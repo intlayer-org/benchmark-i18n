@@ -1,8 +1,8 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
 import { Link as r, useNavigate as i, useParams as a } from "@tanstack/react-router";
 import { ChevronDown as o } from "lucide-react";
-import { Fragment as s, jsxDEV as c } from "react/jsx-dev-runtime";
-var ee = {}, l = [
+import { Fragment as s, jsx as c, jsxs as l } from "react/jsx-runtime";
+var ee = {}, u = [
 	"en",
 	"fr",
 	"es",
@@ -13,57 +13,57 @@ var ee = {}, l = [
 	"ja",
 	"ko",
 	"ru"
-], u = "PARAGLIDE_LOCALE", d = 3456e4, f = [
+], d = "PARAGLIDE_LOCALE", f = 3456e4, p = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], p = [], m = typeof window > "u";
+], m = [], h = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var h, g = !1, _ = () => {
-	let e = f;
-	!m && typeof window < "u" && window.location?.href && (e = N(window.location.href));
-	let t = v(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return g || (h = t, g = !0, y(t, { reload: !1 })), t;
+var g, _ = !1, v = () => {
+	let e = p;
+	!h && typeof window < "u" && window.location?.href && (e = L(window.location.href));
+	let t = y(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return _ || (g = t, _ = !0, b(t, { reload: !1 })), t;
 	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function v(e, t) {
+function y(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = ae();
+		if (t === "cookie") n = j();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && h !== void 0) n = h;
-		else if (F(t) && P.has(t)) {
-			let e = P.get(t);
+		else if (t === "globalVariable" && g !== void 0) n = g;
+		else if (z(t) && R.has(t)) {
+			let e = R.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return x(t);
+				if (t !== void 0) return C(t);
 			}
 		}
-		let e = b(n);
+		let e = S(n);
 		if (e) return e;
 	}
 }
 var te = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, y = (e, t) => {
+}, b = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = _();
+		r = v();
 	} catch {}
-	let i = [], a = f;
-	!m && typeof window < "u" && window.location?.href && (a = N(window.location.href));
-	for (let t of a) if (t === "globalVariable") h = e;
+	let i = [], a = p;
+	!h && typeof window < "u" && window.location?.href && (a = L(window.location.href));
+	for (let t of a) if (t === "globalVariable") g = e;
 	else if (t === "cookie") {
-		if (m || typeof document > "u" || typeof window > "u") continue;
-		let t = `${u}=${e}; path=/; max-age=${d}`;
-		document.cookie = t, D();
+		if (h || typeof document > "u" || typeof window > "u") continue;
+		let t = `${d}=${e}; path=/; max-age=${f}`;
+		document.cookie = t, k();
 	} else if (t === "baseLocale") continue;
-	else if (F(t) && P.has(t)) {
-		let n = P.get(t);
+	else if (z(t) && R.has(t)) {
+		let n = R.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -72,168 +72,163 @@ var te = (e) => {
 		}
 	}
 	let o = () => {
-		!m && n.reload && window.location && e !== r && te(void 0);
+		!h && n.reload && window.location && e !== r && te(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		o();
 	});
 	o();
-}, ne = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
-function b(e) {
+}, x = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function S(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
-	for (let e of l) if (e.toLowerCase() === t) return e;
+	for (let e of u) if (e.toLowerCase() === t) return e;
 }
-function x(e) {
-	let t = b(e);
+function C(e) {
+	let t = S(e);
 	if (t) return t;
-	throw Error(`Invalid locale: ${e}. Expected one of: ${l.join(", ")}`);
+	throw Error(`Invalid locale: ${e}. Expected one of: ${u.join(", ")}`);
 }
-function S(e) {
+function w(e) {
 	return e;
 }
-function C(e, t) {
+function T(e, t) {
 	return e.exec(t.href);
 }
-var w = u.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), re = RegExp(`(?:^|;\\s*)${w}=([^;]*)`), T = Symbol(), E = T;
-function D() {
-	E = T;
+var E = d.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), ne = RegExp(`(?:^|;\\s*)${E}=([^;]*)`), D = Symbol(), O = D;
+function k() {
+	O = D;
 }
-function ie() {
-	typeof queueMicrotask == "function" ? queueMicrotask(D) : Promise.resolve().then(D);
+function A() {
+	typeof queueMicrotask == "function" ? queueMicrotask(k) : Promise.resolve().then(k);
 }
-function ae() {
+function j() {
 	if (typeof document > "u") return;
-	if (E !== T) return E;
-	let e = document.cookie.match(re)?.[1];
-	return E = b(e), ie(), E;
+	if (O !== D) return O;
+	let e = document.cookie.match(ne)?.[1];
+	return O = S(e), A(), O;
 }
-function O(e) {
-	return k(e);
-}
-function k(e) {
-	let t = S(typeof e == "string" ? new URL(e, ne()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
-	return n.length > 0 && b(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), S(t);
-}
-var A, j;
 function M(e) {
-	if (p.length === 0) return;
+	return N(e);
+}
+function N(e) {
+	let t = w(typeof e == "string" ? new URL(e, x()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && S(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), w(t);
+}
+var P, F;
+function I(e) {
+	if (m.length === 0) return;
 	let t = typeof e == "string" ? e : e.href;
-	if (A === t) return j;
-	let n = S(new URL(t, "http://example.com")), r = O(n), i = r.href === n.href ? [n] : [n, r], a;
+	if (P === t) return F;
+	let n = w(new URL(t, "http://example.com")), r = M(n), i = r.href === n.href ? [n] : [n, r], a;
 	for (let e of i) {
-		for (let t of p) if (C(new ee(t.match, e.href), e)) {
+		for (let t of m) if (T(new ee(t.match, e.href), e)) {
 			a = t;
 			break;
 		}
 		if (a) break;
 	}
-	return A = t, j = a, a;
+	return P = t, F = a, a;
 }
-function N(e) {
-	let t = M(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : f;
+function L(e) {
+	let t = I(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : p;
 }
-var P = /* @__PURE__ */ new Map();
-function F(e) {
+var R = /* @__PURE__ */ new Map();
+function z(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var I = () => "Blog", L = () => "Careers", R = () => "Contact", z = () => "FAQ", B = () => "Go to GitHub", V = () => "Home", H = () => "Methodology", U = () => "Mock Pages", W = () => "Pricing", G = () => "Products", K = () => "Settings", q = () => "Team", J = () => "Theme: Auto", oe = () => "Theme: Dark", se = () => "Theme: Light", ce = () => "Theme mode: auto (system). Click to switch to light mode.", le = () => "Theme mode: dark. Click to switch to auto (system) mode.", ue = () => "Theme mode: light. Click to switch to dark mode.", de = () => "Blog", fe = () => "Carrières", pe = () => "Contact", me = () => "FAQ", he = () => "Aller sur GitHub", ge = () => "Accueil", _e = () => "Méthodologie", ve = () => "Pages de test", ye = () => "Tarifs", be = () => "Produits", xe = () => "Paramètres", Se = () => "Équipe", Ce = () => "Thème : Auto", we = () => "Thème : Sombre", Te = () => "Thème : Clair", Ee = () => "Mode thématique : auto (système). Cliquez pour passer en mode clair.", De = () => "Mode thématique : sombre. Cliquez pour passer en mode auto (système).", Oe = () => "Mode thématique : clair. Cliquez pour passer en mode sombre.", ke = () => "Blog", Ae = () => "Carreras", je = () => "Contacto", Me = () => "FAQ", Ne = () => "Ir a GitHub", Pe = () => "Inicio", Fe = () => "Metodología", Ie = () => "Páginas de prueba", Le = () => "Precios", Re = () => "Productos", ze = () => "Ajustes", Be = () => "Equipo", Ve = () => "Tema: Auto", He = () => "Tema: Oscuro", Ue = () => "Tema: Claro", We = () => "Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.", Ge = () => "Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).", Ke = () => "Modo de tema: claro. Haz clic para cambiar al modo oscuro.", qe = () => "Blog", Je = () => "Karriere", Ye = () => "Kontakt", Xe = () => "FAQ", Ze = () => "Zu GitHub", Qe = () => "Startseite", $e = () => "Methodik", et = () => "Testseiten", tt = () => "Preise", nt = () => "Produkte", rt = () => "Einstellungen", it = () => "Team", at = () => "Thema: Auto", ot = () => "Thema: Dunkel", st = () => "Thema: Hell", ct = () => "Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.", lt = () => "Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.", ut = () => "Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.", dt = () => "Blog", ft = () => "Carriere", pt = () => "Contatti", mt = () => "FAQ", ht = () => "Vai su GitHub", gt = () => "Home", _t = () => "Metodologia", vt = () => "Pagine di test", yt = () => "Prezzi", bt = () => "Prodotti", xt = () => "Impostazioni", St = () => "Team", Ct = () => "Tema: Auto", wt = () => "Tema: Scuro", Tt = () => "Tema: Chiaro", Et = () => "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.", Dt = () => "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).", Ot = () => "Modalità tema: chiara. Clicca per passare alla modalità scura.", kt = () => "Blog", At = () => "Carreiras", jt = () => "Contato", Mt = () => "FAQ", Nt = () => "Ir para GitHub", Pt = () => "Início", Ft = () => "Metodologia", It = () => "Páginas de teste", Lt = () => "Preços", Rt = () => "Produtos", zt = () => "Configurações", Bt = () => "Equipe", Vt = () => "Tema: Auto", Ht = () => "Tema: Escuro", Ut = () => "Tema: Claro", Wt = () => "Modo de tema: automático (sistema). Clique para mudar para o modo claro.", Gt = () => "Modo de tema: escuro. Clique para mudar para o modo automático (sistema).", Kt = () => "Modo de tema: claro. Clique para mudar para o modo escuro.", qt = () => "博客", Jt = () => "职业生涯", Yt = () => "联系我们", Xt = () => "常见问题", Zt = () => "访问 GitHub", Qt = () => "首页", $t = () => "方法论", en = () => "模拟页面", tn = () => "价格", nn = () => "产品", rn = () => "设置", an = () => "团队", on = () => "主题：自动", sn = () => "主题：暗黑", cn = () => "主题：明亮", ln = () => "主题模式：自动（系统）。点击切换到明亮模式。", un = () => "主题模式：暗黑。点击切换到自动（系统）模式。", dn = () => "主题模式：明亮。点击切换到暗黑模式。", fn = () => "ブログ", pn = () => "採用情報", mn = () => "お問い合わせ", hn = () => "FAQ", gn = () => "GitHubへ", _n = () => "ホーム", vn = () => "方法論", yn = () => "モックページ", bn = () => "料金", xn = () => "製品", Sn = () => "設定", Cn = () => "チーム", wn = () => "テーマ：自動", Tn = () => "テーマ：ダーク", En = () => "テーマ：ライト", Dn = () => "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。", On = () => "テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。", kn = () => "テーマモード：ライト。クリックしてダークモードに切り替えます。", An = () => "블로그", jn = () => "채용", Mn = () => "문의하기", Nn = () => "FAQ", Pn = () => "GitHub으로 이동", Fn = () => "홈", In = () => "방법론", Ln = () => "모의 페이지", Rn = () => "요금", zn = () => "제품", Bn = () => "설정", Vn = () => "팀", Hn = () => "테마: 자동", Un = () => "테마: 다크", Wn = () => "테마: 라이트", Gn = () => "테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.", Kn = () => "테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.", qn = () => "테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.", Jn = () => "Блог", Yn = () => "Карьера", Xn = () => "Контакт", Zn = () => "FAQ", Qn = () => "Перейти на GitHub", $n = () => "Главная", er = () => "Методология", tr = () => "Тестовые страницы", nr = () => "Цены", rr = () => "Продукты", ir = () => "Настройки", ar = () => "Команда", or = () => "Тема: Авто", sr = () => "Тема: Темная", cr = () => "Тема: Светлая", lr = () => "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.", ur = () => "Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.", dr = () => "Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.", fr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? de(e) : n === "es" ? ke(e) : n === "de" ? qe(e) : n === "it" ? dt(e) : n === "pt" ? kt(e) : n === "zh" ? qt(e) : n === "ja" ? fn(e) : n === "ko" ? An(e) : n === "ru" ? Jn(e) : I(e);
-}), pr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? fe(e) : n === "es" ? Ae(e) : n === "de" ? Je(e) : n === "it" ? ft(e) : n === "pt" ? At(e) : n === "zh" ? Jt(e) : n === "ja" ? pn(e) : n === "ko" ? jn(e) : n === "ru" ? Yn(e) : L(e);
-}), mr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? pe(e) : n === "es" ? je(e) : n === "de" ? Ye(e) : n === "it" ? pt(e) : n === "pt" ? jt(e) : n === "zh" ? Yt(e) : n === "ja" ? mn(e) : n === "ko" ? Mn(e) : n === "ru" ? Xn(e) : R(e);
-}), hr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? me(e) : n === "es" ? Me(e) : n === "de" ? Xe(e) : n === "it" ? mt(e) : n === "pt" ? Mt(e) : n === "zh" ? Xt(e) : n === "ja" ? hn(e) : n === "ko" ? Nn(e) : n === "ru" ? Zn(e) : z(e);
-}), gr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? he(e) : n === "es" ? Ne(e) : n === "de" ? Ze(e) : n === "it" ? ht(e) : n === "pt" ? Nt(e) : n === "zh" ? Zt(e) : n === "ja" ? gn(e) : n === "ko" ? Pn(e) : n === "ru" ? Qn(e) : B(e);
-}), _r = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? ge(e) : n === "es" ? Pe(e) : n === "de" ? Qe(e) : n === "it" ? gt(e) : n === "pt" ? Pt(e) : n === "zh" ? Qt(e) : n === "ja" ? _n(e) : n === "ko" ? Fn(e) : n === "ru" ? $n(e) : V(e);
-}), vr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? _e(e) : n === "es" ? Fe(e) : n === "de" ? $e(e) : n === "it" ? _t(e) : n === "pt" ? Ft(e) : n === "zh" ? $t(e) : n === "ja" ? vn(e) : n === "ko" ? In(e) : n === "ru" ? er(e) : H(e);
-}), Y = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? ve(e) : n === "es" ? Ie(e) : n === "de" ? et(e) : n === "it" ? vt(e) : n === "pt" ? It(e) : n === "zh" ? en(e) : n === "ja" ? yn(e) : n === "ko" ? Ln(e) : n === "ru" ? tr(e) : U(e);
-}), yr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? ye(e) : n === "es" ? Le(e) : n === "de" ? tt(e) : n === "it" ? yt(e) : n === "pt" ? Lt(e) : n === "zh" ? tn(e) : n === "ja" ? bn(e) : n === "ko" ? Rn(e) : n === "ru" ? nr(e) : W(e);
-}), br = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? be(e) : n === "es" ? Re(e) : n === "de" ? nt(e) : n === "it" ? bt(e) : n === "pt" ? Rt(e) : n === "zh" ? nn(e) : n === "ja" ? xn(e) : n === "ko" ? zn(e) : n === "ru" ? rr(e) : G(e);
-}), xr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? xe(e) : n === "es" ? ze(e) : n === "de" ? rt(e) : n === "it" ? xt(e) : n === "pt" ? zt(e) : n === "zh" ? rn(e) : n === "ja" ? Sn(e) : n === "ko" ? Bn(e) : n === "ru" ? ir(e) : K(e);
-}), Sr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? Se(e) : n === "es" ? Be(e) : n === "de" ? it(e) : n === "it" ? St(e) : n === "pt" ? Bt(e) : n === "zh" ? an(e) : n === "ja" ? Cn(e) : n === "ko" ? Vn(e) : n === "ru" ? ar(e) : q(e);
-}), Cr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? Ce(e) : n === "es" ? Ve(e) : n === "de" ? at(e) : n === "it" ? Ct(e) : n === "pt" ? Vt(e) : n === "zh" ? on(e) : n === "ja" ? wn(e) : n === "ko" ? Hn(e) : n === "ru" ? or(e) : J(e);
-}), wr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? we(e) : n === "es" ? He(e) : n === "de" ? ot(e) : n === "it" ? wt(e) : n === "pt" ? Ht(e) : n === "zh" ? sn(e) : n === "ja" ? Tn(e) : n === "ko" ? Un(e) : n === "ru" ? sr(e) : oe(e);
-}), Tr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? Te(e) : n === "es" ? Ue(e) : n === "de" ? st(e) : n === "it" ? Tt(e) : n === "pt" ? Ut(e) : n === "zh" ? cn(e) : n === "ja" ? En(e) : n === "ko" ? Wn(e) : n === "ru" ? cr(e) : se(e);
-}), Er = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? Ee(e) : n === "es" ? We(e) : n === "de" ? ct(e) : n === "it" ? Et(e) : n === "pt" ? Wt(e) : n === "zh" ? ln(e) : n === "ja" ? Dn(e) : n === "ko" ? Gn(e) : n === "ru" ? lr(e) : ce(e);
-}), Dr = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? De(e) : n === "es" ? Ge(e) : n === "de" ? lt(e) : n === "it" ? Dt(e) : n === "pt" ? Gt(e) : n === "zh" ? un(e) : n === "ja" ? On(e) : n === "ko" ? Kn(e) : n === "ru" ? ur(e) : le(e);
-}), Or = ((e = {}, t = {}) => {
-	let n = t.locale ?? _();
-	return n === "fr" ? Oe(e) : n === "es" ? Ke(e) : n === "de" ? ut(e) : n === "it" ? Ot(e) : n === "pt" ? Kt(e) : n === "zh" ? dn(e) : n === "ja" ? kn(e) : n === "ko" ? qn(e) : n === "ru" ? dr(e) : ue(e);
-}), kr = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/ThemeToggle.tsx";
-function Ar() {
+var B = () => "Blog", V = () => "Blog", H = () => "Blog", U = () => "Blog", W = () => "Blog", G = () => "Blog", K = () => "博客", q = () => "ブログ", J = () => "블로그", Y = () => "Блог", X = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? V(e) : n === "es" ? H(e) : n === "de" ? U(e) : n === "it" ? W(e) : n === "pt" ? G(e) : n === "zh" ? K(e) : n === "ja" ? q(e) : n === "ko" ? J(e) : n === "ru" ? Y(e) : B(e);
+}), Z = () => "Careers", re = () => "Carrières", ie = () => "Carreras", ae = () => "Karriere", oe = () => "Carriere", se = () => "Carreiras", ce = () => "职业生涯", le = () => "採用情報", ue = () => "채용", de = () => "Карьера", fe = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? re(e) : n === "es" ? ie(e) : n === "de" ? ae(e) : n === "it" ? oe(e) : n === "pt" ? se(e) : n === "zh" ? ce(e) : n === "ja" ? le(e) : n === "ko" ? ue(e) : n === "ru" ? de(e) : Z(e);
+}), pe = () => "Contact", me = () => "Contact", he = () => "Contacto", ge = () => "Kontakt", _e = () => "Contatti", ve = () => "Contato", ye = () => "联系我们", be = () => "お問い合わせ", xe = () => "문의하기", Se = () => "Контакт", Ce = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? me(e) : n === "es" ? he(e) : n === "de" ? ge(e) : n === "it" ? _e(e) : n === "pt" ? ve(e) : n === "zh" ? ye(e) : n === "ja" ? be(e) : n === "ko" ? xe(e) : n === "ru" ? Se(e) : pe(e);
+}), we = () => "FAQ", Te = () => "FAQ", Ee = () => "FAQ", De = () => "FAQ", Oe = () => "FAQ", ke = () => "FAQ", Ae = () => "常见问题", je = () => "FAQ", Me = () => "FAQ", Ne = () => "FAQ", Pe = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? Te(e) : n === "es" ? Ee(e) : n === "de" ? De(e) : n === "it" ? Oe(e) : n === "pt" ? ke(e) : n === "zh" ? Ae(e) : n === "ja" ? je(e) : n === "ko" ? Me(e) : n === "ru" ? Ne(e) : we(e);
+}), Fe = () => "Go to GitHub", Ie = () => "Aller sur GitHub", Le = () => "Ir a GitHub", Re = () => "Zu GitHub", ze = () => "Vai su GitHub", Be = () => "Ir para GitHub", Ve = () => "访问 GitHub", He = () => "GitHubへ", Ue = () => "GitHub으로 이동", We = () => "Перейти на GitHub", Ge = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? Ie(e) : n === "es" ? Le(e) : n === "de" ? Re(e) : n === "it" ? ze(e) : n === "pt" ? Be(e) : n === "zh" ? Ve(e) : n === "ja" ? He(e) : n === "ko" ? Ue(e) : n === "ru" ? We(e) : Fe(e);
+}), Ke = () => "Home", qe = () => "Accueil", Je = () => "Inicio", Ye = () => "Startseite", Xe = () => "Home", Ze = () => "Início", Qe = () => "首页", $e = () => "ホーム", et = () => "홈", tt = () => "Главная", nt = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? qe(e) : n === "es" ? Je(e) : n === "de" ? Ye(e) : n === "it" ? Xe(e) : n === "pt" ? Ze(e) : n === "zh" ? Qe(e) : n === "ja" ? $e(e) : n === "ko" ? et(e) : n === "ru" ? tt(e) : Ke(e);
+}), rt = () => "Methodology", it = () => "Méthodologie", at = () => "Metodología", ot = () => "Methodik", st = () => "Metodologia", ct = () => "Metodologia", lt = () => "方法论", ut = () => "方法論", dt = () => "방법론", ft = () => "Методология", pt = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? it(e) : n === "es" ? at(e) : n === "de" ? ot(e) : n === "it" ? st(e) : n === "pt" ? ct(e) : n === "zh" ? lt(e) : n === "ja" ? ut(e) : n === "ko" ? dt(e) : n === "ru" ? ft(e) : rt(e);
+}), mt = () => "Mock Pages", ht = () => "Pages de test", gt = () => "Páginas de prueba", _t = () => "Testseiten", vt = () => "Pagine di test", yt = () => "Páginas de teste", bt = () => "模拟页面", xt = () => "モックページ", St = () => "모의 페이지", Ct = () => "Тестовые страницы", wt = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? ht(e) : n === "es" ? gt(e) : n === "de" ? _t(e) : n === "it" ? vt(e) : n === "pt" ? yt(e) : n === "zh" ? bt(e) : n === "ja" ? xt(e) : n === "ko" ? St(e) : n === "ru" ? Ct(e) : mt(e);
+}), Tt = () => "Pricing", Et = () => "Tarifs", Dt = () => "Precios", Ot = () => "Preise", kt = () => "Prezzi", At = () => "Preços", jt = () => "价格", Mt = () => "料金", Nt = () => "요금", Pt = () => "Цены", Ft = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? Et(e) : n === "es" ? Dt(e) : n === "de" ? Ot(e) : n === "it" ? kt(e) : n === "pt" ? At(e) : n === "zh" ? jt(e) : n === "ja" ? Mt(e) : n === "ko" ? Nt(e) : n === "ru" ? Pt(e) : Tt(e);
+}), It = () => "Products", Lt = () => "Produits", Rt = () => "Productos", zt = () => "Produkte", Bt = () => "Prodotti", Vt = () => "Produtos", Ht = () => "产品", Ut = () => "製品", Wt = () => "제품", Gt = () => "Продукты", Kt = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? Lt(e) : n === "es" ? Rt(e) : n === "de" ? zt(e) : n === "it" ? Bt(e) : n === "pt" ? Vt(e) : n === "zh" ? Ht(e) : n === "ja" ? Ut(e) : n === "ko" ? Wt(e) : n === "ru" ? Gt(e) : It(e);
+}), qt = () => "Settings", Jt = () => "Paramètres", Yt = () => "Ajustes", Xt = () => "Einstellungen", Zt = () => "Impostazioni", Qt = () => "Configurações", $t = () => "设置", en = () => "設定", tn = () => "설정", nn = () => "Настройки", rn = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? Jt(e) : n === "es" ? Yt(e) : n === "de" ? Xt(e) : n === "it" ? Zt(e) : n === "pt" ? Qt(e) : n === "zh" ? $t(e) : n === "ja" ? en(e) : n === "ko" ? tn(e) : n === "ru" ? nn(e) : qt(e);
+}), an = () => "Team", on = () => "Équipe", sn = () => "Equipo", cn = () => "Team", ln = () => "Team", un = () => "Equipe", dn = () => "团队", fn = () => "チーム", pn = () => "팀", mn = () => "Команда", hn = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? on(e) : n === "es" ? sn(e) : n === "de" ? cn(e) : n === "it" ? ln(e) : n === "pt" ? un(e) : n === "zh" ? dn(e) : n === "ja" ? fn(e) : n === "ko" ? pn(e) : n === "ru" ? mn(e) : an(e);
+}), gn = () => "Theme: Auto", _n = () => "Thème : Auto", vn = () => "Tema: Auto", yn = () => "Thema: Auto", bn = () => "Tema: Auto", xn = () => "Tema: Auto", Sn = () => "主题：自动", Cn = () => "テーマ：自動", wn = () => "테마: 자동", Tn = () => "Тема: Авто", En = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? _n(e) : n === "es" ? vn(e) : n === "de" ? yn(e) : n === "it" ? bn(e) : n === "pt" ? xn(e) : n === "zh" ? Sn(e) : n === "ja" ? Cn(e) : n === "ko" ? wn(e) : n === "ru" ? Tn(e) : gn(e);
+}), Dn = () => "Theme: Dark", On = () => "Thème : Sombre", kn = () => "Tema: Oscuro", An = () => "Thema: Dunkel", jn = () => "Tema: Scuro", Mn = () => "Tema: Escuro", Nn = () => "主题：暗黑", Pn = () => "テーマ：ダーク", Fn = () => "테마: 다크", In = () => "Тема: Темная", Ln = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? On(e) : n === "es" ? kn(e) : n === "de" ? An(e) : n === "it" ? jn(e) : n === "pt" ? Mn(e) : n === "zh" ? Nn(e) : n === "ja" ? Pn(e) : n === "ko" ? Fn(e) : n === "ru" ? In(e) : Dn(e);
+}), Rn = () => "Theme: Light", zn = () => "Thème : Clair", Bn = () => "Tema: Claro", Vn = () => "Thema: Hell", Hn = () => "Tema: Chiaro", Un = () => "Tema: Claro", Wn = () => "主题：明亮", Gn = () => "テーマ：ライト", Kn = () => "테마: 라이트", qn = () => "Тема: Светлая", Jn = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? zn(e) : n === "es" ? Bn(e) : n === "de" ? Vn(e) : n === "it" ? Hn(e) : n === "pt" ? Un(e) : n === "zh" ? Wn(e) : n === "ja" ? Gn(e) : n === "ko" ? Kn(e) : n === "ru" ? qn(e) : Rn(e);
+}), Yn = () => "Theme mode: auto (system). Click to switch to light mode.", Xn = () => "Mode thématique : auto (système). Cliquez pour passer en mode clair.", Zn = () => "Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.", Qn = () => "Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.", $n = () => "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.", er = () => "Modo de tema: automático (sistema). Clique para mudar para o modo claro.", tr = () => "主题模式：自动（系统）。点击切换到明亮模式。", nr = () => "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。", rr = () => "테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.", ir = () => "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.", ar = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? Xn(e) : n === "es" ? Zn(e) : n === "de" ? Qn(e) : n === "it" ? $n(e) : n === "pt" ? er(e) : n === "zh" ? tr(e) : n === "ja" ? nr(e) : n === "ko" ? rr(e) : n === "ru" ? ir(e) : Yn(e);
+}), or = () => "Theme mode: dark. Click to switch to auto (system) mode.", sr = () => "Mode thématique : sombre. Cliquez pour passer en mode auto (système).", cr = () => "Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).", lr = () => "Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.", ur = () => "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).", dr = () => "Modo de tema: escuro. Clique para mudar para o modo automático (sistema).", fr = () => "主题模式：暗黑。点击切换到自动（系统）模式。", pr = () => "テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。", mr = () => "테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.", hr = () => "Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.", Q = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? sr(e) : n === "es" ? cr(e) : n === "de" ? lr(e) : n === "it" ? ur(e) : n === "pt" ? dr(e) : n === "zh" ? fr(e) : n === "ja" ? pr(e) : n === "ko" ? mr(e) : n === "ru" ? hr(e) : or(e);
+}), gr = () => "Theme mode: light. Click to switch to dark mode.", _r = () => "Mode thématique : clair. Cliquez pour passer en mode sombre.", vr = () => "Modo de tema: claro. Haz clic para cambiar al modo oscuro.", yr = () => "Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.", br = () => "Modalità tema: chiara. Clicca per passare alla modalità scura.", xr = () => "Modo de tema: claro. Clique para mudar para o modo escuro.", Sr = () => "主题模式：明亮。点击切换到暗黑模式。", Cr = () => "テーマモード：ライト。クリックしてダークモードに切り替えます。", wr = () => "테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.", Tr = () => "Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.", Er = ((e = {}, t = {}) => {
+	let n = t.locale ?? v();
+	return n === "fr" ? _r(e) : n === "es" ? vr(e) : n === "de" ? yr(e) : n === "it" ? br(e) : n === "pt" ? xr(e) : n === "zh" ? Sr(e) : n === "ja" ? Cr(e) : n === "ko" ? wr(e) : n === "ru" ? Tr(e) : gr(e);
+});
+function Dr() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 }
-function X(e) {
+function $(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function jr() {
+function Or() {
 	let [t, r] = n("auto");
 	e(() => {
-		let e = Ar();
-		r(e), X(e);
+		let e = Dr();
+		r(e), $(e);
 	}, []), e(() => {
 		if (t !== "auto") return;
-		let e = window.matchMedia("(prefers-color-scheme: dark)"), n = () => X("auto");
+		let e = window.matchMedia("(prefers-color-scheme: dark)"), n = () => $("auto");
 		return e.addEventListener("change", n), () => {
 			e.removeEventListener("change", n);
 		};
 	}, [t]);
 	function i() {
 		let e = t === "light" ? "dark" : t === "dark" ? "auto" : "light";
-		r(e), X(e), window.localStorage.setItem("theme", e);
+		r(e), $(e), window.localStorage.setItem("theme", e);
 	}
-	let a = t === "auto" ? Er() : t === "light" ? Or() : Dr();
+	let a = t === "auto" ? ar() : t === "light" ? Er() : Q();
 	return c("button", {
 		type: "button",
 		onClick: i,
 		"aria-label": a,
 		title: a,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
-		children: t === "auto" ? Cr() : t === "dark" ? wr() : Tr()
-	}, void 0, !1, {
-		fileName: kr,
-		lineNumber: 74,
-		columnNumber: 5
-	}, this);
+		children: t === "auto" ? En() : t === "dark" ? Ln() : Jn()
+	});
 }
-var Z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/LocaleSwitcher.tsx";
-function Mr() {
+function kr() {
 	let e = a({ strict: !1 }).locale ?? "en", t = i(), n = (e) => {
 		try {
 			let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
@@ -256,26 +251,14 @@ function Mr() {
 			value: e,
 			onChange: (e) => r(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: l.map((e) => c("option", {
+			children: u.map((e) => c("option", {
 				value: e,
 				children: n(e)
-			}, e, !1, {
-				fileName: Z,
-				lineNumber: 34,
-				columnNumber: 11
-			}, this))
-		}, void 0, !1, {
-			fileName: Z,
-			lineNumber: 28,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: Z,
-		lineNumber: 27,
-		columnNumber: 5
-	}, this);
+			}, e))
+		})
+	});
 }
-function Nr(e) {
+function Ar(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), t(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -285,48 +268,47 @@ function Nr(e) {
 		}
 	}, [e]);
 }
-var Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/Header.tsx";
-function Pr() {
-	Nr("Header");
+function jr() {
+	Ar("Header");
 	let [e, t] = n(!1), i = a({ strict: !1 }).locale ?? "en", s = [
 		{
 			to: "/$locale/products",
-			label: br()
+			label: Kt()
 		},
 		{
 			to: "/$locale/pricing",
-			label: yr()
+			label: Ft()
 		},
 		{
 			to: "/$locale/team",
-			label: Sr()
+			label: hn()
 		},
 		{
 			to: "/$locale/blog",
-			label: fr()
+			label: X()
 		},
 		{
 			to: "/$locale/careers",
-			label: pr()
+			label: fe()
 		},
 		{
 			to: "/$locale/faq",
-			label: hr()
+			label: Pe()
 		},
 		{
 			to: "/$locale/contact",
-			label: mr()
+			label: Ce()
 		},
 		{
 			to: "/$locale/settings",
-			label: xr()
+			label: rn()
 		}
 	];
 	return c("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: c("nav", {
+		children: l("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [c("div", {
+			children: [l("div", {
 				className: "flex items-center gap-8",
 				children: [c(r, {
 					preload: !1,
@@ -334,11 +316,7 @@ function Pr() {
 					params: { locale: i },
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Bench"
-				}, void 0, !1, {
-					fileName: Q,
-					lineNumber: 31,
-					columnNumber: 11
-				}, this), c("div", {
+				}), l("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
 						c(r, {
@@ -348,45 +326,29 @@ function Pr() {
 							activeOptions: { exact: !0 },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
-							children: _r()
-						}, void 0, !1, {
-							fileName: Q,
-							lineNumber: 41,
-							columnNumber: 13
-						}, this),
+							children: nt()
+						}),
 						c(r, {
 							preload: !1,
 							to: "/$locale/about",
 							params: { locale: i },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
-							children: vr()
-						}, void 0, !1, {
-							fileName: Q,
-							lineNumber: 51,
-							columnNumber: 13
-						}, this),
-						c("div", {
+							children: pt()
+						}),
+						l("div", {
 							className: "relative",
-							children: [c("button", {
+							children: [l("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => t(!0),
 								onMouseLeave: () => t(!1),
 								onClick: () => t(!e),
-								children: [Y(), c(o, {
+								children: [wt(), c(o, {
 									size: 14,
 									className: `transition-transform ${e ? "rotate-180" : ""}`
-								}, void 0, !1, {
-									fileName: Q,
-									lineNumber: 71,
-									columnNumber: 17
-								}, this)]
-							}, void 0, !0, {
-								fileName: Q,
-								lineNumber: 63,
-								columnNumber: 15
-							}, this), e && c("div", {
+								})]
+							}), e && c("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => t(!0),
 								onMouseLeave: () => t(!1),
@@ -399,52 +361,24 @@ function Pr() {
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => t(!1),
 										children: e.label
-									}, e.to, !1, {
-										fileName: Q,
-										lineNumber: 85,
-										columnNumber: 23
-									}, this))
-								}, void 0, !1, {
-									fileName: Q,
-									lineNumber: 83,
-									columnNumber: 19
-								}, this)
-							}, void 0, !1, {
-								fileName: Q,
-								lineNumber: 78,
-								columnNumber: 17
-							}, this)]
-						}, void 0, !0, {
-							fileName: Q,
-							lineNumber: 62,
-							columnNumber: 13
-						}, this)
+									}, e.to))
+								})
+							})]
+						})
 					]
-				}, void 0, !0, {
-					fileName: Q,
-					lineNumber: 40,
-					columnNumber: 11
-				}, this)]
-			}, void 0, !0, {
-				fileName: Q,
-				lineNumber: 30,
-				columnNumber: 9
-			}, this), c("div", {
+				})]
+			}), l("div", {
 				className: "flex items-center gap-4",
 				children: [
-					c("a", {
+					l("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
 						children: [c("span", {
 							className: "sr-only",
-							children: gr()
-						}, void 0, !1, {
-							fileName: Q,
-							lineNumber: 110,
-							columnNumber: 13
-						}, this), c("svg", {
+							children: Ge()
+						}), c("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
@@ -452,67 +386,21 @@ function Pr() {
 							children: c("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							}, void 0, !1, {
-								fileName: Q,
-								lineNumber: 112,
-								columnNumber: 15
-							}, this)
-						}, void 0, !1, {
-							fileName: Q,
-							lineNumber: 111,
-							columnNumber: 13
-						}, this)]
-					}, void 0, !0, {
-						fileName: Q,
-						lineNumber: 104,
-						columnNumber: 11
-					}, this),
-					c(Mr, {}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 118,
-						columnNumber: 11
-					}, this),
-					c(jr, {}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 119,
-						columnNumber: 11
-					}, this)
+							})
+						})]
+					}),
+					c(kr, {}),
+					c(Or, {})
 				]
-			}, void 0, !0, {
-				fileName: Q,
-				lineNumber: 103,
-				columnNumber: 9
-			}, this)]
-		}, void 0, !0, {
-			fileName: Q,
-			lineNumber: 29,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: Q,
-		lineNumber: 28,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
-var Fr = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
-y("en", { reload: !1 });
-function Ir({ children: e }) {
-	return c(s, { children: e }, void 0, !1, {
-		fileName: Fr,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+b("en", { reload: !1 });
+function Mr({ children: e }) {
+	return c(s, { children: e });
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/Header.wrapper.tsx";
-function Lr() {
-	return c(Ir, { children: c(Pr, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function Nr() {
+	return c(Mr, { children: c(jr, {}) });
 }
-export { Lr as default };
+export { Nr as default };

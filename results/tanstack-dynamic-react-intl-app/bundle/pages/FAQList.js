@@ -1,6 +1,6 @@
 import * as React$1 from "react";
 import React, { use } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 function memoize(fn, options) {
 	const cache = options && options.cache ? options.cache : cacheDefault;
 	const serializer = options && options.serializer ? options.serializer : serializerDefault;
@@ -48,7 +48,6 @@ var serializerDefault = function() {
 	return JSON.stringify(arguments);
 };
 var ObjectWithoutPrototypeCache = class {
-	cache;
 	constructor() {
 		this.cache = Object.create(null);
 	}
@@ -112,7 +111,7 @@ function parseDateTimeSkeleton(skeleton) {
 					"long",
 					"narrow",
 					"short"
-				][len - 4];
+				][len - 3];
 				break;
 			case "c":
 				if (len < 4) throw new RangeError("`c..ccc` (weekday) patterns are not supported");
@@ -121,7 +120,7 @@ function parseDateTimeSkeleton(skeleton) {
 					"long",
 					"narrow",
 					"short"
-				][len - 4];
+				][len - 3];
 				break;
 			case "a":
 				result.hour12 = true;
@@ -423,56 +422,6 @@ function parseNumberSkeleton(tokens) {
 	}
 	return result;
 }
-var TYPE = function(TYPE) {
-	TYPE[TYPE["literal"] = 0] = "literal";
-	TYPE[TYPE["argument"] = 1] = "argument";
-	TYPE[TYPE["number"] = 2] = "number";
-	TYPE[TYPE["date"] = 3] = "date";
-	TYPE[TYPE["time"] = 4] = "time";
-	TYPE[TYPE["select"] = 5] = "select";
-	TYPE[TYPE["plural"] = 6] = "plural";
-	TYPE[TYPE["pound"] = 7] = "pound";
-	TYPE[TYPE["tag"] = 8] = "tag";
-	return TYPE;
-}({});
-var SKELETON_TYPE = function(SKELETON_TYPE) {
-	SKELETON_TYPE[SKELETON_TYPE["number"] = 0] = "number";
-	SKELETON_TYPE[SKELETON_TYPE["dateTime"] = 1] = "dateTime";
-	return SKELETON_TYPE;
-}({});
-function isLiteralElement(el) {
-	return el.type === TYPE.literal;
-}
-function isArgumentElement(el) {
-	return el.type === TYPE.argument;
-}
-function isNumberElement(el) {
-	return el.type === TYPE.number;
-}
-function isDateElement(el) {
-	return el.type === TYPE.date;
-}
-function isTimeElement(el) {
-	return el.type === TYPE.time;
-}
-function isSelectElement(el) {
-	return el.type === TYPE.select;
-}
-function isPluralElement(el) {
-	return el.type === TYPE.plural;
-}
-function isPoundElement(el) {
-	return el.type === TYPE.pound;
-}
-function isTagElement(el) {
-	return el.type === TYPE.tag;
-}
-function isNumberSkeleton(el) {
-	return !!(el && typeof el === "object" && el.type === SKELETON_TYPE.number);
-}
-function isDateTimeSkeleton(el) {
-	return !!(el && typeof el === "object" && el.type === SKELETON_TYPE.dateTime);
-}
 var ErrorKind = function(ErrorKind) {
 	ErrorKind[ErrorKind["EXPECT_ARGUMENT_CLOSING_BRACE"] = 1] = "EXPECT_ARGUMENT_CLOSING_BRACE";
 	ErrorKind[ErrorKind["EMPTY_ARGUMENT"] = 2] = "EMPTY_ARGUMENT";
@@ -502,6 +451,51 @@ var ErrorKind = function(ErrorKind) {
 	ErrorKind[ErrorKind["UNCLOSED_TAG"] = 27] = "UNCLOSED_TAG";
 	return ErrorKind;
 }({});
+var TYPE = function(TYPE) {
+	TYPE[TYPE["literal"] = 0] = "literal";
+	TYPE[TYPE["argument"] = 1] = "argument";
+	TYPE[TYPE["number"] = 2] = "number";
+	TYPE[TYPE["date"] = 3] = "date";
+	TYPE[TYPE["time"] = 4] = "time";
+	TYPE[TYPE["select"] = 5] = "select";
+	TYPE[TYPE["plural"] = 6] = "plural";
+	TYPE[TYPE["pound"] = 7] = "pound";
+	TYPE[TYPE["tag"] = 8] = "tag";
+	return TYPE;
+}({});
+function isLiteralElement(el) {
+	return el.type === 0;
+}
+function isArgumentElement(el) {
+	return el.type === 1;
+}
+function isNumberElement(el) {
+	return el.type === 2;
+}
+function isDateElement(el) {
+	return el.type === 3;
+}
+function isTimeElement(el) {
+	return el.type === 4;
+}
+function isSelectElement(el) {
+	return el.type === 5;
+}
+function isPluralElement(el) {
+	return el.type === 6;
+}
+function isPoundElement(el) {
+	return el.type === 7;
+}
+function isTagElement(el) {
+	return el.type === 8;
+}
+function isNumberSkeleton(el) {
+	return !!(el && typeof el === "object" && el.type === 0);
+}
+function isDateTimeSkeleton(el) {
+	return !!(el && typeof el === "object" && el.type === 1);
+}
 var SPACE_SEPARATOR_REGEX = /[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/;
 var timeData = {
 	"001": ["H", "h"],
@@ -1729,18 +1723,43 @@ var trimEnd = hasTrimEnd ? function trimEnd(s) {
 } : function trimEnd(s) {
 	return s.replace(SPACE_SEPARATOR_END_REGEX, "");
 };
-var IDENTIFIER_PREFIX_RE = /* @__PURE__ */ new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
+var IDENTIFIER_PREFIX_RE = new RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
 function matchIdentifierAtIndex(s, index) {
 	IDENTIFIER_PREFIX_RE.lastIndex = index;
 	return IDENTIFIER_PREFIX_RE.exec(s)[1] ?? "";
 }
+function plainTopLevelEndPosition(message) {
+	if (message.length === 0) return null;
+	let line = 1;
+	let column = 1;
+	for (let offset = 0; offset < message.length;) {
+		const code = message.charCodeAt(offset);
+		switch (code) {
+			case 35:
+			case 39:
+			case 60:
+			case 123:
+			case 125: return null;
+		}
+		if (code === 10) {
+			line++;
+			column = 1;
+			offset++;
+		} else {
+			column++;
+			if (code >= 55296 && code <= 56319 && offset + 1 < message.length) {
+				const next = message.charCodeAt(offset + 1);
+				offset += next >= 56320 && next <= 57343 ? 2 : 1;
+			} else offset++;
+		}
+	}
+	return {
+		offset: message.length,
+		line,
+		column
+	};
+}
 var Parser = class {
-	message;
-	position;
-	locale;
-	ignoreTag;
-	requiresOtherClause;
-	shouldParseSkeletons;
 	constructor(message, options = {}) {
 		this.message = message;
 		this.position = {
@@ -1755,6 +1774,24 @@ var Parser = class {
 	}
 	parse() {
 		if (this.offset() !== 0) throw Error("parser can only be used once");
+		if (this.message.length > 0) {
+			const firstCode = this.message.charCodeAt(0);
+			if (firstCode !== 35 && firstCode !== 39 && firstCode !== 60 && firstCode !== 123 && firstCode !== 125) {
+				const plainEndPosition = plainTopLevelEndPosition(this.message);
+				if (plainEndPosition) {
+					const start = this.clonePosition();
+					this.position = plainEndPosition;
+					return {
+						val: [{
+							type: 0,
+							value: this.message,
+							location: createLocation(start, this.clonePosition())
+						}],
+						err: null
+					};
+				}
+			}
+		}
 		return this.parseMessage(0, "", false);
 	}
 	parseMessage(nestingLevel, parentArgType, expectingCloseTag) {
@@ -1770,12 +1807,13 @@ var Parser = class {
 				const position = this.clonePosition();
 				this.bump();
 				elements.push({
-					type: TYPE.pound,
+					type: 7,
 					location: createLocation(position, this.clonePosition())
 				});
-			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) if (expectingCloseTag) break;
-			else return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(this.clonePosition(), this.clonePosition()));
-			else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
+			} else if (char === 60 && !this.ignoreTag && this.peek() === 47) {
+				if (expectingCloseTag) break;
+				else return this.error(26, createLocation(this.clonePosition(), this.clonePosition()));
+			} else if (char === 60 && !this.ignoreTag && _isAlpha(this.peek() || 0)) {
 				const result = this.parseTag(nestingLevel, parentArgType);
 				if (result.err) return result;
 				elements.push(result.val);
@@ -1797,7 +1835,7 @@ var Parser = class {
 		this.bumpSpace();
 		if (this.bumpIf("/>")) return {
 			val: {
-				type: TYPE.literal,
+				type: 0,
 				value: `<${tagName}/>`,
 				location: createLocation(startPosition, this.clonePosition())
 			},
@@ -1809,22 +1847,22 @@ var Parser = class {
 			const children = childrenResult.val;
 			const endTagStartPosition = this.clonePosition();
 			if (this.bumpIf("</")) {
-				if (this.isEOF() || !_isAlpha(this.char())) return this.error(ErrorKind.INVALID_TAG, createLocation(endTagStartPosition, this.clonePosition()));
+				if (this.isEOF() || !_isAlpha(this.char())) return this.error(23, createLocation(endTagStartPosition, this.clonePosition()));
 				const closingTagNameStartPosition = this.clonePosition();
-				if (tagName !== this.parseTagName()) return this.error(ErrorKind.UNMATCHED_CLOSING_TAG, createLocation(closingTagNameStartPosition, this.clonePosition()));
+				if (tagName !== this.parseTagName()) return this.error(26, createLocation(closingTagNameStartPosition, this.clonePosition()));
 				this.bumpSpace();
-				if (!this.bumpIf(">")) return this.error(ErrorKind.INVALID_TAG, createLocation(endTagStartPosition, this.clonePosition()));
+				if (!this.bumpIf(">")) return this.error(23, createLocation(endTagStartPosition, this.clonePosition()));
 				return {
 					val: {
-						type: TYPE.tag,
+						type: 8,
 						value: tagName,
 						children,
 						location: createLocation(startPosition, this.clonePosition())
 					},
 					err: null
 				};
-			} else return this.error(ErrorKind.UNCLOSED_TAG, createLocation(startPosition, this.clonePosition()));
-		} else return this.error(ErrorKind.INVALID_TAG, createLocation(startPosition, this.clonePosition()));
+			} else return this.error(27, createLocation(startPosition, this.clonePosition()));
+		} else return this.error(23, createLocation(startPosition, this.clonePosition()));
 	}
 	parseTagName() {
 		const startOffset = this.offset();
@@ -1856,7 +1894,7 @@ var Parser = class {
 		const location = createLocation(start, this.clonePosition());
 		return {
 			val: {
-				type: TYPE.literal,
+				type: 0,
 				value,
 				location
 			},
@@ -1891,14 +1929,15 @@ var Parser = class {
 		this.bump();
 		while (!this.isEOF()) {
 			const ch = this.char();
-			if (ch === 39) if (this.peek() === 39) {
-				codePoints.push(39);
-				this.bump();
-			} else {
-				this.bump();
-				break;
-			}
-			else codePoints.push(ch);
+			if (ch === 39) {
+				if (this.peek() === 39) {
+					codePoints.push(39);
+					this.bump();
+				} else {
+					this.bump();
+					break;
+				}
+			} else codePoints.push(ch);
 			this.bump();
 		}
 		return String.fromCodePoint(...codePoints);
@@ -1916,21 +1955,21 @@ var Parser = class {
 		const openingBracePosition = this.clonePosition();
 		this.bump();
 		this.bumpSpace();
-		if (this.isEOF()) return this.error(ErrorKind.EXPECT_ARGUMENT_CLOSING_BRACE, createLocation(openingBracePosition, this.clonePosition()));
+		if (this.isEOF()) return this.error(1, createLocation(openingBracePosition, this.clonePosition()));
 		if (this.char() === 125) {
 			this.bump();
-			return this.error(ErrorKind.EMPTY_ARGUMENT, createLocation(openingBracePosition, this.clonePosition()));
+			return this.error(2, createLocation(openingBracePosition, this.clonePosition()));
 		}
 		let value = this.parseIdentifierIfPossible().value;
-		if (!value) return this.error(ErrorKind.MALFORMED_ARGUMENT, createLocation(openingBracePosition, this.clonePosition()));
+		if (!value) return this.error(3, createLocation(openingBracePosition, this.clonePosition()));
 		this.bumpSpace();
-		if (this.isEOF()) return this.error(ErrorKind.EXPECT_ARGUMENT_CLOSING_BRACE, createLocation(openingBracePosition, this.clonePosition()));
+		if (this.isEOF()) return this.error(1, createLocation(openingBracePosition, this.clonePosition()));
 		switch (this.char()) {
 			case 125:
 				this.bump();
 				return {
 					val: {
-						type: TYPE.argument,
+						type: 1,
 						value,
 						location: createLocation(openingBracePosition, this.clonePosition())
 					},
@@ -1939,9 +1978,9 @@ var Parser = class {
 			case 44:
 				this.bump();
 				this.bumpSpace();
-				if (this.isEOF()) return this.error(ErrorKind.EXPECT_ARGUMENT_CLOSING_BRACE, createLocation(openingBracePosition, this.clonePosition()));
+				if (this.isEOF()) return this.error(1, createLocation(openingBracePosition, this.clonePosition()));
 				return this.parseArgumentOptions(nestingLevel, expectingCloseTag, value, openingBracePosition);
-			default: return this.error(ErrorKind.MALFORMED_ARGUMENT, createLocation(openingBracePosition, this.clonePosition()));
+			default: return this.error(3, createLocation(openingBracePosition, this.clonePosition()));
 		}
 	}
 	parseIdentifierIfPossible() {
@@ -1960,7 +1999,7 @@ var Parser = class {
 		let argType = this.parseIdentifierIfPossible().value;
 		let typeEndPosition = this.clonePosition();
 		switch (argType) {
-			case "": return this.error(ErrorKind.EXPECT_ARGUMENT_TYPE, createLocation(typeStartPosition, typeEndPosition));
+			case "": return this.error(4, createLocation(typeStartPosition, typeEndPosition));
 			case "number":
 			case "date":
 			case "time": {
@@ -1972,7 +2011,7 @@ var Parser = class {
 					const result = this.parseSimpleArgStyleIfPossible();
 					if (result.err) return result;
 					const style = trimEnd(result.val);
-					if (style.length === 0) return this.error(ErrorKind.EXPECT_ARGUMENT_STYLE, createLocation(this.clonePosition(), this.clonePosition()));
+					if (style.length === 0) return this.error(6, createLocation(this.clonePosition(), this.clonePosition()));
 					styleAndLocation = {
 						style,
 						styleLocation: createLocation(styleStartPosition, this.clonePosition())
@@ -1988,7 +2027,7 @@ var Parser = class {
 						if (result.err) return result;
 						return {
 							val: {
-								type: TYPE.number,
+								type: 2,
 								value,
 								location,
 								style: result.val
@@ -1996,18 +2035,18 @@ var Parser = class {
 							err: null
 						};
 					} else {
-						if (skeleton.length === 0) return this.error(ErrorKind.EXPECT_DATE_TIME_SKELETON, location);
+						if (skeleton.length === 0) return this.error(10, location);
 						let dateTimePattern = skeleton;
 						if (this.locale) dateTimePattern = getBestPattern(skeleton, this.locale);
 						const style = {
-							type: SKELETON_TYPE.dateTime,
+							type: 1,
 							pattern: dateTimePattern,
 							location: styleAndLocation.styleLocation,
 							parsedOptions: this.shouldParseSkeletons ? parseDateTimeSkeleton(dateTimePattern) : {}
 						};
 						return {
 							val: {
-								type: argType === "date" ? TYPE.date : TYPE.time,
+								type: argType === "date" ? 3 : 4,
 								value,
 								location,
 								style
@@ -2018,7 +2057,7 @@ var Parser = class {
 				}
 				return {
 					val: {
-						type: argType === "number" ? TYPE.number : argType === "date" ? TYPE.date : TYPE.time,
+						type: argType === "number" ? 2 : argType === "date" ? 3 : 4,
 						value,
 						location,
 						style: styleAndLocation?.style ?? null
@@ -2031,14 +2070,14 @@ var Parser = class {
 			case "select": {
 				const typeEndPosition = this.clonePosition();
 				this.bumpSpace();
-				if (!this.bumpIf(",")) return this.error(ErrorKind.EXPECT_SELECT_ARGUMENT_OPTIONS, createLocation(typeEndPosition, { ...typeEndPosition }));
+				if (!this.bumpIf(",")) return this.error(12, createLocation(typeEndPosition, { ...typeEndPosition }));
 				this.bumpSpace();
 				let identifierAndLocation = this.parseIdentifierIfPossible();
 				let pluralOffset = 0;
 				if (argType !== "select" && identifierAndLocation.value === "offset") {
-					if (!this.bumpIf(":")) return this.error(ErrorKind.EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE, createLocation(this.clonePosition(), this.clonePosition()));
+					if (!this.bumpIf(":")) return this.error(13, createLocation(this.clonePosition(), this.clonePosition()));
 					this.bumpSpace();
-					const result = this.tryParseDecimalInteger(ErrorKind.EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE, ErrorKind.INVALID_PLURAL_ARGUMENT_OFFSET_VALUE);
+					const result = this.tryParseDecimalInteger(13, 14);
 					if (result.err) return result;
 					this.bumpSpace();
 					identifierAndLocation = this.parseIdentifierIfPossible();
@@ -2051,7 +2090,7 @@ var Parser = class {
 				const location = createLocation(openingBracePosition, this.clonePosition());
 				if (argType === "select") return {
 					val: {
-						type: TYPE.select,
+						type: 5,
 						value,
 						options: fromEntries(optionsResult.val),
 						location
@@ -2060,7 +2099,7 @@ var Parser = class {
 				};
 				else return {
 					val: {
-						type: TYPE.plural,
+						type: 6,
 						value,
 						options: fromEntries(optionsResult.val),
 						offset: pluralOffset,
@@ -2070,11 +2109,11 @@ var Parser = class {
 					err: null
 				};
 			}
-			default: return this.error(ErrorKind.INVALID_ARGUMENT_TYPE, createLocation(typeStartPosition, typeEndPosition));
+			default: return this.error(5, createLocation(typeStartPosition, typeEndPosition));
 		}
 	}
 	tryParseArgumentClose(openingBracePosition) {
-		if (this.isEOF() || this.char() !== 125) return this.error(ErrorKind.EXPECT_ARGUMENT_CLOSING_BRACE, createLocation(openingBracePosition, this.clonePosition()));
+		if (this.isEOF() || this.char() !== 125) return this.error(1, createLocation(openingBracePosition, this.clonePosition()));
 		this.bump();
 		return {
 			val: true,
@@ -2088,7 +2127,7 @@ var Parser = class {
 			case 39: {
 				this.bump();
 				let apostrophePosition = this.clonePosition();
-				if (!this.bumpUntil("'")) return this.error(ErrorKind.UNCLOSED_QUOTE_IN_ARGUMENT_STYLE, createLocation(apostrophePosition, this.clonePosition()));
+				if (!this.bumpUntil("'")) return this.error(11, createLocation(apostrophePosition, this.clonePosition()));
 				this.bump();
 				break;
 			}
@@ -2103,9 +2142,7 @@ var Parser = class {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(startPosition.offset, this.offset()),
@@ -2117,11 +2154,11 @@ var Parser = class {
 		try {
 			tokens = parseNumberSkeletonFromString(skeleton);
 		} catch {
-			return this.error(ErrorKind.INVALID_NUMBER_SKELETON, location);
+			return this.error(7, location);
 		}
 		return {
 			val: {
-				type: SKELETON_TYPE.number,
+				type: 0,
 				tokens,
 				location,
 				parsedOptions: this.shouldParseSkeletons ? parseNumberSkeleton(tokens) : {}
@@ -2138,17 +2175,17 @@ var Parser = class {
 			if (selector.length === 0) {
 				const startPosition = this.clonePosition();
 				if (parentArgType !== "select" && this.bumpIf("=")) {
-					const result = this.tryParseDecimalInteger(ErrorKind.EXPECT_PLURAL_ARGUMENT_SELECTOR, ErrorKind.INVALID_PLURAL_ARGUMENT_SELECTOR);
+					const result = this.tryParseDecimalInteger(16, 19);
 					if (result.err) return result;
 					selectorLocation = createLocation(startPosition, this.clonePosition());
 					selector = this.message.slice(startPosition.offset, this.offset());
 				} else break;
 			}
-			if (parsedSelectors.has(selector)) return this.error(parentArgType === "select" ? ErrorKind.DUPLICATE_SELECT_ARGUMENT_SELECTOR : ErrorKind.DUPLICATE_PLURAL_ARGUMENT_SELECTOR, selectorLocation);
+			if (parsedSelectors.has(selector)) return this.error(parentArgType === "select" ? 21 : 20, selectorLocation);
 			if (selector === "other") hasOtherClause = true;
 			this.bumpSpace();
 			const openingBracePosition = this.clonePosition();
-			if (!this.bumpIf("{")) return this.error(parentArgType === "select" ? ErrorKind.EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT : ErrorKind.EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT, createLocation(this.clonePosition(), this.clonePosition()));
+			if (!this.bumpIf("{")) return this.error(parentArgType === "select" ? 17 : 18, createLocation(this.clonePosition(), this.clonePosition()));
 			const fragmentResult = this.parseMessage(nestingLevel + 1, parentArgType, expectCloseTag);
 			if (fragmentResult.err) return fragmentResult;
 			const argCloseResult = this.tryParseArgumentClose(openingBracePosition);
@@ -2161,8 +2198,8 @@ var Parser = class {
 			this.bumpSpace();
 			({value: selector, location: selectorLocation} = this.parseIdentifierIfPossible());
 		}
-		if (options.length === 0) return this.error(parentArgType === "select" ? ErrorKind.EXPECT_SELECT_ARGUMENT_SELECTOR : ErrorKind.EXPECT_PLURAL_ARGUMENT_SELECTOR, createLocation(this.clonePosition(), this.clonePosition()));
-		if (this.requiresOtherClause && !hasOtherClause) return this.error(ErrorKind.MISSING_OTHER_CLAUSE, createLocation(this.clonePosition(), this.clonePosition()));
+		if (options.length === 0) return this.error(parentArgType === "select" ? 15 : 16, createLocation(this.clonePosition(), this.clonePosition()));
+		if (this.requiresOtherClause && !hasOtherClause) return this.error(22, createLocation(this.clonePosition(), this.clonePosition()));
 		return {
 			val: options,
 			err: null
@@ -2319,8 +2356,6 @@ var ErrorCode = function(ErrorCode) {
 	return ErrorCode;
 }({});
 var FormatError = class extends Error {
-	code;
-	originalMessage;
 	constructor(msg, code, originalMessage) {
 		super(msg);
 		this.code = code;
@@ -2332,29 +2367,24 @@ var FormatError = class extends Error {
 };
 var InvalidValueError = class extends FormatError {
 	constructor(variableId, value, options, originalMessage) {
-		super(`Invalid values for "${variableId}": "${value}". Options are "${Object.keys(options).join("\", \"")}"`, ErrorCode.INVALID_VALUE, originalMessage);
+		super(`Invalid values for "${variableId}": "${value}". Options are "${Object.keys(options).join("\", \"")}"`, "INVALID_VALUE", originalMessage);
 	}
 };
 var InvalidValueTypeError = class extends FormatError {
 	constructor(value, type, originalMessage) {
-		super(`Value for "${value}" must be of type ${type}`, ErrorCode.INVALID_VALUE, originalMessage);
+		super(`Value for "${value}" must be of type ${type}`, "INVALID_VALUE", originalMessage);
 	}
 };
 var MissingValueError = class extends FormatError {
 	constructor(variableId, originalMessage) {
-		super(`The intl string context variable "${variableId}" was not provided to the string "${originalMessage}"`, ErrorCode.MISSING_VALUE, originalMessage);
+		super(`The intl string context variable "${variableId}" was not provided to the string "${originalMessage}"`, "MISSING_VALUE", originalMessage);
 	}
 };
-var PART_TYPE = function(PART_TYPE) {
-	PART_TYPE[PART_TYPE["literal"] = 0] = "literal";
-	PART_TYPE[PART_TYPE["object"] = 1] = "object";
-	return PART_TYPE;
-}({});
 function mergeLiteral(parts) {
 	if (parts.length < 2) return parts;
 	return parts.reduce((all, part) => {
 		const lastPart = all[all.length - 1];
-		if (!lastPart || lastPart.type !== PART_TYPE.literal || part.type !== PART_TYPE.literal) all.push(part);
+		if (!lastPart || lastPart.type !== 0 || part.type !== 0) all.push(part);
 		else lastPart.value += part.value;
 		return all;
 	}, []);
@@ -2364,21 +2394,21 @@ function isFormatXMLElementFn(el) {
 }
 function formatToParts(els, locales, formatters, formats, values, currentPluralValue, originalMessage) {
 	if (els.length === 1 && isLiteralElement(els[0])) return [{
-		type: PART_TYPE.literal,
+		type: 0,
 		value: els[0].value
 	}];
 	const result = [];
 	for (const el of els) {
 		if (isLiteralElement(el)) {
 			result.push({
-				type: PART_TYPE.literal,
+				type: 0,
 				value: el.value
 			});
 			continue;
 		}
 		if (isPoundElement(el)) {
 			if (typeof currentPluralValue === "number") result.push({
-				type: PART_TYPE.literal,
+				type: 0,
 				value: formatters.getNumberFormat(locales).format(currentPluralValue)
 			});
 			continue;
@@ -2389,7 +2419,7 @@ function formatToParts(els, locales, formatters, formats, values, currentPluralV
 		if (isArgumentElement(el)) {
 			if (!value || typeof value === "string" || typeof value === "number" || typeof value === "bigint") value = typeof value === "string" || typeof value === "number" || typeof value === "bigint" ? String(value) : "";
 			result.push({
-				type: typeof value === "string" ? PART_TYPE.literal : PART_TYPE.object,
+				type: typeof value === "string" ? 0 : 1,
 				value
 			});
 			continue;
@@ -2397,7 +2427,7 @@ function formatToParts(els, locales, formatters, formats, values, currentPluralV
 		if (isDateElement(el)) {
 			const style = typeof el.style === "string" ? formats.date[el.style] : isDateTimeSkeleton(el.style) ? el.style.parsedOptions : void 0;
 			result.push({
-				type: PART_TYPE.literal,
+				type: 0,
 				value: formatters.getDateTimeFormat(locales, style).format(value)
 			});
 			continue;
@@ -2405,7 +2435,7 @@ function formatToParts(els, locales, formatters, formats, values, currentPluralV
 		if (isTimeElement(el)) {
 			const style = typeof el.style === "string" ? formats.time[el.style] : isDateTimeSkeleton(el.style) ? el.style.parsedOptions : formats.time.medium;
 			result.push({
-				type: PART_TYPE.literal,
+				type: 0,
 				value: formatters.getDateTimeFormat(locales, style).format(value)
 			});
 			continue;
@@ -2420,7 +2450,7 @@ function formatToParts(els, locales, formatters, formats, values, currentPluralV
 				} else value = value * scale;
 			}
 			result.push({
-				type: PART_TYPE.literal,
+				type: 0,
 				value: formatters.getNumberFormat(locales, style).format(value)
 			});
 			continue;
@@ -2433,7 +2463,7 @@ function formatToParts(els, locales, formatters, formats, values, currentPluralV
 			if (!Array.isArray(chunks)) chunks = [chunks];
 			result.push(...chunks.map((c) => {
 				return {
-					type: typeof c === "string" ? PART_TYPE.literal : PART_TYPE.object,
+					type: typeof c === "string" ? 0 : 1,
 					value: c
 				};
 			}));
@@ -2451,7 +2481,7 @@ function formatToParts(els, locales, formatters, formats, values, currentPluralV
 			if (!opt) {
 				if (!Intl.PluralRules) throw new FormatError(`Intl.PluralRules is not available in this environment.
 Try polyfilling it using "@formatjs/intl-pluralrules"
-`, ErrorCode.MISSING_INTL_API, originalMessage);
+`, "MISSING_INTL_API", originalMessage);
 				const numericValue = typeof value === "bigint" ? Number(value) : value;
 				const rule = formatters.getPluralRules(locales, { type: el.pluralType }).select(numericValue - (el.offset || 0));
 				opt = (Object.prototype.hasOwnProperty.call(el.options, rule) ? el.options[rule] : void 0) || el.options.other;
@@ -2518,18 +2548,26 @@ function createDefaultFormatters(cache = {
 	};
 }
 var IntlMessageFormat = class IntlMessageFormat {
-	ast;
-	locales;
-	resolvedLocale;
-	formatters;
-	formats;
-	message;
-	formatterCache = {
-		number: {},
-		dateTime: {},
-		pluralRules: {}
-	};
 	constructor(message, locales = IntlMessageFormat.defaultLocale, overrideFormats, opts) {
+		this.formatterCache = {
+			number: {},
+			dateTime: {},
+			pluralRules: {}
+		};
+		this.format = (values) => {
+			const parts = this.formatToParts(values);
+			if (parts.length === 1) return parts[0].value;
+			const result = parts.reduce((all, part) => {
+				if (!all.length || part.type !== 0 || typeof all[all.length - 1] !== "string") all.push(part.value);
+				else all[all.length - 1] += part.value;
+				return all;
+			}, []);
+			if (result.length <= 1) return result[0] || "";
+			return result;
+		};
+		this.formatToParts = (values) => formatToParts(this.ast, this.locales, this.formatters, this.formats, values, void 0, this.message);
+		this.resolvedOptions = () => ({ locale: this.resolvedLocale?.toString() || Intl.NumberFormat.supportedLocalesOf(this.locales)[0] });
+		this.getAst = () => this.ast;
 		this.locales = locales;
 		this.resolvedLocale = IntlMessageFormat.resolveLocale(locales);
 		if (typeof message === "string") {
@@ -2545,96 +2583,81 @@ var IntlMessageFormat = class IntlMessageFormat {
 		this.formats = mergeConfigs(IntlMessageFormat.formats, overrideFormats);
 		this.formatters = opts && opts.formatters || createDefaultFormatters(this.formatterCache);
 	}
-	format = (values) => {
-		const parts = this.formatToParts(values);
-		if (parts.length === 1) return parts[0].value;
-		const result = parts.reduce((all, part) => {
-			if (!all.length || part.type !== PART_TYPE.literal || typeof all[all.length - 1] !== "string") all.push(part.value);
-			else all[all.length - 1] += part.value;
-			return all;
-		}, []);
-		if (result.length <= 1) return result[0] || "";
-		return result;
-	};
-	formatToParts = (values) => formatToParts(this.ast, this.locales, this.formatters, this.formats, values, void 0, this.message);
-	resolvedOptions = () => ({ locale: this.resolvedLocale?.toString() || Intl.NumberFormat.supportedLocalesOf(this.locales)[0] });
-	getAst = () => this.ast;
-	static memoizedDefaultLocale = null;
+	static {
+		this.memoizedDefaultLocale = null;
+	}
 	static get defaultLocale() {
 		if (!IntlMessageFormat.memoizedDefaultLocale) IntlMessageFormat.memoizedDefaultLocale = new Intl.NumberFormat().resolvedOptions().locale;
 		return IntlMessageFormat.memoizedDefaultLocale;
 	}
-	static resolveLocale = (locales) => {
-		if (typeof Intl.Locale === "undefined") return;
-		const supportedLocales = Intl.NumberFormat.supportedLocalesOf(locales);
-		if (supportedLocales.length > 0) return new Intl.Locale(supportedLocales[0]);
-		return new Intl.Locale(typeof locales === "string" ? locales : locales[0]);
-	};
-	static __parse = parse;
-	static formats = {
-		number: {
-			integer: { maximumFractionDigits: 0 },
-			currency: { style: "currency" },
-			percent: { style: "percent" }
-		},
-		date: {
-			short: {
-				month: "numeric",
-				day: "numeric",
-				year: "2-digit"
+	static {
+		this.resolveLocale = (locales) => {
+			if (typeof Intl.Locale === "undefined") return;
+			const supportedLocales = Intl.NumberFormat.supportedLocalesOf(locales);
+			if (supportedLocales.length > 0) return new Intl.Locale(supportedLocales[0]);
+			return new Intl.Locale(typeof locales === "string" ? locales : locales[0]);
+		};
+	}
+	static {
+		this.__parse = parse;
+	}
+	static {
+		this.formats = {
+			number: {
+				integer: { maximumFractionDigits: 0 },
+				currency: { style: "currency" },
+				percent: { style: "percent" }
 			},
-			medium: {
-				month: "short",
-				day: "numeric",
-				year: "numeric"
+			date: {
+				short: {
+					month: "numeric",
+					day: "numeric",
+					year: "2-digit"
+				},
+				medium: {
+					month: "short",
+					day: "numeric",
+					year: "numeric"
+				},
+				long: {
+					month: "long",
+					day: "numeric",
+					year: "numeric"
+				},
+				full: {
+					weekday: "long",
+					month: "long",
+					day: "numeric",
+					year: "numeric"
+				}
 			},
-			long: {
-				month: "long",
-				day: "numeric",
-				year: "numeric"
-			},
-			full: {
-				weekday: "long",
-				month: "long",
-				day: "numeric",
-				year: "numeric"
+			time: {
+				short: {
+					hour: "numeric",
+					minute: "numeric"
+				},
+				medium: {
+					hour: "numeric",
+					minute: "numeric",
+					second: "numeric"
+				},
+				long: {
+					hour: "numeric",
+					minute: "numeric",
+					second: "numeric",
+					timeZoneName: "short"
+				},
+				full: {
+					hour: "numeric",
+					minute: "numeric",
+					second: "numeric",
+					timeZoneName: "short"
+				}
 			}
-		},
-		time: {
-			short: {
-				hour: "numeric",
-				minute: "numeric"
-			},
-			medium: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric"
-			},
-			long: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric",
-				timeZoneName: "short"
-			},
-			full: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric",
-				timeZoneName: "short"
-			}
-		}
-	};
+		};
+	}
 };
-var IntlErrorCode = function(IntlErrorCode) {
-	IntlErrorCode["FORMAT_ERROR"] = "FORMAT_ERROR";
-	IntlErrorCode["UNSUPPORTED_FORMATTER"] = "UNSUPPORTED_FORMATTER";
-	IntlErrorCode["INVALID_CONFIG"] = "INVALID_CONFIG";
-	IntlErrorCode["MISSING_DATA"] = "MISSING_DATA";
-	IntlErrorCode["MISSING_TRANSLATION"] = "MISSING_TRANSLATION";
-	return IntlErrorCode;
-}({});
 var IntlError = class IntlError extends Error {
-	code;
 	constructor(code, message, exception) {
 		const err = exception ? exception instanceof Error ? exception : new Error(String(exception)) : void 0;
 		super(`[@formatjs/intl Error ${code}] ${message}
@@ -2645,32 +2668,28 @@ ${err ? `\n${err.message}\n${err.stack}` : ""}`);
 };
 var UnsupportedFormatterError = class extends IntlError {
 	constructor(message, exception) {
-		super(IntlErrorCode.UNSUPPORTED_FORMATTER, message, exception);
+		super("UNSUPPORTED_FORMATTER", message, exception);
 	}
 };
 var InvalidConfigError = class extends IntlError {
 	constructor(message, exception) {
-		super(IntlErrorCode.INVALID_CONFIG, message, exception);
+		super("INVALID_CONFIG", message, exception);
 	}
 };
 var MissingDataError = class extends IntlError {
 	constructor(message, exception) {
-		super(IntlErrorCode.MISSING_DATA, message, exception);
+		super("MISSING_DATA", message, exception);
 	}
 };
 var IntlFormatError = class extends IntlError {
-	descriptor;
-	locale;
 	constructor(message, locale, exception) {
-		super(IntlErrorCode.FORMAT_ERROR, `${message}
+		super("FORMAT_ERROR", `${message}
 Locale: ${locale}
 `, exception);
 		this.locale = locale;
 	}
 };
 var MessageFormatError = class extends IntlFormatError {
-	descriptor;
-	locale;
 	constructor(message, locale, descriptor, exception) {
 		super(`${message}
 MessageID: ${descriptor?.id}
@@ -2682,9 +2701,8 @@ Description: ${descriptor?.description}
 	}
 };
 var MissingTranslationError = class extends IntlError {
-	descriptor;
 	constructor(descriptor, locale) {
-		super(IntlErrorCode.MISSING_TRANSLATION, `Missing message: "${descriptor.id}" for locale "${locale}", using ${descriptor.defaultMessage ? `default message (${typeof descriptor.defaultMessage === "string" ? descriptor.defaultMessage : descriptor.defaultMessage.map((e) => e.value ?? JSON.stringify(e)).join()})` : "id"} as fallback.`);
+		super("MISSING_TRANSLATION", `Missing message: "${descriptor.id}" for locale "${locale}", using ${descriptor.defaultMessage ? `default message (${typeof descriptor.defaultMessage === "string" ? descriptor.defaultMessage : descriptor.defaultMessage.map((e) => e.value ?? JSON.stringify(e)).join()})` : "id"} as fallback.`);
 		this.descriptor = descriptor;
 	}
 };
@@ -2698,13 +2716,9 @@ function filterProps(props, allowlist, defaults = {}) {
 		return filtered;
 	}, {});
 }
-var defaultErrorHandler = (error) => {
-	if (process.env.NODE_ENV !== "production") console.error(error);
-};
-var defaultWarnHandler = (warning) => {
-	if (process.env.NODE_ENV !== "production") console.warn(warning);
-};
-var DEFAULT_INTL_CONFIG$1 = {
+var defaultErrorHandler = (error) => {};
+var defaultWarnHandler = (warning) => {};
+var DEFAULT_INTL_CONFIG = {
 	formats: {},
 	messages: {},
 	timeZone: void 0,
@@ -2820,13 +2834,21 @@ function deepMergeFormatsAndSetTimeZone(f1, timeZone) {
 		time: deepMergeOptions(setTimeZoneInOptions(mfFormats.time, timeZone), setTimeZoneInOptions(f1.time || {}, timeZone))
 	};
 }
-var formatMessage$1 = ({ locale, formats, messages, defaultLocale, defaultFormats, fallbackOnEmptyString, onError, timeZone, defaultRichTextElements }, state, messageDescriptor = { id: "" }, values, opts) => {
+function getMessageDescriptorContext(messageDescriptor) {
+	const { defaultMessage } = messageDescriptor;
+	try {
+		return defaultMessage !== void 0 ? `\nDefault Message: ${typeof defaultMessage === "string" ? defaultMessage : JSON.stringify(defaultMessage)}` : `\nMessage Descriptor: ${JSON.stringify(messageDescriptor)}`;
+	} catch {
+		return "";
+	}
+}
+var formatMessage = ({ locale, formats, messages, defaultLocale, defaultFormats, fallbackOnEmptyString, onError, timeZone, defaultRichTextElements }, state, messageDescriptor = { id: "" }, values, opts) => {
 	const { id: msgId, defaultMessage } = messageDescriptor;
-	invariant$1(!!msgId, `[@formatjs/intl] An \`id\` must be provided to format a message. You can either:
+	if (!msgId) invariant$1(false, `[@formatjs/intl] An \`id\` must be provided to format a message. You can either:
 1. Configure your build toolchain with [babel-plugin-formatjs](https://formatjs.github.io/docs/tooling/babel-plugin)
 or [@formatjs/ts-transformer](https://formatjs.github.io/docs/tooling/ts-transformer) OR
 2. Configure your \`eslint\` config to include [eslint-plugin-formatjs](https://formatjs.github.io/docs/tooling/linter#enforce-id)
-to autofix this issue`);
+to autofix this issue${getMessageDescriptorContext(messageDescriptor)}`);
 	const id = String(msgId);
 	const message = messages && Object.prototype.hasOwnProperty.call(messages, id) && messages[id];
 	if (Array.isArray(message) && message.length === 1 && message[0].type === TYPE.literal) return message[0].value;
@@ -3084,7 +3106,7 @@ For more details see https://formatjs.github.io/docs/getting-started/message-dis
 function createIntl$1(config, cache) {
 	const formatters = createFormatters(cache);
 	const resolvedConfig = {
-		...DEFAULT_INTL_CONFIG$1,
+		...DEFAULT_INTL_CONFIG,
 		...config
 	};
 	const { locale, defaultLocale, onError } = resolvedConfig;
@@ -3106,8 +3128,8 @@ function createIntl$1(config, cache) {
 		formatDateTimeRange: formatDateTimeRange.bind(null, resolvedConfig, formatters.getDateTimeFormat),
 		formatTimeToParts: formatTimeToParts.bind(null, resolvedConfig, formatters.getDateTimeFormat),
 		formatPlural: formatPlural.bind(null, resolvedConfig, formatters.getPluralRules),
-		formatMessage: formatMessage$1.bind(null, resolvedConfig, formatters),
-		$t: formatMessage$1.bind(null, resolvedConfig, formatters),
+		formatMessage: formatMessage.bind(null, resolvedConfig, formatters),
+		$t: formatMessage.bind(null, resolvedConfig, formatters),
 		formatList: formatList.bind(null, resolvedConfig, formatters.getListFormat),
 		formatListToParts: formatListToParts.bind(null, resolvedConfig, formatters.getListFormat),
 		formatDisplayName: formatDisplayName.bind(null, resolvedConfig, formatters.getDisplayNames)
@@ -3119,8 +3141,8 @@ function invariant(condition, message, Err = Error) {
 function invariantIntlContext(intl) {
 	invariant(intl, "[React Intl] Could not find required `intl` object. <IntlProvider> needs to exist in the component ancestry.");
 }
-var DEFAULT_INTL_CONFIG = {
-	...DEFAULT_INTL_CONFIG$1,
+var DEFAULT_INTL_CONFIG$1 = {
+	...DEFAULT_INTL_CONFIG,
 	textComponent: React$1.Fragment
 };
 var toKeyedReactNodeArray = (children) => {
@@ -3154,6 +3176,55 @@ function useIntl() {
 	invariantIntlContext(intl);
 	return intl;
 }
+var DisplayName = function(DisplayName) {
+	DisplayName["formatDate"] = "FormattedDate";
+	DisplayName["formatTime"] = "FormattedTime";
+	DisplayName["formatNumber"] = "FormattedNumber";
+	DisplayName["formatList"] = "FormattedList";
+	DisplayName["formatDisplayName"] = "FormattedDisplayName";
+	return DisplayName;
+}(DisplayName || {});
+var DisplayNameParts = function(DisplayNameParts) {
+	DisplayNameParts["formatDate"] = "FormattedDateParts";
+	DisplayNameParts["formatTime"] = "FormattedTimeParts";
+	DisplayNameParts["formatNumber"] = "FormattedNumberParts";
+	DisplayNameParts["formatList"] = "FormattedListParts";
+	return DisplayNameParts;
+}(DisplayNameParts || {});
+var FormattedNumberParts = (props) => {
+	const intl = useIntl();
+	const { value, children, ...formatProps } = props;
+	return children(intl.formatNumberToParts(value, formatProps));
+};
+FormattedNumberParts.displayName = "FormattedNumberParts";
+var FormattedListParts = (props) => {
+	const intl = useIntl();
+	const { value, children, ...formatProps } = props;
+	return children(intl.formatListToParts(value, formatProps));
+};
+FormattedListParts.displayName = "FormattedListParts";
+function createFormattedDateTimePartsComponent(name) {
+	const ComponentParts = (props) => {
+		const intl = useIntl();
+		const { value, children, ...formatProps } = props;
+		const date = typeof value === "string" ? new Date(value || 0) : value;
+		return children(name === "formatDate" ? intl.formatDateToParts(date, formatProps) : intl.formatTimeToParts(date, formatProps));
+	};
+	ComponentParts.displayName = DisplayNameParts[name];
+	return ComponentParts;
+}
+function createFormattedComponent(name) {
+	const Component = (props) => {
+		const intl = useIntl();
+		const { value, children, ...formatProps } = props;
+		const formattedValue = intl[name](value, formatProps);
+		if (typeof children === "function") return children(formattedValue);
+		const Text = intl.textComponent || React$1.Fragment;
+		return jsx(Text, { children: formattedValue });
+	};
+	Component.displayName = DisplayName[name];
+	return Component;
+}
 function assignUniqueKeysToFormatXMLElementFnArgument(values) {
 	if (!values) return values;
 	return Object.keys(values).reduce((acc, k) => {
@@ -3162,15 +3233,15 @@ function assignUniqueKeysToFormatXMLElementFnArgument(values) {
 		return acc;
 	}, {});
 }
-var formatMessage = (config, formatters, descriptor, rawValues, ...rest) => {
-	const chunks = formatMessage$1(config, formatters, descriptor, assignUniqueKeysToFormatXMLElementFnArgument(rawValues), ...rest);
+var formatMessage$1 = (config, formatters, descriptor, rawValues, ...rest) => {
+	const chunks = formatMessage(config, formatters, descriptor, assignUniqueKeysToFormatXMLElementFnArgument(rawValues), ...rest);
 	if (Array.isArray(chunks)) return toKeyedReactNodeArray(chunks);
 	return chunks;
 };
 var createIntl = ({ defaultRichTextElements: rawDefaultRichTextElements, ...config }, cache) => {
 	const defaultRichTextElements = assignUniqueKeysToFormatXMLElementFnArgument(rawDefaultRichTextElements);
 	const coreIntl = createIntl$1({
-		...DEFAULT_INTL_CONFIG,
+		...DEFAULT_INTL_CONFIG$1,
 		...config,
 		defaultRichTextElements
 	}, cache);
@@ -3187,10 +3258,48 @@ var createIntl = ({ defaultRichTextElements: rawDefaultRichTextElements, ...conf
 	};
 	return {
 		...coreIntl,
-		formatMessage: formatMessage.bind(null, resolvedConfig, coreIntl.formatters),
-		$t: formatMessage.bind(null, resolvedConfig, coreIntl.formatters)
+		formatMessage: formatMessage$1.bind(null, resolvedConfig, coreIntl.formatters),
+		$t: formatMessage$1.bind(null, resolvedConfig, coreIntl.formatters)
 	};
 };
+var FormattedDateTimeRange = (props) => {
+	const intl = useIntl();
+	const { from, to, children, ...formatProps } = props;
+	const formattedValue = intl.formatDateTimeRange(from, to, formatProps);
+	if (typeof children === "function") return children(formattedValue);
+	const Text = intl.textComponent || React$1.Fragment;
+	return jsx(Text, { children: formattedValue });
+};
+FormattedDateTimeRange.displayName = "FormattedDateTimeRange";
+function areEqual(prevProps, nextProps) {
+	const { values, ...otherProps } = prevProps;
+	const { values: nextValues, ...nextOtherProps } = nextProps;
+	return shallowEqual(nextValues, values) && shallowEqual(otherProps, nextOtherProps);
+}
+function FormattedMessage(props) {
+	const { formatMessage, textComponent: Text = React$1.Fragment } = useIntl();
+	const { id, description, defaultMessage, values, children, tagName: Component = Text, ignoreTag } = props;
+	const nodes = formatMessage({
+		id,
+		description,
+		defaultMessage
+	}, values, { ignoreTag });
+	if (typeof children === "function") return children(Array.isArray(nodes) ? nodes : [nodes]);
+	if (Component) return jsx(Component, { children: nodes });
+	return jsx(Fragment, { children: nodes });
+}
+FormattedMessage.displayName = "FormattedMessage";
+var MemoizedFormattedMessage = React$1.memo(FormattedMessage, areEqual);
+MemoizedFormattedMessage.displayName = "MemoizedFormattedMessage";
+var FormattedPlural = (props) => {
+	const { formatPlural, textComponent: Text } = useIntl();
+	const { value, other, children } = props;
+	const formattedPlural = props[formatPlural(value, props)] || other;
+	if (typeof children === "function") return children(formattedPlural);
+	if (Text) return jsx(Text, { children: formattedPlural });
+	return formattedPlural;
+};
+FormattedPlural.displayName = "FormattedPlural";
 function processIntlConfig(config) {
 	return {
 		locale: config.locale,
@@ -3214,7 +3323,7 @@ function IntlProviderImpl(props) {
 	const filteredProps = {};
 	for (const key in props) if (props[key] !== void 0) filteredProps[key] = props[key];
 	const config = processIntlConfig({
-		...DEFAULT_INTL_CONFIG,
+		...DEFAULT_INTL_CONFIG$1,
 		...filteredProps
 	});
 	if (!prevConfigRef.current || !shallowEqual(prevConfigRef.current, config)) {
@@ -3229,44 +3338,139 @@ function IntlProviderImpl(props) {
 }
 IntlProviderImpl.displayName = "IntlProvider";
 var IntlProvider = IntlProviderImpl;
+var MINUTE = 60;
+var HOUR = 3600;
+var DAY = 86400;
+function selectUnit(seconds) {
+	const absValue = Math.abs(seconds);
+	if (absValue < MINUTE) return "second";
+	if (absValue < HOUR) return "minute";
+	if (absValue < DAY) return "hour";
+	return "day";
+}
+function getDurationInSeconds(unit) {
+	switch (unit) {
+		case "second": return 1;
+		case "minute": return MINUTE;
+		case "hour": return HOUR;
+		default: return DAY;
+	}
+}
+function valueToSeconds(value, unit) {
+	if (!value) return 0;
+	switch (unit) {
+		case "second": return value;
+		case "minute": return value * MINUTE;
+		default: return value * HOUR;
+	}
+}
+var INCREMENTABLE_UNITS = [
+	"second",
+	"minute",
+	"hour"
+];
+function canIncrement(unit = "second") {
+	return INCREMENTABLE_UNITS.indexOf(unit) > -1;
+}
+var SimpleFormattedRelativeTime = (props) => {
+	const { formatRelativeTime, textComponent: Text } = useIntl();
+	const { children, value, unit, ...otherProps } = props;
+	const formattedRelativeTime = formatRelativeTime(value || 0, unit, otherProps);
+	if (typeof children === "function") return children(formattedRelativeTime);
+	if (Text) return jsx(Text, { children: formattedRelativeTime });
+	return jsx(Fragment, { children: formattedRelativeTime });
+};
+var FormattedRelativeTime = ({ value = 0, unit = "second", updateIntervalInSeconds, ...otherProps }) => {
+	invariant(!updateIntervalInSeconds || !!(updateIntervalInSeconds && canIncrement(unit)), "Cannot schedule update with unit longer than hour");
+	const [prevUnit, setPrevUnit] = React$1.useState();
+	const [prevValue, setPrevValue] = React$1.useState(0);
+	const [currentValueInSeconds, setCurrentValueInSeconds] = React$1.useState(0);
+	const updateTimer = React$1.useRef(void 0);
+	if (unit !== prevUnit || value !== prevValue) {
+		setPrevValue(value || 0);
+		setPrevUnit(unit);
+		setCurrentValueInSeconds(canIncrement(unit) ? valueToSeconds(value, unit) : 0);
+	}
+	React$1.useEffect(() => {
+		function clearUpdateTimer() {
+			clearTimeout(updateTimer.current);
+		}
+		clearUpdateTimer();
+		if (!updateIntervalInSeconds || !canIncrement(unit)) return clearUpdateTimer;
+		const nextValueInSeconds = currentValueInSeconds - updateIntervalInSeconds;
+		const nextUnit = selectUnit(nextValueInSeconds);
+		if (nextUnit === "day") return clearUpdateTimer;
+		const unitDuration = getDurationInSeconds(nextUnit);
+		const prevInterestingValueInSeconds = nextValueInSeconds - nextValueInSeconds % unitDuration;
+		const nextInterestingValueInSeconds = prevInterestingValueInSeconds >= currentValueInSeconds ? prevInterestingValueInSeconds - unitDuration : prevInterestingValueInSeconds;
+		const delayInSeconds = Math.abs(nextInterestingValueInSeconds - currentValueInSeconds);
+		if (currentValueInSeconds !== nextInterestingValueInSeconds) updateTimer.current = setTimeout(() => setCurrentValueInSeconds(nextInterestingValueInSeconds), delayInSeconds * 1e3);
+		return clearUpdateTimer;
+	}, [
+		currentValueInSeconds,
+		updateIntervalInSeconds,
+		unit
+	]);
+	let currentValue = value || 0;
+	let currentUnit = unit;
+	if (canIncrement(unit) && typeof currentValueInSeconds === "number" && updateIntervalInSeconds) {
+		currentUnit = selectUnit(currentValueInSeconds);
+		const unitDuration = getDurationInSeconds(currentUnit);
+		currentValue = Math.round(currentValueInSeconds / unitDuration);
+	}
+	return jsx(SimpleFormattedRelativeTime, {
+		value: currentValue,
+		unit: currentUnit,
+		...otherProps
+	});
+};
+FormattedRelativeTime.displayName = "FormattedRelativeTime";
+createFormattedComponent("formatDate");
+createFormattedComponent("formatTime");
+createFormattedComponent("formatNumber");
+createFormattedComponent("formatList");
+createFormattedComponent("formatDisplayName");
+createFormattedDateTimePartsComponent("formatDate");
+createFormattedDateTimePartsComponent("formatTime");
 function FAQList() {
 	const intl = useIntl();
+	const faqs = [
+		{
+			q: intl.formatMessage({ id: "faq-list.whatIsI18nBenchmark" }),
+			a: intl.formatMessage({ id: "faq-list.whatIsI18nBenchmarkAnswer" })
+		},
+		{
+			q: intl.formatMessage({ id: "faq-list.howAreBenchmarksConducted" }),
+			a: intl.formatMessage({ id: "faq-list.weRunStandardizedTestsIn" })
+		},
+		{
+			q: intl.formatMessage({ id: "faq-list.whichLibrariesAreCurrentlySupported" }),
+			a: intl.formatMessage({ id: "faq-list.weSupportReactI18nextReact" })
+		},
+		{
+			q: intl.formatMessage({ id: "faq-list.canISubmitMyOwn" }),
+			a: intl.formatMessage({ id: "faq-list.yesCommunityBenchmarkSubmissionsAre" })
+		},
+		{
+			q: intl.formatMessage({ id: "faq-list.howOftenAreBenchmarksUpdated" }),
+			a: intl.formatMessage({ id: "faq-list.weReRunAllBenchmarks" })
+		},
+		{
+			q: intl.formatMessage({ id: "faq-list.isTheDataReliable" }),
+			a: intl.formatMessage({ id: "faq-list.weFollowRigorousStatisticalMethodology" })
+		},
+		{
+			q: intl.formatMessage({ id: "faq-list.doYouOfferConsultingServices" }),
+			a: intl.formatMessage({ id: "faq-list.yesOurEnterprisePlanIncludes" })
+		},
+		{
+			q: intl.formatMessage({ id: "faq-list.howCanIContribute" }),
+			a: intl.formatMessage({ id: "faq-list.thereAreManyWaysTo" })
+		}
+	];
 	return jsx("div", {
 		className: "mx-auto max-w-3xl space-y-4",
-		children: [
-			{
-				q: intl.formatMessage({ id: "faq-list.whatIsI18nBenchmark" }),
-				a: intl.formatMessage({ id: "faq-list.whatIsI18nBenchmarkAnswer" })
-			},
-			{
-				q: intl.formatMessage({ id: "faq-list.howAreBenchmarksConducted" }),
-				a: intl.formatMessage({ id: "faq-list.weRunStandardizedTestsIn" })
-			},
-			{
-				q: intl.formatMessage({ id: "faq-list.whichLibrariesAreCurrentlySupported" }),
-				a: intl.formatMessage({ id: "faq-list.weSupportReactI18nextReact" })
-			},
-			{
-				q: intl.formatMessage({ id: "faq-list.canISubmitMyOwn" }),
-				a: intl.formatMessage({ id: "faq-list.yesCommunityBenchmarkSubmissionsAre" })
-			},
-			{
-				q: intl.formatMessage({ id: "faq-list.howOftenAreBenchmarksUpdated" }),
-				a: intl.formatMessage({ id: "faq-list.weReRunAllBenchmarks" })
-			},
-			{
-				q: intl.formatMessage({ id: "faq-list.isTheDataReliable" }),
-				a: intl.formatMessage({ id: "faq-list.weFollowRigorousStatisticalMethodology" })
-			},
-			{
-				q: intl.formatMessage({ id: "faq-list.doYouOfferConsultingServices" }),
-				a: intl.formatMessage({ id: "faq-list.yesOurEnterprisePlanIncludes" })
-			},
-			{
-				q: intl.formatMessage({ id: "faq-list.howCanIContribute" }),
-				a: intl.formatMessage({ id: "faq-list.thereAreManyWaysTo" })
-			}
-		].map((f) => jsxs("details", {
+		children: faqs.map((f) => jsxs("details", {
 			className: "group rounded-lg border border-border bg-card",
 			children: [jsx("summary", {
 				className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
@@ -3289,7 +3493,7 @@ var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
 async function getMessages(locale) {
 	return (await _rolldown_dynamic_import_helper_default(Object.assign({
 		"../messages/de.json": () => import("../../../messages/de.json"),
-		"../messages/en.json": () => import("./en-Dbg6eN0F.js"),
+		"../messages/en.json": () => import("./en-xc7HFV_W.js"),
 		"../messages/es.json": () => import("../../../messages/es.json"),
 		"../messages/fr.json": () => import("../../../messages/fr.json"),
 		"../messages/it.json": () => import("../../../messages/it.json"),

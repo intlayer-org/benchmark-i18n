@@ -1,16 +1,16 @@
 import { Dynamic as e, createComponent as t, insert as n, template as r } from "solid-js/web";
 import { createContext as i, createMemo as a, useContext as o } from "solid-js";
 var s = {
-	de: () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/de.json").then((e) => e.default),
-	en: () => import("./en-kffIb0zo.js").then((e) => e.default),
-	es: () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/es.json").then((e) => e.default),
-	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/fr.json").then((e) => e.default),
-	it: () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/it.json").then((e) => e.default),
-	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/ja.json").then((e) => e.default),
-	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/ko.json").then((e) => e.default),
-	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/pt.json").then((e) => e.default),
-	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/ru.json").then((e) => e.default),
-	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/zh.json").then((e) => e.default)
+	de: () => import("./de-CuTEAmLD.js").then((e) => e.default),
+	en: () => import("./en-3VFNNa1g.js").then((e) => e.default),
+	es: () => import("./es-C6jV-209.js").then((e) => e.default),
+	fr: () => import("./fr-D1E8fbO4.js").then((e) => e.default),
+	it: () => import("./it-Bwxg56IB.js").then((e) => e.default),
+	ja: () => import("./ja-Cp2dytU9.js").then((e) => e.default),
+	ko: () => import("./ko-CnMva4xe.js").then((e) => e.default),
+	pt: () => import("./pt-Bxr3DHAf.js").then((e) => e.default),
+	ru: () => import("./ru-CsQ7J2px.js").then((e) => e.default),
+	zh: () => import("./zh-CyTUMVT2.js").then((e) => e.default)
 }, c = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var s = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (g(e) && g(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : _(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : _(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -267,16 +267,16 @@ var z = (e = B) => {
 	let { locale: r } = o(H) ?? {}, i = u.defaultLocale, a = n ?? r?.() ?? i;
 	return U(K(`${String(t)}.${a}`, e[a]?.()), a);
 }, J = {
-	de: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((e) => e.default),
-	en: () => import("./en-l1kUHiNM.js").then((e) => e.default),
-	es: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((e) => e.default),
-	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((e) => e.default),
-	it: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((e) => e.default),
-	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((e) => e.default),
-	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((e) => e.default),
-	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((e) => e.default),
-	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((e) => e.default),
-	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((e) => e.default)
+	de: () => import("./de-DZjVcrEr.js").then((e) => e.default),
+	en: () => import("./en-BIpIqFyC.js").then((e) => e.default),
+	es: () => import("./es-DjApjMna.js").then((e) => e.default),
+	fr: () => import("./fr-B5zdWQYr.js").then((e) => e.default),
+	it: () => import("./it-BV2gaUYH.js").then((e) => e.default),
+	ja: () => import("./ja-BRK6b6e8.js").then((e) => e.default),
+	ko: () => import("./ko-b4l7esQz.js").then((e) => e.default),
+	pt: () => import("./pt-BHCuLMOi.js").then((e) => e.default),
+	ru: () => import("./ru-CGOfbfvo.js").then((e) => e.default),
+	zh: () => import("./zh-BMK-ZYp4.js").then((e) => e.default)
 }, Y = r("<div class=\"mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground\">");
 function X() {
 	let e = q(J, "mock-banner");
@@ -305,6 +305,19 @@ var e = {
 	key: "blog-header",
 	content: {
 		a: "Blog",
+		b: "Einblicke, Tutorials und Analysen aus der i18n-Community."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
+};
+export { e as default };
+var e = {
+	key: "blog-header",
+	content: {
+		a: "Blog",
 		b: "Insights, tutorials, and analysis from the i18n community."
 	}
 };
@@ -312,5 +325,109 @@ export { e as default };
 var e = {
 	key: "mock-banner",
 	content: { a: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
+};
+export { e as default };
+var e = {
+	key: "blog-header",
+	content: {
+		a: "Blog",
+		b: "Información, tutoriales y análisis de la comunidad i18n."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
+};
+export { e as default };
+var e = {
+	key: "blog-header",
+	content: {
+		a: "Blog",
+		b: "Idées, tutoriels et analyses de la communauté i18n."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
+};
+export { e as default };
+var e = {
+	key: "blog-header",
+	content: {
+		a: "Blog",
+		b: "Approfondimenti, tutorial e analisi dalla comunità i18n."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
+};
+export { e as default };
+var e = {
+	key: "blog-header",
+	content: {
+		a: "ブログ",
+		b: "i18nコミュニティからのインサイト、チュートリアル、分析。"
+	}
+};
+export { e as default };
+var e = {
+	key: "blog-header",
+	content: {
+		a: "블로그",
+		b: "i18n 커뮤니티의 인사이트, 튜토리얼 및 분석."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
+};
+export { e as default };
+var e = {
+	key: "blog-header",
+	content: {
+		a: "Blog",
+		b: "Insights, tutoriais e análises da comunidade i18n."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
+};
+export { e as default };
+var e = {
+	key: "blog-header",
+	content: {
+		a: "Блог",
+		b: "Инсайты, учебные пособия и анализ от сообщества i18n."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务 or 服务无关。" }
+};
+export { e as default };
+var e = {
+	key: "blog-header",
+	content: {
+		a: "博客",
+		b: "来自 i18n 社区的见解、教程和分析。"
+	}
 };
 export { e as default };

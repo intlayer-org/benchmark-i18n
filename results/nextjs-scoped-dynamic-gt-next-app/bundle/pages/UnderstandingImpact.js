@@ -1,6 +1,5 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { jsx } from "react/jsx-runtime";
-import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3909,7 +3908,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => true) === true) return "development";
+	if (readImportMetaEnv(() => false) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6019,242 +6018,89 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/home/UnderstandingImpact.tsx";
 function UnderstandingImpact() {
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
-			jsxDEV("h2", {
+			jsx("h2", {
 				className: "text-2xl font-bold text-foreground",
-				children: jsxDEV(a$2, { children: "Understanding the Impact" }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 7,
-					columnNumber: 9
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 6,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", {
+				children: jsx(a$2, { children: "Understanding the Impact" })
+			}),
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsxDEV("h3", {
+					jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: jsxDEV(a$2, { children: "Why a single large JSON can hurt performance" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 12,
-							columnNumber: 11
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 11,
-						columnNumber: 9
-					}, this),
-					jsxDEV("p", {
+						children: jsx(a$2, { children: "Why a single large JSON can hurt performance" })
+					}),
+					jsx("p", {
 						className: "text-sm text-muted-foreground",
-						children: jsxDEV(a$2, { children: "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 15,
-							columnNumber: 11
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 14,
-						columnNumber: 9
-					}, this),
-					jsxDEV("ul", {
+						children: jsx(a$2, { children: "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:" })
+					}),
+					jsxs("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							jsxDEV("li", { children: jsxDEV(a$2, { children: "The JSON must be parsed on every page load — blocking the main thread." }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 24,
-								columnNumber: 13
-							}, this) }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 23,
-								columnNumber: 11
-							}, this),
-							jsxDEV("li", { children: jsxDEV(a$2, { children: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change." }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 30,
-								columnNumber: 13
-							}, this) }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 29,
-								columnNumber: 11
-							}, this),
-							jsxDEV("li", { children: jsxDEV(a$2, { children: "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated." }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 37,
-								columnNumber: 13
-							}, this) }, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 36,
-								columnNumber: 11
-							}, this)
+							jsx("li", { children: jsx(a$2, { children: "The JSON must be parsed on every page load — blocking the main thread." }) }),
+							jsx("li", { children: jsx(a$2, { children: "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change." }) }),
+							jsx("li", { children: jsx(a$2, { children: "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated." }) })
 						]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 22,
-						columnNumber: 9
-					}, this)
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 10,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", {
+			}),
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsxDEV("h3", {
+					jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: jsxDEV(a$2, { children: "The trade-offs of dynamic loading" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 48,
-							columnNumber: 11
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 47,
-						columnNumber: 9
-					}, this),
-					jsxDEV("p", {
+						children: jsx(a$2, { children: "The trade-offs of dynamic loading" })
+					}),
+					jsx("p", {
 						className: "text-sm text-muted-foreground",
-						children: jsxDEV(a$2, { children: "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 51,
-							columnNumber: 11
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 50,
-						columnNumber: 9
-					}, this),
-					jsxDEV("ul", {
+						children: jsx(a$2, { children: "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:" })
+					}),
+					jsxs("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							jsxDEV("li", { children: [
-								jsxDEV("strong", {
+							jsxs("li", { children: [
+								jsx("strong", {
 									className: "text-foreground",
-									children: jsxDEV(a$2, { children: "Waterfall requests:" }, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 60,
-										columnNumber: 15
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 59,
-									columnNumber: 13
-								}, this),
+									children: jsx(a$2, { children: "Waterfall requests:" })
+								}),
 								" ",
-								jsxDEV(a$2, { children: "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips." }, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 62,
-									columnNumber: 13
-								}, this)
-							] }, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 58,
-								columnNumber: 11
-							}, this),
-							jsxDEV("li", { children: [
-								jsxDEV("strong", {
+								jsx(a$2, { children: "the app must first load, determine the locale, then fetch the right chunk — adding network round-trips." })
+							] }),
+							jsxs("li", { children: [
+								jsx("strong", {
 									className: "text-foreground",
-									children: jsxDEV(a$2, { children: "Flash of untranslated content (FOUC):" }, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 69,
-										columnNumber: 15
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 68,
-									columnNumber: 13
-								}, this),
+									children: jsx(a$2, { children: "Flash of untranslated content (FOUC):" })
+								}),
 								" ",
-								jsxDEV(a$2, { children: "users may briefly see translation keys or a fallback language before the chunk arrives." }, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 71,
-									columnNumber: 13
-								}, this)
-							] }, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 67,
-								columnNumber: 11
-							}, this),
-							jsxDEV("li", { children: [
-								jsxDEV("strong", {
+								jsx(a$2, { children: "users may briefly see translation keys or a fallback language before the chunk arrives." })
+							] }),
+							jsxs("li", { children: [
+								jsx("strong", {
 									className: "text-foreground",
-									children: jsxDEV(a$2, { children: "Cache invalidation:" }, void 0, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 78,
-										columnNumber: 15
-									}, this)
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 77,
-									columnNumber: 13
-								}, this),
+									children: jsx(a$2, { children: "Cache invalidation:" })
+								}),
 								" ",
-								jsxDEV(a$2, { children: "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks." }, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 80,
-									columnNumber: 13
-								}, this)
-							] }, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 76,
-								columnNumber: 11
-							}, this)
+								jsx(a$2, { children: "updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks." })
+							] })
 						]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 57,
-						columnNumber: 9
-					}, this)
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 46,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", {
+			}),
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [jsxDEV("h3", {
+				children: [jsx("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
-					children: jsxDEV(a$2, { children: "What this benchmark measures" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 90,
-						columnNumber: 11
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 89,
-					columnNumber: 9
-				}, this), jsxDEV("p", {
+					children: jsx(a$2, { children: "What this benchmark measures" })
+				}), jsx("p", {
 					className: "text-sm text-muted-foreground",
-					children: jsxDEV(a$2, { children: "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable." }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 93,
-						columnNumber: 11
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 92,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 88,
-				columnNumber: 7
-			}, this)
+					children: jsx(a$2, { children: "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable." })
+				})]
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 5,
-		columnNumber: 5
-	}, this);
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6278,7 +6124,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6290,41 +6135,19 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment$1, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 33,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment$1, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsxDEV(BrowserGTProvider, {
+	return jsx(BrowserGTProvider, {
 		locale,
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/home/UnderstandingImpact.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(UnderstandingImpact, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(UnderstandingImpact, {}) });
 }
 export { Wrapped as default };

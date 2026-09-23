@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useId, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useRouter } from "next/router";
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -212,168 +212,67 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/settings/PreferencesSection.tsx";
 function PreferencesSection() {
 	const { t } = useTranslation("common");
 	const languageId = useId();
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: t("settings.preferencesSection.preferences")
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 12,
-			columnNumber: 7
-		}, this), jsxDEV("div", {
+		}), jsxs("div", {
 			className: "space-y-4",
 			children: [
-				jsxDEV("div", {
+				jsxs("div", {
 					className: "flex items-center justify-between",
-					children: [jsxDEV("div", { children: [jsxDEV("p", {
+					children: [jsxs("div", { children: [jsx("p", {
 						className: "text-sm font-medium text-foreground",
 						children: t("settings.preferencesSection.emailNotifications")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 18,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-xs text-muted-foreground",
 						children: t("settings.preferencesSection.receiveWeeklyBenchmarkReports")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 21,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 17,
-						columnNumber: 11
-					}, this), jsxDEV("button", {
+					})] }), jsx("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-primary transition-colors",
 						"aria-label": "Toggle notifications",
-						children: jsxDEV("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 30,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 25,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 16,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+						children: jsx("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
+					})]
+				}),
+				jsxs("div", {
 					className: "flex items-center justify-between",
-					children: [jsxDEV("div", { children: [jsxDEV("p", {
+					children: [jsxs("div", { children: [jsx("p", {
 						className: "text-sm font-medium text-foreground",
 						children: t("settings.preferencesSection.darkMode")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 35,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-xs text-muted-foreground",
 						children: t("settings.preferencesSection.useDarkColorScheme")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 38,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 34,
-						columnNumber: 11
-					}, this), jsxDEV("button", {
+					})] }), jsx("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-muted transition-colors",
 						"aria-label": "Toggle dark mode",
-						children: jsxDEV("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 47,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 42,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 33,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", { children: [jsxDEV("label", {
+						children: jsx("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
+					})]
+				}),
+				jsxs("div", { children: [jsx("label", {
 					htmlFor: languageId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: t("settings.preferencesSection.defaultLanguage")
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 51,
-					columnNumber: 11
-				}, this), jsxDEV("select", {
+				}), jsxs("select", {
 					id: languageId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					children: [
-						jsxDEV("option", { children: "English (en)" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 61,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: "French (fr)" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 62,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: "German (de)" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 63,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: "Spanish (es)" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 64,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: "Japanese (ja)" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 65,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: "Chinese Simplified (zh-CN)" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 66,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: "Arabic (ar)" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 67,
-							columnNumber: 13
-						}, this)
+						jsx("option", { children: "English (en)" }),
+						jsx("option", { children: "French (fr)" }),
+						jsx("option", { children: "German (de)" }),
+						jsx("option", { children: "Spanish (es)" }),
+						jsx("option", { children: "Japanese (ja)" }),
+						jsx("option", { children: "Chinese Simplified (zh-CN)" }),
+						jsx("option", { children: "Arabic (ar)" })
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 57,
-					columnNumber: 11
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 50,
-					columnNumber: 9
-				}, this)
+				})] })
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 15,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 11,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -495,7 +394,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -507,13 +405,8 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const locale = "en";
 	const [translations, setTranslations] = useState({});
@@ -532,34 +425,17 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		lang: locale,
 		namespaces: { common: translations },
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 37,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 36,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/settings/PreferencesSection.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(PreferencesSection, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(PreferencesSection, {}) });
 }
 export { Wrapped as default };
 var en_default = {

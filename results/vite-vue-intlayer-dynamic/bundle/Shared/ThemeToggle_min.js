@@ -1,5 +1,5 @@
-import { computed as e, createElementBlock as t, defineComponent as n, getCurrentInstance as r, h as i, inject as a, isRef as o, markRaw as s, onMounted as c, onUnmounted as l, openBlock as u, ref as d, shallowRef as f, toDisplayString as p, toValue as m, watch as h } from "vue";
-var g = {
+import { computed as e, createElementBlock as t, defineComponent as n, getCurrentInstance as r, h as i, inject as a, isRef as o, markRaw as s, onMounted as c, onUnmounted as l, openBlock as u, ref as d, shallowRef as f, toDisplayString as p, toValue as m, unref as h, watch as g } from "vue";
+var _ = {
 	key: "theme-toggle",
 	content: {
 		nodeType: "translation",
@@ -86,7 +86,7 @@ var g = {
 			}
 		}
 	}
-}, _ = ({ value: e, children: t, additionalProps: n = {} }) => {
+}, v = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = d(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -104,7 +104,7 @@ var g = {
 			return r.value;
 		},
 		use(e) {
-			return _({
+			return v({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -115,14 +115,14 @@ var g = {
 		},
 		...n
 	}), s(o);
-}, v = "translation", y = "object", b = "array", x = (e, t) => {
-	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => x(e, t));
+}, y = "translation", b = "object", x = "array", S = (e, t) => {
+	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => S(e, t));
 	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
-	if (Array.isArray(e)) return e.map((e, n) => x(e, {
+	if (Array.isArray(e)) return e.map((e, n) => S(e, {
 		...t,
 		children: e,
 		keyPath: [...t.keyPath, {
-			type: b,
+			type: x,
 			key: n
 		}]
 	}));
@@ -135,10 +135,10 @@ var g = {
 				...t,
 				children: e[r],
 				keyPath: [...t.keyPath, {
-					type: y,
+					type: b,
 					key: r
 				}]
-			}, i = x(e[r], n);
+			}, i = S(e[r], n);
 			return Object.defineProperty(this, r, {
 				value: i,
 				enumerable: !0,
@@ -147,7 +147,7 @@ var g = {
 		}
 	});
 	return n;
-}, S = {
+}, C = {
 	locales: [
 		"en",
 		"fr",
@@ -174,20 +174,20 @@ var g = {
 	],
 	strictMode: "inclusive",
 	defaultLocale: "en"
-}, C = (e) => {
+}, w = (e) => {
 	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
 	let t = Object.getPrototypeOf(e);
 	return t === Object.prototype || t === null || Array.isArray(e);
-}, w = (e, t) => {
+}, T = (e, t) => {
 	if (e === void 0) return t;
 	if (t === void 0 || Array.isArray(e)) return e;
-	if (C(e) && C(t)) {
+	if (w(e) && w(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : w(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : T(e[r], t[r]));
 		return n;
 	}
 	return e;
-}, T = (e, t, n) => {
+}, E = (e, t, n) => {
 	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
 		e && !i.has(e) && (i.add(e), a.push(e));
 	};
@@ -203,12 +203,12 @@ var g = {
 			s.push(t);
 		}
 	}
-	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => w(e, t));
-}, E = {
+	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => T(e, t));
+}, D = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, D = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? E : {
+}, O = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? D : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -218,38 +218,38 @@ var g = {
 				...r,
 				children: a[e],
 				keyPath: [...r.keyPath, {
-					type: v,
+					type: y,
 					key: e
 				}]
 			};
 			o[e] = i(a[e], t);
 		}
-		return T(o, e, t);
+		return E(o, e, t);
 	}
-}, O = E, k = E, A = E, j = E, M = (e) => E, N = E, P = (e, t = !0) => [
-	D(e ?? S.defaultLocale, t ? S.defaultLocale : void 0),
-	O,
+}, k = D, A = D, j = D, M = D, N = (e) => D, P = D, F = (e, t = !0) => [
+	O(e ?? C.defaultLocale, t ? C.defaultLocale : void 0),
 	k,
 	A,
-	M(e ?? S.defaultLocale),
-	N,
-	j
-], F = (e, t, n = []) => x(e, {
+	j,
+	N(e ?? C.defaultLocale),
+	P,
+	M
+], I = (e, t, n = []) => S(e, {
 	...t,
 	plugins: n
-}), I = (e, t, n = P(t)) => {
+}), L = (e, t, n = F(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return F(e.content, r, n);
-}, L = {
+	return I(e.content, r, n);
+}, R = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => _({
+		let r = (e) => v({
 			...n,
 			value: e,
 			children: e
@@ -267,38 +267,38 @@ var g = {
 		}
 		return s(a);
 	}
-}, R = E, z = E, B = E, V = /* @__PURE__ */ new Map(), H = (e, t = !0) => {
-	let n = `${e ?? S.defaultLocale}_${t}`;
-	if (V.has(n)) return V.get(n);
+}, z = D, B = D, V = D, H = /* @__PURE__ */ new Map(), U = (e, t = !0) => {
+	let n = `${e ?? C.defaultLocale}_${t}`;
+	if (H.has(n)) return H.get(n);
 	let r = [
-		D(e ?? S.defaultLocale, t ? S.defaultLocale : void 0),
-		O,
+		O(e ?? C.defaultLocale, t ? C.defaultLocale : void 0),
 		k,
-		M(e ?? S.defaultLocale),
-		N,
-		j,
-		L,
+		A,
+		N(e ?? C.defaultLocale),
+		P,
+		M,
 		R,
 		z,
-		B
+		B,
+		V
 	];
-	return V.set(n, r), r;
-}, U = (e, t) => I(e, t, H(t)), W = Symbol("intlayer"), G = (e, t) => t.reduce((e, t) => e?.[t], e), K = (e) => typeof e == "object" && !!e, q = (e) => typeof e == "function" || K(e) && ("render" in e || "setup" in e), J = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, Y = (e) => s(n({
+	return H.set(n, r), r;
+}, W = (e, t) => L(e, t, U(t)), G = Symbol("intlayer"), K = (e, t) => t.reduce((e, t) => e?.[t], e), q = (e) => typeof e == "object" && !!e, J = (e) => typeof e == "function" || q(e) && ("render" in e || "setup" in e), Y = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, X = (e) => s(n({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : q(t) ? i(t) : Array.isArray(t) ? i("span", t) : t;
+			return t == null ? null : J(t) ? i(t) : Array.isArray(t) ? i("span", t) : t;
 		};
 	}
-})), X = (e) => new Proxy({}, {
+})), Z = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
 		if (n === "value") return r ?? "";
 		if (n === "$raw") return e;
 		if (n === "__v_skip") return !0;
-		if (n === "c" || n === "asComponent") return Y(() => e.value);
+		if (n === "c" || n === "asComponent") return X(() => e.value);
 		if (r == null) return n === Symbol.toPrimitive || n === "toString" ? () => "" : void 0;
 		let i = r[n];
 		return typeof i == "function" ? i.bind(r) : i;
@@ -313,10 +313,10 @@ var g = {
 			configurable: !0
 		};
 	}
-}), Z = (t, n) => {
-	let i = r() ? a(W) : void 0, s = o(i?.locale) ? i.locale : d(i?.locale ?? S.defaultLocale), c = e(() => (n === void 0 ? void 0 : m(n)) ?? s.value), l = f({});
-	h([() => m(t), () => c.value], ([e, t]) => {
-		l.value = U(e, t);
+}), Q = (t, n) => {
+	let i = r() ? a(G) : void 0, s = o(i?.locale) ? i.locale : d(i?.locale ?? C.defaultLocale), c = e(() => (n === void 0 ? void 0 : m(n)) ?? s.value), l = f({});
+	g([() => m(t), () => c.value], ([e, t]) => {
+		l.value = W(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -324,23 +324,23 @@ var g = {
 	let u = (t) => new Proxy({}, {
 		get(n, r, i) {
 			if (r === "__v_isRef") return !0;
-			let a = e(() => G(l.value, t));
+			let a = e(() => K(l.value, t));
 			if (r === "value") return a.value ?? "";
 			if (r === "then") return;
-			if (r === "c" || r === "asComponent") return Y(() => a.value);
+			if (r === "c" || r === "asComponent") return X(() => a.value);
 			if (r === "$raw") return a;
 			if (r === Symbol.toPrimitive) return () => a.value;
-			let o = t.concat(r), s = G(l.value, o);
-			if (s === void 0 || K(s) && !q(s)) return u(o);
-			if (J(s)) return X(e(() => G(l.value, o)));
-			let c = e(() => G(l.value, o));
+			let o = t.concat(r), s = K(l.value, o);
+			if (s === void 0 || q(s) && !J(s)) return u(o);
+			if (Y(s)) return Z(e(() => K(l.value, o)));
+			let c = e(() => K(l.value, o));
 			return new Proxy(c, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let e = G(l.value, t);
-			return K(e) ? Reflect.ownKeys(e) : [];
+			let e = K(l.value, t);
+			return q(e) ? Reflect.ownKeys(e) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -350,74 +350,44 @@ var g = {
 		}
 	});
 	return u([]);
-}, Q = n({
+}, $ = ["aria-label", "title"], ee = n({
 	__name: "ThemeToggle",
-	setup(e, { expose: t }) {
-		t();
-		let { d: n, e: r, f: i, a, c: o, b: s } = Z(g), u = d("auto");
-		function f() {
+	setup(e) {
+		let { d: n, e: r, f: i, a, c: o, b: s } = Q(_), f = d("auto");
+		function m() {
 			if (typeof window > "u") return "auto";
 			let e = window.localStorage.getItem("theme");
 			return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 		}
-		function p(e) {
+		function v(e) {
 			let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 			document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 		}
 		c(() => {
-			let e = f();
-			u.value = e, p(e);
+			let e = m();
+			f.value = e, v(e);
 		});
-		let m = null;
-		h(u, (e) => {
+		let y = null;
+		g(f, (e) => {
 			if (e === "auto") {
 				let e = window.matchMedia("(prefers-color-scheme: dark)");
-				m = () => p("auto"), e.addEventListener("change", m);
-			} else m &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", m), null);
+				y = () => v("auto"), e.addEventListener("change", y);
+			} else y &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", y), null);
 		}, { immediate: !0 }), l(() => {
-			m && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", m);
+			y && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", y);
 		});
-		function _() {
-			let e = u.value === "light" ? "dark" : u.value === "dark" ? "auto" : "light";
-			u.value = e, p(e), window.localStorage.setItem("theme", e);
+		function b() {
+			let e = f.value === "light" ? "dark" : f.value === "dark" ? "auto" : "light";
+			f.value = e, v(e), window.localStorage.setItem("theme", e);
 		}
-		let v = {
-			auto: n,
-			dark: r,
-			light: i,
-			ariaLabelAuto: a,
-			ariaLabelLight: o,
-			ariaLabelDark: s,
-			mode: u,
-			getInitialMode: f,
-			applyThemeMode: p,
-			get mediaQueryListener() {
-				return m;
-			},
-			set mediaQueryListener(e) {
-				m = e;
-			},
-			toggleMode: _,
-			getLabel: () => u.value === "auto" ? a.value : u.value === "light" ? o.value : s.value
-		};
-		return Object.defineProperty(v, "__isScriptSetup", {
-			enumerable: !1,
-			value: !0
-		}), v;
+		let x = () => f.value === "auto" ? a.value : f.value === "light" ? o.value : s.value;
+		return (e, a) => (u(), t("button", {
+			type: "button",
+			onClick: b,
+			"aria-label": x(),
+			title: x(),
+			class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+		}, p(f.value === "auto" ? h(n) : f.value === "dark" ? h(r) : h(i)), 9, $));
 	}
-}), $ = (e, t) => {
-	let n = e.__vccOpts || e;
-	for (let [e, r] of t) n[e] = r;
-	return n;
-}, ee = ["aria-label", "title"];
-function te(e, n, r, i, a, o) {
-	return u(), t("button", {
-		type: "button",
-		onClick: i.toggleMode,
-		"aria-label": i.getLabel(),
-		title: i.getLabel(),
-		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-	}, p(i.mode === "auto" ? i.auto : i.mode === "dark" ? i.dark : i.light), 9, ee);
-}
-var ne = $(Q, [["render", te], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/ThemeToggle.vue"]]);
-export { ne as default };
+});
+export { ee as default };

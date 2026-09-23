@@ -1,11 +1,6 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var onInvalidFunc = () => "";
-onInvalidFunc = (i, c) => {
-	const item = c[i];
-	if (item == null) return `[i18n-404:${i}]`;
-	return `[i18n-400:${i}(${item})]`;
-};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -94,17 +89,12 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx$1 = registerLoaders("shared", loadCatalog$11, 1);
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/MockBanner.tsx";
 var MockBanner = () => {
 	const _w_runtime_ = getRuntimeRx$1();
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: _w_runtime_(21)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 8,
-		columnNumber: 3
-	}, void 0);
+	});
 };
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -122,39 +112,18 @@ var loadCatalog$10 = (loadID, locale) => {
 	return catalogs$10[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("pricing", loadCatalog$10, 1);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/pricing/PricingHeader.tsx";
 function PricingHeader() {
 	const _w_runtime_ = getRuntimeRx();
-	return jsxDEV(Fragment, { children: [jsxDEV(MockBanner, {}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 12,
-		columnNumber: 7
-	}, this), jsxDEV("div", {
+	return jsxs(Fragment, { children: [jsx(MockBanner, {}), jsxs("div", {
 		className: "mb-12 text-center",
-		children: [jsxDEV("h1", {
+		children: [jsx("h1", {
 			className: "mb-3 text-3xl font-bold text-foreground",
 			children: _w_runtime_(142)
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 14,
-			columnNumber: 9
-		}, this), jsxDEV("p", {
+		}), jsx("p", {
 			className: "text-muted-foreground",
 			children: _w_runtime_(143)
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 17,
-			columnNumber: 9
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 13,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 11,
-		columnNumber: 5
-	}, this);
+		})]
+	})] });
 }
 var catalogs$9 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -316,26 +285,12 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/pricing/PricingHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(PricingHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(PricingHeader, {}) });
 }
 export { Wrapped as default };
 var c = [

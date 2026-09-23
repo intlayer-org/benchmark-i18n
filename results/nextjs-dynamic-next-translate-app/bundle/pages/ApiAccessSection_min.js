@@ -1,42 +1,42 @@
 import e, { createContext as t, useContext as n, useEffect as r, useId as i, useLayoutEffect as a, useMemo as o, useState as s } from "react";
-import { Fragment as c, jsxDEV as l } from "react/jsx-dev-runtime";
-import { useRouter as u } from "next/router";
-var d = function() {
-	return d = Object.assign || function(e) {
+import { Fragment as c, jsx as l, jsxs as u } from "react/jsx-runtime";
+import { useRouter as d } from "next/router";
+var f = function() {
+	return f = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, d.apply(this, arguments);
+	}, f.apply(this, arguments);
 };
-function f(e, t) {
+function p(e, t) {
 	return typeof t == "string" ? function(n, r, i) {
-		return e(n, r, d({ ns: t }, i));
+		return e(n, r, f({ ns: t }, i));
 	} : e;
 }
-var p;
-typeof e.createContext == "function" && (p = e.createContext({
+var m;
+typeof e.createContext == "function" && (m = e.createContext({
 	t: function(e) {
 		return Array.isArray(e) ? e[0] : e;
 	},
 	lang: ""
 }));
-var m = p;
-function h() {
+var h = m;
+function g() {
 	return typeof window > "u";
 }
-function g(e) {
+function _(e) {
 	try {
 		return new Intl.PluralRules(e);
 	} catch {
 		return new Intl.PluralRules();
 	}
 }
-var _ = function() {
-	return _ = Object.assign || function(e) {
+var v = function() {
+	return v = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, _.apply(this, arguments);
+	}, v.apply(this, arguments);
 };
-function v(e, t) {
+function y(e, t) {
 	if (!t) return { i18nKey: e };
 	var n = e.indexOf(t);
 	return n < 0 ? { i18nKey: e } : {
@@ -44,16 +44,16 @@ function v(e, t) {
 		i18nKey: e.slice(n + t.length)
 	};
 }
-function y(e) {
-	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? w : a, s = t.allowEmptyStrings, c = s === void 0 || s, l = function(e, n) {
+function b(e) {
+	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? T : a, s = t.allowEmptyStrings, c = s === void 0 || s, l = function(e, n) {
 		return Array.isArray(e) ? e.map(function(e) {
 			return l(e, n);
-		}) : e instanceof Object ? C({
+		}) : e instanceof Object ? w({
 			obj: e,
 			query: n,
 			config: t,
 			lang: i
-		}) : S({
+		}) : C({
 			text: e,
 			query: n,
 			config: t,
@@ -61,19 +61,19 @@ function y(e) {
 		});
 	}, u = function(e, i, a) {
 		e === void 0 && (e = "");
-		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = v(s, f), g = h.i18nKey, y = h.namespace, S = y === void 0 ? a?.ns ?? t.defaultNS : y, C = S && n[S] || {}, w = b(C, x(r, C, g, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
+		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = y(s, f), g = h.i18nKey, _ = h.namespace, b = _ === void 0 ? a?.ns ?? t.defaultNS : _, C = b && n[b] || {}, w = x(C, S(r, C, g, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
 		if (E && (m === "both" || m === (typeof window > "u" ? "node" : "browser")) && o({
-			namespace: S,
+			namespace: b,
 			i18nKey: g
 		}), E && Array.isArray(D) && D.length) {
 			var O = D[0], k = D.slice(1);
-			if (typeof O == "string") return u(O, i, _(_({}, a), { fallback: k }));
+			if (typeof O == "string") return u(O, i, v(v({}, a), { fallback: k }));
 		}
 		return E && a && a.hasOwnProperty("default") && !D?.length ? a.default ? l(a.default, i) : a.default : E ? s : l(T, i);
 	};
 	return u;
 }
-function b(e, t, n, r) {
+function x(e, t, n, r) {
 	t === void 0 && (t = ""), r === void 0 && (r = { returnObjects: !1 });
 	var i = (n || {}).keySeparator, a = i === void 0 ? "." : i, o = a ? t.split(a) : [t];
 	if (t === a && r.returnObjects) return e;
@@ -84,18 +84,18 @@ function b(e, t, n, r) {
 	}, e);
 	if (typeof s == "string" || s instanceof Object && r.returnObjects && Object.keys(s).length > 0 || Array.isArray(s) && r.returnObjects) return s;
 }
-function x(e, t, n, r, i, a) {
+function S(e, t, n, r, i, a) {
 	if (!i || typeof i.count != "number") return n;
 	var o = `${n}_${i.count}`;
-	if (b(t, o, r, a) !== void 0) return o;
+	if (x(t, o, r, a) !== void 0) return o;
 	var s = `${n}_${e.select(i.count)}`;
-	if (b(t, s, r, a) !== void 0) return s;
+	if (x(t, s, r, a) !== void 0) return s;
 	var c = `${n}.${i.count}`;
-	if (b(t, c, r, a) !== void 0) return c;
+	if (x(t, c, r, a) !== void 0) return c;
 	var l = `${n}.${e.select(i.count)}`;
-	return b(t, l, r, a) === void 0 ? n : l;
+	return x(t, l, r, a) === void 0 ? n : l;
 }
-function S(e) {
+function C(e) {
 	var t = e.text, n = e.query, r = e.config, i = e.lang;
 	if (!t || !n) return t || "";
 	var a = function(e) {
@@ -108,15 +108,15 @@ function S(e) {
 		});
 	}, t);
 }
-function C(e) {
+function w(e) {
 	var t = e.obj, n = e.query, r = e.config, i = e.lang;
 	return !n || Object.keys(n).length === 0 || Object.keys(t).forEach(function(e) {
-		t[e] instanceof Object && C({
+		t[e] instanceof Object && w({
 			obj: t[e],
 			query: n,
 			config: r,
 			lang: i
-		}), typeof t[e] == "string" && (t[e] = S({
+		}), typeof t[e] == "string" && (t[e] = C({
 			text: t[e],
 			query: n,
 			config: r,
@@ -124,7 +124,7 @@ function C(e) {
 		}));
 	}), t;
 }
-function w(e) {
+function T(e) {
 	var t = e.namespace, n = e.i18nKey;
 	if (process.env.NODE_ENV !== "production") {
 		if (!t) {
@@ -134,17 +134,17 @@ function w(e) {
 		console.warn(`[next-translate] "${t}:${n}" is missing in current namespace configuration. Try adding "${n}" to the namespace "${t}".`);
 	}
 }
-function T(e) {
+function E(e) {
 	var t = globalThis.__NEXT_TRANSLATE__ ?? {}, n = t.lang, r = t.namespaces, i = t.config, a = i.localesToIgnore || ["default"], s = !n || a.includes(n), c = function() {
-		return f(y({
+		return p(b({
 			config: i,
 			allNamespaces: r,
-			pluralRules: g(s ? void 0 : n),
+			pluralRules: _(s ? void 0 : n),
 			lang: n
 		}), e);
 	}, l = r ? Object.keys(r).sort().join("|") : "";
 	return {
-		t: h() ? c() : o(c, [
+		t: g() ? c() : o(c, [
 			e,
 			n,
 			l
@@ -152,86 +152,53 @@ function T(e) {
 		lang: n
 	};
 }
-var E = function() {
-	return E = Object.assign || function(e) {
+var D = function() {
+	return D = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, E.apply(this, arguments);
+	}, D.apply(this, arguments);
 };
-function D(e) {
-	var t = n(m);
+function O(e) {
+	var t = n(h);
 	return o(function() {
-		return E(E({}, t), { t: f(t.t, e) });
+		return D(D({}, t), { t: p(t.t, e) });
 	}, [t, e]);
 }
-function O(e) {
-	return (globalThis.__NEXT_TRANSLATE__?.config ? T : D)(e);
+function k(e) {
+	return (globalThis.__NEXT_TRANSLATE__?.config ? E : O)(e);
 }
-var k = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/settings/ApiAccessSection.tsx";
 function A() {
-	let { t: e } = O("common"), t = i();
-	return l("section", {
+	let { t: e } = k("common"), t = i();
+	return u("section", {
 		className: "rounded-lg border border-border bg-card p-6",
 		children: [l("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: e("settings.apiAccessSection.apiAccess")
-		}, void 0, !1, {
-			fileName: k,
-			lineNumber: 12,
-			columnNumber: 7
-		}, this), l("div", { children: [
+		}), u("div", { children: [
 			l("label", {
 				htmlFor: t,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: e("settings.apiAccessSection.apiKey")
-			}, void 0, !1, {
-				fileName: k,
-				lineNumber: 16,
-				columnNumber: 9
-			}, this),
-			l("div", {
+			}),
+			u("div", {
 				className: "flex gap-2",
 				children: [l("input", {
 					id: t,
 					readOnly: !0,
 					defaultValue: "sk_bench_xxxxxxxxxxxxxxxxxxxx",
 					className: "flex-1 rounded-md border border-input bg-muted px-3 py-2 text-sm text-muted-foreground"
-				}, void 0, !1, {
-					fileName: k,
-					lineNumber: 23,
-					columnNumber: 11
-				}, this), l("button", {
+				}), l("button", {
 					type: "button",
 					className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: e("settings.apiAccessSection.copy")
-				}, void 0, !1, {
-					fileName: k,
-					lineNumber: 29,
-					columnNumber: 11
-				}, this)]
-			}, void 0, !0, {
-				fileName: k,
-				lineNumber: 22,
-				columnNumber: 9
-			}, this),
+				})]
+			}),
 			l("p", {
 				className: "mt-1 text-xs text-muted-foreground",
 				children: e("settings.apiAccessSection.useThisKeyTo")
-			}, void 0, !1, {
-				fileName: k,
-				lineNumber: 36,
-				columnNumber: 9
-			}, this)
-		] }, void 0, !0, {
-			fileName: k,
-			lineNumber: 15,
-			columnNumber: 7
-		}, this)]
-	}, void 0, !0, {
-		fileName: k,
-		lineNumber: 11,
-		columnNumber: 5
-	}, this);
+			})
+		] })]
+	});
 }
 var j = function() {
 	return j = Object.assign || function(e) {
@@ -243,23 +210,23 @@ var j = function() {
 	config: {}
 });
 function N(t) {
-	var r = t.lang, i = t.namespaces, a = i === void 0 ? {} : i, s = t.children, c = t.config, l = c === void 0 ? {} : c, d = O().lang, f = u() || {}, p = f.locale, h = f.defaultLocale, _ = n(M), v = j(j(j({}, P()), _.ns), a), b = r || d || p || h || "", x = j(j({}, _.config), l), S = x.localesToIgnore || ["default"], C = !b || S.includes(b), w = o(function() {
-		return g(C ? void 0 : b);
-	}, [C, b]), T = o(function() {
-		return y({
+	var r = t.lang, i = t.namespaces, a = i === void 0 ? {} : i, s = t.children, c = t.config, l = c === void 0 ? {} : c, u = k().lang, f = d() || {}, p = f.locale, m = f.defaultLocale, g = n(M), v = j(j(j({}, P()), g.ns), a), y = r || u || p || m || "", x = j(j({}, g.config), l), S = x.localesToIgnore || ["default"], C = !y || S.includes(y), w = o(function() {
+		return _(C ? void 0 : y);
+	}, [C, y]), T = o(function() {
+		return b({
 			config: x,
 			allNamespaces: v,
 			pluralRules: w,
-			lang: b
+			lang: y
 		});
 	}, [
 		x,
 		v,
 		w,
-		b
+		y
 	]);
-	return e.createElement(m.Provider, { value: {
-		lang: b,
+	return e.createElement(h.Provider, { value: {
+		lang: y,
 		t: T
 	} }, e.createElement(M.Provider, { value: {
 		ns: v,
@@ -330,8 +297,7 @@ function R(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/AppProviders.tsx";
-function B({ children: e, locale: t }) {
+function z({ children: e, locale: t }) {
 	let [n] = s(() => typeof performance < "u" ? performance.now() : 0);
 	return a(() => {
 		R("AppRoot", n);
@@ -339,14 +305,9 @@ function B({ children: e, locale: t }) {
 		document.documentElement.lang = t;
 	}, [t]), r(() => {
 		L();
-	}, []), l(c, { children: e }, void 0, !1, {
-		fileName: z,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	}, []), l(c, { children: e });
 }
-var V = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/scripts/Wrapper.tsx";
-function H({ children: e }) {
+function B({ children: e }) {
 	let [t, n] = s({}), [i, a] = s(!1);
 	return r(() => {
 		(async () => {
@@ -360,33 +321,16 @@ function H({ children: e }) {
 	}, ["en"]), i ? l(N, {
 		lang: "en",
 		namespaces: { common: t },
-		children: l(B, {
+		children: l(z, {
 			locale: "en",
 			children: e
-		}, void 0, !1, {
-			fileName: V,
-			lineNumber: 37,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: V,
-		lineNumber: 36,
-		columnNumber: 5
-	}, this) : null;
+		})
+	}) : null;
 }
-var U = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/settings/ApiAccessSection.wrapper.tsx";
-function W() {
-	return l(H, { children: l(A, {}, void 0, !1, {
-		fileName: U,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: U,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function V() {
+	return l(B, { children: l(A, {}) });
 }
-export { W as default };
+export { V as default };
 var e = {
 	"faq.faqList.howAreTheBenchmarks": "How are the benchmarks run?",
 	"faq.faqList.allBenchmarksAreRun": "All benchmarks are run using Playwright on a consistent hardware setup (M2 MacBook Pro) with simulated 4G network conditions. Each test runs 50 iterations and we report median, P95, and P99 values.",

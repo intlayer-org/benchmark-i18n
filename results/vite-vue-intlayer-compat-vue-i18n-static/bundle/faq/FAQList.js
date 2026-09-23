@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderList, renderSlot, toDisplayString } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderList, renderSlot, toDisplayString, unref } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -975,12 +975,14 @@ var useI18n = ((options) => {
 		n: (value, formatOrOptions) => formatNumberValue(value, formatOrOptions, currentLocale.value, numberFormats)
 	};
 });
-var FAQList_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var _hoisted_1 = { class: "mx-auto max-w-3xl space-y-4" };
+var _hoisted_2 = { class: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors" };
+var _hoisted_3 = { class: "px-6 pb-4 text-sm text-muted-foreground" };
+var FAQList_default = defineComponent({
 	__name: "FAQList",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const { t } = useI18n();
-		const faqIndices = [
+		const faqs = [
 			1,
 			2,
 			3,
@@ -989,62 +991,35 @@ var FAQList_vue_vue_type_script_setup_true_lang_default = defineComponent({
 			6,
 			7,
 			8
-		];
-		const __returned__ = {
-			t,
-			faqIndices,
-			faqs: faqIndices.map((i) => ({
-				q: t(`faq.list.q${i}`),
-				a: t(`faq.list.a${i}`)
-			}))
+		].map((i) => ({
+			q: t(`faq.list.q${i}`),
+			a: t(`faq.list.a${i}`)
+		}));
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(true), createElementBlock(Fragment, null, renderList(unref(faqs), (f, idx) => {
+				return openBlock(), createElementBlock("details", {
+					key: idx,
+					class: "group rounded-lg border border-border bg-card"
+				}, [createElementVNode("summary", _hoisted_2, toDisplayString(f.q), 1), createElementVNode("p", _hoisted_3, toDisplayString(f.a), 1)]);
+			}), 128))]);
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
-var _hoisted_1 = { class: "mx-auto max-w-3xl space-y-4" };
-var _hoisted_2 = { class: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors" };
-var _hoisted_3 = { class: "px-6 pb-4 text-sm text-muted-foreground" };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.faqs, (f, idx) => {
-		return openBlock(), createElementBlock("details", {
-			key: idx,
-			class: "group rounded-lg border border-border bg-card"
-		}, [createElementVNode("summary", _hoisted_2, toDisplayString(f.q), 1), createElementVNode("p", _hoisted_3, toDisplayString(f.a), 1)]);
-	}), 128))]);
-}
-var FAQList_default = _plugin_vue_export_helper_default(FAQList_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/faq/FAQList.vue"]]);
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var FAQList_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(FAQList_default) });
 } };

@@ -1,0 +1,36 @@
+{
+  "name": "vite-vue-tolgee-dynamic",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity",
+    "test:components": "bun scripts/measure-components.ts",
+    "test:consistency": "npx playwright test structure-consistency.test.ts",
+    "test:pages": "npx playwright test pages.test.ts",
+    "test:reactivity": "npx playwright test reactivity.test.ts",
+    "test:rendering": "npx playwright test rendering.test.ts"
+  },
+  "dependencies": {
+    "@tolgee/vue": "^7.2.0",
+    "lucide-vue-next": "^1.0.0",
+    "vue": "^3.5.42",
+    "vue-router": "^5.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^26",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "@vue/tsconfig": "^0.9.1",
+    "rollup-plugin-visualizer": "^7.1.1",
+    "tailwindcss": "^4.3.3",
+    "test-utils": "workspace:*",
+    "typescript": "~7.0.2",
+    "vite": "^8.2.2"
+  }
+}

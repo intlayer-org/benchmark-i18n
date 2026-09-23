@@ -1,4 +1,3 @@
-import { tolgee } from "../../i18n/tolgee";
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
@@ -10,13 +9,6 @@ const PricingTiers = lazy(
 );
 
 export const Route = createFileRoute("/$locale/pricing")({
-  loader: async ({ params }) => {
-    await tolgee.loadRecords([
-      { language: params.locale, namespace: "pricing" },
-      { language: params.locale, namespace: "pricingHeader" },
-      { language: params.locale, namespace: "pricingTiers" },
-    ]);
-  },
   component: Pricing,
 });
 

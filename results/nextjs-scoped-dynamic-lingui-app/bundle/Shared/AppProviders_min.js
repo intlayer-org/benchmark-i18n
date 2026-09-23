@@ -1,31 +1,30 @@
 import { createContext as e, useEffect as t, useLayoutEffect as n, useMemo as r, useState as i } from "react";
 import { jsx as a } from "react/jsx-runtime";
-import { jsxDEV as o } from "react/jsx-dev-runtime";
-var s = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), c = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), s = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), l = s(((e) => {
-	var t = c("react");
+}), c = o(((e) => {
+	var t = s("react");
 	function n(e, t) {
 		return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
 	}
-	var r = typeof Object.is == "function" ? Object.is : n, i = t.useState, a = t.useEffect, o = t.useLayoutEffect, s = t.useDebugValue;
+	var r = typeof Object.is == "function" ? Object.is : n, i = t.useState, a = t.useEffect, o = t.useLayoutEffect, c = t.useDebugValue;
 	function l(e, t) {
 		var n = t(), r = i({ inst: {
 			value: n,
 			getSnapshot: t
-		} }), c = r[0].inst, l = r[1];
+		} }), s = r[0].inst, l = r[1];
 		return o(function() {
-			c.value = n, c.getSnapshot = t, u(c) && l({ inst: c });
+			s.value = n, s.getSnapshot = t, u(s) && l({ inst: s });
 		}, [
 			e,
 			n,
 			t
 		]), a(function() {
-			return u(c) && l({ inst: c }), e(function() {
-				u(c) && l({ inst: c });
+			return u(s) && l({ inst: s }), e(function() {
+				u(s) && l({ inst: s });
 			});
-		}, [e]), s(n), n;
+		}, [e]), c(n), n;
 	}
 	function u(e) {
 		var t = e.getSnapshot;
@@ -42,7 +41,7 @@ var s = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	}
 	var f = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? d : l;
 	e.useSyncExternalStore = t.useSyncExternalStore === void 0 ? f : t.useSyncExternalStore;
-})), u = s(((e) => {
+})), l = o(((e) => {
 	process.env.NODE_ENV !== "production" && (function() {
 		function t(e, t) {
 			return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
@@ -54,20 +53,20 @@ var s = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 				var i = t();
 				o(n, i) || (console.error("The result of getSnapshot should be cached to avoid an infinite loop"), p = !0);
 			}
-			i = s({ inst: {
+			i = c({ inst: {
 				value: n,
 				getSnapshot: t
 			} });
-			var c = i[0].inst, m = i[1];
+			var s = i[0].inst, m = i[1];
 			return u(function() {
-				c.value = n, c.getSnapshot = t, r(c) && m({ inst: c });
+				s.value = n, s.getSnapshot = t, r(s) && m({ inst: s });
 			}, [
 				e,
 				n,
 				t
 			]), l(function() {
-				return r(c) && m({ inst: c }), e(function() {
-					r(c) && m({ inst: c });
+				return r(s) && m({ inst: s }), e(function() {
+					r(s) && m({ inst: s });
 				});
 			}, [e]), d(n), n;
 		}
@@ -85,18 +84,18 @@ var s = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return t();
 		}
 		typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-		var a = c("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, l = a.useEffect, u = a.useLayoutEffect, d = a.useDebugValue, f = !1, p = !1, m = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
+		var a = s("react"), o = typeof Object.is == "function" ? Object.is : t, c = a.useState, l = a.useEffect, u = a.useLayoutEffect, d = a.useDebugValue, f = !1, p = !1, m = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
 		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? m : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 	})();
-})), d = s(((e, t) => {
-	t.exports = process.env.NODE_ENV === "production" ? l() : u();
-}))(), f = e(null), p = (e, t) => ({
+})), u = o(((e, t) => {
+	t.exports = process.env.NODE_ENV === "production" ? c() : l();
+}))(), d = e(null), f = (e, t) => ({
 	i18n: new Proxy(e, {}),
 	defaultComponent: t,
 	_: e.t.bind(e)
-}), m = (e, t) => {
-	let n = e.locale, r = p(e, t), i = () => {
-		n = e.locale, r = p(e, t);
+}), p = (e, t) => {
+	let n = e.locale, r = f(e, t), i = () => {
+		n = e.locale, r = f(e, t);
 	};
 	return {
 		getSnapshot: () => (n !== e.locale && i(), r),
@@ -104,14 +103,14 @@ var s = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			i(), t();
 		})
 	};
-}, h = ({ i18n: e, defaultComponent: t, children: n }) => {
-	let i = r(() => m(e, t), [e, t]), o = (0, d.useSyncExternalStore)(i.subscribe, i.getSnapshot, i.getSnapshot);
-	return o.i18n.locale ? a(f.Provider, {
+}, m = ({ i18n: e, defaultComponent: t, children: n }) => {
+	let i = r(() => p(e, t), [e, t]), o = (0, u.useSyncExternalStore)(i.subscribe, i.getSnapshot, i.getSnapshot);
+	return o.i18n.locale ? a(d.Provider, {
 		value: o,
 		children: n
 	}) : (process.env.NODE_ENV === "development" && console.log("I18nProvider rendered `null`. A call to `i18n.activate` needs to happen in order for translations to be activated and for the I18nProvider to render.This is not an error but an informational message logged only in development."), null);
 };
-function g() {
+function h() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -125,17 +124,17 @@ function g() {
 		}
 	}
 }
-function _(e, t) {
+function g(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var v = (e, t, n) => {
+var _ = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, y = s(((e, t) => {
+}, v = o(((e, t) => {
 	(function(e, n) {
 		typeof define == "function" && define.amd ? define([], n) : typeof t == "object" && t.exports ? t.exports = n() : e.moo = n();
 	})(e, function() {
@@ -453,12 +452,12 @@ var v = (e, t, n) => {
 			keywords: x
 		};
 	});
-})), b = s(((e) => {
+})), y = o(((e) => {
 	var t = e && e.__importDefault || function(e) {
 		return e && e.__esModule ? e : { default: e };
 	};
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.lexer = e.states = void 0;
-	var n = t(y());
+	var n = t(v());
 	e.states = {
 		body: {
 			doubleapos: {
@@ -527,9 +526,9 @@ var v = (e, t, n) => {
 			}
 		}
 	}, e.lexer = n.default.states(e.states);
-})), x = s(((e) => {
+})), b = o(((e) => {
 	Object.defineProperty(e, "__esModule", { value: !0 }), e.ParseError = void 0, e.parse = l;
-	var t = b(), n = (e) => ({
+	var t = y(), n = (e) => ({
 		offset: e.offset,
 		line: e.line,
 		col: e.col,
@@ -685,22 +684,22 @@ var v = (e, t, n) => {
 	function l(e, t = {}) {
 		return new c(e, t).parse();
 	}
-}))(), S = class extends Error {
+}))(), x = class extends Error {
 	constructor(e, t, n) {
 		super(e), this.token = t, this.type = n || "error";
 	}
-}, C = (e) => e < 4 ? "short" : e === 4 ? "long" : "narrow", w = (e) => e % 2 == 0 ? "2-digit" : "numeric";
-function T(e, t) {
+}, S = (e) => e < 4 ? "short" : e === 4 ? "long" : "narrow", C = (e) => e % 2 == 0 ? "2-digit" : "numeric";
+function w(e, t) {
 	switch (e.char) {
-		case "y": return { year: w(e.width) };
+		case "y": return { year: C(e.width) };
 		case "r": return {
 			calendar: "gregory",
 			year: "numeric"
 		};
-		default: return t(`${e.desc} is not supported; falling back to year:numeric`, S.WARNING), { year: "numeric" };
+		default: return t(`${e.desc} is not supported; falling back to year:numeric`, x.WARNING), { year: "numeric" };
 	}
 }
-function E(e, t) {
+function T(e, t) {
 	switch (e.width) {
 		case 1: return "numeric";
 		case 2: return "2-digit";
@@ -712,17 +711,17 @@ function E(e, t) {
 			return;
 	}
 }
-function ee(e, t) {
+function E(e, t) {
 	let { char: n, desc: r, width: i } = e;
-	if (n === "d") return w(i);
+	if (n === "d") return C(i);
 	t(`${r} is not supported`);
 }
-function te(e, t) {
+function ee(e, t) {
 	let { char: n, desc: r, width: i } = e;
-	return (n === "c" || n === "e") && i < 3 && t(`Numeric value is not supported for ${r}; falling back to weekday:short`, S.WARNING), C(i);
+	return (n === "c" || n === "e") && i < 3 && t(`Numeric value is not supported for ${r}; falling back to weekday:short`, x.WARNING), S(i);
 }
-function D(e) {
-	let t = w(e.width), n;
+function te(e) {
+	let t = C(e.width), n;
 	switch (e.char) {
 		case "h":
 			n = "h12";
@@ -740,7 +739,7 @@ function D(e) {
 		hourCycle: n
 	} : { hour: t };
 }
-function O(e, t) {
+function D(e, t) {
 	let { char: n, desc: r, width: i } = e;
 	switch (n) {
 		case "v":
@@ -755,41 +754,41 @@ function O(e, t) {
 	}
 	return "short";
 }
-function k(e, t) {
+function O(e, t) {
 	switch (e.field) {
-		case "era": return { era: C(e.width) };
-		case "year": return T(e, t);
-		case "month": return { month: E(e, t) };
-		case "day": return { day: ee(e, t) };
-		case "weekday": return { weekday: te(e, t) };
+		case "era": return { era: S(e.width) };
+		case "year": return w(e, t);
+		case "month": return { month: T(e, t) };
+		case "day": return { day: E(e, t) };
+		case "weekday": return { weekday: ee(e, t) };
 		case "period": return;
-		case "hour": return D(e);
-		case "min": return { minute: w(e.width) };
-		case "sec": return { second: w(e.width) };
-		case "tz": return { timeZoneName: O(e, t) };
+		case "hour": return te(e);
+		case "min": return { minute: C(e.width) };
+		case "sec": return { second: C(e.width) };
+		case "tz": return { timeZoneName: D(e, t) };
 		case "quarter":
 		case "week":
 		case "sec-frac":
 		case "ms": t(`${e.desc} is not supported`);
 	}
 }
-function A(e, t, n = (e) => {
+function k(e, t, n = (e) => {
 	throw e;
 }) {
 	let r = { timeZone: t }, i = [];
 	for (let t of e) {
 		let { error: e, field: a, str: o } = t;
 		if (e) {
-			let r = new S(e.message, t);
+			let r = new x(e.message, t);
 			r.stack = e.stack, n(r);
 		}
-		o && n(new S(`Ignoring string part: ${o}`, t, S.WARNING)), a && (i.indexOf(a) === -1 ? i.push(a) : n(new S(`Duplicate ${a} token`, t)));
-		let s = k(t, (e, r) => n(new S(e, t, r)));
+		o && n(new x(`Ignoring string part: ${o}`, t, x.WARNING)), a && (i.indexOf(a) === -1 ? i.push(a) : n(new x(`Duplicate ${a} token`, t)));
+		let s = O(t, (e, r) => n(new x(e, t, r)));
 		s && Object.assign(r, s);
 	}
 	return r;
 }
-var j = {
+var A = {
 	G: {
 		field: "era",
 		desc: "Era"
@@ -950,11 +949,11 @@ var j = {
 		field: "tz",
 		desc: "Time Zone: ISO8601"
 	}
-}, M = (e) => e >= "A" && e <= "Z" || e >= "a" && e <= "z";
-function N(e, t) {
+}, j = (e) => e >= "A" && e <= "Z" || e >= "a" && e <= "z";
+function M(e, t) {
 	let n = e[t], r = 1;
 	for (; e[++t] === n;) ++r;
-	let i = j[n];
+	let i = A[n];
 	if (!i) {
 		let e = `The letter ${n} is not a valid field identifier`;
 		return {
@@ -970,7 +969,7 @@ function N(e, t) {
 		width: r
 	};
 }
-function P(e, t) {
+function N(e, t) {
 	let n = e[++t], r = 2;
 	if (n === "'") return {
 		char: "'",
@@ -999,15 +998,15 @@ function P(e, t) {
 		n += i;
 	}
 }
-function ne(e, t) {
+function P(e, t) {
 	let n = e[t];
 	if (!n) return null;
-	if (M(n)) return N(e, t);
-	if (n === "'") return P(e, t);
+	if (j(n)) return M(e, t);
+	if (n === "'") return N(e, t);
 	let r = n, i = 1;
 	for (;;) {
 		let a = e[++t];
-		if (!a || M(a) || a === "'") return {
+		if (!a || j(a) || a === "'") return {
 			char: n,
 			str: r,
 			width: i
@@ -1015,15 +1014,15 @@ function ne(e, t) {
 		r += a, i += 1;
 	}
 }
-function re(e) {
+function F(e) {
 	let t = [], n = 0;
 	for (;;) {
-		let r = ne(e, n);
+		let r = P(e, n);
 		if (!r) return t;
 		t.push(r), n += r.width;
 	}
 }
-function F(e, t) {
+function I(e, t) {
 	return e.filter((e) => e.type !== "content").length ? e.map((e) => {
 		if (e.type === "content") return t(e.value);
 		if (e.type === "octothorpe") return "#";
@@ -1031,7 +1030,7 @@ function F(e, t) {
 		if (e.type === "function") {
 			let t = e?.param?.[0];
 			if (e.key === "date" && t) {
-				let n = ie(t.value.trim(), (e) => {
+				let n = ne(t.value.trim(), (e) => {
 					throw Error(`Unable to compile date expression: ${e.message}`);
 				});
 				return [
@@ -1049,7 +1048,7 @@ function F(e, t) {
 		let n = e.pluralOffset, r = {};
 		return e.cases.forEach(({ key: e, tokens: n }) => {
 			let i = e[0] === "=" ? e.slice(1) : e;
-			r[i] = F(n, t);
+			r[i] = I(n, t);
 		}), [
 			e.arg,
 			e.type,
@@ -1060,27 +1059,27 @@ function F(e, t) {
 		];
 	}) : e.map((e) => t(e.value));
 }
-function ie(e, t) {
-	return /^::/.test(e) ? A(re(e.substring(2)), void 0, t) : e;
+function ne(e, t) {
+	return /^::/.test(e) ? k(F(e.substring(2)), void 0, t) : e;
 }
-function ae(e, t = (e) => e) {
-	return F((0, x.parse)(e), t);
+function re(e, t = (e) => e) {
+	return I((0, b.parse)(e), t);
 }
-function oe(e, t = (e) => e) {
+function ie(e, t = (e) => e) {
 	try {
-		return ae(e, t);
+		return re(e, t);
 	} catch (t) {
 		return console.error(`${t.message} 
 
 Message: ${e}`), [e];
 	}
 }
-var I = (e) => typeof e == "string", se = (e) => typeof e == "function", L = /* @__PURE__ */ new Map(), R = "en";
-function z(e) {
-	return [...Array.isArray(e) ? e : [e], R];
+var L = (e) => typeof e == "string", ae = (e) => typeof e == "function", R = /* @__PURE__ */ new Map(), z = "en";
+function B(e) {
+	return [...Array.isArray(e) ? e : [e], z];
 }
-function B(e, t, n) {
-	let r = z(e);
+function V(e, t, n) {
+	let r = B(e);
 	n ||= "default";
 	let i;
 	if (typeof n == "string") switch (i = {
@@ -1095,9 +1094,9 @@ function B(e, t, n) {
 		case "short": i.month = "numeric";
 	}
 	else i = n;
-	return W(() => G("date", r, n), () => new Intl.DateTimeFormat(r, i)).format(I(t) ? new Date(t) : t);
+	return G(() => K("date", r, n), () => new Intl.DateTimeFormat(r, i)).format(L(t) ? new Date(t) : t);
 }
-function V(e, t, n) {
+function H(e, t, n) {
 	let r;
 	if (n ||= "default", typeof n == "string") switch (r = {
 		second: "numeric",
@@ -1111,24 +1110,24 @@ function V(e, t, n) {
 		case "short": delete r.second;
 	}
 	else r = n;
-	return B(e, t, r);
+	return V(e, t, r);
 }
-function H(e, t, n) {
-	let r = z(e);
-	return W(() => G("number", r, n), () => new Intl.NumberFormat(r, n)).format(t);
+function U(e, t, n) {
+	let r = B(e);
+	return G(() => K("number", r, n), () => new Intl.NumberFormat(r, n)).format(t);
 }
-function U(e, t, n, { offset: r = 0, ...i }) {
-	let a = z(e), o = t ? W(() => G("plural-ordinal", a), () => new Intl.PluralRules(a, { type: "ordinal" })) : W(() => G("plural-cardinal", a), () => new Intl.PluralRules(a, { type: "cardinal" }));
+function W(e, t, n, { offset: r = 0, ...i }) {
+	let a = B(e), o = t ? G(() => K("plural-ordinal", a), () => new Intl.PluralRules(a, { type: "ordinal" })) : G(() => K("plural-cardinal", a), () => new Intl.PluralRules(a, { type: "cardinal" }));
 	return i[n] ?? i[o.select(n - r)] ?? i.other;
 }
-function W(e, t) {
-	let n = e(), r = L.get(n);
-	return r || (r = t(), L.set(n, r)), r;
+function G(e, t) {
+	let n = e(), r = R.get(n);
+	return r || (r = t(), R.set(n, r)), r;
 }
-function G(e, t, n) {
+function K(e, t, n) {
 	return `${e}-${t.join("-")}-${JSON.stringify(n)}`;
 }
-var K = /\\u[a-fA-F0-9]{4}|\\x[a-fA-F0-9]{2}/, q = (e) => e.replace(/\\u([a-fA-F0-9]{4})|\\x([a-fA-F0-9]{2})/g, (e, t, n) => {
+var q = /\\u[a-fA-F0-9]{4}|\\x[a-fA-F0-9]{2}/, J = (e) => e.replace(/\\u([a-fA-F0-9]{4})|\\x([a-fA-F0-9]{2})/g, (e, t, n) => {
 	if (t) {
 		let e = parseInt(t, 16);
 		return String.fromCharCode(e);
@@ -1137,31 +1136,31 @@ var K = /\\u[a-fA-F0-9]{4}|\\x[a-fA-F0-9]{2}/, q = (e) => e.replace(/\\u([a-fA-F
 		let e = parseInt(n, 16);
 		return String.fromCharCode(e);
 	}
-}), J = "%__lingui_octothorpe__%", ce = (e, t, n = {}) => {
+}), Y = "%__lingui_octothorpe__%", oe = (e, t, n = {}) => {
 	let r = t || e, i = (e) => typeof e == "object" ? e : n[e], a = (e, t) => {
-		let a = Object.keys(n).length ? i("number") : void 0, o = H(r, e, a);
-		return t.replace(new RegExp(J, "g"), o);
+		let a = Object.keys(n).length ? i("number") : void 0, o = U(r, e, a);
+		return t.replace(new RegExp(Y, "g"), o);
 	};
 	return {
 		plural: (e, t) => {
-			let { offset: n = 0 } = t, i = U(r, !1, e, t);
+			let { offset: n = 0 } = t, i = W(r, !1, e, t);
 			return a(e - n, i);
 		},
 		selectordinal: (e, t) => {
-			let { offset: n = 0 } = t, i = U(r, !0, e, t);
+			let { offset: n = 0 } = t, i = W(r, !0, e, t);
 			return a(e - n, i);
 		},
-		select: le,
-		number: (e, t) => H(r, e, i(t) || { style: t }),
-		date: (e, t) => B(r, e, i(t) || t),
-		time: (e, t) => V(r, e, i(t) || t)
+		select: se,
+		number: (e, t) => U(r, e, i(t) || { style: t }),
+		date: (e, t) => V(r, e, i(t) || t),
+		time: (e, t) => H(r, e, i(t) || t)
 	};
-}, le = (e, t) => t[e] ?? t.other;
-function ue(e, t, n) {
+}, se = (e, t) => t[e] ?? t.other;
+function ce(e, t, n) {
 	return (r = {}, i) => {
-		let a = ce(t, n, i), o = (e, t = !1) => Array.isArray(e) ? e.reduce((e, n) => {
-			if (n === "#" && t) return e + J;
-			if (I(n)) return e + n;
+		let a = oe(t, n, i), o = (e, t = !1) => Array.isArray(e) ? e.reduce((e, n) => {
+			if (n === "#" && t) return e + Y;
+			if (L(n)) return e + n;
 			let [i, s, c] = n, l = {};
 			s === "plural" || s === "selectordinal" || s === "select" ? Object.entries(c).forEach(([e, t]) => {
 				l[e] = o(t, s === "plural" || s === "selectordinal");
@@ -1173,10 +1172,10 @@ function ue(e, t, n) {
 			} else u = r[i];
 			return u == null ? e : e + u;
 		}, "") : e, s = o(e);
-		return I(s) && K.test(s) ? q(s) : I(s) ? s : s ? String(s) : "";
+		return L(s) && q.test(s) ? J(s) : L(s) ? s : s ? String(s) : "";
 	};
 }
-var de = class {
+var le = class {
 	_events = {};
 	on(e, t) {
 		return this._events[e] ??= /* @__PURE__ */ new Set(), this._events[e].add(t), () => this.removeListener(e, t);
@@ -1189,14 +1188,14 @@ var de = class {
 		let n = this._events[e];
 		if (n) for (let e of [...n]) e.apply(this, t);
 	}
-}, fe = class extends de {
+}, X = class extends le {
 	_locale = "";
 	_locales;
 	_messages = {};
 	_missing;
 	_messageCompiler;
 	constructor(e) {
-		super(), process.env.NODE_ENV !== "production" && this.setMessagesCompiler(oe), e.missing != null && (this._missing = e.missing), e.messages != null && this.load(e.messages), (typeof e.locale == "string" || e.locales) && this.activate(e.locale ?? R, e.locales);
+		super(), process.env.NODE_ENV !== "production" && this.setMessagesCompiler(ie), e.missing != null && (this._missing = e.missing), e.messages != null && this.load(e.messages), (typeof e.locale == "string" || e.locales) && this.activate(e.locale ?? z, e.locales);
 	}
 	get locale() {
 		return this._locale;
@@ -1226,15 +1225,15 @@ var de = class {
 	_(e, t, n) {
 		if (!this.locale) throw Error("Lingui: Attempted to call a translation function without setting a locale.\nMake sure to call `i18n.activate(locale)` before using Lingui functions.\nThis issue may also occur due to a race condition in your initialization logic.");
 		let r = n?.message;
-		e ||= "", I(e) || (t = e.values || t, r = e.message, e = e.id);
+		e ||= "", L(e) || (t = e.values || t, r = e.message, e = e.id);
 		let i = this.messages[e], a = i === void 0, o = this._missing;
-		if (o && a) return se(o) ? o(this._locale, e) : o;
+		if (o && a) return ae(o) ? o(this._locale, e) : o;
 		a && this.emit("missing", {
 			id: e,
 			locale: this._locale
 		});
 		let s = i || r || e;
-		return I(s) && (this._messageCompiler ? s = this._messageCompiler(s) : console.warn(`Uncompiled message detected! Message:
+		return L(s) && (this._messageCompiler ? s = this._messageCompiler(s) : console.warn(`Uncompiled message detected! Message:
 
 > ${s}
 
@@ -1242,21 +1241,21 @@ That means you use raw catalog or your catalog doesn't have a translation for th
 ICU features such as interpolation and plurals will not work properly for that message.
 
 Please compile your catalog first.
-`)), I(s) && K.test(s) ? q(s) : I(s) ? s : ue(s, this._locale, this._locales)(t, n?.formats);
+`)), L(s) && q.test(s) ? J(s) : L(s) ? s : ce(s, this._locale, this._locales)(t, n?.formats);
 	}
 	t = this._.bind(this);
 	date(e, t) {
-		return B(this._locales || this._locale, e, t);
+		return V(this._locales || this._locale, e, t);
 	}
 	number(e, t) {
-		return H(this._locales || this._locale, e, t);
+		return U(this._locales || this._locale, e, t);
 	}
 };
-function Y(e = {}) {
-	return new fe(e);
+function Z(e = {}) {
+	return new X(e);
 }
-Y();
-var pe = ["shared", "route"], me = [
+Z();
+var ue = ["shared", "route"], de = [
 	"about",
 	"blog",
 	"careers",
@@ -1267,10 +1266,10 @@ var pe = ["shared", "route"], me = [
 	"products",
 	"settings",
 	"team"
-], he = [...pe, ...me], X = {};
-async function Z(e, t) {
+], fe = [...ue, ...de], Q = {};
+async function pe(e, t) {
 	for (let n of t) try {
-		let { messages: t } = await v(Object.assign({
+		let { messages: t } = await _(Object.assign({
 			"../locales/de/about.mjs": () => import("./about-BKzBMAkN.js"),
 			"../locales/de/blog.mjs": () => import("./blog-Br5iSzgS.js"),
 			"../locales/de/careers.mjs": () => import("./careers-Kycznex8.js"),
@@ -1402,60 +1401,41 @@ async function Z(e, t) {
 			"../locales/zh/shared.mjs": () => import("./shared-B01PtY4U.js"),
 			"../locales/zh/team.mjs": () => import("./team-DIbOvXyc.js")
 		}), `../locales/${e}/${n}.mjs`, 4);
-		Object.assign(X, t);
+		Object.assign(Q, t);
 	} catch (t) {
 		console.error(`Failed to load namespace: ${n} for locale: ${e}`, t);
 	}
-	return X;
+	return Q;
 }
-function ge(e, t) {
-	let n = Y();
+function me(e, t) {
+	let n = Z();
 	return n.load(e, t), n.activate(e), n;
 }
-var _e = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/AppProviders.tsx";
-function Q({ children: e, locale: a, messages: s }) {
-	let c = r(() => ge(a, s), [a, s]), [l] = i(() => typeof performance < "u" ? performance.now() : 0);
+function $({ children: e, locale: o, messages: s }) {
+	let c = r(() => me(o, s), [o, s]), [l] = i(() => typeof performance < "u" ? performance.now() : 0);
 	return n(() => {
-		_("AppRoot", l);
+		g("AppRoot", l);
 	}, [l]), t(() => {
-		document.documentElement.lang = a;
-	}, [a]), t(() => {
-		g();
-	}, []), o(h, {
+		document.documentElement.lang = o;
+	}, [o]), t(() => {
+		h();
+	}, []), a(m, {
 		i18n: c,
 		children: e
-	}, void 0, !1, {
-		fileName: _e,
-		lineNumber: 40,
-		columnNumber: 7
-	}, this);
+	});
 }
-var ve = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/scripts/Wrapper.tsx";
-async function ye({ children: e }) {
-	let t = await Z("en", he);
-	return o(Q, {
+async function he({ children: e }) {
+	let t = await pe("en", fe);
+	return a($, {
 		locale: "en",
 		messages: t,
 		children: e
-	}, void 0, !1, {
-		fileName: ve,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/AppProviders.wrapper.tsx";
-function be() {
-	return o(ye, { children: o(Q, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function ge() {
+	return a(he, { children: a($, {}) });
 }
-export { be as default };
+export { ge as default };
 var e = JSON.parse("{\"about-grid.choosingAnI18nLibraryIs\":[\"Elegir una biblioteca i18n es una decisión arquitectónica con consecuencias a largo plazo. La mayoría de las comparaciones se centran en la ergonomía de la API, pero pocas miden el costo de rendimiento: ¿cuánto peso añade la biblioteca al paquete? ¿Cómo afecta al renderizado cuando se cargan miles de claves de traducción? ¿Ayuda realmente la carga diferida o simplemente traslada el costo? Este benchmark responde a esas preguntas con datos reales.\"],\"about-grid.methodology\":[\"Metodología\"],\"about-grid.theSame10PageApp\":[\"La misma aplicación de 10 páginas se construye una vez por biblioteca. Medimos el paquete de producción (a través de rollup-plugin-visualizer), realizamos auditorías de Lighthouse para las métricas de carga y utilizamos React Profiler para capturar los tiempos de renderizado durante los cambios de idioma. Todas las pruebas se ejecutan en CI en hardware consistente para garantizar resultados reproducibles.\"],\"about-grid.whyThisExists\":[\"Por qué existe esto\"],\"about-header.aboutThisBenchmark\":[\"Sobre este benchmark\"],\"about-header.thisIsAnOpenSource\":[\"Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación React de varias páginas realista donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas.\"],\"what-we-measure.bundleSizeImpact\":[\"Impacto en el tamaño del paquete\"],\"what-we-measure.duringSsrTranslationDataIs\":[\"Durante el SSR, los datos de traducción se serializan en el HTML. Los diccionarios grandes aumentan la carga útil de HTML y ralentizan la hidratación: el momento en que la página se vuelve interactiva.\"],\"what-we-measure.howFastTheAppCan\":[\"Qué tan rápido puede la aplicación cambiar de un idioma a otro en tiempo de ejecución, incluyendo la obtención de nuevas traducciones, el renderizado de componentes y la actualización del DOM.\"],\"what-we-measure.howMuchExtraTimeThe\":[\"Cuánto tiempo extra añade la biblioteca al ciclo de renderizado de React. Las bibliotecas que inyectan traducciones a través de un único proveedor de contexto pueden causar renderizados innecesarios en todo el árbol de componentes.\"],\"what-we-measure.hydrationCost\":[\"Costo de hidratación\"],\"what-we-measure.lazyLoadingEffectiveness\":[\"Eficacia de la carga diferida\"],\"what-we-measure.localeSwitchSpeed\":[\"Velocidad de cambio de idioma\"],\"what-we-measure.renderingOverhead\":[\"Sobrecarga de renderizado\"],\"what-we-measure.theAdditionalJavascriptBytesSent\":[\"Los bytes de JavaScript adicionales enviados a los usuarios cuando se incluyen la biblioteca i18n y sus archivos de traducción. Esto afecta directamente al tiempo de descarga en redes lentas.\"],\"what-we-measure.whatWeMeasure\":[\"Lo que medimos\"],\"what-we-measure.whetherSplittingTranslationsByRoute\":[\"Si dividir las traducciones por ruta o espacio de nombres reduce realmente la carga inicial y qué compensaciones introduce (solicitudes en cascada, FOUC, complejidad de la caché).\"]}");
 export { e as messages };
 var e = JSON.parse("{\"about-grid.choosingAnI18nLibraryIs\":[\"选择 i18n 库是一项具有长期影响的架构决策。大多数比较侧重于 API 的易用性，但很少衡量性能成本：库为包增加了多少权重？加载数千个翻译键时它如何影响渲染？延迟加载是否真的有帮助，还是只是转移了成本？本基准测试用真实数据回答了这些问题。\"],\"about-grid.methodology\":[\"方法论\"],\"about-grid.theSame10PageApp\":[\"同一个 10 页应用为每个库构建一次。我们测量生产包（通过 rollup-plugin-visualizer），运行 Lighthouse 审计以获取加载指标，并使用 React Profiler 捕获语言切换期间的渲染时间。所有测试都在一致的硬件上在 CI 中运行，以确保结果的可复现性。\"],\"about-grid.whyThisExists\":[\"为什么存在这个基准测试\"],\"about-header.aboutThisBenchmark\":[\"关于本基准测试\"],\"about-header.thisIsAnOpenSource\":[\"这是一个开源测试应用程序 —— 不是产品或公司。其唯一目的是提供一个现实的多页面 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。\"],\"what-we-measure.bundleSizeImpact\":[\"包大小影响\"],\"what-we-measure.duringSsrTranslationDataIs\":[\"在 SSR 期间，翻译数据被序列化到 HTML 中。大型字典会增加 HTML 负载并减慢注水速度 —— 即页面变得可交互的时刻。\"],\"what-we-measure.howFastTheAppCan\":[\"应用在运行时从一种语言切换到另一种语言的速度 —— 包括获取新翻译、重新渲染组件和更新 DOM。\"],\"what-we-measure.howMuchExtraTimeThe\":[\"库为 React 渲染周期增加了多少额外时间。通过单个上下文提供者注入翻译的库可能会在整个组件树中导致不必要的重新渲染。\"],\"what-we-measure.hydrationCost\":[\"注水成本\"],\"what-we-measure.lazyLoadingEffectiveness\":[\"延迟加载有效性\"],\"what-we-measure.localeSwitchSpeed\":[\"语言切换速度\"],\"what-we-measure.renderingOverhead\":[\"渲染开销\"],\"what-we-measure.theAdditionalJavascriptBytesSent\":[\"包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络下的下载时间。\"],\"what-we-measure.whatWeMeasure\":[\"我们测量什么\"],\"what-we-measure.whetherSplittingTranslationsByRoute\":[\"按路由或命名空间拆分翻译是否真的减少了初始负载，以及它引入了哪些权衡（瀑布流请求、FOUC、缓存复杂性）。\"]}");

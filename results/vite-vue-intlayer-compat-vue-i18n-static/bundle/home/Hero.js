@@ -1,4 +1,4 @@
-import { computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, onBeforeMount, onMounted, openBlock, readonly, ref, renderSlot, toDisplayString } from "vue";
+import { computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, onBeforeMount, onMounted, openBlock, readonly, ref, renderSlot, toDisplayString, unref } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -988,25 +988,6 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var Hero_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "Hero",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		usePerformanceMeasure("Hero");
-		const { t } = useI18n();
-		const __returned__ = { t };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "mb-16 text-center" };
 var _hoisted_2 = { class: "mb-4 text-4xl font-bold tracking-tight text-foreground" };
 var _hoisted_3 = { class: "mx-auto max-w-2xl text-lg text-muted-foreground" };
@@ -1019,37 +1000,35 @@ var _hoisted_6 = {
 	type: "button",
 	class: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors"
 };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("section", _hoisted_1, [
-		createElementVNode("h1", _hoisted_2, toDisplayString($setup.t("home.hero.title")), 1),
-		createElementVNode("p", _hoisted_3, toDisplayString($setup.t("home.hero.description")), 1),
-		createElementVNode("div", _hoisted_4, [createElementVNode("button", _hoisted_5, toDisplayString($setup.t("home.hero.viewResults")), 1), createElementVNode("button", _hoisted_6, toDisplayString($setup.t("home.hero.methodology")), 1)])
-	]);
-}
-var Hero_default = _plugin_vue_export_helper_default(Hero_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/home/Hero.vue"]]);
+var Hero_default = defineComponent({
+	__name: "Hero",
+	setup(__props) {
+		usePerformanceMeasure("Hero");
+		const { t } = useI18n();
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("section", _hoisted_1, [
+				createElementVNode("h1", _hoisted_2, toDisplayString(unref(t)("home.hero.title")), 1),
+				createElementVNode("p", _hoisted_3, toDisplayString(unref(t)("home.hero.description")), 1),
+				createElementVNode("div", _hoisted_4, [createElementVNode("button", _hoisted_5, toDisplayString(unref(t)("home.hero.viewResults")), 1), createElementVNode("button", _hoisted_6, toDisplayString(unref(t)("home.hero.methodology")), 1)])
+			]);
+		};
+	}
+});
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var Hero_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(Hero_default) });
 } };

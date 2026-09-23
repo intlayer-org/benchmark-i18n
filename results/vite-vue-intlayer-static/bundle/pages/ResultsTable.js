@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onBeforeMount, onMounted, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onBeforeMount, onMounted, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
 var results_table_default = {
 	key: "results-table",
 	content: {
@@ -117,48 +117,35 @@ var results_table_default = {
 		}
 	}
 };
-var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
-	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
-	if (Object.assign(l, {
-		render: c,
-		toString: () => String(o.value ?? ""),
-		valueOf: () => o.value,
-		[Symbol.toPrimitive]: () => o.value,
-		toJSON: () => o.value,
-		get raw() {
-			return o.value;
-		},
-		set raw(e) {
-			o.value = e;
-		},
-		get value() {
-			return o.value;
-		},
-		use(e) {
-			return n$1({
-				value: o.value,
-				children: () => s(e),
-				additionalProps: a
-			});
-		},
-		__update(e) {
-			s = e.render, this.raw = e.raw;
-		},
-		...a
-	}), r != null) {
-		let e = Object(r), t = Object.getPrototypeOf(e);
-		for (let n of Object.getOwnPropertyNames(t)) {
-			if (n === "constructor" || n in l) continue;
-			let t = e[n];
-			typeof t == "function" && Object.defineProperty(l, n, {
-				value: t.bind(r),
-				writable: !0,
-				configurable: !0
-			});
-		}
-	}
-	return markRaw(l);
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
 };
+var i = Symbol("intlayer");
 var pluginsIdentities = /* @__PURE__ */ new WeakMap();
 var nextPluginsIdentity = 0;
 var getPluginsCacheKey = (plugins) => {
@@ -310,34 +297,6 @@ var getDictionarySelectorCacheKey = (selector) => {
 		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
 	}).join("|");
 };
-var internationalization = {
-	"locales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"requiredLocales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"strictMode": "inclusive",
-	"defaultLocale": "en"
-};
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
 	if (typeof value.then === "function") return false;
@@ -456,30 +415,72 @@ var getDictionary = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
+var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
+	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
+	if (Object.assign(l, {
+		render: c,
+		toString: () => String(o.value ?? ""),
+		valueOf: () => o.value,
+		[Symbol.toPrimitive]: () => o.value,
+		toJSON: () => o.value,
+		get raw() {
+			return o.value;
+		},
+		set raw(e) {
+			o.value = e;
+		},
+		get value() {
+			return o.value;
+		},
+		use(e) {
+			return n$1({
+				value: o.value,
+				children: () => s(e),
+				additionalProps: a
+			});
+		},
+		__update(e) {
+			s = e.render, this.raw = e.raw;
+		},
+		...a
+	}), r != null) {
+		let e = Object(r), t = Object.getPrototypeOf(e);
+		for (let n of Object.getOwnPropertyNames(t)) {
+			if (n === "constructor" || n in l) continue;
+			let t = e[n];
+			typeof t == "function" && Object.defineProperty(l, n, {
+				value: t.bind(r),
+				writable: !0,
+				configurable: !0
+			});
+		}
+	}
+	return markRaw(l);
+};
 var T = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (n, { children: r, ...i }) => {
-		let a = (t) => n$1({
-			...i,
-			value: t,
-			children: t
-		}), c = a(r);
-		if (typeof r != "function") return c;
-		let l = (...e) => {
-			let t = r(...e);
-			return a(t);
+	transform: (t, { children: n, ...a }) => {
+		let o = (e) => n$1({
+			...a,
+			value: e,
+			children: e
+		}), s = o(n);
+		if (typeof n != "function") return s;
+		let u = (...e) => {
+			let t = n(...e);
+			return o(t);
 		};
-		Object.setPrototypeOf(l, Object.getPrototypeOf(c));
-		for (let e of Object.getOwnPropertyNames(c)) {
-			let t = Object.getOwnPropertyDescriptor(c, e);
-			t && Object.defineProperty(l, e, t);
+		Object.setPrototypeOf(u, Object.getPrototypeOf(s));
+		for (let e of Object.getOwnPropertyNames(s)) {
+			let t = Object.getOwnPropertyDescriptor(s, e);
+			t && Object.defineProperty(u, e, t);
 		}
-		for (let e of Object.getOwnPropertySymbols(c)) {
-			let t = Object.getOwnPropertyDescriptor(c, e);
-			t && Object.defineProperty(l, e, t);
+		for (let e of Object.getOwnPropertySymbols(s)) {
+			let t = Object.getOwnPropertyDescriptor(s, e);
+			t && Object.defineProperty(u, e, t);
 		}
-		return markRaw(l);
+		return markRaw(u);
 	}
 };
 var D = fallbackPlugin;
@@ -508,7 +509,6 @@ var M = (e, t = !0) => {
 var n = (n, r) => {
 	return getDictionary(n, r, M(typeof r == "object" && r ? r.locale : r));
 };
-var i = Symbol("intlayer");
 var g = (e, t) => t.reduce((e, t) => e?.[t], e);
 var _ = (e) => typeof e == "object" && !!e;
 var v = (e) => typeof e == "function" || _(e) && ("render" in e || "setup" in e);
@@ -545,39 +545,39 @@ var x = (e) => new Proxy({}, {
 		};
 	}
 });
-var S = (r, a) => {
-	let c = getCurrentInstance() ? inject(i) : void 0, S = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), C = computed(() => {
+var S = (i$1, o) => {
+	let l = getCurrentInstance() ? inject(i) : void 0, S = isRef(l?.locale) ? l.locale : ref(l?.locale ?? internationalization.defaultLocale), C = computed(() => {
 		return {
 			selector: void 0,
-			locale: a === void 0 ? void 0 : toValue(a)
+			locale: o === void 0 ? void 0 : toValue(o)
 		};
 	}), w = computed(() => C.value.locale ?? S.value), T = shallowRef({});
 	watch([
-		() => toValue(r),
+		() => toValue(i$1),
 		() => w.value,
 		() => C.value.selector
-	], ([t, n$2, r]) => {
-		T.value = r ? n(t, {
+	], ([e, n$2, r]) => {
+		T.value = r ? n(e, {
 			...r,
 			locale: n$2
-		}) : n(t, n$2);
+		}) : n(e, n$2);
 	}, {
 		immediate: !0,
 		flush: "sync"
 	});
 	let E = (e) => new Proxy({}, {
-		get(t, r, i) {
+		get(t, n, i) {
 			let a = computed(() => g(T.value, e));
-			if (typeof r == "symbol" || typeof r == "string" && (r.startsWith("__") || r.startsWith("$"))) return r === "__v_isRef" ? !0 : r === "$raw" ? a : r === Symbol.toPrimitive ? () => String(a.value ?? "") : Reflect.get(t, r, i);
-			if (r === "value") return a.value ?? "";
-			if (r === "then") return;
-			if (r === "c" || r === "asComponent") return b(() => a.value);
-			let o = e.concat(r), s = g(T.value, o);
+			if (typeof n == "symbol" || typeof n == "string" && (n.startsWith("__") || n.startsWith("$"))) return n === "__v_isRef" ? !0 : n === "$raw" ? a : n === Symbol.toPrimitive ? () => String(a.value ?? "") : Reflect.get(t, n, i);
+			if (n === "value") return a.value ?? "";
+			if (n === "then") return;
+			if (n === "c" || n === "asComponent") return b(() => a.value);
+			let o = e.concat(n), s = g(T.value, o);
 			if (s === void 0 || _(s) && !v(s)) return E(o);
 			if (y(s)) return x(computed(() => g(T.value, o)));
 			if (typeof s == "function") {
 				let t = g(T.value, e);
-				return t != null && !Object.hasOwn(t, r) ? s.bind(t) : (...e) => g(T.value, o)?.(...e);
+				return t != null && !Object.hasOwn(t, n) ? s.bind(t) : (...e) => g(T.value, o)?.(...e);
 			}
 			let c = computed(() => g(T.value, o));
 			return new Proxy(c, { get(e, t, n) {
@@ -610,57 +610,6 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var ResultsTable_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "ResultsTable",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		usePerformanceMeasure("ResultsTable");
-		const { c: title, a: columns, yes1, b: manual, d: yes } = S(results_table_default);
-		const __returned__ = {
-			title,
-			columns,
-			yes1,
-			manual,
-			yes,
-			results: [
-				{
-					lib: "react-i18next",
-					size: "42.3 kB",
-					time: "0.12ms",
-					lazy: yes
-				},
-				{
-					lib: "react-intl",
-					size: "38.1 kB",
-					time: "0.15ms",
-					lazy: manual
-				},
-				{
-					lib: "lingui",
-					size: "12.8 kB",
-					time: "0.08ms",
-					lazy: yes1
-				},
-				{
-					lib: "typesafe-i18n",
-					size: "5.2 kB",
-					time: "0.05ms",
-					lazy: "Built-in"
-				}
-			]
-		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "mb-6 text-2xl font-bold text-foreground" };
 var _hoisted_2 = { class: "overflow-x-auto rounded-lg border border-border" };
 var _hoisted_3 = { class: "w-full text-sm" };
@@ -673,23 +622,55 @@ var _hoisted_9 = { class: "px-4 py-3 font-medium text-foreground" };
 var _hoisted_10 = { class: "px-4 py-3 text-muted-foreground" };
 var _hoisted_11 = { class: "px-4 py-3 text-muted-foreground" };
 var _hoisted_12 = { class: "px-4 py-3 text-muted-foreground" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("section", null, [createElementVNode("h2", _hoisted_1, toDisplayString($setup.title), 1), createElementVNode("div", _hoisted_2, [createElementVNode("table", _hoisted_3, [createElementVNode("thead", _hoisted_4, [createElementVNode("tr", null, [
-		createElementVNode("th", _hoisted_5, toDisplayString($setup.columns.library), 1),
-		createElementVNode("th", _hoisted_6, toDisplayString($setup.columns.bundleSize), 1),
-		createElementVNode("th", _hoisted_7, toDisplayString($setup.columns.lookupTime), 1),
-		createElementVNode("th", _hoisted_8, toDisplayString($setup.columns.lazyLoading), 1)
-	])]), createElementVNode("tbody", null, [(openBlock(), createElementBlock(Fragment, null, renderList($setup.results, (r) => {
-		return createElementVNode("tr", {
-			key: r.lib,
-			class: "border-t border-border"
-		}, [
-			createElementVNode("td", _hoisted_9, toDisplayString(r.lib), 1),
-			createElementVNode("td", _hoisted_10, toDisplayString(r.size), 1),
-			createElementVNode("td", _hoisted_11, toDisplayString(r.time), 1),
-			createElementVNode("td", _hoisted_12, toDisplayString(r.lazy), 1)
-		]);
-	}), 64))])])])]);
-}
-var ResultsTable_default = _plugin_vue_export_helper_default(ResultsTable_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/home/ResultsTable.vue"]]);
+var ResultsTable_default = defineComponent({
+	__name: "ResultsTable",
+	setup(__props) {
+		usePerformanceMeasure("ResultsTable");
+		const { c: title, a: columns, yes1, b: manual, d: yes } = S(results_table_default);
+		const results = [
+			{
+				lib: "react-i18next",
+				size: "42.3 kB",
+				time: "0.12ms",
+				lazy: yes
+			},
+			{
+				lib: "react-intl",
+				size: "38.1 kB",
+				time: "0.15ms",
+				lazy: manual
+			},
+			{
+				lib: "lingui",
+				size: "12.8 kB",
+				time: "0.08ms",
+				lazy: yes1
+			},
+			{
+				lib: "typesafe-i18n",
+				size: "5.2 kB",
+				time: "0.05ms",
+				lazy: "Built-in"
+			}
+		];
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("section", null, [createElementVNode("h2", _hoisted_1, toDisplayString(unref(title)), 1), createElementVNode("div", _hoisted_2, [createElementVNode("table", _hoisted_3, [createElementVNode("thead", _hoisted_4, [createElementVNode("tr", null, [
+				createElementVNode("th", _hoisted_5, toDisplayString(unref(columns).library), 1),
+				createElementVNode("th", _hoisted_6, toDisplayString(unref(columns).bundleSize), 1),
+				createElementVNode("th", _hoisted_7, toDisplayString(unref(columns).lookupTime), 1),
+				createElementVNode("th", _hoisted_8, toDisplayString(unref(columns).lazyLoading), 1)
+			])]), createElementVNode("tbody", null, [(openBlock(), createElementBlock(Fragment, null, renderList(results, (r) => {
+				return createElementVNode("tr", {
+					key: r.lib,
+					class: "border-t border-border"
+				}, [
+					createElementVNode("td", _hoisted_9, toDisplayString(r.lib), 1),
+					createElementVNode("td", _hoisted_10, toDisplayString(r.size), 1),
+					createElementVNode("td", _hoisted_11, toDisplayString(r.time), 1),
+					createElementVNode("td", _hoisted_12, toDisplayString(r.lazy), 1)
+				]);
+			}), 64))])])])]);
+		};
+	}
+});
 export { ResultsTable_default as default };

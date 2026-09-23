@@ -2,21 +2,20 @@ import "react";
 import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var onInvalidFunc = () => "";
 function mixedToString(ctx, args = [], start = 1) {
-	let msgStr = "";
+	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
 		const fragment = ctx[i];
-		if (typeof fragment === "string") msgStr += fragment;
-		else msgStr += args[fragment];
+		if (typeof fragment === "string") txt += fragment;
+		else txt += args[fragment];
 	}
-	return msgStr;
+	return txt;
 }
-function toRuntime(mod = { ["c"]: [] }, locale) {
-	const catalog = mod["c"];
+function toRuntime(mod = { c: [] }, locale = "") {
 	const getCompositeContext = (id) => {
-		const ctx = catalog[id];
-		if (typeof ctx == "string") return [ctx];
+		const ctx = mod.c[id];
+		if (typeof ctx === "string") return [ctx];
 		if (Array.isArray(ctx)) return ctx;
-		return [onInvalidFunc(id, catalog)];
+		return [onInvalidFunc(id, mod.c)];
 	};
 	const rt = (id, args = []) => mixedToString(getCompositeContext(id), args, 0);
 	rt._ = mod;
@@ -24,10 +23,9 @@ function toRuntime(mod = { ["c"]: [] }, locale) {
 	rt.c = getCompositeContext;
 	rt.x = mixedToString;
 	rt.t = (tag, id, args) => {
-		const ctx = getCompositeContext(id);
 		const strings = [""];
 		const exprs = [];
-		for (const x of ctx) {
+		for (const x of getCompositeContext(id)) {
 			if (typeof x === "string") {
 				strings[strings.length - 1] += x;
 				continue;
@@ -37,7 +35,7 @@ function toRuntime(mod = { ["c"]: [] }, locale) {
 		}
 		return tag(Object.assign(strings, { raw: strings }), ...exprs);
 	};
-	rt.p = (id) => catalog[id] ?? [];
+	rt.p = (id, args) => mod.c[id]?.map((p) => typeof p === "string" ? p : mixedToString(p, args, 0)) ?? [];
 	return rt;
 }
 function defaultCollection(store) {
@@ -50,24 +48,24 @@ function defaultCollection(store) {
 }
 var states = {};
 var emptyRuntime = toRuntime();
-function registerLoaders(key, load, loadIDs, collection) {
+function registerLoaders(key, load, loadCount, collection) {
 	states[key] = {
 		load,
-		catalogs: Object.fromEntries(loadIDs.map((id) => [id])),
-		collection: collection ?? defaultCollection({})
+		catalogs: Array(loadCount).fill(void 0),
+		collection: collection ?? defaultCollection([])
 	};
-	for (const id of loadIDs) states[key].collection.set(id, emptyRuntime);
-	return (loadID) => states[key].collection.get(loadID);
+	for (let id = 0; id < loadCount; id++) states[key].collection.set(id, emptyRuntime);
+	return (loadID = 0) => states[key].collection.get(loadID);
 }
 function commitLocale(locale) {
-	for (const state of Object.values(states)) for (const [loadID, catalog] of Object.entries(state.catalogs)) state.collection.set(loadID, toRuntime(catalog, locale));
+	for (const state of Object.values(states)) for (const [loadID, catalog] of state.catalogs.entries()) state.collection.set(loadID, toRuntime(catalog, locale));
 }
 async function loadLocale(locale, commit = true) {
 	const promises = [];
 	const statesArr = [];
-	for (const state of Object.values(states)) for (const loadID of Object.keys(state.catalogs)) {
-		promises.push(state.load(loadID, locale));
-		statesArr.push([loadID, state]);
+	for (const state of Object.values(states)) for (let id = 0; id < state.catalogs.length; id++) {
+		promises.push(state.load(id, locale));
+		statesArr.push([id, state]);
 	}
 	for (const [i, loaded] of (await Promise.all(promises)).entries()) {
 		const [loadID, state] = statesArr[i];
@@ -75,70 +73,71 @@ async function loadLocale(locale, commit = true) {
 	}
 	commit && commitLocale(locale);
 }
-var catalogs$11 = { pricing: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
-var loadCatalog$11 = (loadID, locale) => {
-	return catalogs$11[loadID][locale]();
+var catalogs$11 = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
 };
-var getRuntimeRx = registerLoaders("pricing", loadCatalog$11, ["pricing"]);
+var loadCatalog$11 = (loadID, locale) => {
+	return catalogs$11[locale][loadID]();
+};
+var getRuntimeRx = registerLoaders("pricing", loadCatalog$11, 1);
 function PricingTiers() {
-	const _w_runtime_ = getRuntimeRx("pricing");
+	const _w_runtime_ = getRuntimeRx();
+	const tiers = [
+		{
+			name: _w_runtime_(146),
+			price: "$0",
+			period: "forever",
+			features: [
+				"5 benchmark runs/day",
+				"3 libraries",
+				_w_runtime_(147),
+				_w_runtime_(148)
+			],
+			cta: _w_runtime_(145)
+		},
+		{
+			name: _w_runtime_(149),
+			price: "$29",
+			period: "/month",
+			features: [
+				_w_runtime_(150),
+				_w_runtime_(151),
+				_w_runtime_(152),
+				_w_runtime_(153),
+				_w_runtime_(154),
+				_w_runtime_(155)
+			],
+			highlighted: true,
+			cta: _w_runtime_(145)
+		},
+		{
+			name: _w_runtime_(143),
+			price: _w_runtime_(156),
+			period: "",
+			features: [
+				_w_runtime_(157),
+				_w_runtime_(158),
+				"SSO & SAML",
+				_w_runtime_(159),
+				_w_runtime_(160),
+				_w_runtime_(161),
+				_w_runtime_(162)
+			],
+			cta: _w_runtime_(144)
+		}
+	];
 	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: [
-			{
-				name: _w_runtime_(108),
-				price: "$0",
-				period: "forever",
-				features: [
-					"5 benchmark runs/day",
-					"3 libraries",
-					_w_runtime_(109),
-					_w_runtime_(110)
-				],
-				cta: _w_runtime_(107)
-			},
-			{
-				name: _w_runtime_(111),
-				price: "$29",
-				period: "/month",
-				features: [
-					_w_runtime_(112),
-					_w_runtime_(113),
-					_w_runtime_(114),
-					_w_runtime_(115),
-					_w_runtime_(116),
-					_w_runtime_(117)
-				],
-				highlighted: true,
-				cta: _w_runtime_(107)
-			},
-			{
-				name: _w_runtime_(105),
-				price: _w_runtime_(118),
-				period: "",
-				features: [
-					_w_runtime_(119),
-					_w_runtime_(120),
-					"SSO & SAML",
-					_w_runtime_(121),
-					_w_runtime_(122),
-					_w_runtime_(123),
-					_w_runtime_(124)
-				],
-				cta: _w_runtime_(106)
-			}
-		].map((tier) => jsxs("div", {
+		children: tiers.map((tier) => jsxs("div", {
 			className: `flex flex-col rounded-lg border p-6 ${tier.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
 				jsx("h3", {
@@ -178,182 +177,182 @@ function PricingTiers() {
 		}, tier.name))
 	});
 }
-var catalogs$10 = { about: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
+var catalogs$10 = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
+};
 var loadCatalog$10 = (loadID, locale) => {
-	return catalogs$10[loadID][locale]();
+	return catalogs$10[locale][loadID]();
 };
-registerLoaders("about", loadCatalog$10, ["about"]);
-var catalogs$9 = { blog: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
+registerLoaders("about", loadCatalog$10, 1);
+var catalogs$9 = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
+};
 var loadCatalog$9 = (loadID, locale) => {
-	return catalogs$9[loadID][locale]();
+	return catalogs$9[locale][loadID]();
 };
-registerLoaders("blog", loadCatalog$9, ["blog"]);
-var catalogs$8 = { careers: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
+registerLoaders("blog", loadCatalog$9, 1);
+var catalogs$8 = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
+};
 var loadCatalog$8 = (loadID, locale) => {
-	return catalogs$8[loadID][locale]();
+	return catalogs$8[locale][loadID]();
 };
-registerLoaders("careers", loadCatalog$8, ["careers"]);
-var catalogs$7 = { contact: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
+registerLoaders("careers", loadCatalog$8, 1);
+var catalogs$7 = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
+};
 var loadCatalog$7 = (loadID, locale) => {
-	return catalogs$7[loadID][locale]();
+	return catalogs$7[locale][loadID]();
 };
-registerLoaders("contact", loadCatalog$7, ["contact"]);
-var catalogs$6 = { faq: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
+registerLoaders("contact", loadCatalog$7, 1);
+var catalogs$6 = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
+};
 var loadCatalog$6 = (loadID, locale) => {
-	return catalogs$6[loadID][locale]();
+	return catalogs$6[locale][loadID]();
 };
-registerLoaders("faq", loadCatalog$6, ["faq"]);
-var catalogs$5 = { home: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
+registerLoaders("faq", loadCatalog$6, 1);
+var catalogs$5 = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
+};
 var loadCatalog$5 = (loadID, locale) => {
-	return catalogs$5[loadID][locale]();
+	return catalogs$5[locale][loadID]();
 };
-registerLoaders("home", loadCatalog$5, ["home"]);
-var catalogs$4 = { products: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
+registerLoaders("home", loadCatalog$5, 1);
+var catalogs$4 = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
+};
 var loadCatalog$4 = (loadID, locale) => {
-	return catalogs$4[loadID][locale]();
+	return catalogs$4[locale][loadID]();
 };
-registerLoaders("products", loadCatalog$4, ["products"]);
-var catalogs$3 = { route: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
+registerLoaders("products", loadCatalog$4, 1);
+var catalogs$3 = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
+};
 var loadCatalog$3 = (loadID, locale) => {
-	return catalogs$3[loadID][locale]();
+	return catalogs$3[locale][loadID]();
 };
-registerLoaders("route", loadCatalog$3, ["route"]);
-var catalogs$2 = { settings: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
+registerLoaders("route", loadCatalog$3, 1);
+var catalogs$2 = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
+};
 var loadCatalog$2 = (loadID, locale) => {
-	return catalogs$2[loadID][locale]();
+	return catalogs$2[locale][loadID]();
 };
-registerLoaders("settings", loadCatalog$2, ["settings"]);
-var catalogs$1 = { shared: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
+registerLoaders("settings", loadCatalog$2, 1);
+var catalogs$1 = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
+};
 var loadCatalog$1 = (loadID, locale) => {
-	return catalogs$1[loadID][locale]();
+	return catalogs$1[locale][loadID]();
 };
-registerLoaders("shared", loadCatalog$1, ["shared"]);
-var catalogs = { team: {
-	en: () => import("./shared.shared.en.compiled-D8FE9LqV.js"),
-	es: () => import("./shared.shared.es.compiled-B_K67tsR.js"),
-	fr: () => import("./shared.shared.fr.compiled-Dpdzb444.js"),
-	de: () => import("./shared.shared.de.compiled-BpCh-iSj.js"),
-	it: () => import("./shared.shared.it.compiled-Dxt97JBp.js"),
-	pt: () => import("./shared.shared.pt.compiled-DBm5LmV8.js"),
-	zh: () => import("./shared.shared.zh.compiled-BznO4_Xq.js"),
-	ja: () => import("./shared.shared.ja.compiled-DqNhiemf.js"),
-	ko: () => import("./shared.shared.ko.compiled-j4Apcm6D.js"),
-	ru: () => import("./shared.shared.ru.compiled-DKrIMrlJ.js")
-} };
+registerLoaders("shared", loadCatalog$1, 1);
+var catalogs = {
+	en: [() => import("./shared.0.en.compiled-C4bvOCKo.js")],
+	es: [() => import("./shared.0.es.compiled-CzhwGWYs.js")],
+	fr: [() => import("./shared.0.fr.compiled-VvxY_QLo.js")],
+	de: [() => import("./shared.0.de.compiled-CXVWnbD0.js")],
+	it: [() => import("./shared.0.it.compiled-BBObrqG7.js")],
+	pt: [() => import("./shared.0.pt.compiled-CjABcqsi.js")],
+	zh: [() => import("./shared.0.zh.compiled-hy-D4QwH.js")],
+	ja: [() => import("./shared.0.ja.compiled-BW2U4Xpt.js")],
+	ko: [() => import("./shared.0.ko.compiled-Do7jwovj.js")],
+	ru: [() => import("./shared.0.ru.compiled-Ck5KhlH8.js")]
+};
 var loadCatalog = (loadID, locale) => {
-	return catalogs[loadID][locale]();
+	return catalogs[locale][loadID]();
 };
-registerLoaders("team", loadCatalog, ["team"]);
+registerLoaders("team", loadCatalog, 1);
 loadLocale("en");
 function Wrapper({ children }) {
 	return jsx(Fragment, { children });
@@ -450,6 +449,28 @@ var c = [
 	"Was wir messen",
 	"Insights, tutorials, and analysis from the i18n community.",
 	"Mehr lesen →",
+	"Comparing i18n Libraries in 2026: A Deep Dive",
+	"March 15, 2026",
+	"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+	"Benchmark",
+	"How to Reduce Your i18n Bundle by 60%",
+	"March 8, 2026",
+	"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+	"Tutorial",
+	"The State of Internationalization in React",
+	"February 28, 2026",
+	"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+	"Analysis",
+	"Migrating from react-i18next to Lingui",
+	"February 15, 2026",
+	"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"Server Components and i18n: What Changes?",
+	"February 1, 2026",
+	"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"Benchmark Methodology: How We Test",
+	"January 20, 2026",
+	"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"Meta",
 	"Remote-first",
 	"Work from anywhere in the world",
 	"Competitive pay",
@@ -462,6 +483,7 @@ var c = [
 	"Full-time",
 	"Engineering",
 	"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"from anywhere in the world",
 	"Name",
 	"Your name",
 	"E-Mail",
@@ -484,6 +506,21 @@ var c = [
 	],
 	"Häufig gestellte Fragen",
 	"Alles, was Sie über das i18n-Benchmark-Projekt wissen müssen.",
+	"What is i18n Benchmark?",
+	"How are benchmarks conducted?",
+	"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+	"Which libraries are currently supported?",
+	"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+	"Can I submit my own benchmarks?",
+	"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+	"How often are benchmarks updated?",
+	"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+	"Is the data reliable?",
+	"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+	"Do you offer consulting services?",
+	"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+	"How can I contribute?",
+	"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
 	"Simple, Transparent Pricing",
 	"Choose the plan that fits your team. No hidden fees.",
 	"Enterprise",
@@ -508,6 +545,20 @@ var c = [
 	"Training sessions",
 	"Mehr erfahren",
 	"Tools and services to streamline your internationalization workflow.",
+	"Benchmark CLI",
+	"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"Free",
+	"Benchmark Cloud",
+	"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"Benchmark Enterprise",
+	"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"Contact Us",
+	"Migration Assistant",
+	"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"Translation QA",
+	"Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"Bundle Optimizer",
+	"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 	"API-Zugriff",
 	"API-Schlüssel",
 	"Kopieren",
@@ -535,6 +586,24 @@ var c = [
 	"Verwalten Sie Ihre Kontoeinstellungen und -konfigurationen.",
 	"Unser Team",
 	"Lernen Sie die Menschen hinter i18n Benchmark kennen. Ein vielfältiges Team, vereint durch die Leidenschaft für großartige Entwicklertools.",
+	"Sarah Chen",
+	"Founder & Lead Engineer",
+	"Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"Marcus Weber",
+	"Performance Engineer",
+	"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"Aisha Patel",
+	"Developer Advocate",
+	"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"Tomás Rodríguez",
+	"Full-Stack Developer",
+	"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"Yuki Tanaka",
+	"Data Analyst",
+	"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"Elena Kowalski",
+	"Community Manager",
+	"Manages community contributions, partnerships, and events. Background in open source governance.",
 	"Hoppla! Seite nicht gefunden",
 	"Zurück zur Startseite",
 	"AppRoot"
@@ -628,6 +697,28 @@ var c = [
 	"What We Measure",
 	"Insights, tutorials, and analysis from the i18n community.",
 	"Read More →",
+	"Comparing i18n Libraries in 2026: A Deep Dive",
+	"March 15, 2026",
+	"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+	"Benchmark",
+	"How to Reduce Your i18n Bundle by 60%",
+	"March 8, 2026",
+	"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+	"Tutorial",
+	"The State of Internationalization in React",
+	"February 28, 2026",
+	"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+	"Analysis",
+	"Migrating from react-i18next to Lingui",
+	"February 15, 2026",
+	"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"Server Components and i18n: What Changes?",
+	"February 1, 2026",
+	"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"Benchmark Methodology: How We Test",
+	"January 20, 2026",
+	"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"Meta",
 	"Remote-first",
 	"Work from anywhere in the world",
 	"Competitive pay",
@@ -640,6 +731,7 @@ var c = [
 	"Full-time",
 	"Engineering",
 	"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"from anywhere in the world",
 	"Name",
 	"Your name",
 	"Email",
@@ -662,6 +754,21 @@ var c = [
 	],
 	"Frequently Asked Questions",
 	"Everything you need to know about i18n Benchmark.",
+	"What is i18n Benchmark?",
+	"How are benchmarks conducted?",
+	"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+	"Which libraries are currently supported?",
+	"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+	"Can I submit my own benchmarks?",
+	"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+	"How often are benchmarks updated?",
+	"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+	"Is the data reliable?",
+	"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+	"Do you offer consulting services?",
+	"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+	"How can I contribute?",
+	"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
 	"Simple, Transparent Pricing",
 	"Choose the plan that fits your team. No hidden fees.",
 	"Enterprise",
@@ -686,6 +793,20 @@ var c = [
 	"Training sessions",
 	"Learn More",
 	"Tools and services to streamline your internationalization workflow.",
+	"Benchmark CLI",
+	"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"Free",
+	"Benchmark Cloud",
+	"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"Benchmark Enterprise",
+	"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"Contact Us",
+	"Migration Assistant",
+	"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"Translation QA",
+	"Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"Bundle Optimizer",
+	"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 	"API Access",
 	"API Key",
 	"Copy",
@@ -713,6 +834,24 @@ var c = [
 	"Manage your account preferences and configuration.",
 	"Our Team",
 	"Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools.",
+	"Sarah Chen",
+	"Founder & Lead Engineer",
+	"Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"Marcus Weber",
+	"Performance Engineer",
+	"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"Aisha Patel",
+	"Developer Advocate",
+	"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"Tomás Rodríguez",
+	"Full-Stack Developer",
+	"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"Yuki Tanaka",
+	"Data Analyst",
+	"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"Elena Kowalski",
+	"Community Manager",
+	"Manages community contributions, partnerships, and events. Background in open source governance.",
 	"Oops! Page not found",
 	"Return to Home",
 	"AppRoot"
@@ -806,6 +945,28 @@ var c = [
 	"Lo que medimos",
 	"Insights, tutorials, and analysis from the i18n community.",
 	"Leer más →",
+	"Comparing i18n Libraries in 2026: A Deep Dive",
+	"March 15, 2026",
+	"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+	"Benchmark",
+	"How to Reduce Your i18n Bundle by 60%",
+	"March 8, 2026",
+	"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+	"Tutorial",
+	"The State of Internationalization in React",
+	"February 28, 2026",
+	"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+	"Analysis",
+	"Migrating from react-i18next to Lingui",
+	"February 15, 2026",
+	"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"Server Components and i18n: What Changes?",
+	"February 1, 2026",
+	"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"Benchmark Methodology: How We Test",
+	"January 20, 2026",
+	"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"Meta",
 	"Remote-first",
 	"Work from anywhere in the world",
 	"Competitive pay",
@@ -818,6 +979,7 @@ var c = [
 	"Full-time",
 	"Engineering",
 	"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"from anywhere in the world",
 	"Nombre",
 	"Your name",
 	"Correo electrónico",
@@ -840,6 +1002,21 @@ var c = [
 	],
 	"Preguntas frecuentes",
 	"Todo lo que necesita saber sobre el proyecto i18n Benchmark.",
+	"What is i18n Benchmark?",
+	"How are benchmarks conducted?",
+	"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+	"Which libraries are currently supported?",
+	"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+	"Can I submit my own benchmarks?",
+	"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+	"How often are benchmarks updated?",
+	"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+	"Is the data reliable?",
+	"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+	"Do you offer consulting services?",
+	"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+	"How can I contribute?",
+	"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
 	"Simple, Transparent Pricing",
 	"Choose the plan that fits your team. No hidden fees.",
 	"Enterprise",
@@ -864,6 +1041,20 @@ var c = [
 	"Training sessions",
 	"Saber más",
 	"Tools and services to streamline your internationalization workflow.",
+	"Benchmark CLI",
+	"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"Free",
+	"Benchmark Cloud",
+	"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"Benchmark Enterprise",
+	"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"Contact Us",
+	"Migration Assistant",
+	"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"Translation QA",
+	"Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"Bundle Optimizer",
+	"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 	"Acceso API",
 	"Clave API",
 	"Copiar",
@@ -891,6 +1082,24 @@ var c = [
 	"Gestione sus preferencias de cuenta y configuración.",
 	"Nuestro equipo",
 	"Conozca a la gente detrás de i18n Benchmark. Un equipo diverso unido por una pasión compartida por las excelentes herramientas de desarrollo.",
+	"Sarah Chen",
+	"Founder & Lead Engineer",
+	"Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"Marcus Weber",
+	"Performance Engineer",
+	"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"Aisha Patel",
+	"Developer Advocate",
+	"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"Tomás Rodríguez",
+	"Full-Stack Developer",
+	"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"Yuki Tanaka",
+	"Data Analyst",
+	"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"Elena Kowalski",
+	"Community Manager",
+	"Manages community contributions, partnerships, and events. Background in open source governance.",
 	"¡Ups! Página no encontrada",
 	"Volver al inicio",
 	"AppRoot"
@@ -984,6 +1193,28 @@ var c = [
 	"Ce que nous mesurons",
 	"Insights, tutorials, and analysis from the i18n community.",
 	"Lire la suite →",
+	"Comparing i18n Libraries in 2026: A Deep Dive",
+	"March 15, 2026",
+	"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+	"Benchmark",
+	"How to Reduce Your i18n Bundle by 60%",
+	"March 8, 2026",
+	"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+	"Tutorial",
+	"The State of Internationalization in React",
+	"February 28, 2026",
+	"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+	"Analysis",
+	"Migrating from react-i18next to Lingui",
+	"February 15, 2026",
+	"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"Server Components and i18n: What Changes?",
+	"February 1, 2026",
+	"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"Benchmark Methodology: How We Test",
+	"January 20, 2026",
+	"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"Meta",
 	"Remote-first",
 	"Work from anywhere in the world",
 	"Salaire compétitif",
@@ -996,6 +1227,7 @@ var c = [
 	"Temps plein",
 	"Ingénierie",
 	"Construisez et maintenez notre tableau de bord de benchmarking et nos outils de développement en utilisant React, TypeScript et Vite.",
+	"from anywhere in the world",
 	"Nom",
 	"Your name",
 	"Email",
@@ -1018,6 +1250,21 @@ var c = [
 	],
 	"Foire aux questions",
 	"Tout ce que vous devez savoir sur le projet i18n Benchmark.",
+	"What is i18n Benchmark?",
+	"How are benchmarks conducted?",
+	"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+	"Which libraries are currently supported?",
+	"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+	"Can I submit my own benchmarks?",
+	"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+	"How often are benchmarks updated?",
+	"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+	"Is the data reliable?",
+	"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+	"Do you offer consulting services?",
+	"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+	"How can I contribute?",
+	"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
 	"Simple, Transparent Pricing",
 	"Choose the plan that fits your team. No hidden fees.",
 	"Entreprise",
@@ -1042,6 +1289,20 @@ var c = [
 	"Sessions de formation",
 	"En savoir plus",
 	"Tools and services to streamline your internationalization workflow.",
+	"Benchmark CLI",
+	"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"Free",
+	"Benchmark Cloud",
+	"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"Benchmark Enterprise",
+	"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"Contact Us",
+	"Migration Assistant",
+	"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"Translation QA",
+	"Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"Bundle Optimizer",
+	"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 	"Accès API",
 	"Clé API",
 	"Copier",
@@ -1069,6 +1330,24 @@ var c = [
 	"Gérez vos préférences de compte et votre configuration.",
 	"Notre équipe",
 	"Rencontrez les personnes derrière i18n Benchmark. Une équipe diversifiée unie par une passion commune pour les excellents outils de développement.",
+	"Sarah Chen",
+	"Founder & Lead Engineer",
+	"Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"Marcus Weber",
+	"Performance Engineer",
+	"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"Aisha Patel",
+	"Developer Advocate",
+	"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"Tomás Rodríguez",
+	"Full-Stack Developer",
+	"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"Yuki Tanaka",
+	"Data Analyst",
+	"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"Elena Kowalski",
+	"Community Manager",
+	"Manages community contributions, partnerships, and events. Background in open source governance.",
 	"Oups ! Page non trouvée",
 	"Retour à l'accueil",
 	"AppRoot"
@@ -1162,6 +1441,28 @@ var c = [
 	"Cosa misuriamo",
 	"Insights, tutorials, and analysis from the i18n community.",
 	"Leggi di più →",
+	"Comparing i18n Libraries in 2026: A Deep Dive",
+	"March 15, 2026",
+	"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+	"Benchmark",
+	"How to Reduce Your i18n Bundle by 60%",
+	"March 8, 2026",
+	"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+	"Tutorial",
+	"The State of Internationalization in React",
+	"February 28, 2026",
+	"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+	"Analysis",
+	"Migrating from react-i18next to Lingui",
+	"February 15, 2026",
+	"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"Server Components and i18n: What Changes?",
+	"February 1, 2026",
+	"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"Benchmark Methodology: How We Test",
+	"January 20, 2026",
+	"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"Meta",
 	"Remote-first",
 	"Work from anywhere in the world",
 	"Competitive pay",
@@ -1174,6 +1475,7 @@ var c = [
 	"Full-time",
 	"Engineering",
 	"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"from anywhere in the world",
 	"Nome",
 	"Your name",
 	"Email",
@@ -1196,6 +1498,21 @@ var c = [
 	],
 	"Domande frequenti",
 	"Tutto quello che c'è da sapere sul progetto i18n Benchmark.",
+	"What is i18n Benchmark?",
+	"How are benchmarks conducted?",
+	"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+	"Which libraries are currently supported?",
+	"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+	"Can I submit my own benchmarks?",
+	"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+	"How often are benchmarks updated?",
+	"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+	"Is the data reliable?",
+	"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+	"Do you offer consulting services?",
+	"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+	"How can I contribute?",
+	"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
 	"Simple, Transparent Pricing",
 	"Choose the plan that fits your team. No hidden fees.",
 	"Enterprise",
@@ -1220,6 +1537,20 @@ var c = [
 	"Training sessions",
 	"Scopri di più",
 	"Tools and services to streamline your internationalization workflow.",
+	"Benchmark CLI",
+	"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"Free",
+	"Benchmark Cloud",
+	"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"Benchmark Enterprise",
+	"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"Contact Us",
+	"Migration Assistant",
+	"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"Translation QA",
+	"Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"Bundle Optimizer",
+	"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 	"Accesso API",
 	"Chiave API",
 	"Copia",
@@ -1247,6 +1578,24 @@ var c = [
 	"Gestisci le preferenze del tuo account e la configurazione.",
 	"Il nostro team",
 	"Incontra le persone dietro i18n Benchmark. Un team diversificato unito da una passione condivisa per gli ottimi strumenti di sviluppo.",
+	"Sarah Chen",
+	"Founder & Lead Engineer",
+	"Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"Marcus Weber",
+	"Performance Engineer",
+	"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"Aisha Patel",
+	"Developer Advocate",
+	"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"Tomás Rodríguez",
+	"Full-Stack Developer",
+	"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"Yuki Tanaka",
+	"Data Analyst",
+	"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"Elena Kowalski",
+	"Community Manager",
+	"Manages community contributions, partnerships, and events. Background in open source governance.",
 	"Ops! Pagina non trovata",
 	"Torna alla Home",
 	"AppRoot"
@@ -1340,6 +1689,28 @@ var c = [
 	"測定するもの",
 	"Insights, tutorials, and analysis from the i18n community.",
 	"続きを読む →",
+	"Comparing i18n Libraries in 2026: A Deep Dive",
+	"March 15, 2026",
+	"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+	"Benchmark",
+	"How to Reduce Your i18n Bundle by 60%",
+	"March 8, 2026",
+	"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+	"Tutorial",
+	"The State of Internationalization in React",
+	"February 28, 2026",
+	"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+	"Analysis",
+	"Migrating from react-i18next to Lingui",
+	"February 15, 2026",
+	"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"Server Components and i18n: What Changes?",
+	"February 1, 2026",
+	"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"Benchmark Methodology: How We Test",
+	"January 20, 2026",
+	"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"Meta",
 	"Remote-first",
 	"Work from anywhere in the world",
 	"Competitive pay",
@@ -1352,6 +1723,7 @@ var c = [
 	"Full-time",
 	"Engineering",
 	"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"from anywhere in the world",
 	"お名前",
 	"Your name",
 	"メールアドレス",
@@ -1374,6 +1746,21 @@ var c = [
 	],
 	"よくある質問",
 	"i18nベンチマークプロジェクトについて知っておくべきことのすべて。",
+	"What is i18n Benchmark?",
+	"How are benchmarks conducted?",
+	"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+	"Which libraries are currently supported?",
+	"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+	"Can I submit my own benchmarks?",
+	"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+	"How often are benchmarks updated?",
+	"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+	"Is the data reliable?",
+	"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+	"Do you offer consulting services?",
+	"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+	"How can I contribute?",
+	"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
 	"Simple, Transparent Pricing",
 	"Choose the plan that fits your team. No hidden fees.",
 	"Enterprise",
@@ -1398,6 +1785,20 @@ var c = [
 	"Training sessions",
 	"詳細はこちら",
 	"Tools and services to streamline your internationalization workflow.",
+	"Benchmark CLI",
+	"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"Free",
+	"Benchmark Cloud",
+	"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"Benchmark Enterprise",
+	"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"Contact Us",
+	"Migration Assistant",
+	"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"Translation QA",
+	"Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"Bundle Optimizer",
+	"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 	"APIアクセス",
 	"APIキー",
 	"コピー",
@@ -1425,6 +1826,24 @@ var c = [
 	"アカウントの設定と構成を管理します。",
 	"私たちのチーム",
 	"i18nベンチマークの裏側にいる人々に会いましょう。優れた開発者ツールへの共通の情熱によって結ばれた多様なチームです。",
+	"Sarah Chen",
+	"Founder & Lead Engineer",
+	"Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"Marcus Weber",
+	"Performance Engineer",
+	"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"Aisha Patel",
+	"Developer Advocate",
+	"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"Tomás Rodríguez",
+	"Full-Stack Developer",
+	"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"Yuki Tanaka",
+	"Data Analyst",
+	"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"Elena Kowalski",
+	"Community Manager",
+	"Manages community contributions, partnerships, and events. Background in open source governance.",
 	"おっと！ページが見つかりません",
 	"ホームに戻る",
 	"AppRoot"
@@ -1518,6 +1937,28 @@ var c = [
 	"측정 항목",
 	"Insights, tutorials, and analysis from the i18n community.",
 	"더 읽어보기 →",
+	"Comparing i18n Libraries in 2026: A Deep Dive",
+	"March 15, 2026",
+	"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+	"Benchmark",
+	"How to Reduce Your i18n Bundle by 60%",
+	"March 8, 2026",
+	"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+	"Tutorial",
+	"The State of Internationalization in React",
+	"February 28, 2026",
+	"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+	"Analysis",
+	"Migrating from react-i18next to Lingui",
+	"February 15, 2026",
+	"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"Server Components and i18n: What Changes?",
+	"February 1, 2026",
+	"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"Benchmark Methodology: How We Test",
+	"January 20, 2026",
+	"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"Meta",
 	"Remote-first",
 	"Work from anywhere in the world",
 	"Competitive pay",
@@ -1530,6 +1971,7 @@ var c = [
 	"Full-time",
 	"Engineering",
 	"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"from anywhere in the world",
 	"이름",
 	"Your name",
 	"이메일",
@@ -1552,6 +1994,21 @@ var c = [
 	],
 	"자주 묻는 질문",
 	"i18n Benchmark 프로젝트에 대해 알아야 할 모든 것.",
+	"What is i18n Benchmark?",
+	"How are benchmarks conducted?",
+	"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+	"Which libraries are currently supported?",
+	"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+	"Can I submit my own benchmarks?",
+	"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+	"How often are benchmarks updated?",
+	"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+	"Is the data reliable?",
+	"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+	"Do you offer consulting services?",
+	"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+	"How can I contribute?",
+	"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
 	"Simple, Transparent Pricing",
 	"Choose the plan that fits your team. No hidden fees.",
 	"Enterprise",
@@ -1576,6 +2033,20 @@ var c = [
 	"Training sessions",
 	"더 알아보기",
 	"Tools and services to streamline your internationalization workflow.",
+	"Benchmark CLI",
+	"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"Free",
+	"Benchmark Cloud",
+	"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"Benchmark Enterprise",
+	"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"Contact Us",
+	"Migration Assistant",
+	"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"Translation QA",
+	"Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"Bundle Optimizer",
+	"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 	"API 액세스",
 	"API 키",
 	"복사",
@@ -1603,6 +2074,24 @@ var c = [
 	"계정 기본 설정 및 구성을 관리합니다.",
 	"우리 팀",
 	"i18n Benchmark를 만드는 사람들을 만나보세요. 훌륭한 개발자 도구에 대한 열정으로 뭉친 다양한 팀입니다.",
+	"Sarah Chen",
+	"Founder & Lead Engineer",
+	"Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"Marcus Weber",
+	"Performance Engineer",
+	"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"Aisha Patel",
+	"Developer Advocate",
+	"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"Tomás Rodríguez",
+	"Full-Stack Developer",
+	"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"Yuki Tanaka",
+	"Data Analyst",
+	"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"Elena Kowalski",
+	"Community Manager",
+	"Manages community contributions, partnerships, and events. Background in open source governance.",
 	"앗! 페이지를 찾을 수 없습니다",
 	"홈으로 돌아가기",
 	"AppRoot"
@@ -1696,6 +2185,28 @@ var c = [
 	"O que medimos",
 	"Insights, tutorials, and analysis from the i18n community.",
 	"Leia mais →",
+	"Comparing i18n Libraries in 2026: A Deep Dive",
+	"March 15, 2026",
+	"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+	"Benchmark",
+	"How to Reduce Your i18n Bundle by 60%",
+	"March 8, 2026",
+	"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+	"Tutorial",
+	"The State of Internationalization in React",
+	"February 28, 2026",
+	"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+	"Analysis",
+	"Migrating from react-i18next to Lingui",
+	"February 15, 2026",
+	"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"Server Components and i18n: What Changes?",
+	"February 1, 2026",
+	"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"Benchmark Methodology: How We Test",
+	"January 20, 2026",
+	"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"Meta",
 	"Remote-first",
 	"Work from anywhere in the world",
 	"Competitive pay",
@@ -1708,6 +2219,7 @@ var c = [
 	"Full-time",
 	"Engineering",
 	"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"from anywhere in the world",
 	"Nome",
 	"Your name",
 	"E-mail",
@@ -1730,6 +2242,21 @@ var c = [
 	],
 	"Perguntas Frequentes",
 	"Tudo o que você precisa saber sobre o projeto i18n Benchmark.",
+	"What is i18n Benchmark?",
+	"How are benchmarks conducted?",
+	"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+	"Which libraries are currently supported?",
+	"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+	"Can I submit my own benchmarks?",
+	"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+	"How often are benchmarks updated?",
+	"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+	"Is the data reliable?",
+	"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+	"Do you offer consulting services?",
+	"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+	"How can I contribute?",
+	"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
 	"Simple, Transparent Pricing",
 	"Choose the plan that fits your team. No hidden fees.",
 	"Enterprise",
@@ -1754,6 +2281,20 @@ var c = [
 	"Training sessions",
 	"Saiba Mais",
 	"Tools and services to streamline your internationalization workflow.",
+	"Benchmark CLI",
+	"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"Free",
+	"Benchmark Cloud",
+	"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"Benchmark Enterprise",
+	"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"Contact Us",
+	"Migration Assistant",
+	"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"Translation QA",
+	"Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"Bundle Optimizer",
+	"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 	"Acesso à API",
 	"Chave da API",
 	"Copiar",
@@ -1781,6 +2322,24 @@ var c = [
 	"Gerencie as suas preferências e configuração da conta.",
 	"Nossa Equipe",
 	"Conheça as pessoas por trás do i18n Benchmark. Uma equipe diversificada unida por uma paixão compartilhada por ótimas ferramentas de desenvolvedor.",
+	"Sarah Chen",
+	"Founder & Lead Engineer",
+	"Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"Marcus Weber",
+	"Performance Engineer",
+	"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"Aisha Patel",
+	"Developer Advocate",
+	"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"Tomás Rodríguez",
+	"Full-Stack Developer",
+	"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"Yuki Tanaka",
+	"Data Analyst",
+	"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"Elena Kowalski",
+	"Community Manager",
+	"Manages community contributions, partnerships, and events. Background in open source governance.",
 	"Ops! Página não encontrada",
 	"Voltar para o Início",
 	"AppRoot"
@@ -1874,6 +2433,28 @@ var c = [
 	"Что мы измеряем",
 	"Insights, tutorials, and analysis from the i18n community.",
 	"Читать далее →",
+	"Comparing i18n Libraries in 2026: A Deep Dive",
+	"March 15, 2026",
+	"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+	"Benchmark",
+	"How to Reduce Your i18n Bundle by 60%",
+	"March 8, 2026",
+	"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+	"Tutorial",
+	"The State of Internationalization in React",
+	"February 28, 2026",
+	"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+	"Analysis",
+	"Migrating from react-i18next to Lingui",
+	"February 15, 2026",
+	"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"Server Components and i18n: What Changes?",
+	"February 1, 2026",
+	"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"Benchmark Methodology: How We Test",
+	"January 20, 2026",
+	"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"Meta",
 	"Remote-first",
 	"Work from anywhere in the world",
 	"Competitive pay",
@@ -1886,6 +2467,7 @@ var c = [
 	"Full-time",
 	"Engineering",
 	"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"from anywhere in the world",
 	"Имя",
 	"Your name",
 	"Email",
@@ -1908,6 +2490,21 @@ var c = [
 	],
 	"Часто задаваемые вопросы",
 	"Все, что вам нужно знать о проекте i18n Benchmark.",
+	"What is i18n Benchmark?",
+	"How are benchmarks conducted?",
+	"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+	"Which libraries are currently supported?",
+	"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+	"Can I submit my own benchmarks?",
+	"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+	"How often are benchmarks updated?",
+	"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+	"Is the data reliable?",
+	"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+	"Do you offer consulting services?",
+	"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+	"How can I contribute?",
+	"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
 	"Simple, Transparent Pricing",
 	"Choose the plan that fits your team. No hidden fees.",
 	"Enterprise",
@@ -1932,6 +2529,20 @@ var c = [
 	"Training sessions",
 	"Узнать больше",
 	"Tools and services to streamline your internationalization workflow.",
+	"Benchmark CLI",
+	"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"Free",
+	"Benchmark Cloud",
+	"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"Benchmark Enterprise",
+	"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"Contact Us",
+	"Migration Assistant",
+	"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"Translation QA",
+	"Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"Bundle Optimizer",
+	"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 	"Доступ к API",
 	"Ключ API",
 	"Копировать",
@@ -1959,6 +2570,24 @@ var c = [
 	"Управляйте настройками своего аккаунта и конфигурацией.",
 	"Наша команда",
 	"Познакомьтесь с людьми, стоящими за i18n Benchmark. Разнообразная команда, объединенная общей страстью к отличным инструментам для разработчиков.",
+	"Sarah Chen",
+	"Founder & Lead Engineer",
+	"Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"Marcus Weber",
+	"Performance Engineer",
+	"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"Aisha Patel",
+	"Developer Advocate",
+	"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"Tomás Rodríguez",
+	"Full-Stack Developer",
+	"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"Yuki Tanaka",
+	"Data Analyst",
+	"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"Elena Kowalski",
+	"Community Manager",
+	"Manages community contributions, partnerships, and events. Background in open source governance.",
 	"Упс! Страница не найдена",
 	"Вернуться на главную",
 	"AppRoot"
@@ -2052,6 +2681,28 @@ var c = [
 	"我们测量什么",
 	"Insights, tutorials, and analysis from the i18n community.",
 	"阅读更多 →",
+	"Comparing i18n Libraries in 2026: A Deep Dive",
+	"March 15, 2026",
+	"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
+	"Benchmark",
+	"How to Reduce Your i18n Bundle by 60%",
+	"March 8, 2026",
+	"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+	"Tutorial",
+	"The State of Internationalization in React",
+	"February 28, 2026",
+	"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
+	"Analysis",
+	"Migrating from react-i18next to Lingui",
+	"February 15, 2026",
+	"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
+	"Server Components and i18n: What Changes?",
+	"February 1, 2026",
+	"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
+	"Benchmark Methodology: How We Test",
+	"January 20, 2026",
+	"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+	"Meta",
 	"Remote-first",
 	"Work from anywhere in the world",
 	"Competitive pay",
@@ -2064,6 +2715,7 @@ var c = [
 	"Full-time",
 	"Engineering",
 	"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"from anywhere in the world",
 	"姓名",
 	"Your name",
 	"电子邮件",
@@ -2086,6 +2738,21 @@ var c = [
 	],
 	"常见问题",
 	"关于 i18n 基准测试项目，你需要知道的一切。",
+	"What is i18n Benchmark?",
+	"How are benchmarks conducted?",
+	"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+	"Which libraries are currently supported?",
+	"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
+	"Can I submit my own benchmarks?",
+	"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
+	"How often are benchmarks updated?",
+	"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
+	"Is the data reliable?",
+	"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
+	"Do you offer consulting services?",
+	"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
+	"How can I contribute?",
+	"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
 	"Simple, Transparent Pricing",
 	"Choose the plan that fits your team. No hidden fees.",
 	"Enterprise",
@@ -2110,6 +2777,20 @@ var c = [
 	"Training sessions",
 	"了解更多",
 	"Tools and services to streamline your internationalization workflow.",
+	"Benchmark CLI",
+	"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
+	"Free",
+	"Benchmark Cloud",
+	"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+	"Benchmark Enterprise",
+	"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.",
+	"Contact Us",
+	"Migration Assistant",
+	"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+	"Translation QA",
+	"Automated quality checks for missing translations, pluralization issues, and context errors.",
+	"Bundle Optimizer",
+	"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 	"API 访问",
 	"API 密钥",
 	"复制",
@@ -2137,6 +2818,24 @@ var c = [
 	"管理您的账户偏好和配置。",
 	"我们的团队",
 	"认识 i18n 基准测试背后的团队。一支多元化的团队，因为对优秀开发人员工具的共同热情而团结在一起。",
+	"Sarah Chen",
+	"Founder & Lead Engineer",
+	"Former Google engineer with 10 years of experience building internationalization systems at scale.",
+	"Marcus Weber",
+	"Performance Engineer",
+	"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+	"Aisha Patel",
+	"Developer Advocate",
+	"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+	"Tomás Rodríguez",
+	"Full-Stack Developer",
+	"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+	"Yuki Tanaka",
+	"Data Analyst",
+	"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+	"Elena Kowalski",
+	"Community Manager",
+	"Manages community contributions, partnerships, and events. Background in open source governance.",
 	"糟糕！找不到页面",
 	"返回首页",
 	"AppRoot"

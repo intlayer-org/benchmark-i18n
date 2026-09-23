@@ -1,0 +1,19 @@
+{
+  "settingsHeader.settings": "设置",
+  "settingsHeader.manageYourAccountPreferences": "管理您的账户偏好和配置。",
+  "profileSection.profile": "个人资料",
+  "profileSection.displayName": "显示名称",
+  "profileSection.email": "电子邮件",
+  "preferencesSection.preferences": "偏好设置",
+  "preferencesSection.emailNotifications": "邮件通知",
+  "preferencesSection.receiveWeeklyBenchmarkReports": "接收每周基准测试报告",
+  "preferencesSection.darkMode": "深色模式",
+  "preferencesSection.useDarkColorScheme": "使用深色配色方案",
+  "preferencesSection.defaultLanguage": "默认语言",
+  "apiAccessSection.apiAccess": "API 访问",
+  "apiAccessSection.apiKey": "API 密钥",
+  "apiAccessSection.useThisKeyTo": "使用此密钥以编程方式访问基准测试 API。",
+  "apiAccessSection.copy": "复制",
+  "settingsFooter.cancel": "取消",
+  "settingsFooter.saveChanges": "保存更改"
+}

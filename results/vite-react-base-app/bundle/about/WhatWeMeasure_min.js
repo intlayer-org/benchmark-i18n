@@ -1,16 +1,11 @@
-import { jsxDEV as e } from "react/jsx-dev-runtime";
-var t = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-react-base-app/src/components/pages/about/WhatWeMeasure.tsx";
+import { jsx as e, jsxs as t } from "react/jsx-runtime";
 function n() {
-	return e("section", {
+	return t("section", {
 		className: "mt-12 mx-auto max-w-3xl",
 		children: [e("h2", {
 			className: "mb-4 text-2xl font-bold text-foreground",
 			children: "What We Measure"
-		}, void 0, !1, {
-			fileName: t,
-			lineNumber: 27,
-			columnNumber: 7
-		}, this), e("ul", {
+		}), e("ul", {
 			className: "space-y-4",
 			children: [
 				{
@@ -33,37 +28,17 @@ function n() {
 					metric: "Locale switch speed",
 					desc: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
 				}
-			].map((n) => e("li", {
+			].map((n) => t("li", {
 				className: "rounded-md border border-border p-4",
 				children: [e("span", {
 					className: "block text-sm font-bold text-primary",
 					children: n.metric
-				}, void 0, !1, {
-					fileName: t,
-					lineNumber: 33,
-					columnNumber: 13
-				}, this), e("span", {
+				}), e("span", {
 					className: "block mt-1 text-sm text-muted-foreground",
 					children: n.desc
-				}, void 0, !1, {
-					fileName: t,
-					lineNumber: 36,
-					columnNumber: 13
-				}, this)]
-			}, n.metric, !0, {
-				fileName: t,
-				lineNumber: 32,
-				columnNumber: 11
-			}, this))
-		}, void 0, !1, {
-			fileName: t,
-			lineNumber: 30,
-			columnNumber: 7
-		}, this)]
-	}, void 0, !0, {
-		fileName: t,
-		lineNumber: 26,
-		columnNumber: 5
-	}, this);
+				})]
+			}, n.metric))
+		})]
+	});
 }
 export { n as default };

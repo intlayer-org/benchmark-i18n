@@ -1,16 +1,16 @@
 import { Dynamic as e, createComponent as t, insert as n, template as r } from "solid-js/web";
 import { For as i, createContext as a, createMemo as o, useContext as s } from "solid-js";
 var c = {
-	de: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/de.json").then((e) => e.default),
-	en: () => import("./en-CCnbSUQ8.js").then((e) => e.default),
-	es: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/es.json").then((e) => e.default),
-	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/fr.json").then((e) => e.default),
-	it: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/it.json").then((e) => e.default),
-	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/ja.json").then((e) => e.default),
-	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/ko.json").then((e) => e.default),
-	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/pt.json").then((e) => e.default),
-	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/ru.json").then((e) => e.default),
-	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/zh.json").then((e) => e.default)
+	de: () => import("./de-DeLX33sx.js").then((e) => e.default),
+	en: () => import("./en-Bi5rdNC1.js").then((e) => e.default),
+	es: () => import("./es-jeoJMQ6W.js").then((e) => e.default),
+	fr: () => import("./fr-JFpjYtgg.js").then((e) => e.default),
+	it: () => import("./it-BECYh3Ct.js").then((e) => e.default),
+	ja: () => import("./ja-DlZXgyVI.js").then((e) => e.default),
+	ko: () => import("./ko-BVsr9DVZ.js").then((e) => e.default),
+	pt: () => import("./pt-B5DU73ol.js").then((e) => e.default),
+	ru: () => import("./ru-O46969TQ.js").then((e) => e.default),
+	zh: () => import("./zh-ClGMjaTV.js").then((e) => e.default)
 }, l = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var c = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (_(e) && _(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : v(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : v(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -316,6 +316,27 @@ var e = {
 	key: "products-grid",
 	content: {
 		e: "Benchmark CLI",
+		n: "Führen Sie Benchmarks lokal von Ihrem Terminal aus durch. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.",
+		j: "Kostenlos",
+		f: "Benchmark Cloud",
+		c: "Automatisiertes cloudbasiertes Benchmarking mit historischer Nachverfolgung, Warnungen und Team-Dashboards.",
+		g: "Benchmark Enterprise",
+		m: "On-Premise-Bereitstellung mit SSO, Audit-Logs, benutzerdefinierten SLAs und dediziertem Support.",
+		i: "Kontaktieren Sie uns",
+		l: "Migrationsassistent",
+		a: "KI-gestütztes Tool, das hilft, Ihre Codebasis ohne Ausfallzeiten zwischen i18n-Bibliotheken zu migrieren.",
+		o: "Übersetzungs-QA",
+		d: "Automatisierte Qualitätsprüfungen auf fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.",
+		h: "Bundle-Optimierer",
+		b: "Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code-Splitting.",
+		k: "Mehr erfahren"
+	}
+};
+export { e as default };
+var e = {
+	key: "products-grid",
+	content: {
+		e: "Benchmark CLI",
 		n: "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
 		j: "Free",
 		f: "Benchmark Cloud",
@@ -330,6 +351,174 @@ var e = {
 		h: "Bundle Optimizer",
 		b: "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
 		k: "Learn More"
+	}
+};
+export { e as default };
+var e = {
+	key: "products-grid",
+	content: {
+		e: "CLI de Benchmark",
+		n: "Ejecute benchmarks localmente desde su terminal. Admite configuraciones personalizadas e integración de CI.",
+		j: "Gratis",
+		f: "Benchmark Cloud",
+		c: "Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.",
+		g: "Benchmark Enterprise",
+		m: "Despliegue local con SSO, registros de auditoría, SLA personalizados y soporte dedicado.",
+		i: "Contáctenos",
+		l: "Asistente de migración",
+		a: "Herramienta impulsada por IA que ayuda a migrar su base de código entre bibliotecas i18n sin tiempo de inactividad.",
+		o: "Control de calidad de traducción",
+		d: "Controles de calidad automatizados para traducciones faltantes, problemas de pluralización y errores de contexto.",
+		h: "Optimizador de bundle",
+		b: "Analiza y optimiza su bundle i18n para producción con tree-shaking y división de código.",
+		k: "Más información"
+	}
+};
+export { e as default };
+var e = {
+	key: "products-grid",
+	content: {
+		e: "CLI Benchmark",
+		n: "Exécutez des benchmarks localement depuis votre terminal. Supporte les configurations personnalisées et l'intégration CI.",
+		j: "Gratuit",
+		f: "Benchmark Cloud",
+		c: "Benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
+		g: "Benchmark Enterprise",
+		m: "Déploiement sur site avec SSO, journaux d'audit, SLA personnalisés et support dédié.",
+		i: "Contactez-nous",
+		l: "Assistant de migration",
+		a: "Outil alimenté par l'IA qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.",
+		o: "QA de traduction",
+		d: "Contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.",
+		h: "Optimiseur de bundle",
+		b: "Analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code.",
+		k: "En savoir plus"
+	}
+};
+export { e as default };
+var e = {
+	key: "products-grid",
+	content: {
+		e: "CLI del Benchmark",
+		n: "Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.",
+		j: "Gratis",
+		f: "Benchmark Cloud",
+		c: "Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.",
+		g: "Benchmark Enterprise",
+		m: "Distribuzione on-premise con SSO, log di controllo, SLA personalizzati e supporto dedicato.",
+		i: "Contattaci",
+		l: "Assistente alla migrazione",
+		a: "Strumento basato sull'IA che aiuta a migrare la tua codebase tra librerie i18n senza tempi di inattività.",
+		o: "QA delle traduzioni",
+		d: "Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.",
+		h: "Ottimizzatore del bundle",
+		b: "Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.",
+		k: "Scopri di più"
+	}
+};
+export { e as default };
+var e = {
+	key: "products-grid",
+	content: {
+		e: "ベンチマーク CLI",
+		n: "ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートします。",
+		j: "無料",
+		f: "ベンチマーククラウド",
+		c: "履歴の追跡、アラート、およびチームダッシュボードを備えた自動クラウドベースのベンチマーク。",
+		g: "ベンチマークエンタープライズ",
+		m: "SSO、監査ログ、カスタムSLA、および専用サポートを備えたオンプレミス展開。",
+		i: "お問い合わせ",
+		l: "移行アシスタント",
+		a: "i18nライブラリ間でコードベースをダウンタイムなしで移行するのを支援するAI搭載ツール。",
+		o: "翻訳QA",
+		d: "欠落している翻訳、複数形の問題、およびコンテキストエラーの自動品質チェック。",
+		h: "バンドルオプティマイザー",
+		b: "ツリーシェイキングとコード分割を使用して、本番用のi18nバンドルを分析および最適化します。",
+		k: "詳細はこちら"
+	}
+};
+export { e as default };
+var e = {
+	key: "products-grid",
+	content: {
+		e: "벤치마크 CLI",
+		n: "터미널에서 로컬로 벤치마크를 실행합니다. 사용자 정의 구성 및 CI 통합을 지원합니다.",
+		j: "무료",
+		f: "벤치마크 클라우드",
+		c: "기록 추적, 알림 및 팀 대시보드를 갖춘 자동화된 클라우드 기반 벤치마킹.",
+		g: "벤치마크 엔터프라이즈",
+		m: "SSO, 감사 로그, 맞춤형 SLA 및 전담 지원을 갖춘 온프레미스 배포.",
+		i: "문의하기",
+		l: "마이그레이션 어시스턴트",
+		a: "다운타임 없이 i18n 라이브러리 간에 코드베이스를 마이그레이션하는 데 도움이 되는 AI 기반 도구입니다.",
+		o: "번역 QA",
+		d: "누락된 번역, 복수형 문제 및 컨텍스트 오류에 대한 자동 품질 검사.",
+		h: "번들 최적화 도구",
+		b: "트리 쉐이킹 및 코드 분할을 통해 프로덕션용 i18n 번들을 분석하고 최적화합니다.",
+		k: "자세히 알아보기"
+	}
+};
+export { e as default };
+var e = {
+	key: "products-grid",
+	content: {
+		e: "CLI de Benchmark",
+		n: "Execute benchmarks localmente em seu terminal. Suporta configurações personalizadas e integração de CI.",
+		j: "Grátis",
+		f: "Benchmark Cloud",
+		c: "Benchmarking automatizado baseado em nuvem com rastreamento histórico, alertas e painéis de equipe.",
+		g: "Benchmark Enterprise",
+		m: "Implantação on-premise com SSO, logs de auditoria, SLAs personalizados e suporte dedicado.",
+		i: "Contate-nos",
+		l: "Assistente de migração",
+		a: "Ferramenta baseada em IA que ajuda a migrar sua base de código entre bibliotecas i18n sem tempo de inatividade.",
+		o: "QA de tradução",
+		d: "Verificações de qualidade automatizadas para traduções ausentes, problemas de pluralização e erros de contexto.",
+		h: "Otimizador de bundle",
+		b: "Analisa e otimiza seu bundle i18n para produção com tree-shaking e divisão de código.",
+		k: "Saiba Mais"
+	}
+};
+export { e as default };
+var e = {
+	key: "products-grid",
+	content: {
+		e: "CLI для бенчмарков",
+		n: "Запускайте бенчмарки локально из терминала. Поддержка пользовательских конфигураций и интеграции с CI.",
+		j: "Бесплатно",
+		f: "Облачный бенчмарк",
+		c: "Автоматизированное облачное тестирование с отслеживанием истории, оповещениями и командными дашбордами.",
+		g: "Бенчмарк для предприятий",
+		m: "Локальное развертывание с поддержкой SSO, журналами аудита, индивидуальными SLA и выделенной поддержкой.",
+		i: "Связаться с нами",
+		l: "Помощник по миграции",
+		a: "Инструмент на базе ИИ, который помогает переносить кодовую базу между библиотеками i18n без простоев.",
+		o: "QA переводов",
+		d: "Автоматизированные проверки качества на наличие отсутствующих переводов, проблем с множественным числом и контекстных ошибок.",
+		h: "Оптимизатор бандла",
+		b: "Анализирует и оптимизирует ваш i18n-бандл для продакшена с помощью tree-shaking и разделения кода.",
+		k: "Узнать больше"
+	}
+};
+export { e as default };
+var e = {
+	key: "products-grid",
+	content: {
+		e: "基准测试 CLI",
+		n: "从您的终端在本地运行基准测试。支持自定义配置和 CI 集成。",
+		j: "免费",
+		f: "基准测试云",
+		c: "具有历史跟踪、警报和团队仪表板的自动化云基准测试。",
+		g: "基准测试企业版",
+		m: "支持 SSO、审计日志、自定义 SLA 和专用支持的本地部署。",
+		i: "联系我们",
+		l: "迁移助手",
+		a: "人工智能驱动的工具，可帮助您在 i18n 库之间迁移代码库，实现零停机时间。",
+		o: "翻译质量保证",
+		d: "针对缺失翻译、复数问题和上下文错误的自动质量检查。",
+		h: "捆绑包优化器",
+		b: "通过摇树优化和代码拆分，分析并优化您的生产 i18n 捆绑包。",
+		k: "了解更多"
 	}
 };
 export { e as default };

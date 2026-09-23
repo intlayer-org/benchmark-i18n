@@ -1,15 +1,13 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import NextLink from "next/link";
 import { useParams, usePathname, useRouter } from "next/navigation";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
 import { ChevronDown } from "lucide-react";
-import { jsx } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 });
-var _jsxFileName$6 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/Link.tsx";
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
 function localizeHref(href, locale) {
 	if (!href.startsWith("/")) return href;
@@ -18,36 +16,24 @@ function localizeHref(href, locale) {
 }
 var Link = ({ href, children, ...props }) => {
 	const locale = useParams().locale ?? "en";
-	if (href == null || typeof href !== "string") return jsxDEV(NextLink, {
+	if (href == null || typeof href !== "string") return jsx(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$6,
-		lineNumber: 23,
-		columnNumber: 7
-	}, void 0);
-	if (checkIsExternalLink(href)) return jsxDEV(NextLink, {
+	});
+	if (checkIsExternalLink(href)) return jsx(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$6,
-		lineNumber: 30,
-		columnNumber: 7
-	}, void 0);
-	return jsxDEV(NextLink, {
+	});
+	return jsx(NextLink, {
 		href: localizeHref(href, locale),
 		prefetch: false,
 		...props,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$6,
-		lineNumber: 36,
-		columnNumber: 5
-	}, void 0);
+	});
 };
 var require_use_sync_external_store_shim_production = __commonJSMin(((exports) => {
 	var React = __require("react");
@@ -204,7 +190,6 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		children
 	});
 };
-var _jsxFileName$5 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/ThemeToggle.tsx";
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -244,18 +229,14 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? i18n._("theme-toggle.themeModeAutoSystemClick") : mode === "light" ? i18n._("theme-toggle.themeModeLightClick") : i18n._("theme-toggle.themeModeDarkClick");
-	return jsxDEV("button", {
+	return jsx("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: mode === "auto" ? i18n._("theme-toggle.themeAuto") : mode === "dark" ? i18n._("theme-toggle.themeDark") : i18n._("theme-toggle.themeLight")
-	}, void 0, false, {
-		fileName: _jsxFileName$5,
-		lineNumber: 78,
-		columnNumber: 5
-	}, this);
+	});
 }
 var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
 	const query = path.lastIndexOf("?");
@@ -1822,7 +1803,6 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams().locale ?? "en";
 	const pathname = usePathname();
@@ -1831,30 +1811,18 @@ function LocaleSwitcher() {
 		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
 		router.push(newPath);
 	};
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "flex items-center gap-2",
-		children: jsxDEV("select", {
+		children: jsx("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((loc) => jsxDEV("option", {
+			children: locales.map((loc) => jsx("option", {
 				value: loc,
 				children: getLocaleName(loc)
-			}, loc, false, {
-				fileName: _jsxFileName$4,
-				lineNumber: 25,
-				columnNumber: 11
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName$4,
-			lineNumber: 19,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 18,
-		columnNumber: 5
-	}, this);
+			}, loc))
+		})
+	});
 }
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
@@ -1867,7 +1835,6 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/Header.tsx";
 function Header() {
 	const { i18n } = useLingui();
 	usePerformanceMeasure("Header");
@@ -1914,166 +1881,86 @@ function Header() {
 		const localized = localizeHref(href, locale);
 		return pathname.startsWith(localized) && (href !== "/" || pathname === localized);
 	};
-	return jsxDEV("header", {
+	return jsx("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: jsxDEV("nav", {
+		children: jsxs("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [jsxDEV("div", {
+			children: [jsxs("div", {
 				className: "flex items-center gap-8",
-				children: [jsxDEV(Link, {
+				children: [jsx(Link, {
 					href: "/",
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Benchmark"
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 46,
-					columnNumber: 11
-				}, this), jsxDEV("div", {
+				}), jsxs("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						jsxDEV(Link, {
+						jsx(Link, {
 							href: "/",
 							className: `nav-link${isExactActive("/") ? " is-active" : ""}`,
 							children: i18n._("header.home")
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 54,
-							columnNumber: 13
-						}, this),
-						jsxDEV(Link, {
+						}),
+						jsx(Link, {
 							href: "/about",
 							className: `nav-link${isActive("/about") ? " is-active" : ""}`,
 							children: i18n._("header.methodology")
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 60,
-							columnNumber: 13
-						}, this),
-						jsxDEV("div", {
+						}),
+						jsxs("div", {
 							className: "relative",
-							children: [jsxDEV("button", {
+							children: [jsxs("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [i18n._("header.mockPages"), jsxDEV(ChevronDown, {
+								children: [i18n._("header.mockPages"), jsx(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 77,
-									columnNumber: 17
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 69,
-								columnNumber: 15
-							}, this), isMockPagesOpen && jsxDEV("div", {
+								})]
+							}), isMockPagesOpen && jsx("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: jsxDEV("div", {
+								children: jsx("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => jsxDEV(Link, {
+									children: mockPages.map((page) => jsx(Link, {
 										href: page.href,
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => setIsMockPagesOpen(false),
 										children: page.label
-									}, page.href, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 91,
-										columnNumber: 23
-									}, this))
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 89,
-									columnNumber: 19
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 84,
-								columnNumber: 17
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 68,
-							columnNumber: 13
-						}, this)
+									}, page.href))
+								})
+							})]
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 53,
-					columnNumber: 11
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 45,
-				columnNumber: 9
-			}, this), jsxDEV("div", {
+				})]
+			}), jsxs("div", {
 				className: "flex items-center gap-4",
 				children: [
-					jsxDEV("a", {
+					jsxs("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [jsxDEV("span", {
+						children: [jsx("span", {
 							className: "sr-only",
 							children: i18n._("header.goToGithub")
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 114,
-							columnNumber: 13
-						}, this), jsxDEV("svg", {
+						}), jsx("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: jsxDEV("path", {
+							children: jsx("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 116,
-								columnNumber: 15
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 115,
-							columnNumber: 13
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 108,
-						columnNumber: 11
-					}, this),
-					jsxDEV(LocaleSwitcher, {}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 122,
-						columnNumber: 11
-					}, this),
-					jsxDEV(ThemeToggle, {}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 123,
-						columnNumber: 11
-					}, this)
+							})
+						})]
+					}),
+					jsx(LocaleSwitcher, {}),
+					jsx(ThemeToggle, {})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 107,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 44,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 43,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -2097,7 +1984,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children, locale, messages }) {
 	const i18n = useMemo(() => initLingui(locale, messages), [locale, messages]);
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -2110,39 +1996,21 @@ function AppProviders({ children, locale, messages }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 40,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/scripts/Wrapper.tsx";
 async function Wrapper({ children }) {
 	const enMessages = await loadNamespaces("en", LINGUI_ALL_NAMESPACES);
-	return jsxDEV(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		messages: enMessages,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/Header.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Header, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Header, {}) });
 }
 export { Wrapped as default };
 var messages = JSON.parse("{\"about-grid.choosingAnI18nLibraryIs\":[\"选择 i18n 库是一项具有长期影响的架构决策。大多数比较侧重于 API 的易用性，但很少衡量性能成本：库为包增加了多少权重？加载数千个翻译键时它如何影响渲染？延迟加载是否真的有帮助，还是只是转移了成本？本基准测试用真实数据回答了这些问题。\"],\"about-grid.methodology\":[\"方法论\"],\"about-grid.theSame10PageApp\":[\"同一个 10 页应用为每个库构建一次。我们测量生产包（通过 rollup-plugin-visualizer），运行 Lighthouse 审计以获取加载指标，并使用 React Profiler 捕获语言切换期间的渲染时间。所有测试都在一致的硬件上在 CI 中运行，以确保结果的可复现性。\"],\"about-grid.whyThisExists\":[\"为什么存在这个基准测试\"],\"about-header.aboutThisBenchmark\":[\"关于本基准测试\"],\"about-header.thisIsAnOpenSource\":[\"这是一个开源测试应用程序 —— 不是产品或公司。其唯一目的是提供一个现实的多页面 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。\"],\"what-we-measure.bundleSizeImpact\":[\"包大小影响\"],\"what-we-measure.duringSsrTranslationDataIs\":[\"在 SSR 期间，翻译数据被序列化到 HTML 中。大型字典会增加 HTML 负载并减慢注水速度 —— 即页面变得可交互的时刻。\"],\"what-we-measure.howFastTheAppCan\":[\"应用在运行时从一种语言切换到另一种语言的速度 —— 包括获取新翻译、重新渲染组件和更新 DOM。\"],\"what-we-measure.howMuchExtraTimeThe\":[\"库为 React 渲染周期增加了多少额外时间。通过单个上下文提供者注入翻译的库可能会在整个组件树中导致不必要的重新渲染。\"],\"what-we-measure.hydrationCost\":[\"注水成本\"],\"what-we-measure.lazyLoadingEffectiveness\":[\"延迟加载有效性\"],\"what-we-measure.localeSwitchSpeed\":[\"语言切换速度\"],\"what-we-measure.renderingOverhead\":[\"渲染开销\"],\"what-we-measure.theAdditionalJavascriptBytesSent\":[\"包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络下的下载时间。\"],\"what-we-measure.whatWeMeasure\":[\"我们测量什么\"],\"what-we-measure.whetherSplittingTranslationsByRoute\":[\"按路由或命名空间拆分翻译是否真的减少了初始负载，以及它引入了哪些权衡（瀑布流请求、FOUC、缓存复杂性）。\"]}");

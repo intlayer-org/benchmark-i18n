@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, onBeforeMount, onMounted, openBlock, readonly, ref, renderList, renderSlot, toDisplayString } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, onBeforeMount, onMounted, openBlock, readonly, ref, renderList, renderSlot, toDisplayString, unref } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -988,86 +988,63 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var WhatWeMeasure_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "WhatWeMeasure",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		usePerformanceMeasure("WhatWeMeasure");
-		const { t } = useI18n();
-		const __returned__ = {
-			t,
-			metrics: computed(() => [
-				{
-					metric: t("about.whatWeMeasure.bundleSizeImpact"),
-					desc: t("about.whatWeMeasure.bundleSizeImpactDesc")
-				},
-				{
-					metric: t("about.whatWeMeasure.renderingOverhead"),
-					desc: t("about.whatWeMeasure.renderingOverheadDesc")
-				},
-				{
-					metric: t("about.whatWeMeasure.hydrationCost"),
-					desc: t("about.whatWeMeasure.hydrationCostDesc")
-				},
-				{
-					metric: t("about.whatWeMeasure.lazyLoading"),
-					desc: t("about.whatWeMeasure.lazyLoadingDesc")
-				},
-				{
-					metric: t("about.whatWeMeasure.localeSwitch"),
-					desc: t("about.whatWeMeasure.localeSwitchDesc")
-				}
-			])
-		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "mt-12 mx-auto max-w-3xl" };
 var _hoisted_2 = { class: "mb-4 text-2xl font-bold text-foreground" };
 var _hoisted_3 = { class: "space-y-4" };
 var _hoisted_4 = { class: "block text-sm font-bold text-primary" };
 var _hoisted_5 = { class: "block mt-1 text-sm text-muted-foreground" };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString($setup.t("about.whatWeMeasure.title")), 1), createElementVNode("ul", _hoisted_3, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.metrics, (m) => {
-		return openBlock(), createElementBlock("li", {
-			key: m.metric,
-			class: "rounded-md border border-border p-4"
-		}, [createElementVNode("span", _hoisted_4, toDisplayString(m.metric), 1), createElementVNode("span", _hoisted_5, toDisplayString(m.desc), 1)]);
-	}), 128))])]);
-}
-var WhatWeMeasure_default = _plugin_vue_export_helper_default(WhatWeMeasure_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/about/WhatWeMeasure.vue"]]);
+var WhatWeMeasure_default = defineComponent({
+	__name: "WhatWeMeasure",
+	setup(__props) {
+		usePerformanceMeasure("WhatWeMeasure");
+		const { t } = useI18n();
+		const metrics = computed(() => [
+			{
+				metric: t("about.whatWeMeasure.bundleSizeImpact"),
+				desc: t("about.whatWeMeasure.bundleSizeImpactDesc")
+			},
+			{
+				metric: t("about.whatWeMeasure.renderingOverhead"),
+				desc: t("about.whatWeMeasure.renderingOverheadDesc")
+			},
+			{
+				metric: t("about.whatWeMeasure.hydrationCost"),
+				desc: t("about.whatWeMeasure.hydrationCostDesc")
+			},
+			{
+				metric: t("about.whatWeMeasure.lazyLoading"),
+				desc: t("about.whatWeMeasure.lazyLoadingDesc")
+			},
+			{
+				metric: t("about.whatWeMeasure.localeSwitch"),
+				desc: t("about.whatWeMeasure.localeSwitchDesc")
+			}
+		]);
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString(unref(t)("about.whatWeMeasure.title")), 1), createElementVNode("ul", _hoisted_3, [(openBlock(true), createElementBlock(Fragment, null, renderList(metrics.value, (m) => {
+				return openBlock(), createElementBlock("li", {
+					key: m.metric,
+					class: "rounded-md border border-border p-4"
+				}, [createElementVNode("span", _hoisted_4, toDisplayString(m.metric), 1), createElementVNode("span", _hoisted_5, toDisplayString(m.desc), 1)]);
+			}), 128))])]);
+		};
+	}
+});
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var WhatWeMeasure_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(WhatWeMeasure_default) });
 } };

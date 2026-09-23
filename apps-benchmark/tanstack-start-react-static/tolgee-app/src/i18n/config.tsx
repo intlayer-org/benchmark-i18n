@@ -47,7 +47,7 @@ export function useTranslate() {
   return {
     ...rest,
     // Enforce the TranslationKey type on the first argument
-    t: (key: TranslationKey, defaultValue?: string) => t(key, defaultValue),
+    t: (key: TranslationKey) => t(key),
   };
 }
 

@@ -1,4 +1,4 @@
-import { Fragment, computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, normalizeClass, onBeforeMount, onMounted, onUnmounted, openBlock, ref, renderList, resolveComponent, shallowRef, toDisplayString, toValue, watch, withCtx } from "vue";
+import { Fragment, computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, normalizeClass, onBeforeMount, onMounted, onUnmounted, openBlock, ref, renderList, resolveComponent, shallowRef, toDisplayString, toValue, unref, watch, withCtx } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { ChevronDown } from "lucide-vue-next";
 var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
@@ -272,7 +272,8 @@ var getBasePlugins = (locale, fallback = true) => [
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
-}), getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
+});
+var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 	const props = {
 		dictionaryKey: dictionary.key,
 		dictionaryPath: dictionary.filePath,
@@ -280,7 +281,8 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-}, b$1 = {
+};
+var b$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { children: n, ...r }) => {
@@ -302,7 +304,12 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 		}
 		return markRaw(c);
 	}
-}, S = fallbackPlugin, w = fallbackPlugin, T = fallbackPlugin, E = /* @__PURE__ */ new Map(), D = (e, t = !0) => {
+};
+var S = fallbackPlugin;
+var w = fallbackPlugin;
+var T = fallbackPlugin;
+var E = /* @__PURE__ */ new Map();
+var D = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (E.has(n)) return E.get(n);
 	let r = [
@@ -318,8 +325,14 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 		T
 	];
 	return E.set(n, r), r;
-}, n = (n, r) => getDictionary(n, r, D(r)), i = Symbol("intlayer");
-var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "object" && !!e, g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e), _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, v = (e) => markRaw(defineComponent({
+};
+var n = (n, r) => getDictionary(n, r, D(r));
+var i = Symbol("intlayer");
+var m = (e, t) => t.reduce((e, t) => e?.[t], e);
+var h$1 = (e) => typeof e == "object" && !!e;
+var g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e);
+var _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e;
+var v = (e) => markRaw(defineComponent({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -327,7 +340,8 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 			return t == null ? null : g(t) ? h(t) : Array.isArray(t) ? h("span", t) : t;
 		};
 	}
-})), y = (e) => new Proxy({}, {
+}));
+var y = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -349,7 +363,8 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 			configurable: !0
 		};
 	}
-}), b = (r, a) => {
+});
+var b = (r, a) => {
 	let c = getCurrentInstance() ? inject(i) : void 0, b = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), x = computed(() => (a === void 0 ? void 0 : toValue(a)) ?? b.value), S = shallowRef({});
 	watch([() => toValue(r), () => x.value], ([t, n$2]) => {
 		S.value = n(t, n$2);
@@ -448,10 +463,10 @@ var s = (e, n) => setLocaleInStorageClient(e, {
 	isCookieEnabled: n
 });
 var a = ({ isCookieEnabled: a, onLocaleChange: o } = {}) => {
-	let { defaultLocale: s$2, locales: c } = internationalization ?? {}, l = inject(i);
+	let { defaultLocale: s$1, locales: c } = internationalization ?? {}, l = inject(i);
 	return {
-		locale: computed(() => l?.locale?.value ?? s$2),
-		defaultLocale: s$2,
+		locale: computed(() => l?.locale?.value ?? s$1),
+		defaultLocale: s$1,
 		availableLocales: c,
 		setLocale: (e) => {
 			if (!c?.map(String).includes(e)) {
@@ -602,55 +617,6 @@ var footer_default = {
 		}
 	}
 };
-var Footer_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "Footer",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		const route = useRoute();
-		const currentLocale = computed(() => route.params.locale || "en");
-		const { e: description, i: resources, b: contactLabel, g: github, h: methodology, d: contributing, f: footerText, a: appName, c: contactEmail } = b(footer_default);
-		const __returned__ = {
-			route,
-			currentLocale,
-			description,
-			resources,
-			contactLabel,
-			github,
-			methodology,
-			contributing,
-			footerText,
-			appName,
-			contactEmail,
-			footerLinks: computed(() => [
-				{
-					label: github,
-					href: "https://github.com/intlayer-org/benchmark-i18n",
-					isInternal: false
-				},
-				{
-					label: methodology,
-					to: `/${currentLocale.value}/about`,
-					isInternal: true
-				},
-				{
-					label: contributing,
-					to: `/${currentLocale.value}/contact`,
-					isInternal: true
-				}
-			])
-		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1$3 = { class: "mt-20 border-t border-border bg-card" };
 var _hoisted_2$2 = { class: "container py-8" };
 var _hoisted_3$2 = { class: "grid gap-8 md:grid-cols-3" };
@@ -662,30 +628,54 @@ var _hoisted_8$1 = ["href"];
 var _hoisted_9$1 = { class: "mb-2 text-sm font-semibold text-foreground" };
 var _hoisted_10 = { class: "text-sm text-muted-foreground" };
 var _hoisted_11 = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" };
-function _sfc_render$4(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_router_link = resolveComponent("router-link");
-	return openBlock(), createElementBlock("footer", _hoisted_1$3, [createElementVNode("div", _hoisted_2$2, [createElementVNode("div", _hoisted_3$2, [
-		createElementVNode("div", null, [createElementVNode("h3", _hoisted_4$1, toDisplayString($setup.appName), 1), createElementVNode("p", _hoisted_5$1, toDisplayString($setup.description), 1)]),
-		createElementVNode("div", null, [createElementVNode("h3", _hoisted_6$1, toDisplayString($setup.resources), 1), createElementVNode("ul", _hoisted_7$1, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.footerLinks, (linkEl) => {
-			return openBlock(), createElementBlock("li", { key: linkEl.label }, [linkEl.isInternal ? (openBlock(), createBlock(_component_router_link, {
-				key: 0,
-				to: linkEl.to,
-				class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-			}, {
-				default: withCtx(() => [createTextVNode(toDisplayString(linkEl.label), 1)]),
-				_: 2
-			}, 1032, ["to"])) : (openBlock(), createElementBlock("a", {
-				key: 1,
-				href: linkEl.href,
-				target: "_blank",
-				rel: "noreferrer",
-				class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-			}, toDisplayString(linkEl.label), 9, _hoisted_8$1))]);
-		}), 128))])]),
-		createElementVNode("div", null, [createElementVNode("h3", _hoisted_9$1, toDisplayString($setup.contactLabel), 1), createElementVNode("p", _hoisted_10, toDisplayString($setup.contactEmail), 1)])
-	]), createElementVNode("div", _hoisted_11, toDisplayString($setup.footerText), 1)])]);
-}
-var Footer_default = _plugin_vue_export_helper_default(Footer_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$4], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/Footer.vue"]]);
+var Footer_default = defineComponent({
+	__name: "Footer",
+	setup(__props) {
+		const route = useRoute();
+		const currentLocale = computed(() => route.params.locale || "en");
+		const { e: description, i: resources, b: contactLabel, g: github, h: methodology, d: contributing, f: footerText, a: appName, c: contactEmail } = b(footer_default);
+		const footerLinks = computed(() => [
+			{
+				label: github,
+				href: "https://github.com/intlayer-org/benchmark-i18n",
+				isInternal: false
+			},
+			{
+				label: methodology,
+				to: `/${currentLocale.value}/about`,
+				isInternal: true
+			},
+			{
+				label: contributing,
+				to: `/${currentLocale.value}/contact`,
+				isInternal: true
+			}
+		]);
+		return (_ctx, _cache) => {
+			const _component_router_link = resolveComponent("router-link");
+			return openBlock(), createElementBlock("footer", _hoisted_1$3, [createElementVNode("div", _hoisted_2$2, [createElementVNode("div", _hoisted_3$2, [
+				createElementVNode("div", null, [createElementVNode("h3", _hoisted_4$1, toDisplayString(unref(appName)), 1), createElementVNode("p", _hoisted_5$1, toDisplayString(unref(description)), 1)]),
+				createElementVNode("div", null, [createElementVNode("h3", _hoisted_6$1, toDisplayString(unref(resources)), 1), createElementVNode("ul", _hoisted_7$1, [(openBlock(true), createElementBlock(Fragment, null, renderList(footerLinks.value, (linkEl) => {
+					return openBlock(), createElementBlock("li", { key: linkEl.label }, [linkEl.isInternal ? (openBlock(), createBlock(_component_router_link, {
+						key: 0,
+						to: linkEl.to,
+						class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+					}, {
+						default: withCtx(() => [createTextVNode(toDisplayString(linkEl.label), 1)]),
+						_: 2
+					}, 1032, ["to"])) : (openBlock(), createElementBlock("a", {
+						key: 1,
+						href: linkEl.href,
+						target: "_blank",
+						rel: "noreferrer",
+						class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+					}, toDisplayString(linkEl.label), 9, _hoisted_8$1))]);
+				}), 128))])]),
+				createElementVNode("div", null, [createElementVNode("h3", _hoisted_9$1, toDisplayString(unref(contactLabel)), 1), createElementVNode("p", _hoisted_10, toDisplayString(unref(contactEmail)), 1)])
+			]), createElementVNode("div", _hoisted_11, toDisplayString(unref(footerText)), 1)])]);
+		};
+	}
+});
 var header_default = {
 	key: "header",
 	content: {
@@ -704,8 +694,7 @@ var header_default = {
 				"d": "Contact",
 				"m": "Settings",
 				"a": "i18n Benchmark",
-				"f": "Go to GitHub",
-				"g": "Header"
+				"f": "Go to GitHub"
 			},
 			"fr": {
 				"h": "Accueil",
@@ -720,8 +709,7 @@ var header_default = {
 				"d": "Contact",
 				"m": "Paramètres",
 				"a": "Benchmark i18n",
-				"f": "Aller sur GitHub",
-				"g": "En-tête"
+				"f": "Aller sur GitHub"
 			},
 			"es": {
 				"h": "Inicio",
@@ -736,8 +724,7 @@ var header_default = {
 				"d": "Contacto",
 				"m": "Ajustes",
 				"a": "i18n Benchmark",
-				"f": "Ir a GitHub",
-				"g": "Encabezado"
+				"f": "Ir a GitHub"
 			},
 			"de": {
 				"h": "Home",
@@ -752,8 +739,7 @@ var header_default = {
 				"d": "Kontakt",
 				"m": "Einstellungen",
 				"a": "i18n Benchmark",
-				"f": "Zu GitHub",
-				"g": "Header"
+				"f": "Zu GitHub"
 			},
 			"it": {
 				"h": "Home",
@@ -768,8 +754,7 @@ var header_default = {
 				"d": "Contatti",
 				"m": "Impostazioni",
 				"a": "i18n Benchmark",
-				"f": "Vai su GitHub",
-				"g": "Intestazione"
+				"f": "Vai su GitHub"
 			},
 			"pt": {
 				"h": "Início",
@@ -784,8 +769,7 @@ var header_default = {
 				"d": "Contato",
 				"m": "Configurações",
 				"a": "i18n Benchmark",
-				"f": "Ir para o GitHub",
-				"g": "Cabeçalho"
+				"f": "Ir para o GitHub"
 			},
 			"zh": {
 				"h": "首页",
@@ -800,8 +784,7 @@ var header_default = {
 				"d": "联系我们",
 				"m": "设置",
 				"a": "i18n 基准测试",
-				"f": "前往 GitHub",
-				"g": "页眉"
+				"f": "前往 GitHub"
 			},
 			"ja": {
 				"h": "ホーム",
@@ -816,8 +799,7 @@ var header_default = {
 				"d": "お問い合わせ",
 				"m": "設定",
 				"a": "i18n ベンチマーク",
-				"f": "GitHub へ",
-				"g": "ヘッダー"
+				"f": "GitHub へ"
 			},
 			"ko": {
 				"h": "홈",
@@ -832,8 +814,7 @@ var header_default = {
 				"d": "문의",
 				"m": "설정",
 				"a": "i18n 벤치마크",
-				"f": "GitHub으로 이동",
-				"g": "헤더"
+				"f": "GitHub으로 이동"
 			},
 			"ru": {
 				"h": "Главная",
@@ -848,8 +829,7 @@ var header_default = {
 				"d": "Контакт",
 				"m": "Настройки",
 				"a": "i18n Бенчмарк",
-				"f": "Перейти на GitHub",
-				"g": "Заголовок"
+				"f": "Перейти на GitHub"
 			}
 		}
 	}
@@ -879,10 +859,12 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
-var LocaleSwitcher_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var _hoisted_1$2 = { class: "flex items-center gap-2" };
+var _hoisted_2$1 = ["value"];
+var _hoisted_3$1 = ["value"];
+var LocaleSwitcher_default = defineComponent({
 	__name: "LocaleSwitcher",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const route = useRoute();
 		const router = useRouter();
 		const { setLocale } = a();
@@ -899,42 +881,20 @@ var LocaleSwitcher_vue_vue_type_script_setup_true_lang_default = defineComponent
 		watch(currentLocale, (newLocale) => {
 			setLocale(newLocale);
 		}, { immediate: true });
-		const __returned__ = {
-			route,
-			router,
-			setLocale,
-			currentLocale,
-			handleLocaleChange,
-			get locales() {
-				return locales;
-			},
-			get getLocaleName() {
-				return getLocaleName;
-			}
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("div", _hoisted_1$2, [createElementVNode("select", {
+				value: currentLocale.value,
+				onChange: _cache[0] || (_cache[0] = (e) => handleLocaleChange(e.target.value)),
+				class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+			}, [(openBlock(true), createElementBlock(Fragment, null, renderList(unref(locales), (localeItem) => {
+				return openBlock(), createElementBlock("option", {
+					key: localeItem,
+					value: localeItem
+				}, toDisplayString(unref(getLocaleName)(localeItem)), 9, _hoisted_3$1);
+			}), 128))], 40, _hoisted_2$1)]);
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
-var _hoisted_1$2 = { class: "flex items-center gap-2" };
-var _hoisted_2$1 = ["value"];
-var _hoisted_3$1 = ["value"];
-function _sfc_render$3(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", _hoisted_1$2, [createElementVNode("select", {
-		value: $setup.currentLocale,
-		onChange: _cache[0] || (_cache[0] = (e) => $setup.handleLocaleChange(e.target.value)),
-		class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-	}, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.locales, (localeItem) => {
-		return openBlock(), createElementBlock("option", {
-			key: localeItem,
-			value: localeItem
-		}, toDisplayString($setup.getLocaleName(localeItem)), 9, _hoisted_3$1);
-	}), 128))], 40, _hoisted_2$1)]);
-}
-var LocaleSwitcher_default = _plugin_vue_export_helper_default(LocaleSwitcher_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$3], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/LocaleSwitcher.vue"]]);
 var theme_toggle_default = {
 	key: "theme-toggle",
 	content: {
@@ -1023,10 +983,10 @@ var theme_toggle_default = {
 		}
 	}
 };
-var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var _hoisted_1$1 = ["aria-label", "title"];
+var ThemeToggle_default = defineComponent({
 	__name: "ThemeToggle",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const { d: auto, e: dark, f: light, a: ariaLabelAuto, c: ariaLabelLight, b: ariaLabelDark } = b(theme_toggle_default);
 		const mode = ref("auto");
 		function getInitialMode() {
@@ -1070,114 +1030,15 @@ var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
 			window.localStorage.setItem("theme", nextMode);
 		}
 		const getLabel = () => mode.value === "auto" ? ariaLabelAuto.value : mode.value === "light" ? ariaLabelLight.value : ariaLabelDark.value;
-		const __returned__ = {
-			auto,
-			dark,
-			light,
-			ariaLabelAuto,
-			ariaLabelLight,
-			ariaLabelDark,
-			mode,
-			getInitialMode,
-			applyThemeMode,
-			get mediaQueryListener() {
-				return mediaQueryListener;
-			},
-			set mediaQueryListener(v) {
-				mediaQueryListener = v;
-			},
-			toggleMode,
-			getLabel
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("button", {
+				type: "button",
+				onClick: toggleMode,
+				"aria-label": getLabel(),
+				title: getLabel(),
+				class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+			}, toDisplayString(mode.value === "auto" ? unref(auto) : mode.value === "dark" ? unref(dark) : unref(light)), 9, _hoisted_1$1);
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _hoisted_1$1 = ["aria-label", "title"];
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("button", {
-		type: "button",
-		onClick: $setup.toggleMode,
-		"aria-label": $setup.getLabel(),
-		title: $setup.getLabel(),
-		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-	}, toDisplayString($setup.mode === "auto" ? $setup.auto : $setup.mode === "dark" ? $setup.dark : $setup.light), 9, _hoisted_1$1);
-}
-var ThemeToggle_default = _plugin_vue_export_helper_default(ThemeToggle_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$2], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/ThemeToggle.vue"]]);
-var Header_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "Header",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		usePerformanceMeasure("Header");
-		const { h: home, i: methodology, j: mockPagesLabel, l: products, k: pricing, n: team, b: blog, c: careers, e: faq, d: contact, m: settings, a: appName, f: goToGithub } = b(header_default);
-		const isMockPagesOpen = ref(false);
-		const route = useRoute();
-		const currentLocale = computed(() => route.params.locale || "en");
-		const __returned__ = {
-			home,
-			methodology,
-			mockPagesLabel,
-			products,
-			pricing,
-			team,
-			blog,
-			careers,
-			faq,
-			contact,
-			settings,
-			appName,
-			goToGithub,
-			isMockPagesOpen,
-			route,
-			currentLocale,
-			mockPagesList: computed(() => [
-				{
-					to: `/${currentLocale.value}/products`,
-					label: products
-				},
-				{
-					to: `/${currentLocale.value}/pricing`,
-					label: pricing
-				},
-				{
-					to: `/${currentLocale.value}/team`,
-					label: team
-				},
-				{
-					to: `/${currentLocale.value}/blog`,
-					label: blog
-				},
-				{
-					to: `/${currentLocale.value}/careers`,
-					label: careers
-				},
-				{
-					to: `/${currentLocale.value}/faq`,
-					label: faq
-				},
-				{
-					to: `/${currentLocale.value}/contact`,
-					label: contact
-				},
-				{
-					to: `/${currentLocale.value}/settings`,
-					label: settings
-				}
-			]),
-			get ChevronDown() {
-				return ChevronDown;
-			},
-			LocaleSwitcher: LocaleSwitcher_default,
-			ThemeToggle: ThemeToggle_default
-		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
 var _hoisted_1 = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" };
@@ -1194,76 +1055,118 @@ var _hoisted_8 = {
 	class: "text-muted-foreground transition hover:text-foreground"
 };
 var _hoisted_9 = { class: "sr-only" };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_router_link = resolveComponent("router-link");
-	return openBlock(), createElementBlock("header", _hoisted_1, [createElementVNode("nav", _hoisted_2, [createElementVNode("div", _hoisted_3, [createVNode(_component_router_link, {
-		to: `/${$setup.currentLocale}`,
-		class: "text-lg font-bold tracking-tight text-primary no-underline"
-	}, {
-		default: withCtx(() => [createTextVNode(toDisplayString($setup.appName), 1)]),
-		_: 1
-	}, 8, ["to"]), createElementVNode("div", _hoisted_4, [
-		createVNode(_component_router_link, {
-			to: `/${$setup.currentLocale}`,
-			class: "nav-link",
-			"exact-active-class": "is-active"
-		}, {
-			default: withCtx(() => [createTextVNode(toDisplayString($setup.home), 1)]),
-			_: 1
-		}, 8, ["to"]),
-		createVNode(_component_router_link, {
-			to: `/${$setup.currentLocale}/about`,
-			class: "nav-link",
-			"active-class": "is-active"
-		}, {
-			default: withCtx(() => [createTextVNode(toDisplayString($setup.methodology), 1)]),
-			_: 1
-		}, 8, ["to"]),
-		createCommentVNode(" Mock Pages Dropdown "),
-		createElementVNode("div", _hoisted_5, [createElementVNode("button", {
-			type: "button",
-			class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-			onMouseenter: _cache[0] || (_cache[0] = ($event) => $setup.isMockPagesOpen = true),
-			onMouseleave: _cache[1] || (_cache[1] = ($event) => $setup.isMockPagesOpen = false),
-			onClick: _cache[2] || (_cache[2] = ($event) => $setup.isMockPagesOpen = !$setup.isMockPagesOpen)
-		}, [createTextVNode(toDisplayString($setup.mockPagesLabel) + " ", 1), createVNode($setup["ChevronDown"], {
-			size: 14,
-			class: normalizeClass(["transition-transform", $setup.isMockPagesOpen ? "rotate-180" : ""])
-		}, null, 8, ["class"])], 32), $setup.isMockPagesOpen ? (openBlock(), createElementBlock("div", {
-			key: 0,
-			class: "absolute left-0 top-full pt-2 w-48",
-			onMouseenter: _cache[4] || (_cache[4] = ($event) => $setup.isMockPagesOpen = true),
-			onMouseleave: _cache[5] || (_cache[5] = ($event) => $setup.isMockPagesOpen = false)
-		}, [createElementVNode("div", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.mockPagesList, (page) => {
-			return openBlock(), createBlock(_component_router_link, {
-				key: page.to,
-				to: page.to,
-				class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
-				onClick: _cache[3] || (_cache[3] = ($event) => $setup.isMockPagesOpen = false)
+var Header_default = defineComponent({
+	__name: "Header",
+	setup(__props) {
+		usePerformanceMeasure("Header");
+		const { h: home, i: methodology, j: mockPagesLabel, l: products, k: pricing, n: team, b: blog, c: careers, e: faq, d: contact, m: settings, a: appName, f: goToGithub } = b(header_default);
+		const isMockPagesOpen = ref(false);
+		const route = useRoute();
+		const currentLocale = computed(() => route.params.locale || "en");
+		const mockPagesList = computed(() => [
+			{
+				to: `/${currentLocale.value}/products`,
+				label: products
+			},
+			{
+				to: `/${currentLocale.value}/pricing`,
+				label: pricing
+			},
+			{
+				to: `/${currentLocale.value}/team`,
+				label: team
+			},
+			{
+				to: `/${currentLocale.value}/blog`,
+				label: blog
+			},
+			{
+				to: `/${currentLocale.value}/careers`,
+				label: careers
+			},
+			{
+				to: `/${currentLocale.value}/faq`,
+				label: faq
+			},
+			{
+				to: `/${currentLocale.value}/contact`,
+				label: contact
+			},
+			{
+				to: `/${currentLocale.value}/settings`,
+				label: settings
+			}
+		]);
+		return (_ctx, _cache) => {
+			const _component_router_link = resolveComponent("router-link");
+			return openBlock(), createElementBlock("header", _hoisted_1, [createElementVNode("nav", _hoisted_2, [createElementVNode("div", _hoisted_3, [createVNode(_component_router_link, {
+				to: `/${currentLocale.value}`,
+				class: "text-lg font-bold tracking-tight text-primary no-underline"
 			}, {
-				default: withCtx(() => [createTextVNode(toDisplayString(page.label), 1)]),
-				_: 2
-			}, 1032, ["to"]);
-		}), 128))])], 32)) : createCommentVNode("v-if", true)])
-	])]), createElementVNode("div", _hoisted_7, [
-		createElementVNode("a", _hoisted_8, [createElementVNode("span", _hoisted_9, toDisplayString($setup.goToGithub), 1), _cache[6] || (_cache[6] = createElementVNode("svg", {
-			viewBox: "0 0 16 16",
-			"aria-hidden": "true",
-			width: "20",
-			height: "20"
-		}, [createElementVNode("path", {
-			fill: "currentColor",
-			d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-		})], -1))]),
-		createVNode($setup["LocaleSwitcher"]),
-		createVNode($setup["ThemeToggle"])
-	])])]);
-}
-var Header_default = _plugin_vue_export_helper_default(Header_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/Header.vue"]]);
-var Layout_vue_vue_type_script_setup_true_lang_default = defineComponent({
+				default: withCtx(() => [createTextVNode(toDisplayString(unref(appName)), 1)]),
+				_: 1
+			}, 8, ["to"]), createElementVNode("div", _hoisted_4, [
+				createVNode(_component_router_link, {
+					to: `/${currentLocale.value}`,
+					class: "nav-link",
+					"exact-active-class": "is-active"
+				}, {
+					default: withCtx(() => [createTextVNode(toDisplayString(unref(home)), 1)]),
+					_: 1
+				}, 8, ["to"]),
+				createVNode(_component_router_link, {
+					to: `/${currentLocale.value}/about`,
+					class: "nav-link",
+					"active-class": "is-active"
+				}, {
+					default: withCtx(() => [createTextVNode(toDisplayString(unref(methodology)), 1)]),
+					_: 1
+				}, 8, ["to"]),
+				createCommentVNode(" Mock Pages Dropdown "),
+				createElementVNode("div", _hoisted_5, [createElementVNode("button", {
+					type: "button",
+					class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
+					onMouseenter: _cache[0] || (_cache[0] = ($event) => isMockPagesOpen.value = true),
+					onMouseleave: _cache[1] || (_cache[1] = ($event) => isMockPagesOpen.value = false),
+					onClick: _cache[2] || (_cache[2] = ($event) => isMockPagesOpen.value = !isMockPagesOpen.value)
+				}, [createTextVNode(toDisplayString(unref(mockPagesLabel)) + " ", 1), createVNode(unref(ChevronDown), {
+					size: 14,
+					class: normalizeClass(["transition-transform", isMockPagesOpen.value ? "rotate-180" : ""])
+				}, null, 8, ["class"])], 32), isMockPagesOpen.value ? (openBlock(), createElementBlock("div", {
+					key: 0,
+					class: "absolute left-0 top-full pt-2 w-48",
+					onMouseenter: _cache[4] || (_cache[4] = ($event) => isMockPagesOpen.value = true),
+					onMouseleave: _cache[5] || (_cache[5] = ($event) => isMockPagesOpen.value = false)
+				}, [createElementVNode("div", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList(mockPagesList.value, (page) => {
+					return openBlock(), createBlock(_component_router_link, {
+						key: page.to,
+						to: page.to,
+						class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
+						onClick: _cache[3] || (_cache[3] = ($event) => isMockPagesOpen.value = false)
+					}, {
+						default: withCtx(() => [createTextVNode(toDisplayString(page.label), 1)]),
+						_: 2
+					}, 1032, ["to"]);
+				}), 128))])], 32)) : createCommentVNode("v-if", true)])
+			])]), createElementVNode("div", _hoisted_7, [
+				createElementVNode("a", _hoisted_8, [createElementVNode("span", _hoisted_9, toDisplayString(unref(goToGithub)), 1), _cache[6] || (_cache[6] = createElementVNode("svg", {
+					viewBox: "0 0 16 16",
+					"aria-hidden": "true",
+					width: "20",
+					height: "20"
+				}, [createElementVNode("path", {
+					fill: "currentColor",
+					d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+				})], -1))]),
+				createVNode(LocaleSwitcher_default),
+				createVNode(ThemeToggle_default)
+			])])]);
+		};
+	}
+});
+var Layout_default = defineComponent({
 	__name: "Layout",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const route = useRoute();
 		const { setLocale } = a();
 		const renderStart = ref(0);
@@ -1280,27 +1183,14 @@ var Layout_vue_vue_type_script_setup_true_lang_default = defineComponent({
 				setLocale(newLocale);
 			}
 		}, { immediate: true });
-		const __returned__ = {
-			route,
-			setLocale,
-			renderStart,
-			Footer: Footer_default,
-			Header: Header_default
+		return (_ctx, _cache) => {
+			const _component_router_view = resolveComponent("router-view");
+			return openBlock(), createElementBlock(Fragment, null, [
+				createVNode(Header_default),
+				createVNode(_component_router_view),
+				createVNode(Footer_default)
+			], 64);
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_router_view = resolveComponent("router-view");
-	return openBlock(), createElementBlock(Fragment, null, [
-		createVNode($setup["Header"]),
-		createVNode(_component_router_view),
-		createVNode($setup["Footer"])
-	], 64);
-}
-var Layout_default = _plugin_vue_export_helper_default(Layout_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/Layout.vue"]]);
 export { Layout_default as default };

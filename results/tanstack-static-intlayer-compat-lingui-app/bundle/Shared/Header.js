@@ -1,166 +1,7 @@
-import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { createContext, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
-import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
-var header_default = {
-	key: "header",
-	content: {
-		"nodeType": "translation",
-		"translation": {
-			"en": {
-				"products": "Products",
-				"pricing": "Pricing",
-				"team": "Team",
-				"careers": "Careers",
-				"faq": "FAQ",
-				"contact": "Contact",
-				"settings": "Settings",
-				"i18nBench": "i18n Bench",
-				"home": "Home",
-				"methodology": "Methodology",
-				"mockPages": "Mock Pages",
-				"goToGithub": "Go to GitHub",
-				"blog": "Blog"
-			},
-			"fr": {
-				"products": "Produits",
-				"pricing": "Tarifs",
-				"team": "Équipe",
-				"careers": "Carrières",
-				"faq": "FAQ",
-				"contact": "Contact",
-				"settings": "Paramètres",
-				"i18nBench": "i18n Bench",
-				"home": "Accueil",
-				"methodology": "Méthodologie",
-				"mockPages": "Pages de test",
-				"goToGithub": "Aller sur GitHub",
-				"blog": "Blog"
-			},
-			"es": {
-				"products": "Productos",
-				"pricing": "Precios",
-				"team": "Equipo",
-				"careers": "Carreras",
-				"faq": "FAQ",
-				"contact": "Contacto",
-				"settings": "Ajustes",
-				"i18nBench": "i18n Bench",
-				"home": "Inicio",
-				"methodology": "Metodología",
-				"mockPages": "Páginas de prueba",
-				"goToGithub": "Ir a GitHub",
-				"blog": "Blog"
-			},
-			"de": {
-				"products": "Produkte",
-				"pricing": "Preise",
-				"team": "Team",
-				"careers": "Karriere",
-				"faq": "FAQ",
-				"contact": "Kontakt",
-				"settings": "Einstellungen",
-				"i18nBench": "i18n Bench",
-				"home": "Startseite",
-				"methodology": "Methodik",
-				"mockPages": "Testseiten",
-				"goToGithub": "Zu GitHub",
-				"blog": "Blog"
-			},
-			"it": {
-				"products": "Prodotti",
-				"pricing": "Prezzi",
-				"team": "Team",
-				"careers": "Carriere",
-				"faq": "FAQ",
-				"contact": "Contatti",
-				"settings": "Impostazioni",
-				"i18nBench": "i18n Bench",
-				"home": "Home",
-				"methodology": "Metodologia",
-				"mockPages": "Pagine di test",
-				"goToGithub": "Vai su GitHub",
-				"blog": "Blog"
-			},
-			"pt": {
-				"products": "Produtos",
-				"pricing": "Preços",
-				"team": "Equipe",
-				"careers": "Carreiras",
-				"faq": "FAQ",
-				"contact": "Contato",
-				"settings": "Configurações",
-				"i18nBench": "i18n Bench",
-				"home": "Início",
-				"methodology": "Metodologia",
-				"mockPages": "Páginas de teste",
-				"goToGithub": "Ir para GitHub",
-				"blog": "Blog"
-			},
-			"zh": {
-				"products": "产品",
-				"pricing": "价格",
-				"team": "团队",
-				"careers": "职业生涯",
-				"faq": "常见问题",
-				"contact": "联系我们",
-				"settings": "设置",
-				"i18nBench": "i18n Bench",
-				"home": "首页",
-				"methodology": "方法论",
-				"mockPages": "模拟页面",
-				"goToGithub": "访问 GitHub",
-				"blog": "博客"
-			},
-			"ja": {
-				"products": "製品",
-				"pricing": "料金",
-				"team": "チーム",
-				"careers": "採用情報",
-				"faq": "FAQ",
-				"contact": "お問い合わせ",
-				"settings": "設定",
-				"i18nBench": "i18n Bench",
-				"home": "ホーム",
-				"methodology": "方法論",
-				"mockPages": "モックページ",
-				"goToGithub": "GitHubへ",
-				"blog": "ブログ"
-			},
-			"ko": {
-				"products": "제품",
-				"pricing": "요금",
-				"team": "팀",
-				"careers": "채용",
-				"faq": "FAQ",
-				"contact": "문의하기",
-				"settings": "설정",
-				"i18nBench": "i18n Bench",
-				"home": "홈",
-				"methodology": "방법론",
-				"mockPages": "모의 페이지",
-				"goToGithub": "GitHub으로 이동",
-				"blog": "블로그"
-			},
-			"ru": {
-				"products": "Продукты",
-				"pricing": "Цены",
-				"team": "Команда",
-				"careers": "Карьера",
-				"faq": "FAQ",
-				"contact": "Контакт",
-				"settings": "Настройки",
-				"i18nBench": "i18n Bench",
-				"home": "Главная",
-				"methodology": "Методология",
-				"mockPages": "Тестовые страницы",
-				"goToGithub": "Перейти на GitHub",
-				"blog": "Блог"
-			}
-		}
-	}
-};
+import { jsx, jsxs } from "react/jsx-runtime";
 var EventEmitter = class {
 	_events = /* @__PURE__ */ new Map();
 	on(event, listener) {
@@ -657,6 +498,335 @@ var icuToIntlayerFormatter = (message) => {
 		}]
 	});
 };
+var parseI18Next = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{" && text[index + 1] === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index += 2;
+				nodes.push(parseStandardArgument());
+			} else if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseICUArgument());
+			} else if (char === "}") break;
+			else {
+				currentText += char;
+				index++;
+			}
+		}
+		if (currentText) nodes.push(currentText);
+		return nodes;
+	};
+	const parseStandardArgument = () => {
+		let name = "";
+		while (index < text.length) {
+			if (text[index] === "}" && text[index + 1] === "}") {
+				index += 2;
+				return {
+					type: "argument",
+					name: name.trim()
+				};
+			}
+			name += text[index];
+			index++;
+		}
+		throw new Error("Unclosed i18next variable");
+	};
+	const parseICUArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var i18nextNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = i18nextNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = i18nextNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = i18nextNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+	}
+	return nodes.map((node) => i18nextNodesToIntlayer([node]));
+};
+var i18nextToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return i18nextNodesToIntlayer(parseI18Next(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var i18nextToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "i18next",
+		keyPath: [],
+		plugins: [{
+			id: "i18next",
+			...i18nextToIntlayerPlugin
+		}]
+	});
+};
+var parseVueI18nPart = (text) => {
+	let index = 0;
+	const nodes = [];
+	let currentText = "";
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "{") {
+			if (currentText) {
+				nodes.push(currentText);
+				currentText = "";
+			}
+			index++;
+			let name = "";
+			while (index < text.length && text[index] !== "}") {
+				name += text[index];
+				index++;
+			}
+			if (index < text.length) index++;
+			nodes.push({
+				type: "argument",
+				name: name.trim()
+			});
+		} else {
+			currentText += char;
+			index++;
+		}
+	}
+	if (currentText) nodes.push(currentText);
+	return nodes;
+};
+var parseVueI18n = (text) => {
+	const parts = [];
+	let currentPart = "";
+	let index = 0;
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "\\" && index + 1 < text.length && text[index + 1] === "|") {
+			currentPart += "|";
+			index += 2;
+		} else if (char === "|") {
+			parts.push(currentPart.trim());
+			currentPart = "";
+			index++;
+		} else {
+			currentPart += char;
+			index++;
+		}
+	}
+	parts.push(currentPart.trim());
+	return parts.map(parseVueI18nPart);
+};
+var vueI18nPartToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") return nodes[0];
+	let str = "";
+	for (const node of nodes) if (typeof node === "string") str += node;
+	else str += `{{${node.name}}}`;
+	return insertion(str);
+};
+var vueI18nNodesToIntlayer = (parts) => {
+	if (parts.length === 1) return vueI18nPartToIntlayer(parts[0]);
+	const options = {};
+	const varName = "count";
+	if (parts.length === 2) return enumeration({
+		"1": vueI18nPartToIntlayer(parts[0]),
+		fallback: vueI18nPartToIntlayer(parts[1])
+	});
+	if (parts.length === 3) return enumeration({
+		"0": vueI18nPartToIntlayer(parts[0]),
+		"1": vueI18nPartToIntlayer(parts[1]),
+		fallback: vueI18nPartToIntlayer(parts[2])
+	});
+	parts.forEach((part, index) => {
+		if (index === parts.length - 1) options.fallback = vueI18nPartToIntlayer(part);
+		else options[index.toString()] = vueI18nPartToIntlayer(part);
+	});
+	options.__intlayer_vue_i18n_var = varName;
+	return enumeration(options);
+};
+var vueI18nToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("|")),
+	transform: (node) => {
+		try {
+			return vueI18nNodesToIntlayer(parseVueI18n(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var vueI18nToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "vue-i18n",
+		keyPath: [],
+		plugins: [{
+			id: "vue-i18n",
+			...vueI18nToIntlayerPlugin
+		}]
+	});
+};
 var findMatchingCondition = (enumerationContent, quantity) => {
 	const numericKeys = Object.keys(enumerationContent);
 	for (const key of numericKeys) {
@@ -890,24 +1060,18 @@ var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
 var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var resolveIcuMessage = createMessageResolver(icuToIntlayerFormatter);
-var splitMessageId = (id) => {
-	const dotPosition = id.indexOf(".");
-	if (dotPosition === -1) return {
-		dictionaryKey: id,
-		remainder: ""
-	};
-	return {
-		dictionaryKey: id.slice(0, dotPosition),
-		remainder: id.slice(dotPosition + 1)
-	};
+var DIALECT_FORMATTERS = {
+	icu: icuToIntlayerFormatter,
+	i18next: i18nextToIntlayerFormatter,
+	"vue-i18n": vueI18nToIntlayerFormatter
 };
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var I18nClass = class extends EventEmitter {
 	_locale;
 	_locales;
 	_catalogs = {};
 	_loadFallbackWarned = false;
-	_boundDictionaries = {};
+	_dictionaryContent;
 	_registry;
 	constructor({ locale = "en", locales, messages, registry } = {}) {
 		super();
@@ -924,7 +1088,7 @@ var I18nClass = class extends EventEmitter {
 	}
 	get messages() {
 		const dictionary = { ...this._registry?.all(this._locale) };
-		for (const content of Object.values(this._boundDictionaries)) Object.assign(dictionary, unwrapLinguiCatalog(content));
+		if (this._dictionaryContent !== void 0) Object.assign(dictionary, unwrapLinguiCatalog(this._dictionaryContent));
 		return {
 			...this._catalogs[this._locale] ?? {},
 			...dictionary
@@ -955,8 +1119,8 @@ var I18nClass = class extends EventEmitter {
 		if (messages) this.mergeLocaleCatalog(locale, messages);
 		this.activate(locale, locales);
 	}
-	bindDictionaries(dictionaries) {
-		this._boundDictionaries = dictionaries;
+	bindDictionaryContent(content) {
+		this._dictionaryContent = content;
 		return this;
 	}
 	activate(locale, locales) {
@@ -964,52 +1128,28 @@ var I18nClass = class extends EventEmitter {
 		this._locales = locales;
 		this.emit("change");
 	}
-	lookupBoundDictionaries(id) {
-		const { dictionaryKey, remainder } = splitMessageId(id);
-		const prefixed = this._boundDictionaries[dictionaryKey];
-		if (prefixed !== void 0) {
-			const value = navigateLinguiCatalog(prefixed, remainder);
-			if (value !== void 0) return value;
-		}
-		for (const content of Object.values(this._boundDictionaries)) {
-			const value = navigateLinguiCatalog(content, id);
-			if (value !== void 0) return value;
-		}
-	}
 	resolveTemplate(id) {
-		const boundNode = this.lookupBoundDictionaries(id);
-		if (boundNode !== void 0) return {
-			kind: "node",
-			node: boundNode
-		};
-		const registryNode = this._registry?.lookup(id, this._locale);
-		if (registryNode !== void 0) return {
-			kind: "node",
-			node: registryNode
-		};
+		if (this._dictionaryContent !== void 0) {
+			const boundValue = navigateLinguiCatalog(this._dictionaryContent, id);
+			if (boundValue !== void 0) return linguiMessageToIcu(boundValue);
+		}
+		const fromDictionary = this._registry?.lookup(id, this._locale);
+		if (fromDictionary !== void 0) return fromDictionary;
 		const catalog = this._catalogs[this._locale];
 		if (catalog) {
 			const raw = navigateLinguiCatalog(catalog, id);
-			if (raw !== void 0) return {
-				kind: "icu",
-				message: linguiMessageToIcu(raw)
-			};
+			if (raw !== void 0) return linguiMessageToIcu(raw);
 		}
 	}
 	_(descriptorOrId, values, options) {
 		const isDescriptor = typeof descriptorOrId === "object" && descriptorOrId !== null;
 		const id = isDescriptor ? descriptorOrId.id : descriptorOrId;
 		const defaultMessage = isDescriptor ? descriptorOrId.message ?? options?.message : options?.message;
-		const messageValues = isDescriptor ? {
+		const resolvedValues = isDescriptor ? {
 			...descriptorOrId.values ?? {},
 			...values ?? {}
 		} : values ?? {};
-		const locale = this._locale;
-		const template = this.resolveTemplate(id) ?? {
-			kind: "icu",
-			message: defaultMessage ?? id
-		};
-		return (template.kind === "node" ? resolveMessageNodeToString(template.node, messageValues, locale) : resolveIcuMessage(template.message, messageValues, locale)) ?? id;
+		return resolveMessage(this.resolveTemplate(id) ?? defaultMessage ?? id, resolvedValues, this._locale, "icu") ?? id;
 	}
 	t = (descriptorOrId, values, options) => this._(descriptorOrId, values, options);
 	date(value, format) {
@@ -1187,7 +1327,7 @@ var getIntlayer = (key, localeOrSelector, plugins) => {
 		}
 		return createSafeFallback(key);
 	}
-	return getDictionary$1(dictionary, localeOrSelector, plugins);
+	return getDictionary(dictionary, localeOrSelector, plugins);
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -1293,9 +1433,8 @@ var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRA
 	}
 };
 var enumerationPlugin = fallbackPlugin;
-var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
-var insertionPlugin$1 = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
 	transform: (node, props, deepTransformNode) => {
@@ -1337,7 +1476,7 @@ var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
 	conditionPlugin,
-	insertionPlugin$1,
+	insertionPlugin,
 	nestedPlugin(locale ?? internationalization.defaultLocale),
 	filePlugin,
 	genderPlugin,
@@ -1347,7 +1486,7 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
+var getDictionary = (dictionary, localeOrSelector, plugins) => {
 	const { locale, selector } = parseDictionarySelector(localeOrSelector);
 	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
 	const cached = readTransformCache(dictionary, cacheKey);
@@ -1368,26 +1507,6 @@ var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
-var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
-var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
-var splitInsertionTemplate = (template, values = {}) => {
-	if (!Object.values(values).some(isComplexValue)) return {
-		isSimple: true,
-		parts: template.replace(insertionRegex, (_, key) => (values[key.trim()] ?? "").toString())
-	};
-	const chunks = template.split(insertionRegex);
-	const parts = [];
-	for (let i = 0; i < chunks.length; i++) if (i % 2 === 0) {
-		if (chunks[i]) parts.push(chunks[i]);
-	} else {
-		const val = values[chunks[i].trim()];
-		if (val != null) parts.push(val);
-	}
-	return {
-		isSimple: false,
-		parts
-	};
-};
 var getDictionaryKeys = () => {
 	try {
 		return Object.keys(getDictionaries());
@@ -1396,23 +1515,15 @@ var getDictionaryKeys = () => {
 	}
 };
 var lookupDictionaryMessage = (id, locale) => {
-	const dictionaryKeys = getDictionaryKeys();
-	const dotPosition = id.indexOf(".");
-	const prefix = dotPosition === -1 ? id : id.slice(0, dotPosition);
-	const readDictionary = (key) => {
+	for (const key of getDictionaryKeys()) {
+		let dictionary;
 		try {
-			return getIntlayer(key, locale);
+			dictionary = getIntlayer(key, locale);
 		} catch {
-			return;
+			continue;
 		}
-	};
-	if (dictionaryKeys.includes(prefix)) {
-		const value = navigateLinguiCatalog(readDictionary(prefix), dotPosition === -1 ? "" : id.slice(dotPosition + 1));
-		if (value !== void 0) return value;
-	}
-	for (const key of dictionaryKeys) {
-		const value = navigateLinguiCatalog(readDictionary(key), id);
-		if (value !== void 0) return value;
+		const value = navigateLinguiCatalog(dictionary, id);
+		if (value !== void 0) return linguiMessageToIcu(value);
 	}
 };
 var collectRegistryMessages = (locale) => {
@@ -1426,108 +1537,6 @@ var createRegistryResolver = () => ({
 	lookup: lookupDictionaryMessage,
 	all: collectRegistryMessages
 });
-var renderIntlayerNode = ({ children, value, additionalProps }) => {
-	const element = isValidElement(children) ? children : jsx(Fragment$1, { children });
-	return new Proxy(element, { get(target, prop, receiver) {
-		if (prop === "value") return value;
-		if (prop === Symbol.toPrimitive) return () => value ?? "";
-		if (prop === "toString") return () => String(value ?? "");
-		if (prop === "valueOf") return () => value;
-		if (additionalProps && Object.hasOwn(additionalProps, prop)) return additionalProps[prop];
-		if (value !== null && value !== void 0 && typeof prop === "string" && prop !== "constructor" && !(prop in target)) {
-			const valObj = Object(value);
-			if (prop in valObj) {
-				const valProp = valObj[prop];
-				return typeof valProp === "function" ? valProp.bind(value) : valProp;
-			}
-		}
-		return Reflect.get(target, prop, receiver);
-	} });
-};
-var intlayerNodePlugins = {
-	id: "intlayer-node-plugin",
-	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
-	transform: (_node, { plugins, ...rest }) => {
-		return renderIntlayerNode({
-			...rest,
-			value: rest.children,
-			children: rest.children
-		});
-	}
-};
-var reactNodePlugins = fallbackPlugin;
-var splitAndJoinInsertion = (template, values) => {
-	const result = splitInsertionTemplate(template, values);
-	if (result.isSimple) return result.parts;
-	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
-};
-var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
-	id: "insertion-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
-	transform: (node, props, deepTransformNode) => {
-		const newKeyPath = [...props.keyPath, { type: INSERTION }];
-		const children = node[INSERTION];
-		const insertionStringPlugin = {
-			id: "insertion-string-plugin",
-			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
-			transform: (node, subProps, deepTransformNode) => {
-				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
-				const transformedResult = deepTransformNode(node, {
-					...subProps,
-					children: node,
-					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-				});
-				return (values) => {
-					const result = splitAndJoinInsertion(transformedResult, values);
-					return deepTransformNode(result, {
-						...subProps,
-						plugins: props.plugins,
-						children: result
-					});
-				};
-			}
-		};
-		const result = deepTransformNode(children, {
-			...props,
-			children,
-			keyPath: newKeyPath,
-			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
-		if (typeof children === "object" && children !== null && "nodeType" in children && ["enumeration", "condition"].includes(children.nodeType)) return (values) => (arg) => {
-			const inner = result(arg);
-			if (typeof inner === "function") return inner(values);
-			return inner;
-		};
-		return result;
-	}
-};
-var markdownPlugin = fallbackPlugin;
-var htmlPlugin = fallbackPlugin;
-var pluginsCache = /* @__PURE__ */ new Map();
-var getPlugins = (locale, fallback = true) => {
-	const cacheKey = `${locale ?? internationalization.defaultLocale}_${fallback}`;
-	if (pluginsCache.has(cacheKey)) return pluginsCache.get(cacheKey);
-	const plugins = [
-		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-		enumerationPlugin,
-		pluralPlugin(locale ?? internationalization.defaultLocale),
-		conditionPlugin,
-		nestedPlugin(locale ?? internationalization.defaultLocale),
-		filePlugin,
-		genderPlugin,
-		selectPlugin,
-		intlayerNodePlugins,
-		reactNodePlugins,
-		insertionPlugin,
-		markdownPlugin,
-		htmlPlugin
-	];
-	pluginsCache.set(cacheKey, plugins);
-	return plugins;
-};
-var getDictionary = (dictionary, localeOrSelector) => {
-	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
-};
 var resolveExpiresToTimestamp = (expires) => {
 	if (typeof expires === "number") return Date.now() + expires * 1e3;
 	if (typeof expires === "string") {
@@ -1707,6 +1716,22 @@ var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 		])
 	};
 };
+var useLingui = () => {
+	const context = useContext(LinguiContext);
+	const { locale } = useLocale();
+	const derivedI18n = useMemo(() => {
+		const instance = new I18nClass({
+			locale,
+			registry: createRegistryResolver()
+		});
+		return {
+			i18n: instance,
+			_: instance._.bind(instance)
+		};
+	}, [locale]);
+	if (context) return context;
+	return derivedI18n;
+};
 var I18nProvider = ({ i18n, defaultComponent, children }) => {
 	const buildContext = (instance) => ({
 		i18n: instance,
@@ -1731,112 +1756,11 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		})
 	});
 };
-var createBoundLinguiContext = (locale, dictionaries) => {
-	const instance = new I18nClass({ locale }).bindDictionaries(dictionaries);
-	return {
-		i18n: instance,
-		_: instance._.bind(instance)
-	};
-};
-var useDictionary = (...dictionaries) => {
-	const { locale } = useLocale();
-	const dictionaryKeysIdentity = dictionaries.map((dictionary) => dictionary.key).join("\0");
-	return useMemo(() => createBoundLinguiContext(locale, Object.fromEntries(dictionaries.map((dictionary) => [dictionary.key, getDictionary(dictionary, locale)]))), [locale, dictionaryKeysIdentity]);
-};
 var setupI18n = (params) => new I18nClass({
 	...params,
 	registry: createRegistryResolver()
 });
 setupI18n({ locale: "en" });
-var theme_toggle_default = {
-	key: "theme-toggle",
-	content: {
-		"nodeType": "translation",
-		"translation": {
-			"en": {
-				"themeModeAutoSystemClick": "Theme mode: auto (system). Click to switch to light mode.",
-				"themeModeLightClick": "Theme mode: light. Click to switch to dark mode.",
-				"themeModeDarkClick": "Theme mode: dark. Click to switch to auto (system) mode.",
-				"themeAuto": "Theme: Auto",
-				"themeDark": "Theme: Dark",
-				"themeLight": "Theme: Light"
-			},
-			"fr": {
-				"themeModeAutoSystemClick": "Mode thématique : auto (système). Cliquez pour passer en mode clair.",
-				"themeModeLightClick": "Mode thématique : clair. Cliquez pour passer en mode sombre.",
-				"themeModeDarkClick": "Mode thématique : sombre. Cliquez pour passer en mode auto (système).",
-				"themeAuto": "Thème : Auto",
-				"themeDark": "Thème : Sombre",
-				"themeLight": "Thème : Clair"
-			},
-			"es": {
-				"themeModeAutoSystemClick": "Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.",
-				"themeModeLightClick": "Modo de tema: claro. Haz clic para cambiar al modo oscuro.",
-				"themeModeDarkClick": "Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).",
-				"themeAuto": "Tema: Auto",
-				"themeDark": "Tema: Oscuro",
-				"themeLight": "Tema: Claro"
-			},
-			"de": {
-				"themeModeAutoSystemClick": "Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.",
-				"themeModeLightClick": "Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.",
-				"themeModeDarkClick": "Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.",
-				"themeAuto": "Thema: Auto",
-				"themeDark": "Thema: Dunkel",
-				"themeLight": "Thema: Hell"
-			},
-			"it": {
-				"themeModeAutoSystemClick": "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.",
-				"themeModeLightClick": "Modalità tema: chiara. Clicca per passare alla modalità scura.",
-				"themeModeDarkClick": "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).",
-				"themeAuto": "Tema: Auto",
-				"themeDark": "Tema: Scuro",
-				"themeLight": "Tema: Chiaro"
-			},
-			"pt": {
-				"themeModeAutoSystemClick": "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-				"themeModeLightClick": "Modo de tema: claro. Clique para mudar para o modo escuro.",
-				"themeModeDarkClick": "Modo de tema: escuro. Clique para mudar para o modo automático (sistema).",
-				"themeAuto": "Tema: Auto",
-				"themeDark": "Tema: Escuro",
-				"themeLight": "Tema: Claro"
-			},
-			"zh": {
-				"themeModeAutoSystemClick": "主题模式：自动（系统）。点击切换到明亮模式。",
-				"themeModeLightClick": "主题模式：明亮。点击切换到暗黑模式。",
-				"themeModeDarkClick": "主题模式：暗黑。点击切换到自动（系统）模式。",
-				"themeAuto": "主题：自动",
-				"themeDark": "主题：暗黑",
-				"themeLight": "主题：明亮"
-			},
-			"ja": {
-				"themeModeAutoSystemClick": "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-				"themeModeLightClick": "テーマモード：ライト。クリックしてダークモードに切り替えます。",
-				"themeModeDarkClick": "テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。",
-				"themeAuto": "テーマ：自動",
-				"themeDark": "テーマ：ダーク",
-				"themeLight": "テーマ：ライト"
-			},
-			"ko": {
-				"themeModeAutoSystemClick": "테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.",
-				"themeModeLightClick": "테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.",
-				"themeModeDarkClick": "테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.",
-				"themeAuto": "테마: 자동",
-				"themeDark": "테마: 다크",
-				"themeLight": "테마: 라이트"
-			},
-			"ru": {
-				"themeModeAutoSystemClick": "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.",
-				"themeModeLightClick": "Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.",
-				"themeModeDarkClick": "Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.",
-				"themeAuto": "Тема: Авто",
-				"themeDark": "Тема: Темная",
-				"themeLight": "Тема: Светлая"
-			}
-		}
-	}
-};
-var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/ThemeToggle.tsx";
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -1853,7 +1777,7 @@ function applyThemeMode(mode) {
 	document.documentElement.style.colorScheme = resolved;
 }
 function ThemeToggle() {
-	const { i18n } = useDictionary(theme_toggle_default);
+	const { i18n } = useLingui();
 	const [mode, setMode] = useState("auto");
 	useEffect(() => {
 		const initialMode = getInitialMode();
@@ -1876,18 +1800,14 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? i18n._("theme-toggle.themeModeAutoSystemClick") : mode === "light" ? i18n._("theme-toggle.themeModeLightClick") : i18n._("theme-toggle.themeModeDarkClick");
-	return jsxDEV("button", {
+	return jsx("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: mode === "auto" ? i18n._("theme-toggle.themeAuto") : mode === "dark" ? i18n._("theme-toggle.themeDark") : i18n._("theme-toggle.themeLight")
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 76,
-		columnNumber: 5
-	}, this);
+	});
 }
 var locales = [
 	"en",
@@ -1914,7 +1834,6 @@ function initLingui(locale, _messages) {
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams({ strict: false }).locale ?? "en";
 	const navigate = useNavigate();
@@ -1924,30 +1843,18 @@ function LocaleSwitcher() {
 			locale: newLocale
 		}) });
 	};
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "flex items-center gap-2",
-		children: jsxDEV("select", {
+		children: jsx("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((loc) => jsxDEV("option", {
+			children: locales.map((loc) => jsx("option", {
 				value: loc,
 				children: getLocaleName(loc)
-			}, loc, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 23,
-				columnNumber: 11
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 17,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 16,
-		columnNumber: 5
-	}, this);
+			}, loc))
+		})
+	});
 }
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
@@ -1960,9 +1867,8 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/Header.tsx";
 function Header() {
-	const { i18n } = useDictionary(header_default);
+	const { i18n } = useLingui();
 	usePerformanceMeasure("Header");
 	const [isMockPagesOpen, setIsMockPagesOpen] = useState(false);
 	const currentLocale = useParams({ strict: false }).locale ?? "en";
@@ -2000,26 +1906,22 @@ function Header() {
 			label: i18n._("header.settings")
 		}
 	];
-	return jsxDEV("header", {
+	return jsx("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: jsxDEV("nav", {
+		children: jsxs("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [jsxDEV("div", {
+			children: [jsxs("div", {
 				className: "flex items-center gap-8",
-				children: [jsxDEV(Link, {
+				children: [jsx(Link, {
 					preload: false,
 					to: "/$locale",
 					params: { locale: currentLocale },
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: i18n._("header.i18nBench")
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 33,
-					columnNumber: 11
-				}, this), jsxDEV("div", {
+				}), jsxs("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						jsxDEV(Link, {
+						jsx(Link, {
 							preload: false,
 							to: "/$locale",
 							params: { locale: currentLocale },
@@ -2027,173 +1929,83 @@ function Header() {
 							activeProps: { className: "is-active" },
 							className: "nav-link",
 							children: i18n._("header.home")
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 43,
-							columnNumber: 13
-						}, this),
-						jsxDEV(Link, {
+						}),
+						jsx(Link, {
 							preload: false,
 							to: "/$locale/about",
 							params: { locale: currentLocale },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
 							children: i18n._("header.methodology")
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 53,
-							columnNumber: 13
-						}, this),
-						jsxDEV("div", {
+						}),
+						jsxs("div", {
 							className: "relative",
-							children: [jsxDEV("button", {
+							children: [jsxs("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [i18n._("header.mockPages"), jsxDEV(ChevronDown, {
+								children: [i18n._("header.mockPages"), jsx(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
-								}, void 0, false, {
-									fileName: _jsxFileName$2,
-									lineNumber: 73,
-									columnNumber: 17
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$2,
-								lineNumber: 65,
-								columnNumber: 15
-							}, this), isMockPagesOpen && jsxDEV("div", {
+								})]
+							}), isMockPagesOpen && jsx("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: jsxDEV("div", {
+								children: jsx("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => jsxDEV(Link, {
+									children: mockPages.map((page) => jsx(Link, {
 										preload: false,
 										to: page.to,
 										params: { locale: currentLocale },
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => setIsMockPagesOpen(false),
 										children: page.label
-									}, page.to, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 87,
-										columnNumber: 23
-									}, this))
-								}, void 0, false, {
-									fileName: _jsxFileName$2,
-									lineNumber: 85,
-									columnNumber: 19
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 80,
-								columnNumber: 17
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$2,
-							lineNumber: 64,
-							columnNumber: 13
-						}, this)
+									}, page.to))
+								})
+							})]
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 42,
-					columnNumber: 11
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 32,
-				columnNumber: 9
-			}, this), jsxDEV("div", {
+				})]
+			}), jsxs("div", {
 				className: "flex items-center gap-4",
 				children: [
-					jsxDEV("a", {
+					jsxs("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [jsxDEV("span", {
+						children: [jsx("span", {
 							className: "sr-only",
 							children: i18n._("header.goToGithub")
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 112,
-							columnNumber: 13
-						}, this), jsxDEV("svg", {
+						}), jsx("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: jsxDEV("path", {
+							children: jsx("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 114,
-								columnNumber: 15
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 113,
-							columnNumber: 13
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 106,
-						columnNumber: 11
-					}, this),
-					jsxDEV(LocaleSwitcher, {}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 120,
-						columnNumber: 11
-					}, this),
-					jsxDEV(ThemeToggle, {}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 121,
-						columnNumber: 11
-					}, this)
+							})
+						})]
+					}),
+					jsx(LocaleSwitcher, {}),
+					jsx(ThemeToggle, {})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 105,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 31,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 30,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const i18n = useMemo(() => initLingui("en"), []);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/Header.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Header, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Header, {}) });
 }
 export { Wrapped as default };

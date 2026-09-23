@@ -1,20 +1,11 @@
 import "react";
 import { useParams as e } from "@tanstack/react-router";
-import { Fragment as t, jsxDEV as n } from "react/jsx-dev-runtime";
-var r = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/wuchale-app/scripts/EmptyComponent.tsx";
-function i() {
-	return e({ strict: !1 }).locale, n(t, {}, void 0, !1, {
-		fileName: r,
-		lineNumber: 10,
-		columnNumber: 10
-	}, this);
+import { Fragment as t, jsx as n } from "react/jsx-runtime";
+function r() {
+	return e({ strict: !1 }).locale, n(t, {});
 }
-var a = () => "";
-a = (e, t) => {
-	let n = t[e];
-	return n == null ? `[i18n-404:${e}]` : `[i18n-400:${e}(${n})]`;
-};
-function o(e, t = [], n = 1) {
+var i = () => "";
+function a(e, t = [], n = 1) {
 	let r = "";
 	for (let i = n; i < e.length; i++) {
 		let n = e[i];
@@ -22,12 +13,12 @@ function o(e, t = [], n = 1) {
 	}
 	return r;
 }
-function s(e = { c: [] }, t = "") {
+function o(e = { c: [] }, t = "") {
 	let n = (t) => {
 		let n = e.c[t];
-		return typeof n == "string" ? [n] : Array.isArray(n) ? n : [a(t, e.c)];
-	}, r = (e, t = []) => o(n(e), t, 0);
-	return r._ = e, r.l = t, r.c = n, r.x = o, r.t = (e, t, r) => {
+		return typeof n == "string" ? [n] : Array.isArray(n) ? n : [i(t, e.c)];
+	}, r = (e, t = []) => a(n(e), t, 0);
+	return r._ = e, r.l = t, r.c = n, r.x = a, r.t = (e, t, r) => {
 		let i = [""], a = [];
 		for (let e of n(t)) {
 			if (typeof e == "string") {
@@ -37,9 +28,9 @@ function s(e = { c: [] }, t = "") {
 			a.push(r?.[e]), i.push("");
 		}
 		return e(Object.assign(i, { raw: i }), ...a);
-	}, r.p = (t, n) => e.c[t]?.map((e) => typeof e == "string" ? e : o(e, n, 0)) ?? [], r;
+	}, r.p = (t, n) => e.c[t]?.map((e) => typeof e == "string" ? e : a(e, n, 0)) ?? [], r;
 }
-function c(e) {
+function s(e) {
 	return {
 		get: (t) => e[t],
 		set: (t, n) => {
@@ -47,29 +38,29 @@ function c(e) {
 		}
 	};
 }
-var l = {}, u = s();
-function d(e, t, n, r) {
-	l[e] = {
+var c = {}, l = o();
+function u(e, t, n, r) {
+	c[e] = {
 		load: t,
 		catalogs: Array(n).fill(void 0),
-		collection: r ?? c([])
+		collection: r ?? s([])
 	};
-	for (let t = 0; t < n; t++) l[e].collection.set(t, u);
-	return (t = 0) => l[e].collection.get(t);
+	for (let t = 0; t < n; t++) c[e].collection.set(t, l);
+	return (t = 0) => c[e].collection.get(t);
 }
-function f(e) {
-	for (let t of Object.values(l)) for (let [n, r] of t.catalogs.entries()) t.collection.set(n, s(r, e));
+function d(e) {
+	for (let t of Object.values(c)) for (let [n, r] of t.catalogs.entries()) t.collection.set(n, o(r, e));
 }
-async function p(e, t = !0) {
+async function f(e, t = !0) {
 	let n = [], r = [];
-	for (let t of Object.values(l)) for (let i = 0; i < t.catalogs.length; i++) n.push(t.load(i, e)), r.push([i, t]);
+	for (let t of Object.values(c)) for (let i = 0; i < t.catalogs.length; i++) n.push(t.load(i, e)), r.push([i, t]);
 	for (let [e, t] of (await Promise.all(n)).entries()) {
 		let [n, i] = r[e];
 		i.catalogs[n] = t;
 	}
-	t && f(e);
+	t && d(e);
 }
-var m = {
+var p = {
 	en: [() => import("./main.0.en.compiled-UUOtz8Ot.js")],
 	es: [() => import("./main.0.es.compiled-CtzZal3r.js")],
 	fr: [() => import("./main.0.fr.compiled-D4-jSgHf.js")],
@@ -80,37 +71,22 @@ var m = {
 	ja: [() => import("./main.0.ja.compiled-BOm_oesj.js")],
 	ko: [() => import("./main.0.ko.compiled-BnH3SNN1.js")],
 	ru: [() => import("./main.0.ru.compiled-Cog3DpFV.js")]
-}, h = (e, t) => m[t][e](), g = "main", _ = [], v = [];
-d(g, h, 1, {
-	get: (e = 0) => v[e],
+}, m = (e, t) => p[t][e](), h = "main", g = [], _ = [];
+u(h, m, 1, {
+	get: (e = 0) => _[e],
 	set: (e, t) => {
-		v[e] = t, _[e]?.forEach((e) => {
+		_[e] = t, g[e]?.forEach((e) => {
 			e(t);
 		});
 	}
-});
-var y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/wuchale-app/scripts/Wrapper.tsx";
-p("en");
-function b({ children: e }) {
-	return n(t, { children: e }, void 0, !1, {
-		fileName: y,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+}), f("en");
+function v({ children: e }) {
+	return n(t, { children: e });
 }
-var x = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/wuchale-app/scripts/EmptyComponent.wrapper.tsx";
-function S() {
-	return n(b, { children: n(i, {}, void 0, !1, {
-		fileName: x,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: x,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function y() {
+	return n(v, { children: n(r, {}) });
 }
-export { S as default };
+export { y as default };
 var e = [
 	"GitHub",
 	"Methodik",

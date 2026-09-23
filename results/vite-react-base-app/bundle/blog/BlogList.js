@@ -1,7 +1,6 @@
-import { jsxDEV } from "react/jsx-dev-runtime";
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-react-base-app/src/components/pages/blog/BlogList.tsx";
+import { jsx, jsxs } from "react/jsx-runtime";
 function BlogList() {
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-2",
 		children: [
 			{
@@ -40,66 +39,34 @@ function BlogList() {
 				excerpt: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
 				category: "Meta"
 			}
-		].map((p) => jsxDEV("article", {
+		].map((p) => jsxs("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				jsxDEV("div", {
+				jsxs("div", {
 					className: "mb-3 flex items-center gap-3",
-					children: [jsxDEV("span", {
+					children: [jsx("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: p.category
-					}, void 0, false, {
-						fileName: _jsxFileName,
-						lineNumber: 55,
-						columnNumber: 13
-					}, this), jsxDEV("span", {
+					}), jsx("span", {
 						className: "text-xs text-muted-foreground",
 						children: p.date
-					}, void 0, false, {
-						fileName: _jsxFileName,
-						lineNumber: 58,
-						columnNumber: 13
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName,
-					lineNumber: 54,
-					columnNumber: 11
-				}, this),
-				jsxDEV("h2", {
+					})]
+				}),
+				jsx("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: p.title
-				}, void 0, false, {
-					fileName: _jsxFileName,
-					lineNumber: 60,
-					columnNumber: 11
-				}, this),
-				jsxDEV("p", {
+				}),
+				jsx("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: p.excerpt
-				}, void 0, false, {
-					fileName: _jsxFileName,
-					lineNumber: 63,
-					columnNumber: 11
-				}, this),
-				jsxDEV("button", {
+				}),
+				jsx("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
 					children: "Read More →"
-				}, void 0, false, {
-					fileName: _jsxFileName,
-					lineNumber: 64,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, p.title, true, {
-			fileName: _jsxFileName,
-			lineNumber: 50,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 48,
-		columnNumber: 5
-	}, this);
+		}, p.title))
+	});
 }
 export { BlogList as default };

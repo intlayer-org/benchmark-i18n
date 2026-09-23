@@ -1,6 +1,6 @@
 import { createContext, createElement, useMemo } from "react";
 import { useNavigate, useParams } from "@tanstack/react-router";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx } from "react/jsx-runtime";
 var locales = [
 	"en",
 	"fr",
@@ -21,7 +21,6 @@ function getLocaleName(locale) {
 		return locale.toUpperCase();
 	}
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/src/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams({ strict: false }).locale ?? "en";
 	const navigate = useNavigate();
@@ -34,30 +33,18 @@ function LocaleSwitcher() {
 			})
 		});
 	};
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "flex items-center gap-2",
-		children: jsxDEV("select", {
+		children: jsx("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((localeEl) => jsxDEV("option", {
+			children: locales.map((localeEl) => jsx("option", {
 				value: localeEl,
 				children: getLocaleName(localeEl)
-			}, localeEl, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 24,
-				columnNumber: 11
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 18,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 17,
-		columnNumber: 5
-	}, this);
+			}, localeEl))
+		})
+	});
 }
 var isString = (obj) => typeof obj === "string";
 var defer = () => {
@@ -2339,28 +2326,14 @@ function createI18n(locale = "en") {
 	return instance$1;
 }
 var defaultI18n = createI18n();
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(I18nextProvider, {
+	return jsx(I18nextProvider, {
 		i18n: defaultI18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 7,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/src/components/LocaleSwitcher.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(LocaleSwitcher, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(LocaleSwitcher, {}) });
 }
 export { Wrapped as default };
 var about_default = {

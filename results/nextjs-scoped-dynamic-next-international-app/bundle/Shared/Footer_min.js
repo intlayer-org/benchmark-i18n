@@ -1,46 +1,29 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
 import r from "next/link";
 import { useParams as i } from "next/navigation";
-import { jsxDEV as a } from "react/jsx-dev-runtime";
-var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), s = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsx as a, jsxs as o } from "react/jsx-runtime";
+var s = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), c = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), c = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/Link.tsx", l = (e) => /^https?:\/\//.test(e ?? "");
+}), l = (e) => /^https?:\/\//.test(e ?? "");
 function u(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
 var d = ({ href: e, children: t, ...n }) => {
 	let o = i().locale ?? "en";
-	return e == null || typeof e != "string" ? a(r, {
+	return e == null || typeof e != "string" || l(e) ? a(r, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: c,
-		lineNumber: 23,
-		columnNumber: 7
-	}, void 0) : l(e) ? a(r, {
-		href: e,
-		prefetch: !1,
-		...n,
-		children: t
-	}, void 0, !1, {
-		fileName: c,
-		lineNumber: 30,
-		columnNumber: 7
-	}, void 0) : a(r, {
+	}) : a(r, {
 		href: u(e, o),
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: c,
-		lineNumber: 36,
-		columnNumber: 5
-	}, void 0);
-}, f = o((() => {})), p = (0, o(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, c = Object.getPrototypeOf, l = Object.prototype.hasOwnProperty, u = Object.prototype.propertyIsEnumerable, d = (e, t, n) => t in e ? r(e, t, {
+	});
+}, f = s((() => {})), p = (0, s(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, s = Object.getPrototypeOf, l = Object.prototype.hasOwnProperty, u = Object.prototype.propertyIsEnumerable, d = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
@@ -60,12 +43,12 @@ var d = ({ href: e, children: t, ...n }) => {
 			enumerable: !(o = i(t, s)) || o.enumerable
 		});
 		return e;
-	}, g = (e, t, i) => (i = e == null ? {} : n(c(e)), h(t || !e || !e.__esModule ? r(i, "default", {
+	}, g = (e, t, i) => (i = e == null ? {} : n(s(e)), h(t || !e || !e.__esModule ? r(i, "default", {
 		value: e,
 		enumerable: !0
 	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
 	m(v, { createI18nClient: () => V }), t.exports = _(v), f();
-	var y = s("next/navigation"), b = g(s("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	var y = c("next/navigation"), b = g(c("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -89,7 +72,7 @@ var d = ({ href: e, children: t, ...n }) => {
 			}, i));
 		};
 	}
-	var D = s("react"), O = s("react"), k = s("react");
+	var D = c("react"), O = c("react"), k = c("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -123,7 +106,7 @@ var d = ({ href: e, children: t, ...n }) => {
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = s("react");
+	var M = c("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -131,7 +114,7 @@ var d = ({ href: e, children: t, ...n }) => {
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = s("next/navigation");
+	var P = c("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -153,7 +136,7 @@ var d = ({ href: e, children: t, ...n }) => {
 			return e;
 		};
 	}
-	var L = s("next/navigation"), R = s("react"), z = "locale";
+	var L = c("next/navigation"), R = c("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -187,8 +170,8 @@ var d = ({ href: e, children: t, ...n }) => {
 	ja: () => import("./ja-B1S-GRLK.js"),
 	ko: () => import("./ko-C6DeYIDJ.js"),
 	ru: () => import("./ru-GMiu7d6N.js")
-}), m = p.useScopedI18n, { I18nProviderClient: h, useChangeLocale: g, useCurrentLocale: _ } = p, v = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/Footer.tsx";
-function y() {
+}), m = p.useScopedI18n, { I18nProviderClient: h, useChangeLocale: g, useCurrentLocale: _ } = p;
+function v() {
 	let e = m("footer"), t = [
 		{
 			label: e("github"),
@@ -208,115 +191,51 @@ function y() {
 	];
 	return a("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: a("div", {
+		children: o("div", {
 			className: "container py-8",
-			children: [a("div", {
+			children: [o("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					a("div", { children: [a("h3", {
+					o("div", { children: [a("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}, void 0, !1, {
-						fileName: v,
-						lineNumber: 32,
-						columnNumber: 13
-					}, this), a("p", {
+					}), a("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("anOpenSourceTestApplication")
-					}, void 0, !1, {
-						fileName: v,
-						lineNumber: 35,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: v,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this),
-					a("div", { children: [a("h3", {
+					})] }),
+					o("div", { children: [a("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("resources")
-					}, void 0, !1, {
-						fileName: v,
-						lineNumber: 40,
-						columnNumber: 13
-					}, this), a("ul", {
+					}), a("ul", {
 						className: "space-y-1",
 						children: t.map((e) => a("li", { children: e.isInternal ? a(d, {
 							href: e.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}, void 0, !1, {
-							fileName: v,
-							lineNumber: 47,
-							columnNumber: 21
-						}, this) : a("a", {
+						}) : a("a", {
 							href: e.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}, void 0, !1, {
-							fileName: v,
-							lineNumber: 54,
-							columnNumber: 21
-						}, this) }, e.label, !1, {
-							fileName: v,
-							lineNumber: 45,
-							columnNumber: 17
-						}, this))
-					}, void 0, !1, {
-						fileName: v,
-						lineNumber: 43,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: v,
-						lineNumber: 39,
-						columnNumber: 11
-					}, this),
-					a("div", { children: [a("h3", {
+						}) }, e.label))
+					})] }),
+					o("div", { children: [a("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("contact")
-					}, void 0, !1, {
-						fileName: v,
-						lineNumber: 68,
-						columnNumber: 13
-					}, this), a("p", {
+					}), a("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					}, void 0, !1, {
-						fileName: v,
-						lineNumber: 71,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: v,
-						lineNumber: 67,
-						columnNumber: 11
-					}, this)
+					})] })
 				]
-			}, void 0, !0, {
-				fileName: v,
-				lineNumber: 30,
-				columnNumber: 9
-			}, this), a("div", {
+			}), a("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: e("builtWith")
-			}, void 0, !1, {
-				fileName: v,
-				lineNumber: 76,
-				columnNumber: 9
-			}, this)]
-		}, void 0, !0, {
-			fileName: v,
-			lineNumber: 29,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: v,
-		lineNumber: 28,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
-function b() {
+function y() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -330,53 +249,35 @@ function b() {
 		}
 	}
 }
-function x(e, t) {
+function b(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var S = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
-function C({ children: r, locale: i }) {
+function x({ children: r, locale: i }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		x("AppRoot", o);
+		b("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = i;
 	}, [i]), e(() => {
-		b();
+		y();
 	}, []), a(h, {
 		locale: i,
 		children: r
-	}, void 0, !1, {
-		fileName: S,
-		lineNumber: 30,
-		columnNumber: 7
-	}, this);
+	});
 }
-var w = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx", T = "en";
-function E({ children: e }) {
-	return a(C, {
-		locale: T,
+var S = "en";
+function C({ children: e }) {
+	return a(x, {
+		locale: S,
 		children: e
-	}, void 0, !1, {
-		fileName: w,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var D = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/Footer.wrapper.tsx";
-function O() {
-	return a(E, { children: a(y, {}, void 0, !1, {
-		fileName: D,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: D,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function w() {
+	return a(C, { children: a(v, {}) });
 }
-export { O as default };
+export { w as default };
 import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/de/about.json";
 import r from "../messages/de/blog.json";

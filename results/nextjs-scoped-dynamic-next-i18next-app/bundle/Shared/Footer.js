@@ -1,13 +1,12 @@
 import { createContext, createElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import NextLink from "next/link";
 import { useParams } from "next/navigation";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 });
-var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/Link.tsx";
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
 function localizeHref(href, locale) {
 	if (!href.startsWith("/")) return href;
@@ -16,36 +15,24 @@ function localizeHref(href, locale) {
 }
 var Link = ({ href, children, ...props }) => {
 	const locale = useParams().locale ?? "en";
-	if (href == null || typeof href !== "string") return jsxDEV(NextLink, {
+	if (href == null || typeof href !== "string") return jsx(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 23,
-		columnNumber: 7
-	}, void 0);
-	if (checkIsExternalLink(href)) return jsxDEV(NextLink, {
+	});
+	if (checkIsExternalLink(href)) return jsx(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 30,
-		columnNumber: 7
-	}, void 0);
-	return jsxDEV(NextLink, {
+	});
+	return jsx(NextLink, {
 		href: localizeHref(href, locale),
 		prefetch: false,
 		...props,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 36,
-		columnNumber: 5
-	}, void 0);
+	});
 };
 var isString$1 = (obj) => typeof obj === "string";
 var defer = () => {
@@ -2463,7 +2450,6 @@ function I18nextProvider({ i18n, defaultNS, children }) {
 	}), [i18n, defaultNS]);
 	return createElement(I18nContext.Provider, { value }, children);
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/Footer.tsx";
 function Footer() {
 	const { t } = useTranslation("shared");
 	const footerLinks = [
@@ -2483,115 +2469,51 @@ function Footer() {
 			isInternal: true
 		}
 	];
-	return jsxDEV("footer", {
+	return jsx("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: jsxDEV("div", {
+		children: jsxs("div", {
 			className: "container py-8",
-			children: [jsxDEV("div", {
+			children: [jsxs("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					jsxDEV("div", { children: [jsxDEV("h3", {
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 32,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("footer.anOpenSourceTestApplication")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 35,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this),
-					jsxDEV("div", { children: [jsxDEV("h3", {
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("footer.resources")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 40,
-						columnNumber: 13
-					}, this), jsxDEV("ul", {
+					}), jsx("ul", {
 						className: "space-y-1",
-						children: footerLinks.map((linkEl) => jsxDEV("li", { children: linkEl.isInternal ? jsxDEV(Link, {
+						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
 							href: linkEl.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 47,
-							columnNumber: 21
-						}, this) : jsxDEV("a", {
+						}) : jsx("a", {
 							href: linkEl.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 54,
-							columnNumber: 21
-						}, this) }, linkEl.label, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 45,
-							columnNumber: 17
-						}, this))
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 43,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 39,
-						columnNumber: 11
-					}, this),
-					jsxDEV("div", { children: [jsxDEV("h3", {
+						}) }, linkEl.label))
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("footer.contact")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 68,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 71,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 67,
-						columnNumber: 11
-					}, this)
+					})] })
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 30,
-				columnNumber: 9
-			}, this), jsxDEV("div", {
+			}), jsx("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: t("footer.builtWith")
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 76,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 29,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 28,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -2809,7 +2731,6 @@ instance.use(initReactI18next).use(function resourcesToBackend(res) {
 	react: { useSuspense: false }
 });
 var i18n_default = instance;
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/AppProviders.tsx";
 function AppProviders({ children, initialResources }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -2828,34 +2749,16 @@ function AppProviders({ children, initialResources }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nextProvider, {
+	return jsx(I18nextProvider, {
 		i18n: i18n_default,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 56,
-		columnNumber: 10
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/Footer.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Footer, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Footer, {}) });
 }
 export { Wrapped as default };
 var about_default = {

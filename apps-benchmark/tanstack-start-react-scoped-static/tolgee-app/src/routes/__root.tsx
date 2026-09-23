@@ -5,7 +5,6 @@ import {
   Link,
   Scripts,
   createRootRoute,
-  useMatches,
 } from "@tanstack/react-router";
 import { TolgeeProvider } from "@tolgee/react";
 import { T } from "../i18n/tolgee";
@@ -13,6 +12,7 @@ import { Route as LocaleRoute } from "./$locale/route";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { tolgee } from "../i18n/tolgee";
+import { messageModules } from "../i18n/getMessages";
 import { defaultLocale } from "../i18n/config";
 
 import appCss from "../styles.css?url";
@@ -53,7 +53,6 @@ export const Route = createRootRoute({
           <p className="mb-4 text-xl text-muted-foreground">
             <T
               keyName="route.oopsPageNotFound"
-              defaultValue="Oops! Page not found"
             />
           </p>
           <Link
@@ -61,7 +60,7 @@ export const Route = createRootRoute({
             params={{ locale: defaultLocale || "en" }}
             className="text-primary underline hover:text-primary/90"
           >
-            <T keyName="route.returnToHome" defaultValue="Return to Home" />
+            <T keyName="route.returnToHome" />
           </Link>
       </div>
       </div>
@@ -83,14 +82,6 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   }, []);
 
   const { locale = defaultLocale } = LocaleRoute.useParams();
-  const matches = useMatches();
-  const allMessages = matches.reduce((acc, match) => {
-    const data = match.loaderData as any;
-    if (data?.messages) {
-      Object.assign(acc, data.messages);
-    }
-    return acc;
-  }, {});
 
   // Set language on server-side or if it changed
   if (typeof window === "undefined" || tolgee.getLanguage() !== locale) {
@@ -114,10 +105,10 @@ function RootDocument({ children }: { children: React.ReactNode }) {
             tolgee={tolgee}
             fallback={<div>Loading translations...</div>}
             options={{ useSuspense: false }}
-              ssr={{
-                language: locale,
-                staticData: { [locale]: allMessages },
-              }}
+            ssr={{
+              language: locale,
+              staticData: messageModules,
+            }}
           >
             <Header />
             {children}

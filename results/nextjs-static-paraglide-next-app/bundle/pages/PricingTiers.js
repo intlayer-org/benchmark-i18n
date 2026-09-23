@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 var URLPattern = {};
 var locales = [
@@ -1348,7 +1348,6 @@ var pricing_tiers_unlimitedruns1 = ((inputs = {}, options = {}) => {
 	if (locale === "ru") return ru_pricing_tiers_unlimitedruns1(inputs);
 	return en_pricing_tiers_unlimitedruns1(inputs);
 });
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
 	const tiers = [
 		{
@@ -1391,87 +1390,47 @@ function PricingTiers() {
 			]
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((t) => jsxDEV("div", {
+		children: tiers.map((t) => jsxs("div", {
 			className: `flex flex-col rounded-lg border p-6 ${t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsxDEV("h3", {
+				jsx("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: t.name
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 59,
-					columnNumber: 11
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "my-4",
-					children: [jsxDEV("span", {
+					children: [jsx("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: t.price
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 61,
-						columnNumber: 13
-					}, this), jsxDEV("span", {
+					}), jsx("span", {
 						className: "text-sm text-muted-foreground",
 						children: t.period
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 62,
-						columnNumber: 13
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 60,
-					columnNumber: 11
-				}, this),
-				jsxDEV("ul", {
+					})]
+				}),
+				jsx("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: t.features.map((f) => jsxDEV("li", {
+					children: t.features.map((f) => jsxs("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsxDEV("span", {
+							jsx("span", {
 								className: "text-primary",
 								children: "✓"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 70,
-								columnNumber: 17
-							}, this),
+							}),
 							" ",
 							f
 						]
-					}, f, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 66,
-						columnNumber: 15
-					}, this))
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 64,
-					columnNumber: 11
-				}, this),
-				jsxDEV("button", {
+					}, f))
+				}),
+				jsx("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: t.name === pricing_tiers_enterprise() ? pricing_tiers_contactsales1() : pricing_tiers_getstarted1()
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 74,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, t.name, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 51,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 49,
-		columnNumber: 5
-	}, this);
+		}, t.name))
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1495,7 +1454,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -1509,30 +1467,12 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
 }
 export { Wrapped as default };

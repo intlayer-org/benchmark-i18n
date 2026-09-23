@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx } from "react/jsx-runtime";
 var URLPattern = {};
 var locales = [
 	"en",
@@ -186,265 +186,264 @@ var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var theme_toggle_themeauto1$10 = () => {
+var en_theme_toggle_themeauto1 = () => {
 	return `Theme: Auto`;
 };
-var theme_toggle_themedark1$10 = () => {
-	return `Theme: Dark`;
-};
-var theme_toggle_themelight1$10 = () => {
-	return `Theme: Light`;
-};
-var theme_toggle_thememodeautosystemclick4$10 = () => {
-	return `Theme mode: auto (system). Click to switch to light mode.`;
-};
-var theme_toggle_thememodedarkclick3$10 = () => {
-	return `Theme mode: dark. Click to switch to auto (system) mode.`;
-};
-var theme_toggle_thememodelightclick3$10 = () => {
-	return `Theme mode: light. Click to switch to dark mode.`;
-};
-var theme_toggle_themeauto1$9 = () => {
+var fr_theme_toggle_themeauto1 = () => {
 	return `Thème : Auto`;
 };
-var theme_toggle_themedark1$9 = () => {
-	return `Thème : Sombre`;
-};
-var theme_toggle_themelight1$9 = () => {
-	return `Thème : Clair`;
-};
-var theme_toggle_thememodeautosystemclick4$9 = () => {
-	return `Mode thématique : auto (système). Cliquez pour passer en mode clair.`;
-};
-var theme_toggle_thememodedarkclick3$9 = () => {
-	return `Mode thématique : sombre. Cliquez pour passer en mode auto (système).`;
-};
-var theme_toggle_thememodelightclick3$9 = () => {
-	return `Mode thématique : clair. Cliquez pour passer en mode sombre.`;
-};
-var theme_toggle_themeauto1$8 = () => {
+var es_theme_toggle_themeauto1 = () => {
 	return `Tema: Auto`;
 };
-var theme_toggle_themedark1$8 = () => {
-	return `Tema: Oscuro`;
-};
-var theme_toggle_themelight1$8 = () => {
-	return `Tema: Claro`;
-};
-var theme_toggle_thememodeautosystemclick4$8 = () => {
-	return `Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.`;
-};
-var theme_toggle_thememodedarkclick3$8 = () => {
-	return `Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).`;
-};
-var theme_toggle_thememodelightclick3$8 = () => {
-	return `Modo de tema: claro. Haz clic para cambiar al modo oscuro.`;
-};
-var theme_toggle_themeauto1$7 = () => {
+var de_theme_toggle_themeauto1 = () => {
 	return `Thema: Auto`;
 };
-var theme_toggle_themedark1$7 = () => {
-	return `Thema: Dunkel`;
-};
-var theme_toggle_themelight1$7 = () => {
-	return `Thema: Hell`;
-};
-var theme_toggle_thememodeautosystemclick4$7 = () => {
-	return `Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.`;
-};
-var theme_toggle_thememodedarkclick3$7 = () => {
-	return `Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.`;
-};
-var theme_toggle_thememodelightclick3$7 = () => {
-	return `Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.`;
-};
-var theme_toggle_themeauto1$6 = () => {
+var it_theme_toggle_themeauto1 = () => {
 	return `Tema: Auto`;
 };
-var theme_toggle_themedark1$6 = () => {
-	return `Tema: Scuro`;
-};
-var theme_toggle_themelight1$6 = () => {
-	return `Tema: Chiaro`;
-};
-var theme_toggle_thememodeautosystemclick4$6 = () => {
-	return `Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.`;
-};
-var theme_toggle_thememodedarkclick3$6 = () => {
-	return `Modalità tema: scura. Clicca per passare alla modalità auto (sistema).`;
-};
-var theme_toggle_thememodelightclick3$6 = () => {
-	return `Modalità tema: chiara. Clicca per passare alla modalità scura.`;
-};
-var theme_toggle_themeauto1$5 = () => {
+var pt_theme_toggle_themeauto1 = () => {
 	return `Tema: Auto`;
 };
-var theme_toggle_themedark1$5 = () => {
-	return `Tema: Escuro`;
-};
-var theme_toggle_themelight1$5 = () => {
-	return `Tema: Claro`;
-};
-var theme_toggle_thememodeautosystemclick4$5 = () => {
-	return `Modo de tema: automático (sistema). Clique para mudar para o modo claro.`;
-};
-var theme_toggle_thememodedarkclick3$5 = () => {
-	return `Modo de tema: escuro. Clique para mudar para o modo automático (sistema).`;
-};
-var theme_toggle_thememodelightclick3$5 = () => {
-	return `Modo de tema: claro. Clique para mudar para o modo escuro.`;
-};
-var theme_toggle_themeauto1$4 = () => {
+var zh_theme_toggle_themeauto1 = () => {
 	return `主题：自动`;
 };
-var theme_toggle_themedark1$4 = () => {
-	return `主题：暗黑`;
-};
-var theme_toggle_themelight1$4 = () => {
-	return `主题：明亮`;
-};
-var theme_toggle_thememodeautosystemclick4$4 = () => {
-	return `主题模式：自动（系统）。点击切换到明亮模式。`;
-};
-var theme_toggle_thememodedarkclick3$4 = () => {
-	return `主题模式：暗黑。点击切换到自动（系统）模式。`;
-};
-var theme_toggle_thememodelightclick3$4 = () => {
-	return `主题模式：明亮。点击切换到暗黑模式。`;
-};
-var theme_toggle_themeauto1$3 = () => {
+var ja_theme_toggle_themeauto1 = () => {
 	return `テーマ：自動`;
 };
-var theme_toggle_themedark1$3 = () => {
-	return `テーマ：ダーク`;
-};
-var theme_toggle_themelight1$3 = () => {
-	return `テーマ：ライト`;
-};
-var theme_toggle_thememodeautosystemclick4$3 = () => {
-	return `テーマモード：自動（システム）。クリックしてライトモードに切り替えます。`;
-};
-var theme_toggle_thememodedarkclick3$3 = () => {
-	return `テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。`;
-};
-var theme_toggle_thememodelightclick3$3 = () => {
-	return `テーマモード：ライト。クリックしてダークモードに切り替えます。`;
-};
-var theme_toggle_themeauto1$2 = () => {
+var ko_theme_toggle_themeauto1 = () => {
 	return `테마: 자동`;
 };
-var theme_toggle_themedark1$2 = () => {
-	return `테마: 다크`;
-};
-var theme_toggle_themelight1$2 = () => {
-	return `테마: 라이트`;
-};
-var theme_toggle_thememodeautosystemclick4$2 = () => {
-	return `테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.`;
-};
-var theme_toggle_thememodedarkclick3$2 = () => {
-	return `테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.`;
-};
-var theme_toggle_thememodelightclick3$2 = () => {
-	return `테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.`;
-};
-var theme_toggle_themeauto1$1 = () => {
+var ru_theme_toggle_themeauto1 = () => {
 	return `Тема: Авто`;
-};
-var theme_toggle_themedark1$1 = () => {
-	return `Тема: Темная`;
-};
-var theme_toggle_themelight1$1 = () => {
-	return `Тема: Светлая`;
-};
-var theme_toggle_thememodeautosystemclick4$1 = () => {
-	return `Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.`;
-};
-var theme_toggle_thememodedarkclick3$1 = () => {
-	return `Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.`;
-};
-var theme_toggle_thememodelightclick3$1 = () => {
-	return `Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.`;
 };
 var theme_toggle_themeauto1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return theme_toggle_themeauto1$9(inputs);
-	if (locale === "es") return theme_toggle_themeauto1$8(inputs);
-	if (locale === "de") return theme_toggle_themeauto1$7(inputs);
-	if (locale === "it") return theme_toggle_themeauto1$6(inputs);
-	if (locale === "pt") return theme_toggle_themeauto1$5(inputs);
-	if (locale === "zh") return theme_toggle_themeauto1$4(inputs);
-	if (locale === "ja") return theme_toggle_themeauto1$3(inputs);
-	if (locale === "ko") return theme_toggle_themeauto1$2(inputs);
-	if (locale === "ru") return theme_toggle_themeauto1$1(inputs);
-	return theme_toggle_themeauto1$10(inputs);
+	if (locale === "fr") return fr_theme_toggle_themeauto1(inputs);
+	if (locale === "es") return es_theme_toggle_themeauto1(inputs);
+	if (locale === "de") return de_theme_toggle_themeauto1(inputs);
+	if (locale === "it") return it_theme_toggle_themeauto1(inputs);
+	if (locale === "pt") return pt_theme_toggle_themeauto1(inputs);
+	if (locale === "zh") return zh_theme_toggle_themeauto1(inputs);
+	if (locale === "ja") return ja_theme_toggle_themeauto1(inputs);
+	if (locale === "ko") return ko_theme_toggle_themeauto1(inputs);
+	if (locale === "ru") return ru_theme_toggle_themeauto1(inputs);
+	return en_theme_toggle_themeauto1(inputs);
 });
+var en_theme_toggle_themedark1 = () => {
+	return `Theme: Dark`;
+};
+var fr_theme_toggle_themedark1 = () => {
+	return `Thème : Sombre`;
+};
+var es_theme_toggle_themedark1 = () => {
+	return `Tema: Oscuro`;
+};
+var de_theme_toggle_themedark1 = () => {
+	return `Thema: Dunkel`;
+};
+var it_theme_toggle_themedark1 = () => {
+	return `Tema: Scuro`;
+};
+var pt_theme_toggle_themedark1 = () => {
+	return `Tema: Escuro`;
+};
+var zh_theme_toggle_themedark1 = () => {
+	return `主题：暗黑`;
+};
+var ja_theme_toggle_themedark1 = () => {
+	return `テーマ：ダーク`;
+};
+var ko_theme_toggle_themedark1 = () => {
+	return `테마: 다크`;
+};
+var ru_theme_toggle_themedark1 = () => {
+	return `Тема: Темная`;
+};
 var theme_toggle_themedark1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return theme_toggle_themedark1$9(inputs);
-	if (locale === "es") return theme_toggle_themedark1$8(inputs);
-	if (locale === "de") return theme_toggle_themedark1$7(inputs);
-	if (locale === "it") return theme_toggle_themedark1$6(inputs);
-	if (locale === "pt") return theme_toggle_themedark1$5(inputs);
-	if (locale === "zh") return theme_toggle_themedark1$4(inputs);
-	if (locale === "ja") return theme_toggle_themedark1$3(inputs);
-	if (locale === "ko") return theme_toggle_themedark1$2(inputs);
-	if (locale === "ru") return theme_toggle_themedark1$1(inputs);
-	return theme_toggle_themedark1$10(inputs);
+	if (locale === "fr") return fr_theme_toggle_themedark1(inputs);
+	if (locale === "es") return es_theme_toggle_themedark1(inputs);
+	if (locale === "de") return de_theme_toggle_themedark1(inputs);
+	if (locale === "it") return it_theme_toggle_themedark1(inputs);
+	if (locale === "pt") return pt_theme_toggle_themedark1(inputs);
+	if (locale === "zh") return zh_theme_toggle_themedark1(inputs);
+	if (locale === "ja") return ja_theme_toggle_themedark1(inputs);
+	if (locale === "ko") return ko_theme_toggle_themedark1(inputs);
+	if (locale === "ru") return ru_theme_toggle_themedark1(inputs);
+	return en_theme_toggle_themedark1(inputs);
 });
+var en_theme_toggle_themelight1 = () => {
+	return `Theme: Light`;
+};
+var fr_theme_toggle_themelight1 = () => {
+	return `Thème : Clair`;
+};
+var es_theme_toggle_themelight1 = () => {
+	return `Tema: Claro`;
+};
+var de_theme_toggle_themelight1 = () => {
+	return `Thema: Hell`;
+};
+var it_theme_toggle_themelight1 = () => {
+	return `Tema: Chiaro`;
+};
+var pt_theme_toggle_themelight1 = () => {
+	return `Tema: Claro`;
+};
+var zh_theme_toggle_themelight1 = () => {
+	return `主题：明亮`;
+};
+var ja_theme_toggle_themelight1 = () => {
+	return `テーマ：ライト`;
+};
+var ko_theme_toggle_themelight1 = () => {
+	return `테마: 라이트`;
+};
+var ru_theme_toggle_themelight1 = () => {
+	return `Тема: Светлая`;
+};
 var theme_toggle_themelight1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return theme_toggle_themelight1$9(inputs);
-	if (locale === "es") return theme_toggle_themelight1$8(inputs);
-	if (locale === "de") return theme_toggle_themelight1$7(inputs);
-	if (locale === "it") return theme_toggle_themelight1$6(inputs);
-	if (locale === "pt") return theme_toggle_themelight1$5(inputs);
-	if (locale === "zh") return theme_toggle_themelight1$4(inputs);
-	if (locale === "ja") return theme_toggle_themelight1$3(inputs);
-	if (locale === "ko") return theme_toggle_themelight1$2(inputs);
-	if (locale === "ru") return theme_toggle_themelight1$1(inputs);
-	return theme_toggle_themelight1$10(inputs);
+	if (locale === "fr") return fr_theme_toggle_themelight1(inputs);
+	if (locale === "es") return es_theme_toggle_themelight1(inputs);
+	if (locale === "de") return de_theme_toggle_themelight1(inputs);
+	if (locale === "it") return it_theme_toggle_themelight1(inputs);
+	if (locale === "pt") return pt_theme_toggle_themelight1(inputs);
+	if (locale === "zh") return zh_theme_toggle_themelight1(inputs);
+	if (locale === "ja") return ja_theme_toggle_themelight1(inputs);
+	if (locale === "ko") return ko_theme_toggle_themelight1(inputs);
+	if (locale === "ru") return ru_theme_toggle_themelight1(inputs);
+	return en_theme_toggle_themelight1(inputs);
 });
+var en_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Theme mode: auto (system). Click to switch to light mode.`;
+};
+var fr_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Mode thématique : auto (système). Cliquez pour passer en mode clair.`;
+};
+var es_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.`;
+};
+var de_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.`;
+};
+var it_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.`;
+};
+var pt_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Modo de tema: automático (sistema). Clique para mudar para o modo claro.`;
+};
+var zh_theme_toggle_thememodeautosystemclick4 = () => {
+	return `主题模式：自动（系统）。点击切换到明亮模式。`;
+};
+var ja_theme_toggle_thememodeautosystemclick4 = () => {
+	return `テーマモード：自動（システム）。クリックしてライトモードに切り替えます。`;
+};
+var ko_theme_toggle_thememodeautosystemclick4 = () => {
+	return `테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.`;
+};
+var ru_theme_toggle_thememodeautosystemclick4 = () => {
+	return `Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.`;
+};
 var theme_toggle_thememodeautosystemclick4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return theme_toggle_thememodeautosystemclick4$9(inputs);
-	if (locale === "es") return theme_toggle_thememodeautosystemclick4$8(inputs);
-	if (locale === "de") return theme_toggle_thememodeautosystemclick4$7(inputs);
-	if (locale === "it") return theme_toggle_thememodeautosystemclick4$6(inputs);
-	if (locale === "pt") return theme_toggle_thememodeautosystemclick4$5(inputs);
-	if (locale === "zh") return theme_toggle_thememodeautosystemclick4$4(inputs);
-	if (locale === "ja") return theme_toggle_thememodeautosystemclick4$3(inputs);
-	if (locale === "ko") return theme_toggle_thememodeautosystemclick4$2(inputs);
-	if (locale === "ru") return theme_toggle_thememodeautosystemclick4$1(inputs);
-	return theme_toggle_thememodeautosystemclick4$10(inputs);
+	if (locale === "fr") return fr_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "es") return es_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "de") return de_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "it") return it_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "pt") return pt_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "zh") return zh_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "ja") return ja_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "ko") return ko_theme_toggle_thememodeautosystemclick4(inputs);
+	if (locale === "ru") return ru_theme_toggle_thememodeautosystemclick4(inputs);
+	return en_theme_toggle_thememodeautosystemclick4(inputs);
 });
+var en_theme_toggle_thememodedarkclick3 = () => {
+	return `Theme mode: dark. Click to switch to auto (system) mode.`;
+};
+var fr_theme_toggle_thememodedarkclick3 = () => {
+	return `Mode thématique : sombre. Cliquez pour passer en mode auto (système).`;
+};
+var es_theme_toggle_thememodedarkclick3 = () => {
+	return `Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).`;
+};
+var de_theme_toggle_thememodedarkclick3 = () => {
+	return `Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.`;
+};
+var it_theme_toggle_thememodedarkclick3 = () => {
+	return `Modalità tema: scura. Clicca per passare alla modalità auto (sistema).`;
+};
+var pt_theme_toggle_thememodedarkclick3 = () => {
+	return `Modo de tema: escuro. Clique para mudar para o modo automático (sistema).`;
+};
+var zh_theme_toggle_thememodedarkclick3 = () => {
+	return `主题模式：暗黑。点击切换到自动（系统）模式。`;
+};
+var ja_theme_toggle_thememodedarkclick3 = () => {
+	return `テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。`;
+};
+var ko_theme_toggle_thememodedarkclick3 = () => {
+	return `테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.`;
+};
+var ru_theme_toggle_thememodedarkclick3 = () => {
+	return `Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.`;
+};
 var theme_toggle_thememodedarkclick3 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return theme_toggle_thememodedarkclick3$9(inputs);
-	if (locale === "es") return theme_toggle_thememodedarkclick3$8(inputs);
-	if (locale === "de") return theme_toggle_thememodedarkclick3$7(inputs);
-	if (locale === "it") return theme_toggle_thememodedarkclick3$6(inputs);
-	if (locale === "pt") return theme_toggle_thememodedarkclick3$5(inputs);
-	if (locale === "zh") return theme_toggle_thememodedarkclick3$4(inputs);
-	if (locale === "ja") return theme_toggle_thememodedarkclick3$3(inputs);
-	if (locale === "ko") return theme_toggle_thememodedarkclick3$2(inputs);
-	if (locale === "ru") return theme_toggle_thememodedarkclick3$1(inputs);
-	return theme_toggle_thememodedarkclick3$10(inputs);
+	if (locale === "fr") return fr_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "es") return es_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "de") return de_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "it") return it_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "pt") return pt_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "zh") return zh_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "ja") return ja_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "ko") return ko_theme_toggle_thememodedarkclick3(inputs);
+	if (locale === "ru") return ru_theme_toggle_thememodedarkclick3(inputs);
+	return en_theme_toggle_thememodedarkclick3(inputs);
 });
+var en_theme_toggle_thememodelightclick3 = () => {
+	return `Theme mode: light. Click to switch to dark mode.`;
+};
+var fr_theme_toggle_thememodelightclick3 = () => {
+	return `Mode thématique : clair. Cliquez pour passer en mode sombre.`;
+};
+var es_theme_toggle_thememodelightclick3 = () => {
+	return `Modo de tema: claro. Haz clic para cambiar al modo oscuro.`;
+};
+var de_theme_toggle_thememodelightclick3 = () => {
+	return `Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.`;
+};
+var it_theme_toggle_thememodelightclick3 = () => {
+	return `Modalità tema: chiara. Clicca per passare alla modalità scura.`;
+};
+var pt_theme_toggle_thememodelightclick3 = () => {
+	return `Modo de tema: claro. Clique para mudar para o modo escuro.`;
+};
+var zh_theme_toggle_thememodelightclick3 = () => {
+	return `主题模式：明亮。点击切换到暗黑模式。`;
+};
+var ja_theme_toggle_thememodelightclick3 = () => {
+	return `テーマモード：ライト。クリックしてダークモードに切り替えます。`;
+};
+var ko_theme_toggle_thememodelightclick3 = () => {
+	return `테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.`;
+};
+var ru_theme_toggle_thememodelightclick3 = () => {
+	return `Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.`;
+};
 var theme_toggle_thememodelightclick3 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return theme_toggle_thememodelightclick3$9(inputs);
-	if (locale === "es") return theme_toggle_thememodelightclick3$8(inputs);
-	if (locale === "de") return theme_toggle_thememodelightclick3$7(inputs);
-	if (locale === "it") return theme_toggle_thememodelightclick3$6(inputs);
-	if (locale === "pt") return theme_toggle_thememodelightclick3$5(inputs);
-	if (locale === "zh") return theme_toggle_thememodelightclick3$4(inputs);
-	if (locale === "ja") return theme_toggle_thememodelightclick3$3(inputs);
-	if (locale === "ko") return theme_toggle_thememodelightclick3$2(inputs);
-	if (locale === "ru") return theme_toggle_thememodelightclick3$1(inputs);
-	return theme_toggle_thememodelightclick3$10(inputs);
+	if (locale === "fr") return fr_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "es") return es_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "de") return de_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "it") return it_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "pt") return pt_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "zh") return zh_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "ja") return ja_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "ko") return ko_theme_toggle_thememodelightclick3(inputs);
+	if (locale === "ru") return ru_theme_toggle_thememodelightclick3(inputs);
+	return en_theme_toggle_thememodelightclick3(inputs);
 });
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/ThemeToggle.tsx";
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -483,38 +482,20 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? theme_toggle_thememodeautosystemclick4() : mode === "light" ? theme_toggle_thememodelightclick3() : theme_toggle_thememodedarkclick3();
-	return jsxDEV("button", {
+	return jsx("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: mode === "auto" ? theme_toggle_themeauto1() : mode === "dark" ? theme_toggle_themedark1() : theme_toggle_themelight1()
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 74,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 setLocale("en", { reload: false });
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/ThemeToggle.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ThemeToggle, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ThemeToggle, {}) });
 }
 export { Wrapped as default };

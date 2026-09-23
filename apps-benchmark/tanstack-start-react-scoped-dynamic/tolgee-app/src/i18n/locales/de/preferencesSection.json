@@ -1,0 +1,18 @@
+{
+  "arabicAr": "Arabic (ar)",
+  "chineseSimplifiedZhCn": "Chinese (Simplified, zh-CN)",
+  "darkMode": "Dunkelmodus",
+  "defaultLanguage": "Standardsprache",
+  "emailNotifications": "E-Mail-Benachrichtigungen",
+  "englishEn": "English (en)",
+  "frenchFr": "French (fr)",
+  "germanDe": "German (de)",
+  "japaneseJa": "Japanese (ja)",
+  "preferences": "Einstellungen",
+  "receiveWeeklyBenchmark": "Receive weekly benchmark reports",
+  "receiveWeeklyBenchmarkReports": "Wöchentliche Benchmark-Berichte erhalten",
+  "spanishEs": "Spanish (es)",
+  "toggleDarkMode": "Toggle dark mode",
+  "toggleNotifications": "Toggle Notifications",
+  "useDarkColorScheme": "Dunkles Farbschema verwenden"
+}

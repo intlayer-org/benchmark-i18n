@@ -1,16 +1,16 @@
 import { Dynamic, insert, template } from "solid-js/web";
 import { createContext, createMemo, onMount, useContext } from "solid-js";
 var content = {
-	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/de.json").then((m) => m.default),
-	"en": () => import("./en-CSjbFKXI.js").then((m) => m.default),
-	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/es.json").then((m) => m.default),
-	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/fr.json").then((m) => m.default),
-	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/it.json").then((m) => m.default),
-	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/ja.json").then((m) => m.default),
-	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/ko.json").then((m) => m.default),
-	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/pt.json").then((m) => m.default),
-	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/ru.json").then((m) => m.default),
-	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/zh.json").then((m) => m.default)
+	"de": () => import("./de-BDOJIsxy.js").then((m) => m.default),
+	"en": () => import("./en-h6EUKEM1.js").then((m) => m.default),
+	"es": () => import("./es-DknIMxlU.js").then((m) => m.default),
+	"fr": () => import("./fr-DtjYS-kR.js").then((m) => m.default),
+	"it": () => import("./it-B0aTvwu4.js").then((m) => m.default),
+	"ja": () => import("./ja-BKRXFD1W.js").then((m) => m.default),
+	"ko": () => import("./ko-C4Fgxl8E.js").then((m) => m.default),
+	"pt": () => import("./pt-BDACFWT-.js").then((m) => m.default),
+	"ru": () => import("./ru-CB8QbTiy.js").then((m) => m.default),
+	"zh": () => import("./zh-BQEtg-w7.js").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,7 +230,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-}, S$1 = {
+};
+var S = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -238,7 +239,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: o.children,
 		children: o.children
 	})
-}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+};
+var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -246,7 +248,12 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
+};
+var T = fallbackPlugin;
+var D = fallbackPlugin;
+var O = fallbackPlugin;
+var k = /* @__PURE__ */ new Map();
+var A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -256,7 +263,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S$1,
+		S,
 		C,
 		T,
 		D,
@@ -275,7 +282,8 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-}, localeStorageOptions = {
+};
+var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -293,7 +301,9 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
+};
+var a$1 = getLocaleFromStorageClient(localeStorageOptions);
+var y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -312,7 +322,9 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+};
+var t = /* @__PURE__ */ new Map();
+var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
@@ -328,7 +340,8 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var _tmpl$ = template(`<h1 class="mb-4 text-3xl font-bold text-foreground">`), _tmpl$2 = template(`<p class="mb-8 max-w-3xl text-muted-foreground">`);
+var _tmpl$ = template(`<h1 class="mb-4 text-3xl font-bold text-foreground">`);
+var _tmpl$2 = template(`<p class="mb-8 max-w-3xl text-muted-foreground">`);
 function AboutHeader() {
 	const content$1 = a(content, "about-header");
 	usePerformanceMeasure("AboutHeader");
@@ -343,6 +356,14 @@ function AboutHeader() {
 	})()];
 }
 export { AboutHeader as default };
+var de_default = {
+	key: "about-header",
+	content: {
+		"a": "Über diesen Benchmark",
+		"b": "Dies ist eine Open-Source-Testanwendung — kein Produkt oder Unternehmen. Ihr einziger Zweck besteht darin, eine realistische, mehrseitige React-App bereitzustellen, in die verschiedene i18n-Bibliotheken integriert und unter identischen Bedingungen gemessen werden können."
+	}
+};
+export { de_default as default };
 var en_default = {
 	key: "about-header",
 	content: {
@@ -351,3 +372,67 @@ var en_default = {
 	}
 };
 export { en_default as default };
+var es_default = {
+	key: "about-header",
+	content: {
+		"a": "Acerca de este benchmark",
+		"b": "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación React realista de varias páginas donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas."
+	}
+};
+export { es_default as default };
+var fr_default = {
+	key: "about-header",
+	content: {
+		"a": "À propos de ce benchmark",
+		"b": "Il s'agit d'une application de test open source, pas d'un produit ou d'une entreprise. Son seul but est de fournir une application React multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques."
+	}
+};
+export { fr_default as default };
+var it_default = {
+	key: "about-header",
+	content: {
+		"a": "Informazioni su questo benchmark",
+		"b": "Questa è un'applicazione di test open source — non un prodotto o un'azienda. Il suo unico scopo è quello di fornire un'app React multipagina realistica in cui diverse librerie i18n possono essere integrate e misurate in condizioni identiche."
+	}
+};
+export { it_default as default };
+var ja_default = {
+	key: "about-header",
+	content: {
+		"a": "このベンチマークについて",
+		"b": "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、さまざまなi18nライブラリを統合し、同一条件下で測定できる現実的なマルチページReactアプリを提供することです。"
+	}
+};
+export { ja_default as default };
+var ko_default = {
+	key: "about-header",
+	content: {
+		"a": "이 벤치마크 정보",
+		"b": "이것은 오픈 소스 테스트 애플리케이션이며 제품이나 회사가 아닙니다. 유일한 목적은 동일한 조건에서 다양한 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 React 앱을 제공하는 것입니다."
+	}
+};
+export { ko_default as default };
+var pt_default = {
+	key: "about-header",
+	content: {
+		"a": "Sobre este benchmark",
+		"b": "Este é um aplicativo de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer um aplicativo React de várias páginas realista, onde diferentes bibliotecas i18n possam ser integradas e medidas em condições idênticas."
+	}
+};
+export { pt_default as default };
+var ru_default = {
+	key: "about-header",
+	content: {
+		"a": "Об этом бенчмарке",
+		"b": "Это открытое тестовое приложение — не продукт и не компания. Его единственная цель — предоставить реалистичное многостраничное React-приложение, в которое можно интегрировать и измерять различные библиотеки i18n в идентичных условиях."
+	}
+};
+export { ru_default as default };
+var zh_default = {
+	key: "about-header",
+	content: {
+		"a": "关于此基准测试",
+		"b": "这是一个开源测试应用程序——不是产品或公司。其唯一目的是提供一个真实的、多页面的 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。"
+	}
+};
+export { zh_default as default };

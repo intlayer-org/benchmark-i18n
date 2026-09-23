@@ -1,21 +1,33 @@
 "use client";
 
-import { useTolgee } from "@tolgee/react";
-import { useLayoutEffect } from "react";
+import { useMemo } from "react";
+import type { TolgeeStaticData } from "@tolgee/react";
+import { tolgee } from "@/tolgee/client";
+import { mergeMessages, type Messages } from "@/tolgee/namespaces";
 
+/**
+ * Hands a page's namespaces to tolgee before the page's components render.
+ *
+ * It wraps the page rather than sitting beside it, and works during render
+ * rather than in an effect, so the namespaces are also there for the server
+ * render — the same way TolgeeProvider applies its `ssr.staticData`.
+ */
 export default function TolgeePageHydrator({
   locale,
   messages,
+  children,
 }: {
   locale: string;
-  messages: Record<string, any>;
+  messages: Messages;
+  children: React.ReactNode;
 }) {
-  const tolgee = useTolgee();
+  useMemo(() => {
+    tolgee.setEmitterActive(false);
+    tolgee.addStaticData({
+      [locale]: mergeMessages(locale, messages),
+    } as TolgeeStaticData);
+    tolgee.setEmitterActive(true);
+  }, [locale, messages]);
 
-  // useLayoutEffect to ensure messages are added before components render
-  useLayoutEffect(() => {
-    tolgee.addStaticData({ [locale]: messages });
-  }, [tolgee, locale, messages]);
-
-  return null;
+  return children;
 }

@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useRouter } from "next/router";
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -212,7 +212,6 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
 	const { t } = useTranslation("pricing");
 	const tiers = [
@@ -259,87 +258,47 @@ function PricingTiers() {
 			buttonText: t("pricingTiers.contactSales")
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((tItem) => jsxDEV("div", {
+		children: tiers.map((tItem) => jsxs("div", {
 			className: `flex flex-col rounded-lg border p-6 ${tItem.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsxDEV("h3", {
+				jsx("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: tItem.name
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 64,
-					columnNumber: 11
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "my-4",
-					children: [jsxDEV("span", {
+					children: [jsx("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: tItem.price
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 68,
-						columnNumber: 13
-					}, this), jsxDEV("span", {
+					}), jsx("span", {
 						className: "text-sm text-muted-foreground",
 						children: tItem.period
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 71,
-						columnNumber: 13
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 67,
-					columnNumber: 11
-				}, this),
-				jsxDEV("ul", {
+					})]
+				}),
+				jsx("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: tItem.features.map((f) => jsxDEV("li", {
+					children: tItem.features.map((f) => jsxs("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsxDEV("span", {
+							jsx("span", {
 								className: "text-primary",
 								children: "✓"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 81,
-								columnNumber: 17
-							}, this),
+							}),
 							" ",
 							f
 						]
-					}, f, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 77,
-						columnNumber: 15
-					}, this))
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 75,
-					columnNumber: 11
-				}, this),
-				jsxDEV("button", {
+					}, f))
+				}),
+				jsx("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${tItem.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: tItem.buttonText
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 85,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, tItem.name, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 56,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 54,
-		columnNumber: 5
-	}, this);
+		}, tItem.name))
+	});
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -576,7 +535,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -588,13 +546,8 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/scripts/Wrapper.tsx";
 var MEASURE_NAMESPACES = [
 	"about",
 	"blog",
@@ -629,34 +582,17 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		lang: locale,
 		namespaces,
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 58,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 57,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
 }
 export { Wrapped as default };
 var about_default = {

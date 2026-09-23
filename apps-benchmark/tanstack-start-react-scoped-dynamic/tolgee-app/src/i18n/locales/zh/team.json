@@ -1,0 +1,22 @@
+{
+  "teamHeader.ourTeam": "我们的团队",
+  "teamHeader.meetThePeopleBehindI18n": "认识 i18n 基准测试背后的团队。一支多元化的团队，因为对优秀开发人员工具的共同热情而团结在一起。",
+  "teamGrid.sarahChen": "Sarah Chen",
+  "teamGrid.founderLeadEngineer": "创始人兼首席工程师",
+  "teamGrid.formerGoogleEngineerWith10": "前 Google 工程师，在构建大规模国际化系统方面拥有 10 年经验。",
+  "teamGrid.marcusWeber": "Marcus Weber",
+  "teamGrid.performanceEngineer": "性能工程师",
+  "teamGrid.specializesInJavascriptPerformanceOptimization": "专注于 JavaScript 性能优化和基准测试方法。曾任职于 Vercel。",
+  "teamGrid.aishaPatel": "Aisha Patel",
+  "teamGrid.developerAdvocate": "开发者倡导者",
+  "teamGrid.passionateAboutDeveloperExperienceAnd": "热爱开发者体验和教育。React Conf、JSConf 和 i18nNext 的演讲者。",
+  "teamGrid.tomasRodriguez": "Tomás Rodríguez",
+  "teamGrid.fullStackDeveloper": "全栈开发人员",
+  "teamGrid.maintainsTheBenchmarkingInfrastructureAnd": "维护基准测试基础架构和 CI/CD 流水线。Lingui 的开源贡献者。",
+  "teamGrid.yukiTanaka": "Yuki Tanaka",
+  "teamGrid.dataAnalyst": "数据分析师",
+  "teamGrid.ensuresStatisticalRigorInAll": "确保所有基准测试结果的统计严谨性。麻省理工学院应用统计学博士。",
+  "teamGrid.elenaKowalski": "Elena Kowalski",
+  "teamGrid.communityManager": "社区经理",
+  "teamGrid.managesCommunityContributionsPartnershipsAnd": "管理社区贡献、合作伙伴关系和活动。具有开源治理背景。"
+}

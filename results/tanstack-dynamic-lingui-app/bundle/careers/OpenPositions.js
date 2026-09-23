@@ -1,73 +1,65 @@
 import { createContext, useContext, useMemo } from "react";
-import { jsx } from "react/jsx-runtime";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 });
-var require_use_sync_external_store_shim_development = __commonJSMin(((exports) => {
-	(function() {
-		function is(x, y) {
-			return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
-		}
-		function useSyncExternalStore$2(subscribe, getSnapshot) {
-			didWarnOld18Alpha || void 0 === React.startTransition || (didWarnOld18Alpha = !0, console.error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release."));
-			var value = getSnapshot();
-			if (!didWarnUncachedGetSnapshot) {
-				var cachedValue = getSnapshot();
-				objectIs(value, cachedValue) || (console.error("The result of getSnapshot should be cached to avoid an infinite loop"), didWarnUncachedGetSnapshot = !0);
-			}
-			cachedValue = useState({ inst: {
-				value,
-				getSnapshot
-			} });
-			var inst = cachedValue[0].inst, forceUpdate = cachedValue[1];
-			useLayoutEffect(function() {
-				inst.value = value;
-				inst.getSnapshot = getSnapshot;
+var require_use_sync_external_store_shim_production = __commonJSMin(((exports) => {
+	var React = __require("react");
+	function is(x, y) {
+		return x === y && (0 !== x || 1 / x === 1 / y) || x !== x && y !== y;
+	}
+	var objectIs = "function" === typeof Object.is ? Object.is : is;
+	var useState = React.useState;
+	var useEffect = React.useEffect;
+	var useLayoutEffect = React.useLayoutEffect;
+	var useDebugValue = React.useDebugValue;
+	function useSyncExternalStore$2(subscribe, getSnapshot) {
+		var value = getSnapshot(), _useState = useState({ inst: {
+			value,
+			getSnapshot
+		} }), inst = _useState[0].inst, forceUpdate = _useState[1];
+		useLayoutEffect(function() {
+			inst.value = value;
+			inst.getSnapshot = getSnapshot;
+			checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+		}, [
+			subscribe,
+			value,
+			getSnapshot
+		]);
+		useEffect(function() {
+			checkIfSnapshotChanged(inst) && forceUpdate({ inst });
+			return subscribe(function() {
 				checkIfSnapshotChanged(inst) && forceUpdate({ inst });
-			}, [
-				subscribe,
-				value,
-				getSnapshot
-			]);
-			useEffect(function() {
-				checkIfSnapshotChanged(inst) && forceUpdate({ inst });
-				return subscribe(function() {
-					checkIfSnapshotChanged(inst) && forceUpdate({ inst });
-				});
-			}, [subscribe]);
-			useDebugValue(value);
-			return value;
+			});
+		}, [subscribe]);
+		useDebugValue(value);
+		return value;
+	}
+	function checkIfSnapshotChanged(inst) {
+		var latestGetSnapshot = inst.getSnapshot;
+		inst = inst.value;
+		try {
+			var nextValue = latestGetSnapshot();
+			return !objectIs(inst, nextValue);
+		} catch (error) {
+			return !0;
 		}
-		function checkIfSnapshotChanged(inst) {
-			var latestGetSnapshot = inst.getSnapshot;
-			inst = inst.value;
-			try {
-				var nextValue = latestGetSnapshot();
-				return !objectIs(inst, nextValue);
-			} catch (error) {
-				return !0;
-			}
-		}
-		function useSyncExternalStore$1(subscribe, getSnapshot) {
-			return getSnapshot();
-		}
-		"undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-		var React = __require("react"), objectIs = "function" === typeof Object.is ? Object.is : is, useState = React.useState, useEffect = React.useEffect, useLayoutEffect = React.useLayoutEffect, useDebugValue = React.useDebugValue, didWarnOld18Alpha = !1, didWarnUncachedGetSnapshot = !1, shim = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
-		exports.useSyncExternalStore = void 0 !== React.useSyncExternalStore ? React.useSyncExternalStore : shim;
-		"undefined" !== typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ && "function" === typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
-	})();
+	}
+	function useSyncExternalStore$1(subscribe, getSnapshot) {
+		return getSnapshot();
+	}
+	var shim = "undefined" === typeof window || "undefined" === typeof window.document || "undefined" === typeof window.document.createElement ? useSyncExternalStore$1 : useSyncExternalStore$2;
+	exports.useSyncExternalStore = void 0 !== React.useSyncExternalStore ? React.useSyncExternalStore : shim;
 }));
 var import_shim = __commonJSMin(((exports, module) => {
-	module.exports = require_use_sync_external_store_shim_development();
+	module.exports = require_use_sync_external_store_shim_production();
 }))();
 var LinguiContext = createContext(null);
 var useLinguiInternal = (devErrorMessage) => {
-	const context = useContext(LinguiContext);
-	if (context == null) throw new Error(devErrorMessage ?? "useLingui hook was used without I18nProvider.\n\nThis often happens when multiple instances of @lingui/react are installed (e.g. due to a version mismatch or misconfiguration in a monorepo). Verify you have only one version installed by running: npm ls @lingui/react (or pnpm why @lingui/react / yarn why @lingui/react).");
-	return context;
+	return useContext(LinguiContext);
 };
 function useLingui() {
 	return useLinguiInternal();
@@ -100,16 +92,12 @@ var createI18nStore = (i18n, defaultComponent) => {
 var I18nProvider = ({ i18n, defaultComponent, children }) => {
 	const store = useMemo(() => createI18nStore(i18n, defaultComponent), [i18n, defaultComponent]);
 	const context = (0, import_shim.useSyncExternalStore)(store.subscribe, store.getSnapshot, store.getSnapshot);
-	if (!context.i18n.locale) {
-		console.log("I18nProvider rendered `null`. A call to `i18n.activate` needs to happen in order for translations to be activated and for the I18nProvider to render.This is not an error but an informational message logged only in development.");
-		return null;
-	}
+	if (!context.i18n.locale) return null;
 	return jsx(LinguiContext.Provider, {
 		value: context,
 		children
 	});
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/lingui-app/src/components/pages/careers/OpenPositions.tsx";
 function OpenPositions() {
 	const { i18n } = useLingui();
 	const openings = [
@@ -224,100 +212,52 @@ function OpenPositions() {
 			})
 		}
 	];
-	return jsxDEV(Fragment, { children: [jsxDEV("h2", {
+	return jsxs(Fragment, { children: [jsx("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: i18n._({
 			id: "open-positions.openPositions",
 			message: "Open Positions"
 		})
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 46,
-		columnNumber: 7
-	}, this), jsxDEV("div", {
+	}), jsx("div", {
 		className: "space-y-4",
-		children: openings.map((o) => jsxDEV("div", {
+		children: openings.map((o) => jsxs("div", {
 			className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-			children: [jsxDEV("div", { children: [
-				jsxDEV("h3", {
+			children: [jsxs("div", { children: [
+				jsx("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: o.title
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 56,
-					columnNumber: 15
-				}, this),
-				jsxDEV("p", {
+				}),
+				jsx("p", {
 					className: "text-sm text-muted-foreground",
 					children: o.desc
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 59,
-					columnNumber: 15
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "mt-2 flex gap-2",
 					children: [
-						jsxDEV("span", {
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.dept
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 61,
-							columnNumber: 17
-						}, this),
-						jsxDEV("span", {
+						}),
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.location
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 64,
-							columnNumber: 17
-						}, this),
-						jsxDEV("span", {
+						}),
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.type
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 67,
-							columnNumber: 17
-						}, this)
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 60,
-					columnNumber: 15
-				}, this)
-			] }, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 55,
-				columnNumber: 13
-			}, this), jsxDEV("button", {
+				})
+			] }), jsx("button", {
 				type: "button",
 				className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: i18n._({
 					id: "open-positions.applyNow",
 					message: "Apply Now"
 				})
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 72,
-				columnNumber: 13
-			}, this)]
-		}, o.title, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 51,
-			columnNumber: 11
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 49,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 45,
-		columnNumber: 5
-	}, this);
+			})]
+		}, o.title))
+	})] });
 }
 var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
 	const query = path.lastIndexOf("?");
@@ -327,1130 +267,6 @@ var _rolldown_dynamic_import_helper_default = (glob, path, segments) => {
 		(typeof queueMicrotask === "function" ? queueMicrotask : setTimeout)(reject.bind(null, /* @__PURE__ */ new Error("Unknown variable dynamic import: " + path + (path.split("/").length !== segments ? ". Note that variables only represent file names one level deep." : ""))));
 	});
 };
-var require_moo = __commonJSMin(((exports, module) => {
-	(function(root, factory) {
-		if (typeof define === "function" && define.amd) define([], factory);
-		else if (typeof module === "object" && module.exports) module.exports = factory();
-		else root.moo = factory();
-	})(exports, function() {
-		"use strict";
-		var hasOwnProperty = Object.prototype.hasOwnProperty;
-		var toString = Object.prototype.toString;
-		var hasSticky = typeof (/* @__PURE__ */ new RegExp()).sticky === "boolean";
-		function isRegExp(o) {
-			return o && toString.call(o) === "[object RegExp]";
-		}
-		function isObject(o) {
-			return o && typeof o === "object" && !isRegExp(o) && !Array.isArray(o);
-		}
-		function reEscape(s) {
-			return s.replace(/[-\/\\^$*+?.()|[\]{}]/g, function(x) {
-				if (x === "-") return "\\x2d";
-				return "\\" + x;
-			});
-		}
-		function reGroups(s) {
-			return new RegExp("|" + s).exec("").length - 1;
-		}
-		function reCapture(s) {
-			return "(" + s + ")";
-		}
-		function reUnion(regexps) {
-			if (!regexps.length) return "(?!)";
-			return "(?:" + regexps.map(function(s) {
-				return "(?:" + s + ")";
-			}).join("|") + ")";
-		}
-		function regexpOrLiteral(obj) {
-			if (typeof obj === "string") return "(?:" + reEscape(obj) + ")";
-			else if (isRegExp(obj)) {
-				if (obj.ignoreCase) throw new Error("RegExp /i flag not allowed");
-				if (obj.global) throw new Error("RegExp /g flag is implied");
-				if (obj.sticky) throw new Error("RegExp /y flag is implied");
-				if (obj.multiline) throw new Error("RegExp /m flag is implied");
-				return obj.source;
-			} else throw new Error("Not a pattern: " + obj);
-		}
-		function pad(s, length) {
-			if (s.length > length) return s;
-			return Array(length - s.length + 1).join(" ") + s;
-		}
-		function lastNLines(string, numLines) {
-			var position = string.length;
-			var lineBreaks = 0;
-			while (true) {
-				var idx = string.lastIndexOf("\n", position - 1);
-				if (idx === -1) break;
-				else lineBreaks++;
-				position = idx;
-				if (lineBreaks === numLines) break;
-				if (position === 0) break;
-			}
-			var startPosition = lineBreaks < numLines ? 0 : position + 1;
-			return string.substring(startPosition).split("\n");
-		}
-		function objectToRules(object) {
-			var keys = Object.getOwnPropertyNames(object);
-			var result = [];
-			for (var i = 0; i < keys.length; i++) {
-				var key = keys[i];
-				var thing = object[key];
-				var rules = [].concat(thing);
-				if (key === "include") {
-					for (var j = 0; j < rules.length; j++) result.push({ include: rules[j] });
-					continue;
-				}
-				var match = [];
-				rules.forEach(function(rule) {
-					if (isObject(rule)) {
-						if (match.length) result.push(ruleOptions(key, match));
-						result.push(ruleOptions(key, rule));
-						match = [];
-					} else match.push(rule);
-				});
-				if (match.length) result.push(ruleOptions(key, match));
-			}
-			return result;
-		}
-		function arrayToRules(array) {
-			var result = [];
-			for (var i = 0; i < array.length; i++) {
-				var obj = array[i];
-				if (obj.include) {
-					var include = [].concat(obj.include);
-					for (var j = 0; j < include.length; j++) result.push({ include: include[j] });
-					continue;
-				}
-				if (!obj.type) throw new Error("Rule has no type: " + JSON.stringify(obj));
-				result.push(ruleOptions(obj.type, obj));
-			}
-			return result;
-		}
-		function ruleOptions(type, obj) {
-			if (!isObject(obj)) obj = { match: obj };
-			if (obj.include) throw new Error("Matching rules cannot also include states");
-			var options = {
-				defaultType: type,
-				lineBreaks: !!obj.error || !!obj.fallback,
-				pop: false,
-				next: null,
-				push: null,
-				error: false,
-				fallback: false,
-				value: null,
-				type: null,
-				shouldThrow: false
-			};
-			for (var key in obj) if (hasOwnProperty.call(obj, key)) options[key] = obj[key];
-			if (typeof options.type === "string" && type !== options.type) throw new Error("Type transform cannot be a string (type '" + options.type + "' for token '" + type + "')");
-			var match = options.match;
-			options.match = Array.isArray(match) ? match : match ? [match] : [];
-			options.match.sort(function(a, b) {
-				return isRegExp(a) && isRegExp(b) ? 0 : isRegExp(b) ? -1 : isRegExp(a) ? 1 : b.length - a.length;
-			});
-			return options;
-		}
-		function toRules(spec) {
-			return Array.isArray(spec) ? arrayToRules(spec) : objectToRules(spec);
-		}
-		var defaultErrorRule = ruleOptions("error", {
-			lineBreaks: true,
-			shouldThrow: true
-		});
-		function compileRules(rules, hasStates) {
-			var errorRule = null;
-			var fast = Object.create(null);
-			var fastAllowed = true;
-			var unicodeFlag = null;
-			var groups = [];
-			var parts = [];
-			for (var i = 0; i < rules.length; i++) if (rules[i].fallback) fastAllowed = false;
-			for (var i = 0; i < rules.length; i++) {
-				var options = rules[i];
-				if (options.include) throw new Error("Inheritance is not allowed in stateless lexers");
-				if (options.error || options.fallback) {
-					if (errorRule) {
-						if (!options.fallback === !errorRule.fallback) throw new Error("Multiple " + (options.fallback ? "fallback" : "error") + " rules not allowed (for token '" + options.defaultType + "')");
-						else throw new Error("fallback and error are mutually exclusive (for token '" + options.defaultType + "')");
-					}
-					errorRule = options;
-				}
-				var match = options.match.slice();
-				if (fastAllowed) while (match.length && typeof match[0] === "string" && match[0].length === 1) {
-					var word = match.shift();
-					fast[word.charCodeAt(0)] = options;
-				}
-				if (options.pop || options.push || options.next) {
-					if (!hasStates) throw new Error("State-switching options are not allowed in stateless lexers (for token '" + options.defaultType + "')");
-					if (options.fallback) throw new Error("State-switching options are not allowed on fallback tokens (for token '" + options.defaultType + "')");
-				}
-				if (match.length === 0) continue;
-				fastAllowed = false;
-				groups.push(options);
-				for (var j = 0; j < match.length; j++) {
-					var obj = match[j];
-					if (!isRegExp(obj)) continue;
-					if (unicodeFlag === null) unicodeFlag = obj.unicode;
-					else if (unicodeFlag !== obj.unicode && options.fallback === false) throw new Error("If one rule is /u then all must be");
-				}
-				var pat = reUnion(match.map(regexpOrLiteral));
-				var regexp = new RegExp(pat);
-				if (regexp.test("")) throw new Error("RegExp matches empty string: " + regexp);
-				if (reGroups(pat) > 0) throw new Error("RegExp has capture groups: " + regexp + "\nUse (?: … ) instead");
-				if (!options.lineBreaks && regexp.test("\n")) throw new Error("Rule should declare lineBreaks: " + regexp);
-				parts.push(reCapture(pat));
-			}
-			var fallbackRule = errorRule && errorRule.fallback;
-			var flags = hasSticky && !fallbackRule ? "ym" : "gm";
-			var suffix = hasSticky || fallbackRule ? "" : "|";
-			if (unicodeFlag === true) flags += "u";
-			return {
-				regexp: new RegExp(reUnion(parts) + suffix, flags),
-				groups,
-				fast,
-				error: errorRule || defaultErrorRule
-			};
-		}
-		function compile(rules) {
-			return new Lexer({ start: compileRules(toRules(rules)) }, "start");
-		}
-		function checkStateGroup(g, name, map) {
-			var state = g && (g.push || g.next);
-			if (state && !map[state]) throw new Error("Missing state '" + state + "' (in token '" + g.defaultType + "' of state '" + name + "')");
-			if (g && g.pop && +g.pop !== 1) throw new Error("pop must be 1 (in token '" + g.defaultType + "' of state '" + name + "')");
-		}
-		function compileStates(states, start) {
-			var all = states.$all ? toRules(states.$all) : [];
-			delete states.$all;
-			var keys = Object.getOwnPropertyNames(states);
-			if (!start) start = keys[0];
-			var ruleMap = Object.create(null);
-			for (var i = 0; i < keys.length; i++) {
-				var key = keys[i];
-				ruleMap[key] = toRules(states[key]).concat(all);
-			}
-			for (var i = 0; i < keys.length; i++) {
-				var key = keys[i];
-				var rules = ruleMap[key];
-				var included = Object.create(null);
-				for (var j = 0; j < rules.length; j++) {
-					var rule = rules[j];
-					if (!rule.include) continue;
-					var splice = [j, 1];
-					if (rule.include !== key && !included[rule.include]) {
-						included[rule.include] = true;
-						var newRules = ruleMap[rule.include];
-						if (!newRules) throw new Error("Cannot include nonexistent state '" + rule.include + "' (in state '" + key + "')");
-						for (var k = 0; k < newRules.length; k++) {
-							var newRule = newRules[k];
-							if (rules.indexOf(newRule) !== -1) continue;
-							splice.push(newRule);
-						}
-					}
-					rules.splice.apply(rules, splice);
-					j--;
-				}
-			}
-			var map = Object.create(null);
-			for (var i = 0; i < keys.length; i++) {
-				var key = keys[i];
-				map[key] = compileRules(ruleMap[key], true);
-			}
-			for (var i = 0; i < keys.length; i++) {
-				var name = keys[i];
-				var state = map[name];
-				var groups = state.groups;
-				for (var j = 0; j < groups.length; j++) checkStateGroup(groups[j], name, map);
-				var fastKeys = Object.getOwnPropertyNames(state.fast);
-				for (var j = 0; j < fastKeys.length; j++) checkStateGroup(state.fast[fastKeys[j]], name, map);
-			}
-			return new Lexer(map, start);
-		}
-		function keywordTransform(map) {
-			var isMap = typeof Map !== "undefined";
-			var reverseMap = isMap ? /* @__PURE__ */ new Map() : Object.create(null);
-			var types = Object.getOwnPropertyNames(map);
-			for (var i = 0; i < types.length; i++) {
-				var tokenType = types[i];
-				var item = map[tokenType];
-				(Array.isArray(item) ? item : [item]).forEach(function(keyword) {
-					if (typeof keyword !== "string") throw new Error("keyword must be string (in keyword '" + tokenType + "')");
-					if (isMap) reverseMap.set(keyword, tokenType);
-					else reverseMap[keyword] = tokenType;
-				});
-			}
-			return function(k) {
-				return isMap ? reverseMap.get(k) : reverseMap[k];
-			};
-		}
-		var Lexer = function(states, state) {
-			this.startState = state;
-			this.states = states;
-			this.buffer = "";
-			this.stack = [];
-			this.reset();
-		};
-		Lexer.prototype.reset = function(data, info) {
-			this.buffer = data || "";
-			this.index = 0;
-			this.line = info ? info.line : 1;
-			this.col = info ? info.col : 1;
-			this.queuedToken = info ? info.queuedToken : null;
-			this.queuedText = info ? info.queuedText : "";
-			this.queuedThrow = info ? info.queuedThrow : null;
-			this.setState(info ? info.state : this.startState);
-			this.stack = info && info.stack ? info.stack.slice() : [];
-			return this;
-		};
-		Lexer.prototype.save = function() {
-			return {
-				line: this.line,
-				col: this.col,
-				state: this.state,
-				stack: this.stack.slice(),
-				queuedToken: this.queuedToken,
-				queuedText: this.queuedText,
-				queuedThrow: this.queuedThrow
-			};
-		};
-		Lexer.prototype.setState = function(state) {
-			if (!state || this.state === state) return;
-			this.state = state;
-			var info = this.states[state];
-			this.groups = info.groups;
-			this.error = info.error;
-			this.re = info.regexp;
-			this.fast = info.fast;
-		};
-		Lexer.prototype.popState = function() {
-			this.setState(this.stack.pop());
-		};
-		Lexer.prototype.pushState = function(state) {
-			this.stack.push(this.state);
-			this.setState(state);
-		};
-		var eat = hasSticky ? function(re, buffer) {
-			return re.exec(buffer);
-		} : function(re, buffer) {
-			var match = re.exec(buffer);
-			if (match[0].length === 0) return null;
-			return match;
-		};
-		Lexer.prototype._getGroup = function(match) {
-			var groupCount = this.groups.length;
-			for (var i = 0; i < groupCount; i++) if (match[i + 1] !== void 0) return this.groups[i];
-			throw new Error("Cannot find token type for matched text");
-		};
-		function tokenToString() {
-			return this.value;
-		}
-		Lexer.prototype.next = function() {
-			var index = this.index;
-			if (this.queuedGroup) {
-				var token = this._token(this.queuedGroup, this.queuedText, index);
-				this.queuedGroup = null;
-				this.queuedText = "";
-				return token;
-			}
-			var buffer = this.buffer;
-			if (index === buffer.length) return;
-			var group = this.fast[buffer.charCodeAt(index)];
-			if (group) return this._token(group, buffer.charAt(index), index);
-			var re = this.re;
-			re.lastIndex = index;
-			var match = eat(re, buffer);
-			var error = this.error;
-			if (match == null) return this._token(error, buffer.slice(index, buffer.length), index);
-			var group = this._getGroup(match);
-			var text = match[0];
-			if (error.fallback && match.index !== index) {
-				this.queuedGroup = group;
-				this.queuedText = text;
-				return this._token(error, buffer.slice(index, match.index), index);
-			}
-			return this._token(group, text, index);
-		};
-		Lexer.prototype._token = function(group, text, offset) {
-			var lineBreaks = 0;
-			if (group.lineBreaks) {
-				var matchNL = /\n/g;
-				var nl = 1;
-				if (text === "\n") lineBreaks = 1;
-				else while (matchNL.exec(text)) {
-					lineBreaks++;
-					nl = matchNL.lastIndex;
-				}
-			}
-			var token = {
-				type: typeof group.type === "function" && group.type(text) || group.defaultType,
-				value: typeof group.value === "function" ? group.value(text) : text,
-				text,
-				toString: tokenToString,
-				offset,
-				lineBreaks,
-				line: this.line,
-				col: this.col
-			};
-			var size = text.length;
-			this.index += size;
-			this.line += lineBreaks;
-			if (lineBreaks !== 0) this.col = size - nl + 1;
-			else this.col += size;
-			if (group.shouldThrow) throw new Error(this.formatError(token, "invalid syntax"));
-			if (group.pop) this.popState();
-			else if (group.push) this.pushState(group.push);
-			else if (group.next) this.setState(group.next);
-			return token;
-		};
-		if (typeof Symbol !== "undefined" && Symbol.iterator) {
-			var LexerIterator = function(lexer) {
-				this.lexer = lexer;
-			};
-			LexerIterator.prototype.next = function() {
-				var token = this.lexer.next();
-				return {
-					value: token,
-					done: !token
-				};
-			};
-			LexerIterator.prototype[Symbol.iterator] = function() {
-				return this;
-			};
-			Lexer.prototype[Symbol.iterator] = function() {
-				return new LexerIterator(this);
-			};
-		}
-		Lexer.prototype.formatError = function(token, message) {
-			if (token == null) {
-				var text = this.buffer.slice(this.index);
-				var token = {
-					text,
-					offset: this.index,
-					lineBreaks: text.indexOf("\n") === -1 ? 0 : 1,
-					line: this.line,
-					col: this.col
-				};
-			}
-			var numLinesAround = 2;
-			var firstDisplayedLine = Math.max(token.line - numLinesAround, 1);
-			var lastDisplayedLine = token.line + numLinesAround;
-			var lastLineDigits = String(lastDisplayedLine).length;
-			var displayedLines = lastNLines(this.buffer, this.line - token.line + numLinesAround + 1).slice(0, 5);
-			var errorLines = [];
-			errorLines.push(message + " at line " + token.line + " col " + token.col + ":");
-			errorLines.push("");
-			for (var i = 0; i < displayedLines.length; i++) {
-				var line = displayedLines[i];
-				var lineNo = firstDisplayedLine + i;
-				errorLines.push(pad(String(lineNo), lastLineDigits) + "  " + line);
-				if (lineNo === token.line) errorLines.push(pad("", lastLineDigits + token.col + 1) + "^");
-			}
-			return errorLines.join("\n");
-		};
-		Lexer.prototype.clone = function() {
-			return new Lexer(this.states, this.state);
-		};
-		Lexer.prototype.has = function(tokenType) {
-			return true;
-		};
-		return {
-			compile,
-			states: compileStates,
-			error: Object.freeze({ error: true }),
-			fallback: Object.freeze({ fallback: true }),
-			keywords: keywordTransform
-		};
-	});
-}));
-var require_lexer = __commonJSMin(((exports) => {
-	var __importDefault = exports && exports.__importDefault || function(mod) {
-		return mod && mod.__esModule ? mod : { "default": mod };
-	};
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.lexer = exports.states = void 0;
-	var moo_1 = __importDefault(require_moo());
-	exports.states = {
-		body: {
-			doubleapos: {
-				match: "''",
-				value: () => "'"
-			},
-			quoted: {
-				lineBreaks: true,
-				match: /'[{}#](?:[^']|'')*'(?!')/u,
-				value: (src) => src.slice(1, -1).replace(/''/g, "'")
-			},
-			argument: {
-				lineBreaks: true,
-				match: /\{\s*[^\p{Pat_Syn}\p{Pat_WS}]+\s*/u,
-				push: "arg",
-				value: (src) => src.substring(1).trim()
-			},
-			octothorpe: "#",
-			end: {
-				match: "}",
-				pop: 1
-			},
-			content: {
-				lineBreaks: true,
-				match: /[^][^{}#']*/u
-			}
-		},
-		arg: {
-			select: {
-				lineBreaks: true,
-				match: /,\s*(?:plural|select|selectordinal)\s*,\s*/u,
-				next: "select",
-				value: (src) => src.split(",")[1].trim()
-			},
-			"func-args": {
-				lineBreaks: true,
-				match: /,\s*[^\p{Pat_Syn}\p{Pat_WS}]+\s*,/u,
-				next: "body",
-				value: (src) => src.split(",")[1].trim()
-			},
-			"func-simple": {
-				lineBreaks: true,
-				match: /,\s*[^\p{Pat_Syn}\p{Pat_WS}]+\s*/u,
-				value: (src) => src.substring(1).trim()
-			},
-			end: {
-				match: "}",
-				pop: 1
-			}
-		},
-		select: {
-			offset: {
-				lineBreaks: true,
-				match: /\s*offset\s*:\s*\d+\s*/u,
-				value: (src) => src.split(":")[1].trim()
-			},
-			case: {
-				lineBreaks: true,
-				match: /\s*(?:=\d+|[^\p{Pat_Syn}\p{Pat_WS}]+)\s*\{/u,
-				push: "body",
-				value: (src) => src.substring(0, src.indexOf("{")).trim()
-			},
-			end: {
-				match: /\s*\}/u,
-				pop: 1
-			}
-		}
-	};
-	exports.lexer = moo_1.default.states(exports.states);
-}));
-var import_parser = __commonJSMin(((exports) => {
-	Object.defineProperty(exports, "__esModule", { value: true });
-	exports.ParseError = void 0;
-	exports.parse = parse;
-	var lexer_js_1 = require_lexer();
-	var getContext = (lt) => ({
-		offset: lt.offset,
-		line: lt.line,
-		col: lt.col,
-		text: lt.text,
-		lineBreaks: lt.lineBreaks
-	});
-	var isSelectType = (type) => type === "plural" || type === "select" || type === "selectordinal";
-	function strictArgStyleParam(lt, param) {
-		let value = "";
-		let text = "";
-		for (const p of param) {
-			const pText = p.ctx.text;
-			text += pText;
-			switch (p.type) {
-				case "content":
-					value += p.value;
-					break;
-				case "argument":
-				case "function":
-				case "octothorpe":
-					value += pText;
-					break;
-				default: throw new ParseError(lt, `Unsupported part in strict mode function arg style: ${pText}`);
-			}
-		}
-		return [{
-			type: "content",
-			value: value.trim(),
-			ctx: Object.assign({}, param[0].ctx, { text })
-		}];
-	}
-	var strictArgTypes = [
-		"number",
-		"date",
-		"time",
-		"spellout",
-		"ordinal",
-		"duration"
-	];
-	var defaultPluralKeys = [
-		"zero",
-		"one",
-		"two",
-		"few",
-		"many",
-		"other"
-	];
-	var ParseError = class extends Error {
-		constructor(lt, msg) {
-			super(lexer_js_1.lexer.formatError(lt, msg));
-		}
-	};
-	exports.ParseError = ParseError;
-	var Parser = class {
-		constructor(src, opt) {
-			var _a, _b, _c, _d;
-			this.lexer = lexer_js_1.lexer.reset(src);
-			this.cardinalKeys = (_a = opt === null || opt === void 0 ? void 0 : opt.cardinal) !== null && _a !== void 0 ? _a : defaultPluralKeys;
-			this.ordinalKeys = (_b = opt === null || opt === void 0 ? void 0 : opt.ordinal) !== null && _b !== void 0 ? _b : defaultPluralKeys;
-			this.strict = (_c = opt === null || opt === void 0 ? void 0 : opt.strict) !== null && _c !== void 0 ? _c : false;
-			this.strictPluralKeys = (_d = opt === null || opt === void 0 ? void 0 : opt.strictPluralKeys) !== null && _d !== void 0 ? _d : true;
-		}
-		parse() {
-			return this.parseBody(false, true);
-		}
-		checkSelectKey(lt, type, key) {
-			if (key[0] === "=") {
-				if (type === "select") throw new ParseError(lt, `The case ${key} is not valid with select`);
-			} else if (type !== "select") {
-				const keys = type === "plural" ? this.cardinalKeys : this.ordinalKeys;
-				if (this.strictPluralKeys && keys.length > 0 && !keys.includes(key)) throw new ParseError(lt, `The ${type} case ${key} is not valid in this locale`);
-			}
-		}
-		parseSelect({ value: arg }, inPlural, ctx, type) {
-			const sel = {
-				type,
-				arg,
-				cases: [],
-				ctx
-			};
-			if (type === "plural" || type === "selectordinal") inPlural = true;
-			else if (this.strict) inPlural = false;
-			for (const lt of this.lexer) switch (lt.type) {
-				case "offset":
-					if (type === "select") throw new ParseError(lt, "Unexpected plural offset for select");
-					if (sel.cases.length > 0) throw new ParseError(lt, "Plural offset must be set before cases");
-					sel.pluralOffset = Number(lt.value);
-					ctx.text += lt.text;
-					ctx.lineBreaks += lt.lineBreaks;
-					break;
-				case "case":
-					this.checkSelectKey(lt, type, lt.value);
-					sel.cases.push({
-						key: lt.value,
-						tokens: this.parseBody(inPlural),
-						ctx: getContext(lt)
-					});
-					break;
-				case "end": return sel;
-				default: throw new ParseError(lt, `Unexpected lexer token: ${lt.type}`);
-			}
-			throw new ParseError(null, "Unexpected message end");
-		}
-		parseArgToken(lt, inPlural) {
-			const ctx = getContext(lt);
-			const argType = this.lexer.next();
-			if (!argType) throw new ParseError(null, "Unexpected message end");
-			ctx.text += argType.text;
-			ctx.lineBreaks += argType.lineBreaks;
-			if (this.strict && (argType.type === "func-simple" || argType.type === "func-args") && !strictArgTypes.includes(argType.value)) throw new ParseError(lt, `Invalid strict mode function arg type: ${argType.value}`);
-			switch (argType.type) {
-				case "end": return {
-					type: "argument",
-					arg: lt.value,
-					ctx
-				};
-				case "func-simple": {
-					const end = this.lexer.next();
-					if (!end) throw new ParseError(null, "Unexpected message end");
-					if (end.type !== "end") throw new ParseError(end, `Unexpected lexer token: ${end.type}`);
-					ctx.text += end.text;
-					if (isSelectType(argType.value.toLowerCase())) throw new ParseError(argType, `Invalid type identifier: ${argType.value}`);
-					return {
-						type: "function",
-						arg: lt.value,
-						key: argType.value,
-						ctx
-					};
-				}
-				case "func-args": {
-					if (isSelectType(argType.value.toLowerCase())) throw new ParseError(argType, `Invalid type identifier: ${argType.value}`);
-					let param = this.parseBody(this.strict ? false : inPlural);
-					if (this.strict && param.length > 0) param = strictArgStyleParam(lt, param);
-					return {
-						type: "function",
-						arg: lt.value,
-						key: argType.value,
-						param,
-						ctx
-					};
-				}
-				case "select": if (isSelectType(argType.value)) return this.parseSelect(lt, inPlural, ctx, argType.value);
-				else throw new ParseError(argType, `Unexpected select type ${argType.value}`);
-				default: throw new ParseError(argType, `Unexpected lexer token: ${argType.type}`);
-			}
-		}
-		parseBody(inPlural, atRoot) {
-			const tokens = [];
-			let content = null;
-			for (const lt of this.lexer) if (lt.type === "argument") {
-				if (content) content = null;
-				tokens.push(this.parseArgToken(lt, inPlural));
-			} else if (lt.type === "octothorpe" && inPlural) {
-				if (content) content = null;
-				tokens.push({
-					type: "octothorpe",
-					ctx: getContext(lt)
-				});
-			} else if (lt.type === "end" && !atRoot) return tokens;
-			else {
-				let value = lt.value;
-				if (!inPlural && lt.type === "quoted" && value[0] === "#") {
-					if (value.includes("{")) throw new ParseError(lt, `Unsupported escape pattern: ${value}`);
-					value = lt.text;
-				}
-				if (content) {
-					content.value += value;
-					content.ctx.text += lt.text;
-					content.ctx.lineBreaks += lt.lineBreaks;
-				} else {
-					content = {
-						type: "content",
-						value,
-						ctx: getContext(lt)
-					};
-					tokens.push(content);
-				}
-			}
-			if (atRoot) return tokens;
-			throw new ParseError(null, "Unexpected message end");
-		}
-	};
-	function parse(src, options = {}) {
-		return new Parser(src, options).parse();
-	}
-}))();
-var DateFormatError = class extends Error {
-	constructor(msg, token, type) {
-		super(msg);
-		this.token = token;
-		this.type = type || "error";
-	}
-};
-var alpha = (width) => width < 4 ? "short" : width === 4 ? "long" : "narrow";
-var numeric = (width) => width % 2 === 0 ? "2-digit" : "numeric";
-function yearOptions(token, onError) {
-	switch (token.char) {
-		case "y": return { year: numeric(token.width) };
-		case "r": return {
-			calendar: "gregory",
-			year: "numeric"
-		};
-		default:
-			onError(`${token.desc} is not supported; falling back to year:numeric`, DateFormatError.WARNING);
-			return { year: "numeric" };
-	}
-}
-function monthStyle(token, onError) {
-	switch (token.width) {
-		case 1: return "numeric";
-		case 2: return "2-digit";
-		case 3: return "short";
-		case 4: return "long";
-		case 5: return "narrow";
-		default:
-			onError(`${token.desc} is not supported with width ${token.width}`);
-			return;
-	}
-}
-function dayStyle(token, onError) {
-	const { char, desc, width } = token;
-	if (char === "d") return numeric(width);
-	else {
-		onError(`${desc} is not supported`);
-		return;
-	}
-}
-function weekdayStyle(token, onError) {
-	const { char, desc, width } = token;
-	if ((char === "c" || char === "e") && width < 3) onError(`Numeric value is not supported for ${desc}; falling back to weekday:short`, DateFormatError.WARNING);
-	return alpha(width);
-}
-function hourOptions(token) {
-	const hour = numeric(token.width);
-	let hourCycle;
-	switch (token.char) {
-		case "h":
-			hourCycle = "h12";
-			break;
-		case "H":
-			hourCycle = "h23";
-			break;
-		case "k":
-			hourCycle = "h24";
-			break;
-		case "K": hourCycle = "h11";
-	}
-	return hourCycle ? {
-		hour,
-		hourCycle
-	} : { hour };
-}
-function timeZoneNameStyle(token, onError) {
-	const { char, desc, width } = token;
-	switch (char) {
-		case "v":
-		case "z": return width === 4 ? "long" : "short";
-		case "V":
-			if (width === 4) return "long";
-			onError(`${desc} is not supported with width ${width}`);
-			return;
-		case "X":
-			onError(`${desc} is not supported`);
-			return;
-	}
-	return "short";
-}
-function compileOptions(token, onError) {
-	switch (token.field) {
-		case "era": return { era: alpha(token.width) };
-		case "year": return yearOptions(token, onError);
-		case "month": return { month: monthStyle(token, onError) };
-		case "day": return { day: dayStyle(token, onError) };
-		case "weekday": return { weekday: weekdayStyle(token, onError) };
-		case "period": return;
-		case "hour": return hourOptions(token);
-		case "min": return { minute: numeric(token.width) };
-		case "sec": return { second: numeric(token.width) };
-		case "tz": return { timeZoneName: timeZoneNameStyle(token, onError) };
-		case "quarter":
-		case "week":
-		case "sec-frac":
-		case "ms": onError(`${token.desc} is not supported`);
-	}
-}
-function getDateFormatOptions(tokens, timeZone, onError = (error) => {
-	throw error;
-}) {
-	const options = { timeZone };
-	const fields = [];
-	for (const token of tokens) {
-		const { error, field, str } = token;
-		if (error) {
-			const dte = new DateFormatError(error.message, token);
-			dte.stack = error.stack;
-			onError(dte);
-		}
-		if (str) onError(new DateFormatError(`Ignoring string part: ${str}`, token, DateFormatError.WARNING));
-		if (field) {
-			if (fields.indexOf(field) === -1) fields.push(field);
-			else onError(new DateFormatError(`Duplicate ${field} token`, token));
-		}
-		const opt = compileOptions(token, (msg, isWarning) => onError(new DateFormatError(msg, token, isWarning)));
-		if (opt) Object.assign(options, opt);
-	}
-	return options;
-}
-var fields = {
-	G: {
-		field: "era",
-		desc: "Era"
-	},
-	y: {
-		field: "year",
-		desc: "Year"
-	},
-	Y: {
-		field: "year",
-		desc: "Year of \"Week of Year\""
-	},
-	u: {
-		field: "year",
-		desc: "Extended year"
-	},
-	U: {
-		field: "year",
-		desc: "Cyclic year name"
-	},
-	r: {
-		field: "year",
-		desc: "Related Gregorian year"
-	},
-	Q: {
-		field: "quarter",
-		desc: "Quarter"
-	},
-	q: {
-		field: "quarter",
-		desc: "Stand-alone quarter"
-	},
-	M: {
-		field: "month",
-		desc: "Month in year"
-	},
-	L: {
-		field: "month",
-		desc: "Stand-alone month in year"
-	},
-	w: {
-		field: "week",
-		desc: "Week of year"
-	},
-	W: {
-		field: "week",
-		desc: "Week of month"
-	},
-	d: {
-		field: "day",
-		desc: "Day in month"
-	},
-	D: {
-		field: "day",
-		desc: "Day of year"
-	},
-	F: {
-		field: "day",
-		desc: "Day of week in month"
-	},
-	g: {
-		field: "day",
-		desc: "Modified julian day"
-	},
-	E: {
-		field: "weekday",
-		desc: "Day of week"
-	},
-	e: {
-		field: "weekday",
-		desc: "Local day of week"
-	},
-	c: {
-		field: "weekday",
-		desc: "Stand-alone local day of week"
-	},
-	a: {
-		field: "period",
-		desc: "AM/PM marker"
-	},
-	b: {
-		field: "period",
-		desc: "AM/PM/noon/midnight marker"
-	},
-	B: {
-		field: "period",
-		desc: "Flexible day period"
-	},
-	h: {
-		field: "hour",
-		desc: "Hour in AM/PM (1~12)"
-	},
-	H: {
-		field: "hour",
-		desc: "Hour in day (0~23)"
-	},
-	k: {
-		field: "hour",
-		desc: "Hour in day (1~24)"
-	},
-	K: {
-		field: "hour",
-		desc: "Hour in AM/PM (0~11)"
-	},
-	j: {
-		field: "hour",
-		desc: "Hour in preferred cycle"
-	},
-	J: {
-		field: "hour",
-		desc: "Hour in preferred cycle without marker"
-	},
-	C: {
-		field: "hour",
-		desc: "Hour in preferred cycle with flexible marker"
-	},
-	m: {
-		field: "min",
-		desc: "Minute in hour"
-	},
-	s: {
-		field: "sec",
-		desc: "Second in minute"
-	},
-	S: {
-		field: "sec-frac",
-		desc: "Fractional second"
-	},
-	A: {
-		field: "ms",
-		desc: "Milliseconds in day"
-	},
-	z: {
-		field: "tz",
-		desc: "Time Zone: specific non-location"
-	},
-	Z: {
-		field: "tz",
-		desc: "Time Zone"
-	},
-	O: {
-		field: "tz",
-		desc: "Time Zone: localized"
-	},
-	v: {
-		field: "tz",
-		desc: "Time Zone: generic non-location"
-	},
-	V: {
-		field: "tz",
-		desc: "Time Zone: ID"
-	},
-	X: {
-		field: "tz",
-		desc: "Time Zone: ISO8601 with Z"
-	},
-	x: {
-		field: "tz",
-		desc: "Time Zone: ISO8601"
-	}
-};
-var isLetter = (char) => char >= "A" && char <= "Z" || char >= "a" && char <= "z";
-function readFieldToken(src, pos) {
-	const char = src[pos];
-	let width = 1;
-	while (src[++pos] === char) ++width;
-	const field = fields[char];
-	if (!field) {
-		const msg = `The letter ${char} is not a valid field identifier`;
-		return {
-			char,
-			error: new Error(msg),
-			width
-		};
-	}
-	return {
-		char,
-		field: field.field,
-		desc: field.desc,
-		width
-	};
-}
-function readQuotedToken(src, pos) {
-	let str = src[++pos];
-	let width = 2;
-	if (str === "'") return {
-		char: "'",
-		str,
-		width
-	};
-	while (true) {
-		const next = src[++pos];
-		++width;
-		if (next === void 0) {
-			const msg = `Unterminated quoted literal in pattern: ${str || src}`;
-			return {
-				char: "'",
-				error: new Error(msg),
-				str,
-				width
-			};
-		} else if (next === "'") {
-			if (src[++pos] !== "'") return {
-				char: "'",
-				str,
-				width
-			};
-			else ++width;
-		}
-		str += next;
-	}
-}
-function readToken(src, pos) {
-	const char = src[pos];
-	if (!char) return null;
-	if (isLetter(char)) return readFieldToken(src, pos);
-	if (char === "'") return readQuotedToken(src, pos);
-	let str = char;
-	let width = 1;
-	while (true) {
-		const next = src[++pos];
-		if (!next || isLetter(next) || next === "'") return {
-			char,
-			str,
-			width
-		};
-		str += next;
-		width += 1;
-	}
-}
-function parseDateTokens(src) {
-	const tokens = [];
-	let pos = 0;
-	while (true) {
-		const token = readToken(src, pos);
-		if (!token) return tokens;
-		tokens.push(token);
-		pos += token.width;
-	}
-}
-function processTokens(tokens, mapText) {
-	if (!tokens.filter((token) => token.type !== "content").length) return tokens.map((token) => mapText(token.value));
-	return tokens.map((token) => {
-		if (token.type === "content") return mapText(token.value);
-		else if (token.type === "octothorpe") return "#";
-		else if (token.type === "argument") return [token.arg];
-		else if (token.type === "function") {
-			const _param = token?.param?.[0];
-			if (token.key === "date" && _param) {
-				const opts = compileDateExpression(_param.value.trim(), (e) => {
-					throw new Error(`Unable to compile date expression: ${e.message}`);
-				});
-				return [
-					token.arg,
-					token.key,
-					opts
-				];
-			}
-			if (_param) return [
-				token.arg,
-				token.key,
-				_param.value.trim()
-			];
-			else return [token.arg, token.key];
-		}
-		const offset = token.pluralOffset;
-		const formatProps = {};
-		token.cases.forEach(({ key, tokens: tokens2 }) => {
-			const prop = key[0] === "=" ? key.slice(1) : key;
-			formatProps[prop] = processTokens(tokens2, mapText);
-		});
-		return [
-			token.arg,
-			token.type,
-			{
-				offset,
-				...formatProps
-			}
-		];
-	});
-}
-function compileDateExpression(format, onError) {
-	if (/^::/.test(format)) return getDateFormatOptions(parseDateTokens(format.substring(2)), void 0, onError);
-	return format;
-}
-function compileMessageOrThrow(message, mapText = (v) => v) {
-	return processTokens((0, import_parser.parse)(message), mapText);
-}
-function compileMessage(message, mapText = (v) => v) {
-	try {
-		return compileMessageOrThrow(message, mapText);
-	} catch (e) {
-		console.error(`${e.message} 
-
-Message: ${message}`);
-		return [message];
-	}
-}
 var isString = (s) => typeof s === "string";
 var isFunction = (f) => typeof f === "function";
 var cache = /* @__PURE__ */ new Map();
@@ -1615,7 +431,6 @@ var I18n = class extends EventEmitter {
 	_messageCompiler;
 	constructor(params) {
 		super();
-		this.setMessagesCompiler(compileMessage);
 		if (params.missing != null) this._missing = params.missing;
 		if (params.messages != null) this.load(params.messages);
 		if (typeof params.locale === "string" || params.locales) this.activate(params.locale ?? defaultLocale, params.locales);
@@ -1650,7 +465,6 @@ var I18n = class extends EventEmitter {
 		this.emit("change");
 	}
 	activate(locale, locales) {
-		if (!this._messages[locale]) console.warn(`Messages for locale "${locale}" not loaded.`);
 		this._locale = locale;
 		this._locales = locales;
 		this.emit("change");
@@ -1712,6 +526,7 @@ async function getMessages(locale, namespaces = ["shared", "route"]) {
 				"../locales/de/contact.mjs": () => import("./contact-_d6I5V5C.js"),
 				"../locales/de/faq.mjs": () => import("./faq-MXrCi941.js"),
 				"../locales/de/home.mjs": () => import("./home-CmR65Rfd.js"),
+				"../locales/de/messages.mjs": () => import("./messages-ARweZBVP.js"),
 				"../locales/de/pricing.mjs": () => import("./pricing-CfA_YsKW.js"),
 				"../locales/de/products.mjs": () => import("./products-D9CSFeu0.js"),
 				"../locales/de/route.mjs": () => import("./route-DdPpkZk4.js"),
@@ -1724,6 +539,7 @@ async function getMessages(locale, namespaces = ["shared", "route"]) {
 				"../locales/en/contact.mjs": () => import("./contact-B09t0Fis.js"),
 				"../locales/en/faq.mjs": () => import("./faq-5m5qv9HJ.js"),
 				"../locales/en/home.mjs": () => import("./home-BuDIJIIh.js"),
+				"../locales/en/messages.mjs": () => import("./messages-0GjCO0az.js"),
 				"../locales/en/pricing.mjs": () => import("./pricing-Ds64W5yk.js"),
 				"../locales/en/products.mjs": () => import("./products-B3Povgwo.js"),
 				"../locales/en/route.mjs": () => import("./route-De2wuHjp.js"),
@@ -1736,6 +552,7 @@ async function getMessages(locale, namespaces = ["shared", "route"]) {
 				"../locales/es/contact.mjs": () => import("./contact-DnEpg5qh.js"),
 				"../locales/es/faq.mjs": () => import("./faq-CQyhHBn8.js"),
 				"../locales/es/home.mjs": () => import("./home-BAI72uX1.js"),
+				"../locales/es/messages.mjs": () => import("./messages-Dm3hndkd.js"),
 				"../locales/es/pricing.mjs": () => import("./pricing-Dt0M7jRV.js"),
 				"../locales/es/products.mjs": () => import("./products-C6Sx6s6t.js"),
 				"../locales/es/route.mjs": () => import("./route-DmF23I8w.js"),
@@ -1748,6 +565,7 @@ async function getMessages(locale, namespaces = ["shared", "route"]) {
 				"../locales/fr/contact.mjs": () => import("./contact-BZZ15SvE.js"),
 				"../locales/fr/faq.mjs": () => import("./faq-CmorXSC2.js"),
 				"../locales/fr/home.mjs": () => import("./home-DFn8Cv6o.js"),
+				"../locales/fr/messages.mjs": () => import("./messages-DwbMPJWq.js"),
 				"../locales/fr/pricing.mjs": () => import("./pricing-Q0D9_Ewp.js"),
 				"../locales/fr/products.mjs": () => import("./products-DOAEqRD4.js"),
 				"../locales/fr/route.mjs": () => import("./route-BKI0G8Uq.js"),
@@ -1760,6 +578,7 @@ async function getMessages(locale, namespaces = ["shared", "route"]) {
 				"../locales/it/contact.mjs": () => import("./contact-CWs01OIV.js"),
 				"../locales/it/faq.mjs": () => import("./faq-DwaciuXK.js"),
 				"../locales/it/home.mjs": () => import("./home-Csf_-gOl.js"),
+				"../locales/it/messages.mjs": () => import("./messages-DRFUe9Gd.js"),
 				"../locales/it/pricing.mjs": () => import("./pricing-DoVhdE1n.js"),
 				"../locales/it/products.mjs": () => import("./products-CtgGdwU9.js"),
 				"../locales/it/route.mjs": () => import("./route-DTb0PsKn.js"),
@@ -1772,6 +591,7 @@ async function getMessages(locale, namespaces = ["shared", "route"]) {
 				"../locales/ja/contact.mjs": () => import("./contact-BTLWVak4.js"),
 				"../locales/ja/faq.mjs": () => import("./faq-CP_Gj7_k.js"),
 				"../locales/ja/home.mjs": () => import("./home-C6rUO2Eh.js"),
+				"../locales/ja/messages.mjs": () => import("./messages-BiygPaUb.js"),
 				"../locales/ja/pricing.mjs": () => import("./pricing-S5VtZMHk.js"),
 				"../locales/ja/products.mjs": () => import("./products-CMBosx_A.js"),
 				"../locales/ja/route.mjs": () => import("./route-x-JUeP9m.js"),
@@ -1784,6 +604,7 @@ async function getMessages(locale, namespaces = ["shared", "route"]) {
 				"../locales/ko/contact.mjs": () => import("./contact-BNOqU47_.js"),
 				"../locales/ko/faq.mjs": () => import("./faq-JLmBcidE.js"),
 				"../locales/ko/home.mjs": () => import("./home-CllVRUiE.js"),
+				"../locales/ko/messages.mjs": () => import("./messages-DKWPGjCb.js"),
 				"../locales/ko/pricing.mjs": () => import("./pricing-koU4J6oU.js"),
 				"../locales/ko/products.mjs": () => import("./products-DGtuQMoq.js"),
 				"../locales/ko/route.mjs": () => import("./route-CFaRaMVB.js"),
@@ -1796,6 +617,7 @@ async function getMessages(locale, namespaces = ["shared", "route"]) {
 				"../locales/pt/contact.mjs": () => import("./contact-DoCN1unA.js"),
 				"../locales/pt/faq.mjs": () => import("./faq-DkUwwbYh.js"),
 				"../locales/pt/home.mjs": () => import("./home-DrYx3w74.js"),
+				"../locales/pt/messages.mjs": () => import("./messages-9QhXILCf.js"),
 				"../locales/pt/pricing.mjs": () => import("./pricing-Aou1Sem-.js"),
 				"../locales/pt/products.mjs": () => import("./products-hCOX8Ad3.js"),
 				"../locales/pt/route.mjs": () => import("./route-DFkcE_s6.js"),
@@ -1808,6 +630,7 @@ async function getMessages(locale, namespaces = ["shared", "route"]) {
 				"../locales/ru/contact.mjs": () => import("./contact-DTApp7Tc.js"),
 				"../locales/ru/faq.mjs": () => import("./faq-CnEdjEpZ.js"),
 				"../locales/ru/home.mjs": () => import("./home-w6n56qGM.js"),
+				"../locales/ru/messages.mjs": () => import("./messages-49zLdhdt.js"),
 				"../locales/ru/pricing.mjs": () => import("./pricing-CM-Z5i8n.js"),
 				"../locales/ru/products.mjs": () => import("./products-Cy8eKQ4D.js"),
 				"../locales/ru/route.mjs": () => import("./route-Bb_QKE3F.js"),
@@ -1820,6 +643,7 @@ async function getMessages(locale, namespaces = ["shared", "route"]) {
 				"../locales/zh/contact.mjs": () => import("./contact-u5To19sP.js"),
 				"../locales/zh/faq.mjs": () => import("./faq-DzqbltZO.js"),
 				"../locales/zh/home.mjs": () => import("./home-CaGDYHRi.js"),
+				"../locales/zh/messages.mjs": () => import("./messages-6JJfMfR6.js"),
 				"../locales/zh/pricing.mjs": () => import("./pricing-BTiZtlor.js"),
 				"../locales/zh/products.mjs": () => import("./products-Yz9MBFQS.js"),
 				"../locales/zh/route.mjs": () => import("./route-CVXgtq9a.js"),
@@ -1840,30 +664,16 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const messages = useMemo(() => getMessages("en"), []);
 	const i18n = useMemo(() => initLingui("en", messages), [messages]);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 10,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/lingui-app/src/components/pages/careers/OpenPositions.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(OpenPositions, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(OpenPositions, {}) });
 }
 export { Wrapped as default };
 var messages = JSON.parse("{\"about-grid.choosingAnI18nLibraryIs\":[\"选择 i18n 库是一项具有长期影响的架构决策。大多数比较侧重于 API 的易用性，但很少衡量性能成本：库为包增加了多少权重？加载数千个翻译键时它如何影响渲染？延迟加载是否真的有帮助，还是只是转移了成本？本基准测试用真实数据回答了这些问题。\"],\"about-grid.methodology\":[\"方法论\"],\"about-grid.theSame10PageApp\":[\"同一个 10 页应用为每个库构建一次。我们测量生产包（通过 rollup-plugin-visualizer），运行 Lighthouse 审计以获取加载指标，并使用 React Profiler 捕获语言切换期间的渲染时间。所有测试都在一致的硬件上在 CI 中运行，以确保结果的可复现性。\"],\"about-grid.whyThisExists\":[\"为什么存在这个基准测试\"],\"about-header.aboutThisBenchmark\":[\"关于本基准测试\"],\"about-header.thisIsAnOpenSource\":[\"这是一个开源测试应用程序 —— 不是产品或公司。其唯一目的是提供一个现实的多页面 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。\"],\"what-we-measure.bundleSizeImpact\":[\"包大小影响\"],\"what-we-measure.duringSsrTranslationDataIs\":[\"在 SSR 期间，翻译数据被序列化到 HTML 中。大型字典会增加 HTML 负载并减慢注水速度 —— 即页面变得可交互的时刻。\"],\"what-we-measure.howFastTheAppCan\":[\"应用在运行时从一种语言切换到另一种语言的速度 —— 包括获取新翻译、重新渲染组件和更新 DOM。\"],\"what-we-measure.howMuchExtraTimeThe\":[\"库为 React 渲染周期增加了多少额外时间。通过单个上下文提供者注入翻译的库可能会在整个组件树中导致不必要的重新渲染。\"],\"what-we-measure.hydrationCost\":[\"注水成本\"],\"what-we-measure.lazyLoadingEffectiveness\":[\"延迟加载有效性\"],\"what-we-measure.localeSwitchSpeed\":[\"语言切换速度\"],\"what-we-measure.renderingOverhead\":[\"渲染开销\"],\"what-we-measure.theAdditionalJavascriptBytesSent\":[\"包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络下的下载时间。\"],\"what-we-measure.whatWeMeasure\":[\"我们测量什么\"],\"what-we-measure.whetherSplittingTranslationsByRoute\":[\"按路由或命名空间拆分翻译是否真的减少了初始负载，以及它引入了哪些权衡（瀑布流请求、FOUC、缓存复杂性）。\"]}");
@@ -1985,6 +795,26 @@ export { messages };
 var messages = JSON.parse("{\"hero.aTestApplicationDesignedTo\":[\"Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade da renderização.\"],\"hero.viewResults\":[\"Ver Resultados\"],\"results-table.bundleSize\":[\"Tamanho do bundle\"],\"results-table.lazyLoading\":[\"Carregamento lento\"],\"results-table.lookupTime\":[\"Tempo de consulta\"],\"results-table.sampleResults\":[\"Resultados de amostra\"],\"understanding-impact.cacheInvalidation\":[\"Invalidação da cache:\"],\"understanding-impact.contextBasedArchitecturesCanCause\":[\"As arquiteturas baseadas no contexto podem causar renderizações em cascata quando a localidade muda, porque cada consumidor é notificado mesmo que as suas chaves específicas não tenham mudado.\"],\"understanding-impact.duringServerSideRenderingThe\":[\"Durante a renderização do lado do servidor, o dicionário completo é serializado na carga útil de HTML, aumentando o tamanho do documento que deve ser descarregado e hidratado.\"],\"understanding-impact.flashOfUntranslatedContentFouc\":[\"Flash de conteúdo não traduzido (FOUC):\"],\"understanding-impact.manyI18nLibrariesStoreTranslations\":[\"Muitas bibliotecas de i18n armazenam as traduções em um único objeto JSON fornecido através do contexto de React. Quando este objeto é grande (milhares de chaves), cada componente que consome traduções mantém uma referência a todo o dicionário. Isto significa:\"],\"understanding-impact.splittingTranslationsIntoPerRoute\":[\"Dividir as traduções em partes por rota ou por namespace pode reduzir drasticamente a carga útil inicial. Mas introduz novos desafios:\"],\"understanding-impact.theJsonMustBeParsed\":[\"O JSON deve ser analisado em cada carga de página — bloqueando a thread principal.\"],\"understanding-impact.theTradeOffsOfDynamic\":[\"As compensações do carregamento dinâmico\"],\"understanding-impact.thisTestAppProvidesA\":[\"Esta aplicação de teste fornece um ambiente controlado — 10 páginas com conteúdo realista — para comparar bibliotecas de i18n em três eixos: o peso que adicionam ao seu pacote de JavaScript, o tempo gasto a analisar e renderizar conteúdo traduzido e a eficácia das suas estratégias de divisão de código e de carregamento preguiçoso. Cada biblioteca é integrada na mesma aplicação para que os resultados sejam diretamente comparáveis.\"],\"understanding-impact.understandingTheImpact\":[\"Entendendo o impacto\"],\"understanding-impact.waterfallRequests\":[\"Pedidos em cascata:\"],\"understanding-impact.whatThisBenchmarkMeasures\":[\"O que este benchmark mede\"],\"understanding-impact.whyASingleLargeJson\":[\"Por que um único JSON grande pode prejudicar o desempenho\"],\"why-it-matters.bundleSize\":[\"Tamanho do Bundle\"],\"why-it-matters.connectingALargeJsonDictionary\":[\"Conectar um grande dicionário JSON a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode desencadear novas renderizações em toda a árvore. Durante a hidratação do SSR, a análise e a anexação de objetos de tradução massivos adicionam latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).\"],\"why-it-matters.dynamicLoading\":[\"Carregamento Dinâmico\"],\"why-it-matters.loadingAllTranslationsUpfrontOverloads\":[\"Carregar todas as traduções antecipadamente sobrecarrega a carga útil inicial. O carregamento dinâmico (lazy) divide as traduções por rota ou namespace, enviando apenas o que a página atual precisa. No entanto, o carregamento preguiçoso introduz suas próprias compensações: solicitações em cascada, flash de conteúdo não traduzido e complexidade de cache. Medir ambas as estratégias é essencial.\"],\"why-it-matters.renderingHydration\":[\"Renderização e Hidratação\"],\"why-it-matters.theBundleIsTheData\":[\"O bundle representa os dados enviados a cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código de tempo de execução, além dos próprios arquivos de tradução mesmos.\"],\"why-it-matters.whyTheseMetricsMatter\":[\"Por que essas métricas são importantes\"]}");
 export { messages };
 var messages = JSON.parse("{\"hero.aTestApplicationDesignedTo\":[\"Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.\"],\"hero.viewResults\":[\"Посмотреть результаты\"],\"results-table.bundleSize\":[\"Размер бандла\"],\"results-table.lazyLoading\":[\"Ленивая загрузка\"],\"results-table.lookupTime\":[\"Время поиска\"],\"results-table.sampleResults\":[\"Примеры результатов\"],\"understanding-impact.cacheInvalidation\":[\"Инвалидация кэша:\"],\"understanding-impact.contextBasedArchitecturesCanCause\":[\"Архитектуры на основе контекста могут вызывать каскадные повторные рендеринги при изменении локали, потому что каждый потребитель уведомляется, даже если его конкретные ключи не изменились.\"],\"understanding-impact.duringServerSideRenderingThe\":[\"Во время серверного рендеринга весь словарь сериализуется в HTML-пейлоад, увеличивая размер документа, который необходимо загрузить и гидратировать.\"],\"understanding-impact.flashOfUntranslatedContentFouc\":[\"Мерцание непереведенного контента (FOUC):\"],\"understanding-impact.manyI18nLibrariesStoreTranslations\":[\"Многие библиотеки i18n хранят переводы в одном объекте JSON, предоставляемом через контекст React. Когда этот объект большой (тысячи ключей), каждый компонент, использующий переводы, хранит ссылку на весь словарь. Это означает:\"],\"understanding-impact.splittingTranslationsIntoPerRoute\":[\"Разделение переводов на чанки для каждого маршрута или пространства имен может значительно уменьшить начальный пейлоад. Но это создает новые проблемы:\"],\"understanding-impact.theJsonMustBeParsed\":[\"JSON должен парситься при каждой загрузке страницы — блокируя основной поток.\"],\"understanding-impact.theTradeOffsOfDynamic\":[\"Компромиссы динамической загрузки\"],\"understanding-impact.thisTestAppProvidesA\":[\"Это тестовое приложение предоставляет контролируемую среду — 10 страниц с реалистичным контентом — для сравнения библиотек i18n по трем осям: вес, который они добавляют вашему JavaScript-бандлу, время, затраченное на парсинг и рендеринг переведенного контента, и эффективность их стратегий разделения кода и ленивой загрузки. Каждая библиотека интегрирована в одно и то же приложение, поэтому результаты напрямую сопоставимы.\"],\"understanding-impact.understandingTheImpact\":[\"Понимание влияния\"],\"understanding-impact.waterfallRequests\":[\"Каскадные запросы (Waterfall requests):\"],\"understanding-impact.whatThisBenchmarkMeasures\":[\"Что измеряет этот бенчмарк\"],\"understanding-impact.whyASingleLargeJson\":[\"Почему один большой JSON может снизить производительность\"],\"why-it-matters.bundleSize\":[\"Размер бандла\"],\"why-it-matters.connectingALargeJsonDictionary\":[\"Подключение большого JSON-словаря к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг всего дерева. Во время гидратации SSR парсинг и присоединение массивных объектов перевода добавляют задержку до того, как страница станет интерактивной, что напрямую влияет на Time to Interactive (TTI).\"],\"why-it-matters.dynamicLoading\":[\"Динамическая загрузка\"],\"why-it-matters.loadingAllTranslationsUpfrontOverloads\":[\"Загрузка всех переводов сразу перегружает начальную полезную нагрузку. Динамическая (ленивая) загрузка разделяет переводы по маршрутам или пространствам имен, отправляя только то, что нужно для текущей страницы. Однако ленивая загрузка вносит свои компромиссы: каскадные запросы (waterfall), мерцание непереведенного контента и сложность кэширования. Измерение обеих стратегий необходимо.\"],\"why-it-matters.renderingHydration\":[\"Рендеринг и гидратация\"],\"why-it-matters.theBundleIsTheData\":[\"Бандл — это данные, которые отправляются каждому пользователю по всему миру. Большой размер бандла означает более долгое время загрузки, особенно при медленном 3G-соединении, характерном для многих регионов. Библиотеки i18n сильно различаются по весу: от нескольких килобайт до десятков килобайт рантайм-кода, плюс сами файлы переводов.\"],\"why-it-matters.whyTheseMetricsMatter\":[\"Почему эти показатели важны\"]}");
+export { messages };
+var messages = JSON.parse("{}");
+export { messages };
+var messages = JSON.parse("{}");
+export { messages };
+var messages = JSON.parse("{}");
+export { messages };
+var messages = JSON.parse("{}");
+export { messages };
+var messages = JSON.parse("{}");
+export { messages };
+var messages = JSON.parse("{}");
+export { messages };
+var messages = JSON.parse("{}");
+export { messages };
+var messages = JSON.parse("{}");
+export { messages };
+var messages = JSON.parse("{}");
+export { messages };
+var messages = JSON.parse("{}");
 export { messages };
 var messages = JSON.parse("{\"pricing-header.chooseThePlanThatFits\":[\"Escolha o plano que se adapta à sua equipe. Sem taxas ocultas.\"],\"pricing-header.simpleTransparentPricing\":[\"Preços Simples e Transparentes\"],\"pricing-tiers.allLibraries\":[\"Todas as bibliotecas\"],\"pricing-tiers.auditLogs\":[\"Logs de auditoria\"],\"pricing-tiers.benchmarkRunPerDay\":[[\"runs\"],\" execuções de benchmark por dia\"],\"pricing-tiers.ciIntegration\":[\"Integração CI\"],\"pricing-tiers.communitySupport\":[\"Suporte da comunidade\"],\"pricing-tiers.contactSales\":[\"Contatar Vendas\"],\"pricing-tiers.customPrice\":[\"Personalizado\"],\"pricing-tiers.customSlas\":[\"SLAs personalizados\"],\"pricing-tiers.dedicatedAccountManager\":[\"Gerente de conta dedicado\"],\"pricing-tiers.enterprise\":[\"Enterprise\"],\"pricing-tiers.everythingInPro\":[\"Tudo o que está no Pro\"],\"pricing-tiers.forever\":[\"para sempre\"],\"pricing-tiers.getStarted\":[\"Começar\"],\"pricing-tiers.historicalData\":[\"Dados históricos\"],\"pricing-tiers.librariesNumber\":[[\"libs\"],\" bibliotecas\"],\"pricing-tiers.month\":[\"/mês\"],\"pricing-tiers.onPremiseOption\":[\"Opção on-premise\"],\"pricing-tiers.price0\":[\"0 $\"],\"pricing-tiers.price29\":[\"29 $\"],\"pricing-tiers.prioritySupport\":[\"Suporte prioritário\"],\"pricing-tiers.privateResults\":[\"Resultados privados\"],\"pricing-tiers.pro\":[\"Pro\"],\"pricing-tiers.publicResults\":[\"Resultados públicos\"],\"pricing-tiers.ssoSaml\":[\"SSO & SAML\"],\"pricing-tiers.starter\":[\"Starter\"],\"pricing-tiers.trainingSessions\":[\"Sessões de treinamento\"],\"pricing-tiers.unlimitedRuns\":[\"Execuções ilimitadas\"]}");
 export { messages };

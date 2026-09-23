@@ -1,7 +1,6 @@
-import { jsxDEV } from "react/jsx-dev-runtime";
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-react-base-app/src/components/pages/pricing/PricingTiers.tsx";
+import { jsx, jsxs } from "react/jsx-runtime";
 function PricingTiers() {
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
 		children: [
 			{
@@ -43,84 +42,44 @@ function PricingTiers() {
 					"Training sessions"
 				]
 			}
-		].map((t) => jsxDEV("div", {
+		].map((t) => jsxs("div", {
 			className: `flex flex-col rounded-lg border p-6 ${t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsxDEV("h3", {
+				jsx("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: t.name
-				}, void 0, false, {
-					fileName: _jsxFileName,
-					lineNumber: 55,
-					columnNumber: 11
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "my-4",
-					children: [jsxDEV("span", {
+					children: [jsx("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: t.price
-					}, void 0, false, {
-						fileName: _jsxFileName,
-						lineNumber: 57,
-						columnNumber: 13
-					}, this), jsxDEV("span", {
+					}), jsx("span", {
 						className: "text-sm text-muted-foreground",
 						children: t.period
-					}, void 0, false, {
-						fileName: _jsxFileName,
-						lineNumber: 58,
-						columnNumber: 13
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName,
-					lineNumber: 56,
-					columnNumber: 11
-				}, this),
-				jsxDEV("ul", {
+					})]
+				}),
+				jsx("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: t.features.map((f) => jsxDEV("li", {
+					children: t.features.map((f) => jsxs("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsxDEV("span", {
+							jsx("span", {
 								className: "text-primary",
 								children: "✓"
-							}, void 0, false, {
-								fileName: _jsxFileName,
-								lineNumber: 66,
-								columnNumber: 17
-							}, this),
+							}),
 							" ",
 							f
 						]
-					}, f, true, {
-						fileName: _jsxFileName,
-						lineNumber: 62,
-						columnNumber: 15
-					}, this))
-				}, void 0, false, {
-					fileName: _jsxFileName,
-					lineNumber: 60,
-					columnNumber: 11
-				}, this),
-				jsxDEV("button", {
+					}, f))
+				}),
+				jsx("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: t.name === "Enterprise" ? "Contact Sales" : "Get Started"
-				}, void 0, false, {
-					fileName: _jsxFileName,
-					lineNumber: 70,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, t.name, true, {
-			fileName: _jsxFileName,
-			lineNumber: 47,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 45,
-		columnNumber: 5
-	}, this);
+		}, t.name))
+	});
 }
 export { PricingTiers as default };

@@ -1,5 +1,5 @@
 import { createContext as e, createElement as t, useCallback as n, useContext as r, useEffect as i, useMemo as a, useRef as o, useState as s } from "react";
-import { jsxDEV as c } from "react/jsx-dev-runtime";
+import { jsx as c } from "react/jsx-runtime";
 var l = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), u = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -1316,51 +1316,43 @@ var de = (e, t, n, r) => {
 		return Object.keys(this.usedNamespaces);
 	}
 }, Oe = l(((e) => {
-	(function() {
-		function t(e, t) {
-			return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
-		}
-		function n(e, t) {
-			f || a.startTransition === void 0 || (f = !0, console.error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release."));
+	var t = u("react");
+	function n(e, t) {
+		return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
+	}
+	var r = typeof Object.is == "function" ? Object.is : n, i = t.useState, a = t.useEffect, o = t.useLayoutEffect, s = t.useDebugValue;
+	function c(e, t) {
+		var n = t(), r = i({ inst: {
+			value: n,
+			getSnapshot: t
+		} }), c = r[0].inst, u = r[1];
+		return o(function() {
+			c.value = n, c.getSnapshot = t, l(c) && u({ inst: c });
+		}, [
+			e,
+			n,
+			t
+		]), a(function() {
+			return l(c) && u({ inst: c }), e(function() {
+				l(c) && u({ inst: c });
+			});
+		}, [e]), s(n), n;
+	}
+	function l(e) {
+		var t = e.getSnapshot;
+		e = e.value;
+		try {
 			var n = t();
-			if (!p) {
-				var i = t();
-				o(n, i) || (console.error("The result of getSnapshot should be cached to avoid an infinite loop"), p = !0);
-			}
-			i = s({ inst: {
-				value: n,
-				getSnapshot: t
-			} });
-			var u = i[0].inst, m = i[1];
-			return l(function() {
-				u.value = n, u.getSnapshot = t, r(u) && m({ inst: u });
-			}, [
-				e,
-				n,
-				t
-			]), c(function() {
-				return r(u) && m({ inst: u }), e(function() {
-					r(u) && m({ inst: u });
-				});
-			}, [e]), d(n), n;
+			return !r(e, n);
+		} catch {
+			return !0;
 		}
-		function r(e) {
-			var t = e.getSnapshot;
-			e = e.value;
-			try {
-				var n = t();
-				return !o(e, n);
-			} catch {
-				return !0;
-			}
-		}
-		function i(e, t) {
-			return t();
-		}
-		typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-		var a = u("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, c = a.useEffect, l = a.useLayoutEffect, d = a.useDebugValue, f = !1, p = !1, m = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
-		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? m : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
-	})();
+	}
+	function d(e, t) {
+		return t();
+	}
+	var f = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? d : c;
+	e.useSyncExternalStore = t.useSyncExternalStore === void 0 ? f : t.useSyncExternalStore;
 })), ke = l(((e, t) => {
 	t.exports = Oe();
 }))(), Ae = {
@@ -1457,7 +1449,7 @@ var de = (e, t, n, r) => {
 	if (d && p && !T) {
 		let e = !1;
 		try {
-			e = !0;
+			e = !1;
 		} catch {}
 		throw e && X(d, "SUSPENDED_WHILE_LOADING", "useTranslation: suspended while translations are loading (useSuspense is true by default). Add a <Suspense> boundary above this component, or set react.useSuspense: false in the i18next init options. https://react.i18next.com/latest/usetranslation-hook"), new Promise((e) => {
 			let n = () => e();
@@ -1473,33 +1465,29 @@ function Ne({ i18n: e, defaultNS: n, children: r }) {
 	}), [e, n]);
 	return t(Ee.Provider, { value: i }, r);
 }
-var Pe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/src/components/MockBanner.tsx", Fe = () => {
+var Pe = () => {
 	let { t: e } = Me("shared");
 	return c("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: e("mockBanner.text")
-	}, void 0, !1, {
-		fileName: Pe,
-		lineNumber: 6,
-		columnNumber: 5
-	}, void 0);
-}, Ie = (e, t, n) => {
+	});
+}, Fe = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, Le = [
+}, Ie = [
 	"__proto__",
 	"constructor",
 	"prototype"
-], Re = function(e, t) {
-	return !(typeof e != "string" || e.length > 128 || Le.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
-}, ze = function(e) {
+], Le = function(e, t) {
+	return !(typeof e != "string" || e.length > 128 || Ie.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
+}, Re = function(e) {
 	return {
 		type: "backend",
 		init: function(e, t, n) {},
 		read: function(t, n, r) {
-			if (!Re(t, !1) || !Re(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
+			if (!Le(t, !1) || !Le(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
 			if (typeof e == "function") {
 				if (e.length < 3) {
 					try {
@@ -1518,7 +1506,7 @@ var Pe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack
 			r(null, e && e[t] && e[t][n]);
 		}
 	};
-}, Be = "shared", Ve = [
+}, ze = "shared", Be = [
 	"about",
 	"blog",
 	"careers",
@@ -1532,9 +1520,9 @@ var Pe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack
 	"shared",
 	"team"
 ];
-function He(e = "en") {
+function Ve(e = "en") {
 	let t = Y.createInstance();
-	return t.use(Te).use(ze((e, t) => Ie(Object.assign({
+	return t.use(Te).use(Re((e, t) => Fe(Object.assign({
 		"./locales/de/about.json": () => import("../i18n/locales/de/about.json"),
 		"./locales/de/blog.json": () => import("../i18n/locales/de/blog.json"),
 		"./locales/de/careers.json": () => import("../i18n/locales/de/careers.json"),
@@ -1659,36 +1647,23 @@ function He(e = "en") {
 		resources: {},
 		lng: e,
 		fallbackLng: "en",
-		ns: Ve,
-		defaultNS: Be,
+		ns: Be,
+		defaultNS: ze,
 		interpolation: { escapeValue: !1 },
 		react: { useSuspense: !1 }
 	}), t;
 }
-var Ue = He(), We = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/scripts/Wrapper.tsx";
-function Ge({ children: e }) {
+var He = Ve();
+function Ue({ children: e }) {
 	return c(Ne, {
-		i18n: Ue,
+		i18n: He,
 		children: e
-	}, void 0, !1, {
-		fileName: We,
-		lineNumber: 7,
-		columnNumber: 5
-	}, this);
+	});
 }
-var Ke = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/react-i18next-app/src/components/MockBanner.wrapper.tsx";
-function qe() {
-	return c(Ge, { children: c(Fe, {}, void 0, !1, {
-		fileName: Ke,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: Ke,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function We() {
+	return c(Ue, { children: c(Pe, {}) });
 }
-export { qe as default };
+export { We as default };
 var e = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",

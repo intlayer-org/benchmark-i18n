@@ -152,7 +152,8 @@
     "benchmark": "Benchmark",
     "tutorial": "Tutorial",
     "analysis": "Análise",
-    "meta": "Meta"
+    "meta": "Meta",
+    "reactServerComponentsIntroduceNew": "Os React Server Components introduzem novos padrões para internacionalização. Exploramos as implicações e as melhores práticas."
   },
   "careersHeader": {
     "careers": "Carreiras",

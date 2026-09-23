@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-21T20:04:25.721Z",
+  "timestamp": "2026-09-23T20:58:56.979Z",
   "packageName": "tanstack-static-intlayer-compat-react-i18next-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 46615,
-    "totalMinifiedBytes": 27771,
-    "totalGzipBytes": 9307
+    "totalUnminifiedBytes": 66625,
+    "totalMinifiedBytes": 40602,
+    "totalGzipBytes": 11861
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 46615,
-      "unminifiedGzipBytes": 12343,
-      "minifiedBytes": 27771,
-      "minifiedGzipBytes": 9307
+      "unminifiedBytes": 66625,
+      "unminifiedGzipBytes": 15658,
+      "minifiedBytes": 40602,
+      "minifiedGzipBytes": 11861
     }
   ]
 }

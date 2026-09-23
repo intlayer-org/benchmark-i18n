@@ -1,10 +1,5 @@
-import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
-var faq_list_default = {
-	key: "faq-list",
-	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"howCanIContribute\":\"How can I contribute?\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"isTheDataReliable\":\"Is the data reliable?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\"},\"fr\":{\"canISubmitMyOwn\":\"Puis-je soumettre mes propres benchmarks ?\",\"doYouOfferConsultingServices\":\"Proposez-vous des services de conseil ?\",\"howAreBenchmarksConducted\":\"Comment les benchmarks sont-ils menés ?\",\"howCanIContribute\":\"Comment puis-je contribuer ?\",\"howOftenAreBenchmarksUpdated\":\"À quelle fréquence les benchmarks sont-ils mis à jour ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark est une suite de tests open source qui mesure et compare les performances, la taille des bundles et l'expérience développeur des bibliothèques d'internationalisation pour les applications JavaScript et React.\",\"isTheDataReliable\":\"Les données sont-elles fiables ?\",\"thereAreManyWaysTo\":\"Il existe de nombreuses façons de contribuer : proposer des benchmarks, améliorer la documentation, signaler des bugs, suggérer de nouvelles métriques ou sponsoriser le projet. Consultez notre dépôt GitHub pour plus de détails.\",\"weFollowRigorousStatisticalMethodology\":\"Nous suivons une méthodologie statistique rigoureuse incluant des phases de préchauffage, la détection des valeurs aberrantes et des intervalles de confiance. Toutes les données brutes sont publiées avec l'analyse pour une transparence totale.\",\"weReRunAllBenchmarks\":\"Nous réexécutons tous les benchmarks chaque semaine pour les dernières versions stables de chaque bibliothèque. Les versions majeures déclenchent un cycle de retraitement immédiat.\",\"weRunStandardizedTestsIn\":\"Nous effectuons des tests standardisés dans des environnements isolés avec un matériel identique. Chaque benchmark est répété plusieurs fois pour garantir sa pertinence statistique. Toutes les configurations de test sont publiques sur notre dépôt GitHub.\",\"weSupportReactI18nextReact\":\"Nous supportons react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react et Tolgee.\",\"whatIsI18nBenchmark\":\"Qu'est-ce que i18n Benchmark ?\",\"whichLibrariesAreCurrentlySupported\":\"Quelles bibliothèques sont actuellement supportées ?\",\"yesOurEnterprisePlanIncludes\":\"Oui, notre offre Entreprise comprend des heures de conseil pour les équipes évaluant des solutions i18n. Nous pouvons fournir des recommandations personnalisées basées sur votre cas d'utilisation, votre échelle et vos contraintes.\",\"yesCommunityBenchmarkSubmissionsAre\":\"Oui ! Nous accueillons avec plaisir les soumissions de benchmarks de la communauté. Veuillez forker le dépôt, ajouter votre benchmark en suivant notre guide de contribution, et soumettre une pull request. Notre équipe examinera et fusionnera les soumissions qualifiées.\"},\"es\":{\"canISubmitMyOwn\":\"¿Puedo enviar mis propios benchmarks?\",\"doYouOfferConsultingServices\":\"¿Ofrecen servicios de consultoría?\",\"howAreBenchmarksConducted\":\"¿Cómo se realizan los benchmarks?\",\"howCanIContribute\":\"¿Cómo puedo contribuir?\",\"howOftenAreBenchmarksUpdated\":\"¿Con qué frecuencia se actualizan los benchmarks?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark es una suite de benchmarking de código abierto que mide y compara el rendimiento, el tamaño del bundle y la experiencia del desarrollador de las bibliotecas de internacionalización.\",\"isTheDataReliable\":\"¿Son fiables los datos?\",\"thereAreManyWaysTo\":\"Existen muchas formas de implementar la internacionalización, y cada una tiene sus propias compensaciones en cuanto a rendimiento y experiencia del desarrollador.\",\"weFollowRigorousStatisticalMethodology\":\"Seguimos una metodología estadística rigurosa que incluye ejecuciones de calentamiento, detección de valores atípicos e intervalos de confianza.\",\"weReRunAllBenchmarks\":\"Volvemos a ejecutar todos los benchmarks semanalmente con las últimas versiones estables.\",\"weRunStandardizedTestsIn\":\"Realizamos pruebas estandarizadas en entornos aislados utilizando hardware consistente.\",\"weSupportReactI18nextReact\":\"Soportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react y Tolgee.\",\"whatIsI18nBenchmark\":\"¿Qué es i18n Benchmark?\",\"whichLibrariesAreCurrentlySupported\":\"¿Qué bibliotecas están soportadas actualmente?\",\"yesOurEnterprisePlanIncludes\":\"Sí, nuestro plan Enterprise incluye horas de consultoría para equipos que evalúan soluciones de i18n.\",\"yesCommunityBenchmarkSubmissionsAre\":\"¡Sí! Damos la bienvenida a las contribuciones de la comunidad. Por favor, haz un fork del repositorio y envía un pull request.\"},\"de\":{\"canISubmitMyOwn\":\"Kann ich meine eigenen Benchmarks einreichen?\",\"doYouOfferConsultingServices\":\"Bieten Sie Beratungsdienstleistungen an?\",\"howAreBenchmarksConducted\":\"Wie werden Benchmarks durchgeführt?\",\"howCanIContribute\":\"Wie kann ich beitragen?\",\"howOftenAreBenchmarksUpdated\":\"Wie oft werden Benchmarks aktualisiert?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark ist eine Open-Source-Benchmarking-Suite, die die Leistung, Bundle-Größe und Entwicklererfahrung von Internationalisierungs-Bibliotheken misst und vergleicht.\",\"isTheDataReliable\":\"Sind die Daten zuverlässig?\",\"thereAreManyWaysTo\":\"Es gibt viele Möglichkeiten, zur Internationalisierung beizutragen, von der Meldung von Fehlern bis hin zur Einreichung neuer Benchmark-Szenarien.\",\"weFollowRigorousStatisticalMethodology\":\"Wir folgen einer strengen statistischen Methodik, die Aufwärmphasen, Ausreißererkennung und Konfidenzintervalle umfasst.\",\"weReRunAllBenchmarks\":\"Wir führen alle Benchmarks wöchentlich mit den neuesten stabilen Versionen jeder Bibliothek erneut durch.\",\"weRunStandardizedTestsIn\":\"Wir führen standardisierte Tests in isolierten Umgebungen unter Verwendung konsistenter Hardware durch.\",\"weSupportReactI18nextReact\":\"Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react und Tolgee.\",\"whatIsI18nBenchmark\":\"Was ist i18n Benchmark?\",\"whichLibrariesAreCurrentlySupported\":\"Welche Bibliotheken werden derzeit unterstützt?\",\"yesOurEnterprisePlanIncludes\":\"Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen evaluieren.\",\"yesCommunityBenchmarkSubmissionsAre\":\"Ja! Community-Benchmark-Einreichungen sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Beitragsleitfaden hinzu und reichen Sie einen Pull-Request ein.\"},\"it\":{\"canISubmitMyOwn\":\"Posso inviare i miei benchmark?\",\"doYouOfferConsultingServices\":\"Offrite servizi di consulenza ?\",\"howAreBenchmarksConducted\":\"Come vengono condotti i benchmark?\",\"howCanIContribute\":\"Come posso contribuire?\",\"howOftenAreBenchmarksUpdated\":\"Quanto spesso vengono aggiornati i benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark è una suite di benchmarking open-source che misura e confronta le prestazioni, le dimensioni del bundle e l'esperienza degli sviluppatori delle librerie di internazionalizzazione.\",\"isTheDataReliable\":\"I dati sono affidabili?\",\"thereAreManyWaysTo\":\"Ci sono molti modi per contribuire al progetto.\",\"weFollowRigorousStatisticalMethodology\":\"Seguiamo una rigorosa metodologia statistica che include fasi di riscaldamento, rilevamento di valori anomali e intervalli di confidenza.\",\"weReRunAllBenchmarks\":\"Eseguiamo nuovamente tutti i benchmark settimanalmente rispetto alle ultime versioni stabili di ciascuna libreria.\",\"weRunStandardizedTestsIn\":\"Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente.\",\"weSupportReactI18nextReact\":\"Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\",\"whatIsI18nBenchmark\":\"Cos'è i18n Benchmark?\",\"whichLibrariesAreCurrentlySupported\":\"Quali librerie sono attualmente supportate?\",\"yesOurEnterprisePlanIncludes\":\"Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano le soluzioni i18n.\",\"yesCommunityBenchmarkSubmissionsAre\":\"Sì! Siamo aperti ai contributi della community. Fai un fork della repository e invia una pull request.\"},\"pt\":{\"canISubmitMyOwn\":\"Posso enviar meus próprios benchmarks?\",\"doYouOfferConsultingServices\":\"Vocês oferecem serviços de consultoria?\",\"howAreBenchmarksConducted\":\"Como os benchmarks são conduzidos?\",\"howCanIContribute\":\"Como posso contribuir?\",\"howOftenAreBenchmarksUpdated\":\"Com que frequência os benchmarks são atualizados?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark é uma suíte de benchmarking de código aberto que mede e compara o desempenho, o tamanho do pacote e a experiência do desenvolvedor das bibliotecas de internacionalização para aplicativos JavaScript e React.\",\"isTheDataReliable\":\"Os dados são confiáveis?\",\"thereAreManyWaysTo\":\"Existem muitas maneiras de contribuir: enviar benchmarks, melhorar a documentação, relatar bugs, sugerir novas métricas ou patrocinar o projeto. Visite nosso repositório GitHub para obter detalhes.\",\"weFollowRigorousStatisticalMethodology\":\"Seguimos uma metodologia estatística rigorosa, incluindo execuções de aquecimento, detecção de valores atípicos e intervalos de confiança. Todos os dados brutos são publicados com a análise para total transparência.\",\"weReRunAllBenchmarks\":\"Executamos novamente todos os benchmarks semanalmente contra as últimas versões estáveis de cada biblioteca. Os lançamentos de versões principais acionam um ciclo de re-benchmarking imediato.\",\"weRunStandardizedTestsIn\":\"Executamos testes padronizados em ambientes isolados usando hardware consistente. Cada benchmark é repetido várias vezes para garantir significância estatística. Todas as configurações de teste estão disponíveis publicamente em nosso repositório GitHub.\",\"weSupportReactI18nextReact\":\"Suportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\",\"whatIsI18nBenchmark\":\"O que é o i18n Benchmark?\",\"whichLibrariesAreCurrentlySupported\":\"Quais bibliotecas são suportadas atualmente?\",\"yesOurEnterprisePlanIncludes\":\"Sim, nosso plano Enterprise inclui horas de consultoria para equipes que avaliam soluções i18n. Podemos fornecer recomendações personalizadas com base no seu caso de uso específico, escala e restrições.\",\"yesCommunityBenchmarkSubmissionsAre\":\"Sim! Congratulamo-nos com o envio de benchmarks da comunidade. Por favor, faça um fork do repositório, adicione seu benchmark seguindo nosso guia de contribuição e envie um pull request. Nossa equipe analisará e mesclará envios qualificados.\"},\"zh\":{\"canISubmitMyOwn\":\"我可以提交自己的基准测试吗？\",\"doYouOfferConsultingServices\":\"你们提供咨询服务吗？\",\"howAreBenchmarksConducted\":\"基准测试是如何进行的？\",\"howCanIContribute\":\"我如何贡献？\",\"howOftenAreBenchmarksUpdated\":\"基准测试多久更新一次？\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark 是一个开源基准测试套件，用于测量和比较 JavaScript 和 React 应用程序的国际化库的性能、包大小和开发人员体验。\",\"isTheDataReliable\":\"数据可靠吗？\",\"thereAreManyWaysTo\":\"有很多贡献方式：提交基准测试、改进文档、报告 bug、提出新指标或赞助项目。详情请访问我们的 GitHub 仓库。\",\"weFollowRigorousStatisticalMethodology\":\"我们遵循严谨的统计方法，包括预热运行、异常值检测和置信区间。所有原始数据都会随分析报告一起发布，以确保完全透明。\",\"weReRunAllBenchmarks\":\"我们每周针对每个库的最新稳定版本重新运行所有基准测试。主版本发布会触发立即的基准测试周期。\",\"weRunStandardizedTestsIn\":\"我们使用一致的硬件在隔离环境中运行标准化测试。每个基准测试都会重复多次以确保统计显著性。所有测试配置都在我们的 GitHub 仓库中公开。\",\"weSupportReactI18nextReact\":\"我们支持 react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react 和 Tolgee。\",\"whatIsI18nBenchmark\":\"什么是 i18n Benchmark？\",\"whichLibrariesAreCurrentlySupported\":\"目前支持哪些库？\",\"yesOurEnterprisePlanIncludes\":\"是的，我们的企业版计划为评估 i18n 解决方案的团队提供咨询时间。我们可以根据您的具体用例、规模和约束提供量身定制的建议。\",\"yesCommunityBenchmarkSubmissionsAre\":\"是的！我们欢迎社区提交基准测试。请点击 Fork 仓库，按照我们的贡献指南添加您的基准测试，并提交 Pull Request。我们的团队将审核并合并合格的提交。\"},\"ja\":{\"canISubmitMyOwn\":\"独自のベンチマークを提出できますか？\",\"doYouOfferConsultingServices\":\"コンサルティングサービスは提供していますか？\",\"howAreBenchmarksConducted\":\"ベンチマークはどのように行われますか？\",\"howCanIContribute\":\"どのように貢献できますか？\",\"howOftenAreBenchmarksUpdated\":\"ベンチマークはどのくらいの頻度で更新されますか？\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmarkは、JavaScriptおよびReactアプリケーション向けの国際化ライブラリのパフォーマンス、バンドルサイズ、および開発者エクスペリエンスを測定および比較するオープンソースのベンチマークスイートです。\",\"isTheDataReliable\":\"データは信頼できますか？\",\"thereAreManyWaysTo\":\"貢献する方法はたくさんあります。ベンチマークの提出、ドキュメントの改善、バグ報告、新しい指標の提案、またはプロジェクトのスポンサーなどです。詳細については、GitHubリポジトリをご覧ください。\",\"weFollowRigorousStatisticalMethodology\":\"ウォームアップ実行、外れ値検出、信頼区間を含む厳密な統計手法に従います。すべての生データは、完全な透明性のために分析と共に公開されます。\",\"weReRunAllBenchmarks\":\"各ライブラリの最新の安定バージョンに対して毎週すべてのベンチマークを再実行します。メジャーバージョンのリリースにより、即時の再ベンチマークサイクルが開始されます。\",\"weRunStandardizedTestsIn\":\"一貫したハードウェアを使用して、隔離された環境で標準化されたテストを実行します。各ベンチマークは統計的な有意性を確保するために複数回繰り返されます。すべてのテスト構成は、GitHubリポジトリで公開されています。\",\"weSupportReactI18nextReact\":\"react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react、およびTolgeeをサポートしています。\",\"whatIsI18nBenchmark\":\"i18n Benchmarkとは何ですか？\",\"whichLibrariesAreCurrentlySupported\":\"現在、どのライブラリがサポートされていますか？\",\"yesOurEnterprisePlanIncludes\":\"はい、エンタープライズプランには、i18nソリューションを評価するチーム向けのコンサルティング時間が含まれています。特定のユースケース、規模、および制約に基づいてカスタマイズされた推奨事項を提供できます。\",\"yesCommunityBenchmarkSubmissionsAre\":\"はい！コミュニティからのベンチマーク提出を歓迎します。リポジトリをフォークし、貢献ガイドに従ってベンチマークを追加し、プルリクエストを送信してください。私たちのチームが適格な提出物をレビューしてマージします。\"},\"ko\":{\"canISubmitMyOwn\":\"함께 벤치마크를 제출할 수 있나요?\",\"doYouOfferConsultingServices\":\"컨설팅 서비스를 제공하나요?\",\"howAreBenchmarksConducted\":\"벤치마크는 어떻게 진행되나요?\",\"howCanIContribute\":\"어떻게 기여할 수 있나요?\",\"howOftenAreBenchmarksUpdated\":\"벤치마크는 얼마나 자주 업데이트되나요?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark는 JavaScript 및 React 애플리케이션을 위한 국제화 라이브러리의 성능, 번들 크기 및 개발자 경험을 측정하고 비교하는 오픈 소스 벤치마킹 제품군입니다.\",\"isTheDataReliable\":\"데이터를 신뢰할 수 있나요?\",\"thereAreManyWaysTo\":\"벤치마크 제출, 문서 개선, 버그 보고, 새로운 지표 제안 등 기여할 수 있는 방법은 많습니다. 자세한 내용은 GitHub 리포지토리를 방문하세요.\",\"weFollowRigorousStatisticalMethodology\":\"저희는 웜업(warm-up) 실행, 이상치 감지 및 신뢰 구간을 포함한 엄격한 통계 방법론을 따릅니다. 모든 원시 데이터는 완전한 투명성을 위해 분석과 함께 공개됩니다.\",\"weReRunAllBenchmarks\":\"매주 각 라이브러리의 최신 안정 버전에 대해 모든 벤치마크를 다시 실행합니다. 메이저 버전 릴리스는 즉각적인 재벤치마크 주기를 트리거합니다.\",\"weRunStandardizedTestsIn\":\"일관된 하드웨어를 사용하여 격리된 환경에서 표준화된 테스트를 실행합니다. 각 벤치마크는 통계적 유의성을 보장하기 위해 여러 번 반복됩니다. 모든 테스트 구성은 GitHub 리포지토리에서 공개적으로 사용할 수 있습니다.\",\"weSupportReactI18nextReact\":\"react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react 및 Tolgee를 지원합니다.\",\"whatIsI18nBenchmark\":\"i18n Benchmark란 무엇인가요?\",\"whichLibrariesAreCurrentlySupported\":\"현재 어떤 라이브러리가 지원되나요?\",\"yesOurEnterprisePlanIncludes\":\"예, 엔터프라이즈 플랜에는 i18n 솔루션을 평가하는 팀을 위한 컨설팅 시간이 포함되어 있습니다. 규모 및 제약 조건에 따라 맞춤형 권장 사항을 제공할 수 있습니다.\",\"yesCommunityBenchmarkSubmissionsAre\":\"네! 커뮤니티의 벤치마크 제출을 환영합니다. 리포지토리를 포크하고 기여 가이드에 따라 벤치마크를 추가한 후 풀 리퀘스트를 제출해 주세요. 저희 팀이 제출물을 검토하고 병합할 것입니다.\"},\"ru\":{\"canISubmitMyOwn\":\"Могу ли я предложить свой бенчмарк?\",\"doYouOfferConsultingServices\":\"Предоставляете ли вы консалтинговые услуги?\",\"howAreBenchmarksConducted\":\"Как проводятся бенчмарки?\",\"howCanIContribute\":\"Как я могу внести свой вклад?\",\"howOftenAreBenchmarksUpdated\":\"Как часто обновляются бенчмарки?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark — это открытый набор тестов, который измеряет и сравнивает производительность, размер пакета и опыт разработчика библиотек интернационализации для приложений на JavaScript и React.\",\"isTheDataReliable\":\"Надежны ли данные?\",\"thereAreManyWaysTo\":\"Есть много способов внести свой вклад: предложить бенчмарки, улучшить документацию, сообщить о багах, предложить новые метрики или стать спонсором проекта. Посетите наш репозиторий GitHub для получения подробной информации.\",\"weFollowRigorousStatisticalMethodology\":\"Мы следуем строгой статистической методологии, включая прогревочные запуски, обнаружение выбросов и доверительные интервалы. Все необработанные данные публикуются вместе с анализом для полной прозрачности.\",\"weReRunAllBenchmarks\":\"Мы еженедельно перезапускаем все бенчмарки для последних стабильных версий каждой библиотеки. Выпуски основных версий запускают немедленный цикл повторного тестирования.\",\"weRunStandardizedTestsIn\":\"Мы проводим стандартизированные тесты в изолированных средах с использованием одинакового оборудования. Каждый бенчмарк повторяется несколько раз для обеспечения статистической значимости. Все конфигурации тестов общедоступны в нашем репозитории GitHub.\",\"weSupportReactI18nextReact\":\"Мы поддерживаем react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react и Tolgee.\",\"whatIsI18nBenchmark\":\"Что такое i18n Benchmark?\",\"whichLibrariesAreCurrentlySupported\":\"Какие библиотеки поддерживаются в данный момент?\",\"yesOurEnterprisePlanIncludes\":\"Да, наш план Enterprise включает консультационные часы для команд, оценивающих решения i18n. Мы можем предоставить индивидуальные рекомендации на основе вашего конкретного случая использования, масштаба и ограничений.\",\"yesCommunityBenchmarkSubmissionsAre\":\"Да! Мы приветствуем бенчмарки от сообщества. Пожалуйста, сделайте форк репозитория, добавьте свой бенчмарк, следуя нашему руководству по вкладу, и отправьте pull request. Наша команда рассмотрит и примет подходящие предложения.\"}}}")
-};
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
 var EventEmitter = class {
 	_events = /* @__PURE__ */ new Map();
 	on(event, listener) {
@@ -501,6 +496,335 @@ var icuToIntlayerFormatter = (message) => {
 		}]
 	});
 };
+var parseI18Next = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{" && text[index + 1] === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index += 2;
+				nodes.push(parseStandardArgument());
+			} else if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseICUArgument());
+			} else if (char === "}") break;
+			else {
+				currentText += char;
+				index++;
+			}
+		}
+		if (currentText) nodes.push(currentText);
+		return nodes;
+	};
+	const parseStandardArgument = () => {
+		let name = "";
+		while (index < text.length) {
+			if (text[index] === "}" && text[index + 1] === "}") {
+				index += 2;
+				return {
+					type: "argument",
+					name: name.trim()
+				};
+			}
+			name += text[index];
+			index++;
+		}
+		throw new Error("Unclosed i18next variable");
+	};
+	const parseICUArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var i18nextNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = i18nextNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = i18nextNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = i18nextNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+	}
+	return nodes.map((node) => i18nextNodesToIntlayer([node]));
+};
+var i18nextToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return i18nextNodesToIntlayer(parseI18Next(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var i18nextToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "i18next",
+		keyPath: [],
+		plugins: [{
+			id: "i18next",
+			...i18nextToIntlayerPlugin
+		}]
+	});
+};
+var parseVueI18nPart = (text) => {
+	let index = 0;
+	const nodes = [];
+	let currentText = "";
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "{") {
+			if (currentText) {
+				nodes.push(currentText);
+				currentText = "";
+			}
+			index++;
+			let name = "";
+			while (index < text.length && text[index] !== "}") {
+				name += text[index];
+				index++;
+			}
+			if (index < text.length) index++;
+			nodes.push({
+				type: "argument",
+				name: name.trim()
+			});
+		} else {
+			currentText += char;
+			index++;
+		}
+	}
+	if (currentText) nodes.push(currentText);
+	return nodes;
+};
+var parseVueI18n = (text) => {
+	const parts = [];
+	let currentPart = "";
+	let index = 0;
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "\\" && index + 1 < text.length && text[index + 1] === "|") {
+			currentPart += "|";
+			index += 2;
+		} else if (char === "|") {
+			parts.push(currentPart.trim());
+			currentPart = "";
+			index++;
+		} else {
+			currentPart += char;
+			index++;
+		}
+	}
+	parts.push(currentPart.trim());
+	return parts.map(parseVueI18nPart);
+};
+var vueI18nPartToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") return nodes[0];
+	let str = "";
+	for (const node of nodes) if (typeof node === "string") str += node;
+	else str += `{{${node.name}}}`;
+	return insertion(str);
+};
+var vueI18nNodesToIntlayer = (parts) => {
+	if (parts.length === 1) return vueI18nPartToIntlayer(parts[0]);
+	const options = {};
+	const varName = "count";
+	if (parts.length === 2) return enumeration({
+		"1": vueI18nPartToIntlayer(parts[0]),
+		fallback: vueI18nPartToIntlayer(parts[1])
+	});
+	if (parts.length === 3) return enumeration({
+		"0": vueI18nPartToIntlayer(parts[0]),
+		"1": vueI18nPartToIntlayer(parts[1]),
+		fallback: vueI18nPartToIntlayer(parts[2])
+	});
+	parts.forEach((part, index) => {
+		if (index === parts.length - 1) options.fallback = vueI18nPartToIntlayer(part);
+		else options[index.toString()] = vueI18nPartToIntlayer(part);
+	});
+	options.__intlayer_vue_i18n_var = varName;
+	return enumeration(options);
+};
+var vueI18nToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("|")),
+	transform: (node) => {
+		try {
+			return vueI18nNodesToIntlayer(parseVueI18n(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var vueI18nToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "vue-i18n",
+		keyPath: [],
+		plugins: [{
+			id: "vue-i18n",
+			...vueI18nToIntlayerPlugin
+		}]
+	});
+};
 var findMatchingCondition = (enumerationContent, quantity) => {
 	const numericKeys = Object.keys(enumerationContent);
 	for (const key of numericKeys) {
@@ -734,24 +1058,18 @@ var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
 var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var resolveIcuMessage = createMessageResolver(icuToIntlayerFormatter);
-var splitMessageId = (id) => {
-	const dotPosition = id.indexOf(".");
-	if (dotPosition === -1) return {
-		dictionaryKey: id,
-		remainder: ""
-	};
-	return {
-		dictionaryKey: id.slice(0, dotPosition),
-		remainder: id.slice(dotPosition + 1)
-	};
+var DIALECT_FORMATTERS = {
+	icu: icuToIntlayerFormatter,
+	i18next: i18nextToIntlayerFormatter,
+	"vue-i18n": vueI18nToIntlayerFormatter
 };
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var I18nClass = class extends EventEmitter {
 	_locale;
 	_locales;
 	_catalogs = {};
 	_loadFallbackWarned = false;
-	_boundDictionaries = {};
+	_dictionaryContent;
 	_registry;
 	constructor({ locale = "en", locales, messages, registry } = {}) {
 		super();
@@ -768,7 +1086,7 @@ var I18nClass = class extends EventEmitter {
 	}
 	get messages() {
 		const dictionary = { ...this._registry?.all(this._locale) };
-		for (const content of Object.values(this._boundDictionaries)) Object.assign(dictionary, unwrapLinguiCatalog(content));
+		if (this._dictionaryContent !== void 0) Object.assign(dictionary, unwrapLinguiCatalog(this._dictionaryContent));
 		return {
 			...this._catalogs[this._locale] ?? {},
 			...dictionary
@@ -799,8 +1117,8 @@ var I18nClass = class extends EventEmitter {
 		if (messages) this.mergeLocaleCatalog(locale, messages);
 		this.activate(locale, locales);
 	}
-	bindDictionaries(dictionaries) {
-		this._boundDictionaries = dictionaries;
+	bindDictionaryContent(content) {
+		this._dictionaryContent = content;
 		return this;
 	}
 	activate(locale, locales) {
@@ -808,52 +1126,28 @@ var I18nClass = class extends EventEmitter {
 		this._locales = locales;
 		this.emit("change");
 	}
-	lookupBoundDictionaries(id) {
-		const { dictionaryKey, remainder } = splitMessageId(id);
-		const prefixed = this._boundDictionaries[dictionaryKey];
-		if (prefixed !== void 0) {
-			const value = navigateLinguiCatalog(prefixed, remainder);
-			if (value !== void 0) return value;
-		}
-		for (const content of Object.values(this._boundDictionaries)) {
-			const value = navigateLinguiCatalog(content, id);
-			if (value !== void 0) return value;
-		}
-	}
 	resolveTemplate(id) {
-		const boundNode = this.lookupBoundDictionaries(id);
-		if (boundNode !== void 0) return {
-			kind: "node",
-			node: boundNode
-		};
-		const registryNode = this._registry?.lookup(id, this._locale);
-		if (registryNode !== void 0) return {
-			kind: "node",
-			node: registryNode
-		};
+		if (this._dictionaryContent !== void 0) {
+			const boundValue = navigateLinguiCatalog(this._dictionaryContent, id);
+			if (boundValue !== void 0) return linguiMessageToIcu(boundValue);
+		}
+		const fromDictionary = this._registry?.lookup(id, this._locale);
+		if (fromDictionary !== void 0) return fromDictionary;
 		const catalog = this._catalogs[this._locale];
 		if (catalog) {
 			const raw = navigateLinguiCatalog(catalog, id);
-			if (raw !== void 0) return {
-				kind: "icu",
-				message: linguiMessageToIcu(raw)
-			};
+			if (raw !== void 0) return linguiMessageToIcu(raw);
 		}
 	}
 	_(descriptorOrId, values, options) {
 		const isDescriptor = typeof descriptorOrId === "object" && descriptorOrId !== null;
 		const id = isDescriptor ? descriptorOrId.id : descriptorOrId;
 		const defaultMessage = isDescriptor ? descriptorOrId.message ?? options?.message : options?.message;
-		const messageValues = isDescriptor ? {
+		const resolvedValues = isDescriptor ? {
 			...descriptorOrId.values ?? {},
 			...values ?? {}
 		} : values ?? {};
-		const locale = this._locale;
-		const template = this.resolveTemplate(id) ?? {
-			kind: "icu",
-			message: defaultMessage ?? id
-		};
-		return (template.kind === "node" ? resolveMessageNodeToString(template.node, messageValues, locale) : resolveIcuMessage(template.message, messageValues, locale)) ?? id;
+		return resolveMessage(this.resolveTemplate(id) ?? defaultMessage ?? id, resolvedValues, this._locale, "icu") ?? id;
 	}
 	t = (descriptorOrId, values, options) => this._(descriptorOrId, values, options);
 	date(value, format) {
@@ -1031,7 +1325,7 @@ var getIntlayer = (key, localeOrSelector, plugins) => {
 		}
 		return createSafeFallback(key);
 	}
-	return getDictionary$1(dictionary, localeOrSelector, plugins);
+	return getDictionary(dictionary, localeOrSelector, plugins);
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -1137,9 +1431,8 @@ var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRA
 	}
 };
 var enumerationPlugin = fallbackPlugin;
-var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
-var insertionPlugin$1 = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
 	transform: (node, props, deepTransformNode) => {
@@ -1181,7 +1474,7 @@ var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
 	conditionPlugin,
-	insertionPlugin$1,
+	insertionPlugin,
 	nestedPlugin(locale ?? internationalization.defaultLocale),
 	filePlugin,
 	genderPlugin,
@@ -1191,7 +1484,7 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
+var getDictionary = (dictionary, localeOrSelector, plugins) => {
 	const { locale, selector } = parseDictionarySelector(localeOrSelector);
 	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
 	const cached = readTransformCache(dictionary, cacheKey);
@@ -1212,26 +1505,6 @@ var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
-var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
-var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
-var splitInsertionTemplate = (template, values = {}) => {
-	if (!Object.values(values).some(isComplexValue)) return {
-		isSimple: true,
-		parts: template.replace(insertionRegex, (_, key) => (values[key.trim()] ?? "").toString())
-	};
-	const chunks = template.split(insertionRegex);
-	const parts = [];
-	for (let i = 0; i < chunks.length; i++) if (i % 2 === 0) {
-		if (chunks[i]) parts.push(chunks[i]);
-	} else {
-		const val = values[chunks[i].trim()];
-		if (val != null) parts.push(val);
-	}
-	return {
-		isSimple: false,
-		parts
-	};
-};
 var getDictionaryKeys = () => {
 	try {
 		return Object.keys(getDictionaries());
@@ -1240,23 +1513,15 @@ var getDictionaryKeys = () => {
 	}
 };
 var lookupDictionaryMessage = (id, locale) => {
-	const dictionaryKeys = getDictionaryKeys();
-	const dotPosition = id.indexOf(".");
-	const prefix = dotPosition === -1 ? id : id.slice(0, dotPosition);
-	const readDictionary = (key) => {
+	for (const key of getDictionaryKeys()) {
+		let dictionary;
 		try {
-			return getIntlayer(key, locale);
+			dictionary = getIntlayer(key, locale);
 		} catch {
-			return;
+			continue;
 		}
-	};
-	if (dictionaryKeys.includes(prefix)) {
-		const value = navigateLinguiCatalog(readDictionary(prefix), dotPosition === -1 ? "" : id.slice(dotPosition + 1));
-		if (value !== void 0) return value;
-	}
-	for (const key of dictionaryKeys) {
-		const value = navigateLinguiCatalog(readDictionary(key), id);
-		if (value !== void 0) return value;
+		const value = navigateLinguiCatalog(dictionary, id);
+		if (value !== void 0) return linguiMessageToIcu(value);
 	}
 };
 var collectRegistryMessages = (locale) => {
@@ -1270,108 +1535,6 @@ var createRegistryResolver = () => ({
 	lookup: lookupDictionaryMessage,
 	all: collectRegistryMessages
 });
-var renderIntlayerNode = ({ children, value, additionalProps }) => {
-	const element = isValidElement(children) ? children : jsx(Fragment$1, { children });
-	return new Proxy(element, { get(target, prop, receiver) {
-		if (prop === "value") return value;
-		if (prop === Symbol.toPrimitive) return () => value ?? "";
-		if (prop === "toString") return () => String(value ?? "");
-		if (prop === "valueOf") return () => value;
-		if (additionalProps && Object.hasOwn(additionalProps, prop)) return additionalProps[prop];
-		if (value !== null && value !== void 0 && typeof prop === "string" && prop !== "constructor" && !(prop in target)) {
-			const valObj = Object(value);
-			if (prop in valObj) {
-				const valProp = valObj[prop];
-				return typeof valProp === "function" ? valProp.bind(value) : valProp;
-			}
-		}
-		return Reflect.get(target, prop, receiver);
-	} });
-};
-var intlayerNodePlugins = {
-	id: "intlayer-node-plugin",
-	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
-	transform: (_node, { plugins, ...rest }) => {
-		return renderIntlayerNode({
-			...rest,
-			value: rest.children,
-			children: rest.children
-		});
-	}
-};
-var reactNodePlugins = fallbackPlugin;
-var splitAndJoinInsertion = (template, values) => {
-	const result = splitInsertionTemplate(template, values);
-	if (result.isSimple) return result.parts;
-	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
-};
-var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
-	id: "insertion-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
-	transform: (node, props, deepTransformNode) => {
-		const newKeyPath = [...props.keyPath, { type: INSERTION }];
-		const children = node[INSERTION];
-		const insertionStringPlugin = {
-			id: "insertion-string-plugin",
-			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
-			transform: (node, subProps, deepTransformNode) => {
-				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
-				const transformedResult = deepTransformNode(node, {
-					...subProps,
-					children: node,
-					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-				});
-				return (values) => {
-					const result = splitAndJoinInsertion(transformedResult, values);
-					return deepTransformNode(result, {
-						...subProps,
-						plugins: props.plugins,
-						children: result
-					});
-				};
-			}
-		};
-		const result = deepTransformNode(children, {
-			...props,
-			children,
-			keyPath: newKeyPath,
-			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
-		if (typeof children === "object" && children !== null && "nodeType" in children && ["enumeration", "condition"].includes(children.nodeType)) return (values) => (arg) => {
-			const inner = result(arg);
-			if (typeof inner === "function") return inner(values);
-			return inner;
-		};
-		return result;
-	}
-};
-var markdownPlugin = fallbackPlugin;
-var htmlPlugin = fallbackPlugin;
-var pluginsCache = /* @__PURE__ */ new Map();
-var getPlugins = (locale, fallback = true) => {
-	const cacheKey = `${locale ?? internationalization.defaultLocale}_${fallback}`;
-	if (pluginsCache.has(cacheKey)) return pluginsCache.get(cacheKey);
-	const plugins = [
-		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-		enumerationPlugin,
-		pluralPlugin(locale ?? internationalization.defaultLocale),
-		conditionPlugin,
-		nestedPlugin(locale ?? internationalization.defaultLocale),
-		filePlugin,
-		genderPlugin,
-		selectPlugin,
-		intlayerNodePlugins,
-		reactNodePlugins,
-		insertionPlugin,
-		markdownPlugin,
-		htmlPlugin
-	];
-	pluginsCache.set(cacheKey, plugins);
-	return plugins;
-};
-var getDictionary = (dictionary, localeOrSelector) => {
-	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
-};
 var resolveExpiresToTimestamp = (expires) => {
 	if (typeof expires === "number") return Date.now() + expires * 1e3;
 	if (typeof expires === "string") {
@@ -1551,6 +1714,22 @@ var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 		])
 	};
 };
+var useLingui = () => {
+	const context = useContext(LinguiContext);
+	const { locale } = useLocale();
+	const derivedI18n = useMemo(() => {
+		const instance = new I18nClass({
+			locale,
+			registry: createRegistryResolver()
+		});
+		return {
+			i18n: instance,
+			_: instance._.bind(instance)
+		};
+	}, [locale]);
+	if (context) return context;
+	return derivedI18n;
+};
 var I18nProvider = ({ i18n, defaultComponent, children }) => {
 	const buildContext = (instance) => ({
 		i18n: instance,
@@ -1575,26 +1754,13 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		})
 	});
 };
-var createBoundLinguiContext = (locale, dictionaries) => {
-	const instance = new I18nClass({ locale }).bindDictionaries(dictionaries);
-	return {
-		i18n: instance,
-		_: instance._.bind(instance)
-	};
-};
-var useDictionary = (...dictionaries) => {
-	const { locale } = useLocale();
-	const dictionaryKeysIdentity = dictionaries.map((dictionary) => dictionary.key).join("\0");
-	return useMemo(() => createBoundLinguiContext(locale, Object.fromEntries(dictionaries.map((dictionary) => [dictionary.key, getDictionary(dictionary, locale)]))), [locale, dictionaryKeysIdentity]);
-};
 var setupI18n = (params) => new I18nClass({
 	...params,
 	registry: createRegistryResolver()
 });
 setupI18n({ locale: "en" });
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/pages/faq/FAQList.tsx";
 function FAQList() {
-	const { i18n } = useDictionary(faq_list_default);
+	const { i18n } = useLingui();
 	const faqs = [
 		{
 			q: i18n._({
@@ -1677,63 +1843,33 @@ function FAQList() {
 			})
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "mx-auto max-w-3xl space-y-4",
-		children: faqs.map((f) => jsxDEV("details", {
+		children: faqs.map((f) => jsxs("details", {
 			className: "group rounded-lg border border-border bg-card",
-			children: [jsxDEV("summary", {
+			children: [jsx("summary", {
 				className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 				children: f.q
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 104,
-				columnNumber: 11
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "px-6 pb-4 text-sm text-muted-foreground",
 				children: f.a
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 107,
-				columnNumber: 11
-			}, this)]
-		}, f.q, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 100,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 98,
-		columnNumber: 5
-	}, this);
+			})]
+		}, f.q))
+	});
 }
 function initLingui(locale, _messages) {
 	const lingui = setupI18n();
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const i18n = useMemo(() => initLingui("en"), []);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/pages/faq/FAQList.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(FAQList, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(FAQList, {}) });
 }
 export { Wrapped as default };

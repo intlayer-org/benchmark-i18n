@@ -1,44 +1,27 @@
 import { createContext as e, createElement as t, useCallback as n, useContext as r, useEffect as i, useLayoutEffect as a, useMemo as o, useRef as s, useState as c } from "react";
 import l from "next/link";
 import { useParams as u } from "next/navigation";
-import { jsxDEV as d } from "react/jsx-dev-runtime";
-var f = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), p = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsx as d, jsxs as f } from "react/jsx-runtime";
+var p = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), m = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), m = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/Link.tsx", h = (e) => /^https?:\/\//.test(e ?? "");
+}), h = (e) => /^https?:\/\//.test(e ?? "");
 function g(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
 var _ = ({ href: e, children: t, ...n }) => {
 	let r = u().locale ?? "en";
-	return e == null || typeof e != "string" ? d(l, {
+	return e == null || typeof e != "string" || h(e) ? d(l, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: m,
-		lineNumber: 23,
-		columnNumber: 7
-	}, void 0) : h(e) ? d(l, {
-		href: e,
-		prefetch: !1,
-		...n,
-		children: t
-	}, void 0, !1, {
-		fileName: m,
-		lineNumber: 30,
-		columnNumber: 7
-	}, void 0) : d(l, {
+	}) : d(l, {
 		href: g(e, r),
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: m,
-		lineNumber: 36,
-		columnNumber: 5
-	}, void 0);
+	});
 }, v = (e) => typeof e == "string", y = () => {
 	let e, t, n = new Promise((n, r) => {
 		e = n, t = r;
@@ -620,10 +603,10 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 	few: 3,
 	many: 4,
 	other: 5
-}, de = {
+}, V = {
 	select: (e) => e === 1 ? "one" : "other",
 	resolvedOptions: () => ({ pluralCategories: ["one", "other"] })
-}, fe = class {
+}, de = class {
 	constructor(e, t = {}) {
 		this.languageUtils = e, this.options = t, this.logger = P.create("pluralResolver"), this.pluralRulesCache = {};
 	}
@@ -640,8 +623,8 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		try {
 			a = new Intl.PluralRules(n, { type: r });
 		} catch {
-			if (typeof Intl > "u") return this.logger.error("No Intl support, please use an Intl polyfill!"), de;
-			if (!e.match(/-|_/)) return de;
+			if (typeof Intl > "u") return this.logger.error("No Intl support, please use an Intl polyfill!"), V;
+			if (!e.match(/-|_/)) return V;
 			let n = this.languageUtils.getLanguagePartFromCode(e);
 			a = this.getRule(n, t);
 		}
@@ -662,10 +645,10 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		let r = this.getRule(e, n);
 		return r ? `${this.options.prepend}${n.ordinal ? `ordinal${this.options.prepend}` : ""}${r.select(t)}` : (this.logger.warn(`no plural rule found for: ${e}`), this.getSuffix("dev", t, n));
 	}
-}, V = (e, t, n, r = ".", i = !0) => {
+}, H = (e, t, n, r = ".", i = !0) => {
 	let a = k(e, t, n);
 	return !a && i && v(n) && (a = M(e, n, r), a === void 0 && (a = M(t, n, r))), a;
-}, H = (e) => e.replace(/\$/g, "$$$$"), U = class {
+}, U = (e) => e.replace(/\$/g, "$$$$"), W = class {
 	constructor(e = {}) {
 		this.logger = P.create("interpolator"), this.options = e, this.format = e?.interpolation?.format || ((e) => e), this.init(e);
 	}
@@ -684,7 +667,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 	interpolate(e, t, n, r) {
 		let i, a, o, s = this.options && this.options.interpolation && this.options.interpolation.defaultVariables || {}, c = (e) => {
 			if (!e.includes(this.formatSeparator)) {
-				let i = V(t, s, e, this.options.keySeparator, this.options.ignoreJSONStructure);
+				let i = H(t, s, e, this.options.keySeparator, this.options.ignoreJSONStructure);
 				return this.alwaysFormat ? this.format(i, void 0, n, {
 					...r,
 					...t,
@@ -692,7 +675,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 				}) : i;
 			}
 			let i = e.split(this.formatSeparator), a = i.shift().trim(), o = i.join(this.formatSeparator).trim();
-			return this.format(V(t, s, a, this.options.keySeparator, this.options.ignoreJSONStructure), o, n, {
+			return this.format(H(t, s, a, this.options.keySeparator, this.options.ignoreJSONStructure), o, n, {
 				...r,
 				...t,
 				interpolationkey: a
@@ -720,7 +703,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 					} else this.logger.warn(`missed to pass in variable ${n} for interpolating ${e}`), a = "";
 				} else !v(a) && !this.useRawValueToEscape && (a = b(a));
 				let s = t.safeValue(a);
-				if (e = e.replace(i[0], H(s)), u ? (t.regex.lastIndex += s.length, t.regex.lastIndex -= i[0].length) : t.regex.lastIndex = 0, o++, o >= this.maxReplaces) break;
+				if (e = e.replace(i[0], U(s)), u ? (t.regex.lastIndex += s.length, t.regex.lastIndex -= i[0].length) : t.regex.lastIndex = 0, o++, o >= this.maxReplaces) break;
 			}
 		}), e;
 	}
@@ -750,11 +733,11 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 			v(i) || (i = b(i)), i ||= (this.logger.warn(`missed to resolve ${r[1]} for nesting ${e}`), ""), s.length && (i = s.reduce((e, t) => this.format(e, t, n.lng, {
 				...n,
 				interpolationkey: r[1].trim()
-			}), i.trim())), e = e.replace(r[0], H(b(i))), this.regexp.lastIndex = 0;
+			}), i.trim())), e = e.replace(r[0], U(b(i))), this.regexp.lastIndex = 0;
 		}
 		return e;
 	}
-}, pe = (e) => {
+}, fe = (e) => {
 	let t = e.toLowerCase().trim(), n = {};
 	if (e.includes("(")) {
 		let r = e.split("(");
@@ -771,7 +754,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		formatName: t,
 		formatOptions: n
 	};
-}, W = (e) => {
+}, pe = (e) => {
 	let t = {};
 	return (n, r, i) => {
 		let a = i;
@@ -788,7 +771,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 	}
 	init(e, t = { interpolation: {} }) {
 		this.formatSeparator = t.interpolation.formatSeparator || ",";
-		let n = t.cacheInBuiltFormats ? W : me;
+		let n = t.cacheInBuiltFormats ? pe : me;
 		this.formats = {
 			number: n((e, t) => {
 				let n = new Intl.NumberFormat(e, { ...t });
@@ -819,7 +802,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		this.formats[e.toLowerCase().trim()] = t;
 	}
 	addCached(e, t) {
-		this.formats[e.toLowerCase().trim()] = W(t);
+		this.formats[e.toLowerCase().trim()] = pe(t);
 	}
 	format(e, t, n, r = {}) {
 		if (!t || e == null) return e;
@@ -830,7 +813,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 			a.push(t);
 		}
 		return a.reduce((e, t) => {
-			let { formatName: i, formatOptions: a } = pe(t);
+			let { formatName: i, formatOptions: a } = fe(t);
 			if (this.formats[i]) {
 				let t = e;
 				try {
@@ -1058,7 +1041,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 			let t = new z(this.options);
 			this.store = new se(this.options.resources, this.options);
 			let n = this.services;
-			n.logger = P, n.resourceStore = this.store, n.languageUtils = t, n.pluralResolver = new fe(t, { prepend: this.options.pluralSeparator }), e && (n.formatter = r(e), n.formatter.init && n.formatter.init(n, this.options), this.options.interpolation.format = n.formatter.format.bind(n.formatter)), n.interpolator = new U(this.options), n.utils = { hasLoadedNamespace: this.hasLoadedNamespace.bind(this) }, n.backendConnector = new _e(r(this.modules.backend), n.resourceStore, n, this.options), n.backendConnector.on("*", (e, ...t) => {
+			n.logger = P, n.resourceStore = this.store, n.languageUtils = t, n.pluralResolver = new de(t, { prepend: this.options.pluralSeparator }), e && (n.formatter = r(e), n.formatter.init && n.formatter.init(n, this.options), this.options.interpolation.format = n.formatter.format.bind(n.formatter)), n.interpolator = new W(this.options), n.utils = { hasLoadedNamespace: this.hasLoadedNamespace.bind(this) }, n.backendConnector = new _e(r(this.modules.backend), n.resourceStore, n, this.options), n.backendConnector.on("*", (e, ...t) => {
 				this.emit(e, ...t);
 			}), this.modules.languageDetector && (n.languageDetector = r(this.modules.languageDetector), n.languageDetector.init && n.languageDetector.init(n, this.options.detection, this.options)), this.modules.i18nFormat && (n.i18nFormat = r(this.modules.i18nFormat), n.i18nFormat.init && n.i18nFormat.init(this)), this.translator = new R(this.services, this.options), this.translator.on("*", (e, ...t) => {
 				this.emit(e, ...t);
@@ -1243,7 +1226,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 				...i,
 				interpolation: e
 			};
-			a.services.interpolator = new U(n);
+			a.services.interpolator = new W(n);
 		}
 		return a.translator = new R(a.services, i), a.translator.on("*", (e, ...t) => {
 			a.emit(e, ...t);
@@ -1351,8 +1334,8 @@ var be = (e, t, n, r) => {
 	getUsedNamespaces() {
 		return Object.keys(this.usedNamespaces);
 	}
-}, Le = f(((e) => {
-	var t = p("react");
+}, Le = p(((e) => {
+	var t = m("react");
 	function n(e, t) {
 		return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
 	}
@@ -1389,7 +1372,7 @@ var be = (e, t, n, r) => {
 	}
 	var d = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? u : c;
 	e.useSyncExternalStore = t.useSyncExternalStore === void 0 ? d : t.useSyncExternalStore;
-})), Re = f(((e) => {
+})), Re = p(((e) => {
 	process.env.NODE_ENV !== "production" && (function() {
 		function t(e, t) {
 			return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
@@ -1432,10 +1415,10 @@ var be = (e, t, n, r) => {
 			return t();
 		}
 		typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-		var a = p("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, c = a.useEffect, l = a.useLayoutEffect, u = a.useDebugValue, d = !1, f = !1, m = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
-		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? m : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
+		var a = m("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, c = a.useEffect, l = a.useLayoutEffect, u = a.useDebugValue, d = !1, f = !1, p = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
+		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? p : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 	})();
-})), ze = f(((e, t) => {
+})), ze = p(((e, t) => {
 	t.exports = process.env.NODE_ENV === "production" ? Le() : Re();
 }))(), Be = {
 	t: (e, t) => {
@@ -1547,7 +1530,6 @@ function Ue({ i18n: e, defaultNS: n, children: r }) {
 	}), [e, n]);
 	return t(Fe.Provider, { value: i }, r);
 }
-var Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/Footer.tsx";
 function We() {
 	let { t: e } = He("shared"), t = [
 		{
@@ -1568,113 +1550,49 @@ function We() {
 	];
 	return d("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: d("div", {
+		children: f("div", {
 			className: "container py-8",
-			children: [d("div", {
+			children: [f("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					d("div", { children: [d("h3", {
+					f("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 32,
-						columnNumber: 13
-					}, this), d("p", {
+					}), d("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("footer.anOpenSourceTestApplication")
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 35,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: Q,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this),
-					d("div", { children: [d("h3", {
+					})] }),
+					f("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("footer.resources")
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 40,
-						columnNumber: 13
-					}, this), d("ul", {
+					}), d("ul", {
 						className: "space-y-1",
 						children: t.map((e) => d("li", { children: e.isInternal ? d(_, {
 							href: e.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}, void 0, !1, {
-							fileName: Q,
-							lineNumber: 47,
-							columnNumber: 21
-						}, this) : d("a", {
+						}) : d("a", {
 							href: e.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}, void 0, !1, {
-							fileName: Q,
-							lineNumber: 54,
-							columnNumber: 21
-						}, this) }, e.label, !1, {
-							fileName: Q,
-							lineNumber: 45,
-							columnNumber: 17
-						}, this))
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 43,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: Q,
-						lineNumber: 39,
-						columnNumber: 11
-					}, this),
-					d("div", { children: [d("h3", {
+						}) }, e.label))
+					})] }),
+					f("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("footer.contact")
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 68,
-						columnNumber: 13
-					}, this), d("p", {
+					}), d("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 71,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: Q,
-						lineNumber: 67,
-						columnNumber: 11
-					}, this)
+					})] })
 				]
-			}, void 0, !0, {
-				fileName: Q,
-				lineNumber: 30,
-				columnNumber: 9
-			}, this), d("div", {
+			}), d("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: e("footer.builtWith")
-			}, void 0, !1, {
-				fileName: Q,
-				lineNumber: 76,
-				columnNumber: 9
-			}, this)]
-		}, void 0, !0, {
-			fileName: Q,
-			lineNumber: 29,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: Q,
-		lineNumber: 28,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
 function Ge() {
 	if (!(typeof window > "u")) {
@@ -1717,7 +1635,7 @@ var qe = (e, t, n) => {
 	"__proto__",
 	"constructor",
 	"prototype"
-], Ze = function(e, t) {
+], Q = function(e, t) {
 	return !(typeof e != "string" || e.length > 128 || Xe.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
 };
 q.use(Pe).use(function(e) {
@@ -1725,7 +1643,7 @@ q.use(Pe).use(function(e) {
 		type: "backend",
 		init: function(e, t, n) {},
 		read: function(t, n, r) {
-			if (!Ze(t, !1) || !Ze(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
+			if (!Q(t, !1) || !Q(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
 			if (typeof e == "function") {
 				if (e.length < 3) {
 					try {
@@ -1874,8 +1792,8 @@ q.use(Pe).use(function(e) {
 	interpolation: { escapeValue: !1 },
 	react: { useSuspense: !1 }
 });
-var $ = q, Qe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/AppProviders.tsx";
-function $e({ children: e, initialResources: t }) {
+var $ = q;
+function Ze({ children: e, initialResources: t }) {
 	let n = u().locale ?? "en", [r] = c(() => typeof performance < "u" ? performance.now() : 0);
 	return c(() => {
 		t && Object.entries(t).forEach(([e, t]) => {
@@ -1890,33 +1808,15 @@ function $e({ children: e, initialResources: t }) {
 	}, []), d(Ue, {
 		i18n: $,
 		children: e
-	}, void 0, !1, {
-		fileName: Qe,
-		lineNumber: 56,
-		columnNumber: 10
-	}, this);
+	});
 }
-var et = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/scripts/Wrapper.tsx";
-function tt({ children: e }) {
-	return d($e, { children: e }, void 0, !1, {
-		fileName: et,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function Qe({ children: e }) {
+	return d(Ze, { children: e });
 }
-var nt = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/Footer.wrapper.tsx";
-function rt() {
-	return d(tt, { children: d(We, {}, void 0, !1, {
-		fileName: nt,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: nt,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function $e() {
+	return d(Qe, { children: d(We, {}) });
 }
-export { rt as default };
+export { $e as default };
 var e = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",

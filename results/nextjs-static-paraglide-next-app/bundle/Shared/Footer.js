@@ -1,8 +1,7 @@
 import { useEffect, useLayoutEffect, useState } from "react";
 import NextLink from "next/link";
 import { useParams } from "next/navigation";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
-var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/Link.tsx";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
 function localizeHref(href, locale) {
 	if (!href.startsWith("/")) return href;
@@ -11,36 +10,24 @@ function localizeHref(href, locale) {
 }
 var Link = ({ href, children, ...props }) => {
 	const locale = useParams().locale ?? "en";
-	if (href == null || typeof href !== "string") return jsxDEV(NextLink, {
+	if (href == null || typeof href !== "string") return jsx(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 23,
-		columnNumber: 7
-	}, void 0);
-	if (checkIsExternalLink(href)) return jsxDEV(NextLink, {
+	});
+	if (checkIsExternalLink(href)) return jsx(NextLink, {
 		href,
 		prefetch: false,
 		...props,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 30,
-		columnNumber: 7
-	}, void 0);
-	return jsxDEV(NextLink, {
+	});
+	return jsx(NextLink, {
 		href: localizeHref(href, locale),
 		prefetch: false,
 		...props,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 36,
-		columnNumber: 5
-	}, void 0);
+	});
 };
 var URLPattern = {};
 var locales = [
@@ -529,7 +516,6 @@ var footer_resources = ((inputs = {}, options = {}) => {
 	if (locale === "ru") return ru_footer_resources(inputs);
 	return en_footer_resources(inputs);
 });
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/Footer.tsx";
 function Footer() {
 	const footerLinks = [
 		{
@@ -548,115 +534,51 @@ function Footer() {
 			isInternal: true
 		}
 	];
-	return jsxDEV("footer", {
+	return jsx("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: jsxDEV("div", {
+		children: jsxs("div", {
 			className: "container py-8",
-			children: [jsxDEV("div", {
+			children: [jsxs("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					jsxDEV("div", { children: [jsxDEV("h3", {
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 30,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: footer_anopensourcetestapplication4()
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 33,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 29,
-						columnNumber: 11
-					}, this),
-					jsxDEV("div", { children: [jsxDEV("h3", {
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: footer_resources()
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 38,
-						columnNumber: 13
-					}, this), jsxDEV("ul", {
+					}), jsx("ul", {
 						className: "space-y-1",
-						children: footerLinks.map((linkEl) => jsxDEV("li", { children: linkEl.isInternal ? jsxDEV(Link, {
+						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
 							href: linkEl.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 45,
-							columnNumber: 21
-						}, this) : jsxDEV("a", {
+						}) : jsx("a", {
 							href: linkEl.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 52,
-							columnNumber: 21
-						}, this) }, linkEl.label, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 43,
-							columnNumber: 17
-						}, this))
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 41,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 37,
-						columnNumber: 11
-					}, this),
-					jsxDEV("div", { children: [jsxDEV("h3", {
+						}) }, linkEl.label))
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: footer_contact()
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 66,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 69,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 65,
-						columnNumber: 11
-					}, this)
+					})] })
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 28,
-				columnNumber: 9
-			}, this), jsxDEV("div", {
+			}), jsx("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: footer_builtwith1()
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 74,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 27,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 26,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -680,7 +602,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -694,30 +615,12 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/Footer.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Footer, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Footer, {}) });
 }
 export { Wrapped as default };

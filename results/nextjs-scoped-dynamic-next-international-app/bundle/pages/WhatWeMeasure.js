@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
@@ -223,7 +223,6 @@ var client = (0, __commonJSMin(((exports, module) => {
 });
 var useScopedI18n = client.useScopedI18n;
 var { I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/pages/about/WhatWeMeasure.tsx";
 function WhatWeMeasure() {
 	const scopedT = useScopedI18n("what-we-measure");
 	const metrics = [
@@ -248,49 +247,25 @@ function WhatWeMeasure() {
 			desc: scopedT("howFastTheAppCan")
 		}
 	];
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mt-12 mx-auto max-w-3xl",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-4 text-2xl font-bold text-foreground",
 			children: scopedT("whatWeMeasure")
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 33,
-			columnNumber: 7
-		}, this), jsxDEV("ul", {
+		}), jsx("ul", {
 			className: "space-y-4",
-			children: metrics.map((m) => jsxDEV("li", {
+			children: metrics.map((m) => jsxs("li", {
 				className: "rounded-md border border-border p-4",
-				children: [jsxDEV("span", {
+				children: [jsx("span", {
 					className: "block text-sm font-bold text-primary",
 					children: m.metric
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 39,
-					columnNumber: 13
-				}, this), jsxDEV("span", {
+				}), jsx("span", {
 					className: "block mt-1 text-sm text-muted-foreground",
 					children: m.desc
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 42,
-					columnNumber: 13
-				}, this)]
-			}, m.metric, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 38,
-				columnNumber: 11
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 36,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 32,
-		columnNumber: 5
-	}, this);
+				})]
+			}, m.metric))
+		})]
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -314,7 +289,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -326,38 +300,20 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nProviderClient, {
+	return jsx(I18nProviderClient, {
 		locale,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 30,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, {
+	return jsx(AppProviders, {
 		locale,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/pages/about/WhatWeMeasure.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(WhatWeMeasure, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(WhatWeMeasure, {}) });
 }
 export { Wrapped as default };
 import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";

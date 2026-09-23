@@ -1,144 +1,5 @@
-import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useId, useMemo, useRef, useState } from "react";
-import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
-var contact_form_default = {
-	key: "contact-form",
-	content: {
-		"nodeType": "translation",
-		"translation": {
-			"en": {
-				"yourName": "Your name",
-				"email": "Email",
-				"topic": "Topic",
-				"bugReport": "Bug Report",
-				"newBenchmarkIdea": "New Benchmark Idea",
-				"methodologyQuestion": "Methodology Question",
-				"contribution": "Contribution",
-				"other": "Other",
-				"message": "Message",
-				"describeYourQuestionOrIdea": "Describe your question or idea...",
-				"sendMessage": "Send Message"
-			},
-			"fr": {
-				"yourName": "Votre nom",
-				"email": "E-mail",
-				"topic": "Sujet",
-				"bugReport": "Rapport de bug",
-				"newBenchmarkIdea": "Nouvelle idée de benchmark",
-				"methodologyQuestion": "Question sur la méthodologie",
-				"contribution": "Contribution",
-				"other": "Autre",
-				"message": "Message",
-				"describeYourQuestionOrIdea": "Décrivez votre question ou idée...",
-				"sendMessage": "Envoyer le message"
-			},
-			"es": {
-				"yourName": "Tu nombre",
-				"email": "Correo electrónico",
-				"topic": "Tema",
-				"bugReport": "Informe de bug",
-				"newBenchmarkIdea": "Nueva idea de benchmark",
-				"methodologyQuestion": "Pregunta sobre metodología",
-				"contribution": "Contribución",
-				"other": "Otro",
-				"message": "Mensaje",
-				"describeYourQuestionOrIdea": "Describe tu pregunta o idea...",
-				"sendMessage": "Enviar mensaje"
-			},
-			"de": {
-				"yourName": "Ihr Name",
-				"email": "E-Mail",
-				"topic": "Thema",
-				"bugReport": "Fehlerbericht",
-				"newBenchmarkIdea": "Neue Benchmark-Idee",
-				"methodologyQuestion": "Frage zur Methodik",
-				"contribution": "Beitrag",
-				"other": "Sonstiges",
-				"message": "Nachricht",
-				"describeYourQuestionOrIdea": "Beschreiben Sie Ihre Frage oder Idee...",
-				"sendMessage": "Nachricht senden"
-			},
-			"it": {
-				"yourName": "Il tuo nome",
-				"email": "Email",
-				"topic": "Argomento",
-				"bugReport": "Segnalazione di bug",
-				"newBenchmarkIdea": "Nuova idea di benchmark",
-				"methodologyQuestion": "Domanda sulla metodologia",
-				"contribution": "Contributo",
-				"other": "Altro",
-				"message": "Messaggio",
-				"describeYourQuestionOrIdea": "Descrivi la tua domanda o idea...",
-				"sendMessage": "Invia messaggio"
-			},
-			"pt": {
-				"yourName": "Seu nome",
-				"email": "E-mail",
-				"topic": "Assunto",
-				"bugReport": "Relatório de bug",
-				"newBenchmarkIdea": "Nova ideia de benchmark",
-				"methodologyQuestion": "Pergunta sobre metodologia",
-				"contribution": "Contribuição",
-				"other": "Outros",
-				"message": "Mensagem",
-				"describeYourQuestionOrIdea": "Descreva sua pergunta ou ideia...",
-				"sendMessage": "Enviar mensagem"
-			},
-			"zh": {
-				"yourName": "您的姓名",
-				"email": "电子邮箱",
-				"topic": "话题",
-				"bugReport": "Bug 报告",
-				"newBenchmarkIdea": "新基准测试想法",
-				"methodologyQuestion": "方法论问题",
-				"contribution": "贡献",
-				"other": "其他",
-				"message": "消息内容",
-				"describeYourQuestionOrIdea": "描述您的问题或想法...",
-				"sendMessage": "发送消息"
-			},
-			"ja": {
-				"yourName": "お名前",
-				"email": "メールアドレス",
-				"topic": "トピック",
-				"bugReport": "バグ報告",
-				"newBenchmarkIdea": "新しいベンチマークのアイデア",
-				"methodologyQuestion": "方法論に関する質問",
-				"contribution": "貢献",
-				"other": "その他",
-				"message": "メッセージ",
-				"describeYourQuestionOrIdea": "質問やアイデアの詳細を記入してください...",
-				"sendMessage": "メッセージを送信"
-			},
-			"ko": {
-				"yourName": "이름",
-				"email": "이메일",
-				"topic": "주제",
-				"bugReport": "버그 보고",
-				"newBenchmarkIdea": "새로운 벤치마크 아이디어",
-				"methodologyQuestion": "방법론 질문",
-				"contribution": "기여",
-				"other": "기타",
-				"message": "메시지",
-				"describeYourQuestionOrIdea": "질문이나 아이디어를 설명해주세요...",
-				"sendMessage": "메시지 보내기"
-			},
-			"ru": {
-				"yourName": "Ваше имя",
-				"email": "Электронная почта",
-				"topic": "Тема",
-				"bugReport": "Отчет об ошибке",
-				"newBenchmarkIdea": "Новая идея для бенчмарка",
-				"methodologyQuestion": "Вопрос по методологии",
-				"contribution": "Вклад",
-				"other": "Другое",
-				"message": "Сообщение",
-				"describeYourQuestionOrIdea": "Опишите ваш вопрос или идею...",
-				"sendMessage": "Отправить сообщение"
-			}
-		}
-	}
-};
+import { createContext, useCallback, useContext, useEffect, useId, useMemo, useRef, useState } from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
 var EventEmitter = class {
 	_events = /* @__PURE__ */ new Map();
 	on(event, listener) {
@@ -635,6 +496,335 @@ var icuToIntlayerFormatter = (message) => {
 		}]
 	});
 };
+var parseI18Next = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{" && text[index + 1] === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index += 2;
+				nodes.push(parseStandardArgument());
+			} else if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseICUArgument());
+			} else if (char === "}") break;
+			else {
+				currentText += char;
+				index++;
+			}
+		}
+		if (currentText) nodes.push(currentText);
+		return nodes;
+	};
+	const parseStandardArgument = () => {
+		let name = "";
+		while (index < text.length) {
+			if (text[index] === "}" && text[index + 1] === "}") {
+				index += 2;
+				return {
+					type: "argument",
+					name: name.trim()
+				};
+			}
+			name += text[index];
+			index++;
+		}
+		throw new Error("Unclosed i18next variable");
+	};
+	const parseICUArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var i18nextNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = i18nextNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = i18nextNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = i18nextNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+	}
+	return nodes.map((node) => i18nextNodesToIntlayer([node]));
+};
+var i18nextToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return i18nextNodesToIntlayer(parseI18Next(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var i18nextToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "i18next",
+		keyPath: [],
+		plugins: [{
+			id: "i18next",
+			...i18nextToIntlayerPlugin
+		}]
+	});
+};
+var parseVueI18nPart = (text) => {
+	let index = 0;
+	const nodes = [];
+	let currentText = "";
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "{") {
+			if (currentText) {
+				nodes.push(currentText);
+				currentText = "";
+			}
+			index++;
+			let name = "";
+			while (index < text.length && text[index] !== "}") {
+				name += text[index];
+				index++;
+			}
+			if (index < text.length) index++;
+			nodes.push({
+				type: "argument",
+				name: name.trim()
+			});
+		} else {
+			currentText += char;
+			index++;
+		}
+	}
+	if (currentText) nodes.push(currentText);
+	return nodes;
+};
+var parseVueI18n = (text) => {
+	const parts = [];
+	let currentPart = "";
+	let index = 0;
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "\\" && index + 1 < text.length && text[index + 1] === "|") {
+			currentPart += "|";
+			index += 2;
+		} else if (char === "|") {
+			parts.push(currentPart.trim());
+			currentPart = "";
+			index++;
+		} else {
+			currentPart += char;
+			index++;
+		}
+	}
+	parts.push(currentPart.trim());
+	return parts.map(parseVueI18nPart);
+};
+var vueI18nPartToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") return nodes[0];
+	let str = "";
+	for (const node of nodes) if (typeof node === "string") str += node;
+	else str += `{{${node.name}}}`;
+	return insertion(str);
+};
+var vueI18nNodesToIntlayer = (parts) => {
+	if (parts.length === 1) return vueI18nPartToIntlayer(parts[0]);
+	const options = {};
+	const varName = "count";
+	if (parts.length === 2) return enumeration({
+		"1": vueI18nPartToIntlayer(parts[0]),
+		fallback: vueI18nPartToIntlayer(parts[1])
+	});
+	if (parts.length === 3) return enumeration({
+		"0": vueI18nPartToIntlayer(parts[0]),
+		"1": vueI18nPartToIntlayer(parts[1]),
+		fallback: vueI18nPartToIntlayer(parts[2])
+	});
+	parts.forEach((part, index) => {
+		if (index === parts.length - 1) options.fallback = vueI18nPartToIntlayer(part);
+		else options[index.toString()] = vueI18nPartToIntlayer(part);
+	});
+	options.__intlayer_vue_i18n_var = varName;
+	return enumeration(options);
+};
+var vueI18nToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("|")),
+	transform: (node) => {
+		try {
+			return vueI18nNodesToIntlayer(parseVueI18n(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var vueI18nToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "vue-i18n",
+		keyPath: [],
+		plugins: [{
+			id: "vue-i18n",
+			...vueI18nToIntlayerPlugin
+		}]
+	});
+};
 var findMatchingCondition = (enumerationContent, quantity) => {
 	const numericKeys = Object.keys(enumerationContent);
 	for (const key of numericKeys) {
@@ -868,24 +1058,18 @@ var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
 var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var resolveIcuMessage = createMessageResolver(icuToIntlayerFormatter);
-var splitMessageId = (id) => {
-	const dotPosition = id.indexOf(".");
-	if (dotPosition === -1) return {
-		dictionaryKey: id,
-		remainder: ""
-	};
-	return {
-		dictionaryKey: id.slice(0, dotPosition),
-		remainder: id.slice(dotPosition + 1)
-	};
+var DIALECT_FORMATTERS = {
+	icu: icuToIntlayerFormatter,
+	i18next: i18nextToIntlayerFormatter,
+	"vue-i18n": vueI18nToIntlayerFormatter
 };
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var I18nClass = class extends EventEmitter {
 	_locale;
 	_locales;
 	_catalogs = {};
 	_loadFallbackWarned = false;
-	_boundDictionaries = {};
+	_dictionaryContent;
 	_registry;
 	constructor({ locale = "en", locales, messages, registry } = {}) {
 		super();
@@ -902,7 +1086,7 @@ var I18nClass = class extends EventEmitter {
 	}
 	get messages() {
 		const dictionary = { ...this._registry?.all(this._locale) };
-		for (const content of Object.values(this._boundDictionaries)) Object.assign(dictionary, unwrapLinguiCatalog(content));
+		if (this._dictionaryContent !== void 0) Object.assign(dictionary, unwrapLinguiCatalog(this._dictionaryContent));
 		return {
 			...this._catalogs[this._locale] ?? {},
 			...dictionary
@@ -933,8 +1117,8 @@ var I18nClass = class extends EventEmitter {
 		if (messages) this.mergeLocaleCatalog(locale, messages);
 		this.activate(locale, locales);
 	}
-	bindDictionaries(dictionaries) {
-		this._boundDictionaries = dictionaries;
+	bindDictionaryContent(content) {
+		this._dictionaryContent = content;
 		return this;
 	}
 	activate(locale, locales) {
@@ -942,52 +1126,28 @@ var I18nClass = class extends EventEmitter {
 		this._locales = locales;
 		this.emit("change");
 	}
-	lookupBoundDictionaries(id) {
-		const { dictionaryKey, remainder } = splitMessageId(id);
-		const prefixed = this._boundDictionaries[dictionaryKey];
-		if (prefixed !== void 0) {
-			const value = navigateLinguiCatalog(prefixed, remainder);
-			if (value !== void 0) return value;
-		}
-		for (const content of Object.values(this._boundDictionaries)) {
-			const value = navigateLinguiCatalog(content, id);
-			if (value !== void 0) return value;
-		}
-	}
 	resolveTemplate(id) {
-		const boundNode = this.lookupBoundDictionaries(id);
-		if (boundNode !== void 0) return {
-			kind: "node",
-			node: boundNode
-		};
-		const registryNode = this._registry?.lookup(id, this._locale);
-		if (registryNode !== void 0) return {
-			kind: "node",
-			node: registryNode
-		};
+		if (this._dictionaryContent !== void 0) {
+			const boundValue = navigateLinguiCatalog(this._dictionaryContent, id);
+			if (boundValue !== void 0) return linguiMessageToIcu(boundValue);
+		}
+		const fromDictionary = this._registry?.lookup(id, this._locale);
+		if (fromDictionary !== void 0) return fromDictionary;
 		const catalog = this._catalogs[this._locale];
 		if (catalog) {
 			const raw = navigateLinguiCatalog(catalog, id);
-			if (raw !== void 0) return {
-				kind: "icu",
-				message: linguiMessageToIcu(raw)
-			};
+			if (raw !== void 0) return linguiMessageToIcu(raw);
 		}
 	}
 	_(descriptorOrId, values, options) {
 		const isDescriptor = typeof descriptorOrId === "object" && descriptorOrId !== null;
 		const id = isDescriptor ? descriptorOrId.id : descriptorOrId;
 		const defaultMessage = isDescriptor ? descriptorOrId.message ?? options?.message : options?.message;
-		const messageValues = isDescriptor ? {
+		const resolvedValues = isDescriptor ? {
 			...descriptorOrId.values ?? {},
 			...values ?? {}
 		} : values ?? {};
-		const locale = this._locale;
-		const template = this.resolveTemplate(id) ?? {
-			kind: "icu",
-			message: defaultMessage ?? id
-		};
-		return (template.kind === "node" ? resolveMessageNodeToString(template.node, messageValues, locale) : resolveIcuMessage(template.message, messageValues, locale)) ?? id;
+		return resolveMessage(this.resolveTemplate(id) ?? defaultMessage ?? id, resolvedValues, this._locale, "icu") ?? id;
 	}
 	t = (descriptorOrId, values, options) => this._(descriptorOrId, values, options);
 	date(value, format) {
@@ -1165,7 +1325,7 @@ var getIntlayer = (key, localeOrSelector, plugins) => {
 		}
 		return createSafeFallback(key);
 	}
-	return getDictionary$1(dictionary, localeOrSelector, plugins);
+	return getDictionary(dictionary, localeOrSelector, plugins);
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -1271,9 +1431,8 @@ var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRA
 	}
 };
 var enumerationPlugin = fallbackPlugin;
-var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
-var insertionPlugin$1 = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
 	transform: (node, props, deepTransformNode) => {
@@ -1315,7 +1474,7 @@ var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
 	conditionPlugin,
-	insertionPlugin$1,
+	insertionPlugin,
 	nestedPlugin(locale ?? internationalization.defaultLocale),
 	filePlugin,
 	genderPlugin,
@@ -1325,7 +1484,7 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
+var getDictionary = (dictionary, localeOrSelector, plugins) => {
 	const { locale, selector } = parseDictionarySelector(localeOrSelector);
 	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
 	const cached = readTransformCache(dictionary, cacheKey);
@@ -1346,26 +1505,6 @@ var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
-var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
-var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
-var splitInsertionTemplate = (template, values = {}) => {
-	if (!Object.values(values).some(isComplexValue)) return {
-		isSimple: true,
-		parts: template.replace(insertionRegex, (_, key) => (values[key.trim()] ?? "").toString())
-	};
-	const chunks = template.split(insertionRegex);
-	const parts = [];
-	for (let i = 0; i < chunks.length; i++) if (i % 2 === 0) {
-		if (chunks[i]) parts.push(chunks[i]);
-	} else {
-		const val = values[chunks[i].trim()];
-		if (val != null) parts.push(val);
-	}
-	return {
-		isSimple: false,
-		parts
-	};
-};
 var getDictionaryKeys = () => {
 	try {
 		return Object.keys(getDictionaries());
@@ -1374,23 +1513,15 @@ var getDictionaryKeys = () => {
 	}
 };
 var lookupDictionaryMessage = (id, locale) => {
-	const dictionaryKeys = getDictionaryKeys();
-	const dotPosition = id.indexOf(".");
-	const prefix = dotPosition === -1 ? id : id.slice(0, dotPosition);
-	const readDictionary = (key) => {
+	for (const key of getDictionaryKeys()) {
+		let dictionary;
 		try {
-			return getIntlayer(key, locale);
+			dictionary = getIntlayer(key, locale);
 		} catch {
-			return;
+			continue;
 		}
-	};
-	if (dictionaryKeys.includes(prefix)) {
-		const value = navigateLinguiCatalog(readDictionary(prefix), dotPosition === -1 ? "" : id.slice(dotPosition + 1));
-		if (value !== void 0) return value;
-	}
-	for (const key of dictionaryKeys) {
-		const value = navigateLinguiCatalog(readDictionary(key), id);
-		if (value !== void 0) return value;
+		const value = navigateLinguiCatalog(dictionary, id);
+		if (value !== void 0) return linguiMessageToIcu(value);
 	}
 };
 var collectRegistryMessages = (locale) => {
@@ -1404,108 +1535,6 @@ var createRegistryResolver = () => ({
 	lookup: lookupDictionaryMessage,
 	all: collectRegistryMessages
 });
-var renderIntlayerNode = ({ children, value, additionalProps }) => {
-	const element = isValidElement(children) ? children : jsx(Fragment$1, { children });
-	return new Proxy(element, { get(target, prop, receiver) {
-		if (prop === "value") return value;
-		if (prop === Symbol.toPrimitive) return () => value ?? "";
-		if (prop === "toString") return () => String(value ?? "");
-		if (prop === "valueOf") return () => value;
-		if (additionalProps && Object.hasOwn(additionalProps, prop)) return additionalProps[prop];
-		if (value !== null && value !== void 0 && typeof prop === "string" && prop !== "constructor" && !(prop in target)) {
-			const valObj = Object(value);
-			if (prop in valObj) {
-				const valProp = valObj[prop];
-				return typeof valProp === "function" ? valProp.bind(value) : valProp;
-			}
-		}
-		return Reflect.get(target, prop, receiver);
-	} });
-};
-var intlayerNodePlugins = {
-	id: "intlayer-node-plugin",
-	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
-	transform: (_node, { plugins, ...rest }) => {
-		return renderIntlayerNode({
-			...rest,
-			value: rest.children,
-			children: rest.children
-		});
-	}
-};
-var reactNodePlugins = fallbackPlugin;
-var splitAndJoinInsertion = (template, values) => {
-	const result = splitInsertionTemplate(template, values);
-	if (result.isSimple) return result.parts;
-	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
-};
-var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
-	id: "insertion-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
-	transform: (node, props, deepTransformNode) => {
-		const newKeyPath = [...props.keyPath, { type: INSERTION }];
-		const children = node[INSERTION];
-		const insertionStringPlugin = {
-			id: "insertion-string-plugin",
-			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
-			transform: (node, subProps, deepTransformNode) => {
-				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
-				const transformedResult = deepTransformNode(node, {
-					...subProps,
-					children: node,
-					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-				});
-				return (values) => {
-					const result = splitAndJoinInsertion(transformedResult, values);
-					return deepTransformNode(result, {
-						...subProps,
-						plugins: props.plugins,
-						children: result
-					});
-				};
-			}
-		};
-		const result = deepTransformNode(children, {
-			...props,
-			children,
-			keyPath: newKeyPath,
-			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
-		if (typeof children === "object" && children !== null && "nodeType" in children && ["enumeration", "condition"].includes(children.nodeType)) return (values) => (arg) => {
-			const inner = result(arg);
-			if (typeof inner === "function") return inner(values);
-			return inner;
-		};
-		return result;
-	}
-};
-var markdownPlugin = fallbackPlugin;
-var htmlPlugin = fallbackPlugin;
-var pluginsCache = /* @__PURE__ */ new Map();
-var getPlugins = (locale, fallback = true) => {
-	const cacheKey = `${locale ?? internationalization.defaultLocale}_${fallback}`;
-	if (pluginsCache.has(cacheKey)) return pluginsCache.get(cacheKey);
-	const plugins = [
-		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-		enumerationPlugin,
-		pluralPlugin(locale ?? internationalization.defaultLocale),
-		conditionPlugin,
-		nestedPlugin(locale ?? internationalization.defaultLocale),
-		filePlugin,
-		genderPlugin,
-		selectPlugin,
-		intlayerNodePlugins,
-		reactNodePlugins,
-		insertionPlugin,
-		markdownPlugin,
-		htmlPlugin
-	];
-	pluginsCache.set(cacheKey, plugins);
-	return plugins;
-};
-var getDictionary = (dictionary, localeOrSelector) => {
-	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
-};
 var resolveExpiresToTimestamp = (expires) => {
 	if (typeof expires === "number") return Date.now() + expires * 1e3;
 	if (typeof expires === "string") {
@@ -1685,6 +1714,22 @@ var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 		])
 	};
 };
+var useLingui = () => {
+	const context = useContext(LinguiContext);
+	const { locale } = useLocale();
+	const derivedI18n = useMemo(() => {
+		const instance = new I18nClass({
+			locale,
+			registry: createRegistryResolver()
+		});
+		return {
+			i18n: instance,
+			_: instance._.bind(instance)
+		};
+	}, [locale]);
+	if (context) return context;
+	return derivedI18n;
+};
 var I18nProvider = ({ i18n, defaultComponent, children }) => {
 	const buildContext = (instance) => ({
 		i18n: instance,
@@ -1709,194 +1754,87 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		})
 	});
 };
-var createBoundLinguiContext = (locale, dictionaries) => {
-	const instance = new I18nClass({ locale }).bindDictionaries(dictionaries);
-	return {
-		i18n: instance,
-		_: instance._.bind(instance)
-	};
-};
-var useDictionary = (...dictionaries) => {
-	const { locale } = useLocale();
-	const dictionaryKeysIdentity = dictionaries.map((dictionary) => dictionary.key).join("\0");
-	return useMemo(() => createBoundLinguiContext(locale, Object.fromEntries(dictionaries.map((dictionary) => [dictionary.key, getDictionary(dictionary, locale)]))), [locale, dictionaryKeysIdentity]);
-};
 var setupI18n = (params) => new I18nClass({
 	...params,
 	registry: createRegistryResolver()
 });
 setupI18n({ locale: "en" });
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/pages/contact/ContactForm.tsx";
 function ContactForm() {
-	const { i18n } = useDictionary(contact_form_default);
+	const { i18n } = useLingui();
 	const nameId = useId();
 	const emailId = useId();
 	const topicId = useId();
 	const messageId = useId();
-	return jsxDEV("form", {
+	return jsxs("form", {
 		className: "space-y-6",
 		children: [
-			jsxDEV("div", {
+			jsxs("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [jsxDEV("div", { children: [jsxDEV("label", {
+				children: [jsxs("div", { children: [jsx("label", {
 					htmlFor: nameId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: i18n._("contact-form.yourName")
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 16,
-					columnNumber: 11
-				}, this), jsxDEV("input", {
+				}), jsx("input", {
 					id: nameId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: i18n._("contact-form.yourName")
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 22,
-					columnNumber: 11
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 15,
-					columnNumber: 9
-				}, this), jsxDEV("div", { children: [jsxDEV("label", {
+				})] }), jsxs("div", { children: [jsx("label", {
 					htmlFor: emailId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: i18n._("contact-form.email")
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 29,
-					columnNumber: 11
-				}, this), jsxDEV("input", {
+				}), jsx("input", {
 					id: emailId,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "you@example.com"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 35,
-					columnNumber: 11
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 28,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 14,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", { children: [jsxDEV("label", {
+				})] })]
+			}),
+			jsxs("div", { children: [jsx("label", {
 				htmlFor: topicId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: i18n._("contact-form.topic")
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 44,
-				columnNumber: 9
-			}, this), jsxDEV("select", {
+			}), jsxs("select", {
 				id: topicId,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					jsxDEV("option", { children: i18n._("contact-form.bugReport") }, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 54,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: i18n._("contact-form.newBenchmarkIdea") }, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 55,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: i18n._("contact-form.methodologyQuestion") }, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 56,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: i18n._("contact-form.contribution") }, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 57,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: i18n._("contact-form.other") }, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 58,
-						columnNumber: 11
-					}, this)
+					jsx("option", { children: i18n._("contact-form.bugReport") }),
+					jsx("option", { children: i18n._("contact-form.newBenchmarkIdea") }),
+					jsx("option", { children: i18n._("contact-form.methodologyQuestion") }),
+					jsx("option", { children: i18n._("contact-form.contribution") }),
+					jsx("option", { children: i18n._("contact-form.other") })
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 50,
-				columnNumber: 9
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 43,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", { children: [jsxDEV("label", {
+			})] }),
+			jsxs("div", { children: [jsx("label", {
 				htmlFor: messageId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: i18n._("contact-form.message")
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 62,
-				columnNumber: 9
-			}, this), jsxDEV("textarea", {
+			}), jsx("textarea", {
 				id: messageId,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				placeholder: i18n._("contact-form.describeYourQuestionOrIdea")
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 68,
-				columnNumber: 9
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 61,
-				columnNumber: 7
-			}, this),
-			jsxDEV("button", {
+			})] }),
+			jsx("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: i18n._("contact-form.sendMessage")
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 75,
-				columnNumber: 7
-			}, this)
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+	});
 }
 function initLingui(locale, _messages) {
 	const lingui = setupI18n();
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const i18n = useMemo(() => initLingui("en"), []);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/pages/contact/ContactForm.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ContactForm, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ContactForm, {}) });
 }
 export { Wrapped as default };

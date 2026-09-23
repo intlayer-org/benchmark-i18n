@@ -1,16 +1,16 @@
 import { Dynamic as e, createComponent as t, insert as n, template as r } from "solid-js/web";
 import { For as i, createContext as a, createMemo as o, useContext as s } from "solid-js";
 var c = {
-	de: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/de.json").then((e) => e.default),
-	en: () => import("./en-taEjNt8W.js").then((e) => e.default),
-	es: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/es.json").then((e) => e.default),
-	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/fr.json").then((e) => e.default),
-	it: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/it.json").then((e) => e.default),
-	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ja.json").then((e) => e.default),
-	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ko.json").then((e) => e.default),
-	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/pt.json").then((e) => e.default),
-	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ru.json").then((e) => e.default),
-	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/zh.json").then((e) => e.default)
+	de: () => import("./de-Ctr6gmyg.js").then((e) => e.default),
+	en: () => import("./en-C7QvljSq.js").then((e) => e.default),
+	es: () => import("./es-DoXbVazm.js").then((e) => e.default),
+	fr: () => import("./fr-DEtVeAXZ.js").then((e) => e.default),
+	it: () => import("./it-DJHlpLt6.js").then((e) => e.default),
+	ja: () => import("./ja-Bnu-DMzD.js").then((e) => e.default),
+	ko: () => import("./ko-CT8K4kXs.js").then((e) => e.default),
+	pt: () => import("./pt-DlNim4UF.js").then((e) => e.default),
+	ru: () => import("./ru-DXtF17-c.js").then((e) => e.default),
+	zh: () => import("./zh-FXCjSlVw.js").then((e) => e.default)
 }, l = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var c = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (_(e) && _(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : v(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : v(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -309,6 +309,19 @@ export { Z as default };
 var e = {
 	key: "results-table",
 	content: {
+		g: "Ja",
+		e: "Manuell",
+		f: "Beispielergebnisse",
+		c: "Bibliothek",
+		a: "Bundle-Größe",
+		d: "Lookup-Zeit",
+		b: "Lazy Loading"
+	}
+};
+export { e as default };
+var e = {
+	key: "results-table",
+	content: {
 		g: "Yes",
 		e: "Manual",
 		f: "Sample Results",
@@ -316,6 +329,110 @@ var e = {
 		a: "Bundle Size",
 		d: "Lookup Time",
 		b: "Lazy Loading"
+	}
+};
+export { e as default };
+var e = {
+	key: "results-table",
+	content: {
+		g: "Sí",
+		e: "Manual",
+		f: "Resultados de ejemplo",
+		c: "Biblioteca",
+		a: "Tamaño del bundle",
+		d: "Tiempo de búsqueda",
+		b: "Carga diferida"
+	}
+};
+export { e as default };
+var e = {
+	key: "results-table",
+	content: {
+		g: "Oui",
+		e: "Manuel",
+		f: "Exemples de résultats",
+		c: "Bibliothèque",
+		a: "Taille du bundle",
+		d: "Temps de recherche",
+		b: "Chargement différé"
+	}
+};
+export { e as default };
+var e = {
+	key: "results-table",
+	content: {
+		g: "Sì",
+		e: "Manuale",
+		f: "Risultati di esempio",
+		c: "Libreria",
+		a: "Dimensione del bundle",
+		d: "Tempo di ricerca",
+		b: "Caricamento lazy"
+	}
+};
+export { e as default };
+var e = {
+	key: "results-table",
+	content: {
+		g: "はい",
+		e: "手動",
+		f: "サンプル結果",
+		c: "ライブラリ",
+		a: "バンドルサイズ",
+		d: "検索時間",
+		b: "遅延ロード"
+	}
+};
+export { e as default };
+var e = {
+	key: "results-table",
+	content: {
+		g: "예",
+		e: "수동",
+		f: "샘플 결과",
+		c: "라이브러리",
+		a: "번들 크기",
+		d: "검색 시간",
+		b: "지연 로드"
+	}
+};
+export { e as default };
+var e = {
+	key: "results-table",
+	content: {
+		g: "Sim",
+		e: "Manual",
+		f: "Resultados de exemplo",
+		c: "Biblioteca",
+		a: "Tamanho do bundle",
+		d: "Tempo de Busca",
+		b: "Carregamento Lento"
+	}
+};
+export { e as default };
+var e = {
+	key: "results-table",
+	content: {
+		g: "Да",
+		e: "Вручную",
+		f: "Примеры результатов",
+		c: "Библиотека",
+		a: "Размер бандла",
+		d: "Время поиска",
+		b: "Ленивая загрузка"
+	}
+};
+export { e as default };
+var e = {
+	key: "results-table",
+	content: {
+		g: "是",
+		e: "手动",
+		f: "示例结果",
+		c: "库",
+		a: "捆绑包大小",
+		d: "查找时间",
+		b: "延迟加载"
 	}
 };
 export { e as default };

@@ -19,14 +19,14 @@ export default function Header() {
   const locale = (params.locale as string) ?? "en";
 
   const mockPages = [
-    { href: "/products", label: t("header.products", "Products") },
-    { href: "/pricing", label: t("header.pricing", "Pricing") },
-    { href: "/team", label: t("header.team", "Team") },
-    { href: "/blog", label: t("header.blog", "Blog") },
-    { href: "/careers", label: t("header.careers", "Careers") },
-    { href: "/faq", label: t("header.faq", "FAQ") },
-    { href: "/contact", label: t("header.contact", "Contact") },
-    { href: "/settings", label: t("header.settings", "Settings") },
+    { href: "/products", label: t("header.products") },
+    { href: "/pricing", label: t("header.pricing") },
+    { href: "/team", label: t("header.team") },
+    { href: "/blog", label: t("header.blog") },
+    { href: "/careers", label: t("header.careers") },
+    { href: "/faq", label: t("header.faq") },
+    { href: "/contact", label: t("header.contact") },
+    { href: "/settings", label: t("header.settings") },
   ];
 
   const isExactActive = (href: string) => pathname === localizeHref(href, locale);
@@ -54,13 +54,13 @@ export default function Header() {
               href="/"
               className={`nav-link${isExactActive("/") ? " is-active" : ""}`}
             >
-              <T keyName="header.home" defaultValue="Home" />
+              <T keyName="header.home" />
             </Link>
             <Link
               href="/about"
               className={`nav-link${isActive("/about") ? " is-active" : ""}`}
             >
-              <T keyName="header.methodology" defaultValue="Methodology" />
+              <T keyName="header.methodology" />
             </Link>
 
             {/* Mock Pages Dropdown */}
@@ -72,7 +72,7 @@ export default function Header() {
                 onMouseLeave={() => setIsMockPagesOpen(false)}
                 onClick={() => setIsMockPagesOpen(!isMockPagesOpen)}
               >
-                <T keyName="header.mockPages" defaultValue="Mock Pages" />
+                <T keyName="header.mockPages" />
                 <ChevronDown
                   size={14}
                   className={`transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`}
@@ -111,7 +111,7 @@ export default function Header() {
             className="text-muted-foreground transition hover:text-foreground"
           >
             <span className="sr-only">
-              <T keyName="header.goToGithub" defaultValue="Go to GitHub" />
+              <T keyName="header.goToGithub" />
             </span>
             <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
               <path

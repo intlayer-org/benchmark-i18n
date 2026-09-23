@@ -1,11 +1,6 @@
 import { useId } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var onInvalidFunc = () => "";
-onInvalidFunc = (i, c) => {
-	const item = c[i];
-	if (item == null) return `[i18n-404:${i}]`;
-	return `[i18n-400:${i}(${item})]`;
-};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -94,72 +89,39 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("settings", loadCatalog$11, 1);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/settings/ApiAccessSection.tsx";
 function ApiAccessSection() {
 	const apiKeyId = useId();
 	const _w_runtime_ = getRuntimeRx();
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: _w_runtime_(180)
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this), jsxDEV("div", { children: [
-			jsxDEV("label", {
+		}), jsxs("div", { children: [
+			jsx("label", {
 				htmlFor: apiKeyId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: _w_runtime_(181)
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 16,
-				columnNumber: 9
-			}, this),
-			jsxDEV("div", {
+			}),
+			jsxs("div", {
 				className: "flex gap-2",
-				children: [jsxDEV("input", {
+				children: [jsx("input", {
 					id: apiKeyId,
 					readOnly: true,
 					defaultValue: "sk_bench_xxxxxxxxxxxxxxxxxxxx",
 					className: "flex-1 rounded-md border border-input bg-muted px-3 py-2 text-sm text-muted-foreground"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 23,
-					columnNumber: 11
-				}, this), jsxDEV("button", {
+				}), jsx("button", {
 					type: "button",
 					className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: _w_runtime_(182)
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 29,
-					columnNumber: 11
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 22,
-				columnNumber: 9
-			}, this),
-			jsxDEV("p", {
+				})]
+			}),
+			jsx("p", {
 				className: "mt-1 text-xs text-muted-foreground",
 				children: _w_runtime_(183)
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 36,
-				columnNumber: 9
-			}, this)
-		] }, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 15,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+			})
+		] })]
+	});
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -337,26 +299,12 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/settings/ApiAccessSection.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ApiAccessSection, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ApiAccessSection, {}) });
 }
 export { Wrapped as default };
 var c = [

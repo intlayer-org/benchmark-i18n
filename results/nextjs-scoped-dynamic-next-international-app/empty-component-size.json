@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-11T14:30:09.735Z",
+  "timestamp": "2026-09-23T20:34:02.046Z",
   "packageName": "nextjs-scoped-dynamic-next-international-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 13548,
-    "totalMinifiedBytes": 8825,
-    "totalGzipBytes": 3290
+    "totalUnminifiedBytes": 12346,
+    "totalMinifiedBytes": 7791,
+    "totalGzipBytes": 3039
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 13548,
-      "unminifiedGzipBytes": 4061,
-      "minifiedBytes": 8825,
-      "minifiedGzipBytes": 3290
+      "unminifiedBytes": 12346,
+      "unminifiedGzipBytes": 3826,
+      "minifiedBytes": 7791,
+      "minifiedGzipBytes": 3039
     }
   ]
 }

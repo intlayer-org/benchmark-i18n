@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderList, renderSlot, toDisplayString } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderList, renderSlot, toDisplayString, unref } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -975,41 +975,6 @@ var useI18n = ((options) => {
 		n: (value, formatOrOptions) => formatNumberValue(value, formatOrOptions, currentLocale.value, numberFormats)
 	};
 });
-var BlogList_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "BlogList",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		const { t } = useI18n();
-		const postIndices = [
-			1,
-			2,
-			3,
-			4,
-			5,
-			6
-		];
-		const __returned__ = {
-			t,
-			postIndices,
-			posts: computed(() => postIndices.map((n) => ({
-				title: t(`blog.list.post${n}Title`),
-				date: t(`blog.list.post${n}Date`),
-				excerpt: t(`blog.list.post${n}Excerpt`),
-				category: t(`blog.list.post${n}Category`)
-			})))
-		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "grid gap-6 md:grid-cols-2" };
 var _hoisted_2 = { class: "mb-3 flex items-center gap-3" };
 var _hoisted_3 = { class: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground" };
@@ -1020,43 +985,54 @@ var _hoisted_7 = {
 	type: "button",
 	class: "text-sm font-medium text-primary hover:underline"
 };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.posts, (p) => {
-		return openBlock(), createElementBlock("article", {
-			key: p.title,
-			class: "rounded-lg border border-border bg-card p-6"
-		}, [
-			createElementVNode("div", _hoisted_2, [createElementVNode("span", _hoisted_3, toDisplayString(p.category), 1), createElementVNode("span", _hoisted_4, toDisplayString(p.date), 1)]),
-			createElementVNode("h2", _hoisted_5, toDisplayString(p.title), 1),
-			createElementVNode("p", _hoisted_6, toDisplayString(p.excerpt), 1),
-			createElementVNode("button", _hoisted_7, toDisplayString($setup.t("blog.list.readMore")), 1)
-		]);
-	}), 128))]);
-}
-var BlogList_default = _plugin_vue_export_helper_default(BlogList_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/blog/BlogList.vue"]]);
+var BlogList_default = defineComponent({
+	__name: "BlogList",
+	setup(__props) {
+		const { t } = useI18n();
+		const postIndices = [
+			1,
+			2,
+			3,
+			4,
+			5,
+			6
+		];
+		const posts = computed(() => postIndices.map((n) => ({
+			title: t(`blog.list.post${n}Title`),
+			date: t(`blog.list.post${n}Date`),
+			excerpt: t(`blog.list.post${n}Excerpt`),
+			category: t(`blog.list.post${n}Category`)
+		})));
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(true), createElementBlock(Fragment, null, renderList(posts.value, (p) => {
+				return openBlock(), createElementBlock("article", {
+					key: p.title,
+					class: "rounded-lg border border-border bg-card p-6"
+				}, [
+					createElementVNode("div", _hoisted_2, [createElementVNode("span", _hoisted_3, toDisplayString(p.category), 1), createElementVNode("span", _hoisted_4, toDisplayString(p.date), 1)]),
+					createElementVNode("h2", _hoisted_5, toDisplayString(p.title), 1),
+					createElementVNode("p", _hoisted_6, toDisplayString(p.excerpt), 1),
+					createElementVNode("button", _hoisted_7, toDisplayString(unref(t)("blog.list.readMore")), 1)
+				]);
+			}), 128))]);
+		};
+	}
+});
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var BlogList_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(BlogList_default) });
 } };

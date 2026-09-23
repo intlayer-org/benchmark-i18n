@@ -1,6 +1,6 @@
 import "react";
 import { useNavigate as e, useParams as t } from "@tanstack/react-router";
-import { Fragment as n, jsxDEV as r } from "react/jsx-dev-runtime";
+import { Fragment as n, jsx as r } from "react/jsx-runtime";
 var i = {}, a = [
 	"en",
 	"fr",
@@ -137,8 +137,7 @@ var F = /* @__PURE__ */ new Map();
 function I(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var L = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/LocaleSwitcher.tsx";
-function R() {
+function L() {
 	let n = t({ strict: !1 }).locale ?? "en", i = e(), o = (e) => {
 		try {
 			let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
@@ -164,41 +163,15 @@ function R() {
 			children: a.map((e) => r("option", {
 				value: e,
 				children: o(e)
-			}, e, !1, {
-				fileName: L,
-				lineNumber: 34,
-				columnNumber: 11
-			}, this))
-		}, void 0, !1, {
-			fileName: L,
-			lineNumber: 28,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: L,
-		lineNumber: 27,
-		columnNumber: 5
-	}, this);
+			}, e))
+		})
+	});
 }
-var z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 g("en", { reload: !1 });
-function B({ children: e }) {
-	return r(n, { children: e }, void 0, !1, {
-		fileName: z,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+function R({ children: e }) {
+	return r(n, { children: e });
 }
-var V = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/LocaleSwitcher.wrapper.tsx";
-function H() {
-	return r(B, { children: r(R, {}, void 0, !1, {
-		fileName: V,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: V,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function z() {
+	return r(R, { children: r(L, {}) });
 }
-export { H as default };
+export { z as default };

@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
 var preferences_section_default = {
 	key: "preferences-section",
 	content: {
@@ -419,7 +419,8 @@ var getBasePlugins = (locale, fallback = true) => [
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
-}), getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
+});
+var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 	const props = {
 		dictionaryKey: dictionary.key,
 		dictionaryPath: dictionary.filePath,
@@ -427,7 +428,8 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-}, b$1 = {
+};
+var b$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { children: n, ...r }) => {
@@ -449,7 +451,12 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 		}
 		return markRaw(c);
 	}
-}, S = fallbackPlugin, w = fallbackPlugin, T = fallbackPlugin, E = /* @__PURE__ */ new Map(), D = (e, t = !0) => {
+};
+var S = fallbackPlugin;
+var w = fallbackPlugin;
+var T = fallbackPlugin;
+var E = /* @__PURE__ */ new Map();
+var D = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (E.has(n)) return E.get(n);
 	let r = [
@@ -465,8 +472,14 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 		T
 	];
 	return E.set(n, r), r;
-}, n = (n, r) => getDictionary(n, r, D(r)), i = Symbol("intlayer");
-var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "object" && !!e, g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e), _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, v = (e) => markRaw(defineComponent({
+};
+var n = (n, r) => getDictionary(n, r, D(r));
+var i = Symbol("intlayer");
+var m = (e, t) => t.reduce((e, t) => e?.[t], e);
+var h$1 = (e) => typeof e == "object" && !!e;
+var g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e);
+var _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e;
+var v = (e) => markRaw(defineComponent({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -474,7 +487,8 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 			return t == null ? null : g(t) ? h(t) : Array.isArray(t) ? h("span", t) : t;
 		};
 	}
-})), y = (e) => new Proxy({}, {
+}));
+var y = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -496,7 +510,8 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 			configurable: !0
 		};
 	}
-}), b = (r, a) => {
+});
+var b = (r, a) => {
 	let c = getCurrentInstance() ? inject(i) : void 0, b = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), x = computed(() => (a === void 0 ? void 0 : toValue(a)) ?? b.value), S = shallowRef({});
 	watch([() => toValue(r), () => x.value], ([t, n$2]) => {
 		S.value = n(t, n$2);
@@ -534,34 +549,6 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
-var PreferencesSection_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "PreferencesSection",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		const { g: title, f: notificationsTitle, e: notificationsDescription, i: toggleNotifications, b: darkModeTitle, a: darkModeDescription, h: toggleDarkMode, c: languageLabel, d: languages } = b(preferences_section_default);
-		const __returned__ = {
-			title,
-			notificationsTitle,
-			notificationsDescription,
-			toggleNotifications,
-			darkModeTitle,
-			darkModeDescription,
-			toggleDarkMode,
-			languageLabel,
-			languages
-		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "rounded-lg border border-border bg-card p-6" };
 var _hoisted_2 = { class: "mb-4 text-lg font-semibold text-foreground" };
 var _hoisted_3 = { class: "space-y-4" };
@@ -581,22 +568,27 @@ var _hoisted_13 = {
 	id: "language",
 	class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
 };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString($setup.title), 1), createElementVNode("div", _hoisted_3, [
-		createElementVNode("div", _hoisted_4, [createElementVNode("div", null, [createElementVNode("p", _hoisted_5, toDisplayString($setup.notificationsTitle), 1), createElementVNode("p", _hoisted_6, toDisplayString($setup.notificationsDescription), 1)]), createElementVNode("button", {
-			type: "button",
-			class: "h-6 w-11 rounded-full bg-primary transition-colors",
-			"aria-label": $setup.toggleNotifications
-		}, [..._cache[0] || (_cache[0] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, null, -1)])], 8, _hoisted_7)]),
-		createElementVNode("div", _hoisted_8, [createElementVNode("div", null, [createElementVNode("p", _hoisted_9, toDisplayString($setup.darkModeTitle), 1), createElementVNode("p", _hoisted_10, toDisplayString($setup.darkModeDescription), 1)]), createElementVNode("button", {
-			type: "button",
-			class: "h-6 w-11 rounded-full bg-muted transition-colors",
-			"aria-label": $setup.toggleDarkMode
-		}, [..._cache[1] || (_cache[1] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, null, -1)])], 8, _hoisted_11)]),
-		createElementVNode("div", null, [createElementVNode("label", _hoisted_12, toDisplayString($setup.languageLabel), 1), createElementVNode("select", _hoisted_13, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.languages, (l) => {
-			return openBlock(), createElementBlock("option", { key: l }, toDisplayString(l), 1);
-		}), 128))])])
-	])]);
-}
-var PreferencesSection_default = _plugin_vue_export_helper_default(PreferencesSection_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/pages/settings/PreferencesSection.vue"]]);
+var PreferencesSection_default = defineComponent({
+	__name: "PreferencesSection",
+	setup(__props) {
+		const { g: title, f: notificationsTitle, e: notificationsDescription, i: toggleNotifications, b: darkModeTitle, a: darkModeDescription, h: toggleDarkMode, c: languageLabel, d: languages } = b(preferences_section_default);
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString(unref(title)), 1), createElementVNode("div", _hoisted_3, [
+				createElementVNode("div", _hoisted_4, [createElementVNode("div", null, [createElementVNode("p", _hoisted_5, toDisplayString(unref(notificationsTitle)), 1), createElementVNode("p", _hoisted_6, toDisplayString(unref(notificationsDescription)), 1)]), createElementVNode("button", {
+					type: "button",
+					class: "h-6 w-11 rounded-full bg-primary transition-colors",
+					"aria-label": unref(toggleNotifications)
+				}, [..._cache[0] || (_cache[0] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, null, -1)])], 8, _hoisted_7)]),
+				createElementVNode("div", _hoisted_8, [createElementVNode("div", null, [createElementVNode("p", _hoisted_9, toDisplayString(unref(darkModeTitle)), 1), createElementVNode("p", _hoisted_10, toDisplayString(unref(darkModeDescription)), 1)]), createElementVNode("button", {
+					type: "button",
+					class: "h-6 w-11 rounded-full bg-muted transition-colors",
+					"aria-label": unref(toggleDarkMode)
+				}, [..._cache[1] || (_cache[1] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, null, -1)])], 8, _hoisted_11)]),
+				createElementVNode("div", null, [createElementVNode("label", _hoisted_12, toDisplayString(unref(languageLabel)), 1), createElementVNode("select", _hoisted_13, [(openBlock(true), createElementBlock(Fragment, null, renderList(unref(languages), (l) => {
+					return openBlock(), createElementBlock("option", { key: l }, toDisplayString(l), 1);
+				}), 128))])])
+			])]);
+		};
+	}
+});
 export { PreferencesSection_default as default };

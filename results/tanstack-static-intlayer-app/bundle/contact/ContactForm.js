@@ -1,6 +1,5 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useId, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var contact_form_default = {
 	key: "contact-form",
 	content: {
@@ -809,171 +808,76 @@ var useDictionary = (dictionary, localeOrSelector) => {
 	const argumentIdentity = typeof argument === "object" && argument !== null ? `${argument.locale ?? ""}|${getDictionarySelectorCacheKey(argument)}` : argument;
 	return useMemo(() => getDictionary(dictionary, argument), [dictionary.key, argumentIdentity]);
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/contact/ContactForm.tsx";
 function ContactForm() {
 	const content = useDictionary(contact_form_default);
 	const nameId = useId();
 	const emailId = useId();
 	const topicId = useId();
 	const messageId = useId();
-	return jsxDEV("form", {
+	return jsxs("form", {
 		className: "space-y-6",
 		children: [
-			jsxDEV("div", {
+			jsxs("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [jsxDEV("div", { children: [jsxDEV("label", {
+				children: [jsxs("div", { children: [jsx("label", {
 					htmlFor: nameId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: content.g
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 16,
-					columnNumber: 11
-				}, this), jsxDEV("input", {
+				}), jsx("input", {
 					id: nameId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: content.l.value
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 20,
-					columnNumber: 11
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 15,
-					columnNumber: 9
-				}, this), jsxDEV("div", { children: [jsxDEV("label", {
+				})] }), jsxs("div", { children: [jsx("label", {
 					htmlFor: emailId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: content.d
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 27,
-					columnNumber: 11
-				}, this), jsxDEV("input", {
+				}), jsx("input", {
 					id: emailId,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "you@example.com"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 31,
-					columnNumber: 11
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 26,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 14,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", { children: [jsxDEV("label", {
+				})] })]
+			}),
+			jsxs("div", { children: [jsx("label", {
 				htmlFor: topicId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: content.k
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 40,
-				columnNumber: 9
-			}, this), jsxDEV("select", {
+			}), jsxs("select", {
 				id: topicId,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					jsxDEV("option", { children: content.a }, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 48,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: content.h }, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 49,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: content.f }, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 50,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: content.b }, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 51,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: content.i }, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 52,
-						columnNumber: 11
-					}, this)
+					jsx("option", { children: content.a }),
+					jsx("option", { children: content.h }),
+					jsx("option", { children: content.f }),
+					jsx("option", { children: content.b }),
+					jsx("option", { children: content.i })
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 44,
-				columnNumber: 9
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 39,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", { children: [jsxDEV("label", {
+			})] }),
+			jsxs("div", { children: [jsx("label", {
 				htmlFor: messageId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: content.e
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 56,
-				columnNumber: 9
-			}, this), jsxDEV("textarea", {
+			}), jsx("textarea", {
 				id: messageId,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				placeholder: content.c.value
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 60,
-				columnNumber: 9
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 55,
-				columnNumber: 7
-			}, this),
-			jsxDEV("button", {
+			})] }),
+			jsx("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: content.j
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 67,
-				columnNumber: 7
-			}, this)
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/contact/ContactForm.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ContactForm, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ContactForm, {}) });
 }
 export { Wrapped as default };

@@ -1,0 +1,19 @@
+{
+  "settingsHeader.settings": "설정",
+  "settingsHeader.manageYourAccountPreferences": "계정 기본 설정 및 구성을 관리합니다.",
+  "profileSection.profile": "프로필",
+  "profileSection.displayName": "표시 이름",
+  "profileSection.email": "이메일",
+  "preferencesSection.preferences": "기본 설정",
+  "preferencesSection.emailNotifications": "이메일 알림",
+  "preferencesSection.receiveWeeklyBenchmarkReports": "주간 벤치마크 보고서 받기",
+  "preferencesSection.darkMode": "다크 모드",
+  "preferencesSection.useDarkColorScheme": "어두운 색상 체계 사용",
+  "preferencesSection.defaultLanguage": "기본 언어",
+  "apiAccessSection.apiAccess": "API 액세스",
+  "apiAccessSection.apiKey": "API 키",
+  "apiAccessSection.useThisKeyTo": "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오.",
+  "apiAccessSection.copy": "복사",
+  "settingsFooter.cancel": "취소",
+  "settingsFooter.saveChanges": "변경 사항 저장"
+}

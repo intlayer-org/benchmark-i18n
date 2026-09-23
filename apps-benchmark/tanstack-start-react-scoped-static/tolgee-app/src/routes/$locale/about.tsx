@@ -1,4 +1,3 @@
-import { tolgee } from "../../i18n/tolgee";
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
@@ -11,14 +10,6 @@ const WhatWeMeasure = lazy(
 );
 
 export const Route = createFileRoute("/$locale/about")({
-  loader: async ({ params }) => {
-    await tolgee.loadRecords([
-      { language: params.locale, namespace: "about" },
-      { language: params.locale, namespace: "aboutHeader" },
-      { language: params.locale, namespace: "aboutGrid" },
-      { language: params.locale, namespace: "whatWeMeasure" },
-    ]);
-  },
   component: About,
 });
 

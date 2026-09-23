@@ -1,7 +1,7 @@
 import { useEffect as e, useId as t, useLayoutEffect as n, useState as r } from "react";
-import { Fragment as i, jsxDEV as a } from "react/jsx-dev-runtime";
-import { useParams as o } from "next/navigation";
-var s = {}, c = [
+import { Fragment as i, jsx as a, jsxs as o } from "react/jsx-runtime";
+import { useParams as s } from "next/navigation";
+var c = {}, l = [
 	"en",
 	"fr",
 	"es",
@@ -12,57 +12,57 @@ var s = {}, c = [
 	"ja",
 	"ko",
 	"ru"
-], l = "PARAGLIDE_LOCALE", ee = 3456e4, u = [
+], u = "PARAGLIDE_LOCALE", d = 3456e4, f = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], d = [], f = typeof window > "u";
+], p = [], m = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var p, m = !1, h = () => {
-	let e = u;
-	!f && typeof window < "u" && window.location?.href && (e = P(window.location.href));
-	let t = te(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return m || (p = t, m = !0, _(t, { reload: !1 })), t;
+var h, g = !1, _ = () => {
+	let e = f;
+	!m && typeof window < "u" && window.location?.href && (e = L(window.location.href));
+	let t = v(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return g || (h = t, g = !0, b(t, { reload: !1 })), t;
 	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function te(e, t) {
+function v(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = O();
+		if (t === "cookie") n = j();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && p !== void 0) n = p;
-		else if (I(t) && F.has(t)) {
-			let e = F.get(t);
+		else if (t === "globalVariable" && h !== void 0) n = h;
+		else if (z(t) && R.has(t)) {
+			let e = R.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return y(t);
+				if (t !== void 0) return C(t);
 			}
 		}
-		let e = v(n);
+		let e = S(n);
 		if (e) return e;
 	}
 }
-var g = (e) => {
+var y = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, _ = (e, t) => {
+}, b = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = h();
+		r = _();
 	} catch {}
-	let i = [], a = u;
-	!f && typeof window < "u" && window.location?.href && (a = P(window.location.href));
-	for (let t of a) if (t === "globalVariable") p = e;
+	let i = [], a = f;
+	!m && typeof window < "u" && window.location?.href && (a = L(window.location.href));
+	for (let t of a) if (t === "globalVariable") h = e;
 	else if (t === "cookie") {
-		if (f || typeof document > "u" || typeof window > "u") continue;
-		let t = `${l}=${e}; path=/; max-age=${ee}`;
-		document.cookie = t, E();
+		if (m || typeof document > "u" || typeof window > "u") continue;
+		let t = `${u}=${e}; path=/; max-age=${d}`;
+		document.cookie = t, k();
 	} else if (t === "baseLocale") continue;
-	else if (I(t) && F.has(t)) {
-		let n = F.get(t);
+	else if (z(t) && R.has(t)) {
+		let n = R.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -71,148 +71,112 @@ var g = (e) => {
 		}
 	}
 	let o = () => {
-		!f && n.reload && window.location && e !== r && g(void 0);
+		!m && n.reload && window.location && e !== r && y(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		o();
 	});
 	o();
-}, ne = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
-function v(e) {
+}, x = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function S(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
-	for (let e of c) if (e.toLowerCase() === t) return e;
+	for (let e of l) if (e.toLowerCase() === t) return e;
 }
-function y(e) {
-	let t = v(e);
+function C(e) {
+	let t = S(e);
 	if (t) return t;
-	throw Error(`Invalid locale: ${e}. Expected one of: ${c.join(", ")}`);
+	throw Error(`Invalid locale: ${e}. Expected one of: ${l.join(", ")}`);
 }
-function b(e) {
+function w(e) {
 	return e;
 }
-function x(e, t) {
+function T(e, t) {
 	return e.exec(t.href);
 }
-var S = l.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), C = RegExp(`(?:^|;\\s*)${S}=([^;]*)`), w = Symbol(), T = w;
-function E() {
-	T = w;
+var E = u.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), ee = RegExp(`(?:^|;\\s*)${E}=([^;]*)`), D = Symbol(), O = D;
+function k() {
+	O = D;
 }
-function D() {
-	typeof queueMicrotask == "function" ? queueMicrotask(E) : Promise.resolve().then(E);
+function A() {
+	typeof queueMicrotask == "function" ? queueMicrotask(k) : Promise.resolve().then(k);
 }
-function O() {
+function j() {
 	if (typeof document > "u") return;
-	if (T !== w) return T;
-	let e = document.cookie.match(C)?.[1];
-	return T = v(e), D(), T;
+	if (O !== D) return O;
+	let e = document.cookie.match(ee)?.[1];
+	return O = S(e), A(), O;
 }
-function k(e) {
-	return A(e);
+function M(e) {
+	return N(e);
 }
-function A(e) {
-	let t = b(typeof e == "string" ? new URL(e, ne()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
-	return n.length > 0 && v(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), b(t);
-}
-var j, M;
 function N(e) {
-	if (d.length === 0) return;
+	let t = w(typeof e == "string" ? new URL(e, x()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && S(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), w(t);
+}
+var P, F;
+function I(e) {
+	if (p.length === 0) return;
 	let t = typeof e == "string" ? e : e.href;
-	if (j === t) return M;
-	let n = b(new URL(t, "http://example.com")), r = k(n), i = r.href === n.href ? [n] : [n, r], a;
+	if (P === t) return F;
+	let n = w(new URL(t, "http://example.com")), r = M(n), i = r.href === n.href ? [n] : [n, r], a;
 	for (let e of i) {
-		for (let t of d) if (x(new s(t.match, e.href), e)) {
+		for (let t of p) if (T(new c(t.match, e.href), e)) {
 			a = t;
 			break;
 		}
 		if (a) break;
 	}
-	return j = t, M = a, a;
+	return P = t, F = a, a;
 }
-function P(e) {
-	let t = N(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : u;
+function L(e) {
+	let t = I(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : f;
 }
-var F = /* @__PURE__ */ new Map();
-function I(e) {
+var R = /* @__PURE__ */ new Map();
+function z(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var L = () => "Display Name", R = () => "Nom d'affichage", z = () => "Nombre visible", B = () => "Anzeigename", V = () => "Nome visualizzato", H = () => "Nome de exibição", U = () => "显示名称", W = () => "表示名", G = () => "표시 이름", K = () => "Отображаемое имя", q = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? R(e) : n === "es" ? z(e) : n === "de" ? B(e) : n === "it" ? V(e) : n === "pt" ? H(e) : n === "zh" ? U(e) : n === "ja" ? W(e) : n === "ko" ? G(e) : n === "ru" ? K(e) : L(e);
-}), J = () => "Email", Y = () => "Email", X = () => "Correo electrónico", re = () => "E-Mail", ie = () => "Email", ae = () => "E-mail", oe = () => "邮件地址", se = () => "メールアドレス", ce = () => "이메일 주소", le = () => "Эл. почта", ue = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? Y(e) : n === "es" ? X(e) : n === "de" ? re(e) : n === "it" ? ie(e) : n === "pt" ? ae(e) : n === "zh" ? oe(e) : n === "ja" ? se(e) : n === "ko" ? ce(e) : n === "ru" ? le(e) : J(e);
-}), de = () => "Profile", fe = () => "Profil", pe = () => "Perfil", me = () => "Profil", he = () => "Profilo", ge = () => "Perfil", _e = () => "个人资料", ve = () => "プロファイル", ye = () => "프로필", be = () => "Профиль", xe = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? fe(e) : n === "es" ? pe(e) : n === "de" ? me(e) : n === "it" ? he(e) : n === "pt" ? ge(e) : n === "zh" ? _e(e) : n === "ja" ? ve(e) : n === "ko" ? ye(e) : n === "ru" ? be(e) : de(e);
-}), Z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/settings/ProfileSection.tsx";
-function Q() {
+var B = () => "Display Name", V = () => "Nom d'affichage", H = () => "Nombre visible", U = () => "Anzeigename", W = () => "Nome visualizzato", G = () => "Nome de exibição", K = () => "显示名称", q = () => "表示名", J = () => "표시 이름", Y = () => "Отображаемое имя", X = ((e = {}, t = {}) => {
+	let n = t.locale ?? _();
+	return n === "fr" ? V(e) : n === "es" ? H(e) : n === "de" ? U(e) : n === "it" ? W(e) : n === "pt" ? G(e) : n === "zh" ? K(e) : n === "ja" ? q(e) : n === "ko" ? J(e) : n === "ru" ? Y(e) : B(e);
+}), te = () => "Email", Z = () => "Email", Q = () => "Correo electrónico", ne = () => "E-Mail", re = () => "Email", ie = () => "E-mail", ae = () => "邮件地址", oe = () => "メールアドレス", se = () => "이메일 주소", ce = () => "Эл. почта", le = ((e = {}, t = {}) => {
+	let n = t.locale ?? _();
+	return n === "fr" ? Z(e) : n === "es" ? Q(e) : n === "de" ? ne(e) : n === "it" ? re(e) : n === "pt" ? ie(e) : n === "zh" ? ae(e) : n === "ja" ? oe(e) : n === "ko" ? se(e) : n === "ru" ? ce(e) : te(e);
+}), ue = () => "Profile", de = () => "Profil", fe = () => "Perfil", pe = () => "Profil", me = () => "Profilo", he = () => "Perfil", ge = () => "个人资料", _e = () => "プロファイル", ve = () => "프로필", ye = () => "Профиль", be = ((e = {}, t = {}) => {
+	let n = t.locale ?? _();
+	return n === "fr" ? de(e) : n === "es" ? fe(e) : n === "de" ? pe(e) : n === "it" ? me(e) : n === "pt" ? he(e) : n === "zh" ? ge(e) : n === "ja" ? _e(e) : n === "ko" ? ve(e) : n === "ru" ? ye(e) : ue(e);
+});
+function $() {
 	let e = t(), n = t();
-	return a("section", {
+	return o("section", {
 		className: "rounded-lg border border-border bg-card p-6",
 		children: [a("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: xe()
-		}, void 0, !1, {
-			fileName: Z,
-			lineNumber: 12,
-			columnNumber: 7
-		}, this), a("div", {
+			children: be()
+		}), o("div", {
 			className: "space-y-4",
-			children: [a("div", { children: [a("label", {
+			children: [o("div", { children: [a("label", {
 				htmlFor: e,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: q()
-			}, void 0, !1, {
-				fileName: Z,
-				lineNumber: 17,
-				columnNumber: 11
-			}, this), a("input", {
+				children: X()
+			}), a("input", {
 				id: e,
 				defaultValue: "John Developer",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			}, void 0, !1, {
-				fileName: Z,
-				lineNumber: 23,
-				columnNumber: 11
-			}, this)] }, void 0, !0, {
-				fileName: Z,
-				lineNumber: 16,
-				columnNumber: 9
-			}, this), a("div", { children: [a("label", {
+			})] }), o("div", { children: [a("label", {
 				htmlFor: n,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: ue()
-			}, void 0, !1, {
-				fileName: Z,
-				lineNumber: 30,
-				columnNumber: 11
-			}, this), a("input", {
+				children: le()
+			}), a("input", {
 				id: n,
 				defaultValue: "john@example.com",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			}, void 0, !1, {
-				fileName: Z,
-				lineNumber: 36,
-				columnNumber: 11
-			}, this)] }, void 0, !0, {
-				fileName: Z,
-				lineNumber: 29,
-				columnNumber: 9
-			}, this)]
-		}, void 0, !0, {
-			fileName: Z,
-			lineNumber: 15,
-			columnNumber: 7
-		}, this)]
-	}, void 0, !0, {
-		fileName: Z,
-		lineNumber: 11,
-		columnNumber: 5
-	}, this);
+			})] })]
+		})]
+	});
 }
-function Se() {
+function xe() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -226,44 +190,25 @@ function Se() {
 		}
 	}
 }
-function Ce(e, t) {
+function Se(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var we = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
-function Te({ children: t }) {
-	let s = o().locale ?? "en", [c] = r(() => typeof performance < "u" ? performance.now() : 0);
+function Ce({ children: t }) {
+	let o = s().locale ?? "en", [c] = r(() => typeof performance < "u" ? performance.now() : 0);
 	return n(() => {
-		Ce("AppRoot", c);
+		Se("AppRoot", c);
 	}, [c]), e(() => {
-		_(s, { reload: !1 }), document.documentElement.lang = s;
-	}, [s]), e(() => {
-		Se();
-	}, []), a(i, { children: t }, void 0, !1, {
-		fileName: we,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+		b(o, { reload: !1 }), document.documentElement.lang = o;
+	}, [o]), e(() => {
+		xe();
+	}, []), a(i, { children: t });
 }
-var Ee = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
-function De({ children: e }) {
-	return a(Te, { children: e }, void 0, !1, {
-		fileName: Ee,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function we({ children: e }) {
+	return a(Ce, { children: e });
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/settings/ProfileSection.wrapper.tsx";
-function Oe() {
-	return a(De, { children: a(Q, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function Te() {
+	return a(we, { children: a($, {}) });
 }
-export { Oe as default };
+export { Te as default };

@@ -1,12 +1,7 @@
 import "react";
 import { Link, useParams } from "@tanstack/react-router";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var onInvalidFunc = () => "";
-onInvalidFunc = (i, c) => {
-	const item = c[i];
-	if (item == null) return `[i18n-404:${i}]`;
-	return `[i18n-400:${i}(${item})]`;
-};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -95,7 +90,6 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("shared", loadCatalog$11, 1);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/Footer.tsx";
 function Footer() {
 	const currentLocale = useParams({ strict: false }).locale ?? "en";
 	const _w_runtime_ = getRuntimeRx();
@@ -116,117 +110,53 @@ function Footer() {
 			isInternal: true
 		}
 	];
-	return jsxDEV("footer", {
+	return jsx("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: jsxDEV("div", {
+		children: jsxs("div", {
 			className: "container py-8",
-			children: [jsxDEV("div", {
+			children: [jsxs("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					jsxDEV("div", { children: [jsxDEV("h3", {
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: _w_runtime_(0)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 32,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: _w_runtime_(9)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 35,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this),
-					jsxDEV("div", { children: [jsxDEV("h3", {
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: _w_runtime_(10)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 40,
-						columnNumber: 13
-					}, this), jsxDEV("ul", {
+					}), jsx("ul", {
 						className: "space-y-1",
-						children: footerLinks.map((linkEl) => jsxDEV("li", { children: linkEl.isInternal ? jsxDEV(Link, {
+						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
 							preload: false,
 							to: linkEl.to,
 							params: { locale: currentLocale },
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 47,
-							columnNumber: 21
-						}, this) : jsxDEV("a", {
+						}) : jsx("a", {
 							href: linkEl.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 56,
-							columnNumber: 21
-						}, this) }, linkEl.label, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 45,
-							columnNumber: 17
-						}, this))
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 43,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 39,
-						columnNumber: 11
-					}, this),
-					jsxDEV("div", { children: [jsxDEV("h3", {
+						}) }, linkEl.label))
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: _w_runtime_(11)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 70,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: _w_runtime_(12)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 73,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 69,
-						columnNumber: 11
-					}, this)
+					})] })
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 30,
-				columnNumber: 9
-			}, this), jsxDEV("div", {
+			}), jsx("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: _w_runtime_(13)
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 78,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 29,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 28,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -404,26 +334,12 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/Footer.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Footer, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Footer, {}) });
 }
 export { Wrapped as default };
 var c = [

@@ -1,7 +1,7 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { Fragment as r, jsxDEV as i } from "react/jsx-dev-runtime";
-import { useParams as a } from "next/navigation";
-var o = {}, s = [
+import { Fragment as r, jsx as i, jsxs as a } from "react/jsx-runtime";
+import { useParams as o } from "next/navigation";
+var s = {}, c = [
 	"en",
 	"fr",
 	"es",
@@ -12,57 +12,57 @@ var o = {}, s = [
 	"ja",
 	"ko",
 	"ru"
-], c = "PARAGLIDE_LOCALE", ee = 3456e4, l = [
+], l = "PARAGLIDE_LOCALE", ee = 3456e4, u = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], u = [], d = typeof window > "u";
+], d = [], f = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var f, p = !1, m = () => {
-	let e = l;
-	!d && typeof window < "u" && window.location?.href && (e = C(window.location.href));
+var p, m = !1, h = () => {
+	let e = u;
+	!f && typeof window < "u" && window.location?.href && (e = T(window.location.href));
 	let t = te(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return p || (f = t, p = !0, h(t, { reload: !1 })), t;
+	if (t) return m || (p = t, m = !0, g(t, { reload: !1 })), t;
 	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
 function te(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = le();
+		if (t === "cookie") n = ce();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && f !== void 0) n = f;
-		else if (T(t) && w.has(t)) {
-			let e = w.get(t);
+		else if (t === "globalVariable" && p !== void 0) n = p;
+		else if (D(t) && E.has(t)) {
+			let e = E.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
 				if (t !== void 0) return ie(t);
 			}
 		}
-		let e = g(n);
+		let e = _(n);
 		if (e) return e;
 	}
 }
 var ne = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, h = (e, t) => {
+}, g = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = m();
+		r = h();
 	} catch {}
-	let i = [], a = l;
-	!d && typeof window < "u" && window.location?.href && (a = C(window.location.href));
-	for (let t of a) if (t === "globalVariable") f = e;
+	let i = [], a = u;
+	!f && typeof window < "u" && window.location?.href && (a = T(window.location.href));
+	for (let t of a) if (t === "globalVariable") p = e;
 	else if (t === "cookie") {
-		if (d || typeof document > "u" || typeof window > "u") continue;
-		let t = `${c}=${e}; path=/; max-age=${ee}`;
-		document.cookie = t, b();
+		if (f || typeof document > "u" || typeof window > "u") continue;
+		let t = `${l}=${e}; path=/; max-age=${ee}`;
+		document.cookie = t, S();
 	} else if (t === "baseLocale") continue;
-	else if (T(t) && w.has(t)) {
-		let n = w.get(t);
+	else if (D(t) && E.has(t)) {
+		let n = E.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -71,220 +71,188 @@ var ne = (e) => {
 		}
 	}
 	let o = () => {
-		!d && n.reload && window.location && e !== r && ne(void 0);
+		!f && n.reload && window.location && e !== r && ne(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		o();
 	});
 	o();
 }, re = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
-function g(e) {
+function _(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
-	for (let e of s) if (e.toLowerCase() === t) return e;
+	for (let e of c) if (e.toLowerCase() === t) return e;
 }
 function ie(e) {
-	let t = g(e);
+	let t = _(e);
 	if (t) return t;
-	throw Error(`Invalid locale: ${e}. Expected one of: ${s.join(", ")}`);
+	throw Error(`Invalid locale: ${e}. Expected one of: ${c.join(", ")}`);
 }
-function _(e) {
+function v(e) {
 	return e;
 }
 function ae(e, t) {
 	return e.exec(t.href);
 }
-var oe = c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), se = RegExp(`(?:^|;\\s*)${oe}=([^;]*)`), v = Symbol(), y = v;
-function b() {
-	y = v;
+var oe = l.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), y = RegExp(`(?:^|;\\s*)${oe}=([^;]*)`), b = Symbol(), x = b;
+function S() {
+	x = b;
+}
+function se() {
+	typeof queueMicrotask == "function" ? queueMicrotask(S) : Promise.resolve().then(S);
 }
 function ce() {
-	typeof queueMicrotask == "function" ? queueMicrotask(b) : Promise.resolve().then(b);
-}
-function le() {
 	if (typeof document > "u") return;
-	if (y !== v) return y;
-	let e = document.cookie.match(se)?.[1];
-	return y = g(e), ce(), y;
+	if (x !== b) return x;
+	let e = document.cookie.match(y)?.[1];
+	return x = _(e), se(), x;
+}
+function le(e) {
+	return ue(e);
 }
 function ue(e) {
-	return de(e);
+	let t = v(typeof e == "string" ? new URL(e, re()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && _(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), v(t);
 }
+var C, w;
 function de(e) {
-	let t = _(typeof e == "string" ? new URL(e, re()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
-	return n.length > 0 && g(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), _(t);
-}
-var x, S;
-function fe(e) {
-	if (u.length === 0) return;
+	if (d.length === 0) return;
 	let t = typeof e == "string" ? e : e.href;
-	if (x === t) return S;
-	let n = _(new URL(t, "http://example.com")), r = ue(n), i = r.href === n.href ? [n] : [n, r], a;
+	if (C === t) return w;
+	let n = v(new URL(t, "http://example.com")), r = le(n), i = r.href === n.href ? [n] : [n, r], a;
 	for (let e of i) {
-		for (let t of u) if (ae(new o(t.match, e.href), e)) {
+		for (let t of d) if (ae(new s(t.match, e.href), e)) {
 			a = t;
 			break;
 		}
 		if (a) break;
 	}
-	return x = t, S = a, a;
+	return C = t, w = a, a;
 }
-function C(e) {
-	let t = fe(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : l;
-}
-var w = /* @__PURE__ */ new Map();
 function T(e) {
+	let t = de(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : u;
+}
+var E = /* @__PURE__ */ new Map();
+function D(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var pe = () => "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.", E = () => "Outil alimenté par l'IA qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.", D = () => "Herramienta basada en IA que ayuda a migrar tu código base entre bibliotecas i18n sin tiempo de inactividad.", O = () => "KI-gestütztes Tool, das hilft, Ihre Codebasis ohne Ausfallzeiten zwischen i18n-Bibliotheken zu migrieren.", k = () => "Strumento basato sull'IA che aiuta a migrare la tua codebase tra librerie i18n con tempi di inattività minimi.", A = () => "Ferramenta baseada em IA que ajuda a migrar sua base de código entre bibliotecas i18n sem tempo de inatividade.", j = () => "人工智能驱动的工具，帮助您在国际化库之间无缝迁移代码库。", M = () => "ダウンタイムなしでi18nライブラリ間でコードベースを移行するのに役立つAI搭載ツール。", N = () => "다운타임 없이 i18n 라이브러리 간에 코드베이스를 마이그레이션하도록 도와주는 AI 기반 도구입니다.", P = () => "Инструмент на базе ИИ, помогающий мигрировать вашу кодовую базу между библиотеками i18n без простоев.", F = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? E(e) : n === "es" ? D(e) : n === "de" ? O(e) : n === "it" ? k(e) : n === "pt" ? A(e) : n === "zh" ? j(e) : n === "ja" ? M(e) : n === "ko" ? N(e) : n === "ru" ? P(e) : pe(e);
-}), I = () => "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.", L = () => "Analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code.", R = () => "Analiza y optimiza tu bundle i18n para producción con tree-shaking y división de código.", z = () => "Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code-Splitting.", B = () => "Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.", me = () => "Analisa e otimiza seu bundle i18n para produção com tree-shaking e divisão de código.", he = () => "通过 Tree-shaking 和代码拆分分析并优化您的生产环境 i18n 包。", ge = () => "Tree-shakingとコード分割により、プロダクション向けのi18nバンドルを分析および最適化します。", _e = () => "트리 쉐이킹(tree-shaking) 및 코드 분할을 통해 프로덕션용 i18n 번들을 분석하고 최적화합니다.", ve = () => "Анализирует и оптимизирует ваш бандл i18n для продакшна с использованием tree-shaking и разделения кода.", ye = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? L(e) : n === "es" ? R(e) : n === "de" ? z(e) : n === "it" ? B(e) : n === "pt" ? me(e) : n === "zh" ? he(e) : n === "ja" ? ge(e) : n === "ko" ? _e(e) : n === "ru" ? ve(e) : I(e);
-}), be = () => "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.", xe = () => "Benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.", Se = () => "Benchmarking automatizado basado en la nube con seguimiento histórico, alertas y paneles de equipo.", Ce = () => "Automatisierte Cloud-basierte Benchmarks mit Verlaufsverfolgung, Warnungen und Team-Dashboards.", we = () => "Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.", Te = () => "Benchmarking automatizado baseado em nuvem com rastreamento histórico, alertas e painéis de equipe.", Ee = () => "自动化的云基准测试，支持历史追踪、警报和团队仪表板。", De = () => "履歴追跡、アラート、チームダッシュボードを備えた自動クラウドベースのベンチマーク。", Oe = () => "기록 추적, 알림 및 팀 대시보드를 갖춘 자동화된 클라우드 기반 벤치마킹.", ke = () => "Автоматизированное облачное тестирование с отслеживанием истории, оповещениями и командными панелями.", Ae = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? xe(e) : n === "es" ? Se(e) : n === "de" ? Ce(e) : n === "it" ? we(e) : n === "pt" ? Te(e) : n === "zh" ? Ee(e) : n === "ja" ? De(e) : n === "ko" ? Oe(e) : n === "ru" ? ke(e) : be(e);
-}), je = () => "Automated quality checks for missing translations, pluralization issues, and context errors.", Me = () => "Contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.", Ne = () => "Controles de calidad automatizados para traducciones faltantes, problemas de pluralización y errores de contexto.", Pe = () => "Automatisierte Qualitätsprüfungen für fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.", Fe = () => "Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.", Ie = () => "Verificações automatizadas de qualidade para traduções ausentes, problemas de pluralização e erros de contexto.", Le = () => "针对缺失翻译、复数形式问题和上下文错误的自动化质量检查。", Re = () => "翻訳の欠落、複数形の問題、およびコンテキストエラーの自動品質チェック。", ze = () => "누락된 번역, 복수형 문제 및 컨텍스트 오류에 대한 자동화된 품질 검사.", Be = () => "Автоматизированная проверка качества на предмет отсутствующих переводов, проблем с плюрализацией и контекстных ошибок.", Ve = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? Me(e) : n === "es" ? Ne(e) : n === "de" ? Pe(e) : n === "it" ? Fe(e) : n === "pt" ? Ie(e) : n === "zh" ? Le(e) : n === "ja" ? Re(e) : n === "ko" ? ze(e) : n === "ru" ? Be(e) : je(e);
-}), He = () => "Benchmark CLI", Ue = () => "CLI Benchmark", We = () => "CLI de Benchmark", Ge = () => "Benchmark CLI", Ke = () => "CLI del Benchmark", qe = () => "CLI de Benchmark", Je = () => "基准测试 CLI", Ye = () => "Benchmark CLI", Xe = () => "Benchmark CLI", Ze = () => "CLI для бенчмаркинга", Qe = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? Ue(e) : n === "es" ? We(e) : n === "de" ? Ge(e) : n === "it" ? Ke(e) : n === "pt" ? qe(e) : n === "zh" ? Je(e) : n === "ja" ? Ye(e) : n === "ko" ? Xe(e) : n === "ru" ? Ze(e) : He(e);
-}), $e = () => "Benchmark Cloud", et = () => "Benchmark Cloud", tt = () => "Benchmark Cloud", nt = () => "Benchmark Cloud", rt = () => "Benchmark Cloud", it = () => "Benchmark Cloud", at = () => "云基准测试", ot = () => "Benchmark Cloud", st = () => "Benchmark Cloud", ct = () => "Облачный бенчмаркинг", lt = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? et(e) : n === "es" ? tt(e) : n === "de" ? nt(e) : n === "it" ? rt(e) : n === "pt" ? it(e) : n === "zh" ? at(e) : n === "ja" ? ot(e) : n === "ko" ? st(e) : n === "ru" ? ct(e) : $e(e);
-}), ut = () => "Benchmark Enterprise", dt = () => "Benchmark Enterprise", ft = () => "Benchmark Enterprise", pt = () => "Benchmark Enterprise", mt = () => "Benchmark Enterprise", ht = () => "Benchmark Enterprise", gt = () => "企业级基准测试", _t = () => "Benchmark Enterprise", vt = () => "Benchmark Enterprise", yt = () => "Корпоративный бенчмаркинг", bt = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? dt(e) : n === "es" ? ft(e) : n === "de" ? pt(e) : n === "it" ? mt(e) : n === "pt" ? ht(e) : n === "zh" ? gt(e) : n === "ja" ? _t(e) : n === "ko" ? vt(e) : n === "ru" ? yt(e) : ut(e);
-}), xt = () => "Bundle Optimizer", St = () => "Optimiseur de bundle", Ct = () => "Optimizador de bundle", wt = () => "Bundle-Optimierer", Tt = () => "Ottimizzatore del Bundle", Et = () => "Otimizador de Bundle", Dt = () => "包优化器", Ot = () => "バンドルオプティマイザー", kt = () => "번들 옵티마이저", At = () => "Оптимизатор бандлов", jt = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? St(e) : n === "es" ? Ct(e) : n === "de" ? wt(e) : n === "it" ? Tt(e) : n === "pt" ? Et(e) : n === "zh" ? Dt(e) : n === "ja" ? Ot(e) : n === "ko" ? kt(e) : n === "ru" ? At(e) : xt(e);
-}), Mt = () => "Contact Us", Nt = () => "Contactez-nous", Pt = () => "Contáctanos", Ft = () => "Kontaktieren Sie uns", It = () => "Contattaci", Lt = () => "Contate-nos", Rt = () => "联系我们", zt = () => "お問い合わせ", Bt = () => "문의하기", Vt = () => "Связаться с нами", Ht = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? Nt(e) : n === "es" ? Pt(e) : n === "de" ? Ft(e) : n === "it" ? It(e) : n === "pt" ? Lt(e) : n === "zh" ? Rt(e) : n === "ja" ? zt(e) : n === "ko" ? Bt(e) : n === "ru" ? Vt(e) : Mt(e);
-}), Ut = () => "Learn More", Wt = () => "En savoir plus", Gt = () => "Más información", Kt = () => "Mehr erfahren", qt = () => "Scopri di più", Jt = () => "Saiba Mais", Yt = () => "了解更多", Xt = () => "詳細を見る", Zt = () => "더 알아보기", Qt = () => "Узнать больше", $t = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? Wt(e) : n === "es" ? Gt(e) : n === "de" ? Kt(e) : n === "it" ? qt(e) : n === "pt" ? Jt(e) : n === "zh" ? Yt(e) : n === "ja" ? Xt(e) : n === "ko" ? Zt(e) : n === "ru" ? Qt(e) : Ut(e);
-}), en = () => "Migration Assistant", tn = () => "Assistant de migration", nn = () => "Asistente de migración", rn = () => "Migrationsassistent", an = () => "Assistente alla Migrazione", on = () => "Assistente de Migração", sn = () => "迁移助手", cn = () => "移行アシスタント", ln = () => "마이그레이션 어시스턴트", un = () => "Помощник по миграции", dn = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? tn(e) : n === "es" ? nn(e) : n === "de" ? rn(e) : n === "it" ? an(e) : n === "pt" ? on(e) : n === "zh" ? sn(e) : n === "ja" ? cn(e) : n === "ko" ? ln(e) : n === "ru" ? un(e) : en(e);
-}), fn = () => "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.", pn = () => "Déploiement sur site avec SSO, journaux d'audit, SLA personnalisés et support dédié.", mn = () => "Despliegue on-premise con SSO, registros de auditoría, SLA personalizados y soporte dedicado.", hn = () => "On-Premise-Bereitstellung mit SSO, Audit-Logs, individuellen SLAs und dediziertem Support.", gn = () => "Distribuzione in locale con SSO, log di controllo, SLA personalizzati e supporto dedicato.", _n = () => "Implantação on-premise com SSO, logs de auditoria, SLAs personalizados e suporte dedicado.", vn = () => "支持 SSO、审计日志、定制 SLA 和专属支持的本地部署。", yn = () => "SSO、監査ログ、カスタムSLA、および専用サポートを備えたオンプレミス展開。", bn = () => "SSO, 감사 로그, 맞춤형 SLA 및 전담 지원을 포함한 온프레미스 배포.", xn = () => "Локальное развертывание с поддержкой SSO, журналами аудита, настраиваемыми SLA и выделенной поддержкой.", Sn = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? pn(e) : n === "es" ? mn(e) : n === "de" ? hn(e) : n === "it" ? gn(e) : n === "pt" ? _n(e) : n === "zh" ? vn(e) : n === "ja" ? yn(e) : n === "ko" ? bn(e) : n === "ru" ? xn(e) : fn(e);
-}), V = () => "$19/mo", Cn = () => "19 €/mois", wn = V, Tn = V, En = V, Dn = V, On = V, kn = V, An = V, jn = V, H = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? Cn(e) : n === "es" ? wn(e) : n === "de" ? Tn(e) : n === "it" ? En(e) : n === "pt" ? Dn(e) : n === "zh" ? On(e) : n === "ja" ? kn(e) : n === "ko" ? An(e) : n === "ru" ? jn(e) : V(e);
-}), U = () => "$29/mo", Mn = () => "29 €/mois", Nn = U, Pn = U, Fn = U, In = U, Ln = U, Rn = U, zn = U, Bn = U, W = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? Mn(e) : n === "es" ? Nn(e) : n === "de" ? Pn(e) : n === "it" ? Fn(e) : n === "pt" ? In(e) : n === "zh" ? Ln(e) : n === "ja" ? Rn(e) : n === "ko" ? zn(e) : n === "ru" ? Bn(e) : U(e);
-}), G = () => "$49/mo", Vn = () => "49 €/mois", Hn = G, Un = G, Wn = G, Gn = G, Kn = G, qn = G, Jn = G, Yn = G, K = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? Vn(e) : n === "es" ? Hn(e) : n === "de" ? Un(e) : n === "it" ? Wn(e) : n === "pt" ? Gn(e) : n === "zh" ? Kn(e) : n === "ja" ? qn(e) : n === "ko" ? Jn(e) : n === "ru" ? Yn(e) : G(e);
-}), q = () => "$99 one-time", Xn = () => "99 € une fois", Zn = q, Qn = q, $n = q, er = q, tr = q, nr = q, rr = q, ir = q, J = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? Xn(e) : n === "es" ? Zn(e) : n === "de" ? Qn(e) : n === "it" ? $n(e) : n === "pt" ? er(e) : n === "zh" ? tr(e) : n === "ja" ? nr(e) : n === "ko" ? rr(e) : n === "ru" ? ir(e) : q(e);
-}), Y = () => "Free", ar = () => "Gratuit", or = Y, sr = Y, cr = Y, lr = Y, ur = Y, dr = Y, fr = Y, pr = Y, X = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? ar(e) : n === "es" ? or(e) : n === "de" ? sr(e) : n === "it" ? cr(e) : n === "pt" ? lr(e) : n === "zh" ? ur(e) : n === "ja" ? dr(e) : n === "ko" ? fr(e) : n === "ru" ? pr(e) : Y(e);
-}), mr = () => "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.", hr = () => "Exécutez des benchmarks localement depuis votre terminal. Supporte les configurations personnalisées et l'intégration CI.", gr = () => "Ejecuta benchmarks localmente desde tu terminal. Soporta configuraciones personalizadas e integración CI.", _r = () => "Führen Sie Benchmarks lokal von Ihrem Terminal aus. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.", vr = () => "Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.", yr = () => "Execute benchmarks localmente pelo seu terminal. Suporta configurações personalizadas e integração CI.", br = () => "在终端本地运行基准测试。支持自定义配置和 CI 集成。", xr = () => "ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートしています。", Sr = () => "터미널에서 로컬로 벤치마크를 실행합니다. 맞춤형 구성 및 CI 통합을 지원합니다.", Cr = () => "Запуск тестов локально из терминала. Поддержка пользовательских конфигураций и интеграции с CI.", wr = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? hr(e) : n === "es" ? gr(e) : n === "de" ? _r(e) : n === "it" ? vr(e) : n === "pt" ? yr(e) : n === "zh" ? br(e) : n === "ja" ? xr(e) : n === "ko" ? Sr(e) : n === "ru" ? Cr(e) : mr(e);
-}), Tr = () => "Translation QA", Er = () => "QA de traduction", Dr = () => "QA de traducción", Z = () => "Übersetzungs-QA", Or = () => "QA delle Traduzioni", kr = () => "QA de Tradução", Ar = () => "翻译质量保证", jr = () => "翻訳QA", Mr = () => "번역 QA", Nr = () => "Контроль качества перевода", Pr = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? Er(e) : n === "es" ? Dr(e) : n === "de" ? Z(e) : n === "it" ? Or(e) : n === "pt" ? kr(e) : n === "zh" ? Ar(e) : n === "ja" ? jr(e) : n === "ko" ? Mr(e) : n === "ru" ? Nr(e) : Tr(e);
-}), Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/products/ProductsGrid.tsx";
-function Fr() {
+var O = () => "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.", k = () => "Outil alimenté par l'IA qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.", A = () => "Herramienta basada en IA que ayuda a migrar tu código base entre bibliotecas i18n sin tiempo de inactividad.", j = () => "KI-gestütztes Tool, das hilft, Ihre Codebasis ohne Ausfallzeiten zwischen i18n-Bibliotheken zu migrieren.", M = () => "Strumento basato sull'IA che aiuta a migrare la tua codebase tra librerie i18n con tempi di inattività minimi.", N = () => "Ferramenta baseada em IA que ajuda a migrar sua base de código entre bibliotecas i18n sem tempo de inatividade.", P = () => "人工智能驱动的工具，帮助您在国际化库之间无缝迁移代码库。", F = () => "ダウンタイムなしでi18nライブラリ間でコードベースを移行するのに役立つAI搭載ツール。", I = () => "다운타임 없이 i18n 라이브러리 간에 코드베이스를 마이그레이션하도록 도와주는 AI 기반 도구입니다.", L = () => "Инструмент на базе ИИ, помогающий мигрировать вашу кодовую базу между библиотеками i18n без простоев.", R = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? k(e) : n === "es" ? A(e) : n === "de" ? j(e) : n === "it" ? M(e) : n === "pt" ? N(e) : n === "zh" ? P(e) : n === "ja" ? F(e) : n === "ko" ? I(e) : n === "ru" ? L(e) : O(e);
+}), z = () => "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.", B = () => "Analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code.", V = () => "Analiza y optimiza tu bundle i18n para producción con tree-shaking y división de código.", H = () => "Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code-Splitting.", fe = () => "Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.", pe = () => "Analisa e otimiza seu bundle i18n para produção com tree-shaking e divisão de código.", me = () => "通过 Tree-shaking 和代码拆分分析并优化您的生产环境 i18n 包。", he = () => "Tree-shakingとコード分割により、プロダクション向けのi18nバンドルを分析および最適化します。", ge = () => "트리 쉐이킹(tree-shaking) 및 코드 분할을 통해 프로덕션용 i18n 번들을 분석하고 최적화합니다.", _e = () => "Анализирует и оптимизирует ваш бандл i18n для продакшна с использованием tree-shaking и разделения кода.", ve = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? B(e) : n === "es" ? V(e) : n === "de" ? H(e) : n === "it" ? fe(e) : n === "pt" ? pe(e) : n === "zh" ? me(e) : n === "ja" ? he(e) : n === "ko" ? ge(e) : n === "ru" ? _e(e) : z(e);
+}), ye = () => "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.", be = () => "Benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.", xe = () => "Benchmarking automatizado basado en la nube con seguimiento histórico, alertas y paneles de equipo.", Se = () => "Automatisierte Cloud-basierte Benchmarks mit Verlaufsverfolgung, Warnungen und Team-Dashboards.", Ce = () => "Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.", we = () => "Benchmarking automatizado baseado em nuvem com rastreamento histórico, alertas e painéis de equipe.", Te = () => "自动化的云基准测试，支持历史追踪、警报和团队仪表板。", Ee = () => "履歴追跡、アラート、チームダッシュボードを備えた自動クラウドベースのベンチマーク。", De = () => "기록 추적, 알림 및 팀 대시보드를 갖춘 자동화된 클라우드 기반 벤치마킹.", Oe = () => "Автоматизированное облачное тестирование с отслеживанием истории, оповещениями и командными панелями.", ke = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? be(e) : n === "es" ? xe(e) : n === "de" ? Se(e) : n === "it" ? Ce(e) : n === "pt" ? we(e) : n === "zh" ? Te(e) : n === "ja" ? Ee(e) : n === "ko" ? De(e) : n === "ru" ? Oe(e) : ye(e);
+}), Ae = () => "Automated quality checks for missing translations, pluralization issues, and context errors.", je = () => "Contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.", Me = () => "Controles de calidad automatizados para traducciones faltantes, problemas de pluralización y errores de contexto.", Ne = () => "Automatisierte Qualitätsprüfungen für fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.", Pe = () => "Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.", Fe = () => "Verificações automatizadas de qualidade para traduções ausentes, problemas de pluralização e erros de contexto.", Ie = () => "针对缺失翻译、复数形式问题和上下文错误的自动化质量检查。", Le = () => "翻訳の欠落、複数形の問題、およびコンテキストエラーの自動品質チェック。", Re = () => "누락된 번역, 복수형 문제 및 컨텍스트 오류에 대한 자동화된 품질 검사.", ze = () => "Автоматизированная проверка качества на предмет отсутствующих переводов, проблем с плюрализацией и контекстных ошибок.", Be = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? je(e) : n === "es" ? Me(e) : n === "de" ? Ne(e) : n === "it" ? Pe(e) : n === "pt" ? Fe(e) : n === "zh" ? Ie(e) : n === "ja" ? Le(e) : n === "ko" ? Re(e) : n === "ru" ? ze(e) : Ae(e);
+}), Ve = () => "Benchmark CLI", He = () => "CLI Benchmark", Ue = () => "CLI de Benchmark", We = () => "Benchmark CLI", Ge = () => "CLI del Benchmark", Ke = () => "CLI de Benchmark", qe = () => "基准测试 CLI", Je = () => "Benchmark CLI", Ye = () => "Benchmark CLI", Xe = () => "CLI для бенчмаркинга", Ze = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? He(e) : n === "es" ? Ue(e) : n === "de" ? We(e) : n === "it" ? Ge(e) : n === "pt" ? Ke(e) : n === "zh" ? qe(e) : n === "ja" ? Je(e) : n === "ko" ? Ye(e) : n === "ru" ? Xe(e) : Ve(e);
+}), Qe = () => "Benchmark Cloud", $e = () => "Benchmark Cloud", et = () => "Benchmark Cloud", tt = () => "Benchmark Cloud", nt = () => "Benchmark Cloud", rt = () => "Benchmark Cloud", it = () => "云基准测试", at = () => "Benchmark Cloud", ot = () => "Benchmark Cloud", st = () => "Облачный бенчмаркинг", ct = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? $e(e) : n === "es" ? et(e) : n === "de" ? tt(e) : n === "it" ? nt(e) : n === "pt" ? rt(e) : n === "zh" ? it(e) : n === "ja" ? at(e) : n === "ko" ? ot(e) : n === "ru" ? st(e) : Qe(e);
+}), lt = () => "Benchmark Enterprise", ut = () => "Benchmark Enterprise", dt = () => "Benchmark Enterprise", ft = () => "Benchmark Enterprise", pt = () => "Benchmark Enterprise", mt = () => "Benchmark Enterprise", ht = () => "企业级基准测试", gt = () => "Benchmark Enterprise", _t = () => "Benchmark Enterprise", vt = () => "Корпоративный бенчмаркинг", yt = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? ut(e) : n === "es" ? dt(e) : n === "de" ? ft(e) : n === "it" ? pt(e) : n === "pt" ? mt(e) : n === "zh" ? ht(e) : n === "ja" ? gt(e) : n === "ko" ? _t(e) : n === "ru" ? vt(e) : lt(e);
+}), bt = () => "Bundle Optimizer", xt = () => "Optimiseur de bundle", St = () => "Optimizador de bundle", Ct = () => "Bundle-Optimierer", wt = () => "Ottimizzatore del Bundle", Tt = () => "Otimizador de Bundle", Et = () => "包优化器", Dt = () => "バンドルオプティマイザー", Ot = () => "번들 옵티마이저", kt = () => "Оптимизатор бандлов", At = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? xt(e) : n === "es" ? St(e) : n === "de" ? Ct(e) : n === "it" ? wt(e) : n === "pt" ? Tt(e) : n === "zh" ? Et(e) : n === "ja" ? Dt(e) : n === "ko" ? Ot(e) : n === "ru" ? kt(e) : bt(e);
+}), jt = () => "Contact Us", Mt = () => "Contactez-nous", Nt = () => "Contáctanos", Pt = () => "Kontaktieren Sie uns", Ft = () => "Contattaci", It = () => "Contate-nos", Lt = () => "联系我们", Rt = () => "お問い合わせ", zt = () => "문의하기", Bt = () => "Связаться с нами", Vt = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? Mt(e) : n === "es" ? Nt(e) : n === "de" ? Pt(e) : n === "it" ? Ft(e) : n === "pt" ? It(e) : n === "zh" ? Lt(e) : n === "ja" ? Rt(e) : n === "ko" ? zt(e) : n === "ru" ? Bt(e) : jt(e);
+}), Ht = () => "Learn More", Ut = () => "En savoir plus", Wt = () => "Más información", Gt = () => "Mehr erfahren", Kt = () => "Scopri di più", qt = () => "Saiba Mais", Jt = () => "了解更多", Yt = () => "詳細を見る", Xt = () => "더 알아보기", Zt = () => "Узнать больше", Qt = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? Ut(e) : n === "es" ? Wt(e) : n === "de" ? Gt(e) : n === "it" ? Kt(e) : n === "pt" ? qt(e) : n === "zh" ? Jt(e) : n === "ja" ? Yt(e) : n === "ko" ? Xt(e) : n === "ru" ? Zt(e) : Ht(e);
+}), $t = () => "Migration Assistant", en = () => "Assistant de migration", tn = () => "Asistente de migración", nn = () => "Migrationsassistent", rn = () => "Assistente alla Migrazione", an = () => "Assistente de Migração", on = () => "迁移助手", sn = () => "移行アシスタント", cn = () => "마이그레이션 어시스턴트", ln = () => "Помощник по миграции", un = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? en(e) : n === "es" ? tn(e) : n === "de" ? nn(e) : n === "it" ? rn(e) : n === "pt" ? an(e) : n === "zh" ? on(e) : n === "ja" ? sn(e) : n === "ko" ? cn(e) : n === "ru" ? ln(e) : $t(e);
+}), dn = () => "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.", fn = () => "Déploiement sur site avec SSO, journaux d'audit, SLA personnalisés et support dédié.", pn = () => "Despliegue on-premise con SSO, registros de auditoría, SLA personalizados y soporte dedicado.", mn = () => "On-Premise-Bereitstellung mit SSO, Audit-Logs, individuellen SLAs und dediziertem Support.", hn = () => "Distribuzione in locale con SSO, log di controllo, SLA personalizzati e supporto dedicato.", gn = () => "Implantação on-premise com SSO, logs de auditoria, SLAs personalizados e suporte dedicado.", _n = () => "支持 SSO、审计日志、定制 SLA 和专属支持的本地部署。", vn = () => "SSO、監査ログ、カスタムSLA、および専用サポートを備えたオンプレミス展開。", yn = () => "SSO, 감사 로그, 맞춤형 SLA 및 전담 지원을 포함한 온프레미스 배포.", bn = () => "Локальное развертывание с поддержкой SSO, журналами аудита, настраиваемыми SLA и выделенной поддержкой.", xn = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? fn(e) : n === "es" ? pn(e) : n === "de" ? mn(e) : n === "it" ? hn(e) : n === "pt" ? gn(e) : n === "zh" ? _n(e) : n === "ja" ? vn(e) : n === "ko" ? yn(e) : n === "ru" ? bn(e) : dn(e);
+}), U = () => "$19/mo", Sn = () => "19 €/mois", Cn = U, wn = U, Tn = U, En = U, Dn = U, On = U, kn = U, An = U, W = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? Sn(e) : n === "es" ? Cn(e) : n === "de" ? wn(e) : n === "it" ? Tn(e) : n === "pt" ? En(e) : n === "zh" ? Dn(e) : n === "ja" ? On(e) : n === "ko" ? kn(e) : n === "ru" ? An(e) : U(e);
+}), G = () => "$29/mo", jn = () => "29 €/mois", Mn = G, Nn = G, Pn = G, Fn = G, In = G, Ln = G, Rn = G, zn = G, K = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? jn(e) : n === "es" ? Mn(e) : n === "de" ? Nn(e) : n === "it" ? Pn(e) : n === "pt" ? Fn(e) : n === "zh" ? In(e) : n === "ja" ? Ln(e) : n === "ko" ? Rn(e) : n === "ru" ? zn(e) : G(e);
+}), q = () => "$49/mo", Bn = () => "49 €/mois", Vn = q, Hn = q, Un = q, Wn = q, Gn = q, Kn = q, qn = q, Jn = q, J = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? Bn(e) : n === "es" ? Vn(e) : n === "de" ? Hn(e) : n === "it" ? Un(e) : n === "pt" ? Wn(e) : n === "zh" ? Gn(e) : n === "ja" ? Kn(e) : n === "ko" ? qn(e) : n === "ru" ? Jn(e) : q(e);
+}), Y = () => "$99 one-time", Yn = () => "99 € une fois", Xn = Y, Zn = Y, Qn = Y, $n = Y, er = Y, tr = Y, nr = Y, rr = Y, X = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? Yn(e) : n === "es" ? Xn(e) : n === "de" ? Zn(e) : n === "it" ? Qn(e) : n === "pt" ? $n(e) : n === "zh" ? er(e) : n === "ja" ? tr(e) : n === "ko" ? nr(e) : n === "ru" ? rr(e) : Y(e);
+}), Z = () => "Free", ir = () => "Gratuit", ar = Z, or = Z, sr = Z, cr = Z, lr = Z, ur = Z, dr = Z, fr = Z, Q = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? ir(e) : n === "es" ? ar(e) : n === "de" ? or(e) : n === "it" ? sr(e) : n === "pt" ? cr(e) : n === "zh" ? lr(e) : n === "ja" ? ur(e) : n === "ko" ? dr(e) : n === "ru" ? fr(e) : Z(e);
+}), pr = () => "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.", mr = () => "Exécutez des benchmarks localement depuis votre terminal. Supporte les configurations personnalisées et l'intégration CI.", $ = () => "Ejecuta benchmarks localmente desde tu terminal. Soporta configuraciones personalizadas e integración CI.", hr = () => "Führen Sie Benchmarks lokal von Ihrem Terminal aus. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.", gr = () => "Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.", _r = () => "Execute benchmarks localmente pelo seu terminal. Suporta configurações personalizadas e integração CI.", vr = () => "在终端本地运行基准测试。支持自定义配置和 CI 集成。", yr = () => "ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートしています。", br = () => "터미널에서 로컬로 벤치마크를 실행합니다. 맞춤형 구성 및 CI 통합을 지원합니다.", xr = () => "Запуск тестов локально из терминала. Поддержка пользовательских конфигураций и интеграции с CI.", Sr = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? mr(e) : n === "es" ? $(e) : n === "de" ? hr(e) : n === "it" ? gr(e) : n === "pt" ? _r(e) : n === "zh" ? vr(e) : n === "ja" ? yr(e) : n === "ko" ? br(e) : n === "ru" ? xr(e) : pr(e);
+}), Cr = () => "Translation QA", wr = () => "QA de traduction", Tr = () => "QA de traducción", Er = () => "Übersetzungs-QA", Dr = () => "QA delle Traduzioni", Or = () => "QA de Tradução", kr = () => "翻译质量保证", Ar = () => "翻訳QA", jr = () => "번역 QA", Mr = () => "Контроль качества перевода", Nr = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? wr(e) : n === "es" ? Tr(e) : n === "de" ? Er(e) : n === "it" ? Dr(e) : n === "pt" ? Or(e) : n === "zh" ? kr(e) : n === "ja" ? Ar(e) : n === "ko" ? jr(e) : n === "ru" ? Mr(e) : Cr(e);
+});
+function Pr() {
 	let e = [
 		{
-			name: Qe(),
-			desc: wr(),
-			price: X ? X() : "Free"
+			name: Ze(),
+			desc: Sr(),
+			price: Q ? Q() : "Free"
 		},
 		{
-			name: lt(),
-			desc: Ae(),
-			price: W ? W() : "$29/mo"
+			name: ct(),
+			desc: ke(),
+			price: K ? K() : "$29/mo"
 		},
 		{
-			name: bt(),
-			desc: Sn(),
-			price: Ht()
+			name: yt(),
+			desc: xn(),
+			price: Vt()
 		},
 		{
-			name: dn(),
-			desc: F(),
-			price: J ? J() : "$99 one-time"
+			name: un(),
+			desc: R(),
+			price: X ? X() : "$99 one-time"
 		},
 		{
-			name: Pr(),
-			desc: Ve(),
-			price: H ? H() : "$19/mo"
+			name: Nr(),
+			desc: Be(),
+			price: W ? W() : "$19/mo"
 		},
 		{
-			name: jt(),
-			desc: ye(),
-			price: K ? K() : "$49/mo"
+			name: At(),
+			desc: ve(),
+			price: J ? J() : "$49/mo"
 		}
 	];
 	return i("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: e.map((e) => i("div", {
+		children: e.map((e) => a("div", {
 			className: "flex flex-col justify-between rounded-lg border border-border bg-card p-6",
-			children: [i("div", { children: [i("h3", {
+			children: [a("div", { children: [i("h3", {
 				className: "mb-2 text-lg font-semibold text-foreground",
 				children: e.name
-			}, void 0, !1, {
-				fileName: Q,
-				lineNumber: 47,
-				columnNumber: 13
-			}, this), i("p", {
+			}), i("p", {
 				className: "mb-4 text-sm text-muted-foreground",
 				children: e.desc
-			}, void 0, !1, {
-				fileName: Q,
-				lineNumber: 50,
-				columnNumber: 13
-			}, this)] }, void 0, !0, {
-				fileName: Q,
-				lineNumber: 46,
-				columnNumber: 11
-			}, this), i("div", {
+			})] }), a("div", {
 				className: "flex items-center justify-between",
 				children: [i("span", {
 					className: "text-sm font-bold text-primary",
 					children: e.price
-				}, void 0, !1, {
-					fileName: Q,
-					lineNumber: 53,
-					columnNumber: 13
-				}, this), i("button", {
+				}), i("button", {
 					type: "button",
 					className: "rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-					children: $t()
-				}, void 0, !1, {
-					fileName: Q,
-					lineNumber: 54,
-					columnNumber: 13
-				}, this)]
-			}, void 0, !0, {
-				fileName: Q,
-				lineNumber: 52,
-				columnNumber: 11
-			}, this)]
-		}, e.name, !0, {
-			fileName: Q,
-			lineNumber: 42,
-			columnNumber: 9
-		}, this))
-	}, void 0, !1, {
-		fileName: Q,
-		lineNumber: 40,
-		columnNumber: 5
-	}, this);
+					children: Qt()
+				})]
+			})]
+		}, e.name))
+	});
 }
-function Ir() {
+function Fr() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -298,44 +266,25 @@ function Ir() {
 		}
 	}
 }
-function Lr(e, t) {
+function Ir(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var Rr = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
-function zr({ children: o }) {
-	let s = a().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
+function Lr({ children: a }) {
+	let s = o().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		Lr("AppRoot", c);
+		Ir("AppRoot", c);
 	}, [c]), e(() => {
-		h(s, { reload: !1 }), document.documentElement.lang = s;
+		g(s, { reload: !1 }), document.documentElement.lang = s;
 	}, [s]), e(() => {
-		Ir();
-	}, []), i(r, { children: o }, void 0, !1, {
-		fileName: Rr,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+		Fr();
+	}, []), i(r, { children: a });
 }
-var Br = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
-function Vr({ children: e }) {
-	return i(zr, { children: e }, void 0, !1, {
-		fileName: Br,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function Rr({ children: e }) {
+	return i(Lr, { children: e });
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/products/ProductsGrid.wrapper.tsx";
-function Hr() {
-	return i(Vr, { children: i(Fr, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function zr() {
+	return i(Rr, { children: i(Pr, {}) });
 }
-export { Hr as default };
+export { zr as default };

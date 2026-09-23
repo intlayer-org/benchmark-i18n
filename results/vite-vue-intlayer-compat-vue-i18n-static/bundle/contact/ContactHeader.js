@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderSlot, toDisplayString } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderSlot, toDisplayString, unref } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -975,43 +975,14 @@ var useI18n = ((options) => {
 		n: (value, formatOrOptions) => formatNumberValue(value, formatOrOptions, currentLocale.value, numberFormats)
 	};
 });
-var MockBanner_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "MockBanner",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		const { t } = useI18n();
-		const __returned__ = { t };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1$1 = { class: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground" };
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", _hoisted_1$1, toDisplayString($setup.t("mockBanner")), 1);
-}
-var MockBanner_default = _plugin_vue_export_helper_default(MockBanner_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$2], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/MockBanner.vue"]]);
-var ContactHeader_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "ContactHeader",
-	setup(__props, { expose: __expose }) {
-		__expose();
+var MockBanner_default = defineComponent({
+	__name: "MockBanner",
+	setup(__props) {
 		const { t } = useI18n();
-		const __returned__ = {
-			t,
-			MockBanner: MockBanner_default
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("div", _hoisted_1$1, toDisplayString(unref(t)("mockBanner")), 1);
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
 var _hoisted_1 = { class: "mb-2 text-3xl font-bold text-foreground" };
@@ -1020,41 +991,38 @@ var _hoisted_3 = {
 	href: "mailto:contact@intlayer.org",
 	class: "text-primary hover:underline"
 };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock(Fragment, null, [
-		createVNode($setup["MockBanner"]),
-		createElementVNode("h1", _hoisted_1, toDisplayString($setup.t("contact.header.title")), 1),
-		createElementVNode("p", _hoisted_2, [
-			createTextVNode(toDisplayString($setup.t("contact.header.description")) + " ", 1),
-			createElementVNode("a", _hoisted_3, toDisplayString($setup.t("shared.contactEmail")), 1),
-			_cache[0] || (_cache[0] = createTextVNode(". ", -1))
-		])
-	], 64);
-}
-var ContactHeader_default = _plugin_vue_export_helper_default(ContactHeader_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/contact/ContactHeader.vue"]]);
+var ContactHeader_default = defineComponent({
+	__name: "ContactHeader",
+	setup(__props) {
+		const { t } = useI18n();
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock(Fragment, null, [
+				createVNode(MockBanner_default),
+				createElementVNode("h1", _hoisted_1, toDisplayString(unref(t)("contact.header.title")), 1),
+				createElementVNode("p", _hoisted_2, [
+					createTextVNode(toDisplayString(unref(t)("contact.header.description")) + " ", 1),
+					createElementVNode("a", _hoisted_3, toDisplayString(unref(t)("shared.contactEmail")), 1),
+					_cache[0] || (_cache[0] = createTextVNode(". ", -1))
+				])
+			], 64);
+		};
+	}
+});
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var ContactHeader_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(ContactHeader_default) });
 } };

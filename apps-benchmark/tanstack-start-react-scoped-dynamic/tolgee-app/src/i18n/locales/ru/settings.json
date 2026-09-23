@@ -1,0 +1,19 @@
+{
+  "settingsHeader.settings": "Настройки",
+  "settingsHeader.manageYourAccountPreferences": "Управляйте настройками своего аккаунта и конфигурацией.",
+  "profileSection.profile": "Профиль",
+  "profileSection.displayName": "Отображаемое имя",
+  "profileSection.email": "Email",
+  "preferencesSection.preferences": "Настройки",
+  "preferencesSection.emailNotifications": "Email-уведомления",
+  "preferencesSection.receiveWeeklyBenchmarkReports": "Получать еженедельные отчеты о бенчмарках",
+  "preferencesSection.darkMode": "Темный режим",
+  "preferencesSection.useDarkColorScheme": "Использовать темную цветовою схему",
+  "preferencesSection.defaultLanguage": "Язык по умолчанию",
+  "apiAccessSection.apiAccess": "Доступ к API",
+  "apiAccessSection.apiKey": "Ключ API",
+  "apiAccessSection.useThisKeyTo": "Используйте этот ключ для программного доступа к API бенчмаркинга.",
+  "apiAccessSection.copy": "Копировать",
+  "settingsFooter.cancel": "Отмена",
+  "settingsFooter.saveChanges": "Сохранить изменения"
+}

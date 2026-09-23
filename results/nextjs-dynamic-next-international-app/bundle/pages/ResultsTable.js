@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
@@ -225,65 +225,36 @@ function useI18n() {
 	return client.useI18n();
 }
 var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/home/ResultsTable.tsx";
 function ResultsTable() {
 	const t = useI18n();
-	return jsxDEV("section", { children: [jsxDEV("h2", {
+	return jsxs("section", { children: [jsx("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: t("home.results-table.sampleResults")
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 31,
-		columnNumber: 7
-	}, this), jsxDEV("div", {
+	}), jsx("div", {
 		className: "overflow-x-auto rounded-lg border border-border",
-		children: jsxDEV("table", {
+		children: jsxs("table", {
 			className: "w-full text-sm",
-			children: [jsxDEV("thead", {
+			children: [jsx("thead", {
 				className: "bg-muted",
-				children: jsxDEV("tr", { children: [
-					jsxDEV("th", {
+				children: jsxs("tr", { children: [
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: t("home.results-table.libraryColumn")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 38,
-						columnNumber: 15
-					}, this),
-					jsxDEV("th", {
+					}),
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: t("home.results-table.bundleSize")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 41,
-						columnNumber: 15
-					}, this),
-					jsxDEV("th", {
+					}),
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: t("home.results-table.lookupTime")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 44,
-						columnNumber: 15
-					}, this),
-					jsxDEV("th", {
+					}),
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: t("home.results-table.lazyLoading")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 47,
-						columnNumber: 15
-					}, this)
-				] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 37,
-					columnNumber: 13
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 36,
-				columnNumber: 11
-			}, this), jsxDEV("tbody", { children: [
+					})
+				] })
+			}), jsx("tbody", { children: [
 				{
 					lib: "react-i18next",
 					size: "42.3 kB",
@@ -308,65 +279,29 @@ function ResultsTable() {
 					time: "0.05ms",
 					lazy: "Built-in"
 				}
-			].map((r) => jsxDEV("tr", {
+			].map((r) => jsxs("tr", {
 				className: "border-t border-border",
 				children: [
-					jsxDEV("td", {
+					jsx("td", {
 						className: "px-4 py-3 font-medium text-foreground",
 						children: r.lib
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 55,
-						columnNumber: 17
-					}, this),
-					jsxDEV("td", {
+					}),
+					jsx("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.size
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 58,
-						columnNumber: 17
-					}, this),
-					jsxDEV("td", {
+					}),
+					jsx("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.time
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 59,
-						columnNumber: 17
-					}, this),
-					jsxDEV("td", {
+					}),
+					jsx("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.lazy
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 60,
-						columnNumber: 17
-					}, this)
+					})
 				]
-			}, r.lib, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 54,
-				columnNumber: 15
-			}, this)) }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 52,
-				columnNumber: 11
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 35,
-			columnNumber: 9
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 34,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 30,
-		columnNumber: 5
-	}, this);
+			}, r.lib)) })]
+		})
+	})] });
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -390,7 +325,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -402,38 +336,20 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nProviderClient, {
+	return jsx(I18nProviderClient, {
 		locale,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 30,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, {
+	return jsx(AppProviders, {
 		locale,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/home/ResultsTable.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ResultsTable, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ResultsTable, {}) });
 }
 export { Wrapped as default };
 import { t as flattenMessages } from "./flatten-C1nycfDa.js";

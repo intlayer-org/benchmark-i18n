@@ -1,16 +1,16 @@
 import { Dynamic as e, insert as t, template as n } from "solid-js/web";
 import { createContext as r, createMemo as i, onMount as a, useContext as o } from "solid-js";
 var s = {
-	de: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/de.json").then((e) => e.default),
-	en: () => import("./en-h8PTvO-0.js").then((e) => e.default),
-	es: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/es.json").then((e) => e.default),
-	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/fr.json").then((e) => e.default),
-	it: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/it.json").then((e) => e.default),
-	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/ja.json").then((e) => e.default),
-	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/ko.json").then((e) => e.default),
-	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/pt.json").then((e) => e.default),
-	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/ru.json").then((e) => e.default),
-	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/hero/zh.json").then((e) => e.default)
+	de: () => import("./de-B9fnT0rY.js").then((e) => e.default),
+	en: () => import("./en-CFzytM1B.js").then((e) => e.default),
+	es: () => import("./es-H_LfCw-s.js").then((e) => e.default),
+	fr: () => import("./fr-DHD3bdlu.js").then((e) => e.default),
+	it: () => import("./it-Bm680aTF.js").then((e) => e.default),
+	ja: () => import("./ja-MnZa2uyg.js").then((e) => e.default),
+	ko: () => import("./ko-DifjZPNr.js").then((e) => e.default),
+	pt: () => import("./pt-DGBdU3UO.js").then((e) => e.default),
+	ru: () => import("./ru-CCvKQI-E.js").then((e) => e.default),
+	zh: () => import("./zh-CVez3NAM.js").then((e) => e.default)
 }, c = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var s = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (g(e) && g(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : _(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : _(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -291,10 +291,109 @@ var e = {
 	key: "hero",
 	content: {
 		d: "i18n Benchmark",
+		a: "Eine Testanwendung, die entwickelt wurde, um die realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladeleistung und die Rendering-Reaktivität zu messen.",
+		e: "Ergebnisse anzeigen",
+		c: "Methodik",
+		b: "Hero"
+	}
+};
+export { e as default };
+var e = {
+	key: "hero",
+	content: {
+		d: "i18n Benchmark",
 		a: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
 		e: "View Results",
 		c: "Methodology",
 		b: "Hero"
+	}
+};
+export { e as default };
+var e = {
+	key: "hero",
+	content: {
+		d: "i18n Benchmark",
+		a: "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el rendimiento de carga и la reactividad de la representación.",
+		e: "Ver Resultados",
+		c: "Metodología",
+		b: "Héroe"
+	}
+};
+export { e as default };
+var e = {
+	key: "hero",
+	content: {
+		d: "Benchmark i18n",
+		a: "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+		e: "Voir les résultats",
+		c: "Méthodologie",
+		b: "Héros"
+	}
+};
+export { e as default };
+var e = {
+	key: "hero",
+	content: {
+		d: "i18n Benchmark",
+		a: "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.",
+		e: "Visualizza risultati",
+		c: "Metodologia",
+		b: "Eroe"
+	}
+};
+export { e as default };
+var e = {
+	key: "hero",
+	content: {
+		d: "i18n Benchmark",
+		a: "国際化ライブラリがバンドルサイズ、ロード性能、レンダリングの反応性に与える実際の影響を測定するために設計されたテストアプリケーションです。",
+		e: "結果を表示",
+		c: "方法論",
+		b: "ヒーロー"
+	}
+};
+export { e as default };
+var e = {
+	key: "hero",
+	content: {
+		d: "i18n Benchmark",
+		a: "번들 크기, 로딩 성능 및 렌더링 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위해 설계된 테스트 애플리케이션입니다.",
+		e: "결과 표시",
+		c: "방법론",
+		b: "히어로"
+	}
+};
+export { e as default };
+var e = {
+	key: "hero",
+	content: {
+		d: "i18n Benchmark",
+		a: "Uma aplicação de teste progettada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade de renderização.",
+		e: "Ver Resultados",
+		c: "Metodologia",
+		b: "Herói"
+	}
+};
+export { e as default };
+var e = {
+	key: "hero",
+	content: {
+		d: "i18n Benchmark",
+		a: "Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.",
+		e: "Посмотреть результаты",
+		c: "Методология",
+		b: "Главная"
+	}
+};
+export { e as default };
+var e = {
+	key: "hero",
+	content: {
+		d: "i18n Benchmark",
+		a: "一个测试应用程序，旨在衡量国际化库对捆绑包大小、加载性能和渲染反应性的真实影响。",
+		e: "查看结果",
+		c: "方法论",
+		b: "主页横幅"
 	}
 };
 export { e as default };

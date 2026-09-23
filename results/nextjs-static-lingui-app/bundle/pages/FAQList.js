@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { jsx } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -162,7 +161,6 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		children
 	});
 };
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/faq/FAQList.tsx";
 function FAQList() {
 	const { i18n } = useLingui();
 	const faqs = [
@@ -247,35 +245,19 @@ function FAQList() {
 			})
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "mx-auto max-w-3xl space-y-4",
-		children: faqs.map((f) => jsxDEV("details", {
+		children: faqs.map((f) => jsxs("details", {
 			className: "group rounded-lg border border-border bg-card",
-			children: [jsxDEV("summary", {
+			children: [jsx("summary", {
 				className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 				children: f.q
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 106,
-				columnNumber: 11
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "px-6 pb-4 text-sm text-muted-foreground",
 				children: f.a
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 109,
-				columnNumber: 11
-			}, this)]
-		}, f.q, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 102,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 100,
-		columnNumber: 5
-	}, this);
+			})]
+		}, f.q))
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1696,7 +1678,6 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const messages = useMemo(() => getMessages(locale), [locale]);
@@ -1711,33 +1692,15 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 35,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/faq/FAQList.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(FAQList, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(FAQList, {}) });
 }
 export { Wrapped as default };

@@ -28,23 +28,23 @@ export default function ResultsTable() {
   return (
     <section>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        <T keyName="resultsTable.sampleResults" defaultValue="Sample Results" />
+        <T keyName="resultsTable.sampleResults" />
       </h2>
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
           <thead className="bg-muted">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.library" defaultValue="Library" />
+                <T keyName="resultsTable.library" />
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.bundleSize" defaultValue="Bundle Size" />
+                <T keyName="resultsTable.bundleSize" />
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.lookupTime" defaultValue="Lookup Time" />
+                <T keyName="resultsTable.lookupTime" />
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.lazyLoading" defaultValue="Lazy Loading" />
+                <T keyName="resultsTable.lazyLoading" />
               </th>
             </tr>
           </thead>

@@ -7,49 +7,37 @@ export default function WhatWeMeasure() {
 
   const metrics = [
     {
-      metric: t("whatWeMeasure.bundleSizeImpact", "Bundle size impact"),
+      metric: t("whatWeMeasure.bundleSizeImpact"),
       desc: t(
-        "whatWeMeasure.theAdditionalJavascriptBytes",
-        "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
-      ),
+        "whatWeMeasure.theAdditionalJavascriptBytes"),
     },
     {
-      metric: t("whatWeMeasure.renderingOverhead", "Rendering overhead"),
+      metric: t("whatWeMeasure.renderingOverhead"),
       desc: t(
-        "whatWeMeasure.howMuchExtraTimeTheLibraryAdds",
-        "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
-      ),
+        "whatWeMeasure.howMuchExtraTimeTheLibraryAdds"),
     },
     {
-      metric: t("whatWeMeasure.hydrationCost", "Hydration cost"),
+      metric: t("whatWeMeasure.hydrationCost"),
       desc: t(
-        "whatWeMeasure.duringSsrTranslationDataIsSerialized",
-        "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
-      ),
+        "whatWeMeasure.duringSsrTranslationDataIsSerialized"),
     },
     {
       metric: t(
-        "whatWeMeasure.lazyLoadingEffectiveness",
-        "Lazy loading effectiveness"
-      ),
+        "whatWeMeasure.lazyLoadingEffectiveness"),
       desc: t(
-        "whatWeMeasure.whetherSplittingTranslationsByRoute",
-        "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
-      ),
+        "whatWeMeasure.whetherSplittingTranslationsByRoute"),
     },
     {
-      metric: t("whatWeMeasure.localeSwitchSpeed", "Locale switch speed"),
+      metric: t("whatWeMeasure.localeSwitchSpeed"),
       desc: t(
-        "whatWeMeasure.howFastTheAppCanSwitchFromOne",
-        "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
-      ),
+        "whatWeMeasure.howFastTheAppCanSwitchFromOne"),
     },
   ];
 
   return (
     <section className="mt-12 mx-auto max-w-3xl">
       <h2 className="mb-4 text-2xl font-bold text-foreground">
-        <T keyName="whatWeMeasure.whatWeMeasure" defaultValue="What We Measure" />
+        <T keyName="whatWeMeasure.whatWeMeasure" />
       </h2>
       <ul className="space-y-4">
         {metrics.map((m) => (

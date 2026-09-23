@@ -1,6 +1,6 @@
 import { createContext as e, createElement as t, useEffect as n, useLayoutEffect as r, useMemo as i, useState as a } from "react";
 import { useParams as o } from "next/navigation";
-import { jsxDEV as s } from "react/jsx-dev-runtime";
+import { jsx as s } from "react/jsx-runtime";
 var c = (e) => typeof e == "string", l = () => {
 	let e, t, n = new Promise((n, r) => {
 		e = n, t = r;
@@ -1290,29 +1290,29 @@ function ge() {
 		}
 	}
 }
-function _e(e, t) {
+function X(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var ve = (e, t, n) => {
+var _e = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, ye = [
+}, ve = [
 	"__proto__",
 	"constructor",
 	"prototype"
-], X = function(e, t) {
-	return !(typeof e != "string" || e.length > 128 || ye.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
+], Z = function(e, t) {
+	return !(typeof e != "string" || e.length > 128 || ve.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
 };
 J.use(pe).use(function(e) {
 	return {
 		type: "backend",
 		init: function(e, t, n) {},
 		read: function(t, n, r) {
-			if (!X(t, !1) || !X(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
+			if (!Z(t, !1) || !Z(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
 			if (typeof e == "function") {
 				if (e.length < 3) {
 					try {
@@ -1331,7 +1331,7 @@ J.use(pe).use(function(e) {
 			r(null, e && e[t] && e[t][n]);
 		}
 	};
-}((e) => ve(Object.assign({
+}((e) => _e(Object.assign({
 	"./locales/de.json": () => import("../i18n/locales/de.json"),
 	"./locales/en.json": () => import("./en-BaXPNSAv.js"),
 	"./locales/es.json": () => import("../i18n/locales/es.json"),
@@ -1350,47 +1350,29 @@ J.use(pe).use(function(e) {
 	keySeparator: !1,
 	nsSeparator: !1
 });
-var Z = J, be = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/components/AppProviders.tsx";
-function Q({ children: e }) {
+var Q = J;
+function $({ children: e }) {
 	let t = o().locale ?? "en", [i] = a(() => typeof performance < "u" ? performance.now() : 0);
 	return r(() => {
-		_e("AppRoot", i);
+		X("AppRoot", i);
 	}, [i]), n(() => {
-		Z.language !== t && Z.changeLanguage(t);
+		Q.language !== t && Q.changeLanguage(t);
 	}, [t]), n(() => {
 		document.documentElement.lang = t;
 	}, [t]), n(() => {
 		ge();
 	}, []), s(he, {
-		i18n: Z,
+		i18n: Q,
 		children: e
-	}, void 0, !1, {
-		fileName: be,
-		lineNumber: 38,
-		columnNumber: 7
-	}, this);
+	});
 }
-var xe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/scripts/Wrapper.tsx";
-function Se({ children: e }) {
-	return s(Q, { children: e }, void 0, !1, {
-		fileName: xe,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function ye({ children: e }) {
+	return s($, { children: e });
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/components/AppProviders.wrapper.tsx";
-function Ce() {
-	return s(Se, { children: s(Q, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function be() {
+	return s(ye, { children: s($, {}) });
 }
-export { Ce as default };
+export { be as default };
 var e = {
 	"faq.faqList.howAreTheBenchmarks": "How are the benchmarks run?",
 	"faq.faqList.allBenchmarksAreRun": "All benchmarks are run using Playwright on a consistent hardware setup (M2 MacBook Pro) with simulated 4G network conditions. Each test runs 50 iterations and we report median, P95, and P99 values.",

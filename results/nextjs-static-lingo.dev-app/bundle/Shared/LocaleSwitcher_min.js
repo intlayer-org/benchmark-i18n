@@ -1,9 +1,8 @@
 import { t as e } from "./logger-LUfhf5qs.js";
 import { createContext as t, useCallback as n, useEffect as r, useRef as i, useState as a } from "react";
 import { useParams as o, usePathname as s, useRouter as c } from "next/navigation";
-import { jsxDEV as l } from "react/jsx-dev-runtime";
-import { jsx as u } from "react/jsx-runtime";
-var d = [
+import { jsx as l } from "react/jsx-runtime";
+var u = [
 	"en",
 	"fr",
 	"es",
@@ -14,15 +13,15 @@ var d = [
 	"ja",
 	"ko",
 	"ru"
-], f = (e) => {
+], d = (e) => {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
 	} catch {
 		return e.toUpperCase();
 	}
-}, p = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/LocaleSwitcher.tsx";
-function m() {
+};
+function f() {
 	let e = o().locale ?? "en", t = s(), n = c(), r = (r) => {
 		let i = t.replace(`/${e}`, `/${r}`);
 		n.push(i);
@@ -33,27 +32,15 @@ function m() {
 			value: e,
 			onChange: (e) => r(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: d.map((e) => l("option", {
+			children: u.map((e) => l("option", {
 				value: e,
-				children: f(e)
-			}, e, !1, {
-				fileName: p,
-				lineNumber: 25,
-				columnNumber: 11
-			}, this))
-		}, void 0, !1, {
-			fileName: p,
-			lineNumber: 19,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: p,
-		lineNumber: 18,
-		columnNumber: 5
-	}, this);
+				children: d(e)
+			}, e))
+		})
+	});
 }
-var h = t(null);
-async function g(t, n, r) {
+var p = t(null);
+async function m(t, n, r) {
 	if (!r || !n || n.length === 0) return {};
 	let i = `${r}/translations/${t}`, a = new AbortController(), o = setTimeout(() => a.abort(), 3e4);
 	try {
@@ -72,19 +59,19 @@ async function g(t, n, r) {
 		clearTimeout(o);
 	}
 }
-var _ = "__SERVER_URL__", v = "__SOURCE_LOCALE__";
-function y() {
+var h = "__SERVER_URL__", g = "__SOURCE_LOCALE__";
+function _() {
 	return "en";
 }
-var b = () => {}, x = process.env.NODE_ENV === "development", S = 200, C = x ? T : w;
-function w({ initialLocale: t, initialTranslations: i = {}, router: o, children: s }) {
-	let [c, l] = a(() => t || (typeof window < "u" ? y() : v)), [d, f] = a(i), [p, m] = a(!1);
+var v = () => {}, y = process.env.NODE_ENV === "development", b = 200, x = y ? C : S;
+function S({ initialLocale: t, initialTranslations: i = {}, router: o, children: s }) {
+	let [c, u] = a(() => t || (typeof window < "u" ? _() : g)), [d, f] = a(i), [m, h] = a(!1);
 	e.debug(`LingoProvider initialized with locale: ${c}`, i), r(() => {
 		typeof document < "u" && (document.documentElement.lang = c);
 	}, [c]);
-	let g = n(async (t) => {
+	let y = n(async (t) => {
 		if (!(Object.keys(i).length > 0)) {
-			m(!0);
+			h(!0);
 			try {
 				let n = await fetch(`/translations/${t}.json`);
 				if (!n.ok) throw Error(`Failed to load translations for ${t}: ${n.statusText}`);
@@ -93,35 +80,35 @@ function w({ initialLocale: t, initialTranslations: i = {}, router: o, children:
 			} catch (n) {
 				e.error(`Failed to load translations for ${t}:`, n), f({});
 			} finally {
-				m(!1);
+				h(!1);
 			}
 		}
 	}, [i]);
 	r(() => {
-		Object.keys(i).length === 0 && g(c);
+		Object.keys(i).length === 0 && y(c);
 	}, []), r(() => {
 		o && f(i);
 	}, [i, o]);
-	let _ = n(async (e) => {
-		l(e), o ? o.refresh() : await g(e);
-	}, [o, g]);
-	return u(h.Provider, {
+	let b = n(async (e) => {
+		u(e), o ? o.refresh() : await y(e);
+	}, [o, y]);
+	return l(p.Provider, {
 		value: {
 			locale: c,
-			setLocale: _,
+			setLocale: b,
 			translations: d,
-			registerHashes: b,
-			isLoading: p,
-			sourceLocale: v
+			registerHashes: v,
+			isLoading: m,
+			sourceLocale: g
 		},
 		children: s
 	});
 }
-function T({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget: c, children: l }) {
-	let [d, f] = a(() => t || y()), [p, m] = a(o), [b, x] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(o), A = i(d);
+function C({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget: c, children: u }) {
+	let [d, f] = a(() => t || _()), [v, y] = a(o), [x, S] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(o), A = i(d);
 	r(() => {
-		k.current = p;
-	}, [p]), r(() => {
+		k.current = v;
+	}, [v]), r(() => {
 		A.current = d;
 	}, [d]), r(() => {
 		typeof document < "u" && (document.documentElement.lang = d);
@@ -139,20 +126,20 @@ function T({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget
 		e.debug(`LingoProvider checking translations for locale ${d}, seen hashes: ${C.size}`);
 		let t = [];
 		e.debug("allSeenHashes: ", [...C.values()], [...E.current.values()]);
-		for (let e of C) !p[e] && !E.current.has(e) && !D.current.has(e) && (t.push(e), E.current.add(e));
+		for (let e of C) !v[e] && !E.current.has(e) && !D.current.has(e) && (t.push(e), E.current.add(e));
 		e.debug("Missing hashes: ", t.join(",")), (t.length !== 0 || A.current != d) && (e.debug(`Requesting translations for ${t.length} hashes in locale ${d}`), O.current && clearTimeout(O.current), O.current = setTimeout(async () => {
 			let t = Array.from(E.current);
 			if (E.current.clear(), e.debug(`Fetching translations for ${t.length} hashes`), t.length !== 0) {
-				x(!0);
+				S(!0);
 				try {
-					let n = await g(A.current, t, _);
+					let n = await m(A.current, t, h);
 					e.debug(`Fetched translations for ${t.length} hashes:`, n);
 					let r = new Set(Object.keys(n)), i = t.filter((e) => !r.has(e));
 					if (i.length > 0) {
 						e.warn(`Server did not return translations for ${i.length} hashes: ${i.join(", ")}`);
 						for (let e of i) D.current.add(e);
 					}
-					m((e) => ({
+					y((e) => ({
 						...e,
 						...n
 					}));
@@ -161,30 +148,30 @@ function T({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget
 					e.warn(`Failed to fetch translations from translation server: ${n}.`);
 					for (let e of t) E.current.delete(e), D.current.add(e);
 				} finally {
-					x(!1);
+					S(!1);
 				}
 			}
-		}, S));
+		}, b));
 	}, [
 		C,
 		d,
-		p
+		v
 	]), r(() => () => {
 		O.current && clearTimeout(O.current);
 	}, []);
 	let M = n(async (t) => {
-		f(t), s && s.refresh(), x(!0);
+		f(t), s && s.refresh(), S(!0);
 		let n = performance.now();
 		try {
-			e.info(`Fetching translations for locale: ${t}. Server url: ${_}`);
-			let r = await g(t, [], _), i = performance.now();
+			e.info(`Fetching translations for locale: ${t}. Server url: ${h}`);
+			let r = await m(t, [], h), i = performance.now();
 			e.info(`Translation fetch complete for ${t} in ${(i - n).toFixed(2)}ms`);
 			let a = r.entries || {};
-			e.debug(`Translations loaded for ${t}:`, a), m(a);
+			e.debug(`Translations loaded for ${t}:`, a), y(a);
 		} catch (n) {
-			e.error(`Failed to load translations for ${t}:`, n), m({});
+			e.error(`Failed to load translations for ${t}:`, n), y({});
 		} finally {
-			x(!1);
+			S(!1);
 		}
 	}, [s]);
 	return r(() => {
@@ -193,57 +180,43 @@ function T({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget
 		});
 	}, [c?.enabled]), r(() => {
 		typeof window < "u" && c?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
-			isLoading: b,
+			isLoading: x,
 			locale: d,
-			sourceLocale: v,
+			sourceLocale: g,
 			pendingCount: E.current.size,
 			position: c?.position || "bottom-left"
-		}, window.__LINGO_DEV_WS_URL__ = _, window.__LINGO_DEV_UPDATE__?.());
+		}, window.__LINGO_DEV_WS_URL__ = h, window.__LINGO_DEV_UPDATE__?.());
 	}, [
-		b,
+		x,
 		d,
-		v,
+		g,
 		c
-	]), u(h.Provider, {
+	]), l(p.Provider, {
 		value: {
 			locale: d,
 			setLocale: M,
-			translations: p,
+			translations: v,
 			registerHashes: j,
-			isLoading: b,
-			sourceLocale: v,
+			isLoading: x,
+			sourceLocale: g,
 			_devStats: {
 				pendingCount: E.current.size,
 				totalRegisteredCount: T.current.size
 			}
 		},
-		children: l
+		children: u
 	});
 }
-var E = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
-function D({ children: e }) {
-	return l(C, {
+function w({ children: e }) {
+	return l(x, {
 		initialLocale: "en",
 		children: e
-	}, void 0, !1, {
-		fileName: E,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var O = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/LocaleSwitcher.wrapper.tsx";
-function k() {
-	return l(D, { children: l(m, {}, void 0, !1, {
-		fileName: O,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: O,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function T() {
+	return l(w, { children: l(f, {}) });
 }
-export { k as default };
+export { T as default };
 import { t as e } from "./logger-LUfhf5qs.js";
 var t = class extends HTMLElement {
 	shadow;

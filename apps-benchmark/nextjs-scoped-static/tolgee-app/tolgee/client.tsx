@@ -30,16 +30,13 @@ export const TolgeeNextProvider = ({
       router.refresh();
     });
 
-    // Update html[lang] immediately on client-side language switch, then refresh
-    // server components so they re-render with the new locale from the cookie.
-    const { unsubscribe: unsubLanguage } = tolgee.on('language', ({ value }) => {
-      document.documentElement.lang = value;
-      router.refresh();
-    });
+    // URL navigation (router.push in LocaleSwitcher) handles the server re-render.
+    // html[lang] is set by AppProviders once the new locale has rendered, as in
+    // every other app — setting it on tolgee's `language` event would stop the
+    // reactivity timer before any content changed.
 
     return () => {
       unsubPermanentChange();
-      unsubLanguage();
     };
   }, [router]);
 

@@ -1,77 +1,59 @@
 import { createContext as e, useContext as t, useEffect as n, useLayoutEffect as r, useMemo as i, useState as a } from "react";
 import o from "next/link";
 import { useParams as s } from "next/navigation";
-import { jsxDEV as c } from "react/jsx-dev-runtime";
-import { jsx as l } from "react/jsx-runtime";
-var u = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-intl-app/components/Link.tsx", d = (e) => /^https?:\/\//.test(e ?? "");
-function f(e, t) {
+import { jsx as c } from "react/jsx-runtime";
+var l = (e) => /^https?:\/\//.test(e ?? "");
+function u(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
-var p = ({ href: e, children: t, ...n }) => {
+var d = ({ href: e, children: t, ...n }) => {
 	let r = s().locale ?? "en";
-	return e == null || typeof e != "string" ? c(o, {
+	return e == null || typeof e != "string" || l(e) ? c(o, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: u,
-		lineNumber: 23,
-		columnNumber: 7
-	}, void 0) : d(e) ? c(o, {
-		href: e,
+	}) : c(o, {
+		href: u(e, r),
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: u,
-		lineNumber: 30,
-		columnNumber: 7
-	}, void 0) : c(o, {
-		href: f(e, r),
-		prefetch: !1,
-		...n,
-		children: t
-	}, void 0, !1, {
-		fileName: u,
-		lineNumber: 36,
-		columnNumber: 5
-	}, void 0);
+	});
 };
-function m(e, t) {
-	let n = t && t.cache ? t.cache : C, r = t && t.serializer ? t.serializer : x;
-	return (t && t.strategy ? t.strategy : v)(e, {
+function f(e, t) {
+	let n = t && t.cache ? t.cache : S, r = t && t.serializer ? t.serializer : b;
+	return (t && t.strategy ? t.strategy : _)(e, {
 		cache: n,
 		serializer: r
 	});
 }
-function ee(e) {
+function p(e) {
 	return e == null || typeof e == "number" || typeof e == "boolean";
 }
-function h(e, t, n, r) {
-	let i = ee(r) ? r : n(r), a = t.get(i);
+function m(e, t, n, r) {
+	let i = p(r) ? r : n(r), a = t.get(i);
 	return a === void 0 && (a = e.call(this, r), t.set(i, a)), a;
 }
-function g(e, t, n) {
+function h(e, t, n) {
 	let r = Array.prototype.slice.call(arguments, 3), i = n(r), a = t.get(i);
 	return a === void 0 && (a = e.apply(this, r), t.set(i, a)), a;
 }
-function _(e, t, n, r, i) {
+function g(e, t, n, r, i) {
 	return n.bind(t, e, r, i);
 }
+function _(e, t) {
+	let n = e.length === 1 ? m : h;
+	return g(e, this, n, t.cache.create(), t.serializer);
+}
 function v(e, t) {
-	let n = e.length === 1 ? h : g;
-	return _(e, this, n, t.cache.create(), t.serializer);
+	return g(e, this, h, t.cache.create(), t.serializer);
 }
 function y(e, t) {
-	return _(e, this, g, t.cache.create(), t.serializer);
+	return g(e, this, m, t.cache.create(), t.serializer);
 }
-function b(e, t) {
-	return _(e, this, h, t.cache.create(), t.serializer);
-}
-var x = function() {
+var b = function() {
 	return JSON.stringify(arguments);
-}, S = class {
+}, x = class {
 	constructor() {
 		this.cache = Object.create(null);
 	}
@@ -81,20 +63,15 @@ var x = function() {
 	set(e, t) {
 		this.cache[e] = t;
 	}
-}, C = { create: function() {
-	return new S();
-} }, w = {
-	variadic: y,
-	monadic: b
-}, T = class extends Error {
-	constructor(e, t) {
-		let n = e;
-		t && (n += ": " + t), super(n), this.code = e, t && (this.originalMessage = t);
-	}
-}, E = function(e) {
+}, S = { create: function() {
+	return new x();
+} }, C = {
+	variadic: v,
+	monadic: y
+}, w = function(e) {
 	return e.MISSING_MESSAGE = "MISSING_MESSAGE", e.MISSING_FORMAT = "MISSING_FORMAT", e.ENVIRONMENT_FALLBACK = "ENVIRONMENT_FALLBACK", e.INSUFFICIENT_PATH = "INSUFFICIENT_PATH", e.INVALID_MESSAGE = "INVALID_MESSAGE", e.INVALID_KEY = "INVALID_KEY", e.FORMATTING_ERROR = "FORMATTING_ERROR", e;
-}(E || {});
-function te() {
+}(w || {});
+function T() {
 	return {
 		dateTime: {},
 		number: {},
@@ -105,117 +82,66 @@ function te() {
 		displayNames: {}
 	};
 }
-function D(e) {
-	return { create() {
-		return {
-			get(t) {
-				return e[t];
-			},
-			set(t, n) {
-				e[t] = n;
+function E(e, t) {
+	return f(e, {
+		cache: (n = t, { create: () => ({
+			get: (e) => n[e],
+			set(e, t) {
+				n[e] = t;
 			}
-		};
-	} };
-}
-function O(e, t) {
-	return m(e, {
-		cache: D(t),
-		strategy: w.variadic
+		}) }),
+		strategy: C.variadic
 	});
+	var n;
 }
-function k(e, t) {
-	return O((...t) => new e(...t), t);
+function D(e, t) {
+	return E(((...t) => new e(...t)), t);
 }
-function A(e) {
+function O(e) {
 	return {
-		getDateTimeFormat: k(Intl.DateTimeFormat, e.dateTime),
-		getNumberFormat: k(Intl.NumberFormat, e.number),
-		getPluralRules: k(Intl.PluralRules, e.pluralRules),
-		getRelativeTimeFormat: k(Intl.RelativeTimeFormat, e.relativeTime),
-		getListFormat: k(Intl.ListFormat, e.list),
-		getDisplayNames: k(Intl.DisplayNames, e.displayNames)
+		getDateTimeFormat: D(Intl.DateTimeFormat, e.dateTime),
+		getNumberFormat: D(Intl.NumberFormat, e.number),
+		getPluralRules: D(Intl.PluralRules, e.pluralRules),
+		getRelativeTimeFormat: D(Intl.RelativeTimeFormat, e.relativeTime),
+		getListFormat: D(Intl.ListFormat, e.list),
+		getDisplayNames: D(Intl.DisplayNames, e.displayNames)
 	};
 }
-function j(...e) {
+function k(...e) {
 	return e.filter(Boolean).join(".");
 }
-function M(e) {
-	return j(e.namespace, e.key);
+function A(e) {
+	return k(e.namespace, e.key);
 }
-function N(e) {
+function j(e) {
 	console.error(e);
 }
-var P = 86400;
-P * 7, 365 / 12 * P * 3, P * 365;
-function F(e, t, n) {
-	Object.entries(e).forEach(([e, r]) => {
-		if (e.includes(".")) {
-			let r = e;
-			n && (r += ` (at ${n})`), t.push(r);
-		}
-		typeof r == "object" && r && F(r, t, j(n, e));
-	});
-}
-function I(e, t) {
-	let n = [];
-	F(e, n), n.length > 0 && t(new T(E.INVALID_KEY, `Namespace keys cannot contain the character "." as this is used to express nesting. Please remove it or replace it with another character.
-
-Invalid ${n.length === 1 ? "key" : "keys"}: ${n.join(", ")}
-
-If you're migrating from a flat structure, you can convert your messages as follows:
-
-import {set} from "lodash";
-
-const input = {
-  "one.one": "1.1",
-  "one.two": "1.2",
-  "two.one.one": "2.1.1"
-};
-
-const output = Object.entries(input).reduce(
-  (acc, [key, value]) => set(acc, key, value),
-  {}
-);
-
-
-
-
-
-
-
-
-
-
-
-
-
-`));
-}
-function L({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }) {
-	let a = r || N, o = t || M;
-	return n && I(n, a), {
+var M = 86400;
+7 * M, 365 * M;
+function N({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }) {
+	return {
 		...i,
 		formats: e || void 0,
 		messages: n || void 0,
-		onError: a,
-		getMessageFallback: o
+		onError: r || j,
+		getMessageFallback: t || A
 	};
 }
-var R = e(void 0);
-function z({ children: e, formats: n, getMessageFallback: r, locale: a, messages: o, now: s, onError: c, timeZone: u }) {
-	let d = t(R), f = i(() => d?.cache || te(), [a, d?.cache]), p = i(() => d?.formatters || A(f), [f, d?.formatters]), m = i(() => ({
-		...L({
+var P = e(void 0);
+function F({ children: e, formats: n, getMessageFallback: r, locale: a, messages: o, now: s, onError: l, timeZone: u }) {
+	let d = t(P), f = i((() => d?.cache || T()), [a, d?.cache]), p = i((() => d?.formatters || O(f)), [f, d?.formatters]), m = i((() => ({
+		...N({
 			locale: a,
 			formats: n === void 0 ? d?.formats : n,
 			getMessageFallback: r || d?.getMessageFallback,
 			messages: o === void 0 ? d?.messages : o,
 			now: s || d?.now,
-			onError: c || d?.onError,
+			onError: l || d?.onError,
 			timeZone: u || d?.timeZone
 		}),
 		formatters: p,
 		cache: f
-	}), [
+	})), [
 		f,
 		n,
 		p,
@@ -223,23 +149,23 @@ function z({ children: e, formats: n, getMessageFallback: r, locale: a, messages
 		a,
 		o,
 		s,
-		c,
+		l,
 		d,
 		u
 	]);
-	return l(R.Provider, {
+	return c(P.Provider, {
 		value: m,
 		children: e
 	});
 }
-function B({ locale: e, ...t }) {
-	if (!e) throw Error("Couldn't infer the `locale` prop in `NextIntlClientProvider`, please provide it explicitly.\n\nSee https://next-intl.dev/docs/configuration#locale");
-	return l(z, {
+function I({ locale: e, ...t }) {
+	if (!e) throw Error(void 0);
+	return c(F, {
 		locale: e,
 		...t
 	});
 }
-function V() {
+function L() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -253,32 +179,27 @@ function V() {
 		}
 	}
 }
-function H(e, t) {
+function R(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var U = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-intl-app/components/AppProviders.tsx";
-function W({ children: e, locale: t, messages: i }) {
+function z({ children: e, locale: t, messages: i }) {
 	let [o] = a(() => typeof performance < "u" ? performance.now() : 0);
 	return r(() => {
-		H("AppRoot", o);
+		R("AppRoot", o);
 	}, [o]), n(() => {
 		document.documentElement.lang = t;
 	}, [t]), n(() => {
-		V();
-	}, []), c(B, {
+		L();
+	}, []), c(I, {
 		locale: t,
 		messages: i,
 		timeZone: "UTC",
 		children: e
-	}, void 0, !1, {
-		fileName: U,
-		lineNumber: 33,
-		columnNumber: 7
-	}, this);
+	});
 }
-var G = [
+var B = [
 	"about",
 	"blog",
 	"careers",
@@ -291,7 +212,7 @@ var G = [
 	"settings",
 	"shared",
 	"team"
-], K = {
+], V = {
 	en: {
 		about: () => import("./about-CX3jC_Kk.js"),
 		blog: () => import("./blog-CPbGzc3E.js"),
@@ -433,10 +354,10 @@ var G = [
 		team: () => import("../messages/ru/team.json")
 	}
 };
-async function q(e, t) {
-	return (await (K[e]?.[t] ?? K.en[t])()).default;
+async function H(e, t) {
+	return (await (V[e]?.[t] ?? V.en[t])()).default;
 }
-function J(e) {
+function U(e) {
 	let t = {};
 	for (let [n, r] of Object.entries(e)) {
 		let e = n.split("."), i = t;
@@ -448,56 +369,43 @@ function J(e) {
 	}
 	return t;
 }
-function Y(e, t) {
+function W(e, t) {
 	let n = { ...e };
 	for (let [e, r] of Object.entries(t)) {
 		let t = n[e];
-		n[e] = typeof r == "object" && r && !Array.isArray(r) && typeof t == "object" && t && !Array.isArray(t) ? Y(t, r) : r;
+		n[e] = typeof r == "object" && r && !Array.isArray(r) && typeof t == "object" && t && !Array.isArray(t) ? W(t, r) : r;
 	}
 	return n;
 }
-function X(e) {
-	return e.reduce((e, t) => Y(e, t), {});
+function G(e) {
+	return e.reduce((e, t) => W(e, t), {});
 }
-async function Z(e, t) {
+async function K(e, t) {
 	let n = new Set(t);
 	n.add("shared");
 	let r = [];
 	for (let t of n) {
-		let n = await q(e, t);
-		r.push(J(n));
+		let n = await H(e, t);
+		r.push(U(n));
 	}
-	return X(r);
+	return G(r);
 }
-async function ne(e) {
-	return Z(e, G);
+async function q(e) {
+	return K(e, B);
 }
-var re = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-intl-app/scripts/Wrapper.tsx", Q = "en";
-async function ie({ children: e }) {
-	let t = await ne(Q);
-	return c(W, {
-		locale: Q,
+var J = "en";
+async function Y({ children: e }) {
+	let t = await q(J);
+	return c(z, {
+		locale: J,
 		messages: t,
 		children: e
-	}, void 0, !1, {
-		fileName: re,
-		lineNumber: 14,
-		columnNumber: 5
-	}, this);
+	});
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-intl-app/components/Link.wrapper.tsx";
-function ae() {
-	return c(ie, { children: c(p, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function X() {
+	return c(Y, { children: c(d, {}) });
 }
-export { ae as default };
+export { X as default };
 var e = {
 	"about-grid.whyThisExists": "Why This Exists",
 	"about-grid.choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",

@@ -1,4 +1,4 @@
-import { computed, createElementBlock, defineComponent, getCurrentInstance, h, inject, onMounted, onUnmounted, openBlock, readonly, ref, renderSlot, toDisplayString, watch } from "vue";
+import { computed, createElementBlock, defineComponent, getCurrentInstance, h, inject, onMounted, onUnmounted, openBlock, readonly, ref, renderSlot, toDisplayString, unref, watch } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -975,10 +975,10 @@ var useI18n = ((options) => {
 		n: (value, formatOrOptions) => formatNumberValue(value, formatOrOptions, currentLocale.value, numberFormats)
 	};
 });
-var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var _hoisted_1 = ["aria-label", "title"];
+var ThemeToggle_default = defineComponent({
 	__name: "ThemeToggle",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const { t } = useI18n();
 		const mode = ref("auto");
 		function getInitialMode() {
@@ -1022,66 +1022,32 @@ var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
 			window.localStorage.setItem("theme", nextMode);
 		}
 		const getLabel = () => mode.value === "auto" ? t("themeToggle.labelAuto") : t("themeToggle.labelOther", { mode: mode.value });
-		const __returned__ = {
-			t,
-			mode,
-			getInitialMode,
-			applyThemeMode,
-			get mediaQueryListener() {
-				return mediaQueryListener;
-			},
-			set mediaQueryListener(v) {
-				mediaQueryListener = v;
-			},
-			toggleMode,
-			getLabel
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("button", {
+				type: "button",
+				onClick: toggleMode,
+				"aria-label": getLabel(),
+				title: getLabel(),
+				class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+			}, toDisplayString(mode.value === "auto" ? unref(t)("themeToggle.auto") : mode.value === "dark" ? unref(t)("themeToggle.dark") : unref(t)("themeToggle.light")), 9, _hoisted_1);
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
-var _hoisted_1 = ["aria-label", "title"];
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("button", {
-		type: "button",
-		onClick: $setup.toggleMode,
-		"aria-label": $setup.getLabel(),
-		title: $setup.getLabel(),
-		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-	}, toDisplayString($setup.mode === "auto" ? $setup.t("themeToggle.auto") : $setup.mode === "dark" ? $setup.t("themeToggle.dark") : $setup.t("themeToggle.light")), 9, _hoisted_1);
-}
-var ThemeToggle_default = _plugin_vue_export_helper_default(ThemeToggle_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/ThemeToggle.vue"]]);
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var ThemeToggle_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(ThemeToggle_default) });
 } };

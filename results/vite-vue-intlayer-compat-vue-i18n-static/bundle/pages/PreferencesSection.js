@@ -1,4 +1,4 @@
-import { computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderSlot, toDisplayString } from "vue";
+import { computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderSlot, toDisplayString, unref } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -975,24 +975,6 @@ var useI18n = ((options) => {
 		n: (value, formatOrOptions) => formatNumberValue(value, formatOrOptions, currentLocale.value, numberFormats)
 	};
 });
-var PreferencesSection_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "PreferencesSection",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		const { t } = useI18n();
-		const __returned__ = { t };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "rounded-lg border border-border bg-card p-6" };
 var _hoisted_2 = { class: "mb-4 text-lg font-semibold text-foreground" };
 var _hoisted_3 = { class: "space-y-4" };
@@ -1012,53 +994,50 @@ var _hoisted_13 = {
 	id: "language",
 	class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
 };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString($setup.t("settings.preferences.title")), 1), createElementVNode("div", _hoisted_3, [
-		createElementVNode("div", _hoisted_4, [createElementVNode("div", null, [createElementVNode("p", _hoisted_5, toDisplayString($setup.t("settings.preferences.emailNotifications")), 1), createElementVNode("p", _hoisted_6, toDisplayString($setup.t("settings.preferences.weeklyReports")), 1)]), createElementVNode("button", {
-			type: "button",
-			class: "h-6 w-11 rounded-full bg-primary transition-colors",
-			"aria-label": $setup.t("settings.preferences.toggleNotifications")
-		}, [..._cache[0] || (_cache[0] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, null, -1)])], 8, _hoisted_7)]),
-		createElementVNode("div", _hoisted_8, [createElementVNode("div", null, [createElementVNode("p", _hoisted_9, toDisplayString($setup.t("settings.preferences.darkMode")), 1), createElementVNode("p", _hoisted_10, toDisplayString($setup.t("settings.preferences.darkColorScheme")), 1)]), createElementVNode("button", {
-			type: "button",
-			class: "h-6 w-11 rounded-full bg-muted transition-colors",
-			"aria-label": $setup.t("settings.preferences.toggleDarkMode")
-		}, [..._cache[1] || (_cache[1] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, null, -1)])], 8, _hoisted_11)]),
-		createElementVNode("div", null, [createElementVNode("label", _hoisted_12, toDisplayString($setup.t("settings.preferences.defaultLanguage")), 1), createElementVNode("select", _hoisted_13, [
-			createElementVNode("option", null, toDisplayString($setup.t("settings.preferences.english")), 1),
-			createElementVNode("option", null, toDisplayString($setup.t("settings.preferences.french")), 1),
-			createElementVNode("option", null, toDisplayString($setup.t("settings.preferences.german")), 1),
-			createElementVNode("option", null, toDisplayString($setup.t("settings.preferences.spanish")), 1),
-			createElementVNode("option", null, toDisplayString($setup.t("settings.preferences.japanese")), 1),
-			createElementVNode("option", null, toDisplayString($setup.t("settings.preferences.chinese")), 1),
-			createElementVNode("option", null, toDisplayString($setup.t("settings.preferences.arabic")), 1)
-		])])
-	])]);
-}
-var PreferencesSection_default = _plugin_vue_export_helper_default(PreferencesSection_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/settings/PreferencesSection.vue"]]);
+var PreferencesSection_default = defineComponent({
+	__name: "PreferencesSection",
+	setup(__props) {
+		const { t } = useI18n();
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString(unref(t)("settings.preferences.title")), 1), createElementVNode("div", _hoisted_3, [
+				createElementVNode("div", _hoisted_4, [createElementVNode("div", null, [createElementVNode("p", _hoisted_5, toDisplayString(unref(t)("settings.preferences.emailNotifications")), 1), createElementVNode("p", _hoisted_6, toDisplayString(unref(t)("settings.preferences.weeklyReports")), 1)]), createElementVNode("button", {
+					type: "button",
+					class: "h-6 w-11 rounded-full bg-primary transition-colors",
+					"aria-label": unref(t)("settings.preferences.toggleNotifications")
+				}, [..._cache[0] || (_cache[0] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, null, -1)])], 8, _hoisted_7)]),
+				createElementVNode("div", _hoisted_8, [createElementVNode("div", null, [createElementVNode("p", _hoisted_9, toDisplayString(unref(t)("settings.preferences.darkMode")), 1), createElementVNode("p", _hoisted_10, toDisplayString(unref(t)("settings.preferences.darkColorScheme")), 1)]), createElementVNode("button", {
+					type: "button",
+					class: "h-6 w-11 rounded-full bg-muted transition-colors",
+					"aria-label": unref(t)("settings.preferences.toggleDarkMode")
+				}, [..._cache[1] || (_cache[1] = [createElementVNode("span", { class: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, null, -1)])], 8, _hoisted_11)]),
+				createElementVNode("div", null, [createElementVNode("label", _hoisted_12, toDisplayString(unref(t)("settings.preferences.defaultLanguage")), 1), createElementVNode("select", _hoisted_13, [
+					createElementVNode("option", null, toDisplayString(unref(t)("settings.preferences.english")), 1),
+					createElementVNode("option", null, toDisplayString(unref(t)("settings.preferences.french")), 1),
+					createElementVNode("option", null, toDisplayString(unref(t)("settings.preferences.german")), 1),
+					createElementVNode("option", null, toDisplayString(unref(t)("settings.preferences.spanish")), 1),
+					createElementVNode("option", null, toDisplayString(unref(t)("settings.preferences.japanese")), 1),
+					createElementVNode("option", null, toDisplayString(unref(t)("settings.preferences.chinese")), 1),
+					createElementVNode("option", null, toDisplayString(unref(t)("settings.preferences.arabic")), 1)
+				])])
+			])]);
+		};
+	}
+});
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var PreferencesSection_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(PreferencesSection_default) });
 } };

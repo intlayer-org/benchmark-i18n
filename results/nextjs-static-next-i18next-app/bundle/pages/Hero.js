@@ -1,5 +1,5 @@
 import { createContext, createElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -2433,59 +2433,34 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/pages/home/Hero.tsx";
 function Hero() {
 	const { t } = useTranslation();
 	usePerformanceMeasure("Hero");
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mb-16 text-center",
 		children: [
-			jsxDEV("h1", {
+			jsx("h1", {
 				className: "mb-4 text-4xl font-bold tracking-tight text-foreground",
 				children: "i18n Benchmark"
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 11,
-				columnNumber: 7
-			}, this),
-			jsxDEV("p", {
+			}),
+			jsx("p", {
 				className: "mx-auto max-w-2xl text-lg text-muted-foreground",
 				children: t("home.hero.aTestApplicationDesignedTo")
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 14,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", {
+			}),
+			jsxs("div", {
 				className: "mt-8 flex justify-center gap-4",
-				children: [jsxDEV("button", {
+				children: [jsx("button", {
 					type: "button",
 					className: "rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: t("home.hero.viewResults")
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 18,
-					columnNumber: 9
-				}, this), jsxDEV("button", {
+				}), jsx("button", {
 					type: "button",
 					className: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: t("shared.header.methodology")
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 24,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 17,
-				columnNumber: 7
-			}, this)
+				})]
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 10,
-		columnNumber: 5
-	}, this);
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -4668,7 +4643,6 @@ instance.use(initReactI18next).init({
 	nsSeparator: false
 });
 var i18n_default = instance;
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -4684,33 +4658,15 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nextProvider, {
+	return jsx(I18nextProvider, {
 		i18n: i18n_default,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 38,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/pages/home/Hero.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Hero, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Hero, {}) });
 }
 export { Wrapped as default };

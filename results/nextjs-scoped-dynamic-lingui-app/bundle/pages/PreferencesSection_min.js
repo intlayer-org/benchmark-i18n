@@ -1,6 +1,5 @@
 import { cloneElement as e, createContext as t, useContext as n, useEffect as r, useId as i, useLayoutEffect as a, useMemo as o, useState as s } from "react";
-import { Fragment as c, jsx as l } from "react/jsx-runtime";
-import { jsxDEV as u } from "react/jsx-dev-runtime";
+import { Fragment as c, jsx as l, jsxs as u } from "react/jsx-runtime";
 var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), f = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -206,230 +205,105 @@ This often happens when multiple instances of @lingui/react are installed (e.g. 
 		lingui: n
 	});
 }
-var O = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/pages/settings/PreferencesSection.tsx";
-function k() {
+function O() {
 	let e = i(), { i18n: t } = ee();
 	return u("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [u("h2", {
+		children: [l("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: u(D, {
+			children: l(D, {
 				id: "preferences-section.preferences",
 				message: "Preferences"
-			}, void 0, !1, {
-				fileName: O,
-				lineNumber: 13,
-				columnNumber: 9
-			}, this)
-		}, void 0, !1, {
-			fileName: O,
-			lineNumber: 12,
-			columnNumber: 7
-		}, this), u("div", {
+			})
+		}), u("div", {
 			className: "space-y-4",
 			children: [
 				u("div", {
 					className: "flex items-center justify-between",
-					children: [u("div", { children: [u("p", {
+					children: [u("div", { children: [l("p", {
 						className: "text-sm font-medium text-foreground",
-						children: u(D, {
+						children: l(D, {
 							id: "preferences-section.emailNotifications",
 							message: "Email Notifications"
-						}, void 0, !1, {
-							fileName: O,
-							lineNumber: 19,
-							columnNumber: 15
-						}, this)
-					}, void 0, !1, {
-						fileName: O,
-						lineNumber: 18,
-						columnNumber: 13
-					}, this), u("p", {
+						})
+					}), l("p", {
 						className: "text-xs text-muted-foreground",
-						children: u(D, {
+						children: l(D, {
 							id: "preferences-section.receiveWeeklyBenchmarkReports",
 							message: "Receive weekly benchmark reports"
-						}, void 0, !1, {
-							fileName: O,
-							lineNumber: 25,
-							columnNumber: 15
-						}, this)
-					}, void 0, !1, {
-						fileName: O,
-						lineNumber: 24,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: O,
-						lineNumber: 17,
-						columnNumber: 11
-					}, this), u("button", {
+						})
+					})] }), l("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-primary transition-colors",
 						"aria-label": "Toggle notifications",
-						children: u("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, void 0, !1, {
-							fileName: O,
-							lineNumber: 36,
-							columnNumber: 13
-						}, this)
-					}, void 0, !1, {
-						fileName: O,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this)]
-				}, void 0, !0, {
-					fileName: O,
-					lineNumber: 16,
-					columnNumber: 9
-				}, this),
+						children: l("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
+					})]
+				}),
 				u("div", {
 					className: "flex items-center justify-between",
-					children: [u("div", { children: [u("p", {
+					children: [u("div", { children: [l("p", {
 						className: "text-sm font-medium text-foreground",
-						children: u(D, {
+						children: l(D, {
 							id: "preferences-section.darkMode",
 							message: "Dark Mode"
-						}, void 0, !1, {
-							fileName: O,
-							lineNumber: 42,
-							columnNumber: 15
-						}, this)
-					}, void 0, !1, {
-						fileName: O,
-						lineNumber: 41,
-						columnNumber: 13
-					}, this), u("p", {
+						})
+					}), l("p", {
 						className: "text-xs text-muted-foreground",
-						children: u(D, {
+						children: l(D, {
 							id: "preferences-section.useDarkColorScheme",
 							message: "Use dark color scheme"
-						}, void 0, !1, {
-							fileName: O,
-							lineNumber: 45,
-							columnNumber: 15
-						}, this)
-					}, void 0, !1, {
-						fileName: O,
-						lineNumber: 44,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: O,
-						lineNumber: 40,
-						columnNumber: 11
-					}, this), u("button", {
+						})
+					})] }), l("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-muted transition-colors",
 						"aria-label": "Toggle dark mode",
-						children: u("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, void 0, !1, {
-							fileName: O,
-							lineNumber: 56,
-							columnNumber: 13
-						}, this)
-					}, void 0, !1, {
-						fileName: O,
-						lineNumber: 51,
-						columnNumber: 11
-					}, this)]
-				}, void 0, !0, {
-					fileName: O,
-					lineNumber: 39,
-					columnNumber: 9
-				}, this),
-				u("div", { children: [u("label", {
+						children: l("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
+					})]
+				}),
+				u("div", { children: [l("label", {
 					htmlFor: e,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: u(D, {
+					children: l(D, {
 						id: "preferences-section.defaultLanguage",
 						message: "Default Language"
-					}, void 0, !1, {
-						fileName: O,
-						lineNumber: 64,
-						columnNumber: 13
-					}, this)
-				}, void 0, !1, {
-					fileName: O,
-					lineNumber: 60,
-					columnNumber: 11
-				}, this), u("select", {
+					})
+				}), u("select", {
 					id: e,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					children: [
-						u("option", { children: t._({
+						l("option", { children: t._({
 							id: "preferences-section.englishEn",
 							message: "English (en)"
-						}) }, void 0, !1, {
-							fileName: O,
-							lineNumber: 73,
-							columnNumber: 13
-						}, this),
-						u("option", { children: t._({
+						}) }),
+						l("option", { children: t._({
 							id: "preferences-section.frenchFr",
 							message: "French (fr)"
-						}) }, void 0, !1, {
-							fileName: O,
-							lineNumber: 74,
-							columnNumber: 13
-						}, this),
-						u("option", { children: t._({
+						}) }),
+						l("option", { children: t._({
 							id: "preferences-section.germanDe",
 							message: "German (de)"
-						}) }, void 0, !1, {
-							fileName: O,
-							lineNumber: 75,
-							columnNumber: 13
-						}, this),
-						u("option", { children: t._({
+						}) }),
+						l("option", { children: t._({
 							id: "preferences-section.spanishEs",
 							message: "Spanish (es)"
-						}) }, void 0, !1, {
-							fileName: O,
-							lineNumber: 76,
-							columnNumber: 13
-						}, this),
-						u("option", { children: t._({
+						}) }),
+						l("option", { children: t._({
 							id: "preferences-section.japaneseJa",
 							message: "Japanese (ja)"
-						}) }, void 0, !1, {
-							fileName: O,
-							lineNumber: 77,
-							columnNumber: 13
-						}, this),
-						u("option", { children: t._({
+						}) }),
+						l("option", { children: t._({
 							id: "preferences-section.chineseSimplifiedZhCn",
 							message: "Chinese Simplified (zh-CN)"
-						}) }, void 0, !1, {
-							fileName: O,
-							lineNumber: 78,
-							columnNumber: 13
-						}, this),
-						u("option", { children: t._({
+						}) }),
+						l("option", { children: t._({
 							id: "preferences-section.arabicAr",
 							message: "Arabic (ar)"
-						}) }, void 0, !1, {
-							fileName: O,
-							lineNumber: 79,
-							columnNumber: 13
-						}, this)
+						}) })
 					]
-				}, void 0, !0, {
-					fileName: O,
-					lineNumber: 69,
-					columnNumber: 11
-				}, this)] }, void 0, !0, {
-					fileName: O,
-					lineNumber: 59,
-					columnNumber: 9
-				}, this)
+				})] })
 			]
-		}, void 0, !0, {
-			fileName: O,
-			lineNumber: 15,
-			columnNumber: 7
-		}, this)]
-	}, void 0, !0, {
-		fileName: O,
-		lineNumber: 11,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
 function re() {
 	if (!(typeof window > "u")) {
@@ -1005,19 +879,19 @@ var ae = (e, t, n) => {
 	function l(e, t = {}) {
 		return new c(e, t).parse();
 	}
-}))(), A = class extends Error {
+}))(), k = class extends Error {
 	constructor(e, t, n) {
 		super(e), this.token = t, this.type = n || "error";
 	}
-}, j = (e) => e < 4 ? "short" : e === 4 ? "long" : "narrow", M = (e) => e % 2 == 0 ? "2-digit" : "numeric";
+}, A = (e) => e < 4 ? "short" : e === 4 ? "long" : "narrow", j = (e) => e % 2 == 0 ? "2-digit" : "numeric";
 function le(e, t) {
 	switch (e.char) {
-		case "y": return { year: M(e.width) };
+		case "y": return { year: j(e.width) };
 		case "r": return {
 			calendar: "gregory",
 			year: "numeric"
 		};
-		default: return t(`${e.desc} is not supported; falling back to year:numeric`, A.WARNING), { year: "numeric" };
+		default: return t(`${e.desc} is not supported; falling back to year:numeric`, k.WARNING), { year: "numeric" };
 	}
 }
 function ue(e, t) {
@@ -1034,15 +908,15 @@ function ue(e, t) {
 }
 function de(e, t) {
 	let { char: n, desc: r, width: i } = e;
-	if (n === "d") return M(i);
+	if (n === "d") return j(i);
 	t(`${r} is not supported`);
 }
 function fe(e, t) {
 	let { char: n, desc: r, width: i } = e;
-	return (n === "c" || n === "e") && i < 3 && t(`Numeric value is not supported for ${r}; falling back to weekday:short`, A.WARNING), j(i);
+	return (n === "c" || n === "e") && i < 3 && t(`Numeric value is not supported for ${r}; falling back to weekday:short`, k.WARNING), A(i);
 }
 function pe(e) {
-	let t = M(e.width), n;
+	let t = j(e.width), n;
 	switch (e.char) {
 		case "h":
 			n = "h12";
@@ -1077,15 +951,15 @@ function me(e, t) {
 }
 function he(e, t) {
 	switch (e.field) {
-		case "era": return { era: j(e.width) };
+		case "era": return { era: A(e.width) };
 		case "year": return le(e, t);
 		case "month": return { month: ue(e, t) };
 		case "day": return { day: de(e, t) };
 		case "weekday": return { weekday: fe(e, t) };
 		case "period": return;
 		case "hour": return pe(e);
-		case "min": return { minute: M(e.width) };
-		case "sec": return { second: M(e.width) };
+		case "min": return { minute: j(e.width) };
+		case "sec": return { second: j(e.width) };
 		case "tz": return { timeZoneName: me(e, t) };
 		case "quarter":
 		case "week":
@@ -1100,16 +974,16 @@ function ge(e, t, n = (e) => {
 	for (let t of e) {
 		let { error: e, field: a, str: o } = t;
 		if (e) {
-			let r = new A(e.message, t);
+			let r = new k(e.message, t);
 			r.stack = e.stack, n(r);
 		}
-		o && n(new A(`Ignoring string part: ${o}`, t, A.WARNING)), a && (i.indexOf(a) === -1 ? i.push(a) : n(new A(`Duplicate ${a} token`, t)));
-		let s = he(t, (e, r) => n(new A(e, t, r)));
+		o && n(new k(`Ignoring string part: ${o}`, t, k.WARNING)), a && (i.indexOf(a) === -1 ? i.push(a) : n(new k(`Duplicate ${a} token`, t)));
+		let s = he(t, (e, r) => n(new k(e, t, r)));
 		s && Object.assign(r, s);
 	}
 	return r;
 }
-var _e = {
+var M = {
 	G: {
 		field: "era",
 		desc: "Era"
@@ -1274,7 +1148,7 @@ var _e = {
 function P(e, t) {
 	let n = e[t], r = 1;
 	for (; e[++t] === n;) ++r;
-	let i = _e[n];
+	let i = M[n];
 	if (!i) {
 		let e = `The letter ${n} is not a valid field identifier`;
 		return {
@@ -1335,7 +1209,7 @@ function I(e, t) {
 		r += a, i += 1;
 	}
 }
-function ve(e) {
+function L(e) {
 	let t = [], n = 0;
 	for (;;) {
 		let r = I(e, n);
@@ -1343,7 +1217,7 @@ function ve(e) {
 		t.push(r), n += r.width;
 	}
 }
-function L(e, t) {
+function R(e, t) {
 	return e.filter((e) => e.type !== "content").length ? e.map((e) => {
 		if (e.type === "content") return t(e.value);
 		if (e.type === "octothorpe") return "#";
@@ -1351,7 +1225,7 @@ function L(e, t) {
 		if (e.type === "function") {
 			let t = e?.param?.[0];
 			if (e.key === "date" && t) {
-				let n = ye(t.value.trim(), (e) => {
+				let n = _e(t.value.trim(), (e) => {
 					throw Error(`Unable to compile date expression: ${e.message}`);
 				});
 				return [
@@ -1369,7 +1243,7 @@ function L(e, t) {
 		let n = e.pluralOffset, r = {};
 		return e.cases.forEach(({ key: e, tokens: n }) => {
 			let i = e[0] === "=" ? e.slice(1) : e;
-			r[i] = L(n, t);
+			r[i] = R(n, t);
 		}), [
 			e.arg,
 			e.type,
@@ -1380,27 +1254,27 @@ function L(e, t) {
 		];
 	}) : e.map((e) => t(e.value));
 }
-function ye(e, t) {
-	return /^::/.test(e) ? ge(ve(e.substring(2)), void 0, t) : e;
+function _e(e, t) {
+	return /^::/.test(e) ? ge(L(e.substring(2)), void 0, t) : e;
 }
-function be(e, t = (e) => e) {
-	return L((0, ce.parse)(e), t);
+function ve(e, t = (e) => e) {
+	return R((0, ce.parse)(e), t);
 }
-function xe(e, t = (e) => e) {
+function ye(e, t = (e) => e) {
 	try {
-		return be(e, t);
+		return ve(e, t);
 	} catch (t) {
 		return console.error(`${t.message} 
 
 Message: ${e}`), [e];
 	}
 }
-var R = (e) => typeof e == "string", Se = (e) => typeof e == "function", z = /* @__PURE__ */ new Map(), B = "en";
-function V(e) {
-	return [...Array.isArray(e) ? e : [e], B];
+var z = (e) => typeof e == "string", be = (e) => typeof e == "function", B = /* @__PURE__ */ new Map(), V = "en";
+function H(e) {
+	return [...Array.isArray(e) ? e : [e], V];
 }
-function H(e, t, n) {
-	let r = V(e);
+function U(e, t, n) {
+	let r = H(e);
 	n ||= "default";
 	let i;
 	if (typeof n == "string") switch (i = {
@@ -1415,9 +1289,9 @@ function H(e, t, n) {
 		case "short": i.month = "numeric";
 	}
 	else i = n;
-	return G(() => K("date", r, n), () => new Intl.DateTimeFormat(r, i)).format(R(t) ? new Date(t) : t);
+	return K(() => q("date", r, n), () => new Intl.DateTimeFormat(r, i)).format(z(t) ? new Date(t) : t);
 }
-function Ce(e, t, n) {
+function xe(e, t, n) {
 	let r;
 	if (n ||= "default", typeof n == "string") switch (r = {
 		second: "numeric",
@@ -1431,24 +1305,24 @@ function Ce(e, t, n) {
 		case "short": delete r.second;
 	}
 	else r = n;
-	return H(e, t, r);
+	return U(e, t, r);
 }
-function U(e, t, n) {
-	let r = V(e);
-	return G(() => K("number", r, n), () => new Intl.NumberFormat(r, n)).format(t);
+function W(e, t, n) {
+	let r = H(e);
+	return K(() => q("number", r, n), () => new Intl.NumberFormat(r, n)).format(t);
 }
-function W(e, t, n, { offset: r = 0, ...i }) {
-	let a = V(e), o = t ? G(() => K("plural-ordinal", a), () => new Intl.PluralRules(a, { type: "ordinal" })) : G(() => K("plural-cardinal", a), () => new Intl.PluralRules(a, { type: "cardinal" }));
+function G(e, t, n, { offset: r = 0, ...i }) {
+	let a = H(e), o = t ? K(() => q("plural-ordinal", a), () => new Intl.PluralRules(a, { type: "ordinal" })) : K(() => q("plural-cardinal", a), () => new Intl.PluralRules(a, { type: "cardinal" }));
 	return i[n] ?? i[o.select(n - r)] ?? i.other;
 }
-function G(e, t) {
-	let n = e(), r = z.get(n);
-	return r || (r = t(), z.set(n, r)), r;
+function K(e, t) {
+	let n = e(), r = B.get(n);
+	return r || (r = t(), B.set(n, r)), r;
 }
-function K(e, t, n) {
+function q(e, t, n) {
 	return `${e}-${t.join("-")}-${JSON.stringify(n)}`;
 }
-var q = /\\u[a-fA-F0-9]{4}|\\x[a-fA-F0-9]{2}/, J = (e) => e.replace(/\\u([a-fA-F0-9]{4})|\\x([a-fA-F0-9]{2})/g, (e, t, n) => {
+var J = /\\u[a-fA-F0-9]{4}|\\x[a-fA-F0-9]{2}/, Y = (e) => e.replace(/\\u([a-fA-F0-9]{4})|\\x([a-fA-F0-9]{2})/g, (e, t, n) => {
 	if (t) {
 		let e = parseInt(t, 16);
 		return String.fromCharCode(e);
@@ -1457,31 +1331,31 @@ var q = /\\u[a-fA-F0-9]{4}|\\x[a-fA-F0-9]{2}/, J = (e) => e.replace(/\\u([a-fA-F
 		let e = parseInt(n, 16);
 		return String.fromCharCode(e);
 	}
-}), Y = "%__lingui_octothorpe__%", we = (e, t, n = {}) => {
+}), X = "%__lingui_octothorpe__%", Se = (e, t, n = {}) => {
 	let r = t || e, i = (e) => typeof e == "object" ? e : n[e], a = (e, t) => {
-		let a = Object.keys(n).length ? i("number") : void 0, o = U(r, e, a);
-		return t.replace(new RegExp(Y, "g"), o);
+		let a = Object.keys(n).length ? i("number") : void 0, o = W(r, e, a);
+		return t.replace(new RegExp(X, "g"), o);
 	};
 	return {
 		plural: (e, t) => {
-			let { offset: n = 0 } = t, i = W(r, !1, e, t);
+			let { offset: n = 0 } = t, i = G(r, !1, e, t);
 			return a(e - n, i);
 		},
 		selectordinal: (e, t) => {
-			let { offset: n = 0 } = t, i = W(r, !0, e, t);
+			let { offset: n = 0 } = t, i = G(r, !0, e, t);
 			return a(e - n, i);
 		},
-		select: Te,
-		number: (e, t) => U(r, e, i(t) || { style: t }),
-		date: (e, t) => H(r, e, i(t) || t),
-		time: (e, t) => Ce(r, e, i(t) || t)
+		select: Ce,
+		number: (e, t) => W(r, e, i(t) || { style: t }),
+		date: (e, t) => U(r, e, i(t) || t),
+		time: (e, t) => xe(r, e, i(t) || t)
 	};
-}, Te = (e, t) => t[e] ?? t.other;
-function Ee(e, t, n) {
+}, Ce = (e, t) => t[e] ?? t.other;
+function we(e, t, n) {
 	return (r = {}, i) => {
-		let a = we(t, n, i), o = (e, t = !1) => Array.isArray(e) ? e.reduce((e, n) => {
-			if (n === "#" && t) return e + Y;
-			if (R(n)) return e + n;
+		let a = Se(t, n, i), o = (e, t = !1) => Array.isArray(e) ? e.reduce((e, n) => {
+			if (n === "#" && t) return e + X;
+			if (z(n)) return e + n;
 			let [i, s, c] = n, l = {};
 			s === "plural" || s === "selectordinal" || s === "select" ? Object.entries(c).forEach(([e, t]) => {
 				l[e] = o(t, s === "plural" || s === "selectordinal");
@@ -1493,10 +1367,10 @@ function Ee(e, t, n) {
 			} else u = r[i];
 			return u == null ? e : e + u;
 		}, "") : e, s = o(e);
-		return R(s) && q.test(s) ? J(s) : R(s) ? s : s ? String(s) : "";
+		return z(s) && J.test(s) ? Y(s) : z(s) ? s : s ? String(s) : "";
 	};
 }
-var De = class {
+var Te = class {
 	_events = {};
 	on(e, t) {
 		return this._events[e] ??= /* @__PURE__ */ new Set(), this._events[e].add(t), () => this.removeListener(e, t);
@@ -1509,14 +1383,14 @@ var De = class {
 		let n = this._events[e];
 		if (n) for (let e of [...n]) e.apply(this, t);
 	}
-}, Oe = class extends De {
+}, Ee = class extends Te {
 	_locale = "";
 	_locales;
 	_messages = {};
 	_missing;
 	_messageCompiler;
 	constructor(e) {
-		super(), process.env.NODE_ENV !== "production" && this.setMessagesCompiler(xe), e.missing != null && (this._missing = e.missing), e.messages != null && this.load(e.messages), (typeof e.locale == "string" || e.locales) && this.activate(e.locale ?? B, e.locales);
+		super(), process.env.NODE_ENV !== "production" && this.setMessagesCompiler(ye), e.missing != null && (this._missing = e.missing), e.messages != null && this.load(e.messages), (typeof e.locale == "string" || e.locales) && this.activate(e.locale ?? V, e.locales);
 	}
 	get locale() {
 		return this._locale;
@@ -1546,15 +1420,15 @@ var De = class {
 	_(e, t, n) {
 		if (!this.locale) throw Error("Lingui: Attempted to call a translation function without setting a locale.\nMake sure to call `i18n.activate(locale)` before using Lingui functions.\nThis issue may also occur due to a race condition in your initialization logic.");
 		let r = n?.message;
-		e ||= "", R(e) || (t = e.values || t, r = e.message, e = e.id);
+		e ||= "", z(e) || (t = e.values || t, r = e.message, e = e.id);
 		let i = this.messages[e], a = i === void 0, o = this._missing;
-		if (o && a) return Se(o) ? o(this._locale, e) : o;
+		if (o && a) return be(o) ? o(this._locale, e) : o;
 		a && this.emit("missing", {
 			id: e,
 			locale: this._locale
 		});
 		let s = i || r || e;
-		return R(s) && (this._messageCompiler ? s = this._messageCompiler(s) : console.warn(`Uncompiled message detected! Message:
+		return z(s) && (this._messageCompiler ? s = this._messageCompiler(s) : console.warn(`Uncompiled message detected! Message:
 
 > ${s}
 
@@ -1562,21 +1436,21 @@ That means you use raw catalog or your catalog doesn't have a translation for th
 ICU features such as interpolation and plurals will not work properly for that message.
 
 Please compile your catalog first.
-`)), R(s) && q.test(s) ? J(s) : R(s) ? s : Ee(s, this._locale, this._locales)(t, n?.formats);
+`)), z(s) && J.test(s) ? Y(s) : z(s) ? s : we(s, this._locale, this._locales)(t, n?.formats);
 	}
 	t = this._.bind(this);
 	date(e, t) {
-		return H(this._locales || this._locale, e, t);
-	}
-	number(e, t) {
 		return U(this._locales || this._locale, e, t);
 	}
+	number(e, t) {
+		return W(this._locales || this._locale, e, t);
+	}
 };
-function X(e = {}) {
-	return new Oe(e);
+function Z(e = {}) {
+	return new Ee(e);
 }
-X();
-var ke = ["shared", "route"], Z = [
+Z();
+var De = ["shared", "route"], Oe = [
 	"about",
 	"blog",
 	"careers",
@@ -1587,8 +1461,8 @@ var ke = ["shared", "route"], Z = [
 	"products",
 	"settings",
 	"team"
-], Ae = [...ke, ...Z], Q = {};
-async function je(e, t) {
+], Q = [...De, ...Oe], $ = {};
+async function ke(e, t) {
 	for (let n of t) try {
 		let { messages: t } = await ae(Object.assign({
 			"../locales/de/about.mjs": () => import("./about-BKzBMAkN.js"),
@@ -1722,60 +1596,41 @@ async function je(e, t) {
 			"../locales/zh/shared.mjs": () => import("./shared-B01PtY4U.js"),
 			"../locales/zh/team.mjs": () => import("./team-DIbOvXyc.js")
 		}), `../locales/${e}/${n}.mjs`, 4);
-		Object.assign(Q, t);
+		Object.assign($, t);
 	} catch (t) {
 		console.error(`Failed to load namespace: ${n} for locale: ${e}`, t);
 	}
-	return Q;
+	return $;
 }
-function Me(e, t) {
-	let n = X();
+function Ae(e, t) {
+	let n = Z();
 	return n.load(e, t), n.activate(e), n;
 }
-var Ne = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/AppProviders.tsx";
-function Pe({ children: e, locale: t, messages: n }) {
-	let i = o(() => Me(t, n), [t, n]), [c] = s(() => typeof performance < "u" ? performance.now() : 0);
+function je({ children: e, locale: t, messages: n }) {
+	let i = o(() => Ae(t, n), [t, n]), [c] = s(() => typeof performance < "u" ? performance.now() : 0);
 	return a(() => {
 		ie("AppRoot", c);
 	}, [c]), r(() => {
 		document.documentElement.lang = t;
 	}, [t]), r(() => {
 		re();
-	}, []), u(ne, {
+	}, []), l(ne, {
 		i18n: i,
 		children: e
-	}, void 0, !1, {
-		fileName: Ne,
-		lineNumber: 40,
-		columnNumber: 7
-	}, this);
+	});
 }
-var Fe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/scripts/Wrapper.tsx";
-async function Ie({ children: e }) {
-	let t = await je("en", Ae);
-	return u(Pe, {
+async function Me({ children: e }) {
+	let t = await ke("en", Q);
+	return l(je, {
 		locale: "en",
 		messages: t,
 		children: e
-	}, void 0, !1, {
-		fileName: Fe,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/pages/settings/PreferencesSection.wrapper.tsx";
-function Le() {
-	return u(Ie, { children: u(k, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function Ne() {
+	return l(Me, { children: l(O, {}) });
 }
-export { Le as default };
+export { Ne as default };
 var e = JSON.parse("{\"about-grid.choosingAnI18nLibraryIs\":[\"Elegir una biblioteca i18n es una decisión arquitectónica con consecuencias a largo plazo. La mayoría de las comparaciones se centran en la ergonomía de la API, pero pocas miden el costo de rendimiento: ¿cuánto peso añade la biblioteca al paquete? ¿Cómo afecta al renderizado cuando se cargan miles de claves de traducción? ¿Ayuda realmente la carga diferida o simplemente traslada el costo? Este benchmark responde a esas preguntas con datos reales.\"],\"about-grid.methodology\":[\"Metodología\"],\"about-grid.theSame10PageApp\":[\"La misma aplicación de 10 páginas se construye una vez por biblioteca. Medimos el paquete de producción (a través de rollup-plugin-visualizer), realizamos auditorías de Lighthouse para las métricas de carga y utilizamos React Profiler para capturar los tiempos de renderizado durante los cambios de idioma. Todas las pruebas se ejecutan en CI en hardware consistente para garantizar resultados reproducibles.\"],\"about-grid.whyThisExists\":[\"Por qué existe esto\"],\"about-header.aboutThisBenchmark\":[\"Sobre este benchmark\"],\"about-header.thisIsAnOpenSource\":[\"Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación React de varias páginas realista donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas.\"],\"what-we-measure.bundleSizeImpact\":[\"Impacto en el tamaño del paquete\"],\"what-we-measure.duringSsrTranslationDataIs\":[\"Durante el SSR, los datos de traducción se serializan en el HTML. Los diccionarios grandes aumentan la carga útil de HTML y ralentizan la hidratación: el momento en que la página se vuelve interactiva.\"],\"what-we-measure.howFastTheAppCan\":[\"Qué tan rápido puede la aplicación cambiar de un idioma a otro en tiempo de ejecución, incluyendo la obtención de nuevas traducciones, el renderizado de componentes y la actualización del DOM.\"],\"what-we-measure.howMuchExtraTimeThe\":[\"Cuánto tiempo extra añade la biblioteca al ciclo de renderizado de React. Las bibliotecas que inyectan traducciones a través de un único proveedor de contexto pueden causar renderizados innecesarios en todo el árbol de componentes.\"],\"what-we-measure.hydrationCost\":[\"Costo de hidratación\"],\"what-we-measure.lazyLoadingEffectiveness\":[\"Eficacia de la carga diferida\"],\"what-we-measure.localeSwitchSpeed\":[\"Velocidad de cambio de idioma\"],\"what-we-measure.renderingOverhead\":[\"Sobrecarga de renderizado\"],\"what-we-measure.theAdditionalJavascriptBytesSent\":[\"Los bytes de JavaScript adicionales enviados a los usuarios cuando se incluyen la biblioteca i18n y sus archivos de traducción. Esto afecta directamente al tiempo de descarga en redes lentas.\"],\"what-we-measure.whatWeMeasure\":[\"Lo que medimos\"],\"what-we-measure.whetherSplittingTranslationsByRoute\":[\"Si dividir las traducciones por ruta o espacio de nombres reduce realmente la carga inicial y qué compensaciones introduce (solicitudes en cascada, FOUC, complejidad de la caché).\"]}");
 export { e as messages };
 var e = JSON.parse("{\"about-grid.choosingAnI18nLibraryIs\":[\"选择 i18n 库是一项具有长期影响的架构决策。大多数比较侧重于 API 的易用性，但很少衡量性能成本：库为包增加了多少权重？加载数千个翻译键时它如何影响渲染？延迟加载是否真的有帮助，还是只是转移了成本？本基准测试用真实数据回答了这些问题。\"],\"about-grid.methodology\":[\"方法论\"],\"about-grid.theSame10PageApp\":[\"同一个 10 页应用为每个库构建一次。我们测量生产包（通过 rollup-plugin-visualizer），运行 Lighthouse 审计以获取加载指标，并使用 React Profiler 捕获语言切换期间的渲染时间。所有测试都在一致的硬件上在 CI 中运行，以确保结果的可复现性。\"],\"about-grid.whyThisExists\":[\"为什么存在这个基准测试\"],\"about-header.aboutThisBenchmark\":[\"关于本基准测试\"],\"about-header.thisIsAnOpenSource\":[\"这是一个开源测试应用程序 —— 不是产品或公司。其唯一目的是提供一个现实的多页面 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。\"],\"what-we-measure.bundleSizeImpact\":[\"包大小影响\"],\"what-we-measure.duringSsrTranslationDataIs\":[\"在 SSR 期间，翻译数据被序列化到 HTML 中。大型字典会增加 HTML 负载并减慢注水速度 —— 即页面变得可交互的时刻。\"],\"what-we-measure.howFastTheAppCan\":[\"应用在运行时从一种语言切换到另一种语言的速度 —— 包括获取新翻译、重新渲染组件和更新 DOM。\"],\"what-we-measure.howMuchExtraTimeThe\":[\"库为 React 渲染周期增加了多少额外时间。通过单个上下文提供者注入翻译的库可能会在整个组件树中导致不必要的重新渲染。\"],\"what-we-measure.hydrationCost\":[\"注水成本\"],\"what-we-measure.lazyLoadingEffectiveness\":[\"延迟加载有效性\"],\"what-we-measure.localeSwitchSpeed\":[\"语言切换速度\"],\"what-we-measure.renderingOverhead\":[\"渲染开销\"],\"what-we-measure.theAdditionalJavascriptBytesSent\":[\"包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络下的下载时间。\"],\"what-we-measure.whatWeMeasure\":[\"我们测量什么\"],\"what-we-measure.whetherSplittingTranslationsByRoute\":[\"按路由或命名空间拆分翻译是否真的减少了初始负载，以及它引入了哪些权衡（瀑布流请求、FOUC、缓存复杂性）。\"]}");

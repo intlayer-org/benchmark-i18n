@@ -80,11 +80,11 @@ export default function ThemeToggle() {
       className="rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
     >
       {mode === "auto" ? (
-        <T keyName="themeToggle.themeAuto" defaultValue="Theme: Auto" />
+        <T keyName="themeToggle.themeAuto" />
       ) : mode === "dark" ? (
-        <T keyName="themeToggle.themeDark" defaultValue="Theme: Dark" />
+        <T keyName="themeToggle.themeDark" />
       ) : (
-        <T keyName="themeToggle.themeLight" defaultValue="Theme: Light" />
+        <T keyName="themeToggle.themeLight" />
       )}
     </button>
   );

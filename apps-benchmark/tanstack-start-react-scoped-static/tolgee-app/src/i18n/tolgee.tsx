@@ -1,5 +1,5 @@
 import { Tolgee, FormatSimple } from "@tolgee/web";
-import { getMessages } from "./getMessages";
+import { messageModules, type Messages } from "./getMessages";
 import {
   useTranslate as useTolgeeTranslate,
   T as TolgeeT,
@@ -10,9 +10,7 @@ export const tolgee = Tolgee()
   .use(FormatSimple())
   .init({
     language: "en",
-    // Required for the DevTools to connect to your project
-    apiUrl: import.meta.env.VITE_TOLGEE_API_URL,
-    apiKey: import.meta.env.VITE_TOLGEE_API_KEY,
+    staticData: messageModules,
   });
 
 // Extracts strict dot-notation keys from the JSON structure
@@ -24,7 +22,7 @@ type Leaves<T> = T extends object
     }[Extract<keyof T, string>]
   : never;
 
-export type TranslationKey = Leaves<ReturnType<typeof getMessages>>;
+export type TranslationKey = Leaves<Messages>;
 
 // Typed Hook
 export function useTranslate() {
@@ -33,7 +31,7 @@ export function useTranslate() {
   return {
     ...rest,
     // Enforce the TranslationKey type on the first argument
-    t: (key: TranslationKey, defaultValue?: string) => t(key, defaultValue),
+    t: (key: TranslationKey) => t(key),
   };
 }
 

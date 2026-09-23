@@ -1,6 +1,5 @@
 import { cloneElement, createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsx } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -274,147 +273,70 @@ This often happens when multiple instances of @lingui/react are installed (e.g. 
 		lingui
 	});
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/home/WhyItMatters.tsx";
 function WhyItMatters() {
 	const { i18n } = useLingui();
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mb-16",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-6 text-2xl font-bold text-foreground",
-			children: jsxDEV(Trans, {
+			children: jsx(Trans, {
 				id: "why-it-matters.whyTheseMetricsMatter",
 				message: "Why These Metrics Matter"
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 12,
-				columnNumber: 9
-			}, this)
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 11,
-			columnNumber: 7
-		}, this), jsxDEV("div", {
+			})
+		}), jsxs("div", {
 			className: "grid gap-6 md:grid-cols-3",
 			children: [
-				jsxDEV("div", {
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: jsxDEV(Trans, {
+						children: jsx(Trans, {
 							id: "why-it-matters.bundleSize",
 							message: "Bundle Size"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 20,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 19,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+						})
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
-						children: jsxDEV(Trans, {
+						children: jsx(Trans, {
 							id: "why-it-matters.theBundleIsTheData",
 							message: "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 23,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 22,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 18,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+						})
+					})]
+				}),
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: jsxDEV(Trans, {
+						children: jsx(Trans, {
 							id: "why-it-matters.renderingHydration",
 							message: "Rendering & Hydration"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 31,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 30,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+						})
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
-						children: jsxDEV(Trans, {
+						children: jsx(Trans, {
 							id: "why-it-matters.connectingALargeJsonDictionary",
 							message: "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 37,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 36,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 29,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+						})
+					})]
+				}),
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: jsxDEV(Trans, {
+						children: jsx(Trans, {
 							id: "why-it-matters.dynamicLoading",
 							message: "Dynamic Loading"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 45,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 44,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+						})
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
-						children: jsxDEV(Trans, {
+						children: jsx(Trans, {
 							id: "why-it-matters.loadingAllTranslationsUpfrontOverloads",
 							message: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 51,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 50,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 43,
-					columnNumber: 9
-				}, this)
+						})
+					})]
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 17,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 10,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1835,7 +1757,6 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const messages = useMemo(() => getMessages(locale), [locale]);
@@ -1850,33 +1771,15 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 35,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/home/WhyItMatters.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(WhyItMatters, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(WhyItMatters, {}) });
 }
 export { Wrapped as default };

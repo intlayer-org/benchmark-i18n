@@ -1,5 +1,5 @@
 import { useEffect, useId, useLayoutEffect, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 var URLPattern = {};
 var locales = [
@@ -316,72 +316,35 @@ var profile_section_profile = ((inputs = {}, options = {}) => {
 	if (locale === "ru") return ru_profile_section_profile(inputs);
 	return en_profile_section_profile(inputs);
 });
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/settings/ProfileSection.tsx";
 function ProfileSection() {
 	const displayNameId = useId();
 	const emailId = useId();
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: profile_section_profile()
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 12,
-			columnNumber: 7
-		}, this), jsxDEV("div", {
+		}), jsxs("div", {
 			className: "space-y-4",
-			children: [jsxDEV("div", { children: [jsxDEV("label", {
+			children: [jsxs("div", { children: [jsx("label", {
 				htmlFor: displayNameId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: profile_section_displayname1()
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 17,
-				columnNumber: 11
-			}, this), jsxDEV("input", {
+			}), jsx("input", {
 				id: displayNameId,
 				defaultValue: "John Developer",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 23,
-				columnNumber: 11
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 16,
-				columnNumber: 9
-			}, this), jsxDEV("div", { children: [jsxDEV("label", {
+			})] }), jsxs("div", { children: [jsx("label", {
 				htmlFor: emailId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: profile_section_email()
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 30,
-				columnNumber: 11
-			}, this), jsxDEV("input", {
+			}), jsx("input", {
 				id: emailId,
 				defaultValue: "john@example.com",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 36,
-				columnNumber: 11
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 29,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 15,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 11,
-		columnNumber: 5
-	}, this);
+			})] })]
+		})]
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -405,7 +368,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -419,30 +381,12 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/settings/ProfileSection.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ProfileSection, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ProfileSection, {}) });
 }
 export { Wrapped as default };

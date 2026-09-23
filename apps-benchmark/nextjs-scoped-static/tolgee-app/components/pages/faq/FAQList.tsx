@@ -7,75 +7,49 @@ export default function FAQList() {
 
   const faqs = [
     {
-      q: t("faqList.whatIsI18nBenchmark", "What is i18n Benchmark?"),
+      q: t("faqList.whatIsI18nBenchmark"),
       a: t(
-        "faqList.i18nBenchmarkIsAnOpenSource",
-        "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.",
-      ),
+        "faqList.i18nBenchmarkIsAnOpenSource"),
     },
     {
       q: t(
-        "faqList.howAreBenchmarksConducted",
-        "How are benchmarks conducted?",
-      ),
+        "faqList.howAreBenchmarksConducted"),
       a: t(
-        "faqList.weRunStandardizedTestsInIsolated",
-        "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
-      ),
+        "faqList.weRunStandardizedTestsInIsolated"),
     },
     {
       q: t(
-        "faqList.whichLibrariesAreCurrentlySupported",
-        "Which libraries are currently supported?",
-      ),
+        "faqList.whichLibrariesAreCurrentlySupported"),
       a: t(
-        "faqList.weSupportReactI18nextReactIntl",
-        "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
-      ),
+        "faqList.weSupportReactI18nextReactIntl"),
     },
     {
       q: t(
-        "faqList.canISubmitMyOwnBenchmarks",
-        "Can I submit my own benchmarks?",
-      ),
+        "faqList.canISubmitMyOwnBenchmarks"),
       a: t(
-        "faqList.yesCommunityBenchmarkSubmissionsAre",
-        "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
-      ),
+        "faqList.yesCommunityBenchmarkSubmissionsAre"),
     },
     {
       q: t(
-        "faqList.howOftenAreBenchmarksUpdated",
-        "How often are benchmarks updated?",
-      ),
+        "faqList.howOftenAreBenchmarksUpdated"),
       a: t(
-        "faqList.weReRunAllBenchmarksWeekly",
-        "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
-      ),
+        "faqList.weReRunAllBenchmarksWeekly"),
     },
     {
-      q: t("faqList.isTheDataReliable", "Is the data reliable?"),
+      q: t("faqList.isTheDataReliable"),
       a: t(
-        "faqList.weFollowRigorousStatisticalMethodologyIncluding",
-        "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
-      ),
+        "faqList.weFollowRigorousStatisticalMethodologyIncluding"),
     },
     {
       q: t(
-        "faqList.doYouOfferConsultingServices",
-        "Do you offer consulting services?",
-      ),
+        "faqList.doYouOfferConsultingServices"),
       a: t(
-        "faqList.yesOurEnterprisePlanIncludesConsulting",
-        "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
-      ),
+        "faqList.yesOurEnterprisePlanIncludesConsulting"),
     },
     {
-      q: t("faqList.howCanIContribute", "How can I contribute?"),
+      q: t("faqList.howCanIContribute"),
       a: t(
-        "faqList.thereAreManyWaysToContribute",
-        "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
-      ),
+        "faqList.thereAreManyWaysToContribute"),
     },
   ];
 

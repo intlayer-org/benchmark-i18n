@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
@@ -3151,7 +3151,6 @@ var client = (0, import_client.createI18nClient)({
 });
 var useScopedI18n = client.useScopedI18n;
 var { I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-international-app/components/pages/blog/BlogList.tsx";
 function BlogList() {
 	const scopedT = useScopedI18n("blog-list");
 	const posts = [
@@ -3192,69 +3191,37 @@ function BlogList() {
 			category: "Meta"
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-2",
-		children: posts.map((p) => jsxDEV("article", {
+		children: posts.map((p) => jsxs("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				jsxDEV("div", {
+				jsxs("div", {
 					className: "mb-3 flex items-center gap-3",
-					children: [jsxDEV("span", {
+					children: [jsx("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: p.category
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 55,
-						columnNumber: 13
-					}, this), jsxDEV("span", {
+					}), jsx("span", {
 						className: "text-xs text-muted-foreground",
 						children: p.date
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 58,
-						columnNumber: 13
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 54,
-					columnNumber: 11
-				}, this),
-				jsxDEV("h2", {
+					})]
+				}),
+				jsx("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: p.title
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 60,
-					columnNumber: 11
-				}, this),
-				jsxDEV("p", {
+				}),
+				jsx("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: p.excerpt
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 63,
-					columnNumber: 11
-				}, this),
-				jsxDEV("button", {
+				}),
+				jsx("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
 					children: scopedT("readMore")
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 64,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, p.title, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 50,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 48,
-		columnNumber: 5
-	}, this);
+		}, p.title))
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -3278,7 +3245,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -3290,37 +3256,19 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nProviderClient, {
+	return jsx(I18nProviderClient, {
 		locale,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 30,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, {
+	return jsx(AppProviders, {
 		locale,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-international-app/components/pages/blog/BlogList.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(BlogList, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(BlogList, {}) });
 }
 export { Wrapped as default };

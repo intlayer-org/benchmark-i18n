@@ -1,4 +1,3 @@
-import { tolgee } from "../../i18n/tolgee";
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
@@ -10,13 +9,6 @@ const ContactForm = lazy(
 );
 
 export const Route = createFileRoute("/$locale/contact")({
-  loader: async ({ params }) => {
-    await tolgee.loadRecords([
-      { language: params.locale, namespace: "contact" },
-      { language: params.locale, namespace: "contactHeader" },
-      { language: params.locale, namespace: "contactForm" },
-    ]);
-  },
   component: Contact,
 });
 

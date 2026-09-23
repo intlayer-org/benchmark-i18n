@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx } from "react/jsx-runtime";
 import { useRouter } from "next/router";
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -23,7 +23,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -35,11 +34,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
 var context;
 if (typeof React.createContext === "function") context = React.createContext({
@@ -2474,7 +2469,6 @@ var i18n_default = {
 	pages: { "*": ["common"] },
 	loadLocaleFrom: async (lang) => translationsMap[lang]
 };
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const locale = "en";
 	const [translations, setTranslations] = useState({});
@@ -2493,33 +2487,16 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		lang: locale,
 		namespaces: { common: translations },
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 37,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 36,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/components/AppProviders.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(AppProviders, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(AppProviders, {}) });
 }
 export { Wrapped as default };

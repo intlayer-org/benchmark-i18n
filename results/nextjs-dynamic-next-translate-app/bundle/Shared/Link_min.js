@@ -1,64 +1,47 @@
 import e, { createContext as t, useContext as n, useEffect as r, useLayoutEffect as i, useMemo as a, useState as o } from "react";
 import s from "next/link";
 import { useParams as c } from "next/navigation";
-import { Fragment as l, jsxDEV as u } from "react/jsx-dev-runtime";
+import { Fragment as l, jsx as u } from "react/jsx-runtime";
 import { useRouter as d } from "next/router";
-var f = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/Link.tsx", p = (e) => /^https?:\/\//.test(e ?? "");
-function m(e, t) {
+var f = (e) => /^https?:\/\//.test(e ?? "");
+function p(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
-var h = ({ href: e, children: t, ...n }) => {
+var m = ({ href: e, children: t, ...n }) => {
 	let r = c().lang ?? "en";
-	return e == null || typeof e != "string" ? u(s, {
+	return e == null || typeof e != "string" || f(e) ? u(s, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: f,
-		lineNumber: 23,
-		columnNumber: 7
-	}, void 0) : p(e) ? u(s, {
-		href: e,
+	}) : u(s, {
+		href: p(e, r),
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: f,
-		lineNumber: 30,
-		columnNumber: 7
-	}, void 0) : u(s, {
-		href: m(e, r),
-		prefetch: !1,
-		...n,
-		children: t
-	}, void 0, !1, {
-		fileName: f,
-		lineNumber: 36,
-		columnNumber: 5
-	}, void 0);
-}, g;
-typeof e.createContext == "function" && (g = e.createContext({
+	});
+}, h;
+typeof e.createContext == "function" && (h = e.createContext({
 	t: function(e) {
 		return Array.isArray(e) ? e[0] : e;
 	},
 	lang: ""
 }));
-var _ = g;
-function v(e) {
+var g = h;
+function _(e) {
 	try {
 		return new Intl.PluralRules(e);
 	} catch {
 		return new Intl.PluralRules();
 	}
 }
-var y = function() {
-	return y = Object.assign || function(e) {
+var v = function() {
+	return v = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, y.apply(this, arguments);
+	}, v.apply(this, arguments);
 };
-function b(e, t) {
+function y(e, t) {
 	if (!t) return { i18nKey: e };
 	var n = e.indexOf(t);
 	return n < 0 ? { i18nKey: e } : {
@@ -66,16 +49,16 @@ function b(e, t) {
 		i18nKey: e.slice(n + t.length)
 	};
 }
-function x(e) {
-	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? E : a, s = t.allowEmptyStrings, c = s === void 0 || s, l = function(e, n) {
+function b(e) {
+	var t = e.config, n = e.allNamespaces, r = e.pluralRules, i = e.lang, a = t.logger, o = a === void 0 ? T : a, s = t.allowEmptyStrings, c = s === void 0 || s, l = function(e, n) {
 		return Array.isArray(e) ? e.map(function(e) {
 			return l(e, n);
-		}) : e instanceof Object ? T({
+		}) : e instanceof Object ? w({
 			obj: e,
 			query: n,
 			config: t,
 			lang: i
-		}) : w({
+		}) : C({
 			text: e,
 			query: n,
 			config: t,
@@ -83,19 +66,19 @@ function x(e) {
 		});
 	}, u = function(e, i, a) {
 		e === void 0 && (e = "");
-		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = b(s, f), g = h.i18nKey, _ = h.namespace, v = _ === void 0 ? a?.ns ?? t.defaultNS : _, x = v && n[v] || {}, w = S(x, C(r, x, g, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
+		var s = Array.isArray(e) ? e[0] : e, d = t.nsSeparator, f = d === void 0 ? ":" : d, p = t.loggerEnvironment, m = p === void 0 ? "browser" : p, h = y(s, f), g = h.i18nKey, _ = h.namespace, b = _ === void 0 ? a?.ns ?? t.defaultNS : _, C = b && n[b] || {}, w = x(C, S(r, C, g, t, i, a), t, a), T = typeof w == "object" ? JSON.parse(JSON.stringify(w)) : w, E = T === void 0 || typeof T == "object" && !Object.keys(T).length || T === "" && !c, D = typeof a?.fallback == "string" ? [a.fallback] : a?.fallback || [];
 		if (E && (m === "both" || m === (typeof window > "u" ? "node" : "browser")) && o({
-			namespace: v,
+			namespace: b,
 			i18nKey: g
 		}), E && Array.isArray(D) && D.length) {
 			var O = D[0], k = D.slice(1);
-			if (typeof O == "string") return u(O, i, y(y({}, a), { fallback: k }));
+			if (typeof O == "string") return u(O, i, v(v({}, a), { fallback: k }));
 		}
 		return E && a && a.hasOwnProperty("default") && !D?.length ? a.default ? l(a.default, i) : a.default : E ? s : l(T, i);
 	};
 	return u;
 }
-function S(e, t, n, r) {
+function x(e, t, n, r) {
 	t === void 0 && (t = ""), r === void 0 && (r = { returnObjects: !1 });
 	var i = (n || {}).keySeparator, a = i === void 0 ? "." : i, o = a ? t.split(a) : [t];
 	if (t === a && r.returnObjects) return e;
@@ -106,18 +89,18 @@ function S(e, t, n, r) {
 	}, e);
 	if (typeof s == "string" || s instanceof Object && r.returnObjects && Object.keys(s).length > 0 || Array.isArray(s) && r.returnObjects) return s;
 }
-function C(e, t, n, r, i, a) {
+function S(e, t, n, r, i, a) {
 	if (!i || typeof i.count != "number") return n;
 	var o = `${n}_${i.count}`;
-	if (S(t, o, r, a) !== void 0) return o;
+	if (x(t, o, r, a) !== void 0) return o;
 	var s = `${n}_${e.select(i.count)}`;
-	if (S(t, s, r, a) !== void 0) return s;
+	if (x(t, s, r, a) !== void 0) return s;
 	var c = `${n}.${i.count}`;
-	if (S(t, c, r, a) !== void 0) return c;
+	if (x(t, c, r, a) !== void 0) return c;
 	var l = `${n}.${e.select(i.count)}`;
-	return S(t, l, r, a) === void 0 ? n : l;
+	return x(t, l, r, a) === void 0 ? n : l;
 }
-function w(e) {
+function C(e) {
 	var t = e.text, n = e.query, r = e.config, i = e.lang;
 	if (!t || !n) return t || "";
 	var a = function(e) {
@@ -130,15 +113,15 @@ function w(e) {
 		});
 	}, t);
 }
-function T(e) {
+function w(e) {
 	var t = e.obj, n = e.query, r = e.config, i = e.lang;
 	return !n || Object.keys(n).length === 0 || Object.keys(t).forEach(function(e) {
-		t[e] instanceof Object && T({
+		t[e] instanceof Object && w({
 			obj: t[e],
 			query: n,
 			config: r,
 			lang: i
-		}), typeof t[e] == "string" && (t[e] = w({
+		}), typeof t[e] == "string" && (t[e] = C({
 			text: t[e],
 			query: n,
 			config: r,
@@ -146,7 +129,7 @@ function T(e) {
 		}));
 	}), t;
 }
-function E(e) {
+function T(e) {
 	var t = e.namespace, n = e.i18nKey;
 	if (process.env.NODE_ENV !== "production") {
 		if (!t) {
@@ -156,31 +139,31 @@ function E(e) {
 		console.warn(`[next-translate] "${t}:${n}" is missing in current namespace configuration. Try adding "${n}" to the namespace "${t}".`);
 	}
 }
-var D = function() {
-	return D = Object.assign || function(e) {
+var E = function() {
+	return E = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, D.apply(this, arguments);
+	}, E.apply(this, arguments);
 };
-function O(e, t) {
+function D(e, t) {
 	return typeof t == "string" ? function(n, r, i) {
-		return e(n, r, D({ ns: t }, i));
+		return e(n, r, E({ ns: t }, i));
 	} : e;
 }
-function k() {
+function O() {
 	return typeof window > "u";
 }
-function A(e) {
+function k(e) {
 	var t = globalThis.__NEXT_TRANSLATE__ ?? {}, n = t.lang, r = t.namespaces, i = t.config, o = i.localesToIgnore || ["default"], s = !n || o.includes(n), c = function() {
-		return O(x({
+		return D(b({
 			config: i,
 			allNamespaces: r,
-			pluralRules: v(s ? void 0 : n),
+			pluralRules: _(s ? void 0 : n),
 			lang: n
 		}), e);
 	}, l = r ? Object.keys(r).sort().join("|") : "";
 	return {
-		t: k() ? c() : a(c, [
+		t: O() ? c() : a(c, [
 			e,
 			n,
 			l
@@ -188,63 +171,63 @@ function A(e) {
 		lang: n
 	};
 }
-var j = function() {
-	return j = Object.assign || function(e) {
+var A = function() {
+	return A = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, j.apply(this, arguments);
+	}, A.apply(this, arguments);
 };
-function M(e) {
-	var t = n(_);
+function j(e) {
+	var t = n(g);
 	return a(function() {
-		return j(j({}, t), { t: O(t.t, e) });
+		return A(A({}, t), { t: D(t.t, e) });
 	}, [t, e]);
 }
-function N(e) {
-	return (globalThis.__NEXT_TRANSLATE__?.config ? A : M)(e);
+function M(e) {
+	return (globalThis.__NEXT_TRANSLATE__?.config ? k : j)(e);
 }
-var P = function() {
-	return P = Object.assign || function(e) {
+var N = function() {
+	return N = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, P.apply(this, arguments);
-}, F = t({
+	}, N.apply(this, arguments);
+}, P = t({
 	ns: {},
 	config: {}
 });
-function I(t) {
-	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, l = c === void 0 ? {} : c, u = N().lang, f = d() || {}, p = f.locale, m = f.defaultLocale, h = n(F), g = P(P(P({}, L()), h.ns), o), y = r || u || p || m || "", b = P(P({}, h.config), l), S = b.localesToIgnore || ["default"], C = !y || S.includes(y), w = a(function() {
-		return v(C ? void 0 : y);
+function F(t) {
+	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, l = c === void 0 ? {} : c, u = M().lang, f = d() || {}, p = f.locale, m = f.defaultLocale, h = n(P), v = N(N(N({}, I()), h.ns), o), y = r || u || p || m || "", x = N(N({}, h.config), l), S = x.localesToIgnore || ["default"], C = !y || S.includes(y), w = a(function() {
+		return _(C ? void 0 : y);
 	}, [C, y]), T = a(function() {
-		return x({
-			config: b,
-			allNamespaces: g,
+		return b({
+			config: x,
+			allNamespaces: v,
 			pluralRules: w,
 			lang: y
 		});
 	}, [
-		b,
-		g,
+		x,
+		v,
 		w,
 		y
 	]);
-	return e.createElement(_.Provider, { value: {
+	return e.createElement(g.Provider, { value: {
 		lang: y,
 		t: T
-	} }, e.createElement(F.Provider, { value: {
-		ns: g,
-		config: b
+	} }, e.createElement(P.Provider, { value: {
+		ns: v,
+		config: x
 	} }, s));
 }
-function L() {
+function I() {
 	return typeof window > "u" ? {} : window.__NEXT_DATA__?.props?.__namespaces || {};
 }
-var R = (e, t, n) => {
+var L = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, z = {
+}, R = {
 	locales: [
 		"en",
 		"fr",
@@ -264,7 +247,7 @@ var R = (e, t, n) => {
 	loadLocaleFrom: async (e, t) => {
 		let n = e ?? "en";
 		try {
-			return (await R(Object.assign({
+			return (await L(Object.assign({
 				"./locales/de.json": () => import("../locales/de.json"),
 				"./locales/en.json": () => import("./en-BaXPNSAv.js"),
 				"./locales/es.json": () => import("../locales/es.json"),
@@ -281,7 +264,7 @@ var R = (e, t, n) => {
 		}
 	}
 };
-function B() {
+function z() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -295,68 +278,45 @@ function B() {
 		}
 	}
 }
-function V(e, t) {
+function B(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var H = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/AppProviders.tsx";
-function U({ children: e, locale: t }) {
+function V({ children: e, locale: t }) {
 	let [n] = o(() => typeof performance < "u" ? performance.now() : 0);
 	return i(() => {
-		V("AppRoot", n);
+		B("AppRoot", n);
 	}, [n]), r(() => {
 		document.documentElement.lang = t;
 	}, [t]), r(() => {
-		B();
-	}, []), u(l, { children: e }, void 0, !1, {
-		fileName: H,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+		z();
+	}, []), u(l, { children: e });
 }
-var W = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/scripts/Wrapper.tsx";
-function G({ children: e }) {
+function H({ children: e }) {
 	let [t, n] = o({}), [i, a] = o(!1);
 	return r(() => {
 		(async () => {
 			try {
-				let e = await z.loadLocaleFrom?.("en", "common");
+				let e = await R.loadLocaleFrom?.("en", "common");
 				n(e ?? {}), a(!0);
 			} catch (e) {
 				console.error("Failed to load translations:", e), a(!0);
 			}
 		})();
-	}, ["en"]), i ? u(I, {
+	}, ["en"]), i ? u(F, {
 		lang: "en",
 		namespaces: { common: t },
-		children: u(U, {
+		children: u(V, {
 			locale: "en",
 			children: e
-		}, void 0, !1, {
-			fileName: W,
-			lineNumber: 37,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: W,
-		lineNumber: 36,
-		columnNumber: 5
-	}, this) : null;
+		})
+	}) : null;
 }
-var K = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/Link.wrapper.tsx";
-function q() {
-	return u(G, { children: u(h, {}, void 0, !1, {
-		fileName: K,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: K,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function U() {
+	return u(H, { children: u(m, {}) });
 }
-export { q as default };
+export { U as default };
 var e = {
 	"faq.faqList.howAreTheBenchmarks": "How are the benchmarks run?",
 	"faq.faqList.allBenchmarksAreRun": "All benchmarks are run using Playwright on a consistent hardware setup (M2 MacBook Pro) with simulated 4G network conditions. Each test runs 50 iterations and we report median, P95, and P99 values.",

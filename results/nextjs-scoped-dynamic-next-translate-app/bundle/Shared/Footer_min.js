@@ -1,42 +1,25 @@
 import e, { createContext as t, useContext as n, useEffect as r, useLayoutEffect as i, useMemo as a, useState as o } from "react";
 import s from "next/link";
 import { useParams as c } from "next/navigation";
-import { Fragment as l, jsxDEV as u } from "react/jsx-dev-runtime";
-import { useRouter as d } from "next/router";
-var f = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/Link.tsx", p = (e) => /^https?:\/\//.test(e ?? "");
+import { Fragment as l, jsx as u, jsxs as d } from "react/jsx-runtime";
+import { useRouter as f } from "next/router";
+var p = (e) => /^https?:\/\//.test(e ?? "");
 function m(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
 var h = ({ href: e, children: t, ...n }) => {
 	let r = c().lang ?? "en";
-	return e == null || typeof e != "string" ? u(s, {
+	return e == null || typeof e != "string" || p(e) ? u(s, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: f,
-		lineNumber: 23,
-		columnNumber: 7
-	}, void 0) : p(e) ? u(s, {
-		href: e,
-		prefetch: !1,
-		...n,
-		children: t
-	}, void 0, !1, {
-		fileName: f,
-		lineNumber: 30,
-		columnNumber: 7
-	}, void 0) : u(s, {
+	}) : u(s, {
 		href: m(e, r),
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: f,
-		lineNumber: 36,
-		columnNumber: 5
-	}, void 0);
+	});
 }, g = function() {
 	return g = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
@@ -203,8 +186,7 @@ function M(e) {
 function N(e) {
 	return (globalThis.__NEXT_TRANSLATE__?.config ? A : M)(e);
 }
-var P = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/Footer.tsx";
-function F() {
+function P() {
 	let { t: e } = N("shared"), t = [
 		{
 			label: e("footer.github"),
@@ -224,125 +206,61 @@ function F() {
 	];
 	return u("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: u("div", {
+		children: d("div", {
 			className: "container py-8",
-			children: [u("div", {
+			children: [d("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					u("div", { children: [u("h3", {
+					d("div", { children: [u("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}, void 0, !1, {
-						fileName: P,
-						lineNumber: 32,
-						columnNumber: 13
-					}, this), u("p", {
+					}), u("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("footer.anOpenSourceTestApplication")
-					}, void 0, !1, {
-						fileName: P,
-						lineNumber: 35,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: P,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this),
-					u("div", { children: [u("h3", {
+					})] }),
+					d("div", { children: [u("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("footer.resources")
-					}, void 0, !1, {
-						fileName: P,
-						lineNumber: 40,
-						columnNumber: 13
-					}, this), u("ul", {
+					}), u("ul", {
 						className: "space-y-1",
 						children: t.map((e) => u("li", { children: e.isInternal ? u(h, {
 							href: e.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}, void 0, !1, {
-							fileName: P,
-							lineNumber: 47,
-							columnNumber: 21
-						}, this) : u("a", {
+						}) : u("a", {
 							href: e.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}, void 0, !1, {
-							fileName: P,
-							lineNumber: 54,
-							columnNumber: 21
-						}, this) }, e.label, !1, {
-							fileName: P,
-							lineNumber: 45,
-							columnNumber: 17
-						}, this))
-					}, void 0, !1, {
-						fileName: P,
-						lineNumber: 43,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: P,
-						lineNumber: 39,
-						columnNumber: 11
-					}, this),
-					u("div", { children: [u("h3", {
+						}) }, e.label))
+					})] }),
+					d("div", { children: [u("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("footer.contact")
-					}, void 0, !1, {
-						fileName: P,
-						lineNumber: 68,
-						columnNumber: 13
-					}, this), u("p", {
+					}), u("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					}, void 0, !1, {
-						fileName: P,
-						lineNumber: 71,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: P,
-						lineNumber: 67,
-						columnNumber: 11
-					}, this)
+					})] })
 				]
-			}, void 0, !0, {
-				fileName: P,
-				lineNumber: 30,
-				columnNumber: 9
-			}, this), u("div", {
+			}), u("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: e("footer.builtWith")
-			}, void 0, !1, {
-				fileName: P,
-				lineNumber: 76,
-				columnNumber: 9
-			}, this)]
-		}, void 0, !0, {
-			fileName: P,
-			lineNumber: 29,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: P,
-		lineNumber: 28,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
-var I = function() {
-	return I = Object.assign || function(e) {
+var F = function() {
+	return F = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, I.apply(this, arguments);
-}, L = t({
+	}, F.apply(this, arguments);
+}, I = t({
 	ns: {},
 	config: {}
 });
-function R(t) {
-	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, l = c === void 0 ? {} : c, u = N().lang, f = d() || {}, p = f.locale, m = f.defaultLocale, h = n(L), g = I(I(I({}, z()), h.ns), o), _ = r || u || p || m || "", v = I(I({}, h.config), l), b = v.localesToIgnore || ["default"], S = !_ || b.includes(_), C = a(function() {
+function L(t) {
+	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, l = c === void 0 ? {} : c, u = N().lang, d = f() || {}, p = d.locale, m = d.defaultLocale, h = n(I), g = F(F(F({}, R()), h.ns), o), _ = r || u || p || m || "", v = F(F({}, h.config), l), b = v.localesToIgnore || ["default"], S = !_ || b.includes(_), C = a(function() {
 		return x(S ? void 0 : _);
 	}, [S, _]), T = a(function() {
 		return w({
@@ -360,20 +278,20 @@ function R(t) {
 	return e.createElement(y.Provider, { value: {
 		lang: _,
 		t: T
-	} }, e.createElement(L.Provider, { value: {
+	} }, e.createElement(I.Provider, { value: {
 		ns: g,
 		config: v
 	} }, s));
 }
-function z() {
+function R() {
 	return typeof window > "u" ? {} : window.__NEXT_DATA__?.props?.__namespaces || {};
 }
-var B = (e, t, n) => {
+var z = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, V = {
+}, B = {
 	locales: [
 		"en",
 		"fr",
@@ -402,7 +320,7 @@ var B = (e, t, n) => {
 		"/[lang]/settings": ["settings"],
 		"/[lang]/team": ["team"]
 	},
-	loadLocaleFrom: (e, t) => B(Object.assign({
+	loadLocaleFrom: (e, t) => z(Object.assign({
 		"./locales/de/about.json": () => import("../locales/de/about.json"),
 		"./locales/de/blog.json": () => import("../locales/de/blog.json"),
 		"./locales/de/careers.json": () => import("../locales/de/careers.json"),
@@ -525,7 +443,7 @@ var B = (e, t, n) => {
 		"./locales/zh/team.json": () => import("../locales/zh/team.json")
 	}), `./locales/${e}/${t}.json`, 4).then((e) => e.default)
 };
-function H() {
+function V() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -539,27 +457,22 @@ function H() {
 		}
 	}
 }
-function U(e, t) {
+function H(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var W = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/AppProviders.tsx";
-function G({ children: e, locale: t }) {
+function U({ children: e, locale: t }) {
 	let [n] = o(() => typeof performance < "u" ? performance.now() : 0);
 	return i(() => {
-		U("AppRoot", n);
+		H("AppRoot", n);
 	}, [n]), r(() => {
 		document.documentElement.lang = t;
 	}, [t]), r(() => {
-		H();
-	}, []), u(l, { children: e }, void 0, !1, {
-		fileName: W,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+		V();
+	}, []), u(l, { children: e });
 }
-var K = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/scripts/Wrapper.tsx", q = [
+var W = [
 	"about",
 	"blog",
 	"careers",
@@ -573,47 +486,30 @@ var K = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-sc
 	"shared",
 	"team"
 ];
-function J({ children: e }) {
+function G({ children: e }) {
 	let [t, n] = o({}), [i, a] = o(!1);
 	return r(() => {
 		(async () => {
 			try {
-				let e = await Promise.all(q.map(async (e) => [e, await V.loadLocaleFrom?.("en", e) ?? {}]));
+				let e = await Promise.all(W.map(async (e) => [e, await B.loadLocaleFrom?.("en", e) ?? {}]));
 				n(Object.fromEntries(e)), a(!0);
 			} catch (e) {
 				console.error("Failed to load translations:", e), a(!0);
 			}
 		})();
-	}, ["en"]), i ? u(R, {
+	}, ["en"]), i ? u(L, {
 		lang: "en",
 		namespaces: t,
-		children: u(G, {
+		children: u(U, {
 			locale: "en",
 			children: e
-		}, void 0, !1, {
-			fileName: K,
-			lineNumber: 58,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: K,
-		lineNumber: 57,
-		columnNumber: 5
-	}, this) : null;
+		})
+	}) : null;
 }
-var Y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/Footer.wrapper.tsx";
-function X() {
-	return u(J, { children: u(F, {}, void 0, !1, {
-		fileName: Y,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: Y,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function K() {
+	return u(G, { children: u(P, {}) });
 }
-export { X as default };
+export { K as default };
 var e = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",

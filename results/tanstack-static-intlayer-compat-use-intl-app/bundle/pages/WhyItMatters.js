@@ -1,6 +1,5 @@
 import React, { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var why_it_matters_default = {
 	key: "why-it-matters",
 	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"whyTheseMetricsMatter\":\"Why These Metrics Matter\",\"bundleSize\":\"Bundle Size\",\"theBundleIsTheData\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\",\"renderingHydration\":\"Rendering & Hydration\",\"connectingALargeJsonDictionary\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\",\"dynamicLoading\":\"Dynamic Loading\",\"loadingAllTranslationsUpfrontOverloads\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"},\"fr\":{\"whyTheseMetricsMatter\":\"Pourquoi ces mesures sont importantes\",\"bundleSize\":\"Taille du bundle\",\"theBundleIsTheData\":\"Le bundle représente les données envoyées à chaque utilisateur dans le monde. Un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3G lentes courantes dans de nombreuses régions. Les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.\",\"renderingHydration\":\"Rendu & Hydratation\",\"connectingALargeJsonDictionary\":\"La connexion d'un dictionnaire JSON volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. Pendant l'hydratation SSR, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le Time to Interactive (TTI).\",\"dynamicLoading\":\"Chargement dynamique\",\"loadingAllTranslationsUpfrontOverloads\":\"Le chargement de toutes les traductions à l'avance surcharge le payload initial. Le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. Cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. Mesurer les deux stratégies est essentiel.\"},\"es\":{\"whyTheseMetricsMatter\":\"Por qué son importantes estas métricas\",\"bundleSize\":\"Tamaño del bundle\",\"theBundleIsTheData\":\"El bundle representa los datos enviados a cada usuario en todo el mundo. Un bundle más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código runtime, además de los propios archivos de traducción.\",\"renderingHydration\":\"Renderizado e hidratación\",\"connectingALargeJsonDictionary\":\"Conectar un diccionario JSON grande a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede desencadenar nuevos renderizados en todo el árbol. Durante la hidratación de SSR, el análisis y la anexión de objetos de traducción masivos añaden latencia antes de que la página sea interactiva, lo que afecta directamente al Time to Interactive (TTI).\",\"dynamicLoading\":\"Carga dinámica\",\"loadingAllTranslationsUpfrontOverloads\":\"Cargar todas las traducciones por adelantado sobrecarga el payload inicial. La carga dinámica (lazy) divide las traducciones por ruta o espacio de nombres, enviando solo lo que la página actual necesita. Sin embargo, la carga diferida introduce sus propias compensaciones: solicitudes en cascada, parpadeo de contenido no traducido y complejidad de la caché. Medir ambas estrategias es esencial.\"},\"de\":{\"whyTheseMetricsMatter\":\"Warum diese Metriken wichtig sind\",\"bundleSize\":\"Bundle-Größe\",\"theBundleIsTheData\":\"Das Bundle sind die Daten, die an jeden Benutzer weltweit gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten — besonders bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren drastisch in ihrem Gewicht: von einigen Kilobytes bis zu zig Kilobytes an Laufzeitcode, plus die Übersetzungsdateien selbst.\",\"renderingHydration\":\"Rendering & Hydratisierung\",\"connectingALargeJsonDictionary\":\"Das Verbinden eines großen JSON-Wörterbuchs mit jeder Komponente erzeugt eine versteckte Abhängigkeit: Jede Änderung im Übersetzungskontext kann Re-Renderings im gesamten Baum auslösen. Während der SSR-Hydratisierung führt das Parsen und Anhängen massiver Übersetzungsobjekte zu Latenzzeiten, bevor die Seite interaktiv wird — was sich direkt auf die Time to Interactive (TTI) auswirkt.\",\"dynamicLoading\":\"Dynamisches Laden\",\"loadingAllTranslationsUpfrontOverloads\":\"Das Laden aller Übersetzungen im Voraus überlastet den initialen Payload. Dynamisches (Lazy) Loading teilt Übersetzungen nach Route oder Namensraum auf und sendet nur das, was die aktuelle Seite benötigt. Lazy Loading bringt jedoch eigene Kompromisse mit sich: Waterfall-Anfragen, Aufblitzen von nicht übersetzten Inhalten (FOUC) und Cache-Komplexität. Die Messung beider Strategien ist essenziell.\"},\"it\":{\"whyTheseMetricsMatter\":\"Perché queste metriche sono importanti\",\"bundleSize\":\"Dimensione del bundle\",\"theBundleIsTheData\":\"Il bundle rappresenta i dati inviati a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi, specialmente sulle connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.\",\"renderingHydration\":\"Rendering e idratazione\",\"connectingALargeJsonDictionary\":\"Il collegamento di un grande dizionario JSON a ogni componente crea una dipendenza nascosta: qualsiasi modifica nel contesto di traduzione può scatenare nuovi rendering in tutto l'albero. Durante l'idratazione SSR, l'analisi e l'aggiunta di enormi oggetti di traduzione aggiungono latenza prima che la pagina diventi interattiva, influenzando direttamente il Time to Interactive (TTI).\",\"dynamicLoading\":\"Caricamento dinamico\",\"loadingAllTranslationsUpfrontOverloads\":\"Il caricamento di tutte le traduzioni in anticipo sovraccarica il payload iniziale. Il caricamento dinamico (lazy) divide le traduzioni per rotta o namespace, inviando solo ciò di cui la pagina corrente ha bisogno. Tuttavia, il lazy loading introduce i propri compromessi: richieste a cascata, flash di contenuti non tradotti e complessità della cache. Misurare entrambe le strategie è essenziale.\"},\"pt\":{\"whyTheseMetricsMatter\":\"Por que essas métricas são importantes\",\"bundleSize\":\"Tamanho do Bundle\",\"theBundleIsTheData\":\"O bundle representa os dados enviados a cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas comuns em muitas regiões. i18n libraries variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código de tempo de execução, além dos próprios arquivos de tradução.\",\"renderingHydration\":\"Renderização e Hidratação\",\"connectingALargeJsonDictionary\":\"Conectar um grande dicionário JSON a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode desencadear novas renderizações em toda a árvore. Durante a hidratação do SSR, a análise e a anexação de objetos de tradução massivos adicionam latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).\",\"dynamicLoading\":\"Carregamento Dinâmico\",\"loadingAllTranslationsUpfrontOverloads\":\"Carregar todas as traduções antecipadamente sobrecarrega a carga útil inicial. O carregamento dinâmico (lazy) divide as traduções por rota ou namespace, enviando apenas o que a página atual precisa. No entanto, o carregamento tardio introduz suas próprias compensações: solicitações em cascada, flash de conteúdo não traduzido e complexidade de cache. Medir ambas as estratégias é essencial.\"},\"zh\":{\"whyTheseMetricsMatter\":\"为什么这些指标很重要\",\"bundleSize\":\"捆绑包大小\",\"theBundleIsTheData\":\"捆绑包是发送给全球每个用户的数据。捆绑包越大意味着下载时间越长——特别是在许多地区常见的缓慢 3G 连接上。i18n 库的重量差异巨大：从几 KB 到数十 KB 的运行时代码，再加上翻译文件本身。\",\"renderingHydration\":\"渲染与水合\",\"connectingALargeJsonDictionary\":\"将大型 JSON 字典连接到每个组件会创建隐藏的依赖关系：翻译环境中的任何更改都可能触发整个树的重新渲染。在 SSR 水合期间，解析和附加庞大的翻译对象会增加页面变得可交互之前的延迟——直接影响可交互时间 (TTI)。\",\"dynamicLoading\":\"动态加载\",\"loadingAllTranslationsUpfrontOverloads\":\"预先加载所有翻译会使初始负载过重。动态（延迟）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，延迟加载引入了其自身的权衡：瀑布式请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。\"},\"ja\":{\"whyTheseMetricsMatter\":\"なぜこれらの指標が重要なのか\",\"bundleSize\":\"バンドルサイズ\",\"theBundleIsTheData\":\"バンドルとは、世界中のすべてのユーザーに送信されるデータです。バンドルが大きいほど、ダウンロード時間が長くなります。特に、多くの地域で一般的な低速な3G接続では顕著です。i18nライブラリは、ランタイムコードだけで数キロバイトから数十キロバイトまで重量が大きく異なり、さらに翻訳ファイル自体が加わります。\",\"renderingHydration\":\"レンダリングとハイドレーション\",\"connectingALargeJsonDictionary\":\"すべてのコンポーネントに大規模なJSON辞書を接続すると、隠れた依存関係が生じます。翻訳コンテキストの変更は、ツリー全体のリレンダリングを引き起こす可能性があります。SSRのハイドレーション中に巨大な翻訳オブジェクトを解析してアタッチすると、ページがインタラクティブになるまでの遅延が発生し、Time to Interactive (TTI) に直接影響します。\",\"dynamicLoading\":\"動的ロード\",\"loadingAllTranslationsUpfrontOverloads\":\"すべての翻訳を事前にロードすると、初期ペイロードが過負荷になります。動的（遅延）ロードは、ルートや名前空間ごとに翻訳を分割し、現在のページに必要なものだけを送信します。ただし、遅延ロードには、ウォーターフォールリクエスト、翻訳されていないコンテンツのちらつき（FOUC）、キャッシュの複雑さなどのトレードオフが伴います。両方の戦略を測定することが不可欠です。\"},\"ko\":{\"whyTheseMetricsMatter\":\"이 지표가 중요한 이유\",\"bundleSize\":\"번들 크기\",\"theBundleIsTheData\":\"번들은 전 세계 모든 사용자에게 전송되는 데이터를 나타냅니다. 번들이 클수록 다운로드 시간이 길어집니다. 특히 많은 지역에서 흔히 발생하는 느린 3G 연결에서 더욱 그렇습니다. i18n 라이브러리는 런타임 코드만으로도 수 킬로바이트에서 수십 킬로바이트까지 무게가 크게 다르며, 여기에 번역 파일 자체가 추가됩니다.\",\"renderingHydration\":\"렌더링 및 수화(Hydration)\",\"connectingALargeJsonDictionary\":\"모든 컴포넌트에 대규모 JSON 사전(dictionary)을 연결하면 숨겨진 종속성이 생성됩니다. 번역 컨텍스트의 모든 변경 사항은 전체 트리에서 리렌더링을 유발할 수 있습니다. SSR 수화 단계에서 방대한 번역 객체를 파싱하고 연결하면 페이지가 상호작용 가능해지는 시간까지 지연이 발생하며, 이는 Time to Interactive (TTI) 에 직접적인 영향을 미칩니다.\",\"dynamicLoading\":\"동적 로딩\",\"loadingAllTranslationsUpfrontOverloads\":\"모든 번역을 미리 로드하면 초기 페이로드가 과부하됩니다. 동적(지연) 로딩은 경로 또는 네임스페이스별로 번역을 분할하여 현재 페이지에 필요한 내용만 전송합니다. 그러나 지연 로딩은 워터폴 요청, 번역되지 않은 콘텐츠의 깜빡임(FOUC), 캐시 복잡성 등 자체적인 트레이드오프를 수반합니다. 두 전략을 모두 측정하는 것이 필수적입니다.\"},\"ru\":{\"whyTheseMetricsMatter\":\"Почему эти показатели важны\",\"bundleSize\":\"Размер бандла\",\"theBundleIsTheData\":\"Бандл — это данные, которые отправляются каждому пользователю по всему миру. Большой размер бандла означает более долгое время загрузки, особенно при медленном 3G-соединении, характерном для многих регионов. Библиотеки i18n сильно различаются по весу: от нескольких килобайт до десятков килобайт рантайм-кода, плюс сами файлы переводов.\",\"renderingHydration\":\"Рендеринг и гидратация\",\"connectingALargeJsonDictionary\":\"Подключение большого JSON-словаря к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг всего дерева. Во время гидратации SSR парсинг и присоединение массивных объектов перевода добавляют задержку до того, как страница станет интерактивной, что напрямую влияет на Time to Interactive (TTI).\",\"dynamicLoading\":\"Динамическая загрузка\",\"loadingAllTranslationsUpfrontOverloads\":\"Загрузка всех переводов сразу перегружает начальную полезную нагрузку. Динамическая (ленивая) загрузка разделяет переводы по маршрутам или пространствам имен, отправляя только то, что нужно для текущей страницы. Однако ленивая загрузка вносит свои компромиссы: каскадные запросы (waterfall), мерцание непереведенного контента и сложность кэширования. Измерение обеих стратегий необходимо.\"}}}")
@@ -50,6 +49,11 @@ var MARKDOWN = "markdown";
 var HTML = "html";
 var GENDER = "gender";
 var SELECT = "select";
+var formatNodeType = (nodeType, content, additionalAttributes) => ({
+	...additionalAttributes,
+	nodeType,
+	[nodeType]: content
+});
 var deepTransformNode = (node, props) => {
 	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
 	if (node === null || typeof node !== "object") return node;
@@ -530,6 +534,605 @@ var splitInsertionTemplate = (template, values = {}) => {
 		parts
 	};
 };
+var enumeration = (content) => formatNodeType(ENUMERATION, content);
+var gender = (content) => formatNodeType(GENDER, content);
+var parseAttributes = (attributesString) => {
+	const attributes = {};
+	if (!attributesString?.trim()) return attributes;
+	[...attributesString.matchAll(/([a-zA-Z0-9-:_@]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^>\s]+))?/g)].forEach((match) => {
+		const attrName = match[1];
+		attributes[attrName] = "string";
+	});
+	return attributes;
+};
+var getHTMLCustomComponents = (content) => {
+	if (typeof content !== "string") throw new Error("content must be a string");
+	const matches = [...content.matchAll(/<(\/)?([a-zA-Z0-9.-]+)\s*([\s\S]*?)(\/?)>/g)];
+	const components = {};
+	matches.forEach((match) => {
+		const isClosing = !!match[1];
+		const tagName = match[2];
+		const attributesString = match[3];
+		const isSelfClosing = !!match[4];
+		if (/^[a-z][a-z0-9]*$/.test(tagName)) {
+			components[tagName] = true;
+			return;
+		}
+		if (!components[tagName]) components[tagName] = {};
+		if (components[tagName] === true) return;
+		if (isClosing) return;
+		const attributes = parseAttributes(attributesString);
+		const componentDef = components[tagName];
+		Object.assign(componentDef, attributes);
+		if (!isSelfClosing) componentDef.children = "string";
+	});
+	return components;
+};
+var VOID_HTML_ELEMENTS = /* @__PURE__ */ new Set([
+	"area",
+	"base",
+	"br",
+	"col",
+	"embed",
+	"hr",
+	"img",
+	"input",
+	"link",
+	"meta",
+	"source",
+	"track",
+	"wbr"
+]);
+var TAG_REGEX = /<(\/)?([a-zA-Z][a-zA-Z0-9.-]*)\s*((?:[^\n]|\n(?!\n))*?)(\/?)>/g;
+var validateHTML = (content) => {
+	const issues = [];
+	const stack = [];
+	for (const match of content.matchAll(TAG_REGEX)) {
+		const isClosing = !!match[1];
+		const tagName = match[2];
+		const attrs = match[3];
+		const isSelfClosing = !!match[4];
+		if (attrs.trimStart().startsWith("://") || attrs.trimStart().startsWith(":")) continue;
+		if (isClosing) {
+			if (stack.length === 0) issues.push({
+				type: "error",
+				message: `Closing tag </${tagName}> has no matching opening tag`
+			});
+			else {
+				const last = stack[stack.length - 1];
+				if (last.tag.toLowerCase() !== tagName.toLowerCase()) issues.push({
+					type: "error",
+					message: `Mismatched closing tag: expected </${last.tag}> but found </${tagName}>`
+				});
+				stack.pop();
+			}
+		} else {
+			const isVoidElement = VOID_HTML_ELEMENTS.has(tagName.toLowerCase());
+			if (!isSelfClosing && !isVoidElement) stack.push({ tag: tagName });
+		}
+	}
+	for (const unclosed of stack) issues.push({
+		type: "error",
+		message: `Unclosed HTML tag: <${unclosed.tag}>`
+	});
+	return {
+		valid: issues.filter((i) => i.type === "error").length === 0,
+		issues
+	};
+};
+var html = (content, components) => {
+	const getComponents = () => {
+		if (components) return components;
+		if (typeof content === "string") {
+			const { issues } = validateHTML(content);
+			for (const issue of issues) if (issue.type === "error") console.error(`[intlayer/html] ${issue.message}`);
+			else console.warn(`[intlayer/html] ${issue.message}`);
+			return getHTMLCustomComponents(content);
+		}
+		let stringContent;
+		if (typeof content === "function") stringContent = content();
+		else if (typeof content.then === "function") stringContent = async () => getHTMLCustomComponents(await content);
+		if (typeof stringContent === "string") return getHTMLCustomComponents(stringContent);
+		try {
+			return getHTMLCustomComponents(JSON.stringify(content));
+		} catch (_e) {
+			return [];
+		}
+	};
+	return formatNodeType(HTML, content, { tags: getComponents() });
+};
+var getInsertionValues = (content) => {
+	const matches = [...content.matchAll(/{{\s*(.*?)\s*}}/g)];
+	if (matches.length === 0) return [];
+	return [...new Set(matches.map((match) => match[1].trim()))].filter(Boolean);
+};
+var insertion = (content) => {
+	const getInsertions = () => {
+		if (typeof content === "string") return getInsertionValues(content);
+		let stringContent;
+		if (typeof content === "function") stringContent = content();
+		else if (typeof content.then === "function") stringContent = async () => getInsertionValues(await content);
+		if (typeof stringContent === "string") return getInsertionValues(stringContent);
+		try {
+			return getInsertionValues(JSON.stringify(content));
+		} catch (_e) {
+			return [];
+		}
+	};
+	return formatNodeType(INSERTION, content, { fields: getInsertions() });
+};
+var plural = (content) => formatNodeType(PLURAL, content);
+var select = (content, variable) => formatNodeType(SELECT, content, { variable });
+var parseICU = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseArgument());
+			} else if (char === "}") break;
+			else if (char === "'") {
+				if (index + 1 < text.length && text[index + 1] === "'") {
+					currentText += "'";
+					index += 2;
+				} else {
+					const nextQuote = text.indexOf("'", index + 1);
+					if (nextQuote !== -1) {
+						currentText += text.substring(index + 1, nextQuote);
+						index = nextQuote + 1;
+					} else {
+						currentText += "'";
+						index++;
+					}
+				}
+			} else {
+				currentText += char;
+				index++;
+			}
+		}
+		if (currentText) nodes.push(currentText);
+		return nodes;
+	};
+	const parseArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select" || type === "selectordinal") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+					else if (type === "selectordinal") return {
+						type: "selectordinal",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var icuNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = icuNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = icuNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = icuNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+		if (node.type === "selectordinal") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) {
+				const newKey = key.startsWith("=") ? key.substring(1) : key === "other" ? "fallback" : key;
+				options[newKey] = icuNodesToIntlayer(val.map((value) => {
+					if (typeof value === "string") return value.replace(/#/g, `{{${node.name}}}`);
+					return value;
+				}));
+			}
+			options.__intlayer_icu_var = node.name;
+			options.__intlayer_icu_ordinal = true;
+			return enumeration(options);
+		}
+	}
+	return nodes.map((node) => icuNodesToIntlayer([node]));
+};
+var icuToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return icuNodesToIntlayer(parseICU(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var icuToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "icu",
+		keyPath: [],
+		plugins: [{
+			id: "icu",
+			...icuToIntlayerPlugin
+		}]
+	});
+};
+var parseI18Next = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{" && text[index + 1] === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index += 2;
+				nodes.push(parseStandardArgument());
+			} else if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseICUArgument());
+			} else if (char === "}") break;
+			else {
+				currentText += char;
+				index++;
+			}
+		}
+		if (currentText) nodes.push(currentText);
+		return nodes;
+	};
+	const parseStandardArgument = () => {
+		let name = "";
+		while (index < text.length) {
+			if (text[index] === "}" && text[index + 1] === "}") {
+				index += 2;
+				return {
+					type: "argument",
+					name: name.trim()
+				};
+			}
+			name += text[index];
+			index++;
+		}
+		throw new Error("Unclosed i18next variable");
+	};
+	const parseICUArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var i18nextNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = i18nextNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = i18nextNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = i18nextNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+	}
+	return nodes.map((node) => i18nextNodesToIntlayer([node]));
+};
+var i18nextToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return i18nextNodesToIntlayer(parseI18Next(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var i18nextToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "i18next",
+		keyPath: [],
+		plugins: [{
+			id: "i18next",
+			...i18nextToIntlayerPlugin
+		}]
+	});
+};
 var navigatePath = (contentValue, path, keySeparator = ".") => {
 	if (!path) return contentValue;
 	if (contentValue !== null && contentValue !== void 0 && typeof contentValue === "object") {
@@ -543,6 +1146,105 @@ var navigatePath = (contentValue, path, keySeparator = ".") => {
 		current = current[part];
 	}
 	return current;
+};
+var parseVueI18nPart = (text) => {
+	let index = 0;
+	const nodes = [];
+	let currentText = "";
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "{") {
+			if (currentText) {
+				nodes.push(currentText);
+				currentText = "";
+			}
+			index++;
+			let name = "";
+			while (index < text.length && text[index] !== "}") {
+				name += text[index];
+				index++;
+			}
+			if (index < text.length) index++;
+			nodes.push({
+				type: "argument",
+				name: name.trim()
+			});
+		} else {
+			currentText += char;
+			index++;
+		}
+	}
+	if (currentText) nodes.push(currentText);
+	return nodes;
+};
+var parseVueI18n = (text) => {
+	const parts = [];
+	let currentPart = "";
+	let index = 0;
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "\\" && index + 1 < text.length && text[index + 1] === "|") {
+			currentPart += "|";
+			index += 2;
+		} else if (char === "|") {
+			parts.push(currentPart.trim());
+			currentPart = "";
+			index++;
+		} else {
+			currentPart += char;
+			index++;
+		}
+	}
+	parts.push(currentPart.trim());
+	return parts.map(parseVueI18nPart);
+};
+var vueI18nPartToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") return nodes[0];
+	let str = "";
+	for (const node of nodes) if (typeof node === "string") str += node;
+	else str += `{{${node.name}}}`;
+	return insertion(str);
+};
+var vueI18nNodesToIntlayer = (parts) => {
+	if (parts.length === 1) return vueI18nPartToIntlayer(parts[0]);
+	const options = {};
+	const varName = "count";
+	if (parts.length === 2) return enumeration({
+		"1": vueI18nPartToIntlayer(parts[0]),
+		fallback: vueI18nPartToIntlayer(parts[1])
+	});
+	if (parts.length === 3) return enumeration({
+		"0": vueI18nPartToIntlayer(parts[0]),
+		"1": vueI18nPartToIntlayer(parts[1]),
+		fallback: vueI18nPartToIntlayer(parts[2])
+	});
+	parts.forEach((part, index) => {
+		if (index === parts.length - 1) options.fallback = vueI18nPartToIntlayer(part);
+		else options[index.toString()] = vueI18nPartToIntlayer(part);
+	});
+	options.__intlayer_vue_i18n_var = varName;
+	return enumeration(options);
+};
+var vueI18nToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("|")),
+	transform: (node) => {
+		try {
+			return vueI18nNodesToIntlayer(parseVueI18n(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var vueI18nToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "vue-i18n",
+		keyPath: [],
+		plugins: [{
+			id: "vue-i18n",
+			...vueI18nToIntlayerPlugin
+		}]
+	});
 };
 var ENUMERATION_METADATA_KEYS = [
 	"__intlayer_icu_var",
@@ -640,6 +1342,13 @@ var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
 	const resolved = resolveMessageNode(node, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
+var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: icuToIntlayerFormatter,
+	i18next: i18nextToIntlayerFormatter,
+	"vue-i18n": vueI18nToIntlayerFormatter
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var parseTaggedMessage = (message) => {
 	const tokens = [];
 	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
@@ -694,7 +1403,7 @@ var createLookupTranslator = (locale, lookup, missingKeyFallback) => {
 	const resolveToString = (key, values = {}) => {
 		const rawValue = lookup(key);
 		if (rawValue === null || rawValue === void 0) return void 0;
-		return resolveMessageNodeToString(rawValue, values, locale);
+		return resolveMessage(rawValue, values, locale, "icu");
 	};
 	const translate = (key, values) => resolveToString(key, values) ?? missingKeyFallback(key);
 	return Object.assign(translate, {
@@ -989,129 +1698,62 @@ var IntlProvider = ({ locale, children, messages: _messages, formats: _formats, 
 		children
 	}, String(locale));
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/pages/home/WhyItMatters.tsx";
 function WhyItMatters() {
 	const t = useDictionary(why_it_matters_default);
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mb-16",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-6 text-2xl font-bold text-foreground",
 			children: t("whyTheseMetricsMatter")
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 7,
-			columnNumber: 7
-		}, this), jsxDEV("div", {
+		}), jsxs("div", {
 			className: "grid gap-6 md:grid-cols-3",
 			children: [
-				jsxDEV("div", {
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("bundleSize")
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 12,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("theBundleIsTheData")
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 15,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 11,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+					})]
+				}),
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("renderingHydration")
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 20,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("connectingALargeJsonDictionary")
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 23,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 19,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+					})]
+				}),
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("dynamicLoading")
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 28,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("loadingAllTranslationsUpfrontOverloads")
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 27,
-					columnNumber: 9
-				}, this)
+					})]
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 10,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(React.Suspense, {
+	return jsx(React.Suspense, {
 		fallback: null,
-		children: jsxDEV(IntlProvider, {
+		children: jsx(IntlProvider, {
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/pages/home/WhyItMatters.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(WhyItMatters, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(WhyItMatters, {}) });
 }
 export { Wrapped as default };

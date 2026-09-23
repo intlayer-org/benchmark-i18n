@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { jsx } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 import { messages } from "../locales/en/messages.mjs";
 import { messages as messages$1 } from "../locales/fr/messages.mjs";
@@ -1548,7 +1547,6 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		children
 	});
 };
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
 	const { _, i18n } = useLingui();
 	i18n.locale;
@@ -1558,18 +1556,10 @@ function EmptyComponent() {
 	const i18n = setupI18n();
 	i18n.load("en", {});
 	i18n.activate("en");
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
-		children: jsxDEV(TestComponent, {}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 21,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 20,
-		columnNumber: 5
-	}, this);
+		children: jsx(TestComponent, {})
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1614,7 +1604,6 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const messages = useMemo(() => getMessages(locale), [locale]);
@@ -1629,33 +1618,15 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 35,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/scripts/EmptyComponent.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(EmptyComponent, {}) });
 }
 export { Wrapped as default };

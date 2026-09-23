@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useRouter } from "next/router";
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -212,7 +212,6 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/components/pages/blog/BlogList.tsx";
 function BlogList() {
 	const { t } = useTranslation("common");
 	const posts = [
@@ -253,69 +252,37 @@ function BlogList() {
 			category: "Meta"
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-2",
-		children: posts.map((p) => jsxDEV("article", {
+		children: posts.map((p) => jsxs("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				jsxDEV("div", {
+				jsxs("div", {
 					className: "mb-3 flex items-center gap-3",
-					children: [jsxDEV("span", {
+					children: [jsx("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: p.category
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 55,
-						columnNumber: 13
-					}, this), jsxDEV("span", {
+					}), jsx("span", {
 						className: "text-xs text-muted-foreground",
 						children: p.date
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 58,
-						columnNumber: 13
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 54,
-					columnNumber: 11
-				}, this),
-				jsxDEV("h2", {
+					})]
+				}),
+				jsx("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: p.title
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 60,
-					columnNumber: 11
-				}, this),
-				jsxDEV("p", {
+				}),
+				jsx("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: p.excerpt
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 63,
-					columnNumber: 11
-				}, this),
-				jsxDEV("button", {
+				}),
+				jsx("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
 					children: t("blog.blogList.readMore")
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 64,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, p.title, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 50,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 48,
-		columnNumber: 5
-	}, this);
+		}, p.title))
+	});
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -2561,7 +2528,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -2573,13 +2539,8 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const locale = "en";
 	const [translations, setTranslations] = useState({});
@@ -2598,33 +2559,16 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		lang: locale,
 		namespaces: { common: translations },
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 37,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 36,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/components/pages/blog/BlogList.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(BlogList, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(BlogList, {}) });
 }
 export { Wrapped as default };

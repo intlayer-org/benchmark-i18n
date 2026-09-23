@@ -23,11 +23,8 @@ export function useTranslate() {
   return {
     ...rest,
     // Enforce the TranslationKey type on the first argument
-    t: (
-      key: TranslationKey,
-      defaultValue?: string,
-      parameters?: Record<string, any>,
-    ) => t(key, defaultValue, parameters),
+    t: (key: TranslationKey, parameters?: Record<string, any>) =>
+      t(key, parameters),
   };
 }
 

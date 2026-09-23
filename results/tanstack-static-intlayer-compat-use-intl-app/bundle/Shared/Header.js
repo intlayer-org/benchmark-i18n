@@ -2,7 +2,6 @@ import React, { Fragment, createContext, createElement, isValidElement, useConte
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var header_default = {
 	key: "header",
 	content: {
@@ -196,6 +195,11 @@ var MARKDOWN = "markdown";
 var HTML = "html";
 var GENDER = "gender";
 var SELECT = "select";
+var formatNodeType = (nodeType, content, additionalAttributes) => ({
+	...additionalAttributes,
+	nodeType,
+	[nodeType]: content
+});
 var deepTransformNode = (node, props) => {
 	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
 	if (node === null || typeof node !== "object") return node;
@@ -676,6 +680,605 @@ var splitInsertionTemplate = (template, values = {}) => {
 		parts
 	};
 };
+var enumeration = (content) => formatNodeType(ENUMERATION, content);
+var gender = (content) => formatNodeType(GENDER, content);
+var parseAttributes = (attributesString) => {
+	const attributes = {};
+	if (!attributesString?.trim()) return attributes;
+	[...attributesString.matchAll(/([a-zA-Z0-9-:_@]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^>\s]+))?/g)].forEach((match) => {
+		const attrName = match[1];
+		attributes[attrName] = "string";
+	});
+	return attributes;
+};
+var getHTMLCustomComponents = (content) => {
+	if (typeof content !== "string") throw new Error("content must be a string");
+	const matches = [...content.matchAll(/<(\/)?([a-zA-Z0-9.-]+)\s*([\s\S]*?)(\/?)>/g)];
+	const components = {};
+	matches.forEach((match) => {
+		const isClosing = !!match[1];
+		const tagName = match[2];
+		const attributesString = match[3];
+		const isSelfClosing = !!match[4];
+		if (/^[a-z][a-z0-9]*$/.test(tagName)) {
+			components[tagName] = true;
+			return;
+		}
+		if (!components[tagName]) components[tagName] = {};
+		if (components[tagName] === true) return;
+		if (isClosing) return;
+		const attributes = parseAttributes(attributesString);
+		const componentDef = components[tagName];
+		Object.assign(componentDef, attributes);
+		if (!isSelfClosing) componentDef.children = "string";
+	});
+	return components;
+};
+var VOID_HTML_ELEMENTS = /* @__PURE__ */ new Set([
+	"area",
+	"base",
+	"br",
+	"col",
+	"embed",
+	"hr",
+	"img",
+	"input",
+	"link",
+	"meta",
+	"source",
+	"track",
+	"wbr"
+]);
+var TAG_REGEX = /<(\/)?([a-zA-Z][a-zA-Z0-9.-]*)\s*((?:[^\n]|\n(?!\n))*?)(\/?)>/g;
+var validateHTML = (content) => {
+	const issues = [];
+	const stack = [];
+	for (const match of content.matchAll(TAG_REGEX)) {
+		const isClosing = !!match[1];
+		const tagName = match[2];
+		const attrs = match[3];
+		const isSelfClosing = !!match[4];
+		if (attrs.trimStart().startsWith("://") || attrs.trimStart().startsWith(":")) continue;
+		if (isClosing) {
+			if (stack.length === 0) issues.push({
+				type: "error",
+				message: `Closing tag </${tagName}> has no matching opening tag`
+			});
+			else {
+				const last = stack[stack.length - 1];
+				if (last.tag.toLowerCase() !== tagName.toLowerCase()) issues.push({
+					type: "error",
+					message: `Mismatched closing tag: expected </${last.tag}> but found </${tagName}>`
+				});
+				stack.pop();
+			}
+		} else {
+			const isVoidElement = VOID_HTML_ELEMENTS.has(tagName.toLowerCase());
+			if (!isSelfClosing && !isVoidElement) stack.push({ tag: tagName });
+		}
+	}
+	for (const unclosed of stack) issues.push({
+		type: "error",
+		message: `Unclosed HTML tag: <${unclosed.tag}>`
+	});
+	return {
+		valid: issues.filter((i) => i.type === "error").length === 0,
+		issues
+	};
+};
+var html = (content, components) => {
+	const getComponents = () => {
+		if (components) return components;
+		if (typeof content === "string") {
+			const { issues } = validateHTML(content);
+			for (const issue of issues) if (issue.type === "error") console.error(`[intlayer/html] ${issue.message}`);
+			else console.warn(`[intlayer/html] ${issue.message}`);
+			return getHTMLCustomComponents(content);
+		}
+		let stringContent;
+		if (typeof content === "function") stringContent = content();
+		else if (typeof content.then === "function") stringContent = async () => getHTMLCustomComponents(await content);
+		if (typeof stringContent === "string") return getHTMLCustomComponents(stringContent);
+		try {
+			return getHTMLCustomComponents(JSON.stringify(content));
+		} catch (_e) {
+			return [];
+		}
+	};
+	return formatNodeType(HTML, content, { tags: getComponents() });
+};
+var getInsertionValues = (content) => {
+	const matches = [...content.matchAll(/{{\s*(.*?)\s*}}/g)];
+	if (matches.length === 0) return [];
+	return [...new Set(matches.map((match) => match[1].trim()))].filter(Boolean);
+};
+var insertion = (content) => {
+	const getInsertions = () => {
+		if (typeof content === "string") return getInsertionValues(content);
+		let stringContent;
+		if (typeof content === "function") stringContent = content();
+		else if (typeof content.then === "function") stringContent = async () => getInsertionValues(await content);
+		if (typeof stringContent === "string") return getInsertionValues(stringContent);
+		try {
+			return getInsertionValues(JSON.stringify(content));
+		} catch (_e) {
+			return [];
+		}
+	};
+	return formatNodeType(INSERTION, content, { fields: getInsertions() });
+};
+var plural = (content) => formatNodeType(PLURAL, content);
+var select = (content, variable) => formatNodeType(SELECT, content, { variable });
+var parseICU = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseArgument());
+			} else if (char === "}") break;
+			else if (char === "'") {
+				if (index + 1 < text.length && text[index + 1] === "'") {
+					currentText += "'";
+					index += 2;
+				} else {
+					const nextQuote = text.indexOf("'", index + 1);
+					if (nextQuote !== -1) {
+						currentText += text.substring(index + 1, nextQuote);
+						index = nextQuote + 1;
+					} else {
+						currentText += "'";
+						index++;
+					}
+				}
+			} else {
+				currentText += char;
+				index++;
+			}
+		}
+		if (currentText) nodes.push(currentText);
+		return nodes;
+	};
+	const parseArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select" || type === "selectordinal") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+					else if (type === "selectordinal") return {
+						type: "selectordinal",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var icuNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = icuNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = icuNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = icuNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+		if (node.type === "selectordinal") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) {
+				const newKey = key.startsWith("=") ? key.substring(1) : key === "other" ? "fallback" : key;
+				options[newKey] = icuNodesToIntlayer(val.map((value) => {
+					if (typeof value === "string") return value.replace(/#/g, `{{${node.name}}}`);
+					return value;
+				}));
+			}
+			options.__intlayer_icu_var = node.name;
+			options.__intlayer_icu_ordinal = true;
+			return enumeration(options);
+		}
+	}
+	return nodes.map((node) => icuNodesToIntlayer([node]));
+};
+var icuToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return icuNodesToIntlayer(parseICU(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var icuToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "icu",
+		keyPath: [],
+		plugins: [{
+			id: "icu",
+			...icuToIntlayerPlugin
+		}]
+	});
+};
+var parseI18Next = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{" && text[index + 1] === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index += 2;
+				nodes.push(parseStandardArgument());
+			} else if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseICUArgument());
+			} else if (char === "}") break;
+			else {
+				currentText += char;
+				index++;
+			}
+		}
+		if (currentText) nodes.push(currentText);
+		return nodes;
+	};
+	const parseStandardArgument = () => {
+		let name = "";
+		while (index < text.length) {
+			if (text[index] === "}" && text[index + 1] === "}") {
+				index += 2;
+				return {
+					type: "argument",
+					name: name.trim()
+				};
+			}
+			name += text[index];
+			index++;
+		}
+		throw new Error("Unclosed i18next variable");
+	};
+	const parseICUArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var i18nextNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = i18nextNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = i18nextNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = i18nextNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+	}
+	return nodes.map((node) => i18nextNodesToIntlayer([node]));
+};
+var i18nextToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return i18nextNodesToIntlayer(parseI18Next(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var i18nextToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "i18next",
+		keyPath: [],
+		plugins: [{
+			id: "i18next",
+			...i18nextToIntlayerPlugin
+		}]
+	});
+};
 var navigatePath = (contentValue, path, keySeparator = ".") => {
 	if (!path) return contentValue;
 	if (contentValue !== null && contentValue !== void 0 && typeof contentValue === "object") {
@@ -689,6 +1292,105 @@ var navigatePath = (contentValue, path, keySeparator = ".") => {
 		current = current[part];
 	}
 	return current;
+};
+var parseVueI18nPart = (text) => {
+	let index = 0;
+	const nodes = [];
+	let currentText = "";
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "{") {
+			if (currentText) {
+				nodes.push(currentText);
+				currentText = "";
+			}
+			index++;
+			let name = "";
+			while (index < text.length && text[index] !== "}") {
+				name += text[index];
+				index++;
+			}
+			if (index < text.length) index++;
+			nodes.push({
+				type: "argument",
+				name: name.trim()
+			});
+		} else {
+			currentText += char;
+			index++;
+		}
+	}
+	if (currentText) nodes.push(currentText);
+	return nodes;
+};
+var parseVueI18n = (text) => {
+	const parts = [];
+	let currentPart = "";
+	let index = 0;
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "\\" && index + 1 < text.length && text[index + 1] === "|") {
+			currentPart += "|";
+			index += 2;
+		} else if (char === "|") {
+			parts.push(currentPart.trim());
+			currentPart = "";
+			index++;
+		} else {
+			currentPart += char;
+			index++;
+		}
+	}
+	parts.push(currentPart.trim());
+	return parts.map(parseVueI18nPart);
+};
+var vueI18nPartToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") return nodes[0];
+	let str = "";
+	for (const node of nodes) if (typeof node === "string") str += node;
+	else str += `{{${node.name}}}`;
+	return insertion(str);
+};
+var vueI18nNodesToIntlayer = (parts) => {
+	if (parts.length === 1) return vueI18nPartToIntlayer(parts[0]);
+	const options = {};
+	const varName = "count";
+	if (parts.length === 2) return enumeration({
+		"1": vueI18nPartToIntlayer(parts[0]),
+		fallback: vueI18nPartToIntlayer(parts[1])
+	});
+	if (parts.length === 3) return enumeration({
+		"0": vueI18nPartToIntlayer(parts[0]),
+		"1": vueI18nPartToIntlayer(parts[1]),
+		fallback: vueI18nPartToIntlayer(parts[2])
+	});
+	parts.forEach((part, index) => {
+		if (index === parts.length - 1) options.fallback = vueI18nPartToIntlayer(part);
+		else options[index.toString()] = vueI18nPartToIntlayer(part);
+	});
+	options.__intlayer_vue_i18n_var = varName;
+	return enumeration(options);
+};
+var vueI18nToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("|")),
+	transform: (node) => {
+		try {
+			return vueI18nNodesToIntlayer(parseVueI18n(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var vueI18nToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "vue-i18n",
+		keyPath: [],
+		plugins: [{
+			id: "vue-i18n",
+			...vueI18nToIntlayerPlugin
+		}]
+	});
 };
 var ENUMERATION_METADATA_KEYS = [
 	"__intlayer_icu_var",
@@ -786,6 +1488,13 @@ var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
 	const resolved = resolveMessageNode(node, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
+var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: icuToIntlayerFormatter,
+	i18next: i18nextToIntlayerFormatter,
+	"vue-i18n": vueI18nToIntlayerFormatter
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var parseTaggedMessage = (message) => {
 	const tokens = [];
 	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
@@ -840,7 +1549,7 @@ var createLookupTranslator = (locale, lookup, missingKeyFallback) => {
 	const resolveToString = (key, values = {}) => {
 		const rawValue = lookup(key);
 		if (rawValue === null || rawValue === void 0) return void 0;
-		return resolveMessageNodeToString(rawValue, values, locale);
+		return resolveMessage(rawValue, values, locale, "icu");
 	};
 	const translate = (key, values) => resolveToString(key, values) ?? missingKeyFallback(key);
 	return Object.assign(translate, {
@@ -1223,7 +1932,6 @@ var theme_toggle_default = {
 		}
 	}
 };
-var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/ThemeToggle.tsx";
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -1263,18 +1971,14 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? t("themeModeAutoSystemClick") : mode === "light" ? t("themeModeLightClick") : t("themeModeDarkClick");
-	return jsxDEV("button", {
+	return jsx("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: mode === "auto" ? t("themeAuto") : mode === "dark" ? t("themeDark") : t("themeLight")
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 75,
-		columnNumber: 5
-	}, this);
+	});
 }
 var locales = [
 	"en",
@@ -1296,7 +2000,6 @@ function getLocaleName(locale) {
 		return locale.toUpperCase();
 	}
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams({ strict: false }).locale ?? "en";
 	const navigate = useNavigate();
@@ -1309,30 +2012,18 @@ function LocaleSwitcher() {
 			})
 		});
 	};
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "flex items-center gap-2",
-		children: jsxDEV("select", {
+		children: jsx("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((l) => jsxDEV("option", {
+			children: locales.map((l) => jsx("option", {
 				value: l,
 				children: getLocaleName(l)
-			}, l, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 24,
-				columnNumber: 11
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 18,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 17,
-		columnNumber: 5
-	}, this);
+			}, l))
+		})
+	});
 }
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
@@ -1345,7 +2036,6 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/Header.tsx";
 function Header() {
 	const t = useDictionary(header_default);
 	usePerformanceMeasure("Header");
@@ -1385,26 +2075,22 @@ function Header() {
 			label: t("settings")
 		}
 	];
-	return jsxDEV("header", {
+	return jsx("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: jsxDEV("nav", {
+		children: jsxs("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [jsxDEV("div", {
+			children: [jsxs("div", {
 				className: "flex items-center gap-8",
-				children: [jsxDEV(Link, {
+				children: [jsx(Link, {
 					preload: false,
 					to: "/$locale",
 					params: { locale: currentLocale },
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Bench"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 32,
-					columnNumber: 11
-				}, this), jsxDEV("div", {
+				}), jsxs("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						jsxDEV(Link, {
+						jsx(Link, {
 							preload: false,
 							to: "/$locale",
 							params: { locale: currentLocale },
@@ -1412,181 +2098,87 @@ function Header() {
 							activeProps: { className: "is-active" },
 							className: "nav-link",
 							children: t("home")
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 42,
-							columnNumber: 13
-						}, this),
-						jsxDEV(Link, {
+						}),
+						jsx(Link, {
 							preload: false,
 							to: "/$locale/about",
 							params: { locale: currentLocale },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
 							children: t("methodology")
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 52,
-							columnNumber: 13
-						}, this),
-						jsxDEV("div", {
+						}),
+						jsxs("div", {
 							className: "relative",
-							children: [jsxDEV("button", {
+							children: [jsxs("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [t("mockPages"), jsxDEV(ChevronDown, {
+								children: [t("mockPages"), jsx(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
-								}, void 0, false, {
-									fileName: _jsxFileName$2,
-									lineNumber: 72,
-									columnNumber: 17
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$2,
-								lineNumber: 64,
-								columnNumber: 15
-							}, this), isMockPagesOpen && jsxDEV("div", {
+								})]
+							}), isMockPagesOpen && jsx("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: jsxDEV("div", {
+								children: jsx("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => jsxDEV(Link, {
+									children: mockPages.map((page) => jsx(Link, {
 										preload: false,
 										to: page.to,
 										params: { locale: currentLocale },
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => setIsMockPagesOpen(false),
 										children: page.label
-									}, page.to, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 86,
-										columnNumber: 23
-									}, this))
-								}, void 0, false, {
-									fileName: _jsxFileName$2,
-									lineNumber: 84,
-									columnNumber: 19
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 79,
-								columnNumber: 17
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$2,
-							lineNumber: 63,
-							columnNumber: 13
-						}, this)
+									}, page.to))
+								})
+							})]
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 41,
-					columnNumber: 11
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 31,
-				columnNumber: 9
-			}, this), jsxDEV("div", {
+				})]
+			}), jsxs("div", {
 				className: "flex items-center gap-4",
 				children: [
-					jsxDEV("a", {
+					jsxs("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [jsxDEV("span", {
+						children: [jsx("span", {
 							className: "sr-only",
 							children: t("goToGithub")
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 111,
-							columnNumber: 13
-						}, this), jsxDEV("svg", {
+						}), jsx("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: jsxDEV("path", {
+							children: jsx("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 113,
-								columnNumber: 15
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 112,
-							columnNumber: 13
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 105,
-						columnNumber: 11
-					}, this),
-					jsxDEV(LocaleSwitcher, {}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 119,
-						columnNumber: 11
-					}, this),
-					jsxDEV(ThemeToggle, {}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 120,
-						columnNumber: 11
-					}, this)
+							})
+						})]
+					}),
+					jsx(LocaleSwitcher, {}),
+					jsx(ThemeToggle, {})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 104,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 30,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 29,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(React.Suspense, {
+	return jsx(React.Suspense, {
 		fallback: null,
-		children: jsxDEV(IntlProvider, {
+		children: jsx(IntlProvider, {
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/Header.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Header, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Header, {}) });
 }
 export { Wrapped as default };

@@ -1,6 +1,5 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { Fragment as Fragment$2, jsxDEV } from "react/jsx-dev-runtime";
 var about_header_default = {
 	key: "about-header",
 	content: {
@@ -720,51 +719,24 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/about/AboutHeader.tsx";
 function AboutHeader() {
 	const content = useDictionary(about_header_default);
 	usePerformanceMeasure("AboutHeader");
-	return jsxDEV(Fragment$2, { children: [jsxDEV("h1", {
+	return jsxs(Fragment$1, { children: [jsx("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: content.a
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 10,
-		columnNumber: 7
-	}, this), jsxDEV("p", {
+	}), jsx("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: content.b
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 13,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+	})] });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/about/AboutHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(AboutHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(AboutHeader, {}) });
 }
 export { Wrapped as default };

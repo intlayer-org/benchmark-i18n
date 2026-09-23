@@ -1,6 +1,6 @@
 import "react";
-import { Fragment as e, jsxDEV as t } from "react/jsx-dev-runtime";
-var n = {}, r = [
+import { Fragment as e, jsx as t, jsxs as n } from "react/jsx-runtime";
+var r = {}, i = [
 	"en",
 	"fr",
 	"es",
@@ -11,183 +11,157 @@ var n = {}, r = [
 	"ja",
 	"ko",
 	"ru"
-], i = "PARAGLIDE_LOCALE", a = 3456e4, o = [
+], a = "PARAGLIDE_LOCALE", o = 3456e4, s = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], s = [], c = typeof window > "u";
+], c = [], l = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var l, u = !1, d = () => {
-	let e = o;
-	!c && typeof window < "u" && window.location?.href && (e = A(window.location.href));
-	let t = f(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return u || (l = t, u = !0, m(t, { reload: !1 })), t;
+var u, d = !1, f = () => {
+	let e = s;
+	!l && typeof window < "u" && window.location?.href && (e = N(window.location.href));
+	let t = p(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return d || (u = t, d = !0, h(t, { reload: !1 })), t;
 	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function f(e, t) {
+function p(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = te();
+		if (t === "cookie") n = D();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && l !== void 0) n = l;
-		else if (M(t) && j.has(t)) {
-			let e = j.get(t);
+		else if (t === "globalVariable" && u !== void 0) n = u;
+		else if (F(t) && P.has(t)) {
+			let e = P.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return _(t);
+				if (t !== void 0) return v(t);
 			}
 		}
-		let e = g(n);
+		let e = _(n);
 		if (e) return e;
 	}
 }
-var p = (e) => {
+var m = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, m = (e, t) => {
+}, h = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = d();
+		r = f();
 	} catch {}
-	let s = [], u = o;
-	!c && typeof window < "u" && window.location?.href && (u = A(window.location.href));
-	for (let t of u) if (t === "globalVariable") l = e;
+	let i = [], c = s;
+	!l && typeof window < "u" && window.location?.href && (c = N(window.location.href));
+	for (let t of c) if (t === "globalVariable") u = e;
 	else if (t === "cookie") {
-		if (c || typeof document > "u" || typeof window > "u") continue;
-		let t = `${i}=${e}; path=/; max-age=${a}`;
-		document.cookie = t, w();
+		if (l || typeof document > "u" || typeof window > "u") continue;
+		let t = `${a}=${e}; path=/; max-age=${o}`;
+		document.cookie = t, T();
 	} else if (t === "baseLocale") continue;
-	else if (M(t) && j.has(t)) {
-		let n = j.get(t);
+	else if (F(t) && P.has(t)) {
+		let n = P.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
 				throw Error(`Custom strategy "${t}" setLocale failed.`, { cause: e });
-			}), s.push(r));
+			}), i.push(r));
 		}
 	}
-	let f = () => {
-		!c && n.reload && window.location && e !== r && p(void 0);
+	let d = () => {
+		!l && n.reload && window.location && e !== r && m(void 0);
 	};
-	if (s.length) return Promise.all(s).then(() => {
-		f();
+	if (i.length) return Promise.all(i).then(() => {
+		d();
 	});
-	f();
-}, h = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
-function g(e) {
+	d();
+}, g = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function _(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
-	for (let e of r) if (e.toLowerCase() === t) return e;
-}
-function _(e) {
-	let t = g(e);
-	if (t) return t;
-	throw Error(`Invalid locale: ${e}. Expected one of: ${r.join(", ")}`);
+	for (let e of i) if (e.toLowerCase() === t) return e;
 }
 function v(e) {
+	let t = _(e);
+	if (t) return t;
+	throw Error(`Invalid locale: ${e}. Expected one of: ${i.join(", ")}`);
+}
+function y(e) {
 	return e;
 }
-function y(e, t) {
+function b(e, t) {
 	return e.exec(t.href);
 }
-var b = i.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), x = RegExp(`(?:^|;\\s*)${b}=([^;]*)`), S = Symbol(), C = S;
-function w() {
-	C = S;
+var x = a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), S = RegExp(`(?:^|;\\s*)${x}=([^;]*)`), C = Symbol(), w = C;
+function T() {
+	w = C;
 }
-function ee() {
-	typeof queueMicrotask == "function" ? queueMicrotask(w) : Promise.resolve().then(w);
+function E() {
+	typeof queueMicrotask == "function" ? queueMicrotask(T) : Promise.resolve().then(T);
 }
-function te() {
+function D() {
 	if (typeof document > "u") return;
-	if (C !== S) return C;
-	let e = document.cookie.match(x)?.[1];
-	return C = g(e), ee(), C;
+	if (w !== C) return w;
+	let e = document.cookie.match(S)?.[1];
+	return w = _(e), E(), w;
 }
-function T(e) {
-	return E(e);
+function O(e) {
+	return k(e);
 }
-function E(e) {
-	let t = v(typeof e == "string" ? new URL(e, h()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
-	return n.length > 0 && g(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), v(t);
-}
-var D, O;
 function k(e) {
-	if (s.length === 0) return;
+	let t = y(typeof e == "string" ? new URL(e, g()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && _(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), y(t);
+}
+var A, j;
+function M(e) {
+	if (c.length === 0) return;
 	let t = typeof e == "string" ? e : e.href;
-	if (D === t) return O;
-	let r = v(new URL(t, "http://example.com")), i = T(r), a = i.href === r.href ? [r] : [r, i], o;
+	if (A === t) return j;
+	let n = y(new URL(t, "http://example.com")), i = O(n), a = i.href === n.href ? [n] : [n, i], o;
 	for (let e of a) {
-		for (let t of s) if (y(new n(t.match, e.href), e)) {
+		for (let t of c) if (b(new r(t.match, e.href), e)) {
 			o = t;
 			break;
 		}
 		if (o) break;
 	}
-	return D = t, O = o, o;
+	return A = t, j = o, o;
 }
-function A(e) {
-	let t = k(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : o;
+function N(e) {
+	let t = M(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : s;
 }
-var j = /* @__PURE__ */ new Map();
-function M(e) {
+var P = /* @__PURE__ */ new Map();
+function F(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var N = () => "Cancel", P = () => "Save Changes", F = () => "Annuler", I = () => "Enregistrer les modifications", L = () => "Cancelar", R = () => "Guardar cambios", z = () => "Abbrechen", B = () => "Änderungen speichern", ne = () => "Annulla", V = () => "Salva modifiche", H = () => "Cancelar", U = () => "Salvar alterações", W = () => "取消", G = () => "保存更改", K = () => "キャンセル", q = () => "変更を保存", J = () => "취소", Y = () => "변경 사항 저장", X = () => "Отмена", Z = () => "Сохранить изменения", re = ((e = {}, t = {}) => {
-	let n = t.locale ?? d();
-	return n === "fr" ? F(e) : n === "es" ? L(e) : n === "de" ? z(e) : n === "it" ? ne(e) : n === "pt" ? H(e) : n === "zh" ? W(e) : n === "ja" ? K(e) : n === "ko" ? J(e) : n === "ru" ? X(e) : N(e);
-}), ie = ((e = {}, t = {}) => {
-	let n = t.locale ?? d();
-	return n === "fr" ? I(e) : n === "es" ? R(e) : n === "de" ? B(e) : n === "it" ? V(e) : n === "pt" ? U(e) : n === "zh" ? G(e) : n === "ja" ? q(e) : n === "ko" ? Y(e) : n === "ru" ? Z(e) : P(e);
-}), Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/SettingsFooter.tsx";
-function ae() {
-	return t("div", {
+var I = () => "Cancel", L = () => "Annuler", R = () => "Cancelar", z = () => "Abbrechen", B = () => "Annulla", ee = () => "Cancelar", V = () => "取消", H = () => "キャンセル", U = () => "취소", W = () => "Отмена", G = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? L(e) : n === "es" ? R(e) : n === "de" ? z(e) : n === "it" ? B(e) : n === "pt" ? ee(e) : n === "zh" ? V(e) : n === "ja" ? H(e) : n === "ko" ? U(e) : n === "ru" ? W(e) : I(e);
+}), K = () => "Save Changes", q = () => "Enregistrer les modifications", J = () => "Guardar cambios", Y = () => "Änderungen speichern", X = () => "Salva modifiche", Z = () => "Salvar alterações", Q = () => "保存更改", $ = () => "変更を保存", te = () => "변경 사항 저장", ne = () => "Сохранить изменения", re = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? q(e) : n === "es" ? J(e) : n === "de" ? Y(e) : n === "it" ? X(e) : n === "pt" ? Z(e) : n === "zh" ? Q(e) : n === "ja" ? $(e) : n === "ko" ? te(e) : n === "ru" ? ne(e) : K(e);
+});
+function ie() {
+	return n("div", {
 		className: "flex justify-end gap-3",
 		children: [t("button", {
 			type: "button",
 			className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
-			children: re()
-		}, void 0, !1, {
-			fileName: Q,
-			lineNumber: 6,
-			columnNumber: 7
-		}, this), t("button", {
+			children: G()
+		}), t("button", {
 			type: "submit",
 			className: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-			children: ie()
-		}, void 0, !1, {
-			fileName: Q,
-			lineNumber: 12,
-			columnNumber: 7
-		}, this)]
-	}, void 0, !0, {
-		fileName: Q,
-		lineNumber: 5,
-		columnNumber: 5
-	}, this);
+			children: re()
+		})]
+	});
 }
-var oe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
-m("en", { reload: !1 });
-function se({ children: n }) {
-	return t(e, { children: n }, void 0, !1, {
-		fileName: oe,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+h("en", { reload: !1 });
+function ae({ children: n }) {
+	return t(e, { children: n });
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/SettingsFooter.wrapper.tsx";
-function ce() {
-	return t(se, { children: t(ae, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function oe() {
+	return t(ae, { children: t(ie, {}) });
 }
-export { ce as default };
+export { oe as default };

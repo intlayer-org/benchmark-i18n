@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, onBeforeMount, onMounted, openBlock, readonly, ref, renderSlot, toDisplayString } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, onBeforeMount, onMounted, openBlock, readonly, ref, renderSlot, toDisplayString, unref } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -988,54 +988,33 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var AboutHeader_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "AboutHeader",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		usePerformanceMeasure("AboutHeader");
-		const { t } = useI18n();
-		const __returned__ = { t };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "mb-4 text-3xl font-bold text-foreground" };
 var _hoisted_2 = { class: "mb-8 max-w-3xl text-muted-foreground" };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock(Fragment, null, [createElementVNode("h1", _hoisted_1, toDisplayString($setup.t("about.header.title")), 1), createElementVNode("p", _hoisted_2, toDisplayString($setup.t("about.header.description")), 1)], 64);
-}
-var AboutHeader_default = _plugin_vue_export_helper_default(AboutHeader_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/about/AboutHeader.vue"]]);
+var AboutHeader_default = defineComponent({
+	__name: "AboutHeader",
+	setup(__props) {
+		usePerformanceMeasure("AboutHeader");
+		const { t } = useI18n();
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock(Fragment, null, [createElementVNode("h1", _hoisted_1, toDisplayString(unref(t)("about.header.title")), 1), createElementVNode("p", _hoisted_2, toDisplayString(unref(t)("about.header.description")), 1)], 64);
+		};
+	}
+});
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var AboutHeader_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(AboutHeader_default) });
 } };

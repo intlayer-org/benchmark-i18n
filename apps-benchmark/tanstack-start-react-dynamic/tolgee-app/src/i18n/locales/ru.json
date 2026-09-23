@@ -152,7 +152,8 @@
     "benchmark": "Бенчмарк",
     "tutorial": "Руководство",
     "analysis": "Анализ",
-    "meta": "Мета"
+    "meta": "Мета",
+    "reactServerComponentsIntroduceNew": "React Server Components представляют новые паттерны для интернационализации. Мы исследуем последствия и лучшие практики."
   },
   "careersHeader": {
     "careers": "Вакансии",

@@ -1,44 +1,27 @@
 import { createContext as e, createElement as t, useCallback as n, useContext as r, useEffect as i, useLayoutEffect as a, useMemo as o, useRef as s, useState as c } from "react";
 import l from "next/link";
 import { useParams as u } from "next/navigation";
-import { jsxDEV as d } from "react/jsx-dev-runtime";
-var f = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), p = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsx as d, jsxs as f } from "react/jsx-runtime";
+var p = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), m = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), m = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/Link.tsx", h = (e) => /^https?:\/\//.test(e ?? "");
+}), h = (e) => /^https?:\/\//.test(e ?? "");
 function g(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
 var _ = ({ href: e, children: t, ...n }) => {
 	let r = u().locale ?? "en";
-	return e == null || typeof e != "string" ? d(l, {
+	return e == null || typeof e != "string" || h(e) ? d(l, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: m,
-		lineNumber: 23,
-		columnNumber: 7
-	}, void 0) : h(e) ? d(l, {
-		href: e,
-		prefetch: !1,
-		...n,
-		children: t
-	}, void 0, !1, {
-		fileName: m,
-		lineNumber: 30,
-		columnNumber: 7
-	}, void 0) : d(l, {
+	}) : d(l, {
 		href: g(e, r),
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: m,
-		lineNumber: 36,
-		columnNumber: 5
-	}, void 0);
+	});
 }, v = (e) => typeof e == "string", y = () => {
 	let e, t, n = new Promise((n, r) => {
 		e = n, t = r;
@@ -771,7 +754,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		formatName: t,
 		formatOptions: n
 	};
-}, pe = (e) => {
+}, G = (e) => {
 	let t = {};
 	return (n, r, i) => {
 		let a = i;
@@ -782,13 +765,13 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		let o = r + JSON.stringify(a), s = t[o];
 		return s || (s = e(N(r), i), t[o] = s), s(n);
 	};
-}, me = (e) => (t, n, r) => e(N(n), r)(t), he = class {
+}, pe = (e) => (t, n, r) => e(N(n), r)(t), me = class {
 	constructor(e = {}) {
 		this.logger = P.create("formatter"), this.options = e, this.init(e);
 	}
 	init(e, t = { interpolation: {} }) {
 		this.formatSeparator = t.interpolation.formatSeparator || ",";
-		let n = t.cacheInBuiltFormats ? pe : me;
+		let n = t.cacheInBuiltFormats ? G : pe;
 		this.formats = {
 			number: n((e, t) => {
 				let n = new Intl.NumberFormat(e, { ...t });
@@ -819,7 +802,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		this.formats[e.toLowerCase().trim()] = t;
 	}
 	addCached(e, t) {
-		this.formats[e.toLowerCase().trim()] = pe(t);
+		this.formats[e.toLowerCase().trim()] = G(t);
 	}
 	format(e, t, n, r = {}) {
 		if (!t || e == null) return e;
@@ -848,9 +831,9 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 			return this.logger.warn(`there was no format function for ${i}`), e;
 		}, e);
 	}
-}, ge = (e, t) => {
+}, he = (e, t) => {
 	e.pending[t] !== void 0 && (delete e.pending[t], e.pendingCount--);
-}, _e = class extends F {
+}, ge = class extends F {
 	constructor(e, t, n, r = {}) {
 		super(), this.backend = e, this.store = t, this.services = n, this.languageUtils = n.languageUtils, this.options = r, this.logger = P.create("backendConnector"), this.waitingReads = [], this.maxParallelReads = r.maxParallelReads || 10, this.readingCalls = 0, this.maxRetries = r.maxRetries >= 0 ? r.maxRetries : 5, this.retryTimeout = r.retryTimeout >= 1 ? r.retryTimeout : 350, this.state = {}, this.queue = [], this.backend?.init?.(n, r.backend, r);
 	}
@@ -880,7 +863,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		t && this.emit("failedLoading", i, a, t), !t && n && this.store.addResourceBundle(i, a, n, void 0, void 0, { skipCopy: !0 }), this.state[e] = t ? -1 : 2, t && n && (this.state[e] = 0);
 		let o = {};
 		this.queue.forEach((n) => {
-			D(n.loaded, [i], a), ge(n, e), t && n.errors.push(t), n.pendingCount === 0 && !n.done && (Object.keys(n.loaded).forEach((e) => {
+			D(n.loaded, [i], a), he(n, e), t && n.errors.push(t), n.pendingCount === 0 && !n.done && (Object.keys(n.loaded).forEach((e) => {
 				o[e] || (o[e] = {});
 				let t = n.loaded[e];
 				t.length && t.forEach((t) => {
@@ -970,7 +953,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 			e && e[0] && this.store.addResource(e[0], t, n, r);
 		}
 	}
-}, G = () => ({
+}, K = () => ({
 	debug: !1,
 	initAsync: !0,
 	ns: ["translation"],
@@ -1026,13 +1009,13 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		skipOnVariables: !0
 	},
 	cacheInBuiltFormats: !0
-}), ve = (e) => (v(e.ns) && (e.ns = [e.ns]), v(e.fallbackLng) && (e.fallbackLng = [e.fallbackLng]), v(e.fallbackNS) && (e.fallbackNS = [e.fallbackNS]), e.supportedLngs && !e.supportedLngs.includes("cimode") && (e.supportedLngs = e.supportedLngs.concat(["cimode"])), e), K = () => {}, ye = (e) => {
+}), _e = (e) => (v(e.ns) && (e.ns = [e.ns]), v(e.fallbackLng) && (e.fallbackLng = [e.fallbackLng]), v(e.fallbackNS) && (e.fallbackNS = [e.fallbackNS]), e.supportedLngs && !e.supportedLngs.includes("cimode") && (e.supportedLngs = e.supportedLngs.concat(["cimode"])), e), q = () => {}, ve = (e) => {
 	Object.getOwnPropertyNames(Object.getPrototypeOf(e)).forEach((t) => {
 		typeof e[t] == "function" && (e[t] = e[t].bind(e));
 	});
-}, q = class e extends F {
+}, J = class e extends F {
 	constructor(e = {}, t) {
-		if (super(), this.options = ve(e), this.services = {}, this.logger = P, this.modules = { external: [] }, ye(this), t && !this.isInitialized && !e.isClone) {
+		if (super(), this.options = _e(e), this.services = {}, this.logger = P, this.modules = { external: [] }, ve(this), t && !this.isInitialized && !e.isClone) {
 			if (!this.options.initAsync) return this.init(e, t), this;
 			setTimeout(() => {
 				this.init(e, t);
@@ -1041,11 +1024,11 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 	}
 	init(e = {}, t) {
 		this.isInitializing = !0, typeof e == "function" && (t = e, e = {}), e.defaultNS == null && e.ns && (v(e.ns) ? e.defaultNS = e.ns : e.ns.includes("translation") || (e.defaultNS = e.ns[0]));
-		let n = G();
+		let n = K();
 		this.options = {
 			...n,
 			...this.options,
-			...ve(e)
+			..._e(e)
 		}, this.options.interpolation = {
 			...n.interpolation,
 			...this.options.interpolation
@@ -1054,11 +1037,11 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		if (!this.options.isClone) {
 			this.modules.logger ? P.init(r(this.modules.logger), this.options) : P.init(null, this.options);
 			let e;
-			e = this.modules.formatter ? this.modules.formatter : he;
+			e = this.modules.formatter ? this.modules.formatter : me;
 			let t = new z(this.options);
 			this.store = new se(this.options.resources, this.options);
 			let n = this.services;
-			n.logger = P, n.resourceStore = this.store, n.languageUtils = t, n.pluralResolver = new de(t, { prepend: this.options.pluralSeparator }), e && (n.formatter = r(e), n.formatter.init && n.formatter.init(n, this.options), this.options.interpolation.format = n.formatter.format.bind(n.formatter)), n.interpolator = new W(this.options), n.utils = { hasLoadedNamespace: this.hasLoadedNamespace.bind(this) }, n.backendConnector = new _e(r(this.modules.backend), n.resourceStore, n, this.options), n.backendConnector.on("*", (e, ...t) => {
+			n.logger = P, n.resourceStore = this.store, n.languageUtils = t, n.pluralResolver = new de(t, { prepend: this.options.pluralSeparator }), e && (n.formatter = r(e), n.formatter.init && n.formatter.init(n, this.options), this.options.interpolation.format = n.formatter.format.bind(n.formatter)), n.interpolator = new W(this.options), n.utils = { hasLoadedNamespace: this.hasLoadedNamespace.bind(this) }, n.backendConnector = new ge(r(this.modules.backend), n.resourceStore, n, this.options), n.backendConnector.on("*", (e, ...t) => {
 				this.emit(e, ...t);
 			}), this.modules.languageDetector && (n.languageDetector = r(this.modules.languageDetector), n.languageDetector.init && n.languageDetector.init(n, this.options.detection, this.options)), this.modules.i18nFormat && (n.i18nFormat = r(this.modules.i18nFormat), n.i18nFormat.init && n.i18nFormat.init(this)), this.translator = new R(this.services, this.options), this.translator.on("*", (e, ...t) => {
 				this.emit(e, ...t);
@@ -1066,7 +1049,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 				e.init && e.init(this);
 			});
 		}
-		if (this.format = this.options.interpolation.format, t ||= K, this.options.fallbackLng && !this.services.languageDetector && !this.options.lng) {
+		if (this.format = this.options.interpolation.format, t ||= q, this.options.fallbackLng && !this.services.languageDetector && !this.options.lng) {
 			let e = this.services.languageUtils.getFallbackCodes(this.options.fallbackLng);
 			e.length > 0 && e[0] !== "dev" && (this.options.lng = e[0]);
 		}
@@ -1094,7 +1077,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		};
 		return this.options.resources || !this.options.initAsync ? a() : setTimeout(a, 0), i;
 	}
-	loadResources(e, t = K) {
+	loadResources(e, t = q) {
 		let n = t, r = v(e) ? e : this.language;
 		if (typeof e == "function" && (n = e), !this.options.resources || this.options.partialBundledLanguages) {
 			if (r?.toLowerCase() === "cimode" && (!this.options.preload || this.options.preload.length === 0)) return n();
@@ -1110,7 +1093,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 	}
 	reloadResources(e, t, n) {
 		let r = y();
-		return typeof e == "function" && (n = e, e = void 0), typeof t == "function" && (n = t, t = void 0), e ||= this.languages, t ||= this.options.ns, n ||= K, this.services.backendConnector.reload(e, t, (e) => {
+		return typeof e == "function" && (n = e, e = void 0), typeof t == "function" && (n = t, t = void 0), e ||= this.languages, t ||= this.options.ns, n ||= q, this.services.backendConnector.reload(e, t, (e) => {
 			r.resolve(), n(e);
 		}), r;
 	}
@@ -1213,14 +1196,14 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 				if (e && e.direction) return e.direction;
 			}
 		} catch {}
-		let t = /* @__PURE__ */ "ar.shu.sqr.ssh.xaa.yhd.yud.aao.abh.abv.acm.acq.acw.acx.acy.adf.ads.aeb.aec.afb.ajp.apc.apd.arb.arq.ars.ary.arz.auz.avl.ayh.ayl.ayn.ayp.bbz.pga.he.iw.ps.pbt.pbu.pst.prp.prd.ug.ur.ydd.yds.yih.ji.yi.hbo.men.xmn.fa.jpr.peo.pes.prs.dv.sam.ckb".split("."), n = this.services?.languageUtils || new z(G());
+		let t = /* @__PURE__ */ "ar.shu.sqr.ssh.xaa.yhd.yud.aao.abh.abv.acm.acq.acw.acx.acy.adf.ads.aeb.aec.afb.ajp.apc.apd.arb.arq.ars.ary.arz.auz.avl.ayh.ayl.ayn.ayp.bbz.pga.he.iw.ps.pbt.pbu.pst.prp.prd.ug.ur.ydd.yds.yih.ji.yi.hbo.men.xmn.fa.jpr.peo.pes.prs.dv.sam.ckb".split("."), n = this.services?.languageUtils || new z(K());
 		return e.toLowerCase().indexOf("-latn") > 1 ? "ltr" : t.includes(n.getLanguagePartFromCode(e)) || e.toLowerCase().indexOf("-arab") > 1 ? "rtl" : "ltr";
 	}
 	static createInstance(t = {}, n) {
 		let r = new e(t, n);
 		return r.createInstance = e.createInstance, r;
 	}
-	cloneInstance(t = {}, n = K) {
+	cloneInstance(t = {}, n = q) {
 		let r = t.forkResourceStore;
 		r && delete t.forkResourceStore;
 		let i = {
@@ -1236,7 +1219,7 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 			a[e] = this[e];
 		}), a.services = { ...this.services }, a.services.utils = { hasLoadedNamespace: a.hasLoadedNamespace.bind(a) }, r && (a.store = new se(Object.keys(this.store.data).reduce((e, t) => (e[t] = { ...this.store.data[t] }, e[t] = Object.keys(e[t]).reduce((n, r) => (n[r] = { ...e[t][r] }, n), e[t]), e), {}), i), a.services.resourceStore = a.store), t.interpolation) {
 			let e = {
-				...G().interpolation,
+				...K().interpolation,
 				...this.options.interpolation,
 				...t.interpolation
 			}, n = {
@@ -1259,17 +1242,17 @@ var L = (e) => !v(e) && typeof e != "boolean" && typeof e != "number", R = class
 		};
 	}
 }.createInstance();
-q.createInstance, q.dir, q.init, q.loadResources, q.reloadResources, q.use, q.changeLanguage, q.getFixedT, q.t, q.exists, q.setDefaultNamespace, q.hasLoadedNamespace, q.loadNamespaces, q.loadLanguages;
-var be = (e, t, n, r) => {
+J.createInstance, J.dir, J.init, J.loadResources, J.reloadResources, J.use, J.changeLanguage, J.getFixedT, J.t, J.exists, J.setDefaultNamespace, J.hasLoadedNamespace, J.loadNamespaces, J.loadLanguages;
+var ye = (e, t, n, r) => {
 	let i = [n, {
 		code: t,
 		...r || {}
 	}];
 	if (e?.services?.logger?.forward) return e.services.logger.forward(i, "warn", "react-i18next::", !0);
-	X(i[0]) && (i[0] = `react-i18next:: ${i[0]}`), e?.services?.logger?.warn ? e.services.logger.warn(...i) : console?.warn && console.warn(...i);
-}, xe = {}, J = (e, t, n, r) => {
-	X(n) && xe[n] || (X(n) && (xe[n] = /* @__PURE__ */ new Date()), be(e, t, n, r));
-}, Se = (e, t) => () => {
+	Z(i[0]) && (i[0] = `react-i18next:: ${i[0]}`), e?.services?.logger?.warn ? e.services.logger.warn(...i) : console?.warn && console.warn(...i);
+}, be = {}, Y = (e, t, n, r) => {
+	Z(n) && be[n] || (Z(n) && (be[n] = /* @__PURE__ */ new Date()), ye(e, t, n, r));
+}, xe = (e, t) => () => {
 	if (e.isInitialized) t();
 	else {
 		let n = () => {
@@ -1279,19 +1262,19 @@ var be = (e, t, n, r) => {
 		};
 		e.on("initialized", n);
 	}
-}, Y = (e, t, n) => {
-	e.loadNamespaces(t, Se(e, n));
-}, Ce = (e, t, n, r) => {
-	if (X(n) && (n = [n]), e.options.preload && e.options.preload.indexOf(t) > -1) return Y(e, n, r);
+}, X = (e, t, n) => {
+	e.loadNamespaces(t, xe(e, n));
+}, Se = (e, t, n, r) => {
+	if (Z(n) && (n = [n]), e.options.preload && e.options.preload.indexOf(t) > -1) return X(e, n, r);
 	n.forEach((t) => {
 		e.options.ns.indexOf(t) < 0 && e.options.ns.push(t);
-	}), e.loadLanguages(t, Se(e, r));
-}, we = (e, t, n = {}) => !t.languages || !t.languages.length ? (J(t, "NO_LANGUAGES", "i18n.languages were undefined or empty", { languages: t.languages }), !0) : t.hasLoadedNamespace(e, {
+	}), e.loadLanguages(t, xe(e, r));
+}, Ce = (e, t, n = {}) => !t.languages || !t.languages.length ? (Y(t, "NO_LANGUAGES", "i18n.languages were undefined or empty", { languages: t.languages }), !0) : t.hasLoadedNamespace(e, {
 	lng: n.lng,
 	precheck: (t, r) => {
 		if (n.bindI18n && n.bindI18n.indexOf("languageChanging") > -1 && t.services.backendConnector.backend && t.isLanguageChangingTo && !r(t.isLanguageChangingTo, e)) return !1;
 	}
-}), X = (e) => typeof e == "string", Te = (e) => typeof e == "object" && !!e, Ee = /&(?:amp|#38|lt|#60|gt|#62|apos|#39|quot|#34|nbsp|#160|copy|#169|reg|#174|hellip|#8230|#x2F|#47);/g, De = {
+}), Z = (e) => typeof e == "string", we = (e) => typeof e == "object" && !!e, Te = /&(?:amp|#38|lt|#60|gt|#62|apos|#39|quot|#34|nbsp|#160|copy|#169|reg|#174|hellip|#8230|#x2F|#47);/g, Ee = {
 	"&amp;": "&",
 	"&#38;": "&",
 	"&lt;": "<",
@@ -1312,7 +1295,7 @@ var be = (e, t, n, r) => {
 	"&#8230;": "…",
 	"&#x2F;": "/",
 	"&#47;": "/"
-}, Oe = (e) => De[e], Z = {
+}, De = (e) => Ee[e], Q = {
 	bindI18n: "languageChanged",
 	bindI18nStore: "",
 	transEmptyNodeValue: "",
@@ -1325,21 +1308,21 @@ var be = (e, t, n, r) => {
 		"p"
 	],
 	useSuspense: !0,
-	unescape: (e) => e.replace(Ee, Oe),
+	unescape: (e) => e.replace(Te, De),
 	transDefaultProps: void 0
-}, ke = (e = {}) => {
-	Z = {
-		...Z,
+}, Oe = (e = {}) => {
+	Q = {
+		...Q,
 		...e
 	};
-}, Ae = () => Z, je, Me = (e) => {
-	je = e;
-}, Ne = () => je, Pe = {
+}, ke = () => Q, Ae, je = (e) => {
+	Ae = e;
+}, Me = () => Ae, Ne = {
 	type: "3rdParty",
 	init(e) {
-		ke(e.options.react), Me(e);
+		Oe(e.options.react), je(e);
 	}
-}, Fe = e(), Ie = class {
+}, Pe = e(), Fe = class {
 	constructor() {
 		this.usedNamespaces = {};
 	}
@@ -1351,8 +1334,8 @@ var be = (e, t, n, r) => {
 	getUsedNamespaces() {
 		return Object.keys(this.usedNamespaces);
 	}
-}, Le = f(((e) => {
-	var t = p("react");
+}, Ie = p(((e) => {
+	var t = m("react");
 	function n(e, t) {
 		return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
 	}
@@ -1389,7 +1372,7 @@ var be = (e, t, n, r) => {
 	}
 	var d = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? u : c;
 	e.useSyncExternalStore = t.useSyncExternalStore === void 0 ? d : t.useSyncExternalStore;
-})), Re = f(((e) => {
+})), Le = p(((e) => {
 	process.env.NODE_ENV !== "production" && (function() {
 		function t(e, t) {
 			return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
@@ -1432,15 +1415,15 @@ var be = (e, t, n, r) => {
 			return t();
 		}
 		typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-		var a = p("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, c = a.useEffect, l = a.useLayoutEffect, u = a.useDebugValue, d = !1, f = !1, m = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
-		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? m : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
+		var a = m("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, c = a.useEffect, l = a.useLayoutEffect, u = a.useDebugValue, d = !1, f = !1, p = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
+		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? p : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 	})();
-})), ze = f(((e, t) => {
-	t.exports = process.env.NODE_ENV === "production" ? Le() : Re();
-}))(), Be = {
+})), Re = p(((e, t) => {
+	t.exports = process.env.NODE_ENV === "production" ? Ie() : Le();
+}))(), ze = {
 	t: (e, t) => {
-		if (X(t)) return t;
-		if (Te(t) && X(t.defaultValue)) return t.defaultValue;
+		if (Z(t)) return t;
+		if (we(t) && Z(t.defaultValue)) return t.defaultValue;
 		if (typeof e == "function") return "";
 		if (Array.isArray(e)) {
 			let t = e[e.length - 1];
@@ -1449,17 +1432,17 @@ var be = (e, t, n, r) => {
 		return e;
 	},
 	ready: !1
-}, Ve = () => () => {}, He = (e, t = {}) => {
-	let { i18n: a } = t, { i18n: l, defaultNS: u } = r(Fe) || {}, d = a || l || Ne();
-	d && !d.reportNamespaces && (d.reportNamespaces = new Ie()), d || J(d, "NO_I18NEXT_INSTANCE", "useTranslation: You will need to pass in an i18next instance by using initReactI18next or by passing it via props or context. In monorepo setups, make sure there is only one instance of react-i18next.");
+}, Be = () => () => {}, Ve = (e, t = {}) => {
+	let { i18n: a } = t, { i18n: l, defaultNS: u } = r(Pe) || {}, d = a || l || Me();
+	d && !d.reportNamespaces && (d.reportNamespaces = new Fe()), d || Y(d, "NO_I18NEXT_INSTANCE", "useTranslation: You will need to pass in an i18next instance by using initReactI18next or by passing it via props or context. In monorepo setups, make sure there is only one instance of react-i18next.");
 	let f = o(() => ({
-		...Ae(),
+		...ke(),
 		...d?.options?.react,
 		...t
-	}), [d, t]), { useSuspense: p, keyPrefix: m } = f, h = e || u || d?.options?.defaultNS, g = X(h) ? [h] : h || ["translation"], _ = o(() => g, g);
+	}), [d, t]), { useSuspense: p, keyPrefix: m } = f, h = e || u || d?.options?.defaultNS, g = Z(h) ? [h] : h || ["translation"], _ = o(() => g, g);
 	d?.reportNamespaces?.addUsedNamespaces?.(_);
 	let v = s(0), y = n((e) => {
-		if (!d) return Ve;
+		if (!d) return Be;
 		let { bindI18n: t, bindI18nStore: n } = f, r = () => {
 			v.current += 1, e();
 		};
@@ -1467,8 +1450,8 @@ var be = (e, t, n, r) => {
 			t && t.split(" ").forEach((e) => d.off(e, r)), n && n.split(" ").forEach((e) => d.store.off(e, r));
 		};
 	}, [d, f]), b = s(), x = n(() => {
-		if (!d) return Be;
-		let e = !!(d.isInitialized || d.initializedStoreOnce) && _.every((e) => we(e, d, f)), n = t.lng || d.language, r = v.current, i = b.current;
+		if (!d) return ze;
+		let e = !!(d.isInitialized || d.initializedStoreOnce) && _.every((e) => Ce(e, d, f)), n = t.lng || d.language, r = v.current, i = b.current;
 		if (i && i.ready === e && i.lng === n && i.keyPrefix === m && i.revision === r) return i;
 		let a = {
 			t: d.getFixedT(n, f.nsMode === "fallback" ? _ : _[0], m, { scopeNs: _ }),
@@ -1484,11 +1467,11 @@ var be = (e, t, n, r) => {
 		m,
 		f,
 		t.lng
-	]), [S, C] = c(0), { t: w, ready: T } = (0, ze.useSyncExternalStore)(y, x, x);
+	]), [S, C] = c(0), { t: w, ready: T } = (0, Re.useSyncExternalStore)(y, x, x);
 	i(() => {
 		if (d && !T && !p) {
 			let e = () => C((e) => e + 1);
-			t.lng ? Ce(d, t.lng, _, e) : Y(d, _, e);
+			t.lng ? Se(d, t.lng, _, e) : X(d, _, e);
 		}
 	}, [
 		d,
@@ -1514,7 +1497,7 @@ var be = (e, t, n, r) => {
 	}, A = o(() => {
 		let e = E, t = e?.language, n = e;
 		e && (D.current && D.current.__original === e && O.current === t ? n = D.current : (n = k(e), D.current = n, O.current = t));
-		let r = !T && !p ? (...e) => (J(d, "USE_T_BEFORE_READY", "useTranslation: t was called before ready. When using useSuspense: false, make sure to check the ready flag before using t."), w(...e)) : w, i = [
+		let r = !T && !p ? (...e) => (Y(d, "USE_T_BEFORE_READY", "useTranslation: t was called before ready. When using useSuspense: false, make sure to check the ready flag before using t."), w(...e)) : w, i = [
 			r,
 			n,
 			T
@@ -1533,23 +1516,22 @@ var be = (e, t, n, r) => {
 		try {
 			e = process.env.NODE_ENV !== "production";
 		} catch {}
-		throw e && J(d, "SUSPENDED_WHILE_LOADING", "useTranslation: suspended while translations are loading (useSuspense is true by default). Add a <Suspense> boundary above this component, or set react.useSuspense: false in the i18next init options. https://react.i18next.com/latest/usetranslation-hook"), new Promise((e) => {
+		throw e && Y(d, "SUSPENDED_WHILE_LOADING", "useTranslation: suspended while translations are loading (useSuspense is true by default). Add a <Suspense> boundary above this component, or set react.useSuspense: false in the i18next init options. https://react.i18next.com/latest/usetranslation-hook"), new Promise((e) => {
 			let n = () => e();
-			t.lng ? Ce(d, t.lng, _, n) : Y(d, _, n);
+			t.lng ? Se(d, t.lng, _, n) : X(d, _, n);
 		});
 	}
 	return A;
 };
-function Ue({ i18n: e, defaultNS: n, children: r }) {
+function He({ i18n: e, defaultNS: n, children: r }) {
 	let i = o(() => ({
 		i18n: e,
 		defaultNS: n
 	}), [e, n]);
-	return t(Fe.Provider, { value: i }, r);
+	return t(Pe.Provider, { value: i }, r);
 }
-var Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/Footer.tsx";
-function We() {
-	let { t: e } = He("shared"), t = [
+function Ue() {
+	let { t: e } = Ve("shared"), t = [
 		{
 			label: e("footer.github"),
 			href: "https://github.com/intlayer-org/benchmark-i18n",
@@ -1568,115 +1550,51 @@ function We() {
 	];
 	return d("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: d("div", {
+		children: f("div", {
 			className: "container py-8",
-			children: [d("div", {
+			children: [f("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					d("div", { children: [d("h3", {
+					f("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 32,
-						columnNumber: 13
-					}, this), d("p", {
+					}), d("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("footer.anOpenSourceTestApplication")
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 35,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: Q,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this),
-					d("div", { children: [d("h3", {
+					})] }),
+					f("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("footer.resources")
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 40,
-						columnNumber: 13
-					}, this), d("ul", {
+					}), d("ul", {
 						className: "space-y-1",
 						children: t.map((e) => d("li", { children: e.isInternal ? d(_, {
 							href: e.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}, void 0, !1, {
-							fileName: Q,
-							lineNumber: 47,
-							columnNumber: 21
-						}, this) : d("a", {
+						}) : d("a", {
 							href: e.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}, void 0, !1, {
-							fileName: Q,
-							lineNumber: 54,
-							columnNumber: 21
-						}, this) }, e.label, !1, {
-							fileName: Q,
-							lineNumber: 45,
-							columnNumber: 17
-						}, this))
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 43,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: Q,
-						lineNumber: 39,
-						columnNumber: 11
-					}, this),
-					d("div", { children: [d("h3", {
+						}) }, e.label))
+					})] }),
+					f("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("footer.contact")
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 68,
-						columnNumber: 13
-					}, this), d("p", {
+					}), d("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					}, void 0, !1, {
-						fileName: Q,
-						lineNumber: 71,
-						columnNumber: 13
-					}, this)] }, void 0, !0, {
-						fileName: Q,
-						lineNumber: 67,
-						columnNumber: 11
-					}, this)
+					})] })
 				]
-			}, void 0, !0, {
-				fileName: Q,
-				lineNumber: 30,
-				columnNumber: 9
-			}, this), d("div", {
+			}), d("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: e("footer.builtWith")
-			}, void 0, !1, {
-				fileName: Q,
-				lineNumber: 76,
-				columnNumber: 9
-			}, this)]
-		}, void 0, !0, {
-			fileName: Q,
-			lineNumber: 29,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: Q,
-		lineNumber: 28,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
-function Ge() {
+function We() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -1690,12 +1608,12 @@ function Ge() {
 		}
 	}
 }
-function Ke(e, t) {
+function Ge(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var qe = {
+var Ke = {
 	"aboutHeader.methodology": "Methodik",
 	"aboutHeader.weDesignedThisBenchmarkTo": "Wir haben diesen Benchmark so konzipiert, dass er faire, reproduzierbare und aussagekräftige Vergleiche von i18n-Bibliotheken ermöglicht.",
 	"whatWeMeasure.bundleSizeImpact": "Auswirkung auf die Bundle-Größe",
@@ -1717,7 +1635,7 @@ var qe = {
 	"aboutGrid.weUseBrowserNativeApis": "Wir verwenden browsernative APIs (Performance Timeline, Resource Timing, Layout Instability) kombiniert mit React Profiler-Daten. Bundle-Größen werden nach dem Gzip-Verfahren mit source-map-explorer für die Genauigkeit gemessen.",
 	"aboutGrid.fairComparison": "Fairer Vergleich",
 	"aboutGrid.eachI18nLibraryIsIntegrated": "Jede i18n-Bibliothek wird gemäß ihrer offiziellen Dokumentation und Best Practices integriert. Wir konsultieren nach Möglichkeit die Maintainer, um eine optimale Konfiguration sicherzustellen. Dieselbe React-App, dieselbe Vite-Konfiguration, dasselbe Deployment."
-}, Je = {
+}, qe = {
 	"blogList.i18nBenchmark2026Results": "i18n Benchmark 2026 Ergebnisse",
 	"blogList.march152026": "15. März 2026",
 	"blogList.weTested12DifferentInternationalization": "Wir haben 12 verschiedene Internationalisierungsbibliotheken auf 10 Seiten getestet. Hier sind die detaillierten Ergebnisse mit interaktiven Diagrammen.",
@@ -1739,7 +1657,7 @@ var qe = {
 	"blogList.readMore": "Mehr lesen →",
 	"blogHeader.blog": "Blog",
 	"blogHeader.insightsDeepDivesAnd": "Einblicke, tiefgehende Analysen und Updates aus der i18n-Benchmarking-Community."
-}, Ye = {
+}, Je = {
 	"openPositions.openPositions": "Offene Stellen",
 	"openPositions.seniorPerformanceEngineer": "Senior Performance Engineer",
 	"openPositions.fullTime": "Vollzeit",
@@ -1762,7 +1680,7 @@ var qe = {
 	"careersBenefits.allOurWorkIs": "Unsere gesamte Arbeit ist Open Source. Bauen Sie Ihr öffentliches Portfolio auf, während Sie etwas bewirken.",
 	"careersBenefits.impactful": "Wirkungsvoll",
 	"careersBenefits.yourWorkDirectlyHelps": "Ihre Arbeit hilft Entwicklern direkt dabei, bessere und schnellere internationalisierte Anwendungen zu erstellen."
-}, Xe = {
+}, Ye = {
 	"contactForm.name": "Name",
 	"contactForm.email": "E-Mail",
 	"contactForm.subject": "Betreff",
@@ -1771,7 +1689,7 @@ var qe = {
 	"contactForm.wellGetBackTo": "Wir melden uns innerhalb von 48 Stunden bei Ihnen.",
 	"contactHeader.contactUs": "Kontaktieren Sie uns",
 	"contactHeader.haveQuestionsOrWantTo": "Haben Sie Fragen oder möchten Sie einen Beitrag leisten? Wir würden uns freuen, von Ihnen zu hören."
-}, Ze = {
+}, Xe = {
 	"faqList.howAreTheBenchmarks": "Wie werden die Benchmarks durchgeführt?",
 	"faqList.allBenchmarksAreRun": "Alle Benchmarks werden mit Playwright auf einem einheitlichen Hardware-Setup (M2 MacBook Pro) mit simulierten 4G-Netzwerkbedingungen ausgeführt. Jeder Test umfasst 50 Iterationen, und wir geben den Median, P95- und P99-Werte an.",
 	"faqList.whatLibrariesAreCurrently": "Welche Bibliotheken werden derzeit getestet?",
@@ -1784,7 +1702,7 @@ var qe = {
 	"faqList.yesWeUseThe": "Ja. Wir verwenden den Mann-Whitney-U-Test mit einem Signifikanzniveau von 0,05, um Verteilungen zu vergleichen. Wir geben auch Konfidenzintervalle und Effektstärken an.",
 	"faq-header1.frequentlyAskedQuestions": "Häufig gestellte Fragen",
 	"faq-header1.everythingYouNeedToKnow": "Alles, was Sie über das i18n-Benchmark-Projekt wissen müssen."
-}, Qe = {
+}, Ze = {
 	"understandingImpact.understandingTheImpact": "Die Auswirkungen verstehen",
 	"understandingImpact.whyASingleLargeJson": "Warum ein einziges großes JSON die Leistung beeinträchtigen kann",
 	"understandingImpact.manyI18nLibrariesStoreTranslations": "Viele i18n-Bibliotheken speichern Übersetzungen in einem einzigen JSON-Objekt, das über den React-Kontext bereitgestellt wird. Wenn dieses Objekt groß ist (Tausende von Schlüsseln), hält jede Komponente, die Übersetzungen verbraucht, eine Referenz auf das gesamte Wörterbuch. Das bedeutet:",
@@ -1811,7 +1729,7 @@ var qe = {
 	"resultsTable.lazyLoading": "Lazy Loading",
 	"hero.aTestApplicationDesignedTo": "Eine Testanwendung, die darauf ausgelegt ist, die realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladeleistung und die Rendering-Reaktivität zu messen.",
 	"hero.viewResults": "Ergebnisse anzeigen"
-}, $e = {
+}, Qe = {
 	"pricingTiers.freeTier": "Kostenlose Stufe",
 	"pricingTiers.free": "Kostenlos",
 	"pricingTiers.publicBenchmarkDashboard": "Öffentliches Benchmark-Dashboard",
@@ -1857,7 +1775,7 @@ var qe = {
 	"pricingTiers.customSLAs": "Custom SLAs",
 	"pricingTiers.auditLogs": "Audit logs",
 	"pricingTiers.trainingSessions": "Training sessions"
-}, et = {
+}, $e = {
 	"productsGrid.benchmarkDashboard": "Benchmark-Dashboard",
 	"productsGrid.interactiveChartsAndTables": "Interaktive Diagramme und Tabellen, die i18n-Bibliotheken hinsichtlich Bundle-Größe, Renderzeit und Hydratationskosten vergleichen.",
 	"productsGrid.bundleAnalyzer": "Bundle-Analyzer",
@@ -1869,11 +1787,11 @@ var qe = {
 	"productsGrid.learnMore": "Mehr erfahren",
 	"productsHeader.products": "Produkte",
 	"productsHeader.toolsAndServicesTo": "Tools und Services unterstützen Sie bei der Optimierung Ihrer Internationalisierungsstrategie."
-}, tt = {
+}, et = {
 	"route.oopsPageNotFound": "Hoppla! Seite nicht gefunden",
 	"route.returnToHome": "Zurück zur Startseite",
 	"route.couldNotMeasureHydrationDuration": "Hydratationsdauer konnte nicht gemessen werden:"
-}, nt = {
+}, tt = {
 	"preferencesSection.preferences": "Einstellungen",
 	"preferencesSection.emailNotifications": "E-Mail-Benachrichtigungen",
 	"preferencesSection.receiveWeeklyBenchmarkReports": "Wöchentliche Benchmark-Berichte erhalten",
@@ -1891,7 +1809,7 @@ var qe = {
 	"profileSection.profile": "Profil",
 	"profileSection.displayName": "Anzeigename",
 	"profileSection.email": "E-Mail"
-}, rt = {
+}, nt = {
 	"header.home": "Startseite",
 	"header.methodology": "Methodik",
 	"header.mockPages": "Testseiten",
@@ -1918,7 +1836,7 @@ var qe = {
 	"themeToggle.themeAuto": "Thema: Auto",
 	"themeToggle.themeDark": "Thema: Dunkel",
 	"themeToggle.themeLight": "Thema: Hell"
-}, it = {
+}, rt = {
 	"teamGrid.sarahChen": "Sarah Chen",
 	"teamGrid.founderLeadEngineer": "Gründerin & Leitende Ingenieurin",
 	"teamGrid.formerGoogleEngineerWith10": "Ehemalige Google-Ingenieurin mit 10 Jahren Erfahrung im Aufbau von Internationalisierungssystemen in großem Maßstab.",
@@ -1939,7 +1857,7 @@ var qe = {
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "Verwaltet Community-Beiträge, Partnerschaften und Events. Hintergrund in Open-Source-Governance.",
 	"teamHeader.ourTeam": "Unser Team",
 	"teamHeader.meetThePeopleBehindI18n": "Lernen Sie die Menschen hinter i18n Benchmark kennen. Ein vielfältiges Team, vereint durch die Leidenschaft für großartige Entwicklertools."
-}, at = {
+}, it = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",
 	"whatWeMeasure.bundleSizeImpact": "Bundle size impact",
@@ -1961,7 +1879,7 @@ var qe = {
 	"aboutGrid.weUseBrowserNativeApis": "We use browser-native APIs (Performance Timeline, Resource Timing, Layout Instability) combined with React Profiler data. Bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
 	"aboutGrid.fairComparison": "Fair Comparison",
 	"aboutGrid.eachI18nLibraryIsIntegrated": "Each i18n library is integrated following its official documentation and best practices. We consult maintainers when possible to ensure optimal configuration. The same React app, same Vite config, same deployment."
-}, ot = {
+}, at = {
 	"blogList.i18nBenchmark2026Results": "i18n Benchmark 2026 Results",
 	"blogList.march152026": "March 15, 2026",
 	"blogList.weTested12DifferentInternationalization": "We tested 12 different internationalization libraries across 10 pages. Here are the detailed results with interactive charts.",
@@ -1983,7 +1901,7 @@ var qe = {
 	"blogList.readMore": "Read More →",
 	"blogHeader.blog": "Blog",
 	"blogHeader.insightsDeepDivesAnd": "Insights, deep dives, and updates from the i18n benchmarking community."
-}, st = {
+}, ot = {
 	"careersHeader.careers": "Careers",
 	"careersHero.fromAnywhere": "from anywhere in the world",
 	"careersBenefits.competitivePay": "Competitive pay",
@@ -1996,7 +1914,7 @@ var qe = {
 	"openPositions.remote": "Remote",
 	"openPositions.fullTime": "Full-time",
 	"openPositions.applyNow": "Apply Now"
-}, ct = {
+}, st = {
 	"contactForm.name": "Name",
 	"contactForm.email": "Email",
 	"contactForm.subject": "Subject",
@@ -2005,7 +1923,7 @@ var qe = {
 	"contactForm.wellGetBackTo": "We'll get back to you within 48 hours.",
 	"contactHeader.contactUs": "Contact Us",
 	"contactHeader.haveQuestionsOrWantTo": "Have questions or want to contribute? We'd love to hear from you."
-}, lt = {
+}, ct = {
 	"faqList.howAreTheBenchmarks": "How are the benchmarks run?",
 	"faqList.allBenchmarksAreRun": "All benchmarks are run using Playwright on a consistent hardware setup (M2 MacBook Pro) with simulated 4G network conditions. Each test runs 50 iterations and we report median, P95, and P99 values.",
 	"faqList.whatLibrariesAreCurrently": "What libraries are currently tested?",
@@ -2018,7 +1936,7 @@ var qe = {
 	"faqList.yesWeUseThe": "Yes. We use the Mann-Whitney U test with a significance level of 0.05 to compare distributions. We also report confidence intervals and effect sizes.",
 	"faq-header1.frequentlyAskedQuestions": "Frequently Asked Questions",
 	"faq-header1.everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
-}, ut = {
+}, lt = {
 	"understandingImpact.understandingTheImpact": "Understanding the Impact",
 	"understandingImpact.whyASingleLargeJson": "Why a single large JSON can hurt performance",
 	"understandingImpact.manyI18nLibrariesStoreTranslations": "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:",
@@ -2045,7 +1963,7 @@ var qe = {
 	"resultsTable.lazyLoading": "Lazy Loading",
 	"hero.aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
 	"hero.viewResults": "View Results"
-}, dt = {
+}, ut = {
 	"pricingTiers.starterTier": "Starter",
 	"pricingTiers.starterPrice": "$0",
 	"pricingTiers.forever": "forever",
@@ -2075,7 +1993,7 @@ var qe = {
 	"pricingTiers.contactSales": "Contact Sales",
 	"pricingHeader.pricing": "Pricing",
 	"pricingHeader.transparentPricingForEvery": "Transparent pricing for every stage of your i18n journey."
-}, ft = {
+}, dt = {
 	"products.benchmarkCLI": "Benchmark CLI",
 	"products.benchmarkCLIDesc": "Run benchmarks locally from your terminal. Supports custom configurations and CI integration.",
 	"products.benchmarkCLIPrice": "Free",
@@ -2097,11 +2015,11 @@ var qe = {
 	"products.learnMore": "Learn More",
 	"productsHeader.ourProducts": "Our Products",
 	"productsHeader.exploreOurSuiteOfTools": "Explore our suite of tools designed to help you build better i18n apps."
-}, pt = {
+}, ft = {
 	"route.oopsPageNotFound": "Oops! Page not found",
 	"route.returnToHome": "Return to Home",
 	"route.couldNotMeasureHydrationDuration": "Could not measure hydration duration:"
-}, mt = {
+}, pt = {
 	"preferencesSection.preferences": "Preferences",
 	"preferencesSection.emailNotifications": "Email Notifications",
 	"preferencesSection.receiveWeeklyBenchmarkReports": "Receive weekly benchmark reports",
@@ -2119,7 +2037,7 @@ var qe = {
 	"profileSection.profile": "Profile",
 	"profileSection.displayName": "Display Name",
 	"profileSection.email": "Email"
-}, ht = {
+}, mt = {
 	"header.home": "Home",
 	"header.methodology": "Methodology",
 	"header.mockPages": "Mock Pages",
@@ -2146,7 +2064,7 @@ var qe = {
 	"themeToggle.themeAuto": "Theme: Auto",
 	"themeToggle.themeDark": "Theme: Dark",
 	"themeToggle.themeLight": "Theme: Light"
-}, gt = {
+}, ht = {
 	"teamGrid.sarahChen": "Sarah Chen",
 	"teamGrid.founderLeadEngineer": "Founder & Lead Engineer",
 	"teamGrid.formerGoogleEngineerWith10": "Former Google engineer with 10 years of experience building internationalization systems at scale.",
@@ -2167,7 +2085,7 @@ var qe = {
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "Manages community contributions, partnerships, and events. Background in open source governance.",
 	"teamHeader.ourTeam": "Our Team",
 	"teamHeader.meetThePeopleBehindI18n": "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
-}, _t = {
+}, gt = {
 	"aboutHeader.methodology": "Metodología",
 	"aboutHeader.weDesignedThisBenchmarkTo": "Diseñamos este benchmark para proporcionar comparaciones justas, reproducibles y significativas de las bibliotecas i18n.",
 	"whatWeMeasure.bundleSizeImpact": "Impacto en el tamaño del paquete",
@@ -2189,7 +2107,7 @@ var qe = {
 	"aboutGrid.weUseBrowserNativeApis": "Utilizamos las API nativas del navegador (Performance Timeline, Resource Timing, Layout Instability) combinadas con los datos del React Profiler. Los tamaños de los paquetes se miden después de gzip utilizando source-map-explorer para mayor precisión.",
 	"aboutGrid.fairComparison": "Comparación justa",
 	"aboutGrid.eachI18nLibraryIsIntegrated": "Cada biblioteca i18n se integra siguiendo su documentación oficial y sus mejores prácticas. Consultamos a los mantenedores cuando es posible para garantizar una configuración óptima. La misma aplicación React, la misma configuración Vite, el mismo despliegue."
-}, vt = {
+}, _t = {
 	"blogList.i18nBenchmark2026Results": "Resultados de i18n Benchmark 2026",
 	"blogList.march152026": "15 de marzo de 2026",
 	"blogList.weTested12DifferentInternationalization": "Probamos 12 bibliotecas de internacionalización diferentes en 10 páginas. Aquí están los resultados detallados con gráficos interactivos.",
@@ -2211,7 +2129,7 @@ var qe = {
 	"blogList.readMore": "Leer más →",
 	"blogHeader.blog": "Blog",
 	"blogHeader.insightsDeepDivesAnd": "Información, análisis profundos y actualizaciones de la comunidad de benchmarking i18n."
-}, yt = {
+}, vt = {
 	"careersHeader.careers": "Carreras",
 	"careersHero.fromAnywhere": "desde cualquier lugar del mundo",
 	"careersBenefits.competitivePay": "Salario competitivo",
@@ -2224,7 +2142,7 @@ var qe = {
 	"openPositions.remote": "Remoto",
 	"openPositions.fullTime": "Tiempo completo",
 	"openPositions.applyNow": "Solicitar ahora"
-}, bt = {
+}, yt = {
 	"contactForm.name": "Nombre",
 	"contactForm.email": "Correo electrónico",
 	"contactForm.subject": "Asunto",
@@ -2233,7 +2151,7 @@ var qe = {
 	"contactForm.wellGetBackTo": "Nos pondremos en contacto con usted en un plazo de 48 horas.",
 	"contactHeader.contactUs": "Contáctenos",
 	"contactHeader.haveQuestionsOrWantTo": "¿Tiene preguntas o quiere contribuir? Nos encantaría saber de usted."
-}, xt = {
+}, bt = {
 	"faqList.howAreTheBenchmarks": "¿Cómo se ejecutan los benchmarks?",
 	"faqList.allBenchmarksAreRun": "Todos los benchmarks se ejecutan utilizando Playwright en una configuración de hardware consistente (M2 MacBook Pro) con condiciones de red 4G simuladas. Cada prueba realiza 50 iteraciones y reportamos la mediana, los valores P95 y P99.",
 	"faqList.whatLibrariesAreCurrently": "¿Qué bibliotecas se prueban actualmente?",
@@ -2246,7 +2164,7 @@ var qe = {
 	"faqList.yesWeUseThe": "Sí. Utilizamos la prueba U de Mann-Whitney con un nivel de significación de 0,05 para comparar distribuciones. También reportamos intervalos de confianza y tamaños del efecto.",
 	"faq-header1.frequentlyAskedQuestions": "Preguntas frecuentes",
 	"faq-header1.everythingYouNeedToKnow": "Todo lo que necesita saber sobre el proyecto i18n Benchmark."
-}, St = {
+}, xt = {
 	"understandingImpact.understandingTheImpact": "Entendiendo el impacto",
 	"understandingImpact.whyASingleLargeJson": "Por qué un solo JSON grande puede perjudicar el rendimiento",
 	"understandingImpact.manyI18nLibrariesStoreTranslations": "Muchas bibliotecas i18n almacenan las traducciones en un solo objeto JSON proporcionado a través del contexto de React. Cuando este objeto es grande (miles de claves), cada componente que consume traducciones mantiene una referencia a todo el diccionario. Esto significa:",
@@ -2273,7 +2191,7 @@ var qe = {
 	"resultsTable.lazyLoading": "Carga diferida",
 	"hero.aTestApplicationDesignedTo": "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el rendimiento de carga y la reactividad de renderizado.",
 	"hero.viewResults": "Ver resultados"
-}, Ct = {
+}, St = {
 	"pricingTiers.starterTier": "Inicial",
 	"pricingTiers.starterPrice": "$0",
 	"pricingTiers.forever": "para siempre",
@@ -2303,7 +2221,7 @@ var qe = {
 	"pricingTiers.contactSales": "Contactar con ventas",
 	"pricingHeader.pricing": "Precios",
 	"pricingHeader.transparentPricingForEvery": "Precios transparentes para cada etapa de tu recorrido i18n."
-}, wt = {
+}, Ct = {
 	"products.benchmarkCLI": "Benchmark CLI",
 	"products.benchmarkCLIDesc": "Ejecuta benchmarks localmente desde tu terminal. Compatible con configuraciones personalizadas e integración CI.",
 	"products.benchmarkCLIPrice": "Gratis",
@@ -2325,11 +2243,11 @@ var qe = {
 	"products.learnMore": "Saber más",
 	"productsHeader.ourProducts": "Nuestros productos",
 	"productsHeader.exploreOurSuiteOfTools": "Explora nuestra suite de herramientas para crear mejores aplicaciones i18n."
-}, Tt = {
+}, wt = {
 	"route.oopsPageNotFound": "¡Ups! Página no encontrada",
 	"route.returnToHome": "Volver al inicio",
 	"route.couldNotMeasureHydrationDuration": "No se pudo medir la duración de la hidratación:"
-}, Et = {
+}, Tt = {
 	"preferencesSection.preferences": "Preferencias",
 	"preferencesSection.emailNotifications": "Notificaciones por correo electrónico",
 	"preferencesSection.receiveWeeklyBenchmarkReports": "Recibir informes semanales de benchmark",
@@ -2347,7 +2265,7 @@ var qe = {
 	"profileSection.profile": "Perfil",
 	"profileSection.displayName": "Nombre de pantalla",
 	"profileSection.email": "Correo electrónico"
-}, Dt = {
+}, Et = {
 	"header.home": "Inicio",
 	"header.methodology": "Metodología",
 	"header.mockPages": "Páginas de prueba",
@@ -2374,7 +2292,7 @@ var qe = {
 	"themeToggle.themeAuto": "Tema: Auto",
 	"themeToggle.themeDark": "Tema: Oscuro",
 	"themeToggle.themeLight": "Tema: Claro"
-}, Ot = {
+}, Dt = {
 	"teamGrid.sarahChen": "Sarah Chen",
 	"teamGrid.founderLeadEngineer": "Fundadora e Ingeniera Principal",
 	"teamGrid.formerGoogleEngineerWith10": "Ex ingeniera de Google con 10 años de experiencia en la construcción de sistemas de internacionalización a escala.",
@@ -2395,7 +2313,7 @@ var qe = {
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "Gestiona las contribuciones de la comunidad, las asociaciones y los eventos. Antecedentes en gobernanza de código abierto.",
 	"teamHeader.ourTeam": "Nuestro equipo",
 	"teamHeader.meetThePeopleBehindI18n": "Conozca a la gente detrás de i18n Benchmark. Un equipo diverso unido por una pasión compartida por las excelentes herramientas de desarrollo."
-}, kt = {
+}, Ot = {
 	"aboutHeader.methodology": "Méthodologie",
 	"aboutHeader.weDesignedThisBenchmarkTo": "Nous avons conçu ce benchmark pour fournir des comparaisons équitables, reproductibles et significatives des bibliothèques i18n.",
 	"whatWeMeasure.bundleSizeImpact": "Impact sur la taille du bundle",
@@ -2417,7 +2335,7 @@ var qe = {
 	"aboutGrid.weUseBrowserNativeApis": "Nous utilisons les API natives du navigateur (Performance Timeline, Resource Timing, Layout Instability) combinées aux données de React Profiler. La taille des bundles est mesurée après gzip à l'aide de source-map-explorer pour plus de précision.",
 	"aboutGrid.fairComparison": "Comparaison équitable",
 	"aboutGrid.eachI18nLibraryIsIntegrated": "Chaque bibliothèque i18n est intégrée en suivant sa documentation officielle et ses meilleures pratiques. Nous consultons les mainteneurs lorsque cela est possible. Même application React, même configuration Vite, même déploiement."
-}, At = {
+}, kt = {
 	"blogList.i18nBenchmark2026Results": "Résultats de l'i18n Benchmark 2026",
 	"blogList.march152026": "15 mars 2026",
 	"blogList.weTested12DifferentInternationalization": "Nous avons testé 12 bibliothèques d'internationalisation différentes sur 10 pages. Voici les résultats détaillés avec des graphiques interactifs.",
@@ -2439,7 +2357,7 @@ var qe = {
 	"blogList.readMore": "Lire la suite →",
 	"blogHeader.blog": "Blog",
 	"blogHeader.insightsDeepDivesAnd": "Aperçus, analyses approfondies et mises à jour de la communauté de benchmarking i18n."
-}, jt = {
+}, At = {
 	"careersHeader.careers": "Carrières",
 	"careersHero.fromAnywhere": "de n'importe où dans le monde",
 	"careersBenefits.competitivePay": "Salaire compétitif",
@@ -2452,7 +2370,7 @@ var qe = {
 	"openPositions.remote": "À distance",
 	"openPositions.fullTime": "Temps plein",
 	"openPositions.applyNow": "Postuler maintenant"
-}, Mt = {
+}, jt = {
 	"contactForm.name": "Nom",
 	"contactForm.email": "Email",
 	"contactForm.subject": "Sujet",
@@ -2461,7 +2379,7 @@ var qe = {
 	"contactForm.wellGetBackTo": "Nous vous répondrons dans les 48 heures.",
 	"contactHeader.contactUs": "Contactez-nous",
 	"contactHeader.haveQuestionsOrWantTo": "Vous avez des questions ou vous voulez contribuer ? Nous serions ravis de vous entendre."
-}, Nt = {
+}, Mt = {
 	"faqList.howAreTheBenchmarks": "Comment les benchmarks sont-ils exécutés ?",
 	"faqList.allBenchmarksAreRun": "Tous les benchmarks sont exécutés à l'aide de Playwright sur une configuration matérielle cohérente (M2 MacBook Pro) avec des conditions de réseau 4G simulées. Chaque test effectue 50 itérations et nous rapportons les valeurs médiane, P95 et P99.",
 	"faqList.whatLibrariesAreCurrently": "Quelles bibliotecas sont actuellement testées ?",
@@ -2474,7 +2392,7 @@ var qe = {
 	"faqList.yesWeUseThe": "Oui. Nous utilisons le test U de Mann-Whitney avec un niveau de signification de 0,05 pour comparer les distributions. Nous rapportons également les intervalles de confiance et les tailles d'effet.",
 	"faq-header1.frequentlyAskedQuestions": "Foire aux questions",
 	"faq-header1.everythingYouNeedToKnow": "Tout ce que vous devez savoir sur le projet i18n Benchmark."
-}, Pt = {
+}, Nt = {
 	"understandingImpact.understandingTheImpact": "Comprendre l'impact",
 	"understandingImpact.whyASingleLargeJson": "Pourquoi un seul JSON volumineux peut nuire aux performances",
 	"understandingImpact.manyI18nLibrariesStoreTranslations": "De nombreuses bibliothèques i18n stockent les traductions dans un seul objet JSON fourni via le contexte React. Lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. Cela signifie :",
@@ -2501,7 +2419,7 @@ var qe = {
 	"resultsTable.lazyLoading": "Chargement différé",
 	"hero.aTestApplicationDesignedTo": "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
 	"hero.viewResults": "Voir les résultats"
-}, Ft = {
+}, Pt = {
 	"pricingTiers.starterTier": "Starter",
 	"pricingTiers.starterPrice": "0 $",
 	"pricingTiers.forever": "à vie",
@@ -2531,7 +2449,7 @@ var qe = {
 	"pricingTiers.contactSales": "Contacter les ventes",
 	"pricingHeader.pricing": "Tarifs",
 	"pricingHeader.transparentPricingForEvery": "Une tarification transparente pour chaque étape de votre voyage i18n."
-}, It = {
+}, Ft = {
 	"products.benchmarkCLI": "Benchmark CLI",
 	"products.benchmarkCLIDesc": "Exécutez des benchmarks localement depuis votre terminal. Supporte les configurations personnalisées et l'intégration CI.",
 	"products.benchmarkCLIPrice": "Gratuit",
@@ -2553,11 +2471,11 @@ var qe = {
 	"products.learnMore": "En savoir plus",
 	"productsHeader.ourProducts": "Nos Produits",
 	"productsHeader.exploreOurSuiteOfTools": "Explorez notre suite d'outils conçus pour vous aider à créer de meilleures applications i18n."
-}, Lt = {
+}, It = {
 	"route.oopsPageNotFound": "Oups ! Page non trouvée",
 	"route.returnToHome": "Retour à l'accueil",
 	"route.couldNotMeasureHydrationDuration": "Impossible de mesurer la durée d'hydratation :"
-}, Rt = {
+}, Lt = {
 	"preferencesSection.preferences": "Préférences",
 	"preferencesSection.emailNotifications": "Notifications par email",
 	"preferencesSection.receiveWeeklyBenchmarkReports": "Recevoir des rapports hebdomadaires de benchmark",
@@ -2575,7 +2493,7 @@ var qe = {
 	"profileSection.profile": "Profil",
 	"profileSection.displayName": "Nom d'affichage",
 	"profileSection.email": "Email"
-}, zt = {
+}, Rt = {
 	"header.home": "Accueil",
 	"header.methodology": "Méthodologie",
 	"header.mockPages": "Pages de test",
@@ -2602,7 +2520,7 @@ var qe = {
 	"themeToggle.themeAuto": "Thème : Auto",
 	"themeToggle.themeDark": "Thème : Sombre",
 	"themeToggle.themeLight": "Thème : Clair"
-}, Bt = {
+}, zt = {
 	"teamGrid.sarahChen": "Sarah Chen",
 	"teamGrid.founderLeadEngineer": "Fondatrice & Ingénieure en chef",
 	"teamGrid.formerGoogleEngineerWith10": "Ancienne ingénieure Google avec 10 ans d'expérience dans la construction de systèmes d'internationalisation à grande échelle.",
@@ -2623,7 +2541,7 @@ var qe = {
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "Gère les contributions de la communauté, les partenariats et les événements. Expérience en gouvernance open source.",
 	"teamHeader.ourTeam": "Notre équipe",
 	"teamHeader.meetThePeopleBehindI18n": "Rencontrez les personnes derrière i18n Benchmark. Une équipe diversifiée unie par une passion commune pour les excellents outils de développement."
-}, Vt = {
+}, Bt = {
 	"aboutHeader.methodology": "Metodologia",
 	"aboutHeader.weDesignedThisBenchmarkTo": "Abbiamo progettato questo benchmark per fornire confronti equi, riproducibili e significativi delle librerie i18n.",
 	"whatWeMeasure.bundleSizeImpact": "Impatto sulla dimensione del bundle",
@@ -2645,7 +2563,7 @@ var qe = {
 	"aboutGrid.weUseBrowserNativeApis": "Utilizziamo le API native del browser (Performance Timeline, Resource Timing, Layout Instability) combinate con i dati di React Profiler. Le dimensioni dei bundle vengono misurate dopo la compressione gzip utilizzando source-map-explorer per accuratezza.",
 	"aboutGrid.fairComparison": "Confronto equo",
 	"aboutGrid.eachI18nLibraryIsIntegrated": "Ogni libreria i18n viene integrata seguendo la sua documentazione ufficiale e le migliori pratiche. Consultiamo i manutentori, quando possibile, per garantire una configurazione ottimale. Stessa app React, stessa configurazione Vite, stessa distribuzione."
-}, Ht = {
+}, Vt = {
 	"blogList.i18nBenchmark2026Results": "Risultati i18n Benchmark 2026",
 	"blogList.march152026": "15 marzo 2026",
 	"blogList.weTested12DifferentInternationalization": "Abbiamo testato 12 diverse librerie di internazionalizzazione su 10 pagine. Ecco i risultati dettagliati con grafici interattivi.",
@@ -2667,7 +2585,7 @@ var qe = {
 	"blogList.readMore": "Leggi di più →",
 	"blogHeader.blog": "Blog",
 	"blogHeader.insightsDeepDivesAnd": "Approfondimenti e aggiornamenti dalla comunità di benchmarking i18n."
-}, Ut = {
+}, Ht = {
 	"openPositions.openPositions": "Posizioni aperte",
 	"openPositions.seniorPerformanceEngineer": "Ingegnere delle prestazioni senior",
 	"openPositions.fullTime": "Tempo pieno",
@@ -2690,7 +2608,7 @@ var qe = {
 	"careersBenefits.allOurWorkIs": "Tutto il nostro lavoro è open source. Costruisci il tuo portfolio pubblico mentre generi un impatto.",
 	"careersBenefits.impactful": "Impattante",
 	"careersBenefits.yourWorkDirectlyHelps": "Il tuo lavoro aiuta direttamente i sviluppatori a creare applicazioni internazionalizzate migliori e più veloci."
-}, Wt = {
+}, Ut = {
 	"contactForm.name": "Nome",
 	"contactForm.email": "Email",
 	"contactForm.subject": "Oggetto",
@@ -2699,7 +2617,7 @@ var qe = {
 	"contactForm.wellGetBackTo": "Ti risponderemo entro 48 ore.",
 	"contactHeader.contactUs": "Contattaci",
 	"contactHeader.haveQuestionsOrWantTo": "Hai domande o vuoi contribuire? Ci piacerebbe sentirti."
-}, Gt = {
+}, Wt = {
 	"faqList.howAreTheBenchmarks": "Come vengono eseguiti i benchmark?",
 	"faqList.allBenchmarksAreRun": "Tutti i benchmark vengono eseguiti utilizzando Playwright su una configurazione hardware coerente (M2 MacBook Pro) con condizioni di rete 4G simulate. Ogni test esegue 50 iterazioni e riportiamo la mediana, i valori P95 e P99.",
 	"faqList.whatLibrariesAreCurrently": "Quali librerie sono attualmente testate?",
@@ -2712,7 +2630,7 @@ var qe = {
 	"faqList.yesWeUseThe": "Sì. Utilizziamo il test U di Mann-Whitney con un livello di significatività di 0,05 per confrontare le distribuzioni. Riportiamo anche gli intervalli di confidenza e le dimensioni dell'effetto.",
 	"faq-header1.frequentlyAskedQuestions": "Domande frequenti",
 	"faq-header1.everythingYouNeedToKnow": "Tutto quello che c'è da sapere sul progetto i18n Benchmark."
-}, Kt = {
+}, Gt = {
 	"understandingImpact.understandingTheImpact": "Capire l'impatto",
 	"understandingImpact.whyASingleLargeJson": "Perché un singolo JSON di grandi dimensioni può danneggiare le prestazioni",
 	"understandingImpact.manyI18nLibrariesStoreTranslations": "Molte librerie i18n memorizzano le traduzioni in un unico oggetto JSON fornito tramite il contesto React. Quando questo oggetto è grande (migliaia di chiavi), ogni componente che consuma le traduzioni mantiene un riferimento all'intero dizionario. Questo significa:",
@@ -2739,7 +2657,7 @@ var qe = {
 	"resultsTable.lazyLoading": "Caricamento lazy",
 	"hero.aTestApplicationDesignedTo": "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.",
 	"hero.viewResults": "Visualizza i risultati"
-}, qt = {
+}, Kt = {
 	"pricingTiers.freeTier": "Piano Gratuito",
 	"pricingTiers.free": "Gratis",
 	"pricingTiers.publicBenchmarkDashboard": "Dashboard pubblica dei benchmark",
@@ -2785,7 +2703,7 @@ var qe = {
 	"pricingTiers.customSLAs": "Custom SLAs",
 	"pricingTiers.auditLogs": "Audit logs",
 	"pricingTiers.trainingSessions": "Training sessions"
-}, Jt = {
+}, qt = {
 	"productsGrid.benchmarkDashboard": "Dashboard dei benchmark",
 	"productsGrid.interactiveChartsAndTables": "Grafici e tabelle interattive che confrontano le librerie i18n per dimensione del bundle, tempo di rendering e costo di idratazione.",
 	"productsGrid.bundleAnalyzer": "Analizzatore di bundle",
@@ -2797,11 +2715,11 @@ var qe = {
 	"productsGrid.learnMore": "Scopri di più",
 	"productsHeader.products": "Prodotti",
 	"productsHeader.toolsAndServicesTo": "Strumenti e servizi per aiutarti a ottimizzare la tua strategia di internazionalizzazione."
-}, Yt = {
+}, Jt = {
 	"route.oopsPageNotFound": "Ops! Pagina non trovata",
 	"route.returnToHome": "Torna alla Home",
 	"route.couldNotMeasureHydrationDuration": "Impossibile misurare la durata dell'idratazione:"
-}, Xt = {
+}, Yt = {
 	"preferencesSection.preferences": "Preferenze",
 	"preferencesSection.emailNotifications": "Notifiche via email",
 	"preferencesSection.receiveWeeklyBenchmarkReports": "Ricevi rapporti settimanali sui benchmark",
@@ -2819,7 +2737,7 @@ var qe = {
 	"profileSection.profile": "Profilo",
 	"profileSection.displayName": "Nome visualizzato",
 	"profileSection.email": "Email"
-}, Zt = {
+}, Xt = {
 	"header.home": "Home",
 	"header.methodology": "Metodologia",
 	"header.mockPages": "Pagine di test",
@@ -2846,7 +2764,7 @@ var qe = {
 	"themeToggle.themeAuto": "Tema: Auto",
 	"themeToggle.themeDark": "Tema: Scuro",
 	"themeToggle.themeLight": "Tema: Chiaro"
-}, Qt = {
+}, Zt = {
 	"teamGrid.sarahChen": "Sarah Chen",
 	"teamGrid.founderLeadEngineer": "Fondatrice & Lead Engineer",
 	"teamGrid.formerGoogleEngineerWith10": "Ex ingegnere Google con 10 anni di esperienza nella costruzione di sistemi di internazionalizzazione su scala.",
@@ -2867,7 +2785,7 @@ var qe = {
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "Gestisce i contributi della comunità, le partnership e gli eventi. Background nella governance open source.",
 	"teamHeader.ourTeam": "Il nostro team",
 	"teamHeader.meetThePeopleBehindI18n": "Incontra le persone dietro i18n Benchmark. Un team diversificato unito da una passione condivisa per gli ottimi strumenti di sviluppo."
-}, $t = {
+}, Qt = {
 	"aboutHeader.methodology": "メソッド",
 	"aboutHeader.weDesignedThisBenchmarkTo": "私たちは、i18nライブラリを公平、再現可能、そして有意義に比較できるようにこのベンチマークを設計しました。",
 	"whatWeMeasure.bundleSizeImpact": "バンドルサイズへの影響",
@@ -2889,7 +2807,7 @@ var qe = {
 	"aboutGrid.weUseBrowserNativeApis": "Performance Timeline、Resource Timing、Layout InstabilityなどのブラウザネイティブAPIと、React Profilerデータを組み合わせて使用します。バンドルサイズは、正確を期すためにsource-map-explorerを使用してgzip後に測定されます。",
 	"aboutGrid.fairComparison": "公平な比較",
 	"aboutGrid.eachI18nLibraryIsIntegrated": "各i18nライブラリは、公式ドキュメントとベストプラクティスに従って統合されています。最適な構成を確保するために、可能な場合はメンテナに相談しています。同じReactアプリ、同じVite設定、同じデプロイメント。"
-}, en = {
+}, $t = {
 	"blogList.i18nBenchmark2026Results": "i18nベンチマーク2026の結果",
 	"blogList.march152026": "2026年3月15日",
 	"blogList.weTested12DifferentInternationalization": "10ページにわたって12種類の国際化ライブラリをテストしました。インタラクティブなチャートを含む詳細な結果はこちらです。",
@@ -2911,7 +2829,7 @@ var qe = {
 	"blogList.readMore": "続きを読む →",
 	"blogHeader.blog": "ブログ",
 	"blogHeader.insightsDeepDivesAnd": "i18nベンチマークコミュニティからの洞察、詳細な分析、および最新情報。"
-}, tn = {
+}, en = {
 	"openPositions.openPositions": "募集中の職種",
 	"openPositions.seniorPerformanceEngineer": "シニアパフォーマンスエンジニア",
 	"openPositions.fullTime": "正社員",
@@ -2934,7 +2852,7 @@ var qe = {
 	"careersBenefits.allOurWorkIs": "私たちの仕事はすべてオープンソースです。影響を与えながら、公開ポートフォリオを構築してください。",
 	"careersBenefits.impactful": "インパクトがある",
 	"careersBenefits.yourWorkDirectlyHelps": "あなたの仕事は、開発者がより良く、より速い国際化アプリを構築するのを直接助けます。"
-}, nn = {
+}, tn = {
 	"contactForm.name": "お名前",
 	"contactForm.email": "メールアドレス",
 	"contactForm.subject": "件名",
@@ -2943,7 +2861,7 @@ var qe = {
 	"contactForm.wellGetBackTo": "48時間以内に返信いたします。",
 	"contactHeader.contactUs": "お問い合わせ",
 	"contactHeader.haveQuestionsOrWantTo": "質問がある、または貢献したいですか？ぜひご連絡ください。"
-}, rn = {
+}, nn = {
 	"faqList.howAreTheBenchmarks": "ベンチマークはどのように実行されますか？",
 	"faqList.allBenchmarksAreRun": "すべてのベンチマークは、Playwrightを使用して、一貫したハードウェア（M2 MacBook Pro）上でシミュレートされた4Gネットワーク条件で実行されます。各テストは50回繰り返され、中央値、P95、およびP99の値を報告します。",
 	"faqList.whatLibrariesAreCurrently": "現在テストされているライブラリは何ですか？",
@@ -2956,7 +2874,7 @@ var qe = {
 	"faqList.yesWeUseThe": "はい。分布を比較するために、有意水準0.05のマン・ホイットニーのU検定を使用します。また、信頼区間と効果量も報告します。",
 	"faq-header1.frequentlyAskedQuestions": "よくある質問",
 	"faq-header1.everythingYouNeedToKnow": "i18nベンチマークプロジェクトについて知っておくべきことのすべて。"
-}, an = {
+}, rn = {
 	"understandingImpact.understandingTheImpact": "影響を理解する",
 	"understandingImpact.whyASingleLargeJson": "なぜ1つの大きなJSONがパフォーマンスを低下させるのか",
 	"understandingImpact.manyI18nLibrariesStoreTranslations": "多くのi18nライブラリは、Reactコンテキストを介して提供される1つのJSONオブジェクトに翻訳を保存します。このオブジェクトが大きい（数千のキーがある）場合、翻訳を使用するすべてのコンポーネントが辞書全体への参照を保持します。これは以下のことを意味します：",
@@ -2983,7 +2901,7 @@ var qe = {
 	"resultsTable.lazyLoading": "遅延読み込み",
 	"hero.aTestApplicationDesignedTo": "国際化ライブラリがバンドルサイズ、読み込みパフォーマンス、レンダリングの反応性に与える実際の影響を測定するために設計されたテストアプリケーション。",
 	"hero.viewResults": "結果を表示"
-}, on = {
+}, an = {
 	"pricingTiers.freeTier": "無料プラン",
 	"pricingTiers.free": "無料",
 	"pricingTiers.publicBenchmarkDashboard": "公開ベンチマークダッシュボード",
@@ -3029,7 +2947,7 @@ var qe = {
 	"pricingTiers.customSLAs": "Custom SLAs",
 	"pricingTiers.auditLogs": "Audit logs",
 	"pricingTiers.trainingSessions": "Training sessions"
-}, sn = {
+}, on = {
 	"productsGrid.benchmarkDashboard": "ベンチマークダッシュボード",
 	"productsGrid.interactiveChartsAndTables": "バンドルサイズ、レンダリング時間、ハイドレーションコストにわたってi18nライブラリを比較するインタラクティブなチャートと表。",
 	"productsGrid.bundleAnalyzer": "バンドルアナライザー",
@@ -3041,11 +2959,11 @@ var qe = {
 	"productsGrid.learnMore": "詳細はこちら",
 	"productsHeader.products": "製品",
 	"productsHeader.toolsAndServicesTo": "国際化戦略の最適化に役立つツールとサービス。"
-}, cn = {
+}, sn = {
 	"route.oopsPageNotFound": "おっと！ページが見つかりません",
 	"route.returnToHome": "ホームに戻る",
 	"route.couldNotMeasureHydrationDuration": "ハイドレーション時間を測定できませんでした："
-}, ln = {
+}, cn = {
 	"preferencesSection.preferences": "設定",
 	"preferencesSection.emailNotifications": "メール通知",
 	"preferencesSection.receiveWeeklyBenchmarkReports": "ベンチマーク週報を受け取る",
@@ -3063,7 +2981,7 @@ var qe = {
 	"profileSection.profile": "プロフィール",
 	"profileSection.displayName": "表示名",
 	"profileSection.email": "メールアドレス"
-}, un = {
+}, ln = {
 	"header.home": "ホーム",
 	"header.methodology": "メソッド",
 	"header.mockPages": "テストページ",
@@ -3090,7 +3008,7 @@ var qe = {
 	"themeToggle.themeAuto": "テーマ：自動",
 	"themeToggle.themeDark": "テーマ：ダーク",
 	"themeToggle.themeLight": "テーマ：ライト"
-}, dn = {
+}, un = {
 	"teamGrid.sarahChen": "Sarah Chen",
 	"teamGrid.founderLeadEngineer": "創設者兼リードエンジニア",
 	"teamGrid.formerGoogleEngineerWith10": "以前はGoogleのエンジニアで、大規模な国際化システムの構築に10年の経験があります。",
@@ -3111,7 +3029,7 @@ var qe = {
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "コミュニティの貢献、パートナーシップ、およびイベントを管理。オープンソースガバナンスの経歴を持つ。",
 	"teamHeader.ourTeam": "私たちのチーム",
 	"teamHeader.meetThePeopleBehindI18n": "i18nベンチマークの裏側にいる人々に会いましょう。優れた開発者ツールへの共通の情熱によって結ばれた多様なチームです。"
-}, fn = {
+}, dn = {
 	"aboutHeader.methodology": "방법론",
 	"aboutHeader.weDesignedThisBenchmarkTo": "우리는 i18n 라이브러리를 공정하고, 재현 가능하며, 의미 있게 비교할 수 있도록 이 벤치마크를 설계했습니다.",
 	"whatWeMeasure.bundleSizeImpact": "번들 크기 영향",
@@ -3133,7 +3051,7 @@ var qe = {
 	"aboutGrid.weUseBrowserNativeApis": "Performance Timeline, Resource Timing, Layout Instability와 같은 브라우저 기반 API와 React Profiler 데이터를 결합하여 사용합니다. 번들 크기는 정확성을 위해 source-map-explorer를 사용하여 gzip 후에 측정됩니다.",
 	"aboutGrid.fairComparison": "공정한 비교",
 	"aboutGrid.eachI18nLibraryIsIntegrated": "각 i18n 라이브러리는 공식 문서와 모범 사례에 따라 통합되었습니다. 최적의 구성을 보장하기 위해 가능한 경우 유지 관리자와 상담합니다. 동일한 React 앱, 동일한 Vite 설정, 동일한 배포 방식이 적용됩니다."
-}, pn = {
+}, fn = {
 	"blogList.i18nBenchmark2026Results": "i18n 벤치마크 2026 결과",
 	"blogList.march152026": "2026년 3월 15일",
 	"blogList.weTested12DifferentInternationalization": "우리는 10개 페이지에 걸쳐 12가지 서로 다른 국제화 라이브러리를 테스트했습니다. 대화형 차트가 포함된 자세한 결과는 다음과 같습니다.",
@@ -3155,7 +3073,7 @@ var qe = {
 	"blogList.readMore": "더 읽어보기 →",
 	"blogHeader.blog": "블로그",
 	"blogHeader.insightsDeepDivesAnd": "i18n 벤치마킹 커뮤니티의 통찰력, 심층 분석 및 업데이트."
-}, mn = {
+}, pn = {
 	"openPositions.openPositions": "채용 중인 직책",
 	"openPositions.seniorPerformanceEngineer": "시니어 성능 엔지니어",
 	"openPositions.fullTime": "정규직",
@@ -3178,7 +3096,7 @@ var qe = {
 	"careersBenefits.allOurWorkIs": "우리의 모든 작업은 오픈 소스입니다. 영향력을 미치는 동시에 공개 포트폴리오를 만드세요.",
 	"careersBenefits.impactful": "영향력 있는",
 	"careersBenefits.yourWorkDirectlyHelps": "여러분의 작업은 개발자가 더 나은, 더 빠른 국제화 앱을 구축하는 데 직접적인 도움이 됩니다."
-}, hn = {
+}, mn = {
 	"contactForm.name": "이름",
 	"contactForm.email": "이메일",
 	"contactForm.subject": "제목",
@@ -3187,7 +3105,7 @@ var qe = {
 	"contactForm.wellGetBackTo": "48시간 이내에 답변해 드리겠습니다.",
 	"contactHeader.contactUs": "문의처",
 	"contactHeader.haveQuestionsOrWantTo": "궁금한 점이 있거나 기여하고 싶으신가요? 여러분의 의견을 기다립니다."
-}, gn = {
+}, hn = {
 	"faqList.howAreTheBenchmarks": "벤치마크는 어떻게 실행되나요?",
 	"faqList.allBenchmarksAreRun": "모든 벤치마크는 일관된 하드웨어 설정(M2 MacBook Pro)에서 시뮬레이션된 4G 네트워크 조건으로 Playwright를 사용하여 실행됩니다. 각 테스트는 50번 반복되며 중앙값, P95 및 P99 값을 보고합니다.",
 	"faqList.whatLibrariesAreCurrently": "현재 어떤 라이브러리가 테스트되고 있나요?",
@@ -3200,7 +3118,7 @@ var qe = {
 	"faqList.yesWeUseThe": "네. 0.05 유의 수준에서 Mann-Whitney U 검정을 사용하여 분포를 비교합니다. 또한 신뢰 구간과 효과 크기를 보고합니다.",
 	"faq-header1.frequentlyAskedQuestions": "자주 묻는 질문",
 	"faq-header1.everythingYouNeedToKnow": "i18n Benchmark 프로젝트에 대해 알아야 할 모든 것."
-}, _n = {
+}, gn = {
 	"understandingImpact.understandingTheImpact": "영향 이해하기",
 	"understandingImpact.whyASingleLargeJson": "단일 대형 JSON이 성능을 저해하는 이유",
 	"understandingImpact.manyI18nLibrariesStoreTranslations": "많은 i18n 라이브러리는 React 컨텍스트를 통해 제공되는 단일 JSON 객체에 번역을 저장합니다. 이 객체가 클 경우(수천 개의 키), 번역을 사용하는 모든 구성 요소가 전체 사전에 대한 참조를 보유하게 됩니다. 이는 다음을 의미합니다:",
@@ -3227,7 +3145,7 @@ var qe = {
 	"resultsTable.lazyLoading": "지연 로딩",
 	"hero.aTestApplicationDesignedTo": "국제화 라이브러리가 번들 크기, 로드 성능 및 렌더링 반응성에 미치는 실제 영향을 측정하도록 설계된 테스트 애플리케이션입니다.",
 	"hero.viewResults": "결과 보기"
-}, vn = {
+}, _n = {
 	"pricingTiers.freeTier": "무료 티어",
 	"pricingTiers.free": "무료",
 	"pricingTiers.publicBenchmarkDashboard": "공개 벤치마크 대시보드",
@@ -3273,7 +3191,7 @@ var qe = {
 	"pricingTiers.customSLAs": "Custom SLAs",
 	"pricingTiers.auditLogs": "Audit logs",
 	"pricingTiers.trainingSessions": "Training sessions"
-}, yn = {
+}, vn = {
 	"productsGrid.benchmarkDashboard": "벤치마크 대시보드",
 	"productsGrid.interactiveChartsAndTables": "번들 크기, 렌더링 시간, 하이드레이션 비용에 따라 i18n 라이브러리를 비교하는 대화형 차트와 표.",
 	"productsGrid.bundleAnalyzer": "번들 분석기",
@@ -3285,11 +3203,11 @@ var qe = {
 	"productsGrid.learnMore": "더 알아보기",
 	"productsHeader.products": "제품",
 	"productsHeader.toolsAndServicesTo": "국제화 전략을 최적화하는 데 도움이 되는 도구와 서비스."
-}, bn = {
+}, yn = {
 	"route.oopsPageNotFound": "앗! 페이지를 찾을 수 없습니다",
 	"route.returnToHome": "홈으로 돌아가기",
 	"route.couldNotMeasureHydrationDuration": "하이드레이션 시간을 측정할 수 없습니다:"
-}, xn = {
+}, bn = {
 	"preferencesSection.preferences": "기본 설정",
 	"preferencesSection.emailNotifications": "이메일 알림",
 	"preferencesSection.receiveWeeklyBenchmarkReports": "주간 벤치마크 보고서 받기",
@@ -3307,7 +3225,7 @@ var qe = {
 	"profileSection.profile": "프로필",
 	"profileSection.displayName": "표시 이름",
 	"profileSection.email": "이메일"
-}, Sn = {
+}, xn = {
 	"header.home": "홈",
 	"header.methodology": "방법론",
 	"header.mockPages": "테스트 페이지",
@@ -3334,7 +3252,7 @@ var qe = {
 	"themeToggle.themeAuto": "테마: 자동",
 	"themeToggle.themeDark": "테마: 다크",
 	"themeToggle.themeLight": "테마: 라이트"
-}, Cn = {
+}, Sn = {
 	"teamGrid.sarahChen": "Sarah Chen",
 	"teamGrid.founderLeadEngineer": "창립자 및 리드 엔지니어",
 	"teamGrid.formerGoogleEngineerWith10": "전 Google 엔지니어로 대규모 국제화 시스템 구축에 10년의 경험이 있습니다.",
@@ -3355,7 +3273,7 @@ var qe = {
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "커뮤니티 기여, 파트너십 및 이벤트를 관리합니다. 오픈 소스 거버넌스 배경 보유。",
 	"teamHeader.ourTeam": "우리 팀",
 	"teamHeader.meetThePeopleBehindI18n": "i18n Benchmark를 만드는 사람들을 만나보세요. 훌륭한 개발자 도구에 대한 열정으로 뭉친 다양한 팀입니다."
-}, wn = {
+}, Cn = {
 	"aboutHeader.methodology": "Metodologia",
 	"aboutHeader.weDesignedThisBenchmarkTo": "Projetamos este benchmark para fornecer comparações justas, reproduzíveis e significativas das bibliotecas de i18n.",
 	"whatWeMeasure.bundleSizeImpact": "Impacto no tamanho do bundle",
@@ -3377,7 +3295,7 @@ var qe = {
 	"aboutGrid.weUseBrowserNativeApis": "Usamos APIs nativas do navegador (Performance Timeline, Resource Timing, Layout Instability) combinadas com dados do React Profiler. Os tamanhos dos bundles são medidos pós-gzip usando source-map-explorer para maior precisão.",
 	"aboutGrid.fairComparison": "Comparação Justa",
 	"aboutGrid.eachI18nLibraryIsIntegrated": "Cada biblioteca i18n é integrada seguindo sua documentação oficial e as melhores práticas. Consultamos os mantenedores quando possível para garantir a configuração ideal. O mesmo aplicativo React, a mesma configuração Vite, o mesmo deploy."
-}, Tn = {
+}, wn = {
 	"blogList.i18nBenchmark2026Results": "Resultados do i18n Benchmark 2026",
 	"blogList.march152026": "15 de março de 2026",
 	"blogList.weTested12DifferentInternationalization": "Testamos 12 bibliotecas de internacionalização diferentes em 10 páginas. Aqui estão os resultados detalhados com gráficos interativos.",
@@ -3399,7 +3317,7 @@ var qe = {
 	"blogList.readMore": "Leia mais →",
 	"blogHeader.blog": "Blog",
 	"blogHeader.insightsDeepDivesAnd": "Insights, análises aprofundadas e atualizações da comunidade de benchmarking i18n."
-}, En = {
+}, Tn = {
 	"careersHeader.careers": "Carreiras",
 	"careersHero.fromAnywhere": "de qualquer lugar do mundo",
 	"careersBenefits.competitivePay": "Salário competitivo",
@@ -3412,7 +3330,7 @@ var qe = {
 	"openPositions.remote": "Remoto",
 	"openPositions.fullTime": "Tempo integral",
 	"openPositions.applyNow": "Candidatar-se agora"
-}, Dn = {
+}, En = {
 	"contactForm.name": "Nome",
 	"contactForm.email": "E-mail",
 	"contactForm.subject": "Assunto",
@@ -3421,7 +3339,7 @@ var qe = {
 	"contactForm.wellGetBackTo": "Retornaremos em até 48 horas.",
 	"contactHeader.contactUs": "Contate-nos",
 	"contactHeader.haveQuestionsOrWantTo": "Tem dúvidas ou quer contribuir? Gostaríamos muito de ouvir você."
-}, On = {
+}, Dn = {
 	"faqList.howAreTheBenchmarks": "Como os benchmarks são executados?",
 	"faqList.allBenchmarksAreRun": "Todos os benchmarks são executados usando o Playwright em uma configuração de hardware consistente (M2 MacBook Pro) com condições de rede 4G simuladas. Cada teste executa 50 iterações e relatamos a mediana, e os valores P95 e P99.",
 	"faqList.whatLibrariesAreCurrently": "Quais bibliotecas são testadas atualmente?",
@@ -3434,7 +3352,7 @@ var qe = {
 	"faqList.yesWeUseThe": "Sim. Usamos o teste U de Mann-Whitney com um nível de significância de 0,05 para comparar distribuições. Também relatamos intervalos de confiança e tamanhos de efeito.",
 	"faq-header1.frequentlyAskedQuestions": "Perguntas Frequentes",
 	"faq-header1.everythingYouNeedToKnow": "Tudo o que você precisa saber sobre o projeto i18n Benchmark."
-}, kn = {
+}, On = {
 	"understandingImpact.understandingTheImpact": "Entendendo o impacto",
 	"understandingImpact.whyASingleLargeJson": "Por que um único JSON grande pode prejudicar o desempenho",
 	"understandingImpact.manyI18nLibrariesStoreTranslations": "Muitas bibliotecas de i18n armazenam as traduções em um único objeto JSON fornecido através do contexto de React. Quando este objeto é grande (milhares de chaves), cada componente que consome traduções mantém uma referência a todo o dicionário. Isto significa:",
@@ -3461,7 +3379,7 @@ var qe = {
 	"resultsTable.lazyLoading": "Carregamento lento",
 	"hero.aTestApplicationDesignedTo": "Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade da renderização.",
 	"hero.viewResults": "Ver Resultados"
-}, An = {
+}, kn = {
 	"pricingTiers.starterTier": "Inicial",
 	"pricingTiers.starterPrice": "$0",
 	"pricingTiers.forever": "para sempre",
@@ -3491,7 +3409,7 @@ var qe = {
 	"pricingTiers.contactSales": "Falar com vendas",
 	"pricingHeader.pricing": "Preços",
 	"pricingHeader.transparentPricingForEvery": "Preços transparentes para cada etapa da sua jornada i18n."
-}, jn = {
+}, An = {
 	"products.benchmarkCLI": "Benchmark CLI",
 	"products.benchmarkCLIDesc": "Execute benchmarks localmente pelo terminal. Suporta configurações personalizadas e integração CI.",
 	"products.benchmarkCLIPrice": "Grátis",
@@ -3513,11 +3431,11 @@ var qe = {
 	"products.learnMore": "Saiba mais",
 	"productsHeader.ourProducts": "Nossos produtos",
 	"productsHeader.exploreOurSuiteOfTools": "Explore nossa suíte de ferramentas para criar aplicativos i18n melhores."
-}, Mn = {
+}, jn = {
 	"route.oopsPageNotFound": "Ops! Página não encontrada",
 	"route.returnToHome": "Voltar para o Início",
 	"route.couldNotMeasureHydrationDuration": "Não foi possível medir a duração da hidratação:"
-}, Nn = {
+}, Mn = {
 	"preferencesSection.preferences": "Preferências",
 	"preferencesSection.emailNotifications": "Notificações por e-mail",
 	"preferencesSection.receiveWeeklyBenchmarkReports": "Receber relatórios semanais de benchmarks",
@@ -3535,7 +3453,7 @@ var qe = {
 	"profileSection.profile": "Perfil",
 	"profileSection.displayName": "Nome de exibição",
 	"profileSection.email": "E-Mail"
-}, Pn = {
+}, Nn = {
 	"header.home": "Início",
 	"header.methodology": "Metodologia",
 	"header.mockPages": "Páginas de teste",
@@ -3562,7 +3480,7 @@ var qe = {
 	"themeToggle.themeAuto": "Tema: Auto",
 	"themeToggle.themeDark": "Tema: Escuro",
 	"themeToggle.themeLight": "Tema: Claro"
-}, Fn = {
+}, Pn = {
 	"teamGrid.sarahChen": "Sarah Chen",
 	"teamGrid.founderLeadEngineer": "Fundadora e Engenheira Líder",
 	"teamGrid.formerGoogleEngineerWith10": "Ex-engenheira do Google com 10 anos de experiência na construção de sistemas de internacionalização em escala.",
@@ -3583,7 +3501,7 @@ var qe = {
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "Gerencia contribuições da comunidade, parcerias e eventos. Experiência em governança de código aberto.",
 	"teamHeader.ourTeam": "Nossa Equipe",
 	"teamHeader.meetThePeopleBehindI18n": "Conheça as pessoas por trás do i18n Benchmark. Uma equipe diversificada unida por uma paixão compartilhada por ótimas ferramentas de desenvolvedor."
-}, In = {
+}, Fn = {
 	"aboutHeader.methodology": "Методология",
 	"aboutHeader.weDesignedThisBenchmarkTo": "Мы разработали этот бенчмарк, чтобы обеспечить справедливое, воспроизводимое и значимое сравнение библиотек i18n. Вот наш подход.",
 	"whatWeMeasure.bundleSizeImpact": "Влияние на размер бандла",
@@ -3605,7 +3523,7 @@ var qe = {
 	"aboutGrid.weUseBrowserNativeApis": "Мы используем нативные API браузера (Performance Timeline, Resource Timing, Layout Instability) в сочетании с данными React Profiler. Размеры бандлов измеряются после gzip с использованием source-map-explorer для точности.",
 	"aboutGrid.fairComparison": "Справедливое сравнение",
 	"aboutGrid.eachI18nLibraryIsIntegrated": "Каждая библиотека i18n интегрируется в соответствии с ее официальной документацией и лучшими практиками. Мы консультируемся с мейнтейнерами, когда это возможно, чтобы обеспечить оптимальную конфигурацию. Одно и то же приложение React, один и тот же конфиг Vite, одно и то же развертывание."
-}, Ln = {
+}, In = {
 	"blogList.i18nBenchmark2026Results": "Результаты i18n Benchmark 2026",
 	"blogList.march152026": "15 марта 2026 года",
 	"blogList.weTested12DifferentInternationalization": "Мы протестировали 12 различных библиотек интернационализации на 10 страницах. Вот подробные результаты с интерактивными графиками.",
@@ -3627,7 +3545,7 @@ var qe = {
 	"blogList.readMore": "Читать далее →",
 	"blogHeader.blog": "Блог",
 	"blogHeader.insightsDeepDivesAnd": "Инсайты, глубокие погружения и обновления от сообщества бенчмаркинга i18n."
-}, Rn = {
+}, Ln = {
 	"openPositions.openPositions": "Открытые вакансии",
 	"openPositions.seniorPerformanceEngineer": "Старший инженер по производительности",
 	"openPositions.fullTime": "Полный рабочий день",
@@ -3650,7 +3568,7 @@ var qe = {
 	"careersBenefits.allOurWorkIs": "Вся наша работа — open source. Создавайте свое публичное портфолио, оказывая реальное влияние.",
 	"careersBenefits.impactful": "Значимо",
 	"careersBenefits.yourWorkDirectlyHelps": "Ваша работа напрямую помогает разработчикам создавать более качественные и быстрые локализованные приложения."
-}, zn = {
+}, Rn = {
 	"contactForm.name": "Имя",
 	"contactForm.email": "Email",
 	"contactForm.subject": "Тема",
@@ -3659,7 +3577,7 @@ var qe = {
 	"contactForm.wellGetBackTo": "Мы ответим вам в течение 48 часов.",
 	"contactHeader.contactUs": "Связаться с нами",
 	"contactHeader.haveQuestionsOrWantTo": "Есть вопросы или хотите внести вклад? Мы будем рады услышать вас."
-}, Bn = {
+}, zn = {
 	"faqList.howAreTheBenchmarks": "Как запускаются бенчмарки?",
 	"faqList.allBenchmarksAreRun": "Все бенчмарки запускаются с использованием Playwright на стабильной конфигурации оборудования (M2 MacBook Pro) с симулированными условиями сети 4G. Каждый тест выполняется 50 раз, и мы сообщаем медиану, значения P95 и P99.",
 	"faqList.whatLibrariesAreCurrently": "Какие библиотеки сейчас тестируются?",
@@ -3672,7 +3590,7 @@ var qe = {
 	"faqList.yesWeUseThe": "Да. Мы используем U-критерий Манна-Уитни с уровнем значимости 0,05 для сравнения распределений. Мы также сообщаем доверительные интервалы и размеры эффекта.",
 	"faq-header1.frequentlyAskedQuestions": "Часто задаваемые вопросы",
 	"faq-header1.everythingYouNeedToKnow": "Все, что вам нужно знать о проекте i18n Benchmark."
-}, Vn = {
+}, Bn = {
 	"understandingImpact.understandingTheImpact": "Понимание влияния",
 	"understandingImpact.whyASingleLargeJson": "Почему один большой JSON может снизить производительность",
 	"understandingImpact.manyI18nLibrariesStoreTranslations": "Многие библиотеки i18n хранят переводы в одном объекте JSON, предоставляемом через контекст React. Когда этот объект большой (тысячи ключей), каждый компонент, использующий переводы, хранит ссылку на весь словарь. Это означает:",
@@ -3699,7 +3617,7 @@ var qe = {
 	"resultsTable.lazyLoading": "Ленивая загрузка",
 	"hero.aTestApplicationDesignedTo": "Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.",
 	"hero.viewResults": "Посмотреть результаты"
-}, Hn = {
+}, Vn = {
 	"pricingTiers.freeTier": "Бесплатный уровень",
 	"pricingTiers.free": "Бесплатно",
 	"pricingTiers.publicBenchmarkDashboard": "Публичный дашборд бенчмарков",
@@ -3745,7 +3663,7 @@ var qe = {
 	"pricingTiers.customSLAs": "Custom SLAs",
 	"pricingTiers.auditLogs": "Audit logs",
 	"pricingTiers.trainingSessions": "Training sessions"
-}, Un = {
+}, Hn = {
 	"productsGrid.benchmarkDashboard": "Дашборд бенчмарков",
 	"productsGrid.interactiveChartsAndTables": "Интерактивные графики и таблицы, сравнивающие библиотеки i18n по размеру бандла, времени рендеринга и стоимости гидратации.",
 	"productsGrid.bundleAnalyzer": "Анализатор бандла",
@@ -3757,11 +3675,11 @@ var qe = {
 	"productsGrid.learnMore": "Узнать больше",
 	"productsHeader.products": "Продукты",
 	"productsHeader.toolsAndServicesTo": "Инструменты и услуги, которые помогут вам оптимизировать стратегию интернационализации."
-}, Wn = {
+}, Un = {
 	"route.oopsPageNotFound": "Упс! Страница не найдена",
 	"route.returnToHome": "Вернуться на главную",
 	"route.couldNotMeasureHydrationDuration": "Не удалось измерить продолжительность гидратации:"
-}, Gn = {
+}, Wn = {
 	"preferencesSection.preferences": "Настройки",
 	"preferencesSection.emailNotifications": "Email-уведомления",
 	"preferencesSection.receiveWeeklyBenchmarkReports": "Получать еженедельные отчеты о бенчмарках",
@@ -3779,7 +3697,7 @@ var qe = {
 	"profileSection.profile": "Профиль",
 	"profileSection.displayName": "Отображаемое имя",
 	"profileSection.email": "Email"
-}, Kn = {
+}, Gn = {
 	"header.home": "Главная",
 	"header.methodology": "Методология",
 	"header.mockPages": "Тестовые страницы",
@@ -3806,7 +3724,7 @@ var qe = {
 	"themeToggle.themeAuto": "Тема: Авто",
 	"themeToggle.themeDark": "Тема: Темная",
 	"themeToggle.themeLight": "Тема: Светлая"
-}, qn = {
+}, Kn = {
 	"teamGrid.sarahChen": "Сара Чен",
 	"teamGrid.founderLeadEngineer": "Основатель и ведущий инженер",
 	"teamGrid.formerGoogleEngineerWith10": "Бывший инженер Google с 10-летним опытом создания систем интернационализации в масштабе.",
@@ -3827,7 +3745,7 @@ var qe = {
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "Управляет вкладом сообщества, партнерствами и мероприятиями. Опыт в управлении проектами с открытым исходным кодом.",
 	"teamHeader.ourTeam": "Наша команда",
 	"teamHeader.meetThePeopleBehindI18n": "Познакомьтесь с людьми, стоящими за i18n Benchmark. Разнообразная команда, объединенная общей страстью к отличным инструментам для разработчиков."
-}, Jn = {
+}, qn = {
 	"aboutHeader.methodology": "方法学",
 	"aboutHeader.weDesignedThisBenchmarkTo": "我们设计这个基准是为了提供公平、可重现和有意义的 i18n 库比较。",
 	"whatWeMeasure.bundleSizeImpact": "包大小影响",
@@ -3849,7 +3767,7 @@ var qe = {
 	"aboutGrid.weUseBrowserNativeApis": "我们使用浏览器原生的 API（Performance Timeline, Resource Timing, Layout Instability）结合 React Profiler 数据。包大小在 gzip 后使用 source-map-explorer 测量以确保准确性。",
 	"aboutGrid.fairComparison": "公平比较",
 	"aboutGrid.eachI18nLibraryIsIntegrated": "每个 i18n 库都按照其官方文档和最佳实践进行集成。我们尽可能咨询维护者以确保最佳配置。相同的 React 应用，相同的 Vite 配置，相同的部署。"
-}, Yn = {
+}, Jn = {
 	"blogList.i18nBenchmark2026Results": "i18n 基准测试 2026 结果",
 	"blogList.march152026": "2026年3月15日",
 	"blogList.weTested12DifferentInternationalization": "我们针对 10 个页面测试了 12 种不同的国际化库。以下是带有交互式图表的详细结果。",
@@ -3871,7 +3789,7 @@ var qe = {
 	"blogList.readMore": "阅读更多 →",
 	"blogHeader.blog": "博客",
 	"blogHeader.insightsDeepDivesAnd": "来自 i18n 基准测试社区的见解、深入探讨和更新。"
-}, Xn = {
+}, Yn = {
 	"openPositions.openPositions": "开放职位",
 	"openPositions.seniorPerformanceEngineer": "高级性能工程师",
 	"openPositions.fullTime": "全职",
@@ -3894,7 +3812,7 @@ var qe = {
 	"careersBenefits.allOurWorkIs": "我们所有的工作都是开源的。在产生影响的同时建立你的公共投资组合。",
 	"careersBenefits.impactful": "有影响力的",
 	"careersBenefits.yourWorkDirectlyHelps": "你的工作直接帮助开发人员构建更好、更快的国际化应用程序。"
-}, Zn = {
+}, Xn = {
 	"contactForm.name": "姓名",
 	"contactForm.email": "电子邮件",
 	"contactForm.subject": "主题",
@@ -3903,7 +3821,7 @@ var qe = {
 	"contactForm.wellGetBackTo": "我们将在 48 小时内回复您。",
 	"contactHeader.contactUs": "联系我们",
 	"contactHeader.haveQuestionsOrWantTo": "有疑问或想做出贡献？我们很期待听到你的声音。"
-}, Qn = {
+}, Zn = {
 	"faqList.howAreTheBenchmarks": "基准测试是如何运行的？",
 	"faqList.allBenchmarksAreRun": "所有的基准测试都是使用 Playwright 在一致的硬件设置（M2 MacBook Pro）上运行的，并模拟了 4G 网络条件。每个测试运行 50 次迭代，我们报告中位数、P95 和 P99 值。",
 	"faqList.whatLibrariesAreCurrently": "目前测试了哪些库？",
@@ -3916,7 +3834,7 @@ var qe = {
 	"faqList.yesWeUseThe": "是的。我们使用 Mann-Whitney U 检验（显着性水平为 0.05）来比较分布。我们还报告置信区间和效应大小。",
 	"faq-header1.frequentlyAskedQuestions": "常见问题",
 	"faq-header1.everythingYouNeedToKnow": "关于 i18n 基准测试项目，你需要知道的一切。"
-}, $n = {
+}, Qn = {
 	"understandingImpact.understandingTheImpact": "理解影响",
 	"understandingImpact.whyASingleLargeJson": "为什么单个大型 JSON 会损害性能",
 	"understandingImpact.manyI18nLibrariesStoreTranslations": "许多 i18n 库将翻译存储在通过 React 上下文提供的单个 JSON 对象中。当这个对象很大（数千个键）时，每个使用翻译的组件都会持有对整个字典的引用。这意味着：",
@@ -3943,7 +3861,7 @@ var qe = {
 	"resultsTable.lazyLoading": "延迟加载",
 	"hero.aTestApplicationDesignedTo": "一个测试应用程序，旨在衡量国际化库对包大小、加载性能和渲染反应性的实际影响。",
 	"hero.viewResults": "查看结果"
-}, er = {
+}, $n = {
 	"pricingTiers.freeTier": "免费版",
 	"pricingTiers.free": "免费",
 	"pricingTiers.publicBenchmarkDashboard": "公共基准测试仪表板",
@@ -3989,7 +3907,7 @@ var qe = {
 	"pricingTiers.customSLAs": "Custom SLAs",
 	"pricingTiers.auditLogs": "Audit logs",
 	"pricingTiers.trainingSessions": "Training sessions"
-}, tr = {
+}, er = {
 	"productsGrid.benchmarkDashboard": "基准测试仪表板",
 	"productsGrid.interactiveChartsAndTables": "交互式图表和表格，对比了不同 i18n 库在包大小、渲染时间和注水成本方面的表现。",
 	"productsGrid.bundleAnalyzer": "包分析器",
@@ -4001,11 +3919,11 @@ var qe = {
 	"productsGrid.learnMore": "了解更多",
 	"productsHeader.products": "产品",
 	"productsHeader.toolsAndServicesTo": "帮助您优化国际化战略的工具和服务。"
-}, nr = {
+}, tr = {
 	"route.oopsPageNotFound": "糟糕！找不到页面",
 	"route.returnToHome": "返回首页",
 	"route.couldNotMeasureHydrationDuration": "无法测量注水时长："
-}, rr = {
+}, nr = {
 	"preferencesSection.preferences": "偏好设置",
 	"preferencesSection.emailNotifications": "邮件通知",
 	"preferencesSection.receiveWeeklyBenchmarkReports": "接收每周基准测试报告",
@@ -4023,7 +3941,7 @@ var qe = {
 	"profileSection.profile": "个人资料",
 	"profileSection.displayName": "显示名称",
 	"profileSection.email": "电子邮件"
-}, ir = {
+}, rr = {
 	"header.home": "首页",
 	"header.methodology": "方法学",
 	"header.mockPages": "模拟页面",
@@ -4050,7 +3968,7 @@ var qe = {
 	"themeToggle.themeAuto": "主题：自动",
 	"themeToggle.themeDark": "主题：深色",
 	"themeToggle.themeLight": "主题：浅色"
-}, ar = {
+}, ir = {
 	"teamGrid.sarahChen": "Sarah Chen",
 	"teamGrid.founderLeadEngineer": "创始人兼首席工程师",
 	"teamGrid.formerGoogleEngineerWith10": "前 Google 工程师，在构建大规模国际化系统方面拥有 10 年经验。",
@@ -4071,7 +3989,7 @@ var qe = {
 	"teamGrid.managesCommunityContributionsPartnershipsAnd": "管理社区贡献、合作伙伴关系和活动。具有开源治理背景。",
 	"teamHeader.ourTeam": "我们的团队",
 	"teamHeader.meetThePeopleBehindI18n": "认识 i18n 基准测试背后的团队。一支多元化的团队，因为对优秀开发人员工具的共同热情而团结在一起。"
-}, or = [
+}, ar = [
 	"about",
 	"blog",
 	"careers",
@@ -4084,195 +4002,177 @@ var qe = {
 	"settings",
 	"shared",
 	"team"
-], sr = "shared", cr = {
+], or = "shared", sr = {
 	de: {
-		about: qe,
-		blog: Je,
-		careers: Ye,
-		contact: Xe,
-		faq: Ze,
-		home: Qe,
-		pricing: $e,
-		products: et,
-		route: tt,
-		settings: nt,
-		shared: rt,
-		team: it
+		about: Ke,
+		blog: qe,
+		careers: Je,
+		contact: Ye,
+		faq: Xe,
+		home: Ze,
+		pricing: Qe,
+		products: $e,
+		route: et,
+		settings: tt,
+		shared: nt,
+		team: rt
 	},
 	en: {
-		about: at,
-		blog: ot,
-		careers: st,
-		contact: ct,
-		faq: lt,
-		home: ut,
-		pricing: dt,
-		products: ft,
-		route: pt,
-		settings: mt,
-		shared: ht,
-		team: gt
+		about: it,
+		blog: at,
+		careers: ot,
+		contact: st,
+		faq: ct,
+		home: lt,
+		pricing: ut,
+		products: dt,
+		route: ft,
+		settings: pt,
+		shared: mt,
+		team: ht
 	},
 	es: {
-		about: _t,
-		blog: vt,
-		careers: yt,
-		contact: bt,
-		faq: xt,
-		home: St,
-		pricing: Ct,
-		products: wt,
-		route: Tt,
-		settings: Et,
-		shared: Dt,
-		team: Ot
+		about: gt,
+		blog: _t,
+		careers: vt,
+		contact: yt,
+		faq: bt,
+		home: xt,
+		pricing: St,
+		products: Ct,
+		route: wt,
+		settings: Tt,
+		shared: Et,
+		team: Dt
 	},
 	fr: {
-		about: kt,
-		blog: At,
-		careers: jt,
-		contact: Mt,
-		faq: Nt,
-		home: Pt,
-		pricing: Ft,
-		products: It,
-		route: Lt,
-		settings: Rt,
-		shared: zt,
-		team: Bt
+		about: Ot,
+		blog: kt,
+		careers: At,
+		contact: jt,
+		faq: Mt,
+		home: Nt,
+		pricing: Pt,
+		products: Ft,
+		route: It,
+		settings: Lt,
+		shared: Rt,
+		team: zt
 	},
 	it: {
-		about: Vt,
-		blog: Ht,
-		careers: Ut,
-		contact: Wt,
-		faq: Gt,
-		home: Kt,
-		pricing: qt,
-		products: Jt,
-		route: Yt,
-		settings: Xt,
-		shared: Zt,
-		team: Qt
+		about: Bt,
+		blog: Vt,
+		careers: Ht,
+		contact: Ut,
+		faq: Wt,
+		home: Gt,
+		pricing: Kt,
+		products: qt,
+		route: Jt,
+		settings: Yt,
+		shared: Xt,
+		team: Zt
 	},
 	ja: {
-		about: $t,
-		blog: en,
-		careers: tn,
-		contact: nn,
-		faq: rn,
-		home: an,
-		pricing: on,
-		products: sn,
-		route: cn,
-		settings: ln,
-		shared: un,
-		team: dn
+		about: Qt,
+		blog: $t,
+		careers: en,
+		contact: tn,
+		faq: nn,
+		home: rn,
+		pricing: an,
+		products: on,
+		route: sn,
+		settings: cn,
+		shared: ln,
+		team: un
 	},
 	ko: {
-		about: fn,
-		blog: pn,
-		careers: mn,
-		contact: hn,
-		faq: gn,
-		home: _n,
-		pricing: vn,
-		products: yn,
-		route: bn,
-		settings: xn,
-		shared: Sn,
-		team: Cn
+		about: dn,
+		blog: fn,
+		careers: pn,
+		contact: mn,
+		faq: hn,
+		home: gn,
+		pricing: _n,
+		products: vn,
+		route: yn,
+		settings: bn,
+		shared: xn,
+		team: Sn
 	},
 	pt: {
-		about: wn,
-		blog: Tn,
-		careers: En,
-		contact: Dn,
-		faq: On,
-		home: kn,
-		pricing: An,
-		products: jn,
-		route: Mn,
-		settings: Nn,
-		shared: Pn,
-		team: Fn
+		about: Cn,
+		blog: wn,
+		careers: Tn,
+		contact: En,
+		faq: Dn,
+		home: On,
+		pricing: kn,
+		products: An,
+		route: jn,
+		settings: Mn,
+		shared: Nn,
+		team: Pn
 	},
 	ru: {
-		about: In,
-		blog: Ln,
-		careers: Rn,
-		contact: zn,
-		faq: Bn,
-		home: Vn,
-		pricing: Hn,
-		products: Un,
-		route: Wn,
-		settings: Gn,
-		shared: Kn,
-		team: qn
+		about: Fn,
+		blog: In,
+		careers: Ln,
+		contact: Rn,
+		faq: zn,
+		home: Bn,
+		pricing: Vn,
+		products: Hn,
+		route: Un,
+		settings: Wn,
+		shared: Gn,
+		team: Kn
 	},
 	zh: {
-		about: Jn,
-		blog: Yn,
-		careers: Xn,
-		contact: Zn,
-		faq: Qn,
-		home: $n,
-		pricing: er,
-		products: tr,
-		route: nr,
-		settings: rr,
-		shared: ir,
-		team: ar
+		about: qn,
+		blog: Jn,
+		careers: Yn,
+		contact: Xn,
+		faq: Zn,
+		home: Qn,
+		pricing: $n,
+		products: er,
+		route: tr,
+		settings: nr,
+		shared: rr,
+		team: ir
 	}
 };
-q.use(Pe).init({
-	resources: cr,
+J.use(Ne).init({
+	resources: sr,
 	lng: "en",
 	fallbackLng: "en",
-	ns: or,
-	defaultNS: sr,
+	ns: ar,
+	defaultNS: or,
 	interpolation: { escapeValue: !1 },
 	react: { useSuspense: !1 }
 });
-var $ = q, lr = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/AppProviders.tsx";
-function ur({ children: e }) {
+var $ = J;
+function cr({ children: e }) {
 	let t = u().locale ?? "en", [n] = c(() => typeof performance < "u" ? performance.now() : 0);
 	return a(() => {
-		Ke("AppRoot", n);
+		Ge("AppRoot", n);
 	}, [n]), i(() => {
 		$.language !== t && $.changeLanguage(t);
 	}, [t]), i(() => {
 		document.documentElement.lang = t;
 	}, [t]), i(() => {
-		Ge();
-	}, []), d(Ue, {
+		We();
+	}, []), d(He, {
 		i18n: $,
 		children: e
-	}, void 0, !1, {
-		fileName: lr,
-		lineNumber: 38,
-		columnNumber: 7
-	}, this);
+	});
 }
-var dr = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/scripts/Wrapper.tsx";
-function fr({ children: e }) {
-	return d(ur, { children: e }, void 0, !1, {
-		fileName: dr,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function lr({ children: e }) {
+	return d(cr, { children: e });
 }
-var pr = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/Footer.wrapper.tsx";
-function mr() {
-	return d(fr, { children: d(We, {}, void 0, !1, {
-		fileName: pr,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: pr,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function ur() {
+	return d(lr, { children: d(Ue, {}) });
 }
-export { mr as default };
+export { ur as default };

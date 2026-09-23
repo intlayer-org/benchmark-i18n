@@ -1,6 +1,6 @@
 import "react";
-import { Fragment as e, jsxDEV as t } from "react/jsx-dev-runtime";
-var n = {}, r = [
+import { Fragment as e, jsx as t, jsxs as n } from "react/jsx-runtime";
+var r = {}, i = [
 	"en",
 	"fr",
 	"es",
@@ -11,38 +11,38 @@ var n = {}, r = [
 	"ja",
 	"ko",
 	"ru"
-], i = "PARAGLIDE_LOCALE", a = 3456e4, o = [
+], a = "PARAGLIDE_LOCALE", o = 3456e4, s = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], s = [], c = typeof window > "u";
+], c = [], l = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var l, u = !1, d = () => {
-	let e = o;
-	!c && typeof window < "u" && window.location?.href && (e = k(window.location.href));
-	let t = f(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return u || (l = t, u = !0, m(t, { reload: !1 })), t;
+var u, d = !1, f = () => {
+	let e = s;
+	!l && typeof window < "u" && window.location?.href && (e = M(window.location.href));
+	let t = p(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return d || (u = t, d = !0, m(t, { reload: !1 })), t;
 	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function f(e, t) {
+function p(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = ne();
+		if (t === "cookie") n = E();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && l !== void 0) n = l;
-		else if (j(t) && A.has(t)) {
-			let e = A.get(t);
+		else if (t === "globalVariable" && u !== void 0) n = u;
+		else if (P(t) && N.has(t)) {
+			let e = N.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return g(t);
+				if (t !== void 0) return _(t);
 			}
 		}
-		let e = h(n);
+		let e = g(n);
 		if (e) return e;
 	}
 }
-var p = (e) => {
+var ee = (e) => {
 	e ? window.location.href = e : window.location.reload();
 }, m = (e, t) => {
 	let n = {
@@ -50,157 +50,123 @@ var p = (e) => {
 		...t
 	}, r;
 	try {
-		r = d();
+		r = f();
 	} catch {}
-	let s = [], u = o;
-	!c && typeof window < "u" && window.location?.href && (u = k(window.location.href));
-	for (let t of u) if (t === "globalVariable") l = e;
+	let i = [], c = s;
+	!l && typeof window < "u" && window.location?.href && (c = M(window.location.href));
+	for (let t of c) if (t === "globalVariable") u = e;
 	else if (t === "cookie") {
-		if (c || typeof document > "u" || typeof window > "u") continue;
-		let t = `${i}=${e}; path=/; max-age=${a}`;
-		document.cookie = t, C();
+		if (l || typeof document > "u" || typeof window > "u") continue;
+		let t = `${a}=${e}; path=/; max-age=${o}`;
+		document.cookie = t, w();
 	} else if (t === "baseLocale") continue;
-	else if (j(t) && A.has(t)) {
-		let n = A.get(t);
+	else if (P(t) && N.has(t)) {
+		let n = N.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
 				throw Error(`Custom strategy "${t}" setLocale failed.`, { cause: e });
-			}), s.push(r));
+			}), i.push(r));
 		}
 	}
-	let f = () => {
-		!c && n.reload && window.location && e !== r && p(void 0);
+	let d = () => {
+		!l && n.reload && window.location && e !== r && ee(void 0);
 	};
-	if (s.length) return Promise.all(s).then(() => {
-		f();
+	if (i.length) return Promise.all(i).then(() => {
+		d();
 	});
-	f();
-}, ee = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
-function h(e) {
+	d();
+}, h = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function g(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
-	for (let e of r) if (e.toLowerCase() === t) return e;
-}
-function g(e) {
-	let t = h(e);
-	if (t) return t;
-	throw Error(`Invalid locale: ${e}. Expected one of: ${r.join(", ")}`);
+	for (let e of i) if (e.toLowerCase() === t) return e;
 }
 function _(e) {
+	let t = g(e);
+	if (t) return t;
+	throw Error(`Invalid locale: ${e}. Expected one of: ${i.join(", ")}`);
+}
+function v(e) {
 	return e;
 }
-function v(e, t) {
+function y(e, t) {
 	return e.exec(t.href);
 }
-var y = i.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), b = RegExp(`(?:^|;\\s*)${y}=([^;]*)`), x = Symbol(), S = x;
-function C() {
-	S = x;
+var b = a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), x = RegExp(`(?:^|;\\s*)${b}=([^;]*)`), S = Symbol(), C = S;
+function w() {
+	C = S;
 }
-function te() {
-	typeof queueMicrotask == "function" ? queueMicrotask(C) : Promise.resolve().then(C);
+function T() {
+	typeof queueMicrotask == "function" ? queueMicrotask(w) : Promise.resolve().then(w);
 }
-function ne() {
+function E() {
 	if (typeof document > "u") return;
-	if (S !== x) return S;
-	let e = document.cookie.match(b)?.[1];
-	return S = h(e), te(), S;
+	if (C !== S) return C;
+	let e = document.cookie.match(x)?.[1];
+	return C = g(e), T(), C;
 }
-function w(e) {
-	return T(e);
+function D(e) {
+	return O(e);
 }
-function T(e) {
-	let t = _(typeof e == "string" ? new URL(e, ee()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
-	return n.length > 0 && h(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), _(t);
-}
-var E, D;
 function O(e) {
-	if (s.length === 0) return;
+	let t = v(typeof e == "string" ? new URL(e, h()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && g(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), v(t);
+}
+var k, A;
+function j(e) {
+	if (c.length === 0) return;
 	let t = typeof e == "string" ? e : e.href;
-	if (E === t) return D;
-	let r = _(new URL(t, "http://example.com")), i = w(r), a = i.href === r.href ? [r] : [r, i], o;
+	if (k === t) return A;
+	let n = v(new URL(t, "http://example.com")), i = D(n), a = i.href === n.href ? [n] : [n, i], o;
 	for (let e of a) {
-		for (let t of s) if (v(new n(t.match, e.href), e)) {
+		for (let t of c) if (y(new r(t.match, e.href), e)) {
 			o = t;
 			break;
 		}
 		if (o) break;
 	}
-	return E = t, D = o, o;
+	return k = t, A = o, o;
 }
-function k(e) {
-	let t = O(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : o;
+function M(e) {
+	let t = j(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : s;
 }
-var A = /* @__PURE__ */ new Map();
-function j(e) {
+var N = /* @__PURE__ */ new Map();
+function P(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var M = () => "Settings", N = () => "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.", P = () => "Manage your account preferences and configuration.", F = () => "Paramètres", I = () => "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.", L = () => "Gérez vos préférences de compte et votre configuration.", R = () => "Ajustes", z = () => "⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.", B = () => "Gestiona las preferencias y la configuración de tu cuenta.", V = () => "Einstellungen", H = () => "⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.", U = () => "Verwalten Sie Ihre Kontoeinstellungen und Konfigurationen.", W = () => "Impostazioni", G = () => "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.", K = () => "Gestisci le preferenze del tuo account e la configurazione.", q = () => "Configurações", re = () => "⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.", J = () => "Gerencie as preferências de sua conta e a configuração.", Y = () => "设置", X = () => "⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。", ie = () => "管理您的账户偏好和配置。", ae = () => "設定", oe = () => "⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。", se = () => "アカウントの優先設定と構成を管理します。", ce = () => "설정", le = () => "⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.", ue = () => "계정 기본 설정 및 구성을 관리합니다.", de = () => "Настройки", fe = () => "⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.", pe = () => "Управляйте настройками и конфигурацией своего аккаунта.", me = ((e = {}, t = {}) => {
-	let n = t.locale ?? d();
-	return n === "fr" ? F(e) : n === "es" ? R(e) : n === "de" ? V(e) : n === "it" ? W(e) : n === "pt" ? q(e) : n === "zh" ? Y(e) : n === "ja" ? ae(e) : n === "ko" ? ce(e) : n === "ru" ? de(e) : M(e);
-}), he = ((e = {}, t = {}) => {
-	let n = t.locale ?? d();
-	return n === "fr" ? I(e) : n === "es" ? z(e) : n === "de" ? H(e) : n === "it" ? G(e) : n === "pt" ? re(e) : n === "zh" ? X(e) : n === "ja" ? oe(e) : n === "ko" ? le(e) : n === "ru" ? fe(e) : N(e);
-}), Z = ((e = {}, t = {}) => {
-	let n = t.locale ?? d();
-	return n === "fr" ? L(e) : n === "es" ? B(e) : n === "de" ? U(e) : n === "it" ? K(e) : n === "pt" ? J(e) : n === "zh" ? ie(e) : n === "ja" ? se(e) : n === "ko" ? ue(e) : n === "ru" ? pe(e) : P(e);
-}), ge = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/MockBanner.tsx", _e = () => t("div", {
+var F = () => "Settings", I = () => "Paramètres", L = () => "Ajustes", R = () => "Einstellungen", z = () => "Impostazioni", B = () => "Configurações", V = () => "设置", H = () => "設定", U = () => "설정", W = () => "Настройки", G = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? I(e) : n === "es" ? L(e) : n === "de" ? R(e) : n === "it" ? z(e) : n === "pt" ? B(e) : n === "zh" ? V(e) : n === "ja" ? H(e) : n === "ko" ? U(e) : n === "ru" ? W(e) : F(e);
+}), K = () => "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.", q = () => "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.", te = () => "⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.", J = () => "⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.", Y = () => "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.", X = () => "⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.", Z = () => "⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。", Q = () => "⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。", ne = () => "⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.", re = () => "⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.", ie = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? q(e) : n === "es" ? te(e) : n === "de" ? J(e) : n === "it" ? Y(e) : n === "pt" ? X(e) : n === "zh" ? Z(e) : n === "ja" ? Q(e) : n === "ko" ? ne(e) : n === "ru" ? re(e) : K(e);
+}), ae = () => "Manage your account preferences and configuration.", oe = () => "Gérez vos préférences de compte et votre configuration.", se = () => "Gestiona las preferencias y la configuración de tu cuenta.", ce = () => "Verwalten Sie Ihre Kontoeinstellungen und Konfigurationen.", le = () => "Gestisci le preferenze del tuo account e la configurazione.", ue = () => "Gerencie as preferências de sua conta e a configuração.", de = () => "管理您的账户偏好和配置。", fe = () => "アカウントの優先設定と構成を管理します。", pe = () => "계정 기본 설정 및 구성을 관리합니다.", $ = () => "Управляйте настройками и конфигурацией своего аккаунта.", me = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? oe(e) : n === "es" ? se(e) : n === "de" ? ce(e) : n === "it" ? le(e) : n === "pt" ? ue(e) : n === "zh" ? de(e) : n === "ja" ? fe(e) : n === "ko" ? pe(e) : n === "ru" ? $(e) : ae(e);
+}), he = () => t("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: he()
-}, void 0, !1, {
-	fileName: ge,
-	lineNumber: 4,
-	columnNumber: 3
-}, void 0), Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/SettingsHeader.tsx";
-function ve() {
-	return t(e, { children: [
-		t(_e, {}, void 0, !1, {
-			fileName: Q,
-			lineNumber: 7,
-			columnNumber: 7
-		}, this),
+	children: ie()
+});
+function ge() {
+	return n(e, { children: [
+		t(he, {}),
 		t("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
-			children: me()
-		}, void 0, !1, {
-			fileName: Q,
-			lineNumber: 8,
-			columnNumber: 7
-		}, this),
+			children: G()
+		}),
 		t("p", {
 			className: "mb-8 text-muted-foreground mr-10",
-			children: Z()
-		}, void 0, !1, {
-			fileName: Q,
-			lineNumber: 11,
-			columnNumber: 7
-		}, this)
-	] }, void 0, !0, {
-		fileName: Q,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+			children: me()
+		})
+	] });
 }
-var ye = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 m("en", { reload: !1 });
-function be({ children: n }) {
-	return t(e, { children: n }, void 0, !1, {
-		fileName: ye,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+function _e({ children: n }) {
+	return t(e, { children: n });
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/SettingsHeader.wrapper.tsx";
-function xe() {
-	return t(be, { children: t(ve, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function ve() {
+	return t(_e, { children: t(ge, {}) });
 }
-export { xe as default };
+export { ve as default };

@@ -1,7 +1,7 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { Fragment as r, jsxDEV as i } from "react/jsx-dev-runtime";
-import { useParams as a } from "next/navigation";
-var o = {}, s = [
+import { Fragment as r, jsx as i, jsxs as a } from "react/jsx-runtime";
+import { useParams as o } from "next/navigation";
+var s = {}, c = [
 	"en",
 	"fr",
 	"es",
@@ -12,57 +12,57 @@ var o = {}, s = [
 	"ja",
 	"ko",
 	"ru"
-], c = "PARAGLIDE_LOCALE", ee = 3456e4, l = [
+], l = "PARAGLIDE_LOCALE", ee = 3456e4, u = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], u = [], d = typeof window > "u";
+], d = [], f = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var f, p = !1, m = () => {
-	let e = l;
-	!d && typeof window < "u" && window.location?.href && (e = N(window.location.href));
-	let t = te(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return p || (f = t, p = !0, g(t, { reload: !1 })), t;
+var p, m = !1, h = () => {
+	let e = u;
+	!f && typeof window < "u" && window.location?.href && (e = I(window.location.href));
+	let t = g(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return m || (p = t, m = !0, v(t, { reload: !1 })), t;
 	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function te(e, t) {
+function g(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = D();
+		if (t === "cookie") n = A();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && f !== void 0) n = f;
-		else if (F(t) && P.has(t)) {
-			let e = P.get(t);
+		else if (t === "globalVariable" && p !== void 0) n = p;
+		else if (R(t) && L.has(t)) {
+			let e = L.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return v(t);
+				if (t !== void 0) return x(t);
 			}
 		}
-		let e = _(n);
+		let e = b(n);
 		if (e) return e;
 	}
 }
-var h = (e) => {
+var _ = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, g = (e, t) => {
+}, v = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = m();
+		r = h();
 	} catch {}
-	let i = [], a = l;
-	!d && typeof window < "u" && window.location?.href && (a = N(window.location.href));
-	for (let t of a) if (t === "globalVariable") f = e;
+	let i = [], a = u;
+	!f && typeof window < "u" && window.location?.href && (a = I(window.location.href));
+	for (let t of a) if (t === "globalVariable") p = e;
 	else if (t === "cookie") {
-		if (d || typeof document > "u" || typeof window > "u") continue;
-		let t = `${c}=${e}; path=/; max-age=${ee}`;
-		document.cookie = t, T();
+		if (f || typeof document > "u" || typeof window > "u") continue;
+		let t = `${l}=${e}; path=/; max-age=${ee}`;
+		document.cookie = t, O();
 	} else if (t === "baseLocale") continue;
-	else if (F(t) && P.has(t)) {
-		let n = P.get(t);
+	else if (R(t) && L.has(t)) {
+		let n = L.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -71,132 +71,108 @@ var h = (e) => {
 		}
 	}
 	let o = () => {
-		!d && n.reload && window.location && e !== r && h(void 0);
+		!f && n.reload && window.location && e !== r && _(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		o();
 	});
 	o();
-}, ne = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
-function _(e) {
+}, y = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function b(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
-	for (let e of s) if (e.toLowerCase() === t) return e;
+	for (let e of c) if (e.toLowerCase() === t) return e;
 }
-function v(e) {
-	let t = _(e);
+function x(e) {
+	let t = b(e);
 	if (t) return t;
-	throw Error(`Invalid locale: ${e}. Expected one of: ${s.join(", ")}`);
+	throw Error(`Invalid locale: ${e}. Expected one of: ${c.join(", ")}`);
 }
-function y(e) {
+function S(e) {
 	return e;
 }
-function b(e, t) {
+function C(e, t) {
 	return e.exec(t.href);
 }
-var x = c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), S = RegExp(`(?:^|;\\s*)${x}=([^;]*)`), C = Symbol(), w = C;
-function T() {
-	w = C;
+var w = l.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), T = RegExp(`(?:^|;\\s*)${w}=([^;]*)`), E = Symbol(), D = E;
+function O() {
+	D = E;
 }
-function E() {
-	typeof queueMicrotask == "function" ? queueMicrotask(T) : Promise.resolve().then(T);
+function k() {
+	typeof queueMicrotask == "function" ? queueMicrotask(O) : Promise.resolve().then(O);
 }
-function D() {
+function A() {
 	if (typeof document > "u") return;
-	if (w !== C) return w;
-	let e = document.cookie.match(S)?.[1];
-	return w = _(e), E(), w;
+	if (D !== E) return D;
+	let e = document.cookie.match(T)?.[1];
+	return D = b(e), k(), D;
 }
-function O(e) {
-	return k(e);
+function j(e) {
+	return M(e);
 }
-function k(e) {
-	let t = y(typeof e == "string" ? new URL(e, ne()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
-	return n.length > 0 && _(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), y(t);
-}
-var A, j;
 function M(e) {
-	if (u.length === 0) return;
+	let t = S(typeof e == "string" ? new URL(e, y()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && b(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), S(t);
+}
+var N, P;
+function F(e) {
+	if (d.length === 0) return;
 	let t = typeof e == "string" ? e : e.href;
-	if (A === t) return j;
-	let n = y(new URL(t, "http://example.com")), r = O(n), i = r.href === n.href ? [n] : [n, r], a;
+	if (N === t) return P;
+	let n = S(new URL(t, "http://example.com")), r = j(n), i = r.href === n.href ? [n] : [n, r], a;
 	for (let e of i) {
-		for (let t of u) if (b(new o(t.match, e.href), e)) {
+		for (let t of d) if (C(new s(t.match, e.href), e)) {
 			a = t;
 			break;
 		}
 		if (a) break;
 	}
-	return A = t, j = a, a;
+	return N = t, P = a, a;
 }
-function N(e) {
-	let t = M(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : l;
+function I(e) {
+	let t = F(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : u;
 }
-var P = /* @__PURE__ */ new Map();
-function F(e) {
+var L = /* @__PURE__ */ new Map();
+function R(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var I = () => "Get in Touch", L = () => "Contactez-nous", R = () => "Ponte en contacto", z = () => "Kontakt aufnehmen", B = () => "Mettiti in contatto", V = () => "Entre em contato", H = () => "联系我们", U = () => "お問い合わせ", W = () => "연락하기", G = () => "Свяжитесь с нами", K = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? L(e) : n === "es" ? R(e) : n === "de" ? z(e) : n === "it" ? B(e) : n === "pt" ? V(e) : n === "zh" ? H(e) : n === "ja" ? U(e) : n === "ko" ? W(e) : n === "ru" ? G(e) : I(e);
-}), q = () => "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at", J = () => "Vous avez des idées, trouvé un bug ou voulez proposer un benchmark ? Contactez-nous à", Y = () => "¿Tienes ideas, has encontrado un bug o quieres contribuir con un benchmark? Contáctanos en", re = () => "Haben Sie Ideen, einen Fehler gefunden oder möchten Sie einen Benchmark beisteuern? Kontaktieren Sie uns unter", X = () => "Hai idee, hai trovato un bug o vuoi contribuire con un benchmark? Contattaci all'indirizzo", ie = () => "Tem ideias, encontrou um bug ou quer contribuir com um benchmark? Entre em contato conosco em", ae = () => "有想法、发现了 Bug 或想贡献基准测试？请联系我们：", oe = () => "アイデアがある、バグを見つけた、またはベンチマークを提供したいですか？こちらまでご連絡ください：", se = () => "아이디어가 있거나 버그를 발견했나요? 아니면 벤치마크를 기여하고 싶으신가요? 다음 주소로 연락주세요.", ce = () => "Есть идеи, нашли баг или хотите предложить бенчмарк? Свяжитесь с нами по адресу", le = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? J(e) : n === "es" ? Y(e) : n === "de" ? re(e) : n === "it" ? X(e) : n === "pt" ? ie(e) : n === "zh" ? ae(e) : n === "ja" ? oe(e) : n === "ko" ? se(e) : n === "ru" ? ce(e) : q(e);
-}), ue = () => "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.", de = () => "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.", fe = () => "⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.", pe = () => "⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.", me = () => "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.", he = () => "⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.", ge = () => "⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。", _e = () => "⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。", ve = () => "⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.", ye = () => "⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.", be = ((e = {}, t = {}) => {
-	let n = t.locale ?? m();
-	return n === "fr" ? de(e) : n === "es" ? fe(e) : n === "de" ? pe(e) : n === "it" ? me(e) : n === "pt" ? he(e) : n === "zh" ? ge(e) : n === "ja" ? _e(e) : n === "ko" ? ve(e) : n === "ru" ? ye(e) : ue(e);
-}), xe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/MockBanner.tsx", Se = () => i("div", {
+var z = () => "Get in Touch", B = () => "Contactez-nous", V = () => "Ponte en contacto", H = () => "Kontakt aufnehmen", U = () => "Mettiti in contatto", W = () => "Entre em contato", G = () => "联系我们", K = () => "お問い合わせ", q = () => "연락하기", J = () => "Свяжитесь с нами", Y = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? B(e) : n === "es" ? V(e) : n === "de" ? H(e) : n === "it" ? U(e) : n === "pt" ? W(e) : n === "zh" ? G(e) : n === "ja" ? K(e) : n === "ko" ? q(e) : n === "ru" ? J(e) : z(e);
+}), X = () => "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at", te = () => "Vous avez des idées, trouvé un bug ou voulez proposer un benchmark ? Contactez-nous à", Z = () => "¿Tienes ideas, has encontrado un bug o quieres contribuir con un benchmark? Contáctanos en", Q = () => "Haben Sie Ideen, einen Fehler gefunden oder möchten Sie einen Benchmark beisteuern? Kontaktieren Sie uns unter", ne = () => "Hai idee, hai trovato un bug o vuoi contribuire con un benchmark? Contattaci all'indirizzo", re = () => "Tem ideias, encontrou um bug ou quer contribuir com um benchmark? Entre em contato conosco em", ie = () => "有想法、发现了 Bug 或想贡献基准测试？请联系我们：", ae = () => "アイデアがある、バグを見つけた、またはベンチマークを提供したいですか？こちらまでご連絡ください：", oe = () => "아이디어가 있거나 버그를 발견했나요? 아니면 벤치마크를 기여하고 싶으신가요? 다음 주소로 연락주세요.", se = () => "Есть идеи, нашли баг или хотите предложить бенчмарк? Свяжитесь с нами по адресу", ce = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? te(e) : n === "es" ? Z(e) : n === "de" ? Q(e) : n === "it" ? ne(e) : n === "pt" ? re(e) : n === "zh" ? ie(e) : n === "ja" ? ae(e) : n === "ko" ? oe(e) : n === "ru" ? se(e) : X(e);
+}), le = () => "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.", ue = () => "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.", de = () => "⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.", fe = () => "⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.", pe = () => "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.", me = () => "⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.", he = () => "⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。", ge = () => "⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。", _e = () => "⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.", ve = () => "⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.", ye = ((e = {}, t = {}) => {
+	let n = t.locale ?? h();
+	return n === "fr" ? ue(e) : n === "es" ? de(e) : n === "de" ? fe(e) : n === "it" ? pe(e) : n === "pt" ? me(e) : n === "zh" ? he(e) : n === "ja" ? ge(e) : n === "ko" ? _e(e) : n === "ru" ? ve(e) : le(e);
+}), be = () => i("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: be()
-}, void 0, !1, {
-	fileName: xe,
-	lineNumber: 6,
-	columnNumber: 3
-}, void 0), Z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/contact/ContactHeader.tsx";
-function Ce() {
-	return i(r, { children: [
-		i(Se, {}, void 0, !1, {
-			fileName: Z,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this),
+	children: ye()
+});
+function $() {
+	return a(r, { children: [
+		i(be, {}),
 		i("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
-			children: K()
-		}, void 0, !1, {
-			fileName: Z,
-			lineNumber: 10,
-			columnNumber: 7
-		}, this),
-		i("p", {
+			children: Y()
+		}),
+		a("p", {
 			className: "mb-8 text-muted-foreground mr-10",
 			children: [
-				le(),
+				ce(),
 				" ",
 				i("a", {
 					href: "mailto:contact@intlayer.org",
 					className: "text-primary hover:underline",
 					children: "contact@intlayer.org"
-				}, void 0, !1, {
-					fileName: Z,
-					lineNumber: 15,
-					columnNumber: 9
-				}, this),
+				}),
 				"."
 			]
-		}, void 0, !0, {
-			fileName: Z,
-			lineNumber: 13,
-			columnNumber: 7
-		}, this)
-	] }, void 0, !0, {
-		fileName: Z,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+		})
+	] });
 }
-function we() {
+function xe() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -210,44 +186,25 @@ function we() {
 		}
 	}
 }
-function Q(e, t) {
+function Se(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var Te = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
-function Ee({ children: o }) {
-	let s = a().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
+function Ce({ children: a }) {
+	let s = o().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		Q("AppRoot", c);
+		Se("AppRoot", c);
 	}, [c]), e(() => {
-		g(s, { reload: !1 }), document.documentElement.lang = s;
+		v(s, { reload: !1 }), document.documentElement.lang = s;
 	}, [s]), e(() => {
-		we();
-	}, []), i(r, { children: o }, void 0, !1, {
-		fileName: Te,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+		xe();
+	}, []), i(r, { children: a });
 }
-var De = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
-function Oe({ children: e }) {
-	return i(Ee, { children: e }, void 0, !1, {
-		fileName: De,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function we({ children: e }) {
+	return i(Ce, { children: e });
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/contact/ContactHeader.wrapper.tsx";
-function ke() {
-	return i(Oe, { children: i(Ce, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function Te() {
+	return i(we, { children: i($, {}) });
 }
-export { ke as default };
+export { Te as default };

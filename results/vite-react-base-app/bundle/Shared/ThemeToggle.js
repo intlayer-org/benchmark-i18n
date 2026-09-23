@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { jsxDEV } from "react/jsx-dev-runtime";
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-react-base-app/src/components/ThemeToggle.tsx";
+import { jsx } from "react/jsx-runtime";
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -39,17 +38,13 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? "Theme mode: auto (system). Click to switch to light mode." : `Theme mode: ${mode}. Click to switch mode.`;
-	return jsxDEV("button", {
+	return jsx("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: mode === "auto" ? "Theme: Auto" : mode === "dark" ? "Theme: Dark" : "Theme: Light"
-	}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 71,
-		columnNumber: 5
-	}, this);
+	});
 }
 export { ThemeToggle as default };

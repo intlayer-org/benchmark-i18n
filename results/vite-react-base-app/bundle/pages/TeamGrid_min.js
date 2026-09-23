@@ -1,5 +1,4 @@
-import { jsxDEV as e } from "react/jsx-dev-runtime";
-var t = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-react-base-app/src/components/pages/team/TeamGrid.tsx";
+import { jsx as e, jsxs as t } from "react/jsx-runtime";
 function n() {
 	return e("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
@@ -34,51 +33,27 @@ function n() {
 				role: "Community Manager",
 				bio: "Manages community contributions, partnerships, and events. Background in open source governance."
 			}
-		].map((n) => e("div", {
+		].map((n) => t("div", {
 			className: "rounded-lg border border-border bg-card p-6 text-center",
 			children: [
 				e("div", {
 					className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 					children: n.name.split(" ").map((e) => e[0]).join("")
-				}, void 0, !1, {
-					fileName: t,
-					lineNumber: 42,
-					columnNumber: 11
-				}, this),
+				}),
 				e("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: n.name
-				}, void 0, !1, {
-					fileName: t,
-					lineNumber: 48,
-					columnNumber: 11
-				}, this),
+				}),
 				e("p", {
 					className: "mb-2 text-xs font-medium text-primary",
 					children: n.role
-				}, void 0, !1, {
-					fileName: t,
-					lineNumber: 49,
-					columnNumber: 11
-				}, this),
+				}),
 				e("p", {
 					className: "text-sm text-muted-foreground",
 					children: n.bio
-				}, void 0, !1, {
-					fileName: t,
-					lineNumber: 50,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, n.name, !0, {
-			fileName: t,
-			lineNumber: 38,
-			columnNumber: 9
-		}, this))
-	}, void 0, !1, {
-		fileName: t,
-		lineNumber: 36,
-		columnNumber: 5
-	}, this);
+		}, n.name))
+	});
 }
 export { n as default };

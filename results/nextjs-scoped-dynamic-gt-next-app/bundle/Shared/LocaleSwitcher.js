@@ -1,10 +1,8 @@
 import { createContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import { useParams, usePathname, useRouter } from "next/navigation";
 import { locales } from "../gt.config.json";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
-import { jsx } from "react/jsx-runtime";
+import { Fragment, jsx } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams().locale ?? "en";
 	const router = useRouter();
@@ -23,30 +21,18 @@ function LocaleSwitcher() {
 		const newPathname = segments.join("/");
 		router.push(newPathname);
 	};
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "flex items-center gap-2",
-		children: jsxDEV("select", {
+		children: jsx("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((localeItem) => jsxDEV("option", {
+			children: locales.map((localeItem) => jsx("option", {
 				value: localeItem,
 				children: getLocaleName(localeItem)
-			}, localeItem, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 42,
-				columnNumber: 11
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 36,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 35,
-		columnNumber: 5
-	}, this);
+			}, localeItem))
+		})
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -70,7 +56,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -82,11 +67,7 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 33,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
 function getRuntimeCredentials() {
 	return {
@@ -3941,7 +3922,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => true) === true) return "development";
+	if (readImportMetaEnv(() => false) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -5279,35 +5260,17 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsxDEV(BrowserGTProvider, {
+	return jsx(BrowserGTProvider, {
 		locale,
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/LocaleSwitcher.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(LocaleSwitcher, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(LocaleSwitcher, {}) });
 }
 export { Wrapped as default };

@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, createVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderSlot, toDisplayString } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, createVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderSlot, toDisplayString, unref } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -975,68 +975,39 @@ var useI18n = ((options) => {
 		n: (value, formatOrOptions) => formatNumberValue(value, formatOrOptions, currentLocale.value, numberFormats)
 	};
 });
-var MockBanner_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "MockBanner",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		const { t } = useI18n();
-		const __returned__ = { t };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground" };
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", _hoisted_1, toDisplayString($setup.t("mockBanner")), 1);
-}
-var MockBanner_default = _plugin_vue_export_helper_default(MockBanner_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$2], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/MockBanner.vue"]]);
-var PricingHeader_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "PricingHeader",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		const __returned__ = { MockBanner: MockBanner_default };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+var MockBanner_default = defineComponent({
+	__name: "MockBanner",
+	setup(__props) {
+		const { t } = useI18n();
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("div", _hoisted_1, toDisplayString(unref(t)("mockBanner")), 1);
+		};
 	}
 });
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock(Fragment, null, [createVNode($setup["MockBanner"]), _cache[0] || (_cache[0] = createElementVNode("div", { class: "mb-12 text-center" }, [createElementVNode("h1", { class: "mb-3 text-3xl font-bold text-foreground" }, " Simple, Transparent Pricing "), createElementVNode("p", { class: "text-muted-foreground" }, " Choose the plan that fits your team. No hidden fees. ")], -1))], 64);
-}
-var PricingHeader_default = _plugin_vue_export_helper_default(PricingHeader_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/pricing/PricingHeader.vue"]]);
+var PricingHeader_default = defineComponent({
+	__name: "PricingHeader",
+	setup(__props) {
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock(Fragment, null, [createVNode(MockBanner_default), _cache[0] || (_cache[0] = createElementVNode("div", { class: "mb-12 text-center" }, [createElementVNode("h1", { class: "mb-3 text-3xl font-bold text-foreground" }, " Simple, Transparent Pricing "), createElementVNode("p", { class: "text-muted-foreground" }, " Choose the plan that fits your team. No hidden fees. ")], -1))], 64);
+		};
+	}
+});
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var PricingHeader_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(PricingHeader_default) });
 } };

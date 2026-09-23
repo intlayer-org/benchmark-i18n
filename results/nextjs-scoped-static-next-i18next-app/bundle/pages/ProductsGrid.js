@@ -1,5 +1,5 @@
 import { createContext, createElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -2422,7 +2422,6 @@ function I18nextProvider({ i18n, defaultNS, children }) {
 	}), [i18n, defaultNS]);
 	return createElement(I18nContext.Provider, { value }, children);
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/pages/products/ProductsGrid.tsx";
 function ProductsGrid() {
 	const { t } = useTranslation("products");
 	const products = [
@@ -2457,61 +2456,29 @@ function ProductsGrid() {
 			price: t("products.bundleOptimizerPrice")
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: products.map((p) => jsxDEV("div", {
+		children: products.map((p) => jsxs("div", {
 			className: "flex flex-col justify-between rounded-lg border border-border bg-card p-6",
-			children: [jsxDEV("div", { children: [jsxDEV("h3", {
+			children: [jsxs("div", { children: [jsx("h3", {
 				className: "mb-2 text-lg font-semibold text-foreground",
 				children: p.name
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 49,
-				columnNumber: 13
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "mb-4 text-sm text-muted-foreground",
 				children: p.desc
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 52,
-				columnNumber: 13
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 48,
-				columnNumber: 11
-			}, this), jsxDEV("div", {
+			})] }), jsxs("div", {
 				className: "flex items-center justify-between",
-				children: [jsxDEV("span", {
+				children: [jsx("span", {
 					className: "text-sm font-bold text-primary",
 					children: p.price
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 55,
-					columnNumber: 13
-				}, this), jsxDEV("button", {
+				}), jsx("button", {
 					type: "button",
 					className: "rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: t("products.learnMore")
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 56,
-					columnNumber: 13
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 54,
-				columnNumber: 11
-			}, this)]
-		}, p.name, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 44,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 42,
-		columnNumber: 5
-	}, this);
+				})]
+			})]
+		}, p.name))
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -5198,7 +5165,6 @@ instance.use(initReactI18next).init({
 	react: { useSuspense: false }
 });
 var i18n_default = instance;
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -5214,33 +5180,15 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nextProvider, {
+	return jsx(I18nextProvider, {
 		i18n: i18n_default,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 38,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/pages/products/ProductsGrid.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ProductsGrid, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ProductsGrid, {}) });
 }
 export { Wrapped as default };

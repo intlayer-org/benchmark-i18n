@@ -152,7 +152,8 @@
     "benchmark": "基准测试",
     "tutorial": "教程",
     "analysis": "分析",
-    "meta": "元数据"
+    "meta": "元数据",
+    "reactServerComponentsIntroduceNew": "React 服务器组件为国际化引入了新模式。我们探讨了其影响和最佳实践。"
   },
   "careersHeader": {
     "careers": "职业生涯",

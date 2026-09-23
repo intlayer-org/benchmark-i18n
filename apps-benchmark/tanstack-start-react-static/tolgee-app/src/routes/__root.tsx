@@ -53,7 +53,6 @@ export const Route = createRootRoute({
           <p className="mb-4 text-xl text-muted-foreground">
             <T
               keyName="route.oopsPageNotFound"
-              defaultValue="Oops! Page not found"
             />
           </p>
           <Link
@@ -61,7 +60,7 @@ export const Route = createRootRoute({
             params={{ locale: defaultLocale || "en" }}
             className="text-primary underline hover:text-primary/90"
           >
-            <T keyName="route.returnToHome" defaultValue="Return to Home" />
+            <T keyName="route.returnToHome" />
           </Link>
       </div>
       </div>

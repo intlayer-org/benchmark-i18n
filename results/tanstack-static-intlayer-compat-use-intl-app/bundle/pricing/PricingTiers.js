@@ -1,6 +1,5 @@
 import React, { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var pricing_tiers_default = {
 	key: "pricing-tiers",
 	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"starter\":\"Starter\",\"price0\":\"$0\",\"forever\":\"forever\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} benchmark runs/day\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} libraries\"},\"communitySupport\":\"Community support\",\"publicResults\":\"Public results\",\"pro\":\"Pro\",\"price29\":\"$29\",\"month\":\"/month\",\"unlimitedRuns\":\"Unlimited runs\",\"allLibraries\":\"All libraries\",\"prioritySupport\":\"Priority support\",\"privateResults\":\"Private results\",\"ciIntegration\":\"CI integration\",\"historicalData\":\"Historical data\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Custom\",\"everythingInPro\":\"Everything in Pro\",\"onPremiseOption\":\"On-premise option\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Dedicated account manager\",\"customSlas\":\"Custom SLAs\",\"auditLogs\":\"Audit logs\",\"trainingSessions\":\"Training sessions\",\"contactSales\":\"Contact Sales\",\"getStarted\":\"Get Started\"},\"fr\":{\"starter\":\"Starter\",\"price0\":\"0 €\",\"forever\":\"pour toujours\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} passages de benchmark / jour\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliothèques\"},\"communitySupport\":\"Support communautaire\",\"publicResults\":\"Résultats publics\",\"pro\":\"Pro\",\"price29\":\"29 €\",\"month\":\"/ mois\",\"unlimitedRuns\":\"Passages illimités\",\"allLibraries\":\"Toutes les bibliothèques\",\"prioritySupport\":\"Support prioritaire\",\"privateResults\":\"Résultats privés\",\"ciIntegration\":\"Intégration CI\",\"historicalData\":\"Données historiques\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Sur mesure\",\"everythingInPro\":\"Tout ce qui est dans Pro\",\"onPremiseOption\":\"Option sur site (on-premise)\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Gestionnaire de compte dédié\",\"customSlas\":\"SLA personnalisés\",\"auditLogs\":\"Journaux d'audit\",\"trainingSessions\":\"Sessions de formation\",\"contactSales\":\"Contacter le service commercial\",\"getStarted\":\"Démarrer\"},\"es\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"para siempre\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} ejecuciones de benchmark/día\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliotecas\"},\"communitySupport\":\"Soporte de la comunidad\",\"publicResults\":\"Resultados públicos\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/mes\",\"unlimitedRuns\":\"Ejecuciones ilimitadas\",\"allLibraries\":\"Todas las bibliotecas\",\"prioritySupport\":\"Soporte prioritario\",\"privateResults\":\"Resultados privados\",\"ciIntegration\":\"Integración CI\",\"historicalData\":\"Datos históricos\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Personalizado\",\"everythingInPro\":\"Todo lo que hay en Pro\",\"onPremiseOption\":\"Opción on-premise\",\"ssoSaml\":\"SSO y SAML\",\"dedicatedAccountManager\":\"Gestor de cuentas dedicado\",\"customSlas\":\"SLA personalizados\",\"auditLogs\":\"Registros de auditoría\",\"trainingSessions\":\"Sesiones de formación\",\"contactSales\":\"Contactar con ventas\",\"getStarted\":\"Empezar\"},\"de\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"für immer\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} Benchmark-Durchläufe/Tag\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} Bibliotheken\"},\"communitySupport\":\"Community-Support\",\"publicResults\":\"Öffentliche Ergebnisse\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/Monat\",\"unlimitedRuns\":\"Unbegrenzte Durchläufe\",\"allLibraries\":\"Alle Bibliotheken\",\"prioritySupport\":\"Prioritäts-Support\",\"privateResults\":\"Private Ergebnisse\",\"ciIntegration\":\"CI-Integration\",\"historicalData\":\"Historische Daten\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Individuell\",\"everythingInPro\":\"Alles in Pro\",\"onPremiseOption\":\"On-Premise-Option\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Dedizierter Account-Manager\",\"customSlas\":\"Individuelle SLAs\",\"auditLogs\":\"Audit-Logs\",\"trainingSessions\":\"Schulungen\",\"contactSales\":\"Vertrieb kontaktieren\",\"getStarted\":\"Jetzt starten\"},\"it\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"per sempre\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} esecuzioni benchmark/giorno\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} librerie\"},\"communitySupport\":\"Supporto della comunità\",\"publicResults\":\"Risultati pubblici\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/mese\",\"unlimitedRuns\":\"Esecuzioni illimitate\",\"allLibraries\":\"Tutte le librerie\",\"prioritySupport\":\"Supporto prioritario\",\"privateResults\":\"Risultati privati\",\"ciIntegration\":\"Integrazione CI\",\"historicalData\":\"Dati storici\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Personalizzato\",\"everythingInPro\":\"Tutto quello che c'è in Pro\",\"onPremiseOption\":\"Opzione in locale\",\"ssoSaml\":\"SSO e SAML\",\"dedicatedAccountManager\":\"Account manager dedicato\",\"customSlas\":\"SLA personalizzati\",\"auditLogs\":\"Registri di controllo\",\"trainingSessions\":\"Sessioni di formazione\",\"contactSales\":\"Contatta l'ufficio vendite\",\"getStarted\":\"Inizia ora\"},\"pt\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"para sempre\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} execuções de benchmark por dia\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliotecas\"},\"communitySupport\":\"Suporte da comunidade\",\"publicResults\":\"Resultados públicos\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/mês\",\"unlimitedRuns\":\"Execuções ilimitadas\",\"allLibraries\":\"Todas as bibliotecas\",\"prioritySupport\":\"Suporte prioritário\",\"privateResults\":\"Resultados privados\",\"ciIntegration\":\"Integração CI\",\"historicalData\":\"Dados históricos\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Personalizado\",\"everythingInPro\":\"Tudo o que está no Pro\",\"onPremiseOption\":\"Opção on-premise\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Gerente de conta dedicado\",\"customSlas\":\"SLAs personalizados\",\"auditLogs\":\"Logs de auditoria\",\"trainingSessions\":\"Sessões de treinamento\",\"contactSales\":\"Contatar Vendas\",\"getStarted\":\"Começar\"},\"zh\":{\"starter\":\"入门版\",\"price0\":\"¥0\",\"forever\":\"永久\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"每天 {{runs}} 次基准测试运行\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} 个库\"},\"communitySupport\":\"社区支持\",\"publicResults\":\"公开结果\",\"pro\":\"专业版\",\"price29\":\"¥199\",\"month\":\"/月\",\"unlimitedRuns\":\"无限次运行\",\"allLibraries\":\"所有库\",\"prioritySupport\":\"优先支持\",\"privateResults\":\"私有结果\",\"ciIntegration\":\"CI 集成\",\"historicalData\":\"历史数据\",\"enterprise\":\"企业版\",\"customPrice\":\"定制\",\"everythingInPro\":\"包含专业版所有功能\",\"onPremiseOption\":\"本地部署选项\",\"ssoSaml\":\"SSO 和 SAML\",\"dedicatedAccountManager\":\"专属客户经理\",\"customSlas\":\"定制 SLA\",\"auditLogs\":\"审计日志\",\"trainingSessions\":\"培训课程\",\"contactSales\":\"联系销售\",\"getStarted\":\"开始使用\"},\"ja\":{\"starter\":\"スターター\",\"price0\":\"0円\",\"forever\":\"永久に無料\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"1日あたり {{runs}} 回のベンチマーク実行\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} ライブラリ\"},\"communitySupport\":\"コミュニティサポート\",\"publicResults\":\"結果を公開\",\"pro\":\"プロ\",\"price29\":\"3,900円\",\"month\":\"/月\",\"unlimitedRuns\":\"無制限の実行\",\"allLibraries\":\"すべてのライブラリ\",\"prioritySupport\":\"優先サポート\",\"privateResults\":\"結果を非公開\",\"ciIntegration\":\"CI統合\",\"historicalData\":\"履歴データ\",\"enterprise\":\"エンタープライズ\",\"customPrice\":\"カスタム\",\"everythingInPro\":\"Proのすべての機能を含む\",\"onPremiseOption\":\"オンプレミスオプション\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"専任のアカウントマネージャー\",\"customSlas\":\"カスタムSLA\",\"auditLogs\":\"監査ログ\",\"trainingSessions\":\"トレーニングセッション\",\"contactSales\":\"営業に問い合わせる\",\"getStarted\":\"始める\"},\"ko\":{\"starter\":\"스타터\",\"price0\":\"0원\",\"forever\":\"영원히\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"하루 {{runs}}회 벤치마크 실행\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}}개 라이브러리\"},\"communitySupport\":\"커뮤니티 지원\",\"publicResults\":\"결과 공개\",\"pro\":\"프로\",\"price29\":\"39,000원\",\"month\":\"/월\",\"unlimitedRuns\":\"무제한 실행\",\"allLibraries\":\"모든 라이브러리\",\"prioritySupport\":\"우선 지원\",\"privateResults\":\"결과 비공개\",\"ciIntegration\":\"CI 통합\",\"historicalData\":\"기록 데이터\",\"enterprise\":\"엔터프라이즈\",\"customPrice\":\"커스텀\",\"everythingInPro\":\"Pro의 모든 기능 포함\",\"onPremiseOption\":\"온프레미스 옵션\",\"ssoSaml\":\"SSO 및 SAML\",\"dedicatedAccountManager\":\"전담 어카운트 매니저\",\"customSlas\":\"맞춤형 SLA\",\"auditLogs\":\"감사 로그\",\"trainingSessions\":\"교육 세션\",\"contactSales\":\"영업팀 문의\",\"getStarted\":\"시작하기\"},\"ru\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"навсегда\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} запусков бенчмарка в день\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} библиотек\"},\"communitySupport\":\"Сообщество поддержки\",\"publicResults\":\"Публичные результаты\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/месяц\",\"unlimitedRuns\":\"Неограниченное количество запусков\",\"allLibraries\":\"Все библиотеки\",\"prioritySupport\":\"Приоритетная поддержка\",\"privateResults\":\"Приватные результаты\",\"ciIntegration\":\"Интеграция с CI\",\"historicalData\":\"Исторические данные\",\"enterprise\":\"Корпоративный\",\"customPrice\":\"Индивидуальная цена\",\"everythingInPro\":\"Все возможности Pro\",\"onPremiseOption\":\"Локальное развертывание\",\"ssoSaml\":\"SSO и SAML\",\"dedicatedAccountManager\":\"Выделенный менеджер\",\"customSlas\":\"Индивидуальные SLA\",\"auditLogs\":\"Журналы аудита\",\"trainingSessions\":\"Сессии обучения\",\"contactSales\":\"Связаться с отделом продаж\",\"getStarted\":\"Начать\"}}}")
@@ -50,6 +49,11 @@ var MARKDOWN = "markdown";
 var HTML = "html";
 var GENDER = "gender";
 var SELECT = "select";
+var formatNodeType = (nodeType, content, additionalAttributes) => ({
+	...additionalAttributes,
+	nodeType,
+	[nodeType]: content
+});
 var deepTransformNode = (node, props) => {
 	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
 	if (node === null || typeof node !== "object") return node;
@@ -530,6 +534,605 @@ var splitInsertionTemplate = (template, values = {}) => {
 		parts
 	};
 };
+var enumeration = (content) => formatNodeType(ENUMERATION, content);
+var gender = (content) => formatNodeType(GENDER, content);
+var parseAttributes = (attributesString) => {
+	const attributes = {};
+	if (!attributesString?.trim()) return attributes;
+	[...attributesString.matchAll(/([a-zA-Z0-9-:_@]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^>\s]+))?/g)].forEach((match) => {
+		const attrName = match[1];
+		attributes[attrName] = "string";
+	});
+	return attributes;
+};
+var getHTMLCustomComponents = (content) => {
+	if (typeof content !== "string") throw new Error("content must be a string");
+	const matches = [...content.matchAll(/<(\/)?([a-zA-Z0-9.-]+)\s*([\s\S]*?)(\/?)>/g)];
+	const components = {};
+	matches.forEach((match) => {
+		const isClosing = !!match[1];
+		const tagName = match[2];
+		const attributesString = match[3];
+		const isSelfClosing = !!match[4];
+		if (/^[a-z][a-z0-9]*$/.test(tagName)) {
+			components[tagName] = true;
+			return;
+		}
+		if (!components[tagName]) components[tagName] = {};
+		if (components[tagName] === true) return;
+		if (isClosing) return;
+		const attributes = parseAttributes(attributesString);
+		const componentDef = components[tagName];
+		Object.assign(componentDef, attributes);
+		if (!isSelfClosing) componentDef.children = "string";
+	});
+	return components;
+};
+var VOID_HTML_ELEMENTS = /* @__PURE__ */ new Set([
+	"area",
+	"base",
+	"br",
+	"col",
+	"embed",
+	"hr",
+	"img",
+	"input",
+	"link",
+	"meta",
+	"source",
+	"track",
+	"wbr"
+]);
+var TAG_REGEX = /<(\/)?([a-zA-Z][a-zA-Z0-9.-]*)\s*((?:[^\n]|\n(?!\n))*?)(\/?)>/g;
+var validateHTML = (content) => {
+	const issues = [];
+	const stack = [];
+	for (const match of content.matchAll(TAG_REGEX)) {
+		const isClosing = !!match[1];
+		const tagName = match[2];
+		const attrs = match[3];
+		const isSelfClosing = !!match[4];
+		if (attrs.trimStart().startsWith("://") || attrs.trimStart().startsWith(":")) continue;
+		if (isClosing) {
+			if (stack.length === 0) issues.push({
+				type: "error",
+				message: `Closing tag </${tagName}> has no matching opening tag`
+			});
+			else {
+				const last = stack[stack.length - 1];
+				if (last.tag.toLowerCase() !== tagName.toLowerCase()) issues.push({
+					type: "error",
+					message: `Mismatched closing tag: expected </${last.tag}> but found </${tagName}>`
+				});
+				stack.pop();
+			}
+		} else {
+			const isVoidElement = VOID_HTML_ELEMENTS.has(tagName.toLowerCase());
+			if (!isSelfClosing && !isVoidElement) stack.push({ tag: tagName });
+		}
+	}
+	for (const unclosed of stack) issues.push({
+		type: "error",
+		message: `Unclosed HTML tag: <${unclosed.tag}>`
+	});
+	return {
+		valid: issues.filter((i) => i.type === "error").length === 0,
+		issues
+	};
+};
+var html = (content, components) => {
+	const getComponents = () => {
+		if (components) return components;
+		if (typeof content === "string") {
+			const { issues } = validateHTML(content);
+			for (const issue of issues) if (issue.type === "error") console.error(`[intlayer/html] ${issue.message}`);
+			else console.warn(`[intlayer/html] ${issue.message}`);
+			return getHTMLCustomComponents(content);
+		}
+		let stringContent;
+		if (typeof content === "function") stringContent = content();
+		else if (typeof content.then === "function") stringContent = async () => getHTMLCustomComponents(await content);
+		if (typeof stringContent === "string") return getHTMLCustomComponents(stringContent);
+		try {
+			return getHTMLCustomComponents(JSON.stringify(content));
+		} catch (_e) {
+			return [];
+		}
+	};
+	return formatNodeType(HTML, content, { tags: getComponents() });
+};
+var getInsertionValues = (content) => {
+	const matches = [...content.matchAll(/{{\s*(.*?)\s*}}/g)];
+	if (matches.length === 0) return [];
+	return [...new Set(matches.map((match) => match[1].trim()))].filter(Boolean);
+};
+var insertion = (content) => {
+	const getInsertions = () => {
+		if (typeof content === "string") return getInsertionValues(content);
+		let stringContent;
+		if (typeof content === "function") stringContent = content();
+		else if (typeof content.then === "function") stringContent = async () => getInsertionValues(await content);
+		if (typeof stringContent === "string") return getInsertionValues(stringContent);
+		try {
+			return getInsertionValues(JSON.stringify(content));
+		} catch (_e) {
+			return [];
+		}
+	};
+	return formatNodeType(INSERTION, content, { fields: getInsertions() });
+};
+var plural = (content) => formatNodeType(PLURAL, content);
+var select = (content, variable) => formatNodeType(SELECT, content, { variable });
+var parseICU = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseArgument());
+			} else if (char === "}") break;
+			else if (char === "'") {
+				if (index + 1 < text.length && text[index + 1] === "'") {
+					currentText += "'";
+					index += 2;
+				} else {
+					const nextQuote = text.indexOf("'", index + 1);
+					if (nextQuote !== -1) {
+						currentText += text.substring(index + 1, nextQuote);
+						index = nextQuote + 1;
+					} else {
+						currentText += "'";
+						index++;
+					}
+				}
+			} else {
+				currentText += char;
+				index++;
+			}
+		}
+		if (currentText) nodes.push(currentText);
+		return nodes;
+	};
+	const parseArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select" || type === "selectordinal") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+					else if (type === "selectordinal") return {
+						type: "selectordinal",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var icuNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = icuNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = icuNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = icuNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+		if (node.type === "selectordinal") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) {
+				const newKey = key.startsWith("=") ? key.substring(1) : key === "other" ? "fallback" : key;
+				options[newKey] = icuNodesToIntlayer(val.map((value) => {
+					if (typeof value === "string") return value.replace(/#/g, `{{${node.name}}}`);
+					return value;
+				}));
+			}
+			options.__intlayer_icu_var = node.name;
+			options.__intlayer_icu_ordinal = true;
+			return enumeration(options);
+		}
+	}
+	return nodes.map((node) => icuNodesToIntlayer([node]));
+};
+var icuToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return icuNodesToIntlayer(parseICU(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var icuToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "icu",
+		keyPath: [],
+		plugins: [{
+			id: "icu",
+			...icuToIntlayerPlugin
+		}]
+	});
+};
+var parseI18Next = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{" && text[index + 1] === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index += 2;
+				nodes.push(parseStandardArgument());
+			} else if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseICUArgument());
+			} else if (char === "}") break;
+			else {
+				currentText += char;
+				index++;
+			}
+		}
+		if (currentText) nodes.push(currentText);
+		return nodes;
+	};
+	const parseStandardArgument = () => {
+		let name = "";
+		while (index < text.length) {
+			if (text[index] === "}" && text[index + 1] === "}") {
+				index += 2;
+				return {
+					type: "argument",
+					name: name.trim()
+				};
+			}
+			name += text[index];
+			index++;
+		}
+		throw new Error("Unclosed i18next variable");
+	};
+	const parseICUArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var i18nextNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = i18nextNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = i18nextNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = i18nextNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+	}
+	return nodes.map((node) => i18nextNodesToIntlayer([node]));
+};
+var i18nextToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return i18nextNodesToIntlayer(parseI18Next(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var i18nextToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "i18next",
+		keyPath: [],
+		plugins: [{
+			id: "i18next",
+			...i18nextToIntlayerPlugin
+		}]
+	});
+};
 var navigatePath = (contentValue, path, keySeparator = ".") => {
 	if (!path) return contentValue;
 	if (contentValue !== null && contentValue !== void 0 && typeof contentValue === "object") {
@@ -543,6 +1146,105 @@ var navigatePath = (contentValue, path, keySeparator = ".") => {
 		current = current[part];
 	}
 	return current;
+};
+var parseVueI18nPart = (text) => {
+	let index = 0;
+	const nodes = [];
+	let currentText = "";
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "{") {
+			if (currentText) {
+				nodes.push(currentText);
+				currentText = "";
+			}
+			index++;
+			let name = "";
+			while (index < text.length && text[index] !== "}") {
+				name += text[index];
+				index++;
+			}
+			if (index < text.length) index++;
+			nodes.push({
+				type: "argument",
+				name: name.trim()
+			});
+		} else {
+			currentText += char;
+			index++;
+		}
+	}
+	if (currentText) nodes.push(currentText);
+	return nodes;
+};
+var parseVueI18n = (text) => {
+	const parts = [];
+	let currentPart = "";
+	let index = 0;
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "\\" && index + 1 < text.length && text[index + 1] === "|") {
+			currentPart += "|";
+			index += 2;
+		} else if (char === "|") {
+			parts.push(currentPart.trim());
+			currentPart = "";
+			index++;
+		} else {
+			currentPart += char;
+			index++;
+		}
+	}
+	parts.push(currentPart.trim());
+	return parts.map(parseVueI18nPart);
+};
+var vueI18nPartToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") return nodes[0];
+	let str = "";
+	for (const node of nodes) if (typeof node === "string") str += node;
+	else str += `{{${node.name}}}`;
+	return insertion(str);
+};
+var vueI18nNodesToIntlayer = (parts) => {
+	if (parts.length === 1) return vueI18nPartToIntlayer(parts[0]);
+	const options = {};
+	const varName = "count";
+	if (parts.length === 2) return enumeration({
+		"1": vueI18nPartToIntlayer(parts[0]),
+		fallback: vueI18nPartToIntlayer(parts[1])
+	});
+	if (parts.length === 3) return enumeration({
+		"0": vueI18nPartToIntlayer(parts[0]),
+		"1": vueI18nPartToIntlayer(parts[1]),
+		fallback: vueI18nPartToIntlayer(parts[2])
+	});
+	parts.forEach((part, index) => {
+		if (index === parts.length - 1) options.fallback = vueI18nPartToIntlayer(part);
+		else options[index.toString()] = vueI18nPartToIntlayer(part);
+	});
+	options.__intlayer_vue_i18n_var = varName;
+	return enumeration(options);
+};
+var vueI18nToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("|")),
+	transform: (node) => {
+		try {
+			return vueI18nNodesToIntlayer(parseVueI18n(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var vueI18nToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "vue-i18n",
+		keyPath: [],
+		plugins: [{
+			id: "vue-i18n",
+			...vueI18nToIntlayerPlugin
+		}]
+	});
 };
 var ENUMERATION_METADATA_KEYS = [
 	"__intlayer_icu_var",
@@ -640,6 +1342,13 @@ var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
 	const resolved = resolveMessageNode(node, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
+var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: icuToIntlayerFormatter,
+	i18next: i18nextToIntlayerFormatter,
+	"vue-i18n": vueI18nToIntlayerFormatter
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var parseTaggedMessage = (message) => {
 	const tokens = [];
 	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
@@ -694,7 +1403,7 @@ var createLookupTranslator = (locale, lookup, missingKeyFallback) => {
 	const resolveToString = (key, values = {}) => {
 		const rawValue = lookup(key);
 		if (rawValue === null || rawValue === void 0) return void 0;
-		return resolveMessageNodeToString(rawValue, values, locale);
+		return resolveMessage(rawValue, values, locale, "icu");
 	};
 	const translate = (key, values) => resolveToString(key, values) ?? missingKeyFallback(key);
 	return Object.assign(translate, {
@@ -989,7 +1698,6 @@ var IntlProvider = ({ locale, children, messages: _messages, formats: _formats, 
 		children
 	}, String(locale));
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
 	const t = useDictionary(pricing_tiers_default);
 	const tiers = [
@@ -1033,118 +1741,60 @@ function PricingTiers() {
 			]
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((tier) => jsxDEV("div", {
+		children: tiers.map((tier) => jsxs("div", {
 			className: `flex flex-col rounded-lg border p-6 ${tier.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsxDEV("h3", {
+				jsx("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: tier.name
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 59,
-					columnNumber: 11
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "my-4",
-					children: [jsxDEV("span", {
+					children: [jsx("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: tier.price
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 61,
-						columnNumber: 13
-					}, this), jsxDEV("span", {
+					}), jsx("span", {
 						className: "text-sm text-muted-foreground",
 						children: tier.period
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 64,
-						columnNumber: 13
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 60,
-					columnNumber: 11
-				}, this),
-				jsxDEV("ul", {
+					})]
+				}),
+				jsx("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: tier.features.map((f) => jsxDEV("li", {
+					children: tier.features.map((f) => jsxs("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsxDEV("span", {
+							jsx("span", {
 								className: "text-primary",
 								children: "✓"
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 72,
-								columnNumber: 17
-							}, this),
+							}),
 							" ",
 							f
 						]
-					}, f, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 68,
-						columnNumber: 15
-					}, this))
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 66,
-					columnNumber: 11
-				}, this),
-				jsxDEV("button", {
+					}, f))
+				}),
+				jsx("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${tier.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: tier.name === t("enterprise") ? t("contactSales") : t("getStarted")
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 76,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, tier.name, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 51,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 49,
-		columnNumber: 5
-	}, this);
+		}, tier.name))
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(React.Suspense, {
+	return jsx(React.Suspense, {
 		fallback: null,
-		children: jsxDEV(IntlProvider, {
+		children: jsx(IntlProvider, {
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
 }
 export { Wrapped as default };

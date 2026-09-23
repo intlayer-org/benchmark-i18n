@@ -1,5 +1,5 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var URLPattern = {};
 var locales = [
 	"en",
@@ -186,193 +186,157 @@ var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var blog_header_insightstutorialsandanalysisfrom4$10 = () => {
+var en_blog_header_insightstutorialsandanalysisfrom4 = () => {
 	return `Insights, tutorials, and analysis from the i18n community.`;
 };
-var header_blog$10 = () => {
-	return `Blog`;
-};
-var mockbanner1$10 = () => {
-	return `⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.`;
-};
-var blog_header_insightstutorialsandanalysisfrom4$9 = () => {
+var fr_blog_header_insightstutorialsandanalysisfrom4 = () => {
 	return `Aperçus, tutoriels et analyses de la communauté i18n.`;
 };
-var header_blog$9 = () => {
-	return `Blog`;
-};
-var mockbanner1$9 = () => {
-	return `⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.`;
-};
-var blog_header_insightstutorialsandanalysisfrom4$8 = () => {
+var es_blog_header_insightstutorialsandanalysisfrom4 = () => {
 	return `Información, tutoriales y análisis de la comunidad i18n.`;
 };
-var header_blog$8 = () => {
-	return `Blog`;
-};
-var mockbanner1$8 = () => {
-	return `⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.`;
-};
-var blog_header_insightstutorialsandanalysisfrom4$7 = () => {
+var de_blog_header_insightstutorialsandanalysisfrom4 = () => {
 	return `Einblicke, Tutorials und Analysen aus der i18n-Community.`;
 };
-var header_blog$7 = () => {
-	return `Blog`;
-};
-var mockbanner1$7 = () => {
-	return `⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.`;
-};
-var blog_header_insightstutorialsandanalysisfrom4$6 = () => {
+var it_blog_header_insightstutorialsandanalysisfrom4 = () => {
 	return `Approfondimenti, tutorial e analisi dalla comunità i18n.`;
 };
-var header_blog$6 = () => {
-	return `Blog`;
-};
-var mockbanner1$6 = () => {
-	return `⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.`;
-};
-var blog_header_insightstutorialsandanalysisfrom4$5 = () => {
+var pt_blog_header_insightstutorialsandanalysisfrom4 = () => {
 	return `Insights, tutoriais e análises da comunidade i18n.`;
 };
-var header_blog$5 = () => {
-	return `Blog`;
-};
-var mockbanner1$5 = () => {
-	return `⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.`;
-};
-var blog_header_insightstutorialsandanalysisfrom4$4 = () => {
+var zh_blog_header_insightstutorialsandanalysisfrom4 = () => {
 	return `来自 i18n 社区的见解、教程和分析。`;
 };
-var header_blog$4 = () => {
-	return `博客`;
-};
-var mockbanner1$4 = () => {
-	return `⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。`;
-};
-var blog_header_insightstutorialsandanalysisfrom4$3 = () => {
+var ja_blog_header_insightstutorialsandanalysisfrom4 = () => {
 	return `i18nコミュニティからの洞察、チュートリアル、分析。`;
 };
-var header_blog$3 = () => {
-	return `ブログ`;
-};
-var mockbanner1$3 = () => {
-	return `⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。`;
-};
-var blog_header_insightstutorialsandanalysisfrom4$2 = () => {
+var ko_blog_header_insightstutorialsandanalysisfrom4 = () => {
 	return `i18n 커뮤니티의 인사이트, 튜토리얼 및 분석.`;
 };
-var header_blog$2 = () => {
-	return `블로그`;
-};
-var mockbanner1$2 = () => {
-	return `⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.`;
-};
-var blog_header_insightstutorialsandanalysisfrom4$1 = () => {
+var ru_blog_header_insightstutorialsandanalysisfrom4 = () => {
 	return `Инсайты, руководства и анализ от сообщества i18n.`;
-};
-var header_blog$1 = () => {
-	return `Блог`;
-};
-var mockbanner1$1 = () => {
-	return `⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.`;
 };
 var blog_header_insightstutorialsandanalysisfrom4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return blog_header_insightstutorialsandanalysisfrom4$9(inputs);
-	if (locale === "es") return blog_header_insightstutorialsandanalysisfrom4$8(inputs);
-	if (locale === "de") return blog_header_insightstutorialsandanalysisfrom4$7(inputs);
-	if (locale === "it") return blog_header_insightstutorialsandanalysisfrom4$6(inputs);
-	if (locale === "pt") return blog_header_insightstutorialsandanalysisfrom4$5(inputs);
-	if (locale === "zh") return blog_header_insightstutorialsandanalysisfrom4$4(inputs);
-	if (locale === "ja") return blog_header_insightstutorialsandanalysisfrom4$3(inputs);
-	if (locale === "ko") return blog_header_insightstutorialsandanalysisfrom4$2(inputs);
-	if (locale === "ru") return blog_header_insightstutorialsandanalysisfrom4$1(inputs);
-	return blog_header_insightstutorialsandanalysisfrom4$10(inputs);
+	if (locale === "fr") return fr_blog_header_insightstutorialsandanalysisfrom4(inputs);
+	if (locale === "es") return es_blog_header_insightstutorialsandanalysisfrom4(inputs);
+	if (locale === "de") return de_blog_header_insightstutorialsandanalysisfrom4(inputs);
+	if (locale === "it") return it_blog_header_insightstutorialsandanalysisfrom4(inputs);
+	if (locale === "pt") return pt_blog_header_insightstutorialsandanalysisfrom4(inputs);
+	if (locale === "zh") return zh_blog_header_insightstutorialsandanalysisfrom4(inputs);
+	if (locale === "ja") return ja_blog_header_insightstutorialsandanalysisfrom4(inputs);
+	if (locale === "ko") return ko_blog_header_insightstutorialsandanalysisfrom4(inputs);
+	if (locale === "ru") return ru_blog_header_insightstutorialsandanalysisfrom4(inputs);
+	return en_blog_header_insightstutorialsandanalysisfrom4(inputs);
 });
+var en_header_blog = () => {
+	return `Blog`;
+};
+var fr_header_blog = () => {
+	return `Blog`;
+};
+var es_header_blog = () => {
+	return `Blog`;
+};
+var de_header_blog = () => {
+	return `Blog`;
+};
+var it_header_blog = () => {
+	return `Blog`;
+};
+var pt_header_blog = () => {
+	return `Blog`;
+};
+var zh_header_blog = () => {
+	return `博客`;
+};
+var ja_header_blog = () => {
+	return `ブログ`;
+};
+var ko_header_blog = () => {
+	return `블로그`;
+};
+var ru_header_blog = () => {
+	return `Блог`;
+};
 var header_blog = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return header_blog$9(inputs);
-	if (locale === "es") return header_blog$8(inputs);
-	if (locale === "de") return header_blog$7(inputs);
-	if (locale === "it") return header_blog$6(inputs);
-	if (locale === "pt") return header_blog$5(inputs);
-	if (locale === "zh") return header_blog$4(inputs);
-	if (locale === "ja") return header_blog$3(inputs);
-	if (locale === "ko") return header_blog$2(inputs);
-	if (locale === "ru") return header_blog$1(inputs);
-	return header_blog$10(inputs);
+	if (locale === "fr") return fr_header_blog(inputs);
+	if (locale === "es") return es_header_blog(inputs);
+	if (locale === "de") return de_header_blog(inputs);
+	if (locale === "it") return it_header_blog(inputs);
+	if (locale === "pt") return pt_header_blog(inputs);
+	if (locale === "zh") return zh_header_blog(inputs);
+	if (locale === "ja") return ja_header_blog(inputs);
+	if (locale === "ko") return ko_header_blog(inputs);
+	if (locale === "ru") return ru_header_blog(inputs);
+	return en_header_blog(inputs);
 });
+var en_mockbanner1 = () => {
+	return `⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.`;
+};
+var fr_mockbanner1 = () => {
+	return `⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.`;
+};
+var es_mockbanner1 = () => {
+	return `⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.`;
+};
+var de_mockbanner1 = () => {
+	return `⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.`;
+};
+var it_mockbanner1 = () => {
+	return `⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.`;
+};
+var pt_mockbanner1 = () => {
+	return `⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.`;
+};
+var zh_mockbanner1 = () => {
+	return `⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。`;
+};
+var ja_mockbanner1 = () => {
+	return `⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。`;
+};
+var ko_mockbanner1 = () => {
+	return `⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.`;
+};
+var ru_mockbanner1 = () => {
+	return `⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.`;
+};
 var mockbanner1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return mockbanner1$9(inputs);
-	if (locale === "es") return mockbanner1$8(inputs);
-	if (locale === "de") return mockbanner1$7(inputs);
-	if (locale === "it") return mockbanner1$6(inputs);
-	if (locale === "pt") return mockbanner1$5(inputs);
-	if (locale === "zh") return mockbanner1$4(inputs);
-	if (locale === "ja") return mockbanner1$3(inputs);
-	if (locale === "ko") return mockbanner1$2(inputs);
-	if (locale === "ru") return mockbanner1$1(inputs);
-	return mockbanner1$10(inputs);
+	if (locale === "fr") return fr_mockbanner1(inputs);
+	if (locale === "es") return es_mockbanner1(inputs);
+	if (locale === "de") return de_mockbanner1(inputs);
+	if (locale === "it") return it_mockbanner1(inputs);
+	if (locale === "pt") return pt_mockbanner1(inputs);
+	if (locale === "zh") return zh_mockbanner1(inputs);
+	if (locale === "ja") return ja_mockbanner1(inputs);
+	if (locale === "ko") return ko_mockbanner1(inputs);
+	if (locale === "ru") return ru_mockbanner1(inputs);
+	return en_mockbanner1(inputs);
 });
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/MockBanner.tsx";
-var MockBanner = () => jsxDEV("div", {
+var MockBanner = () => jsx("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 	children: mockbanner1()
-}, void 0, false, {
-	fileName: _jsxFileName$3,
-	lineNumber: 4,
-	columnNumber: 3
-}, void 0);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/blog/BlogHeader.tsx";
+});
 function BlogHeader() {
-	return jsxDEV(Fragment, { children: [
-		jsxDEV(MockBanner, {}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 7,
-			columnNumber: 7
-		}, this),
-		jsxDEV("h1", {
+	return jsxs(Fragment, { children: [
+		jsx(MockBanner, {}),
+		jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: header_blog()
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 8,
-			columnNumber: 7
-		}, this),
-		jsxDEV("p", {
+		}),
+		jsx("p", {
 			className: "mb-10 text-muted-foreground",
 			children: blog_header_insightstutorialsandanalysisfrom4()
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 11,
-			columnNumber: 7
-		}, this)
-	] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+		})
+	] });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 setLocale("en", { reload: false });
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/blog/BlogHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(BlogHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(BlogHeader, {}) });
 }
 export { Wrapped as default };

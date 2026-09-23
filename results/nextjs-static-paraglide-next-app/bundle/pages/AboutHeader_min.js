@@ -1,7 +1,7 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { Fragment as r, jsxDEV as i } from "react/jsx-dev-runtime";
-import { useParams as a } from "next/navigation";
-function o(e) {
+import { Fragment as r, jsx as i, jsxs as a } from "react/jsx-runtime";
+import { useParams as o } from "next/navigation";
+function s(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), t(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -11,7 +11,7 @@ function o(e) {
 		}
 	}, [e]);
 }
-var s = {}, c = [
+var c = {}, l = [
 	"en",
 	"fr",
 	"es",
@@ -22,57 +22,57 @@ var s = {}, c = [
 	"ja",
 	"ko",
 	"ru"
-], l = "PARAGLIDE_LOCALE", ee = 3456e4, u = [
+], u = "PARAGLIDE_LOCALE", d = 3456e4, f = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], d = [], f = typeof window > "u";
+], p = [], m = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var p, m = !1, h = () => {
-	let e = u;
-	!f && typeof window < "u" && window.location?.href && (e = P(window.location.href));
-	let t = te(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return m || (p = t, m = !0, _(t, { reload: !1 })), t;
+var h, g = !1, _ = () => {
+	let e = f;
+	!m && typeof window < "u" && window.location?.href && (e = L(window.location.href));
+	let t = v(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return g || (h = t, g = !0, b(t, { reload: !1 })), t;
 	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function te(e, t) {
+function v(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = O();
+		if (t === "cookie") n = j();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && p !== void 0) n = p;
-		else if (I(t) && F.has(t)) {
-			let e = F.get(t);
+		else if (t === "globalVariable" && h !== void 0) n = h;
+		else if (z(t) && R.has(t)) {
+			let e = R.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return y(t);
+				if (t !== void 0) return ee(t);
 			}
 		}
-		let e = v(n);
+		let e = S(n);
 		if (e) return e;
 	}
 }
-var g = (e) => {
+var y = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, _ = (e, t) => {
+}, b = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = h();
+		r = _();
 	} catch {}
-	let i = [], a = u;
-	!f && typeof window < "u" && window.location?.href && (a = P(window.location.href));
-	for (let t of a) if (t === "globalVariable") p = e;
+	let i = [], a = f;
+	!m && typeof window < "u" && window.location?.href && (a = L(window.location.href));
+	for (let t of a) if (t === "globalVariable") h = e;
 	else if (t === "cookie") {
-		if (f || typeof document > "u" || typeof window > "u") continue;
-		let t = `${l}=${e}; path=/; max-age=${ee}`;
-		document.cookie = t, E();
+		if (m || typeof document > "u" || typeof window > "u") continue;
+		let t = `${u}=${e}; path=/; max-age=${d}`;
+		document.cookie = t, k();
 	} else if (t === "baseLocale") continue;
-	else if (I(t) && F.has(t)) {
-		let n = F.get(t);
+	else if (z(t) && R.has(t)) {
+		let n = R.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -81,101 +81,89 @@ var g = (e) => {
 		}
 	}
 	let o = () => {
-		!f && n.reload && window.location && e !== r && g(void 0);
+		!m && n.reload && window.location && e !== r && y(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		o();
 	});
 	o();
-}, ne = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
-function v(e) {
+}, x = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function S(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
-	for (let e of c) if (e.toLowerCase() === t) return e;
+	for (let e of l) if (e.toLowerCase() === t) return e;
 }
-function y(e) {
-	let t = v(e);
+function ee(e) {
+	let t = S(e);
 	if (t) return t;
-	throw Error(`Invalid locale: ${e}. Expected one of: ${c.join(", ")}`);
+	throw Error(`Invalid locale: ${e}. Expected one of: ${l.join(", ")}`);
 }
-function b(e) {
+function C(e) {
 	return e;
 }
-function x(e, t) {
+function w(e, t) {
 	return e.exec(t.href);
 }
-var S = l.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), C = RegExp(`(?:^|;\\s*)${S}=([^;]*)`), w = Symbol(), T = w;
-function E() {
-	T = w;
+var T = u.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), E = RegExp(`(?:^|;\\s*)${T}=([^;]*)`), D = Symbol(), O = D;
+function k() {
+	O = D;
 }
-function D() {
-	typeof queueMicrotask == "function" ? queueMicrotask(E) : Promise.resolve().then(E);
+function A() {
+	typeof queueMicrotask == "function" ? queueMicrotask(k) : Promise.resolve().then(k);
 }
-function O() {
+function j() {
 	if (typeof document > "u") return;
-	if (T !== w) return T;
-	let e = document.cookie.match(C)?.[1];
-	return T = v(e), D(), T;
+	if (O !== D) return O;
+	let e = document.cookie.match(E)?.[1];
+	return O = S(e), A(), O;
 }
-function k(e) {
-	return A(e);
+function M(e) {
+	return N(e);
 }
-function A(e) {
-	let t = b(typeof e == "string" ? new URL(e, ne()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
-	return n.length > 0 && v(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), b(t);
-}
-var j, M;
 function N(e) {
-	if (d.length === 0) return;
+	let t = C(typeof e == "string" ? new URL(e, x()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && S(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), C(t);
+}
+var P, F;
+function I(e) {
+	if (p.length === 0) return;
 	let t = typeof e == "string" ? e : e.href;
-	if (j === t) return M;
-	let n = b(new URL(t, "http://example.com")), r = k(n), i = r.href === n.href ? [n] : [n, r], a;
+	if (P === t) return F;
+	let n = C(new URL(t, "http://example.com")), r = M(n), i = r.href === n.href ? [n] : [n, r], a;
 	for (let e of i) {
-		for (let t of d) if (x(new s(t.match, e.href), e)) {
+		for (let t of p) if (w(new c(t.match, e.href), e)) {
 			a = t;
 			break;
 		}
 		if (a) break;
 	}
-	return j = t, M = a, a;
+	return P = t, F = a, a;
 }
-function P(e) {
-	let t = N(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : u;
+function L(e) {
+	let t = I(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : f;
 }
-var F = /* @__PURE__ */ new Map();
-function I(e) {
+var R = /* @__PURE__ */ new Map();
+function z(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var L = () => "About This Benchmark", R = () => "À propos de ce benchmark", z = () => "Sobre este benchmark", B = () => "Über diesen Benchmark", V = () => "Informazioni su questo benchmark", H = () => "Sobre este benchmark", U = () => "关于本基准测试", W = () => "このベンチマークについて", G = () => "이 벤치마크에 대하여", K = () => "Об этом бенчмарке", re = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? R(e) : n === "es" ? z(e) : n === "de" ? B(e) : n === "it" ? V(e) : n === "pt" ? H(e) : n === "zh" ? U(e) : n === "ja" ? W(e) : n === "ko" ? G(e) : n === "ru" ? K(e) : L(e);
-}), q = () => "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions.", J = () => "Il s'agit d'une application de test open source, pas d'un produit ou d'une entreprise. Son seul but est de fournir une application React multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques.", Y = () => "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación React multipágina realista donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas.", X = () => "Dies ist eine Open-Source-Testanwendung — kein Produkt oder Unternehmen. Ihr einziger Zweck ist es, eine realistische, mehrseitige React-App bereitzustellen, in der verschiedene i18n-Bibliotheken unter identischen Bedingungen integriert und gemessen werden können.", ie = () => "Questa è un'applicazione di test open-source, non un prodotto o un'azienda. Il suo unico scopo è fornire un'applicazione React multi-pagina realistica dove diverse librerie i18n possono essere integrate e misurate in condizioni identiche.", ae = () => "Esta é uma aplicação de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer um aplicativo React realista e de várias páginas onde diferentes bibliotecas i18n possam ser integradas e medidas em condições idênticas.", oe = () => "这是一个开源测试应用程序 —— 不是产品或公司。其唯一目的是提供一个现实的多页面 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。", se = () => "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、同一の条件下でさまざまなi18nライブラリを統合して測定できる、現実的なマルチページのReactアプリを提供することです。", ce = () => "이것은 제품이나 회사가 아닌 오픈 소스 테스트 애플리케이션입니다. 유일한 목적은 동일한 조건에서 서로 다른 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 React 앱을 제공하는 것입니다.", le = () => "Это открытое приложение для тестирования, а не продукт или компания. Его единственная цель — предоставить реалистичное многостраничное приложение на React, в котором можно интегрировать и измерять различные библиотеки i18n в идентичных условиях.", ue = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? J(e) : n === "es" ? Y(e) : n === "de" ? X(e) : n === "it" ? ie(e) : n === "pt" ? ae(e) : n === "zh" ? oe(e) : n === "ja" ? se(e) : n === "ko" ? ce(e) : n === "ru" ? le(e) : q(e);
-}), Z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/about/AboutHeader.tsx";
-function de() {
-	return o("AboutHeader"), i(r, { children: [i("h1", {
+var B = () => "About This Benchmark", V = () => "À propos de ce benchmark", H = () => "Sobre este benchmark", U = () => "Über diesen Benchmark", W = () => "Informazioni su questo benchmark", G = () => "Sobre este benchmark", K = () => "关于本基准测试", q = () => "このベンチマークについて", te = () => "이 벤치마크에 대하여", J = () => "Об этом бенчмарке", Y = ((e = {}, t = {}) => {
+	let n = t.locale ?? _();
+	return n === "fr" ? V(e) : n === "es" ? H(e) : n === "de" ? U(e) : n === "it" ? W(e) : n === "pt" ? G(e) : n === "zh" ? K(e) : n === "ja" ? q(e) : n === "ko" ? te(e) : n === "ru" ? J(e) : B(e);
+}), X = () => "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions.", Z = () => "Il s'agit d'une application de test open source, pas d'un produit ou d'une entreprise. Son seul but est de fournir une application React multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques.", Q = () => "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación React multipágina realista donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas.", ne = () => "Dies ist eine Open-Source-Testanwendung — kein Produkt oder Unternehmen. Ihr einziger Zweck ist es, eine realistische, mehrseitige React-App bereitzustellen, in der verschiedene i18n-Bibliotheken unter identischen Bedingungen integriert und gemessen werden können.", re = () => "Questa è un'applicazione di test open-source, non un prodotto o un'azienda. Il suo unico scopo è fornire un'applicazione React multi-pagina realistica dove diverse librerie i18n possono essere integrate e misurate in condizioni identiche.", ie = () => "Esta é uma aplicação de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer um aplicativo React realista e de várias páginas onde diferentes bibliotecas i18n possam ser integradas e medidas em condições idênticas.", ae = () => "这是一个开源测试应用程序 —— 不是产品或公司。其唯一目的是提供一个现实的多页面 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。", oe = () => "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、同一の条件下でさまざまなi18nライブラリを統合して測定できる、現実的なマルチページのReactアプリを提供することです。", se = () => "이것은 제품이나 회사가 아닌 오픈 소스 테스트 애플리케이션입니다. 유일한 목적은 동일한 조건에서 서로 다른 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 React 앱을 제공하는 것입니다.", ce = () => "Это открытое приложение для тестирования, а не продукт или компания. Его единственная цель — предоставить реалистичное многостраничное приложение на React, в котором можно интегрировать и измерять различные библиотеки i18n в идентичных условиях.", $ = ((e = {}, t = {}) => {
+	let n = t.locale ?? _();
+	return n === "fr" ? Z(e) : n === "es" ? Q(e) : n === "de" ? ne(e) : n === "it" ? re(e) : n === "pt" ? ie(e) : n === "zh" ? ae(e) : n === "ja" ? oe(e) : n === "ko" ? se(e) : n === "ru" ? ce(e) : X(e);
+});
+function le() {
+	return s("AboutHeader"), a(r, { children: [i("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
-		children: re()
-	}, void 0, !1, {
-		fileName: Z,
-		lineNumber: 10,
-		columnNumber: 7
-	}, this), i("p", {
+		children: Y()
+	}), i("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
-		children: ue()
-	}, void 0, !1, {
-		fileName: Z,
-		lineNumber: 13,
-		columnNumber: 7
-	}, this)] }, void 0, !0, {
-		fileName: Z,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+		children: $()
+	})] });
 }
-function fe() {
+function ue() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -189,44 +177,25 @@ function fe() {
 		}
 	}
 }
-function pe(e, t) {
+function de(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var me = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
-function Q({ children: o }) {
-	let s = a().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
+function fe({ children: a }) {
+	let s = o().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		pe("AppRoot", c);
+		de("AppRoot", c);
 	}, [c]), e(() => {
-		_(s, { reload: !1 }), document.documentElement.lang = s;
+		b(s, { reload: !1 }), document.documentElement.lang = s;
 	}, [s]), e(() => {
-		fe();
-	}, []), i(r, { children: o }, void 0, !1, {
-		fileName: me,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+		ue();
+	}, []), i(r, { children: a });
 }
-var he = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
-function ge({ children: e }) {
-	return i(Q, { children: e }, void 0, !1, {
-		fileName: he,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function pe({ children: e }) {
+	return i(fe, { children: e });
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/about/AboutHeader.wrapper.tsx";
-function _e() {
-	return i(ge, { children: i(de, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function me() {
+	return i(pe, { children: i(le, {}) });
 }
-export { _e as default };
+export { me as default };

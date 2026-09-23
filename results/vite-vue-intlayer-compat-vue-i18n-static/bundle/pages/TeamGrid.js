@@ -1,8 +1,12 @@
 import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, openBlock, readonly, ref, renderList, renderSlot, toDisplayString } from "vue";
-var TeamGrid_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var _hoisted_1 = { class: "grid gap-6 md:grid-cols-2 lg:grid-cols-3" };
+var _hoisted_2 = { class: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground" };
+var _hoisted_3 = { class: "text-base font-semibold text-foreground" };
+var _hoisted_4 = { class: "mb-2 text-xs font-medium text-primary" };
+var _hoisted_5 = { class: "text-sm text-muted-foreground" };
+var TeamGrid_default = defineComponent({
 	__name: "TeamGrid",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const members = [
 			{
 				name: "Sarah Chen",
@@ -36,41 +40,21 @@ var TeamGrid_vue_vue_type_script_setup_true_lang_default = defineComponent({
 			}
 		];
 		const getInitials = (name) => name.split(" ").map((n) => n[0]).join("");
-		const __returned__ = {
-			members,
-			getInitials
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(), createElementBlock(Fragment, null, renderList(members, (m) => {
+				return createElementVNode("div", {
+					key: m.name,
+					class: "rounded-lg border border-border bg-card p-6 text-center"
+				}, [
+					createElementVNode("div", _hoisted_2, toDisplayString(getInitials(m.name)), 1),
+					createElementVNode("h3", _hoisted_3, toDisplayString(m.name), 1),
+					createElementVNode("p", _hoisted_4, toDisplayString(m.role), 1),
+					createElementVNode("p", _hoisted_5, toDisplayString(m.bio), 1)
+				]);
+			}), 64))]);
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
-var _hoisted_1 = { class: "grid gap-6 md:grid-cols-2 lg:grid-cols-3" };
-var _hoisted_2 = { class: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground" };
-var _hoisted_3 = { class: "text-base font-semibold text-foreground" };
-var _hoisted_4 = { class: "mb-2 text-xs font-medium text-primary" };
-var _hoisted_5 = { class: "text-sm text-muted-foreground" };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(), createElementBlock(Fragment, null, renderList($setup.members, (m) => {
-		return createElementVNode("div", {
-			key: m.name,
-			class: "rounded-lg border border-border bg-card p-6 text-center"
-		}, [
-			createElementVNode("div", _hoisted_2, toDisplayString($setup.getInitials(m.name)), 1),
-			createElementVNode("h3", _hoisted_3, toDisplayString(m.name), 1),
-			createElementVNode("p", _hoisted_4, toDisplayString(m.role), 1),
-			createElementVNode("p", _hoisted_5, toDisplayString(m.bio), 1)
-		]);
-	}), 64))]);
-}
-var TeamGrid_default = _plugin_vue_export_helper_default(TeamGrid_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/team/TeamGrid.vue"]]);
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -929,24 +913,16 @@ var i18n = createI18n({
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var TeamGrid_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(TeamGrid_default) });
 } };

@@ -1,10 +1,5 @@
-import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
-var pricing_tiers_default = {
-	key: "pricing-tiers",
-	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"month\":\"/month\",\"price0\":\"$0\",\"price29\":\"$29\",\"librariesNumber\":\"3 libraries\",\"benchmarkRunPerDay\":\"5 benchmark runs/day\",\"allLibraries\":\"All libraries\",\"auditLogs\":\"Audit logs\",\"ciIntegration\":\"CI integration\",\"communitySupport\":\"Community support\",\"contactSales\":\"Contact Sales\",\"customPrice\":\"Custom\",\"customSlas\":\"Custom SLAs\",\"dedicatedAccountManager\":\"Dedicated account manager\",\"enterprise\":\"Enterprise\",\"everythingInPro\":\"Everything in Pro\",\"forever\":\"forever\",\"getStarted\":\"Get Started\",\"historicalData\":\"Historical data\",\"onPremiseOption\":\"On-premise option\",\"prioritySupport\":\"Priority support\",\"privateResults\":\"Private results\",\"pro\":\"Pro\",\"publicResults\":\"Public results\",\"ssoSaml\":\"SSO & SAML\",\"starter\":\"Starter\",\"trainingSessions\":\"Training sessions\",\"unlimitedRuns\":\"Unlimited runs\"},\"fr\":{\"month\":\"/mois\",\"price0\":\"0 €\",\"price29\":\"29 €\",\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliothèques\"},\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} benchmarks/jour\"},\"allLibraries\":\"Toutes les bibliothèques\",\"auditLogs\":\"Journaux d'audit\",\"ciIntegration\":\"Intégration CI\",\"communitySupport\":\"Support communautaire\",\"contactSales\":\"Contacter le service commercial\",\"customPrice\":\"Sur mesure\",\"customSlas\":\"SLA personnalisés\",\"dedicatedAccountManager\":\"Gestionnaire de compte dédié\",\"enterprise\":\"Entreprise\",\"everythingInPro\":\"Tout ce qui est inclus dans l'offre Pro\",\"forever\":\"à vie\",\"getStarted\":\"Démarrer\",\"historicalData\":\"Données historiques\",\"onPremiseOption\":\"Option de déploiement sur site\",\"prioritySupport\":\"Support prioritaire\",\"privateResults\":\"Résultats privés\",\"pro\":\"Pro\",\"publicResults\":\"Résultats publics\",\"ssoSaml\":\"SSO & SAML\",\"starter\":\"Starter\",\"trainingSessions\":\"Sessions de formation\",\"unlimitedRuns\":\"Tests illimités\"},\"es\":{\"month\":\"/mes\",\"price0\":\"$0\",\"price29\":\"$29\",\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliotecas\"},\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} ejecuciones de benchmark/día\"},\"allLibraries\":\"Todas las bibliotecas\",\"auditLogs\":\"Registros de auditoría\",\"ciIntegration\":\"Integración CI\",\"communitySupport\":\"Soporte comunitario\",\"contactSales\":\"Contactar con ventas\",\"customPrice\":\"Personalizado\",\"customSlas\":\"SLAs personalizados\",\"dedicatedAccountManager\":\"Gestor de cuenta dedicado\",\"enterprise\":\"Enterprise\",\"everythingInPro\":\"Todo lo de Pro\",\"forever\":\"para siempre\",\"getStarted\":\"Comenzar\",\"historicalData\":\"Datos históricos\",\"onPremiseOption\":\"Opción on-premise\",\"prioritySupport\":\"Soporte prioritario\",\"privateResults\":\"Resultados privados\",\"pro\":\"Pro\",\"publicResults\":\"Resultados públicos\",\"ssoSaml\":\"SSO y SAML\",\"starter\":\"Starter\",\"trainingSessions\":\"Sesiones de formación\",\"unlimitedRuns\":\"Ejecuciones ilimitadas\"},\"de\":{\"month\":\"/Monat\",\"price0\":\"0 €\",\"price29\":\"29 €\",\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} Bibliotheken\"},\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} Benchmark-Durchläufe/Tag\"},\"allLibraries\":\"Alle Bibliotheken\",\"auditLogs\":\"Audit-Protokolle\",\"ciIntegration\":\"CI-Integration\",\"communitySupport\":\"Community-Support\",\"contactSales\":\"Vertrieb kontaktieren\",\"customPrice\":\"Individueller Preis\",\"customSlas\":\"Benutzerdefinierte SLAs\",\"dedicatedAccountManager\":\"Dedizierter Account-Manager\",\"enterprise\":\"Enterprise\",\"everythingInPro\":\"Alles in Pro\",\"forever\":\"für immer\",\"getStarted\":\"Loslegen\",\"historicalData\":\"Historische Daten\",\"onPremiseOption\":\"On-Premise-Option\",\"prioritySupport\":\"Priorisierter Support\",\"privateResults\":\"Private Ergebnisse\",\"pro\":\"Pro\",\"publicResults\":\"Öffentliche Ergebnisse\",\"ssoSaml\":\"SSO & SAML\",\"starter\":\"Starter\",\"trainingSessions\":\"Schulungssitzungen\",\"unlimitedRuns\":\"Unbegrenzte Ausführungen\"},\"it\":{\"month\":\"/mese\",\"price0\":\"0 €\",\"price29\":\"29 €\",\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} librerie\"},\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} benchmark eseguiti al giorno\"},\"allLibraries\":\"Tutte le librerie\",\"auditLogs\":\"Registri di audit\",\"ciIntegration\":\"Integrazione CI\",\"communitySupport\":\"Supporto della community\",\"contactSales\":\"Contatta l'ufficio vendite\",\"customPrice\":\"Personalizzato\",\"customSlas\":\"SLA personalizzati\",\"dedicatedAccountManager\":\"Account manager dedicato\",\"enterprise\":\"Enterprise\",\"everythingInPro\":\"Tutto quello che c'è in Pro\",\"forever\":\"per sempre\",\"getStarted\":\"Per iniziare\",\"historicalData\":\"Dati storici\",\"onPremiseOption\":\"Opzione on-premise\",\"prioritySupport\":\"Supporto prioritario\",\"privateResults\":\"Risultati privati\",\"pro\":\"Pro\",\"publicResults\":\"Risultati pubblici\",\"ssoSaml\":\"SSO e SAML\",\"starter\":\"Starter\",\"trainingSessions\":\"Sessioni di formazione\",\"unlimitedRuns\":\"Esecuzioni illimitate\"},\"pt\":{\"month\":\"/mês\",\"price0\":\"R$ 0\",\"price29\":\"R$ 145\",\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliotecas\"},\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} benchmarks por dia\"},\"allLibraries\":\"Todas as bibliotecas\",\"auditLogs\":\"Logs de auditoria\",\"ciIntegration\":\"Integração CI\",\"communitySupport\":\"Suporte da comunidade\",\"contactSales\":\"Contatar Vendas\",\"customPrice\":\"Preço personalizado\",\"customSlas\":\"SLAs personalizados\",\"dedicatedAccountManager\":\"Gerente de conta dedicado\",\"enterprise\":\"Enterprise\",\"everythingInPro\":\"Tudo no Pro\",\"forever\":\"para sempre\",\"getStarted\":\"Começar\",\"historicalData\":\"Dados históricos\",\"onPremiseOption\":\"Opção on-premise\",\"prioritySupport\":\"Suporte prioritário\",\"privateResults\":\"Resultados privados\",\"pro\":\"Pro\",\"publicResults\":\"Resultados públicos\",\"ssoSaml\":\"SSO & SAML\",\"starter\":\"Starter\",\"trainingSessions\":\"Sessões de treinamento\",\"unlimitedRuns\":\"Execuções ilimitadas\"},\"zh\":{\"month\":\"/月\",\"price0\":\"¥ 0\",\"price29\":\"¥ 299\",\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} 个库\"},\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"每天 {{runs}} 次基准测试\"},\"allLibraries\":\"所有库\",\"auditLogs\":\"审计日志\",\"ciIntegration\":\"CI 集成\",\"communitySupport\":\"社区支持\",\"contactSales\":\"联系销售\",\"customPrice\":\"定制价格\",\"customSlas\":\"定制 SLA\",\"dedicatedAccountManager\":\"专属客户经理\",\"enterprise\":\"企业版\",\"everythingInPro\":\"Pro 版的所有功能\",\"forever\":\"永久\",\"getStarted\":\"开始使用\",\"historicalData\":\"历史数据\",\"onPremiseOption\":\"本地部署选项\",\"prioritySupport\":\"优先支持\",\"privateResults\":\"私有结果\",\"pro\":\"Pro\",\"publicResults\":\"公开结果\",\"ssoSaml\":\"SSO 和 SAML\",\"starter\":\"入门版 (Starter)\",\"trainingSessions\":\"培训课程\",\"unlimitedRuns\":\"无限次运行\"},\"ja\":{\"month\":\"／月\",\"price0\":\"¥0\",\"price29\":\"¥3,500\",\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} 個のライブラリ\"},\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"1日あたり {{runs}} 回のベンチマーク実行\"},\"allLibraries\":\"すべてのライブラリ\",\"auditLogs\":\"監査ログ\",\"ciIntegration\":\"CI統合\",\"communitySupport\":\"コミュニティサポート\",\"contactSales\":\"営業に問い合わせる\",\"customPrice\":\"カスタム\",\"customSlas\":\"カスタムSLA\",\"dedicatedAccountManager\":\"専任のアカウントマネージャー\",\"enterprise\":\"エンタープライズ\",\"everythingInPro\":\"Proプランのすべて\",\"forever\":\"永久\",\"getStarted\":\"始める\",\"historicalData\":\"履歴データ\",\"onPremiseOption\":\"オンプレミスオプション\",\"prioritySupport\":\"優先サポート\",\"privateResults\":\"非公開結果\",\"pro\":\"Pro\",\"publicResults\":\"公開結果\",\"ssoSaml\":\"SSO ＆ SAML\",\"starter\":\"スターター\",\"trainingSessions\":\"トレーニングセッション\",\"unlimitedRuns\":\"無制限の実行\"},\"ko\":{\"month\":\"/월\",\"price0\":\"₩0\",\"price29\":\"₩29.000\",\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}}개 라이브러리\"},\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"하루 {{runs}}회 벤치마크 실행\"},\"allLibraries\":\"모든 라이브러리\",\"auditLogs\":\"감사 로그\",\"ciIntegration\":\"CI 통합\",\"communitySupport\":\"커뮤니티 지원\",\"contactSales\":\"영업팀에 문의\",\"customPrice\":\"맞춤형\",\"customSlas\":\"맞춤형 SLA\",\"dedicatedAccountManager\":\"전담 계정 관리자\",\"enterprise\":\"엔터프라이즈\",\"everythingInPro\":\"Pro의 모든 기능\",\"forever\":\"평생\",\"getStarted\":\"시작하기\",\"historicalData\":\"기록 데이터\",\"onPremiseOption\":\"온프레미스 옵션\",\"prioritySupport\":\"우선 지원\",\"privateResults\":\"비공개 결과\",\"pro\":\"Pro\",\"publicResults\":\"공개 결과\",\"ssoSaml\":\"SSO 및 SAML\",\"starter\":\"스타터\",\"trainingSessions\":\"교육 세션\",\"unlimitedRuns\":\"제한 없는 실행\"},\"ru\":{\"month\":\"/мес\",\"price0\":\"0 ₽\",\"price29\":\"3 500 ₽\",\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"Библиотек: {{libs}}\"},\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} прогонов бенчмарков в день\"},\"allLibraries\":\"Все библиотеки\",\"auditLogs\":\"Логи аудита\",\"ciIntegration\":\"Интеграция с CI\",\"communitySupport\":\"Сообщество поддержки\",\"contactSales\":\"Связаться с отделом продаж\",\"customPrice\":\"Индивидуальная цена\",\"customSlas\":\"Кастомные SLA\",\"dedicatedAccountManager\":\"Персональный менеджер\",\"enterprise\":\"Enterprise\",\"everythingInPro\":\"Всё, что есть в Pro\",\"forever\":\"навсегда\",\"getStarted\":\"Начать\",\"historicalData\":\"Исторические данные\",\"onPremiseOption\":\"Вариант локального развертывания\",\"prioritySupport\":\"Приоритетная поддержка\",\"privateResults\":\"Приватные результаты\",\"pro\":\"Pro\",\"publicResults\":\"Публичные результаты\",\"ssoSaml\":\"SSO и SAML\",\"starter\":\"Starter\",\"trainingSessions\":\"Обучающие сессии\",\"unlimitedRuns\":\"Неограниченное количество запусков\"}}}")
-};
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
+import { jsx, jsxs } from "react/jsx-runtime";
 var EventEmitter = class {
 	_events = /* @__PURE__ */ new Map();
 	on(event, listener) {
@@ -501,6 +496,335 @@ var icuToIntlayerFormatter = (message) => {
 		}]
 	});
 };
+var parseI18Next = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{" && text[index + 1] === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index += 2;
+				nodes.push(parseStandardArgument());
+			} else if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseICUArgument());
+			} else if (char === "}") break;
+			else {
+				currentText += char;
+				index++;
+			}
+		}
+		if (currentText) nodes.push(currentText);
+		return nodes;
+	};
+	const parseStandardArgument = () => {
+		let name = "";
+		while (index < text.length) {
+			if (text[index] === "}" && text[index + 1] === "}") {
+				index += 2;
+				return {
+					type: "argument",
+					name: name.trim()
+				};
+			}
+			name += text[index];
+			index++;
+		}
+		throw new Error("Unclosed i18next variable");
+	};
+	const parseICUArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var i18nextNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = i18nextNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = i18nextNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = i18nextNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+	}
+	return nodes.map((node) => i18nextNodesToIntlayer([node]));
+};
+var i18nextToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return i18nextNodesToIntlayer(parseI18Next(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var i18nextToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "i18next",
+		keyPath: [],
+		plugins: [{
+			id: "i18next",
+			...i18nextToIntlayerPlugin
+		}]
+	});
+};
+var parseVueI18nPart = (text) => {
+	let index = 0;
+	const nodes = [];
+	let currentText = "";
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "{") {
+			if (currentText) {
+				nodes.push(currentText);
+				currentText = "";
+			}
+			index++;
+			let name = "";
+			while (index < text.length && text[index] !== "}") {
+				name += text[index];
+				index++;
+			}
+			if (index < text.length) index++;
+			nodes.push({
+				type: "argument",
+				name: name.trim()
+			});
+		} else {
+			currentText += char;
+			index++;
+		}
+	}
+	if (currentText) nodes.push(currentText);
+	return nodes;
+};
+var parseVueI18n = (text) => {
+	const parts = [];
+	let currentPart = "";
+	let index = 0;
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "\\" && index + 1 < text.length && text[index + 1] === "|") {
+			currentPart += "|";
+			index += 2;
+		} else if (char === "|") {
+			parts.push(currentPart.trim());
+			currentPart = "";
+			index++;
+		} else {
+			currentPart += char;
+			index++;
+		}
+	}
+	parts.push(currentPart.trim());
+	return parts.map(parseVueI18nPart);
+};
+var vueI18nPartToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") return nodes[0];
+	let str = "";
+	for (const node of nodes) if (typeof node === "string") str += node;
+	else str += `{{${node.name}}}`;
+	return insertion(str);
+};
+var vueI18nNodesToIntlayer = (parts) => {
+	if (parts.length === 1) return vueI18nPartToIntlayer(parts[0]);
+	const options = {};
+	const varName = "count";
+	if (parts.length === 2) return enumeration({
+		"1": vueI18nPartToIntlayer(parts[0]),
+		fallback: vueI18nPartToIntlayer(parts[1])
+	});
+	if (parts.length === 3) return enumeration({
+		"0": vueI18nPartToIntlayer(parts[0]),
+		"1": vueI18nPartToIntlayer(parts[1]),
+		fallback: vueI18nPartToIntlayer(parts[2])
+	});
+	parts.forEach((part, index) => {
+		if (index === parts.length - 1) options.fallback = vueI18nPartToIntlayer(part);
+		else options[index.toString()] = vueI18nPartToIntlayer(part);
+	});
+	options.__intlayer_vue_i18n_var = varName;
+	return enumeration(options);
+};
+var vueI18nToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("|")),
+	transform: (node) => {
+		try {
+			return vueI18nNodesToIntlayer(parseVueI18n(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var vueI18nToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "vue-i18n",
+		keyPath: [],
+		plugins: [{
+			id: "vue-i18n",
+			...vueI18nToIntlayerPlugin
+		}]
+	});
+};
 var findMatchingCondition = (enumerationContent, quantity) => {
 	const numericKeys = Object.keys(enumerationContent);
 	for (const key of numericKeys) {
@@ -734,24 +1058,18 @@ var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
 var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var resolveIcuMessage = createMessageResolver(icuToIntlayerFormatter);
-var splitMessageId = (id) => {
-	const dotPosition = id.indexOf(".");
-	if (dotPosition === -1) return {
-		dictionaryKey: id,
-		remainder: ""
-	};
-	return {
-		dictionaryKey: id.slice(0, dotPosition),
-		remainder: id.slice(dotPosition + 1)
-	};
+var DIALECT_FORMATTERS = {
+	icu: icuToIntlayerFormatter,
+	i18next: i18nextToIntlayerFormatter,
+	"vue-i18n": vueI18nToIntlayerFormatter
 };
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var I18nClass = class extends EventEmitter {
 	_locale;
 	_locales;
 	_catalogs = {};
 	_loadFallbackWarned = false;
-	_boundDictionaries = {};
+	_dictionaryContent;
 	_registry;
 	constructor({ locale = "en", locales, messages, registry } = {}) {
 		super();
@@ -768,7 +1086,7 @@ var I18nClass = class extends EventEmitter {
 	}
 	get messages() {
 		const dictionary = { ...this._registry?.all(this._locale) };
-		for (const content of Object.values(this._boundDictionaries)) Object.assign(dictionary, unwrapLinguiCatalog(content));
+		if (this._dictionaryContent !== void 0) Object.assign(dictionary, unwrapLinguiCatalog(this._dictionaryContent));
 		return {
 			...this._catalogs[this._locale] ?? {},
 			...dictionary
@@ -799,8 +1117,8 @@ var I18nClass = class extends EventEmitter {
 		if (messages) this.mergeLocaleCatalog(locale, messages);
 		this.activate(locale, locales);
 	}
-	bindDictionaries(dictionaries) {
-		this._boundDictionaries = dictionaries;
+	bindDictionaryContent(content) {
+		this._dictionaryContent = content;
 		return this;
 	}
 	activate(locale, locales) {
@@ -808,52 +1126,28 @@ var I18nClass = class extends EventEmitter {
 		this._locales = locales;
 		this.emit("change");
 	}
-	lookupBoundDictionaries(id) {
-		const { dictionaryKey, remainder } = splitMessageId(id);
-		const prefixed = this._boundDictionaries[dictionaryKey];
-		if (prefixed !== void 0) {
-			const value = navigateLinguiCatalog(prefixed, remainder);
-			if (value !== void 0) return value;
-		}
-		for (const content of Object.values(this._boundDictionaries)) {
-			const value = navigateLinguiCatalog(content, id);
-			if (value !== void 0) return value;
-		}
-	}
 	resolveTemplate(id) {
-		const boundNode = this.lookupBoundDictionaries(id);
-		if (boundNode !== void 0) return {
-			kind: "node",
-			node: boundNode
-		};
-		const registryNode = this._registry?.lookup(id, this._locale);
-		if (registryNode !== void 0) return {
-			kind: "node",
-			node: registryNode
-		};
+		if (this._dictionaryContent !== void 0) {
+			const boundValue = navigateLinguiCatalog(this._dictionaryContent, id);
+			if (boundValue !== void 0) return linguiMessageToIcu(boundValue);
+		}
+		const fromDictionary = this._registry?.lookup(id, this._locale);
+		if (fromDictionary !== void 0) return fromDictionary;
 		const catalog = this._catalogs[this._locale];
 		if (catalog) {
 			const raw = navigateLinguiCatalog(catalog, id);
-			if (raw !== void 0) return {
-				kind: "icu",
-				message: linguiMessageToIcu(raw)
-			};
+			if (raw !== void 0) return linguiMessageToIcu(raw);
 		}
 	}
 	_(descriptorOrId, values, options) {
 		const isDescriptor = typeof descriptorOrId === "object" && descriptorOrId !== null;
 		const id = isDescriptor ? descriptorOrId.id : descriptorOrId;
 		const defaultMessage = isDescriptor ? descriptorOrId.message ?? options?.message : options?.message;
-		const messageValues = isDescriptor ? {
+		const resolvedValues = isDescriptor ? {
 			...descriptorOrId.values ?? {},
 			...values ?? {}
 		} : values ?? {};
-		const locale = this._locale;
-		const template = this.resolveTemplate(id) ?? {
-			kind: "icu",
-			message: defaultMessage ?? id
-		};
-		return (template.kind === "node" ? resolveMessageNodeToString(template.node, messageValues, locale) : resolveIcuMessage(template.message, messageValues, locale)) ?? id;
+		return resolveMessage(this.resolveTemplate(id) ?? defaultMessage ?? id, resolvedValues, this._locale, "icu") ?? id;
 	}
 	t = (descriptorOrId, values, options) => this._(descriptorOrId, values, options);
 	date(value, format) {
@@ -1031,7 +1325,7 @@ var getIntlayer = (key, localeOrSelector, plugins) => {
 		}
 		return createSafeFallback(key);
 	}
-	return getDictionary$1(dictionary, localeOrSelector, plugins);
+	return getDictionary(dictionary, localeOrSelector, plugins);
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -1137,9 +1431,8 @@ var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRA
 	}
 };
 var enumerationPlugin = fallbackPlugin;
-var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
-var insertionPlugin$1 = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
 	transform: (node, props, deepTransformNode) => {
@@ -1181,7 +1474,7 @@ var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
 	conditionPlugin,
-	insertionPlugin$1,
+	insertionPlugin,
 	nestedPlugin(locale ?? internationalization.defaultLocale),
 	filePlugin,
 	genderPlugin,
@@ -1191,7 +1484,7 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
+var getDictionary = (dictionary, localeOrSelector, plugins) => {
 	const { locale, selector } = parseDictionarySelector(localeOrSelector);
 	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
 	const cached = readTransformCache(dictionary, cacheKey);
@@ -1212,26 +1505,6 @@ var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
-var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
-var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
-var splitInsertionTemplate = (template, values = {}) => {
-	if (!Object.values(values).some(isComplexValue)) return {
-		isSimple: true,
-		parts: template.replace(insertionRegex, (_, key) => (values[key.trim()] ?? "").toString())
-	};
-	const chunks = template.split(insertionRegex);
-	const parts = [];
-	for (let i = 0; i < chunks.length; i++) if (i % 2 === 0) {
-		if (chunks[i]) parts.push(chunks[i]);
-	} else {
-		const val = values[chunks[i].trim()];
-		if (val != null) parts.push(val);
-	}
-	return {
-		isSimple: false,
-		parts
-	};
-};
 var getDictionaryKeys = () => {
 	try {
 		return Object.keys(getDictionaries());
@@ -1240,23 +1513,15 @@ var getDictionaryKeys = () => {
 	}
 };
 var lookupDictionaryMessage = (id, locale) => {
-	const dictionaryKeys = getDictionaryKeys();
-	const dotPosition = id.indexOf(".");
-	const prefix = dotPosition === -1 ? id : id.slice(0, dotPosition);
-	const readDictionary = (key) => {
+	for (const key of getDictionaryKeys()) {
+		let dictionary;
 		try {
-			return getIntlayer(key, locale);
+			dictionary = getIntlayer(key, locale);
 		} catch {
-			return;
+			continue;
 		}
-	};
-	if (dictionaryKeys.includes(prefix)) {
-		const value = navigateLinguiCatalog(readDictionary(prefix), dotPosition === -1 ? "" : id.slice(dotPosition + 1));
-		if (value !== void 0) return value;
-	}
-	for (const key of dictionaryKeys) {
-		const value = navigateLinguiCatalog(readDictionary(key), id);
-		if (value !== void 0) return value;
+		const value = navigateLinguiCatalog(dictionary, id);
+		if (value !== void 0) return linguiMessageToIcu(value);
 	}
 };
 var collectRegistryMessages = (locale) => {
@@ -1270,108 +1535,6 @@ var createRegistryResolver = () => ({
 	lookup: lookupDictionaryMessage,
 	all: collectRegistryMessages
 });
-var renderIntlayerNode = ({ children, value, additionalProps }) => {
-	const element = isValidElement(children) ? children : jsx(Fragment$1, { children });
-	return new Proxy(element, { get(target, prop, receiver) {
-		if (prop === "value") return value;
-		if (prop === Symbol.toPrimitive) return () => value ?? "";
-		if (prop === "toString") return () => String(value ?? "");
-		if (prop === "valueOf") return () => value;
-		if (additionalProps && Object.hasOwn(additionalProps, prop)) return additionalProps[prop];
-		if (value !== null && value !== void 0 && typeof prop === "string" && prop !== "constructor" && !(prop in target)) {
-			const valObj = Object(value);
-			if (prop in valObj) {
-				const valProp = valObj[prop];
-				return typeof valProp === "function" ? valProp.bind(value) : valProp;
-			}
-		}
-		return Reflect.get(target, prop, receiver);
-	} });
-};
-var intlayerNodePlugins = {
-	id: "intlayer-node-plugin",
-	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
-	transform: (_node, { plugins, ...rest }) => {
-		return renderIntlayerNode({
-			...rest,
-			value: rest.children,
-			children: rest.children
-		});
-	}
-};
-var reactNodePlugins = fallbackPlugin;
-var splitAndJoinInsertion = (template, values) => {
-	const result = splitInsertionTemplate(template, values);
-	if (result.isSimple) return result.parts;
-	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
-};
-var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
-	id: "insertion-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
-	transform: (node, props, deepTransformNode) => {
-		const newKeyPath = [...props.keyPath, { type: INSERTION }];
-		const children = node[INSERTION];
-		const insertionStringPlugin = {
-			id: "insertion-string-plugin",
-			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
-			transform: (node, subProps, deepTransformNode) => {
-				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
-				const transformedResult = deepTransformNode(node, {
-					...subProps,
-					children: node,
-					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-				});
-				return (values) => {
-					const result = splitAndJoinInsertion(transformedResult, values);
-					return deepTransformNode(result, {
-						...subProps,
-						plugins: props.plugins,
-						children: result
-					});
-				};
-			}
-		};
-		const result = deepTransformNode(children, {
-			...props,
-			children,
-			keyPath: newKeyPath,
-			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
-		if (typeof children === "object" && children !== null && "nodeType" in children && ["enumeration", "condition"].includes(children.nodeType)) return (values) => (arg) => {
-			const inner = result(arg);
-			if (typeof inner === "function") return inner(values);
-			return inner;
-		};
-		return result;
-	}
-};
-var markdownPlugin = fallbackPlugin;
-var htmlPlugin = fallbackPlugin;
-var pluginsCache = /* @__PURE__ */ new Map();
-var getPlugins = (locale, fallback = true) => {
-	const cacheKey = `${locale ?? internationalization.defaultLocale}_${fallback}`;
-	if (pluginsCache.has(cacheKey)) return pluginsCache.get(cacheKey);
-	const plugins = [
-		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-		enumerationPlugin,
-		pluralPlugin(locale ?? internationalization.defaultLocale),
-		conditionPlugin,
-		nestedPlugin(locale ?? internationalization.defaultLocale),
-		filePlugin,
-		genderPlugin,
-		selectPlugin,
-		intlayerNodePlugins,
-		reactNodePlugins,
-		insertionPlugin,
-		markdownPlugin,
-		htmlPlugin
-	];
-	pluginsCache.set(cacheKey, plugins);
-	return plugins;
-};
-var getDictionary = (dictionary, localeOrSelector) => {
-	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
-};
 var resolveExpiresToTimestamp = (expires) => {
 	if (typeof expires === "number") return Date.now() + expires * 1e3;
 	if (typeof expires === "string") {
@@ -1551,6 +1714,22 @@ var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 		])
 	};
 };
+var useLingui = () => {
+	const context = useContext(LinguiContext);
+	const { locale } = useLocale();
+	const derivedI18n = useMemo(() => {
+		const instance = new I18nClass({
+			locale,
+			registry: createRegistryResolver()
+		});
+		return {
+			i18n: instance,
+			_: instance._.bind(instance)
+		};
+	}, [locale]);
+	if (context) return context;
+	return derivedI18n;
+};
 var I18nProvider = ({ i18n, defaultComponent, children }) => {
 	const buildContext = (instance) => ({
 		i18n: instance,
@@ -1575,26 +1754,13 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		})
 	});
 };
-var createBoundLinguiContext = (locale, dictionaries) => {
-	const instance = new I18nClass({ locale }).bindDictionaries(dictionaries);
-	return {
-		i18n: instance,
-		_: instance._.bind(instance)
-	};
-};
-var useDictionary = (...dictionaries) => {
-	const { locale } = useLocale();
-	const dictionaryKeysIdentity = dictionaries.map((dictionary) => dictionary.key).join("\0");
-	return useMemo(() => createBoundLinguiContext(locale, Object.fromEntries(dictionaries.map((dictionary) => [dictionary.key, getDictionary(dictionary, locale)]))), [locale, dictionaryKeysIdentity]);
-};
 var setupI18n = (params) => new I18nClass({
 	...params,
 	registry: createRegistryResolver()
 });
 setupI18n({ locale: "en" });
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
-	const { i18n } = useDictionary(pricing_tiers_default);
+	const { i18n } = useLingui();
 	const tiers = [
 		{
 			name: i18n._({
@@ -1725,115 +1891,61 @@ function PricingTiers() {
 			})
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((tier) => jsxDEV("div", {
+		children: tiers.map((tier) => jsxs("div", {
 			className: `flex flex-col rounded-lg border p-6 ${tier.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsxDEV("h3", {
+				jsx("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: tier.name
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 76,
-					columnNumber: 11
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "my-4",
-					children: [jsxDEV("span", {
+					children: [jsx("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: tier.price
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 78,
-						columnNumber: 13
-					}, this), jsxDEV("span", {
+					}), jsx("span", {
 						className: "text-sm text-muted-foreground",
 						children: tier.period
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 81,
-						columnNumber: 13
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 77,
-					columnNumber: 11
-				}, this),
-				jsxDEV("ul", {
+					})]
+				}),
+				jsx("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: tier.features.map((f, i) => jsxDEV("li", {
+					children: tier.features.map((f, i) => jsxs("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsxDEV("span", {
+							jsx("span", {
 								className: "text-primary",
 								children: "✓"
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 89,
-								columnNumber: 17
-							}, this),
+							}),
 							" ",
 							f
 						]
-					}, i, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 85,
-						columnNumber: 15
-					}, this))
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 83,
-					columnNumber: 11
-				}, this),
-				jsxDEV("button", {
+					}, i))
+				}),
+				jsx("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${tier.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: tier.cta
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 93,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, tier.name, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 68,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 66,
-		columnNumber: 5
-	}, this);
+		}, tier.name))
+	});
 }
 function initLingui(locale, _messages) {
 	const lingui = setupI18n();
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const i18n = useMemo(() => initLingui("en"), []);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
 }
 export { Wrapped as default };

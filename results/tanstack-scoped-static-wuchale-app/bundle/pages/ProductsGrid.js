@@ -1,11 +1,6 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var onInvalidFunc = () => "";
-onInvalidFunc = (i, c) => {
-	const item = c[i];
-	if (item == null) return `[i18n-404:${i}]`;
-	return `[i18n-400:${i}(${item})]`;
-};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -94,7 +89,6 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("products", loadCatalog$11, 1);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/products/ProductsGrid.tsx";
 function ProductsGrid() {
 	const _w_runtime_ = getRuntimeRx();
 	const products = [
@@ -129,61 +123,29 @@ function ProductsGrid() {
 			price: "$49/mo"
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: products.map((p) => jsxDEV("div", {
+		children: products.map((p) => jsxs("div", {
 			className: "flex flex-col justify-between rounded-lg border border-border bg-card p-6",
-			children: [jsxDEV("div", { children: [jsxDEV("h3", {
+			children: [jsxs("div", { children: [jsx("h3", {
 				className: "mb-2 text-lg font-semibold text-foreground",
 				children: p.name
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 49,
-				columnNumber: 13
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "mb-4 text-sm text-muted-foreground",
 				children: p.desc
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 52,
-				columnNumber: 13
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 48,
-				columnNumber: 11
-			}, this), jsxDEV("div", {
+			})] }), jsxs("div", {
 				className: "flex items-center justify-between",
-				children: [jsxDEV("span", {
+				children: [jsx("span", {
 					className: "text-sm font-bold text-primary",
 					children: p.price
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 55,
-					columnNumber: 13
-				}, this), jsxDEV("button", {
+				}), jsx("button", {
 					type: "button",
 					className: "rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: _w_runtime_(164)
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 56,
-					columnNumber: 13
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 54,
-				columnNumber: 11
-			}, this)]
-		}, p.name, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 44,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 42,
-		columnNumber: 5
-	}, this);
+				})]
+			})]
+		}, p.name))
+	});
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -361,26 +323,12 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/products/ProductsGrid.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ProductsGrid, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ProductsGrid, {}) });
 }
 export { Wrapped as default };
 var c = [

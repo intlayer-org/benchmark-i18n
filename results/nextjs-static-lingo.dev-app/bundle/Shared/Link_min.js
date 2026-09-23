@@ -2,44 +2,26 @@ import { t as e } from "./logger-LUfhf5qs.js";
 import { createContext as t, useCallback as n, useEffect as r, useRef as i, useState as a } from "react";
 import o from "next/link";
 import { useParams as s } from "next/navigation";
-import { jsxDEV as c } from "react/jsx-dev-runtime";
-import { jsx as l } from "react/jsx-runtime";
-var u = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/Link.tsx", d = (e) => /^https?:\/\//.test(e ?? "");
-function f(e, t) {
+import { jsx as c } from "react/jsx-runtime";
+var l = (e) => /^https?:\/\//.test(e ?? "");
+function u(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
-var p = ({ href: e, children: t, ...n }) => {
+var d = ({ href: e, children: t, ...n }) => {
 	let r = s().locale ?? "en";
-	return e == null || typeof e != "string" ? c(o, {
+	return e == null || typeof e != "string" || l(e) ? c(o, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: u,
-		lineNumber: 23,
-		columnNumber: 7
-	}, void 0) : d(e) ? c(o, {
-		href: e,
+	}) : c(o, {
+		href: u(e, r),
 		prefetch: !1,
 		...n,
 		children: t
-	}, void 0, !1, {
-		fileName: u,
-		lineNumber: 30,
-		columnNumber: 7
-	}, void 0) : c(o, {
-		href: f(e, r),
-		prefetch: !1,
-		...n,
-		children: t
-	}, void 0, !1, {
-		fileName: u,
-		lineNumber: 36,
-		columnNumber: 5
-	}, void 0);
-}, m = t(null);
-async function h(t, n, r) {
+	});
+}, f = t(null);
+async function p(t, n, r) {
 	if (!r || !n || n.length === 0) return {};
 	let i = `${r}/translations/${t}`, a = new AbortController(), o = setTimeout(() => a.abort(), 3e4);
 	try {
@@ -58,56 +40,56 @@ async function h(t, n, r) {
 		clearTimeout(o);
 	}
 }
-var g = "__SERVER_URL__", _ = "__SOURCE_LOCALE__";
-function v() {
+var m = "__SERVER_URL__", h = "__SOURCE_LOCALE__";
+function g() {
 	return "en";
 }
-var y = () => {}, b = process.env.NODE_ENV === "development", x = 200, S = b ? w : C;
-function C({ initialLocale: t, initialTranslations: i = {}, router: o, children: s }) {
-	let [c, u] = a(() => t || (typeof window < "u" ? v() : _)), [d, f] = a(i), [p, h] = a(!1);
-	e.debug(`LingoProvider initialized with locale: ${c}`, i), r(() => {
-		typeof document < "u" && (document.documentElement.lang = c);
-	}, [c]);
-	let g = n(async (t) => {
+var _ = () => {}, v = process.env.NODE_ENV === "development", y = 200, b = v ? S : x;
+function x({ initialLocale: t, initialTranslations: i = {}, router: o, children: s }) {
+	let [l, u] = a(() => t || (typeof window < "u" ? g() : h)), [d, p] = a(i), [m, v] = a(!1);
+	e.debug(`LingoProvider initialized with locale: ${l}`, i), r(() => {
+		typeof document < "u" && (document.documentElement.lang = l);
+	}, [l]);
+	let y = n(async (t) => {
 		if (!(Object.keys(i).length > 0)) {
-			h(!0);
+			v(!0);
 			try {
 				let n = await fetch(`/translations/${t}.json`);
 				if (!n.ok) throw Error(`Failed to load translations for ${t}: ${n.statusText}`);
 				let r = await n.json();
-				f(r.entries || r), e.debug(`Loaded translations for ${t}:`, Object.keys(r.entries || r).length);
+				p(r.entries || r), e.debug(`Loaded translations for ${t}:`, Object.keys(r.entries || r).length);
 			} catch (n) {
-				e.error(`Failed to load translations for ${t}:`, n), f({});
+				e.error(`Failed to load translations for ${t}:`, n), p({});
 			} finally {
-				h(!1);
+				v(!1);
 			}
 		}
 	}, [i]);
 	r(() => {
-		Object.keys(i).length === 0 && g(c);
+		Object.keys(i).length === 0 && y(l);
 	}, []), r(() => {
-		o && f(i);
+		o && p(i);
 	}, [i, o]);
 	let b = n(async (e) => {
-		u(e), o ? o.refresh() : await g(e);
-	}, [o, g]);
-	return l(m.Provider, {
+		u(e), o ? o.refresh() : await y(e);
+	}, [o, y]);
+	return c(f.Provider, {
 		value: {
-			locale: c,
+			locale: l,
 			setLocale: b,
 			translations: d,
-			registerHashes: y,
-			isLoading: p,
-			sourceLocale: _
+			registerHashes: _,
+			isLoading: m,
+			sourceLocale: h
 		},
 		children: s
 	});
 }
-function w({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget: c, children: u }) {
-	let [d, f] = a(() => t || v()), [p, y] = a(o), [b, S] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(o), A = i(d);
+function S({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget: l, children: u }) {
+	let [d, _] = a(() => t || g()), [v, b] = a(o), [x, S] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(o), A = i(d);
 	r(() => {
-		k.current = p;
-	}, [p]), r(() => {
+		k.current = v;
+	}, [v]), r(() => {
 		A.current = d;
 	}, [d]), r(() => {
 		typeof document < "u" && (document.documentElement.lang = d);
@@ -125,20 +107,20 @@ function w({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget
 		e.debug(`LingoProvider checking translations for locale ${d}, seen hashes: ${C.size}`);
 		let t = [];
 		e.debug("allSeenHashes: ", [...C.values()], [...E.current.values()]);
-		for (let e of C) !p[e] && !E.current.has(e) && !D.current.has(e) && (t.push(e), E.current.add(e));
+		for (let e of C) !v[e] && !E.current.has(e) && !D.current.has(e) && (t.push(e), E.current.add(e));
 		e.debug("Missing hashes: ", t.join(",")), (t.length !== 0 || A.current != d) && (e.debug(`Requesting translations for ${t.length} hashes in locale ${d}`), O.current && clearTimeout(O.current), O.current = setTimeout(async () => {
 			let t = Array.from(E.current);
 			if (E.current.clear(), e.debug(`Fetching translations for ${t.length} hashes`), t.length !== 0) {
 				S(!0);
 				try {
-					let n = await h(A.current, t, g);
+					let n = await p(A.current, t, m);
 					e.debug(`Fetched translations for ${t.length} hashes:`, n);
 					let r = new Set(Object.keys(n)), i = t.filter((e) => !r.has(e));
 					if (i.length > 0) {
 						e.warn(`Server did not return translations for ${i.length} hashes: ${i.join(", ")}`);
 						for (let e of i) D.current.add(e);
 					}
-					y((e) => ({
+					b((e) => ({
 						...e,
 						...n
 					}));
@@ -150,54 +132,54 @@ function w({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget
 					S(!1);
 				}
 			}
-		}, x));
+		}, y));
 	}, [
 		C,
 		d,
-		p
+		v
 	]), r(() => () => {
 		O.current && clearTimeout(O.current);
 	}, []);
 	let M = n(async (t) => {
-		f(t), s && s.refresh(), S(!0);
+		_(t), s && s.refresh(), S(!0);
 		let n = performance.now();
 		try {
-			e.info(`Fetching translations for locale: ${t}. Server url: ${g}`);
-			let r = await h(t, [], g), i = performance.now();
+			e.info(`Fetching translations for locale: ${t}. Server url: ${m}`);
+			let r = await p(t, [], m), i = performance.now();
 			e.info(`Translation fetch complete for ${t} in ${(i - n).toFixed(2)}ms`);
 			let a = r.entries || {};
-			e.debug(`Translations loaded for ${t}:`, a), y(a);
+			e.debug(`Translations loaded for ${t}:`, a), b(a);
 		} catch (n) {
-			e.error(`Failed to load translations for ${t}:`, n), y({});
+			e.error(`Failed to load translations for ${t}:`, n), b({});
 		} finally {
 			S(!1);
 		}
 	}, [s]);
 	return r(() => {
-		c?.enabled !== !1 && import("./lingo-dev-widget-C3EvpmD3.js").catch((t) => {
+		l?.enabled !== !1 && import("./lingo-dev-widget-C3EvpmD3.js").catch((t) => {
 			e.error("Failed to load dev widget:", t, t.message);
 		});
-	}, [c?.enabled]), r(() => {
-		typeof window < "u" && c?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
-			isLoading: b,
+	}, [l?.enabled]), r(() => {
+		typeof window < "u" && l?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
+			isLoading: x,
 			locale: d,
-			sourceLocale: _,
+			sourceLocale: h,
 			pendingCount: E.current.size,
-			position: c?.position || "bottom-left"
-		}, window.__LINGO_DEV_WS_URL__ = g, window.__LINGO_DEV_UPDATE__?.());
+			position: l?.position || "bottom-left"
+		}, window.__LINGO_DEV_WS_URL__ = m, window.__LINGO_DEV_UPDATE__?.());
 	}, [
-		b,
+		x,
 		d,
-		_,
-		c
-	]), l(m.Provider, {
+		h,
+		l
+	]), c(f.Provider, {
 		value: {
 			locale: d,
 			setLocale: M,
-			translations: p,
+			translations: v,
 			registerHashes: j,
-			isLoading: b,
-			sourceLocale: _,
+			isLoading: x,
+			sourceLocale: h,
 			_devStats: {
 				pendingCount: E.current.size,
 				totalRegisteredCount: T.current.size
@@ -206,30 +188,16 @@ function w({ initialLocale: t, initialTranslations: o = {}, router: s, devWidget
 		children: u
 	});
 }
-var T = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
-function E({ children: e }) {
-	return c(S, {
+function C({ children: e }) {
+	return c(b, {
 		initialLocale: "en",
 		children: e
-	}, void 0, !1, {
-		fileName: T,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var D = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/Link.wrapper.tsx";
-function O() {
-	return c(E, { children: c(p, {}, void 0, !1, {
-		fileName: D,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: D,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function w() {
+	return c(C, { children: c(d, {}) });
 }
-export { O as default };
+export { w as default };
 import { t as e } from "./logger-LUfhf5qs.js";
 var t = class extends HTMLElement {
 	shadow;

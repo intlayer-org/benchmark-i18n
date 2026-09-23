@@ -35,7 +35,6 @@ function f(e, t) {
 var p = function() {
 	return JSON.stringify(arguments);
 }, m = class {
-	cache;
 	constructor() {
 		this.cache = Object.create(null);
 	}
@@ -96,7 +95,7 @@ function te(e) {
 					"long",
 					"narrow",
 					"short"
-				][n - 4];
+				][n - 3];
 				break;
 			case "c":
 				if (n < 4) throw RangeError("`c..ccc` (weekday) patterns are not supported");
@@ -105,7 +104,7 @@ function te(e) {
 					"long",
 					"narrow",
 					"short"
-				][n - 4];
+				][n - 3];
 				break;
 			case "a":
 				t.hour12 = !0;
@@ -351,47 +350,45 @@ function se(e) {
 	}
 	return t;
 }
-var C = function(e) {
+var ce = function(e) {
+	return e[e.EXPECT_ARGUMENT_CLOSING_BRACE = 1] = "EXPECT_ARGUMENT_CLOSING_BRACE", e[e.EMPTY_ARGUMENT = 2] = "EMPTY_ARGUMENT", e[e.MALFORMED_ARGUMENT = 3] = "MALFORMED_ARGUMENT", e[e.EXPECT_ARGUMENT_TYPE = 4] = "EXPECT_ARGUMENT_TYPE", e[e.INVALID_ARGUMENT_TYPE = 5] = "INVALID_ARGUMENT_TYPE", e[e.EXPECT_ARGUMENT_STYLE = 6] = "EXPECT_ARGUMENT_STYLE", e[e.INVALID_NUMBER_SKELETON = 7] = "INVALID_NUMBER_SKELETON", e[e.INVALID_DATE_TIME_SKELETON = 8] = "INVALID_DATE_TIME_SKELETON", e[e.EXPECT_NUMBER_SKELETON = 9] = "EXPECT_NUMBER_SKELETON", e[e.EXPECT_DATE_TIME_SKELETON = 10] = "EXPECT_DATE_TIME_SKELETON", e[e.UNCLOSED_QUOTE_IN_ARGUMENT_STYLE = 11] = "UNCLOSED_QUOTE_IN_ARGUMENT_STYLE", e[e.EXPECT_SELECT_ARGUMENT_OPTIONS = 12] = "EXPECT_SELECT_ARGUMENT_OPTIONS", e[e.EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE = 13] = "EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE", e[e.INVALID_PLURAL_ARGUMENT_OFFSET_VALUE = 14] = "INVALID_PLURAL_ARGUMENT_OFFSET_VALUE", e[e.EXPECT_SELECT_ARGUMENT_SELECTOR = 15] = "EXPECT_SELECT_ARGUMENT_SELECTOR", e[e.EXPECT_PLURAL_ARGUMENT_SELECTOR = 16] = "EXPECT_PLURAL_ARGUMENT_SELECTOR", e[e.EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT = 17] = "EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT", e[e.EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT = 18] = "EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT", e[e.INVALID_PLURAL_ARGUMENT_SELECTOR = 19] = "INVALID_PLURAL_ARGUMENT_SELECTOR", e[e.DUPLICATE_PLURAL_ARGUMENT_SELECTOR = 20] = "DUPLICATE_PLURAL_ARGUMENT_SELECTOR", e[e.DUPLICATE_SELECT_ARGUMENT_SELECTOR = 21] = "DUPLICATE_SELECT_ARGUMENT_SELECTOR", e[e.MISSING_OTHER_CLAUSE = 22] = "MISSING_OTHER_CLAUSE", e[e.INVALID_TAG = 23] = "INVALID_TAG", e[e.INVALID_TAG_NAME = 25] = "INVALID_TAG_NAME", e[e.UNMATCHED_CLOSING_TAG = 26] = "UNMATCHED_CLOSING_TAG", e[e.UNCLOSED_TAG = 27] = "UNCLOSED_TAG", e;
+}({}), le = function(e) {
 	return e[e.literal = 0] = "literal", e[e.argument = 1] = "argument", e[e.number = 2] = "number", e[e.date = 3] = "date", e[e.time = 4] = "time", e[e.select = 5] = "select", e[e.plural = 6] = "plural", e[e.pound = 7] = "pound", e[e.tag = 8] = "tag", e;
-}({}), w = function(e) {
-	return e[e.number = 0] = "number", e[e.dateTime = 1] = "dateTime", e;
 }({});
-function T(e) {
-	return e.type === C.literal;
-}
-function ce(e) {
-	return e.type === C.argument;
-}
-function le(e) {
-	return e.type === C.number;
-}
 function ue(e) {
-	return e.type === C.date;
+	return e.type === 0;
 }
 function de(e) {
-	return e.type === C.time;
+	return e.type === 1;
 }
 function fe(e) {
-	return e.type === C.select;
+	return e.type === 2;
 }
 function pe(e) {
-	return e.type === C.plural;
+	return e.type === 3;
 }
 function me(e) {
-	return e.type === C.pound;
+	return e.type === 4;
 }
 function he(e) {
-	return e.type === C.tag;
+	return e.type === 5;
 }
 function ge(e) {
-	return !!(e && typeof e == "object" && e.type === w.number);
+	return e.type === 6;
 }
-function E(e) {
-	return !!(e && typeof e == "object" && e.type === w.dateTime);
+function _e(e) {
+	return e.type === 7;
 }
-var D = function(e) {
-	return e[e.EXPECT_ARGUMENT_CLOSING_BRACE = 1] = "EXPECT_ARGUMENT_CLOSING_BRACE", e[e.EMPTY_ARGUMENT = 2] = "EMPTY_ARGUMENT", e[e.MALFORMED_ARGUMENT = 3] = "MALFORMED_ARGUMENT", e[e.EXPECT_ARGUMENT_TYPE = 4] = "EXPECT_ARGUMENT_TYPE", e[e.INVALID_ARGUMENT_TYPE = 5] = "INVALID_ARGUMENT_TYPE", e[e.EXPECT_ARGUMENT_STYLE = 6] = "EXPECT_ARGUMENT_STYLE", e[e.INVALID_NUMBER_SKELETON = 7] = "INVALID_NUMBER_SKELETON", e[e.INVALID_DATE_TIME_SKELETON = 8] = "INVALID_DATE_TIME_SKELETON", e[e.EXPECT_NUMBER_SKELETON = 9] = "EXPECT_NUMBER_SKELETON", e[e.EXPECT_DATE_TIME_SKELETON = 10] = "EXPECT_DATE_TIME_SKELETON", e[e.UNCLOSED_QUOTE_IN_ARGUMENT_STYLE = 11] = "UNCLOSED_QUOTE_IN_ARGUMENT_STYLE", e[e.EXPECT_SELECT_ARGUMENT_OPTIONS = 12] = "EXPECT_SELECT_ARGUMENT_OPTIONS", e[e.EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE = 13] = "EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE", e[e.INVALID_PLURAL_ARGUMENT_OFFSET_VALUE = 14] = "INVALID_PLURAL_ARGUMENT_OFFSET_VALUE", e[e.EXPECT_SELECT_ARGUMENT_SELECTOR = 15] = "EXPECT_SELECT_ARGUMENT_SELECTOR", e[e.EXPECT_PLURAL_ARGUMENT_SELECTOR = 16] = "EXPECT_PLURAL_ARGUMENT_SELECTOR", e[e.EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT = 17] = "EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT", e[e.EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT = 18] = "EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT", e[e.INVALID_PLURAL_ARGUMENT_SELECTOR = 19] = "INVALID_PLURAL_ARGUMENT_SELECTOR", e[e.DUPLICATE_PLURAL_ARGUMENT_SELECTOR = 20] = "DUPLICATE_PLURAL_ARGUMENT_SELECTOR", e[e.DUPLICATE_SELECT_ARGUMENT_SELECTOR = 21] = "DUPLICATE_SELECT_ARGUMENT_SELECTOR", e[e.MISSING_OTHER_CLAUSE = 22] = "MISSING_OTHER_CLAUSE", e[e.INVALID_TAG = 23] = "INVALID_TAG", e[e.INVALID_TAG_NAME = 25] = "INVALID_TAG_NAME", e[e.UNMATCHED_CLOSING_TAG = 26] = "UNMATCHED_CLOSING_TAG", e[e.UNCLOSED_TAG = 27] = "UNCLOSED_TAG", e;
-}({}), O = /[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/, k = {
+function C(e) {
+	return e.type === 8;
+}
+function w(e) {
+	return !!(e && typeof e == "object" && e.type === 0);
+}
+function T(e) {
+	return !!(e && typeof e == "object" && e.type === 1);
+}
+var E = /[ \xA0\u1680\u2000-\u200A\u202F\u205F\u3000]/, D = {
 	"001": ["H", "h"],
 	419: [
 		"h",
@@ -1554,21 +1551,21 @@ var D = function(e) {
 		"h"
 	]
 };
-function _e(e, t) {
+function ve(e, t) {
 	let n = "";
 	for (let r = 0; r < e.length; r++) {
 		let i = e.charAt(r);
 		if (i === "j") {
 			let a = 0;
 			for (; r + 1 < e.length && e.charAt(r + 1) === i;) a++, r++;
-			let o = 1 + (a & 1), s = a < 2 ? 1 : 3 + (a >> 1), c = ve(t);
+			let o = 1 + (a & 1), s = a < 2 ? 1 : 3 + (a >> 1), c = ye(t);
 			for ((c == "H" || c == "k") && (s = 0); s-- > 0;) n += "a";
 			for (; o-- > 0;) n = c + n;
-		} else i === "J" ? n += "H" : n += i;
+		} else n += i === "J" ? "H" : i;
 	}
 	return n;
 }
-function ve(e) {
+function ye(e) {
 	let t = e.hourCycle;
 	if (t === void 0 && e.hourCycles && e.hourCycles.length && (t = e.hourCycles[0]), t) switch (t) {
 		case "h24": return "k";
@@ -1578,38 +1575,56 @@ function ve(e) {
 		default: throw Error("Invalid hourCycle");
 	}
 	let n = e.language, r;
-	return n !== "root" && (r = e.maximize().region), (k[r || ""] || k[n || ""] || k[`${n}-001`] || k["001"])[0];
+	return n !== "root" && (r = e.maximize().region), (D[r || ""] || D[n || ""] || D[`${n}-001`] || D["001"])[0];
 }
-var ye = RegExp(`^${O.source}*`), be = RegExp(`${O.source}*$`);
-function A(e, t) {
+var be = RegExp(`^${E.source}*`), xe = RegExp(`${E.source}*$`);
+function O(e, t) {
 	return {
 		start: e,
 		end: t
 	};
 }
-var xe = !!Object.fromEntries, Se = !!String.prototype.trimStart, Ce = !!String.prototype.trimEnd, j = xe ? Object.fromEntries : function(e) {
+var Se = !!Object.fromEntries, Ce = !!String.prototype.trimStart, we = !!String.prototype.trimEnd, k = Se ? Object.fromEntries : function(e) {
 	let t = {};
 	for (let [n, r] of e) t[n] = r;
 	return t;
-}, we = Se ? function(e) {
+}, Te = Ce ? function(e) {
 	return e.trimStart();
 } : function(e) {
-	return e.replace(ye, "");
-}, Te = Ce ? function(e) {
+	return e.replace(be, "");
+}, Ee = we ? function(e) {
 	return e.trimEnd();
 } : function(e) {
-	return e.replace(be, "");
-}, M = /* @__PURE__ */ RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
-function Ee(e, t) {
-	return M.lastIndex = t, M.exec(e)[1] ?? "";
+	return e.replace(xe, "");
+}, A = /* @__PURE__ */ RegExp("([^\\p{White_Space}\\p{Pattern_Syntax}]*)", "yu");
+function De(e, t) {
+	return A.lastIndex = t, A.exec(e)[1] ?? "";
 }
-var De = class {
-	message;
-	position;
-	locale;
-	ignoreTag;
-	requiresOtherClause;
-	shouldParseSkeletons;
+function Oe(e) {
+	if (e.length === 0) return null;
+	let t = 1, n = 1;
+	for (let r = 0; r < e.length;) {
+		let i = e.charCodeAt(r);
+		switch (i) {
+			case 35:
+			case 39:
+			case 60:
+			case 123:
+			case 125: return null;
+		}
+		if (i === 10) t++, n = 1, r++;
+		else if (n++, i >= 55296 && i <= 56319 && r + 1 < e.length) {
+			let t = e.charCodeAt(r + 1);
+			r += t >= 56320 && t <= 57343 ? 2 : 1;
+		} else r++;
+	}
+	return {
+		offset: e.length,
+		line: t,
+		column: n
+	};
+}
+var ke = class {
 	constructor(e, t = {}) {
 		this.message = e, this.position = {
 			offset: 0,
@@ -1619,6 +1634,23 @@ var De = class {
 	}
 	parse() {
 		if (this.offset() !== 0) throw Error("parser can only be used once");
+		if (this.message.length > 0) {
+			let e = this.message.charCodeAt(0);
+			if (e !== 35 && e !== 39 && e !== 60 && e !== 123 && e !== 125) {
+				let e = Oe(this.message);
+				if (e) {
+					let t = this.clonePosition();
+					return this.position = e, {
+						val: [{
+							type: 0,
+							value: this.message,
+							location: O(t, this.clonePosition())
+						}],
+						err: null
+					};
+				}
+			}
+		}
 		return this.parseMessage(0, "", !1);
 	}
 	parseMessage(e, t, n) {
@@ -1633,13 +1665,13 @@ var De = class {
 			else if (i === 35 && (t === "plural" || t === "selectordinal")) {
 				let e = this.clonePosition();
 				this.bump(), r.push({
-					type: C.pound,
-					location: A(e, this.clonePosition())
+					type: 7,
+					location: O(e, this.clonePosition())
 				});
 			} else if (i === 60 && !this.ignoreTag && this.peek() === 47) {
 				if (n) break;
-				return this.error(D.UNMATCHED_CLOSING_TAG, A(this.clonePosition(), this.clonePosition()));
-			} else if (i === 60 && !this.ignoreTag && N(this.peek() || 0)) {
+				return this.error(26, O(this.clonePosition(), this.clonePosition()));
+			} else if (i === 60 && !this.ignoreTag && j(this.peek() || 0)) {
 				let n = this.parseTag(e, t);
 				if (n.err) return n;
 				r.push(n.val);
@@ -1660,9 +1692,9 @@ var De = class {
 		let r = this.parseTagName();
 		if (this.bumpSpace(), this.bumpIf("/>")) return {
 			val: {
-				type: C.literal,
+				type: 0,
 				value: `<${r}/>`,
-				location: A(n, this.clonePosition())
+				location: O(n, this.clonePosition())
 			},
 			err: null
 		};
@@ -1671,23 +1703,25 @@ var De = class {
 			if (i.err) return i;
 			let a = i.val, o = this.clonePosition();
 			if (this.bumpIf("</")) {
-				if (this.isEOF() || !N(this.char())) return this.error(D.INVALID_TAG, A(o, this.clonePosition()));
+				if (this.isEOF() || !j(this.char())) return this.error(23, O(o, this.clonePosition()));
 				let e = this.clonePosition();
 				return r === this.parseTagName() ? (this.bumpSpace(), this.bumpIf(">") ? {
 					val: {
-						type: C.tag,
+						type: 8,
 						value: r,
 						children: a,
-						location: A(n, this.clonePosition())
+						location: O(n, this.clonePosition())
 					},
 					err: null
-				} : this.error(D.INVALID_TAG, A(o, this.clonePosition()))) : this.error(D.UNMATCHED_CLOSING_TAG, A(e, this.clonePosition()));
-			} else return this.error(D.UNCLOSED_TAG, A(n, this.clonePosition()));
-		} else return this.error(D.INVALID_TAG, A(n, this.clonePosition()));
+				} : this.error(23, O(o, this.clonePosition()))) : this.error(26, O(e, this.clonePosition()));
+			}
+			return this.error(27, O(n, this.clonePosition()));
+		}
+		return this.error(23, O(n, this.clonePosition()));
 	}
 	parseTagName() {
 		let e = this.offset();
-		for (this.bump(); !this.isEOF() && ke(this.char());) this.bump();
+		for (this.bump(); !this.isEOF() && je(this.char());) this.bump();
 		return this.message.slice(e, this.offset());
 	}
 	parseLiteral(e, t) {
@@ -1710,10 +1744,10 @@ var De = class {
 			}
 			break;
 		}
-		let i = A(n, this.clonePosition());
+		let i = O(n, this.clonePosition());
 		return {
 			val: {
-				type: C.literal,
+				type: 0,
 				value: r,
 				location: i
 			},
@@ -1721,7 +1755,7 @@ var De = class {
 		};
 	}
 	tryParseLeftAngleBracket() {
-		return !this.isEOF() && this.char() === 60 && (this.ignoreTag || !Oe(this.peek() || 0)) ? (this.bump(), "<") : null;
+		return !this.isEOF() && this.char() === 60 && (this.ignoreTag || !Ae(this.peek() || 0)) ? (this.bump(), "<") : null;
 	}
 	tryParseQuote(e) {
 		if (this.isEOF() || this.char() !== 39) return null;
@@ -1740,12 +1774,13 @@ var De = class {
 		let t = [this.char()];
 		for (this.bump(); !this.isEOF();) {
 			let e = this.char();
-			if (e === 39) if (this.peek() === 39) t.push(39), this.bump();
-			else {
-				this.bump();
-				break;
-			}
-			else t.push(e);
+			if (e === 39) {
+				if (this.peek() === 39) t.push(39), this.bump();
+				else {
+					this.bump();
+					break;
+				}
+			} else t.push(e);
 			this.bump();
 		}
 		return String.fromCodePoint(...t);
@@ -1757,35 +1792,35 @@ var De = class {
 	}
 	parseArgument(e, t) {
 		let n = this.clonePosition();
-		if (this.bump(), this.bumpSpace(), this.isEOF()) return this.error(D.EXPECT_ARGUMENT_CLOSING_BRACE, A(n, this.clonePosition()));
-		if (this.char() === 125) return this.bump(), this.error(D.EMPTY_ARGUMENT, A(n, this.clonePosition()));
+		if (this.bump(), this.bumpSpace(), this.isEOF()) return this.error(1, O(n, this.clonePosition()));
+		if (this.char() === 125) return this.bump(), this.error(2, O(n, this.clonePosition()));
 		let r = this.parseIdentifierIfPossible().value;
-		if (!r) return this.error(D.MALFORMED_ARGUMENT, A(n, this.clonePosition()));
-		if (this.bumpSpace(), this.isEOF()) return this.error(D.EXPECT_ARGUMENT_CLOSING_BRACE, A(n, this.clonePosition()));
+		if (!r) return this.error(3, O(n, this.clonePosition()));
+		if (this.bumpSpace(), this.isEOF()) return this.error(1, O(n, this.clonePosition()));
 		switch (this.char()) {
 			case 125: return this.bump(), {
 				val: {
-					type: C.argument,
+					type: 1,
 					value: r,
-					location: A(n, this.clonePosition())
+					location: O(n, this.clonePosition())
 				},
 				err: null
 			};
-			case 44: return this.bump(), this.bumpSpace(), this.isEOF() ? this.error(D.EXPECT_ARGUMENT_CLOSING_BRACE, A(n, this.clonePosition())) : this.parseArgumentOptions(e, t, r, n);
-			default: return this.error(D.MALFORMED_ARGUMENT, A(n, this.clonePosition()));
+			case 44: return this.bump(), this.bumpSpace(), this.isEOF() ? this.error(1, O(n, this.clonePosition())) : this.parseArgumentOptions(e, t, r, n);
+			default: return this.error(3, O(n, this.clonePosition()));
 		}
 	}
 	parseIdentifierIfPossible() {
-		let e = this.clonePosition(), t = this.offset(), n = Ee(this.message, t), r = t + n.length;
+		let e = this.clonePosition(), t = this.offset(), n = De(this.message, t), r = t + n.length;
 		return this.bumpTo(r), {
 			value: n,
-			location: A(e, this.clonePosition())
+			location: O(e, this.clonePosition())
 		};
 	}
 	parseArgumentOptions(e, t, n, r) {
 		let i = this.clonePosition(), a = this.parseIdentifierIfPossible().value, o = this.clonePosition();
 		switch (a) {
-			case "": return this.error(D.EXPECT_ARGUMENT_TYPE, A(i, o));
+			case "": return this.error(4, O(i, o));
 			case "number":
 			case "date":
 			case "time": {
@@ -1795,42 +1830,43 @@ var De = class {
 					this.bumpSpace();
 					let t = this.clonePosition(), n = this.parseSimpleArgStyleIfPossible();
 					if (n.err) return n;
-					let r = Te(n.val);
-					if (r.length === 0) return this.error(D.EXPECT_ARGUMENT_STYLE, A(this.clonePosition(), this.clonePosition()));
+					let r = Ee(n.val);
+					if (r.length === 0) return this.error(6, O(this.clonePosition(), this.clonePosition()));
 					e = {
 						style: r,
-						styleLocation: A(t, this.clonePosition())
+						styleLocation: O(t, this.clonePosition())
 					};
 				}
 				let t = this.tryParseArgumentClose(r);
 				if (t.err) return t;
-				let i = A(r, this.clonePosition());
+				let i = O(r, this.clonePosition());
 				if (e && e.style.startsWith("::")) {
-					let t = we(e.style.slice(2));
+					let t = Te(e.style.slice(2));
 					if (a === "number") {
 						let r = this.parseNumberSkeletonFromString(t, e.styleLocation);
 						return r.err ? r : {
 							val: {
-								type: C.number,
+								type: 2,
 								value: n,
 								location: i,
 								style: r.val
 							},
 							err: null
 						};
-					} else {
-						if (t.length === 0) return this.error(D.EXPECT_DATE_TIME_SKELETON, i);
+					}
+					{
+						if (t.length === 0) return this.error(10, i);
 						let r = t;
-						this.locale && (r = _e(t, this.locale));
+						this.locale && (r = ve(t, this.locale));
 						let o = {
-							type: w.dateTime,
+							type: 1,
 							pattern: r,
 							location: e.styleLocation,
 							parsedOptions: this.shouldParseSkeletons ? te(r) : {}
 						};
 						return {
 							val: {
-								type: a === "date" ? C.date : C.time,
+								type: a === "date" ? 3 : 4,
 								value: n,
 								location: i,
 								style: o
@@ -1841,7 +1877,7 @@ var De = class {
 				}
 				return {
 					val: {
-						type: a === "number" ? C.number : a === "date" ? C.date : C.time,
+						type: a === "number" ? 2 : a === "date" ? 3 : 4,
 						value: n,
 						location: i,
 						style: e?.style ?? null
@@ -1853,13 +1889,13 @@ var De = class {
 			case "selectordinal":
 			case "select": {
 				let i = this.clonePosition();
-				if (this.bumpSpace(), !this.bumpIf(",")) return this.error(D.EXPECT_SELECT_ARGUMENT_OPTIONS, A(i, { ...i }));
+				if (this.bumpSpace(), !this.bumpIf(",")) return this.error(12, O(i, { ...i }));
 				this.bumpSpace();
 				let o = this.parseIdentifierIfPossible(), s = 0;
 				if (a !== "select" && o.value === "offset") {
-					if (!this.bumpIf(":")) return this.error(D.EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE, A(this.clonePosition(), this.clonePosition()));
+					if (!this.bumpIf(":")) return this.error(13, O(this.clonePosition(), this.clonePosition()));
 					this.bumpSpace();
-					let e = this.tryParseDecimalInteger(D.EXPECT_PLURAL_ARGUMENT_OFFSET_VALUE, D.INVALID_PLURAL_ARGUMENT_OFFSET_VALUE);
+					let e = this.tryParseDecimalInteger(13, 14);
 					if (e.err) return e;
 					this.bumpSpace(), o = this.parseIdentifierIfPossible(), s = e.val;
 				}
@@ -1867,20 +1903,20 @@ var De = class {
 				if (c.err) return c;
 				let l = this.tryParseArgumentClose(r);
 				if (l.err) return l;
-				let u = A(r, this.clonePosition());
+				let u = O(r, this.clonePosition());
 				return a === "select" ? {
 					val: {
-						type: C.select,
+						type: 5,
 						value: n,
-						options: j(c.val),
+						options: k(c.val),
 						location: u
 					},
 					err: null
 				} : {
 					val: {
-						type: C.plural,
+						type: 6,
 						value: n,
-						options: j(c.val),
+						options: k(c.val),
 						offset: s,
 						pluralType: a === "plural" ? "cardinal" : "ordinal",
 						location: u
@@ -1888,11 +1924,11 @@ var De = class {
 					err: null
 				};
 			}
-			default: return this.error(D.INVALID_ARGUMENT_TYPE, A(i, o));
+			default: return this.error(5, O(i, o));
 		}
 	}
 	tryParseArgumentClose(e) {
-		return this.isEOF() || this.char() !== 125 ? this.error(D.EXPECT_ARGUMENT_CLOSING_BRACE, A(e, this.clonePosition())) : (this.bump(), {
+		return this.isEOF() || this.char() !== 125 ? this.error(1, O(e, this.clonePosition())) : (this.bump(), {
 			val: !0,
 			err: null
 		});
@@ -1903,7 +1939,7 @@ var De = class {
 			case 39: {
 				this.bump();
 				let e = this.clonePosition();
-				if (!this.bumpUntil("'")) return this.error(D.UNCLOSED_QUOTE_IN_ARGUMENT_STYLE, A(e, this.clonePosition()));
+				if (!this.bumpUntil("'")) return this.error(11, O(e, this.clonePosition()));
 				this.bump();
 				break;
 			}
@@ -1917,9 +1953,7 @@ var De = class {
 					err: null
 				};
 				break;
-			default:
-				this.bump();
-				break;
+			default: this.bump();
 		}
 		return {
 			val: this.message.slice(t.offset, this.offset()),
@@ -1931,11 +1965,11 @@ var De = class {
 		try {
 			n = re(e);
 		} catch {
-			return this.error(D.INVALID_NUMBER_SKELETON, t);
+			return this.error(7, t);
 		}
 		return {
 			val: {
-				type: w.number,
+				type: 0,
 				tokens: n,
 				location: t,
 				parsedOptions: this.shouldParseSkeletons ? se(n) : {}
@@ -1949,25 +1983,25 @@ var De = class {
 			if (s.length === 0) {
 				let e = this.clonePosition();
 				if (t !== "select" && this.bumpIf("=")) {
-					let t = this.tryParseDecimalInteger(D.EXPECT_PLURAL_ARGUMENT_SELECTOR, D.INVALID_PLURAL_ARGUMENT_SELECTOR);
+					let t = this.tryParseDecimalInteger(16, 19);
 					if (t.err) return t;
-					c = A(e, this.clonePosition()), s = this.message.slice(e.offset, this.offset());
+					c = O(e, this.clonePosition()), s = this.message.slice(e.offset, this.offset());
 				} else break;
 			}
-			if (o.has(s)) return this.error(t === "select" ? D.DUPLICATE_SELECT_ARGUMENT_SELECTOR : D.DUPLICATE_PLURAL_ARGUMENT_SELECTOR, c);
+			if (o.has(s)) return this.error(t === "select" ? 21 : 20, c);
 			s === "other" && (i = !0), this.bumpSpace();
 			let r = this.clonePosition();
-			if (!this.bumpIf("{")) return this.error(t === "select" ? D.EXPECT_SELECT_ARGUMENT_SELECTOR_FRAGMENT : D.EXPECT_PLURAL_ARGUMENT_SELECTOR_FRAGMENT, A(this.clonePosition(), this.clonePosition()));
+			if (!this.bumpIf("{")) return this.error(t === "select" ? 17 : 18, O(this.clonePosition(), this.clonePosition()));
 			let l = this.parseMessage(e + 1, t, n);
 			if (l.err) return l;
 			let u = this.tryParseArgumentClose(r);
 			if (u.err) return u;
 			a.push([s, {
 				value: l.val,
-				location: A(r, this.clonePosition())
+				location: O(r, this.clonePosition())
 			}]), o.add(s), this.bumpSpace(), {value: s, location: c} = this.parseIdentifierIfPossible();
 		}
-		return a.length === 0 ? this.error(t === "select" ? D.EXPECT_SELECT_ARGUMENT_SELECTOR : D.EXPECT_PLURAL_ARGUMENT_SELECTOR, A(this.clonePosition(), this.clonePosition())) : this.requiresOtherClause && !i ? this.error(D.MISSING_OTHER_CLAUSE, A(this.clonePosition(), this.clonePosition())) : {
+		return a.length === 0 ? this.error(t === "select" ? 15 : 16, O(this.clonePosition(), this.clonePosition())) : this.requiresOtherClause && !i ? this.error(22, O(this.clonePosition(), this.clonePosition())) : {
 			val: a,
 			err: null
 		};
@@ -1981,7 +2015,7 @@ var De = class {
 			if (e >= 48 && e <= 57) i = !0, a = a * 10 + (e - 48), this.bump();
 			else break;
 		}
-		let o = A(r, this.clonePosition());
+		let o = O(r, this.clonePosition());
 		return i ? (a *= n, Number.isSafeInteger(a) ? {
 			val: a,
 			err: null
@@ -2043,7 +2077,7 @@ var De = class {
 		}
 	}
 	bumpSpace() {
-		for (; !this.isEOF() && Ae(this.char());) this.bump();
+		for (; !this.isEOF() && Me(this.char());) this.bump();
 	}
 	peek() {
 		if (this.isEOF()) return null;
@@ -2051,121 +2085,117 @@ var De = class {
 		return this.message.charCodeAt(t + (e >= 65536 ? 2 : 1)) ?? null;
 	}
 };
-function N(e) {
+function j(e) {
 	return e >= 97 && e <= 122 || e >= 65 && e <= 90;
 }
-function Oe(e) {
-	return N(e) || e === 47;
+function Ae(e) {
+	return j(e) || e === 47;
 }
-function ke(e) {
+function je(e) {
 	return e === 45 || e === 46 || e >= 48 && e <= 57 || e === 95 || e >= 97 && e <= 122 || e >= 65 && e <= 90 || e == 183 || e >= 192 && e <= 214 || e >= 216 && e <= 246 || e >= 248 && e <= 893 || e >= 895 && e <= 8191 || e >= 8204 && e <= 8205 || e >= 8255 && e <= 8256 || e >= 8304 && e <= 8591 || e >= 11264 && e <= 12271 || e >= 12289 && e <= 55295 || e >= 63744 && e <= 64975 || e >= 65008 && e <= 65533 || e >= 65536 && e <= 983039;
 }
-function Ae(e) {
+function Me(e) {
 	return e >= 9 && e <= 13 || e === 32 || e === 133 || e >= 8206 && e <= 8207 || e === 8232 || e === 8233;
 }
-function P(e) {
+function M(e) {
 	e.forEach((e) => {
-		if (delete e.location, fe(e) || pe(e)) for (let t in e.options) delete e.options[t].location, P(e.options[t].value);
-		else le(e) && ge(e.style) || (ue(e) || de(e)) && E(e.style) ? delete e.style.location : he(e) && P(e.children);
+		if (delete e.location, he(e) || ge(e)) for (let t in e.options) delete e.options[t].location, M(e.options[t].value);
+		else fe(e) && w(e.style) || (pe(e) || me(e)) && T(e.style) ? delete e.style.location : C(e) && M(e.children);
 	});
 }
-function je(e, t = {}) {
+function Ne(e, t = {}) {
 	t = {
 		shouldParseSkeletons: !0,
 		requiresOtherClause: !0,
 		...t
 	};
-	let n = new De(e, t).parse();
+	let n = new ke(e, t).parse();
 	if (n.err) {
-		let e = SyntaxError(D[n.err.kind]);
+		let e = SyntaxError(ce[n.err.kind]);
 		throw e.location = n.err.location, e.originalMessage = n.err.message, e;
 	}
-	return t?.captureLocation || P(n.val), n.val;
+	return t?.captureLocation || M(n.val), n.val;
 }
-var F = function(e) {
+var N = function(e) {
 	return e.MISSING_VALUE = "MISSING_VALUE", e.INVALID_VALUE = "INVALID_VALUE", e.MISSING_INTL_API = "MISSING_INTL_API", e;
-}({}), I = class extends Error {
-	code;
-	originalMessage;
+}({}), P = class extends Error {
 	constructor(e, t, n) {
 		super(e), this.code = t, this.originalMessage = n;
 	}
 	toString() {
 		return `[formatjs Error: ${this.code}] ${this.message}`;
 	}
-}, L = class extends I {
+}, F = class extends P {
 	constructor(e, t, n, r) {
-		super(`Invalid values for "${e}": "${t}". Options are "${Object.keys(n).join("\", \"")}"`, F.INVALID_VALUE, r);
+		super(`Invalid values for "${e}": "${t}". Options are "${Object.keys(n).join("\", \"")}"`, "INVALID_VALUE", r);
 	}
-}, Me = class extends I {
+}, Pe = class extends P {
 	constructor(e, t, n) {
-		super(`Value for "${e}" must be of type ${t}`, F.INVALID_VALUE, n);
+		super(`Value for "${e}" must be of type ${t}`, "INVALID_VALUE", n);
 	}
-}, Ne = class extends I {
+}, Fe = class extends P {
 	constructor(e, t) {
-		super(`The intl string context variable "${e}" was not provided to the string "${t}"`, F.MISSING_VALUE, t);
+		super(`The intl string context variable "${e}" was not provided to the string "${t}"`, "MISSING_VALUE", t);
 	}
-}, R = function(e) {
-	return e[e.literal = 0] = "literal", e[e.object = 1] = "object", e;
-}({});
-function Pe(e) {
+};
+function Ie(e) {
 	return e.length < 2 ? e : e.reduce((e, t) => {
 		let n = e[e.length - 1];
-		return !n || n.type !== R.literal || t.type !== R.literal ? e.push(t) : n.value += t.value, e;
+		return !n || n.type !== 0 || t.type !== 0 ? e.push(t) : n.value += t.value, e;
 	}, []);
 }
-function z(e) {
+function I(e) {
 	return typeof e == "function";
 }
-function B(e, t, n, r, i, a, o) {
-	if (e.length === 1 && T(e[0])) return [{
-		type: R.literal,
+function L(e, t, n, r, i, a, o) {
+	if (e.length === 1 && ue(e[0])) return [{
+		type: 0,
 		value: e[0].value
 	}];
 	let s = [];
 	for (let c of e) {
-		if (T(c)) {
+		if (ue(c)) {
 			s.push({
-				type: R.literal,
+				type: 0,
 				value: c.value
 			});
 			continue;
 		}
-		if (me(c)) {
+		if (_e(c)) {
 			typeof a == "number" && s.push({
-				type: R.literal,
+				type: 0,
 				value: n.getNumberFormat(t).format(a)
 			});
 			continue;
 		}
 		let { value: e } = c;
-		if (!(i && e in i)) throw new Ne(e, o);
+		if (!(i && e in i)) throw new Fe(e, o);
 		let l = i[e];
-		if (ce(c)) {
+		if (de(c)) {
 			(!l || typeof l == "string" || typeof l == "number" || typeof l == "bigint") && (l = typeof l == "string" || typeof l == "number" || typeof l == "bigint" ? String(l) : ""), s.push({
-				type: typeof l == "string" ? R.literal : R.object,
+				type: typeof l == "string" ? 0 : 1,
 				value: l
 			});
 			continue;
 		}
-		if (ue(c)) {
-			let e = typeof c.style == "string" ? r.date[c.style] : E(c.style) ? c.style.parsedOptions : void 0;
+		if (pe(c)) {
+			let e = typeof c.style == "string" ? r.date[c.style] : T(c.style) ? c.style.parsedOptions : void 0;
 			s.push({
-				type: R.literal,
+				type: 0,
 				value: n.getDateTimeFormat(t, e).format(l)
 			});
 			continue;
 		}
-		if (de(c)) {
-			let e = typeof c.style == "string" ? r.time[c.style] : E(c.style) ? c.style.parsedOptions : r.time.medium;
+		if (me(c)) {
+			let e = typeof c.style == "string" ? r.time[c.style] : T(c.style) ? c.style.parsedOptions : r.time.medium;
 			s.push({
-				type: R.literal,
+				type: 0,
 				value: n.getDateTimeFormat(t, e).format(l)
 			});
 			continue;
 		}
-		if (le(c)) {
-			let e = typeof c.style == "string" ? r.number[c.style] : ge(c.style) ? c.style.parsedOptions : void 0;
+		if (fe(c)) {
+			let e = typeof c.style == "string" ? r.number[c.style] : w(c.style) ? c.style.parsedOptions : void 0;
 			if (e && e.scale) {
 				let t = e.scale || 1;
 				if (typeof l == "bigint") {
@@ -2174,42 +2204,42 @@ function B(e, t, n, r, i, a, o) {
 				} else l *= t;
 			}
 			s.push({
-				type: R.literal,
+				type: 0,
 				value: n.getNumberFormat(t, e).format(l)
 			});
 			continue;
 		}
-		if (he(c)) {
+		if (C(c)) {
 			let { children: e, value: l } = c, u = i[l];
-			if (!z(u)) throw new Me(l, "function", o);
-			let d = u(B(e, t, n, r, i, a).map((e) => e.value));
+			if (!I(u)) throw new Pe(l, "function", o);
+			let d = u(L(e, t, n, r, i, a).map((e) => e.value));
 			Array.isArray(d) || (d = [d]), s.push(...d.map((e) => ({
-				type: typeof e == "string" ? R.literal : R.object,
+				type: typeof e == "string" ? 0 : 1,
 				value: e
 			})));
 		}
-		if (fe(c)) {
+		if (he(c)) {
 			let e = l, a = (Object.prototype.hasOwnProperty.call(c.options, e) ? c.options[e] : void 0) || c.options.other;
-			if (!a) throw new L(c.value, l, Object.keys(c.options), o);
-			s.push(...B(a.value, t, n, r, i));
+			if (!a) throw new F(c.value, l, Object.keys(c.options), o);
+			s.push(...L(a.value, t, n, r, i));
 			continue;
 		}
-		if (pe(c)) {
+		if (ge(c)) {
 			let e = `=${l}`, a = Object.prototype.hasOwnProperty.call(c.options, e) ? c.options[e] : void 0;
 			if (!a) {
-				if (!Intl.PluralRules) throw new I("Intl.PluralRules is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-pluralrules\"\n", F.MISSING_INTL_API, o);
+				if (!Intl.PluralRules) throw new P("Intl.PluralRules is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-pluralrules\"\n", "MISSING_INTL_API", o);
 				let e = typeof l == "bigint" ? Number(l) : l, r = n.getPluralRules(t, { type: c.pluralType }).select(e - (c.offset || 0));
 				a = (Object.prototype.hasOwnProperty.call(c.options, r) ? c.options[r] : void 0) || c.options.other;
 			}
-			if (!a) throw new L(c.value, l, Object.keys(c.options), o);
+			if (!a) throw new F(c.value, l, Object.keys(c.options), o);
 			let u = typeof l == "bigint" ? Number(l) : l;
-			s.push(...B(a.value, t, n, r, i, u - (c.offset || 0)));
+			s.push(...L(a.value, t, n, r, i, u - (c.offset || 0)));
 			continue;
 		}
 	}
-	return Pe(s);
+	return Ie(s);
 }
-function Fe(e, t) {
+function Le(e, t) {
 	return t ? {
 		...e,
 		...t,
@@ -2219,10 +2249,10 @@ function Fe(e, t) {
 		}, n), {})
 	} : e;
 }
-function Ie(e, t) {
-	return t ? Object.keys(e).reduce((n, r) => (n[r] = Fe(e[r], t[r]), n), { ...e }) : e;
+function Re(e, t) {
+	return t ? Object.keys(e).reduce((n, r) => (n[r] = Le(e[r], t[r]), n), { ...e }) : e;
 }
-function V(e) {
+function R(e) {
 	return { create() {
 		return {
 			get(t) {
@@ -2234,40 +2264,38 @@ function V(e) {
 		};
 	} };
 }
-function Le(e = {
+function ze(e = {
 	number: {},
 	dateTime: {},
 	pluralRules: {}
 }) {
 	return {
 		getNumberFormat: a((...e) => new Intl.NumberFormat(...e), {
-			cache: V(e.number),
+			cache: R(e.number),
 			strategy: g.variadic
 		}),
 		getDateTimeFormat: a((...e) => new Intl.DateTimeFormat(...e), {
-			cache: V(e.dateTime),
+			cache: R(e.dateTime),
 			strategy: g.variadic
 		}),
 		getPluralRules: a((...e) => new Intl.PluralRules(...e), {
-			cache: V(e.pluralRules),
+			cache: R(e.pluralRules),
 			strategy: g.variadic
 		})
 	};
 }
-var H = class e {
-	ast;
-	locales;
-	resolvedLocale;
-	formatters;
-	formats;
-	message;
-	formatterCache = {
-		number: {},
-		dateTime: {},
-		pluralRules: {}
-	};
+var z = class e {
 	constructor(t, n = e.defaultLocale, r, i) {
-		if (this.locales = n, this.resolvedLocale = e.resolveLocale(n), typeof t == "string") {
+		if (this.formatterCache = {
+			number: {},
+			dateTime: {},
+			pluralRules: {}
+		}, this.format = (e) => {
+			let t = this.formatToParts(e);
+			if (t.length === 1) return t[0].value;
+			let n = t.reduce((e, t) => (!e.length || t.type !== 0 || typeof e[e.length - 1] != "string" ? e.push(t.value) : e[e.length - 1] += t.value, e), []);
+			return n.length <= 1 ? n[0] || "" : n;
+		}, this.formatToParts = (e) => L(this.ast, this.locales, this.formatters, this.formats, e, void 0, this.message), this.resolvedOptions = () => ({ locale: this.resolvedLocale?.toString() || Intl.NumberFormat.supportedLocalesOf(this.locales)[0] }), this.getAst = () => this.ast, this.locales = n, this.resolvedLocale = e.resolveLocale(n), typeof t == "string") {
 			if (this.message = t, !e.__parse) throw TypeError("IntlMessageFormat.__parse must be set to process `message` of type `string`");
 			let { ...n } = i || {};
 			this.ast = e.__parse(t, {
@@ -2276,112 +2304,104 @@ var H = class e {
 			});
 		} else this.ast = t;
 		if (!Array.isArray(this.ast)) throw TypeError("A message must be provided as a String or AST.");
-		this.formats = Ie(e.formats, r), this.formatters = i && i.formatters || Le(this.formatterCache);
+		this.formats = Re(e.formats, r), this.formatters = i && i.formatters || ze(this.formatterCache);
 	}
-	format = (e) => {
-		let t = this.formatToParts(e);
-		if (t.length === 1) return t[0].value;
-		let n = t.reduce((e, t) => (!e.length || t.type !== R.literal || typeof e[e.length - 1] != "string" ? e.push(t.value) : e[e.length - 1] += t.value, e), []);
-		return n.length <= 1 ? n[0] || "" : n;
-	};
-	formatToParts = (e) => B(this.ast, this.locales, this.formatters, this.formats, e, void 0, this.message);
-	resolvedOptions = () => ({ locale: this.resolvedLocale?.toString() || Intl.NumberFormat.supportedLocalesOf(this.locales)[0] });
-	getAst = () => this.ast;
-	static memoizedDefaultLocale = null;
+	static {
+		this.memoizedDefaultLocale = null;
+	}
 	static get defaultLocale() {
 		return e.memoizedDefaultLocale ||= new Intl.NumberFormat().resolvedOptions().locale, e.memoizedDefaultLocale;
 	}
-	static resolveLocale = (e) => {
-		if (Intl.Locale === void 0) return;
-		let t = Intl.NumberFormat.supportedLocalesOf(e);
-		return t.length > 0 ? new Intl.Locale(t[0]) : new Intl.Locale(typeof e == "string" ? e : e[0]);
-	};
-	static __parse = je;
-	static formats = {
-		number: {
-			integer: { maximumFractionDigits: 0 },
-			currency: { style: "currency" },
-			percent: { style: "percent" }
-		},
-		date: {
-			short: {
-				month: "numeric",
-				day: "numeric",
-				year: "2-digit"
+	static {
+		this.resolveLocale = (e) => {
+			if (Intl.Locale === void 0) return;
+			let t = Intl.NumberFormat.supportedLocalesOf(e);
+			return t.length > 0 ? new Intl.Locale(t[0]) : new Intl.Locale(typeof e == "string" ? e : e[0]);
+		};
+	}
+	static {
+		this.__parse = Ne;
+	}
+	static {
+		this.formats = {
+			number: {
+				integer: { maximumFractionDigits: 0 },
+				currency: { style: "currency" },
+				percent: { style: "percent" }
 			},
-			medium: {
-				month: "short",
-				day: "numeric",
-				year: "numeric"
+			date: {
+				short: {
+					month: "numeric",
+					day: "numeric",
+					year: "2-digit"
+				},
+				medium: {
+					month: "short",
+					day: "numeric",
+					year: "numeric"
+				},
+				long: {
+					month: "long",
+					day: "numeric",
+					year: "numeric"
+				},
+				full: {
+					weekday: "long",
+					month: "long",
+					day: "numeric",
+					year: "numeric"
+				}
 			},
-			long: {
-				month: "long",
-				day: "numeric",
-				year: "numeric"
-			},
-			full: {
-				weekday: "long",
-				month: "long",
-				day: "numeric",
-				year: "numeric"
+			time: {
+				short: {
+					hour: "numeric",
+					minute: "numeric"
+				},
+				medium: {
+					hour: "numeric",
+					minute: "numeric",
+					second: "numeric"
+				},
+				long: {
+					hour: "numeric",
+					minute: "numeric",
+					second: "numeric",
+					timeZoneName: "short"
+				},
+				full: {
+					hour: "numeric",
+					minute: "numeric",
+					second: "numeric",
+					timeZoneName: "short"
+				}
 			}
-		},
-		time: {
-			short: {
-				hour: "numeric",
-				minute: "numeric"
-			},
-			medium: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric"
-			},
-			long: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric",
-				timeZoneName: "short"
-			},
-			full: {
-				hour: "numeric",
-				minute: "numeric",
-				second: "numeric",
-				timeZoneName: "short"
-			}
-		}
-	};
-}, U = function(e) {
-	return e.FORMAT_ERROR = "FORMAT_ERROR", e.UNSUPPORTED_FORMATTER = "UNSUPPORTED_FORMATTER", e.INVALID_CONFIG = "INVALID_CONFIG", e.MISSING_DATA = "MISSING_DATA", e.MISSING_TRANSLATION = "MISSING_TRANSLATION", e;
-}({}), W = class e extends Error {
-	code;
+		};
+	}
+}, B = class e extends Error {
 	constructor(t, n, r) {
 		let i = r ? r instanceof Error ? r : Error(String(r)) : void 0;
 		super(`[@formatjs/intl Error ${t}] ${n}
 ${i ? `\n${i.message}\n${i.stack}` : ""}`), this.code = t, typeof Error.captureStackTrace == "function" && Error.captureStackTrace(this, e);
 	}
-}, Re = class extends W {
+}, Be = class extends B {
 	constructor(e, t) {
-		super(U.UNSUPPORTED_FORMATTER, e, t);
+		super("UNSUPPORTED_FORMATTER", e, t);
 	}
-}, ze = class extends W {
+}, Ve = class extends B {
 	constructor(e, t) {
-		super(U.INVALID_CONFIG, e, t);
+		super("INVALID_CONFIG", e, t);
 	}
-}, Be = class extends W {
+}, V = class extends B {
 	constructor(e, t) {
-		super(U.MISSING_DATA, e, t);
+		super("MISSING_DATA", e, t);
 	}
-}, G = class extends W {
-	descriptor;
-	locale;
+}, H = class extends B {
 	constructor(e, t, n) {
-		super(U.FORMAT_ERROR, `${e}
+		super("FORMAT_ERROR", `${e}
 Locale: ${t}
 `, n), this.locale = t;
 	}
-}, K = class extends G {
-	descriptor;
-	locale;
+}, U = class extends H {
 	constructor(e, t, n, r) {
 		super(`${e}
 MessageID: ${n?.id}
@@ -2389,33 +2409,28 @@ Default Message: ${n?.defaultMessage}
 Description: ${n?.description}
 `, t, r), this.descriptor = n, this.locale = t;
 	}
-}, Ve = class extends W {
-	descriptor;
+}, He = class extends B {
 	constructor(e, t) {
-		super(U.MISSING_TRANSLATION, `Missing message: "${e.id}" for locale "${t}", using ${e.defaultMessage ? `default message (${typeof e.defaultMessage == "string" ? e.defaultMessage : e.defaultMessage.map((e) => e.value ?? JSON.stringify(e)).join()})` : "id"} as fallback.`), this.descriptor = e;
+		super("MISSING_TRANSLATION", `Missing message: "${e.id}" for locale "${t}", using ${e.defaultMessage ? `default message (${typeof e.defaultMessage == "string" ? e.defaultMessage : e.defaultMessage.map((e) => e.value ?? JSON.stringify(e)).join()})` : "id"} as fallback.`), this.descriptor = e;
 	}
 };
-function He(e, t, n = Error) {
+function Ue(e, t, n = Error) {
 	if (!e) throw new n(t);
 }
-function q(e, t, n = {}) {
+function W(e, t, n = {}) {
 	return t.reduce((t, r) => (r in e ? t[r] = e[r] : r in n && (t[r] = n[r]), t), {});
 }
-var Ue = {
+var We = {
 	formats: {},
 	messages: {},
 	timeZone: void 0,
 	defaultLocale: "en",
 	defaultFormats: {},
 	fallbackOnEmptyString: !0,
-	onError: (e) => {
-		process.env.NODE_ENV !== "production" && console.error(e);
-	},
-	onWarn: (e) => {
-		process.env.NODE_ENV !== "production" && console.warn(e);
-	}
+	onError: (e) => {},
+	onWarn: (e) => {}
 };
-function We() {
+function G() {
 	return {
 		dateTime: {},
 		number: {},
@@ -2426,7 +2441,7 @@ function We() {
 		displayNames: {}
 	};
 }
-function J(e) {
+function K(e) {
 	return { create() {
 		return {
 			get(t) {
@@ -2438,21 +2453,21 @@ function J(e) {
 		};
 	} };
 }
-function Ge(e = We()) {
+function Ge(e = G()) {
 	let t = Intl.RelativeTimeFormat, n = Intl.ListFormat, r = Intl.DisplayNames, i = a((...e) => new Intl.DateTimeFormat(...e), {
-		cache: J(e.dateTime),
+		cache: K(e.dateTime),
 		strategy: g.variadic
 	}), o = a((...e) => new Intl.NumberFormat(...e), {
-		cache: J(e.number),
+		cache: K(e.number),
 		strategy: g.variadic
 	}), s = a((...e) => new Intl.PluralRules(...e), {
-		cache: J(e.pluralRules),
+		cache: K(e.pluralRules),
 		strategy: g.variadic
 	});
 	return {
 		getDateTimeFormat: i,
 		getNumberFormat: o,
-		getMessageFormat: a((e, t, n, r) => new H(e, t, n, {
+		getMessageFormat: a((e, t, n, r) => new z(e, t, n, {
 			formatters: {
 				getNumberFormat: o,
 				getDateTimeFormat: i,
@@ -2460,30 +2475,30 @@ function Ge(e = We()) {
 			},
 			...r
 		}), {
-			cache: J(e.message),
+			cache: K(e.message),
 			strategy: g.variadic
 		}),
 		getRelativeTimeFormat: a((...e) => new t(...e), {
-			cache: J(e.relativeTime),
+			cache: K(e.relativeTime),
 			strategy: g.variadic
 		}),
 		getPluralRules: s,
 		getListFormat: a((...e) => new n(...e), {
-			cache: J(e.list),
+			cache: K(e.list),
 			strategy: g.variadic
 		}),
 		getDisplayNames: a((...e) => new r(...e), {
-			cache: J(e.displayNames),
+			cache: K(e.displayNames),
 			strategy: g.variadic
 		})
 	};
 }
-function Y(e, t, n, r) {
+function q(e, t, n, r) {
 	let i = e && e[t], a;
 	if (i && (a = i[n]), a) return a;
-	r(new Re(`No ${t} format named: ${n}`));
+	r(new Be(`No ${t} format named: ${n}`));
 }
-function X(e, t) {
+function J(e, t) {
 	return Object.keys(e).reduce((n, r) => (n[r] = {
 		timeZone: t,
 		...e[r]
@@ -2500,28 +2515,40 @@ function Ke(e, t) {
 }
 function qe(e, t) {
 	if (!t) return e;
-	let n = H.formats;
+	let n = z.formats;
 	return {
 		...n,
 		...e,
-		date: Ke(X(n.date, t), X(e.date || {}, t)),
-		time: Ke(X(n.time, t), X(e.time || {}, t))
+		date: Ke(J(n.date, t), J(e.date || {}, t)),
+		time: Ke(J(n.time, t), J(e.time || {}, t))
 	};
 }
-var Z = ({ locale: e, formats: t, messages: n, defaultLocale: r, defaultFormats: i, fallbackOnEmptyString: a, onError: o, timeZone: s, defaultRichTextElements: c }, l, u = { id: "" }, d, f) => {
+function Je(e) {
+	let { defaultMessage: t } = e;
+	try {
+		return t === void 0 ? `\nMessage Descriptor: ${JSON.stringify(e)}` : `\nDefault Message: ${typeof t == "string" ? t : JSON.stringify(t)}`;
+	} catch {
+		return "";
+	}
+}
+var Y = ({ locale: e, formats: t, messages: n, defaultLocale: r, defaultFormats: i, fallbackOnEmptyString: a, onError: o, timeZone: s, defaultRichTextElements: c }, l, u = { id: "" }, d, f) => {
 	let { id: p, defaultMessage: m } = u;
-	He(!!p, "[@formatjs/intl] An `id` must be provided to format a message. You can either:\n1. Configure your build toolchain with [babel-plugin-formatjs](https://formatjs.github.io/docs/tooling/babel-plugin)\nor [@formatjs/ts-transformer](https://formatjs.github.io/docs/tooling/ts-transformer) OR\n2. Configure your `eslint` config to include [eslint-plugin-formatjs](https://formatjs.github.io/docs/tooling/linter#enforce-id)\nto autofix this issue");
+	p || Ue(!1, `[@formatjs/intl] An \`id\` must be provided to format a message. You can either:
+1. Configure your build toolchain with [babel-plugin-formatjs](https://formatjs.github.io/docs/tooling/babel-plugin)
+or [@formatjs/ts-transformer](https://formatjs.github.io/docs/tooling/ts-transformer) OR
+2. Configure your \`eslint\` config to include [eslint-plugin-formatjs](https://formatjs.github.io/docs/tooling/linter#enforce-id)
+to autofix this issue${Je(u)}`);
 	let h = String(p), g = n && Object.prototype.hasOwnProperty.call(n, h) && n[h];
-	if (Array.isArray(g) && g.length === 1 && g[0].type === C.literal) return g[0].value;
+	if (Array.isArray(g) && g.length === 1 && g[0].type === le.literal) return g[0].value;
 	if (d = {
 		...c,
 		...d
 	}, t = qe(t, s), i = qe(i, s), !g) {
 		if (a === !1 && g === "") return g;
-		if ((!m || e && e.toLowerCase() !== r.toLowerCase()) && o(new Ve(u, e)), m) try {
+		if ((!m || e && e.toLowerCase() !== r.toLowerCase()) && o(new He(u, e)), m) try {
 			return l.getMessageFormat(m, r, i, f).format(d);
 		} catch (t) {
-			return o(new K(`Error formatting default message for: "${h}", rendering default message verbatim`, e, u, t)), typeof m == "string" ? m : h;
+			return o(new U(`Error formatting default message for: "${h}", rendering default message verbatim`, e, u, t)), typeof m == "string" ? m : h;
 		}
 		return h;
 	}
@@ -2531,15 +2558,15 @@ var Z = ({ locale: e, formats: t, messages: n, defaultLocale: r, defaultFormats:
 			...f
 		}).format(d);
 	} catch (t) {
-		o(new K(`Error formatting message: "${h}", using ${m ? "default message" : "id"} as fallback.`, e, u, t));
+		o(new U(`Error formatting message: "${h}", using ${m ? "default message" : "id"} as fallback.`, e, u, t));
 	}
 	if (m) try {
 		return l.getMessageFormat(m, r, i, f).format(d);
 	} catch (t) {
-		o(new K(`Error formatting the default message for: "${h}", rendering message verbatim`, e, u, t));
+		o(new U(`Error formatting the default message for: "${h}", rendering message verbatim`, e, u, t));
 	}
 	return typeof g == "string" ? g : typeof m == "string" ? m : h;
-}, Je = [
+}, Ye = [
 	"formatMatcher",
 	"timeZone",
 	"hour12",
@@ -2559,10 +2586,10 @@ var Z = ({ locale: e, formats: t, messages: n, defaultLocale: r, defaultFormats:
 	"numberingSystem",
 	"fractionalSecondDigits"
 ];
-function Q({ locale: e, formats: t, onError: n, timeZone: r }, i, a, o = {}) {
-	let { format: s } = o, c = q(o, Je, {
+function X({ locale: e, formats: t, onError: n, timeZone: r }, i, a, o = {}) {
+	let { format: s } = o, c = W(o, Ye, {
 		...r && { timeZone: r },
-		...s && Y(t, i, s, n)
+		...s && q(t, i, s, n)
 	});
 	return i === "time" && !c.hour && !c.minute && !c.second && !c.timeStyle && !c.dateStyle && (c = {
 		...c,
@@ -2570,84 +2597,84 @@ function Q({ locale: e, formats: t, onError: n, timeZone: r }, i, a, o = {}) {
 		minute: "numeric"
 	}), a(e, c);
 }
-function Ye(e, t, n, r = {}) {
-	let i = typeof n == "string" ? new Date(n || 0) : n;
-	try {
-		return Q(e, "date", t, r).format(i);
-	} catch (t) {
-		e.onError(new G("Error formatting date.", e.locale, t));
-	}
-	return String(i);
-}
 function Xe(e, t, n, r = {}) {
 	let i = typeof n == "string" ? new Date(n || 0) : n;
 	try {
-		return Q(e, "time", t, r).format(i);
+		return X(e, "date", t, r).format(i);
 	} catch (t) {
-		e.onError(new G("Error formatting time.", e.locale, t));
+		e.onError(new H("Error formatting date.", e.locale, t));
 	}
 	return String(i);
 }
-function Ze(e, t, n, r, i = {}) {
-	let a = typeof n == "string" ? new Date(n || 0) : n, o = typeof r == "string" ? new Date(r || 0) : r;
-	try {
-		return Q(e, "dateTimeRange", t, i).formatRange(a, o);
-	} catch (t) {
-		e.onError(new G("Error formatting date time range.", e.locale, t));
-	}
-	return String(a);
-}
-function Qe(e, t, n, r = {}) {
+function Ze(e, t, n, r = {}) {
 	let i = typeof n == "string" ? new Date(n || 0) : n;
 	try {
-		return Q(e, "date", t, r).formatToParts(i);
+		return X(e, "time", t, r).format(i);
 	} catch (t) {
-		e.onError(new G("Error formatting date.", e.locale, t));
+		e.onError(new H("Error formatting time.", e.locale, t));
 	}
-	return [];
+	return String(i);
+}
+function Qe(e, t, n, r, i = {}) {
+	let a = typeof n == "string" ? new Date(n || 0) : n, o = typeof r == "string" ? new Date(r || 0) : r;
+	try {
+		return X(e, "dateTimeRange", t, i).formatRange(a, o);
+	} catch (t) {
+		e.onError(new H("Error formatting date time range.", e.locale, t));
+	}
+	return String(a);
 }
 function $e(e, t, n, r = {}) {
 	let i = typeof n == "string" ? new Date(n || 0) : n;
 	try {
-		return Q(e, "time", t, r).formatToParts(i);
+		return X(e, "date", t, r).formatToParts(i);
 	} catch (t) {
-		e.onError(new G("Error formatting time.", e.locale, t));
+		e.onError(new H("Error formatting date.", e.locale, t));
 	}
 	return [];
 }
-var et = [
+function et(e, t, n, r = {}) {
+	let i = typeof n == "string" ? new Date(n || 0) : n;
+	try {
+		return X(e, "time", t, r).formatToParts(i);
+	} catch (t) {
+		e.onError(new H("Error formatting time.", e.locale, t));
+	}
+	return [];
+}
+var tt = [
 	"style",
 	"type",
 	"fallback",
 	"languageDisplay"
 ];
-function tt({ locale: e, onError: t }, n, r, i) {
-	Intl.DisplayNames || t(new I("Intl.DisplayNames is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-displaynames\"\n", F.MISSING_INTL_API));
-	let a = q(i, et);
+function nt({ locale: e, onError: t }, n, r, i) {
+	Intl.DisplayNames || t(new P("Intl.DisplayNames is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-displaynames\"\n", N.MISSING_INTL_API));
+	let a = W(i, tt);
 	try {
 		return n(e, a).of(r);
 	} catch (n) {
-		t(new G("Error formatting display name.", e, n));
+		t(new H("Error formatting display name.", e, n));
 	}
 }
-var nt = ["type", "style"], rt = Date.now();
-function it(e) {
-	return `${rt}_${e}_${rt}`;
+var rt = ["type", "style"], it = Date.now();
+function at(e) {
+	return `${it}_${e}_${it}`;
 }
-function at(e, t, n, r = {}) {
-	let i = ot(e, t, n, r).reduce((e, t) => {
+function ot(e, t, n, r = {}) {
+	let i = st(e, t, n, r).reduce((e, t) => {
 		let n = t.value;
 		return typeof n == "string" && typeof e[e.length - 1] == "string" ? e[e.length - 1] += n : e.push(n), e;
 	}, []);
 	return i.length === 1 ? i[0] : i.length === 0 ? "" : i;
 }
-function ot({ locale: e, onError: t }, n, r, i = {}) {
-	Intl.ListFormat || t(new I("Intl.ListFormat is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-listformat\"\n", F.MISSING_INTL_API));
-	let a = q(i, nt);
+function st({ locale: e, onError: t }, n, r, i = {}) {
+	Intl.ListFormat || t(new P("Intl.ListFormat is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-listformat\"\n", N.MISSING_INTL_API));
+	let a = W(i, rt);
 	try {
 		let t = {}, i = Array.from(r).map((e, n) => {
 			if (typeof e == "object" && e) {
-				let r = it(n);
+				let r = at(n);
 				return t[r] = e, r;
 			}
 			return String(e);
@@ -2657,36 +2684,36 @@ function ot({ locale: e, onError: t }, n, r, i = {}) {
 			value: t[e.value] || e.value
 		});
 	} catch (n) {
-		t(new G("Error formatting list.", e, n));
+		t(new H("Error formatting list.", e, n));
 	}
 	return r;
 }
-var st = ["type"];
-function ct({ locale: e, onError: t }, n, r, i = {}) {
-	Intl.PluralRules || t(new I("Intl.PluralRules is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-pluralrules\"\n", F.MISSING_INTL_API));
-	let a = q(i, st);
+var ct = ["type"];
+function lt({ locale: e, onError: t }, n, r, i = {}) {
+	Intl.PluralRules || t(new P("Intl.PluralRules is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-pluralrules\"\n", N.MISSING_INTL_API));
+	let a = W(i, ct);
 	try {
 		return n(e, a).select(r);
 	} catch (n) {
-		t(new G("Error formatting plural.", e, n));
+		t(new H("Error formatting plural.", e, n));
 	}
 	return "other";
 }
-var lt = ["numeric", "style"];
-function ut({ locale: e, formats: t, onError: n }, r, i = {}) {
+var ut = ["numeric", "style"];
+function dt({ locale: e, formats: t, onError: n }, r, i = {}) {
 	let { format: a } = i;
-	return r(e, q(i, lt, !!a && Y(t, "relative", a, n) || {}));
+	return r(e, W(i, ut, !!a && q(t, "relative", a, n) || {}));
 }
-function dt(e, t, n, r, i = {}) {
-	r ||= "second", Intl.RelativeTimeFormat || e.onError(new I("Intl.RelativeTimeFormat is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-relativetimeformat\"\n", F.MISSING_INTL_API));
+function ft(e, t, n, r, i = {}) {
+	r ||= "second", Intl.RelativeTimeFormat || e.onError(new P("Intl.RelativeTimeFormat is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-relativetimeformat\"\n", N.MISSING_INTL_API));
 	try {
-		return ut(e, t, i).format(n, r);
+		return dt(e, t, i).format(n, r);
 	} catch (t) {
-		e.onError(new G("Error formatting relative time.", e.locale, t));
+		e.onError(new H("Error formatting relative time.", e.locale, t));
 	}
 	return String(n);
 }
-var ft = [
+var pt = [
 	"style",
 	"currency",
 	"unit",
@@ -2710,72 +2737,72 @@ var ft = [
 	"roundingIncrement",
 	"roundingMode"
 ];
-function pt({ locale: e, formats: t, onError: n }, r, i = {}) {
+function mt({ locale: e, formats: t, onError: n }, r, i = {}) {
 	let { format: a } = i;
-	return r(e, q(i, ft, a && Y(t, "number", a, n) || {}));
-}
-function mt(e, t, n, r = {}) {
-	try {
-		return pt(e, t, r).format(n);
-	} catch (t) {
-		e.onError(new G("Error formatting number.", e.locale, t));
-	}
-	return String(n);
+	return r(e, W(i, pt, a && q(t, "number", a, n) || {}));
 }
 function ht(e, t, n, r = {}) {
 	try {
-		return pt(e, t, r).formatToParts(n);
+		return mt(e, t, r).format(n);
 	} catch (t) {
-		e.onError(new G("Error formatting number.", e.locale, t));
+		e.onError(new H("Error formatting number.", e.locale, t));
+	}
+	return String(n);
+}
+function gt(e, t, n, r = {}) {
+	try {
+		return mt(e, t, r).formatToParts(n);
+	} catch (t) {
+		e.onError(new H("Error formatting number.", e.locale, t));
 	}
 	return [];
 }
-function gt(e) {
+function _t(e) {
 	return typeof (e ? e[Object.keys(e)[0]] : void 0) == "string";
 }
-function _t(e) {
-	e.onWarn && e.defaultRichTextElements && gt(e.messages || {}) && e.onWarn("[@formatjs/intl] \"defaultRichTextElements\" was specified but \"message\" was not pre-compiled. \nPlease consider using \"@formatjs/cli\" to pre-compile your messages for performance.\nFor more details see https://formatjs.github.io/docs/getting-started/message-distribution");
+function vt(e) {
+	e.onWarn && e.defaultRichTextElements && _t(e.messages || {}) && e.onWarn("[@formatjs/intl] \"defaultRichTextElements\" was specified but \"message\" was not pre-compiled. \nPlease consider using \"@formatjs/cli\" to pre-compile your messages for performance.\nFor more details see https://formatjs.github.io/docs/getting-started/message-distribution");
 }
-function vt(e, t) {
+function yt(e, t) {
 	let n = Ge(t), r = {
-		...Ue,
+		...We,
 		...e
 	}, { locale: i, defaultLocale: a, onError: o } = r;
-	return i ? !Intl.NumberFormat.supportedLocalesOf(i).length && o ? o(new Be(`Missing locale data for locale: "${i}" in Intl.NumberFormat. Using default locale: "${a}" as fallback. See https://formatjs.github.io/docs/react-intl#runtime-requirements for more details`)) : !Intl.DateTimeFormat.supportedLocalesOf(i).length && o && o(new Be(`Missing locale data for locale: "${i}" in Intl.DateTimeFormat. Using default locale: "${a}" as fallback. See https://formatjs.github.io/docs/react-intl#runtime-requirements for more details`)) : (o && o(new ze(`"locale" was not configured, using "${a}" as fallback. See https://formatjs.github.io/docs/react-intl/api#intlshape for more details`)), r.locale = r.defaultLocale || "en"), _t(r), {
+	return i ? !Intl.NumberFormat.supportedLocalesOf(i).length && o ? o(new V(`Missing locale data for locale: "${i}" in Intl.NumberFormat. Using default locale: "${a}" as fallback. See https://formatjs.github.io/docs/react-intl#runtime-requirements for more details`)) : !Intl.DateTimeFormat.supportedLocalesOf(i).length && o && o(new V(`Missing locale data for locale: "${i}" in Intl.DateTimeFormat. Using default locale: "${a}" as fallback. See https://formatjs.github.io/docs/react-intl#runtime-requirements for more details`)) : (o && o(new Ve(`"locale" was not configured, using "${a}" as fallback. See https://formatjs.github.io/docs/react-intl/api#intlshape for more details`)), r.locale = r.defaultLocale || "en"), vt(r), {
 		...r,
 		formatters: n,
-		formatNumber: mt.bind(null, r, n.getNumberFormat),
-		formatNumberToParts: ht.bind(null, r, n.getNumberFormat),
-		formatRelativeTime: dt.bind(null, r, n.getRelativeTimeFormat),
-		formatDate: Ye.bind(null, r, n.getDateTimeFormat),
-		formatDateToParts: Qe.bind(null, r, n.getDateTimeFormat),
-		formatTime: Xe.bind(null, r, n.getDateTimeFormat),
-		formatDateTimeRange: Ze.bind(null, r, n.getDateTimeFormat),
-		formatTimeToParts: $e.bind(null, r, n.getDateTimeFormat),
-		formatPlural: ct.bind(null, r, n.getPluralRules),
-		formatMessage: Z.bind(null, r, n),
-		$t: Z.bind(null, r, n),
-		formatList: at.bind(null, r, n.getListFormat),
-		formatListToParts: ot.bind(null, r, n.getListFormat),
-		formatDisplayName: tt.bind(null, r, n.getDisplayNames)
+		formatNumber: ht.bind(null, r, n.getNumberFormat),
+		formatNumberToParts: gt.bind(null, r, n.getNumberFormat),
+		formatRelativeTime: ft.bind(null, r, n.getRelativeTimeFormat),
+		formatDate: Xe.bind(null, r, n.getDateTimeFormat),
+		formatDateToParts: $e.bind(null, r, n.getDateTimeFormat),
+		formatTime: Ze.bind(null, r, n.getDateTimeFormat),
+		formatDateTimeRange: Qe.bind(null, r, n.getDateTimeFormat),
+		formatTimeToParts: et.bind(null, r, n.getDateTimeFormat),
+		formatPlural: lt.bind(null, r, n.getPluralRules),
+		formatMessage: Y.bind(null, r, n),
+		$t: Y.bind(null, r, n),
+		formatList: ot.bind(null, r, n.getListFormat),
+		formatListToParts: st.bind(null, r, n.getListFormat),
+		formatDisplayName: nt.bind(null, r, n.getDisplayNames)
 	};
 }
-function yt(e, t, n = Error) {
+function bt(e, t, n = Error) {
 	if (!e) throw new n(t);
 }
-function bt(e) {
-	yt(e, "[React Intl] Could not find required `intl` object. <IntlProvider> needs to exist in the component ancestry.");
+function xt(e) {
+	bt(e, "[React Intl] Could not find required `intl` object. <IntlProvider> needs to exist in the component ancestry.");
 }
-var xt = {
-	...Ue,
+var St = {
+	...We,
 	textComponent: e.Fragment
-}, St = (t) => e.Children.toArray(t).map((t, n) => e.isValidElement(t) ? i(e.Fragment, { children: t }, n) : t);
-function Ct(e) {
+}, Ct = (t) => e.Children.toArray(t).map((t, n) => e.isValidElement(t) ? i(e.Fragment, { children: t }, n) : t);
+function wt(e) {
 	return function(t) {
-		return e(St(t));
+		return e(Ct(t));
 	};
 }
-function $(e, t) {
+function Z(e, t) {
 	if (e === t) return !0;
 	if (!e || !t) return !1;
 	var n = Object.keys(e), r = Object.keys(t), i = n.length;
@@ -2786,23 +2813,44 @@ function $(e, t) {
 	}
 	return !0;
 }
-var wt = e.createContext(null), Tt = wt.Provider;
-function Et() {
-	let t = e.useContext(wt);
-	return bt(t), t;
+var Tt = e.createContext(null), Et = Tt.Provider;
+function Q() {
+	let t = e.useContext(Tt);
+	return xt(t), t;
 }
-function Dt(e) {
+var Dt = function(e) {
+	return e.formatDate = "FormattedDate", e.formatTime = "FormattedTime", e.formatNumber = "FormattedNumber", e.formatList = "FormattedList", e.formatDisplayName = "FormattedDisplayName", e;
+}(Dt || {}), Ot = function(e) {
+	return e.formatDate = "FormattedDateParts", e.formatTime = "FormattedTimeParts", e.formatNumber = "FormattedNumberParts", e.formatList = "FormattedListParts", e;
+}(Ot || {});
+function kt(e) {
+	let t = (t) => {
+		let n = Q(), { value: r, children: i, ...a } = t, o = typeof r == "string" ? new Date(r || 0) : r;
+		return i(e === "formatDate" ? n.formatDateToParts(o, a) : n.formatTimeToParts(o, a));
+	};
+	return t.displayName = Ot[e], t;
+}
+function $(t) {
+	let n = (n) => {
+		let r = Q(), { value: a, children: o, ...s } = n, c = r[t](a, s);
+		if (typeof o == "function") return o(c);
+		let l = r.textComponent || e.Fragment;
+		return i(l, { children: c });
+	};
+	return n.displayName = Dt[t], n;
+}
+function At(e) {
 	return e && Object.keys(e).reduce((t, n) => {
 		let r = e[n];
-		return t[n] = z(r) ? Ct(r) : r, t;
+		return t[n] = I(r) ? wt(r) : r, t;
 	}, {});
 }
-var Ot = (e, t, n, r, ...i) => {
-	let a = Z(e, t, n, Dt(r), ...i);
-	return Array.isArray(a) ? St(a) : a;
-}, kt = ({ defaultRichTextElements: e, ...t }, n) => {
-	let r = Dt(e), i = vt({
-		...xt,
+var jt = (e, t, n, r, ...i) => {
+	let a = Y(e, t, n, At(r), ...i);
+	return Array.isArray(a) ? Ct(a) : a;
+}, Mt = ({ defaultRichTextElements: e, ...t }, n) => {
+	let r = At(e), i = yt({
+		...St,
 		...t,
 		defaultRichTextElements: r
 	}, n), a = {
@@ -2818,26 +2866,26 @@ var Ot = (e, t, n, r, ...i) => {
 	};
 	return {
 		...i,
-		formatMessage: Ot.bind(null, a, i.formatters),
-		$t: Ot.bind(null, a, i.formatters)
+		formatMessage: jt.bind(null, a, i.formatters),
+		$t: jt.bind(null, a, i.formatters)
 	};
 };
-function At(e, t) {
+function Nt(e, t) {
 	let { values: n, ...r } = e, { values: i, ...a } = t;
-	return $(i, n) && $(r, a);
+	return Z(i, n) && Z(r, a);
 }
-function jt(t) {
-	let { formatMessage: n, textComponent: a = e.Fragment } = Et(), { id: o, description: s, defaultMessage: c, values: l, children: u, tagName: d = a, ignoreTag: f } = t, p = n({
+function Pt(t) {
+	let { formatMessage: n, textComponent: a = e.Fragment } = Q(), { id: o, description: s, defaultMessage: c, values: l, children: u, tagName: d = a, ignoreTag: f } = t, p = n({
 		id: o,
 		description: s,
 		defaultMessage: c
 	}, l, { ignoreTag: f });
 	return typeof u == "function" ? u(Array.isArray(p) ? p : [p]) : i(d || r, { children: p });
 }
-jt.displayName = "FormattedMessage";
-var Mt = e.memo(jt, At);
-Mt.displayName = "MemoizedFormattedMessage";
-function Nt(e) {
+Pt.displayName = "FormattedMessage";
+var Ft = e.memo(Pt, Nt);
+Ft.displayName = "MemoizedFormattedMessage";
+function It(e) {
 	return {
 		locale: e.locale,
 		timeZone: e.timeZone,
@@ -2853,32 +2901,34 @@ function Nt(e) {
 		defaultRichTextElements: e.defaultRichTextElements
 	};
 }
-function Pt(t) {
-	let n = e.useRef(We()), r = e.useRef(void 0), a = e.useRef(void 0), o = {};
+function Lt(t) {
+	let n = e.useRef(G()), r = e.useRef(void 0), a = e.useRef(void 0), o = {};
 	for (let e in t) t[e] !== void 0 && (o[e] = t[e]);
-	let s = Nt({
-		...xt,
+	let s = It({
+		...St,
 		...o
 	});
-	return (!r.current || !$(r.current, s)) && (r.current = s, a.current = kt(s, n.current)), bt(a.current), i(Tt, {
+	return (!r.current || !Z(r.current, s)) && (r.current = s, a.current = Mt(s, n.current)), xt(a.current), i(Et, {
 		value: a.current,
 		children: t.children
 	});
 }
-Pt.displayName = "IntlProvider";
-var Ft = Pt, It = () => i("div", {
+Lt.displayName = "IntlProvider";
+var Rt = Lt;
+$("formatDate"), $("formatTime"), $("formatNumber"), $("formatList"), $("formatDisplayName"), kt("formatDate"), kt("formatTime");
+var zt = () => i("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
-	children: i(Mt, { id: "mockBanner" })
-}), Lt = (e, t, n) => {
+	children: i(Ft, { id: "mockBanner" })
+}), Bt = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
 };
-async function Rt(e, t = ["shared", "route"]) {
+async function Vt(e, t = ["shared", "route"]) {
 	let n = {};
 	for (let r of t) try {
-		let t = await Lt(Object.assign({
+		let t = await Bt(Object.assign({
 			"../messages/de/about.json": () => import("../messages/de/about.json"),
 			"../messages/de/blog.json": () => import("../messages/de/blog.json"),
 			"../messages/de/careers.json": () => import("../messages/de/careers.json"),
@@ -2891,18 +2941,18 @@ async function Rt(e, t = ["shared", "route"]) {
 			"../messages/de/settings.json": () => import("../messages/de/settings.json"),
 			"../messages/de/shared.json": () => import("../messages/de/shared.json"),
 			"../messages/de/team.json": () => import("../messages/de/team.json"),
-			"../messages/en/about.json": () => import("./about-DGl0ofka.js"),
-			"../messages/en/blog.json": () => import("./blog-Lz5WCcm7.js"),
-			"../messages/en/careers.json": () => import("./careers-C7fCERzT.js"),
-			"../messages/en/contact.json": () => import("./contact-BvodRLkx.js"),
-			"../messages/en/faq.json": () => import("./faq-CEqyJQ5O.js"),
-			"../messages/en/home.json": () => import("./home-CVHSFRQq.js"),
-			"../messages/en/pricing.json": () => import("./pricing-BoxWUPtD.js"),
-			"../messages/en/products.json": () => import("./products-CalFKazM.js"),
-			"../messages/en/route.json": () => import("./route-5-5GFmRv.js"),
-			"../messages/en/settings.json": () => import("./settings-BcdUIlzb.js"),
-			"../messages/en/shared.json": () => import("./shared-A7jof5em.js"),
-			"../messages/en/team.json": () => import("./team-BnHu4vwv.js"),
+			"../messages/en/about.json": () => import("./about-CX3jC_Kk.js"),
+			"../messages/en/blog.json": () => import("./blog-CPbGzc3E.js"),
+			"../messages/en/careers.json": () => import("./careers-BIxiVWaG.js"),
+			"../messages/en/contact.json": () => import("./contact-CIc57sSz.js"),
+			"../messages/en/faq.json": () => import("./faq-D_dNe7hJ.js"),
+			"../messages/en/home.json": () => import("./home-DgCDMSPU.js"),
+			"../messages/en/pricing.json": () => import("./pricing-cn0rhBWQ.js"),
+			"../messages/en/products.json": () => import("./products-DZYllM_T.js"),
+			"../messages/en/route.json": () => import("./route-CS6jLh6_.js"),
+			"../messages/en/settings.json": () => import("./settings-CzlIiJiT.js"),
+			"../messages/en/shared.json": () => import("./shared-D3pqEgVD.js"),
+			"../messages/en/team.json": () => import("./team-BnpzCYSM.js"),
 			"../messages/es/about.json": () => import("../messages/es/about.json"),
 			"../messages/es/blog.json": () => import("../messages/es/blog.json"),
 			"../messages/es/careers.json": () => import("../messages/es/careers.json"),
@@ -3006,12 +3056,12 @@ async function Rt(e, t = ["shared", "route"]) {
 	}
 	return n;
 }
-var zt = Rt("en");
-function Bt({ children: e }) {
-	let r = n(zt);
+var Ht = Vt("en");
+function Ut({ children: e }) {
+	let r = n(Ht);
 	return i(t.Suspense, {
 		fallback: null,
-		children: i(Ft, {
+		children: i(Rt, {
 			messages: r,
 			locale: "en",
 			defaultLocale: "en",
@@ -3019,10 +3069,10 @@ function Bt({ children: e }) {
 		})
 	});
 }
-function Vt() {
-	return i(Bt, { children: i(It, {}) });
+function Wt() {
+	return i(Ut, { children: i(zt, {}) });
 }
-export { Vt as default };
+export { Wt as default };
 var e = {
 	"about-grid.whyThisExists": "Why This Exists",
 	"about-grid.choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",

@@ -152,7 +152,8 @@
     "benchmark": "ベンチマーク",
     "tutorial": "チュートリアル",
     "analysis": "分析",
-    "meta": "メタ"
+    "meta": "メタ",
+    "reactServerComponentsIntroduceNew": "React Server Componentsは国際化のための新しいパターンを導入します。その影響とベストプラクティスを探ります。"
   },
   "careersHeader": {
     "careers": "採用情報",

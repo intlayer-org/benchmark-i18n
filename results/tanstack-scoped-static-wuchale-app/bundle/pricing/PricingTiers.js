@@ -1,11 +1,6 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var onInvalidFunc = () => "";
-onInvalidFunc = (i, c) => {
-	const item = c[i];
-	if (item == null) return `[i18n-404:${i}]`;
-	return `[i18n-400:${i}(${item})]`;
-};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -94,7 +89,6 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("pricing", loadCatalog$11, 1);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
 	const _w_runtime_ = getRuntimeRx();
 	const tiers = [
@@ -141,87 +135,47 @@ function PricingTiers() {
 			cta: _w_runtime_(145)
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((tier) => jsxDEV("div", {
+		children: tiers.map((tier) => jsxs("div", {
 			className: `flex flex-col rounded-lg border p-6 ${tier.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsxDEV("h3", {
+				jsx("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: tier.name
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 64,
-					columnNumber: 11
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "my-4",
-					children: [jsxDEV("span", {
+					children: [jsx("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: tier.price
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 66,
-						columnNumber: 13
-					}, this), jsxDEV("span", {
+					}), jsx("span", {
 						className: "text-sm text-muted-foreground",
 						children: tier.period
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 69,
-						columnNumber: 13
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 65,
-					columnNumber: 11
-				}, this),
-				jsxDEV("ul", {
+					})]
+				}),
+				jsx("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: tier.features.map((f) => jsxDEV("li", {
+					children: tier.features.map((f) => jsxs("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsxDEV("span", {
+							jsx("span", {
 								className: "text-primary",
 								children: "✓"
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 77,
-								columnNumber: 17
-							}, this),
+							}),
 							" ",
 							f
 						]
-					}, f, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 73,
-						columnNumber: 15
-					}, this))
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 71,
-					columnNumber: 11
-				}, this),
-				jsxDEV("button", {
+					}, f))
+				}),
+				jsx("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${tier.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: tier.cta
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 81,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, tier.name, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 56,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 54,
-		columnNumber: 5
-	}, this);
+		}, tier.name))
+	});
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -399,26 +353,12 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
 }
 export { Wrapped as default };
 var c = [

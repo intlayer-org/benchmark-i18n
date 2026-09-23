@@ -1,16 +1,16 @@
 import { Dynamic, delegateEvents, effect, insert, setAttribute, template } from "solid-js/web";
 import { createContext, createEffect, createMemo, createSignal, onMount, useContext } from "solid-js";
 var content = {
-	"de": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((m) => m.default),
-	"en": () => import("./en-CTBXFFC3.js").then((m) => m.default),
-	"es": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/es.json").then((m) => m.default),
-	"fr": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/fr.json").then((m) => m.default),
-	"it": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/it.json").then((m) => m.default),
-	"ja": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ja.json").then((m) => m.default),
-	"ko": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ko.json").then((m) => m.default),
-	"pt": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/pt.json").then((m) => m.default),
-	"ru": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ru.json").then((m) => m.default),
-	"zh": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/zh.json").then((m) => m.default)
+	"de": () => import("./de-xYEQ1CKO.js").then((m) => m.default),
+	"en": () => import("./en-CeOnUdEz.js").then((m) => m.default),
+	"es": () => import("./es-CAfaD014.js").then((m) => m.default),
+	"fr": () => import("./fr-VNi9z7pt.js").then((m) => m.default),
+	"it": () => import("./it-D9rKjkYC.js").then((m) => m.default),
+	"ja": () => import("./ja-DPzs3QQe.js").then((m) => m.default),
+	"ko": () => import("./ko-0QEhZA1h.js").then((m) => m.default),
+	"pt": () => import("./pt-Df66bTeJ.js").then((m) => m.default),
+	"ru": () => import("./ru-Ce0F8Lta.js").then((m) => m.default),
+	"zh": () => import("./zh-Dovr6cuc.js").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,7 +230,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-}, S$1 = {
+};
+var S = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -238,7 +239,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: o.children,
 		children: o.children
 	})
-}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+};
+var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -246,7 +248,12 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
+};
+var T = fallbackPlugin;
+var D = fallbackPlugin;
+var O = fallbackPlugin;
+var k = /* @__PURE__ */ new Map();
+var A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -256,7 +263,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S$1,
+		S,
 		C,
 		T,
 		D,
@@ -275,7 +282,8 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-}, localeStorageOptions = {
+};
+var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -293,7 +301,9 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
+};
+var a$1 = getLocaleFromStorageClient(localeStorageOptions);
+var y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -312,7 +322,9 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+};
+var t = /* @__PURE__ */ new Map();
+var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
@@ -377,6 +389,16 @@ function ThemeToggle() {
 }
 delegateEvents(["click"]);
 export { ThemeToggle as default };
+var de_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
+		"a": "Design: Auto",
+		"b": "Design: Dunkel",
+		"c": "Design: Hell"
+	}
+};
+export { de_default as default };
 var en_default = {
 	key: "theme-toggle",
 	content: {
@@ -387,3 +409,83 @@ var en_default = {
 	}
 };
 export { en_default as default };
+var es_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
+		"a": "Tema: Automático",
+		"b": "Tema: Oscuro",
+		"c": "Tema: Claro"
+	}
+};
+export { es_default as default };
+var fr_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Mode thématique : auto (système). Cliquez pour passer en mode clair.",
+		"a": "Thème : Auto",
+		"b": "Thème : Sombre",
+		"c": "Thème : Clair"
+	}
+};
+export { fr_default as default };
+var it_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
+		"a": "Tema: Auto",
+		"b": "Tema: Scuro",
+		"c": "Tema: Chiaro"
+	}
+};
+export { it_default as default };
+var ja_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
+		"a": "テーマ：自動",
+		"b": "テーマ：ダーク",
+		"c": "テーマ：ライト"
+	}
+};
+export { ja_default as default };
+var ko_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
+		"a": "테마: 자동",
+		"b": "테마: 다크",
+		"c": "테마: 라이트"
+	}
+};
+export { ko_default as default };
+var pt_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
+		"a": "Tema: Automático",
+		"b": "Tema: Escuro",
+		"c": "Tema: Claro"
+	}
+};
+export { pt_default as default };
+var ru_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
+		"a": "Тема: Авто",
+		"b": "Тема: Темная",
+		"c": "Тема: Светлая"
+	}
+};
+export { ru_default as default };
+var zh_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "主题模式：自动（系统）。点击切换到亮色模式。",
+		"a": "主题：自动",
+		"b": "主题：深色",
+		"c": "主题：亮色"
+	}
+};
+export { zh_default as default };

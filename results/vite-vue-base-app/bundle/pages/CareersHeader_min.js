@@ -7,23 +7,14 @@ var o = (e, t) => {
 function l(e, n) {
 	return a(), t("div", c, " ⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service. ");
 }
-var u = o(s, [["render", l], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/MockBanner.vue"]]), d = i({
+var u = o(s, [["render", l]]), d = i({
 	__name: "CareersHeader",
-	setup(e, { expose: t }) {
-		t();
-		let n = { MockBanner: u };
-		return Object.defineProperty(n, "__isScriptSetup", {
-			enumerable: !1,
-			value: !0
-		}), n;
+	setup(i) {
+		return (i, o) => (a(), t(e, null, [
+			r(u),
+			o[0] ||= n("h1", { class: "mb-2 text-3xl font-bold text-foreground" }, "Careers", -1),
+			o[1] ||= n("p", { class: "mb-4 text-muted-foreground" }, " Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning. ", -1)
+		], 64));
 	}
 });
-function f(i, o, s, c, l, u) {
-	return a(), t(e, null, [
-		r(c.MockBanner),
-		o[0] ||= n("h1", { class: "mb-2 text-3xl font-bold text-foreground" }, "Careers", -1),
-		o[1] ||= n("p", { class: "mb-4 text-muted-foreground" }, " Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning. ", -1)
-	], 64);
-}
-var p = o(d, [["render", f], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/pages/careers/CareersHeader.vue"]]);
-export { p as default };
+export { d as default };

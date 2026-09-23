@@ -2744,49 +2744,21 @@ if (ln(kt), dn(en), pn(Vt), process.env.NODE_ENV !== "production") {
 process.env.NODE_ENV;
 var Mi = a({
 	__name: "EmptyComponent",
-	setup(e, { expose: t }) {
-		t();
-		let { t: n } = bi(), r = {
-			t: n,
-			value: n("header.home")
-		};
-		return Object.defineProperty(r, "__isScriptSetup", {
-			enumerable: !1,
-			value: !0
-		}), r;
+	setup(e) {
+		let { t } = bi();
+		return t("header.home"), (e, t) => null;
 	}
-}), Ni = (e, t) => {
-	let n = e.__vccOpts || e;
-	for (let [e, r] of t) n[e] = r;
-	return n;
-};
-function Pi(e, t, n, r, i, a) {
-	return null;
-}
-var Fi = Ni(Mi, [["render", Pi], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/scripts/EmptyComponent.vue"]]), Ii = a({
+}), Ni = a({
 	__name: "LibWrapper",
-	setup(e, { expose: t }) {
-		t();
-		let n = yi({
+	setup(e) {
+		let t = yi({
 			legacy: !1,
 			locale: "en",
 			messages: { en: { header: { home: "Home" } } }
-		}), r = s()?.appContext.app;
-		r && !r.config.globalProperties.$i18n && r.use(n);
-		let i = {
-			i18n: n,
-			app: r
-		};
-		return Object.defineProperty(i, "__isScriptSetup", {
-			enumerable: !1,
-			value: !0
-		}), i;
+		}), n = s()?.appContext.app;
+		return n && !n.config.globalProperties.$i18n && n.use(t), (e, t) => g(e.$slots, "default");
 	}
-});
-function Li(e, t, n, r, i, a) {
-	return g(e.$slots, "default");
-}
-var Ri = Ni(Ii, [["render", Li], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-i18n-app/scripts/LibWrapper.vue"]]), zi = { render() {
-	return l(Ri, {}, { default: () => l(Fi) });
+}), Pi = { render() {
+	return l(Ni, {}, { default: () => l(Mi) });
 } };
-export { zi as default };
+export { Pi as default };

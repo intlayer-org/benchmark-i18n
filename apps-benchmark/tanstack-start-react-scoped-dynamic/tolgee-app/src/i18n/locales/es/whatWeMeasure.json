@@ -1,0 +1,17 @@
+{
+  "bundleSizeImpact": "Impacto en el tamaño del paquete",
+  "duringSsrTranslationDataIs": "Durante el SSR, los datos de traducción se serializan en el HTML. Los diccionarios grandes aumentan la carga útil de HTML y ralentizan la hidratación — el momento en que la página se vuelve interactiva.",
+  "duringSsrTranslationDataIsSerialized": "During SSR, translation data is serialized into the HTML. We measure the size of this payload and its effect on Time to Interactive (TTI).",
+  "howFastTheAppCan": "Qué tan rápido puede la aplicación cambiar de un idioma a otro en tiempo de ejecución — incluyendo la obtención de nuevas traducciones, el renderizado de componentes y la actualización del DOM.",
+  "howFastTheAppCanSwitchFromOne": "How fast the app can switch from one language to another. We measure the re-render time and any network delays for lazy-loaded locales.",
+  "howMuchExtraTimeThe": "Cuánto tiempo extra añade la capa i18n a cada renderizado de componente — medido con actualDuration del React Profiler.",
+  "howMuchExtraTimeTheLibraryAdds": "How much extra time the library adds to the initial page load. This includes script execution and the time to fetch/parse translation data.",
+  "hydrationCost": "Costo de hidratación",
+  "lazyLoadingEffectiveness": "Eficacia de la carga diferida",
+  "localeSwitchSpeed": "Velocidad de cambio de idioma",
+  "renderingOverhead": "Sobrecarga de renderizado",
+  "theAdditionalJavascriptBytes": "The additional Javascript bytes that the library adds to your production build. We measure both the library itself and its mandatory dependencies.",
+  "theAdditionalJavascriptBytesSent": "Los bytes adicionales de JavaScript enviados al cliente específicamente debido al tiempo de ejecución de la biblioteca i18n, además de los archivos de traducción para el local actual.",
+  "whatWeMeasure": "Lo que medimos",
+  "whetherSplittingTranslationsByRoute": "Si dividir las traducciones por ruta o por espacio de nombres realmente reduce la carga inicial, y qué compensaciones introduce (solicitudes en cascada, FOUC, complejidad de la caché)."
+}

@@ -1,7 +1,6 @@
 import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
-import { jsx } from "react/jsx-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -13,28 +12,15 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/about/AboutHeader.tsx";
 function AboutHeader() {
 	usePerformanceMeasure("AboutHeader");
-	return jsxDEV(Fragment, { children: [jsxDEV("h1", {
+	return jsxs(Fragment, { children: [jsx("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: "About This Benchmark"
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 9,
-		columnNumber: 7
-	}, this), jsxDEV("p", {
+	}), jsx("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 12,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+	})] });
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -268,28 +254,14 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(LingoProvider, {
+	return jsx(LingoProvider, {
 		initialLocale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/about/AboutHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(AboutHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(AboutHeader, {}) });
 }
 export { Wrapped as default };
 import { t as logger } from "./logger-CWLzb-Ic.js";

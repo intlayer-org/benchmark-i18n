@@ -269,7 +269,8 @@ var getBasePlugins = (locale, fallback = true) => [
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
-}), getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
+});
+var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 	const props = {
 		dictionaryKey: dictionary.key,
 		dictionaryPath: dictionary.filePath,
@@ -277,7 +278,8 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-}, b$1 = {
+};
+var b$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { children: n, ...r }) => {
@@ -299,7 +301,12 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 		}
 		return markRaw(c);
 	}
-}, S = fallbackPlugin, w = fallbackPlugin, T = fallbackPlugin, E = /* @__PURE__ */ new Map(), D = (e, t = !0) => {
+};
+var S = fallbackPlugin;
+var w = fallbackPlugin;
+var T = fallbackPlugin;
+var E = /* @__PURE__ */ new Map();
+var D = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (E.has(n)) return E.get(n);
 	let r = [
@@ -315,8 +322,14 @@ var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 		T
 	];
 	return E.set(n, r), r;
-}, n = (n, r) => getDictionary(n, r, D(r)), i = Symbol("intlayer");
-var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "object" && !!e, g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e), _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, v = (e) => markRaw(defineComponent({
+};
+var n = (n, r) => getDictionary(n, r, D(r));
+var i = Symbol("intlayer");
+var m = (e, t) => t.reduce((e, t) => e?.[t], e);
+var h$1 = (e) => typeof e == "object" && !!e;
+var g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e);
+var _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e;
+var v = (e) => markRaw(defineComponent({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -324,7 +337,8 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 			return t == null ? null : g(t) ? h(t) : Array.isArray(t) ? h("span", t) : t;
 		};
 	}
-})), y = (e) => new Proxy({}, {
+}));
+var y = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -346,7 +360,8 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 			configurable: !0
 		};
 	}
-}), b = (r, a) => {
+});
+var b = (r, a) => {
 	let c = getCurrentInstance() ? inject(i) : void 0, b = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), x = computed(() => (a === void 0 ? void 0 : toValue(a)) ?? b.value), S = shallowRef({});
 	watch([() => toValue(r), () => x.value], ([t, n$2]) => {
 		S.value = n(t, n$2);
@@ -384,50 +399,35 @@ var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "objec
 	});
 	return C([]);
 };
-var CareersBenefits_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "CareersBenefits",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		const content = b(careers_benefits_default);
-		const __returned__ = {
-			content,
-			benefits: [
-				{
-					label: "Remote-first",
-					value: content.workFromAnywhereInThe
-				},
-				{
-					label: content.competitivePay,
-					value: content.topOfMarketCompensation
-				},
-				{
-					label: content.openSourceTime,
-					value: content.x20TimeForOssContributions
-				}
-			]
-		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "mb-12 grid gap-4 md:grid-cols-3" };
 var _hoisted_2 = { class: "text-sm font-semibold text-foreground" };
 var _hoisted_3 = { class: "text-xs text-muted-foreground" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(), createElementBlock(Fragment, null, renderList($setup.benefits, (b) => {
-		return createElementVNode("div", {
-			key: b.label,
-			class: "rounded-lg border border-border bg-card p-4 text-center"
-		}, [createElementVNode("p", _hoisted_2, toDisplayString(b.label), 1), createElementVNode("p", _hoisted_3, toDisplayString(b.value), 1)]);
-	}), 64))]);
-}
-var CareersBenefits_default = _plugin_vue_export_helper_default(CareersBenefits_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/pages/careers/CareersBenefits.vue"]]);
+var CareersBenefits_default = defineComponent({
+	__name: "CareersBenefits",
+	setup(__props) {
+		const content = b(careers_benefits_default);
+		const benefits = [
+			{
+				label: "Remote-first",
+				value: content.workFromAnywhereInThe
+			},
+			{
+				label: content.competitivePay,
+				value: content.topOfMarketCompensation
+			},
+			{
+				label: content.openSourceTime,
+				value: content.x20TimeForOssContributions
+			}
+		];
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(), createElementBlock(Fragment, null, renderList(benefits, (b) => {
+				return createElementVNode("div", {
+					key: b.label,
+					class: "rounded-lg border border-border bg-card p-4 text-center"
+				}, [createElementVNode("p", _hoisted_2, toDisplayString(b.label), 1), createElementVNode("p", _hoisted_3, toDisplayString(b.value), 1)]);
+			}), 64))]);
+		};
+	}
+});
 export { CareersBenefits_default as default };

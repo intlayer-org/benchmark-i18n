@@ -1,16 +1,16 @@
 import { Dynamic, insert, template } from "solid-js/web";
 import { createContext, createMemo, onMount, useContext } from "solid-js";
 var content = {
-	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/hero/de.json").then((m) => m.default),
-	"en": () => import("./en-BB3Sn2zZ.js").then((m) => m.default),
-	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/hero/es.json").then((m) => m.default),
-	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/hero/fr.json").then((m) => m.default),
-	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/hero/it.json").then((m) => m.default),
-	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/hero/ja.json").then((m) => m.default),
-	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/hero/ko.json").then((m) => m.default),
-	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/hero/pt.json").then((m) => m.default),
-	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/hero/ru.json").then((m) => m.default),
-	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/hero/zh.json").then((m) => m.default)
+	"de": () => import("./de-DNuMtM65.js").then((m) => m.default),
+	"en": () => import("./en-CQoqZkYb.js").then((m) => m.default),
+	"es": () => import("./es-D_u8cbUV.js").then((m) => m.default),
+	"fr": () => import("./fr-T9QnqWXg.js").then((m) => m.default),
+	"it": () => import("./it-Dg3b_l1U.js").then((m) => m.default),
+	"ja": () => import("./ja-CdmSVk96.js").then((m) => m.default),
+	"ko": () => import("./ko-Aji8pZOs.js").then((m) => m.default),
+	"pt": () => import("./pt-1Z80ysq2.js").then((m) => m.default),
+	"ru": () => import("./ru-B4AK-WoD.js").then((m) => m.default),
+	"zh": () => import("./zh-dKulFa8n.js").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,7 +230,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-}, S$1 = {
+};
+var S = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -238,7 +239,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: o.children,
 		children: o.children
 	})
-}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+};
+var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -246,7 +248,12 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
+};
+var T = fallbackPlugin;
+var D = fallbackPlugin;
+var O = fallbackPlugin;
+var k = /* @__PURE__ */ new Map();
+var A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -256,7 +263,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S$1,
+		S,
 		C,
 		T,
 		D,
@@ -275,7 +282,8 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-}, localeStorageOptions = {
+};
+var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -293,7 +301,9 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
+};
+var a$1 = getLocaleFromStorageClient(localeStorageOptions);
+var y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -312,7 +322,9 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+};
+var t = /* @__PURE__ */ new Map();
+var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
@@ -342,6 +354,17 @@ function Hero() {
 	})();
 }
 export { Hero as default };
+var de_default = {
+	key: "hero",
+	content: {
+		"d": "i18n Benchmark",
+		"a": "Eine Testanwendung, die entwickelt wurde, um die realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladeleistung und die Rendering-Reaktivität zu messen.",
+		"e": "Ergebnisse anzeigen",
+		"c": "Methodik",
+		"b": "Hero"
+	}
+};
+export { de_default as default };
 var en_default = {
 	key: "hero",
 	content: {
@@ -353,3 +376,91 @@ var en_default = {
 	}
 };
 export { en_default as default };
+var es_default = {
+	key: "hero",
+	content: {
+		"d": "i18n Benchmark",
+		"a": "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el rendimiento de carga и la reactividad de la representación.",
+		"e": "Ver Resultados",
+		"c": "Metodología",
+		"b": "Héroe"
+	}
+};
+export { es_default as default };
+var fr_default = {
+	key: "hero",
+	content: {
+		"d": "Benchmark i18n",
+		"a": "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+		"e": "Voir les résultats",
+		"c": "Méthodologie",
+		"b": "Héros"
+	}
+};
+export { fr_default as default };
+var it_default = {
+	key: "hero",
+	content: {
+		"d": "i18n Benchmark",
+		"a": "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.",
+		"e": "Visualizza risultati",
+		"c": "Metodologia",
+		"b": "Eroe"
+	}
+};
+export { it_default as default };
+var ja_default = {
+	key: "hero",
+	content: {
+		"d": "i18n Benchmark",
+		"a": "国際化ライブラリがバンドルサイズ、ロード性能、レンダリングの反応性に与える実際の影響を測定するために設計されたテストアプリケーションです。",
+		"e": "結果を表示",
+		"c": "方法論",
+		"b": "ヒーロー"
+	}
+};
+export { ja_default as default };
+var ko_default = {
+	key: "hero",
+	content: {
+		"d": "i18n Benchmark",
+		"a": "번들 크기, 로딩 성능 및 렌더링 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위해 설계된 테스트 애플리케이션입니다.",
+		"e": "결과 표시",
+		"c": "방법론",
+		"b": "히어로"
+	}
+};
+export { ko_default as default };
+var pt_default = {
+	key: "hero",
+	content: {
+		"d": "i18n Benchmark",
+		"a": "Uma aplicação de teste progettada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade de renderização.",
+		"e": "Ver Resultados",
+		"c": "Metodologia",
+		"b": "Herói"
+	}
+};
+export { pt_default as default };
+var ru_default = {
+	key: "hero",
+	content: {
+		"d": "i18n Benchmark",
+		"a": "Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.",
+		"e": "Посмотреть результаты",
+		"c": "Методология",
+		"b": "Главная"
+	}
+};
+export { ru_default as default };
+var zh_default = {
+	key: "hero",
+	content: {
+		"d": "i18n Benchmark",
+		"a": "一个测试应用程序，旨在衡量国际化库对捆绑包大小、加载性能和渲染反应性的真实影响。",
+		"e": "查看结果",
+		"c": "方法论",
+		"b": "主页横幅"
+	}
+};
+export { zh_default as default };

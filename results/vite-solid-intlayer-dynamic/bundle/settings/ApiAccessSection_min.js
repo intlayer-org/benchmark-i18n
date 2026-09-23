@@ -1,16 +1,16 @@
 import { Dynamic as e, insert as t, setAttribute as n, template as r } from "solid-js/web";
 import { createContext as i, createMemo as a, createUniqueId as o, useContext as s } from "solid-js";
 var c = {
-	de: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/de.json").then((e) => e.default),
-	en: () => import("./en-BtfQda4j.js").then((e) => e.default),
-	es: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/es.json").then((e) => e.default),
-	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/fr.json").then((e) => e.default),
-	it: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/it.json").then((e) => e.default),
-	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/ja.json").then((e) => e.default),
-	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/ko.json").then((e) => e.default),
-	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/pt.json").then((e) => e.default),
-	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/ru.json").then((e) => e.default),
-	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/api-access-section/zh.json").then((e) => e.default)
+	de: () => import("./de-Dmpa6Uqi.js").then((e) => e.default),
+	en: () => import("./en-Ck3RVym0.js").then((e) => e.default),
+	es: () => import("./es-BMBAagGI.js").then((e) => e.default),
+	fr: () => import("./fr-BTQloshY.js").then((e) => e.default),
+	it: () => import("./it-BShkypOP.js").then((e) => e.default),
+	ja: () => import("./ja-CrELw9Sm.js").then((e) => e.default),
+	ko: () => import("./ko-Cg-KcKed.js").then((e) => e.default),
+	pt: () => import("./pt-D6N9JXfv.js").then((e) => e.default),
+	ru: () => import("./ru-BXz0GIE4.js").then((e) => e.default),
+	zh: () => import("./zh-DBLQz5xx.js").then((e) => e.default)
 }, l = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var c = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (_(e) && _(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : v(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : v(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -278,10 +278,100 @@ export { X as default };
 var e = {
 	key: "api-access-section",
 	content: {
+		a: "API-Zugriff",
+		b: "API-Schlüssel",
+		c: "Kopieren",
+		d: "Verwenden Sie diesen Schlüssel, um programmatisch auf die Benchmarking-API zuzugreifen."
+	}
+};
+export { e as default };
+var e = {
+	key: "api-access-section",
+	content: {
 		a: "API Access",
 		b: "API Key",
 		c: "Copy",
 		d: "Use this key to access the benchmarking API programmatically."
+	}
+};
+export { e as default };
+var e = {
+	key: "api-access-section",
+	content: {
+		a: "Acceso API",
+		b: "Clave API",
+		c: "Copiar",
+		d: "Utilice esta clave para acceder a la API de benchmarking de forma programada."
+	}
+};
+export { e as default };
+var e = {
+	key: "api-access-section",
+	content: {
+		a: "Accès API",
+		b: "Clé API",
+		c: "Copier",
+		d: "Utilisez cette clé pour accéder à l'API de benchmarking par programmation."
+	}
+};
+export { e as default };
+var e = {
+	key: "api-access-section",
+	content: {
+		a: "Accesso API",
+		b: "Chiave API",
+		c: "Copia",
+		d: "Usa questa chiave per accedere programmaticamente alle API di benchmarking."
+	}
+};
+export { e as default };
+var e = {
+	key: "api-access-section",
+	content: {
+		a: "APIアクセス",
+		b: "APIキー",
+		c: "コピー",
+		d: "このキーを使用して、プログラムでベンチマークAPIにアクセスします。"
+	}
+};
+export { e as default };
+var e = {
+	key: "api-access-section",
+	content: {
+		a: "API 액세스",
+		b: "API 키",
+		c: "복사",
+		d: "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하세요."
+	}
+};
+export { e as default };
+var e = {
+	key: "api-access-section",
+	content: {
+		a: "Acesso API",
+		b: "Chave API",
+		c: "Copiar",
+		d: "Use esta chave para acessar a API de benchmarking programaticamente."
+	}
+};
+export { e as default };
+var e = {
+	key: "api-access-section",
+	content: {
+		a: "Доступ к API",
+		b: "API-ключ",
+		c: "Копировать",
+		d: "Используйте этот ключ для программного доступа к API бенчмаркинга."
+	}
+};
+export { e as default };
+var e = {
+	key: "api-access-section",
+	content: {
+		a: "API 访问",
+		b: "API 密钥",
+		c: "复制",
+		d: "使用此密钥以编程方式访问基准测试 API。"
 	}
 };
 export { e as default };

@@ -173,7 +173,7 @@ var _ = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (w(e) && w(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : T(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : T(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -340,42 +340,27 @@ var _ = {
 		}
 	});
 	return u([]);
-}, $ = i({
+}, $ = { class: "mb-12 grid gap-4 md:grid-cols-3" }, ee = { class: "text-sm font-semibold text-foreground" }, te = { class: "text-xs text-muted-foreground" }, ne = i({
 	__name: "CareersBenefits",
-	setup(e, { expose: t }) {
-		t();
-		let n = Q(_), r = {
-			content: n,
-			benefits: [
-				{
-					label: "Remote-first",
-					value: n.workFromAnywhereInThe
-				},
-				{
-					label: n.competitivePay,
-					value: n.topOfMarketCompensation
-				},
-				{
-					label: n.openSourceTime,
-					value: n.x20TimeForOssContributions
-				}
-			]
-		};
-		return Object.defineProperty(r, "__isScriptSetup", {
-			enumerable: !1,
-			value: !0
-		}), r;
+	setup(t) {
+		let i = Q(_), a = [
+			{
+				label: "Remote-first",
+				value: i.workFromAnywhereInThe
+			},
+			{
+				label: i.competitivePay,
+				value: i.topOfMarketCompensation
+			},
+			{
+				label: i.openSourceTime,
+				value: i.x20TimeForOssContributions
+			}
+		];
+		return (t, i) => (u(), n("div", $, [(u(), n(e, null, f(a, (e) => r("div", {
+			key: e.label,
+			class: "rounded-lg border border-border bg-card p-4 text-center"
+		}, [r("p", ee, m(e.label), 1), r("p", te, m(e.value), 1)])), 64))]));
 	}
-}), ee = (e, t) => {
-	let n = e.__vccOpts || e;
-	for (let [e, r] of t) n[e] = r;
-	return n;
-}, te = { class: "mb-12 grid gap-4 md:grid-cols-3" }, ne = { class: "text-sm font-semibold text-foreground" }, re = { class: "text-xs text-muted-foreground" };
-function ie(t, i, a, o, s, c) {
-	return u(), n("div", te, [(u(), n(e, null, f(o.benefits, (e) => r("div", {
-		key: e.label,
-		class: "rounded-lg border border-border bg-card p-4 text-center"
-	}, [r("p", ne, m(e.label), 1), r("p", re, m(e.value), 1)])), 64))]);
-}
-var ae = ee($, [["render", ie], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/pages/careers/CareersBenefits.vue"]]);
-export { ae as default };
+});
+export { ne as default };

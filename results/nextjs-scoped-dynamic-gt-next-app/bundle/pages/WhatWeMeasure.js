@@ -1,6 +1,5 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { jsx } from "react/jsx-runtime";
-import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3909,7 +3908,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => true) === true) return "development";
+	if (readImportMetaEnv(() => false) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6019,117 +6018,47 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/about/WhatWeMeasure.tsx";
 function WhatWeMeasure() {
-	const metrics = [
-		{
-			metric: jsxDEV(a$2, { children: "Bundle size impact" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 6,
-				columnNumber: 15
-			}, this),
-			desc: jsxDEV(a$2, { children: "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 8,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			metric: jsxDEV(a$2, { children: "Rendering overhead" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 16,
-				columnNumber: 15
-			}, this),
-			desc: jsxDEV(a$2, { children: "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 18,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			metric: jsxDEV(a$2, { children: "Hydration cost" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 26,
-				columnNumber: 15
-			}, this),
-			desc: jsxDEV(a$2, { children: "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 28,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			metric: jsxDEV(a$2, { children: "Lazy loading effectiveness" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 36,
-				columnNumber: 15
-			}, this),
-			desc: jsxDEV(a$2, { children: "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 38,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			metric: jsxDEV(a$2, { children: "Locale switch speed" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 46,
-				columnNumber: 15
-			}, this),
-			desc: jsxDEV(a$2, { children: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 48,
-				columnNumber: 9
-			}, this)
-		}
-	];
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mt-12 mx-auto max-w-3xl",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-4 text-2xl font-bold text-foreground",
-			children: jsxDEV(a$2, { children: "What We Measure" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 60,
-				columnNumber: 9
-			}, this)
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 59,
-			columnNumber: 7
-		}, this), jsxDEV("ul", {
+			children: jsx(a$2, { children: "What We Measure" })
+		}), jsx("ul", {
 			className: "space-y-4",
-			children: metrics.map((m) => jsxDEV("li", {
+			children: [
+				{
+					metric: jsx(a$2, { children: "Bundle size impact" }),
+					desc: jsx(a$2, { children: "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks." })
+				},
+				{
+					metric: jsx(a$2, { children: "Rendering overhead" }),
+					desc: jsx(a$2, { children: "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree." })
+				},
+				{
+					metric: jsx(a$2, { children: "Hydration cost" }),
+					desc: jsx(a$2, { children: "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive." })
+				},
+				{
+					metric: jsx(a$2, { children: "Lazy loading effectiveness" }),
+					desc: jsx(a$2, { children: "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)." })
+				},
+				{
+					metric: jsx(a$2, { children: "Locale switch speed" }),
+					desc: jsx(a$2, { children: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM." })
+				}
+			].map((m) => jsxs("li", {
 				className: "rounded-md border border-border p-4",
-				children: [jsxDEV("span", {
+				children: [jsx("span", {
 					className: "block text-sm font-bold text-primary",
 					children: m.metric
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 68,
-					columnNumber: 13
-				}, this), jsxDEV("span", {
+				}), jsx("span", {
 					className: "block mt-1 text-sm text-muted-foreground",
 					children: m.desc
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 71,
-					columnNumber: 13
-				}, this)]
-			}, m.metric?.toString() || "", true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 64,
-				columnNumber: 11
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 62,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 58,
-		columnNumber: 5
-	}, this);
+				})]
+			}, m.metric?.toString() || ""))
+		})]
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6153,7 +6082,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6165,41 +6093,19 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment$1, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 33,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment$1, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsxDEV(BrowserGTProvider, {
+	return jsx(BrowserGTProvider, {
 		locale,
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/about/WhatWeMeasure.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(WhatWeMeasure, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(WhatWeMeasure, {}) });
 }
 export { Wrapped as default };

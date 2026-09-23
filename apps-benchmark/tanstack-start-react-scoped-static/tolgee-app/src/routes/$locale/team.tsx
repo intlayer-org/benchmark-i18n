@@ -1,4 +1,3 @@
-import { tolgee } from "../../i18n/tolgee";
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
@@ -6,13 +5,6 @@ const TeamHeader = lazy(() => import("../../components/pages/team/TeamHeader"));
 const TeamGrid = lazy(() => import("../../components/pages/team/TeamGrid"));
 
 export const Route = createFileRoute("/$locale/team")({
-  loader: async ({ params }) => {
-    await tolgee.loadRecords([
-      { language: params.locale, namespace: "team" },
-      { language: params.locale, namespace: "teamHeader" },
-      { language: params.locale, namespace: "teamGrid" },
-    ]);
-  },
   component: Team,
 });
 

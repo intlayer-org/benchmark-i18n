@@ -1,5 +1,5 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsxDEV as r } from "react/jsx-dev-runtime";
+import { jsx as r } from "react/jsx-runtime";
 var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -151,23 +151,15 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	ja: () => import("../locales/ja.ts"),
 	ko: () => import("../locales/ko.ts"),
 	ru: () => import("../locales/ru.ts")
-}), c = s.useScopedI18n, { I18nProviderClient: l, useChangeLocale: u, useCurrentLocale: d } = s, f = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/EmptyComponent.tsx", p = () => (c("header"), null);
-function m() {
+}), c = s.useScopedI18n, { I18nProviderClient: l, useChangeLocale: u, useCurrentLocale: d } = s, f = () => (c("header"), null);
+function p() {
 	let e = d();
 	return r(l, {
 		locale: e,
-		children: r(p, {}, void 0, !1, {
-			fileName: f,
-			lineNumber: 17,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: f,
-		lineNumber: 16,
-		columnNumber: 5
-	}, this);
+		children: r(f, {})
+	});
 }
-function h() {
+function m() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -181,50 +173,32 @@ function h() {
 		}
 	}
 }
-function g(e, t) {
+function h(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var _ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
-function v({ children: i, locale: a }) {
+function g({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		g("AppRoot", o);
+		h("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
-		h();
+		m();
 	}, []), r(l, {
 		locale: a,
 		children: i
-	}, void 0, !1, {
-		fileName: _,
-		lineNumber: 30,
-		columnNumber: 7
-	}, this);
+	});
 }
-var y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx", b = "en";
-function x({ children: e }) {
-	return r(v, {
-		locale: b,
+var _ = "en";
+function v({ children: e }) {
+	return r(g, {
+		locale: _,
 		children: e
-	}, void 0, !1, {
-		fileName: y,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var S = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/EmptyComponent.wrapper.tsx";
-function C() {
-	return r(x, { children: r(m, {}, void 0, !1, {
-		fileName: S,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: S,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function y() {
+	return r(v, { children: r(p, {}) });
 }
-export { C as default };
+export { y as default };

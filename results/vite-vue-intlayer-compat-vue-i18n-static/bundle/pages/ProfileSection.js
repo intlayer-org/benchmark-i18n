@@ -1,4 +1,4 @@
-import { computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderSlot, toDisplayString } from "vue";
+import { computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderSlot, toDisplayString, unref } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -975,24 +975,6 @@ var useI18n = ((options) => {
 		n: (value, formatOrOptions) => formatNumberValue(value, formatOrOptions, currentLocale.value, numberFormats)
 	};
 });
-var ProfileSection_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "ProfileSection",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		const { t } = useI18n();
-		const __returned__ = { t };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "rounded-lg border border-border bg-card p-6" };
 var _hoisted_2 = { class: "mb-4 text-lg font-semibold text-foreground" };
 var _hoisted_3 = { class: "space-y-4" };
@@ -1004,41 +986,38 @@ var _hoisted_5 = {
 	for: "email",
 	class: "mb-1 block text-sm font-medium text-foreground"
 };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString($setup.t("settings.profile.title")), 1), createElementVNode("div", _hoisted_3, [createElementVNode("div", null, [createElementVNode("label", _hoisted_4, toDisplayString($setup.t("settings.profile.displayName")), 1), _cache[0] || (_cache[0] = createElementVNode("input", {
-		id: "display-name",
-		value: "John Developer",
-		class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-	}, null, -1))]), createElementVNode("div", null, [createElementVNode("label", _hoisted_5, toDisplayString($setup.t("settings.profile.email")), 1), _cache[1] || (_cache[1] = createElementVNode("input", {
-		id: "email",
-		value: "john@example.com",
-		class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-	}, null, -1))])])]);
-}
-var ProfileSection_default = _plugin_vue_export_helper_default(ProfileSection_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/settings/ProfileSection.vue"]]);
+var ProfileSection_default = defineComponent({
+	__name: "ProfileSection",
+	setup(__props) {
+		const { t } = useI18n();
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString(unref(t)("settings.profile.title")), 1), createElementVNode("div", _hoisted_3, [createElementVNode("div", null, [createElementVNode("label", _hoisted_4, toDisplayString(unref(t)("settings.profile.displayName")), 1), _cache[0] || (_cache[0] = createElementVNode("input", {
+				id: "display-name",
+				value: "John Developer",
+				class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+			}, null, -1))]), createElementVNode("div", null, [createElementVNode("label", _hoisted_5, toDisplayString(unref(t)("settings.profile.email")), 1), _cache[1] || (_cache[1] = createElementVNode("input", {
+				id: "email",
+				value: "john@example.com",
+				class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
+			}, null, -1))])])]);
+		};
+	}
+});
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var ProfileSection_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(ProfileSection_default) });
 } };

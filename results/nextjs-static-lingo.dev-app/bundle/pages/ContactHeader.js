@@ -1,58 +1,31 @@
 import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
-import { jsx } from "react/jsx-runtime";
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/MockBanner.tsx";
-var MockBanner = () => jsxDEV("div", {
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+var MockBanner = () => jsx("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 	children: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
-}, void 0, false, {
-	fileName: _jsxFileName$3,
-	lineNumber: 2,
-	columnNumber: 3
-}, void 0);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/contact/ContactHeader.tsx";
+});
 function ContactHeader() {
-	return jsxDEV(Fragment, { children: [
-		jsxDEV(MockBanner, {}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 6,
-			columnNumber: 7
-		}, this),
-		jsxDEV("h1", {
+	return jsxs(Fragment, { children: [
+		jsx(MockBanner, {}),
+		jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: "Get in Touch"
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 7,
-			columnNumber: 7
-		}, this),
-		jsxDEV("p", {
+		}),
+		jsxs("p", {
 			className: "mb-8 text-muted-foreground",
 			children: [
 				"Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at",
 				" ",
-				jsxDEV("a", {
+				jsx("a", {
 					href: "mailto:contact@intlayer.org",
 					className: "text-primary hover:underline",
 					children: "contact@intlayer.org"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 11,
-					columnNumber: 9
-				}, this),
+				}),
 				"."
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 8,
-			columnNumber: 7
-		}, this)
-	] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 5,
-		columnNumber: 5
-	}, this);
+		})
+	] });
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -286,28 +259,14 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(LingoProvider, {
+	return jsx(LingoProvider, {
 		initialLocale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/contact/ContactHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ContactHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ContactHeader, {}) });
 }
 export { Wrapped as default };
 import { t as logger } from "./logger-CWLzb-Ic.js";

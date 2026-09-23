@@ -2,10 +2,10 @@
   "meta": {
     "framework": "vite-vue",
     "frameworkLabel": "Vite + Vue",
-    "generatedAt": "2026-09-21T20:26:13.883Z",
+    "generatedAt": "2026-09-23T22:09:16.252Z",
     "counts": {
-      "totalLibs": 5,
-      "totalApps": 6
+      "totalLibs": 6,
+      "totalApps": 8
     }
   },
   "libs": {
@@ -14,9 +14,9 @@
         "version": "9.5.1",
         "libSize": {
           "status": "ok",
-          "gzip": 8102,
-          "minified": 23733,
-          "unminified": 41132
+          "gzip": 7846,
+          "minified": 22923,
+          "unminified": 39818
         }
       },
       "static": {
@@ -34,7 +34,15 @@
                 "min": 47599,
                 "max": 49476,
                 "raw": [
-                  48300, 47827, 47734, 48342, 48041, 47599, 48093, 48067, 49476,
+                  48300,
+                  47827,
+                  47734,
+                  48342,
+                  48041,
+                  47599,
+                  48093,
+                  48067,
+                  49476,
                   48100
                 ]
               },
@@ -42,19 +50,52 @@
                 "avg": 10,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 100]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  100
+                ]
               },
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pages": [
                 {
@@ -195,7 +236,15 @@
                 "min": 47599,
                 "max": 49476,
                 "raw": [
-                  48300, 47827, 47734, 48342, 48041, 47599, 48093, 48067, 49476,
+                  48300,
+                  47827,
+                  47734,
+                  48342,
+                  48041,
+                  47599,
+                  48093,
+                  48067,
+                  49476,
                   48100
                 ]
               },
@@ -203,19 +252,52 @@
                 "avg": 20,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pages": [
                 {
@@ -360,274 +442,274 @@
         },
         "components": {
           "status": "ok",
-          "gzipMin": 7623,
-          "gzipAvg": 8643.181818181818,
-          "gzipMax": 12037,
+          "gzipMin": 7324,
+          "gzipAvg": 8356.272727272728,
+          "gzipMax": 11463,
           "count": 33,
           "items": [
             {
               "name": "Layout.vue",
               "category": "Shared",
-              "minifiedGzip": 12037,
-              "minified": 36879,
-              "unminified": 59398,
-              "unminifiedGzip": 15241
+              "minifiedGzip": 11463,
+              "minified": 34108,
+              "unminified": 55342,
+              "unminifiedGzip": 14658
             },
             {
               "name": "Header.vue",
               "category": "Shared",
-              "minifiedGzip": 11106,
-              "minified": 32765,
-              "unminified": 53291,
-              "unminifiedGzip": 14246
+              "minifiedGzip": 10606,
+              "minified": 30747,
+              "unminified": 50423,
+              "unminifiedGzip": 13750
             },
             {
               "name": "UnderstandingImpact.vue",
               "category": "pages",
-              "minifiedGzip": 8710,
-              "minified": 26422,
-              "unminified": 44942,
-              "unminifiedGzip": 11692
+              "minifiedGzip": 8455,
+              "minified": 25683,
+              "unminified": 43680,
+              "unminifiedGzip": 11354
             },
             {
               "name": "ContactForm.vue",
               "category": "pages",
-              "minifiedGzip": 8825,
-              "minified": 26231,
-              "unminified": 44285,
-              "unminifiedGzip": 11800
+              "minifiedGzip": 8547,
+              "minified": 25466,
+              "unminified": 43044,
+              "unminifiedGzip": 11471
             },
             {
               "name": "PreferencesSection.vue",
               "category": "pages",
-              "minifiedGzip": 8793,
-              "minified": 26178,
-              "unminified": 44545,
-              "unminifiedGzip": 11764
+              "minifiedGzip": 8549,
+              "minified": 25431,
+              "unminified": 43280,
+              "unminifiedGzip": 11421
             },
             {
               "name": "ResultsTable.vue",
               "category": "pages",
-              "minifiedGzip": 8802,
-              "minified": 26084,
-              "unminified": 44253,
-              "unminifiedGzip": 11780
+              "minifiedGzip": 8543,
+              "minified": 25293,
+              "unminified": 42975,
+              "unminifiedGzip": 11442
             },
             {
               "name": "OpenPositions.vue",
               "category": "pages",
-              "minifiedGzip": 8801,
-              "minified": 26033,
-              "unminified": 43966,
-              "unminifiedGzip": 11755
+              "minifiedGzip": 8525,
+              "minified": 25218,
+              "unminified": 42661,
+              "unminifiedGzip": 11411
             },
             {
               "name": "Footer.vue",
               "category": "Shared",
-              "minifiedGzip": 8870,
-              "minified": 25873,
-              "unminified": 44058,
-              "unminifiedGzip": 11844
+              "minifiedGzip": 8599,
+              "minified": 25103,
+              "unminified": 42800,
+              "unminifiedGzip": 11517
             },
             {
               "name": "ThemeToggle.vue",
               "category": "Shared",
-              "minifiedGzip": 8787,
-              "minified": 25791,
-              "unminified": 43761,
-              "unminifiedGzip": 11796
+              "minifiedGzip": 8461,
+              "minified": 24828,
+              "unminified": 42269,
+              "unminifiedGzip": 11413
             },
             {
               "name": "WhatWeMeasure.vue",
               "category": "pages",
-              "minifiedGzip": 8644,
-              "minified": 25424,
-              "unminified": 43174,
-              "unminifiedGzip": 11609
+              "minifiedGzip": 8391,
+              "minified": 24620,
+              "unminified": 41876,
+              "unminifiedGzip": 11272
             },
             {
               "name": "WhyItMatters.vue",
               "category": "pages",
-              "minifiedGzip": 8549,
-              "minified": 25372,
-              "unminified": 43387,
-              "unminifiedGzip": 11521
+              "minifiedGzip": 8290,
+              "minified": 24615,
+              "unminified": 42112,
+              "unminifiedGzip": 11185
             },
             {
               "name": "Hero.vue",
               "category": "pages",
-              "minifiedGzip": 8581,
-              "minified": 24955,
-              "unminified": 42637,
-              "unminifiedGzip": 11533
-            },
-            {
-              "name": "ContactHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 8507,
-              "minified": 24927,
-              "unminified": 42886,
-              "unminifiedGzip": 11458
+              "minifiedGzip": 8318,
+              "minified": 24203,
+              "unminified": 41386,
+              "unminifiedGzip": 11198
             },
             {
               "name": "BlogList.vue",
               "category": "pages",
-              "minifiedGzip": 8643,
-              "minified": 24922,
-              "unminified": 42689,
-              "unminifiedGzip": 11588
+              "minifiedGzip": 8359,
+              "minified": 24129,
+              "unminified": 41417,
+              "unminifiedGzip": 11247
             },
             {
               "name": "AboutGrid.vue",
               "category": "pages",
-              "minifiedGzip": 8466,
-              "minified": 24856,
-              "unminified": 42605,
-              "unminifiedGzip": 11431
+              "minifiedGzip": 8209,
+              "minified": 24094,
+              "unminified": 41330,
+              "unminifiedGzip": 11096
             },
             {
               "name": "ProfileSection.vue",
               "category": "pages",
-              "minifiedGzip": 8482,
-              "minified": 24836,
-              "unminified": 42539,
-              "unminifiedGzip": 11438
+              "minifiedGzip": 8232,
+              "minified": 24069,
+              "unminified": 41262,
+              "unminifiedGzip": 11101
             },
             {
               "name": "ApiAccessSection.vue",
               "category": "pages",
-              "minifiedGzip": 8512,
-              "minified": 24764,
-              "unminified": 42483,
-              "unminifiedGzip": 11472
+              "minifiedGzip": 8260,
+              "minified": 23997,
+              "unminified": 41202,
+              "unminifiedGzip": 11133
             },
             {
-              "name": "PricingHeader.vue",
+              "name": "ContactHeader.vue",
               "category": "pages",
-              "minifiedGzip": 8439,
-              "minified": 24733,
-              "unminified": 42543,
-              "unminifiedGzip": 11379
-            },
-            {
-              "name": "ProductsHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 8403,
-              "minified": 24729,
-              "unminified": 42600,
-              "unminifiedGzip": 11343
-            },
-            {
-              "name": "SettingsHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 8399,
-              "minified": 24728,
-              "unminified": 42599,
-              "unminifiedGzip": 11341
-            },
-            {
-              "name": "CareersHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 8398,
-              "minified": 24723,
-              "unminified": 42588,
-              "unminifiedGzip": 11341
-            },
-            {
-              "name": "BlogHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 8399,
-              "minified": 24709,
-              "unminified": 42556,
-              "unminifiedGzip": 11339
-            },
-            {
-              "name": "TeamHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 8400,
-              "minified": 24709,
-              "unminified": 42556,
-              "unminifiedGzip": 11339
-            },
-            {
-              "name": "FAQHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 8399,
-              "minified": 24704,
-              "unminified": 42545,
-              "unminifiedGzip": 11340
+              "minifiedGzip": 8208,
+              "minified": 23788,
+              "unminified": 41009,
+              "unminifiedGzip": 11073
             },
             {
               "name": "CareersBenefits.vue",
               "category": "pages",
-              "minifiedGzip": 8415,
-              "minified": 24581,
-              "unminified": 42159,
-              "unminifiedGzip": 11375
+              "minifiedGzip": 8159,
+              "minified": 23773,
+              "unminified": 40855,
+              "unminifiedGzip": 11032
             },
             {
               "name": "AboutHeader.vue",
               "category": "pages",
-              "minifiedGzip": 8376,
-              "minified": 24457,
-              "unminified": 42011,
-              "unminifiedGzip": 11333
+              "minifiedGzip": 8123,
+              "minified": 23690,
+              "unminified": 40730,
+              "unminifiedGzip": 10999
             },
             {
               "name": "FAQList.vue",
               "category": "pages",
-              "minifiedGzip": 8481,
-              "minified": 24441,
-              "unminified": 41996,
-              "unminifiedGzip": 11435
+              "minifiedGzip": 8206,
+              "minified": 23638,
+              "unminified": 40689,
+              "unminifiedGzip": 11074
+            },
+            {
+              "name": "PricingHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 8146,
+              "minified": 23591,
+              "unminified": 40661,
+              "unminifiedGzip": 11000
+            },
+            {
+              "name": "ProductsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 8121,
+              "minified": 23584,
+              "unminified": 40711,
+              "unminifiedGzip": 10958
+            },
+            {
+              "name": "SettingsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 8118,
+              "minified": 23583,
+              "unminified": 40710,
+              "unminifiedGzip": 10956
+            },
+            {
+              "name": "CareersHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 8115,
+              "minified": 23580,
+              "unminified": 40703,
+              "unminifiedGzip": 10955
+            },
+            {
+              "name": "BlogHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 8118,
+              "minified": 23572,
+              "unminified": 40683,
+              "unminifiedGzip": 10955
+            },
+            {
+              "name": "TeamHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 8114,
+              "minified": 23572,
+              "unminified": 40683,
+              "unminifiedGzip": 10954
+            },
+            {
+              "name": "FAQHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 8118,
+              "minified": 23569,
+              "unminified": 40676,
+              "unminifiedGzip": 10955
             },
             {
               "name": "SettingsFooter.vue",
               "category": "pages",
-              "minifiedGzip": 8347,
-              "minified": 24289,
-              "unminified": 41795,
-              "unminifiedGzip": 11291
+              "minifiedGzip": 8095,
+              "minified": 23513,
+              "unminified": 40502,
+              "unminifiedGzip": 10952
             },
             {
               "name": "MockBanner.vue",
               "category": "Shared",
-              "minifiedGzip": 8213,
-              "minified": 23927,
-              "unminified": 41322,
-              "unminifiedGzip": 11158
+              "minifiedGzip": 7963,
+              "minified": 23168,
+              "unminified": 40056,
+              "unminifiedGzip": 10825
             },
             {
               "name": "PricingTiers.vue",
               "category": "pages",
-              "minifiedGzip": 7946,
-              "minified": 22591,
-              "unminified": 38899,
-              "unminifiedGzip": 10989
+              "minifiedGzip": 7674,
+              "minified": 21813,
+              "unminified": 37647,
+              "unminifiedGzip": 10457
             },
             {
               "name": "TeamGrid.vue",
               "category": "pages",
-              "minifiedGzip": 7961,
-              "minified": 22470,
-              "unminified": 38550,
-              "unminifiedGzip": 10989
+              "minifiedGzip": 7696,
+              "minified": 21630,
+              "unminified": 37251,
+              "unminifiedGzip": 10451
             },
             {
               "name": "ProductsGrid.vue",
               "category": "pages",
-              "minifiedGzip": 7911,
-              "minified": 22420,
-              "unminified": 38540,
-              "unminifiedGzip": 10956
+              "minifiedGzip": 7652,
+              "minified": 21628,
+              "unminified": 37267,
+              "unminifiedGzip": 10409
             },
             {
               "name": "LocaleSwitcher.vue",
               "category": "Shared",
-              "minifiedGzip": 7623,
-              "minified": 21796,
-              "unminified": 38037,
-              "unminifiedGzip": 10688
+              "minifiedGzip": 7324,
+              "minified": 20851,
+              "unminified": 36606,
+              "unminifiedGzip": 10124
             }
           ]
         },
@@ -640,15 +722,24 @@
                 "min": 1.100000023841858,
                 "max": 3.5,
                 "raw": [
-                  3.5, 1.2999999821186066, 1.2000000178813934,
-                  1.100000023841858, 1.2000000178813934
+                  3.5,
+                  1.2999999821186066,
+                  1.2000000178813934,
+                  1.100000023841858,
+                  1.2000000178813934
                 ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             },
             "fr": {
@@ -657,15 +748,24 @@
                 "min": 1.0999999940395355,
                 "max": 2.2000000178813934,
                 "raw": [
-                  2.2000000178813934, 1.2000000178813934, 1.4000000059604645,
-                  1.0999999940395355, 1.199999988079071
+                  2.2000000178813934,
+                  1.2000000178813934,
+                  1.4000000059604645,
+                  1.0999999940395355,
+                  1.199999988079071
                 ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             }
           },
@@ -681,8 +781,11 @@
                 "min": 8.700000017881393,
                 "max": 10.899999976158142,
                 "raw": [
-                  10.899999976158142, 9.900000005960464, 9.300000011920929,
-                  8.700000017881393, 8.900000005960464
+                  10.899999976158142,
+                  9.900000005960464,
+                  9.300000011920929,
+                  8.700000017881393,
+                  8.900000005960464
                 ]
               },
               "hydration": {
@@ -690,7 +793,10 @@
                 "min": 3.199999988079071,
                 "max": 4.200000017881393,
                 "raw": [
-                  4, 4.200000017881393, 3.2999999821186066, 3.2999999821186066,
+                  4,
+                  4.200000017881393,
+                  3.2999999821186066,
+                  3.2999999821186066,
                   3.199999988079071
                 ]
               },
@@ -699,8 +805,11 @@
                 "min": 1.600000023841858,
                 "max": 2.699999988079071,
                 "raw": [
-                  1.699999988079071, 2.699999988079071, 1.7000000178813934,
-                  1.699999988079071, 1.600000023841858
+                  1.699999988079071,
+                  2.699999988079071,
+                  1.7000000178813934,
+                  1.699999988079071,
+                  1.600000023841858
                 ]
               },
               "hydrationInstrumented": true,
@@ -712,7 +821,11 @@
                 "min": 8.600000023841858,
                 "max": 10,
                 "raw": [
-                  9.199999988079071, 10, 8.799999982118607, 8.600000023841858, 9
+                  9.199999988079071,
+                  10,
+                  8.799999982118607,
+                  8.600000023841858,
+                  9
                 ]
               },
               "hydration": {
@@ -720,8 +833,11 @@
                 "min": 3.2999999821186066,
                 "max": 4.199999988079071,
                 "raw": [
-                  3.2999999821186066, 4.199999988079071, 3.300000011920929,
-                  3.2999999821186066, 3.300000011920929
+                  3.2999999821186066,
+                  4.199999988079071,
+                  3.300000011920929,
+                  3.2999999821186066,
+                  3.300000011920929
                 ]
               },
               "reactMount": {
@@ -729,8 +845,11 @@
                 "min": 1.5,
                 "max": 2.399999976158142,
                 "raw": [
-                  1.7000000178813934, 2.399999976158142, 1.699999988079071,
-                  1.800000011920929, 1.5
+                  1.7000000178813934,
+                  2.399999976158142,
+                  1.699999988079071,
+                  1.800000011920929,
+                  1.5
                 ]
               },
               "hydrationInstrumented": true,
@@ -771,7 +890,15 @@
                 "min": 41731,
                 "max": 43222,
                 "raw": [
-                  43222, 42433, 42032, 42473, 41731, 42241, 41871, 41864, 43125,
+                  43222,
+                  42433,
+                  42032,
+                  42473,
+                  41731,
+                  42241,
+                  41871,
+                  41864,
+                  43125,
                   41924
                 ]
               },
@@ -779,19 +906,52 @@
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pageLeakPct": {
                 "avg": 70,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 0, 100, 100, 100, 0, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  0,
+                  100,
+                  100,
+                  100,
+                  0,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 70,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 0, 100, 100, 100, 0, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  0,
+                  100,
+                  100,
+                  100,
+                  0,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "pages": [
                 {
@@ -932,7 +1092,15 @@
                 "min": 41731,
                 "max": 43222,
                 "raw": [
-                  43222, 42433, 42032, 42473, 41731, 42241, 41871, 41864, 43125,
+                  43222,
+                  42433,
+                  42032,
+                  42473,
+                  41731,
+                  42241,
+                  41871,
+                  41864,
+                  43125,
                   41924
                 ]
               },
@@ -940,19 +1108,52 @@
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pages": [
                 {
@@ -1097,274 +1298,274 @@
         },
         "components": {
           "status": "ok",
-          "gzipMin": 445,
-          "gzipAvg": 1152.2121212121212,
-          "gzipMax": 4502,
+          "gzipMin": 368,
+          "gzipAvg": 943.6969696969697,
+          "gzipMax": 3925,
           "count": 33,
           "items": [
             {
               "name": "Layout.vue",
               "category": "Shared",
-              "minifiedGzip": 4502,
-              "minified": 13205,
-              "unminified": 18460,
-              "unminifiedGzip": 4893
+              "minifiedGzip": 3925,
+              "minified": 10948,
+              "unminified": 15116,
+              "unminifiedGzip": 4322
             },
             {
               "name": "Header.vue",
               "category": "Shared",
-              "minifiedGzip": 3437,
-              "minified": 9140,
-              "unminified": 12620,
-              "unminifiedGzip": 3761
+              "minifiedGzip": 2959,
+              "minified": 7569,
+              "unminified": 10393,
+              "unminifiedGzip": 3269
             },
             {
               "name": "UnderstandingImpact.vue",
               "category": "pages",
-              "minifiedGzip": 1441,
-              "minified": 3148,
-              "unminified": 3419,
-              "unminifiedGzip": 1517
+              "minifiedGzip": 1360,
+              "minified": 3003,
+              "unminified": 3274,
+              "unminifiedGzip": 1439
             },
             {
               "name": "FAQList.vue",
               "category": "pages",
-              "minifiedGzip": 1610,
-              "minified": 3081,
-              "unminified": 3642,
-              "unminifiedGzip": 1741
+              "minifiedGzip": 1370,
+              "minified": 2678,
+              "unminified": 2958,
+              "unminifiedGzip": 1421
             },
             {
               "name": "BlogList.vue",
               "category": "pages",
-              "minifiedGzip": 1435,
-              "minified": 2997,
-              "unminified": 3750,
-              "unminifiedGzip": 1580
+              "minifiedGzip": 1187,
+              "minified": 2598,
+              "unminified": 3078,
+              "unminifiedGzip": 1254
             },
             {
               "name": "OpenPositions.vue",
               "category": "pages",
-              "minifiedGzip": 1339,
-              "minified": 2966,
-              "unminified": 3871,
-              "unminifiedGzip": 1485
+              "minifiedGzip": 1089,
+              "minified": 2556,
+              "unminified": 3187,
+              "unminifiedGzip": 1164
             },
             {
               "name": "Footer.vue",
               "category": "Shared",
-              "minifiedGzip": 1293,
-              "minified": 2791,
-              "unminified": 3863,
-              "unminifiedGzip": 1469
-            },
-            {
-              "name": "ThemeToggle.vue",
-              "category": "Shared",
-              "minifiedGzip": 1157,
-              "minified": 2633,
-              "unminified": 3612,
-              "unminifiedGzip": 1348
+              "minifiedGzip": 1056,
+              "minified": 2384,
+              "unminified": 3179,
+              "unminifiedGzip": 1154
             },
             {
               "name": "PricingTiers.vue",
               "category": "pages",
-              "minifiedGzip": 1284,
-              "minified": 2615,
-              "unminified": 3538,
-              "unminifiedGzip": 1429
-            },
-            {
-              "name": "TeamGrid.vue",
-              "category": "pages",
-              "minifiedGzip": 1295,
-              "minified": 2501,
-              "unminified": 3197,
-              "unminifiedGzip": 1441
-            },
-            {
-              "name": "ProductsGrid.vue",
-              "category": "pages",
-              "minifiedGzip": 1240,
-              "minified": 2451,
-              "unminified": 3179,
-              "unminifiedGzip": 1381
-            },
-            {
-              "name": "WhatWeMeasure.vue",
-              "category": "pages",
-              "minifiedGzip": 1262,
-              "minified": 2328,
-              "unminified": 2987,
-              "unminifiedGzip": 1400
+              "minifiedGzip": 1037,
+              "minified": 2212,
+              "unminified": 2861,
+              "unminifiedGzip": 1105
             },
             {
               "name": "ContactForm.vue",
               "category": "pages",
-              "minifiedGzip": 856,
-              "minified": 2257,
-              "unminified": 2515,
-              "unminifiedGzip": 920
-            },
-            {
-              "name": "ResultsTable.vue",
-              "category": "pages",
-              "minifiedGzip": 954,
-              "minified": 2219,
-              "unminified": 3139,
-              "unminifiedGzip": 1102
+              "minifiedGzip": 772,
+              "minified": 2117,
+              "unminified": 2375,
+              "unminifiedGzip": 842
             },
             {
               "name": "WhyItMatters.vue",
               "category": "pages",
-              "minifiedGzip": 1083,
-              "minified": 2194,
-              "unminified": 2451,
-              "unminifiedGzip": 1160
+              "minifiedGzip": 996,
+              "minified": 2056,
+              "unminified": 2313,
+              "unminifiedGzip": 1077
+            },
+            {
+              "name": "ThemeToggle.vue",
+              "category": "Shared",
+              "minifiedGzip": 850,
+              "minified": 2036,
+              "unminified": 2694,
+              "unminifiedGzip": 978
+            },
+            {
+              "name": "TeamGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 1036,
+              "minified": 2035,
+              "unminified": 2473,
+              "unminifiedGzip": 1109
+            },
+            {
+              "name": "ProductsGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 990,
+              "minified": 2033,
+              "unminified": 2481,
+              "unminifiedGzip": 1055
+            },
+            {
+              "name": "WhatWeMeasure.vue",
+              "category": "pages",
+              "minifiedGzip": 1010,
+              "minified": 1911,
+              "unminified": 2283,
+              "unminifiedGzip": 1075
             },
             {
               "name": "PreferencesSection.vue",
               "category": "pages",
-              "minifiedGzip": 888,
-              "minified": 2030,
-              "unminified": 2299,
-              "unminifiedGzip": 960
+              "minifiedGzip": 805,
+              "minified": 1882,
+              "unminified": 2151,
+              "unminifiedGzip": 880
             },
             {
-              "name": "LocaleSwitcher.vue",
-              "category": "Shared",
-              "minifiedGzip": 1024,
-              "minified": 1837,
-              "unminified": 2682,
-              "unminifiedGzip": 1195
-            },
-            {
-              "name": "Hero.vue",
+              "name": "ResultsTable.vue",
               "category": "pages",
-              "minifiedGzip": 941,
-              "minified": 1774,
-              "unminified": 2282,
-              "unminifiedGzip": 1085
-            },
-            {
-              "name": "ContactHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 857,
-              "minified": 1589,
-              "unminified": 2270,
-              "unminifiedGzip": 998
+              "minifiedGzip": 701,
+              "minified": 1814,
+              "unminified": 2459,
+              "unminifiedGzip": 777
             },
             {
               "name": "AboutGrid.vue",
               "category": "pages",
-              "minifiedGzip": 890,
-              "minified": 1582,
-              "unminified": 1833,
-              "unminifiedGzip": 966
+              "minifiedGzip": 807,
+              "minified": 1446,
+              "unminified": 1697,
+              "unminifiedGzip": 888
             },
             {
-              "name": "CareersHeader.vue",
+              "name": "Hero.vue",
               "category": "pages",
-              "minifiedGzip": 812,
-              "minified": 1479,
-              "unminified": 2120,
-              "unminifiedGzip": 957
+              "minifiedGzip": 716,
+              "minified": 1371,
+              "unminified": 1594,
+              "unminifiedGzip": 774
             },
             {
-              "name": "AboutHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 809,
-              "minified": 1454,
-              "unminified": 2006,
-              "unminifiedGzip": 947
+              "name": "LocaleSwitcher.vue",
+              "category": "Shared",
+              "minifiedGzip": 743,
+              "minified": 1264,
+              "unminified": 1826,
+              "unminifiedGzip": 854
             },
             {
-              "name": "TeamHeader.vue",
+              "name": "ContactHeader.vue",
               "category": "pages",
-              "minifiedGzip": 788,
-              "minified": 1431,
-              "unminified": 2060,
-              "unminifiedGzip": 931
-            },
-            {
-              "name": "PricingHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 774,
-              "minified": 1422,
-              "unminified": 2062,
-              "unminifiedGzip": 914
-            },
-            {
-              "name": "ProductsHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 765,
-              "minified": 1404,
-              "unminified": 2049,
-              "unminifiedGzip": 907
-            },
-            {
-              "name": "FAQHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 769,
-              "minified": 1390,
-              "unminified": 2015,
-              "unminifiedGzip": 914
-            },
-            {
-              "name": "SettingsHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 755,
-              "minified": 1385,
-              "unminified": 2030,
-              "unminifiedGzip": 898
-            },
-            {
-              "name": "BlogHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 760,
-              "minified": 1378,
-              "unminified": 2007,
-              "unminifiedGzip": 903
-            },
-            {
-              "name": "CareersBenefits.vue",
-              "category": "pages",
-              "minifiedGzip": 772,
-              "minified": 1324,
-              "unminified": 1917,
-              "unminifiedGzip": 898
+              "minifiedGzip": 664,
+              "minified": 1124,
+              "unminified": 1578,
+              "unminifiedGzip": 766
             },
             {
               "name": "ProfileSection.vue",
               "category": "pages",
-              "minifiedGzip": 610,
-              "minified": 1235,
-              "unminified": 1496,
-              "unminifiedGzip": 684
+              "minifiedGzip": 522,
+              "minified": 1091,
+              "unminified": 1352,
+              "unminifiedGzip": 602
+            },
+            {
+              "name": "AboutHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 577,
+              "minified": 1043,
+              "unminified": 1296,
+              "unminifiedGzip": 627
             },
             {
               "name": "ApiAccessSection.vue",
               "category": "pages",
-              "minifiedGzip": 666,
-              "minified": 1184,
-              "unminified": 1449,
-              "unminifiedGzip": 736
+              "minifiedGzip": 579,
+              "minified": 1038,
+              "unminified": 1303,
+              "unminifiedGzip": 658
+            },
+            {
+              "name": "CareersHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 621,
+              "minified": 1007,
+              "unminified": 1414,
+              "unminifiedGzip": 721
+            },
+            {
+              "name": "TeamHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 598,
+              "minified": 965,
+              "unminified": 1366,
+              "unminifiedGzip": 691
+            },
+            {
+              "name": "PricingHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 581,
+              "minified": 946,
+              "unminified": 1348,
+              "unminifiedGzip": 673
+            },
+            {
+              "name": "ProductsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 574,
+              "minified": 930,
+              "unminified": 1339,
+              "unminifiedGzip": 670
+            },
+            {
+              "name": "FAQHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 578,
+              "minified": 926,
+              "unminified": 1325,
+              "unminifiedGzip": 677
+            },
+            {
+              "name": "BlogHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 568,
+              "minified": 912,
+              "unminified": 1313,
+              "unminifiedGzip": 666
+            },
+            {
+              "name": "SettingsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 564,
+              "minified": 911,
+              "unminified": 1320,
+              "unminifiedGzip": 661
+            },
+            {
+              "name": "CareersBenefits.vue",
+              "category": "pages",
+              "minifiedGzip": 521,
+              "minified": 901,
+              "unminified": 1205,
+              "unminifiedGzip": 572
             },
             {
               "name": "SettingsFooter.vue",
               "category": "pages",
-              "minifiedGzip": 510,
-              "minified": 852,
-              "unminified": 1131,
-              "unminifiedGzip": 581
+              "minifiedGzip": 418,
+              "minified": 708,
+              "unminified": 987,
+              "unminifiedGzip": 501
             },
             {
               "name": "MockBanner.vue",
               "category": "Shared",
-              "minifiedGzip": 445,
-              "minified": 633,
-              "unminified": 857,
-              "unminifiedGzip": 518
+              "minifiedGzip": 368,
+              "minified": 508,
+              "unminified": 732,
+              "unminifiedGzip": 448
             }
           ]
         },
@@ -1377,15 +1578,24 @@
                 "min": 1.0999999940395355,
                 "max": 5.399999998509884,
                 "raw": [
-                  5.399999998509884, 1.3000000044703484, 1.3999999985098839,
-                  1.0999999940395355, 1.2999999970197678
+                  5.399999998509884,
+                  1.3000000044703484,
+                  1.3999999985098839,
+                  1.0999999940395355,
+                  1.2999999970197678
                 ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             },
             "fr": {
@@ -1394,15 +1604,24 @@
                 "min": 1.1000000014901161,
                 "max": 2.5,
                 "raw": [
-                  2.5, 1.3000000044703484, 1.2999999970197678,
-                  1.3999999985098839, 1.1000000014901161
+                  2.5,
+                  1.3000000044703484,
+                  1.2999999970197678,
+                  1.3999999985098839,
+                  1.1000000014901161
                 ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             }
           },
@@ -1418,7 +1637,10 @@
                 "min": 10.400000005960464,
                 "max": 12.5,
                 "raw": [
-                  12.5, 10.5, 10.400000005960464, 10.799999997019768,
+                  12.5,
+                  10.5,
+                  10.400000005960464,
+                  10.799999997019768,
                   11.399999998509884
                 ]
               },
@@ -1427,7 +1649,10 @@
                 "min": 3.2999999970197678,
                 "max": 4.299999997019768,
                 "raw": [
-                  3.7999999970197678, 3.2999999970197678, 3.9000000059604645, 4,
+                  3.7999999970197678,
+                  3.2999999970197678,
+                  3.9000000059604645,
+                  4,
                   4.299999997019768
                 ]
               },
@@ -1436,8 +1661,11 @@
                 "min": 1.5,
                 "max": 1.8999999985098839,
                 "raw": [
-                  1.5, 1.7999999970197678, 1.5999999940395355,
-                  1.6999999955296516, 1.8999999985098839
+                  1.5,
+                  1.7999999970197678,
+                  1.5999999940395355,
+                  1.6999999955296516,
+                  1.8999999985098839
                 ]
               },
               "hydrationInstrumented": true,
@@ -1449,8 +1677,11 @@
                 "min": 9.800000004470348,
                 "max": 11.899999998509884,
                 "raw": [
-                  11.899999998509884, 10.700000002980232, 9.800000004470348,
-                  10.399999998509884, 9.899999998509884
+                  11.899999998509884,
+                  10.700000002980232,
+                  9.800000004470348,
+                  10.399999998509884,
+                  9.899999998509884
                 ]
               },
               "hydration": {
@@ -1458,8 +1689,11 @@
                 "min": 3.100000001490116,
                 "max": 3.7999999970197678,
                 "raw": [
-                  3.7999999970197678, 3.5, 3.100000001490116,
-                  3.2000000029802322, 3.2999999970197678
+                  3.7999999970197678,
+                  3.5,
+                  3.100000001490116,
+                  3.2000000029802322,
+                  3.2999999970197678
                 ]
               },
               "reactMount": {
@@ -1467,8 +1701,11 @@
                 "min": 1.5,
                 "max": 1.8000000044703484,
                 "raw": [
-                  1.5999999940395355, 1.7999999970197678, 1.5,
-                  1.8000000044703484, 1.6999999955296516
+                  1.5999999940395355,
+                  1.7999999970197678,
+                  1.5,
+                  1.8000000044703484,
+                  1.6999999955296516
                 ]
               },
               "hydrationInstrumented": true,
@@ -1489,9 +1726,9 @@
         "version": "3.8.2",
         "libSize": {
           "status": "ok",
-          "gzip": 30436,
-          "minified": 101429,
-          "unminified": 145278
+          "gzip": 30226,
+          "minified": 100707,
+          "unminified": 144251
         }
       },
       "static": {
@@ -1509,8 +1746,16 @@
                 "min": 175109,
                 "max": 177687,
                 "raw": [
-                  176207, 175708, 175617, 176340, 175932, 175109, 175871,
-                  175656, 177687, 175218
+                  176207,
+                  175708,
+                  175617,
+                  176340,
+                  175932,
+                  175109,
+                  175871,
+                  175656,
+                  177687,
+                  175218
                 ]
               },
               "localeLeakPct": {
@@ -1518,9 +1763,15 @@
                 "min": 51.35135135135135,
                 "max": 51.35135135135135,
                 "raw": [
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
                   51.35135135135135
                 ]
               },
@@ -1528,13 +1779,35 @@
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "pages": [
                 {
@@ -1675,8 +1948,16 @@
                 "min": 175109,
                 "max": 177687,
                 "raw": [
-                  176207, 175708, 175617, 176340, 175932, 175109, 175871,
-                  175656, 177687, 175218
+                  176207,
+                  175708,
+                  175617,
+                  176340,
+                  175932,
+                  175109,
+                  175871,
+                  175656,
+                  177687,
+                  175218
                 ]
               },
               "localeLeakPct": {
@@ -1684,9 +1965,15 @@
                 "min": 48.64864864864865,
                 "max": 48.64864864864865,
                 "raw": [
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
                   48.64864864864865
                 ]
               },
@@ -1694,13 +1981,35 @@
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "pages": [
                 {
@@ -1845,274 +2154,274 @@
         },
         "components": {
           "status": "ok",
-          "gzipMin": 221968,
-          "gzipAvg": 222425.87878787878,
-          "gzipMax": 226052,
+          "gzipMin": 221598,
+          "gzipAvg": 222065.45454545456,
+          "gzipMax": 225436,
           "count": 33,
           "items": [
             {
               "name": "Layout.vue",
               "category": "Shared",
-              "minifiedGzip": 226052,
-              "minified": 809434,
-              "unminified": 869458,
-              "unminifiedGzip": 233329
+              "minifiedGzip": 225436,
+              "minified": 806699,
+              "unminified": 866089,
+              "unminifiedGzip": 232760
             },
             {
               "name": "Header.vue",
               "category": "Shared",
-              "minifiedGzip": 224809,
-              "minified": 804727,
-              "unminified": 859331,
-              "unminifiedGzip": 232085
+              "minifiedGzip": 224185,
+              "minified": 802684,
+              "unminified": 856894,
+              "unminifiedGzip": 231539
             },
             {
               "name": "UnderstandingImpact.vue",
               "category": "pages",
-              "minifiedGzip": 222311,
-              "minified": 797945,
-              "unminified": 847200,
-              "unminifiedGzip": 229352
+              "minifiedGzip": 222048,
+              "minified": 797152,
+              "unminified": 846136,
+              "unminifiedGzip": 228863
             },
             {
               "name": "ContactForm.vue",
               "category": "pages",
-              "minifiedGzip": 222381,
-              "minified": 797752,
-              "unminified": 846456,
-              "unminifiedGzip": 229457
+              "minifiedGzip": 222103,
+              "minified": 796940,
+              "unminified": 845397,
+              "unminifiedGzip": 228988
             },
             {
               "name": "PreferencesSection.vue",
               "category": "pages",
-              "minifiedGzip": 222338,
-              "minified": 797697,
-              "unminified": 846792,
-              "unminifiedGzip": 229397
+              "minifiedGzip": 222084,
+              "minified": 796903,
+              "unminified": 845723,
+              "unminifiedGzip": 228952
             },
             {
               "name": "ResultsTable.vue",
               "category": "pages",
-              "minifiedGzip": 222413,
-              "minified": 797614,
-              "unminified": 846444,
-              "unminifiedGzip": 229491
+              "minifiedGzip": 222087,
+              "minified": 796775,
+              "unminified": 845350,
+              "unminifiedGzip": 228961
             },
             {
               "name": "OpenPositions.vue",
               "category": "pages",
-              "minifiedGzip": 222375,
-              "minified": 797552,
-              "unminified": 846155,
-              "unminifiedGzip": 229440
+              "minifiedGzip": 222072,
+              "minified": 796683,
+              "unminified": 845036,
+              "unminifiedGzip": 228940
             },
             {
               "name": "Footer.vue",
               "category": "Shared",
-              "minifiedGzip": 222417,
-              "minified": 797406,
-              "unminified": 846189,
-              "unminifiedGzip": 229560
+              "minifiedGzip": 222139,
+              "minified": 796589,
+              "unminified": 845103,
+              "unminifiedGzip": 229025
             },
             {
               "name": "PricingTiers.vue",
               "category": "pages",
-              "minifiedGzip": 222462,
-              "minified": 797389,
-              "unminified": 846014,
-              "unminifiedGzip": 229606
+              "minifiedGzip": 222149,
+              "minified": 796528,
+              "unminified": 844920,
+              "unminifiedGzip": 229086
             },
             {
               "name": "ThemeToggle.vue",
               "category": "Shared",
-              "minifiedGzip": 222446,
-              "minified": 797318,
-              "unminified": 845933,
-              "unminifiedGzip": 229545
+              "minifiedGzip": 222055,
+              "minified": 796288,
+              "unminified": 844623,
+              "unminifiedGzip": 228931
             },
             {
               "name": "WhatWeMeasure.vue",
               "category": "pages",
-              "minifiedGzip": 222320,
-              "minified": 796952,
-              "unminified": 845377,
-              "unminifiedGzip": 229303
+              "minifiedGzip": 221971,
+              "minified": 796099,
+              "unminified": 844265,
+              "unminifiedGzip": 228755
             },
             {
               "name": "WhyItMatters.vue",
               "category": "pages",
-              "minifiedGzip": 222221,
-              "minified": 796889,
-              "unminified": 845566,
-              "unminifiedGzip": 229175
-            },
-            {
-              "name": "ContactHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 222257,
-              "minified": 796776,
-              "unminified": 847170,
-              "unminifiedGzip": 229294
-            },
-            {
-              "name": "PricingHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 222186,
-              "minified": 796608,
-              "unminified": 846946,
-              "unminifiedGzip": 229172
-            },
-            {
-              "name": "ProductsHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 222215,
-              "minified": 796577,
-              "unminified": 846892,
-              "unminifiedGzip": 229166
-            },
-            {
-              "name": "SettingsHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 222175,
-              "minified": 796576,
-              "unminified": 846891,
-              "unminifiedGzip": 229162
-            },
-            {
-              "name": "CareersHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 222181,
-              "minified": 796571,
-              "unminified": 846870,
-              "unminifiedGzip": 229163
-            },
-            {
-              "name": "BlogHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 222180,
-              "minified": 796557,
-              "unminified": 846808,
-              "unminifiedGzip": 229169
+              "minifiedGzip": 221887,
+              "minified": 796081,
+              "unminified": 844475,
+              "unminifiedGzip": 228669
             },
             {
               "name": "Hero.vue",
               "category": "pages",
-              "minifiedGzip": 222215,
-              "minified": 796467,
-              "unminified": 844733,
-              "unminifiedGzip": 229180
+              "minifiedGzip": 221905,
+              "minified": 795655,
+              "unminified": 843650,
+              "unminifiedGzip": 228681
             },
             {
               "name": "BlogList.vue",
               "category": "pages",
-              "minifiedGzip": 222280,
-              "minified": 796453,
-              "unminified": 844836,
-              "unminifiedGzip": 229283
+              "minifiedGzip": 221950,
+              "minified": 795612,
+              "unminified": 843740,
+              "unminifiedGzip": 228750
+            },
+            {
+              "name": "ContactHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 221867,
+              "minified": 795600,
+              "unminified": 845609,
+              "unminifiedGzip": 228724
             },
             {
               "name": "ProductsGrid.vue",
               "category": "pages",
-              "minifiedGzip": 222277,
-              "minified": 796448,
-              "unminified": 844858,
-              "unminifiedGzip": 229300
+              "minifiedGzip": 221950,
+              "minified": 795586,
+              "unminified": 843746,
+              "unminifiedGzip": 228757
             },
             {
               "name": "AboutGrid.vue",
               "category": "pages",
-              "minifiedGzip": 222149,
-              "minified": 796370,
-              "unminified": 844751,
-              "unminifiedGzip": 229069
+              "minifiedGzip": 221808,
+              "minified": 795551,
+              "unminified": 843654,
+              "unminifiedGzip": 228544
             },
             {
               "name": "ProfileSection.vue",
               "category": "pages",
-              "minifiedGzip": 222136,
-              "minified": 796343,
-              "unminified": 844734,
-              "unminifiedGzip": 229056
-            },
-            {
-              "name": "TeamGrid.vue",
-              "category": "pages",
-              "minifiedGzip": 222248,
-              "minified": 796336,
-              "unminified": 844676,
-              "unminifiedGzip": 229263
+              "minifiedGzip": 221826,
+              "minified": 795519,
+              "unminified": 843645,
+              "unminifiedGzip": 228565
             },
             {
               "name": "ApiAccessSection.vue",
               "category": "pages",
-              "minifiedGzip": 222172,
-              "minified": 796272,
-              "unminified": 844699,
-              "unminifiedGzip": 229136
+              "minifiedGzip": 221859,
+              "minified": 795446,
+              "unminified": 843610,
+              "unminifiedGzip": 228625
             },
             {
-              "name": "LocaleSwitcher.vue",
-              "category": "Shared",
-              "minifiedGzip": 222212,
-              "minified": 796150,
-              "unminified": 844436,
-              "unminifiedGzip": 229140
+              "name": "TeamGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 221882,
+              "minified": 795435,
+              "unminified": 843535,
+              "unminifiedGzip": 228685
+            },
+            {
+              "name": "PricingHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 221799,
+              "minified": 795425,
+              "unminified": 845369,
+              "unminifiedGzip": 228628
+            },
+            {
+              "name": "ProductsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 221787,
+              "minified": 795394,
+              "unminified": 845321,
+              "unminifiedGzip": 228607
+            },
+            {
+              "name": "SettingsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 221787,
+              "minified": 795393,
+              "unminified": 845320,
+              "unminifiedGzip": 228606
+            },
+            {
+              "name": "CareersHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 221788,
+              "minified": 795390,
+              "unminified": 845301,
+              "unminifiedGzip": 228605
+            },
+            {
+              "name": "BlogHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 221787,
+              "minified": 795382,
+              "unminified": 845245,
+              "unminifiedGzip": 228602
             },
             {
               "name": "CareersBenefits.vue",
               "category": "pages",
-              "minifiedGzip": 222126,
-              "minified": 796109,
-              "unminified": 844382,
-              "unminifiedGzip": 229032
+              "minifiedGzip": 221774,
+              "minified": 795228,
+              "unminified": 843267,
+              "unminifiedGzip": 228479
             },
             {
               "name": "TeamHeader.vue",
               "category": "pages",
-              "minifiedGzip": 222094,
-              "minified": 795984,
-              "unminified": 844197,
-              "unminifiedGzip": 228978
+              "minifiedGzip": 221744,
+              "minified": 795153,
+              "unminified": 843100,
+              "unminifiedGzip": 228472
             },
             {
               "name": "FAQHeader.vue",
               "category": "pages",
-              "minifiedGzip": 222115,
-              "minified": 795978,
-              "unminified": 844175,
-              "unminifiedGzip": 228980
+              "minifiedGzip": 221744,
+              "minified": 795149,
+              "unminified": 843080,
+              "unminifiedGzip": 228437
+            },
+            {
+              "name": "LocaleSwitcher.vue",
+              "category": "Shared",
+              "minifiedGzip": 221825,
+              "minified": 795137,
+              "unminified": 843194,
+              "unminifiedGzip": 228565
             },
             {
               "name": "AboutHeader.vue",
               "category": "pages",
-              "minifiedGzip": 222093,
-              "minified": 795968,
-              "unminified": 844175,
-              "unminifiedGzip": 228968
+              "minifiedGzip": 221735,
+              "minified": 795135,
+              "unminified": 843076,
+              "unminifiedGzip": 228427
             },
             {
               "name": "FAQList.vue",
               "category": "pages",
-              "minifiedGzip": 222158,
-              "minified": 795948,
-              "unminified": 844111,
-              "unminifiedGzip": 229095
+              "minifiedGzip": 221809,
+              "minified": 795087,
+              "unminified": 842987,
+              "unminifiedGzip": 228529
             },
             {
               "name": "SettingsFooter.vue",
               "category": "pages",
-              "minifiedGzip": 222072,
-              "minified": 795795,
-              "unminified": 843989,
-              "unminifiedGzip": 228926
+              "minifiedGzip": 221720,
+              "minified": 794963,
+              "unminified": 842884,
+              "unminifiedGzip": 228402
             },
             {
               "name": "MockBanner.vue",
               "category": "Shared",
-              "minifiedGzip": 221968,
-              "minified": 795432,
-              "unminified": 843475,
-              "unminifiedGzip": 228765
+              "minifiedGzip": 221598,
+              "minified": 794611,
+              "unminified": 842389,
+              "unminifiedGzip": 228226
             }
           ]
         },
@@ -2125,7 +2434,10 @@
                 "min": 2,
                 "max": 6,
                 "raw": [
-                  6, 2.1999999955296516, 2.100000001490116, 2.2999999970197678,
+                  6,
+                  2.1999999955296516,
+                  2.100000001490116,
+                  2.2999999970197678,
                   2
                 ]
               },
@@ -2133,7 +2445,13 @@
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             },
             "fr": {
@@ -2142,15 +2460,24 @@
                 "min": 2.100000001490116,
                 "max": 4.200000002980232,
                 "raw": [
-                  4.200000002980232, 2.1999999955296516, 2.100000001490116,
-                  2.100000001490116, 2.1999999955296516
+                  4.200000002980232,
+                  2.1999999955296516,
+                  2.100000001490116,
+                  2.100000001490116,
+                  2.1999999955296516
                 ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             }
           },
@@ -2166,8 +2493,11 @@
                 "min": 30.400000005960464,
                 "max": 58.20000000298023,
                 "raw": [
-                  31.899999998509884, 30.400000005960464, 35.399999998509884,
-                  58.20000000298023, 31.899999998509884
+                  31.899999998509884,
+                  30.400000005960464,
+                  35.399999998509884,
+                  58.20000000298023,
+                  31.899999998509884
                 ]
               },
               "hydration": {
@@ -2175,8 +2505,11 @@
                 "min": 21.200000002980232,
                 "max": 37.20000000298023,
                 "raw": [
-                  21.200000002980232, 22.899999998509884, 27.19999999552965,
-                  37.20000000298023, 23
+                  21.200000002980232,
+                  22.899999998509884,
+                  27.19999999552965,
+                  37.20000000298023,
+                  23
                 ]
               },
               "reactMount": {
@@ -2184,8 +2517,11 @@
                 "min": 2.2000000029802322,
                 "max": 3.2999999970197678,
                 "raw": [
-                  2.2000000029802322, 2.7000000029802322, 3.2999999970197678,
-                  2.5, 2.2999999970197678
+                  2.2000000029802322,
+                  2.7000000029802322,
+                  3.2999999970197678,
+                  2.5,
+                  2.2999999970197678
                 ]
               },
               "hydrationInstrumented": true,
@@ -2197,8 +2533,11 @@
                 "min": 27,
                 "max": 33.19999999552965,
                 "raw": [
-                  30.100000001490116, 29.799999997019768, 30.69999999552965,
-                  33.19999999552965, 27
+                  30.100000001490116,
+                  29.799999997019768,
+                  30.69999999552965,
+                  33.19999999552965,
+                  27
                 ]
               },
               "hydration": {
@@ -2206,7 +2545,10 @@
                 "min": 19.399999998509884,
                 "max": 25.69999999552965,
                 "raw": [
-                  21.900000005960464, 22.100000001490116, 23, 25.69999999552965,
+                  21.900000005960464,
+                  22.100000001490116,
+                  23,
+                  25.69999999552965,
                   19.399999998509884
                 ]
               },
@@ -2215,8 +2557,11 @@
                 "min": 2.1999999955296516,
                 "max": 3.100000001490116,
                 "raw": [
-                  2.2000000029802322, 3.100000001490116, 2.5,
-                  2.1999999955296516, 2.5
+                  2.2000000029802322,
+                  3.100000001490116,
+                  2.5,
+                  2.1999999955296516,
+                  2.5
                 ]
               },
               "hydrationInstrumented": true,
@@ -2237,9 +2582,9 @@
         "version": "9.5.6",
         "libSize": {
           "status": "ok",
-          "gzip": 4026,
-          "minified": 11382,
-          "unminified": 17685
+          "gzip": 3826,
+          "minified": 10955,
+          "unminified": 16967
         }
       },
       "static": {
@@ -2257,7 +2602,15 @@
                 "min": 53140,
                 "max": 70114,
                 "raw": [
-                  70114, 63254, 57127, 58348, 53140, 60503, 54359, 55851, 56327,
+                  70114,
+                  63254,
+                  57127,
+                  58348,
+                  53140,
+                  60503,
+                  54359,
+                  55851,
+                  56327,
                   56084
                 ]
               },
@@ -2265,19 +2618,52 @@
                 "avg": 49.44444444444444,
                 "min": 44.44444444444444,
                 "max": 50,
-                "raw": [44.44444444444444, 50, 50, 50, 50, 50, 50, 50, 50, 50]
+                "raw": [
+                  44.44444444444444,
+                  50,
+                  50,
+                  50,
+                  50,
+                  50,
+                  50,
+                  50,
+                  50,
+                  50
+                ]
               },
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pages": [
                 {
@@ -2418,7 +2804,15 @@
                 "min": 53140,
                 "max": 70114,
                 "raw": [
-                  70114, 63254, 57127, 58348, 53140, 60503, 54359, 55851, 56327,
+                  70114,
+                  63254,
+                  57127,
+                  58348,
+                  53140,
+                  60503,
+                  54359,
+                  55851,
+                  56327,
                   56084
                 ]
               },
@@ -2427,21 +2821,51 @@
                 "min": 50,
                 "max": 88.88888888888889,
                 "raw": [
-                  55.55555555555556, 50, 88.88888888888889, 87.5, 60, 60, 60,
-                  60, 60, 60
+                  55.55555555555556,
+                  50,
+                  88.88888888888889,
+                  87.5,
+                  60,
+                  60,
+                  60,
+                  60,
+                  60,
+                  60
                 ]
               },
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pages": [
                 {
@@ -2586,274 +3010,274 @@
         },
         "components": {
           "status": "ok",
-          "gzipMin": 2188,
-          "gzipAvg": 7849.545454545455,
-          "gzipMax": 15556,
+          "gzipMin": 1907,
+          "gzipAvg": 7568.787878787879,
+          "gzipMax": 15290,
           "count": 33,
           "items": [
             {
-              "name": "Layout.vue",
-              "category": "Shared",
-              "minifiedGzip": 13334,
-              "minified": 38414,
-              "unminified": 51855,
-              "unminifiedGzip": 14975
-            },
-            {
               "name": "UnderstandingImpact.vue",
               "category": "pages",
-              "minifiedGzip": 15556,
-              "minified": 37256,
-              "unminified": 44636,
-              "unminifiedGzip": 16919
+              "minifiedGzip": 15290,
+              "minified": 36686,
+              "unminified": 43866,
+              "unminifiedGzip": 16592
+            },
+            {
+              "name": "Layout.vue",
+              "category": "Shared",
+              "minifiedGzip": 12552,
+              "minified": 35466,
+              "unminified": 48023,
+              "unminifiedGzip": 14307
             },
             {
               "name": "FAQList.vue",
               "category": "pages",
-              "minifiedGzip": 14243,
-              "minified": 34936,
-              "unminified": 41427,
-              "unminifiedGzip": 15561
-            },
-            {
-              "name": "Header.vue",
-              "category": "Shared",
-              "minifiedGzip": 10455,
-              "minified": 29392,
-              "unminified": 40539,
-              "unminifiedGzip": 12061
+              "minifiedGzip": 14035,
+              "minified": 34522,
+              "unminified": 40731,
+              "unminifiedGzip": 15251
             },
             {
               "name": "BlogList.vue",
               "category": "pages",
-              "minifiedGzip": 10927,
-              "minified": 29187,
-              "unminified": 35889,
-              "unminifiedGzip": 12236
+              "minifiedGzip": 10704,
+              "minified": 28744,
+              "unminified": 35180,
+              "unminifiedGzip": 11912
+            },
+            {
+              "name": "Header.vue",
+              "category": "Shared",
+              "minifiedGzip": 9880,
+              "minified": 27384,
+              "unminified": 38003,
+              "unminifiedGzip": 11512
             },
             {
               "name": "WhyItMatters.vue",
               "category": "pages",
-              "minifiedGzip": 12060,
-              "minified": 27837,
-              "unminified": 34847,
-              "unminifiedGzip": 13387
+              "minifiedGzip": 11803,
+              "minified": 27275,
+              "unminified": 34070,
+              "unminifiedGzip": 13072
             },
             {
               "name": "WhatWeMeasure.vue",
               "category": "pages",
-              "minifiedGzip": 11312,
-              "minified": 26531,
-              "unminified": 33244,
-              "unminifiedGzip": 12609
+              "minifiedGzip": 11090,
+              "minified": 26081,
+              "unminified": 32510,
+              "unminifiedGzip": 12284
             },
             {
               "name": "OpenPositions.vue",
               "category": "pages",
-              "minifiedGzip": 9580,
-              "minified": 26267,
-              "unminified": 33154,
-              "unminifiedGzip": 10851
+              "minifiedGzip": 9341,
+              "minified": 25797,
+              "unminified": 32420,
+              "unminifiedGzip": 10533
             },
             {
               "name": "TeamGrid.vue",
               "category": "pages",
-              "minifiedGzip": 9178,
-              "minified": 24152,
-              "unminified": 30792,
-              "unminifiedGzip": 10453
+              "minifiedGzip": 8958,
+              "minified": 23706,
+              "unminified": 30071,
+              "unminifiedGzip": 10128
             },
             {
               "name": "ProductsGrid.vue",
               "category": "pages",
-              "minifiedGzip": 9472,
-              "minified": 23912,
-              "unminified": 30603,
-              "unminifiedGzip": 10738
+              "minifiedGzip": 9248,
+              "minified": 23451,
+              "unminified": 29864,
+              "unminifiedGzip": 10410
             },
             {
               "name": "AboutGrid.vue",
               "category": "pages",
-              "minifiedGzip": 10170,
-              "minified": 23100,
-              "unminified": 29817,
-              "unminifiedGzip": 11455
+              "minifiedGzip": 9933,
+              "minified": 22640,
+              "unminified": 29083,
+              "unminifiedGzip": 11134
             },
             {
               "name": "PricingTiers.vue",
               "category": "pages",
-              "minifiedGzip": 7927,
-              "minified": 21191,
-              "unminified": 28622,
-              "unminifiedGzip": 9211
+              "minifiedGzip": 7626,
+              "minified": 20449,
+              "unminified": 27681,
+              "unminifiedGzip": 8860
             },
             {
               "name": "PreferencesSection.vue",
               "category": "pages",
-              "minifiedGzip": 7047,
-              "minified": 19084,
-              "unminified": 26551,
-              "unminifiedGzip": 8286
+              "minifiedGzip": 6734,
+              "minified": 18350,
+              "unminified": 25660,
+              "unminifiedGzip": 7945
             },
             {
               "name": "Footer.vue",
               "category": "Shared",
-              "minifiedGzip": 7034,
-              "minified": 18435,
-              "unminified": 25866,
-              "unminifiedGzip": 8310
+              "minifiedGzip": 6752,
+              "minified": 17810,
+              "unminified": 25043,
+              "unminifiedGzip": 7976
             },
             {
               "name": "ContactForm.vue",
               "category": "pages",
-              "minifiedGzip": 6438,
-              "minified": 17491,
-              "unminified": 24748,
-              "unminifiedGzip": 7682
+              "minifiedGzip": 6157,
+              "minified": 16832,
+              "unminified": 23926,
+              "unminifiedGzip": 7354
             },
             {
               "name": "ThemeToggle.vue",
               "category": "Shared",
-              "minifiedGzip": 5994,
-              "minified": 17008,
-              "unminified": 24161,
-              "unminifiedGzip": 7296
+              "minifiedGzip": 5675,
+              "minified": 16296,
+              "unminified": 23156,
+              "unminifiedGzip": 6924
             },
             {
               "name": "CareersHeader.vue",
               "category": "pages",
-              "minifiedGzip": 7009,
-              "minified": 16888,
-              "unminified": 23857,
-              "unminifiedGzip": 8263
+              "minifiedGzip": 6741,
+              "minified": 16089,
+              "unminified": 22554,
+              "unminifiedGzip": 7917
             },
             {
               "name": "ContactHeader.vue",
               "category": "pages",
-              "minifiedGzip": 6592,
-              "minified": 16288,
-              "unminified": 23331,
-              "unminifiedGzip": 7863
+              "minifiedGzip": 6322,
+              "minified": 15496,
+              "unminified": 22042,
+              "unminifiedGzip": 7511
             },
             {
               "name": "TeamHeader.vue",
               "category": "pages",
-              "minifiedGzip": 6778,
-              "minified": 16272,
-              "unminified": 23239,
-              "unminifiedGzip": 8037
-            },
-            {
-              "name": "ProductsHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 6239,
-              "minified": 15830,
-              "unminified": 22805,
-              "unminifiedGzip": 7481
+              "minifiedGzip": 6493,
+              "minified": 15453,
+              "unminified": 21916,
+              "unminifiedGzip": 7675
             },
             {
               "name": "ResultsTable.vue",
               "category": "pages",
-              "minifiedGzip": 5754,
-              "minified": 15705,
-              "unminified": 23016,
-              "unminifiedGzip": 7022
-            },
-            {
-              "name": "PricingHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 6457,
-              "minified": 15683,
-              "unminified": 22705,
-              "unminifiedGzip": 7713
+              "minifiedGzip": 5503,
+              "minified": 15174,
+              "unminified": 22252,
+              "unminifiedGzip": 6696
             },
             {
               "name": "Hero.vue",
               "category": "pages",
-              "minifiedGzip": 6298,
-              "minified": 15641,
-              "unminified": 22409,
-              "unminifiedGzip": 7553
-            },
-            {
-              "name": "SettingsHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 6137,
-              "minified": 15628,
-              "unminified": 22603,
-              "unminifiedGzip": 7379
-            },
-            {
-              "name": "BlogHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 6122,
-              "minified": 15571,
-              "unminified": 22522,
-              "unminifiedGzip": 7363
+              "minifiedGzip": 6061,
+              "minified": 15141,
+              "unminified": 21665,
+              "unminifiedGzip": 7235
             },
             {
               "name": "AboutHeader.vue",
               "category": "pages",
-              "minifiedGzip": 6428,
-              "minified": 15556,
-              "unminified": 22145,
-              "unminifiedGzip": 7686
+              "minifiedGzip": 6214,
+              "minified": 15097,
+              "unminified": 21403,
+              "unminifiedGzip": 7381
+            },
+            {
+              "name": "ProductsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 5977,
+              "minified": 15029,
+              "unminified": 21498,
+              "unminifiedGzip": 7134
             },
             {
               "name": "CareersBenefits.vue",
               "category": "pages",
-              "minifiedGzip": 5738,
-              "minified": 15368,
-              "unminified": 22056,
-              "unminifiedGzip": 6987
+              "minifiedGzip": 5502,
+              "minified": 14891,
+              "unminified": 21303,
+              "unminifiedGzip": 6664
+            },
+            {
+              "name": "PricingHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 6179,
+              "minified": 14854,
+              "unminified": 21362,
+              "unminifiedGzip": 7347
+            },
+            {
+              "name": "SettingsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 5875,
+              "minified": 14827,
+              "unminified": 21296,
+              "unminifiedGzip": 7031
+            },
+            {
+              "name": "BlogHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 5857,
+              "minified": 14778,
+              "unminified": 21231,
+              "unminifiedGzip": 7014
             },
             {
               "name": "FAQHeader.vue",
               "category": "pages",
-              "minifiedGzip": 6173,
-              "minified": 15340,
-              "unminified": 22301,
-              "unminifiedGzip": 7426
+              "minifiedGzip": 5894,
+              "minified": 14523,
+              "unminified": 20982,
+              "unminifiedGzip": 7065
             },
             {
               "name": "ApiAccessSection.vue",
               "category": "pages",
-              "minifiedGzip": 5409,
-              "minified": 14165,
-              "unminified": 20967,
-              "unminifiedGzip": 6656
-            },
-            {
-              "name": "ProfileSection.vue",
-              "category": "pages",
-              "minifiedGzip": 4923,
-              "minified": 13406,
-              "unminified": 20174,
-              "unminifiedGzip": 6162
+              "minifiedGzip": 5167,
+              "minified": 13666,
+              "unminified": 20200,
+              "unminifiedGzip": 6342
             },
             {
               "name": "MockBanner.vue",
               "category": "Shared",
-              "minifiedGzip": 5379,
-              "minified": 13341,
-              "unminified": 19746,
-              "unminifiedGzip": 6622
+              "minifiedGzip": 5168,
+              "minified": 12925,
+              "unminified": 19038,
+              "unminifiedGzip": 6326
+            },
+            {
+              "name": "ProfileSection.vue",
+              "category": "pages",
+              "minifiedGzip": 4684,
+              "minified": 12914,
+              "unminified": 19416,
+              "unminifiedGzip": 5838
             },
             {
               "name": "SettingsFooter.vue",
               "category": "pages",
-              "minifiedGzip": 4684,
-              "minified": 12633,
-              "unminified": 19174,
-              "unminifiedGzip": 5904
+              "minifiedGzip": 4448,
+              "minified": 12167,
+              "unminified": 18419,
+              "unminifiedGzip": 5592
             },
             {
               "name": "LocaleSwitcher.vue",
               "category": "Shared",
-              "minifiedGzip": 2188,
-              "minified": 4781,
-              "unminified": 6768,
-              "unminifiedGzip": 2519
+              "minifiedGzip": 1907,
+              "minified": 4161,
+              "unminified": 5881,
+              "unminifiedGzip": 2180
             }
           ]
         },
@@ -2866,15 +3290,24 @@
                 "min": 3.7999999970197678,
                 "max": 6.5999999940395355,
                 "raw": [
-                  6.5999999940395355, 3.7999999970197678, 4.899999998509884,
-                  3.8000000044703484, 3.7999999970197678
+                  6.5999999940395355,
+                  3.7999999970197678,
+                  4.899999998509884,
+                  3.8000000044703484,
+                  3.7999999970197678
                 ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             },
             "fr": {
@@ -2883,7 +3316,10 @@
                 "min": 3.7000000029802322,
                 "max": 5.700000002980232,
                 "raw": [
-                  5.700000002980232, 4.699999995529652, 4, 3.7999999970197678,
+                  5.700000002980232,
+                  4.699999995529652,
+                  4,
+                  3.7999999970197678,
                   3.7000000029802322
                 ]
               },
@@ -2891,7 +3327,13 @@
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             }
           },
@@ -2907,7 +3349,10 @@
                 "min": 12.199999995529652,
                 "max": 16.30000000447035,
                 "raw": [
-                  16.30000000447035, 12.899999998509884, 14, 12.199999995529652,
+                  16.30000000447035,
+                  12.899999998509884,
+                  14,
+                  12.199999995529652,
                   14.600000001490116
                 ]
               },
@@ -2916,8 +3361,11 @@
                 "min": 5.300000004470348,
                 "max": 7.9000000059604645,
                 "raw": [
-                  7.399999998509884, 5.600000001490116, 6.100000001490116,
-                  5.300000004470348, 7.9000000059604645
+                  7.399999998509884,
+                  5.600000001490116,
+                  6.100000001490116,
+                  5.300000004470348,
+                  7.9000000059604645
                 ]
               },
               "reactMount": {
@@ -2925,8 +3373,11 @@
                 "min": 3.3000000044703484,
                 "max": 5.199999995529652,
                 "raw": [
-                  4.200000002980232, 3.5, 3.3000000044703484,
-                  3.3000000044703484, 5.199999995529652
+                  4.200000002980232,
+                  3.5,
+                  3.3000000044703484,
+                  3.3000000044703484,
+                  5.199999995529652
                 ]
               },
               "hydrationInstrumented": true,
@@ -2938,8 +3389,11 @@
                 "min": 12.800000004470348,
                 "max": 14.399999998509884,
                 "raw": [
-                  14.399999998509884, 12.800000004470348, 13.600000001490116,
-                  13.400000005960464, 13.300000004470348
+                  14.399999998509884,
+                  12.800000004470348,
+                  13.600000001490116,
+                  13.400000005960464,
+                  13.300000004470348
                 ]
               },
               "hydration": {
@@ -2947,7 +3401,10 @@
                 "min": 5.700000002980232,
                 "max": 6.600000001490116,
                 "raw": [
-                  6.4000000059604645, 5.700000002980232, 5.700000002980232, 6,
+                  6.4000000059604645,
+                  5.700000002980232,
+                  5.700000002980232,
+                  6,
                   6.600000001490116
                 ]
               },
@@ -2956,8 +3413,11 @@
                 "min": 3.3000000044703484,
                 "max": 4.399999998509884,
                 "raw": [
-                  4.0999999940395355, 3.399999998509884, 3.3000000044703484,
-                  3.3000000044703484, 4.399999998509884
+                  4.0999999940395355,
+                  3.399999998509884,
+                  3.3000000044703484,
+                  3.3000000044703484,
+                  4.399999998509884
                 ]
               },
               "hydrationInstrumented": true,
@@ -2973,14 +3433,870 @@
       "scoped-static": null,
       "scoped-dynamic": null
     },
+    "tolgee": {
+      "global": {
+        "version": "7.2.0",
+        "libSize": {
+          "status": "ok",
+          "gzip": 14142,
+          "minified": 44999,
+          "unminified": 69742
+        }
+      },
+      "static": {
+        "appName": "vite-vue-tolgee-static",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-vue-tolgee-static/bundle/rollup-visualizer.html",
+        "measuredCategory": "static",
+        "isFallback": false,
+        "overallStatus": "ok",
+        "pageBundle": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "jsGzip": {
+                "avg": 115599,
+                "min": 115038,
+                "max": 116922,
+                "raw": [
+                  115739,
+                  115267,
+                  115174,
+                  115782,
+                  115482,
+                  115038,
+                  115535,
+                  115509,
+                  116922,
+                  115542
+                ]
+              },
+              "localeLeakPct": {
+                "avg": 51.35135135135134,
+                "min": 51.35135135135135,
+                "max": 51.35135135135135,
+                "raw": [
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135
+                ]
+              },
+              "pageLeakPct": {
+                "avg": 90,
+                "min": 0,
+                "max": 100,
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
+              },
+              "otherPageContentLeakPct": {
+                "avg": 90,
+                "min": 0,
+                "max": 100,
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/en/",
+                  "page": "home",
+                  "jsGzipSize": 115739,
+                  "totalGzipSize": 121605,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 51.35135135135135,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/about",
+                  "page": "about",
+                  "jsGzipSize": 115267,
+                  "totalGzipSize": 121133,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 51.35135135135135,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/blog",
+                  "page": "blog",
+                  "jsGzipSize": 115174,
+                  "totalGzipSize": 121040,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 51.35135135135135,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/careers",
+                  "page": "careers",
+                  "jsGzipSize": 115782,
+                  "totalGzipSize": 121648,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 51.35135135135135,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/contact",
+                  "page": "contact",
+                  "jsGzipSize": 115482,
+                  "totalGzipSize": 121348,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 51.35135135135135,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/faq",
+                  "page": "faq",
+                  "jsGzipSize": 115038,
+                  "totalGzipSize": 120904,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 51.35135135135135,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 115535,
+                  "totalGzipSize": 121401,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 51.35135135135135,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/products",
+                  "page": "products",
+                  "jsGzipSize": 115509,
+                  "totalGzipSize": 121375,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 51.35135135135135,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/settings",
+                  "page": "settings",
+                  "jsGzipSize": 116922,
+                  "totalGzipSize": 122788,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 10,
+                  "jsFileCount": 8,
+                  "localeLeakagePercent": 51.35135135135135,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/en/team",
+                  "page": "team",
+                  "jsGzipSize": 115542,
+                  "totalGzipSize": 121408,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 51.35135135135135,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                }
+              ]
+            },
+            "fr": {
+              "jsGzip": {
+                "avg": 115599,
+                "min": 115038,
+                "max": 116922,
+                "raw": [
+                  115739,
+                  115267,
+                  115174,
+                  115782,
+                  115482,
+                  115038,
+                  115535,
+                  115509,
+                  116922,
+                  115542
+                ]
+              },
+              "localeLeakPct": {
+                "avg": 48.64864864864865,
+                "min": 48.64864864864865,
+                "max": 48.64864864864865,
+                "raw": [
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865
+                ]
+              },
+              "pageLeakPct": {
+                "avg": 90,
+                "min": 0,
+                "max": 100,
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
+              },
+              "otherPageContentLeakPct": {
+                "avg": 90,
+                "min": 0,
+                "max": 100,
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/fr/",
+                  "page": "home",
+                  "jsGzipSize": 115739,
+                  "totalGzipSize": 121605,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 48.64864864864865,
+                  "pageLeakagePercent": 0,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/about",
+                  "page": "about",
+                  "jsGzipSize": 115267,
+                  "totalGzipSize": 121133,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 48.64864864864865,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/fr/blog",
+                  "page": "blog",
+                  "jsGzipSize": 115174,
+                  "totalGzipSize": 121040,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 48.64864864864865,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/fr/careers",
+                  "page": "careers",
+                  "jsGzipSize": 115782,
+                  "totalGzipSize": 121648,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 48.64864864864865,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/fr/contact",
+                  "page": "contact",
+                  "jsGzipSize": 115482,
+                  "totalGzipSize": 121348,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 48.64864864864865,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/fr/faq",
+                  "page": "faq",
+                  "jsGzipSize": 115038,
+                  "totalGzipSize": 120904,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 48.64864864864865,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/fr/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 115535,
+                  "totalGzipSize": 121401,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 48.64864864864865,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/fr/products",
+                  "page": "products",
+                  "jsGzipSize": 115509,
+                  "totalGzipSize": 121375,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 48.64864864864865,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/fr/settings",
+                  "page": "settings",
+                  "jsGzipSize": 116922,
+                  "totalGzipSize": 122788,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 10,
+                  "jsFileCount": 8,
+                  "localeLeakagePercent": 48.64864864864865,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                },
+                {
+                  "path": "/fr/team",
+                  "page": "team",
+                  "jsGzipSize": 115542,
+                  "totalGzipSize": 121408,
+                  "cssGzipSize": 5241,
+                  "htmlGzipSize": 625,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 48.64864864864865,
+                  "pageLeakagePercent": 100,
+                  "otherPageContentLeakagePercent": 100
+                }
+              ]
+            }
+          },
+          "jsGzipMin": 115038,
+          "jsGzipAvg": 115599,
+          "jsGzipMax": 116922,
+          "localeLeakAvgPct": 49.99999999999999,
+          "pageLeakAvgPct": 90,
+          "otherPageContentLeakAvgPct": 90
+        },
+        "components": {
+          "status": "ok",
+          "gzipMin": 77327,
+          "gzipAvg": 77888.60606060606,
+          "gzipMax": 81210,
+          "count": 33,
+          "items": [
+            {
+              "name": "Layout.vue",
+              "category": "Shared",
+              "minifiedGzip": 81210,
+              "minified": 269559,
+              "unminified": 304501,
+              "unminifiedGzip": 85008
+            },
+            {
+              "name": "Header.vue",
+              "category": "Shared",
+              "minifiedGzip": 80410,
+              "minified": 266211,
+              "unminified": 299609,
+              "unminifiedGzip": 84088
+            },
+            {
+              "name": "UnderstandingImpact.vue",
+              "category": "pages",
+              "minifiedGzip": 77874,
+              "minified": 261182,
+              "unminified": 292889,
+              "unminifiedGzip": 81696
+            },
+            {
+              "name": "ContactForm.vue",
+              "category": "pages",
+              "minifiedGzip": 78012,
+              "minified": 261013,
+              "unminified": 292279,
+              "unminifiedGzip": 81808
+            },
+            {
+              "name": "PreferencesSection.vue",
+              "category": "pages",
+              "minifiedGzip": 77978,
+              "minified": 260976,
+              "unminified": 292515,
+              "unminifiedGzip": 81758
+            },
+            {
+              "name": "ResultsTable.vue",
+              "category": "pages",
+              "minifiedGzip": 77951,
+              "minified": 260792,
+              "unminified": 292184,
+              "unminifiedGzip": 81779
+            },
+            {
+              "name": "OpenPositions.vue",
+              "category": "pages",
+              "minifiedGzip": 77974,
+              "minified": 260762,
+              "unminified": 291896,
+              "unminifiedGzip": 81753
+            },
+            {
+              "name": "Footer.vue",
+              "category": "Shared",
+              "minifiedGzip": 78063,
+              "minified": 260651,
+              "unminified": 292035,
+              "unminifiedGzip": 81891
+            },
+            {
+              "name": "ThemeToggle.vue",
+              "category": "Shared",
+              "minifiedGzip": 77956,
+              "minified": 260318,
+              "unminified": 291473,
+              "unminifiedGzip": 81817
+            },
+            {
+              "name": "PricingTiers.vue",
+              "category": "pages",
+              "minifiedGzip": 77848,
+              "minified": 260308,
+              "unminified": 291276,
+              "unminifiedGzip": 81377
+            },
+            {
+              "name": "TeamGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 77842,
+              "minified": 260123,
+              "unminified": 290880,
+              "unminifiedGzip": 81410
+            },
+            {
+              "name": "ProductsGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 77808,
+              "minified": 260121,
+              "unminified": 290896,
+              "unminifiedGzip": 81350
+            },
+            {
+              "name": "WhatWeMeasure.vue",
+              "category": "pages",
+              "minifiedGzip": 77790,
+              "minified": 260120,
+              "unminified": 291085,
+              "unminifiedGzip": 81616
+            },
+            {
+              "name": "WhyItMatters.vue",
+              "category": "pages",
+              "minifiedGzip": 77703,
+              "minified": 260114,
+              "unminified": 291321,
+              "unminifiedGzip": 81536
+            },
+            {
+              "name": "Hero.vue",
+              "category": "pages",
+              "minifiedGzip": 77773,
+              "minified": 259701,
+              "unminified": 290595,
+              "unminifiedGzip": 81570
+            },
+            {
+              "name": "BlogList.vue",
+              "category": "pages",
+              "minifiedGzip": 77829,
+              "minified": 259674,
+              "unminified": 290652,
+              "unminifiedGzip": 81627
+            },
+            {
+              "name": "ProfileSection.vue",
+              "category": "pages",
+              "minifiedGzip": 77655,
+              "minified": 259613,
+              "unminified": 290497,
+              "unminifiedGzip": 81450
+            },
+            {
+              "name": "AboutGrid.vue",
+              "category": "pages",
+              "minifiedGzip": 77620,
+              "minified": 259593,
+              "unminified": 290539,
+              "unminifiedGzip": 81449
+            },
+            {
+              "name": "ApiAccessSection.vue",
+              "category": "pages",
+              "minifiedGzip": 77715,
+              "minified": 259541,
+              "unminified": 290437,
+              "unminifiedGzip": 81516
+            },
+            {
+              "name": "LocaleSwitcher.vue",
+              "category": "Shared",
+              "minifiedGzip": 77568,
+              "minified": 259345,
+              "unminified": 290235,
+              "unminifiedGzip": 81208
+            },
+            {
+              "name": "ContactHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 77604,
+              "minified": 259334,
+              "unminified": 290241,
+              "unminifiedGzip": 81417
+            },
+            {
+              "name": "CareersBenefits.vue",
+              "category": "pages",
+              "minifiedGzip": 77558,
+              "minified": 259317,
+              "unminified": 290090,
+              "unminifiedGzip": 81382
+            },
+            {
+              "name": "AboutHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 77512,
+              "minified": 259189,
+              "unminified": 289939,
+              "unminifiedGzip": 81361
+            },
+            {
+              "name": "FAQList.vue",
+              "category": "pages",
+              "minifiedGzip": 77664,
+              "minified": 259183,
+              "unminified": 289924,
+              "unminifiedGzip": 81470
+            },
+            {
+              "name": "PricingHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 77574,
+              "minified": 259135,
+              "unminified": 289896,
+              "unminifiedGzip": 81367
+            },
+            {
+              "name": "ProductsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 77498,
+              "minified": 259128,
+              "unminified": 289943,
+              "unminifiedGzip": 81297
+            },
+            {
+              "name": "SettingsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 77497,
+              "minified": 259127,
+              "unminified": 289942,
+              "unminifiedGzip": 81296
+            },
+            {
+              "name": "CareersHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 77497,
+              "minified": 259124,
+              "unminified": 289935,
+              "unminifiedGzip": 81297
+            },
+            {
+              "name": "BlogHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 77500,
+              "minified": 259116,
+              "unminified": 289915,
+              "unminifiedGzip": 81297
+            },
+            {
+              "name": "TeamHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 77498,
+              "minified": 259116,
+              "unminified": 289915,
+              "unminifiedGzip": 81297
+            },
+            {
+              "name": "FAQHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 77499,
+              "minified": 259113,
+              "unminified": 289908,
+              "unminifiedGzip": 81296
+            },
+            {
+              "name": "SettingsFooter.vue",
+              "category": "pages",
+              "minifiedGzip": 77517,
+              "minified": 259057,
+              "unminified": 289737,
+              "unminifiedGzip": 81319
+            },
+            {
+              "name": "MockBanner.vue",
+              "category": "Shared",
+              "minifiedGzip": 77327,
+              "minified": 258712,
+              "unminified": 289291,
+              "unminifiedGzip": 81145
+            }
+          ]
+        },
+        "reactivity": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "e2e": {
+                "avg": 1.8600000143051147,
+                "min": 1.100000023841858,
+                "max": 4.599999904632568,
+                "raw": [
+                  4.599999904632568,
+                  1.100000023841858,
+                  1.2000000476837158,
+                  1.2000000476837158,
+                  1.2000000476837158
+                ]
+              },
+              "profiler": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            },
+            "fr": {
+              "e2e": {
+                "avg": 1.3199999809265137,
+                "min": 1.0999999046325684,
+                "max": 2.100000023841858,
+                "raw": [
+                  2.100000023841858,
+                  1.100000023841858,
+                  1.0999999046325684,
+                  1.100000023841858,
+                  1.1999999284744263
+                ]
+              },
+              "profiler": {
+                "avg": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              }
+            }
+          },
+          "e2eAvgMs": 1.5899999976158141,
+          "profilerAvgMs": null
+        },
+        "rendering": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "e2ePageLoad": {
+                "avg": 18.059999990463258,
+                "min": 15.299999952316284,
+                "max": 24.399999976158142,
+                "raw": [
+                  24.399999976158142,
+                  16.700000047683716,
+                  15.5,
+                  15.299999952316284,
+                  18.399999976158142
+                ]
+              },
+              "hydration": {
+                "avg": 9.280000019073487,
+                "min": 7,
+                "max": 13.100000023841858,
+                "raw": [
+                  13.100000023841858,
+                  8.700000047683716,
+                  8,
+                  7,
+                  9.600000023841858
+                ]
+              },
+              "reactMount": {
+                "avg": 1.5600000143051147,
+                "min": 1.5,
+                "max": 1.7000000476837158,
+                "raw": [
+                  1.600000023841858,
+                  1.5,
+                  1.5,
+                  1.5,
+                  1.7000000476837158
+                ]
+              },
+              "hydrationInstrumented": true,
+              "reactMountInstrumented": true
+            },
+            "fr": {
+              "e2ePageLoad": {
+                "avg": 19.40000002384186,
+                "min": 14,
+                "max": 27.600000023841858,
+                "raw": [
+                  20.90000009536743,
+                  27.600000023841858,
+                  19,
+                  15.5,
+                  14
+                ]
+              },
+              "hydration": {
+                "avg": 9.12000002861023,
+                "min": 6.800000071525574,
+                "max": 12.5,
+                "raw": [
+                  12.5,
+                  9.800000071525574,
+                  8.800000071525574,
+                  7.699999928474426,
+                  6.800000071525574
+                ]
+              },
+              "reactMount": {
+                "avg": 1.4999999761581422,
+                "min": 1.399999976158142,
+                "max": 1.5999999046325684,
+                "raw": [
+                  1.5,
+                  1.5999999046325684,
+                  1.5,
+                  1.5,
+                  1.399999976158142
+                ]
+              },
+              "hydrationInstrumented": true,
+              "reactMountInstrumented": true
+            }
+          },
+          "e2ePageLoadAvgMs": 18.730000007152558,
+          "hydrationAvgMs": 9.20000002384186,
+          "reactMountAvgMs": 1.5299999952316283
+        }
+      },
+      "dynamic": null,
+      "scoped-static": null,
+      "scoped-dynamic": null
+    },
     "vue-i18n": {
       "global": {
         "version": "11.4.0",
         "libSize": {
           "status": "ok",
-          "gzip": 24875,
-          "minified": 85240,
-          "unminified": 137614
+          "gzip": 24646,
+          "minified": 84462,
+          "unminified": 136332
         }
       },
       "static": {
@@ -2998,8 +4314,16 @@
                 "min": 137626,
                 "max": 139501,
                 "raw": [
-                  138321, 137849, 137760, 138365, 138069, 137626, 138119,
-                  138095, 139501, 138129
+                  138321,
+                  137849,
+                  137760,
+                  138365,
+                  138069,
+                  137626,
+                  138119,
+                  138095,
+                  139501,
+                  138129
                 ]
               },
               "localeLeakPct": {
@@ -3007,9 +4331,15 @@
                 "min": 51.35135135135135,
                 "max": 51.35135135135135,
                 "raw": [
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
                   51.35135135135135
                 ]
               },
@@ -3017,13 +4347,35 @@
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "pages": [
                 {
@@ -3164,8 +4516,16 @@
                 "min": 137626,
                 "max": 139501,
                 "raw": [
-                  138321, 137849, 137760, 138365, 138069, 137626, 138119,
-                  138095, 139501, 138129
+                  138321,
+                  137849,
+                  137760,
+                  138365,
+                  138069,
+                  137626,
+                  138119,
+                  138095,
+                  139501,
+                  138129
                 ]
               },
               "localeLeakPct": {
@@ -3173,9 +4533,15 @@
                 "min": 48.64864864864865,
                 "max": 48.64864864864865,
                 "raw": [
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
                   48.64864864864865
                 ]
               },
@@ -3183,13 +4549,35 @@
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "pages": [
                 {
@@ -3334,274 +4722,274 @@
         },
         "components": {
           "status": "ok",
-          "gzipMin": 200178,
-          "gzipAvg": 200686.18181818182,
-          "gzipMax": 203770,
+          "gzipMin": 106923,
+          "gzipAvg": 107357.90909090909,
+          "gzipMax": 110005,
           "count": 33,
           "items": [
             {
               "name": "Layout.vue",
               "category": "Shared",
-              "minifiedGzip": 203770,
-              "minified": 2649265,
-              "unminified": 2928501,
-              "unminifiedGzip": 215911
+              "minifiedGzip": 110005,
+              "minified": 536578,
+              "unminified": 631206,
+              "unminifiedGzip": 117421
             },
             {
               "name": "Header.vue",
               "category": "Shared",
-              "minifiedGzip": 202927,
-              "minified": 2645175,
-              "unminified": 2922426,
-              "unminifiedGzip": 214823
+              "minifiedGzip": 109294,
+              "minified": 533211,
+              "unminified": 626287,
+              "unminifiedGzip": 116451
             },
             {
               "name": "UnderstandingImpact.vue",
               "category": "pages",
-              "minifiedGzip": 200612,
-              "minified": 2638911,
-              "unminified": 2914152,
-              "unminifiedGzip": 212036
+              "minifiedGzip": 107340,
+              "minified": 528186,
+              "unminified": 619587,
+              "unminifiedGzip": 113834
             },
             {
               "name": "ContactForm.vue",
               "category": "pages",
-              "minifiedGzip": 200709,
-              "minified": 2638725,
-              "unminified": 2913496,
-              "unminifiedGzip": 212117
+              "minifiedGzip": 107417,
+              "minified": 527978,
+              "unminified": 618952,
+              "unminifiedGzip": 113923
             },
             {
               "name": "PreferencesSection.vue",
               "category": "pages",
-              "minifiedGzip": 200705,
-              "minified": 2638681,
-              "unminified": 2913766,
-              "unminifiedGzip": 212106
+              "minifiedGzip": 107420,
+              "minified": 527944,
+              "unminified": 619198,
+              "unminifiedGzip": 113912
             },
             {
               "name": "ResultsTable.vue",
               "category": "pages",
-              "minifiedGzip": 200665,
-              "minified": 2638555,
-              "unminified": 2913453,
-              "unminifiedGzip": 212138
+              "minifiedGzip": 107384,
+              "minified": 527781,
+              "unminified": 618872,
+              "unminifiedGzip": 113915
             },
             {
               "name": "OpenPositions.vue",
               "category": "pages",
-              "minifiedGzip": 200683,
-              "minified": 2638515,
-              "unminified": 2913177,
-              "unminifiedGzip": 212115
+              "minifiedGzip": 107392,
+              "minified": 527728,
+              "unminified": 618569,
+              "unminifiedGzip": 113875
             },
             {
               "name": "Footer.vue",
               "category": "Shared",
-              "minifiedGzip": 200730,
-              "minified": 2638392,
-              "unminified": 2913269,
-              "unminifiedGzip": 212171
+              "minifiedGzip": 107464,
+              "minified": 527642,
+              "unminified": 618708,
+              "unminifiedGzip": 113990
             },
             {
               "name": "PricingTiers.vue",
               "category": "pages",
-              "minifiedGzip": 200928,
-              "minified": 2638296,
-              "unminified": 2912861,
-              "unminifiedGzip": 212495
-            },
-            {
-              "name": "ThemeToggle.vue",
-              "category": "Shared",
-              "minifiedGzip": 200699,
-              "minified": 2638237,
-              "unminified": 2912951,
-              "unminifiedGzip": 212159
+              "minifiedGzip": 107588,
+              "minified": 527537,
+              "unminified": 618306,
+              "unminifiedGzip": 114206
             },
             {
               "name": "TeamGrid.vue",
               "category": "pages",
-              "minifiedGzip": 200967,
-              "minified": 2638180,
-              "unminified": 2912512,
-              "unminifiedGzip": 212495
+              "minifiedGzip": 107618,
+              "minified": 527364,
+              "unminified": 617910,
+              "unminifiedGzip": 114229
             },
             {
               "name": "ProductsGrid.vue",
               "category": "pages",
-              "minifiedGzip": 200885,
-              "minified": 2638130,
-              "unminified": 2912502,
-              "unminifiedGzip": 212427
+              "minifiedGzip": 107562,
+              "minified": 527362,
+              "unminified": 617926,
+              "unminifiedGzip": 114138
             },
             {
-              "name": "WhatWeMeasure.vue",
-              "category": "pages",
-              "minifiedGzip": 200545,
-              "minified": 2637895,
-              "unminified": 2912374,
-              "unminifiedGzip": 211949
+              "name": "ThemeToggle.vue",
+              "category": "Shared",
+              "minifiedGzip": 107349,
+              "minified": 527291,
+              "unminified": 618156,
+              "unminifiedGzip": 113902
             },
             {
               "name": "WhyItMatters.vue",
               "category": "pages",
-              "minifiedGzip": 200455,
-              "minified": 2637849,
-              "unminified": 2912597,
-              "unminifiedGzip": 211842
+              "minifiedGzip": 107177,
+              "minified": 527117,
+              "unminified": 618019,
+              "unminifiedGzip": 113690
             },
             {
-              "name": "LocaleSwitcher.vue",
-              "category": "Shared",
-              "minifiedGzip": 200653,
-              "minified": 2637510,
-              "unminified": 2911999,
-              "unminifiedGzip": 212165
+              "name": "WhatWeMeasure.vue",
+              "category": "pages",
+              "minifiedGzip": 107250,
+              "minified": 527109,
+              "unminified": 617773,
+              "unminifiedGzip": 113737
             },
             {
               "name": "Hero.vue",
               "category": "pages",
-              "minifiedGzip": 200487,
-              "minified": 2637432,
-              "unminified": 2911847,
-              "unminifiedGzip": 211859
+              "minifiedGzip": 107204,
+              "minified": 526705,
+              "unminified": 617293,
+              "unminifiedGzip": 113681
             },
             {
               "name": "BlogList.vue",
               "category": "pages",
-              "minifiedGzip": 200558,
-              "minified": 2637404,
-              "unminified": 2911900,
-              "unminifiedGzip": 211929
-            },
-            {
-              "name": "ContactHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 200410,
-              "minified": 2637373,
-              "unminified": 2912068,
-              "unminifiedGzip": 211767
-            },
-            {
-              "name": "ProfileSection.vue",
-              "category": "pages",
-              "minifiedGzip": 200425,
-              "minified": 2637339,
-              "unminified": 2911760,
-              "unminifiedGzip": 211769
+              "minifiedGzip": 107249,
+              "minified": 526640,
+              "unminified": 617325,
+              "unminifiedGzip": 113718
             },
             {
               "name": "AboutGrid.vue",
               "category": "pages",
-              "minifiedGzip": 200381,
-              "minified": 2637333,
-              "unminified": 2911815,
-              "unminifiedGzip": 211764
+              "minifiedGzip": 107103,
+              "minified": 526596,
+              "unminified": 617237,
+              "unminifiedGzip": 113625
+            },
+            {
+              "name": "ProfileSection.vue",
+              "category": "pages",
+              "minifiedGzip": 107133,
+              "minified": 526582,
+              "unminified": 617180,
+              "unminifiedGzip": 113630
+            },
+            {
+              "name": "LocaleSwitcher.vue",
+              "category": "Shared",
+              "minifiedGzip": 107302,
+              "minified": 526574,
+              "unminified": 617265,
+              "unminifiedGzip": 113856
             },
             {
               "name": "ApiAccessSection.vue",
               "category": "pages",
-              "minifiedGzip": 200463,
-              "minified": 2637267,
-              "unminified": 2911704,
-              "unminifiedGzip": 211807
-            },
-            {
-              "name": "PricingHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 200385,
-              "minified": 2637183,
-              "unminified": 2911725,
-              "unminifiedGzip": 211700
-            },
-            {
-              "name": "ProductsHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 200345,
-              "minified": 2637180,
-              "unminified": 2911782,
-              "unminifiedGzip": 211654
-            },
-            {
-              "name": "SettingsHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 200339,
-              "minified": 2637179,
-              "unminified": 2911781,
-              "unminifiedGzip": 211652
-            },
-            {
-              "name": "CareersHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 200335,
-              "minified": 2637174,
-              "unminified": 2911770,
-              "unminifiedGzip": 211641
-            },
-            {
-              "name": "BlogHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 200335,
-              "minified": 2637160,
-              "unminified": 2911738,
-              "unminifiedGzip": 211645
-            },
-            {
-              "name": "TeamHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 200337,
-              "minified": 2637160,
-              "unminified": 2911738,
-              "unminifiedGzip": 211646
-            },
-            {
-              "name": "FAQHeader.vue",
-              "category": "pages",
-              "minifiedGzip": 200341,
-              "minified": 2637155,
-              "unminified": 2911727,
-              "unminifiedGzip": 211646
+              "minifiedGzip": 107178,
+              "minified": 526510,
+              "unminified": 617120,
+              "unminifiedGzip": 113652
             },
             {
               "name": "CareersBenefits.vue",
               "category": "pages",
-              "minifiedGzip": 200359,
-              "minified": 2637062,
-              "unminified": 2911370,
-              "unminifiedGzip": 211699
+              "minifiedGzip": 107071,
+              "minified": 526283,
+              "unminified": 616763,
+              "unminifiedGzip": 113588
             },
             {
-              "name": "FAQList.vue",
+              "name": "ContactHeader.vue",
               "category": "pages",
-              "minifiedGzip": 200430,
-              "minified": 2636922,
-              "unminified": 2911207,
-              "unminifiedGzip": 211768
+              "minifiedGzip": 107093,
+              "minified": 526278,
+              "unminified": 616904,
+              "unminifiedGzip": 113598
             },
             {
               "name": "AboutHeader.vue",
               "category": "pages",
-              "minifiedGzip": 200299,
-              "minified": 2636916,
-              "unminified": 2911211,
-              "unminifiedGzip": 211651
+              "minifiedGzip": 107023,
+              "minified": 526178,
+              "unminified": 616627,
+              "unminifiedGzip": 113570
+            },
+            {
+              "name": "FAQList.vue",
+              "category": "pages",
+              "minifiedGzip": 107121,
+              "minified": 526149,
+              "unminified": 616597,
+              "unminifiedGzip": 113606
+            },
+            {
+              "name": "PricingHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 107016,
+              "minified": 526068,
+              "unminified": 616556,
+              "unminifiedGzip": 113547
+            },
+            {
+              "name": "ProductsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 107019,
+              "minified": 526061,
+              "unminified": 616606,
+              "unminifiedGzip": 113538
+            },
+            {
+              "name": "SettingsHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 107016,
+              "minified": 526060,
+              "unminified": 616605,
+              "unminifiedGzip": 113536
+            },
+            {
+              "name": "CareersHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 107017,
+              "minified": 526057,
+              "unminified": 616598,
+              "unminifiedGzip": 113536
+            },
+            {
+              "name": "BlogHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 107019,
+              "minified": 526049,
+              "unminified": 616578,
+              "unminifiedGzip": 113534
+            },
+            {
+              "name": "TeamHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 107016,
+              "minified": 526049,
+              "unminified": 616578,
+              "unminifiedGzip": 113535
+            },
+            {
+              "name": "FAQHeader.vue",
+              "category": "pages",
+              "minifiedGzip": 107019,
+              "minified": 526046,
+              "unminified": 616571,
+              "unminifiedGzip": 113537
             },
             {
               "name": "SettingsFooter.vue",
               "category": "pages",
-              "minifiedGzip": 200304,
-              "minified": 2636792,
-              "unminified": 2911016,
-              "unminifiedGzip": 211614
+              "minifiedGzip": 107029,
+              "minified": 526026,
+              "unminified": 616420,
+              "unminifiedGzip": 113537
             },
             {
               "name": "MockBanner.vue",
               "category": "Shared",
-              "minifiedGzip": 200178,
-              "minified": 2636425,
-              "unminified": 2910543,
-              "unminifiedGzip": 211475
+              "minifiedGzip": 106923,
+              "minified": 525685,
+              "unminified": 615974,
+              "unminifiedGzip": 113441
             }
           ]
         },
@@ -3614,15 +5002,24 @@
                 "min": 2.1999999955296516,
                 "max": 5.399999998509884,
                 "raw": [
-                  5.399999998509884, 2.2000000029802322, 2.3000000044703484,
-                  2.3000000044703484, 2.1999999955296516
+                  5.399999998509884,
+                  2.2000000029802322,
+                  2.3000000044703484,
+                  2.3000000044703484,
+                  2.1999999955296516
                 ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             },
             "fr": {
@@ -3631,15 +5028,24 @@
                 "min": 2.1999999955296516,
                 "max": 4.299999997019768,
                 "raw": [
-                  4.299999997019768, 2.2999999970197678, 2.2000000029802322,
-                  2.3000000044703484, 2.1999999955296516
+                  4.299999997019768,
+                  2.2999999970197678,
+                  2.2000000029802322,
+                  2.3000000044703484,
+                  2.1999999955296516
                 ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             }
           },
@@ -3655,7 +5061,10 @@
                 "min": 12.700000002980232,
                 "max": 16.299999997019768,
                 "raw": [
-                  16.299999997019768, 14, 12.700000002980232, 14,
+                  16.299999997019768,
+                  14,
+                  12.700000002980232,
+                  14,
                   13.399999998509884
                 ]
               },
@@ -3664,8 +5073,11 @@
                 "min": 5.299999997019768,
                 "max": 7.200000002980232,
                 "raw": [
-                  7.200000002980232, 6.699999995529652, 5.299999997019768,
-                  6.600000001490116, 5.899999998509884
+                  7.200000002980232,
+                  6.699999995529652,
+                  5.299999997019768,
+                  6.600000001490116,
+                  5.899999998509884
                 ]
               },
               "reactMount": {
@@ -3673,8 +5085,11 @@
                 "min": 2.1999999955296516,
                 "max": 2.899999998509884,
                 "raw": [
-                  2.1999999955296516, 2.899999998509884, 2.399999998509884,
-                  2.3000000044703484, 2.2999999970197678
+                  2.1999999955296516,
+                  2.899999998509884,
+                  2.399999998509884,
+                  2.3000000044703484,
+                  2.2999999970197678
                 ]
               },
               "hydrationInstrumented": true,
@@ -3686,8 +5101,11 @@
                 "min": 11.899999998509884,
                 "max": 15.799999997019768,
                 "raw": [
-                  15.799999997019768, 12.800000004470348, 11.899999998509884,
-                  12.899999998509884, 12.5
+                  15.799999997019768,
+                  12.800000004470348,
+                  11.899999998509884,
+                  12.899999998509884,
+                  12.5
                 ]
               },
               "hydration": {
@@ -3695,7 +5113,10 @@
                 "min": 5.5,
                 "max": 6.700000002980232,
                 "raw": [
-                  6.700000002980232, 5.699999995529652, 5.5, 6.200000002980232,
+                  6.700000002980232,
+                  5.699999995529652,
+                  5.5,
+                  6.200000002980232,
                   6
                 ]
               },
@@ -3704,7 +5125,11 @@
                 "min": 2,
                 "max": 2.399999998509884,
                 "raw": [
-                  2.100000001490116, 2.399999998509884, 2, 2, 2.2000000029802322
+                  2.100000001490116,
+                  2.399999998509884,
+                  2,
+                  2,
+                  2.2000000029802322
                 ]
               },
               "hydrationInstrumented": true,

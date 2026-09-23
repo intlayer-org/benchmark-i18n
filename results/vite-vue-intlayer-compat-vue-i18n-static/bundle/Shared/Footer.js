@@ -1,4 +1,4 @@
-import { Fragment, computed, createBlock, createElementBlock, createElementVNode, createTextVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderList, renderSlot, resolveComponent, toDisplayString, withCtx } from "vue";
+import { Fragment, computed, createBlock, createElementBlock, createElementVNode, createTextVNode, defineComponent, getCurrentInstance, h, inject, openBlock, readonly, ref, renderList, renderSlot, resolveComponent, toDisplayString, unref, withCtx } from "vue";
 import { useRoute } from "vue-router";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
@@ -976,47 +976,6 @@ var useI18n = ((options) => {
 		n: (value, formatOrOptions) => formatNumberValue(value, formatOrOptions, currentLocale.value, numberFormats)
 	};
 });
-var Footer_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "Footer",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		const { t } = useI18n();
-		const route = useRoute();
-		const currentLocale = computed(() => route.params.locale || "en");
-		const __returned__ = {
-			t,
-			route,
-			currentLocale,
-			footerLinks: computed(() => [
-				{
-					label: t("footer.github"),
-					href: "https://github.com/intlayer-org/benchmark-i18n",
-					isInternal: false
-				},
-				{
-					label: t("footer.methodology"),
-					to: `/${currentLocale.value}/about`,
-					isInternal: true
-				},
-				{
-					label: t("footer.contributing"),
-					to: `/${currentLocale.value}/contact`,
-					isInternal: true
-				}
-			])
-		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "mt-20 border-t border-border bg-card" };
 var _hoisted_2 = { class: "container py-8" };
 var _hoisted_3 = { class: "grid gap-8 md:grid-cols-3" };
@@ -1028,53 +987,69 @@ var _hoisted_8 = ["href"];
 var _hoisted_9 = { class: "mb-2 text-sm font-semibold text-foreground" };
 var _hoisted_10 = { class: "text-sm text-muted-foreground" };
 var _hoisted_11 = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_router_link = resolveComponent("router-link");
-	return openBlock(), createElementBlock("footer", _hoisted_1, [createElementVNode("div", _hoisted_2, [createElementVNode("div", _hoisted_3, [
-		createElementVNode("div", null, [createElementVNode("h3", _hoisted_4, toDisplayString($setup.t("footer.title")), 1), createElementVNode("p", _hoisted_5, toDisplayString($setup.t("footer.description")), 1)]),
-		createElementVNode("div", null, [createElementVNode("h3", _hoisted_6, toDisplayString($setup.t("footer.resources")), 1), createElementVNode("ul", _hoisted_7, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.footerLinks, (linkEl) => {
-			return openBlock(), createElementBlock("li", { key: linkEl.label }, [linkEl.isInternal ? (openBlock(), createBlock(_component_router_link, {
-				key: 0,
-				to: linkEl.to,
-				class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-			}, {
-				default: withCtx(() => [createTextVNode(toDisplayString(linkEl.label), 1)]),
-				_: 2
-			}, 1032, ["to"])) : (openBlock(), createElementBlock("a", {
-				key: 1,
-				href: linkEl.href,
-				target: "_blank",
-				rel: "noreferrer",
-				class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-			}, toDisplayString(linkEl.label), 9, _hoisted_8))]);
-		}), 128))])]),
-		createElementVNode("div", null, [createElementVNode("h3", _hoisted_9, toDisplayString($setup.t("footer.contact")), 1), createElementVNode("p", _hoisted_10, toDisplayString($setup.t("shared.contactEmail")), 1)])
-	]), createElementVNode("div", _hoisted_11, toDisplayString($setup.t("footer.builtWith")), 1)])]);
-}
-var Footer_default = _plugin_vue_export_helper_default(Footer_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/Footer.vue"]]);
+var Footer_default = defineComponent({
+	__name: "Footer",
+	setup(__props) {
+		const { t } = useI18n();
+		const route = useRoute();
+		const currentLocale = computed(() => route.params.locale || "en");
+		const footerLinks = computed(() => [
+			{
+				label: t("footer.github"),
+				href: "https://github.com/intlayer-org/benchmark-i18n",
+				isInternal: false
+			},
+			{
+				label: t("footer.methodology"),
+				to: `/${currentLocale.value}/about`,
+				isInternal: true
+			},
+			{
+				label: t("footer.contributing"),
+				to: `/${currentLocale.value}/contact`,
+				isInternal: true
+			}
+		]);
+		return (_ctx, _cache) => {
+			const _component_router_link = resolveComponent("router-link");
+			return openBlock(), createElementBlock("footer", _hoisted_1, [createElementVNode("div", _hoisted_2, [createElementVNode("div", _hoisted_3, [
+				createElementVNode("div", null, [createElementVNode("h3", _hoisted_4, toDisplayString(unref(t)("footer.title")), 1), createElementVNode("p", _hoisted_5, toDisplayString(unref(t)("footer.description")), 1)]),
+				createElementVNode("div", null, [createElementVNode("h3", _hoisted_6, toDisplayString(unref(t)("footer.resources")), 1), createElementVNode("ul", _hoisted_7, [(openBlock(true), createElementBlock(Fragment, null, renderList(footerLinks.value, (linkEl) => {
+					return openBlock(), createElementBlock("li", { key: linkEl.label }, [linkEl.isInternal ? (openBlock(), createBlock(_component_router_link, {
+						key: 0,
+						to: linkEl.to,
+						class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+					}, {
+						default: withCtx(() => [createTextVNode(toDisplayString(linkEl.label), 1)]),
+						_: 2
+					}, 1032, ["to"])) : (openBlock(), createElementBlock("a", {
+						key: 1,
+						href: linkEl.href,
+						target: "_blank",
+						rel: "noreferrer",
+						class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+					}, toDisplayString(linkEl.label), 9, _hoisted_8))]);
+				}), 128))])]),
+				createElementVNode("div", null, [createElementVNode("h3", _hoisted_9, toDisplayString(unref(t)("footer.contact")), 1), createElementVNode("p", _hoisted_10, toDisplayString(unref(t)("shared.contactEmail")), 1)])
+			]), createElementVNode("div", _hoisted_11, toDisplayString(unref(t)("footer.builtWith")), 1)])]);
+		};
+	}
+});
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var Footer_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(Footer_default) });
 } };

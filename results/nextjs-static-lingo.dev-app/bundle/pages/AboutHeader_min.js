@@ -1,7 +1,6 @@
 import { t as e } from "./logger-LUfhf5qs.js";
 import { createContext as t, useCallback as n, useEffect as r, useLayoutEffect as i, useRef as a, useState as o } from "react";
-import { Fragment as s, jsxDEV as c } from "react/jsx-dev-runtime";
-import { jsx as l } from "react/jsx-runtime";
+import { Fragment as s, jsx as c, jsxs as l } from "react/jsx-runtime";
 function u(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), i(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
@@ -12,30 +11,17 @@ function u(e) {
 		}
 	}, [e]);
 }
-var d = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/about/AboutHeader.tsx";
-function f() {
-	return u("AboutHeader"), c(s, { children: [c("h1", {
+function d() {
+	return u("AboutHeader"), l(s, { children: [c("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: "About This Benchmark"
-	}, void 0, !1, {
-		fileName: d,
-		lineNumber: 9,
-		columnNumber: 7
-	}, this), c("p", {
+	}), c("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
-	}, void 0, !1, {
-		fileName: d,
-		lineNumber: 12,
-		columnNumber: 7
-	}, this)] }, void 0, !0, {
-		fileName: d,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+	})] });
 }
-var p = t(null);
-async function m(t, n, r) {
+var f = t(null);
+async function p(t, n, r) {
 	if (!r || !n || n.length === 0) return {};
 	let i = `${r}/translations/${t}`, a = new AbortController(), o = setTimeout(() => a.abort(), 3e4);
 	try {
@@ -54,53 +40,53 @@ async function m(t, n, r) {
 		clearTimeout(o);
 	}
 }
-var h = "__SERVER_URL__", g = "__SOURCE_LOCALE__";
-function _() {
+var m = "__SERVER_URL__", h = "__SOURCE_LOCALE__";
+function g() {
 	return "en";
 }
-var v = () => {}, y = process.env.NODE_ENV === "development", b = 200, x = y ? C : S;
-function S({ initialLocale: t, initialTranslations: i = {}, router: a, children: s }) {
-	let [c, u] = o(() => t || (typeof window < "u" ? _() : g)), [d, f] = o(i), [m, h] = o(!1);
-	e.debug(`LingoProvider initialized with locale: ${c}`, i), r(() => {
-		typeof document < "u" && (document.documentElement.lang = c);
-	}, [c]);
+var _ = () => {}, v = process.env.NODE_ENV === "development", y = 200, b = v ? S : x;
+function x({ initialLocale: t, initialTranslations: i = {}, router: a, children: s }) {
+	let [l, u] = o(() => t || (typeof window < "u" ? g() : h)), [d, p] = o(i), [m, v] = o(!1);
+	e.debug(`LingoProvider initialized with locale: ${l}`, i), r(() => {
+		typeof document < "u" && (document.documentElement.lang = l);
+	}, [l]);
 	let y = n(async (t) => {
 		if (!(Object.keys(i).length > 0)) {
-			h(!0);
+			v(!0);
 			try {
 				let n = await fetch(`/translations/${t}.json`);
 				if (!n.ok) throw Error(`Failed to load translations for ${t}: ${n.statusText}`);
 				let r = await n.json();
-				f(r.entries || r), e.debug(`Loaded translations for ${t}:`, Object.keys(r.entries || r).length);
+				p(r.entries || r), e.debug(`Loaded translations for ${t}:`, Object.keys(r.entries || r).length);
 			} catch (n) {
-				e.error(`Failed to load translations for ${t}:`, n), f({});
+				e.error(`Failed to load translations for ${t}:`, n), p({});
 			} finally {
-				h(!1);
+				v(!1);
 			}
 		}
 	}, [i]);
 	r(() => {
-		Object.keys(i).length === 0 && y(c);
+		Object.keys(i).length === 0 && y(l);
 	}, []), r(() => {
-		a && f(i);
+		a && p(i);
 	}, [i, a]);
 	let b = n(async (e) => {
 		u(e), a ? a.refresh() : await y(e);
 	}, [a, y]);
-	return l(p.Provider, {
+	return c(f.Provider, {
 		value: {
-			locale: c,
+			locale: l,
 			setLocale: b,
 			translations: d,
-			registerHashes: v,
+			registerHashes: _,
 			isLoading: m,
-			sourceLocale: g
+			sourceLocale: h
 		},
 		children: s
 	});
 }
-function C({ initialLocale: t, initialTranslations: i = {}, router: s, devWidget: c, children: u }) {
-	let [d, f] = o(() => t || _()), [v, y] = o(i), [x, S] = o(!1), [C, w] = o(/* @__PURE__ */ new Set()), T = a(/* @__PURE__ */ new Set()), E = a(/* @__PURE__ */ new Set()), D = a(/* @__PURE__ */ new Set()), O = a(null), k = a(i), A = a(d);
+function S({ initialLocale: t, initialTranslations: i = {}, router: s, devWidget: l, children: u }) {
+	let [d, _] = o(() => t || g()), [v, b] = o(i), [x, S] = o(!1), [C, w] = o(/* @__PURE__ */ new Set()), T = a(/* @__PURE__ */ new Set()), E = a(/* @__PURE__ */ new Set()), D = a(/* @__PURE__ */ new Set()), O = a(null), k = a(i), A = a(d);
 	r(() => {
 		k.current = v;
 	}, [v]), r(() => {
@@ -127,14 +113,14 @@ function C({ initialLocale: t, initialTranslations: i = {}, router: s, devWidget
 			if (E.current.clear(), e.debug(`Fetching translations for ${t.length} hashes`), t.length !== 0) {
 				S(!0);
 				try {
-					let n = await m(A.current, t, h);
+					let n = await p(A.current, t, m);
 					e.debug(`Fetched translations for ${t.length} hashes:`, n);
 					let r = new Set(Object.keys(n)), i = t.filter((e) => !r.has(e));
 					if (i.length > 0) {
 						e.warn(`Server did not return translations for ${i.length} hashes: ${i.join(", ")}`);
 						for (let e of i) D.current.add(e);
 					}
-					y((e) => ({
+					b((e) => ({
 						...e,
 						...n
 					}));
@@ -146,7 +132,7 @@ function C({ initialLocale: t, initialTranslations: i = {}, router: s, devWidget
 					S(!1);
 				}
 			}
-		}, b));
+		}, y));
 	}, [
 		C,
 		d,
@@ -155,45 +141,45 @@ function C({ initialLocale: t, initialTranslations: i = {}, router: s, devWidget
 		O.current && clearTimeout(O.current);
 	}, []);
 	let M = n(async (t) => {
-		f(t), s && s.refresh(), S(!0);
+		_(t), s && s.refresh(), S(!0);
 		let n = performance.now();
 		try {
-			e.info(`Fetching translations for locale: ${t}. Server url: ${h}`);
-			let r = await m(t, [], h), i = performance.now();
+			e.info(`Fetching translations for locale: ${t}. Server url: ${m}`);
+			let r = await p(t, [], m), i = performance.now();
 			e.info(`Translation fetch complete for ${t} in ${(i - n).toFixed(2)}ms`);
 			let a = r.entries || {};
-			e.debug(`Translations loaded for ${t}:`, a), y(a);
+			e.debug(`Translations loaded for ${t}:`, a), b(a);
 		} catch (n) {
-			e.error(`Failed to load translations for ${t}:`, n), y({});
+			e.error(`Failed to load translations for ${t}:`, n), b({});
 		} finally {
 			S(!1);
 		}
 	}, [s]);
 	return r(() => {
-		c?.enabled !== !1 && import("./lingo-dev-widget-C3EvpmD3.js").catch((t) => {
+		l?.enabled !== !1 && import("./lingo-dev-widget-C3EvpmD3.js").catch((t) => {
 			e.error("Failed to load dev widget:", t, t.message);
 		});
-	}, [c?.enabled]), r(() => {
-		typeof window < "u" && c?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
+	}, [l?.enabled]), r(() => {
+		typeof window < "u" && l?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
 			isLoading: x,
 			locale: d,
-			sourceLocale: g,
+			sourceLocale: h,
 			pendingCount: E.current.size,
-			position: c?.position || "bottom-left"
-		}, window.__LINGO_DEV_WS_URL__ = h, window.__LINGO_DEV_UPDATE__?.());
+			position: l?.position || "bottom-left"
+		}, window.__LINGO_DEV_WS_URL__ = m, window.__LINGO_DEV_UPDATE__?.());
 	}, [
 		x,
 		d,
-		g,
-		c
-	]), l(p.Provider, {
+		h,
+		l
+	]), c(f.Provider, {
 		value: {
 			locale: d,
 			setLocale: M,
 			translations: v,
 			registerHashes: j,
 			isLoading: x,
-			sourceLocale: g,
+			sourceLocale: h,
 			_devStats: {
 				pendingCount: E.current.size,
 				totalRegisteredCount: T.current.size
@@ -202,30 +188,16 @@ function C({ initialLocale: t, initialTranslations: i = {}, router: s, devWidget
 		children: u
 	});
 }
-var w = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
-function T({ children: e }) {
-	return c(x, {
+function C({ children: e }) {
+	return c(b, {
 		initialLocale: "en",
 		children: e
-	}, void 0, !1, {
-		fileName: w,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var E = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/about/AboutHeader.wrapper.tsx";
-function D() {
-	return c(T, { children: c(f, {}, void 0, !1, {
-		fileName: E,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: E,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function w() {
+	return c(C, { children: c(d, {}) });
 }
-export { D as default };
+export { w as default };
 import { t as e } from "./logger-LUfhf5qs.js";
 var t = class extends HTMLElement {
 	shadow;

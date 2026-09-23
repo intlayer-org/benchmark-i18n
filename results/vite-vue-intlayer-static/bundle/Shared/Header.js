@@ -1,4 +1,4 @@
-import { Fragment, computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, normalizeClass, onBeforeMount, onMounted, onUnmounted, openBlock, ref, renderList, resolveComponent, shallowRef, toDisplayString, toValue, watch, withCtx } from "vue";
+import { Fragment, computed, createBlock, createCommentVNode, createElementBlock, createElementVNode, createTextVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, normalizeClass, onBeforeMount, onMounted, onUnmounted, openBlock, ref, renderList, resolveComponent, shallowRef, toDisplayString, toValue, unref, watch, withCtx } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { ChevronDown } from "lucide-vue-next";
 var header_default = {
@@ -159,48 +159,47 @@ var header_default = {
 		}
 	}
 };
-var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
-	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
-	if (Object.assign(l, {
-		render: c,
-		toString: () => String(o.value ?? ""),
-		valueOf: () => o.value,
-		[Symbol.toPrimitive]: () => o.value,
-		toJSON: () => o.value,
-		get raw() {
-			return o.value;
-		},
-		set raw(e) {
-			o.value = e;
-		},
-		get value() {
-			return o.value;
-		},
-		use(e) {
-			return n$1({
-				value: o.value,
-				children: () => s(e),
-				additionalProps: a
-			});
-		},
-		__update(e) {
-			s = e.render, this.raw = e.raw;
-		},
-		...a
-	}), r != null) {
-		let e = Object(r), t = Object.getPrototypeOf(e);
-		for (let n of Object.getOwnPropertyNames(t)) {
-			if (n === "constructor" || n in l) continue;
-			let t = e[n];
-			typeof t == "function" && Object.defineProperty(l, n, {
-				value: t.bind(r),
-				writable: !0,
-				configurable: !0
-			});
-		}
-	}
-	return markRaw(l);
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
 };
+var routing = {
+	"mode": "prefix-all",
+	"enableProxy": false,
+	"storage": {
+		"cookies": [{
+			"name": "INTLAYER_LOCALE",
+			"attributes": { "path": "/" }
+		}],
+		"headers": [{ "name": "x-intlayer-locale" }]
+	},
+	"basePath": ""
+};
+var i = Symbol("intlayer");
 var pluginsIdentities = /* @__PURE__ */ new WeakMap();
 var nextPluginsIdentity = 0;
 var getPluginsCacheKey = (plugins) => {
@@ -352,46 +351,6 @@ var getDictionarySelectorCacheKey = (selector) => {
 		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
 	}).join("|");
 };
-var internationalization = {
-	"locales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"requiredLocales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"strictMode": "inclusive",
-	"defaultLocale": "en"
-};
-var routing = {
-	"mode": "prefix-all",
-	"enableProxy": false,
-	"storage": {
-		"cookies": [{
-			"name": "INTLAYER_LOCALE",
-			"attributes": { "path": "/" }
-		}],
-		"headers": [{ "name": "x-intlayer-locale" }]
-	},
-	"basePath": ""
-};
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
 	if (typeof value.then === "function") return false;
@@ -510,30 +469,72 @@ var getDictionary = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
+var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
+	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
+	if (Object.assign(l, {
+		render: c,
+		toString: () => String(o.value ?? ""),
+		valueOf: () => o.value,
+		[Symbol.toPrimitive]: () => o.value,
+		toJSON: () => o.value,
+		get raw() {
+			return o.value;
+		},
+		set raw(e) {
+			o.value = e;
+		},
+		get value() {
+			return o.value;
+		},
+		use(e) {
+			return n$1({
+				value: o.value,
+				children: () => s(e),
+				additionalProps: a
+			});
+		},
+		__update(e) {
+			s = e.render, this.raw = e.raw;
+		},
+		...a
+	}), r != null) {
+		let e = Object(r), t = Object.getPrototypeOf(e);
+		for (let n of Object.getOwnPropertyNames(t)) {
+			if (n === "constructor" || n in l) continue;
+			let t = e[n];
+			typeof t == "function" && Object.defineProperty(l, n, {
+				value: t.bind(r),
+				writable: !0,
+				configurable: !0
+			});
+		}
+	}
+	return markRaw(l);
+};
 var T = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (n, { children: r, ...i }) => {
-		let a = (t) => n$1({
-			...i,
-			value: t,
-			children: t
-		}), c = a(r);
-		if (typeof r != "function") return c;
-		let l = (...e) => {
-			let t = r(...e);
-			return a(t);
+	transform: (t, { children: n, ...a }) => {
+		let o = (e) => n$1({
+			...a,
+			value: e,
+			children: e
+		}), s = o(n);
+		if (typeof n != "function") return s;
+		let u = (...e) => {
+			let t = n(...e);
+			return o(t);
 		};
-		Object.setPrototypeOf(l, Object.getPrototypeOf(c));
-		for (let e of Object.getOwnPropertyNames(c)) {
-			let t = Object.getOwnPropertyDescriptor(c, e);
-			t && Object.defineProperty(l, e, t);
+		Object.setPrototypeOf(u, Object.getPrototypeOf(s));
+		for (let e of Object.getOwnPropertyNames(s)) {
+			let t = Object.getOwnPropertyDescriptor(s, e);
+			t && Object.defineProperty(u, e, t);
 		}
-		for (let e of Object.getOwnPropertySymbols(c)) {
-			let t = Object.getOwnPropertyDescriptor(c, e);
-			t && Object.defineProperty(l, e, t);
+		for (let e of Object.getOwnPropertySymbols(s)) {
+			let t = Object.getOwnPropertyDescriptor(s, e);
+			t && Object.defineProperty(u, e, t);
 		}
-		return markRaw(l);
+		return markRaw(u);
 	}
 };
 var D = fallbackPlugin;
@@ -562,7 +563,6 @@ var M = (e, t = !0) => {
 var n = (n, r) => {
 	return getDictionary(n, r, M(typeof r == "object" && r ? r.locale : r));
 };
-var i = Symbol("intlayer");
 var g = (e, t) => t.reduce((e, t) => e?.[t], e);
 var _ = (e) => typeof e == "object" && !!e;
 var v = (e) => typeof e == "function" || _(e) && ("render" in e || "setup" in e);
@@ -599,39 +599,39 @@ var x = (e) => new Proxy({}, {
 		};
 	}
 });
-var S = (r, a) => {
-	let c = getCurrentInstance() ? inject(i) : void 0, S = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), C = computed(() => {
+var S = (i$1, o) => {
+	let l = getCurrentInstance() ? inject(i) : void 0, S = isRef(l?.locale) ? l.locale : ref(l?.locale ?? internationalization.defaultLocale), C = computed(() => {
 		return {
 			selector: void 0,
-			locale: a === void 0 ? void 0 : toValue(a)
+			locale: o === void 0 ? void 0 : toValue(o)
 		};
 	}), w = computed(() => C.value.locale ?? S.value), T = shallowRef({});
 	watch([
-		() => toValue(r),
+		() => toValue(i$1),
 		() => w.value,
 		() => C.value.selector
-	], ([t, n$2, r]) => {
-		T.value = r ? n(t, {
+	], ([e, n$2, r]) => {
+		T.value = r ? n(e, {
 			...r,
 			locale: n$2
-		}) : n(t, n$2);
+		}) : n(e, n$2);
 	}, {
 		immediate: !0,
 		flush: "sync"
 	});
 	let E = (e) => new Proxy({}, {
-		get(t, r, i) {
+		get(t, n, i) {
 			let a = computed(() => g(T.value, e));
-			if (typeof r == "symbol" || typeof r == "string" && (r.startsWith("__") || r.startsWith("$"))) return r === "__v_isRef" ? !0 : r === "$raw" ? a : r === Symbol.toPrimitive ? () => String(a.value ?? "") : Reflect.get(t, r, i);
-			if (r === "value") return a.value ?? "";
-			if (r === "then") return;
-			if (r === "c" || r === "asComponent") return b(() => a.value);
-			let o = e.concat(r), s = g(T.value, o);
+			if (typeof n == "symbol" || typeof n == "string" && (n.startsWith("__") || n.startsWith("$"))) return n === "__v_isRef" ? !0 : n === "$raw" ? a : n === Symbol.toPrimitive ? () => String(a.value ?? "") : Reflect.get(t, n, i);
+			if (n === "value") return a.value ?? "";
+			if (n === "then") return;
+			if (n === "c" || n === "asComponent") return b(() => a.value);
+			let o = e.concat(n), s = g(T.value, o);
 			if (s === void 0 || _(s) && !v(s)) return E(o);
 			if (y(s)) return x(computed(() => g(T.value, o)));
 			if (typeof s == "function") {
 				let t = g(T.value, e);
-				return t != null && !Object.hasOwn(t, r) ? s.bind(t) : (...e) => g(T.value, o)?.(...e);
+				return t != null && !Object.hasOwn(t, n) ? s.bind(t) : (...e) => g(T.value, o)?.(...e);
 			}
 			let c = computed(() => g(T.value, o));
 			return new Proxy(c, { get(e, t, n) {
@@ -715,22 +715,22 @@ var setLocaleInStorageClient = (locale, options) => {
 	}
 };
 getLocaleFromStorageClient(localeStorageOptions);
-var s = (e, t) => setLocaleInStorageClient(e, {
+var s$1 = (e, t) => setLocaleInStorageClient(e, {
 	...localeStorageOptions,
 	isCookieEnabled: t
 });
-var a = ({ isCookieEnabled: a, onLocaleChange: o } = {}) => {
-	let { defaultLocale: s$1, locales: c } = internationalization ?? {}, l = inject(i);
+var { defaultLocale: a, locales: o } = internationalization ?? {}, s = ({ isCookieEnabled: n, onLocaleChange: s } = {}) => {
+	let c = inject(i);
 	return {
-		locale: computed(() => l?.locale?.value ?? s$1),
-		defaultLocale: s$1,
-		availableLocales: c,
+		locale: computed(() => c?.locale?.value ?? a),
+		defaultLocale: a,
+		availableLocales: o,
 		setLocale: (e) => {
-			if (!c?.map(String).includes(e)) {
+			if (!o?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			l && l.setLocale(e), s(e, a ?? l?.isCookieEnabled ?? !0), o?.(e);
+			c && c.setLocale(e), s$1(e, n ?? c?.isCookieEnabled ?? !0), s?.(e);
 		}
 	};
 };
@@ -758,13 +758,15 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
-var LocaleSwitcher_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var _hoisted_1$2 = { class: "flex items-center gap-2" };
+var _hoisted_2$1 = ["value"];
+var _hoisted_3$1 = ["value"];
+var LocaleSwitcher_default = defineComponent({
 	__name: "LocaleSwitcher",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const route = useRoute();
 		const router = useRouter();
-		const { setLocale } = a();
+		const { setLocale } = s();
 		const currentLocale = computed(() => route.params.locale || "en");
 		const handleLocaleChange = (newLocale) => {
 			setLocale(newLocale);
@@ -778,47 +780,20 @@ var LocaleSwitcher_vue_vue_type_script_setup_true_lang_default = defineComponent
 		watch(currentLocale, (newLocale) => {
 			setLocale(newLocale);
 		}, { immediate: true });
-		const __returned__ = {
-			route,
-			router,
-			setLocale,
-			currentLocale,
-			handleLocaleChange,
-			get locales() {
-				return locales;
-			},
-			get getLocaleName() {
-				return getLocaleName;
-			}
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("div", _hoisted_1$2, [createElementVNode("select", {
+				value: currentLocale.value,
+				onChange: _cache[0] || (_cache[0] = (e) => handleLocaleChange(e.target.value)),
+				class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+			}, [(openBlock(true), createElementBlock(Fragment, null, renderList(unref(locales), (localeItem) => {
+				return openBlock(), createElementBlock("option", {
+					key: localeItem,
+					value: localeItem
+				}, toDisplayString(unref(getLocaleName)(localeItem)), 9, _hoisted_3$1);
+			}), 128))], 40, _hoisted_2$1)]);
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
-var _hoisted_1$2 = { class: "flex items-center gap-2" };
-var _hoisted_2$1 = ["value"];
-var _hoisted_3$1 = ["value"];
-function _sfc_render$2(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", _hoisted_1$2, [createElementVNode("select", {
-		value: $setup.currentLocale,
-		onChange: _cache[0] || (_cache[0] = (e) => $setup.handleLocaleChange(e.target.value)),
-		class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-	}, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.locales, (localeItem) => {
-		return openBlock(), createElementBlock("option", {
-			key: localeItem,
-			value: localeItem
-		}, toDisplayString($setup.getLocaleName(localeItem)), 9, _hoisted_3$1);
-	}), 128))], 40, _hoisted_2$1)]);
-}
-var LocaleSwitcher_default = _plugin_vue_export_helper_default(LocaleSwitcher_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$2], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/LocaleSwitcher.vue"]]);
 var theme_toggle_default = {
 	key: "theme-toggle",
 	content: {
@@ -907,10 +882,10 @@ var theme_toggle_default = {
 		}
 	}
 };
-var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var _hoisted_1$1 = ["aria-label", "title"];
+var ThemeToggle_default = defineComponent({
 	__name: "ThemeToggle",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const { d: auto, e: dark, f: light, a: ariaLabelAuto, c: ariaLabelLight, b: ariaLabelDark } = S(theme_toggle_default);
 		const mode = ref("auto");
 		function getInitialMode() {
@@ -954,114 +929,15 @@ var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
 			window.localStorage.setItem("theme", nextMode);
 		}
 		const getLabel = () => mode.value === "auto" ? ariaLabelAuto.value : mode.value === "light" ? ariaLabelLight.value : ariaLabelDark.value;
-		const __returned__ = {
-			auto,
-			dark,
-			light,
-			ariaLabelAuto,
-			ariaLabelLight,
-			ariaLabelDark,
-			mode,
-			getInitialMode,
-			applyThemeMode,
-			get mediaQueryListener() {
-				return mediaQueryListener;
-			},
-			set mediaQueryListener(v) {
-				mediaQueryListener = v;
-			},
-			toggleMode,
-			getLabel
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("button", {
+				type: "button",
+				onClick: toggleMode,
+				"aria-label": getLabel(),
+				title: getLabel(),
+				class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+			}, toDisplayString(mode.value === "auto" ? unref(auto) : mode.value === "dark" ? unref(dark) : unref(light)), 9, _hoisted_1$1);
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _hoisted_1$1 = ["aria-label", "title"];
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("button", {
-		type: "button",
-		onClick: $setup.toggleMode,
-		"aria-label": $setup.getLabel(),
-		title: $setup.getLabel(),
-		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-	}, toDisplayString($setup.mode === "auto" ? $setup.auto : $setup.mode === "dark" ? $setup.dark : $setup.light), 9, _hoisted_1$1);
-}
-var ThemeToggle_default = _plugin_vue_export_helper_default(ThemeToggle_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/ThemeToggle.vue"]]);
-var Header_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "Header",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		usePerformanceMeasure("Header");
-		const { h: home, i: methodology, j: mockPagesLabel, l: products, k: pricing, n: team, b: blog, c: careers, e: faq, d: contact, m: settings, a: appName, f: goToGithub } = S(header_default);
-		const isMockPagesOpen = ref(false);
-		const route = useRoute();
-		const currentLocale = computed(() => route.params.locale || "en");
-		const __returned__ = {
-			home,
-			methodology,
-			mockPagesLabel,
-			products,
-			pricing,
-			team,
-			blog,
-			careers,
-			faq,
-			contact,
-			settings,
-			appName,
-			goToGithub,
-			isMockPagesOpen,
-			route,
-			currentLocale,
-			mockPagesList: computed(() => [
-				{
-					to: `/${currentLocale.value}/products`,
-					label: products
-				},
-				{
-					to: `/${currentLocale.value}/pricing`,
-					label: pricing
-				},
-				{
-					to: `/${currentLocale.value}/team`,
-					label: team
-				},
-				{
-					to: `/${currentLocale.value}/blog`,
-					label: blog
-				},
-				{
-					to: `/${currentLocale.value}/careers`,
-					label: careers
-				},
-				{
-					to: `/${currentLocale.value}/faq`,
-					label: faq
-				},
-				{
-					to: `/${currentLocale.value}/contact`,
-					label: contact
-				},
-				{
-					to: `/${currentLocale.value}/settings`,
-					label: settings
-				}
-			]),
-			get ChevronDown() {
-				return ChevronDown;
-			},
-			LocaleSwitcher: LocaleSwitcher_default,
-			ThemeToggle: ThemeToggle_default
-		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
 var _hoisted_1 = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" };
@@ -1078,70 +954,113 @@ var _hoisted_8 = {
 	class: "text-muted-foreground transition hover:text-foreground"
 };
 var _hoisted_9 = { class: "sr-only" };
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	const _component_router_link = resolveComponent("router-link");
-	return openBlock(), createElementBlock("header", _hoisted_1, [createElementVNode("nav", _hoisted_2, [createElementVNode("div", _hoisted_3, [createVNode(_component_router_link, {
-		to: `/${$setup.currentLocale}`,
-		class: "text-lg font-bold tracking-tight text-primary no-underline"
-	}, {
-		default: withCtx(() => [createTextVNode(toDisplayString($setup.appName), 1)]),
-		_: 1
-	}, 8, ["to"]), createElementVNode("div", _hoisted_4, [
-		createVNode(_component_router_link, {
-			to: `/${$setup.currentLocale}`,
-			class: "nav-link",
-			"exact-active-class": "is-active"
-		}, {
-			default: withCtx(() => [createTextVNode(toDisplayString($setup.home), 1)]),
-			_: 1
-		}, 8, ["to"]),
-		createVNode(_component_router_link, {
-			to: `/${$setup.currentLocale}/about`,
-			class: "nav-link",
-			"active-class": "is-active"
-		}, {
-			default: withCtx(() => [createTextVNode(toDisplayString($setup.methodology), 1)]),
-			_: 1
-		}, 8, ["to"]),
-		createCommentVNode(" Mock Pages Dropdown "),
-		createElementVNode("div", _hoisted_5, [createElementVNode("button", {
-			type: "button",
-			class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-			onMouseenter: _cache[0] || (_cache[0] = ($event) => $setup.isMockPagesOpen = true),
-			onMouseleave: _cache[1] || (_cache[1] = ($event) => $setup.isMockPagesOpen = false),
-			onClick: _cache[2] || (_cache[2] = ($event) => $setup.isMockPagesOpen = !$setup.isMockPagesOpen)
-		}, [createTextVNode(toDisplayString($setup.mockPagesLabel) + " ", 1), createVNode($setup["ChevronDown"], {
-			size: 14,
-			class: normalizeClass(["transition-transform", $setup.isMockPagesOpen ? "rotate-180" : ""])
-		}, null, 8, ["class"])], 32), $setup.isMockPagesOpen ? (openBlock(), createElementBlock("div", {
-			key: 0,
-			class: "absolute left-0 top-full pt-2 w-48",
-			onMouseenter: _cache[4] || (_cache[4] = ($event) => $setup.isMockPagesOpen = true),
-			onMouseleave: _cache[5] || (_cache[5] = ($event) => $setup.isMockPagesOpen = false)
-		}, [createElementVNode("div", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.mockPagesList, (page) => {
-			return openBlock(), createBlock(_component_router_link, {
-				key: page.to,
-				to: page.to,
-				class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
-				onClick: _cache[3] || (_cache[3] = ($event) => $setup.isMockPagesOpen = false)
+var Header_default = defineComponent({
+	__name: "Header",
+	setup(__props) {
+		usePerformanceMeasure("Header");
+		const { h: home, i: methodology, j: mockPagesLabel, l: products, k: pricing, n: team, b: blog, c: careers, e: faq, d: contact, m: settings, a: appName, f: goToGithub } = S(header_default);
+		const isMockPagesOpen = ref(false);
+		const route = useRoute();
+		const currentLocale = computed(() => route.params.locale || "en");
+		const mockPagesList = computed(() => [
+			{
+				to: `/${currentLocale.value}/products`,
+				label: products
+			},
+			{
+				to: `/${currentLocale.value}/pricing`,
+				label: pricing
+			},
+			{
+				to: `/${currentLocale.value}/team`,
+				label: team
+			},
+			{
+				to: `/${currentLocale.value}/blog`,
+				label: blog
+			},
+			{
+				to: `/${currentLocale.value}/careers`,
+				label: careers
+			},
+			{
+				to: `/${currentLocale.value}/faq`,
+				label: faq
+			},
+			{
+				to: `/${currentLocale.value}/contact`,
+				label: contact
+			},
+			{
+				to: `/${currentLocale.value}/settings`,
+				label: settings
+			}
+		]);
+		return (_ctx, _cache) => {
+			const _component_router_link = resolveComponent("router-link");
+			return openBlock(), createElementBlock("header", _hoisted_1, [createElementVNode("nav", _hoisted_2, [createElementVNode("div", _hoisted_3, [createVNode(_component_router_link, {
+				to: `/${currentLocale.value}`,
+				class: "text-lg font-bold tracking-tight text-primary no-underline"
 			}, {
-				default: withCtx(() => [createTextVNode(toDisplayString(page.label), 1)]),
-				_: 2
-			}, 1032, ["to"]);
-		}), 128))])], 32)) : createCommentVNode("v-if", true)])
-	])]), createElementVNode("div", _hoisted_7, [
-		createElementVNode("a", _hoisted_8, [createElementVNode("span", _hoisted_9, toDisplayString($setup.goToGithub), 1), _cache[6] || (_cache[6] = createElementVNode("svg", {
-			viewBox: "0 0 16 16",
-			"aria-hidden": "true",
-			width: "20",
-			height: "20"
-		}, [createElementVNode("path", {
-			fill: "currentColor",
-			d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-		})], -1))]),
-		createVNode($setup["LocaleSwitcher"]),
-		createVNode($setup["ThemeToggle"])
-	])])]);
-}
-var Header_default = _plugin_vue_export_helper_default(Header_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/Header.vue"]]);
+				default: withCtx(() => [createTextVNode(toDisplayString(unref(appName)), 1)]),
+				_: 1
+			}, 8, ["to"]), createElementVNode("div", _hoisted_4, [
+				createVNode(_component_router_link, {
+					to: `/${currentLocale.value}`,
+					class: "nav-link",
+					"exact-active-class": "is-active"
+				}, {
+					default: withCtx(() => [createTextVNode(toDisplayString(unref(home)), 1)]),
+					_: 1
+				}, 8, ["to"]),
+				createVNode(_component_router_link, {
+					to: `/${currentLocale.value}/about`,
+					class: "nav-link",
+					"active-class": "is-active"
+				}, {
+					default: withCtx(() => [createTextVNode(toDisplayString(unref(methodology)), 1)]),
+					_: 1
+				}, 8, ["to"]),
+				createCommentVNode(" Mock Pages Dropdown "),
+				createElementVNode("div", _hoisted_5, [createElementVNode("button", {
+					type: "button",
+					class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
+					onMouseenter: _cache[0] || (_cache[0] = ($event) => isMockPagesOpen.value = true),
+					onMouseleave: _cache[1] || (_cache[1] = ($event) => isMockPagesOpen.value = false),
+					onClick: _cache[2] || (_cache[2] = ($event) => isMockPagesOpen.value = !isMockPagesOpen.value)
+				}, [createTextVNode(toDisplayString(unref(mockPagesLabel)) + " ", 1), createVNode(unref(ChevronDown), {
+					size: 14,
+					class: normalizeClass(["transition-transform", isMockPagesOpen.value ? "rotate-180" : ""])
+				}, null, 8, ["class"])], 32), isMockPagesOpen.value ? (openBlock(), createElementBlock("div", {
+					key: 0,
+					class: "absolute left-0 top-full pt-2 w-48",
+					onMouseenter: _cache[4] || (_cache[4] = ($event) => isMockPagesOpen.value = true),
+					onMouseleave: _cache[5] || (_cache[5] = ($event) => isMockPagesOpen.value = false)
+				}, [createElementVNode("div", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList(mockPagesList.value, (page) => {
+					return openBlock(), createBlock(_component_router_link, {
+						key: page.to,
+						to: page.to,
+						class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
+						onClick: _cache[3] || (_cache[3] = ($event) => isMockPagesOpen.value = false)
+					}, {
+						default: withCtx(() => [createTextVNode(toDisplayString(page.label), 1)]),
+						_: 2
+					}, 1032, ["to"]);
+				}), 128))])], 32)) : createCommentVNode("v-if", true)])
+			])]), createElementVNode("div", _hoisted_7, [
+				createElementVNode("a", _hoisted_8, [createElementVNode("span", _hoisted_9, toDisplayString(unref(goToGithub)), 1), _cache[6] || (_cache[6] = createElementVNode("svg", {
+					viewBox: "0 0 16 16",
+					"aria-hidden": "true",
+					width: "20",
+					height: "20"
+				}, [createElementVNode("path", {
+					fill: "currentColor",
+					d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+				})], -1))]),
+				createVNode(LocaleSwitcher_default),
+				createVNode(ThemeToggle_default)
+			])])]);
+		};
+	}
+});
 export { Header_default as default };

@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { useRouter } from "next/router";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx } from "react/jsx-runtime";
 import en from "../locales/en.json";
 import fr from "../locales/fr.json";
 import es from "../locales/es.json";
@@ -275,25 +275,16 @@ function initialBrowserNamespaces() {
 	if (typeof window === "undefined") return {};
 	return ((_b = (_a = window.__NEXT_DATA__) === null || _a === void 0 ? void 0 : _a.props) === null || _b === void 0 ? void 0 : _b.__namespaces) || {};
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
 	const { t } = useTranslation("common");
 	return null;
 };
 function EmptyComponent() {
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		lang: "en",
 		namespaces: {},
-		children: jsxDEV(TestComponent, {}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 16,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 15,
-		columnNumber: 5
-	}, this);
+		children: jsx(TestComponent, {})
+	});
 }
 var translationsMap = {
 	en,
@@ -348,7 +339,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -360,13 +350,8 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const locale = "en";
 	const [translations, setTranslations] = useState({});
@@ -385,33 +370,16 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		lang: locale,
 		namespaces: { common: translations },
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 37,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 36,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/scripts/EmptyComponent.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(EmptyComponent, {}) });
 }
 export { Wrapped as default };

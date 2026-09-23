@@ -1,5 +1,5 @@
 import { createContext, createElement, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -2422,157 +2422,72 @@ function I18nextProvider({ i18n, defaultNS, children }) {
 	}), [i18n, defaultNS]);
 	return createElement(I18nContext.Provider, { value }, children);
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/pages/contact/ContactForm.tsx";
 function ContactForm() {
 	const { t } = useTranslation("contact");
 	const nameId = useId();
 	const emailId = useId();
 	const topicId = useId();
 	const messageId = useId();
-	return jsxDEV("form", {
+	return jsxs("form", {
 		className: "space-y-6",
 		children: [
-			jsxDEV("div", {
+			jsxs("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [jsxDEV("div", { children: [jsxDEV("label", {
+				children: [jsxs("div", { children: [jsx("label", {
 					htmlFor: nameId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: t("contactForm.name")
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 17,
-					columnNumber: 11
-				}, this), jsxDEV("input", {
+				}), jsx("input", {
 					id: nameId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: t("contactForm.name")
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 23,
-					columnNumber: 11
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 16,
-					columnNumber: 9
-				}, this), jsxDEV("div", { children: [jsxDEV("label", {
+				})] }), jsxs("div", { children: [jsx("label", {
 					htmlFor: emailId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: t("contactForm.email")
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 30,
-					columnNumber: 11
-				}, this), jsxDEV("input", {
+				}), jsx("input", {
 					id: emailId,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "you@example.com"
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 36,
-					columnNumber: 11
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 29,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 15,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", { children: [jsxDEV("label", {
+				})] })]
+			}),
+			jsxs("div", { children: [jsx("label", {
 				htmlFor: topicId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: t("contactForm.subject")
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 45,
-				columnNumber: 9
-			}, this), jsxDEV("select", {
+			}), jsxs("select", {
 				id: topicId,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					jsxDEV("option", { children: "Bug Report" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 55,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: "New Benchmark Idea" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 56,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: "Methodology Question" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 57,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: "Contribution" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 58,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: "Other" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 59,
-						columnNumber: 11
-					}, this)
+					jsx("option", { children: "Bug Report" }),
+					jsx("option", { children: "New Benchmark Idea" }),
+					jsx("option", { children: "Methodology Question" }),
+					jsx("option", { children: "Contribution" }),
+					jsx("option", { children: "Other" })
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 51,
-				columnNumber: 9
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 44,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", { children: [jsxDEV("label", {
+			})] }),
+			jsxs("div", { children: [jsx("label", {
 				htmlFor: messageId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: t("contactForm.message")
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 63,
-				columnNumber: 9
-			}, this), jsxDEV("textarea", {
+			}), jsx("textarea", {
 				id: messageId,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				placeholder: t("contactForm.message")
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 69,
-				columnNumber: 9
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 62,
-				columnNumber: 7
-			}, this),
-			jsxDEV("button", {
+			})] }),
+			jsx("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: t("contactForm.sendMessage")
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 76,
-				columnNumber: 7
-			}, this),
-			jsxDEV("p", {
+			}),
+			jsx("p", {
 				className: "text-xs text-muted-foreground",
 				children: t("contactForm.wellGetBackTo")
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 82,
-				columnNumber: 7
-			}, this)
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 14,
-		columnNumber: 5
-	}, this);
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -2790,7 +2705,6 @@ instance.use(initReactI18next).use(function resourcesToBackend(res) {
 	react: { useSuspense: false }
 });
 var i18n_default = instance;
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/AppProviders.tsx";
 function AppProviders({ children, initialResources }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -2809,34 +2723,16 @@ function AppProviders({ children, initialResources }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nextProvider, {
+	return jsx(I18nextProvider, {
 		i18n: i18n_default,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 56,
-		columnNumber: 10
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/pages/contact/ContactForm.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ContactForm, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ContactForm, {}) });
 }
 export { Wrapped as default };
 var about_default = {

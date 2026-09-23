@@ -1,5 +1,5 @@
 import "react";
-import { Fragment as e, jsxDEV as t } from "react/jsx-dev-runtime";
+import { Fragment as e, jsx as t } from "react/jsx-runtime";
 var n = {}, r = [
 	"en",
 	"fr",
@@ -136,33 +136,14 @@ var N = /* @__PURE__ */ new Map();
 function P(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var F = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/EmptyComponent.tsx";
-function I() {
-	return t(e, {}, void 0, !1, {
-		fileName: F,
-		lineNumber: 22,
-		columnNumber: 10
-	}, this);
+function F() {
+	return t(e, {});
 }
-var L = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/LibWrapper.tsx";
 m("en", { reload: !1 });
-function R({ children: n }) {
-	return t(e, { children: n }, void 0, !1, {
-		fileName: L,
-		lineNumber: 7,
-		columnNumber: 10
-	}, this);
+function I({ children: n }) {
+	return t(e, { children: n });
 }
-var z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/EmptyComponent.wrapper.tsx";
-function B() {
-	return t(R, { children: t(I, {}, void 0, !1, {
-		fileName: z,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: z,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function L() {
+	return t(I, { children: t(F, {}) });
 }
-export { B as default };
+export { L as default };

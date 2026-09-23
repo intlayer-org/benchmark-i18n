@@ -1,4 +1,3 @@
-import { tolgee } from "../../i18n/tolgee";
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
@@ -6,13 +5,6 @@ const FAQHeader = lazy(() => import("../../components/pages/faq/FAQHeader"));
 const FAQList = lazy(() => import("../../components/pages/faq/FAQList"));
 
 export const Route = createFileRoute("/$locale/faq")({
-  loader: async ({ params }) => {
-    await tolgee.loadRecords([
-      { language: params.locale, namespace: "faq" },
-      { language: params.locale, namespace: "faqHeader" },
-      { language: params.locale, namespace: "faqList" },
-    ]);
-  },
   component: FAQ,
 });
 

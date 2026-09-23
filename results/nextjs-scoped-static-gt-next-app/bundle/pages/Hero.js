@@ -1,6 +1,5 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { jsx } from "react/jsx-runtime";
-import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3909,7 +3908,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => true) === true) return "development";
+	if (readImportMetaEnv(() => false) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6030,74 +6029,33 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/pages/home/Hero.tsx";
 function Hero() {
 	usePerformanceMeasure("Hero");
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mb-16 text-center",
 		children: [
-			jsxDEV("h1", {
+			jsx("h1", {
 				className: "mb-4 text-4xl font-bold tracking-tight text-foreground",
-				children: jsxDEV(a$2, { children: "i18n Benchmark" }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 11,
-					columnNumber: 9
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 10,
-				columnNumber: 7
-			}, this),
-			jsxDEV("p", {
+				children: jsx(a$2, { children: "i18n Benchmark" })
+			}),
+			jsx("p", {
 				className: "mx-auto max-w-2xl text-lg text-muted-foreground",
-				children: jsxDEV(a$2, { children: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity." }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 14,
-					columnNumber: 9
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 13,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", {
+				children: jsx(a$2, { children: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity." })
+			}),
+			jsxs("div", {
 				className: "mt-8 flex justify-center gap-4",
-				children: [jsxDEV("button", {
+				children: [jsx("button", {
 					type: "button",
 					className: "rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-					children: jsxDEV(a$2, { children: "View Results" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 25,
-						columnNumber: 11
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 21,
-					columnNumber: 9
-				}, this), jsxDEV("button", {
+					children: jsx(a$2, { children: "View Results" })
+				}), jsx("button", {
 					type: "button",
 					className: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors",
-					children: jsxDEV(a$2, { children: "Methodology" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 27,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 20,
-				columnNumber: 7
-			}, this)
+					children: jsx(a$2, { children: "Methodology" })
+				})]
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6121,7 +6079,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6133,41 +6090,19 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment$1, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 33,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment$1, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsxDEV(BrowserGTProvider, {
+	return jsx(BrowserGTProvider, {
 		locale,
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/pages/home/Hero.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Hero, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Hero, {}) });
 }
 export { Wrapped as default };

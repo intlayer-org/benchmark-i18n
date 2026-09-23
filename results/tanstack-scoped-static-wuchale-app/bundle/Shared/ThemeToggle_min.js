@@ -1,10 +1,6 @@
 import { useEffect as e, useState as t } from "react";
-import { Fragment as n, jsxDEV as r } from "react/jsx-dev-runtime";
+import { Fragment as n, jsx as r } from "react/jsx-runtime";
 var i = () => "";
-i = (e, t) => {
-	let n = t[e];
-	return n == null ? `[i18n-404:${e}]` : `[i18n-400:${e}(${n})]`;
-};
 function a(e, t = [], n = 1) {
 	let r = "";
 	for (let i = n; i < e.length; i++) {
@@ -71,31 +67,31 @@ var p = {
 	ja: [() => import("./shared.0.ja.compiled-CF_vYGhT.js")],
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
-}, m = u("shared", (e, t) => p[t][e](), 1), h = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/ThemeToggle.tsx";
-function g() {
+}, m = u("shared", (e, t) => p[t][e](), 1);
+function h() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 }
-function _(e) {
+function g(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function v() {
+function _() {
 	let [n, i] = t("auto");
 	e(() => {
-		let e = g();
-		i(e), _(e);
+		let e = h();
+		i(e), g(e);
 	}, []), e(() => {
 		if (n !== "auto") return;
-		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => _("auto");
+		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => g("auto");
 		return e.addEventListener("change", t), () => {
 			e.removeEventListener("change", t);
 		};
 	}, [n]);
 	function a() {
 		let e = n === "light" ? "dark" : n === "dark" ? "auto" : "light";
-		i(e), _(e), window.localStorage.setItem("theme", e);
+		i(e), g(e), window.localStorage.setItem("theme", e);
 	}
 	let o = m(), s = n === "auto" ? o(22) : o(23, [n]);
 	return r("button", {
@@ -105,12 +101,21 @@ function v() {
 		title: s,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: o(n === "auto" ? 24 : n === "dark" ? 25 : 26)
-	}, void 0, !1, {
-		fileName: h,
-		lineNumber: 77,
-		columnNumber: 5
-	}, this);
+	});
 }
+var v = {
+	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
+	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
+	fr: [() => import("./shared.0.fr.compiled-DDY-COJ8.js")],
+	de: [() => import("./shared.0.de.compiled-DCmIzkyq.js")],
+	it: [() => import("./shared.0.it.compiled-VOv4SkIc.js")],
+	pt: [() => import("./shared.0.pt.compiled-DxguAjRI.js")],
+	zh: [() => import("./shared.0.zh.compiled-BQgPByDl.js")],
+	ja: [() => import("./shared.0.ja.compiled-CF_vYGhT.js")],
+	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
+	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
+};
+u("about", (e, t) => v[t][e](), 1);
 var y = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -123,7 +128,7 @@ var y = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("about", (e, t) => y[t][e](), 1);
+u("blog", (e, t) => y[t][e](), 1);
 var b = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -136,7 +141,7 @@ var b = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("blog", (e, t) => b[t][e](), 1);
+u("careers", (e, t) => b[t][e](), 1);
 var x = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -149,7 +154,7 @@ var x = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("careers", (e, t) => x[t][e](), 1);
+u("contact", (e, t) => x[t][e](), 1);
 var S = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -162,7 +167,7 @@ var S = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("contact", (e, t) => S[t][e](), 1);
+u("faq", (e, t) => S[t][e](), 1);
 var C = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -175,7 +180,7 @@ var C = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("faq", (e, t) => C[t][e](), 1);
+u("home", (e, t) => C[t][e](), 1);
 var w = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -188,7 +193,7 @@ var w = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("home", (e, t) => w[t][e](), 1);
+u("pricing", (e, t) => w[t][e](), 1);
 var T = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -201,7 +206,7 @@ var T = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("pricing", (e, t) => T[t][e](), 1);
+u("products", (e, t) => T[t][e](), 1);
 var E = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -214,7 +219,7 @@ var E = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("products", (e, t) => E[t][e](), 1);
+u("route", (e, t) => E[t][e](), 1);
 var D = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -227,7 +232,7 @@ var D = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("route", (e, t) => D[t][e](), 1);
+u("settings", (e, t) => D[t][e](), 1);
 var O = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -240,42 +245,14 @@ var O = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("settings", (e, t) => O[t][e](), 1);
-var k = {
-	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
-	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
-	fr: [() => import("./shared.0.fr.compiled-DDY-COJ8.js")],
-	de: [() => import("./shared.0.de.compiled-DCmIzkyq.js")],
-	it: [() => import("./shared.0.it.compiled-VOv4SkIc.js")],
-	pt: [() => import("./shared.0.pt.compiled-DxguAjRI.js")],
-	zh: [() => import("./shared.0.zh.compiled-BQgPByDl.js")],
-	ja: [() => import("./shared.0.ja.compiled-CF_vYGhT.js")],
-	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
-	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
-};
-u("team", (e, t) => k[t][e](), 1);
-var A = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
-f("en");
-function j({ children: e }) {
-	return r(n, { children: e }, void 0, !1, {
-		fileName: A,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+u("team", (e, t) => O[t][e](), 1), f("en");
+function k({ children: e }) {
+	return r(n, { children: e });
 }
-var M = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/ThemeToggle.wrapper.tsx";
-function N() {
-	return r(j, { children: r(v, {}, void 0, !1, {
-		fileName: M,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: M,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function A() {
+	return r(k, { children: r(_, {}) });
 }
-export { N as default };
+export { A as default };
 var e = [
 	"i18n Benchmark",
 	"Methodik",

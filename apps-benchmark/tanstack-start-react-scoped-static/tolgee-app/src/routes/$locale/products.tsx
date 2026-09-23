@@ -1,4 +1,3 @@
-import { tolgee } from "../../i18n/tolgee";
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
@@ -10,13 +9,6 @@ const ProductsGrid = lazy(
 );
 
 export const Route = createFileRoute("/$locale/products")({
-  loader: async ({ params }) => {
-    await tolgee.loadRecords([
-      { language: params.locale, namespace: "products" },
-      { language: params.locale, namespace: "productsHeader" },
-      { language: params.locale, namespace: "productsGrid" },
-    ]);
-  },
   component: Products,
 });
 

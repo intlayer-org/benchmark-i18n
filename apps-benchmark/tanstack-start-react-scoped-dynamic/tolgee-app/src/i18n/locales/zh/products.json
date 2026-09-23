@@ -1,0 +1,13 @@
+{
+  "productsHeader.products": "产品",
+  "productsHeader.toolsAndServicesTo": "帮助您优化国际化战略的工具和服务。",
+  "productsGrid.benchmarkDashboard": "基准测试仪表板",
+  "productsGrid.interactiveChartsAndTables": "交互式图表和表格，对比了不同 i18n 库在包大小、渲染时间和注水成本方面的表现。",
+  "productsGrid.bundleAnalyzer": "包分析器",
+  "productsGrid.uploadYourBuildOutput": "上传您的构建输出，获取关于 i18n 开销在您的包中占比的详细分析。",
+  "productsGrid.migrationAssistant": "迁移助手",
+  "productsGrid.automatedCodemodsAndGuides": "自动化代码修改工具和指南，助您在 i18n 库之间平滑迁移，最大程度减少中断。",
+  "productsGrid.performanceMonitor": "性能监控器",
+  "productsGrid.continuousPerformanceTrackingFor": "对您的 i18n 实现进行持续的性能跟踪。当翻译加载速度下降时获得警报。",
+  "productsGrid.learnMore": "了解更多"
+}

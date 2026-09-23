@@ -1,8 +1,7 @@
-import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 import { usePathname, useRouter } from "next/navigation.js";
 import NextLink from "next/link";
-import { jsxDEV } from "react/jsx-dev-runtime";
 import { ChevronDown } from "lucide-react";
 import { useParams, usePathname as usePathname$1, useRouter as useRouter$1 } from "next/navigation";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
@@ -132,21 +131,6 @@ var getLocalizedUrl = (url, currentLocale = internationalization?.defaultLocale,
 	const isAbsoluteUrl = checkIsURLAbsolute(url);
 	const parsedUrl = isAbsoluteUrl ? new URL(url) : new URL(url, "http://e.com");
 	return `${isAbsoluteUrl ? `${parsedUrl.protocol}//${parsedUrl.host}` : ""}${getLocalizedPath(`${parsedUrl.pathname}${parsedUrl.search}${parsedUrl.hash}`, currentLocale, options)}`;
-};
-var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
-	const requestedLocales = [selectedLocale].flat();
-	const normalize = (locale) => locale.trim().toLowerCase();
-	try {
-		for (const requested of requestedLocales) {
-			const normalizedRequested = normalize(requested);
-			const exactMatch = locales.find((locale) => normalize(locale) === normalizedRequested);
-			if (exactMatch) return exactMatch;
-			const [requestedLang] = normalizedRequested.split("-");
-			const partialMatch = locales.find((locale) => normalize(locale).split("-")[0] === requestedLang);
-			if (partialMatch) return partialMatch;
-		}
-	} catch {}
-	return defaultLocale;
 };
 var resolveExpiresToTimestamp = (expires) => {
 	if (typeof expires === "number") return Date.now() + expires * 1e3;
@@ -763,78 +747,10 @@ var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(l
 	...localeStorageOptions,
 	isCookieEnabled
 });
-var useEditor = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const managerRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !managerRef.current) return;
-		managerRef.current.currentLocale.set(locale);
-	}, [locale]);
-};
-var EditorProvider = ({ children }) => {
-	useEditor();
-	return children;
-};
-var useAnalytics = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const clientRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !clientRef.current) return;
-		clientRef.current.setLocale(locale);
-		clientRef.current.trackPageView({ reason: "locale_change" });
-	}, [locale]);
-};
-var AnalyticsProvider = ({ children }) => {
-	useAnalytics();
-	return children;
-};
-var setIntlayerIdentifier = () => {
-	if (typeof window !== "undefined") window.intlayer = { enabled: true };
-};
 var IntlayerClientContext = createContext({
 	locale: localeInStorage ?? internationalization?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: true
-});
-var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocaleProp, variant, children, setLocale: setLocaleProp, disableEditor, isCookieEnabled }) => {
-	const { locales: availableLocales, defaultLocale: defaultLocaleConfig } = internationalization ?? {};
-	const [currentLocale, setCurrentLocale] = useState(localeProp ?? localeInStorage ?? defaultLocaleProp ?? defaultLocaleConfig);
-	useEffect(() => {
-		if (localeProp && localeProp !== currentLocale) setCurrentLocale(localeProp);
-	}, [localeProp]);
-	useEffect(() => {
-		setIntlayerIdentifier();
-	}, []);
-	const setLocaleBase = (newLocale) => {
-		if (currentLocale.toString() === newLocale.toString()) return;
-		if (!availableLocales?.map(String).includes(newLocale)) {
-			console.error(`Locale ${newLocale} is not available`);
-			return;
-		}
-		setCurrentLocale(newLocale);
-		setLocaleInStorage(newLocale, isCookieEnabled);
-	};
-	const setLocale = setLocaleProp ?? setLocaleBase;
-	const resolvedLocale = localeResolver(currentLocale);
-	return jsx(IntlayerClientContext.Provider, {
-		value: {
-			locale: resolvedLocale,
-			setLocale,
-			variant,
-			disableEditor
-		},
-		children
-	});
-};
-var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent, {
-	...props,
-	children: [
-		jsx(EditorProvider, {}),
-		jsx(AnalyticsProvider, {}),
-		children
-	]
 });
 var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const { locale: currentLocale, variant: contextVariant } = useContext(IntlayerClientContext) ?? {};
@@ -871,8 +787,6 @@ var useLocale$1 = ({ isCookieEnabled, onLocaleChange } = {}) => {
 		])
 	};
 };
-var IntlayerClientProviderBase = (props) => jsx(IntlayerProvider, { ...props });
-var IntlayerClientProvider = IntlayerClientProviderBase;
 var usePathname$2 = () => {
 	const nextPathname = usePathname();
 	const [searchParams, setSearchParams] = useState("");
@@ -916,22 +830,17 @@ var useLocale = ({ onChange = "replace", onLocaleChange, isCookieEnabled } = {})
 var locales = internationalization.locales;
 internationalization.requiredLocales;
 internationalization.defaultLocale;
-var _jsxFileName$6 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/Link.tsx";
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
 var Link = ({ href, children, ...props }) => {
 	const { locale } = useLocale();
 	const isExternalLink = checkIsExternalLink(href.toString());
 	const hrefI18n = href && !isExternalLink ? getLocalizedUrl(href.toString(), locale) : href;
-	return jsxDEV(NextLink, {
+	return jsx(NextLink, {
 		href: hrefI18n,
 		prefetch: false,
 		...props,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$6,
-		lineNumber: 26,
-		columnNumber: 5
-	}, void 0);
+	});
 };
 var content = {
 	"de": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((m) => m.default),
@@ -953,19 +862,13 @@ if (typeof window !== "undefined" && typeof __intlayerLoader === "function") __i
 		dictionary: __intlayerDictionary
 	};
 }, () => void 0);
-var _jsxFileName$5 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/ThemeToggle.tsx";
 function ThemeToggle() {
 	const content$2 = useDictionaryDynamic(content, "theme-toggle");
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground",
 		children: content$2.a.value
-	}, void 0, false, {
-		fileName: _jsxFileName$5,
-		lineNumber: 7,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/LocaleSwitcher.tsx";
 function getLocaleName(locale) {
 	try {
 		const name = new Intl.DisplayNames([locale], { type: "language" }).of(locale);
@@ -982,32 +885,19 @@ function LocaleSwitcher() {
 		const newPath = pathname.replace(`/${locale}`, `/${newLocale}`);
 		router.push(newPath);
 	};
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "flex items-center gap-2",
-		children: jsxDEV("select", {
+		children: jsx("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((localeItem) => jsxDEV("option", {
+			children: locales.map((localeItem) => jsx("option", {
 				value: localeItem,
 				children: getLocaleName(localeItem)
-			}, localeItem, false, {
-				fileName: _jsxFileName$4,
-				lineNumber: 35,
-				columnNumber: 11
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName$4,
-			lineNumber: 29,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 28,
-		columnNumber: 5
-	}, this);
+			}, localeItem))
+		})
+	});
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/Header.tsx";
 function Header() {
 	const content = useDictionaryDynamic(content$1, "header");
 	const mockPages = [
@@ -1044,160 +934,80 @@ function Header() {
 			label: content.m
 		}
 	];
-	return jsxDEV("header", {
+	return jsx("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: jsxDEV("nav", {
+		children: jsxs("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [jsxDEV("div", {
+			children: [jsxs("div", {
 				className: "flex items-center gap-8",
-				children: [jsxDEV(Link, {
+				children: [jsx(Link, {
 					href: "/",
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: content.h
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 25,
-					columnNumber: 11
-				}, this), jsxDEV("div", {
+				}), jsxs("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						jsxDEV(Link, {
+						jsx(Link, {
 							href: "/",
 							className: "nav-link",
 							children: content.g
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 33,
-							columnNumber: 13
-						}, this),
-						jsxDEV(Link, {
+						}),
+						jsx(Link, {
 							href: "/about",
 							className: "nav-link",
 							children: content.i
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 36,
-							columnNumber: 13
-						}, this),
-						jsxDEV("div", {
+						}),
+						jsxs("div", {
 							className: "relative group",
-							children: [jsxDEV("button", {
+							children: [jsxs("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-								children: [content.j, jsxDEV(ChevronDown, {
+								children: [content.j, jsx(ChevronDown, {
 									size: 14,
 									className: "transition-transform group-hover:rotate-180"
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 47,
-									columnNumber: 17
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$3,
-								lineNumber: 42,
-								columnNumber: 15
-							}, this), jsxDEV("div", {
+								})]
+							}), jsx("div", {
 								className: "absolute left-0 top-full pt-2 w-48 hidden group-hover:block",
-								children: jsxDEV("div", {
+								children: jsx("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => jsxDEV(Link, {
+									children: mockPages.map((page) => jsx(Link, {
 										href: page.href,
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										children: page.label
-									}, page.href, false, {
-										fileName: _jsxFileName$3,
-										lineNumber: 56,
-										columnNumber: 21
-									}, this))
-								}, void 0, false, {
-									fileName: _jsxFileName$3,
-									lineNumber: 54,
-									columnNumber: 17
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 53,
-								columnNumber: 15
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$3,
-							lineNumber: 41,
-							columnNumber: 13
-						}, this)
+									}, page.href))
+								})
+							})]
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 32,
-					columnNumber: 11
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 24,
-				columnNumber: 9
-			}, this), jsxDEV("div", {
+				})]
+			}), jsxs("div", {
 				className: "flex items-center gap-4",
 				children: [
-					jsxDEV("a", {
+					jsxs("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [jsxDEV("span", {
+						children: [jsx("span", {
 							className: "sr-only",
 							children: content.e
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 77,
-							columnNumber: 13
-						}, this), jsxDEV("svg", {
+						}), jsx("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: jsxDEV("path", {
+							children: jsx("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 79,
-								columnNumber: 15
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 78,
-							columnNumber: 13
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 71,
-						columnNumber: 11
-					}, this),
-					jsxDEV(LocaleSwitcher, {}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 85,
-						columnNumber: 11
-					}, this),
-					jsxDEV(ThemeToggle, {}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 86,
-						columnNumber: 11
-					}, this)
+							})
+						})]
+					}),
+					jsx(LocaleSwitcher, {}),
+					jsx(ThemeToggle, {})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 70,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 23,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 22,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1221,7 +1031,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -1233,37 +1042,16 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(IntlayerClientProvider, {
-		locale,
-		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 34,
-		columnNumber: 7
-	}, this);
+	return children;
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/Header.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Header, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Header, {}) });
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

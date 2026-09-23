@@ -1,7 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 import { Link, useParams } from "@tanstack/react-router";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -58,12 +57,12 @@ var getLocaleFromDomain = (hostname, domains) => {
 var PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
 var LOCALES = ["en"];
 var resolveRoutingConfig = (options = {}) => ({
-	defaultLocale: internationalization?.defaultLocale ?? "en",
-	mode: routing?.mode ?? "prefix-no-default",
-	locales: internationalization?.locales ?? LOCALES,
-	rewrite: routing?.rewrite,
-	domains: routing?.domains,
-	...options
+	...options,
+	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
+	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
+	locales: options.locales ?? internationalization?.locales ?? LOCALES,
+	rewrite: options.rewrite ?? routing?.rewrite,
+	domains: options.domains ?? routing?.domains
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -781,7 +780,6 @@ var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const plainLoaders = dictionaryPromise;
 	return getDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, plainLoaders[localeTarget]?.()), localeTarget);
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/Footer.tsx";
 function Footer() {
 	const content$1 = useDictionaryDynamic(content, "footer");
 	const currentLocale = useParams({ strict: false }).locale ?? "en";
@@ -802,140 +800,62 @@ function Footer() {
 			isInternal: true
 		}
 	];
-	return jsxDEV("footer", {
+	return jsx("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: jsxDEV("div", {
+		children: jsxs("div", {
 			className: "container py-8",
-			children: [jsxDEV("div", {
+			children: [jsxs("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					jsxDEV("div", { children: [jsxDEV("h3", {
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: content$1.g
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 33,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: content$1.a
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 36,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 32,
-						columnNumber: 11
-					}, this),
-					jsxDEV("div", { children: [jsxDEV("h3", {
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: content$1.i
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 41,
-						columnNumber: 13
-					}, this), jsxDEV("ul", {
+					}), jsx("ul", {
 						className: "space-y-1",
-						children: footerLinks.map((linkEl) => jsxDEV("li", { children: linkEl.isInternal ? jsxDEV(Link, {
+						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
 							preload: false,
 							to: linkEl.to,
 							params: { locale: currentLocale },
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 48,
-							columnNumber: 21
-						}, this) : jsxDEV("a", {
+						}) : jsx("a", {
 							href: linkEl.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 57,
-							columnNumber: 21
-						}, this) }, linkEl.label.value, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 46,
-							columnNumber: 17
-						}, this))
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 44,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 40,
-						columnNumber: 11
-					}, this),
-					jsxDEV("div", { children: [jsxDEV("h3", {
+						}) }, linkEl.label.value))
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: content$1.c
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 71,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: content$1.d
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 74,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 70,
-						columnNumber: 11
-					}, this)
+					})] })
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 31,
-				columnNumber: 9
-			}, this), jsxDEV("div", {
+			}), jsx("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: content$1.b
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 79,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 30,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 29,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/Footer.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Footer, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Footer, {}) });
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

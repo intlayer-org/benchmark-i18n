@@ -1,5 +1,5 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsxDEV as r } from "react/jsx-dev-runtime";
+import { jsx as r } from "react/jsx-runtime";
 var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -151,31 +151,31 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	ja: () => import("./ja-B1S-GRLK.js"),
 	ko: () => import("./ko-C6DeYIDJ.js"),
 	ru: () => import("./ru-GMiu7d6N.js")
-}), c = s.useScopedI18n, { I18nProviderClient: l, useChangeLocale: u, useCurrentLocale: d } = s, f = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/ThemeToggle.tsx";
-function p() {
+}), c = s.useScopedI18n, { I18nProviderClient: l, useChangeLocale: u, useCurrentLocale: d } = s;
+function f() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 }
-function m(e) {
+function p(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function h() {
+function m() {
 	let t = c("theme-toggle"), [i, a] = n("auto");
 	e(() => {
-		let e = p();
-		a(e), m(e);
+		let e = f();
+		a(e), p(e);
 	}, []), e(() => {
 		if (i !== "auto") return;
-		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => m("auto");
+		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => p("auto");
 		return e.addEventListener("change", t), () => {
 			e.removeEventListener("change", t);
 		};
 	}, [i]);
 	function o() {
 		let e = i === "light" ? "dark" : i === "dark" ? "auto" : "light";
-		a(e), m(e), window.localStorage.setItem("theme", e);
+		a(e), p(e), window.localStorage.setItem("theme", e);
 	}
 	let s = t(i === "auto" ? "themeModeAutoSystemClick" : i === "light" ? "themeModeLightClick" : "themeModeDarkClick");
 	return r("button", {
@@ -185,13 +185,9 @@ function h() {
 		title: s,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: t(i === "auto" ? "themeAuto" : i === "dark" ? "themeDark" : "themeLight")
-	}, void 0, !1, {
-		fileName: f,
-		lineNumber: 77,
-		columnNumber: 5
-	}, this);
+	});
 }
-function g() {
+function h() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -205,53 +201,35 @@ function g() {
 		}
 	}
 }
-function _(e, t) {
+function g(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var v = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
-function y({ children: i, locale: a }) {
+function _({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		_("AppRoot", o);
+		g("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
-		g();
+		h();
 	}, []), r(l, {
 		locale: a,
 		children: i
-	}, void 0, !1, {
-		fileName: v,
-		lineNumber: 30,
-		columnNumber: 7
-	}, this);
+	});
 }
-var b = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx", x = "en";
-function S({ children: e }) {
-	return r(y, {
-		locale: x,
+var v = "en";
+function y({ children: e }) {
+	return r(_, {
+		locale: v,
 		children: e
-	}, void 0, !1, {
-		fileName: b,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var C = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/ThemeToggle.wrapper.tsx";
-function w() {
-	return r(S, { children: r(h, {}, void 0, !1, {
-		fileName: C,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: C,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function b() {
+	return r(y, { children: r(m, {}) });
 }
-export { w as default };
+export { b as default };
 import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/de/about.json";
 import r from "../messages/de/blog.json";

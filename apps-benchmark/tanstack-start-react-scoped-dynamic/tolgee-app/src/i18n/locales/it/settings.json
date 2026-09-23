@@ -1,0 +1,19 @@
+{
+  "settingsHeader.settings": "Impostazioni",
+  "settingsHeader.manageYourAccountPreferences": "Gestisci le preferenze del tuo account e la configurazione.",
+  "profileSection.profile": "Profilo",
+  "profileSection.displayName": "Nome visualizzato",
+  "profileSection.email": "Email",
+  "preferencesSection.preferences": "Preferenze",
+  "preferencesSection.emailNotifications": "Notifiche via email",
+  "preferencesSection.receiveWeeklyBenchmarkReports": "Ricevi rapporti settimanali sui benchmark",
+  "preferencesSection.darkMode": "Modalità scura",
+  "preferencesSection.useDarkColorScheme": "Usa lo schema colori scuro",
+  "preferencesSection.defaultLanguage": "Lingua predefinita",
+  "apiAccessSection.apiAccess": "Accesso API",
+  "apiAccessSection.apiKey": "Chiave API",
+  "apiAccessSection.useThisKeyTo": "Usa questa chiave per accedere programmaticamente all'API di benchmarking.",
+  "apiAccessSection.copy": "Copia",
+  "settingsFooter.cancel": "Annulla",
+  "settingsFooter.saveChanges": "Salva modifiche"
+}

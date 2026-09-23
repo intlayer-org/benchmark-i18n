@@ -1,7 +1,6 @@
-import { jsxDEV } from "react/jsx-dev-runtime";
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-react-base-app/src/components/pages/careers/CareersBenefits.tsx";
+import { jsx, jsxs } from "react/jsx-runtime";
 function CareersBenefits() {
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
 		children: [
 			{
@@ -16,32 +15,16 @@ function CareersBenefits() {
 				label: "Open source time",
 				value: "20% time for OSS contributions"
 			}
-		].map((b) => jsxDEV("div", {
+		].map((b) => jsxs("div", {
 			className: "rounded-lg border border-border bg-card p-4 text-center",
-			children: [jsxDEV("p", {
+			children: [jsx("p", {
 				className: "text-sm font-semibold text-foreground",
 				children: b.label
-			}, void 0, false, {
-				fileName: _jsxFileName,
-				lineNumber: 18,
-				columnNumber: 11
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "text-xs text-muted-foreground",
 				children: b.value
-			}, void 0, false, {
-				fileName: _jsxFileName,
-				lineNumber: 19,
-				columnNumber: 11
-			}, this)]
-		}, b.label, true, {
-			fileName: _jsxFileName,
-			lineNumber: 14,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+			})]
+		}, b.label))
+	});
 }
 export { CareersBenefits as default };

@@ -2,7 +2,7 @@
   "meta": {
     "framework": "vite-solid",
     "frameworkLabel": "Vite + Solid",
-    "generatedAt": "2026-09-21T20:26:13.883Z",
+    "generatedAt": "2026-09-23T22:09:16.252Z",
     "counts": {
       "totalLibs": 5,
       "totalApps": 6
@@ -37,7 +37,15 @@
                 "min": 20649,
                 "max": 22027,
                 "raw": [
-                  22027, 21309, 20957, 21388, 20649, 21165, 20854, 20777, 21964,
+                  22027,
+                  21309,
+                  20957,
+                  21388,
+                  20649,
+                  21165,
+                  20854,
+                  20777,
+                  21964,
                   20857
                 ]
               },
@@ -45,19 +53,52 @@
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pages": [
                 {
@@ -198,7 +239,15 @@
                 "min": 20649,
                 "max": 22027,
                 "raw": [
-                  22027, 21309, 20957, 21388, 20649, 21165, 20854, 20777, 21964,
+                  22027,
+                  21309,
+                  20957,
+                  21388,
+                  20649,
+                  21165,
+                  20854,
+                  20777,
+                  21964,
                   20857
                 ]
               },
@@ -206,19 +255,52 @@
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pages": [
                 {
@@ -642,13 +724,25 @@
                 "avg": 0.6399999991059303,
                 "min": 0.5,
                 "max": 1.0999999940395355,
-                "raw": [1.0999999940395355, 0.5, 0.5, 0.5, 0.6000000014901161]
+                "raw": [
+                  1.0999999940395355,
+                  0.5,
+                  0.5,
+                  0.5,
+                  0.6000000014901161
+                ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             },
             "fr": {
@@ -656,13 +750,25 @@
                 "avg": 0.6200000002980233,
                 "min": 0.5,
                 "max": 1,
-                "raw": [1, 0.6000000014901161, 0.5, 0.5, 0.5]
+                "raw": [
+                  1,
+                  0.6000000014901161,
+                  0.5,
+                  0.5,
+                  0.5
+                ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             }
           },
@@ -678,8 +784,11 @@
                 "min": 8.899999998509884,
                 "max": 10.200000002980232,
                 "raw": [
-                  10.200000002980232, 10.100000001490116, 9.299999997019768,
-                  8.899999998509884, 9.5
+                  10.200000002980232,
+                  10.100000001490116,
+                  9.299999997019768,
+                  8.899999998509884,
+                  9.5
                 ]
               },
               "hydration": {
@@ -687,8 +796,11 @@
                 "min": 2.100000001490116,
                 "max": 2.899999998509884,
                 "raw": [
-                  2.899999998509884, 2.899999998509884, 2.2000000029802322,
-                  2.100000001490116, 2.399999998509884
+                  2.899999998509884,
+                  2.899999998509884,
+                  2.2000000029802322,
+                  2.100000001490116,
+                  2.399999998509884
                 ]
               },
               "reactMount": {
@@ -696,8 +808,11 @@
                 "min": 1.1000000014901161,
                 "max": 1.3000000044703484,
                 "raw": [
-                  1.1999999955296516, 1.3000000044703484, 1.1000000014901161,
-                  1.2000000029802322, 1.2000000029802322
+                  1.1999999955296516,
+                  1.3000000044703484,
+                  1.1000000014901161,
+                  1.2000000029802322,
+                  1.2000000029802322
                 ]
               },
               "hydrationInstrumented": true,
@@ -709,7 +824,11 @@
                 "min": 9,
                 "max": 10.799999997019768,
                 "raw": [
-                  10.799999997019768, 9, 9, 9.100000001490116, 9.199999995529652
+                  10.799999997019768,
+                  9,
+                  9,
+                  9.100000001490116,
+                  9.199999995529652
                 ]
               },
               "hydration": {
@@ -717,8 +836,11 @@
                 "min": 2.100000001490116,
                 "max": 2.9000000059604645,
                 "raw": [
-                  2.9000000059604645, 2.2999999970197678, 2.2000000029802322,
-                  2.100000001490116, 2.2000000029802322
+                  2.9000000059604645,
+                  2.2999999970197678,
+                  2.2000000029802322,
+                  2.100000001490116,
+                  2.2000000029802322
                 ]
               },
               "reactMount": {
@@ -726,8 +848,11 @@
                 "min": 1.1000000014901161,
                 "max": 1.3999999985098839,
                 "raw": [
-                  1.3999999985098839, 1.2000000029802322, 1.2000000029802322,
-                  1.2000000029802322, 1.1000000014901161
+                  1.3999999985098839,
+                  1.2000000029802322,
+                  1.2000000029802322,
+                  1.2000000029802322,
+                  1.1000000014901161
                 ]
               },
               "hydrationInstrumented": true,
@@ -768,7 +893,15 @@
                 "min": 95185,
                 "max": 97122,
                 "raw": [
-                  96006, 95405, 95290, 95946, 95716, 95185, 95694, 95392, 97122,
+                  96006,
+                  95405,
+                  95290,
+                  95946,
+                  95716,
+                  95185,
+                  95694,
+                  95392,
+                  97122,
                   95278
                 ]
               },
@@ -777,9 +910,15 @@
                 "min": 51.35135135135135,
                 "max": 51.35135135135135,
                 "raw": [
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
                   51.35135135135135
                 ]
               },
@@ -787,13 +926,35 @@
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "pages": [
                 {
@@ -934,7 +1095,15 @@
                 "min": 95185,
                 "max": 97122,
                 "raw": [
-                  96006, 95405, 95290, 95946, 95716, 95185, 95694, 95392, 97122,
+                  96006,
+                  95405,
+                  95290,
+                  95946,
+                  95716,
+                  95185,
+                  95694,
+                  95392,
+                  97122,
                   95278
                 ]
               },
@@ -943,9 +1112,15 @@
                 "min": 48.64864864864865,
                 "max": 48.64864864864865,
                 "raw": [
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
                   48.64864864864865
                 ]
               },
@@ -953,13 +1128,35 @@
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "pages": [
                 {
@@ -1383,13 +1580,25 @@
                 "avg": 0.6399999991059303,
                 "min": 0.3999999985098839,
                 "max": 1.2999999970197678,
-                "raw": [1.2999999970197678, 0.5, 0.5, 0.5, 0.3999999985098839]
+                "raw": [
+                  1.2999999970197678,
+                  0.5,
+                  0.5,
+                  0.5,
+                  0.3999999985098839
+                ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             },
             "fr": {
@@ -1398,7 +1607,10 @@
                 "min": 0.3999999985098839,
                 "max": 0.8999999985098839,
                 "raw": [
-                  0.8999999985098839, 0.5, 0.3999999985098839, 0.5,
+                  0.8999999985098839,
+                  0.5,
+                  0.3999999985098839,
+                  0.5,
                   0.3999999985098839
                 ]
               },
@@ -1406,7 +1618,13 @@
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             }
           },
@@ -1422,8 +1640,11 @@
                 "min": 11,
                 "max": 14.700000002980232,
                 "raw": [
-                  14.700000002980232, 12.100000001490116, 11.5,
-                  11.899999998509884, 11
+                  14.700000002980232,
+                  12.100000001490116,
+                  11.5,
+                  11.899999998509884,
+                  11
                 ]
               },
               "hydration": {
@@ -1431,7 +1652,10 @@
                 "min": 3.0999999940395355,
                 "max": 4.199999995529652,
                 "raw": [
-                  3.899999998509884, 4.199999995529652, 4, 3.7000000029802322,
+                  3.899999998509884,
+                  4.199999995529652,
+                  4,
+                  3.7000000029802322,
                   3.0999999940395355
                 ]
               },
@@ -1440,8 +1664,11 @@
                 "min": 1.5,
                 "max": 2.4000000059604645,
                 "raw": [
-                  1.5, 2.100000001490116, 1.7999999970197678,
-                  2.4000000059604645, 1.6000000014901161
+                  1.5,
+                  2.100000001490116,
+                  1.7999999970197678,
+                  2.4000000059604645,
+                  1.6000000014901161
                 ]
               },
               "hydrationInstrumented": true,
@@ -1453,8 +1680,11 @@
                 "min": 10,
                 "max": 15.5,
                 "raw": [
-                  13.200000002980232, 15.5, 10.800000004470348,
-                  11.100000001490116, 10
+                  13.200000002980232,
+                  15.5,
+                  10.800000004470348,
+                  11.100000001490116,
+                  10
                 ]
               },
               "hydration": {
@@ -1462,7 +1692,10 @@
                 "min": 2.899999998509884,
                 "max": 4.5999999940395355,
                 "raw": [
-                  3.899999998509884, 4.5999999940395355, 3.6999999955296516, 3,
+                  3.899999998509884,
+                  4.5999999940395355,
+                  3.6999999955296516,
+                  3,
                   2.899999998509884
                 ]
               },
@@ -1471,7 +1704,10 @@
                 "min": 1.5,
                 "max": 2,
                 "raw": [
-                  1.7000000029802322, 2, 1.5, 1.6000000014901161,
+                  1.7000000029802322,
+                  2,
+                  1.5,
+                  1.6000000014901161,
                   1.6000000014901161
                 ]
               },
@@ -1490,9 +1726,9 @@
         "version": "9.5.6",
         "libSize": {
           "status": "ok",
-          "gzip": 4416,
+          "gzip": 4426,
           "minified": 12037,
-          "unminified": 19568
+          "unminified": 19564
         }
       },
       "static": null,
@@ -1513,7 +1749,15 @@
                 "min": 27843,
                 "max": 27843,
                 "raw": [
-                  27843, 27843, 27843, 27843, 27843, 27843, 27843, 27843, 27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
                   27843
                 ]
               },
@@ -1521,19 +1765,52 @@
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pages": [
                 {
@@ -1674,7 +1951,15 @@
                 "min": 27843,
                 "max": 27843,
                 "raw": [
-                  27843, 27843, 27843, 27843, 27843, 27843, 27843, 27843, 27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
+                  27843,
                   27843
                 ]
               },
@@ -1682,19 +1967,52 @@
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pages": [
                 {
@@ -1839,274 +2157,274 @@
         },
         "components": {
           "status": "ok",
-          "gzipMin": 694,
-          "gzipAvg": 3598.4545454545455,
-          "gzipMax": 7085,
+          "gzipMin": 699,
+          "gzipAvg": 6421.969696969697,
+          "gzipMax": 14127,
           "count": 33,
           "items": [
             {
-              "name": "Layout.tsx",
-              "category": "Shared",
-              "minifiedGzip": 7085,
-              "minified": 22140,
-              "unminified": 28417,
-              "unminifiedGzip": 8102
-            },
-            {
-              "name": "Header.tsx",
-              "category": "Shared",
-              "minifiedGzip": 5637,
-              "minified": 16574,
-              "unminified": 21349,
-              "unminifiedGzip": 6505
-            },
-            {
               "name": "UnderstandingImpact.tsx",
               "category": "pages",
-              "minifiedGzip": 4331,
-              "minified": 12067,
-              "unminified": 15282,
-              "unminifiedGzip": 4917
+              "minifiedGzip": 14127,
+              "minified": 33018,
+              "unminified": 36727,
+              "unminifiedGzip": 14823
             },
             {
               "name": "FAQList.tsx",
               "category": "pages",
-              "minifiedGzip": 4243,
-              "minified": 11310,
-              "unminified": 14260,
-              "unminifiedGzip": 4806
+              "minifiedGzip": 13501,
+              "minified": 31096,
+              "unminified": 34524,
+              "unminifiedGzip": 14163
+            },
+            {
+              "name": "Layout.tsx",
+              "category": "Shared",
+              "minifiedGzip": 10568,
+              "minified": 30066,
+              "unminified": 37333,
+              "unminifiedGzip": 11780
             },
             {
               "name": "BlogList.tsx",
               "category": "pages",
-              "minifiedGzip": 4080,
-              "minified": 11298,
-              "unminified": 14409,
-              "unminifiedGzip": 4649
-            },
-            {
-              "name": "PreferencesSection.tsx",
-              "category": "pages",
-              "minifiedGzip": 3863,
-              "minified": 11215,
-              "unminified": 14664,
-              "unminifiedGzip": 4463
-            },
-            {
-              "name": "OpenPositions.tsx",
-              "category": "pages",
-              "minifiedGzip": 3904,
-              "minified": 11111,
-              "unminified": 14259,
-              "unminifiedGzip": 4479
-            },
-            {
-              "name": "PricingTiers.tsx",
-              "category": "pages",
-              "minifiedGzip": 3990,
-              "minified": 11106,
-              "unminified": 14359,
-              "unminifiedGzip": 4594
-            },
-            {
-              "name": "ContactForm.tsx",
-              "category": "pages",
-              "minifiedGzip": 3638,
-              "minified": 10811,
-              "unminified": 14252,
-              "unminifiedGzip": 4248
-            },
-            {
-              "name": "TeamGrid.tsx",
-              "category": "pages",
-              "minifiedGzip": 3869,
-              "minified": 10557,
-              "unminified": 13581,
-              "unminifiedGzip": 4439
-            },
-            {
-              "name": "ProductsGrid.tsx",
-              "category": "pages",
-              "minifiedGzip": 3796,
-              "minified": 10468,
-              "unminified": 13478,
-              "unminifiedGzip": 4359
+              "minifiedGzip": 10075,
+              "minified": 25130,
+              "unminified": 28865,
+              "unminifiedGzip": 10744
             },
             {
               "name": "WhyItMatters.tsx",
               "category": "pages",
-              "minifiedGzip": 3733,
-              "minified": 10349,
-              "unminified": 13265,
-              "unminifiedGzip": 4296
+              "minifiedGzip": 10482,
+              "minified": 23498,
+              "unminified": 26746,
+              "unminifiedGzip": 11138
             },
             {
               "name": "WhatWeMeasure.tsx",
               "category": "pages",
-              "minifiedGzip": 3785,
-              "minified": 10242,
-              "unminified": 13193,
-              "unminifiedGzip": 4351
+              "minifiedGzip": 9994,
+              "minified": 22562,
+              "unminified": 25921,
+              "unminifiedGzip": 10649
             },
             {
-              "name": "ContactHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 3311,
-              "minified": 10149,
-              "unminified": 13079,
-              "unminifiedGzip": 3881
-            },
-            {
-              "name": "CareersHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 3285,
-              "minified": 10094,
-              "unminified": 13014,
-              "unminifiedGzip": 3846
-            },
-            {
-              "name": "ProductsHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 3241,
-              "minified": 10033,
-              "unminified": 12955,
-              "unminifiedGzip": 3803
-            },
-            {
-              "name": "PricingHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 3278,
-              "minified": 10030,
-              "unminified": 12937,
-              "unminifiedGzip": 3842
-            },
-            {
-              "name": "TeamHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 3268,
-              "minified": 10022,
-              "unminified": 12936,
-              "unminifiedGzip": 3838
-            },
-            {
-              "name": "SettingsHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 3230,
-              "minified": 10017,
-              "unminified": 12939,
-              "unminifiedGzip": 3804
-            },
-            {
-              "name": "Footer.tsx",
+              "name": "Header.tsx",
               "category": "Shared",
-              "minifiedGzip": 3527,
-              "minified": 9998,
-              "unminified": 12955,
-              "unminifiedGzip": 4081
+              "minifiedGzip": 7560,
+              "minified": 20785,
+              "unminified": 26260,
+              "unminifiedGzip": 8552
             },
             {
-              "name": "FAQHeader.tsx",
+              "name": "TeamGrid.tsx",
               "category": "pages",
-              "minifiedGzip": 3241,
-              "minified": 9988,
-              "unminified": 12900,
-              "unminifiedGzip": 3815
+              "minifiedGzip": 8062,
+              "minified": 20558,
+              "unminified": 24116,
+              "unminifiedGzip": 8718
             },
             {
-              "name": "BlogHeader.tsx",
+              "name": "OpenPositions.tsx",
               "category": "pages",
-              "minifiedGzip": 3231,
-              "minified": 9975,
-              "unminified": 12889,
-              "unminifiedGzip": 3802
+              "minifiedGzip": 8143,
+              "minified": 20249,
+              "unminified": 23917,
+              "unminifiedGzip": 8817
             },
             {
-              "name": "ResultsTable.tsx",
+              "name": "ProductsGrid.tsx",
               "category": "pages",
-              "minifiedGzip": 3393,
-              "minified": 9966,
-              "unminified": 13009,
-              "unminifiedGzip": 3977
-            },
-            {
-              "name": "ThemeToggle.tsx",
-              "category": "Shared",
-              "minifiedGzip": 3478,
-              "minified": 9894,
-              "unminified": 13180,
-              "unminifiedGzip": 4162
+              "minifiedGzip": 8116,
+              "minified": 19610,
+              "unminified": 23100,
+              "unminifiedGzip": 8762
             },
             {
               "name": "AboutGrid.tsx",
               "category": "pages",
-              "minifiedGzip": 3466,
-              "minified": 9462,
-              "unminified": 12283,
-              "unminifiedGzip": 4026
+              "minifiedGzip": 8577,
+              "minified": 18964,
+              "unminified": 22063,
+              "unminifiedGzip": 9233
+            },
+            {
+              "name": "PricingTiers.tsx",
+              "category": "pages",
+              "minifiedGzip": 6565,
+              "minified": 17808,
+              "unminified": 21707,
+              "unminifiedGzip": 7259
+            },
+            {
+              "name": "PreferencesSection.tsx",
+              "category": "pages",
+              "minifiedGzip": 6050,
+              "minified": 16396,
+              "unminified": 20393,
+              "unminifiedGzip": 6731
+            },
+            {
+              "name": "CareersHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 5669,
+              "minified": 14065,
+              "unminified": 17411,
+              "unminifiedGzip": 6345
+            },
+            {
+              "name": "Footer.tsx",
+              "category": "Shared",
+              "minifiedGzip": 5347,
+              "minified": 13713,
+              "unminified": 16984,
+              "unminifiedGzip": 5989
+            },
+            {
+              "name": "ContactForm.tsx",
+              "category": "pages",
+              "minifiedGzip": 5075,
+              "minified": 13701,
+              "unminified": 17564,
+              "unminifiedGzip": 5763
+            },
+            {
+              "name": "TeamHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 5397,
+              "minified": 13591,
+              "unminified": 16931,
+              "unminifiedGzip": 6081
+            },
+            {
+              "name": "ContactHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 5211,
+              "minified": 13350,
+              "unminified": 16706,
+              "unminifiedGzip": 5898
+            },
+            {
+              "name": "PricingHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 5143,
+              "minified": 13084,
+              "unminified": 16413,
+              "unminifiedGzip": 5823
+            },
+            {
+              "name": "ProductsHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 4883,
+              "minified": 12900,
+              "unminified": 16248,
+              "unminifiedGzip": 5557
+            },
+            {
+              "name": "FAQHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 4861,
+              "minified": 12730,
+              "unminified": 16068,
+              "unminifiedGzip": 5535
+            },
+            {
+              "name": "SettingsHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 4817,
+              "minified": 12674,
+              "unminified": 16022,
+              "unminifiedGzip": 5498
+            },
+            {
+              "name": "BlogHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 4800,
+              "minified": 12614,
+              "unminified": 15954,
+              "unminifiedGzip": 5483
             },
             {
               "name": "Hero.tsx",
               "category": "pages",
-              "minifiedGzip": 3340,
-              "minified": 9273,
-              "unminified": 12192,
-              "unminifiedGzip": 3915
-            },
-            {
-              "name": "ApiAccessSection.tsx",
-              "category": "pages",
-              "minifiedGzip": 3242,
-              "minified": 9187,
-              "unminified": 12095,
-              "unminifiedGzip": 3822
-            },
-            {
-              "name": "ProfileSection.tsx",
-              "category": "pages",
-              "minifiedGzip": 3183,
-              "minified": 9186,
-              "unminified": 12156,
-              "unminifiedGzip": 3761
-            },
-            {
-              "name": "CareersBenefits.tsx",
-              "category": "pages",
-              "minifiedGzip": 3205,
-              "minified": 9013,
-              "unminified": 11885,
-              "unminifiedGzip": 3765
+              "minifiedGzip": 4958,
+              "minified": 12156,
+              "unminified": 15371,
+              "unminifiedGzip": 5607
             },
             {
               "name": "AboutHeader.tsx",
               "category": "pages",
-              "minifiedGzip": 3169,
-              "minified": 8951,
-              "unminified": 11810,
-              "unminifiedGzip": 3730
+              "minifiedGzip": 5049,
+              "minified": 12073,
+              "unminified": 15178,
+              "unminifiedGzip": 5690
             },
             {
-              "name": "SettingsFooter.tsx",
+              "name": "ThemeToggle.tsx",
+              "category": "Shared",
+              "minifiedGzip": 4359,
+              "minified": 11650,
+              "unminified": 15214,
+              "unminifiedGzip": 5100
+            },
+            {
+              "name": "ResultsTable.tsx",
               "category": "pages",
-              "minifiedGzip": 3024,
-              "minified": 8592,
-              "unminified": 11365,
-              "unminifiedGzip": 3576
+              "minifiedGzip": 4248,
+              "minified": 11578,
+              "unminified": 14957,
+              "unminifiedGzip": 4899
+            },
+            {
+              "name": "CareersBenefits.tsx",
+              "category": "pages",
+              "minifiedGzip": 4407,
+              "minified": 11049,
+              "unminified": 14221,
+              "unminifiedGzip": 5036
+            },
+            {
+              "name": "ApiAccessSection.tsx",
+              "category": "pages",
+              "minifiedGzip": 4090,
+              "minified": 10744,
+              "unminified": 13930,
+              "unminifiedGzip": 4743
             },
             {
               "name": "MockBanner.tsx",
               "category": "Shared",
-              "minifiedGzip": 2989,
-              "minified": 8316,
-              "unminified": 11048,
-              "unminifiedGzip": 3532
+              "minifiedGzip": 4071,
+              "minified": 10021,
+              "unminified": 12977,
+              "unminifiedGzip": 4692
+            },
+            {
+              "name": "ProfileSection.tsx",
+              "category": "pages",
+              "minifiedGzip": 3633,
+              "minified": 9988,
+              "unminified": 13218,
+              "unminifiedGzip": 4278
+            },
+            {
+              "name": "SettingsFooter.tsx",
+              "category": "pages",
+              "minifiedGzip": 3388,
+              "minified": 9231,
+              "unminified": 12246,
+              "unminifiedGzip": 4002
             },
             {
               "name": "LocaleSwitcher.tsx",
               "category": "Shared",
-              "minifiedGzip": 694,
-              "minified": 1171,
-              "unminified": 1538,
-              "unminifiedGzip": 782
+              "minifiedGzip": 699,
+              "minified": 1184,
+              "unminified": 1569,
+              "unminifiedGzip": 788
             }
           ]
         },
@@ -2125,21 +2443,36 @@
                 "min": 8.100000023841858,
                 "max": 17.19999998807907,
                 "raw": [
-                  8.300000011920929, 8.100000023841858, 12.399999976158142,
-                  17.19999998807907, 9.599999964237213
+                  8.300000011920929,
+                  8.100000023841858,
+                  12.399999976158142,
+                  17.19999998807907,
+                  9.599999964237213
                 ]
               },
               "hydration": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "reactMount": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "hydrationInstrumented": false,
               "reactMountInstrumented": false
@@ -2150,21 +2483,36 @@
                 "min": 6.599999964237213,
                 "max": 11.100000023841858,
                 "raw": [
-                  6.599999964237213, 11.100000023841858, 8.400000035762787,
-                  7.599999964237213, 10.5
+                  6.599999964237213,
+                  11.100000023841858,
+                  8.400000035762787,
+                  7.599999964237213,
+                  10.5
                 ]
               },
               "hydration": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "reactMount": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "hydrationInstrumented": false,
               "reactMountInstrumented": false
@@ -2204,8 +2552,16 @@
                 "min": 33069,
                 "max": 122118,
                 "raw": [
-                  49501, 41913, 37582, 38542, 33069, 122118, 35105, 35785,
-                  37073, 35993
+                  49501,
+                  41913,
+                  37582,
+                  38542,
+                  33069,
+                  122118,
+                  35105,
+                  35785,
+                  37073,
+                  35993
                 ]
               },
               "localeLeakPct": {
@@ -2213,20 +2569,51 @@
                 "min": 0,
                 "max": 51.515151515151516,
                 "raw": [
-                  51.515151515151516, 0, 0, 0, 0, 51.515151515151516, 0, 0, 0, 0
+                  51.515151515151516,
+                  0,
+                  0,
+                  0,
+                  0,
+                  51.515151515151516,
+                  0,
+                  0,
+                  0,
+                  0
                 ]
               },
               "pageLeakPct": {
                 "avg": 10,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 0, 0, 0, 0, 100, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  100,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 10,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 0, 0, 0, 0, 100, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  100,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pages": [
                 {
@@ -2367,27 +2754,68 @@
                 "min": 33069,
                 "max": 122118,
                 "raw": [
-                  49501, 41913, 37582, 38542, 33069, 122118, 35105, 35785,
-                  37073, 35993
+                  49501,
+                  41913,
+                  37582,
+                  38542,
+                  33069,
+                  122118,
+                  35105,
+                  35785,
+                  37073,
+                  35993
                 ]
               },
               "localeLeakPct": {
                 "avg": 20,
                 "min": 0,
                 "max": 100,
-                "raw": [100, 0, 0, 0, 0, 100, 0, 0, 0, 0]
+                "raw": [
+                  100,
+                  0,
+                  0,
+                  0,
+                  0,
+                  100,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pageLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               },
               "pages": [
                 {
@@ -2811,13 +3239,25 @@
                 "avg": 0.7400000005960464,
                 "min": 0.5,
                 "max": 1.5,
-                "raw": [1.5, 0.5, 0.6000000014901161, 0.5, 0.6000000014901161]
+                "raw": [
+                  1.5,
+                  0.5,
+                  0.6000000014901161,
+                  0.5,
+                  0.6000000014901161
+                ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             },
             "fr": {
@@ -2826,15 +3266,24 @@
                 "min": 0.5,
                 "max": 1.0999999940395355,
                 "raw": [
-                  1.0999999940395355, 0.5, 0.6000000014901161,
-                  0.6999999955296516, 0.6000000014901161
+                  1.0999999940395355,
+                  0.5,
+                  0.6000000014901161,
+                  0.6999999955296516,
+                  0.6000000014901161
                 ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             }
           },
@@ -2850,8 +3299,11 @@
                 "min": 12.600000001490116,
                 "max": 15.799999997019768,
                 "raw": [
-                  15.799999997019768, 14.199999995529652, 13.299999997019768,
-                  14.299999997019768, 12.600000001490116
+                  15.799999997019768,
+                  14.199999995529652,
+                  13.299999997019768,
+                  14.299999997019768,
+                  12.600000001490116
                 ]
               },
               "hydration": {
@@ -2859,8 +3311,11 @@
                 "min": 5,
                 "max": 7.100000001490116,
                 "raw": [
-                  7.100000001490116, 6.700000002980232, 6.199999995529652,
-                  5.700000002980232, 5
+                  7.100000001490116,
+                  6.700000002980232,
+                  6.199999995529652,
+                  5.700000002980232,
+                  5
                 ]
               },
               "reactMount": {
@@ -2868,7 +3323,10 @@
                 "min": 2.6999999955296516,
                 "max": 3.2999999970197678,
                 "raw": [
-                  3.2999999970197678, 2.7999999970197678, 2.6999999955296516, 3,
+                  3.2999999970197678,
+                  2.7999999970197678,
+                  2.6999999955296516,
+                  3,
                   2.6999999955296516
                 ]
               },
@@ -2881,7 +3339,10 @@
                 "min": 12,
                 "max": 13.700000002980232,
                 "raw": [
-                  13.700000002980232, 12, 13.100000001490116, 12.5,
+                  13.700000002980232,
+                  12,
+                  13.100000001490116,
+                  12.5,
                   12.200000002980232
                 ]
               },
@@ -2889,15 +3350,24 @@
                 "avg": 5.5,
                 "min": 4.899999998509884,
                 "max": 6.5,
-                "raw": [6.5, 5, 5.600000001490116, 4.899999998509884, 5.5]
+                "raw": [
+                  6.5,
+                  5,
+                  5.600000001490116,
+                  4.899999998509884,
+                  5.5
+                ]
               },
               "reactMount": {
                 "avg": 2.720000000298023,
                 "min": 2.5,
                 "max": 2.8000000044703484,
                 "raw": [
-                  2.7999999970197678, 2.7999999970197678, 2.7000000029802322,
-                  2.8000000044703484, 2.5
+                  2.7999999970197678,
+                  2.7999999970197678,
+                  2.7000000029802322,
+                  2.8000000044703484,
+                  2.5
                 ]
               },
               "hydrationInstrumented": true,
@@ -2938,7 +3408,15 @@
                 "min": 81620,
                 "max": 83533,
                 "raw": [
-                  82399, 81895, 82279, 82410, 82140, 81620, 82069, 81748, 83533,
+                  82399,
+                  81895,
+                  82279,
+                  82410,
+                  82140,
+                  81620,
+                  82069,
+                  81748,
+                  83533,
                   81696
                 ]
               },
@@ -2947,9 +3425,15 @@
                 "min": 51.35135135135135,
                 "max": 51.35135135135135,
                 "raw": [
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
-                  51.35135135135135, 51.35135135135135, 51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
+                  51.35135135135135,
                   51.35135135135135
                 ]
               },
@@ -2957,13 +3441,35 @@
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "pages": [
                 {
@@ -3104,7 +3610,15 @@
                 "min": 81620,
                 "max": 83533,
                 "raw": [
-                  82399, 81895, 82279, 82410, 82140, 81620, 82069, 81748, 83533,
+                  82399,
+                  81895,
+                  82279,
+                  82410,
+                  82140,
+                  81620,
+                  82069,
+                  81748,
+                  83533,
                   81696
                 ]
               },
@@ -3113,9 +3627,15 @@
                 "min": 48.64864864864865,
                 "max": 48.64864864864865,
                 "raw": [
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
-                  48.64864864864865, 48.64864864864865, 48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
+                  48.64864864864865,
                   48.64864864864865
                 ]
               },
@@ -3123,13 +3643,35 @@
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "otherPageContentLeakPct": {
                 "avg": 90,
                 "min": 0,
                 "max": 100,
-                "raw": [0, 100, 100, 100, 100, 100, 100, 100, 100, 100]
+                "raw": [
+                  0,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100,
+                  100
+                ]
               },
               "pages": [
                 {
@@ -3554,15 +4096,24 @@
                 "min": 0.6000000014901161,
                 "max": 1.5,
                 "raw": [
-                  1.5, 0.6000000014901161, 0.7000000029802322,
-                  0.7000000029802322, 0.6999999955296516
+                  1.5,
+                  0.6000000014901161,
+                  0.7000000029802322,
+                  0.7000000029802322,
+                  0.6999999955296516
                 ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             },
             "fr": {
@@ -3571,15 +4122,24 @@
                 "min": 0.5999999940395355,
                 "max": 1.1000000014901161,
                 "raw": [
-                  1.1000000014901161, 0.6000000014901161, 0.6000000014901161,
-                  0.5999999940395355, 0.7000000029802322
+                  1.1000000014901161,
+                  0.6000000014901161,
+                  0.6000000014901161,
+                  0.5999999940395355,
+                  0.7000000029802322
                 ]
               },
               "profiler": {
                 "avg": 0,
                 "min": 0,
                 "max": 0,
-                "raw": [0, 0, 0, 0, 0]
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
               }
             }
           },
@@ -3595,8 +4155,11 @@
                 "min": 10.599999994039536,
                 "max": 13.700000002980232,
                 "raw": [
-                  13.700000002980232, 12.800000004470348, 11.700000002980232,
-                  11, 10.599999994039536
+                  13.700000002980232,
+                  12.800000004470348,
+                  11.700000002980232,
+                  11,
+                  10.599999994039536
                 ]
               },
               "hydration": {
@@ -3604,7 +4167,10 @@
                 "min": 3.2000000029802322,
                 "max": 5.100000001490116,
                 "raw": [
-                  5.100000001490116, 4.399999998509884, 4.5, 4,
+                  5.100000001490116,
+                  4.399999998509884,
+                  4.5,
+                  4,
                   3.2000000029802322
                 ]
               },
@@ -3613,8 +4179,11 @@
                 "min": 1.1000000014901161,
                 "max": 1.3999999985098839,
                 "raw": [
-                  1.3000000044703484, 1.2000000029802322, 1.2999999970197678,
-                  1.3999999985098839, 1.1000000014901161
+                  1.3000000044703484,
+                  1.2000000029802322,
+                  1.2999999970197678,
+                  1.3999999985098839,
+                  1.1000000014901161
                 ]
               },
               "hydrationInstrumented": true,
@@ -3626,7 +4195,10 @@
                 "min": 9.899999998509884,
                 "max": 12.5,
                 "raw": [
-                  12.5, 11.700000002980232, 11.200000002980232, 11,
+                  12.5,
+                  11.700000002980232,
+                  11.200000002980232,
+                  11,
                   9.899999998509884
                 ]
               },
@@ -3635,8 +4207,11 @@
                 "min": 3.2000000029802322,
                 "max": 4.700000002980232,
                 "raw": [
-                  3.899999998509884, 4.700000002980232, 3.899999998509884,
-                  3.2999999970197678, 3.2000000029802322
+                  3.899999998509884,
+                  4.700000002980232,
+                  3.899999998509884,
+                  3.2999999970197678,
+                  3.2000000029802322
                 ]
               },
               "reactMount": {
@@ -3644,8 +4219,11 @@
                 "min": 1.1999999955296516,
                 "max": 1.3999999985098839,
                 "raw": [
-                  1.3000000044703484, 1.3999999985098839, 1.1999999955296516,
-                  1.1999999955296516, 1.3000000044703484
+                  1.3000000044703484,
+                  1.3999999985098839,
+                  1.1999999955296516,
+                  1.1999999955296516,
+                  1.3000000044703484
                 ]
               },
               "hydrationInstrumented": true,

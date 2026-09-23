@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-11T14:30:15.010Z",
+  "timestamp": "2026-09-23T20:39:40.715Z",
   "packageName": "nextjs-static-next-i18next-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 97494,
-    "totalMinifiedBytes": 68579,
-    "totalGzipBytes": 20177
+    "totalUnminifiedBytes": 96210,
+    "totalMinifiedBytes": 67464,
+    "totalGzipBytes": 19923
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 97494,
-      "unminifiedGzipBytes": 24656,
-      "minifiedBytes": 68579,
-      "minifiedGzipBytes": 20177
+      "unminifiedBytes": 96210,
+      "unminifiedGzipBytes": 24405,
+      "minifiedBytes": 67464,
+      "minifiedGzipBytes": 19923
     }
   ]
 }

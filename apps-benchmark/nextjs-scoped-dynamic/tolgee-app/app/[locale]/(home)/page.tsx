@@ -18,14 +18,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   ]);
 
   return (
-    <>
-      <TolgeePageHydrator locale={locale} messages={messages} />
+    <TolgeePageHydrator locale={locale} messages={messages}>
       <div className="container py-16">
         <Hero />
         <WhyItMatters />
         <UnderstandingImpact />
         <ResultsTable />
       </div>
-    </>
+    </TolgeePageHydrator>
   );
 }

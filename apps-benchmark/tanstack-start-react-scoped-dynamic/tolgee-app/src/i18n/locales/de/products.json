@@ -1,0 +1,13 @@
+{
+  "productsHeader.products": "Produkte",
+  "productsHeader.toolsAndServicesTo": "Tools und Services unterstützen Sie bei der Optimierung Ihrer Internationalisierungsstrategie.",
+  "productsGrid.benchmarkDashboard": "Benchmark-Dashboard",
+  "productsGrid.interactiveChartsAndTables": "Interaktive Diagramme und Tabellen, die i18n-Bibliotheken hinsichtlich Bundle-Größe, Renderzeit und Hydratationskosten vergleichen.",
+  "productsGrid.bundleAnalyzer": "Bundle-Analyzer",
+  "productsGrid.uploadYourBuildOutput": "Laden Sie Ihren Build-Output hoch und erhalten Sie eine detaillierte Aufschlüsselung, wie viel von Ihrem Bundle i18n-Overhead ist.",
+  "productsGrid.migrationAssistant": "Migrationsassistent",
+  "productsGrid.automatedCodemodsAndGuides": "Automatisierte Codemods und Anleitungen für die Migration zwischen i18n-Bibliotheken mit minimaler Unterbrechung.",
+  "productsGrid.performanceMonitor": "Leistungsmonitor",
+  "productsGrid.continuousPerformanceTrackingFor": "Kontinuierliche Leistungsverfolgung für Ihre i18n-Implementierung. Erhalten Sie Warnungen, wenn sich das Laden von Übersetzungen verschlechtert.",
+  "productsGrid.learnMore": "Mehr erfahren"
+}

@@ -1,5 +1,5 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var URLPattern = {};
 var locales = [
 	"en",
@@ -186,193 +186,157 @@ var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var header_settings$10 = () => {
+var en_header_settings = () => {
 	return `Settings`;
 };
-var mockbanner1$10 = () => {
-	return `⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.`;
-};
-var settings_header_manageyouraccountpreferencesand4$10 = () => {
-	return `Manage your account preferences and configuration.`;
-};
-var header_settings$9 = () => {
+var fr_header_settings = () => {
 	return `Paramètres`;
 };
-var mockbanner1$9 = () => {
-	return `⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.`;
-};
-var settings_header_manageyouraccountpreferencesand4$9 = () => {
-	return `Gérez vos préférences de compte et votre configuration.`;
-};
-var header_settings$8 = () => {
+var es_header_settings = () => {
 	return `Ajustes`;
 };
-var mockbanner1$8 = () => {
-	return `⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.`;
-};
-var settings_header_manageyouraccountpreferencesand4$8 = () => {
-	return `Gestiona las preferencias y la configuración de tu cuenta.`;
-};
-var header_settings$7 = () => {
+var de_header_settings = () => {
 	return `Einstellungen`;
 };
-var mockbanner1$7 = () => {
-	return `⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.`;
-};
-var settings_header_manageyouraccountpreferencesand4$7 = () => {
-	return `Verwalten Sie Ihre Kontoeinstellungen und Konfigurationen.`;
-};
-var header_settings$6 = () => {
+var it_header_settings = () => {
 	return `Impostazioni`;
 };
-var mockbanner1$6 = () => {
-	return `⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.`;
-};
-var settings_header_manageyouraccountpreferencesand4$6 = () => {
-	return `Gestisci le preferenze del tuo account e la configurazione.`;
-};
-var header_settings$5 = () => {
+var pt_header_settings = () => {
 	return `Configurações`;
 };
-var mockbanner1$5 = () => {
-	return `⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.`;
-};
-var settings_header_manageyouraccountpreferencesand4$5 = () => {
-	return `Gerencie as preferências de sua conta e a configuração.`;
-};
-var header_settings$4 = () => {
+var zh_header_settings = () => {
 	return `设置`;
 };
-var mockbanner1$4 = () => {
-	return `⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。`;
-};
-var settings_header_manageyouraccountpreferencesand4$4 = () => {
-	return `管理您的账户偏好和配置。`;
-};
-var header_settings$3 = () => {
+var ja_header_settings = () => {
 	return `設定`;
 };
-var mockbanner1$3 = () => {
-	return `⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。`;
-};
-var settings_header_manageyouraccountpreferencesand4$3 = () => {
-	return `アカウントの優先設定と構成を管理します。`;
-};
-var header_settings$2 = () => {
+var ko_header_settings = () => {
 	return `설정`;
 };
-var mockbanner1$2 = () => {
-	return `⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.`;
-};
-var settings_header_manageyouraccountpreferencesand4$2 = () => {
-	return `계정 기본 설정 및 구성을 관리합니다.`;
-};
-var header_settings$1 = () => {
+var ru_header_settings = () => {
 	return `Настройки`;
-};
-var mockbanner1$1 = () => {
-	return `⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.`;
-};
-var settings_header_manageyouraccountpreferencesand4$1 = () => {
-	return `Управляйте настройками и конфигурацией своего аккаунта.`;
 };
 var header_settings = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return header_settings$9(inputs);
-	if (locale === "es") return header_settings$8(inputs);
-	if (locale === "de") return header_settings$7(inputs);
-	if (locale === "it") return header_settings$6(inputs);
-	if (locale === "pt") return header_settings$5(inputs);
-	if (locale === "zh") return header_settings$4(inputs);
-	if (locale === "ja") return header_settings$3(inputs);
-	if (locale === "ko") return header_settings$2(inputs);
-	if (locale === "ru") return header_settings$1(inputs);
-	return header_settings$10(inputs);
+	if (locale === "fr") return fr_header_settings(inputs);
+	if (locale === "es") return es_header_settings(inputs);
+	if (locale === "de") return de_header_settings(inputs);
+	if (locale === "it") return it_header_settings(inputs);
+	if (locale === "pt") return pt_header_settings(inputs);
+	if (locale === "zh") return zh_header_settings(inputs);
+	if (locale === "ja") return ja_header_settings(inputs);
+	if (locale === "ko") return ko_header_settings(inputs);
+	if (locale === "ru") return ru_header_settings(inputs);
+	return en_header_settings(inputs);
 });
+var en_mockbanner1 = () => {
+	return `⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.`;
+};
+var fr_mockbanner1 = () => {
+	return `⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.`;
+};
+var es_mockbanner1 = () => {
+	return `⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.`;
+};
+var de_mockbanner1 = () => {
+	return `⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.`;
+};
+var it_mockbanner1 = () => {
+	return `⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.`;
+};
+var pt_mockbanner1 = () => {
+	return `⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.`;
+};
+var zh_mockbanner1 = () => {
+	return `⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。`;
+};
+var ja_mockbanner1 = () => {
+	return `⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。`;
+};
+var ko_mockbanner1 = () => {
+	return `⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.`;
+};
+var ru_mockbanner1 = () => {
+	return `⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.`;
+};
 var mockbanner1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return mockbanner1$9(inputs);
-	if (locale === "es") return mockbanner1$8(inputs);
-	if (locale === "de") return mockbanner1$7(inputs);
-	if (locale === "it") return mockbanner1$6(inputs);
-	if (locale === "pt") return mockbanner1$5(inputs);
-	if (locale === "zh") return mockbanner1$4(inputs);
-	if (locale === "ja") return mockbanner1$3(inputs);
-	if (locale === "ko") return mockbanner1$2(inputs);
-	if (locale === "ru") return mockbanner1$1(inputs);
-	return mockbanner1$10(inputs);
+	if (locale === "fr") return fr_mockbanner1(inputs);
+	if (locale === "es") return es_mockbanner1(inputs);
+	if (locale === "de") return de_mockbanner1(inputs);
+	if (locale === "it") return it_mockbanner1(inputs);
+	if (locale === "pt") return pt_mockbanner1(inputs);
+	if (locale === "zh") return zh_mockbanner1(inputs);
+	if (locale === "ja") return ja_mockbanner1(inputs);
+	if (locale === "ko") return ko_mockbanner1(inputs);
+	if (locale === "ru") return ru_mockbanner1(inputs);
+	return en_mockbanner1(inputs);
 });
+var en_settings_header_manageyouraccountpreferencesand4 = () => {
+	return `Manage your account preferences and configuration.`;
+};
+var fr_settings_header_manageyouraccountpreferencesand4 = () => {
+	return `Gérez vos préférences de compte et votre configuration.`;
+};
+var es_settings_header_manageyouraccountpreferencesand4 = () => {
+	return `Gestiona las preferencias y la configuración de tu cuenta.`;
+};
+var de_settings_header_manageyouraccountpreferencesand4 = () => {
+	return `Verwalten Sie Ihre Kontoeinstellungen und Konfigurationen.`;
+};
+var it_settings_header_manageyouraccountpreferencesand4 = () => {
+	return `Gestisci le preferenze del tuo account e la configurazione.`;
+};
+var pt_settings_header_manageyouraccountpreferencesand4 = () => {
+	return `Gerencie as preferências de sua conta e a configuração.`;
+};
+var zh_settings_header_manageyouraccountpreferencesand4 = () => {
+	return `管理您的账户偏好和配置。`;
+};
+var ja_settings_header_manageyouraccountpreferencesand4 = () => {
+	return `アカウントの優先設定と構成を管理します。`;
+};
+var ko_settings_header_manageyouraccountpreferencesand4 = () => {
+	return `계정 기본 설정 및 구성을 관리합니다.`;
+};
+var ru_settings_header_manageyouraccountpreferencesand4 = () => {
+	return `Управляйте настройками и конфигурацией своего аккаунта.`;
+};
 var settings_header_manageyouraccountpreferencesand4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return settings_header_manageyouraccountpreferencesand4$9(inputs);
-	if (locale === "es") return settings_header_manageyouraccountpreferencesand4$8(inputs);
-	if (locale === "de") return settings_header_manageyouraccountpreferencesand4$7(inputs);
-	if (locale === "it") return settings_header_manageyouraccountpreferencesand4$6(inputs);
-	if (locale === "pt") return settings_header_manageyouraccountpreferencesand4$5(inputs);
-	if (locale === "zh") return settings_header_manageyouraccountpreferencesand4$4(inputs);
-	if (locale === "ja") return settings_header_manageyouraccountpreferencesand4$3(inputs);
-	if (locale === "ko") return settings_header_manageyouraccountpreferencesand4$2(inputs);
-	if (locale === "ru") return settings_header_manageyouraccountpreferencesand4$1(inputs);
-	return settings_header_manageyouraccountpreferencesand4$10(inputs);
+	if (locale === "fr") return fr_settings_header_manageyouraccountpreferencesand4(inputs);
+	if (locale === "es") return es_settings_header_manageyouraccountpreferencesand4(inputs);
+	if (locale === "de") return de_settings_header_manageyouraccountpreferencesand4(inputs);
+	if (locale === "it") return it_settings_header_manageyouraccountpreferencesand4(inputs);
+	if (locale === "pt") return pt_settings_header_manageyouraccountpreferencesand4(inputs);
+	if (locale === "zh") return zh_settings_header_manageyouraccountpreferencesand4(inputs);
+	if (locale === "ja") return ja_settings_header_manageyouraccountpreferencesand4(inputs);
+	if (locale === "ko") return ko_settings_header_manageyouraccountpreferencesand4(inputs);
+	if (locale === "ru") return ru_settings_header_manageyouraccountpreferencesand4(inputs);
+	return en_settings_header_manageyouraccountpreferencesand4(inputs);
 });
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/MockBanner.tsx";
-var MockBanner = () => jsxDEV("div", {
+var MockBanner = () => jsx("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 	children: mockbanner1()
-}, void 0, false, {
-	fileName: _jsxFileName$3,
-	lineNumber: 4,
-	columnNumber: 3
-}, void 0);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/SettingsHeader.tsx";
+});
 function SettingsHeader() {
-	return jsxDEV(Fragment, { children: [
-		jsxDEV(MockBanner, {}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 7,
-			columnNumber: 7
-		}, this),
-		jsxDEV("h1", {
+	return jsxs(Fragment, { children: [
+		jsx(MockBanner, {}),
+		jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: header_settings()
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 8,
-			columnNumber: 7
-		}, this),
-		jsxDEV("p", {
+		}),
+		jsx("p", {
 			className: "mb-8 text-muted-foreground mr-10",
 			children: settings_header_manageyouraccountpreferencesand4()
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 11,
-			columnNumber: 7
-		}, this)
-	] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+		})
+	] });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 setLocale("en", { reload: false });
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/SettingsHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(SettingsHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(SettingsHeader, {}) });
 }
 export { Wrapped as default };

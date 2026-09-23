@@ -1,11 +1,6 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var onInvalidFunc = () => "";
-onInvalidFunc = (i, c) => {
-	const item = c[i];
-	if (item == null) return `[i18n-404:${i}]`;
-	return `[i18n-400:${i}(${item})]`;
-};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -94,59 +89,30 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("about", loadCatalog$11, 1);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/about/AboutGrid.tsx";
 function AboutGrid() {
 	const _w_runtime_ = getRuntimeRx();
-	return jsxDEV("div", {
+	return jsxs("div", {
 		className: "grid gap-8 md:grid-cols-2",
-		children: [jsxDEV("div", {
+		children: [jsxs("div", {
 			className: "rounded-lg border border-border bg-card p-6",
-			children: [jsxDEV("h2", {
+			children: [jsx("h2", {
 				className: "mb-3 text-xl font-semibold text-foreground",
 				children: _w_runtime_(57)
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 11,
-				columnNumber: 9
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "text-sm text-muted-foreground",
 				children: _w_runtime_(58)
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 14,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 10,
-			columnNumber: 7
-		}, this), jsxDEV("div", {
+			})]
+		}), jsxs("div", {
 			className: "rounded-lg border border-border bg-card p-6",
-			children: [jsxDEV("h2", {
+			children: [jsx("h2", {
 				className: "mb-3 text-xl font-semibold text-foreground",
 				children: _w_runtime_(1)
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 19,
-				columnNumber: 9
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "text-sm text-muted-foreground",
 				children: _w_runtime_(59)
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 22,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 18,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+			})]
+		})]
+	});
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -324,26 +290,12 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/about/AboutGrid.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(AboutGrid, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(AboutGrid, {}) });
 }
 export { Wrapped as default };
 var c = [

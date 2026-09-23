@@ -1,4 +1,4 @@
-import { computed, createElementBlock, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onMounted, onUnmounted, openBlock, ref, shallowRef, toDisplayString, toValue, watch } from "vue";
+import { computed, createElementBlock, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onMounted, onUnmounted, openBlock, ref, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
 var theme_toggle_default = {
 	key: "theme-toggle",
 	content: {
@@ -87,48 +87,35 @@ var theme_toggle_default = {
 		}
 	}
 };
-var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
-	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
-	if (Object.assign(l, {
-		render: c,
-		toString: () => String(o.value ?? ""),
-		valueOf: () => o.value,
-		[Symbol.toPrimitive]: () => o.value,
-		toJSON: () => o.value,
-		get raw() {
-			return o.value;
-		},
-		set raw(e) {
-			o.value = e;
-		},
-		get value() {
-			return o.value;
-		},
-		use(e) {
-			return n$1({
-				value: o.value,
-				children: () => s(e),
-				additionalProps: a
-			});
-		},
-		__update(e) {
-			s = e.render, this.raw = e.raw;
-		},
-		...a
-	}), r != null) {
-		let e = Object(r), t = Object.getPrototypeOf(e);
-		for (let n of Object.getOwnPropertyNames(t)) {
-			if (n === "constructor" || n in l) continue;
-			let t = e[n];
-			typeof t == "function" && Object.defineProperty(l, n, {
-				value: t.bind(r),
-				writable: !0,
-				configurable: !0
-			});
-		}
-	}
-	return markRaw(l);
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
 };
+var i = Symbol("intlayer");
 var pluginsIdentities = /* @__PURE__ */ new WeakMap();
 var nextPluginsIdentity = 0;
 var getPluginsCacheKey = (plugins) => {
@@ -280,34 +267,6 @@ var getDictionarySelectorCacheKey = (selector) => {
 		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
 	}).join("|");
 };
-var internationalization = {
-	"locales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"requiredLocales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"strictMode": "inclusive",
-	"defaultLocale": "en"
-};
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
 	if (typeof value.then === "function") return false;
@@ -426,30 +385,72 @@ var getDictionary = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
+var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
+	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
+	if (Object.assign(l, {
+		render: c,
+		toString: () => String(o.value ?? ""),
+		valueOf: () => o.value,
+		[Symbol.toPrimitive]: () => o.value,
+		toJSON: () => o.value,
+		get raw() {
+			return o.value;
+		},
+		set raw(e) {
+			o.value = e;
+		},
+		get value() {
+			return o.value;
+		},
+		use(e) {
+			return n$1({
+				value: o.value,
+				children: () => s(e),
+				additionalProps: a
+			});
+		},
+		__update(e) {
+			s = e.render, this.raw = e.raw;
+		},
+		...a
+	}), r != null) {
+		let e = Object(r), t = Object.getPrototypeOf(e);
+		for (let n of Object.getOwnPropertyNames(t)) {
+			if (n === "constructor" || n in l) continue;
+			let t = e[n];
+			typeof t == "function" && Object.defineProperty(l, n, {
+				value: t.bind(r),
+				writable: !0,
+				configurable: !0
+			});
+		}
+	}
+	return markRaw(l);
+};
 var T = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (n, { children: r, ...i }) => {
-		let a = (t) => n$1({
-			...i,
-			value: t,
-			children: t
-		}), c = a(r);
-		if (typeof r != "function") return c;
-		let l = (...e) => {
-			let t = r(...e);
-			return a(t);
+	transform: (t, { children: n, ...a }) => {
+		let o = (e) => n$1({
+			...a,
+			value: e,
+			children: e
+		}), s = o(n);
+		if (typeof n != "function") return s;
+		let u = (...e) => {
+			let t = n(...e);
+			return o(t);
 		};
-		Object.setPrototypeOf(l, Object.getPrototypeOf(c));
-		for (let e of Object.getOwnPropertyNames(c)) {
-			let t = Object.getOwnPropertyDescriptor(c, e);
-			t && Object.defineProperty(l, e, t);
+		Object.setPrototypeOf(u, Object.getPrototypeOf(s));
+		for (let e of Object.getOwnPropertyNames(s)) {
+			let t = Object.getOwnPropertyDescriptor(s, e);
+			t && Object.defineProperty(u, e, t);
 		}
-		for (let e of Object.getOwnPropertySymbols(c)) {
-			let t = Object.getOwnPropertyDescriptor(c, e);
-			t && Object.defineProperty(l, e, t);
+		for (let e of Object.getOwnPropertySymbols(s)) {
+			let t = Object.getOwnPropertyDescriptor(s, e);
+			t && Object.defineProperty(u, e, t);
 		}
-		return markRaw(l);
+		return markRaw(u);
 	}
 };
 var D = fallbackPlugin;
@@ -478,7 +479,6 @@ var M = (e, t = !0) => {
 var n = (n, r) => {
 	return getDictionary(n, r, M(typeof r == "object" && r ? r.locale : r));
 };
-var i = Symbol("intlayer");
 var g = (e, t) => t.reduce((e, t) => e?.[t], e);
 var _ = (e) => typeof e == "object" && !!e;
 var v = (e) => typeof e == "function" || _(e) && ("render" in e || "setup" in e);
@@ -515,39 +515,39 @@ var x = (e) => new Proxy({}, {
 		};
 	}
 });
-var S = (r, a) => {
-	let c = getCurrentInstance() ? inject(i) : void 0, S = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), C = computed(() => {
+var S = (i$1, o) => {
+	let l = getCurrentInstance() ? inject(i) : void 0, S = isRef(l?.locale) ? l.locale : ref(l?.locale ?? internationalization.defaultLocale), C = computed(() => {
 		return {
 			selector: void 0,
-			locale: a === void 0 ? void 0 : toValue(a)
+			locale: o === void 0 ? void 0 : toValue(o)
 		};
 	}), w = computed(() => C.value.locale ?? S.value), T = shallowRef({});
 	watch([
-		() => toValue(r),
+		() => toValue(i$1),
 		() => w.value,
 		() => C.value.selector
-	], ([t, n$2, r]) => {
-		T.value = r ? n(t, {
+	], ([e, n$2, r]) => {
+		T.value = r ? n(e, {
 			...r,
 			locale: n$2
-		}) : n(t, n$2);
+		}) : n(e, n$2);
 	}, {
 		immediate: !0,
 		flush: "sync"
 	});
 	let E = (e) => new Proxy({}, {
-		get(t, r, i) {
+		get(t, n, i) {
 			let a = computed(() => g(T.value, e));
-			if (typeof r == "symbol" || typeof r == "string" && (r.startsWith("__") || r.startsWith("$"))) return r === "__v_isRef" ? !0 : r === "$raw" ? a : r === Symbol.toPrimitive ? () => String(a.value ?? "") : Reflect.get(t, r, i);
-			if (r === "value") return a.value ?? "";
-			if (r === "then") return;
-			if (r === "c" || r === "asComponent") return b(() => a.value);
-			let o = e.concat(r), s = g(T.value, o);
+			if (typeof n == "symbol" || typeof n == "string" && (n.startsWith("__") || n.startsWith("$"))) return n === "__v_isRef" ? !0 : n === "$raw" ? a : n === Symbol.toPrimitive ? () => String(a.value ?? "") : Reflect.get(t, n, i);
+			if (n === "value") return a.value ?? "";
+			if (n === "then") return;
+			if (n === "c" || n === "asComponent") return b(() => a.value);
+			let o = e.concat(n), s = g(T.value, o);
 			if (s === void 0 || _(s) && !v(s)) return E(o);
 			if (y(s)) return x(computed(() => g(T.value, o)));
 			if (typeof s == "function") {
 				let t = g(T.value, e);
-				return t != null && !Object.hasOwn(t, r) ? s.bind(t) : (...e) => g(T.value, o)?.(...e);
+				return t != null && !Object.hasOwn(t, n) ? s.bind(t) : (...e) => g(T.value, o)?.(...e);
 			}
 			let c = computed(() => g(T.value, o));
 			return new Proxy(c, { get(e, t, n) {
@@ -567,10 +567,10 @@ var S = (r, a) => {
 	});
 	return E([]);
 };
-var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var _hoisted_1 = ["aria-label", "title"];
+var ThemeToggle_default = defineComponent({
 	__name: "ThemeToggle",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const { d: auto, e: dark, f: light, a: ariaLabelAuto, c: ariaLabelLight, b: ariaLabelDark } = S(theme_toggle_default);
 		const mode = ref("auto");
 		function getInitialMode() {
@@ -614,46 +614,15 @@ var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
 			window.localStorage.setItem("theme", nextMode);
 		}
 		const getLabel = () => mode.value === "auto" ? ariaLabelAuto.value : mode.value === "light" ? ariaLabelLight.value : ariaLabelDark.value;
-		const __returned__ = {
-			auto,
-			dark,
-			light,
-			ariaLabelAuto,
-			ariaLabelLight,
-			ariaLabelDark,
-			mode,
-			getInitialMode,
-			applyThemeMode,
-			get mediaQueryListener() {
-				return mediaQueryListener;
-			},
-			set mediaQueryListener(v) {
-				mediaQueryListener = v;
-			},
-			toggleMode,
-			getLabel
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("button", {
+				type: "button",
+				onClick: toggleMode,
+				"aria-label": getLabel(),
+				title: getLabel(),
+				class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+			}, toDisplayString(mode.value === "auto" ? unref(auto) : mode.value === "dark" ? unref(dark) : unref(light)), 9, _hoisted_1);
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
-var _hoisted_1 = ["aria-label", "title"];
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("button", {
-		type: "button",
-		onClick: $setup.toggleMode,
-		"aria-label": $setup.getLabel(),
-		title: $setup.getLabel(),
-		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-	}, toDisplayString($setup.mode === "auto" ? $setup.auto : $setup.mode === "dark" ? $setup.dark : $setup.light), 9, _hoisted_1);
-}
-var ThemeToggle_default = _plugin_vue_export_helper_default(ThemeToggle_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/ThemeToggle.vue"]]);
 export { ThemeToggle_default as default };

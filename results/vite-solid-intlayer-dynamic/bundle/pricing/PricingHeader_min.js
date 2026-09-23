@@ -1,16 +1,16 @@
 import { Dynamic as e, createComponent as t, insert as n, template as r } from "solid-js/web";
 import { createContext as i, createMemo as a, useContext as o } from "solid-js";
 var s = {
-	de: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/de.json").then((e) => e.default),
-	en: () => import("./en-H0YCA1ao.js").then((e) => e.default),
-	es: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/es.json").then((e) => e.default),
-	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/fr.json").then((e) => e.default),
-	it: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/it.json").then((e) => e.default),
-	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/ja.json").then((e) => e.default),
-	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/ko.json").then((e) => e.default),
-	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/pt.json").then((e) => e.default),
-	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/ru.json").then((e) => e.default),
-	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-header/zh.json").then((e) => e.default)
+	de: () => import("./de-C-DUX9hw.js").then((e) => e.default),
+	en: () => import("./en-Csq3MERG.js").then((e) => e.default),
+	es: () => import("./es-GMOqshlL.js").then((e) => e.default),
+	fr: () => import("./fr-5FB5OmuD.js").then((e) => e.default),
+	it: () => import("./it-rs3nTsxB.js").then((e) => e.default),
+	ja: () => import("./ja-WY3dXXh5.js").then((e) => e.default),
+	ko: () => import("./ko-BPl0iYls.js").then((e) => e.default),
+	pt: () => import("./pt-D4EpMwvD.js").then((e) => e.default),
+	ru: () => import("./ru-BkPLMdrV.js").then((e) => e.default),
+	zh: () => import("./zh-89gEt16y.js").then((e) => e.default)
 }, c = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var s = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (g(e) && g(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : _(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : _(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -267,16 +267,16 @@ var z = (e = B) => {
 	let { locale: r } = o(H) ?? {}, i = u.defaultLocale, a = n ?? r?.() ?? i;
 	return U(K(`${String(t)}.${a}`, e[a]?.()), a);
 }, J = {
-	de: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((e) => e.default),
-	en: () => import("./en-B4WwrKbL.js").then((e) => e.default),
-	es: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((e) => e.default),
-	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((e) => e.default),
-	it: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((e) => e.default),
-	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((e) => e.default),
-	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((e) => e.default),
-	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((e) => e.default),
-	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((e) => e.default),
-	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((e) => e.default)
+	de: () => import("./de-DZjVcrEr.js").then((e) => e.default),
+	en: () => import("./en-BIpIqFyC.js").then((e) => e.default),
+	es: () => import("./es-DjApjMna.js").then((e) => e.default),
+	fr: () => import("./fr-B5zdWQYr.js").then((e) => e.default),
+	it: () => import("./it-BV2gaUYH.js").then((e) => e.default),
+	ja: () => import("./ja-BRK6b6e8.js").then((e) => e.default),
+	ko: () => import("./ko-b4l7esQz.js").then((e) => e.default),
+	pt: () => import("./pt-BHCuLMOi.js").then((e) => e.default),
+	ru: () => import("./ru-CGOfbfvo.js").then((e) => e.default),
+	zh: () => import("./zh-BMK-ZYp4.js").then((e) => e.default)
 }, Y = r("<div class=\"mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground\">");
 function X() {
 	let e = q(J, "mock-banner");
@@ -295,6 +295,19 @@ function Q() {
 }
 export { Q as default };
 var e = {
+	key: "pricing-header",
+	content: {
+		b: "Einfache, transparente Preise",
+		a: "Wählen Sie den Plan, der zu Ihrem Team passt. Keine versteckten Gebühren."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
+};
+export { e as default };
+var e = {
 	key: "mock-banner",
 	content: { a: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
 };
@@ -305,5 +318,109 @@ var e = {
 		b: "Simple, Transparent Pricing",
 		a: "Choose the plan that fits your team. No hidden fees."
 	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
+};
+export { e as default };
+var e = {
+	key: "pricing-header",
+	content: {
+		b: "Precios simples y transparentes",
+		a: "Elija el plan que mejor se adapte a su equipo. Sin cargos ocultos."
+	}
+};
+export { e as default };
+var e = {
+	key: "pricing-header",
+	content: {
+		b: "Une tarification simple et transparente",
+		a: "Choisissez le forfait qui convient à votre équipe. Pas de frais cachés."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
+};
+export { e as default };
+var e = {
+	key: "pricing-header",
+	content: {
+		b: "Prezzi semplici e trasparenti",
+		a: "Scegli il piano più adatto al tuo team. Nessun costo nascosto."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
+};
+export { e as default };
+var e = {
+	key: "pricing-header",
+	content: {
+		b: "シンプルで透明性の高い価格設定",
+		a: "あなたのチームに合ったプランをお選びください。隠れた費用はありません。"
+	}
+};
+export { e as default };
+var e = {
+	key: "pricing-header",
+	content: {
+		b: "단순하고 투명한 가격 책정",
+		a: "팀에 맞는 플랜을 선택하십시오. 숨겨진 비용은 없습니다."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
+};
+export { e as default };
+var e = {
+	key: "pricing-header",
+	content: {
+		b: "Preços Simples e Transparentes",
+		a: "Escolha o plano que melhor se adapta à sua equipe. Sem taxas ocultas."
+	}
+};
+export { e as default };
+var e = {
+	key: "pricing-header",
+	content: {
+		b: "Простые и прозрачные цены",
+		a: "Выберите план, который подходит вашей команде. Никаких скрытых платежей."
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
+};
+export { e as default };
+var e = {
+	key: "pricing-header",
+	content: {
+		b: "简单、透明的定价",
+		a: "选择适合您团队的计划。无隐藏费用。"
+	}
+};
+export { e as default };
+var e = {
+	key: "mock-banner",
+	content: { a: "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务 or 服务无关。" }
 };
 export { e as default };

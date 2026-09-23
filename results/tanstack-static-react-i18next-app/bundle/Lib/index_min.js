@@ -1,5 +1,5 @@
 import { createContext as e, createElement as t, useCallback as n, useContext as r, useEffect as i, useMemo as a, useRef as o, useState as s } from "react";
-import { jsxDEV as c } from "react/jsx-dev-runtime";
+import { jsx as c } from "react/jsx-runtime";
 import l from "../src/i18n/locales/en.json";
 import u from "../src/i18n/locales/fr.json";
 import d from "../src/i18n/locales/es.json";
@@ -1326,51 +1326,43 @@ var xe = (e, t, n, r) => {
 		return Object.keys(this.usedNamespaces);
 	}
 }, Re = y(((e) => {
-	(function() {
-		function t(e, t) {
-			return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
-		}
-		function n(e, t) {
-			d || a.startTransition === void 0 || (d = !0, console.error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release."));
+	var t = b("react");
+	function n(e, t) {
+		return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
+	}
+	var r = typeof Object.is == "function" ? Object.is : n, i = t.useState, a = t.useEffect, o = t.useLayoutEffect, s = t.useDebugValue;
+	function c(e, t) {
+		var n = t(), r = i({ inst: {
+			value: n,
+			getSnapshot: t
+		} }), c = r[0].inst, u = r[1];
+		return o(function() {
+			c.value = n, c.getSnapshot = t, l(c) && u({ inst: c });
+		}, [
+			e,
+			n,
+			t
+		]), a(function() {
+			return l(c) && u({ inst: c }), e(function() {
+				l(c) && u({ inst: c });
+			});
+		}, [e]), s(n), n;
+	}
+	function l(e) {
+		var t = e.getSnapshot;
+		e = e.value;
+		try {
 			var n = t();
-			if (!f) {
-				var i = t();
-				o(n, i) || (console.error("The result of getSnapshot should be cached to avoid an infinite loop"), f = !0);
-			}
-			i = s({ inst: {
-				value: n,
-				getSnapshot: t
-			} });
-			var p = i[0].inst, m = i[1];
-			return l(function() {
-				p.value = n, p.getSnapshot = t, r(p) && m({ inst: p });
-			}, [
-				e,
-				n,
-				t
-			]), c(function() {
-				return r(p) && m({ inst: p }), e(function() {
-					r(p) && m({ inst: p });
-				});
-			}, [e]), u(n), n;
+			return !r(e, n);
+		} catch {
+			return !0;
 		}
-		function r(e) {
-			var t = e.getSnapshot;
-			e = e.value;
-			try {
-				var n = t();
-				return !o(e, n);
-			} catch {
-				return !0;
-			}
-		}
-		function i(e, t) {
-			return t();
-		}
-		typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-		var a = b("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, c = a.useEffect, l = a.useLayoutEffect, u = a.useDebugValue, d = !1, f = !1, p = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
-		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? p : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
-	})();
+	}
+	function u(e, t) {
+		return t();
+	}
+	var d = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? u : c;
+	e.useSyncExternalStore = t.useSyncExternalStore === void 0 ? d : t.useSyncExternalStore;
 })), ze = y(((e, t) => {
 	t.exports = Re();
 }))(), Be = {
@@ -1467,7 +1459,7 @@ var xe = (e, t, n, r) => {
 	if (d && p && !T) {
 		let e = !1;
 		try {
-			e = !0;
+			e = !1;
 		} catch {}
 		throw e && X(d, "SUSPENDED_WHILE_LOADING", "useTranslation: suspended while translations are loading (useSuspense is true by default). Add a <Suspense> boundary above this component, or set react.useSuspense: false in the i18next init options. https://react.i18next.com/latest/usetranslation-hook"), new Promise((e) => {
 			let n = () => e();
@@ -1483,8 +1475,8 @@ function Ue({ i18n: e, defaultNS: n, children: r }) {
 	}), [e, n]);
 	return t(Ie.Provider, { value: i }, r);
 }
-var We = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/react-i18next-app/scripts/EmptyComponent.tsx", Ge = Y.createInstance();
-Ge.use(Fe).init({
+var We = Y.createInstance();
+We.use(Fe).init({
 	lng: "en",
 	fallbackLng: "en",
 	resources: { en: { translation: {} } },
@@ -1493,23 +1485,15 @@ Ge.use(Fe).init({
 	keySeparator: !1,
 	nsSeparator: !1
 });
-var Ke = () => {
+var Ge = () => {
 	let { i18n: e, t } = He();
 	return e.language, null;
 };
-function qe() {
+function Ke() {
 	return c(Ue, {
-		i18n: Ge,
-		children: c(Ke, {}, void 0, !1, {
-			fileName: We,
-			lineNumber: 28,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: We,
-		lineNumber: 27,
-		columnNumber: 5
-	}, this);
+		i18n: We,
+		children: c(Ge, {})
+	});
 }
 Y.use(Fe).init({
 	resources: {
@@ -1528,27 +1512,14 @@ Y.use(Fe).init({
 	fallbackLng: "en",
 	interpolation: { escapeValue: !1 }
 });
-var Je = Y, Ye = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/react-i18next-app/scripts/Wrapper.tsx";
-function Xe({ children: e }) {
+var qe = Y;
+function Je({ children: e }) {
 	return c(Ue, {
-		i18n: Je,
+		i18n: qe,
 		children: e
-	}, void 0, !1, {
-		fileName: Ye,
-		lineNumber: 7,
-		columnNumber: 5
-	}, this);
+	});
 }
-var Ze = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/react-i18next-app/scripts/EmptyComponent.wrapper.tsx";
-function Qe() {
-	return c(Xe, { children: c(qe, {}, void 0, !1, {
-		fileName: Ze,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: Ze,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function Ye() {
+	return c(Je, { children: c(Ke, {}) });
 }
-export { Qe as default };
+export { Ye as default };

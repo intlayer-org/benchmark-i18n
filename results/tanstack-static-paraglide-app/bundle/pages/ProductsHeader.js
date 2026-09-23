@@ -1,5 +1,5 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var URLPattern = {};
 var locales = [
 	"en",
@@ -186,193 +186,157 @@ var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var header_products$10 = () => {
+var en_header_products = () => {
 	return `Products`;
 };
-var mockbanner1$10 = () => {
-	return `⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.`;
-};
-var products_header_toolsandservicestostreamline4$10 = () => {
-	return `Tools and services to streamline your internationalization workflow.`;
-};
-var header_products$9 = () => {
+var fr_header_products = () => {
 	return `Produits`;
 };
-var mockbanner1$9 = () => {
-	return `⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.`;
-};
-var products_header_toolsandservicestostreamline4$9 = () => {
-	return `Des outils et services pour rationaliser votre flux de travail d'internationalisation.`;
-};
-var header_products$8 = () => {
+var es_header_products = () => {
 	return `Productos`;
 };
-var mockbanner1$8 = () => {
-	return `⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.`;
-};
-var products_header_toolsandservicestostreamline4$8 = () => {
-	return `Herramientas y servicios para agilizar tu flujo de trabajo de internacionalización.`;
-};
-var header_products$7 = () => {
+var de_header_products = () => {
 	return `Produkte`;
 };
-var mockbanner1$7 = () => {
-	return `⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.`;
-};
-var products_header_toolsandservicestostreamline4$7 = () => {
-	return `Tools und Services zur Optimierung Ihres Internationalisierungs-Worflows.`;
-};
-var header_products$6 = () => {
+var it_header_products = () => {
 	return `Prodotti`;
 };
-var mockbanner1$6 = () => {
-	return `⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.`;
-};
-var products_header_toolsandservicestostreamline4$6 = () => {
-	return `Strumenti e servizi per snellire il flusso di lavoro dell'internazionalizzazione.`;
-};
-var header_products$5 = () => {
+var pt_header_products = () => {
 	return `Produtos`;
 };
-var mockbanner1$5 = () => {
-	return `⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.`;
-};
-var products_header_toolsandservicestostreamline4$5 = () => {
-	return `Ferramentas e serviços para agilizar seu fluxo de trabalho de internacionalização.`;
-};
-var header_products$4 = () => {
+var zh_header_products = () => {
 	return `产品`;
 };
-var mockbanner1$4 = () => {
-	return `⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。`;
-};
-var products_header_toolsandservicestostreamline4$4 = () => {
-	return `简化国际化工作流程的工具和服务。`;
-};
-var header_products$3 = () => {
+var ja_header_products = () => {
 	return `製品`;
 };
-var mockbanner1$3 = () => {
-	return `⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。`;
-};
-var products_header_toolsandservicestostreamline4$3 = () => {
-	return `国際化ワークフローを合理化するためのツールとサービス。`;
-};
-var header_products$2 = () => {
+var ko_header_products = () => {
 	return `제품`;
 };
-var mockbanner1$2 = () => {
-	return `⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.`;
-};
-var products_header_toolsandservicestostreamline4$2 = () => {
-	return `국제화 워크플로우를 간소화하기 위한 도구 및 서비스.`;
-};
-var header_products$1 = () => {
+var ru_header_products = () => {
 	return `Продукты`;
-};
-var mockbanner1$1 = () => {
-	return `⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.`;
-};
-var products_header_toolsandservicestostreamline4$1 = () => {
-	return `Инструменты и услуги для оптимизации рабочего процесса интернационализации.`;
 };
 var header_products = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return header_products$9(inputs);
-	if (locale === "es") return header_products$8(inputs);
-	if (locale === "de") return header_products$7(inputs);
-	if (locale === "it") return header_products$6(inputs);
-	if (locale === "pt") return header_products$5(inputs);
-	if (locale === "zh") return header_products$4(inputs);
-	if (locale === "ja") return header_products$3(inputs);
-	if (locale === "ko") return header_products$2(inputs);
-	if (locale === "ru") return header_products$1(inputs);
-	return header_products$10(inputs);
+	if (locale === "fr") return fr_header_products(inputs);
+	if (locale === "es") return es_header_products(inputs);
+	if (locale === "de") return de_header_products(inputs);
+	if (locale === "it") return it_header_products(inputs);
+	if (locale === "pt") return pt_header_products(inputs);
+	if (locale === "zh") return zh_header_products(inputs);
+	if (locale === "ja") return ja_header_products(inputs);
+	if (locale === "ko") return ko_header_products(inputs);
+	if (locale === "ru") return ru_header_products(inputs);
+	return en_header_products(inputs);
 });
+var en_mockbanner1 = () => {
+	return `⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.`;
+};
+var fr_mockbanner1 = () => {
+	return `⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.`;
+};
+var es_mockbanner1 = () => {
+	return `⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.`;
+};
+var de_mockbanner1 = () => {
+	return `⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.`;
+};
+var it_mockbanner1 = () => {
+	return `⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.`;
+};
+var pt_mockbanner1 = () => {
+	return `⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.`;
+};
+var zh_mockbanner1 = () => {
+	return `⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。`;
+};
+var ja_mockbanner1 = () => {
+	return `⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。`;
+};
+var ko_mockbanner1 = () => {
+	return `⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.`;
+};
+var ru_mockbanner1 = () => {
+	return `⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.`;
+};
 var mockbanner1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return mockbanner1$9(inputs);
-	if (locale === "es") return mockbanner1$8(inputs);
-	if (locale === "de") return mockbanner1$7(inputs);
-	if (locale === "it") return mockbanner1$6(inputs);
-	if (locale === "pt") return mockbanner1$5(inputs);
-	if (locale === "zh") return mockbanner1$4(inputs);
-	if (locale === "ja") return mockbanner1$3(inputs);
-	if (locale === "ko") return mockbanner1$2(inputs);
-	if (locale === "ru") return mockbanner1$1(inputs);
-	return mockbanner1$10(inputs);
+	if (locale === "fr") return fr_mockbanner1(inputs);
+	if (locale === "es") return es_mockbanner1(inputs);
+	if (locale === "de") return de_mockbanner1(inputs);
+	if (locale === "it") return it_mockbanner1(inputs);
+	if (locale === "pt") return pt_mockbanner1(inputs);
+	if (locale === "zh") return zh_mockbanner1(inputs);
+	if (locale === "ja") return ja_mockbanner1(inputs);
+	if (locale === "ko") return ko_mockbanner1(inputs);
+	if (locale === "ru") return ru_mockbanner1(inputs);
+	return en_mockbanner1(inputs);
 });
+var en_products_header_toolsandservicestostreamline4 = () => {
+	return `Tools and services to streamline your internationalization workflow.`;
+};
+var fr_products_header_toolsandservicestostreamline4 = () => {
+	return `Des outils et services pour rationaliser votre flux de travail d'internationalisation.`;
+};
+var es_products_header_toolsandservicestostreamline4 = () => {
+	return `Herramientas y servicios para agilizar tu flujo de trabajo de internacionalización.`;
+};
+var de_products_header_toolsandservicestostreamline4 = () => {
+	return `Tools und Services zur Optimierung Ihres Internationalisierungs-Worflows.`;
+};
+var it_products_header_toolsandservicestostreamline4 = () => {
+	return `Strumenti e servizi per snellire il flusso di lavoro dell'internazionalizzazione.`;
+};
+var pt_products_header_toolsandservicestostreamline4 = () => {
+	return `Ferramentas e serviços para agilizar seu fluxo de trabalho de internacionalização.`;
+};
+var zh_products_header_toolsandservicestostreamline4 = () => {
+	return `简化国际化工作流程的工具和服务。`;
+};
+var ja_products_header_toolsandservicestostreamline4 = () => {
+	return `国際化ワークフローを合理化するためのツールとサービス。`;
+};
+var ko_products_header_toolsandservicestostreamline4 = () => {
+	return `국제화 워크플로우를 간소화하기 위한 도구 및 서비스.`;
+};
+var ru_products_header_toolsandservicestostreamline4 = () => {
+	return `Инструменты и услуги для оптимизации рабочего процесса интернационализации.`;
+};
 var products_header_toolsandservicestostreamline4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return products_header_toolsandservicestostreamline4$9(inputs);
-	if (locale === "es") return products_header_toolsandservicestostreamline4$8(inputs);
-	if (locale === "de") return products_header_toolsandservicestostreamline4$7(inputs);
-	if (locale === "it") return products_header_toolsandservicestostreamline4$6(inputs);
-	if (locale === "pt") return products_header_toolsandservicestostreamline4$5(inputs);
-	if (locale === "zh") return products_header_toolsandservicestostreamline4$4(inputs);
-	if (locale === "ja") return products_header_toolsandservicestostreamline4$3(inputs);
-	if (locale === "ko") return products_header_toolsandservicestostreamline4$2(inputs);
-	if (locale === "ru") return products_header_toolsandservicestostreamline4$1(inputs);
-	return products_header_toolsandservicestostreamline4$10(inputs);
+	if (locale === "fr") return fr_products_header_toolsandservicestostreamline4(inputs);
+	if (locale === "es") return es_products_header_toolsandservicestostreamline4(inputs);
+	if (locale === "de") return de_products_header_toolsandservicestostreamline4(inputs);
+	if (locale === "it") return it_products_header_toolsandservicestostreamline4(inputs);
+	if (locale === "pt") return pt_products_header_toolsandservicestostreamline4(inputs);
+	if (locale === "zh") return zh_products_header_toolsandservicestostreamline4(inputs);
+	if (locale === "ja") return ja_products_header_toolsandservicestostreamline4(inputs);
+	if (locale === "ko") return ko_products_header_toolsandservicestostreamline4(inputs);
+	if (locale === "ru") return ru_products_header_toolsandservicestostreamline4(inputs);
+	return en_products_header_toolsandservicestostreamline4(inputs);
 });
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/MockBanner.tsx";
-var MockBanner = () => jsxDEV("div", {
+var MockBanner = () => jsx("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 	children: mockbanner1()
-}, void 0, false, {
-	fileName: _jsxFileName$3,
-	lineNumber: 4,
-	columnNumber: 3
-}, void 0);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/products/ProductsHeader.tsx";
+});
 function ProductsHeader() {
-	return jsxDEV(Fragment, { children: [
-		jsxDEV(MockBanner, {}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 7,
-			columnNumber: 7
-		}, this),
-		jsxDEV("h1", {
+	return jsxs(Fragment, { children: [
+		jsx(MockBanner, {}),
+		jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: header_products()
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 8,
-			columnNumber: 7
-		}, this),
-		jsxDEV("p", {
+		}),
+		jsx("p", {
 			className: "mb-10 text-muted-foreground",
 			children: products_header_toolsandservicestostreamline4()
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 11,
-			columnNumber: 7
-		}, this)
-	] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+		})
+	] });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 setLocale("en", { reload: false });
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/products/ProductsHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ProductsHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ProductsHeader, {}) });
 }
 export { Wrapped as default };

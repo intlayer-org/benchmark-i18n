@@ -5,16 +5,16 @@ export default function CareersBenefits() {
 
   const benefits = [
     {
-      label: t("careersBenefits.remoteFirst", "Remote-first"),
-      value: t("careersBenefits.workFromAnywhere", "Work from anywhere in the world"),
+      label: t("careersBenefits.remoteFirst"),
+      value: t("careersBenefits.workFromAnywhere"),
     },
     {
-      label: t("careersBenefits.competitivePay", "Competitive pay"),
-      value: t("careersBenefits.topOfMarketCompensation", "Top-of-market compensation"),
+      label: t("careersBenefits.competitivePay"),
+      value: t("careersBenefits.topOfMarketCompensation"),
     },
     {
-      label: t("careersBenefits.openSourceTime", "Open source time"),
-      value: t("careersBenefits.percentTimeForOss", "20% time for OSS contributions"),
+      label: t("careersBenefits.openSourceTime"),
+      value: t("careersBenefits.percentTimeForOss"),
     },
   ];
 

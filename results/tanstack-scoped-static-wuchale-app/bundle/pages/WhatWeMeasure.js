@@ -1,11 +1,6 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var onInvalidFunc = () => "";
-onInvalidFunc = (i, c) => {
-	const item = c[i];
-	if (item == null) return `[i18n-404:${i}]`;
-	return `[i18n-400:${i}(${item})]`;
-};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -94,7 +89,6 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("about", loadCatalog$11, 1);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/about/WhatWeMeasure.tsx";
 function WhatWeMeasure() {
 	const _w_runtime_ = getRuntimeRx();
 	const metrics = [
@@ -119,49 +113,25 @@ function WhatWeMeasure() {
 			desc: _w_runtime_(72)
 		}
 	];
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mt-12 mx-auto max-w-3xl",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-4 text-2xl font-bold text-foreground",
 			children: _w_runtime_(73)
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 33,
-			columnNumber: 7
-		}, this), jsxDEV("ul", {
+		}), jsx("ul", {
 			className: "space-y-4",
-			children: metrics.map((m) => jsxDEV("li", {
+			children: metrics.map((m) => jsxs("li", {
 				className: "rounded-md border border-border p-4",
-				children: [jsxDEV("span", {
+				children: [jsx("span", {
 					className: "block text-sm font-bold text-primary",
 					children: m.metric
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 39,
-					columnNumber: 13
-				}, this), jsxDEV("span", {
+				}), jsx("span", {
 					className: "block mt-1 text-sm text-muted-foreground",
 					children: m.desc
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 42,
-					columnNumber: 13
-				}, this)]
-			}, m.metric, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 38,
-				columnNumber: 11
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 36,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 32,
-		columnNumber: 5
-	}, this);
+				})]
+			}, m.metric))
+		})]
+	});
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -339,26 +309,12 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/about/WhatWeMeasure.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(WhatWeMeasure, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(WhatWeMeasure, {}) });
 }
 export { Wrapped as default };
 var c = [

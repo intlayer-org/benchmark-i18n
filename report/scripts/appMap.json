@@ -80,6 +80,7 @@
       },
       "tolgee": {
         "static": "./apps-benchmark/nextjs-static/tolgee-app",
+        "dynamic": "./apps-benchmark/nextjs-dynamic/tolgee-app",
         "scoped-static": "./apps-benchmark/nextjs-scoped-static/tolgee-app",
         "scoped-dynamic": "./apps-benchmark/nextjs-scoped-dynamic/tolgee-app"
       }
@@ -138,7 +139,8 @@
       "tolgee": {
         "static": "./apps-benchmark/tanstack-start-react-static/tolgee-app",
         "dynamic": "./apps-benchmark/tanstack-start-react-dynamic/tolgee-app",
-        "scoped-static": "./apps-benchmark/tanstack-start-react-scoped-static/tolgee-app"
+        "scoped-static": "./apps-benchmark/tanstack-start-react-scoped-static/tolgee-app",
+        "scoped-dynamic": "./apps-benchmark/tanstack-start-react-scoped-dynamic/tolgee-app"
       },
       "use-intl": {
         "static": "./apps-benchmark/tanstack-start-react-static/use-intl-app",

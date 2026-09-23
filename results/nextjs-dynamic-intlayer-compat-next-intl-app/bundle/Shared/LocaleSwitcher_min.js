@@ -1,8 +1,7 @@
 import { createContext as e, useContext as t, useEffect as n, useLayoutEffect as r, useRef as i, useState as a } from "react";
 import { useParams as o, usePathname as s, useRouter as c } from "next/navigation";
-import { jsxDEV as l } from "react/jsx-dev-runtime";
-import { jsx as u, jsxs as d } from "react/jsx-runtime";
-var f = [
+import { jsx as l, jsxs as u } from "react/jsx-runtime";
+var d = [
 	"en",
 	"fr",
 	"es",
@@ -14,7 +13,7 @@ var f = [
 	"ko",
 	"ru"
 ];
-function p(e) {
+function f(e) {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
@@ -22,8 +21,7 @@ function p(e) {
 		return e.toUpperCase();
 	}
 }
-var m = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/intlayer-compat-next-intl-app/components/LocaleSwitcher.tsx";
-function h() {
+function p() {
 	let e = o().locale ?? "en", t = s(), n = c(), r = (r) => {
 		let i = t.replace(`/${e}`, `/${r}`);
 		n.push(i);
@@ -34,26 +32,14 @@ function h() {
 			value: e,
 			onChange: (e) => r(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: f.map((e) => l("option", {
+			children: d.map((e) => l("option", {
 				value: e,
-				children: p(e)
-			}, e, !1, {
-				fileName: m,
-				lineNumber: 25,
-				columnNumber: 11
-			}, this))
-		}, void 0, !1, {
-			fileName: m,
-			lineNumber: 19,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: m,
-		lineNumber: 18,
-		columnNumber: 5
-	}, this);
+				children: f(e)
+			}, e))
+		})
+	});
 }
-var g = {
+var m = {
 	locales: [
 		"en",
 		"fr",
@@ -80,7 +66,7 @@ var g = {
 	],
 	strictMode: "inclusive",
 	defaultLocale: "en"
-}, _ = {
+}, h = {
 	mode: "prefix-all",
 	enableProxy: !1,
 	storage: {
@@ -91,37 +77,37 @@ var g = {
 		headers: [{ name: "x-intlayer-locale" }]
 	},
 	basePath: ""
-}, ee = {
+}, g = {
 	mode: "default",
 	prefix: "\x1B[38;5;239m[intlayer] \x1B[0m"
-}, v = "\x1B[0m", y = "\x1B[34m", b = "\x1B[31m", x = "\x1B[32m", S = "\x1B[36m", C = (e) => e, w = (e, t) => {
+}, _ = "\x1B[0m", v = "\x1B[34m", y = "\x1B[31m", b = "\x1B[32m", x = "\x1B[36m", S = (e) => e, C = (e, t) => {
 	let n = t?.config ?? {}, r = n.mode ?? "default";
 	if (r === "disabled" || t?.isVerbose && r !== "verbose") return;
-	let i = C(n.prefix), a = i ? [i, ...[e].flat()] : [e].flat(), o = t?.level ?? "info";
+	let i = S(n.prefix), a = i ? [i, ...[e].flat()] : [e].flat(), o = t?.level ?? "info";
 	(n[o] ?? console[o] ?? n.log ?? console.log)(...a);
-}, T = (e, t) => (n, r) => w(n, {
+}, w = (e, t) => (n, r) => C(n, {
 	...r ?? {},
 	config: {
 		...e?.log,
 		...t?.config,
 		...r?.config ?? {}
 	}
-}), E = (e, t, n) => t && typeof window > "u" ? `${t}${e}${n ? typeof n == "boolean" ? v : n : v}` : e;
-E("✗", b), E("✓", x), E("⏲", y);
-var D = ["en"], O = (e) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(e), k = (e) => {
+}), T = (e, t, n) => t && typeof window > "u" ? `${t}${e}${n ? typeof n == "boolean" ? _ : n : _}` : e;
+T("✗", y), T("✓", b), T("⏲", v);
+var E = ["en"], D = (e) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(e), O = (e) => {
 	if (typeof e == "number") return Date.now() + e * 1e3;
 	if (typeof e == "string") {
 		let t = Date.parse(e);
 		return Number.isNaN(t) ? void 0 : t;
 	}
-}, A = (e, t, n) => {
+}, k = (e, t, n) => {
 	let r = [`${e}=${encodeURIComponent(t)}`];
 	n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`);
-	let i = k(n.expires);
+	let i = O(n.expires);
 	return i !== void 0 && r.push(`Expires=${new Date(i).toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, j = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+}, A = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var M = {
+var j = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -139,51 +125,51 @@ var M = {
 	},
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
-}, N = (e = M) => {
-	let { locales: t } = g;
+}, M = (e = j) => {
+	let { locales: t } = m;
 	if (e?.isCookieEnabled === !1) return;
 	let n = (e) => !!e && t.includes(e);
-	if (!j) for (let t = 0; t < (_.storage.cookies ?? []).length; t++) try {
-		let r = e?.getCookie?.(_.storage.cookies[t].name);
+	if (!A) for (let t = 0; t < (h.storage.cookies ?? []).length; t++) try {
+		let r = e?.getCookie?.(h.storage.cookies[t].name);
 		if (n(r)) return r;
 	} catch {}
-}, P = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !j && _.storage.cookies) for (let n = 0; n < _.storage.cookies.length; n++) {
-		let { name: r, attributes: i } = _.storage.cookies[n];
+}, N = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && !A && h.storage.cookies) for (let n = 0; n < h.storage.cookies.length; n++) {
+		let { name: r, attributes: i } = h.storage.cookies[n];
 		try {
 			t?.setCookieStore && t.setCookieStore(r, e, {
 				...i,
-				expires: k(i.expires)
+				expires: O(i.expires)
 			});
 		} catch {
 			try {
-				t?.setCookieString && t.setCookieString(r, A(r, e, i));
+				t?.setCookieString && t.setCookieString(r, k(r, e, i));
 			} catch {}
 		}
 	}
-}, F = N(M), I = (e, t) => P(e, {
-	...M,
+}, P = M(j), F = (e, t) => N(e, {
+	...j,
 	isCookieEnabled: t
-}), L = () => {
-	let { locale: e } = t(K) ?? {}, r = i(null);
+}), I = () => {
+	let { locale: e } = t(G) ?? {}, r = i(null);
 	n(() => {}, []), n(() => {
 		e && r.current && r.current.currentLocale.set(e);
 	}, [e]);
-}, R = ({ children: e }) => (L(), e), z = () => {
-	let { locale: e } = t(K) ?? {}, r = i(null);
+}, L = ({ children: e }) => (I(), e), R = () => {
+	let { locale: e } = t(G) ?? {}, r = i(null);
 	n(() => {}, []), n(() => {
 		e && r.current && (r.current.setLocale(e), r.current.trackPageView({ reason: "locale_change" }));
 	}, [e]);
-}, B = ({ children: e }) => (z(), e), V = () => {
+}, z = ({ children: e }) => (R(), e), B = () => {
 	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, H = (e = {}) => ({
+}, V = (e = {}) => ({
 	...e,
-	defaultLocale: e.defaultLocale ?? g?.defaultLocale ?? "en",
-	mode: e.mode ?? _?.mode ?? "prefix-no-default",
-	locales: e.locales ?? g?.locales ?? D,
-	rewrite: e.rewrite ?? _?.rewrite,
-	domains: e.domains ?? _?.domains
-}), U = (e, t) => !!e && (t ?? g.locales).includes(e), W = (e, t = g?.locales, n = g?.defaultLocale) => {
+	defaultLocale: e.defaultLocale ?? m?.defaultLocale ?? "en",
+	mode: e.mode ?? h?.mode ?? "prefix-no-default",
+	locales: e.locales ?? m?.locales ?? E,
+	rewrite: e.rewrite ?? h?.rewrite,
+	domains: e.domains ?? h?.domains
+}), H = (e, t) => !!e && (t ?? m.locales).includes(e), U = (e, t = m?.locales, n = m?.defaultLocale) => {
 	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
 	try {
 		for (let e of r) {
@@ -194,62 +180,62 @@ var M = {
 		}
 	} catch {}
 	return n;
-}, G = (e = "/", t) => {
-	let { defaultLocale: n, locales: r, mode: i } = H(t);
+}, W = (e = "/", t) => {
+	let { defaultLocale: n, locales: r, mode: i } = V(t);
 	if (!n || !r) return n;
-	let a = O(e), o = e?.endsWith("/") && e.length > 1 ? e.slice(0, -1) : e, s = a ? new URL(o) : new URL(o, "http://e.com");
+	let a = D(e), o = e?.endsWith("/") && e.length > 1 ? e.slice(0, -1) : e, s = a ? new URL(o) : new URL(o, "http://e.com");
 	if (i === "search-params") {
 		let e = s.searchParams.get("locale");
-		return U(e, r) ? e : n;
+		return H(e, r) ? e : n;
 	}
 	if (i === "no-prefix") return n;
 	let c = s.pathname.split("/")[1];
-	if (U(c, r)) return c;
+	if (H(c, r)) return c;
 	if (i === "prefix-no-default") return n;
-}, K = e({
-	locale: F ?? g?.defaultLocale,
+}, G = e({
+	locale: P ?? m?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: !0
-}), q = ({ locale: e, defaultLocale: t, variant: r, children: i, setLocale: o, disableEditor: s, isCookieEnabled: c }) => {
-	let { locales: l, defaultLocale: d } = g ?? {}, [f, p] = a(e ?? F ?? t ?? d);
+}), K = ({ locale: e, defaultLocale: t, variant: r, children: i, setLocale: o, disableEditor: s, isCookieEnabled: c }) => {
+	let { locales: u, defaultLocale: d } = m ?? {}, [f, p] = a(e ?? P ?? t ?? d);
 	n(() => {
 		e && e !== f && p(e);
 	}, [e]), n(() => {
-		V();
+		B();
 	}, []);
-	let m = o ?? ((e) => {
+	let h = o ?? ((e) => {
 		if (f.toString() !== e.toString()) {
-			if (!l?.map(String).includes(e)) {
+			if (!u?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			p(e), I(e, c);
+			p(e), F(e, c);
 		}
-	}), h = W(f);
-	return u(K.Provider, {
+	}), g = U(f);
+	return l(G.Provider, {
 		value: {
-			locale: h,
-			setLocale: m,
+			locale: g,
+			setLocale: h,
 			variant: r,
 			disableEditor: s
 		},
 		children: i
 	});
-}, J = ({ children: e, ...t }) => d(q, {
+}, q = ({ children: e, ...t }) => u(K, {
 	...t,
 	children: [
-		u(R, {}),
-		u(B, {}),
+		l(L, {}),
+		l(z, {}),
 		e
 	]
-}), Y = ({ locale: e, children: t, messages: n, timeZone: r, now: i, ...a }) => {
-	n !== void 0 && T({ log: ee })(`${E("NextIntlClientProvider", S)} do not pass the messages prop with intlayer. Messages are loaded automatically under the hood for bundle optimization reason`);
-	let o = s(), c = _?.mode ?? "prefix-no-default", l = e ?? (c === "prefix-all" || c === "prefix-no-default" ? G(o) : void 0);
-	return u(J, {
-		locale: l,
+}), J = (e) => l(q, { ...e }), Y = ({ locale: e, children: t, messages: n, timeZone: r, now: i, ...a }) => {
+	n !== void 0 && w({ log: g })(`${T("NextIntlClientProvider", x)} do not pass the messages prop with intlayer. Messages are loaded automatically under the hood for bundle optimization reason`);
+	let o = s(), c = h?.mode ?? "prefix-no-default", u = e ?? (c === "prefix-all" || c === "prefix-no-default" ? W(o) : void 0);
+	return l(J, {
+		locale: u,
 		...a,
 		children: t
-	}, String(l));
+	}, String(u));
 };
 function X() {
 	if (!(typeof window > "u")) {
@@ -270,8 +256,7 @@ function Z(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/intlayer-compat-next-intl-app/components/AppProviders.tsx";
-function te({ children: e, locale: t }) {
+function Q({ children: e, locale: t }) {
 	let [i] = a(() => typeof performance < "u" ? performance.now() : 0);
 	return r(() => {
 		Z("AppRoot", i);
@@ -283,33 +268,16 @@ function te({ children: e, locale: t }) {
 		locale: t,
 		timeZone: "UTC",
 		children: e
-	}, void 0, !1, {
-		fileName: Q,
-		lineNumber: 32,
-		columnNumber: 7
-	}, this);
+	});
 }
-var ne = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/intlayer-compat-next-intl-app/scripts/Wrapper.tsx", re = "en";
-function ie({ children: e }) {
-	return l(te, {
-		locale: re,
+var $ = "en";
+function ee({ children: e }) {
+	return l(Q, {
+		locale: $,
 		children: e
-	}, void 0, !1, {
-		fileName: ne,
-		lineNumber: 11,
-		columnNumber: 10
-	}, this);
+	});
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/intlayer-compat-next-intl-app/components/LocaleSwitcher.wrapper.tsx";
-function ae() {
-	return l(ie, { children: l(h, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function te() {
+	return l(ee, { children: l(p, {}) });
 }
-export { ae as default };
+export { te as default };

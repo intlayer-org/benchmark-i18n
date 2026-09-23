@@ -1,8 +1,7 @@
 import { createContext as e, useContext as t, useEffect as n, useLayoutEffect as r, useMemo as i, useState as a } from "react";
 import { useParams as o, usePathname as s, useRouter as c } from "next/navigation";
-import { jsxDEV as l } from "react/jsx-dev-runtime";
-import { jsx as u } from "react/jsx-runtime";
-var d = [
+import { jsx as l } from "react/jsx-runtime";
+var u = [
 	"en",
 	"fr",
 	"es",
@@ -14,7 +13,7 @@ var d = [
 	"ko",
 	"ru"
 ];
-function f(e) {
+function d(e) {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
@@ -22,8 +21,7 @@ function f(e) {
 		return e.toUpperCase();
 	}
 }
-var p = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intl-app/components/LocaleSwitcher.tsx";
-function m() {
+function f() {
 	let e = o().locale ?? "en", t = s(), n = c(), r = (r) => {
 		let i = t.replace(`/${e}`, `/${r}`);
 		n.push(i);
@@ -34,59 +32,47 @@ function m() {
 			value: e,
 			onChange: (e) => r(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: d.map((e) => l("option", {
+			children: u.map((e) => l("option", {
 				value: e,
-				children: f(e)
-			}, e, !1, {
-				fileName: p,
-				lineNumber: 25,
-				columnNumber: 11
-			}, this))
-		}, void 0, !1, {
-			fileName: p,
-			lineNumber: 19,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: p,
-		lineNumber: 18,
-		columnNumber: 5
-	}, this);
+				children: d(e)
+			}, e))
+		})
+	});
 }
-function h(e, t) {
-	let n = t && t.cache ? t.cache : T, r = t && t.serializer ? t.serializer : C;
-	return (t && t.strategy ? t.strategy : b)(e, {
+function p(e, t) {
+	let n = t && t.cache ? t.cache : C, r = t && t.serializer ? t.serializer : x;
+	return (t && t.strategy ? t.strategy : v)(e, {
 		cache: n,
 		serializer: r
 	});
 }
-function g(e) {
+function m(e) {
 	return e == null || typeof e == "number" || typeof e == "boolean";
 }
-function _(e, t, n, r) {
-	let i = g(r) ? r : n(r), a = t.get(i);
+function h(e, t, n, r) {
+	let i = m(r) ? r : n(r), a = t.get(i);
 	return a === void 0 && (a = e.call(this, r), t.set(i, a)), a;
 }
-function v(e, t, n) {
+function g(e, t, n) {
 	let r = Array.prototype.slice.call(arguments, 3), i = n(r), a = t.get(i);
 	return a === void 0 && (a = e.apply(this, r), t.set(i, a)), a;
 }
-function y(e, t, n, r, i) {
+function _(e, t, n, r, i) {
 	return n.bind(t, e, r, i);
 }
+function v(e, t) {
+	let n = e.length === 1 ? h : g;
+	return _(e, this, n, t.cache.create(), t.serializer);
+}
+function y(e, t) {
+	return _(e, this, g, t.cache.create(), t.serializer);
+}
 function b(e, t) {
-	let n = e.length === 1 ? _ : v;
-	return y(e, this, n, t.cache.create(), t.serializer);
+	return _(e, this, h, t.cache.create(), t.serializer);
 }
-function x(e, t) {
-	return y(e, this, v, t.cache.create(), t.serializer);
-}
-function S(e, t) {
-	return y(e, this, _, t.cache.create(), t.serializer);
-}
-var C = function() {
+var x = function() {
 	return JSON.stringify(arguments);
-}, w = class {
+}, S = class {
 	constructor() {
 		this.cache = Object.create(null);
 	}
@@ -96,20 +82,15 @@ var C = function() {
 	set(e, t) {
 		this.cache[e] = t;
 	}
-}, T = { create: function() {
-	return new w();
-} }, E = {
-	variadic: x,
-	monadic: S
-}, D = class extends Error {
-	constructor(e, t) {
-		let n = e;
-		t && (n += ": " + t), super(n), this.code = e, t && (this.originalMessage = t);
-	}
-}, O = function(e) {
+}, C = { create: function() {
+	return new S();
+} }, w = {
+	variadic: y,
+	monadic: b
+}, T = function(e) {
 	return e.MISSING_MESSAGE = "MISSING_MESSAGE", e.MISSING_FORMAT = "MISSING_FORMAT", e.ENVIRONMENT_FALLBACK = "ENVIRONMENT_FALLBACK", e.INSUFFICIENT_PATH = "INSUFFICIENT_PATH", e.INVALID_MESSAGE = "INVALID_MESSAGE", e.INVALID_KEY = "INVALID_KEY", e.FORMATTING_ERROR = "FORMATTING_ERROR", e;
-}(O || {});
-function k() {
+}(T || {});
+function E() {
 	return {
 		dateTime: {},
 		number: {},
@@ -120,117 +101,66 @@ function k() {
 		displayNames: {}
 	};
 }
-function A(e) {
-	return { create() {
-		return {
-			get(t) {
-				return e[t];
-			},
-			set(t, n) {
-				e[t] = n;
+function D(e, t) {
+	return p(e, {
+		cache: (n = t, { create: () => ({
+			get: (e) => n[e],
+			set(e, t) {
+				n[e] = t;
 			}
-		};
-	} };
-}
-function j(e, t) {
-	return h(e, {
-		cache: A(t),
-		strategy: E.variadic
+		}) }),
+		strategy: w.variadic
 	});
+	var n;
 }
-function M(e, t) {
-	return j((...t) => new e(...t), t);
+function O(e, t) {
+	return D(((...t) => new e(...t)), t);
 }
-function N(e) {
+function k(e) {
 	return {
-		getDateTimeFormat: M(Intl.DateTimeFormat, e.dateTime),
-		getNumberFormat: M(Intl.NumberFormat, e.number),
-		getPluralRules: M(Intl.PluralRules, e.pluralRules),
-		getRelativeTimeFormat: M(Intl.RelativeTimeFormat, e.relativeTime),
-		getListFormat: M(Intl.ListFormat, e.list),
-		getDisplayNames: M(Intl.DisplayNames, e.displayNames)
+		getDateTimeFormat: O(Intl.DateTimeFormat, e.dateTime),
+		getNumberFormat: O(Intl.NumberFormat, e.number),
+		getPluralRules: O(Intl.PluralRules, e.pluralRules),
+		getRelativeTimeFormat: O(Intl.RelativeTimeFormat, e.relativeTime),
+		getListFormat: O(Intl.ListFormat, e.list),
+		getDisplayNames: O(Intl.DisplayNames, e.displayNames)
 	};
 }
-function P(...e) {
+function A(...e) {
 	return e.filter(Boolean).join(".");
 }
-function F(e) {
-	return P(e.namespace, e.key);
+function j(e) {
+	return A(e.namespace, e.key);
 }
-function I(e) {
+function M(e) {
 	console.error(e);
 }
-var L = 86400;
-L * 7, 365 / 12 * L * 3, L * 365;
-function R(e, t, n) {
-	Object.entries(e).forEach(([e, r]) => {
-		if (e.includes(".")) {
-			let r = e;
-			n && (r += ` (at ${n})`), t.push(r);
-		}
-		typeof r == "object" && r && R(r, t, P(n, e));
-	});
-}
-function z(e, t) {
-	let n = [];
-	R(e, n), n.length > 0 && t(new D(O.INVALID_KEY, `Namespace keys cannot contain the character "." as this is used to express nesting. Please remove it or replace it with another character.
-
-Invalid ${n.length === 1 ? "key" : "keys"}: ${n.join(", ")}
-
-If you're migrating from a flat structure, you can convert your messages as follows:
-
-import {set} from "lodash";
-
-const input = {
-  "one.one": "1.1",
-  "one.two": "1.2",
-  "two.one.one": "2.1.1"
-};
-
-const output = Object.entries(input).reduce(
-  (acc, [key, value]) => set(acc, key, value),
-  {}
-);
-
-
-
-
-
-
-
-
-
-
-
-
-
-`));
-}
-function B({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }) {
-	let a = r || I, o = t || F;
-	return n && z(n, a), {
+var N = 86400;
+7 * N, 365 * N;
+function P({ formats: e, getMessageFallback: t, messages: n, onError: r, ...i }) {
+	return {
 		...i,
 		formats: e || void 0,
 		messages: n || void 0,
-		onError: a,
-		getMessageFallback: o
+		onError: r || M,
+		getMessageFallback: t || j
 	};
 }
-var V = e(void 0);
-function H({ children: e, formats: n, getMessageFallback: r, locale: a, messages: o, now: s, onError: c, timeZone: l }) {
-	let d = t(V), f = i(() => d?.cache || k(), [a, d?.cache]), p = i(() => d?.formatters || N(f), [f, d?.formatters]), m = i(() => ({
-		...B({
+var F = e(void 0);
+function I({ children: e, formats: n, getMessageFallback: r, locale: a, messages: o, now: s, onError: c, timeZone: u }) {
+	let d = t(F), f = i((() => d?.cache || E()), [a, d?.cache]), p = i((() => d?.formatters || k(f)), [f, d?.formatters]), m = i((() => ({
+		...P({
 			locale: a,
 			formats: n === void 0 ? d?.formats : n,
 			getMessageFallback: r || d?.getMessageFallback,
 			messages: o === void 0 ? d?.messages : o,
 			now: s || d?.now,
 			onError: c || d?.onError,
-			timeZone: l || d?.timeZone
+			timeZone: u || d?.timeZone
 		}),
 		formatters: p,
 		cache: f
-	}), [
+	})), [
 		f,
 		n,
 		p,
@@ -240,21 +170,21 @@ function H({ children: e, formats: n, getMessageFallback: r, locale: a, messages
 		s,
 		c,
 		d,
-		l
+		u
 	]);
-	return u(V.Provider, {
+	return l(F.Provider, {
 		value: m,
 		children: e
 	});
 }
-function U({ locale: e, ...t }) {
-	if (!e) throw Error("Couldn't infer the `locale` prop in `NextIntlClientProvider`, please provide it explicitly.\n\nSee https://next-intl.dev/docs/configuration#locale");
-	return u(H, {
+function L({ locale: e, ...t }) {
+	if (!e) throw Error(void 0);
+	return l(I, {
 		locale: e,
 		...t
 	});
 }
-function W() {
+function R() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -268,32 +198,27 @@ function W() {
 		}
 	}
 }
-function G(e, t) {
+function z(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var K = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intl-app/components/AppProviders.tsx";
-function q({ children: e, locale: t, messages: i }) {
+function B({ children: e, locale: t, messages: i }) {
 	let [o] = a(() => typeof performance < "u" ? performance.now() : 0);
 	return r(() => {
-		G("AppRoot", o);
+		z("AppRoot", o);
 	}, [o]), n(() => {
 		document.documentElement.lang = t;
 	}, [t]), n(() => {
-		W();
-	}, []), l(U, {
+		R();
+	}, []), l(L, {
 		locale: t,
 		messages: i,
 		timeZone: "UTC",
 		children: e
-	}, void 0, !1, {
-		fileName: K,
-		lineNumber: 33,
-		columnNumber: 7
-	}, this);
+	});
 }
-var J = {
+var V = {
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -741,28 +666,15 @@ var J = {
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}, Y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intl-app/scripts/Wrapper.tsx", X = "en";
-function Z({ children: e }) {
-	return l(q, {
-		locale: X,
-		messages: J,
+}, H = "en";
+function U({ children: e }) {
+	return l(B, {
+		locale: H,
+		messages: V,
 		children: e
-	}, void 0, !1, {
-		fileName: Y,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+	});
 }
-var Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intl-app/components/LocaleSwitcher.wrapper.tsx";
-function $() {
-	return l(Z, { children: l(m, {}, void 0, !1, {
-		fileName: Q,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: Q,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function W() {
+	return l(U, { children: l(f, {}) });
 }
-export { $ as default };
+export { W as default };

@@ -1,5 +1,5 @@
 import { createContext as e, createElement as t, useCallback as n, useContext as r, useEffect as i, useLayoutEffect as a, useMemo as o, useRef as s, useState as c } from "react";
-import { jsxDEV as l } from "react/jsx-dev-runtime";
+import { jsx as l } from "react/jsx-runtime";
 import { useParams as u } from "next/navigation";
 var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), f = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
@@ -62,23 +62,23 @@ var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		let n = new RegExp(e);
 		return this.regExpQueue.length === this.capacity && this.regExpMap.delete(this.regExpQueue.shift()), this.regExpMap.set(e, n), this.regExpQueue.push(e), n;
 	}
-}, ee = [
+}, A = [
 	" ",
 	",",
 	"?",
 	"!",
 	";"
-], te = new k(20), ne = (e, t, n) => {
+], ee = new k(20), te = (e, t, n) => {
 	t ||= "", n ||= "";
-	let r = ee.filter((e) => !t.includes(e) && !n.includes(e));
+	let r = A.filter((e) => !t.includes(e) && !n.includes(e));
 	if (r.length === 0) return !0;
-	let i = te.getRegExp(`(${r.map((e) => e === "?" ? "\\?" : e).join("|")})`), a = !i.test(e);
+	let i = ee.getRegExp(`(${r.map((e) => e === "?" ? "\\?" : e).join("|")})`), a = !i.test(e);
 	if (!a) {
 		let t = e.indexOf(n);
 		t > 0 && !i.test(e.substring(0, t)) && (a = !0);
 	}
 	return a;
-}, A = (e, t, n = ".") => {
+}, j = (e, t, n = ".") => {
 	if (!e) return;
 	if (e[t]) return Object.prototype.hasOwnProperty.call(e, t) ? e[t] : void 0;
 	let r = t.split(n), i = e;
@@ -97,7 +97,7 @@ var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		i = t;
 	}
 	return i;
-}, j = (e) => e?.replace(/_/g, "-"), re = {
+}, M = (e) => e?.replace(/_/g, "-"), ne = {
 	type: "logger",
 	log(e) {
 		this.output("log", e);
@@ -111,12 +111,12 @@ var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	output(e, t) {
 		console?.[e]?.apply?.(console, t);
 	}
-}, M = new class e {
+}, N = new class e {
 	constructor(e, t = {}) {
 		this.init(e, t);
 	}
 	init(e, t = {}) {
-		this.prefix = t.prefix || "i18next:", this.logger = e || re, this.options = t, this.debug = t.debug;
+		this.prefix = t.prefix || "i18next:", this.logger = e || ne, this.options = t, this.debug = t.debug;
 	}
 	log(...e) {
 		return this.forward(e, "log", "", !0);
@@ -142,7 +142,7 @@ var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	clone(t) {
 		return t ||= this.options, t.prefix = t.prefix || this.prefix, new e(this.logger, t);
 	}
-}(), N = class {
+}(), P = class {
 	constructor() {
 		this.observers = {};
 	}
@@ -175,7 +175,7 @@ var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			for (let i = 0; i < r; i++) n(e, ...t);
 		});
 	}
-}, ie = class extends N {
+}, F = class extends P {
 	constructor(e, t = {
 		ns: ["translation"],
 		defaultNS: "translation"
@@ -193,7 +193,7 @@ var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		let i = r.keySeparator === void 0 ? this.options.keySeparator : r.keySeparator, a = r.ignoreJSONStructure === void 0 ? this.options.ignoreJSONStructure : r.ignoreJSONStructure, o;
 		e.includes(".") ? o = e.split(".") : (o = [e, t], n && (Array.isArray(n) ? o.push(...n) : p(n) && i ? o.push(...n.split(i)) : o.push(n)));
 		let s = C(this.data, o);
-		return !s && !t && !n && e.includes(".") && (e = o[0], t = o[1], n = o.slice(2).join(".")), s || !a || !p(n) ? s : A(this.data?.[e]?.[t], n, i);
+		return !s && !t && !n && e.includes(".") && (e = o[0], t = o[1], n = o.slice(2).join(".")), s || !a || !p(n) ? s : j(this.data?.[e]?.[t], n, i);
 	}
 	addResource(e, t, n, r, i = { silent: !1 }) {
 		let a = i.keySeparator === void 0 ? this.options.keySeparator : i.keySeparator, o = [e, t];
@@ -234,7 +234,7 @@ var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	toJSON() {
 		return this.data;
 	}
-}, ae = {
+}, I = {
 	processors: {},
 	addPostProcessor(e) {
 		this.processors[e.name] = e;
@@ -244,20 +244,20 @@ var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			t = this.processors[e]?.process(t, n, r, i) ?? t;
 		}), t;
 	}
-}, oe = Symbol("i18next/PATH_KEY");
-function se() {
+}, L = Symbol("i18next/PATH_KEY");
+function re() {
 	let e = [], t = Object.create(null), n;
-	return t.get = (r, i) => (n?.revoke?.(), i === oe ? e : (e.push(i), n = Proxy.revocable(r, t), n.proxy)), Proxy.revocable(Object.create(null), t).proxy;
+	return t.get = (r, i) => (n?.revoke?.(), i === L ? e : (e.push(i), n = Proxy.revocable(r, t), n.proxy)), Proxy.revocable(Object.create(null), t).proxy;
 }
-function P(e, t) {
-	let { [oe]: n } = e(se()), r = t?.keySeparator ?? ".", i = t?.nsSeparator ?? ":", a = t?.enableSelector === "strict";
+function R(e, t) {
+	let { [L]: n } = e(re()), r = t?.keySeparator ?? ".", i = t?.nsSeparator ?? ":", a = t?.enableSelector === "strict";
 	if (n.length > 1 && i) {
 		let e = t?.ns, o = a ? Array.isArray(e) ? e : e ? [e] : null : Array.isArray(e) ? e : null;
 		if (o && (a ? o : o.length > 1 ? o.slice(1) : []).includes(n[0])) return `${n[0]}${i}${n.slice(1).join(r)}`;
 	}
 	return n.join(r);
 }
-var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class e extends N {
+var z = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", B = class e extends P {
 	constructor(e, t = {}) {
 		super(), g([
 			"resourceStore",
@@ -267,7 +267,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 			"backendConnector",
 			"i18nFormat",
 			"utils"
-		], e, this), this.options = t, this.options.keySeparator === void 0 && (this.options.keySeparator = "."), this.logger = M.create("translator"), this.checkedLoadedFor = {};
+		], e, this), this.options = t, this.options.keySeparator === void 0 && (this.options.keySeparator = "."), this.logger = N.create("translator"), this.checkedLoadedFor = {};
 	}
 	changeLanguage(e) {
 		e && (this.language = e);
@@ -277,13 +277,13 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 		if (e == null) return !1;
 		let r = this.resolve(e, n);
 		if (r?.res === void 0) return !1;
-		let i = F(r.res);
+		let i = z(r.res);
 		return !(n.returnObjects === !1 && i);
 	}
 	extractFromKey(e, t) {
 		let n = t.nsSeparator === void 0 ? this.options.nsSeparator : t.nsSeparator;
 		n === void 0 && (n = ":");
-		let r = t.keySeparator === void 0 ? this.options.keySeparator : t.keySeparator, i = t.ns || this.options.defaultNS || [], a = n && e.includes(n), o = !this.options.userDefinedKeySeparator && !t.keySeparator && !this.options.userDefinedNsSeparator && !t.nsSeparator && !ne(e, n, r);
+		let r = t.keySeparator === void 0 ? this.options.keySeparator : t.keySeparator, i = t.ns || this.options.defaultNS || [], a = n && e.includes(n), o = !this.options.userDefinedKeySeparator && !t.keySeparator && !this.options.userDefinedNsSeparator && !t.nsSeparator && !te(e, n, r);
 		if (a && !o) {
 			let t = e.match(this.interpolator.nestingRegexp);
 			if (t && t.length > 0) return {
@@ -301,10 +301,10 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 	translate(t, n, r) {
 		let i = typeof n == "object" ? { ...n } : n;
 		if (typeof i != "object" && this.options.overloadTranslationOptionHandler && (i = this.options.overloadTranslationOptionHandler(arguments)), typeof i == "object" && (i = { ...i }), i ||= {}, t == null) return "";
-		typeof t == "function" && (t = P(t, {
+		typeof t == "function" && (t = R(t, {
 			...this.options,
 			...i
-		})), Array.isArray(t) || (t = [String(t)]), t = t.map((e) => typeof e == "function" ? P(e, {
+		})), Array.isArray(t) || (t = [String(t)]), t = t.map((e) => typeof e == "function" ? R(e, {
 			...this.options,
 			...i
 		}) : String(e));
@@ -332,7 +332,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 			"[object RegExp]"
 		], y = i.joinArrays === void 0 ? this.options.joinArrays : i.joinArrays, b = !this.i18nFormat || this.i18nFormat.handleAsObject, x = i.count !== void 0 && !p(i.count), S = e.hasDefaultValue(i), C = x ? this.pluralResolver.getSuffix(d, i.count, i) : "", w = i.ordinal && x ? this.pluralResolver.getSuffix(d, i.count, { ordinal: !1 }) : "", T = x && !i.ordinal && i.count === 0, E = T && i[`defaultValue${this.options.pluralSeparator}zero`] || i[`defaultValue${C}`] || i[`defaultValue${w}`] || i.defaultValue, D = h;
 		b && !h && S && (D = E);
-		let O = F(D), k = Object.prototype.toString.apply(D);
+		let O = z(D), k = Object.prototype.toString.apply(D);
 		if (b && D && O && !v.includes(k) && !(p(y) && Array.isArray(D))) {
 			if (!i.returnObjects && !this.options.returnObjects) {
 				this.options.returnedObjectHandler || this.logger.warn("accessing an object - but returnObjects options is not enabled!");
@@ -348,7 +348,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 					let r = `${n}${o}${e}`;
 					t[e] = S && !h ? this.translate(r, {
 						...i,
-						defaultValue: F(E) ? E[e] : void 0,
+						defaultValue: z(E) ? E[e] : void 0,
 						joinArrays: !1,
 						ns: c
 					}) : this.translate(r, {
@@ -419,7 +419,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 			!n.lng && r && r.res && (n.lng = this.language || r.usedLng), n.nest !== !1 && (e = this.interpolator.nest(e, (...e) => i?.[0] === e[0] && !n.context ? (this.logger.warn(`It seems you are nesting recursively key: ${e[0]} in key: ${t[0]}`), null) : this.translate(...e, t), n)), n.interpolation && this.interpolator.reset();
 		}
 		let a = n.postProcess || this.options.postProcess, o = p(a) ? [a] : a;
-		return e != null && o?.length && n.applyPostProcessor !== !1 && (e = ae.handle(o, e, t, this.options && this.options.postProcessPassResolved ? {
+		return e != null && o?.length && n.applyPostProcessor !== !1 && (e = I.handle(o, e, t, this.options && this.options.postProcessPassResolved ? {
 			i18nResolved: {
 				...r,
 				usedParams: this.getUsedParamsDetails(n)
@@ -429,7 +429,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 	}
 	resolve(e, t = {}) {
 		let n, r, i, a, o;
-		return p(e) && (e = [e]), Array.isArray(e) && (e = e.map((e) => typeof e == "function" ? P(e, {
+		return p(e) && (e = [e]), Array.isArray(e) && (e = e.map((e) => typeof e == "function" ? R(e, {
 			...this.options,
 			...t
 		}) : e)), e.forEach((e) => {
@@ -506,20 +506,20 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 		for (let t in e) if (Object.prototype.hasOwnProperty.call(e, t) && t.startsWith("defaultValue") && e[t] !== void 0) return !0;
 		return !1;
 	}
-}, L = class {
+}, V = class {
 	constructor(e) {
-		this.options = e, this.supportedLngs = this.options.supportedLngs || !1, this.logger = M.create("languageUtils"), this.resolveHierarchyCache = {};
+		this.options = e, this.supportedLngs = this.options.supportedLngs || !1, this.logger = N.create("languageUtils"), this.resolveHierarchyCache = {};
 	}
 	clearCache() {
 		this.resolveHierarchyCache = {};
 	}
 	getScriptPartFromCode(e) {
-		if (e = j(e), !e || !e.includes("-")) return null;
+		if (e = M(e), !e || !e.includes("-")) return null;
 		let t = e.split("-");
 		return t.length === 2 || (t.pop(), t[t.length - 1].toLowerCase() === "x") ? null : this.formatLanguageCode(t.join("-"));
 	}
 	getLanguagePartFromCode(e) {
-		if (e = j(e), !e || !e.includes("-")) return e;
+		if (e = M(e), !e || !e.includes("-")) return e;
 		let t = e.split("-");
 		return this.formatLanguageCode(t[0]);
 	}
@@ -578,25 +578,25 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 			l.includes(e) || u(this.formatLanguageCode(e));
 		}), s === null ? l : (this.resolveHierarchyCache[s] = l, l.slice());
 	}
-}, R = {
+}, H = {
 	zero: 0,
 	one: 1,
 	two: 2,
 	few: 3,
 	many: 4,
 	other: 5
-}, z = {
+}, U = {
 	select: (e) => e === 1 ? "one" : "other",
 	resolvedOptions: () => ({ pluralCategories: ["one", "other"] })
-}, ce = class {
+}, ie = class {
 	constructor(e, t = {}) {
-		this.languageUtils = e, this.options = t, this.logger = M.create("pluralResolver"), this.pluralRulesCache = {};
+		this.languageUtils = e, this.options = t, this.logger = N.create("pluralResolver"), this.pluralRulesCache = {};
 	}
 	clearCache() {
 		this.pluralRulesCache = {};
 	}
 	getRule(e, t = {}) {
-		let n = j(e === "dev" ? "en" : e), r = t.ordinal ? "ordinal" : "cardinal", i = JSON.stringify({
+		let n = M(e === "dev" ? "en" : e), r = t.ordinal ? "ordinal" : "cardinal", i = JSON.stringify({
 			cleanedCode: n,
 			type: r
 		});
@@ -605,8 +605,8 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 		try {
 			a = new Intl.PluralRules(n, { type: r });
 		} catch {
-			if (typeof Intl > "u") return this.logger.error("No Intl support, please use an Intl polyfill!"), z;
-			if (!e.match(/-|_/)) return z;
+			if (typeof Intl > "u") return this.logger.error("No Intl support, please use an Intl polyfill!"), U;
+			if (!e.match(/-|_/)) return U;
 			let n = this.languageUtils.getLanguagePartFromCode(e);
 			a = this.getRule(n, t);
 		}
@@ -621,18 +621,18 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 	}
 	getSuffixes(e, t = {}) {
 		let n = this.getRule(e, t);
-		return n ||= this.getRule("dev", t), n ? n.resolvedOptions().pluralCategories.sort((e, t) => R[e] - R[t]).map((e) => `${this.options.prepend}${t.ordinal ? `ordinal${this.options.prepend}` : ""}${e}`) : [];
+		return n ||= this.getRule("dev", t), n ? n.resolvedOptions().pluralCategories.sort((e, t) => H[e] - H[t]).map((e) => `${this.options.prepend}${t.ordinal ? `ordinal${this.options.prepend}` : ""}${e}`) : [];
 	}
 	getSuffix(e, t, n = {}) {
 		let r = this.getRule(e, n);
 		return r ? `${this.options.prepend}${n.ordinal ? `ordinal${this.options.prepend}` : ""}${r.select(t)}` : (this.logger.warn(`no plural rule found for: ${e}`), this.getSuffix("dev", t, n));
 	}
-}, B = (e, t, n, r = ".", i = !0) => {
+}, W = (e, t, n, r = ".", i = !0) => {
 	let a = w(e, t, n);
-	return !a && i && p(n) && (a = A(e, n, r), a === void 0 && (a = A(t, n, r))), a;
-}, V = (e) => e.replace(/\$/g, "$$$$"), H = class {
+	return !a && i && p(n) && (a = j(e, n, r), a === void 0 && (a = j(t, n, r))), a;
+}, ae = (e) => e.replace(/\$/g, "$$$$"), oe = class {
 	constructor(e = {}) {
-		this.logger = M.create("interpolator"), this.options = e, this.format = e?.interpolation?.format || ((e) => e), this.init(e);
+		this.logger = N.create("interpolator"), this.options = e, this.format = e?.interpolation?.format || ((e) => e), this.init(e);
 	}
 	init(e = {}) {
 		e.interpolation ||= { escapeValue: !0 };
@@ -649,7 +649,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 	interpolate(e, t, n, r) {
 		let i, a, o, s = this.options && this.options.interpolation && this.options.interpolation.defaultVariables || {}, c = (e) => {
 			if (!e.includes(this.formatSeparator)) {
-				let i = B(t, s, e, this.options.keySeparator, this.options.ignoreJSONStructure);
+				let i = W(t, s, e, this.options.keySeparator, this.options.ignoreJSONStructure);
 				return this.alwaysFormat ? this.format(i, void 0, n, {
 					...r,
 					...t,
@@ -657,7 +657,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 				}) : i;
 			}
 			let i = e.split(this.formatSeparator), a = i.shift().trim(), o = i.join(this.formatSeparator).trim();
-			return this.format(B(t, s, a, this.options.keySeparator, this.options.ignoreJSONStructure), o, n, {
+			return this.format(W(t, s, a, this.options.keySeparator, this.options.ignoreJSONStructure), o, n, {
 				...r,
 				...t,
 				interpolationkey: a
@@ -685,7 +685,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 					} else this.logger.warn(`missed to pass in variable ${n} for interpolating ${e}`), a = "";
 				} else !p(a) && !this.useRawValueToEscape && (a = h(a));
 				let s = t.safeValue(a);
-				if (e = e.replace(i[0], V(s)), u ? (t.regex.lastIndex += s.length, t.regex.lastIndex -= i[0].length) : t.regex.lastIndex = 0, o++, o >= this.maxReplaces) break;
+				if (e = e.replace(i[0], ae(s)), u ? (t.regex.lastIndex += s.length, t.regex.lastIndex -= i[0].length) : t.regex.lastIndex = 0, o++, o >= this.maxReplaces) break;
 			}
 		}), e;
 	}
@@ -715,11 +715,11 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 			p(i) || (i = h(i)), i ||= (this.logger.warn(`missed to resolve ${r[1]} for nesting ${e}`), ""), s.length && (i = s.reduce((e, t) => this.format(e, t, n.lng, {
 				...n,
 				interpolationkey: r[1].trim()
-			}), i.trim())), e = e.replace(r[0], V(h(i))), this.regexp.lastIndex = 0;
+			}), i.trim())), e = e.replace(r[0], ae(h(i))), this.regexp.lastIndex = 0;
 		}
 		return e;
 	}
-}, le = (e) => {
+}, se = (e) => {
 	let t = e.toLowerCase().trim(), n = {};
 	if (e.includes("(")) {
 		let r = e.split("(");
@@ -736,7 +736,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 		formatName: t,
 		formatOptions: n
 	};
-}, U = (e) => {
+}, ce = (e) => {
 	let t = {};
 	return (n, r, i) => {
 		let a = i;
@@ -745,15 +745,15 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 			[i.interpolationkey]: void 0
 		});
 		let o = r + JSON.stringify(a), s = t[o];
-		return s || (s = e(j(r), i), t[o] = s), s(n);
+		return s || (s = e(M(r), i), t[o] = s), s(n);
 	};
-}, ue = (e) => (t, n, r) => e(j(n), r)(t), de = class {
+}, le = (e) => (t, n, r) => e(M(n), r)(t), ue = class {
 	constructor(e = {}) {
-		this.logger = M.create("formatter"), this.options = e, this.init(e);
+		this.logger = N.create("formatter"), this.options = e, this.init(e);
 	}
 	init(e, t = { interpolation: {} }) {
 		this.formatSeparator = t.interpolation.formatSeparator || ",";
-		let n = t.cacheInBuiltFormats ? U : ue;
+		let n = t.cacheInBuiltFormats ? ce : le;
 		this.formats = {
 			number: n((e, t) => {
 				let n = new Intl.NumberFormat(e, { ...t });
@@ -784,7 +784,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 		this.formats[e.toLowerCase().trim()] = t;
 	}
 	addCached(e, t) {
-		this.formats[e.toLowerCase().trim()] = U(t);
+		this.formats[e.toLowerCase().trim()] = ce(t);
 	}
 	format(e, t, n, r = {}) {
 		if (!t || e == null) return e;
@@ -795,7 +795,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 			a.push(t);
 		}
 		return a.reduce((e, t) => {
-			let { formatName: i, formatOptions: a } = le(t);
+			let { formatName: i, formatOptions: a } = se(t);
 			if (this.formats[i]) {
 				let t = e;
 				try {
@@ -813,11 +813,11 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 			return this.logger.warn(`there was no format function for ${i}`), e;
 		}, e);
 	}
-}, fe = (e, t) => {
+}, de = (e, t) => {
 	e.pending[t] !== void 0 && (delete e.pending[t], e.pendingCount--);
-}, pe = class extends N {
+}, fe = class extends P {
 	constructor(e, t, n, r = {}) {
-		super(), this.backend = e, this.store = t, this.services = n, this.languageUtils = n.languageUtils, this.options = r, this.logger = M.create("backendConnector"), this.waitingReads = [], this.maxParallelReads = r.maxParallelReads || 10, this.readingCalls = 0, this.maxRetries = r.maxRetries >= 0 ? r.maxRetries : 5, this.retryTimeout = r.retryTimeout >= 1 ? r.retryTimeout : 350, this.state = {}, this.queue = [], this.backend?.init?.(n, r.backend, r);
+		super(), this.backend = e, this.store = t, this.services = n, this.languageUtils = n.languageUtils, this.options = r, this.logger = N.create("backendConnector"), this.waitingReads = [], this.maxParallelReads = r.maxParallelReads || 10, this.readingCalls = 0, this.maxRetries = r.maxRetries >= 0 ? r.maxRetries : 5, this.retryTimeout = r.retryTimeout >= 1 ? r.retryTimeout : 350, this.state = {}, this.queue = [], this.backend?.init?.(n, r.backend, r);
 	}
 	queueLoad(e, t, n, r) {
 		let i = {}, a = {}, o = {}, s = {};
@@ -845,7 +845,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 		t && this.emit("failedLoading", i, a, t), !t && n && this.store.addResourceBundle(i, a, n, void 0, void 0, { skipCopy: !0 }), this.state[e] = t ? -1 : 2, t && n && (this.state[e] = 0);
 		let o = {};
 		this.queue.forEach((n) => {
-			S(n.loaded, [i], a), fe(n, e), t && n.errors.push(t), n.pendingCount === 0 && !n.done && (Object.keys(n.loaded).forEach((e) => {
+			S(n.loaded, [i], a), de(n, e), t && n.errors.push(t), n.pendingCount === 0 && !n.done && (Object.keys(n.loaded).forEach((e) => {
 				o[e] || (o[e] = {});
 				let t = n.loaded[e];
 				t.length && t.forEach((t) => {
@@ -935,7 +935,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 			e && e[0] && this.store.addResource(e[0], t, n, r);
 		}
 	}
-}, W = () => ({
+}, G = () => ({
 	debug: !1,
 	initAsync: !0,
 	ns: ["translation"],
@@ -991,13 +991,13 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 		skipOnVariables: !0
 	},
 	cacheInBuiltFormats: !0
-}), G = (e) => (p(e.ns) && (e.ns = [e.ns]), p(e.fallbackLng) && (e.fallbackLng = [e.fallbackLng]), p(e.fallbackNS) && (e.fallbackNS = [e.fallbackNS]), e.supportedLngs && !e.supportedLngs.includes("cimode") && (e.supportedLngs = e.supportedLngs.concat(["cimode"])), e), K = () => {}, me = (e) => {
+}), pe = (e) => (p(e.ns) && (e.ns = [e.ns]), p(e.fallbackLng) && (e.fallbackLng = [e.fallbackLng]), p(e.fallbackNS) && (e.fallbackNS = [e.fallbackNS]), e.supportedLngs && !e.supportedLngs.includes("cimode") && (e.supportedLngs = e.supportedLngs.concat(["cimode"])), e), K = () => {}, me = (e) => {
 	Object.getOwnPropertyNames(Object.getPrototypeOf(e)).forEach((t) => {
 		typeof e[t] == "function" && (e[t] = e[t].bind(e));
 	});
-}, q = class e extends N {
+}, q = class e extends P {
 	constructor(e = {}, t) {
-		if (super(), this.options = G(e), this.services = {}, this.logger = M, this.modules = { external: [] }, me(this), t && !this.isInitialized && !e.isClone) {
+		if (super(), this.options = pe(e), this.services = {}, this.logger = N, this.modules = { external: [] }, me(this), t && !this.isInitialized && !e.isClone) {
 			if (!this.options.initAsync) return this.init(e, t), this;
 			setTimeout(() => {
 				this.init(e, t);
@@ -1006,26 +1006,26 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 	}
 	init(e = {}, t) {
 		this.isInitializing = !0, typeof e == "function" && (t = e, e = {}), e.defaultNS == null && e.ns && (p(e.ns) ? e.defaultNS = e.ns : e.ns.includes("translation") || (e.defaultNS = e.ns[0]));
-		let n = W();
+		let n = G();
 		this.options = {
 			...n,
 			...this.options,
-			...G(e)
+			...pe(e)
 		}, this.options.interpolation = {
 			...n.interpolation,
 			...this.options.interpolation
 		}, e.keySeparator !== void 0 && (this.options.userDefinedKeySeparator = e.keySeparator), e.nsSeparator !== void 0 && (this.options.userDefinedNsSeparator = e.nsSeparator), typeof this.options.overloadTranslationOptionHandler != "function" && (this.options.overloadTranslationOptionHandler = n.overloadTranslationOptionHandler);
 		let r = (e) => e ? typeof e == "function" ? new e() : e : null;
 		if (!this.options.isClone) {
-			this.modules.logger ? M.init(r(this.modules.logger), this.options) : M.init(null, this.options);
+			this.modules.logger ? N.init(r(this.modules.logger), this.options) : N.init(null, this.options);
 			let e;
-			e = this.modules.formatter ? this.modules.formatter : de;
-			let t = new L(this.options);
-			this.store = new ie(this.options.resources, this.options);
+			e = this.modules.formatter ? this.modules.formatter : ue;
+			let t = new V(this.options);
+			this.store = new F(this.options.resources, this.options);
 			let n = this.services;
-			n.logger = M, n.resourceStore = this.store, n.languageUtils = t, n.pluralResolver = new ce(t, { prepend: this.options.pluralSeparator }), e && (n.formatter = r(e), n.formatter.init && n.formatter.init(n, this.options), this.options.interpolation.format = n.formatter.format.bind(n.formatter)), n.interpolator = new H(this.options), n.utils = { hasLoadedNamespace: this.hasLoadedNamespace.bind(this) }, n.backendConnector = new pe(r(this.modules.backend), n.resourceStore, n, this.options), n.backendConnector.on("*", (e, ...t) => {
+			n.logger = N, n.resourceStore = this.store, n.languageUtils = t, n.pluralResolver = new ie(t, { prepend: this.options.pluralSeparator }), e && (n.formatter = r(e), n.formatter.init && n.formatter.init(n, this.options), this.options.interpolation.format = n.formatter.format.bind(n.formatter)), n.interpolator = new oe(this.options), n.utils = { hasLoadedNamespace: this.hasLoadedNamespace.bind(this) }, n.backendConnector = new fe(r(this.modules.backend), n.resourceStore, n, this.options), n.backendConnector.on("*", (e, ...t) => {
 				this.emit(e, ...t);
-			}), this.modules.languageDetector && (n.languageDetector = r(this.modules.languageDetector), n.languageDetector.init && n.languageDetector.init(n, this.options.detection, this.options)), this.modules.i18nFormat && (n.i18nFormat = r(this.modules.i18nFormat), n.i18nFormat.init && n.i18nFormat.init(this)), this.translator = new I(this.services, this.options), this.translator.on("*", (e, ...t) => {
+			}), this.modules.languageDetector && (n.languageDetector = r(this.modules.languageDetector), n.languageDetector.init && n.languageDetector.init(n, this.options.detection, this.options)), this.modules.i18nFormat && (n.i18nFormat = r(this.modules.i18nFormat), n.i18nFormat.init && n.i18nFormat.init(this)), this.translator = new B(this.services, this.options), this.translator.on("*", (e, ...t) => {
 				this.emit(e, ...t);
 			}), this.modules.external.forEach((e) => {
 				e.init && e.init(this);
@@ -1082,7 +1082,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 	use(e) {
 		if (!e) throw Error("You are passing an undefined module! Please check the object you are passing to i18next.use()");
 		if (!e.type) throw Error("You are passing a wrong module! Please check the object you are passing to i18next.use()");
-		return e.type === "backend" && (this.modules.backend = e), (e.type === "logger" || e.log && e.warn && e.error) && (this.modules.logger = e), e.type === "languageDetector" && (this.modules.languageDetector = e), e.type === "i18nFormat" && (this.modules.i18nFormat = e), e.type === "postProcessor" && ae.addPostProcessor(e), e.type === "formatter" && (this.modules.formatter = e), e.type === "3rdParty" && this.modules.external.push(e), this;
+		return e.type === "backend" && (this.modules.backend = e), (e.type === "logger" || e.log && e.warn && e.error) && (this.modules.logger = e), e.type === "languageDetector" && (this.modules.languageDetector = e), e.type === "i18nFormat" && (this.modules.i18nFormat = e), e.type === "postProcessor" && I.addPostProcessor(e), e.type === "formatter" && (this.modules.formatter = e), e.type === "3rdParty" && this.modules.external.push(e), this;
 	}
 	setResolvedLanguage(e) {
 		if (e && this.languages && !["cimode", "dev"].includes(e)) {
@@ -1123,9 +1123,9 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 				...this.options,
 				...o
 			};
-			Array.isArray(i) && !s && (c.ns = i), typeof o.keyPrefix == "function" && (o.keyPrefix = P(o.keyPrefix, c));
+			Array.isArray(i) && !s && (c.ns = i), typeof o.keyPrefix == "function" && (o.keyPrefix = R(o.keyPrefix, c));
 			let l = this.options.keySeparator || ".", u;
-			return o.keyPrefix && Array.isArray(e) ? u = e.map((e) => (typeof e == "function" && (e = P(e, c)), `${o.keyPrefix}${l}${e}`)) : (typeof e == "function" && (e = P(e, c)), u = o.keyPrefix ? `${o.keyPrefix}${l}${e}` : e), this.t(u, o);
+			return o.keyPrefix && Array.isArray(e) ? u = e.map((e) => (typeof e == "function" && (e = R(e, c)), `${o.keyPrefix}${l}${e}`)) : (typeof e == "function" && (e = R(e, c)), u = o.keyPrefix ? `${o.keyPrefix}${l}${e}` : e), this.t(u, o);
 		};
 		return p(e) ? a.lng = e : a.lngs = e, a.ns = t, a.keyPrefix = n, a;
 	}
@@ -1178,7 +1178,7 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 				if (e && e.direction) return e.direction;
 			}
 		} catch {}
-		let t = /* @__PURE__ */ "ar.shu.sqr.ssh.xaa.yhd.yud.aao.abh.abv.acm.acq.acw.acx.acy.adf.ads.aeb.aec.afb.ajp.apc.apd.arb.arq.ars.ary.arz.auz.avl.ayh.ayl.ayn.ayp.bbz.pga.he.iw.ps.pbt.pbu.pst.prp.prd.ug.ur.ydd.yds.yih.ji.yi.hbo.men.xmn.fa.jpr.peo.pes.prs.dv.sam.ckb".split("."), n = this.services?.languageUtils || new L(W());
+		let t = /* @__PURE__ */ "ar.shu.sqr.ssh.xaa.yhd.yud.aao.abh.abv.acm.acq.acw.acx.acy.adf.ads.aeb.aec.afb.ajp.apc.apd.arb.arq.ars.ary.arz.auz.avl.ayh.ayl.ayn.ayp.bbz.pga.he.iw.ps.pbt.pbu.pst.prp.prd.ug.ur.ydd.yds.yih.ji.yi.hbo.men.xmn.fa.jpr.peo.pes.prs.dv.sam.ckb".split("."), n = this.services?.languageUtils || new V(G());
 		return e.toLowerCase().indexOf("-latn") > 1 ? "ltr" : t.includes(n.getLanguagePartFromCode(e)) || e.toLowerCase().indexOf("-arab") > 1 ? "rtl" : "ltr";
 	}
 	static createInstance(t = {}, n) {
@@ -1199,18 +1199,18 @@ var F = (e) => !p(e) && typeof e != "boolean" && typeof e != "number", I = class
 			"language"
 		].forEach((e) => {
 			a[e] = this[e];
-		}), a.services = { ...this.services }, a.services.utils = { hasLoadedNamespace: a.hasLoadedNamespace.bind(a) }, r && (a.store = new ie(Object.keys(this.store.data).reduce((e, t) => (e[t] = { ...this.store.data[t] }, e[t] = Object.keys(e[t]).reduce((n, r) => (n[r] = { ...e[t][r] }, n), e[t]), e), {}), i), a.services.resourceStore = a.store), t.interpolation) {
+		}), a.services = { ...this.services }, a.services.utils = { hasLoadedNamespace: a.hasLoadedNamespace.bind(a) }, r && (a.store = new F(Object.keys(this.store.data).reduce((e, t) => (e[t] = { ...this.store.data[t] }, e[t] = Object.keys(e[t]).reduce((n, r) => (n[r] = { ...e[t][r] }, n), e[t]), e), {}), i), a.services.resourceStore = a.store), t.interpolation) {
 			let e = {
-				...W().interpolation,
+				...G().interpolation,
 				...this.options.interpolation,
 				...t.interpolation
 			}, n = {
 				...i,
 				interpolation: e
 			};
-			a.services.interpolator = new H(n);
+			a.services.interpolator = new oe(n);
 		}
-		return a.translator = new I(a.services, i), a.translator.on("*", (e, ...t) => {
+		return a.translator = new B(a.services, i), a.translator.on("*", (e, ...t) => {
 			a.emit(e, ...t);
 		}), a.init(i, n), a.translator.options = i, a.translator.backendConnector.services.utils = { hasLoadedNamespace: a.hasLoadedNamespace.bind(a) }, a;
 	}
@@ -1476,7 +1476,7 @@ var he = (e, t, n, r) => {
 			});
 		} catch {}
 		return n;
-	}, ee = o(() => {
+	}, A = o(() => {
 		let e = E, t = e?.language, n = e;
 		e && (D.current && D.current.__original === e && O.current === t ? n = D.current : (n = k(e), D.current = n, O.current = t));
 		let r = !T && !p ? (...e) => (J(d, "USE_T_BEFORE_READY", "useTranslation: t was called before ready. When using useSuspense: false, make sure to check the ready flag before using t."), w(...e)) : w, i = [
@@ -1503,7 +1503,7 @@ var he = (e, t, n, r) => {
 			t.lng ? ve(d, t.lng, _, n) : Y(d, _, n);
 		});
 	}
-	return ee;
+	return A;
 };
 function Re({ i18n: e, defaultNS: n, children: r }) {
 	let i = o(() => ({
@@ -1512,8 +1512,7 @@ function Re({ i18n: e, defaultNS: n, children: r }) {
 	}), [e, n]);
 	return t(Ae.Provider, { value: i }, r);
 }
-var ze = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/ThemeToggle.tsx";
-function Be() {
+function ze() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
@@ -1522,10 +1521,10 @@ function Q(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function Ve() {
+function Be() {
 	let { t: e } = Le(), [t, n] = c("auto");
 	i(() => {
-		let e = Be();
+		let e = ze();
 		n(e), Q(e);
 	}, []), i(() => {
 		if (t !== "auto") return;
@@ -1546,13 +1545,9 @@ function Ve() {
 		title: a,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: e(t === "auto" ? "shared.themeToggle.themeAuto" : t === "dark" ? "shared.themeToggle.themeDark" : "shared.themeToggle.themeLight")
-	}, void 0, !1, {
-		fileName: ze,
-		lineNumber: 77,
-		columnNumber: 5
-	}, this);
+	});
 }
-function He() {
+function Ve() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -1566,7 +1561,7 @@ function He() {
 		}
 	}
 }
-function Ue(e, t) {
+function He(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
@@ -3729,44 +3724,26 @@ q.use(ke).init({
 	keySeparator: !1,
 	nsSeparator: !1
 });
-var $ = q, We = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/AppProviders.tsx";
-function Ge({ children: e }) {
+var $ = q;
+function Ue({ children: e }) {
 	let t = u().locale ?? "en", [n] = c(() => typeof performance < "u" ? performance.now() : 0);
 	return a(() => {
-		Ue("AppRoot", n);
+		He("AppRoot", n);
 	}, [n]), i(() => {
 		$.language !== t && $.changeLanguage(t);
 	}, [t]), i(() => {
 		document.documentElement.lang = t;
 	}, [t]), i(() => {
-		He();
+		Ve();
 	}, []), l(Re, {
 		i18n: $,
 		children: e
-	}, void 0, !1, {
-		fileName: We,
-		lineNumber: 38,
-		columnNumber: 7
-	}, this);
+	});
 }
-var Ke = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/scripts/Wrapper.tsx";
-function qe({ children: e }) {
-	return l(Ge, { children: e }, void 0, !1, {
-		fileName: Ke,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function We({ children: e }) {
+	return l(Ue, { children: e });
 }
-var Je = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/ThemeToggle.wrapper.tsx";
-function Ye() {
-	return l(qe, { children: l(Ve, {}, void 0, !1, {
-		fileName: Je,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: Je,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function Ge() {
+	return l(We, { children: l(Be, {}) });
 }
-export { Ye as default };
+export { Ge as default };

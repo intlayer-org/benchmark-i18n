@@ -1,5 +1,4 @@
-import { jsxDEV as e } from "react/jsx-dev-runtime";
-var t = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-react-base-app/src/components/pages/blog/BlogList.tsx";
+import { jsx as e, jsxs as t } from "react/jsx-runtime";
 function n() {
 	return e("div", {
 		className: "grid gap-6 md:grid-cols-2",
@@ -40,66 +39,34 @@ function n() {
 				excerpt: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
 				category: "Meta"
 			}
-		].map((n) => e("article", {
+		].map((n) => t("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				e("div", {
+				t("div", {
 					className: "mb-3 flex items-center gap-3",
 					children: [e("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: n.category
-					}, void 0, !1, {
-						fileName: t,
-						lineNumber: 55,
-						columnNumber: 13
-					}, this), e("span", {
+					}), e("span", {
 						className: "text-xs text-muted-foreground",
 						children: n.date
-					}, void 0, !1, {
-						fileName: t,
-						lineNumber: 58,
-						columnNumber: 13
-					}, this)]
-				}, void 0, !0, {
-					fileName: t,
-					lineNumber: 54,
-					columnNumber: 11
-				}, this),
+					})]
+				}),
 				e("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: n.title
-				}, void 0, !1, {
-					fileName: t,
-					lineNumber: 60,
-					columnNumber: 11
-				}, this),
+				}),
 				e("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: n.excerpt
-				}, void 0, !1, {
-					fileName: t,
-					lineNumber: 63,
-					columnNumber: 11
-				}, this),
+				}),
 				e("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
 					children: "Read More →"
-				}, void 0, !1, {
-					fileName: t,
-					lineNumber: 64,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, n.title, !0, {
-			fileName: t,
-			lineNumber: 50,
-			columnNumber: 9
-		}, this))
-	}, void 0, !1, {
-		fileName: t,
-		lineNumber: 48,
-		columnNumber: 5
-	}, this);
+		}, n.title))
+	});
 }
 export { n as default };

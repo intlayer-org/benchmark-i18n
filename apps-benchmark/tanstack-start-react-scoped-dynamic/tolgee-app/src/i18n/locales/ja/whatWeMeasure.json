@@ -1,0 +1,17 @@
+{
+  "bundleSizeImpact": "バンドルサイズへの影響",
+  "duringSsrTranslationDataIs": "SSR中、翻訳データはHTMLにシリアル化されます。大きな辞書はHTMLペイロードを増加させ、ハイドレーション（ページがインタラクティブになる瞬間）を遅らせます。",
+  "duringSsrTranslationDataIsSerialized": "During SSR, translation data is serialized into the HTML. We measure the size of this payload and its effect on Time to Interactive (TTI).",
+  "howFastTheAppCan": "実行時にアプリが1つの言語から別の言語にどれだけ速く切り替えられるか（新しい翻訳の取得、コンポーネントの再レンダリング、DOMの更新を含む）。",
+  "howFastTheAppCanSwitchFromOne": "How fast the app can switch from one language to another. We measure the re-render time and any network delays for lazy-loaded locales.",
+  "howMuchExtraTimeThe": "ライブラリがReactのレンダリングサイクルに追加する余分な時間。単一のコンテキストプロバイダーを介して翻訳を注入するライブラリは、コンポーネントツリー全体で不要な再レンダリングを引き起こす可能性があります。",
+  "howMuchExtraTimeTheLibraryAdds": "How much extra time the library adds to the initial page load. This includes script execution and the time to fetch/parse translation data.",
+  "hydrationCost": "ハイドレーションのコスト",
+  "lazyLoadingEffectiveness": "遅延読み込みの有効性",
+  "localeSwitchSpeed": "ロケール切り替え速度",
+  "renderingOverhead": "レンダリングのオーバーヘッド",
+  "theAdditionalJavascriptBytes": "The additional Javascript bytes that the library adds to your production build. We measure both the library itself and its mandatory dependencies.",
+  "theAdditionalJavascriptBytesSent": "i18nライブラリとその翻訳ファイルが含まれているときにユーザーに送信される追加のJavaScriptバイト。これは、低速なネットワークでのダウンロード時間に直接影響します。",
+  "whatWeMeasure": "測定するもの",
+  "whetherSplittingTranslationsByRoute": "ルートまたは名前空間ごとに翻訳を分割することで、初期負荷が実際に軽減されるか、またどのようなトレードオフ（ウォーターフォールリクエスト、FOUC、キャッシュの複雑さ）が生じるかがわかります。"
+}

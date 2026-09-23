@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { jsx } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -162,7 +161,6 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		children
 	});
 };
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/team/TeamGrid.tsx";
 function TeamGrid() {
 	const { i18n } = useLingui();
 	const members = [
@@ -251,54 +249,30 @@ function TeamGrid() {
 			})
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: members.map((m) => jsxDEV("div", {
+		children: members.map((m) => jsxs("div", {
 			className: "rounded-lg border border-border bg-card p-6 text-center",
 			children: [
-				jsxDEV("div", {
+				jsx("div", {
 					className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 					children: m.name.split(" ").map((n) => n[0]).join("")
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 78,
-					columnNumber: 11
-				}, this),
-				jsxDEV("h3", {
+				}),
+				jsx("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: m.name
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 84,
-					columnNumber: 11
-				}, this),
-				jsxDEV("p", {
+				}),
+				jsx("p", {
 					className: "mb-2 text-xs font-medium text-primary",
 					children: m.role
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 85,
-					columnNumber: 11
-				}, this),
-				jsxDEV("p", {
+				}),
+				jsx("p", {
 					className: "text-sm text-muted-foreground",
 					children: m.bio
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 86,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, m.name, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 74,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 72,
-		columnNumber: 5
-	}, this);
+		}, m.name))
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1719,7 +1693,6 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const messages = useMemo(() => getMessages(locale), [locale]);
@@ -1734,33 +1707,15 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 35,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/team/TeamGrid.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(TeamGrid, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(TeamGrid, {}) });
 }
 export { Wrapped as default };

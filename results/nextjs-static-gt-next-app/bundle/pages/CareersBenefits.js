@@ -1,6 +1,5 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { jsx } from "react/jsx-runtime";
-import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3909,7 +3908,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => true) === true) return "development";
+	if (readImportMetaEnv(() => false) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6019,75 +6018,33 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/components/pages/careers/CareersBenefits.tsx";
 function CareersBenefits() {
-	const benefits = [
-		{
-			label: jsxDEV(a$2, { children: "Remote-first" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 6,
-				columnNumber: 14
-			}, this),
-			value: jsxDEV(a$2, { children: "Work from anywhere in the world" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 7,
-				columnNumber: 14
-			}, this)
-		},
-		{
-			label: jsxDEV(a$2, { children: "Competitive pay" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 9,
-				columnNumber: 14
-			}, this),
-			value: jsxDEV(a$2, { children: "Top-of-market compensation" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 9,
-				columnNumber: 45
-			}, this)
-		},
-		{
-			label: jsxDEV(a$2, { children: "Open source time" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 11,
-				columnNumber: 14
-			}, this),
-			value: jsxDEV(a$2, { children: "20% time for OSS contributions" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 12,
-				columnNumber: 14
-			}, this)
-		}
-	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
-		children: benefits.map((b) => jsxDEV("div", {
+		children: [
+			{
+				label: jsx(a$2, { children: "Remote-first" }),
+				value: jsx(a$2, { children: "Work from anywhere in the world" })
+			},
+			{
+				label: jsx(a$2, { children: "Competitive pay" }),
+				value: jsx(a$2, { children: "Top-of-market compensation" })
+			},
+			{
+				label: jsx(a$2, { children: "Open source time" }),
+				value: jsx(a$2, { children: "20% time for OSS contributions" })
+			}
+		].map((b) => jsxs("div", {
 			className: "rounded-lg border border-border bg-card p-4 text-center",
-			children: [jsxDEV("p", {
+			children: [jsx("p", {
 				className: "text-sm font-semibold text-foreground",
 				children: b.label
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 23,
-				columnNumber: 11
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "text-xs text-muted-foreground",
 				children: b.value
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 24,
-				columnNumber: 11
-			}, this)]
-		}, b.label?.toString() || "", true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 19,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 17,
-		columnNumber: 5
-	}, this);
+			})]
+		}, b.label?.toString() || ""))
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6111,7 +6068,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6123,41 +6079,19 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment$1, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 33,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment$1, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsxDEV(BrowserGTProvider, {
+	return jsx(BrowserGTProvider, {
 		locale,
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/components/pages/careers/CareersBenefits.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(CareersBenefits, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(CareersBenefits, {}) });
 }
 export { Wrapped as default };

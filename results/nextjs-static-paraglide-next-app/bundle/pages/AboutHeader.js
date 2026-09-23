@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
@@ -284,28 +284,15 @@ var about_header_thisisanopensource4 = ((inputs = {}, options = {}) => {
 	if (locale === "ru") return ru_about_header_thisisanopensource4(inputs);
 	return en_about_header_thisisanopensource4(inputs);
 });
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/about/AboutHeader.tsx";
 function AboutHeader() {
 	usePerformanceMeasure("AboutHeader");
-	return jsxDEV(Fragment, { children: [jsxDEV("h1", {
+	return jsxs(Fragment, { children: [jsx("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: about_header_aboutthisbenchmark2()
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 10,
-		columnNumber: 7
-	}, this), jsxDEV("p", {
+	}), jsx("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: about_header_thisisanopensource4()
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 13,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+	})] });
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -329,7 +316,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -343,30 +329,12 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/about/AboutHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(AboutHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(AboutHeader, {}) });
 }
 export { Wrapped as default };

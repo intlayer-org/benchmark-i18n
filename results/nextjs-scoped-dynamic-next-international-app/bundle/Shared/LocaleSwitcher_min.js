@@ -1,6 +1,6 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
 import { useParams as r, usePathname as i, useRouter as a } from "next/navigation";
-import { jsxDEV as o } from "react/jsx-dev-runtime";
+import { jsx as o } from "react/jsx-runtime";
 var s = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), c = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -22,8 +22,8 @@ var s = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	} catch {
 		return e.toUpperCase();
 	}
-}, d = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/LocaleSwitcher.tsx";
-function f() {
+};
+function d() {
 	let e = r().locale ?? "en", t = i(), n = a(), s = (r) => {
 		let i = t.replace(`/${e}`, `/${r}`);
 		n.push(i);
@@ -37,29 +37,17 @@ function f() {
 			children: l.map((e) => o("option", {
 				value: e,
 				children: u(e)
-			}, e, !1, {
-				fileName: d,
-				lineNumber: 25,
-				columnNumber: 11
-			}, this))
-		}, void 0, !1, {
-			fileName: d,
-			lineNumber: 19,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: d,
-		lineNumber: 18,
-		columnNumber: 5
-	}, this);
+			}, e))
+		})
+	});
 }
-var p = s((() => {})), m = (0, s(((e, t) => {
+var f = s((() => {})), p = (0, s(((e, t) => {
 	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, s = Object.getPrototypeOf, l = Object.prototype.hasOwnProperty, u = Object.prototype.propertyIsEnumerable, d = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
 		value: n
-	}) : e[t] = n, f = (e, t) => {
+	}) : e[t] = n, p = (e, t) => {
 		for (var n in t ||= {}) l.call(t, n) && d(e, n, t[n]);
 		if (o) for (var n of o(t)) u.call(t, n) && d(e, n, t[n]);
 		return e;
@@ -78,8 +66,8 @@ var p = s((() => {})), m = (0, s(((e, t) => {
 		value: e,
 		enumerable: !0
 	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), p();
-	var y = c("next/navigation"), b = g(c("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => f(f({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	m(v, { createI18nClient: () => V }), t.exports = _(v), f();
+	var y = c("next/navigation"), b = g(c("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -202,9 +190,9 @@ var p = s((() => {})), m = (0, s(((e, t) => {
 	ko: () => import("./ko-C6DeYIDJ.js"),
 	ru: () => import("./ru-GMiu7d6N.js")
 });
-m.useScopedI18n;
-var { I18nProviderClient: h, useChangeLocale: g, useCurrentLocale: _ } = m;
-function v() {
+p.useScopedI18n;
+var { I18nProviderClient: m, useChangeLocale: h, useCurrentLocale: g } = p;
+function _() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -218,53 +206,35 @@ function v() {
 		}
 	}
 }
-function y(e, t) {
+function v(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var b = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
-function x({ children: r, locale: i }) {
+function y({ children: r, locale: i }) {
 	let [a] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		y("AppRoot", a);
+		v("AppRoot", a);
 	}, [a]), e(() => {
 		document.documentElement.lang = i;
 	}, [i]), e(() => {
-		v();
-	}, []), o(h, {
+		_();
+	}, []), o(m, {
 		locale: i,
 		children: r
-	}, void 0, !1, {
-		fileName: b,
-		lineNumber: 30,
-		columnNumber: 7
-	}, this);
+	});
 }
-var S = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx", C = "en";
-function w({ children: e }) {
-	return o(x, {
-		locale: C,
+var b = "en";
+function x({ children: e }) {
+	return o(y, {
+		locale: b,
 		children: e
-	}, void 0, !1, {
-		fileName: S,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var T = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/LocaleSwitcher.wrapper.tsx";
-function E() {
-	return o(w, { children: o(f, {}, void 0, !1, {
-		fileName: T,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: T,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function S() {
+	return o(x, { children: o(d, {}) });
 }
-export { E as default };
+export { S as default };
 import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../messages/de/about.json";
 import r from "../messages/de/blog.json";

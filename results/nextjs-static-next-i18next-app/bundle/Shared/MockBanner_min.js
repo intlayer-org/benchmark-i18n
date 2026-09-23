@@ -1,5 +1,5 @@
 import { createContext as e, createElement as t, useCallback as n, useContext as r, useEffect as i, useLayoutEffect as a, useMemo as o, useRef as s, useState as c } from "react";
-import { jsxDEV as l } from "react/jsx-dev-runtime";
+import { jsx as l } from "react/jsx-runtime";
 import { useParams as u } from "next/navigation";
 var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), f = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
@@ -1512,18 +1512,14 @@ function Le({ i18n: e, defaultNS: n, children: r }) {
 	}), [e, n]);
 	return t(ke.Provider, { value: i }, r);
 }
-var Re = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/MockBanner.tsx", ze = () => {
+var Re = () => {
 	let { t: e } = Ie();
 	return l("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: e("shared.mockBanner.text")
-	}, void 0, !1, {
-		fileName: Re,
-		lineNumber: 8,
-		columnNumber: 5
-	}, void 0);
+	});
 };
-function Be() {
+function ze() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -1537,7 +1533,7 @@ function Be() {
 		}
 	}
 }
-function Ve(e, t) {
+function Be(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
@@ -3700,44 +3696,26 @@ J.use(Oe).init({
 	keySeparator: !1,
 	nsSeparator: !1
 });
-var $ = J, He = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/AppProviders.tsx";
-function Ue({ children: e }) {
+var $ = J;
+function Ve({ children: e }) {
 	let t = u().locale ?? "en", [n] = c(() => typeof performance < "u" ? performance.now() : 0);
 	return a(() => {
-		Ve("AppRoot", n);
+		Be("AppRoot", n);
 	}, [n]), i(() => {
 		$.language !== t && $.changeLanguage(t);
 	}, [t]), i(() => {
 		document.documentElement.lang = t;
 	}, [t]), i(() => {
-		Be();
+		ze();
 	}, []), l(Le, {
 		i18n: $,
 		children: e
-	}, void 0, !1, {
-		fileName: He,
-		lineNumber: 38,
-		columnNumber: 7
-	}, this);
+	});
 }
-var We = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/scripts/Wrapper.tsx";
-function Ge({ children: e }) {
-	return l(Ue, { children: e }, void 0, !1, {
-		fileName: We,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function He({ children: e }) {
+	return l(Ve, { children: e });
 }
-var Ke = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/MockBanner.wrapper.tsx";
-function qe() {
-	return l(Ge, { children: l(ze, {}, void 0, !1, {
-		fileName: Ke,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: Ke,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function Ue() {
+	return l(He, { children: l(Re, {}) });
 }
-export { qe as default };
+export { Ue as default };

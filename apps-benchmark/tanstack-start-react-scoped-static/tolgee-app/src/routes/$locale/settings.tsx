@@ -1,4 +1,3 @@
-import { tolgee } from "../../i18n/tolgee";
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
@@ -19,16 +18,6 @@ const SettingsFooter = lazy(
 );
 
 export const Route = createFileRoute("/$locale/settings")({
-  loader: async ({ params }) => {
-    await tolgee.loadRecords([
-      { language: params.locale, namespace: "settings" },
-      { language: params.locale, namespace: "settingsHeader" },
-      { language: params.locale, namespace: "profileSection" },
-      { language: params.locale, namespace: "preferencesSection" },
-      { language: params.locale, namespace: "apiAccessSection" },
-      { language: params.locale, namespace: "settingsFooter" },
-    ]);
-  },
   component: Settings,
 });
 

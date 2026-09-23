@@ -8,17 +8,17 @@ export default function Footer() {
 
   const footerLinks = [
     {
-      label: t("footer.github", "GitHub"),
+      label: t("footer.github"),
       href: "https://github.com/intlayer-org/benchmark-i18n",
       isInternal: false,
     },
     {
-      label: t("footer.methodology", "Methodology"),
+      label: t("footer.methodology"),
       to: "/$locale/about" as const,
       isInternal: true,
     },
     {
-      label: t("footer.contributing", "Contributing"),
+      label: t("footer.contributing"),
       to: "/$locale/contact" as const,
       isInternal: true,
     },
@@ -35,13 +35,12 @@ export default function Footer() {
             <p className="text-sm text-muted-foreground">
               <T
                 keyName="footer.anOpenSourceTestApplication"
-                defaultValue="An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
               />
             </p>
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              <T keyName="footer.resources" defaultValue="Resources" />
+              <T keyName="footer.resources" />
             </h3>
             <ul className="space-y-1">
               {footerLinks.map((linkEl) => (
@@ -71,7 +70,7 @@ export default function Footer() {
           </div>
           <div>
             <h3 className="mb-2 text-sm font-semibold text-foreground">
-              <T keyName="footer.contact" defaultValue="Contact" />
+              <T keyName="footer.contact" />
             </h3>
             <p className="text-sm text-muted-foreground">
               contact@intlayer.org
@@ -81,7 +80,6 @@ export default function Footer() {
         <div className="mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground">
           <T
             keyName="footer.builtWith"
-            defaultValue="i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
           />
         </div>
       </div>

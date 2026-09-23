@@ -152,7 +152,8 @@
     "benchmark": "벤치마크",
     "tutorial": "튜토리얼",
     "analysis": "분석",
-    "meta": "메타"
+    "meta": "메타",
+    "reactServerComponentsIntroduceNew": "React 서버 구성 요소는 국제화를 위한 새로운 패턴을 도입합니다. 그 영향과 모범 사례를 살펴봅니다."
   },
   "careersHeader": {
     "careers": "채용",

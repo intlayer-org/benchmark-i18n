@@ -1,5 +1,5 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsxDEV as r } from "react/jsx-dev-runtime";
+import { jsx as r } from "react/jsx-runtime";
 var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -155,31 +155,31 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 function c() {
 	return s.useI18n();
 }
-var { useScopedI18n: l, I18nProviderClient: u, useChangeLocale: d, useCurrentLocale: f } = s, p = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/ThemeToggle.tsx";
-function m() {
+var { useScopedI18n: l, I18nProviderClient: u, useChangeLocale: d, useCurrentLocale: f } = s;
+function p() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 }
-function h(e) {
+function m(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function g() {
+function h() {
 	let t = c(), [i, a] = n("auto");
 	e(() => {
-		let e = m();
-		a(e), h(e);
+		let e = p();
+		a(e), m(e);
 	}, []), e(() => {
 		if (i !== "auto") return;
-		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => h("auto");
+		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => m("auto");
 		return e.addEventListener("change", t), () => {
 			e.removeEventListener("change", t);
 		};
 	}, [i]);
 	function o() {
 		let e = i === "light" ? "dark" : i === "dark" ? "auto" : "light";
-		a(e), h(e), window.localStorage.setItem("theme", e);
+		a(e), m(e), window.localStorage.setItem("theme", e);
 	}
 	let s = t(i === "auto" ? "theme-toggle.themeModeAutoSystemClick" : i === "light" ? "theme-toggle.themeModeLightClick" : "theme-toggle.themeModeDarkClick");
 	return r("button", {
@@ -189,13 +189,9 @@ function g() {
 		title: s,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: t(i === "auto" ? "theme-toggle.themeAuto" : i === "dark" ? "theme-toggle.themeDark" : "theme-toggle.themeLight")
-	}, void 0, !1, {
-		fileName: p,
-		lineNumber: 77,
-		columnNumber: 5
-	}, this);
+	});
 }
-function _() {
+function g() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -209,53 +205,35 @@ function _() {
 		}
 	}
 }
-function v(e, t) {
+function _(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
-function b({ children: i, locale: a }) {
+function v({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		v("AppRoot", o);
+		_("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
-		_();
+		g();
 	}, []), r(u, {
 		locale: a,
 		children: i
-	}, void 0, !1, {
-		fileName: y,
-		lineNumber: 30,
-		columnNumber: 7
-	}, this);
+	});
 }
-var x = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx", S = "en";
-function C({ children: e }) {
-	return r(b, {
-		locale: S,
+var y = "en";
+function b({ children: e }) {
+	return r(v, {
+		locale: y,
 		children: e
-	}, void 0, !1, {
-		fileName: x,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var w = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/ThemeToggle.wrapper.tsx";
-function T() {
-	return r(C, { children: r(g, {}, void 0, !1, {
-		fileName: w,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: w,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function x() {
+	return r(b, { children: r(h, {}) });
 }
-export { T as default };
+export { x as default };
 import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/de.json";
 var n = e(t);

@@ -547,45 +547,45 @@ mt(J);
 var gt = (e, t) => ht(e, {
 	...J,
 	isCookieEnabled: t
-}), { defaultLocale: _t, locales: vt } = b ?? {}, yt = ({ isCookieEnabled: t, onLocaleChange: n } = {}) => {
+}), { defaultLocale: Y, locales: _t } = b ?? {}, vt = ({ isCookieEnabled: t, onLocaleChange: n } = {}) => {
 	let r = i(ct);
 	return {
-		locale: e(() => r?.locale?.value ?? _t),
-		defaultLocale: _t,
-		availableLocales: vt,
+		locale: e(() => r?.locale?.value ?? Y),
+		defaultLocale: Y,
+		availableLocales: _t,
 		setLocale: (e) => {
-			if (!vt?.map(String).includes(e)) {
+			if (!_t?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
 			r && r.setLocale(e), gt(e, t ?? r?.isCookieEnabled ?? !0), n?.(e);
 		}
 	};
-}, bt = Symbol("global-i18n"), xt = "translation", Y = (e, t, n) => {
+}, yt = Symbol("global-i18n"), bt = "translation", X = (e, t, n) => {
 	try {
 		let r = ne(Ue(t, e), n);
 		if (r != null) return r;
 	} catch {}
-}, X = (e, t, n) => {
+}, Z = (e, t, n) => {
 	let r = t, i = n;
 	if (n.includes(":")) {
 		let e = n.indexOf(":");
 		r = n.slice(0, e), i = n.slice(e + 1);
 	}
 	if (r) {
-		let t = Y(e, r, i);
+		let t = X(e, r, i);
 		if (t !== void 0) return t;
 	}
 	if (i.includes(".")) {
-		let t = i.indexOf("."), n = Y(e, i.slice(0, t), i.slice(t + 1));
+		let t = i.indexOf("."), n = X(e, i.slice(0, t), i.slice(t + 1));
 		if (n !== void 0) return n;
 	}
 	if (!r) {
-		let t = Y(e, xt, i);
+		let t = X(e, bt, i);
 		if (t !== void 0) return t;
 	}
-}, Z = (e, t, n, r, i) => {
-	let { values: a, count: o, defaultMessage: s } = k(r), c = X(e, t, n);
+}, xt = (e, t, n, r, i) => {
+	let { values: a, count: o, defaultMessage: s } = k(r), c = Z(e, t, n);
 	if (c === void 0) {
 		if (i?.[e]) {
 			let r = t ? `${t}.${n}` : n, s = ne(i[e], r);
@@ -594,9 +594,9 @@ var gt = (e, t) => ht(e, {
 		return s === void 0 ? n : A(s, a, o, e);
 	}
 	return A(c, a, o, e);
-}, St = () => b?.locales?.map(String) ?? [], Q = (e) => {
+}, Q = () => b?.locales?.map(String) ?? [], $ = (e) => {
 	P({ log: S })(`${F(e, N)} has no effect with ${F("@intlayer/vue-i18n", ye)} — translations are managed by the compiled intlayer dictionaries.`);
-}, Ct = ((t = {}) => {
+}, St = ((t = {}) => {
 	let n = t.messages;
 	t.messages !== void 0 && P({ log: S })(`${F("createI18n", N)}: the ${F("`messages`", N)} option is used as a fallback. For optimal bundle size, remove the locale JSON imports and use ${F("useDictionary", N)} or compile your intlayer dictionaries instead:\n  ${F("Before:", M)} createI18n({ messages: { en, fr, … } })\n  ${F("After: ", M)} createI18n({})`);
 	let r = lt(t.locale), i = t.datetimeFormats, a = t.numberFormats, o = () => String(r.locale.value), s = e({
@@ -604,14 +604,14 @@ var gt = (e, t) => ht(e, {
 		set: (e) => {
 			r.setLocale(e);
 		}
-	}), c = (e, ...t) => Z(o(), void 0, e, t, n), d = (e, t) => l(e, t, o(), i), f = (e, t) => u(e, t, o(), a), p = {
+	}), c = (e, ...t) => xt(o(), void 0, e, t, n), d = (e, t) => l(e, t, o(), i), f = (e, t) => u(e, t, o(), a), p = {
 		locale: s,
-		availableLocales: St(),
+		availableLocales: Q(),
 		fallbackLocale: t.fallbackLocale ?? b?.defaultLocale,
 		t: c,
 		tc: c,
-		te: (e) => X(o(), void 0, e) !== void 0,
-		tm: (e) => X(o(), void 0, e) ?? {},
+		te: (e) => Z(o(), void 0, e) !== void 0,
+		tm: (e) => Z(o(), void 0, e) ?? {},
 		rt: (e, ...t) => {
 			let { values: n, count: r } = k(t);
 			return A(e, n, r, o());
@@ -619,12 +619,12 @@ var gt = (e, t) => ht(e, {
 		d,
 		n: f,
 		setLocaleMessage: (e, t) => {
-			Q("setLocaleMessage");
+			$("setLocaleMessage");
 		},
 		mergeLocaleMessage: (e, t) => {
-			Q("mergeLocaleMessage");
+			$("mergeLocaleMessage");
 		},
-		getLocaleMessage: (e) => (Q("getLocaleMessage"), {})
+		getLocaleMessage: (e) => ($("getLocaleMessage"), {})
 	}, m = {
 		get locale() {
 			return o();
@@ -633,7 +633,7 @@ var gt = (e, t) => ht(e, {
 			r.setLocale(e);
 		},
 		get availableLocales() {
-			return St();
+			return Q();
 		},
 		t: c,
 		tc: c,
@@ -654,27 +654,27 @@ var gt = (e, t) => ht(e, {
 		mode: t.legacy === !0 ? "legacy" : "composition",
 		__optionsMessages: n,
 		install(e) {
-			ut(e, { locale: t.locale }), e.provide(bt, g), e.config.globalProperties.$t = c, e.config.globalProperties.$tc = c, e.config.globalProperties.$te = p.te, e.config.globalProperties.$tm = p.tm, e.config.globalProperties.$rt = p.rt, e.config.globalProperties.$d = d, e.config.globalProperties.$n = f, e.config.globalProperties.$i18n = m, e.directive("t", {
+			ut(e, { locale: t.locale }), e.provide(yt, g), e.config.globalProperties.$t = c, e.config.globalProperties.$tc = c, e.config.globalProperties.$te = p.te, e.config.globalProperties.$tm = p.tm, e.config.globalProperties.$rt = p.rt, e.config.globalProperties.$d = d, e.config.globalProperties.$n = f, e.config.globalProperties.$i18n = m, e.directive("t", {
 				beforeMount: h,
 				updated: h
 			});
 		}
 	};
 	return g;
-}), wt = ((t) => {
-	let { locale: n, setLocale: r, availableLocales: a } = yt(), o = i(bt)?.__optionsMessages, s = t?.namespace, c = t?.datetimeFormats, d = t?.numberFormats, f = e({
+}), Ct = ((t) => {
+	let { locale: n, setLocale: r, availableLocales: a } = vt(), o = i(yt)?.__optionsMessages, s = t?.namespace, c = t?.datetimeFormats, d = t?.numberFormats, f = e({
 		get: () => n.value,
 		set: (e) => {
 			r(e);
 		}
-	}), p = (e, ...t) => Z(n.value, s, e, t, o);
+	}), p = (e, ...t) => xt(n.value, s, e, t, o);
 	return {
 		locale: f,
 		availableLocales: a,
 		t: p,
 		tc: p,
-		te: (e) => X(n.value, s, e) !== void 0,
-		tm: (e) => X(n.value, s, e) ?? {},
+		te: (e) => Z(n.value, s, e) !== void 0,
+		tm: (e) => Z(n.value, s, e) ?? {},
 		rt: (e, ...t) => {
 			let { values: r, count: i } = k(t);
 			return A(e, r, i, n.value);
@@ -682,50 +682,22 @@ var gt = (e, t) => ht(e, {
 		d: (e, t) => l(e, t, n.value, c),
 		n: (e, t) => u(e, t, n.value, d)
 	};
-}), Tt = t({
+}), wt = t({
 	__name: "EmptyComponent",
-	setup(e, { expose: t }) {
-		t();
-		let { t: n } = wt(), r = {
-			t: n,
-			value: n("header.home")
-		};
-		return Object.defineProperty(r, "__isScriptSetup", {
-			enumerable: !1,
-			value: !0
-		}), r;
+	setup(e) {
+		let { t } = Ct();
+		return t("header.home"), (e, t) => null;
 	}
-}), $ = (e, t) => {
-	let n = e.__vccOpts || e;
-	for (let [e, r] of t) n[e] = r;
-	return n;
-};
-function Et(e, t, n, r, i, a) {
-	return null;
-}
-var Dt = $(Tt, [["render", Et], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/EmptyComponent.vue"]]), Ot = t({
+}), Tt = t({
 	__name: "LibWrapper",
-	setup(e, { expose: t }) {
-		t();
-		let r = Ct({
+	setup(e) {
+		let t = St({
 			legacy: !1,
 			locale: "en"
-		}), i = n()?.appContext.app;
-		i && !i.config.globalProperties.$i18n && i.use(r);
-		let a = {
-			i18n: r,
-			app: i
-		};
-		return Object.defineProperty(a, "__isScriptSetup", {
-			enumerable: !1,
-			value: !0
-		}), a;
+		}), r = n()?.appContext.app;
+		return r && !r.config.globalProperties.$i18n && r.use(t), (e, t) => s(e.$slots, "default");
 	}
-});
-function kt(e, t, n, r, i, a) {
-	return s(e.$slots, "default");
-}
-var At = $(Ot, [["render", kt], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/LibWrapper.vue"]]), jt = { render() {
-	return r(At, {}, { default: () => r(Dt) });
+}), Et = { render() {
+	return r(Tt, {}, { default: () => r(wt) });
 } };
-export { jt as default };
+export { Et as default };

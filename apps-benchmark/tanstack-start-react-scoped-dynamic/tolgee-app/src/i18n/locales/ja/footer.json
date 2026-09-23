@@ -1,0 +1,9 @@
+{
+  "resources": "リソース",
+  "contact": "お問い合わせ",
+  "github": "GitHub",
+  "methodology": "メソッド",
+  "contributing": "貢献する",
+  "builtWith": "i18n Benchmark — オープンソースプロジェクト。React、Vite、TanStack Routerで構築。",
+  "anOpenSourceTestApplication": "国際化ライブラリがバンドルサイズ、読み込み時間、アプリの反応性に与える実際の影響を測定するためのオープンソーステストアプリケーション。"
+}

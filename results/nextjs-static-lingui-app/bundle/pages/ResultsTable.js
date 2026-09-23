@@ -1,6 +1,5 @@
 import { cloneElement, createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsx } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -274,79 +273,42 @@ This often happens when multiple instances of @lingui/react are installed (e.g. 
 		lingui
 	});
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/home/ResultsTable.tsx";
 function ResultsTable() {
 	const { i18n } = useLingui();
-	return jsxDEV("section", { children: [jsxDEV("h2", {
+	return jsxs("section", { children: [jsx("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
-		children: jsxDEV(Trans, {
+		children: jsx(Trans, {
 			id: "results-table.sampleResults",
 			message: "Sample Results"
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 34,
-			columnNumber: 9
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 33,
-		columnNumber: 7
-	}, this), jsxDEV("div", {
+		})
+	}), jsx("div", {
 		className: "overflow-x-auto rounded-lg border border-border",
-		children: jsxDEV("table", {
+		children: jsxs("table", {
 			className: "w-full text-sm",
-			children: [jsxDEV("thead", {
+			children: [jsx("thead", {
 				className: "bg-muted",
-				children: jsxDEV("tr", { children: [
-					jsxDEV("th", {
+				children: jsxs("tr", { children: [
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
-						children: jsxDEV(Trans, {
+						children: jsx(Trans, {
 							id: "results-table.library",
 							message: "Library"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 41,
-							columnNumber: 17
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 40,
-						columnNumber: 15
-					}, this),
-					jsxDEV("th", {
+						})
+					}),
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: i18n._("results-table.bundleSize")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 43,
-						columnNumber: 15
-					}, this),
-					jsxDEV("th", {
+					}),
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: i18n._("results-table.lookupTime")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 46,
-						columnNumber: 15
-					}, this),
-					jsxDEV("th", {
+					}),
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: i18n._("results-table.lazyLoading")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 49,
-						columnNumber: 15
-					}, this)
-				] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 39,
-					columnNumber: 13
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 38,
-				columnNumber: 11
-			}, this), jsxDEV("tbody", { children: [
+					})
+				] })
+			}), jsx("tbody", { children: [
 				{
 					lib: "react-i18next",
 					size: "42.3 kB",
@@ -371,65 +333,29 @@ function ResultsTable() {
 					time: "0.05ms",
 					lazy: "Built-in"
 				}
-			].map((r) => jsxDEV("tr", {
+			].map((r) => jsxs("tr", {
 				className: "border-t border-border",
 				children: [
-					jsxDEV("td", {
+					jsx("td", {
 						className: "px-4 py-3 font-medium text-foreground",
 						children: r.lib
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 57,
-						columnNumber: 17
-					}, this),
-					jsxDEV("td", {
+					}),
+					jsx("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.size
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 60,
-						columnNumber: 17
-					}, this),
-					jsxDEV("td", {
+					}),
+					jsx("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.time
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 61,
-						columnNumber: 17
-					}, this),
-					jsxDEV("td", {
+					}),
+					jsx("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.lazy
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 62,
-						columnNumber: 17
-					}, this)
+					})
 				]
-			}, r.lib, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 56,
-				columnNumber: 15
-			}, this)) }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 54,
-				columnNumber: 11
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 37,
-			columnNumber: 9
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 36,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 32,
-		columnNumber: 5
-	}, this);
+			}, r.lib)) })]
+		})
+	})] });
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1850,7 +1776,6 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const messages = useMemo(() => getMessages(locale), [locale]);
@@ -1865,33 +1790,15 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 35,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/home/ResultsTable.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ResultsTable, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ResultsTable, {}) });
 }
 export { Wrapped as default };

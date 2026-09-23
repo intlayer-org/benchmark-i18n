@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useRouter } from "next/router";
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -212,48 +212,26 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
-var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/MockBanner.tsx";
 var MockBanner = () => {
 	const { t } = useTranslation("common");
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: t("shared.mockBanner.text")
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 8,
-		columnNumber: 5
-	}, void 0);
+	});
 };
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/settings/SettingsHeader.tsx";
 function SettingsHeader() {
 	const { t } = useTranslation("common");
-	return jsxDEV(Fragment, { children: [
-		jsxDEV(MockBanner, {}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 10,
-			columnNumber: 7
-		}, this),
-		jsxDEV("h1", {
+	return jsxs(Fragment, { children: [
+		jsx(MockBanner, {}),
+		jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: t("settings.settingsHeader.settings")
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 11,
-			columnNumber: 7
-		}, this),
-		jsxDEV("p", {
+		}),
+		jsx("p", {
 			className: "mb-8 text-muted-foreground",
 			children: t("settings.settingsHeader.manageYourAccountPreferences")
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this)
-	] }, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+		})
+	] });
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -375,7 +353,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -387,13 +364,8 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const locale = "en";
 	const [translations, setTranslations] = useState({});
@@ -412,34 +384,17 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		lang: locale,
 		namespaces: { common: translations },
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 37,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 36,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-translate-app/components/pages/settings/SettingsHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(SettingsHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(SettingsHeader, {}) });
 }
 export { Wrapped as default };
 var en_default = {

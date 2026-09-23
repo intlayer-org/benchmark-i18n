@@ -1,7 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
 import _609x7od68v from "../.intlayer/dictionary/header.json";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var internationalization = {
 	"locales": [
 		"en",
@@ -661,26 +660,15 @@ var useDictionary = (dictionary, localeOrSelector) => {
 	const argumentIdentity = typeof argument === "object" && argument !== null ? `${argument.locale ?? ""}|${getDictionarySelectorCacheKey(argument)}` : argument;
 	return useMemo(() => getDictionary(dictionary, argument), [dictionary.key, argumentIdentity]);
 };
-var IntlayerClientProviderBase = (props) => jsx(IntlayerProvider, { ...props });
-var IntlayerClientProvider = IntlayerClientProviderBase;
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
 	useDictionary(_609x7od68v);
 	return null;
 };
 function EmptyComponent() {
-	return jsxDEV(IntlayerClientProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
-		children: jsxDEV(TestComponent, {}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 13,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+		children: jsx(TestComponent, {})
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -704,7 +692,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/src/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -716,36 +703,15 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(IntlayerClientProvider, {
-		locale,
-		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 35,
-		columnNumber: 5
-	}, this);
+	return children;
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/scripts/EmptyComponent.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(EmptyComponent, {}) });
 }
 export { Wrapped as default };

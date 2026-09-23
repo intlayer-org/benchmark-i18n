@@ -1,5 +1,4 @@
-import { jsxDEV as e } from "react/jsx-dev-runtime";
-var t = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-base-app/components/pages/faq/FAQList.tsx";
+import { jsx as e, jsxs as t } from "react/jsx-runtime";
 function n() {
 	return e("div", {
 		className: "mx-auto max-w-3xl space-y-4",
@@ -36,32 +35,16 @@ function n() {
 				q: "How can I contribute?",
 				a: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
 			}
-		].map((n) => e("details", {
+		].map((n) => t("details", {
 			className: "group rounded-lg border border-border bg-card",
 			children: [e("summary", {
 				className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 				children: n.q
-			}, void 0, !1, {
-				fileName: t,
-				lineNumber: 44,
-				columnNumber: 11
-			}, this), e("p", {
+			}), e("p", {
 				className: "px-6 pb-4 text-sm text-muted-foreground",
 				children: n.a
-			}, void 0, !1, {
-				fileName: t,
-				lineNumber: 47,
-				columnNumber: 11
-			}, this)]
-		}, n.q, !0, {
-			fileName: t,
-			lineNumber: 40,
-			columnNumber: 9
-		}, this))
-	}, void 0, !1, {
-		fileName: t,
-		lineNumber: 38,
-		columnNumber: 5
-	}, this);
+			})]
+		}, n.q))
+	});
 }
 export { n as default };

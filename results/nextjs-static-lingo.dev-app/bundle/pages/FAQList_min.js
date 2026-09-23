@@ -1,197 +1,95 @@
 import { t as e } from "./logger-LUfhf5qs.js";
 import { createContext as t, useCallback as n, useEffect as r, useRef as i, useState as a } from "react";
-import { jsxDEV as o } from "react/jsx-dev-runtime";
-import { jsx as s } from "react/jsx-runtime";
-var c = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/faq/FAQList.tsx";
-function l() {
-	return o("div", {
+import { jsx as o, jsxs as s } from "react/jsx-runtime";
+function c() {
+	return s("div", {
 		className: "mx-auto max-w-3xl space-y-4",
 		children: [
-			o("details", {
+			s("details", {
 				className: "group rounded-lg border border-border bg-card",
 				children: [o("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "What is i18n Benchmark?"
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 5,
-					columnNumber: 9
-				}, this), o("p", {
+				}), o("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications."
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 8,
-					columnNumber: 9
-				}, this)]
-			}, void 0, !0, {
-				fileName: c,
-				lineNumber: 4,
-				columnNumber: 7
-			}, this),
-			o("details", {
+				})]
+			}),
+			s("details", {
 				className: "group rounded-lg border border-border bg-card",
 				children: [o("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "How are benchmarks conducted?"
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 16,
-					columnNumber: 9
-				}, this), o("p", {
+				}), o("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 19,
-					columnNumber: 9
-				}, this)]
-			}, void 0, !0, {
-				fileName: c,
-				lineNumber: 15,
-				columnNumber: 7
-			}, this),
-			o("details", {
+				})]
+			}),
+			s("details", {
 				className: "group rounded-lg border border-border bg-card",
 				children: [o("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "Which libraries are currently supported?"
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 28,
-					columnNumber: 9
-				}, this), o("p", {
+				}), o("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee."
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 31,
-					columnNumber: 9
-				}, this)]
-			}, void 0, !0, {
-				fileName: c,
-				lineNumber: 27,
-				columnNumber: 7
-			}, this),
-			o("details", {
+				})]
+			}),
+			s("details", {
 				className: "group rounded-lg border border-border bg-card",
 				children: [o("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "Can I submit my own benchmarks?"
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 39,
-					columnNumber: 9
-				}, this), o("p", {
+				}), o("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 42,
-					columnNumber: 9
-				}, this)]
-			}, void 0, !0, {
-				fileName: c,
-				lineNumber: 38,
-				columnNumber: 7
-			}, this),
-			o("details", {
+				})]
+			}),
+			s("details", {
 				className: "group rounded-lg border border-border bg-card",
 				children: [o("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "How often are benchmarks updated?"
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 50,
-					columnNumber: 9
-				}, this), o("p", {
+				}), o("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 53,
-					columnNumber: 9
-				}, this)]
-			}, void 0, !0, {
-				fileName: c,
-				lineNumber: 49,
-				columnNumber: 7
-			}, this),
-			o("details", {
+				})]
+			}),
+			s("details", {
 				className: "group rounded-lg border border-border bg-card",
 				children: [o("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "Is the data reliable?"
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 61,
-					columnNumber: 9
-				}, this), o("p", {
+				}), o("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 64,
-					columnNumber: 9
-				}, this)]
-			}, void 0, !0, {
-				fileName: c,
-				lineNumber: 60,
-				columnNumber: 7
-			}, this),
-			o("details", {
+				})]
+			}),
+			s("details", {
 				className: "group rounded-lg border border-border bg-card",
 				children: [o("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "Do you offer consulting services?"
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 72,
-					columnNumber: 9
-				}, this), o("p", {
+				}), o("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 75,
-					columnNumber: 9
-				}, this)]
-			}, void 0, !0, {
-				fileName: c,
-				lineNumber: 71,
-				columnNumber: 7
-			}, this),
-			o("details", {
+				})]
+			}),
+			s("details", {
 				className: "group rounded-lg border border-border bg-card",
 				children: [o("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "How can I contribute?"
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 83,
-					columnNumber: 9
-				}, this), o("p", {
+				}), o("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
-				}, void 0, !1, {
-					fileName: c,
-					lineNumber: 86,
-					columnNumber: 9
-				}, this)]
-			}, void 0, !0, {
-				fileName: c,
-				lineNumber: 82,
-				columnNumber: 7
-			}, this)
+				})]
+			})
 		]
-	}, void 0, !0, {
-		fileName: c,
-		lineNumber: 3,
-		columnNumber: 5
-	}, this);
+	});
 }
-var u = t(null);
-async function d(t, n, r) {
+var l = t(null);
+async function u(t, n, r) {
 	if (!r || !n || n.length === 0) return {};
 	let i = `${r}/translations/${t}`, a = new AbortController(), o = setTimeout(() => a.abort(), 3e4);
 	try {
@@ -210,16 +108,16 @@ async function d(t, n, r) {
 		clearTimeout(o);
 	}
 }
-var f = "__SERVER_URL__", p = "__SOURCE_LOCALE__";
-function m() {
+var d = "__SERVER_URL__", f = "__SOURCE_LOCALE__";
+function p() {
 	return "en";
 }
-var h = () => {}, g = process.env.NODE_ENV === "development", _ = 200, v = g ? b : y;
-function y({ initialLocale: t, initialTranslations: i = {}, router: o, children: c }) {
-	let [l, d] = a(() => t || (typeof window < "u" ? m() : p)), [f, g] = a(i), [_, v] = a(!1);
-	e.debug(`LingoProvider initialized with locale: ${l}`, i), r(() => {
-		typeof document < "u" && (document.documentElement.lang = l);
-	}, [l]);
+var m = () => {}, h = process.env.NODE_ENV === "development", g = 200, _ = h ? y : v;
+function v({ initialLocale: t, initialTranslations: i = {}, router: s, children: c }) {
+	let [u, d] = a(() => t || (typeof window < "u" ? p() : f)), [h, g] = a(i), [_, v] = a(!1);
+	e.debug(`LingoProvider initialized with locale: ${u}`, i), r(() => {
+		typeof document < "u" && (document.documentElement.lang = u);
+	}, [u]);
 	let y = n(async (t) => {
 		if (!(Object.keys(i).length > 0)) {
 			v(!0);
@@ -236,34 +134,34 @@ function y({ initialLocale: t, initialTranslations: i = {}, router: o, children:
 		}
 	}, [i]);
 	r(() => {
-		Object.keys(i).length === 0 && y(l);
+		Object.keys(i).length === 0 && y(u);
 	}, []), r(() => {
-		o && g(i);
-	}, [i, o]);
+		s && g(i);
+	}, [i, s]);
 	let b = n(async (e) => {
-		d(e), o ? o.refresh() : await y(e);
-	}, [o, y]);
-	return s(u.Provider, {
+		d(e), s ? s.refresh() : await y(e);
+	}, [s, y]);
+	return o(l.Provider, {
 		value: {
-			locale: l,
+			locale: u,
 			setLocale: b,
-			translations: f,
-			registerHashes: h,
+			translations: h,
+			registerHashes: m,
 			isLoading: _,
-			sourceLocale: p
+			sourceLocale: f
 		},
 		children: c
 	});
 }
-function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget: l, children: h }) {
-	let [g, v] = a(() => t || m()), [y, b] = a(o), [x, S] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(o), A = i(g);
+function y({ initialLocale: t, initialTranslations: s = {}, router: c, devWidget: m, children: h }) {
+	let [_, v] = a(() => t || p()), [y, b] = a(s), [x, S] = a(!1), [C, w] = a(/* @__PURE__ */ new Set()), T = i(/* @__PURE__ */ new Set()), E = i(/* @__PURE__ */ new Set()), D = i(/* @__PURE__ */ new Set()), O = i(null), k = i(s), A = i(_);
 	r(() => {
 		k.current = y;
 	}, [y]), r(() => {
-		A.current = g;
-	}, [g]), r(() => {
-		typeof document < "u" && (document.documentElement.lang = g);
-	}, [g]);
+		A.current = _;
+	}, [_]), r(() => {
+		typeof document < "u" && (document.documentElement.lang = _);
+	}, [_]);
 	let j = n((t) => {
 		let n = !1;
 		t.forEach((e) => {
@@ -274,16 +172,16 @@ function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget
 		});
 	}, []);
 	r(() => {
-		e.debug(`LingoProvider checking translations for locale ${g}, seen hashes: ${C.size}`);
+		e.debug(`LingoProvider checking translations for locale ${_}, seen hashes: ${C.size}`);
 		let t = [];
 		e.debug("allSeenHashes: ", [...C.values()], [...E.current.values()]);
 		for (let e of C) !y[e] && !E.current.has(e) && !D.current.has(e) && (t.push(e), E.current.add(e));
-		e.debug("Missing hashes: ", t.join(",")), (t.length !== 0 || A.current != g) && (e.debug(`Requesting translations for ${t.length} hashes in locale ${g}`), O.current && clearTimeout(O.current), O.current = setTimeout(async () => {
+		e.debug("Missing hashes: ", t.join(",")), (t.length !== 0 || A.current != _) && (e.debug(`Requesting translations for ${t.length} hashes in locale ${_}`), O.current && clearTimeout(O.current), O.current = setTimeout(async () => {
 			let t = Array.from(E.current);
 			if (E.current.clear(), e.debug(`Fetching translations for ${t.length} hashes`), t.length !== 0) {
 				S(!0);
 				try {
-					let n = await d(A.current, t, f);
+					let n = await u(A.current, t, d);
 					e.debug(`Fetched translations for ${t.length} hashes:`, n);
 					let r = new Set(Object.keys(n)), i = t.filter((e) => !r.has(e));
 					if (i.length > 0) {
@@ -302,10 +200,10 @@ function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget
 					S(!1);
 				}
 			}
-		}, _));
+		}, g));
 	}, [
 		C,
-		g,
+		_,
 		y
 	]), r(() => () => {
 		O.current && clearTimeout(O.current);
@@ -314,8 +212,8 @@ function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget
 		v(t), c && c.refresh(), S(!0);
 		let n = performance.now();
 		try {
-			e.info(`Fetching translations for locale: ${t}. Server url: ${f}`);
-			let r = await d(t, [], f), i = performance.now();
+			e.info(`Fetching translations for locale: ${t}. Server url: ${d}`);
+			let r = await u(t, [], d), i = performance.now();
 			e.info(`Translation fetch complete for ${t} in ${(i - n).toFixed(2)}ms`);
 			let a = r.entries || {};
 			e.debug(`Translations loaded for ${t}:`, a), b(a);
@@ -326,30 +224,30 @@ function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget
 		}
 	}, [c]);
 	return r(() => {
-		l?.enabled !== !1 && import("./lingo-dev-widget-C3EvpmD3.js").catch((t) => {
+		m?.enabled !== !1 && import("./lingo-dev-widget-C3EvpmD3.js").catch((t) => {
 			e.error("Failed to load dev widget:", t, t.message);
 		});
-	}, [l?.enabled]), r(() => {
-		typeof window < "u" && l?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
+	}, [m?.enabled]), r(() => {
+		typeof window < "u" && m?.enabled !== !1 && (window.__LINGO_DEV_STATE__ = {
 			isLoading: x,
-			locale: g,
-			sourceLocale: p,
+			locale: _,
+			sourceLocale: f,
 			pendingCount: E.current.size,
-			position: l?.position || "bottom-left"
-		}, window.__LINGO_DEV_WS_URL__ = f, window.__LINGO_DEV_UPDATE__?.());
+			position: m?.position || "bottom-left"
+		}, window.__LINGO_DEV_WS_URL__ = d, window.__LINGO_DEV_UPDATE__?.());
 	}, [
 		x,
-		g,
-		p,
-		l
-	]), s(u.Provider, {
+		_,
+		f,
+		m
+	]), o(l.Provider, {
 		value: {
-			locale: g,
+			locale: _,
 			setLocale: M,
 			translations: y,
 			registerHashes: j,
 			isLoading: x,
-			sourceLocale: p,
+			sourceLocale: f,
 			_devStats: {
 				pendingCount: E.current.size,
 				totalRegisteredCount: T.current.size
@@ -358,30 +256,16 @@ function b({ initialLocale: t, initialTranslations: o = {}, router: c, devWidget
 		children: h
 	});
 }
-var x = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
-function S({ children: e }) {
-	return o(v, {
+function b({ children: e }) {
+	return o(_, {
 		initialLocale: "en",
 		children: e
-	}, void 0, !1, {
-		fileName: x,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var C = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/faq/FAQList.wrapper.tsx";
-function w() {
-	return o(S, { children: o(l, {}, void 0, !1, {
-		fileName: C,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: C,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function x() {
+	return o(b, { children: o(c, {}) });
 }
-export { w as default };
+export { x as default };
 import { t as e } from "./logger-LUfhf5qs.js";
 var t = class extends HTMLElement {
 	shadow;

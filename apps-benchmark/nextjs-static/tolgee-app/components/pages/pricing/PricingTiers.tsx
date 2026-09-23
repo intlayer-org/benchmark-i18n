@@ -7,52 +7,46 @@ export default function PricingTiers() {
 
   const tiers = [
     {
-      name: t("pricingTiers.freeTier", "Free Tier"),
-      price: t("pricingTiers.free", "Free"),
+      name: t("pricingTiers.freeTier"),
+      price: t("pricingTiers.free"),
       period: "",
       features: [
-        t("pricingTiers.publicBenchmarkDashboard", "Public benchmark dashboard"),
-        t("pricingTiers.basicLibraryComparisons", "Basic library comparisons"),
-        t("pricingTiers.communityForumAccess", "Community forum access"),
-        t("pricingTiers.monthlyResultDigest", "Monthly result digest"),
+        t("pricingTiers.publicBenchmarkDashboard"),
+        t("pricingTiers.basicLibraryComparisons"),
+        t("pricingTiers.communityForumAccess"),
+        t("pricingTiers.monthlyResultDigest"),
       ],
-      cta: t("pricingTiers.getStarted", "Get Started"),
+      cta: t("pricingTiers.getStarted"),
     },
     {
-      name: t("pricingTiers.proTier", "Pro Tier"),
+      name: t("pricingTiers.proTier"),
       price: "$29",
-      period: t("pricingTiers.perMonth", "/month"),
+      period: t("pricingTiers.perMonth"),
       features: [
-        t("pricingTiers.allFreeFeatures", "All Free features"),
+        t("pricingTiers.allFreeFeatures"),
         t(
-          "pricingTiers.customBenchmarkConfigurations",
-          "Custom benchmark configurations"
-        ),
-        t("pricingTiers.privateResultsDashboard", "Private results dashboard"),
-        t("pricingTiers.apiAccess1000Requests", "API access (1,000 requests/day)"),
-        t("pricingTiers.slackIntegration", "Slack integration"),
+          "pricingTiers.customBenchmarkConfigurations"),
+        t("pricingTiers.privateResultsDashboard"),
+        t("pricingTiers.apiAccess1000Requests"),
+        t("pricingTiers.slackIntegration"),
       ],
       highlighted: true,
-      cta: t("pricingTiers.subscribeToPro", "Subscribe to Pro"),
+      cta: t("pricingTiers.subscribeToPro"),
     },
     {
-      name: t("pricingTiers.enterpriseTier", "Enterprise Tier"),
-      price: t("pricingTiers.custom", "Custom"),
+      name: t("pricingTiers.enterpriseTier"),
+      price: t("pricingTiers.custom"),
       period: "",
       features: [
-        t("pricingTiers.allProFeatures", "All Pro features"),
+        t("pricingTiers.allProFeatures"),
         t(
-          "pricingTiers.dedicatedBenchmarkInfrastructure",
-          "Dedicated benchmark infrastructure"
-        ),
+          "pricingTiers.dedicatedBenchmarkInfrastructure"),
         t(
-          "pricingTiers.customLibraryIntegrations",
-          "Custom library integrations"
-        ),
-        t("pricingTiers.slaGuarantees", "SLA guarantees"),
-        t("pricingTiers.prioritySupport", "Priority support"),
+          "pricingTiers.customLibraryIntegrations"),
+        t("pricingTiers.slaGuarantees"),
+        t("pricingTiers.prioritySupport"),
       ],
-      cta: t("pricingTiers.contactSales", "Contact Sales"),
+      cta: t("pricingTiers.contactSales"),
     },
   ];
 

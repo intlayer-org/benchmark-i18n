@@ -1,6 +1,5 @@
 import { cloneElement, createContext, useContext, useEffect, useId, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsx } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -274,210 +273,85 @@ This often happens when multiple instances of @lingui/react are installed (e.g. 
 		lingui
 	});
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/settings/PreferencesSection.tsx";
 function PreferencesSection() {
 	const languageId = useId();
 	const { i18n } = useLingui();
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: jsxDEV(Trans, {
+			children: jsx(Trans, {
 				id: "settings.preferences.title",
 				message: "Preferences"
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 13,
-				columnNumber: 9
-			}, this)
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 12,
-			columnNumber: 7
-		}, this), jsxDEV("div", {
+			})
+		}), jsxs("div", {
 			className: "space-y-4",
 			children: [
-				jsxDEV("div", {
+				jsxs("div", {
 					className: "flex items-center justify-between",
-					children: [jsxDEV("div", { children: [jsxDEV("p", {
+					children: [jsxs("div", { children: [jsx("p", {
 						className: "text-sm font-medium text-foreground",
-						children: jsxDEV(Trans, {
+						children: jsx(Trans, {
 							id: "settings.preferences.emailNotifications",
 							message: "Email Notifications"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 19,
-							columnNumber: 15
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 18,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+						})
+					}), jsx("p", {
 						className: "text-xs text-muted-foreground",
-						children: jsxDEV(Trans, {
+						children: jsx(Trans, {
 							id: "settings.preferences.receiveWeeklyReports",
 							message: "Receive weekly benchmark reports"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 25,
-							columnNumber: 15
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 24,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 17,
-						columnNumber: 11
-					}, this), jsxDEV("button", {
+						})
+					})] }), jsx("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-primary transition-colors",
 						"aria-label": "Toggle notifications",
-						children: jsxDEV("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 36,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 16,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+						children: jsx("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
+					})]
+				}),
+				jsxs("div", {
 					className: "flex items-center justify-between",
-					children: [jsxDEV("div", { children: [jsxDEV("p", {
+					children: [jsxs("div", { children: [jsx("p", {
 						className: "text-sm font-medium text-foreground",
-						children: jsxDEV(Trans, {
+						children: jsx(Trans, {
 							id: "settings.preferences.darkMode",
 							message: "Dark Mode"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 42,
-							columnNumber: 15
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 41,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+						})
+					}), jsx("p", {
 						className: "text-xs text-muted-foreground",
-						children: jsxDEV(Trans, {
+						children: jsx(Trans, {
 							id: "settings.preferences.useDarkScheme",
 							message: "Use dark color scheme"
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 45,
-							columnNumber: 15
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 44,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 40,
-						columnNumber: 11
-					}, this), jsxDEV("button", {
+						})
+					})] }), jsx("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-muted transition-colors",
 						"aria-label": "Toggle dark mode",
-						children: jsxDEV("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 56,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 51,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 39,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", { children: [jsxDEV("label", {
+						children: jsx("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
+					})]
+				}),
+				jsxs("div", { children: [jsx("label", {
 					htmlFor: languageId,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: jsxDEV(Trans, {
+					children: jsx(Trans, {
 						id: "settings.preferences.defaultLanguage",
 						message: "Default Language"
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 64,
-						columnNumber: 13
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 60,
-					columnNumber: 11
-				}, this), jsxDEV("select", {
+					})
+				}), jsxs("select", {
 					id: languageId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					children: [
-						jsxDEV("option", { children: i18n._("settings.preferences.english") }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 73,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: i18n._("settings.preferences.french") }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 74,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: i18n._("settings.preferences.german") }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 75,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: i18n._("settings.preferences.spanish") }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 76,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: i18n._("settings.preferences.japanese") }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 77,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: i18n._("settings.preferences.chinese") }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 78,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: i18n._("settings.preferences.arabic") }, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 79,
-							columnNumber: 13
-						}, this)
+						jsx("option", { children: i18n._("settings.preferences.english") }),
+						jsx("option", { children: i18n._("settings.preferences.french") }),
+						jsx("option", { children: i18n._("settings.preferences.german") }),
+						jsx("option", { children: i18n._("settings.preferences.spanish") }),
+						jsx("option", { children: i18n._("settings.preferences.japanese") }),
+						jsx("option", { children: i18n._("settings.preferences.chinese") }),
+						jsx("option", { children: i18n._("settings.preferences.arabic") })
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 69,
-					columnNumber: 11
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 59,
-					columnNumber: 9
-				}, this)
+				})] })
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 15,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 11,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1898,7 +1772,6 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const messages = useMemo(() => getMessages(locale), [locale]);
@@ -1913,33 +1786,15 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		i18n,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 35,
-		columnNumber: 7
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/settings/PreferencesSection.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(PreferencesSection, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(PreferencesSection, {}) });
 }
 export { Wrapped as default };

@@ -1,4 +1,3 @@
-import { tolgee } from "../../i18n/tolgee";
 import { createFileRoute } from "@tanstack/react-router";
 import { lazy, Suspense } from "react";
 
@@ -13,14 +12,6 @@ const OpenPositions = lazy(
 );
 
 export const Route = createFileRoute("/$locale/careers")({
-  loader: async ({ params }) => {
-    await tolgee.loadRecords([
-      { language: params.locale, namespace: "careers" },
-      { language: params.locale, namespace: "careersHeader" },
-      { language: params.locale, namespace: "careersBenefits" },
-      { language: params.locale, namespace: "openPositions" },
-    ]);
-  },
   component: Careers,
 });
 

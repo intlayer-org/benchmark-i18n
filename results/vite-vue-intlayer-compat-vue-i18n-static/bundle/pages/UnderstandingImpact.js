@@ -1,4 +1,4 @@
-import { computed, createElementBlock, createElementVNode, createTextVNode, defineComponent, getCurrentInstance, h, inject, onBeforeMount, onMounted, openBlock, readonly, ref, renderSlot, toDisplayString } from "vue";
+import { computed, createElementBlock, createElementVNode, createTextVNode, defineComponent, getCurrentInstance, h, inject, onBeforeMount, onMounted, openBlock, readonly, ref, renderSlot, toDisplayString, unref } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -988,25 +988,6 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var UnderstandingImpact_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "UnderstandingImpact",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		usePerformanceMeasure("UnderstandingImpact");
-		const { t } = useI18n();
-		const __returned__ = { t };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "mb-16 mx-auto max-w-3xl space-y-6" };
 var _hoisted_2 = { class: "text-2xl font-bold text-foreground" };
 var _hoisted_3 = { class: "rounded-lg border border-border bg-card p-6" };
@@ -1023,54 +1004,52 @@ var _hoisted_13 = { class: "text-foreground" };
 var _hoisted_14 = { class: "rounded-lg border border-border bg-card p-6" };
 var _hoisted_15 = { class: "mb-2 text-lg font-semibold text-foreground" };
 var _hoisted_16 = { class: "text-sm text-muted-foreground" };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("section", _hoisted_1, [
-		createElementVNode("h2", _hoisted_2, toDisplayString($setup.t("home.understandingImpact.title")), 1),
-		createElementVNode("div", _hoisted_3, [
-			createElementVNode("h3", _hoisted_4, toDisplayString($setup.t("home.understandingImpact.singleJsonTitle")), 1),
-			createElementVNode("p", _hoisted_5, toDisplayString($setup.t("home.understandingImpact.singleJsonIntro")), 1),
-			createElementVNode("ul", _hoisted_6, [
-				createElementVNode("li", null, toDisplayString($setup.t("home.understandingImpact.singleJsonBullet1")), 1),
-				createElementVNode("li", null, toDisplayString($setup.t("home.understandingImpact.singleJsonBullet2")), 1),
-				createElementVNode("li", null, toDisplayString($setup.t("home.understandingImpact.singleJsonBullet3")), 1)
-			])
-		]),
-		createElementVNode("div", _hoisted_7, [
-			createElementVNode("h3", _hoisted_8, toDisplayString($setup.t("home.understandingImpact.tradeOffsTitle")), 1),
-			createElementVNode("p", _hoisted_9, toDisplayString($setup.t("home.understandingImpact.tradeOffsIntro")), 1),
-			createElementVNode("ul", _hoisted_10, [
-				createElementVNode("li", null, [createElementVNode("strong", _hoisted_11, toDisplayString($setup.t("home.understandingImpact.waterfallLabel")), 1), createTextVNode(" " + toDisplayString($setup.t("home.understandingImpact.waterfallDesc")), 1)]),
-				createElementVNode("li", null, [createElementVNode("strong", _hoisted_12, toDisplayString($setup.t("home.understandingImpact.foucLabel")), 1), createTextVNode(" " + toDisplayString($setup.t("home.understandingImpact.foucDesc")), 1)]),
-				createElementVNode("li", null, [createElementVNode("strong", _hoisted_13, toDisplayString($setup.t("home.understandingImpact.cacheLabel")), 1), createTextVNode(" " + toDisplayString($setup.t("home.understandingImpact.cacheDesc")), 1)])
-			])
-		]),
-		createElementVNode("div", _hoisted_14, [createElementVNode("h3", _hoisted_15, toDisplayString($setup.t("home.understandingImpact.measuresTitle")), 1), createElementVNode("p", _hoisted_16, toDisplayString($setup.t("home.understandingImpact.measuresDesc")), 1)])
-	]);
-}
-var UnderstandingImpact_default = _plugin_vue_export_helper_default(UnderstandingImpact_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/home/UnderstandingImpact.vue"]]);
+var UnderstandingImpact_default = defineComponent({
+	__name: "UnderstandingImpact",
+	setup(__props) {
+		usePerformanceMeasure("UnderstandingImpact");
+		const { t } = useI18n();
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("section", _hoisted_1, [
+				createElementVNode("h2", _hoisted_2, toDisplayString(unref(t)("home.understandingImpact.title")), 1),
+				createElementVNode("div", _hoisted_3, [
+					createElementVNode("h3", _hoisted_4, toDisplayString(unref(t)("home.understandingImpact.singleJsonTitle")), 1),
+					createElementVNode("p", _hoisted_5, toDisplayString(unref(t)("home.understandingImpact.singleJsonIntro")), 1),
+					createElementVNode("ul", _hoisted_6, [
+						createElementVNode("li", null, toDisplayString(unref(t)("home.understandingImpact.singleJsonBullet1")), 1),
+						createElementVNode("li", null, toDisplayString(unref(t)("home.understandingImpact.singleJsonBullet2")), 1),
+						createElementVNode("li", null, toDisplayString(unref(t)("home.understandingImpact.singleJsonBullet3")), 1)
+					])
+				]),
+				createElementVNode("div", _hoisted_7, [
+					createElementVNode("h3", _hoisted_8, toDisplayString(unref(t)("home.understandingImpact.tradeOffsTitle")), 1),
+					createElementVNode("p", _hoisted_9, toDisplayString(unref(t)("home.understandingImpact.tradeOffsIntro")), 1),
+					createElementVNode("ul", _hoisted_10, [
+						createElementVNode("li", null, [createElementVNode("strong", _hoisted_11, toDisplayString(unref(t)("home.understandingImpact.waterfallLabel")), 1), createTextVNode(" " + toDisplayString(unref(t)("home.understandingImpact.waterfallDesc")), 1)]),
+						createElementVNode("li", null, [createElementVNode("strong", _hoisted_12, toDisplayString(unref(t)("home.understandingImpact.foucLabel")), 1), createTextVNode(" " + toDisplayString(unref(t)("home.understandingImpact.foucDesc")), 1)]),
+						createElementVNode("li", null, [createElementVNode("strong", _hoisted_13, toDisplayString(unref(t)("home.understandingImpact.cacheLabel")), 1), createTextVNode(" " + toDisplayString(unref(t)("home.understandingImpact.cacheDesc")), 1)])
+					])
+				]),
+				createElementVNode("div", _hoisted_14, [createElementVNode("h3", _hoisted_15, toDisplayString(unref(t)("home.understandingImpact.measuresTitle")), 1), createElementVNode("p", _hoisted_16, toDisplayString(unref(t)("home.understandingImpact.measuresDesc")), 1)])
+			]);
+		};
+	}
+});
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var UnderstandingImpact_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(UnderstandingImpact_default) });
 } };

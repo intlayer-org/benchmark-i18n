@@ -975,56 +975,30 @@ var useI18n = ((options) => {
 		n: (value, formatOrOptions) => formatNumberValue(value, formatOrOptions, currentLocale.value, numberFormats)
 	};
 });
-var EmptyComponent_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var EmptyComponent_default = defineComponent({
 	__name: "EmptyComponent",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const { t } = useI18n();
-		const __returned__ = {
-			t,
-			value: t("header.home")
+		t("header.home");
+		return (_ctx, _cache) => {
+			return null;
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return null;
-}
-var EmptyComponent_default = _plugin_vue_export_helper_default(EmptyComponent_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/EmptyComponent.vue"]]);
-var LibWrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var LibWrapper_default = defineComponent({
 	__name: "LibWrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const i18n = createI18n({
 			legacy: false,
 			locale: "en"
 		});
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = {
-			i18n,
-			app
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var LibWrapper_default = _plugin_vue_export_helper_default(LibWrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/LibWrapper.vue"]]);
 var EmptyComponent_wrapper_default = { render() {
 	return h(LibWrapper_default, {}, { default: () => h(EmptyComponent_default) });
 } };

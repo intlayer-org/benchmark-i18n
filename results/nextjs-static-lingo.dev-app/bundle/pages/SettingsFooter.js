@@ -1,33 +1,19 @@
 import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
-import { jsxDEV } from "react/jsx-dev-runtime";
-import { jsx } from "react/jsx-runtime";
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/settings/SettingsFooter.tsx";
+import { jsx, jsxs } from "react/jsx-runtime";
 function SettingsFooter() {
-	return jsxDEV("div", {
+	return jsxs("div", {
 		className: "flex justify-end gap-3",
-		children: [jsxDEV("button", {
+		children: [jsx("button", {
 			type: "button",
 			className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 			children: "Cancel"
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 4,
-			columnNumber: 7
-		}, this), jsxDEV("button", {
+		}), jsx("button", {
 			type: "submit",
 			className: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 			children: "Save Changes"
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 10,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 3,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -261,28 +247,14 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(LingoProvider, {
+	return jsx(LingoProvider, {
 		initialLocale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/settings/SettingsFooter.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(SettingsFooter, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(SettingsFooter, {}) });
 }
 export { Wrapped as default };
 import { t as logger } from "./logger-CWLzb-Ic.js";

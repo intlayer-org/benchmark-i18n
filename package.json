@@ -21,6 +21,7 @@
     "apps-benchmark/tanstack-start-react-scoped-dynamic/*",
     "apps-benchmark/vite-solid-static/*",
     "apps-benchmark/vite-vue-static/*",
+    "apps-benchmark/vite-vue-dynamic/*",
     "apps-benchmark/vite-svelte-static/*"
   ],
   "scripts": {

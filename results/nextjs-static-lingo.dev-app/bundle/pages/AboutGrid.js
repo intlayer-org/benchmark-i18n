@@ -1,59 +1,29 @@
 import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
-import { jsxDEV } from "react/jsx-dev-runtime";
-import { jsx } from "react/jsx-runtime";
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/about/AboutGrid.tsx";
+import { jsx, jsxs } from "react/jsx-runtime";
 function AboutGrid() {
-	return jsxDEV("div", {
+	return jsxs("div", {
 		className: "grid gap-8 md:grid-cols-2",
-		children: [jsxDEV("div", {
+		children: [jsxs("div", {
 			className: "rounded-lg border border-border bg-card p-6",
-			children: [jsxDEV("h2", {
+			children: [jsx("h2", {
 				className: "mb-3 text-xl font-semibold text-foreground",
 				children: "Why This Exists"
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 5,
-				columnNumber: 9
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "text-sm text-muted-foreground",
 				children: "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 8,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 4,
-			columnNumber: 7
-		}, this), jsxDEV("div", {
+			})]
+		}), jsxs("div", {
 			className: "rounded-lg border border-border bg-card p-6",
-			children: [jsxDEV("h2", {
+			children: [jsx("h2", {
 				className: "mb-3 text-xl font-semibold text-foreground",
 				children: "Methodology"
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 18,
-				columnNumber: 9
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "text-sm text-muted-foreground",
 				children: "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 21,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 17,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 3,
-		columnNumber: 5
-	}, this);
+			})]
+		})]
+	});
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -287,28 +257,14 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(LingoProvider, {
+	return jsx(LingoProvider, {
 		initialLocale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/about/AboutGrid.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(AboutGrid, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(AboutGrid, {}) });
 }
 export { Wrapped as default };
 import { t as logger } from "./logger-CWLzb-Ic.js";

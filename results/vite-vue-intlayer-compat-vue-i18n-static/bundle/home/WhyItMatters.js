@@ -1,4 +1,4 @@
-import { computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, onBeforeMount, onMounted, openBlock, readonly, ref, renderSlot, toDisplayString } from "vue";
+import { computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, onBeforeMount, onMounted, openBlock, readonly, ref, renderSlot, toDisplayString, unref } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -988,25 +988,6 @@ function usePerformanceMeasure(name) {
 		}
 	});
 }
-var WhyItMatters_vue_vue_type_script_setup_true_lang_default = defineComponent({
-	__name: "WhyItMatters",
-	setup(__props, { expose: __expose }) {
-		__expose();
-		usePerformanceMeasure("WhyItMatters");
-		const { t } = useI18n();
-		const __returned__ = { t };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
-	}
-});
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
 var _hoisted_1 = { class: "mb-16" };
 var _hoisted_2 = { class: "mb-6 text-2xl font-bold text-foreground" };
 var _hoisted_3 = { class: "grid gap-6 md:grid-cols-3" };
@@ -1019,37 +1000,35 @@ var _hoisted_9 = { class: "text-sm text-muted-foreground" };
 var _hoisted_10 = { class: "rounded-lg border border-border bg-card p-6" };
 var _hoisted_11 = { class: "mb-2 text-lg font-semibold text-foreground" };
 var _hoisted_12 = { class: "text-sm text-muted-foreground" };
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString($setup.t("home.whyItMatters.title")), 1), createElementVNode("div", _hoisted_3, [
-		createElementVNode("div", _hoisted_4, [createElementVNode("h3", _hoisted_5, toDisplayString($setup.t("home.whyItMatters.bundleSizeTitle")), 1), createElementVNode("p", _hoisted_6, toDisplayString($setup.t("home.whyItMatters.bundleSizeDesc")), 1)]),
-		createElementVNode("div", _hoisted_7, [createElementVNode("h3", _hoisted_8, toDisplayString($setup.t("home.whyItMatters.renderingTitle")), 1), createElementVNode("p", _hoisted_9, toDisplayString($setup.t("home.whyItMatters.renderingDesc")), 1)]),
-		createElementVNode("div", _hoisted_10, [createElementVNode("h3", _hoisted_11, toDisplayString($setup.t("home.whyItMatters.dynamicLoadingTitle")), 1), createElementVNode("p", _hoisted_12, toDisplayString($setup.t("home.whyItMatters.dynamicLoadingDesc")), 1)])
-	])]);
-}
-var WhyItMatters_default = _plugin_vue_export_helper_default(WhyItMatters_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/src/components/pages/home/WhyItMatters.vue"]]);
+var WhyItMatters_default = defineComponent({
+	__name: "WhyItMatters",
+	setup(__props) {
+		usePerformanceMeasure("WhyItMatters");
+		const { t } = useI18n();
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("section", _hoisted_1, [createElementVNode("h2", _hoisted_2, toDisplayString(unref(t)("home.whyItMatters.title")), 1), createElementVNode("div", _hoisted_3, [
+				createElementVNode("div", _hoisted_4, [createElementVNode("h3", _hoisted_5, toDisplayString(unref(t)("home.whyItMatters.bundleSizeTitle")), 1), createElementVNode("p", _hoisted_6, toDisplayString(unref(t)("home.whyItMatters.bundleSizeDesc")), 1)]),
+				createElementVNode("div", _hoisted_7, [createElementVNode("h3", _hoisted_8, toDisplayString(unref(t)("home.whyItMatters.renderingTitle")), 1), createElementVNode("p", _hoisted_9, toDisplayString(unref(t)("home.whyItMatters.renderingDesc")), 1)]),
+				createElementVNode("div", _hoisted_10, [createElementVNode("h3", _hoisted_11, toDisplayString(unref(t)("home.whyItMatters.dynamicLoadingTitle")), 1), createElementVNode("p", _hoisted_12, toDisplayString(unref(t)("home.whyItMatters.dynamicLoadingDesc")), 1)])
+			])]);
+		};
+	}
+});
 var i18n = createI18n({
 	legacy: false,
 	locale: "en",
 	fallbackLocale: "en"
 });
-var Wrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
+var Wrapper_default = defineComponent({
 	__name: "Wrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$i18n) app.use(i18n);
-		const __returned__ = { app };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
+		};
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
-var Wrapper_default = _plugin_vue_export_helper_default(Wrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/intlayer-compat-vue-i18n-app/scripts/Wrapper.vue"]]);
 var WhyItMatters_wrapper_default = { render() {
 	return h(Wrapper_default, {}, { default: () => h(WhyItMatters_default) });
 } };

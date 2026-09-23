@@ -7,19 +7,10 @@ var o = (e, t) => {
 function l(e, n) {
 	return a(), t("div", c, " ⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service. ");
 }
-var u = o(s, [["render", l], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/MockBanner.vue"]]), d = i({
+var u = o(s, [["render", l]]), d = i({
 	__name: "PricingHeader",
-	setup(e, { expose: t }) {
-		t();
-		let n = { MockBanner: u };
-		return Object.defineProperty(n, "__isScriptSetup", {
-			enumerable: !1,
-			value: !0
-		}), n;
+	setup(i) {
+		return (i, o) => (a(), t(e, null, [r(u), o[0] ||= n("div", { class: "mb-12 text-center" }, [n("h1", { class: "mb-3 text-3xl font-bold text-foreground" }, " Simple, Transparent Pricing "), n("p", { class: "text-muted-foreground" }, " Choose the plan that fits your team. No hidden fees. ")], -1)], 64));
 	}
 });
-function f(i, o, s, c, l, u) {
-	return a(), t(e, null, [r(c.MockBanner), o[0] ||= n("div", { class: "mb-12 text-center" }, [n("h1", { class: "mb-3 text-3xl font-bold text-foreground" }, " Simple, Transparent Pricing "), n("p", { class: "text-muted-foreground" }, " Choose the plan that fits your team. No hidden fees. ")], -1)], 64);
-}
-var p = o(d, [["render", f], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/pages/pricing/PricingHeader.vue"]]);
-export { p as default };
+export { d as default };

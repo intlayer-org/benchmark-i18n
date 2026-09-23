@@ -1,16 +1,11 @@
-import { jsxDEV } from "react/jsx-dev-runtime";
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-react-base-app/src/components/pages/about/WhatWeMeasure.tsx";
+import { jsx, jsxs } from "react/jsx-runtime";
 function WhatWeMeasure() {
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mt-12 mx-auto max-w-3xl",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-4 text-2xl font-bold text-foreground",
 			children: "What We Measure"
-		}, void 0, false, {
-			fileName: _jsxFileName,
-			lineNumber: 27,
-			columnNumber: 7
-		}, this), jsxDEV("ul", {
+		}), jsx("ul", {
 			className: "space-y-4",
 			children: [
 				{
@@ -33,37 +28,17 @@ function WhatWeMeasure() {
 					metric: "Locale switch speed",
 					desc: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
 				}
-			].map((m) => jsxDEV("li", {
+			].map((m) => jsxs("li", {
 				className: "rounded-md border border-border p-4",
-				children: [jsxDEV("span", {
+				children: [jsx("span", {
 					className: "block text-sm font-bold text-primary",
 					children: m.metric
-				}, void 0, false, {
-					fileName: _jsxFileName,
-					lineNumber: 33,
-					columnNumber: 13
-				}, this), jsxDEV("span", {
+				}), jsx("span", {
 					className: "block mt-1 text-sm text-muted-foreground",
 					children: m.desc
-				}, void 0, false, {
-					fileName: _jsxFileName,
-					lineNumber: 36,
-					columnNumber: 13
-				}, this)]
-			}, m.metric, true, {
-				fileName: _jsxFileName,
-				lineNumber: 32,
-				columnNumber: 11
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName,
-			lineNumber: 30,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName,
-		lineNumber: 26,
-		columnNumber: 5
-	}, this);
+				})]
+			}, m.metric))
+		})]
+	});
 }
 export { WhatWeMeasure as default };

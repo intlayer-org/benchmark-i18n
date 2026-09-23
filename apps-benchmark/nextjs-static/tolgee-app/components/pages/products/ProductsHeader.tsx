@@ -8,12 +8,11 @@ export default function ProductsHeader() {
     <>
       <MockBanner />
       <h1 className="mb-2 text-3xl font-bold text-foreground">
-        <T keyName="productsHeader.products" defaultValue="Products" />
+        <T keyName="productsHeader.products" />
       </h1>
       <p className="mb-10 text-muted-foreground">
         <T
           keyName="productsHeader.toolsAndServicesTo"
-          defaultValue="Tools and services to help you optimize your internationalization strategy."
         />
       </p>
     </>

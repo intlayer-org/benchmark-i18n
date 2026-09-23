@@ -1,6 +1,5 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -57,12 +56,12 @@ var getLocaleFromDomain = (hostname, domains) => {
 var PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
 var LOCALES = ["en"];
 var resolveRoutingConfig = (options = {}) => ({
-	defaultLocale: internationalization?.defaultLocale ?? "en",
-	mode: routing?.mode ?? "prefix-no-default",
-	locales: internationalization?.locales ?? LOCALES,
-	rewrite: routing?.rewrite,
-	domains: routing?.domains,
-	...options
+	...options,
+	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
+	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
+	locales: options.locales ?? internationalization?.locales ?? LOCALES,
+	rewrite: options.rewrite ?? routing?.rewrite,
+	domains: options.domains ?? routing?.domains
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -780,56 +779,29 @@ var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const plainLoaders = dictionaryPromise;
 	return getDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, plainLoaders[localeTarget]?.()), localeTarget);
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/settings/SettingsFooter.tsx";
 function SettingsFooter() {
 	const content$1 = useDictionaryDynamic(content, "settings-footer");
-	return jsxDEV("div", {
+	return jsxs("div", {
 		className: "flex justify-end gap-3",
-		children: [jsxDEV("button", {
+		children: [jsx("button", {
 			type: "button",
 			className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 			children: content$1.a
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 7,
-			columnNumber: 7
-		}, this), jsxDEV("button", {
+		}), jsx("button", {
 			type: "submit",
 			className: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 			children: content$1.b
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 11,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/settings/SettingsFooter.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(SettingsFooter, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(SettingsFooter, {}) });
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

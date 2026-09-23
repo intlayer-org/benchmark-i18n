@@ -1,14 +1,9 @@
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-react-base-app/src/components/pages/careers/OpenPositions.tsx";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 function OpenPositions() {
-	return jsxDEV(Fragment, { children: [jsxDEV("h2", {
+	return jsxs(Fragment, { children: [jsx("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: "Open Positions"
-	}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 42,
-		columnNumber: 7
-	}, this), jsxDEV("div", {
+	}), jsx("div", {
 		className: "space-y-4",
 		children: [
 			{
@@ -46,80 +41,40 @@ function OpenPositions() {
 				dept: "Engineering",
 				desc: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
 			}
-		].map((o) => jsxDEV("div", {
+		].map((o) => jsxs("div", {
 			className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-			children: [jsxDEV("div", { children: [
-				jsxDEV("h3", {
+			children: [jsxs("div", { children: [
+				jsx("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: o.title
-				}, void 0, false, {
-					fileName: _jsxFileName,
-					lineNumber: 52,
-					columnNumber: 15
-				}, this),
-				jsxDEV("p", {
+				}),
+				jsx("p", {
 					className: "text-sm text-muted-foreground",
 					children: o.desc
-				}, void 0, false, {
-					fileName: _jsxFileName,
-					lineNumber: 55,
-					columnNumber: 15
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "mt-2 flex gap-2",
 					children: [
-						jsxDEV("span", {
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.dept
-						}, void 0, false, {
-							fileName: _jsxFileName,
-							lineNumber: 57,
-							columnNumber: 17
-						}, this),
-						jsxDEV("span", {
+						}),
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.location
-						}, void 0, false, {
-							fileName: _jsxFileName,
-							lineNumber: 60,
-							columnNumber: 17
-						}, this),
-						jsxDEV("span", {
+						}),
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.type
-						}, void 0, false, {
-							fileName: _jsxFileName,
-							lineNumber: 63,
-							columnNumber: 17
-						}, this)
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName,
-					lineNumber: 56,
-					columnNumber: 15
-				}, this)
-			] }, void 0, true, {
-				fileName: _jsxFileName,
-				lineNumber: 51,
-				columnNumber: 13
-			}, this), jsxDEV("button", {
+				})
+			] }), jsx("button", {
 				type: "button",
 				className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: "Apply Now"
-			}, void 0, false, {
-				fileName: _jsxFileName,
-				lineNumber: 68,
-				columnNumber: 13
-			}, this)]
-		}, o.title, true, {
-			fileName: _jsxFileName,
-			lineNumber: 47,
-			columnNumber: 11
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 45,
-		columnNumber: 7
-	}, this)] }, void 0, true);
+			})]
+		}, o.title))
+	})] });
 }
 export { OpenPositions as default };

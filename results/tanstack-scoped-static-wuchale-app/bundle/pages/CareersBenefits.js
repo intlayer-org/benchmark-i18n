@@ -1,11 +1,6 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var onInvalidFunc = () => "";
-onInvalidFunc = (i, c) => {
-	const item = c[i];
-	if (item == null) return `[i18n-404:${i}]`;
-	return `[i18n-400:${i}(${item})]`;
-};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -94,7 +89,6 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("careers", loadCatalog$11, 1);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/careers/CareersBenefits.tsx";
 function CareersBenefits() {
 	const _w_runtime_ = getRuntimeRx();
 	const benefits = [
@@ -111,35 +105,19 @@ function CareersBenefits() {
 			value: "20% time for OSS contributions"
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
-		children: benefits.map((b) => jsxDEV("div", {
+		children: benefits.map((b) => jsxs("div", {
 			className: "rounded-lg border border-border bg-card p-4 text-center",
-			children: [jsxDEV("p", {
+			children: [jsx("p", {
 				className: "text-sm font-semibold text-foreground",
 				children: b.label
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 24,
-				columnNumber: 11
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "text-xs text-muted-foreground",
 				children: b.value
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 25,
-				columnNumber: 11
-			}, this)]
-		}, b.label, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 20,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 18,
-		columnNumber: 5
-	}, this);
+			})]
+		}, b.label))
+	});
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -317,26 +295,12 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/careers/CareersBenefits.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(CareersBenefits, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(CareersBenefits, {}) });
 }
 export { Wrapped as default };
 var c = [

@@ -5,35 +5,27 @@ export default function ProductsGrid() {
 
   const products = [
     {
-      name: t("productsGrid.benchmarkDashboard", "Benchmark Dashboard"),
+      name: t("productsGrid.benchmarkDashboard"),
       desc: t(
-        "productsGrid.interactiveChartsAndTables",
-        "Interactive charts and tables comparing i18n libraries across bundle size, render time, and hydration cost."
-      ),
-      price: t("pricingTiers.free", "Free"),
+        "productsGrid.interactiveChartsAndTables"),
+      price: t("pricingTiers.free"),
     },
     {
-      name: t("productsGrid.bundleAnalyzer", "Bundle Analyzer"),
+      name: t("productsGrid.bundleAnalyzer"),
       desc: t(
-        "productsGrid.uploadYourBuildOutput",
-        "Upload your build output and get a detailed breakdown of how much of your bundle is i18n overhead."
-      ),
+        "productsGrid.uploadYourBuildOutput"),
       price: "$29/mo",
     },
     {
-      name: t("productsGrid.migrationAssistant", "Migration Assistant"),
+      name: t("productsGrid.migrationAssistant"),
       desc: t(
-        "productsGrid.automatedCodemodsAndGuides",
-        "Automated codemods and guides for migrating between i18n libraries with minimal disruption."
-      ),
-      price: t("pricingTiers.custom", "Custom"),
+        "productsGrid.automatedCodemodsAndGuides"),
+      price: t("pricingTiers.custom"),
     },
     {
-      name: t("productsGrid.performanceMonitor", "Performance Monitor"),
+      name: t("productsGrid.performanceMonitor"),
       desc: t(
-        "productsGrid.continuousPerformanceTrackingFor",
-        "Continuous performance tracking for your i18n implementation. Get alerts when translation loading degrades."
-      ),
+        "productsGrid.continuousPerformanceTrackingFor"),
       price: "$49/mo",
     },
   ];
@@ -57,7 +49,7 @@ export default function ProductsGrid() {
               type="button"
               className="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              <T keyName="productsGrid.learnMore" defaultValue="Learn More" />
+              <T keyName="productsGrid.learnMore" />
             </button>
           </div>
         </div>

@@ -5,61 +5,51 @@ export default function OpenPositions() {
 
   const openings = [
     {
-      title: t("openPositions.seniorFrontendEngineer", "Senior Frontend Engineer"),
-      location: t("openPositions.remote", "Remote"),
-      type: t("openPositions.fullTime", "Full-time"),
-      dept: t("openPositions.engineering", "Engineering"),
+      title: t("openPositions.seniorFrontendEngineer"),
+      location: t("openPositions.remote"),
+      type: t("openPositions.fullTime"),
+      dept: t("openPositions.engineering"),
       desc: t(
-        "openPositions.buildAndMaintainOur",
-        "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
-      ),
+        "openPositions.buildAndMaintainOur"),
     },
     {
-      title: t("openPositions.backendEngineer", "Backend Engineer"),
-      location: t("openPositions.remote", "Remote"),
-      type: t("openPositions.fullTime", "Full-time"),
-      dept: t("openPositions.engineering", "Engineering"),
+      title: t("openPositions.backendEngineer"),
+      location: t("openPositions.remote"),
+      type: t("openPositions.fullTime"),
+      dept: t("openPositions.engineering"),
       desc: t(
-        "openPositions.designAndScaleOur",
-        "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
-      ),
+        "openPositions.designAndScaleOur"),
     },
     {
-      title: t("openPositions.technicalWriter", "Technical Writer"),
-      location: t("openPositions.remote", "Remote"),
-      type: t("openPositions.partTime", "Part-time"),
-      dept: t("openPositions.documentation", "Documentation"),
+      title: t("openPositions.technicalWriter"),
+      location: t("openPositions.remote"),
+      type: t("openPositions.partTime"),
+      dept: t("openPositions.documentation"),
       desc: t(
-        "openPositions.createComprehensiveGuidesApi",
-        "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
-      ),
+        "openPositions.createComprehensiveGuidesApi"),
     },
     {
-      title: t("openPositions.devrelEngineer", "DevRel Engineer"),
-      location: t("openPositions.sfRemote", "San Francisco / Remote"),
-      type: t("openPositions.fullTime", "Full-time"),
-      dept: t("openPositions.community", "Community"),
+      title: t("openPositions.devrelEngineer"),
+      location: t("openPositions.sfRemote"),
+      type: t("openPositions.fullTime"),
+      dept: t("openPositions.community"),
       desc: t(
-        "openPositions.engageWithTheI18n",
-        "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
-      ),
+        "openPositions.engageWithTheI18n"),
     },
     {
-      title: t("openPositions.qaEngineer", "QA Engineer"),
-      location: t("openPositions.remote", "Remote"),
-      type: t("openPositions.fullTime", "Full-time"),
-      dept: t("openPositions.engineering", "Engineering"),
+      title: t("openPositions.qaEngineer"),
+      location: t("openPositions.remote"),
+      type: t("openPositions.fullTime"),
+      dept: t("openPositions.engineering"),
       desc: t(
-        "openPositions.ensureTheAccuracyAnd",
-        "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
-      ),
+        "openPositions.ensureTheAccuracyAnd"),
     },
   ];
 
   return (
     <>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        <T keyName="openPositions.openPositions" defaultValue="Open Positions" />
+        <T keyName="openPositions.openPositions" />
       </h2>
       <div className="space-y-4">
         {openings.map((o) => (
@@ -88,7 +78,7 @@ export default function OpenPositions() {
               type="button"
               className="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              <T keyName="openPositions.applyNow" defaultValue="Apply Now" />
+              <T keyName="openPositions.applyNow" />
             </button>
           </div>
         ))}

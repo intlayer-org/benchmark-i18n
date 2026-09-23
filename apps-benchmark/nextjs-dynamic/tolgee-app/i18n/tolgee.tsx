@@ -1,0 +1,39 @@
+import type { Messages } from "./getMessages";
+import {
+  useTranslate as useTolgeeTranslate,
+  T as TolgeeT,
+} from "@tolgee/react";
+import { ReactNode } from "react";
+
+// Extracts strict dot-notation keys from the JSON structure
+type Leaves<T> = T extends object
+  ? {
+      [K in Extract<keyof T, string>]: T[K] extends object
+        ? `${K}.${Leaves<T[K]>}`
+        : K;
+    }[Extract<keyof T, string>]
+  : never;
+
+export type TranslationKey = Leaves<Messages>;
+
+// Typed Hook
+export function useTranslate() {
+  const { t, ...rest } = useTolgeeTranslate();
+
+  return {
+    ...rest,
+    // Enforce the TranslationKey type on the first argument
+    t: (key: TranslationKey, parameters?: Record<string, any>) =>
+      t(key, parameters),
+  };
+}
+
+// Typed Component
+type TProps = Omit<React.ComponentProps<typeof TolgeeT>, "keyName"> & {
+  keyName: TranslationKey;
+  children?: ReactNode;
+};
+
+export function T(props: TProps) {
+  return <TolgeeT {...props} />;
+}

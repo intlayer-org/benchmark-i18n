@@ -1,11 +1,6 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var onInvalidFunc = () => "";
-onInvalidFunc = (i, c) => {
-	const item = c[i];
-	if (item == null) return `[i18n-404:${i}]`;
-	return `[i18n-400:${i}(${item})]`;
-};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -94,98 +89,49 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("home", loadCatalog$11, 1);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/home/WhyItMatters.tsx";
 function WhyItMatters() {
 	const _w_runtime_ = getRuntimeRx();
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mb-16",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-6 text-2xl font-bold text-foreground",
 			children: _w_runtime_(51)
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 10,
-			columnNumber: 7
-		}, this), jsxDEV("div", {
+		}), jsxs("div", {
 			className: "grid gap-6 md:grid-cols-3",
 			children: [
-				jsxDEV("div", {
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: _w_runtime_(35)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 15,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: _w_runtime_(52)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 18,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 14,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+					})]
+				}),
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: _w_runtime_(53)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 23,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: _w_runtime_(54)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 26,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 22,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+					})]
+				}),
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: _w_runtime_(55)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: _w_runtime_(56)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 34,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 30,
-					columnNumber: 9
-				}, this)
+					})]
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 13,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -363,26 +309,12 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/home/WhyItMatters.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(WhyItMatters, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(WhyItMatters, {}) });
 }
 export { Wrapped as default };
 var c = [

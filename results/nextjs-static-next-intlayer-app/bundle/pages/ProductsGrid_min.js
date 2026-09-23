@@ -1,10 +1,9 @@
-import { Fragment as e, createContext as t, createElement as n, isValidElement as r, useContext as i, useEffect as a, useLayoutEffect as o, useMemo as s, useRef as c, useState as l } from "react";
-import { Fragment as u, jsx as d, jsxs as f } from "react/jsx-runtime";
-import { jsxDEV as p } from "react/jsx-dev-runtime";
-var m = {
+import { Fragment as e, createContext as t, createElement as n, isValidElement as r, useContext as i, useEffect as a, useLayoutEffect as o, useMemo as s, useState as c } from "react";
+import { Fragment as l, jsx as u, jsxs as d } from "react/jsx-runtime";
+var ee = {
 	key: "products-grid",
 	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"e\":\"Benchmark CLI\",\"r\":\"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.\",\"f\":\"Benchmark Cloud\",\"c\":\"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.\",\"g\":\"Benchmark Enterprise\",\"m\":\"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.\",\"i\":\"Contact Us\",\"l\":\"Migration Assistant\",\"a\":\"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.\",\"s\":\"Translation QA\",\"d\":\"Automated quality checks for missing translations, pluralization issues, and context errors.\",\"h\":\"Bundle Optimizer\",\"b\":\"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.\",\"k\":\"Learn More\",\"j\":\"Free\",\"o\":\"$29/mo\",\"q\":\"$99 one-time\",\"n\":\"$19/mo\",\"p\":\"$49/mo\"},\"fr\":{\"e\":\"CLI de Benchmark\",\"r\":\"Lancez des benchmarks localement depuis votre terminal. Supporte les configurations personnalisées et l'intégration CI.\",\"f\":\"Benchmark Cloud\",\"c\":\"Benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.\",\"g\":\"Benchmark Entreprise\",\"m\":\"Déploiement sur site avec SSO, journaux d'audit, SLA personnalisés et support dédié.\",\"i\":\"Contactez-nous\",\"l\":\"Assistant de Migration\",\"a\":\"Outil propulsé par l'IA qui aide à migrer votre codebase entre les bibliothèques i18n sans temps d'arrêt.\",\"s\":\"QA de Traduction\",\"d\":\"Contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.\",\"h\":\"Optimiseur de Bundle\",\"b\":\"Analyse et optimise votre bundle i18n pour la production avec le tree-shaking et le fractionnement du code.\",\"k\":\"En savoir plus\",\"j\":\"Gratuit\",\"o\":\"29 $/mois\",\"q\":\"99 $ une fois\",\"n\":\"19 $/mois\",\"p\":\"49 $/mois\"},\"es\":{\"e\":\"CLI de Benchmark\",\"r\":\"Realice benchmarks localmente desde su terminal. Admite configuraciones personalizadas e integración de CI.\",\"f\":\"Benchmark Cloud\",\"c\":\"Benchmarking automatizado basado en la nube con seguimiento histórico, alertas y paneles de equipo.\",\"g\":\"Benchmark para Empresas\",\"m\":\"Implementación local con SSO, registros de auditoría, SLA personalizados y soporte dedicado.\",\"i\":\"Contáctenos\",\"l\":\"Asistente de Migración\",\"a\":\"Herramienta impulsada por IA que ayuda a migrar su base de código entre bibliotecas de i18n sin tiempo de inactividad.\",\"s\":\"QA de Traducción\",\"d\":\"Comprobaciones de calidad automatizadas para traducciones faltantes, problemas de pluralización y errores de contexto.\",\"h\":\"Optimizador de Bundles\",\"b\":\"Analiza y optimiza su bundle i18n para producción con tree-shaking y división de código.\",\"k\":\"Más información\",\"j\":\"Gratis\",\"o\":\"29 $/mes\",\"q\":\"99 $ pago único\",\"n\":\"19 $/mes\",\"p\":\"49 $/mes\"},\"de\":{\"e\":\"Benchmark-CLI\",\"r\":\"Führen Sie Benchmarks lokal von Ihrem Terminal aus durch. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.\",\"f\":\"Benchmark-Cloud\",\"c\":\"Automatisierte cloudbasierte Benchmarks mit Verlaufsverfolgung, Benachrichtigungen und Team-Dashboards.\",\"g\":\"Benchmark-Enterprise\",\"m\":\"On-Premise-Bereitstellung mit SSO, Audit-Logs, benutzerdefinierten SLAs und dediziertem Support.\",\"i\":\"Kontaktieren Sie uns\",\"l\":\"Migrations-Assistent\",\"a\":\"KI-gestütztes Tool, das bei der Migration Ihrer Codebasis zwischen i18n-Bibliotheken ohne Ausfallzeiten hilft.\",\"s\":\"Übersetzungs-QA\",\"d\":\"Automatisierte Qualitätsprüfungen auf fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.\",\"h\":\"Bundle-Optimierer\",\"b\":\"Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code Splitting.\",\"k\":\"Mehr erfahren\",\"j\":\"Kostenlos\",\"o\":\"29 €/Monat\",\"q\":\"99 € einmalig\",\"n\":\"19 €/Monat\",\"p\":\"49 €/Monat\"},\"it\":{\"e\":\"CLI di benchmark\",\"r\":\"Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.\",\"f\":\"Benchmark cloud\",\"c\":\"Benchmarking automatizzato basato su cloud con monitoraggio storico, avvisi e dashboard per i team.\",\"g\":\"Benchmark enterprise\",\"m\":\"Distribuzione on-premise con SSO, log di audit, SLA personalizzati e supporto dedicato.\",\"i\":\"Contattaci\",\"l\":\"Assistente alla migrazione\",\"a\":\"Strumento basato sull’intelligenza artificiale che aiuta a migrare il codebase tra le librerie i18n senza tempi d’interruzione.\",\"s\":\"QA di traduzione\",\"d\":\"Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.\",\"h\":\"Ottimizzatore bundle\",\"b\":\"Analizza e ottimizza il bundle i18n per la produzione con tree-shaking e suddivisione del codice.\",\"k\":\"Scopri di più\",\"j\":\"Gratis\",\"o\":\"29 €/mese\",\"q\":\"99 € una volta\",\"n\":\"19 €/mese\",\"p\":\"49 €/mese\"},\"pt\":{\"e\":\"CLI do Benchmark\",\"r\":\"Execute benchmarks localmente em seu terminal. Suporta configurações personalizadas e integração de CI.\",\"f\":\"Benchmark Cloud\",\"c\":\"Benchmarking automatizado baseado em nuvem com rastreamento histórico, alertas e painéis de equipe.\",\"g\":\"Benchmark Enterprise\",\"m\":\"Implantação local com SSO, logs de auditoria, SLAs personalizados e suporte dedicado.\",\"i\":\"Contate-nos\",\"l\":\"Assistente de Migração\",\"a\":\"Ferramenta baseada em IA que ajuda a migrar sua base de código entre bibliotecas i18n sem tempo de inatividade.\",\"s\":\"QA de Tradução\",\"d\":\"Verificações automáticas de qualidade para traduções ausentes, problemas de pluralização e erros de contexto.\",\"h\":\"Otimizador de Bundle\",\"b\":\"Analisa e otimiza seu bundle i18n para produção com tree-shaking e divisão de código.\",\"k\":\"Saiba mais\",\"j\":\"Grátis\",\"o\":\"29 €/mês\",\"q\":\"99 € pagamento único\",\"n\":\"19 €/mês\",\"p\":\"49 €/mês\"},\"zh\":{\"e\":\"基准测试 CLI\",\"r\":\"在终端本地运行基准测试。支持自定义配置和 CI 集成。\",\"f\":\"基准测试云\",\"c\":\"基于云的自动化基准测试，具有历史跟踪、警报和团队仪表板。\",\"g\":\"基准测试企业版\",\"m\":\"采用 SSO、审核日志、自定义 SLA 和专用支持的本地部署。\",\"i\":\"联系我们\",\"l\":\"迁移助手\",\"a\":\"由人工智能驱动的工具，可帮助您在 i18n 库之间迁移代码库，实现零停机时间。\",\"s\":\"翻译质量保证\",\"d\":\"针对缺失翻译、复数问题和上下文错误的自动化质量检查。\",\"h\":\"包优化器\",\"b\":\"通过摇树优化和代码拆分，分析并在生产环境中优化 i18n 包。\",\"k\":\"了解更多\",\"j\":\"免费\",\"o\":\"29 美元/月\",\"q\":\"99 美元一次性\",\"n\":\"19 美元/月\",\"p\":\"49 美元/月\"},\"ja\":{\"e\":\"ベンチマーク CLI\",\"r\":\"ターミナルからローカルでベンチマークを実行します。カスタム構成と CI 統合をサポートします。\",\"f\":\"ベンチマーククラウド\",\"c\":\"履歴追跡、アラート、チームダッシュボードを備えた、自動化されたクラウドベースのベンチマーク。\",\"g\":\"ベンチマークエンタープライズ\",\"m\":\"SSO、監査ログ、カスタム SLA、および専用サポートを備えたオンプレミス展開。\",\"i\":\"お問い合わせ\",\"l\":\"移行アシスタント\",\"a\":\"i18n ライブラリ間のコードベースをダウンタイムなしで移行するのに役立つ AI 搭載ツール。\",\"s\":\"翻訳 QA\",\"d\":\"翻訳の欠落、複数形の問題、コンテキストエラーに対する自動品質チェック。\",\"h\":\"バンドルオプティマイザー\",\"b\":\"生産向けに i18n バンドルをツリーシェイキングとコード分割で分析・最適化します。\",\"k\":\"詳細はこちら\",\"j\":\"無料\",\"o\":\"29 ドル/月\",\"q\":\"99 ドルの1回払い\",\"n\":\"19 ドル/月\",\"p\":\"49 ドル/月\"},\"ko\":{\"e\":\"벤치마크 CLI\",\"r\":\"터미널에서 로컬로 벤치마크를 실행합니다. 사용자 지정 구성 및 CI 통합을 지원합니다.\",\"f\":\"벤치마크 클라우드\",\"c\":\"기록 추적, 알림 및 팀 대시보드를 제공하는 자동화된 클라우드 기반 벤치마킹.\",\"g\":\"벤치마크 엔터프라이즈\",\"m\":\"SSO, 감사 로그, 사용자 지정 SLA 및 전담 지원을 제공하는 온프레미스 배포.\",\"i\":\"문의하기\",\"l\":\"마이그레이션 어시스턴트\",\"a\":\"코드베이스를 가동 중지 시간 없이 i18n 라이브러리 간에 마이그레이션할 수 있도록 지원하는 AI 기반 도구입니다.\",\"s\":\"번역 QA\",\"d\":\"누락된 번역, 복수화 문제 및 상황별 오류에 대한 자동화된 품질 검사.\",\"h\":\"번들 최적화기\",\"b\":\"트리 쉐이킹 및 코드 분할을 사용하여 프로덕션용 i18n 번들을 분석하고 최적화합니다.\",\"k\":\"자세히 알아보기\",\"j\":\"무료\",\"o\":\"29 달러/월\",\"q\":\"99 달러 일회성\",\"n\":\"19 달러/월\",\"p\":\"49 달러/월\"},\"ru\":{\"e\":\"CLI для бенчмаркинга\",\"r\":\"Запуск тестов локально из терминала. Поддержка пользовательских конфигураций и интеграции с CI.\",\"f\":\"Облачный бенчмаркинг\",\"c\":\"Автоматизированное облачное тестирование с отслеживанием истории, оповещениями и командными панелями.\",\"g\":\"Корпоративный бенчмаркинг\",\"m\":\"Локальное развертывание с поддержкой SSO, журналами аудита, настраиваемыми SLA и выделенной поддержкой.\",\"i\":\"Связаться с нами\",\"l\":\"Помощник по миграции\",\"a\":\"Инструмент на базе ИИ, помогающий мигрировать вашу кодовую базу между библиотеками i18n без простоев.\",\"s\":\"Контроль качества перевода\",\"d\":\"Автоматизированная проверка качества на предмет отсутствующих переводов, проблем с плюрализацией и контекстных ошибок.\",\"h\":\"Оптимизатор бандлов\",\"b\":\"Анализирует и оптимизирует ваш бандл i18n для продакшна с использованием tree-shaking и разделения кода.\",\"k\":\"Узнать больше\",\"j\":\"Бесплатно\",\"o\":\"$29/мес\",\"q\":\"99 $ единоразово\",\"n\":\"$19/мес\",\"p\":\"$49/мес\"}}}")
-}, h = {
+}, f = {
 	locales: [
 		"en",
 		"fr",
@@ -31,7 +30,7 @@ var m = {
 	],
 	strictMode: "inclusive",
 	defaultLocale: "en"
-}, g = {
+}, p = {
 	mode: "prefix-all",
 	storage: {
 		cookies: [{
@@ -41,8 +40,8 @@ var m = {
 		headers: [{ name: "x-intlayer-locale" }]
 	},
 	basePath: ""
-}, ee = ({ children: e, value: t, additionalProps: n }) => {
-	let i = r(e) ? e : d(u, { children: e });
+}, m = ({ children: e, value: t, additionalProps: n }) => {
+	let i = r(e) ? e : u(l, { children: e });
 	return new Proxy(i, { get(e, r, i) {
 		if (r === "value") return t;
 		if (r === Symbol.toPrimitive) return () => t ?? "";
@@ -58,32 +57,32 @@ var m = {
 		}
 		return Reflect.get(e, r, i);
 	} });
-}, _ = /* @__PURE__ */ new WeakMap(), v = 0, te = (e) => {
+}, h = /* @__PURE__ */ new WeakMap(), g = 0, _ = (e) => {
 	if (!e) return "base";
-	let t = _.get(e);
+	let t = h.get(e);
 	if (t) return t;
-	v += 1;
-	let n = `p${v}`;
-	return _.set(e, n), n;
-}, ne = 256, y = /* @__PURE__ */ new WeakMap(), b = (e) => typeof e == "object" && !!e, re = (e, t, n) => `${e}_${t}_${te(n)}`, ie = (e, t) => {
-	if (!b(e)) return { hit: !1 };
-	let n = y.get(e);
+	g += 1;
+	let n = `p${g}`;
+	return h.set(e, n), n;
+}, te = 256, v = /* @__PURE__ */ new WeakMap(), y = (e) => typeof e == "object" && !!e, b = (e, t, n) => `${e}_${t}_${_(n)}`, x = (e, t) => {
+	if (!y(e)) return { hit: !1 };
+	let n = v.get(e);
 	return n?.has(t) ? {
 		hit: !0,
 		content: n.get(t)
 	} : { hit: !1 };
-}, x = (e, t, n) => {
-	if (!b(e)) return n;
-	let r = y.get(e);
-	return r || (r = /* @__PURE__ */ new Map(), y.set(e, r)), r.size >= ne && r.clear(), r.set(t, n), n;
-}, ae = "translation", S = "insertion", oe = "object", se = "array", C = "markdown", w = "html", T = (e, t) => {
-	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => T(e, t));
+}, S = (e, t, n) => {
+	if (!y(e)) return n;
+	let r = v.get(e);
+	return r || (r = /* @__PURE__ */ new Map(), v.set(e, r)), r.size >= te && r.clear(), r.set(t, n), n;
+}, ne = "translation", C = "insertion", re = "object", ie = "array", w = "markdown", T = "html", E = (e, t) => {
+	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => E(e, t));
 	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
-	if (Array.isArray(e)) return e.map((e, n) => T(e, {
+	if (Array.isArray(e)) return e.map((e, n) => E(e, {
 		...t,
 		children: e,
 		keyPath: [...t.keyPath, {
-			type: se,
+			type: ie,
 			key: n
 		}]
 	}));
@@ -93,19 +92,19 @@ var m = {
 			...t,
 			children: e[r],
 			keyPath: [...t.keyPath, {
-				type: oe,
+				type: re,
 				key: r
 			}]
 		};
 		if (t.eager) {
-			n[r] = T(e[r], i);
+			n[r] = E(e[r], i);
 			continue;
 		}
 		Object.defineProperty(n, r, {
 			enumerable: !0,
 			configurable: !0,
 			get: function() {
-				let t = T(e[r], i);
+				let t = E(e[r], i);
 				return Object.defineProperty(this, r, {
 					value: t,
 					enumerable: !0,
@@ -115,17 +114,17 @@ var m = {
 		});
 	}
 	return n;
-}, E = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), D = "default", ce = /[^A-Za-z0-9._&=-]/g, O = /[^A-Za-z0-9._-]/g, le = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, k = (e, t) => {
+}, D = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), O = "default", k = /[^A-Za-z0-9._&=-]/g, A = /[^A-Za-z0-9._-]/g, ae = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, j = (e, t) => {
 	if (e === "") return "%";
-	let n = e.replace(t, le);
+	let n = e.replace(t, ae);
 	return n === "." || n === ".." ? n.replace(/\./g, "%002E") : n;
-}, A = (e) => e === void 0 ? D : typeof e == "string" ? k(e, ce) : Object.keys(e).sort().map((t) => `${k(t, O)}=${k(String(e[t]), O)}`).join("&"), j = (e) => Array.isArray(e) ? e.length === 0 ? [D] : e.map(A) : [A(e)], ue = (e, t) => {
+}, M = (e) => e === void 0 ? O : typeof e == "string" ? j(e, k) : Object.keys(e).sort().map((t) => `${j(t, A)}=${j(String(e[t]), A)}`).join("&"), N = (e) => Array.isArray(e) ? e.length === 0 ? [O] : e.map(M) : [M(e)], oe = (e, t) => {
 	for (let n of e) if (t(n)) return n;
-	return t("default") ? D : e[0] ?? "default";
-}, de = (e, t, n, r) => {
+	return t("default") ? O : e[0] ?? "default";
+}, se = (e, t, n, r) => {
 	let i = e.split("/");
 	return t.every((e, t) => e === "variant" ? i[t] === r : n?.item === void 0 || i[t] === String(n.item));
-}, fe = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, pe = (e, t) => {
+}, ce = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, le = (e, t) => {
 	let n = t.split("/"), r = {
 		key: e.key,
 		content: e.content[t]
@@ -133,30 +132,30 @@ var m = {
 	return e.qualifierTypes.forEach((e, t) => {
 		e === "variant" ? r.variant = n[t] : e === "item" && (r.item = Number(n[t]));
 	}), r;
-}, me = (e, t) => {
-	if (!fe(e)) return e;
-	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? D : ue(j(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => de(e, n, t, s)).map((t) => pe(e, t));
+}, ue = (e, t) => {
+	if (!ce(e)) return e;
+	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? O : oe(N(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => se(e, n, t, s)).map((t) => le(e, t));
 	return i ? c.sort((e, t) => (e.item ?? 0) - (t.item ?? 0)) : c[0] ?? null;
-}, he = (e) => typeof e == "object" && e ? {
+}, de = (e) => typeof e == "object" && e ? {
 	locale: e.locale,
 	selector: e
-} : { locale: e }, M = (e) => e ? Object.keys(e).filter((e) => e !== "locale").sort().map((t) => {
+} : { locale: e }, P = (e) => e ? Object.keys(e).filter((e) => e !== "locale").sort().map((t) => {
 	let n = e[t];
-	return `${t}:${t === "variant" ? j(n).join(",") : String(n)}`;
-}).join("|") : "", N = (e) => {
+	return `${t}:${t === "variant" ? N(n).join(",") : String(n)}`;
+}).join("|") : "", F = (e) => {
 	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
 	let t = Object.getPrototypeOf(e);
 	return t === Object.prototype || t === null || Array.isArray(e);
-}, P = (e, t) => {
+}, I = (e, t) => {
 	if (e === void 0) return t;
 	if (t === void 0 || Array.isArray(e)) return e;
-	if (N(e) && N(t)) {
+	if (F(e) && F(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : P(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : I(e[r], t[r]));
 		return n;
 	}
 	return e;
-}, ge = (e, t, n) => {
+}, L = (e, t, n) => {
 	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
 		e && !i.has(e) && (i.add(e), a.push(e));
 	};
@@ -172,36 +171,36 @@ var m = {
 			s.push(t);
 		}
 	}
-	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => P(e, t));
-}, F = (e) => {
+	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => I(e, t));
+}, R = (e) => {
 	if (typeof e != "object" || !e || !("nodeType" in e)) return !1;
 	let { nodeType: t } = e;
 	return !1;
-}, _e = (e) => {
+}, z = (e) => {
 	if (typeof e == "string") return e;
-	if (F(e)) return e.nodeType === "html" ? e[w] : e[C];
-}, ve = (e, t) => {
+	if (R(e)) return e.nodeType === "html" ? e[T] : e[w];
+}, B = (e, t) => {
 	if (typeof e == "string") return t;
-	if (F(e)) {
-		let n = e.nodeType === "html" ? w : C;
+	if (R(e)) {
+		let n = e.nodeType === "html" ? T : w;
 		return {
 			...e,
 			[n]: t
 		};
 	}
 	return e;
-}, I = (e, t, n, r, i) => {
-	let a = ve(e, E(_e(e), t));
+}, V = (e, t, n, r, i) => {
+	let a = B(e, D(z(e), t));
 	return i(a, {
 		...n,
 		plugins: r,
 		children: a
 	});
-}, L = {
+}, H = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, R = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? L : {
+}, U = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? H : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -211,30 +210,30 @@ var m = {
 				...r,
 				children: a[e],
 				keyPath: [...r.keyPath, {
-					type: ae,
+					type: ne,
 					key: e
 				}]
 			};
 			o[e] = i(a[e], t);
 		}
-		return ge(o, e, t);
+		return L(o, e, t);
 	}
-}, z = L, ye = (e) => L, B = L, be = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? L : {
+}, W = H, fe = (e) => H, G = H, pe = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? H : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
-		let r = [...t.keyPath, { type: S }], i = e[S], a = {
+		let r = [...t.keyPath, { type: C }], i = e[C], a = {
 			id: "insertion-string-plugin",
-			canHandle: (e) => typeof e == "string" || F(e),
+			canHandle: (e) => typeof e == "string" || R(e),
 			transform: (e, n, r) => {
-				if (F(e)) return (i) => I(e, i, n, t.plugins, r);
+				if (R(e)) return (i) => V(e, i, n, t.plugins, r);
 				let i = r(e, {
 					...n,
 					children: e,
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = E(i, e);
+					let a = D(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -250,22 +249,22 @@ var m = {
 			plugins: [a, ...t.plugins ?? []]
 		});
 	}
-}, V = L, H = L, U = (e) => L, W = L, xe = (e, t = !0) => [
-	R(e ?? h.defaultLocale, t ? h.defaultLocale : void 0),
-	z,
-	B,
-	be,
-	U(e ?? h.defaultLocale),
+}, K = H, q = H, J = (e) => H, Y = H, me = (e, t = !0) => [
+	U(e ?? f.defaultLocale, t ? f.defaultLocale : void 0),
 	W,
-	V,
-	H
-], Se = (e, t, n = []) => T(e, {
+	G,
+	pe,
+	J(e ?? f.defaultLocale),
+	Y,
+	K,
+	q
+], he = (e, t, n = []) => E(e, {
 	...t,
 	plugins: n
-}), Ce = (e, t, n) => {
-	let { locale: r, selector: i } = he(t), a = re(r ?? h.defaultLocale, M(i), n), o = ie(e, a);
+}), ge = (e, t, n) => {
+	let { locale: r, selector: i } = de(t), a = b(r ?? f.defaultLocale, P(i), n), o = x(e, a);
 	if (o.hit) return o.content;
-	let s = n ?? xe(r), c = me(e, i), l = (e) => {
+	let s = n ?? me(r), c = ue(e, i), l = (e) => {
 		let t = {
 			dictionaryKey: e.key,
 			dictionaryPath: e.filePath,
@@ -273,15 +272,15 @@ var m = {
 			plugins: s,
 			nestedDictionaries: e.nestedDictionaries
 		};
-		return Se(e.content, t, s);
+		return he(e.content, t, s);
 	};
-	return c === null ? x(e, a, null) : Array.isArray(c) ? x(e, a, c.map(l)) : x(e, a, l(c));
-}, we = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", G = /\{\{\s*(.*?)\s*\}\}/g, Te = (e, t = {}) => {
-	if (!Object.values(t).some(we)) return {
+	return c === null ? S(e, a, null) : Array.isArray(c) ? S(e, a, c.map(l)) : S(e, a, l(c));
+}, _e = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", X = /\{\{\s*(.*?)\s*\}\}/g, ve = (e, t = {}) => {
+	if (!Object.values(t).some(_e)) return {
 		isSimple: !0,
-		parts: e.replace(G, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(X, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(G), r = [];
+	let n = e.split(X), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -291,33 +290,33 @@ var m = {
 		isSimple: !1,
 		parts: r
 	};
-}, Ee = {
+}, ye = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { plugins: t, ...n }) => ee({
+	transform: (e, { plugins: t, ...n }) => m({
 		...n,
 		value: n.children,
 		children: n.children
 	})
-}, De = L, Oe = (t, r) => {
-	let i = Te(t, r);
+}, be = H, xe = (t, r) => {
+	let i = ve(t, r);
 	return i.isSimple ? i.parts : n(e, null, ...i.parts.map((t, r) => n(e, { key: r }, t)));
-}, ke = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? L : {
+}, Se = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? H : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
-		let r = [...t.keyPath, { type: S }], i = e[S], a = {
+		let r = [...t.keyPath, { type: C }], i = e[C], a = {
 			id: "insertion-string-plugin",
-			canHandle: (e) => typeof e == "string" || F(e),
+			canHandle: (e) => typeof e == "string" || R(e),
 			transform: (e, n, r) => {
-				if (F(e)) return (i) => I(e, i, n, t.plugins, r);
+				if (R(e)) return (i) => V(e, i, n, t.plugins, r);
 				let i = r(e, {
 					...n,
 					children: e,
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = Oe(i, e);
+					let a = xe(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -336,39 +335,28 @@ var m = {
 			return typeof n == "function" ? n(e) : n;
 		} : o;
 	}
-}, Ae = L, je = L, K = /* @__PURE__ */ new Map(), Me = (e, t = !0) => {
-	let n = `${e ?? h.defaultLocale}_${t}`;
-	if (K.has(n)) return K.get(n);
+}, Ce = H, we = H, Z = /* @__PURE__ */ new Map(), Te = (e, t = !0) => {
+	let n = `${e ?? f.defaultLocale}_${t}`;
+	if (Z.has(n)) return Z.get(n);
 	let r = [
-		R(e ?? h.defaultLocale, t ? h.defaultLocale : void 0),
-		z,
-		ye(e ?? h.defaultLocale),
-		B,
-		U(e ?? h.defaultLocale),
+		U(e ?? f.defaultLocale, t ? f.defaultLocale : void 0),
 		W,
-		V,
-		H,
-		Ee,
-		De,
-		ke,
-		Ae,
-		je
+		fe(e ?? f.defaultLocale),
+		G,
+		J(e ?? f.defaultLocale),
+		Y,
+		K,
+		q,
+		ye,
+		be,
+		Se,
+		Ce,
+		we
 	];
-	return K.set(n, r), r;
-}, Ne = (e, t) => Ce(e, t, Me(typeof t == "object" && t ? t.locale : t)), q = (e) => {
-	if (typeof e == "number") return Date.now() + e * 1e3;
-	if (typeof e == "string") {
-		let t = Date.parse(e);
-		return Number.isNaN(t) ? void 0 : t;
-	}
-}, Pe = (e, t, n) => {
-	let r = [`${e}=${encodeURIComponent(t)}`];
-	n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`);
-	let i = q(n.expires);
-	return i !== void 0 && r.push(`Expires=${new Date(i).toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, J = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+	return Z.set(n, r), r;
+}, Ee = (e, t) => ge(e, t, Te(typeof t == "object" && t ? t.locale : t)), De = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var Y = {
+var Q = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -386,96 +374,24 @@ var Y = {
 	},
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
-}, Fe = (e = Y) => {
-	let { locales: t } = h;
+}, $ = ((e = Q) => {
+	let { locales: t } = f;
 	if (e?.isCookieEnabled === !1) return;
 	let n = (e) => !!e && t.includes(e);
-	if (!J) for (let t = 0; t < (g.storage.cookies ?? []).length; t++) try {
-		let r = e?.getCookie?.(g.storage.cookies[t].name);
+	if (!De) for (let t = 0; t < (p.storage.cookies ?? []).length; t++) try {
+		let r = e?.getCookie?.(p.storage.cookies[t].name);
 		if (n(r)) return r;
 	} catch {}
-}, Ie = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !J && g.storage.cookies) for (let n = 0; n < g.storage.cookies.length; n++) {
-		let { name: r, attributes: i } = g.storage.cookies[n];
-		try {
-			t?.setCookieStore && t.setCookieStore(r, e, {
-				...i,
-				expires: q(i.expires)
-			});
-		} catch {
-			try {
-				t?.setCookieString && t.setCookieString(r, Pe(r, e, i));
-			} catch {}
-		}
-	}
-}, X = Fe(Y), Le = (e, t) => Ie(e, {
-	...Y,
-	isCookieEnabled: t
-}), Re = () => {
-	let { locale: e } = i(Z) ?? {}, t = c(null);
-	a(() => {}, []), a(() => {
-		e && t.current && t.current.currentLocale.set(e);
-	}, [e]);
-}, ze = ({ children: e }) => (Re(), e), Be = () => {
-	let { locale: e } = i(Z) ?? {}, t = c(null);
-	a(() => {}, []), a(() => {
-		e && t.current && (t.current.setLocale(e), t.current.trackPageView({ reason: "locale_change" }));
-	}, [e]);
-}, Ve = ({ children: e }) => (Be(), e), He = () => {
-	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, Ue = (e, t = h?.locales, n = h?.defaultLocale) => {
-	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
-	try {
-		for (let e of r) {
-			let n = i(e), r = t.find((e) => i(e) === n);
-			if (r) return r;
-			let [a] = n.split("-"), o = t.find((e) => i(e).split("-")[0] === a);
-			if (o) return o;
-		}
-	} catch {}
-	return n;
-}, Z = t({
-	locale: X ?? h?.defaultLocale,
+})(Q), Oe = t({
+	locale: $ ?? f?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: !0
-}), We = ({ locale: e, defaultLocale: t, variant: n, children: r, setLocale: i, disableEditor: o, isCookieEnabled: s }) => {
-	let { locales: c, defaultLocale: u } = h ?? {}, [f, p] = l(e ?? X ?? t ?? u);
-	a(() => {
-		e && e !== f && p(e);
-	}, [e]), a(() => {
-		He();
-	}, []);
-	let m = i ?? ((e) => {
-		if (f.toString() !== e.toString()) {
-			if (!c?.map(String).includes(e)) {
-				console.error(`Locale ${e} is not available`);
-				return;
-			}
-			p(e), Le(e, s);
-		}
-	}), g = Ue(f);
-	return d(Z.Provider, {
-		value: {
-			locale: g,
-			setLocale: m,
-			variant: n,
-			disableEditor: o
-		},
-		children: r
-	});
-}, Ge = ({ children: e, ...t }) => f(We, {
-	...t,
-	children: [
-		d(ze, {}),
-		d(Ve, {}),
-		e
-	]
-}), Ke = (e, t) => {
-	let { locale: n, variant: r } = i(Z) ?? {}, a = t ?? n, o = typeof a == "object" && a ? `${a.locale ?? ""}|${M(a)}` : a;
-	return s(() => Ne(e, a), [e.key, o]);
-}, qe = (e) => d(Ge, { ...e }), Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/src/components/pages/products/ProductsGrid.tsx";
-function Je() {
-	let e = Ke(m), t = [
+}), ke = (e, t) => {
+	let { locale: n, variant: r } = i(Oe) ?? {}, a = t ?? n, o = typeof a == "object" && a ? `${a.locale ?? ""}|${P(a)}` : a;
+	return s(() => Ee(e, a), [e.key, o]);
+};
+function Ae() {
+	let e = ke(ee), t = [
 		{
 			name: e.e.value,
 			desc: e.r.value,
@@ -507,63 +423,31 @@ function Je() {
 			price: e.p.value
 		}
 	];
-	return p("div", {
+	return u("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: t.map((t) => p("div", {
+		children: t.map((t) => d("div", {
 			className: "flex flex-col justify-between rounded-lg border border-border bg-card p-6",
-			children: [p("div", { children: [p("h3", {
+			children: [d("div", { children: [u("h3", {
 				className: "mb-2 text-lg font-semibold text-foreground",
 				children: t.name
-			}, void 0, !1, {
-				fileName: Q,
-				lineNumber: 49,
-				columnNumber: 13
-			}, this), p("p", {
+			}), u("p", {
 				className: "mb-4 text-sm text-muted-foreground",
 				children: t.desc
-			}, void 0, !1, {
-				fileName: Q,
-				lineNumber: 52,
-				columnNumber: 13
-			}, this)] }, void 0, !0, {
-				fileName: Q,
-				lineNumber: 48,
-				columnNumber: 11
-			}, this), p("div", {
+			})] }), d("div", {
 				className: "flex items-center justify-between",
-				children: [p("span", {
+				children: [u("span", {
 					className: "text-sm font-bold text-primary",
 					children: t.price
-				}, void 0, !1, {
-					fileName: Q,
-					lineNumber: 55,
-					columnNumber: 13
-				}, this), p("button", {
+				}), u("button", {
 					type: "button",
 					className: "rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: e.k
-				}, void 0, !1, {
-					fileName: Q,
-					lineNumber: 56,
-					columnNumber: 13
-				}, this)]
-			}, void 0, !0, {
-				fileName: Q,
-				lineNumber: 54,
-				columnNumber: 11
-			}, this)]
-		}, t.name, !0, {
-			fileName: Q,
-			lineNumber: 44,
-			columnNumber: 9
-		}, this))
-	}, void 0, !1, {
-		fileName: Q,
-		lineNumber: 42,
-		columnNumber: 5
-	}, this);
+				})]
+			})]
+		}, t.name))
+	});
 }
-function Ye() {
+function je() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -577,50 +461,28 @@ function Ye() {
 		}
 	}
 }
-function Xe(e, t) {
+function Me(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var Ze = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/src/components/AppProviders.tsx";
-function Qe({ children: e, locale: t }) {
-	let [n] = l(() => typeof performance < "u" ? performance.now() : 0);
+function Ne({ children: e, locale: t }) {
+	let [n] = c(() => typeof performance < "u" ? performance.now() : 0);
 	return o(() => {
-		Xe("AppRoot", n);
+		Me("AppRoot", n);
 	}, [n]), a(() => {
 		t && (document.documentElement.lang = t);
 	}, [t]), a(() => {
-		Ye();
-	}, []), p(qe, {
-		locale: t,
-		children: e
-	}, void 0, !1, {
-		fileName: Ze,
-		lineNumber: 35,
-		columnNumber: 5
-	}, this);
+		je();
+	}, []), e;
 }
-var $e = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/scripts/Wrapper.tsx";
-function et({ children: e }) {
-	return p(Qe, {
+function Pe({ children: e }) {
+	return u(Ne, {
 		locale: "en",
 		children: e
-	}, void 0, !1, {
-		fileName: $e,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	});
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/src/components/pages/products/ProductsGrid.wrapper.tsx";
-function tt() {
-	return p(et, { children: p(Je, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function Fe() {
+	return u(Pe, { children: u(Ae, {}) });
 }
-export { tt as default };
+export { Fe as default };

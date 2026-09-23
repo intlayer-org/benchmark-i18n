@@ -1,7 +1,7 @@
-import { Fragment as e, computed as t, createBlock as n, createCommentVNode as r, createElementBlock as i, createElementVNode as a, createTextVNode as o, createVNode as s, defineComponent as c, getCurrentInstance as l, h as u, inject as d, isRef as f, markRaw as p, normalizeClass as m, onBeforeMount as h, onMounted as g, onUnmounted as _, openBlock as v, ref as y, renderList as b, resolveComponent as ee, shallowRef as te, toDisplayString as x, toValue as S, watch as C, withCtx as w } from "vue";
-import { useRoute as T, useRouter as ne } from "vue-router";
-import { ChevronDown as re } from "lucide-vue-next";
-var ie = {
+import { Fragment as e, computed as t, createBlock as n, createCommentVNode as r, createElementBlock as i, createElementVNode as a, createTextVNode as o, createVNode as s, defineComponent as c, getCurrentInstance as l, h as u, inject as d, isRef as f, markRaw as p, normalizeClass as ee, onBeforeMount as m, onMounted as h, onUnmounted as g, openBlock as _, ref as v, renderList as y, resolveComponent as te, shallowRef as b, toDisplayString as x, toValue as S, unref as C, watch as w, withCtx as T } from "vue";
+import { useRoute as E, useRouter as D } from "vue-router";
+import { ChevronDown as ne } from "lucide-vue-next";
+var re = {
 	key: "header",
 	content: {
 		nodeType: "translation",
@@ -19,8 +19,7 @@ var ie = {
 				d: "Contact",
 				m: "Settings",
 				a: "i18n Benchmark",
-				f: "Go to GitHub",
-				g: "Header"
+				f: "Go to GitHub"
 			},
 			fr: {
 				h: "Accueil",
@@ -35,8 +34,7 @@ var ie = {
 				d: "Contact",
 				m: "Paramètres",
 				a: "Benchmark i18n",
-				f: "Aller sur GitHub",
-				g: "En-tête"
+				f: "Aller sur GitHub"
 			},
 			es: {
 				h: "Inicio",
@@ -51,8 +49,7 @@ var ie = {
 				d: "Contacto",
 				m: "Ajustes",
 				a: "i18n Benchmark",
-				f: "Ir a GitHub",
-				g: "Encabezado"
+				f: "Ir a GitHub"
 			},
 			de: {
 				h: "Home",
@@ -67,8 +64,7 @@ var ie = {
 				d: "Kontakt",
 				m: "Einstellungen",
 				a: "i18n Benchmark",
-				f: "Zu GitHub",
-				g: "Header"
+				f: "Zu GitHub"
 			},
 			it: {
 				h: "Home",
@@ -83,8 +79,7 @@ var ie = {
 				d: "Contatti",
 				m: "Impostazioni",
 				a: "i18n Benchmark",
-				f: "Vai su GitHub",
-				g: "Intestazione"
+				f: "Vai su GitHub"
 			},
 			pt: {
 				h: "Início",
@@ -99,8 +94,7 @@ var ie = {
 				d: "Contato",
 				m: "Configurações",
 				a: "i18n Benchmark",
-				f: "Ir para o GitHub",
-				g: "Cabeçalho"
+				f: "Ir para o GitHub"
 			},
 			zh: {
 				h: "首页",
@@ -115,8 +109,7 @@ var ie = {
 				d: "联系我们",
 				m: "设置",
 				a: "i18n 基准测试",
-				f: "前往 GitHub",
-				g: "页眉"
+				f: "前往 GitHub"
 			},
 			ja: {
 				h: "ホーム",
@@ -131,8 +124,7 @@ var ie = {
 				d: "お問い合わせ",
 				m: "設定",
 				a: "i18n ベンチマーク",
-				f: "GitHub へ",
-				g: "ヘッダー"
+				f: "GitHub へ"
 			},
 			ko: {
 				h: "홈",
@@ -147,8 +139,7 @@ var ie = {
 				d: "문의",
 				m: "설정",
 				a: "i18n 벤치마크",
-				f: "GitHub으로 이동",
-				g: "헤더"
+				f: "GitHub으로 이동"
 			},
 			ru: {
 				h: "Главная",
@@ -163,13 +154,12 @@ var ie = {
 				d: "Контакт",
 				m: "Настройки",
 				a: "i18n Бенчмарк",
-				f: "Перейти на GitHub",
-				g: "Заголовок"
+				f: "Перейти на GitHub"
 			}
 		}
 	}
-}, E = ({ value: e, children: t, additionalProps: n = {} }) => {
-	let r = y(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
+}, O = ({ value: e, children: t, additionalProps: n = {} }) => {
+	let r = v(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
 		toString: () => String(r.value ?? ""),
@@ -186,7 +176,7 @@ var ie = {
 			return r.value;
 		},
 		use(e) {
-			return E({
+			return O({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -197,14 +187,14 @@ var ie = {
 		},
 		...n
 	}), p(o);
-}, ae = "translation", oe = "object", se = "array", D = (e, t) => {
-	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => D(e, t));
+}, k = "translation", A = "object", j = "array", M = (e, t) => {
+	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => M(e, t));
 	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
-	if (Array.isArray(e)) return e.map((e, n) => D(e, {
+	if (Array.isArray(e)) return e.map((e, n) => M(e, {
 		...t,
 		children: e,
 		keyPath: [...t.keyPath, {
-			type: se,
+			type: j,
 			key: n
 		}]
 	}));
@@ -217,10 +207,10 @@ var ie = {
 				...t,
 				children: e[r],
 				keyPath: [...t.keyPath, {
-					type: oe,
+					type: A,
 					key: r
 				}]
-			}, i = D(e[r], n);
+			}, i = M(e[r], n);
 			return Object.defineProperty(this, r, {
 				value: i,
 				enumerable: !0,
@@ -229,7 +219,7 @@ var ie = {
 		}
 	});
 	return n;
-}, O = {
+}, N = {
 	locales: [
 		"en",
 		"fr",
@@ -256,7 +246,7 @@ var ie = {
 	],
 	strictMode: "inclusive",
 	defaultLocale: "en"
-}, k = {
+}, P = {
 	mode: "prefix-all",
 	storage: {
 		cookies: [{
@@ -266,9 +256,9 @@ var ie = {
 		headers: [{ name: "x-intlayer-locale" }]
 	},
 	basePath: ""
-}, A = {
-	internationalization: O,
-	routing: k,
+}, F = {
+	internationalization: N,
+	routing: P,
 	editor: {
 		applicationURL: "http://localhost:3000",
 		editorURL: "http://localhost:8000",
@@ -333,20 +323,20 @@ var ie = {
 		noMetadata: !1,
 		saveComponents: !1
 	}
-}, j = (e) => {
+}, I = (e) => {
 	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
 	let t = Object.getPrototypeOf(e);
 	return t === Object.prototype || t === null || Array.isArray(e);
-}, M = (e, t) => {
+}, L = (e, t) => {
 	if (e === void 0) return t;
 	if (t === void 0 || Array.isArray(e)) return e;
-	if (j(e) && j(t)) {
+	if (I(e) && I(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : M(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : L(e[r], t[r]));
 		return n;
 	}
 	return e;
-}, ce = (e, t, n) => {
+}, ie = (e, t, n) => {
 	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
 		e && !i.has(e) && (i.add(e), a.push(e));
 	};
@@ -362,12 +352,12 @@ var ie = {
 			s.push(t);
 		}
 	}
-	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => M(e, t));
-}, N = {
+	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => L(e, t));
+}, R = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, P = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? N : {
+}, z = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? R : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -377,38 +367,38 @@ var ie = {
 				...r,
 				children: a[e],
 				keyPath: [...r.keyPath, {
-					type: ae,
+					type: k,
 					key: e
 				}]
 			};
 			o[e] = i(a[e], t);
 		}
-		return ce(o, e, t);
+		return ie(o, e, t);
 	}
-}, F = N, I = N, le = N, L = N, R = (e) => N, z = N, ue = (e, t = !0) => [
-	P(e ?? O.defaultLocale, t ? O.defaultLocale : void 0),
-	F,
-	I,
-	le,
-	R(e ?? O.defaultLocale),
-	z,
-	L
-], de = (e, t, n = []) => D(e, {
+}, B = R, V = R, ae = R, H = R, U = (e) => R, W = R, oe = (e, t = !0) => [
+	z(e ?? N.defaultLocale, t ? N.defaultLocale : void 0),
+	B,
+	V,
+	ae,
+	U(e ?? N.defaultLocale),
+	W,
+	H
+], se = (e, t, n = []) => M(e, {
 	...t,
 	plugins: n
-}), B = (e, t, n = ue(t)) => {
+}), ce = (e, t, n = oe(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return de(e.content, r, n);
-}, V = {
+	return se(e.content, r, n);
+}, le = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => E({
+		let r = (e) => O({
 			...n,
 			value: e,
 			children: e
@@ -426,38 +416,38 @@ var ie = {
 		}
 		return p(a);
 	}
-}, H = N, fe = N, pe = N, U = /* @__PURE__ */ new Map(), me = (e, t = !0) => {
-	let n = `${e ?? O.defaultLocale}_${t}`;
-	if (U.has(n)) return U.get(n);
+}, ue = R, de = R, fe = R, G = /* @__PURE__ */ new Map(), pe = (e, t = !0) => {
+	let n = `${e ?? N.defaultLocale}_${t}`;
+	if (G.has(n)) return G.get(n);
 	let r = [
-		P(e ?? O.defaultLocale, t ? O.defaultLocale : void 0),
-		F,
-		I,
-		R(e ?? O.defaultLocale),
-		z,
-		L,
+		z(e ?? N.defaultLocale, t ? N.defaultLocale : void 0),
+		B,
 		V,
+		U(e ?? N.defaultLocale),
+		W,
 		H,
-		fe,
-		pe
+		le,
+		ue,
+		de,
+		fe
 	];
-	return U.set(n, r), r;
-}, he = (e, t) => B(e, t, me(t)), W = Symbol("intlayer"), G = (e, t) => t.reduce((e, t) => e?.[t], e), K = (e) => typeof e == "object" && !!e, q = (e) => typeof e == "function" || K(e) && ("render" in e || "setup" in e), ge = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, J = (e) => p(c({
+	return G.set(n, r), r;
+}, me = (e, t) => ce(e, t, pe(t)), K = Symbol("intlayer"), q = (e, t) => t.reduce((e, t) => e?.[t], e), J = (e) => typeof e == "object" && !!e, Y = (e) => typeof e == "function" || J(e) && ("render" in e || "setup" in e), he = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, X = (e) => p(c({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : q(t) ? u(t) : Array.isArray(t) ? u("span", t) : t;
+			return t == null ? null : Y(t) ? u(t) : Array.isArray(t) ? u("span", t) : t;
 		};
 	}
-})), _e = (e) => new Proxy({}, {
+})), ge = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
 		if (n === "value") return r ?? "";
 		if (n === "$raw") return e;
 		if (n === "__v_skip") return !0;
-		if (n === "c" || n === "asComponent") return J(() => e.value);
+		if (n === "c" || n === "asComponent") return X(() => e.value);
 		if (r == null) return n === Symbol.toPrimitive || n === "toString" ? () => "" : void 0;
 		let i = r[n];
 		return typeof i == "function" ? i.bind(r) : i;
@@ -472,10 +462,10 @@ var ie = {
 			configurable: !0
 		};
 	}
-}), Y = (e, n) => {
-	let r = l() ? d(W) : void 0, i = f(r?.locale) ? r.locale : y(r?.locale ?? O.defaultLocale), a = t(() => (n === void 0 ? void 0 : S(n)) ?? i.value), o = te({});
-	C([() => S(e), () => a.value], ([e, t]) => {
-		o.value = he(e, t);
+}), Z = (e, n) => {
+	let r = l() ? d(K) : void 0, i = f(r?.locale) ? r.locale : v(r?.locale ?? N.defaultLocale), a = t(() => (n === void 0 ? void 0 : S(n)) ?? i.value), o = b({});
+	w([() => S(e), () => a.value], ([e, t]) => {
+		o.value = me(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -483,23 +473,23 @@ var ie = {
 	let s = (e) => new Proxy({}, {
 		get(n, r, i) {
 			if (r === "__v_isRef") return !0;
-			let a = t(() => G(o.value, e));
+			let a = t(() => q(o.value, e));
 			if (r === "value") return a.value ?? "";
 			if (r === "then") return;
-			if (r === "c" || r === "asComponent") return J(() => a.value);
+			if (r === "c" || r === "asComponent") return X(() => a.value);
 			if (r === "$raw") return a;
 			if (r === Symbol.toPrimitive) return () => a.value;
-			let c = e.concat(r), l = G(o.value, c);
-			if (l === void 0 || K(l) && !q(l)) return s(c);
-			if (ge(l)) return _e(t(() => G(o.value, c)));
-			let u = t(() => G(o.value, c));
+			let c = e.concat(r), l = q(o.value, c);
+			if (l === void 0 || J(l) && !Y(l)) return s(c);
+			if (he(l)) return ge(t(() => q(o.value, c)));
+			let u = t(() => q(o.value, c));
 			return new Proxy(u, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let t = G(o.value, e);
-			return K(t) ? Reflect.ownKeys(t) : [];
+			let t = q(o.value, e);
+			return J(t) ? Reflect.ownKeys(t) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -509,22 +499,22 @@ var ie = {
 		}
 	});
 	return s([]);
-}, X = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+}, Q = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var ve = (e, t, n) => {
+var _e = (e, t, n) => {
 	let r = [`${e}=${encodeURIComponent(t)}`];
 	return n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`), n.expires instanceof Date && r.push(`Expires=${n.expires.toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, ye = (e = Z) => {
-	let { locales: t } = O;
+}, ve = (e = $) => {
+	let { locales: t } = N;
 	if (e?.isCookieEnabled === !1) return;
 	let n = (e) => !!e && t.includes(e);
-	if (!X) for (let t = 0; t < (k.storage.cookies ?? []).length; t++) try {
-		let r = e?.getCookie?.(k.storage.cookies[t].name);
+	if (!Q) for (let t = 0; t < (P.storage.cookies ?? []).length; t++) try {
+		let r = e?.getCookie?.(P.storage.cookies[t].name);
 		if (n(r)) return r;
 	} catch {}
-}, be = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !X && k.storage.cookies) for (let n = 0; n < k.storage.cookies.length; n++) {
-		let { name: r, attributes: i } = k.storage.cookies[n];
+}, ye = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && !Q && P.storage.cookies) for (let n = 0; n < P.storage.cookies.length; n++) {
+		let { name: r, attributes: i } = P.storage.cookies[n];
 		try {
 			t?.setCookieStore && t.setCookieStore(r, e, {
 				...i,
@@ -532,11 +522,11 @@ var ve = (e, t, n) => {
 			});
 		} catch {
 			try {
-				t?.setCookieString && t.setCookieString(r, ve(r, e, i));
+				t?.setCookieString && t.setCookieString(r, _e(r, e, i));
 			} catch {}
 		}
 	}
-}, Z = {
+}, $ = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -555,12 +545,12 @@ var ve = (e, t, n) => {
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
 };
-ye(Z);
-var xe = (e, t) => be(e, {
-	...Z,
+ve($);
+var be = (e, t) => ye(e, {
+	...$,
 	isCookieEnabled: t
-}), Se = ({ isCookieEnabled: e, onLocaleChange: n } = {}) => {
-	let { defaultLocale: r, locales: i } = O ?? {}, a = d(W);
+}), xe = ({ isCookieEnabled: e, onLocaleChange: n } = {}) => {
+	let { defaultLocale: r, locales: i } = N ?? {}, a = d(K);
 	return {
 		locale: t(() => a?.locale?.value ?? r),
 		defaultLocale: r,
@@ -570,14 +560,14 @@ var xe = (e, t) => be(e, {
 				console.error(`Locale ${t} is not available`);
 				return;
 			}
-			a && a.setLocale(t), xe(t, e ?? a?.isCookieEnabled ?? !0), n?.(t);
+			a && a.setLocale(t), be(t, e ?? a?.isCookieEnabled ?? !0), n?.(t);
 		}
 	};
 };
-function Ce(e) {
-	h(() => {
+function Se(e) {
+	m(() => {
 		typeof performance < "u" && performance.mark && performance.mark(`${e}-start`);
-	}), g(() => {
+	}), h(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
 			try {
@@ -586,65 +576,39 @@ function Ce(e) {
 		}
 	});
 }
-var we = A.internationalization.locales;
-A.internationalization.requiredLocales, A.internationalization.defaultLocale, A.editor;
-var Te = (e) => {
+var Ce = F.internationalization.locales;
+F.internationalization.requiredLocales, F.internationalization.defaultLocale, F.editor;
+var we = (e) => {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
 	} catch {
 		return e.toUpperCase();
 	}
-}, Ee = c({
+}, Te = { class: "flex items-center gap-2" }, Ee = ["value"], De = ["value"], Oe = c({
 	__name: "LocaleSwitcher",
-	setup(e, { expose: n }) {
-		n();
-		let r = T(), i = ne(), { setLocale: a } = Se(), o = t(() => r.params.locale || "en"), s = (e) => {
-			a(e);
+	setup(n) {
+		let r = E(), o = D(), { setLocale: s } = xe(), c = t(() => r.params.locale || "en"), l = (e) => {
+			s(e);
 			let t = r.path.replace(/^\/[^/]+/, `/${e}`);
-			i.push({
+			o.push({
 				path: t,
 				query: r.query,
 				hash: r.hash
 			});
 		};
-		C(o, (e) => {
-			a(e);
-		}, { immediate: !0 });
-		let c = {
-			route: r,
-			router: i,
-			setLocale: a,
-			currentLocale: o,
-			handleLocaleChange: s,
-			get locales() {
-				return we;
-			},
-			get getLocaleName() {
-				return Te;
-			}
-		};
-		return Object.defineProperty(c, "__isScriptSetup", {
-			enumerable: !1,
-			value: !0
-		}), c;
+		return w(c, (e) => {
+			s(e);
+		}, { immediate: !0 }), (t, n) => (_(), i("div", Te, [a("select", {
+			value: c.value,
+			onChange: n[0] ||= (e) => l(e.target.value),
+			class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+		}, [(_(!0), i(e, null, y(C(Ce), (e) => (_(), i("option", {
+			key: e,
+			value: e
+		}, x(C(we)(e)), 9, De))), 128))], 40, Ee)]));
 	}
-}), Q = (e, t) => {
-	let n = e.__vccOpts || e;
-	for (let [e, r] of t) n[e] = r;
-	return n;
-}, De = { class: "flex items-center gap-2" }, Oe = ["value"], ke = ["value"];
-function Ae(t, n, r, o, s, c) {
-	return v(), i("div", De, [a("select", {
-		value: o.currentLocale,
-		onChange: n[0] ||= (e) => o.handleLocaleChange(e.target.value),
-		class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-	}, [(v(!0), i(e, null, b(o.locales, (e) => (v(), i("option", {
-		key: e,
-		value: e
-	}, x(o.getLocaleName(e)), 9, ke))), 128))], 40, Oe)]);
-}
-var je = Q(Ee, [["render", Ae], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/LocaleSwitcher.vue"]]), Me = {
+}), ke = {
 	key: "theme-toggle",
 	content: {
 		nodeType: "translation",
@@ -731,11 +695,10 @@ var je = Q(Ee, [["render", Ae], ["__file", "/Users/aymericpineau/Documents/bench
 			}
 		}
 	}
-}, Ne = c({
+}, Ae = ["aria-label", "title"], je = c({
 	__name: "ThemeToggle",
-	setup(e, { expose: t }) {
-		t();
-		let { d: n, e: r, f: i, a, c: o, b: s } = Y(Me), c = y("auto");
+	setup(e) {
+		let { d: t, e: n, f: r, a, c: o, b: s } = Z(ke), c = v("auto");
 		function l() {
 			if (typeof window > "u") return "auto";
 			let e = window.localStorage.getItem("theme");
@@ -745,191 +708,138 @@ var je = Q(Ee, [["render", Ae], ["__file", "/Users/aymericpineau/Documents/bench
 			let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 			document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 		}
-		g(() => {
+		h(() => {
 			let e = l();
 			c.value = e, u(e);
 		});
 		let d = null;
-		C(c, (e) => {
+		w(c, (e) => {
 			if (e === "auto") {
 				let e = window.matchMedia("(prefers-color-scheme: dark)");
 				d = () => u("auto"), e.addEventListener("change", d);
 			} else d &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", d), null);
-		}, { immediate: !0 }), _(() => {
+		}, { immediate: !0 }), g(() => {
 			d && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", d);
 		});
 		function f() {
 			let e = c.value === "light" ? "dark" : c.value === "dark" ? "auto" : "light";
 			c.value = e, u(e), window.localStorage.setItem("theme", e);
 		}
-		let p = {
-			auto: n,
-			dark: r,
-			light: i,
-			ariaLabelAuto: a,
-			ariaLabelLight: o,
-			ariaLabelDark: s,
-			mode: c,
-			getInitialMode: l,
-			applyThemeMode: u,
-			get mediaQueryListener() {
-				return d;
-			},
-			set mediaQueryListener(e) {
-				d = e;
-			},
-			toggleMode: f,
-			getLabel: () => c.value === "auto" ? a.value : c.value === "light" ? o.value : s.value
-		};
-		return Object.defineProperty(p, "__isScriptSetup", {
-			enumerable: !1,
-			value: !0
-		}), p;
+		let p = () => c.value === "auto" ? a.value : c.value === "light" ? o.value : s.value;
+		return (e, a) => (_(), i("button", {
+			type: "button",
+			onClick: f,
+			"aria-label": p(),
+			title: p(),
+			class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+		}, x(c.value === "auto" ? C(t) : c.value === "dark" ? C(n) : C(r)), 9, Ae));
 	}
-}), Pe = ["aria-label", "title"];
-function $(e, t, n, r, a, o) {
-	return v(), i("button", {
-		type: "button",
-		onClick: r.toggleMode,
-		"aria-label": r.getLabel(),
-		title: r.getLabel(),
-		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-	}, x(r.mode === "auto" ? r.auto : r.mode === "dark" ? r.dark : r.light), 9, Pe);
-}
-var Fe = Q(Ne, [["render", $], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/ThemeToggle.vue"]]), Ie = c({
-	__name: "Header",
-	setup(e, { expose: n }) {
-		n(), Ce("Header");
-		let { h: r, i, j: a, l: o, k: s, n: c, b: l, c: u, e: d, d: f, m: p, a: m, f: h } = Y(ie), g = y(!1), _ = T(), v = t(() => _.params.locale || "en"), b = {
-			home: r,
-			methodology: i,
-			mockPagesLabel: a,
-			products: o,
-			pricing: s,
-			team: c,
-			blog: l,
-			careers: u,
-			faq: d,
-			contact: f,
-			settings: p,
-			appName: m,
-			goToGithub: h,
-			isMockPagesOpen: g,
-			route: _,
-			currentLocale: v,
-			mockPagesList: t(() => [
-				{
-					to: `/${v.value}/products`,
-					label: o
-				},
-				{
-					to: `/${v.value}/pricing`,
-					label: s
-				},
-				{
-					to: `/${v.value}/team`,
-					label: c
-				},
-				{
-					to: `/${v.value}/blog`,
-					label: l
-				},
-				{
-					to: `/${v.value}/careers`,
-					label: u
-				},
-				{
-					to: `/${v.value}/faq`,
-					label: d
-				},
-				{
-					to: `/${v.value}/contact`,
-					label: f
-				},
-				{
-					to: `/${v.value}/settings`,
-					label: p
-				}
-			]),
-			get ChevronDown() {
-				return re;
-			},
-			LocaleSwitcher: je,
-			ThemeToggle: Fe
-		};
-		return Object.defineProperty(b, "__isScriptSetup", {
-			enumerable: !1,
-			value: !0
-		}), b;
-	}
-}), Le = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" }, Re = { class: "container flex h-16 items-center justify-between" }, ze = { class: "flex items-center gap-8" }, Be = { class: "hidden items-center gap-6 text-sm font-medium md:flex" }, Ve = { class: "relative" }, He = { class: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1" }, Ue = { class: "flex items-center gap-4" }, We = {
+}), Me = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" }, Ne = { class: "container flex h-16 items-center justify-between" }, Pe = { class: "flex items-center gap-8" }, Fe = { class: "hidden items-center gap-6 text-sm font-medium md:flex" }, Ie = { class: "relative" }, Le = { class: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1" }, Re = { class: "flex items-center gap-4" }, ze = {
 	href: "https://github.com/intlayer-org/benchmark-i18n",
 	target: "_blank",
 	rel: "noreferrer",
 	class: "text-muted-foreground transition hover:text-foreground"
-}, Ge = { class: "sr-only" };
-function Ke(t, c, l, u, d, f) {
-	let p = ee("router-link");
-	return v(), i("header", Le, [a("nav", Re, [a("div", ze, [s(p, {
-		to: `/${u.currentLocale}`,
-		class: "text-lg font-bold tracking-tight text-primary no-underline"
-	}, {
-		default: w(() => [o(x(u.appName), 1)]),
-		_: 1
-	}, 8, ["to"]), a("div", Be, [
-		s(p, {
-			to: `/${u.currentLocale}`,
-			class: "nav-link",
-			"exact-active-class": "is-active"
-		}, {
-			default: w(() => [o(x(u.home), 1)]),
-			_: 1
-		}, 8, ["to"]),
-		s(p, {
-			to: `/${u.currentLocale}/about`,
-			class: "nav-link",
-			"active-class": "is-active"
-		}, {
-			default: w(() => [o(x(u.methodology), 1)]),
-			_: 1
-		}, 8, ["to"]),
-		r(" Mock Pages Dropdown "),
-		a("div", Ve, [a("button", {
-			type: "button",
-			class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-			onMouseenter: c[0] ||= (e) => u.isMockPagesOpen = !0,
-			onMouseleave: c[1] ||= (e) => u.isMockPagesOpen = !1,
-			onClick: c[2] ||= (e) => u.isMockPagesOpen = !u.isMockPagesOpen
-		}, [o(x(u.mockPagesLabel) + " ", 1), s(u.ChevronDown, {
-			size: 14,
-			class: m(["transition-transform", u.isMockPagesOpen ? "rotate-180" : ""])
-		}, null, 8, ["class"])], 32), u.isMockPagesOpen ? (v(), i("div", {
-			key: 0,
-			class: "absolute left-0 top-full pt-2 w-48",
-			onMouseenter: c[4] ||= (e) => u.isMockPagesOpen = !0,
-			onMouseleave: c[5] ||= (e) => u.isMockPagesOpen = !1
-		}, [a("div", He, [(v(!0), i(e, null, b(u.mockPagesList, (e) => (v(), n(p, {
-			key: e.to,
-			to: e.to,
-			class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
-			onClick: c[3] ||= (e) => u.isMockPagesOpen = !1
-		}, {
-			default: w(() => [o(x(e.label), 1)]),
-			_: 2
-		}, 1032, ["to"]))), 128))])], 32)) : r("v-if", !0)])
-	])]), a("div", Ue, [
-		a("a", We, [a("span", Ge, x(u.goToGithub), 1), c[6] ||= a("svg", {
-			viewBox: "0 0 16 16",
-			"aria-hidden": "true",
-			width: "20",
-			height: "20"
-		}, [a("path", {
-			fill: "currentColor",
-			d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-		})], -1)]),
-		s(u.LocaleSwitcher),
-		s(u.ThemeToggle)
-	])])]);
-}
-var qe = Q(Ie, [["render", Ke], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/Header.vue"]]);
-export { qe as default };
+}, Be = { class: "sr-only" }, Ve = c({
+	__name: "Header",
+	setup(c) {
+		Se("Header");
+		let { h: l, i: u, j: d, l: f, k: p, n: m, b: h, c: g, e: b, d: S, m: w, a: D, f: O } = Z(re), k = v(!1), A = E(), j = t(() => A.params.locale || "en"), M = t(() => [
+			{
+				to: `/${j.value}/products`,
+				label: f
+			},
+			{
+				to: `/${j.value}/pricing`,
+				label: p
+			},
+			{
+				to: `/${j.value}/team`,
+				label: m
+			},
+			{
+				to: `/${j.value}/blog`,
+				label: h
+			},
+			{
+				to: `/${j.value}/careers`,
+				label: g
+			},
+			{
+				to: `/${j.value}/faq`,
+				label: b
+			},
+			{
+				to: `/${j.value}/contact`,
+				label: S
+			},
+			{
+				to: `/${j.value}/settings`,
+				label: w
+			}
+		]);
+		return (t, c) => {
+			let f = te("router-link");
+			return _(), i("header", Me, [a("nav", Ne, [a("div", Pe, [s(f, {
+				to: `/${j.value}`,
+				class: "text-lg font-bold tracking-tight text-primary no-underline"
+			}, {
+				default: T(() => [o(x(C(D)), 1)]),
+				_: 1
+			}, 8, ["to"]), a("div", Fe, [
+				s(f, {
+					to: `/${j.value}`,
+					class: "nav-link",
+					"exact-active-class": "is-active"
+				}, {
+					default: T(() => [o(x(C(l)), 1)]),
+					_: 1
+				}, 8, ["to"]),
+				s(f, {
+					to: `/${j.value}/about`,
+					class: "nav-link",
+					"active-class": "is-active"
+				}, {
+					default: T(() => [o(x(C(u)), 1)]),
+					_: 1
+				}, 8, ["to"]),
+				r(" Mock Pages Dropdown "),
+				a("div", Ie, [a("button", {
+					type: "button",
+					class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
+					onMouseenter: c[0] ||= (e) => k.value = !0,
+					onMouseleave: c[1] ||= (e) => k.value = !1,
+					onClick: c[2] ||= (e) => k.value = !k.value
+				}, [o(x(C(d)) + " ", 1), s(C(ne), {
+					size: 14,
+					class: ee(["transition-transform", k.value ? "rotate-180" : ""])
+				}, null, 8, ["class"])], 32), k.value ? (_(), i("div", {
+					key: 0,
+					class: "absolute left-0 top-full pt-2 w-48",
+					onMouseenter: c[4] ||= (e) => k.value = !0,
+					onMouseleave: c[5] ||= (e) => k.value = !1
+				}, [a("div", Le, [(_(!0), i(e, null, y(M.value, (e) => (_(), n(f, {
+					key: e.to,
+					to: e.to,
+					class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
+					onClick: c[3] ||= (e) => k.value = !1
+				}, {
+					default: T(() => [o(x(e.label), 1)]),
+					_: 2
+				}, 1032, ["to"]))), 128))])], 32)) : r("v-if", !0)])
+			])]), a("div", Re, [
+				a("a", ze, [a("span", Be, x(C(O)), 1), c[6] ||= a("svg", {
+					viewBox: "0 0 16 16",
+					"aria-hidden": "true",
+					width: "20",
+					height: "20"
+				}, [a("path", {
+					fill: "currentColor",
+					d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+				})], -1)]),
+				s(Oe),
+				s(je)
+			])])]);
+		};
+	}
+});
+export { Ve as default };

@@ -2,16 +2,16 @@ import { Dynamic, createComponent, delegateEvents, effect, insert, memo, setAttr
 import { For, createContext, createEffect, createMemo, createSignal, onMount, useContext } from "solid-js";
 import { A, useLocation, useNavigate, useParams } from "@solidjs/router";
 var content$1 = {
-	"de": () => import("../../.intlayer/dynamic_dictionary/json/header/de.json").then((m) => m.default),
-	"en": () => import("./en-CEOi87I2.js").then((m) => m.default),
-	"es": () => import("../../.intlayer/dynamic_dictionary/json/header/es.json").then((m) => m.default),
-	"fr": () => import("../../.intlayer/dynamic_dictionary/json/header/fr.json").then((m) => m.default),
-	"it": () => import("../../.intlayer/dynamic_dictionary/json/header/it.json").then((m) => m.default),
-	"ja": () => import("../../.intlayer/dynamic_dictionary/json/header/ja.json").then((m) => m.default),
-	"ko": () => import("../../.intlayer/dynamic_dictionary/json/header/ko.json").then((m) => m.default),
-	"pt": () => import("../../.intlayer/dynamic_dictionary/json/header/pt.json").then((m) => m.default),
-	"ru": () => import("../../.intlayer/dynamic_dictionary/json/header/ru.json").then((m) => m.default),
-	"zh": () => import("../../.intlayer/dynamic_dictionary/json/header/zh.json").then((m) => m.default)
+	"de": () => import("./de-BvhGx4EF.js").then((m) => m.default),
+	"en": () => import("./en-BJuL9Je1.js").then((m) => m.default),
+	"es": () => import("./es-BROmd0ZD.js").then((m) => m.default),
+	"fr": () => import("./fr-CgbqJKoS.js").then((m) => m.default),
+	"it": () => import("./it-0_ioE7ZM.js").then((m) => m.default),
+	"ja": () => import("./ja-Op9BmTCY.js").then((m) => m.default),
+	"ko": () => import("./ko-DeiYbSgM.js").then((m) => m.default),
+	"pt": () => import("./pt-DS-jh05P.js").then((m) => m.default),
+	"ru": () => import("./ru-NGF0J3Yt.js").then((m) => m.default),
+	"zh": () => import("./zh-cRJDQ8WH.js").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -231,7 +231,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-}, S$1 = {
+};
+var S = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -239,7 +240,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: o.children,
 		children: o.children
 	})
-}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+};
+var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -247,7 +249,12 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A$1 = (e, t = !0) => {
+};
+var T = fallbackPlugin;
+var D = fallbackPlugin;
+var O = fallbackPlugin;
+var k = /* @__PURE__ */ new Map();
+var A$1 = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -257,7 +264,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S$1,
+		S,
 		C,
 		T,
 		D,
@@ -276,7 +283,8 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-}, localeStorageOptions = {
+};
+var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -294,7 +302,9 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
+};
+var a$1 = getLocaleFromStorageClient(localeStorageOptions);
+var y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -313,7 +323,9 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+};
+var t = /* @__PURE__ */ new Map();
+var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
@@ -349,13 +361,15 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
-var _tmpl$$2 = template(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary">`), _tmpl$2$1 = template(`<option>`);
+var _tmpl$$2 = template(`<div class="flex items-center gap-2"><select class="h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary">`);
+var _tmpl$2$1 = template(`<option>`);
 function LocaleSwitcher() {
 	const params = useParams();
 	const navigate = useNavigate();
 	const location = useLocation();
 	const handleLocaleChange = (newLocale) => {
-		navigate(`${location.pathname.replace(/^\/[^/]+/, `/${newLocale}`)}${location.search}${location.hash}`);
+		const newPath = location.pathname.replace(/^\/[^/]+/, `/${newLocale}`);
+		navigate(`${newPath}${location.search}${location.hash}`);
 	};
 	return (() => {
 		var _el$ = _tmpl$$2(), _el$2 = _el$.firstChild;
@@ -374,16 +388,16 @@ function LocaleSwitcher() {
 	})();
 }
 var content = {
-	"de": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((m) => m.default),
-	"en": () => import("./en-BwpI0L5L.js").then((m) => m.default),
-	"es": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/es.json").then((m) => m.default),
-	"fr": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/fr.json").then((m) => m.default),
-	"it": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/it.json").then((m) => m.default),
-	"ja": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ja.json").then((m) => m.default),
-	"ko": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ko.json").then((m) => m.default),
-	"pt": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/pt.json").then((m) => m.default),
-	"ru": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ru.json").then((m) => m.default),
-	"zh": () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/zh.json").then((m) => m.default)
+	"de": () => import("./de-xYEQ1CKO.js").then((m) => m.default),
+	"en": () => import("./en-CeOnUdEz.js").then((m) => m.default),
+	"es": () => import("./es-CAfaD014.js").then((m) => m.default),
+	"fr": () => import("./fr-VNi9z7pt.js").then((m) => m.default),
+	"it": () => import("./it-D9rKjkYC.js").then((m) => m.default),
+	"ja": () => import("./ja-DPzs3QQe.js").then((m) => m.default),
+	"ko": () => import("./ko-0QEhZA1h.js").then((m) => m.default),
+	"pt": () => import("./pt-Df66bTeJ.js").then((m) => m.default),
+	"ru": () => import("./ru-Ce0F8Lta.js").then((m) => m.default),
+	"zh": () => import("./zh-Dovr6cuc.js").then((m) => m.default)
 };
 var _tmpl$$1 = template(`<button type=button class="rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80">`);
 function getInitialMode() {
@@ -444,7 +458,9 @@ function ThemeToggle() {
 	})();
 }
 delegateEvents(["click"]);
-var _tmpl$ = template(`<svg width=14 height=14 viewBox="0 0 24 24"fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round aria-hidden=true><path d="m6 9 6 6 6-6">`), _tmpl$2 = template(`<header class="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg"><nav class="container flex h-16 items-center justify-between"><div class="flex items-center gap-8"><div class="hidden items-center gap-6 text-sm font-medium md:flex"><div class=relative><button type=button class="flex cursor-pointer items-center gap-1 border-none bg-transparent nav-link"></button></div></div></div><div class="flex items-center gap-4"><a href=https://github.com/intlayer-org/benchmark-i18n target=_blank rel=noreferrer class="text-muted-foreground transition hover:text-foreground"><span class=sr-only></span><svg viewBox="0 0 16 16"aria-hidden=true width=20 height=20><path fill=currentColor d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z">`), _tmpl$3 = template(`<div class="absolute left-0 top-full w-48 pt-2"><div class="overflow-hidden rounded-md border border-border bg-card py-1 shadow-lg">`);
+var _tmpl$ = template(`<svg width=14 height=14 viewBox="0 0 24 24"fill=none stroke=currentColor stroke-width=2 stroke-linecap=round stroke-linejoin=round aria-hidden=true><path d="m6 9 6 6 6-6">`);
+var _tmpl$2 = template(`<header class="sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg"><nav class="container flex h-16 items-center justify-between"><div class="flex items-center gap-8"><div class="hidden items-center gap-6 text-sm font-medium md:flex"><div class=relative><button type=button class="flex cursor-pointer items-center gap-1 border-none bg-transparent nav-link"></button></div></div></div><div class="flex items-center gap-4"><a href=https://github.com/intlayer-org/benchmark-i18n target=_blank rel=noreferrer class="text-muted-foreground transition hover:text-foreground"><span class=sr-only></span><svg viewBox="0 0 16 16"aria-hidden=true width=20 height=20><path fill=currentColor d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z">`);
+var _tmpl$3 = template(`<div class="absolute left-0 top-full w-48 pt-2"><div class="overflow-hidden rounded-md border border-border bg-card py-1 shadow-lg">`);
 function ChevronDown(props) {
 	return (() => {
 		var _el$ = _tmpl$();
@@ -563,16 +579,35 @@ function Header() {
 }
 delegateEvents(["click"]);
 export { Header as default };
-var en_default = {
-	key: "theme-toggle",
+var de_default = {
+	key: "header",
 	content: {
-		"d": "Theme mode: auto (system). Click to switch to light mode.",
-		"a": "Theme: Auto",
-		"b": "Theme: Dark",
-		"c": "Theme: Light"
+		"f": "Header",
+		"k": "Produkte",
+		"j": "Preise",
+		"m": "Team",
+		"a": "Blog",
+		"b": "Karriere",
+		"d": "FAQ",
+		"c": "Kontakt",
+		"l": "Einstellungen",
+		"g": "Home",
+		"h": "Methodik",
+		"i": "Testseiten",
+		"e": "Zu GitHub"
 	}
 };
-export { en_default as default };
+export { de_default as default };
+var de_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
+		"a": "Design: Auto",
+		"b": "Design: Dunkel",
+		"c": "Design: Hell"
+	}
+};
+export { de_default as default };
 var en_default = {
 	key: "header",
 	content: {
@@ -592,3 +627,245 @@ var en_default = {
 	}
 };
 export { en_default as default };
+var en_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Theme mode: auto (system). Click to switch to light mode.",
+		"a": "Theme: Auto",
+		"b": "Theme: Dark",
+		"c": "Theme: Light"
+	}
+};
+export { en_default as default };
+var es_default = {
+	key: "header",
+	content: {
+		"f": "Encabezado",
+		"k": "Productos",
+		"j": "Precios",
+		"m": "Equipo",
+		"a": "Blog",
+		"b": "Carreras",
+		"d": "FAQ",
+		"c": "Contacto",
+		"l": "Ajustes",
+		"g": "Inicio",
+		"h": "Metodología",
+		"i": "Páginas de prueba",
+		"e": "Ir a GitHub"
+	}
+};
+export { es_default as default };
+var es_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
+		"a": "Tema: Automático",
+		"b": "Tema: Oscuro",
+		"c": "Tema: Claro"
+	}
+};
+export { es_default as default };
+var fr_default = {
+	key: "header",
+	content: {
+		"f": "En-tête",
+		"k": "Produits",
+		"j": "Tarification",
+		"m": "Équipe",
+		"a": "Blog",
+		"b": "Carrières",
+		"d": "FAQ",
+		"c": "Contact",
+		"l": "Paramètres",
+		"g": "Accueil",
+		"h": "Méthodologie",
+		"i": "Pages fictives",
+		"e": "Aller sur GitHub"
+	}
+};
+export { fr_default as default };
+var fr_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Mode thématique : auto (système). Cliquez pour passer en mode clair.",
+		"a": "Thème : Auto",
+		"b": "Thème : Sombre",
+		"c": "Thème : Clair"
+	}
+};
+export { fr_default as default };
+var it_default = {
+	key: "header",
+	content: {
+		"f": "Intestazione",
+		"k": "Prodotti",
+		"j": "Prezzi",
+		"m": "Team",
+		"a": "Blog",
+		"b": "Carriere",
+		"d": "FAQ",
+		"c": "Contatti",
+		"l": "Impostazioni",
+		"g": "Home",
+		"h": "Metodologia",
+		"i": "Pagine di prova",
+		"e": "Vai su GitHub"
+	}
+};
+export { it_default as default };
+var it_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
+		"a": "Tema: Auto",
+		"b": "Tema: Scuro",
+		"c": "Tema: Chiaro"
+	}
+};
+export { it_default as default };
+var ja_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
+		"a": "テーマ：自動",
+		"b": "テーマ：ダーク",
+		"c": "テーマ：ライト"
+	}
+};
+export { ja_default as default };
+var ja_default = {
+	key: "header",
+	content: {
+		"f": "ヘッダー",
+		"k": "製品",
+		"j": "価格設定",
+		"m": "チーム",
+		"a": "ブログ",
+		"b": "採用情報",
+		"d": "よくある質問",
+		"c": "お問い合わせ",
+		"l": "設定",
+		"g": "ホーム",
+		"h": "方法論",
+		"i": "モックページ",
+		"e": "GitHub へ"
+	}
+};
+export { ja_default as default };
+var ko_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
+		"a": "테마: 자동",
+		"b": "테마: 다크",
+		"c": "테마: 라이트"
+	}
+};
+export { ko_default as default };
+var ko_default = {
+	key: "header",
+	content: {
+		"f": "헤더",
+		"k": "제품",
+		"j": "가격",
+		"m": "팀",
+		"a": "블로그",
+		"b": "채용",
+		"d": "자주 묻는 질문",
+		"c": "문의",
+		"l": "설정",
+		"g": "홈",
+		"h": "방법론",
+		"i": "모ック 페이지",
+		"e": "GitHub으로 이동"
+	}
+};
+export { ko_default as default };
+var pt_default = {
+	key: "header",
+	content: {
+		"f": "Cabeçalho",
+		"k": "Produtos",
+		"j": "Preços",
+		"m": "Equipe",
+		"a": "Blog",
+		"b": "Carreiras",
+		"d": "FAQ",
+		"c": "Contato",
+		"l": "Configurações",
+		"g": "Início",
+		"h": "Metodologia",
+		"i": "Páginas de Teste",
+		"e": "Ir para o GitHub"
+	}
+};
+export { pt_default as default };
+var pt_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
+		"a": "Tema: Automático",
+		"b": "Tema: Escuro",
+		"c": "Tema: Claro"
+	}
+};
+export { pt_default as default };
+var ru_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
+		"a": "Тема: Авто",
+		"b": "Тема: Темная",
+		"c": "Тема: Светлая"
+	}
+};
+export { ru_default as default };
+var ru_default = {
+	key: "header",
+	content: {
+		"f": "Заголовок",
+		"k": "Продукты",
+		"j": "Цены",
+		"m": "Команда",
+		"a": "Блог",
+		"b": "Вакансии",
+		"d": "FAQ",
+		"c": "Контакт",
+		"l": "Настройки",
+		"g": "Главная",
+		"h": "Методология",
+		"i": "Мок-страницы",
+		"e": "Перейти на GitHub"
+	}
+};
+export { ru_default as default };
+var zh_default = {
+	key: "theme-toggle",
+	content: {
+		"d": "主题模式：自动（系统）。点击切换到亮色模式。",
+		"a": "主题：自动",
+		"b": "主题：深色",
+		"c": "主题：亮色"
+	}
+};
+export { zh_default as default };
+var zh_default = {
+	key: "header",
+	content: {
+		"f": "页眉",
+		"k": "产品",
+		"j": "定价",
+		"m": "团队",
+		"a": "博客",
+		"b": "职业",
+		"d": "常见问题",
+		"c": "联系我们",
+		"l": "设置",
+		"g": "首页",
+		"h": "方法论",
+		"i": "模拟页面",
+		"e": "前往 GitHub"
+	}
+};
+export { zh_default as default };

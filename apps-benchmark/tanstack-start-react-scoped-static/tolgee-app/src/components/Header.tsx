@@ -15,14 +15,14 @@ export default function Header() {
   const currentLocale = params.locale ?? "en";
 
   const mockPages = [
-    { to: "/$locale/products" as const, label: t("header.products", "Products") },
-    { to: "/$locale/pricing" as const, label: t("header.pricing", "Pricing") },
-    { to: "/$locale/team" as const, label: t("header.team", "Team") },
-    { to: "/$locale/blog" as const, label: t("header.blog", "Blog") },
-    { to: "/$locale/careers" as const, label: t("header.careers", "Careers") },
-    { to: "/$locale/faq" as const, label: t("header.faq", "FAQ") },
-    { to: "/$locale/contact" as const, label: t("header.contact", "Contact") },
-    { to: "/$locale/settings" as const, label: t("header.settings", "Settings") },
+    { to: "/$locale/products" as const, label: t("header.products") },
+    { to: "/$locale/pricing" as const, label: t("header.pricing") },
+    { to: "/$locale/team" as const, label: t("header.team") },
+    { to: "/$locale/blog" as const, label: t("header.blog") },
+    { to: "/$locale/careers" as const, label: t("header.careers") },
+    { to: "/$locale/faq" as const, label: t("header.faq") },
+    { to: "/$locale/contact" as const, label: t("header.contact") },
+    { to: "/$locale/settings" as const, label: t("header.settings") },
   ];
 
   return (
@@ -47,7 +47,7 @@ export default function Header() {
               activeProps={{ className: "is-active" }}
               className="nav-link"
             >
-              <T keyName="header.home" defaultValue="Home" />
+              <T keyName="header.home" />
             </Link>
             <Link
               preload={false}
@@ -56,7 +56,7 @@ export default function Header() {
               activeProps={{ className: "is-active" }}
               className="nav-link"
             >
-              <T keyName="header.methodology" defaultValue="Methodology" />
+              <T keyName="header.methodology" />
             </Link>
 
             {/* Mock Pages Dropdown */}
@@ -68,7 +68,7 @@ export default function Header() {
                 onMouseLeave={() => setIsMockPagesOpen(false)}
                 onClick={() => setIsMockPagesOpen(!isMockPagesOpen)}
               >
-                <T keyName="header.mockPages" defaultValue="Mock Pages" />
+                <T keyName="header.mockPages" />
                 <ChevronDown
                   size={14}
                   className={`transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`}
@@ -109,7 +109,7 @@ export default function Header() {
             className="text-muted-foreground transition hover:text-foreground"
           >
             <span className="sr-only">
-              <T keyName="header.goToGithub" defaultValue="Go to GitHub" />
+              <T keyName="header.goToGithub" />
             </span>
             <svg viewBox="0 0 16 16" aria-hidden="true" width="20" height="20">
               <path

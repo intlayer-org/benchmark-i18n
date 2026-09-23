@@ -1,0 +1,22 @@
+{
+  "teamHeader.ourTeam": "우리 팀",
+  "teamHeader.meetThePeopleBehindI18n": "i18n Benchmark를 만드는 사람들을 만나보세요. 훌륭한 개발자 도구에 대한 열정으로 뭉친 다양한 팀입니다.",
+  "teamGrid.sarahChen": "Sarah Chen",
+  "teamGrid.founderLeadEngineer": "창립자 및 리드 엔지니어",
+  "teamGrid.formerGoogleEngineerWith10": "전 Google 엔지니어로 대규모 국제화 시스템 구축에 10년의 경험이 있습니다.",
+  "teamGrid.marcusWeber": "Marcus Weber",
+  "teamGrid.performanceEngineer": "성능 엔지니어",
+  "teamGrid.specializesInJavascriptPerformanceOptimization": "JavaScript 성능 최적화 및 벤치마킹 방법론을 전문으로 합니다. 이전 Vercel 근무.",
+  "teamGrid.aishaPatel": "Aisha Patel",
+  "teamGrid.developerAdvocate": "개발자 에반젤리스트",
+  "teamGrid.passionateAboutDeveloperExperienceAnd": "개발자 경험과 교육에 열정적입니다. React Conf, JSConf 및 i18nNext 강연자.",
+  "teamGrid.tomasRodriguez": "Tomás Rodríguez",
+  "teamGrid.fullStackDeveloper": "풀스택 개발자",
+  "teamGrid.maintainsTheBenchmarkingInfrastructureAnd": "벤치마킹 인프라 및 CI/CD 파이프라인 유지 관리. Lingui 오픈 소스 기여자.",
+  "teamGrid.yukiTanaka": "Yuki Tanaka",
+  "teamGrid.dataAnalyst": "데이터 분석가",
+  "teamGrid.ensuresStatisticalRigorInAll": "모든 벤치마크 결과의 통계적 엄격함을 보장합니다. MIT 응용통계학 박사.",
+  "teamGrid.elenaKowalski": "Elena Kowalski",
+  "teamGrid.communityManager": "커뮤니티 매니저",
+  "teamGrid.managesCommunityContributionsPartnershipsAnd": "커뮤니티 기여, 파트너십 및 이벤트를 관리합니다. 오픈 소스 거버넌스 배경 보유。"
+}

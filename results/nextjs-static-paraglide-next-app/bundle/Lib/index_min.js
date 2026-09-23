@@ -1,5 +1,5 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { Fragment as r, jsxDEV as i } from "react/jsx-dev-runtime";
+import { Fragment as r, jsx as i } from "react/jsx-runtime";
 import { useParams as a } from "next/navigation";
 var o = {}, s = [
 	"en",
@@ -137,15 +137,10 @@ var L = /* @__PURE__ */ new Map();
 function R(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/EmptyComponent.tsx";
-function B() {
-	return i(r, {}, void 0, !1, {
-		fileName: z,
-		lineNumber: 22,
-		columnNumber: 10
-	}, this);
+function z() {
+	return i(r, {});
 }
-function V() {
+function B() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -159,44 +154,25 @@ function V() {
 		}
 	}
 }
-function H(e, t) {
+function V(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var U = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
-function W({ children: o }) {
+function H({ children: o }) {
 	let s = a().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		H("AppRoot", c);
+		V("AppRoot", c);
 	}, [c]), e(() => {
 		v(s, { reload: !1 }), document.documentElement.lang = s;
 	}, [s]), e(() => {
-		V();
-	}, []), i(r, { children: o }, void 0, !1, {
-		fileName: U,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+		B();
+	}, []), i(r, { children: o });
 }
-var G = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
-function K({ children: e }) {
-	return i(W, { children: e }, void 0, !1, {
-		fileName: G,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function U({ children: e }) {
+	return i(H, { children: e });
 }
-var q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/EmptyComponent.wrapper.tsx";
-function J() {
-	return i(K, { children: i(B, {}, void 0, !1, {
-		fileName: q,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: q,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function W() {
+	return i(U, { children: i(z, {}) });
 }
-export { J as default };
+export { W as default };

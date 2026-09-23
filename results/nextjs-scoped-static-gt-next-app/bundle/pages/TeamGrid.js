@@ -1,6 +1,5 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { jsx } from "react/jsx-runtime";
-import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3909,7 +3908,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => true) === true) return "development";
+	if (readImportMetaEnv(() => false) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6019,160 +6018,62 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/pages/team/TeamGrid.tsx";
 function TeamGrid() {
-	const members = [
-		{
-			name: jsxDEV(a$2, { children: "Sarah Chen" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 6,
-				columnNumber: 13
-			}, this),
-			role: jsxDEV(a$2, { children: "Founder & Lead Engineer" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 7,
-				columnNumber: 13
-			}, this),
-			bio: jsxDEV(a$2, { children: "Former Google engineer with 10 years of experience building internationalization systems at scale." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 9,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			name: jsxDEV(a$2, { children: "Marcus Weber" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 16,
-				columnNumber: 13
-			}, this),
-			role: jsxDEV(a$2, { children: "Performance Engineer" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 17,
-				columnNumber: 13
-			}, this),
-			bio: jsxDEV(a$2, { children: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 19,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			name: jsxDEV(a$2, { children: "Aisha Patel" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 26,
-				columnNumber: 13
-			}, this),
-			role: jsxDEV(a$2, { children: "Developer Advocate" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 27,
-				columnNumber: 13
-			}, this),
-			bio: jsxDEV(a$2, { children: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 29,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			name: jsxDEV(a$2, { children: "Tomás Rodríguez" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 36,
-				columnNumber: 13
-			}, this),
-			role: jsxDEV(a$2, { children: "Full-Stack Developer" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 37,
-				columnNumber: 13
-			}, this),
-			bio: jsxDEV(a$2, { children: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 39,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			name: jsxDEV(a$2, { children: "Yuki Tanaka" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 46,
-				columnNumber: 13
-			}, this),
-			role: jsxDEV(a$2, { children: "Data Analyst" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 47,
-				columnNumber: 13
-			}, this),
-			bio: jsxDEV(a$2, { children: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 49,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			name: jsxDEV(a$2, { children: "Elena Kowalski" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 56,
-				columnNumber: 13
-			}, this),
-			role: jsxDEV(a$2, { children: "Community Manager" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 57,
-				columnNumber: 13
-			}, this),
-			bio: jsxDEV(a$2, { children: "Manages community contributions, partnerships, and events. Background in open source governance." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 59,
-				columnNumber: 9
-			}, this)
-		}
-	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: members.map((m, i) => jsxDEV("div", {
+		children: [
+			{
+				name: jsx(a$2, { children: "Sarah Chen" }),
+				role: jsx(a$2, { children: "Founder & Lead Engineer" }),
+				bio: jsx(a$2, { children: "Former Google engineer with 10 years of experience building internationalization systems at scale." })
+			},
+			{
+				name: jsx(a$2, { children: "Marcus Weber" }),
+				role: jsx(a$2, { children: "Performance Engineer" }),
+				bio: jsx(a$2, { children: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel." })
+			},
+			{
+				name: jsx(a$2, { children: "Aisha Patel" }),
+				role: jsx(a$2, { children: "Developer Advocate" }),
+				bio: jsx(a$2, { children: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext." })
+			},
+			{
+				name: jsx(a$2, { children: "Tomás Rodríguez" }),
+				role: jsx(a$2, { children: "Full-Stack Developer" }),
+				bio: jsx(a$2, { children: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui." })
+			},
+			{
+				name: jsx(a$2, { children: "Yuki Tanaka" }),
+				role: jsx(a$2, { children: "Data Analyst" }),
+				bio: jsx(a$2, { children: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT." })
+			},
+			{
+				name: jsx(a$2, { children: "Elena Kowalski" }),
+				role: jsx(a$2, { children: "Community Manager" }),
+				bio: jsx(a$2, { children: "Manages community contributions, partnerships, and events. Background in open source governance." })
+			}
+		].map((m, i) => jsxs("div", {
 			className: "rounded-lg border border-border bg-card p-6 text-center",
 			children: [
-				jsxDEV("div", {
+				jsx("div", {
 					className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 					children: m.name.props.children.split(" ").map((n) => n[0]).join("")
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 74,
-					columnNumber: 11
-				}, this),
-				jsxDEV("h3", {
+				}),
+				jsx("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: m.name
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 80,
-					columnNumber: 11
-				}, this),
-				jsxDEV("p", {
+				}),
+				jsx("p", {
 					className: "mb-2 text-xs font-medium text-primary",
 					children: m.role
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 81,
-					columnNumber: 11
-				}, this),
-				jsxDEV("p", {
+				}),
+				jsx("p", {
 					className: "text-sm text-muted-foreground",
 					children: m.bio
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 82,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, i, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 70,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 68,
-		columnNumber: 5
-	}, this);
+		}, i))
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6196,7 +6097,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6208,41 +6108,19 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment$1, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 33,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment$1, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsxDEV(BrowserGTProvider, {
+	return jsx(BrowserGTProvider, {
 		locale,
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/pages/team/TeamGrid.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(TeamGrid, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(TeamGrid, {}) });
 }
 export { Wrapped as default };

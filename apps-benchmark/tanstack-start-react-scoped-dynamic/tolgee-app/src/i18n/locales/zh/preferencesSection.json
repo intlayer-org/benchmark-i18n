@@ -1,0 +1,18 @@
+{
+  "arabicAr": "Arabic (ar)",
+  "chineseSimplifiedZhCn": "Chinese (Simplified, zh-CN)",
+  "darkMode": "深色模式",
+  "defaultLanguage": "默认语言",
+  "emailNotifications": "邮件通知",
+  "englishEn": "English (en)",
+  "frenchFr": "French (fr)",
+  "germanDe": "German (de)",
+  "japaneseJa": "Japanese (ja)",
+  "preferences": "偏好设置",
+  "receiveWeeklyBenchmark": "Receive weekly benchmark reports",
+  "receiveWeeklyBenchmarkReports": "接收每周基准测试报告",
+  "spanishEs": "Spanish (es)",
+  "toggleDarkMode": "Toggle dark mode",
+  "toggleNotifications": "Toggle Notifications",
+  "useDarkColorScheme": "使用深色配色方案"
+}

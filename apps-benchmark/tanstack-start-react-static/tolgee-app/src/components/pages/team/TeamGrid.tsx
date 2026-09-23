@@ -6,51 +6,39 @@ export default function TeamGrid() {
   const members = [
     {
       name: "Sarah Chen",
-      role: t("teamGrid.founderLeadEngineer", "Founder & Lead Engineer"),
+      role: t("teamGrid.founderLeadEngineer"),
       bio: t(
-        "teamGrid.formerGoogleEngineerWith",
-        "Former Google engineer with 10 years of experience building internationalization systems at scale.",
-      ),
+        "teamGrid.formerGoogleEngineerWith"),
     },
     {
       name: "Marcus Weber",
-      role: t("teamGrid.performanceEngineer", "Performance Engineer"),
+      role: t("teamGrid.performanceEngineer"),
       bio: t(
-        "teamGrid.specializesInJavascriptPerformance",
-        "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
-      ),
+        "teamGrid.specializesInJavascriptPerformance"),
     },
     {
       name: "Aisha Patel",
-      role: t("teamGrid.developerAdvocate", "Developer Advocate"),
+      role: t("teamGrid.developerAdvocate"),
       bio: t(
-        "teamGrid.passionateAboutDeveloperExperience",
-        "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
-      ),
+        "teamGrid.passionateAboutDeveloperExperience"),
     },
     {
       name: "Tomás Rodríguez",
-      role: t("teamGrid.fullStackDeveloper", "Full-Stack Developer"),
+      role: t("teamGrid.fullStackDeveloper"),
       bio: t(
-        "teamGrid.maintainsTheBenchmarkingInfrastructure",
-        "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
-      ),
+        "teamGrid.maintainsTheBenchmarkingInfrastructure"),
     },
     {
       name: "Yuki Tanaka",
-      role: t("teamGrid.dataAnalyst", "Data Analyst"),
+      role: t("teamGrid.dataAnalyst"),
       bio: t(
-        "teamGrid.ensuresStatisticalRigorIn",
-        "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
-      ),
+        "teamGrid.ensuresStatisticalRigorIn"),
     },
     {
       name: "Elena Kowalski",
-      role: t("teamGrid.communityManager", "Community Manager"),
+      role: t("teamGrid.communityManager"),
       bio: t(
-        "teamGrid.managesCommunityContributions",
-        "Manages community contributions, partnerships, and events. Background in open source governance.",
-      ),
+        "teamGrid.managesCommunityContributions"),
     },
   ];
 

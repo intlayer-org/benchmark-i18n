@@ -3,7 +3,6 @@ import { RouterProvider } from "@tanstack/react-router";
 import { createIsomorphicFn, createMiddleware } from "@tanstack/start-client-core";
 import { jsx } from "react/jsx-runtime";
 import { defineHandlerCallback, renderRouterToStream, renderRouterToString } from "@tanstack/react-router/ssr/server";
-import { jsxDEV } from "react/jsx-dev-runtime";
 import gtConfig from "../gt.config.json";
 import en from "../src/_gt/en.json";
 import fr from "../src/_gt/fr.json";
@@ -3969,10 +3968,9 @@ function getTranslationApiType(params) {
 	else return "disabled";
 }
 function getRuntimeEnvironment() {
-	if (typeof process === "object" && true) return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => true) === true) return "development";
+	if (readImportMetaEnv(() => false) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -4285,22 +4283,12 @@ function getCookieValue(cookieHeader, cookieName) {
 async function getGTInternal({ locale, enableI18n }, _messages) {
 	const i18nCache = getI18nCache();
 	const sourceLocale = getI18nConfig().getDefaultLocale();
-	const devHotReloadEnabled = getI18nConfig().isDevHotReloadEnabled();
 	const lookupTranslation = await i18nCache.getLookupTranslation(enableI18n ? locale : sourceLocale);
-	if (devHotReloadEnabled && lookupTranslation.prefetchEntries) await lookupTranslation.prefetchEntries(_messages?.map(({ message, ...options }) => ({
-		message,
-		options: {
-			$format: "ICU",
-			...options
-		}
-	})) ?? []);
 	const gt = (message, options = {}) => {
 		const lookupOptions = createLookupOptions(enableI18n ? options.$locale ?? locale : getI18nConfig().getDefaultLocale(), options, "ICU");
-		const translation = lookupTranslation(message, lookupOptions);
-		if (devHotReloadEnabled && translation == null) i18nCache.lookupTranslationWithFallback(lookupOptions.$locale, message, lookupOptions).catch(() => {});
 		return interpolateMessage({
 			source: message,
-			target: translation,
+			target: lookupTranslation(message, lookupOptions),
 			options: lookupOptions,
 			sourceLocale
 		});
@@ -4997,13 +4985,7 @@ var I18nCache = class {
 			const asyncBoundaryLocale = this._resolveCacheLocale(locale);
 			if (!asyncBoundaryLocale) return (message) => message;
 			const asyncBoundaryTxCache = await this.translations.getOrLoad(asyncBoundaryLocale);
-			const prefetchEntries = async (prefetchEntries = []) => {
-				if (getI18nConfig().isDevHotReloadEnabled()) {
-					const resolvedPrefetchEntries = resolvePrefetchEntriesByLocale(prefetchEntries, asyncBoundaryLocale, (entryLocale) => this._resolveCacheLocale(entryLocale) ?? this._resolveLocale(entryLocale));
-					if (resolvedPrefetchEntries.length !== prefetchEntries.length) logger_default.warn(`I18nCache: getLookupTranslation(): prefetchEntries must all be the same locale, ignoring all entries that are not for ${asyncBoundaryLocale}`);
-					await Promise.allSettled(resolvedPrefetchEntries.filter((entry) => asyncBoundaryTxCache.get(entry) == null).map((entry) => asyncBoundaryTxCache.miss(entry)));
-				}
-			};
+			const prefetchEntries = async (prefetchEntries = []) => {};
 			const lookupTranslation = (message, lookupOptions = {}) => this.guard(void 0, () => {
 				const { translationLocale, options } = this.resolveLookupParams(lookupOptions.$locale ?? asyncBoundaryLocale, lookupOptions);
 				if (!translationLocale) return message;
@@ -5099,25 +5081,6 @@ function validateCacheParams(params) {
 		}));
 		throw new Error("Validation errors occurred");
 	}
-}
-function resolvePrefetchEntriesByLocale(prefetchEntries, locale, resolveLocale) {
-	return prefetchEntries.flatMap((entry) => {
-		const entryLocale = entry.options.$locale;
-		if (entryLocale == null) return [entry];
-		try {
-			const resolvedLocale = resolveLocale(entryLocale);
-			if (resolvedLocale !== locale) return [];
-			return [{
-				message: entry.message,
-				options: {
-					...entry.options,
-					$locale: resolvedLocale
-				}
-			}];
-		} catch {
-			return [];
-		}
-	});
 }
 function getTranslateListenerKey(lookup) {
 	const hash = "hash" in lookup ? lookup.hash : hashMessage(lookup.message, lookup.options);
@@ -5797,24 +5760,15 @@ function initializeGT(config) {
 		locale: determineLocaleClient(config)
 	});
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/gt-react-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
 	return null;
 };
 function EmptyComponent() {
-	return jsxDEV(BrowserGTProvider, {
+	return jsx(BrowserGTProvider, {
 		locale: "en",
 		translations: {},
-		children: jsxDEV(TestComponent, {}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 12,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 11,
-		columnNumber: 5
-	}, this);
+		children: jsx(TestComponent, {})
+	});
 }
 var translationsMap = {
 	en,
@@ -5831,31 +5785,17 @@ var translationsMap = {
 function loadTranslations(locale) {
 	return translationsMap[locale] || translationsMap["en"];
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/gt-react-app/scripts/Wrapper.tsx";
 initializeGT({
 	...gtConfig,
 	loadTranslations
 });
 function Wrapper({ children }) {
-	return jsxDEV(BrowserGTProvider, {
+	return jsx(BrowserGTProvider, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 13,
-		columnNumber: 10
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/gt-react-app/scripts/EmptyComponent.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(EmptyComponent, {}) });
 }
 export { Wrapped as default };

@@ -1,6 +1,5 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { jsx } from "react/jsx-runtime";
-import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3909,7 +3908,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => true) === true) return "development";
+	if (readImportMetaEnv(() => false) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6019,241 +6018,83 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/careers/OpenPositions.tsx";
 function OpenPositions() {
-	const openings = [
-		{
-			title: jsxDEV(a$2, { children: "Senior Frontend Engineer" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 6,
-				columnNumber: 14
-			}, this),
-			location: jsxDEV(a$2, { children: "Remote" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 7,
-				columnNumber: 17
-			}, this),
-			type: jsxDEV(a$2, { children: "Full-time" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 8,
-				columnNumber: 13
-			}, this),
-			dept: jsxDEV(a$2, { children: "Engineering" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 9,
-				columnNumber: 13
-			}, this),
-			desc: jsxDEV(a$2, { children: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 11,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			title: jsxDEV(a$2, { children: "Backend Engineer" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 18,
-				columnNumber: 14
-			}, this),
-			location: jsxDEV(a$2, { children: "Remote" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 19,
-				columnNumber: 17
-			}, this),
-			type: jsxDEV(a$2, { children: "Full-time" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 20,
-				columnNumber: 13
-			}, this),
-			dept: jsxDEV(a$2, { children: "Engineering" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 21,
-				columnNumber: 13
-			}, this),
-			desc: jsxDEV(a$2, { children: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 23,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			title: jsxDEV(a$2, { children: "Technical Writer" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 30,
-				columnNumber: 14
-			}, this),
-			location: jsxDEV(a$2, { children: "Remote" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 31,
-				columnNumber: 17
-			}, this),
-			type: jsxDEV(a$2, { children: "Part-time" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 32,
-				columnNumber: 13
-			}, this),
-			dept: jsxDEV(a$2, { children: "Documentation" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 33,
-				columnNumber: 13
-			}, this),
-			desc: jsxDEV(a$2, { children: "Create comprehensive guides, API references, and tutorials for our benchmarking platform." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 35,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			title: jsxDEV(a$2, { children: "DevRel Engineer" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 42,
-				columnNumber: 14
-			}, this),
-			location: jsxDEV(a$2, { children: "San Francisco / Remote" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 43,
-				columnNumber: 17
-			}, this),
-			type: jsxDEV(a$2, { children: "Full-time" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 44,
-				columnNumber: 13
-			}, this),
-			dept: jsxDEV(a$2, { children: "Community" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 45,
-				columnNumber: 13
-			}, this),
-			desc: jsxDEV(a$2, { children: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 47,
-				columnNumber: 9
-			}, this)
-		},
-		{
-			title: jsxDEV(a$2, { children: "QA Engineer" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 54,
-				columnNumber: 14
-			}, this),
-			location: jsxDEV(a$2, { children: "Remote" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 55,
-				columnNumber: 17
-			}, this),
-			type: jsxDEV(a$2, { children: "Full-time" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 56,
-				columnNumber: 13
-			}, this),
-			dept: jsxDEV(a$2, { children: "Engineering" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 57,
-				columnNumber: 13
-			}, this),
-			desc: jsxDEV(a$2, { children: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation." }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 59,
-				columnNumber: 9
-			}, this)
-		}
-	];
-	return jsxDEV(Fragment$1, { children: [jsxDEV("h2", {
+	return jsxs(Fragment$1, { children: [jsx("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
-		children: jsxDEV(a$2, { children: "Open Positions" }, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 70,
-			columnNumber: 9
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 69,
-		columnNumber: 7
-	}, this), jsxDEV("div", {
+		children: jsx(a$2, { children: "Open Positions" })
+	}), jsx("div", {
 		className: "space-y-4",
-		children: openings.map((o) => jsxDEV("div", {
+		children: [
+			{
+				title: jsx(a$2, { children: "Senior Frontend Engineer" }),
+				location: jsx(a$2, { children: "Remote" }),
+				type: jsx(a$2, { children: "Full-time" }),
+				dept: jsx(a$2, { children: "Engineering" }),
+				desc: jsx(a$2, { children: "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite." })
+			},
+			{
+				title: jsx(a$2, { children: "Backend Engineer" }),
+				location: jsx(a$2, { children: "Remote" }),
+				type: jsx(a$2, { children: "Full-time" }),
+				dept: jsx(a$2, { children: "Engineering" }),
+				desc: jsx(a$2, { children: "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily." })
+			},
+			{
+				title: jsx(a$2, { children: "Technical Writer" }),
+				location: jsx(a$2, { children: "Remote" }),
+				type: jsx(a$2, { children: "Part-time" }),
+				dept: jsx(a$2, { children: "Documentation" }),
+				desc: jsx(a$2, { children: "Create comprehensive guides, API references, and tutorials for our benchmarking platform." })
+			},
+			{
+				title: jsx(a$2, { children: "DevRel Engineer" }),
+				location: jsx(a$2, { children: "San Francisco / Remote" }),
+				type: jsx(a$2, { children: "Full-time" }),
+				dept: jsx(a$2, { children: "Community" }),
+				desc: jsx(a$2, { children: "Engage with the i18n community through talks, workshops, blog posts, and open source contributions." })
+			},
+			{
+				title: jsx(a$2, { children: "QA Engineer" }),
+				location: jsx(a$2, { children: "Remote" }),
+				type: jsx(a$2, { children: "Full-time" }),
+				dept: jsx(a$2, { children: "Engineering" }),
+				desc: jsx(a$2, { children: "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation." })
+			}
+		].map((o) => jsxs("div", {
 			className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-			children: [jsxDEV("div", { children: [
-				jsxDEV("h3", {
+			children: [jsxs("div", { children: [
+				jsx("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: o.title
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 79,
-					columnNumber: 15
-				}, this),
-				jsxDEV("p", {
+				}),
+				jsx("p", {
 					className: "text-sm text-muted-foreground",
 					children: o.desc
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 82,
-					columnNumber: 15
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "mt-2 flex gap-2",
 					children: [
-						jsxDEV("span", {
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.dept
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 84,
-							columnNumber: 17
-						}, this),
-						jsxDEV("span", {
+						}),
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.location
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 87,
-							columnNumber: 17
-						}, this),
-						jsxDEV("span", {
+						}),
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.type
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 90,
-							columnNumber: 17
-						}, this)
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 83,
-					columnNumber: 15
-				}, this)
-			] }, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 78,
-				columnNumber: 13
-			}, this), jsxDEV("button", {
+				})
+			] }), jsx("button", {
 				type: "button",
 				className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-				children: jsxDEV(a$2, { children: "Apply Now" }, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 99,
-					columnNumber: 15
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 95,
-				columnNumber: 13
-			}, this)]
-		}, o.title?.toString() || "", true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 74,
-			columnNumber: 11
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 72,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 68,
-		columnNumber: 5
-	}, this);
+				children: jsx(a$2, { children: "Apply Now" })
+			})]
+		}, o.title?.toString() || ""))
+	})] });
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6277,7 +6118,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6289,41 +6129,19 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment$1, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 33,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment$1, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsxDEV(BrowserGTProvider, {
+	return jsx(BrowserGTProvider, {
 		locale,
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/careers/OpenPositions.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(OpenPositions, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(OpenPositions, {}) });
 }
 export { Wrapped as default };

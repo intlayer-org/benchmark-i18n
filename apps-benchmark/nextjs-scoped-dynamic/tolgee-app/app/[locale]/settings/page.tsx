@@ -1,4 +1,6 @@
 import dynamic from "next/dynamic";
+import { getMessages } from "@/i18n/getMessages";
+import TolgeePageHydrator from "@/components/TolgeePageHydrator";
 
 const SettingsHeader = dynamic(() => import("../../../components/pages/settings/SettingsHeader"));
 const ProfileSection = dynamic(() => import("../../../components/pages/settings/ProfileSection"));
@@ -6,22 +8,38 @@ const PreferencesSection = dynamic(() => import("../../../components/pages/setti
 const ApiAccessSection = dynamic(() => import("../../../components/pages/settings/ApiAccessSection"));
 const SettingsFooter = dynamic(() => import("../../../components/pages/settings/SettingsFooter"));
 
-export default function Settings() {
+export default async function Settings({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const messages = await getMessages(locale, [
+    "settings",
+    "settingsHeader",
+    "profileSection",
+    "preferencesSection",
+    "apiAccessSection",
+    "settingsFooter",
+  ]);
+
   return (
-    <div className="container py-16">
-      <SettingsHeader />
+    <TolgeePageHydrator locale={locale} messages={messages}>
+      <div className="container py-16">
+        <SettingsHeader />
 
-      <div className="mx-auto max-w-2xl space-y-8">
-        <form className="space-y-8">
-          <ProfileSection />
+        <div className="mx-auto max-w-2xl space-y-8">
+          <form className="space-y-8">
+            <ProfileSection />
 
-          <PreferencesSection />
+            <PreferencesSection />
 
-          <ApiAccessSection />
+            <ApiAccessSection />
 
-          <SettingsFooter />
-        </form>
+            <SettingsFooter />
+          </form>
+        </div>
       </div>
-    </div>
+    </TolgeePageHydrator>
   );
 }

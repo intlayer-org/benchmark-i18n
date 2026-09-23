@@ -1,0 +1,21 @@
+{
+  "cacheInvalidation": "Инвалидация кэша:",
+  "contextBasedArchitecturesCan": "Context-based architectures can cause the entire app to re-render when the language changes. For large apps with thousands of components, this can lead to noticeable lag during locale switches.",
+  "contextBasedArchitecturesCanCause": "Архитектуры на основе контекста могут вызывать каскадные повторные рендеринги при изменении локали, потому что каждый потребитель уведомляется, даже если его конкретные ключи не изменились.",
+  "duringServerSideRenderingThe": "Во время серверного рендеринга весь словарь сериализуется в HTML-пейлоад, увеличивая размер документа, который необходимо загрузить и гидратировать.",
+  "flashOfUntranslatedContent": "Flash of Untranslated Content (FOUC)",
+  "flashOfUntranslatedContentFouc": "Мерцание непереведенного контента (FOUC):",
+  "manyI18nLibrariesStore": "Many i18n libraries store translations in large JSON files that are loaded upfront. This can significantly increase the \"Time to Interactive\" as the browser must download and parse these files before the app can be used.",
+  "manyI18nLibrariesStoreTranslations": "Многие библиотеки i18n хранят переводы в одном объекте JSON, предоставляемом через контекст React. Когда этот объект большой (тысячи ключей), каждый компонент, использующий переводы, хранит ссылку на весь словарь. Это означает:",
+  "splittingTranslationsIntoPerRoute": "Разделение переводов на чанки для каждого маршрута или пространства имен может значительно уменьшить начальный пейлоад. Но это создает новые проблемы:",
+  "theAppMustFirstLoad": "The app must first load the core library (e.g., i18next) which adds to the initial bundle size. Even \"lightweight\" libraries can add 10-20KB of minified JS.",
+  "theJsonMustBeParsed": "JSON должен парситься при каждой загрузке страницы — блокируя основной поток.",
+  "theTradeOffsOfDynamic": "Компромиссы динамической загрузки",
+  "thisTestAppProvidesA": "Это тестовое приложение предоставляет контролируемую среду — 10 страниц с реалистичным контентом — для сравнения библиотек i18n по трем осям: вес, который они добавляют вашему JavaScript-бандлу, время, затраченное на парсинг и рендеринг переведенного контента, и эффективность их стратегий разделения кода и ленивой загрузки. Каждая библиотека интегрирована в одно и то же приложение, поэтому результаты напрямую сопоставимы.",
+  "understandingTheImpact": "Понимание влияния",
+  "updatingTranslationsRequiresCache": "Updating translations often requires a full rebuild or clearing the CDN cache, which can delay the roll-out of critical copy changes.",
+  "usersMayBrieflySeeTranslation": "Users may briefly see translation keys or English text while the library and translation files are being loaded.",
+  "waterfallRequests": "Каскадные запросы (Waterfall requests):",
+  "whatThisBenchmarkMeasures": "Что измеряет этот бенчмарк",
+  "whyASingleLargeJson": "Почему один большой JSON может снизить производительность"
+}

@@ -1,0 +1,23 @@
+{
+  "blogHeader.blog": "Blog",
+  "blogHeader.insightsDeepDivesAnd": "Einblicke, tiefgehende Analysen und Updates aus der i18n-Benchmarking-Community.",
+  "blogList.i18nBenchmark2026Results": "i18n Benchmark 2026 Ergebnisse",
+  "blogList.march152026": "15. März 2026",
+  "blogList.weTested12DifferentInternationalization": "Wir haben 12 verschiedene Internationalisierungsbibliotheken auf 10 Seiten getestet. Hier sind die detaillierten Ergebnisse mit interaktiven Diagrammen.",
+  "blogList.howToReduceYourI18n": "So reduzieren Sie Ihr i18n-Bundle um 60 %",
+  "blogList.march82026": "8. März 2026",
+  "blogList.practicalStrategiesForOptimizingTranslation": "Praktische Strategien zur Optimierung des Ladens von Übersetzungsdateien, Tree-Shaking nicht verwendeter Gebietsschemata und Nutzung der Kompilierung zur Erstellungszeit.",
+  "blogList.theStateOfInternationalizationIn": "Der Stand der Internationalisierung im Jahr 2026",
+  "blogList.february282026": "28. Februar 2026",
+  "blogList.anOverviewOfTheCurrent": "Eine Übersicht über das aktuelle i18n-Ökosystem, Vergleich von Ansätzen von Nachrichtenkatalogen bis hin zu compilerbasierten Lösungen.",
+  "blogList.migratingFromReactI18nextTo": "Migration von react-i18next zu Lingui",
+  "blogList.february152026": "15. Februar 2026",
+  "blogList.aStepByStepGuide": "Schritt-für-Schritt-Anleitung für die Migration einer Produktions-App mit 50.000 Übersetzungsschlüsseln von react-i18next zu Lingui.",
+  "blogList.serverComponentsAndI18nWhat": "Server Components und i18n: Was ändert sich?",
+  "blogList.february12026": "1. Februar 2026",
+  "blogList.reactServerComponentsIntroduceNew": "React Server Components führen neue Muster für die Internationalisierung ein. Wir untersuchen die Auswirkungen und Best Practices.",
+  "blogList.benchmarkMethodologyHowWeTest": "Benchmark-Methodik: Wie wir testen",
+  "blogList.january202026": "20. Januar 2026",
+  "blogList.aTransparentLookAtOur": "Ein transparenter Einblick in unsere Benchmarking-Methodik, einschließlich Testumgebungen, statistischer Methoden und Reproduzierbarkeit.",
+  "blogList.readMore": "Mehr lesen →"
+}

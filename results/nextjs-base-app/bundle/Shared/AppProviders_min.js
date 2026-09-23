@@ -1,7 +1,7 @@
 "use client";
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
 import { useParams as r } from "next/navigation";
-import { Fragment as i, jsxDEV as a } from "react/jsx-dev-runtime";
+import { Fragment as i, jsx as a } from "react/jsx-runtime";
 function o() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
@@ -21,19 +21,14 @@ function s(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var c = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-base-app/components/AppProviders.tsx";
-function l({ children: l }) {
-	let u = r().locale ?? "en", [d] = n(() => typeof performance < "u" ? performance.now() : 0);
+function c({ children: c }) {
+	let l = r().locale ?? "en", [u] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		s("AppRoot", d);
-	}, [d]), e(() => {
-		document.documentElement.lang = u;
+		s("AppRoot", u);
 	}, [u]), e(() => {
+		document.documentElement.lang = l;
+	}, [l]), e(() => {
 		o();
-	}, []), a(i, { children: l }, void 0, !1, {
-		fileName: c,
-		lineNumber: 38,
-		columnNumber: 10
-	}, this);
+	}, []), a(i, { children: c });
 }
-export { l as default };
+export { c as default };

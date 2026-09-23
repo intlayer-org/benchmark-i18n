@@ -1,0 +1,17 @@
+{
+  "bugReport": "Bug Report",
+  "contribution": "Contribution",
+  "email": "E-mail",
+  "emailPlaceholder": "you@example.com",
+  "message": "Mensagem",
+  "messagePlaceholder": "Your message...",
+  "methodologyQuestion": "Methodology Question",
+  "name": "Nome",
+  "newBenchmarkIdea": "New Benchmark Idea",
+  "other": "Other",
+  "sendMessage": "Enviar Mensagem",
+  "subject": "Assunto",
+  "topic": "Topic",
+  "wellGetBackTo": "Retornaremos em até 48 horas.",
+  "yourName": "Your name"
+}

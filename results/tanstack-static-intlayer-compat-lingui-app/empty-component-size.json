@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-11T23:30:04.887Z",
+  "timestamp": "2026-09-23T20:58:08.805Z",
   "packageName": "tanstack-static-intlayer-compat-lingui-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 54768,
-    "totalMinifiedBytes": 33370,
-    "totalGzipBytes": 10588
+    "totalUnminifiedBytes": 61767,
+    "totalMinifiedBytes": 37665,
+    "totalGzipBytes": 10758
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 54768,
-      "unminifiedGzipBytes": 14082,
-      "minifiedBytes": 33370,
-      "minifiedGzipBytes": 10588
+      "unminifiedBytes": 61767,
+      "unminifiedGzipBytes": 14357,
+      "minifiedBytes": 37665,
+      "minifiedGzipBytes": 10758
     }
   ]
 }

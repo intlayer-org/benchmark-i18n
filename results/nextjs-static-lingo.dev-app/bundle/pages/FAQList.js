@@ -1,194 +1,92 @@
 import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
-import { jsxDEV } from "react/jsx-dev-runtime";
-import { jsx } from "react/jsx-runtime";
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/faq/FAQList.tsx";
+import { jsx, jsxs } from "react/jsx-runtime";
 function FAQList() {
-	return jsxDEV("div", {
+	return jsxs("div", {
 		className: "mx-auto max-w-3xl space-y-4",
 		children: [
-			jsxDEV("details", {
+			jsxs("details", {
 				className: "group rounded-lg border border-border bg-card",
-				children: [jsxDEV("summary", {
+				children: [jsx("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "What is i18n Benchmark?"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 5,
-					columnNumber: 9
-				}, this), jsxDEV("p", {
+				}), jsx("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications."
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 8,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 4,
-				columnNumber: 7
-			}, this),
-			jsxDEV("details", {
+				})]
+			}),
+			jsxs("details", {
 				className: "group rounded-lg border border-border bg-card",
-				children: [jsxDEV("summary", {
+				children: [jsx("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "How are benchmarks conducted?"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 16,
-					columnNumber: 9
-				}, this), jsxDEV("p", {
+				}), jsx("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 19,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 15,
-				columnNumber: 7
-			}, this),
-			jsxDEV("details", {
+				})]
+			}),
+			jsxs("details", {
 				className: "group rounded-lg border border-border bg-card",
-				children: [jsxDEV("summary", {
+				children: [jsx("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "Which libraries are currently supported?"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 28,
-					columnNumber: 9
-				}, this), jsxDEV("p", {
+				}), jsx("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee."
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 31,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 27,
-				columnNumber: 7
-			}, this),
-			jsxDEV("details", {
+				})]
+			}),
+			jsxs("details", {
 				className: "group rounded-lg border border-border bg-card",
-				children: [jsxDEV("summary", {
+				children: [jsx("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "Can I submit my own benchmarks?"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 39,
-					columnNumber: 9
-				}, this), jsxDEV("p", {
+				}), jsx("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 42,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 38,
-				columnNumber: 7
-			}, this),
-			jsxDEV("details", {
+				})]
+			}),
+			jsxs("details", {
 				className: "group rounded-lg border border-border bg-card",
-				children: [jsxDEV("summary", {
+				children: [jsx("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "How often are benchmarks updated?"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 50,
-					columnNumber: 9
-				}, this), jsxDEV("p", {
+				}), jsx("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 53,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 49,
-				columnNumber: 7
-			}, this),
-			jsxDEV("details", {
+				})]
+			}),
+			jsxs("details", {
 				className: "group rounded-lg border border-border bg-card",
-				children: [jsxDEV("summary", {
+				children: [jsx("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "Is the data reliable?"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 61,
-					columnNumber: 9
-				}, this), jsxDEV("p", {
+				}), jsx("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 64,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 60,
-				columnNumber: 7
-			}, this),
-			jsxDEV("details", {
+				})]
+			}),
+			jsxs("details", {
 				className: "group rounded-lg border border-border bg-card",
-				children: [jsxDEV("summary", {
+				children: [jsx("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "Do you offer consulting services?"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 72,
-					columnNumber: 9
-				}, this), jsxDEV("p", {
+				}), jsx("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 75,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 71,
-				columnNumber: 7
-			}, this),
-			jsxDEV("details", {
+				})]
+			}),
+			jsxs("details", {
 				className: "group rounded-lg border border-border bg-card",
-				children: [jsxDEV("summary", {
+				children: [jsx("summary", {
 					className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 					children: "How can I contribute?"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 83,
-					columnNumber: 9
-				}, this), jsxDEV("p", {
+				}), jsx("p", {
 					className: "px-6 pb-4 text-sm text-muted-foreground",
 					children: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 86,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 82,
-				columnNumber: 7
-			}, this)
+				})]
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 3,
-		columnNumber: 5
-	}, this);
+	});
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -422,28 +320,14 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(LingoProvider, {
+	return jsx(LingoProvider, {
 		initialLocale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/faq/FAQList.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(FAQList, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(FAQList, {}) });
 }
 export { Wrapped as default };
 import { t as logger } from "./logger-CWLzb-Ic.js";

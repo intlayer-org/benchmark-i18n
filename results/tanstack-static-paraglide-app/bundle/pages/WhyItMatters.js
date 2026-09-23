@@ -1,5 +1,5 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var URLPattern = {};
 var locales = [
 	"en",
@@ -186,418 +186,355 @@ var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var why_it_matters_bundlesize1$10 = () => {
+var en_why_it_matters_bundlesize1 = () => {
 	return `Bundle Size`;
 };
-var why_it_matters_connectingalargejsondictionary4$10 = () => {
-	return `Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).`;
-};
-var why_it_matters_dynamicloading1$10 = () => {
-	return `Dynamic Loading`;
-};
-var why_it_matters_loadingalltranslationsupfrontoverloads4$10 = () => {
-	return `Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.`;
-};
-var why_it_matters_renderinghydration1$10 = () => {
-	return `Rendering & Hydration`;
-};
-var why_it_matters_thebundleisthedata4$10 = () => {
-	return `The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.`;
-};
-var why_it_matters_whythesemetricsmatter3$10 = () => {
-	return `Why These Metrics Matter`;
-};
-var why_it_matters_bundlesize1$9 = () => {
+var fr_why_it_matters_bundlesize1 = () => {
 	return `Taille du bundle`;
 };
-var why_it_matters_connectingalargejsondictionary4$9 = () => {
-	return `La connexion d'un dictionnaire JSON volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. Pendant l'hydratation SSR, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le Time to Interactive (TTI).`;
-};
-var why_it_matters_dynamicloading1$9 = () => {
-	return `Chargement dynamique`;
-};
-var why_it_matters_loadingalltranslationsupfrontoverloads4$9 = () => {
-	return `Le chargement de toutes les traductions à l'avance surcharge le payload initial. Le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. Cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. Mesurer les deux stratégies est essentiel.`;
-};
-var why_it_matters_renderinghydration1$9 = () => {
-	return `Rendu & Hydratation`;
-};
-var why_it_matters_thebundleisthedata4$9 = () => {
-	return `Le bundle représente les données envoyées à chaque utilisateur dans le monde. Un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3G lentes courantes dans de nombreuses régions. Les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.`;
-};
-var why_it_matters_whythesemetricsmatter3$9 = () => {
-	return `Pourquoi ces mesures sont importantes`;
-};
-var why_it_matters_bundlesize1$8 = () => {
+var es_why_it_matters_bundlesize1 = () => {
 	return `Tamaño del bundle`;
 };
-var why_it_matters_connectingalargejsondictionary4$8 = () => {
-	return `Conectar un diccionario JSON grande a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede desencadenar nuevos renderizados en todo el árbol. Durante la hidratación de SSR, el análisis y la anexión de objetos de traducción masivos añaden latencia antes de que la página sea interactiva, lo que afecta directamente al Time to Interactive (TTI).`;
-};
-var why_it_matters_dynamicloading1$8 = () => {
-	return `Carga dinámica`;
-};
-var why_it_matters_loadingalltranslationsupfrontoverloads4$8 = () => {
-	return `Cargar todas las traducciones por adelantado sobrecarga el payload inicial. La carga dinámica (lazy) divide las traducciones por ruta o espacio de nombres, enviando solo lo que la página actual necesita. Sin embargo, la carga diferida introduce sus propias compensaciones: solicitudes en cascada, parpadeo de contenido no traducido y complejidad de la caché. Medir ambas estrategias es esencial.`;
-};
-var why_it_matters_renderinghydration1$8 = () => {
-	return `Renderizado e hidratación`;
-};
-var why_it_matters_thebundleisthedata4$8 = () => {
-	return `El bundle representa los datos enviados a cada usuario en todo el mundo. Un bundle más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código runtime, además de los propios archivos de traducción.`;
-};
-var why_it_matters_whythesemetricsmatter3$8 = () => {
-	return `Por qué son importantes estas métricas`;
-};
-var why_it_matters_bundlesize1$7 = () => {
+var de_why_it_matters_bundlesize1 = () => {
 	return `Bundle-Größe`;
 };
-var why_it_matters_connectingalargejsondictionary4$7 = () => {
-	return `Das Verbinden eines großen JSON-Wörterbuchs mit jeder Komponente erzeugt eine versteckte Abhängigkeit: Jede Änderung im Übersetzungskontext kann Re-Renderings im gesamten Baum auslösen. Während der SSR-Hydratisierung führt das Parsen und Anhängen massiver Übersetzungsobjekte zu Latenzzeiten, bevor die Seite interaktiv wird — was sich direkt auf die Time to Interactive (TTI) auswirkt.`;
-};
-var why_it_matters_dynamicloading1$7 = () => {
-	return `Dynamisches Laden`;
-};
-var why_it_matters_loadingalltranslationsupfrontoverloads4$7 = () => {
-	return `Das Laden aller Übersetzungen im Voraus überlastet den initialen Payload. Dynamisches (Lazy) Loading teilt Übersetzungen nach Route oder Namensraum auf und sendet nur das, was die aktuelle Seite benötigt. Lazy Loading bringt jedoch eigene Kompromisse mit sich: Waterfall-Anfragen, Aufblitzen von nicht übersetzten Inhalten (FOUC) und Cache-Komplexität. Die Messung beider Strategien ist essenziell.`;
-};
-var why_it_matters_renderinghydration1$7 = () => {
-	return `Rendering & Hydratisierung`;
-};
-var why_it_matters_thebundleisthedata4$7 = () => {
-	return `Das Bundle sind die Daten, die an jeden Benutzer weltweit gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten — besonders bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren drastisch in ihrem Gewicht: von einigen Kilobytes bis zu zig Kilobytes an Laufzeitcode, plus die Übersetzungsdateien selbst.`;
-};
-var why_it_matters_whythesemetricsmatter3$7 = () => {
-	return `Warum diese Metriken wichtig sind`;
-};
-var why_it_matters_bundlesize1$6 = () => {
+var it_why_it_matters_bundlesize1 = () => {
 	return `Dimensione del bundle`;
 };
-var why_it_matters_connectingalargejsondictionary4$6 = () => {
-	return `Il collegamento di un grande dizionario JSON a ogni componente crea una dipendenza nascosta: qualsiasi modifica nel contesto di traduzione può scatenare nuovi rendering in tutto l'albero. Durante l'idratazione SSR, l'analisi e l'aggiunta di enormi oggetti di traduzione aggiungono latenza prima che la pagina diventi interattiva, influenzando direttamente il Time to Interactive (TTI).`;
-};
-var why_it_matters_dynamicloading1$6 = () => {
-	return `Caricamento dinamico`;
-};
-var why_it_matters_loadingalltranslationsupfrontoverloads4$6 = () => {
-	return `Il caricamento di tutte le traduzioni in anticipo sovraccarica il payload iniziale. Il caricamento dinamico (lazy) divide le traduzioni per rotta o namespace, inviando solo ciò di cui la pagina corrente ha bisogno. Tuttavia, il lazy loading introduce i propri compromessi: richieste a cascata, flash di contenuti non tradotti e complessità della cache. Misurare entrambe le strategie è essenziale.`;
-};
-var why_it_matters_renderinghydration1$6 = () => {
-	return `Rendering e idratazione`;
-};
-var why_it_matters_thebundleisthedata4$6 = () => {
-	return `Il bundle rappresenta i dati inviati a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi, specialmente sulle connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.`;
-};
-var why_it_matters_whythesemetricsmatter3$6 = () => {
-	return `Perché queste metriche sono importanti`;
-};
-var why_it_matters_bundlesize1$5 = () => {
+var pt_why_it_matters_bundlesize1 = () => {
 	return `Tamanho do Bundle`;
 };
-var why_it_matters_connectingalargejsondictionary4$5 = () => {
-	return `Conectar um grande dicionário JSON a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode desencadear novas renderizações em toda a árvore. Durante a hidratação do SSR, a análise e a anexação de objetos de tradução massivos adicionam latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).`;
-};
-var why_it_matters_dynamicloading1$5 = () => {
-	return `Carregamento Dinâmico`;
-};
-var why_it_matters_loadingalltranslationsupfrontoverloads4$5 = () => {
-	return `Carregar todas as traduções antecipadamente sobrecarrega a carga útil inicial. O carregamento dinâmico (lazy) divide as traduções por rota ou namespace, enviando apenas o que a página atual precisa. No entanto, o carregamento tardio introduz suas próprias compensações: solicitações em cascada, flash de conteúdo não traduzido e complexidade de cache. Medir ambas as estratégias é essencial.`;
-};
-var why_it_matters_renderinghydration1$5 = () => {
-	return `Renderização e Hidratação`;
-};
-var why_it_matters_thebundleisthedata4$5 = () => {
-	return `O bundle representa os dados enviados a cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código de tempo de execução, além dos próprios arquivos de tradução.`;
-};
-var why_it_matters_whythesemetricsmatter3$5 = () => {
-	return `Por que essas métricas são importantes`;
-};
-var why_it_matters_bundlesize1$4 = () => {
+var zh_why_it_matters_bundlesize1 = () => {
 	return `包大小`;
 };
-var why_it_matters_connectingalargejsondictionary4$4 = () => {
-	return `将大型 JSON 字典连接到每个组件会创建一个隐藏的依赖：翻译上下文中的任何更改都可能触发整个树的重新渲染。在 SSR 注水期间，解析和附加庞大的翻译对象会在页面变得可交互之前增加延迟——直接影响可交互时间 (TTI)。`;
-};
-var why_it_matters_dynamicloading1$4 = () => {
-	return `动态加载`;
-};
-var why_it_matters_loadingalltranslationsupfrontoverloads4$4 = () => {
-	return `预先加载所有翻译会使初始负载过重。动态（延迟）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，延迟加载引入了它自己的权衡：瀑布流请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。`;
-};
-var why_it_matters_renderinghydration1$4 = () => {
-	return `渲染与注水`;
-};
-var why_it_matters_thebundleisthedata4$4 = () => {
-	return `包是发送给全球每个用户的数据。更大的包意味着更长的下载时间——特别是在许多地区常见的慢速 3G 连接上。i18n 库的权重差异巨大：从几 KB 到几十 KB 的运行时代码，外加翻译文件本身。`;
-};
-var why_it_matters_whythesemetricsmatter3$4 = () => {
-	return `为什么这些指标很重要`;
-};
-var why_it_matters_bundlesize1$3 = () => {
+var ja_why_it_matters_bundlesize1 = () => {
 	return `バンドルサイズ`;
 };
-var why_it_matters_connectingalargejsondictionary4$3 = () => {
-	return `巨大なJSON辞書をすべてのコンポーネントに接続すると、隠れた依存関係が生じます。翻訳コンテキストの変更がツリー全体の再レンダリングを引き起こす可能性があります。SSRのハイドレーション中、巨大な翻訳オブジェクトのパースとアタッチにより、ページがインタラクティブになるまでの遅延が発生し、Time to Interactive (TTI) に直接影響します。`;
-};
-var why_it_matters_dynamicloading1$3 = () => {
-	return `動的ローディング`;
-};
-var why_it_matters_loadingalltranslationsupfrontoverloads4$3 = () => {
-	return `すべての翻訳を事前に読み込むと、初期のペイロードが過負荷になります。動的（遅延）読み込みは、ルートまたは名前空間ごとに翻訳を分割し、現在のページに必要なものだけを送信します。ただし、遅延読み込みには、ウォーターフォールリクエスト、未翻訳コンテンツのフラッシュ、キャッシュの複雑化といった独自のトレードオフがあります。両方の戦略を測定することが不可欠です。`;
-};
-var why_it_matters_renderinghydration1$3 = () => {
-	return `レンダリングとハイドレーション`;
-};
-var why_it_matters_thebundleisthedata4$3 = () => {
-	return `バンドルは、世界中のすべてのユーザーに送られるデータです。バンドルが大きいほどダウンロード時間が長くなります。特に多くの地域で一般的な低速な3G接続では顕著です。i18nライブラリはその重量が劇的に異なります。ランタイムコードだけで数キロバイトから数十キロバイト、さらに翻訳ファイル自体が加わります。`;
-};
-var why_it_matters_whythesemetricsmatter3$3 = () => {
-	return `これらの指標が重要な理由`;
-};
-var why_it_matters_bundlesize1$2 = () => {
+var ko_why_it_matters_bundlesize1 = () => {
 	return `번들 크기`;
 };
-var why_it_matters_connectingalargejsondictionary4$2 = () => {
-	return `모든 컴포넌트에 대규모 JSON 사전(dictionary)을 연결하면 숨겨진 종속성이 생성됩니다. 번역 컨텍스트의 모든 변경 사항은 전체 트리에서 리렌더링을 유발할 수 있습니다. SSR 수화 단계에서 방대한 번역 객체를 파싱하고 연결하면 페이지가 상호작용 가능해지는 시간까지 지연이 발생하며, 이는 Time to Interactive(TTI)에 직접적인 영향을 미칩니다.`;
-};
-var why_it_matters_dynamicloading1$2 = () => {
-	return `동적 로딩`;
-};
-var why_it_matters_loadingalltranslationsupfrontoverloads4$2 = () => {
-	return `모든 번역을 미리 로드하면 초기 페이로드가 과부하됩니다. 동적(지연) 로딩은 경로 또는 네임스페이스별로 번역을 분할하여 현재 페이지에 필요한 내용만 전송합니다. 그러나 지연 로딩은 워터폴 요청, 번역되지 않은 콘텐츠의 깜빡임(FOUC), 캐시 복잡성 등 자체적인 트레이드오프를 수반합니다. 두 전략을 모두 측정하는 것이 필수적입니다.`;
-};
-var why_it_matters_renderinghydration1$2 = () => {
-	return `렌더링 및 수화(Hydration)`;
-};
-var why_it_matters_thebundleisthedata4$2 = () => {
-	return `번들은 전 세계 모든 사용자에게 전송되는 데이터를 나타냅니다. 번들이 클수록 다운로드 시간이 길어집니다. 특히 많은 지역에서 흔히 발생하는 느린 3G 연결에서 더욱 그렇습니다. i18n 라이브러리는 런타임 코드만으로도 수 킬로바이트에서 수십 킬로바이트까지 무게가 크게 다르며, 여기에 번역 파일 자체가 추가됩니다.`;
-};
-var why_it_matters_whythesemetricsmatter3$2 = () => {
-	return `이 지표가 중요한 이유`;
-};
-var why_it_matters_bundlesize1$1 = () => {
+var ru_why_it_matters_bundlesize1 = () => {
 	return `Размер бандла`;
-};
-var why_it_matters_connectingalargejsondictionary4$1 = () => {
-	return `Подключение большого JSON-словаря к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг всего дерева. Во время гидратации SSR парсинг и присоединение массивных объектов перевода добавляют задержку до того, как страница станет интерактивной, что напрямую влияет на Time to Interactive (TTI).`;
-};
-var why_it_matters_dynamicloading1$1 = () => {
-	return `Динамическая загрузка`;
-};
-var why_it_matters_loadingalltranslationsupfrontoverloads4$1 = () => {
-	return `Загрузка всех переводов сразу перегружает начальную полезную нагрузку. Динамическая (ленивая) загрузка разделяет переводы по маршрутам или пространствам имен, отправляя только то, что нужно для текущей страницы. Однако ленивая загрузка вносит свои компромиссы: каскадные запросы (waterfall), мерцание непереведенного контента и сложность кэширования. Измерение обеих стратегий необходимо.`;
-};
-var why_it_matters_renderinghydration1$1 = () => {
-	return `Рендеринг и гидратация`;
-};
-var why_it_matters_thebundleisthedata4$1 = () => {
-	return `Бандл — это данные, которые отправляются каждому пользователю по всему миру. Большой размер бандла означает более долгое время загрузки, особенно при медленном 3G-соединении, характерном для многих регионов. Библиотеки i18n сильно различаются по весу: от нескольких килобайт до десятков килобайт рантайм-кода, плюс сами файлы переводов.`;
-};
-var why_it_matters_whythesemetricsmatter3$1 = () => {
-	return `Почему эти показатели важны`;
 };
 var why_it_matters_bundlesize1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return why_it_matters_bundlesize1$9(inputs);
-	if (locale === "es") return why_it_matters_bundlesize1$8(inputs);
-	if (locale === "de") return why_it_matters_bundlesize1$7(inputs);
-	if (locale === "it") return why_it_matters_bundlesize1$6(inputs);
-	if (locale === "pt") return why_it_matters_bundlesize1$5(inputs);
-	if (locale === "zh") return why_it_matters_bundlesize1$4(inputs);
-	if (locale === "ja") return why_it_matters_bundlesize1$3(inputs);
-	if (locale === "ko") return why_it_matters_bundlesize1$2(inputs);
-	if (locale === "ru") return why_it_matters_bundlesize1$1(inputs);
-	return why_it_matters_bundlesize1$10(inputs);
+	if (locale === "fr") return fr_why_it_matters_bundlesize1(inputs);
+	if (locale === "es") return es_why_it_matters_bundlesize1(inputs);
+	if (locale === "de") return de_why_it_matters_bundlesize1(inputs);
+	if (locale === "it") return it_why_it_matters_bundlesize1(inputs);
+	if (locale === "pt") return pt_why_it_matters_bundlesize1(inputs);
+	if (locale === "zh") return zh_why_it_matters_bundlesize1(inputs);
+	if (locale === "ja") return ja_why_it_matters_bundlesize1(inputs);
+	if (locale === "ko") return ko_why_it_matters_bundlesize1(inputs);
+	if (locale === "ru") return ru_why_it_matters_bundlesize1(inputs);
+	return en_why_it_matters_bundlesize1(inputs);
 });
+var en_why_it_matters_connectingalargejsondictionary4 = () => {
+	return `Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).`;
+};
+var fr_why_it_matters_connectingalargejsondictionary4 = () => {
+	return `La connexion d'un dictionnaire JSON volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. Pendant l'hydratation SSR, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le Time to Interactive (TTI).`;
+};
+var es_why_it_matters_connectingalargejsondictionary4 = () => {
+	return `Conectar un diccionario JSON grande a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede desencadenar nuevos renderizados en todo el árbol. Durante la hidratación de SSR, el análisis y la anexión de objetos de traducción masivos añaden latencia antes de que la página sea interactiva, lo que afecta directamente al Time to Interactive (TTI).`;
+};
+var de_why_it_matters_connectingalargejsondictionary4 = () => {
+	return `Das Verbinden eines großen JSON-Wörterbuchs mit jeder Komponente erzeugt eine versteckte Abhängigkeit: Jede Änderung im Übersetzungskontext kann Re-Renderings im gesamten Baum auslösen. Während der SSR-Hydratisierung führt das Parsen und Anhängen massiver Übersetzungsobjekte zu Latenzzeiten, bevor die Seite interaktiv wird — was sich direkt auf die Time to Interactive (TTI) auswirkt.`;
+};
+var it_why_it_matters_connectingalargejsondictionary4 = () => {
+	return `Il collegamento di un grande dizionario JSON a ogni componente crea una dipendenza nascosta: qualsiasi modifica nel contesto di traduzione può scatenare nuovi rendering in tutto l'albero. Durante l'idratazione SSR, l'analisi e l'aggiunta di enormi oggetti di traduzione aggiungono latenza prima che la pagina diventi interattiva, influenzando direttamente il Time to Interactive (TTI).`;
+};
+var pt_why_it_matters_connectingalargejsondictionary4 = () => {
+	return `Conectar um grande dicionário JSON a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode desencadear novas renderizações em toda a árvore. Durante a hidratação do SSR, a análise e a anexação de objetos de tradução massivos adicionam latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).`;
+};
+var zh_why_it_matters_connectingalargejsondictionary4 = () => {
+	return `将大型 JSON 字典连接到每个组件会创建一个隐藏的依赖：翻译上下文中的任何更改都可能触发整个树的重新渲染。在 SSR 注水期间，解析和附加庞大的翻译对象会在页面变得可交互之前增加延迟——直接影响可交互时间 (TTI)。`;
+};
+var ja_why_it_matters_connectingalargejsondictionary4 = () => {
+	return `巨大なJSON辞書をすべてのコンポーネントに接続すると、隠れた依存関係が生じます。翻訳コンテキストの変更がツリー全体の再レンダリングを引き起こす可能性があります。SSRのハイドレーション中、巨大な翻訳オブジェクトのパースとアタッチにより、ページがインタラクティブになるまでの遅延が発生し、Time to Interactive (TTI) に直接影響します。`;
+};
+var ko_why_it_matters_connectingalargejsondictionary4 = () => {
+	return `모든 컴포넌트에 대규모 JSON 사전(dictionary)을 연결하면 숨겨진 종속성이 생성됩니다. 번역 컨텍스트의 모든 변경 사항은 전체 트리에서 리렌더링을 유발할 수 있습니다. SSR 수화 단계에서 방대한 번역 객체를 파싱하고 연결하면 페이지가 상호작용 가능해지는 시간까지 지연이 발생하며, 이는 Time to Interactive(TTI)에 직접적인 영향을 미칩니다.`;
+};
+var ru_why_it_matters_connectingalargejsondictionary4 = () => {
+	return `Подключение большого JSON-словаря к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг всего дерева. Во время гидратации SSR парсинг и присоединение массивных объектов перевода добавляют задержку до того, как страница станет интерактивной, что напрямую влияет на Time to Interactive (TTI).`;
+};
 var why_it_matters_connectingalargejsondictionary4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return why_it_matters_connectingalargejsondictionary4$9(inputs);
-	if (locale === "es") return why_it_matters_connectingalargejsondictionary4$8(inputs);
-	if (locale === "de") return why_it_matters_connectingalargejsondictionary4$7(inputs);
-	if (locale === "it") return why_it_matters_connectingalargejsondictionary4$6(inputs);
-	if (locale === "pt") return why_it_matters_connectingalargejsondictionary4$5(inputs);
-	if (locale === "zh") return why_it_matters_connectingalargejsondictionary4$4(inputs);
-	if (locale === "ja") return why_it_matters_connectingalargejsondictionary4$3(inputs);
-	if (locale === "ko") return why_it_matters_connectingalargejsondictionary4$2(inputs);
-	if (locale === "ru") return why_it_matters_connectingalargejsondictionary4$1(inputs);
-	return why_it_matters_connectingalargejsondictionary4$10(inputs);
+	if (locale === "fr") return fr_why_it_matters_connectingalargejsondictionary4(inputs);
+	if (locale === "es") return es_why_it_matters_connectingalargejsondictionary4(inputs);
+	if (locale === "de") return de_why_it_matters_connectingalargejsondictionary4(inputs);
+	if (locale === "it") return it_why_it_matters_connectingalargejsondictionary4(inputs);
+	if (locale === "pt") return pt_why_it_matters_connectingalargejsondictionary4(inputs);
+	if (locale === "zh") return zh_why_it_matters_connectingalargejsondictionary4(inputs);
+	if (locale === "ja") return ja_why_it_matters_connectingalargejsondictionary4(inputs);
+	if (locale === "ko") return ko_why_it_matters_connectingalargejsondictionary4(inputs);
+	if (locale === "ru") return ru_why_it_matters_connectingalargejsondictionary4(inputs);
+	return en_why_it_matters_connectingalargejsondictionary4(inputs);
 });
+var en_why_it_matters_dynamicloading1 = () => {
+	return `Dynamic Loading`;
+};
+var fr_why_it_matters_dynamicloading1 = () => {
+	return `Chargement dynamique`;
+};
+var es_why_it_matters_dynamicloading1 = () => {
+	return `Carga dinámica`;
+};
+var de_why_it_matters_dynamicloading1 = () => {
+	return `Dynamisches Laden`;
+};
+var it_why_it_matters_dynamicloading1 = () => {
+	return `Caricamento dinamico`;
+};
+var pt_why_it_matters_dynamicloading1 = () => {
+	return `Carregamento Dinâmico`;
+};
+var zh_why_it_matters_dynamicloading1 = () => {
+	return `动态加载`;
+};
+var ja_why_it_matters_dynamicloading1 = () => {
+	return `動的ローディング`;
+};
+var ko_why_it_matters_dynamicloading1 = () => {
+	return `동적 로딩`;
+};
+var ru_why_it_matters_dynamicloading1 = () => {
+	return `Динамическая загрузка`;
+};
 var why_it_matters_dynamicloading1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return why_it_matters_dynamicloading1$9(inputs);
-	if (locale === "es") return why_it_matters_dynamicloading1$8(inputs);
-	if (locale === "de") return why_it_matters_dynamicloading1$7(inputs);
-	if (locale === "it") return why_it_matters_dynamicloading1$6(inputs);
-	if (locale === "pt") return why_it_matters_dynamicloading1$5(inputs);
-	if (locale === "zh") return why_it_matters_dynamicloading1$4(inputs);
-	if (locale === "ja") return why_it_matters_dynamicloading1$3(inputs);
-	if (locale === "ko") return why_it_matters_dynamicloading1$2(inputs);
-	if (locale === "ru") return why_it_matters_dynamicloading1$1(inputs);
-	return why_it_matters_dynamicloading1$10(inputs);
+	if (locale === "fr") return fr_why_it_matters_dynamicloading1(inputs);
+	if (locale === "es") return es_why_it_matters_dynamicloading1(inputs);
+	if (locale === "de") return de_why_it_matters_dynamicloading1(inputs);
+	if (locale === "it") return it_why_it_matters_dynamicloading1(inputs);
+	if (locale === "pt") return pt_why_it_matters_dynamicloading1(inputs);
+	if (locale === "zh") return zh_why_it_matters_dynamicloading1(inputs);
+	if (locale === "ja") return ja_why_it_matters_dynamicloading1(inputs);
+	if (locale === "ko") return ko_why_it_matters_dynamicloading1(inputs);
+	if (locale === "ru") return ru_why_it_matters_dynamicloading1(inputs);
+	return en_why_it_matters_dynamicloading1(inputs);
 });
+var en_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
+	return `Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.`;
+};
+var fr_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
+	return `Le chargement de toutes les traductions à l'avance surcharge le payload initial. Le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. Cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. Mesurer les deux stratégies est essentiel.`;
+};
+var es_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
+	return `Cargar todas las traducciones por adelantado sobrecarga el payload inicial. La carga dinámica (lazy) divide las traducciones por ruta o espacio de nombres, enviando solo lo que la página actual necesita. Sin embargo, la carga diferida introduce sus propias compensaciones: solicitudes en cascada, parpadeo de contenido no traducido y complejidad de la caché. Medir ambas estrategias es esencial.`;
+};
+var de_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
+	return `Das Laden aller Übersetzungen im Voraus überlastet den initialen Payload. Dynamisches (Lazy) Loading teilt Übersetzungen nach Route oder Namensraum auf und sendet nur das, was die aktuelle Seite benötigt. Lazy Loading bringt jedoch eigene Kompromisse mit sich: Waterfall-Anfragen, Aufblitzen von nicht übersetzten Inhalten (FOUC) und Cache-Komplexität. Die Messung beider Strategien ist essenziell.`;
+};
+var it_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
+	return `Il caricamento di tutte le traduzioni in anticipo sovraccarica il payload iniziale. Il caricamento dinamico (lazy) divide le traduzioni per rotta o namespace, inviando solo ciò di cui la pagina corrente ha bisogno. Tuttavia, il lazy loading introduce i propri compromessi: richieste a cascata, flash di contenuti non tradotti e complessità della cache. Misurare entrambe le strategie è essenziale.`;
+};
+var pt_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
+	return `Carregar todas as traduções antecipadamente sobrecarrega a carga útil inicial. O carregamento dinâmico (lazy) divide as traduções por rota ou namespace, enviando apenas o que a página atual precisa. No entanto, o carregamento tardio introduz suas próprias compensações: solicitações em cascada, flash de conteúdo não traduzido e complexidade de cache. Medir ambas as estratégias é essencial.`;
+};
+var zh_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
+	return `预先加载所有翻译会使初始负载过重。动态（延迟）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，延迟加载引入了它自己的权衡：瀑布流请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。`;
+};
+var ja_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
+	return `すべての翻訳を事前に読み込むと、初期のペイロードが過負荷になります。動的（遅延）読み込みは、ルートまたは名前空間ごとに翻訳を分割し、現在のページに必要なものだけを送信します。ただし、遅延読み込みには、ウォーターフォールリクエスト、未翻訳コンテンツのフラッシュ、キャッシュの複雑化といった独自のトレードオフがあります。両方の戦略を測定することが不可欠です。`;
+};
+var ko_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
+	return `모든 번역을 미리 로드하면 초기 페이로드가 과부하됩니다. 동적(지연) 로딩은 경로 또는 네임스페이스별로 번역을 분할하여 현재 페이지에 필요한 내용만 전송합니다. 그러나 지연 로딩은 워터폴 요청, 번역되지 않은 콘텐츠의 깜빡임(FOUC), 캐시 복잡성 등 자체적인 트레이드오프를 수반합니다. 두 전략을 모두 측정하는 것이 필수적입니다.`;
+};
+var ru_why_it_matters_loadingalltranslationsupfrontoverloads4 = () => {
+	return `Загрузка всех переводов сразу перегружает начальную полезную нагрузку. Динамическая (ленивая) загрузка разделяет переводы по маршрутам или пространствам имен, отправляя только то, что нужно для текущей страницы. Однако ленивая загрузка вносит свои компромиссы: каскадные запросы (waterfall), мерцание непереведенного контента и сложность кэширования. Измерение обеих стратегий необходимо.`;
+};
 var why_it_matters_loadingalltranslationsupfrontoverloads4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return why_it_matters_loadingalltranslationsupfrontoverloads4$9(inputs);
-	if (locale === "es") return why_it_matters_loadingalltranslationsupfrontoverloads4$8(inputs);
-	if (locale === "de") return why_it_matters_loadingalltranslationsupfrontoverloads4$7(inputs);
-	if (locale === "it") return why_it_matters_loadingalltranslationsupfrontoverloads4$6(inputs);
-	if (locale === "pt") return why_it_matters_loadingalltranslationsupfrontoverloads4$5(inputs);
-	if (locale === "zh") return why_it_matters_loadingalltranslationsupfrontoverloads4$4(inputs);
-	if (locale === "ja") return why_it_matters_loadingalltranslationsupfrontoverloads4$3(inputs);
-	if (locale === "ko") return why_it_matters_loadingalltranslationsupfrontoverloads4$2(inputs);
-	if (locale === "ru") return why_it_matters_loadingalltranslationsupfrontoverloads4$1(inputs);
-	return why_it_matters_loadingalltranslationsupfrontoverloads4$10(inputs);
+	if (locale === "fr") return fr_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
+	if (locale === "es") return es_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
+	if (locale === "de") return de_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
+	if (locale === "it") return it_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
+	if (locale === "pt") return pt_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
+	if (locale === "zh") return zh_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
+	if (locale === "ja") return ja_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
+	if (locale === "ko") return ko_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
+	if (locale === "ru") return ru_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
+	return en_why_it_matters_loadingalltranslationsupfrontoverloads4(inputs);
 });
+var en_why_it_matters_renderinghydration1 = () => {
+	return `Rendering & Hydration`;
+};
+var fr_why_it_matters_renderinghydration1 = () => {
+	return `Rendu & Hydratation`;
+};
+var es_why_it_matters_renderinghydration1 = () => {
+	return `Renderizado e hidratación`;
+};
+var de_why_it_matters_renderinghydration1 = () => {
+	return `Rendering & Hydratisierung`;
+};
+var it_why_it_matters_renderinghydration1 = () => {
+	return `Rendering e idratazione`;
+};
+var pt_why_it_matters_renderinghydration1 = () => {
+	return `Renderização e Hidratação`;
+};
+var zh_why_it_matters_renderinghydration1 = () => {
+	return `渲染与注水`;
+};
+var ja_why_it_matters_renderinghydration1 = () => {
+	return `レンダリングとハイドレーション`;
+};
+var ko_why_it_matters_renderinghydration1 = () => {
+	return `렌더링 및 수화(Hydration)`;
+};
+var ru_why_it_matters_renderinghydration1 = () => {
+	return `Рендеринг и гидратация`;
+};
 var why_it_matters_renderinghydration1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return why_it_matters_renderinghydration1$9(inputs);
-	if (locale === "es") return why_it_matters_renderinghydration1$8(inputs);
-	if (locale === "de") return why_it_matters_renderinghydration1$7(inputs);
-	if (locale === "it") return why_it_matters_renderinghydration1$6(inputs);
-	if (locale === "pt") return why_it_matters_renderinghydration1$5(inputs);
-	if (locale === "zh") return why_it_matters_renderinghydration1$4(inputs);
-	if (locale === "ja") return why_it_matters_renderinghydration1$3(inputs);
-	if (locale === "ko") return why_it_matters_renderinghydration1$2(inputs);
-	if (locale === "ru") return why_it_matters_renderinghydration1$1(inputs);
-	return why_it_matters_renderinghydration1$10(inputs);
+	if (locale === "fr") return fr_why_it_matters_renderinghydration1(inputs);
+	if (locale === "es") return es_why_it_matters_renderinghydration1(inputs);
+	if (locale === "de") return de_why_it_matters_renderinghydration1(inputs);
+	if (locale === "it") return it_why_it_matters_renderinghydration1(inputs);
+	if (locale === "pt") return pt_why_it_matters_renderinghydration1(inputs);
+	if (locale === "zh") return zh_why_it_matters_renderinghydration1(inputs);
+	if (locale === "ja") return ja_why_it_matters_renderinghydration1(inputs);
+	if (locale === "ko") return ko_why_it_matters_renderinghydration1(inputs);
+	if (locale === "ru") return ru_why_it_matters_renderinghydration1(inputs);
+	return en_why_it_matters_renderinghydration1(inputs);
 });
+var en_why_it_matters_thebundleisthedata4 = () => {
+	return `The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.`;
+};
+var fr_why_it_matters_thebundleisthedata4 = () => {
+	return `Le bundle représente les données envoyées à chaque utilisateur dans le monde. Un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3G lentes courantes dans de nombreuses régions. Les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.`;
+};
+var es_why_it_matters_thebundleisthedata4 = () => {
+	return `El bundle representa los datos enviados a cada usuario en todo el mundo. Un bundle más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código runtime, además de los propios archivos de traducción.`;
+};
+var de_why_it_matters_thebundleisthedata4 = () => {
+	return `Das Bundle sind die Daten, die an jeden Benutzer weltweit gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten — besonders bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren drastisch in ihrem Gewicht: von einigen Kilobytes bis zu zig Kilobytes an Laufzeitcode, plus die Übersetzungsdateien selbst.`;
+};
+var it_why_it_matters_thebundleisthedata4 = () => {
+	return `Il bundle rappresenta i dati inviati a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi, specialmente sulle connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.`;
+};
+var pt_why_it_matters_thebundleisthedata4 = () => {
+	return `O bundle representa os dados enviados a cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código de tempo de execução, além dos próprios arquivos de tradução.`;
+};
+var zh_why_it_matters_thebundleisthedata4 = () => {
+	return `包是发送给全球每个用户的数据。更大的包意味着更长的下载时间——特别是在许多地区常见的慢速 3G 连接上。i18n 库的权重差异巨大：从几 KB 到几十 KB 的运行时代码，外加翻译文件本身。`;
+};
+var ja_why_it_matters_thebundleisthedata4 = () => {
+	return `バンドルは、世界中のすべてのユーザーに送られるデータです。バンドルが大きいほどダウンロード時間が長くなります。特に多くの地域で一般的な低速な3G接続では顕著です。i18nライブラリはその重量が劇的に異なります。ランタイムコードだけで数キロバイトから数十キロバイト、さらに翻訳ファイル自体が加わります。`;
+};
+var ko_why_it_matters_thebundleisthedata4 = () => {
+	return `번들은 전 세계 모든 사용자에게 전송되는 데이터를 나타냅니다. 번들이 클수록 다운로드 시간이 길어집니다. 특히 많은 지역에서 흔히 발생하는 느린 3G 연결에서 더욱 그렇습니다. i18n 라이브러리는 런타임 코드만으로도 수 킬로바이트에서 수십 킬로바이트까지 무게가 크게 다르며, 여기에 번역 파일 자체가 추가됩니다.`;
+};
+var ru_why_it_matters_thebundleisthedata4 = () => {
+	return `Бандл — это данные, которые отправляются каждому пользователю по всему миру. Большой размер бандла означает более долгое время загрузки, особенно при медленном 3G-соединении, характерном для многих регионов. Библиотеки i18n сильно различаются по весу: от нескольких килобайт до десятков килобайт рантайм-кода, плюс сами файлы переводов.`;
+};
 var why_it_matters_thebundleisthedata4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return why_it_matters_thebundleisthedata4$9(inputs);
-	if (locale === "es") return why_it_matters_thebundleisthedata4$8(inputs);
-	if (locale === "de") return why_it_matters_thebundleisthedata4$7(inputs);
-	if (locale === "it") return why_it_matters_thebundleisthedata4$6(inputs);
-	if (locale === "pt") return why_it_matters_thebundleisthedata4$5(inputs);
-	if (locale === "zh") return why_it_matters_thebundleisthedata4$4(inputs);
-	if (locale === "ja") return why_it_matters_thebundleisthedata4$3(inputs);
-	if (locale === "ko") return why_it_matters_thebundleisthedata4$2(inputs);
-	if (locale === "ru") return why_it_matters_thebundleisthedata4$1(inputs);
-	return why_it_matters_thebundleisthedata4$10(inputs);
+	if (locale === "fr") return fr_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "es") return es_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "de") return de_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "it") return it_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "pt") return pt_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "zh") return zh_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "ja") return ja_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "ko") return ko_why_it_matters_thebundleisthedata4(inputs);
+	if (locale === "ru") return ru_why_it_matters_thebundleisthedata4(inputs);
+	return en_why_it_matters_thebundleisthedata4(inputs);
 });
+var en_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Why These Metrics Matter`;
+};
+var fr_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Pourquoi ces mesures sont importantes`;
+};
+var es_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Por qué son importantes estas métricas`;
+};
+var de_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Warum diese Metriken wichtig sind`;
+};
+var it_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Perché queste metriche sono importanti`;
+};
+var pt_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Por que essas métricas são importantes`;
+};
+var zh_why_it_matters_whythesemetricsmatter3 = () => {
+	return `为什么这些指标很重要`;
+};
+var ja_why_it_matters_whythesemetricsmatter3 = () => {
+	return `これらの指標が重要な理由`;
+};
+var ko_why_it_matters_whythesemetricsmatter3 = () => {
+	return `이 지표가 중요한 이유`;
+};
+var ru_why_it_matters_whythesemetricsmatter3 = () => {
+	return `Почему эти показатели важны`;
+};
 var why_it_matters_whythesemetricsmatter3 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return why_it_matters_whythesemetricsmatter3$9(inputs);
-	if (locale === "es") return why_it_matters_whythesemetricsmatter3$8(inputs);
-	if (locale === "de") return why_it_matters_whythesemetricsmatter3$7(inputs);
-	if (locale === "it") return why_it_matters_whythesemetricsmatter3$6(inputs);
-	if (locale === "pt") return why_it_matters_whythesemetricsmatter3$5(inputs);
-	if (locale === "zh") return why_it_matters_whythesemetricsmatter3$4(inputs);
-	if (locale === "ja") return why_it_matters_whythesemetricsmatter3$3(inputs);
-	if (locale === "ko") return why_it_matters_whythesemetricsmatter3$2(inputs);
-	if (locale === "ru") return why_it_matters_whythesemetricsmatter3$1(inputs);
-	return why_it_matters_whythesemetricsmatter3$10(inputs);
+	if (locale === "fr") return fr_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "es") return es_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "de") return de_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "it") return it_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "pt") return pt_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "zh") return zh_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "ja") return ja_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "ko") return ko_why_it_matters_whythesemetricsmatter3(inputs);
+	if (locale === "ru") return ru_why_it_matters_whythesemetricsmatter3(inputs);
+	return en_why_it_matters_whythesemetricsmatter3(inputs);
 });
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/home/WhyItMatters.tsx";
 function WhyItMatters() {
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mb-16",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-6 text-2xl font-bold text-foreground",
 			children: why_it_matters_whythesemetricsmatter3()
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 6,
-			columnNumber: 7
-		}, this), jsxDEV("div", {
+		}), jsxs("div", {
 			className: "grid gap-6 md:grid-cols-3",
 			children: [
-				jsxDEV("div", {
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: why_it_matters_bundlesize1()
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 11,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: why_it_matters_thebundleisthedata4()
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 14,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 10,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+					})]
+				}),
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: why_it_matters_renderinghydration1()
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 19,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: why_it_matters_connectingalargejsondictionary4()
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 22,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 18,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+					})]
+				}),
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: why_it_matters_dynamicloading1()
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 27,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: why_it_matters_loadingalltranslationsupfrontoverloads4()
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 30,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 26,
-					columnNumber: 9
-				}, this)
+					})]
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 5,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 setLocale("en", { reload: false });
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/home/WhyItMatters.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(WhyItMatters, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(WhyItMatters, {}) });
 }
 export { Wrapped as default };

@@ -1,6 +1,6 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
 import { useParams as r, usePathname as i, useRouter as a } from "next/navigation";
-import { Fragment as o, jsxDEV as s } from "react/jsx-dev-runtime";
+import { Fragment as o, jsx as s } from "react/jsx-runtime";
 var c = {}, l = [
 	"en",
 	"fr",
@@ -137,8 +137,7 @@ var z = /* @__PURE__ */ new Map();
 function B(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var V = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/LocaleSwitcher.tsx";
-function H() {
+function V() {
 	let e = r().locale ?? "en", t = i(), n = a(), o = (e) => {
 		try {
 			let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
@@ -159,23 +158,11 @@ function H() {
 			children: l.map((e) => s("option", {
 				value: e,
 				children: o(e)
-			}, e, !1, {
-				fileName: V,
-				lineNumber: 35,
-				columnNumber: 11
-			}, this))
-		}, void 0, !1, {
-			fileName: V,
-			lineNumber: 29,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: V,
-		lineNumber: 28,
-		columnNumber: 5
-	}, this);
+			}, e))
+		})
+	});
 }
-function U() {
+function H() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -189,44 +176,25 @@ function U() {
 		}
 	}
 }
-function W(e, t) {
+function U(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var G = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
-function K({ children: i }) {
+function W({ children: i }) {
 	let a = r().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		W("AppRoot", c);
+		U("AppRoot", c);
 	}, [c]), e(() => {
 		b(a, { reload: !1 }), document.documentElement.lang = a;
 	}, [a]), e(() => {
-		U();
-	}, []), s(o, { children: i }, void 0, !1, {
-		fileName: G,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+		H();
+	}, []), s(o, { children: i });
 }
-var q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
-function J({ children: e }) {
-	return s(K, { children: e }, void 0, !1, {
-		fileName: q,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function G({ children: e }) {
+	return s(W, { children: e });
 }
-var Y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/LocaleSwitcher.wrapper.tsx";
-function X() {
-	return s(J, { children: s(H, {}, void 0, !1, {
-		fileName: Y,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: Y,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function K() {
+	return s(G, { children: s(V, {}) });
 }
-export { X as default };
+export { K as default };

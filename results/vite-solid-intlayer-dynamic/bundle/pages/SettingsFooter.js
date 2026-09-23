@@ -1,16 +1,16 @@
 import { Dynamic, insert, template } from "solid-js/web";
 import { createContext, createMemo, useContext } from "solid-js";
 var content = {
-	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/de.json").then((m) => m.default),
-	"en": () => import("./en-C1KI9Ggo.js").then((m) => m.default),
-	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/es.json").then((m) => m.default),
-	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/fr.json").then((m) => m.default),
-	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/it.json").then((m) => m.default),
-	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ja.json").then((m) => m.default),
-	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ko.json").then((m) => m.default),
-	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/pt.json").then((m) => m.default),
-	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ru.json").then((m) => m.default),
-	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/zh.json").then((m) => m.default)
+	"de": () => import("./de-NjhMXFf3.js").then((m) => m.default),
+	"en": () => import("./en-2Oakixuk.js").then((m) => m.default),
+	"es": () => import("./es-zAS-seWq.js").then((m) => m.default),
+	"fr": () => import("./fr-D_LQ9904.js").then((m) => m.default),
+	"it": () => import("./it-DP1dOs3e.js").then((m) => m.default),
+	"ja": () => import("./ja-BQ5c4LDs.js").then((m) => m.default),
+	"ko": () => import("./ko-CSsWkxJ1.js").then((m) => m.default),
+	"pt": () => import("./pt-D-YV6gPk.js").then((m) => m.default),
+	"ru": () => import("./ru-C5SmGThd.js").then((m) => m.default),
+	"zh": () => import("./zh-BXGCCL1Q.js").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,7 +230,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-}, S$1 = {
+};
+var S = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -238,7 +239,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: o.children,
 		children: o.children
 	})
-}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+};
+var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -246,7 +248,12 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
+};
+var T = fallbackPlugin;
+var D = fallbackPlugin;
+var O = fallbackPlugin;
+var k = /* @__PURE__ */ new Map();
+var A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -256,7 +263,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S$1,
+		S,
 		C,
 		T,
 		D,
@@ -275,7 +282,8 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-}, localeStorageOptions = {
+};
+var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -293,7 +301,9 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
+};
+var a$1 = getLocaleFromStorageClient(localeStorageOptions);
+var y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -312,7 +322,9 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+};
+var t = /* @__PURE__ */ new Map();
+var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
@@ -328,6 +340,14 @@ function SettingsFooter() {
 	})();
 }
 export { SettingsFooter as default };
+var de_default = {
+	key: "settings-footer",
+	content: {
+		"a": "Abbrechen",
+		"b": "Änderungen speichern"
+	}
+};
+export { de_default as default };
 var en_default = {
 	key: "settings-footer",
 	content: {
@@ -336,3 +356,67 @@ var en_default = {
 	}
 };
 export { en_default as default };
+var es_default = {
+	key: "settings-footer",
+	content: {
+		"a": "Cancelar",
+		"b": "Guardar cambios"
+	}
+};
+export { es_default as default };
+var fr_default = {
+	key: "settings-footer",
+	content: {
+		"a": "Annuler",
+		"b": "Enregistrer les modifications"
+	}
+};
+export { fr_default as default };
+var it_default = {
+	key: "settings-footer",
+	content: {
+		"a": "Annulla",
+		"b": "Salva modifiche"
+	}
+};
+export { it_default as default };
+var ja_default = {
+	key: "settings-footer",
+	content: {
+		"a": "キャンセル",
+		"b": "変更を保存"
+	}
+};
+export { ja_default as default };
+var ko_default = {
+	key: "settings-footer",
+	content: {
+		"a": "취소",
+		"b": "변경 사항 저장"
+	}
+};
+export { ko_default as default };
+var pt_default = {
+	key: "settings-footer",
+	content: {
+		"a": "Cancelar",
+		"b": "Salvar alterações"
+	}
+};
+export { pt_default as default };
+var ru_default = {
+	key: "settings-footer",
+	content: {
+		"a": "Отмена",
+		"b": "Сохранить изменения"
+	}
+};
+export { ru_default as default };
+var zh_default = {
+	key: "settings-footer",
+	content: {
+		"a": "取消",
+		"b": "保存更改"
+	}
+};
+export { zh_default as default };

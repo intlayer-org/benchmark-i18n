@@ -1,16 +1,16 @@
 import { Dynamic, createComponent, insert, template } from "solid-js/web";
 import { For, createContext, createMemo, useContext } from "solid-js";
 var content = {
-	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/de.json").then((m) => m.default),
-	"en": () => import("./en-CYq3mfT7.js").then((m) => m.default),
-	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/es.json").then((m) => m.default),
-	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/fr.json").then((m) => m.default),
-	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/it.json").then((m) => m.default),
-	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/ja.json").then((m) => m.default),
-	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/ko.json").then((m) => m.default),
-	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/pt.json").then((m) => m.default),
-	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/ru.json").then((m) => m.default),
-	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/products-grid/zh.json").then((m) => m.default)
+	"de": () => import("./de-CtBBvDAY.js").then((m) => m.default),
+	"en": () => import("./en-BbplybxF.js").then((m) => m.default),
+	"es": () => import("./es-v0iJZx9H.js").then((m) => m.default),
+	"fr": () => import("./fr-lp8irYbR.js").then((m) => m.default),
+	"it": () => import("./it-BKv3Vc8I.js").then((m) => m.default),
+	"ja": () => import("./ja-CUUkaDDG.js").then((m) => m.default),
+	"ko": () => import("./ko-SdMW5PSi.js").then((m) => m.default),
+	"pt": () => import("./pt-Du8us24R.js").then((m) => m.default),
+	"ru": () => import("./ru-_8MuoHCu.js").then((m) => m.default),
+	"zh": () => import("./zh-B21aO1Ck.js").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,7 +230,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-}, S$1 = {
+};
+var S = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -238,7 +239,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: o.children,
 		children: o.children
 	})
-}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+};
+var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -246,7 +248,12 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
+};
+var T = fallbackPlugin;
+var D = fallbackPlugin;
+var O = fallbackPlugin;
+var k = /* @__PURE__ */ new Map();
+var A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -256,7 +263,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S$1,
+		S,
 		C,
 		T,
 		D,
@@ -275,7 +282,8 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-}, localeStorageOptions = {
+};
+var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -293,7 +301,9 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
+};
+var a$1 = getLocaleFromStorageClient(localeStorageOptions);
+var y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -312,12 +322,15 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+};
+var t = /* @__PURE__ */ new Map();
+var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
 };
-var _tmpl$ = template(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">`), _tmpl$2 = template(`<div class="flex flex-col justify-between rounded-lg border border-border bg-card p-6"><div><h3 class="mb-2 text-lg font-semibold text-foreground"></h3><p class="mb-4 text-sm text-muted-foreground"></p></div><div class="flex items-center justify-between"><span class="text-sm font-bold text-primary"></span><button type=button class="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90">`);
+var _tmpl$ = template(`<div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">`);
+var _tmpl$2 = template(`<div class="flex flex-col justify-between rounded-lg border border-border bg-card p-6"><div><h3 class="mb-2 text-lg font-semibold text-foreground"></h3><p class="mb-4 text-sm text-muted-foreground"></p></div><div class="flex items-center justify-between"><span class="text-sm font-bold text-primary"></span><button type=button class="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground transition-opacity hover:opacity-90">`);
 function ProductsGrid() {
 	const content$1 = a(content, "products-grid");
 	const products = [
@@ -369,6 +382,27 @@ function ProductsGrid() {
 	})();
 }
 export { ProductsGrid as default };
+var de_default = {
+	key: "products-grid",
+	content: {
+		"e": "Benchmark CLI",
+		"n": "Führen Sie Benchmarks lokal von Ihrem Terminal aus durch. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.",
+		"j": "Kostenlos",
+		"f": "Benchmark Cloud",
+		"c": "Automatisiertes cloudbasiertes Benchmarking mit historischer Nachverfolgung, Warnungen und Team-Dashboards.",
+		"g": "Benchmark Enterprise",
+		"m": "On-Premise-Bereitstellung mit SSO, Audit-Logs, benutzerdefinierten SLAs und dediziertem Support.",
+		"i": "Kontaktieren Sie uns",
+		"l": "Migrationsassistent",
+		"a": "KI-gestütztes Tool, das hilft, Ihre Codebasis ohne Ausfallzeiten zwischen i18n-Bibliotheken zu migrieren.",
+		"o": "Übersetzungs-QA",
+		"d": "Automatisierte Qualitätsprüfungen auf fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.",
+		"h": "Bundle-Optimierer",
+		"b": "Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code-Splitting.",
+		"k": "Mehr erfahren"
+	}
+};
+export { de_default as default };
 var en_default = {
 	key: "products-grid",
 	content: {
@@ -390,3 +424,171 @@ var en_default = {
 	}
 };
 export { en_default as default };
+var es_default = {
+	key: "products-grid",
+	content: {
+		"e": "CLI de Benchmark",
+		"n": "Ejecute benchmarks localmente desde su terminal. Admite configuraciones personalizadas e integración de CI.",
+		"j": "Gratis",
+		"f": "Benchmark Cloud",
+		"c": "Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.",
+		"g": "Benchmark Enterprise",
+		"m": "Despliegue local con SSO, registros de auditoría, SLA personalizados y soporte dedicado.",
+		"i": "Contáctenos",
+		"l": "Asistente de migración",
+		"a": "Herramienta impulsada por IA que ayuda a migrar su base de código entre bibliotecas i18n sin tiempo de inactividad.",
+		"o": "Control de calidad de traducción",
+		"d": "Controles de calidad automatizados para traducciones faltantes, problemas de pluralización y errores de contexto.",
+		"h": "Optimizador de bundle",
+		"b": "Analiza y optimiza su bundle i18n para producción con tree-shaking y división de código.",
+		"k": "Más información"
+	}
+};
+export { es_default as default };
+var fr_default = {
+	key: "products-grid",
+	content: {
+		"e": "CLI Benchmark",
+		"n": "Exécutez des benchmarks localement depuis votre terminal. Supporte les configurations personnalisées et l'intégration CI.",
+		"j": "Gratuit",
+		"f": "Benchmark Cloud",
+		"c": "Benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
+		"g": "Benchmark Enterprise",
+		"m": "Déploiement sur site avec SSO, journaux d'audit, SLA personnalisés et support dédié.",
+		"i": "Contactez-nous",
+		"l": "Assistant de migration",
+		"a": "Outil alimenté par l'IA qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.",
+		"o": "QA de traduction",
+		"d": "Contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.",
+		"h": "Optimiseur de bundle",
+		"b": "Analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code.",
+		"k": "En savoir plus"
+	}
+};
+export { fr_default as default };
+var it_default = {
+	key: "products-grid",
+	content: {
+		"e": "CLI del Benchmark",
+		"n": "Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.",
+		"j": "Gratis",
+		"f": "Benchmark Cloud",
+		"c": "Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.",
+		"g": "Benchmark Enterprise",
+		"m": "Distribuzione on-premise con SSO, log di controllo, SLA personalizzati e supporto dedicato.",
+		"i": "Contattaci",
+		"l": "Assistente alla migrazione",
+		"a": "Strumento basato sull'IA che aiuta a migrare la tua codebase tra librerie i18n senza tempi di inattività.",
+		"o": "QA delle traduzioni",
+		"d": "Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.",
+		"h": "Ottimizzatore del bundle",
+		"b": "Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.",
+		"k": "Scopri di più"
+	}
+};
+export { it_default as default };
+var ja_default = {
+	key: "products-grid",
+	content: {
+		"e": "ベンチマーク CLI",
+		"n": "ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートします。",
+		"j": "無料",
+		"f": "ベンチマーククラウド",
+		"c": "履歴の追跡、アラート、およびチームダッシュボードを備えた自動クラウドベースのベンチマーク。",
+		"g": "ベンチマークエンタープライズ",
+		"m": "SSO、監査ログ、カスタムSLA、および専用サポートを備えたオンプレミス展開。",
+		"i": "お問い合わせ",
+		"l": "移行アシスタント",
+		"a": "i18nライブラリ間でコードベースをダウンタイムなしで移行するのを支援するAI搭載ツール。",
+		"o": "翻訳QA",
+		"d": "欠落している翻訳、複数形の問題、およびコンテキストエラーの自動品質チェック。",
+		"h": "バンドルオプティマイザー",
+		"b": "ツリーシェイキングとコード分割を使用して、本番用のi18nバンドルを分析および最適化します。",
+		"k": "詳細はこちら"
+	}
+};
+export { ja_default as default };
+var ko_default = {
+	key: "products-grid",
+	content: {
+		"e": "벤치마크 CLI",
+		"n": "터미널에서 로컬로 벤치마크를 실행합니다. 사용자 정의 구성 및 CI 통합을 지원합니다.",
+		"j": "무료",
+		"f": "벤치마크 클라우드",
+		"c": "기록 추적, 알림 및 팀 대시보드를 갖춘 자동화된 클라우드 기반 벤치마킹.",
+		"g": "벤치마크 엔터프라이즈",
+		"m": "SSO, 감사 로그, 맞춤형 SLA 및 전담 지원을 갖춘 온프레미스 배포.",
+		"i": "문의하기",
+		"l": "마이그레이션 어시스턴트",
+		"a": "다운타임 없이 i18n 라이브러리 간에 코드베이스를 마이그레이션하는 데 도움이 되는 AI 기반 도구입니다.",
+		"o": "번역 QA",
+		"d": "누락된 번역, 복수형 문제 및 컨텍스트 오류에 대한 자동 품질 검사.",
+		"h": "번들 최적화 도구",
+		"b": "트리 쉐이킹 및 코드 분할을 통해 프로덕션용 i18n 번들을 분석하고 최적화합니다.",
+		"k": "자세히 알아보기"
+	}
+};
+export { ko_default as default };
+var pt_default = {
+	key: "products-grid",
+	content: {
+		"e": "CLI de Benchmark",
+		"n": "Execute benchmarks localmente em seu terminal. Suporta configurações personalizadas e integração de CI.",
+		"j": "Grátis",
+		"f": "Benchmark Cloud",
+		"c": "Benchmarking automatizado baseado em nuvem com rastreamento histórico, alertas e painéis de equipe.",
+		"g": "Benchmark Enterprise",
+		"m": "Implantação on-premise com SSO, logs de auditoria, SLAs personalizados e suporte dedicado.",
+		"i": "Contate-nos",
+		"l": "Assistente de migração",
+		"a": "Ferramenta baseada em IA que ajuda a migrar sua base de código entre bibliotecas i18n sem tempo de inatividade.",
+		"o": "QA de tradução",
+		"d": "Verificações de qualidade automatizadas para traduções ausentes, problemas de pluralização e erros de contexto.",
+		"h": "Otimizador de bundle",
+		"b": "Analisa e otimiza seu bundle i18n para produção com tree-shaking e divisão de código.",
+		"k": "Saiba Mais"
+	}
+};
+export { pt_default as default };
+var ru_default = {
+	key: "products-grid",
+	content: {
+		"e": "CLI для бенчмарков",
+		"n": "Запускайте бенчмарки локально из терминала. Поддержка пользовательских конфигураций и интеграции с CI.",
+		"j": "Бесплатно",
+		"f": "Облачный бенчмарк",
+		"c": "Автоматизированное облачное тестирование с отслеживанием истории, оповещениями и командными дашбордами.",
+		"g": "Бенчмарк для предприятий",
+		"m": "Локальное развертывание с поддержкой SSO, журналами аудита, индивидуальными SLA и выделенной поддержкой.",
+		"i": "Связаться с нами",
+		"l": "Помощник по миграции",
+		"a": "Инструмент на базе ИИ, который помогает переносить кодовую базу между библиотеками i18n без простоев.",
+		"o": "QA переводов",
+		"d": "Автоматизированные проверки качества на наличие отсутствующих переводов, проблем с множественным числом и контекстных ошибок.",
+		"h": "Оптимизатор бандла",
+		"b": "Анализирует и оптимизирует ваш i18n-бандл для продакшена с помощью tree-shaking и разделения кода.",
+		"k": "Узнать больше"
+	}
+};
+export { ru_default as default };
+var zh_default = {
+	key: "products-grid",
+	content: {
+		"e": "基准测试 CLI",
+		"n": "从您的终端在本地运行基准测试。支持自定义配置和 CI 集成。",
+		"j": "免费",
+		"f": "基准测试云",
+		"c": "具有历史跟踪、警报和团队仪表板的自动化云基准测试。",
+		"g": "基准测试企业版",
+		"m": "支持 SSO、审计日志、自定义 SLA 和专用支持的本地部署。",
+		"i": "联系我们",
+		"l": "迁移助手",
+		"a": "人工智能驱动的工具，可帮助您在 i18n 库之间迁移代码库，实现零停机时间。",
+		"o": "翻译质量保证",
+		"d": "针对缺失翻译、复数问题和上下文错误的自动质量检查。",
+		"h": "捆绑包优化器",
+		"b": "通过摇树优化和代码拆分，分析并优化您的生产 i18n 捆绑包。",
+		"k": "了解更多"
+	}
+};
+export { zh_default as default };

@@ -13,7 +13,6 @@ export default function Hero() {
       <p className="mx-auto max-w-2xl text-lg text-muted-foreground">
         <T
           keyName="hero.aTestApplicationDesignedTo"
-          defaultValue="A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
         />
       </p>
       <div className="mt-8 flex justify-center gap-4">
@@ -21,13 +20,13 @@ export default function Hero() {
           type="button"
           className="rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
         >
-          <T keyName="hero.viewResults" defaultValue="View Results" />
+          <T keyName="hero.viewResults" />
         </button>
         <button
           type="button"
           className="rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors"
         >
-          <T keyName="header.methodology" defaultValue="Methodology" />
+          <T keyName="header.methodology" />
         </button>
       </div>
     </section>

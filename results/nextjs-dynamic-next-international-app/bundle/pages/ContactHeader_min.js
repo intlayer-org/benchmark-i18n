@@ -1,17 +1,17 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { Fragment as r, jsxDEV as i } from "react/jsx-dev-runtime";
-var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), o = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { Fragment as r, jsx as i, jsxs as a } from "react/jsx-runtime";
+var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), s = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), s = a((() => {})), c = (0, a(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, c = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
+}), c = o((() => {})), l = (0, o(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
 		value: n
 	}) : e[t] = n, p = (e, t) => {
 		for (var n in t ||= {}) u.call(t, n) && f(e, n, t[n]);
-		if (c) for (var n of c(t)) d.call(t, n) && f(e, n, t[n]);
+		if (o) for (var n of o(t)) d.call(t, n) && f(e, n, t[n]);
 		return e;
 	}, m = (e, t) => {
 		for (var n in t) r(e, n, {
@@ -28,8 +28,8 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		value: e,
 		enumerable: !0
 	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), s();
-	var y = o("next/navigation"), b = g(o("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	m(v, { createI18nClient: () => V }), t.exports = _(v), c();
+	var y = s("next/navigation"), b = g(s("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -53,7 +53,7 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			}, i));
 		};
 	}
-	var D = o("react"), O = o("react"), k = o("react");
+	var D = s("react"), O = s("react"), k = s("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -87,7 +87,7 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = o("react");
+	var M = s("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -95,7 +95,7 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = o("next/navigation");
+	var P = s("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -117,7 +117,7 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return e;
 		};
 	}
-	var L = o("next/navigation"), R = o("react"), z = "locale";
+	var L = s("next/navigation"), R = s("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -152,37 +152,25 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	ko: () => import("./ko-HtThxRhP.js"),
 	ru: () => import("./ru-5Z3nDjnd.js")
 });
-function l() {
-	return c.useI18n();
+function u() {
+	return l.useI18n();
 }
-var { useScopedI18n: u, I18nProviderClient: d, useChangeLocale: f, useCurrentLocale: p } = c, m = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/MockBanner.tsx", h = () => {
-	let e = l();
+var { useScopedI18n: d, I18nProviderClient: f, useChangeLocale: p, useCurrentLocale: m } = l, h = () => {
+	let e = u();
 	return i("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: e("mockBanner")
-	}, void 0, !1, {
-		fileName: m,
-		lineNumber: 8,
-		columnNumber: 5
-	}, void 0);
-}, g = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/contact/ContactHeader.tsx";
-function _() {
-	let e = l();
-	return i(r, { children: [
-		i(h, {}, void 0, !1, {
-			fileName: g,
-			lineNumber: 10,
-			columnNumber: 7
-		}, this),
+	});
+};
+function g() {
+	let e = u();
+	return a(r, { children: [
+		i(h, {}),
 		i("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: e("contact.contact-header.getInTouch")
-		}, void 0, !1, {
-			fileName: g,
-			lineNumber: 11,
-			columnNumber: 7
-		}, this),
-		i("p", {
+		}),
+		a("p", {
 			className: "mb-8 text-muted-foreground",
 			children: [
 				e("contact.contact-header.haveIdeasFoundABug"),
@@ -191,25 +179,13 @@ function _() {
 					href: "mailto:contact@intlayer.org",
 					className: "text-primary hover:underline",
 					children: "contact@intlayer.org"
-				}, void 0, !1, {
-					fileName: g,
-					lineNumber: 16,
-					columnNumber: 9
-				}, this),
+				}),
 				"."
 			]
-		}, void 0, !0, {
-			fileName: g,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this)
-	] }, void 0, !0, {
-		fileName: g,
-		lineNumber: 9,
-		columnNumber: 5
-	}, this);
+		})
+	] });
 }
-function v() {
+function _() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -223,53 +199,35 @@ function v() {
 		}
 	}
 }
-function y(e, t) {
+function v(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var b = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
-function x({ children: r, locale: a }) {
+function y({ children: r, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		y("AppRoot", o);
+		v("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
-		v();
-	}, []), i(d, {
+		_();
+	}, []), i(f, {
 		locale: a,
 		children: r
-	}, void 0, !1, {
-		fileName: b,
-		lineNumber: 30,
-		columnNumber: 7
-	}, this);
+	});
 }
-var S = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx", C = "en";
-function w({ children: e }) {
-	return i(x, {
-		locale: C,
+var b = "en";
+function x({ children: e }) {
+	return i(y, {
+		locale: b,
 		children: e
-	}, void 0, !1, {
-		fileName: S,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
-var T = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/contact/ContactHeader.wrapper.tsx";
-function E() {
-	return i(w, { children: i(_, {}, void 0, !1, {
-		fileName: T,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: T,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function S() {
+	return i(x, { children: i(g, {}) });
 }
-export { E as default };
+export { S as default };
 import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../../../messages/de.json";
 var n = e(t);

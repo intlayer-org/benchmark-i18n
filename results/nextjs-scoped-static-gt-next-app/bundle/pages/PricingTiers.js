@@ -1,6 +1,5 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { jsx } from "react/jsx-runtime";
-import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3909,7 +3908,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => true) === true) return "development";
+	if (readImportMetaEnv(() => false) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6019,243 +6018,89 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
-	const tiers = [
-		{
-			name: jsxDEV(a$2, { children: "Starter" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 6,
-				columnNumber: 13
-			}, this),
-			price: jsxDEV(a$2, { children: "$0" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 7,
-				columnNumber: 14
-			}, this),
-			period: jsxDEV(a$2, { children: "forever" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 8,
-				columnNumber: 15
-			}, this),
-			features: [
-				jsxDEV(a$2, { children: "5 benchmark runs/day" }, "f1", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 10,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "3 libraries" }, "f2", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 11,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "Community support" }, "f3", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 12,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "Public results" }, "f4", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 13,
-					columnNumber: 9
-				}, this)
-			]
-		},
-		{
-			name: jsxDEV(a$2, { children: "Pro" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 17,
-				columnNumber: 13
-			}, this),
-			price: jsxDEV(a$2, { children: "$29" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 18,
-				columnNumber: 14
-			}, this),
-			period: jsxDEV(a$2, { children: "/month" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 19,
-				columnNumber: 15
-			}, this),
-			features: [
-				jsxDEV(a$2, { children: "Unlimited runs" }, "f1", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 21,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "All libraries" }, "f2", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 22,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "Priority support" }, "f3", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 23,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "Private results" }, "f4", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 24,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "CI integration" }, "f5", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 25,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "Historical data" }, "f6", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 26,
-					columnNumber: 9
-				}, this)
-			],
-			highlighted: true
-		},
-		{
-			name: jsxDEV(a$2, { children: "Enterprise" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 31,
-				columnNumber: 13
-			}, this),
-			price: jsxDEV(a$2, { children: "Custom" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 32,
-				columnNumber: 14
-			}, this),
-			period: jsxDEV(a$2, { children: "" }, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 33,
-				columnNumber: 15
-			}, this),
-			features: [
-				jsxDEV(a$2, { children: "Everything in Pro" }, "f1", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 35,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "On-premise option" }, "f2", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 36,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "SSO & SAML" }, "f3", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 37,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "Dedicated account manager" }, "f4", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 38,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "Custom SLAs" }, "f5", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 39,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "Audit logs" }, "f6", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 40,
-					columnNumber: 9
-				}, this),
-				jsxDEV(a$2, { children: "Training sessions" }, "f7", false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 41,
-					columnNumber: 9
-				}, this)
-			],
-			isEnterprise: true
-		}
-	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((t, i) => jsxDEV("div", {
+		children: [
+			{
+				name: jsx(a$2, { children: "Starter" }),
+				price: jsx(a$2, { children: "$0" }),
+				period: jsx(a$2, { children: "forever" }),
+				features: [
+					jsx(a$2, { children: "5 benchmark runs/day" }, "f1"),
+					jsx(a$2, { children: "3 libraries" }, "f2"),
+					jsx(a$2, { children: "Community support" }, "f3"),
+					jsx(a$2, { children: "Public results" }, "f4")
+				]
+			},
+			{
+				name: jsx(a$2, { children: "Pro" }),
+				price: jsx(a$2, { children: "$29" }),
+				period: jsx(a$2, { children: "/month" }),
+				features: [
+					jsx(a$2, { children: "Unlimited runs" }, "f1"),
+					jsx(a$2, { children: "All libraries" }, "f2"),
+					jsx(a$2, { children: "Priority support" }, "f3"),
+					jsx(a$2, { children: "Private results" }, "f4"),
+					jsx(a$2, { children: "CI integration" }, "f5"),
+					jsx(a$2, { children: "Historical data" }, "f6")
+				],
+				highlighted: true
+			},
+			{
+				name: jsx(a$2, { children: "Enterprise" }),
+				price: jsx(a$2, { children: "Custom" }),
+				period: jsx(a$2, { children: "" }),
+				features: [
+					jsx(a$2, { children: "Everything in Pro" }, "f1"),
+					jsx(a$2, { children: "On-premise option" }, "f2"),
+					jsx(a$2, { children: "SSO & SAML" }, "f3"),
+					jsx(a$2, { children: "Dedicated account manager" }, "f4"),
+					jsx(a$2, { children: "Custom SLAs" }, "f5"),
+					jsx(a$2, { children: "Audit logs" }, "f6"),
+					jsx(a$2, { children: "Training sessions" }, "f7")
+				],
+				isEnterprise: true
+			}
+		].map((t, i) => jsxs("div", {
 			className: `flex flex-col rounded-lg border p-6 ${t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsxDEV("h3", {
+				jsx("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: t.name
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 58,
-					columnNumber: 11
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "my-4",
-					children: [jsxDEV("span", {
+					children: [jsx("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: t.price
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 60,
-						columnNumber: 13
-					}, this), jsxDEV("span", {
+					}), jsx("span", {
 						className: "text-sm text-muted-foreground",
 						children: t.period
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 63,
-						columnNumber: 13
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 59,
-					columnNumber: 11
-				}, this),
-				jsxDEV("ul", {
+					})]
+				}),
+				jsx("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: t.features.map((f, fi) => jsxDEV("li", {
+					children: t.features.map((f, fi) => jsxs("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsxDEV("span", {
+							jsx("span", {
 								className: "text-primary",
 								children: "✓"
-							}, void 0, false, {
-								fileName: _jsxFileName$3,
-								lineNumber: 71,
-								columnNumber: 17
-							}, this),
+							}),
 							" ",
 							f
 						]
-					}, fi, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 67,
-						columnNumber: 15
-					}, this))
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 65,
-					columnNumber: 11
-				}, this),
-				jsxDEV("button", {
+					}, fi))
+				}),
+				jsx("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
-					children: t.isEnterprise ? jsxDEV(a$2, { children: "Contact Sales" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 83,
-						columnNumber: 31
-					}, this) : jsxDEV(a$2, { children: "Get Started" }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 83,
-						columnNumber: 54
-					}, this)
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 75,
-					columnNumber: 11
-				}, this)
+					children: t.isEnterprise ? jsx(a$2, { children: "Contact Sales" }) : jsx(a$2, { children: "Get Started" })
+				})
 			]
-		}, i, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 50,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 48,
-		columnNumber: 5
-	}, this);
+		}, i))
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6279,7 +6124,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6291,41 +6135,19 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment$1, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 33,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment$1, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsxDEV(BrowserGTProvider, {
+	return jsx(BrowserGTProvider, {
 		locale,
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 14,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
 }
 export { Wrapped as default };

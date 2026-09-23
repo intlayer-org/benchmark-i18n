@@ -1,5 +1,5 @@
 import * as Vue from "vue";
-import { createElementBlock, defineComponent, getCurrentInstance, h, openBlock, renderSlot, toDisplayString } from "vue";
+import { createElementBlock, defineComponent, getCurrentInstance, h, openBlock, renderSlot, toDisplayString, unref } from "vue";
 import block0 from "../src/locales/en.ftl?vue&type=fluent&index=0&src=true&locale=en&lang.fluent";
 import block1 from "../src/locales/fr.ftl?vue&type=fluent&index=1&src=true&locale=fr&lang.fluent";
 import block2 from "../src/locales/es.ftl?vue&type=fluent&index=2&src=true&locale=es&lang.fluent";
@@ -4667,25 +4667,13 @@ function createFluentVue(options) {
 }
 var EmptyComponent_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "EmptyComponent",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const { $t } = useFluent();
-		const __returned__ = { $t };
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
+		return (_ctx, _cache) => {
+			return openBlock(), createElementBlock("div", null, toDisplayString(unref($t)("header-home")), 1);
+		};
 	}
 });
-var _plugin_vue_export_helper_default = (sfc, props) => {
-	const target = sfc.__vccOpts || sfc;
-	for (const [key, val] of props) target[key] = val;
-	return target;
-};
-function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
-	return openBlock(), createElementBlock("div", null, toDisplayString($setup.$t("header-home")), 1);
-}
 if (typeof block0 === "function") block0(EmptyComponent_vue_vue_type_script_setup_true_lang_default);
 if (typeof block1 === "function") block1(EmptyComponent_vue_vue_type_script_setup_true_lang_default);
 if (typeof block2 === "function") block2(EmptyComponent_vue_vue_type_script_setup_true_lang_default);
@@ -4696,28 +4684,18 @@ if (typeof block6 === "function") block6(EmptyComponent_vue_vue_type_script_setu
 if (typeof block7 === "function") block7(EmptyComponent_vue_vue_type_script_setup_true_lang_default);
 if (typeof block8 === "function") block8(EmptyComponent_vue_vue_type_script_setup_true_lang_default);
 if (typeof block9 === "function") block9(EmptyComponent_vue_vue_type_script_setup_true_lang_default);
-var EmptyComponent_default = _plugin_vue_export_helper_default(EmptyComponent_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/scripts/EmptyComponent.vue"]]);
+var EmptyComponent_default = EmptyComponent_vue_vue_type_script_setup_true_lang_default;
 var LibWrapper_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "LibWrapper",
-	setup(__props, { expose: __expose }) {
-		__expose();
+	setup(__props) {
 		const fluent = createFluentVue({ bundles: [] });
 		const app = getCurrentInstance()?.appContext.app;
 		if (app && !app.config.globalProperties.$fluent) app.use(fluent);
-		const __returned__ = {
-			fluent,
-			app
+		return (_ctx, _cache) => {
+			return renderSlot(_ctx.$slots, "default");
 		};
-		Object.defineProperty(__returned__, "__isScriptSetup", {
-			enumerable: false,
-			value: true
-		});
-		return __returned__;
 	}
 });
-function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
-	return renderSlot(_ctx.$slots, "default");
-}
 if (typeof block0 === "function") block0(LibWrapper_vue_vue_type_script_setup_true_lang_default);
 if (typeof block1 === "function") block1(LibWrapper_vue_vue_type_script_setup_true_lang_default);
 if (typeof block2 === "function") block2(LibWrapper_vue_vue_type_script_setup_true_lang_default);
@@ -4728,7 +4706,7 @@ if (typeof block6 === "function") block6(LibWrapper_vue_vue_type_script_setup_tr
 if (typeof block7 === "function") block7(LibWrapper_vue_vue_type_script_setup_true_lang_default);
 if (typeof block8 === "function") block8(LibWrapper_vue_vue_type_script_setup_true_lang_default);
 if (typeof block9 === "function") block9(LibWrapper_vue_vue_type_script_setup_true_lang_default);
-var LibWrapper_default = _plugin_vue_export_helper_default(LibWrapper_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/fluent-vue-app/scripts/LibWrapper.vue"]]);
+var LibWrapper_default = LibWrapper_vue_vue_type_script_setup_true_lang_default;
 var EmptyComponent_wrapper_default = { render() {
 	return h(LibWrapper_default, {}, { default: () => h(EmptyComponent_default) });
 } };

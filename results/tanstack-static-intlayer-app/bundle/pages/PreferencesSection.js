@@ -1,6 +1,5 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useId, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var preferences_section_default = {
 	key: "preferences-section",
 	content: {
@@ -839,190 +838,75 @@ var useDictionary = (dictionary, localeOrSelector) => {
 	const argumentIdentity = typeof argument === "object" && argument !== null ? `${argument.locale ?? ""}|${getDictionarySelectorCacheKey(argument)}` : argument;
 	return useMemo(() => getDictionary(dictionary, argument), [dictionary.key, argumentIdentity]);
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/settings/PreferencesSection.tsx";
 function PreferencesSection() {
 	const content = useDictionary(preferences_section_default);
 	const languageId = useId();
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: content.j
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 11,
-			columnNumber: 7
-		}, this), jsxDEV("div", {
+		}), jsxs("div", {
 			className: "space-y-4",
 			children: [
-				jsxDEV("div", {
+				jsxs("div", {
 					className: "flex items-center justify-between",
-					children: [jsxDEV("div", { children: [jsxDEV("p", {
+					children: [jsxs("div", { children: [jsx("p", {
 						className: "text-sm font-medium text-foreground",
 						children: content.e
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 15,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-xs text-muted-foreground",
 						children: content.k
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 16,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 14,
-						columnNumber: 11
-					}, this), jsxDEV("button", {
+					})] }), jsx("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-primary transition-colors",
 						"aria-label": content.n.value,
-						children: jsxDEV("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 23,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 18,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 13,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+						children: jsx("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
+					})]
+				}),
+				jsxs("div", {
 					className: "flex items-center justify-between",
-					children: [jsxDEV("div", { children: [jsxDEV("p", {
+					children: [jsxs("div", { children: [jsx("p", {
 						className: "text-sm font-medium text-foreground",
 						children: content.c
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 28,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-xs text-muted-foreground",
 						children: content.o
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 29,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 27,
-						columnNumber: 11
-					}, this), jsxDEV("button", {
+					})] }), jsx("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-muted transition-colors",
 						"aria-label": content.m.value,
-						children: jsxDEV("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 36,
-							columnNumber: 13
-						}, this)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 31,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 26,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", { children: [jsxDEV("label", {
+						children: jsx("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
+					})]
+				}),
+				jsxs("div", { children: [jsx("label", {
 					htmlFor: languageId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: content.d
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 40,
-					columnNumber: 11
-				}, this), jsxDEV("select", {
+				}), jsxs("select", {
 					id: languageId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					children: [
-						jsxDEV("option", { children: content.f }, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 48,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: content.g }, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 49,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: content.h }, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 50,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: content.l }, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 51,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: content.i }, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 52,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: content.b }, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 53,
-							columnNumber: 13
-						}, this),
-						jsxDEV("option", { children: content.a }, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 54,
-							columnNumber: 13
-						}, this)
+						jsx("option", { children: content.f }),
+						jsx("option", { children: content.g }),
+						jsx("option", { children: content.h }),
+						jsx("option", { children: content.l }),
+						jsx("option", { children: content.i }),
+						jsx("option", { children: content.b }),
+						jsx("option", { children: content.a })
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 44,
-					columnNumber: 11
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 39,
-					columnNumber: 9
-				}, this)
+				})] })
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 12,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 10,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/settings/PreferencesSection.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(PreferencesSection, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(PreferencesSection, {}) });
 }
 export { Wrapped as default };

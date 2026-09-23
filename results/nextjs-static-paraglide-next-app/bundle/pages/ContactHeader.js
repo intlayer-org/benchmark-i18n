@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useParams } from "next/navigation";
 var URLPattern = {};
 var locales = [
@@ -316,57 +316,31 @@ var mockbanner1 = ((inputs = {}, options = {}) => {
 	if (locale === "ru") return ru_mockbanner1(inputs);
 	return en_mockbanner1(inputs);
 });
-var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/MockBanner.tsx";
-var MockBanner = () => jsxDEV("div", {
+var MockBanner = () => jsx("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 	children: mockbanner1()
-}, void 0, false, {
-	fileName: _jsxFileName$4,
-	lineNumber: 6,
-	columnNumber: 3
-}, void 0);
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/contact/ContactHeader.tsx";
+});
 function ContactHeader() {
-	return jsxDEV(Fragment, { children: [
-		jsxDEV(MockBanner, {}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this),
-		jsxDEV("h1", {
+	return jsxs(Fragment, { children: [
+		jsx(MockBanner, {}),
+		jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: contact_header_getintouch2()
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 10,
-			columnNumber: 7
-		}, this),
-		jsxDEV("p", {
+		}),
+		jsxs("p", {
 			className: "mb-8 text-muted-foreground mr-10",
 			children: [
 				contact_header_haveideasfoundabug4(),
 				" ",
-				jsxDEV("a", {
+				jsx("a", {
 					href: "mailto:contact@intlayer.org",
 					className: "text-primary hover:underline",
 					children: "contact@intlayer.org"
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 15,
-					columnNumber: 9
-				}, this),
+				}),
 				"."
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 13,
-			columnNumber: 7
-		}, this)
-	] }, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+		})
+	] });
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -390,7 +364,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -404,30 +377,12 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	return jsx(AppProviders, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/contact/ContactHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ContactHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ContactHeader, {}) });
 }
 export { Wrapped as default };

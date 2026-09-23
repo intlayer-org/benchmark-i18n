@@ -7,58 +7,46 @@ export default function BlogList() {
 
   const posts = [
     {
-      title: t("blogList.comparingI18nLibrariesIn", "Comparing i18n Libraries in 2026: A Deep Dive"),
-      date: t("blogList.march152026", "March 15, 2026"),
+      title: t("blogList.comparingI18nLibrariesIn"),
+      date: t("blogList.march152026"),
       excerpt: t(
-        "blogList.weTested12DifferentInternationalization",
-        "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
-      ),
-      category: t("blogList.benchmark", "Benchmark"),
+        "blogList.weTested12DifferentInternationalization"),
+      category: t("blogList.benchmark"),
     },
     {
-      title: t("blogList.howToReduceYourI18n", "How to Reduce Your i18n Bundle by 60%"),
-      date: t("blogList.march82026", "March 8, 2026"),
+      title: t("blogList.howToReduceYourI18n"),
+      date: t("blogList.march82026"),
       excerpt: t(
-        "blogList.practicalStrategiesForOptimizingTranslation",
-        "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
-      ),
-      category: t("blogList.tutorial", "Tutorial"),
+        "blogList.practicalStrategiesForOptimizingTranslation"),
+      category: t("blogList.tutorial"),
     },
     {
-      title: t("blogList.theStateOfInternationalizationIn", "The State of Internationalization in React"),
-      date: t("blogList.february282026", "February 28, 2026"),
+      title: t("blogList.theStateOfInternationalizationIn"),
+      date: t("blogList.february282026"),
       excerpt: t(
-        "blogList.anOverviewOfTheCurrentI18n",
-        "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
-      ),
-      category: t("blogList.analysis", "Analysis"),
+        "blogList.anOverviewOfTheCurrentI18n"),
+      category: t("blogList.analysis"),
     },
     {
-      title: t("blogList.migratingFromReactI18nextTo", "Migrating from react-i18next to Lingui"),
-      date: t("blogList.february152026", "February 15, 2026"),
+      title: t("blogList.migratingFromReactI18nextTo"),
+      date: t("blogList.february152026"),
       excerpt: t(
-        "blogList.aStepByStepGuideOnMigrating",
-        "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
-      ),
-      category: t("blogList.tutorial", "Tutorial"),
+        "blogList.aStepByStepGuideOnMigrating"),
+      category: t("blogList.tutorial"),
     },
     {
-      title: t("blogList.serverComponentsAndI18nWhat", "Server Components and i18n: What Changes?"),
-      date: t("blogList.february12026", "February 1, 2026"),
+      title: t("blogList.serverComponentsAndI18nWhat"),
+      date: t("blogList.february12026"),
       excerpt: t(
-        "blogList.reactServerComponentsIntroduceNew",
-        "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
-      ),
-      category: t("blogList.analysis", "Analysis"),
+        "blogList.reactServerComponentsIntroduceNew"),
+      category: t("blogList.analysis"),
     },
     {
-      title: t("blogList.benchmarkMethodologyHowWe", "Benchmark Methodology: How We Test"),
-      date: t("blogList.january202026", "January 20, 2026"),
+      title: t("blogList.benchmarkMethodologyHowWe"),
+      date: t("blogList.january202026"),
       excerpt: t(
-        "blogList.aTransparentLookAtOurBenchmarking",
-        "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
-      ),
-      category: t("blogList.meta", "Meta"),
+        "blogList.aTransparentLookAtOurBenchmarking"),
+      category: t("blogList.meta"),
     },
   ];
 
@@ -83,7 +71,7 @@ export default function BlogList() {
             type="button"
             className="text-sm font-medium text-primary hover:underline"
           >
-            <T keyName="common.readMore" defaultValue="Read More" /> →
+            <T keyName="common.readMore" /> →
           </button>
         </article>
       ))}

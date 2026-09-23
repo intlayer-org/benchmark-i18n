@@ -1,16 +1,16 @@
 import { Dynamic, effect, insert, setAttribute, template } from "solid-js/web";
 import { createContext, createMemo, createUniqueId, useContext } from "solid-js";
 var content = {
-	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/de.json").then((m) => m.default),
-	"en": () => import("./en-Bwf7mH3e.js").then((m) => m.default),
-	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/es.json").then((m) => m.default),
-	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/fr.json").then((m) => m.default),
-	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/it.json").then((m) => m.default),
-	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/ja.json").then((m) => m.default),
-	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/ko.json").then((m) => m.default),
-	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/pt.json").then((m) => m.default),
-	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/ru.json").then((m) => m.default),
-	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/zh.json").then((m) => m.default)
+	"de": () => import("./de-B5ZF0ekj.js").then((m) => m.default),
+	"en": () => import("./en-DVW7Htpv.js").then((m) => m.default),
+	"es": () => import("./es-eWq9wD4K.js").then((m) => m.default),
+	"fr": () => import("./fr-PyXfXA1M.js").then((m) => m.default),
+	"it": () => import("./it-CaX-t7jF.js").then((m) => m.default),
+	"ja": () => import("./ja-B5FiD0yV.js").then((m) => m.default),
+	"ko": () => import("./ko-B0Fr48rt.js").then((m) => m.default),
+	"pt": () => import("./pt-Bezu_cZ6.js").then((m) => m.default),
+	"ru": () => import("./ru-VvxaJ2EH.js").then((m) => m.default),
+	"zh": () => import("./zh-CPEOvyFo.js").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,7 +230,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-}, S$1 = {
+};
+var S = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -238,7 +239,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: o.children,
 		children: o.children
 	})
-}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+};
+var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -246,7 +248,12 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
+};
+var T = fallbackPlugin;
+var D = fallbackPlugin;
+var O = fallbackPlugin;
+var k = /* @__PURE__ */ new Map();
+var A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -256,7 +263,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S$1,
+		S,
 		C,
 		T,
 		D,
@@ -275,7 +282,8 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-}, localeStorageOptions = {
+};
+var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -293,7 +301,9 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
+};
+var a$1 = getLocaleFromStorageClient(localeStorageOptions);
+var y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -312,7 +322,9 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+};
+var t = /* @__PURE__ */ new Map();
+var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
@@ -355,6 +367,31 @@ function PreferencesSection() {
 	})();
 }
 export { PreferencesSection as default };
+var de_default = {
+	key: "preferences-section",
+	content: {
+		"m": "Einstellungen",
+		"e": "E-Mail-Benachrichtigungen",
+		"n": "Erhalten Sie wöchentliche Benchmark-Berichte",
+		"r": "Benachrichtigungen umschalten",
+		"c": "Dunkelmodus",
+		"s": "Dunkles Farbschema verwenden",
+		"q": "Dunkelmodus umschalten",
+		"d": "Standardsprache",
+		"f": "Englisch (en)",
+		"g": "Französisch (fr)",
+		"h": "Deutsch (de)",
+		"p": "Spanisch (es)",
+		"j": "Japanisch (ja)",
+		"b": "Chinesisch (Vereinfacht) (zh-CN)",
+		"i": "Italienisch (it)",
+		"l": "Portugiesisch (pt)",
+		"k": "Koreanisch (ko)",
+		"o": "Russisch (ru)",
+		"a": "Arabisch (ar)"
+	}
+};
+export { de_default as default };
 var en_default = {
 	key: "preferences-section",
 	content: {
@@ -380,3 +417,203 @@ var en_default = {
 	}
 };
 export { en_default as default };
+var es_default = {
+	key: "preferences-section",
+	content: {
+		"m": "Preferencias",
+		"e": "Notificaciones por correo electrónico",
+		"n": "Recibe informes semanales de benchmarks",
+		"r": "Alternar notificaciones",
+		"c": "Modo oscuro",
+		"s": "Usar combinación de colores oscuros",
+		"q": "Alternar modo oscuro",
+		"d": "Idioma predeterminado",
+		"f": "Inglés (en)",
+		"g": "Francés (fr)",
+		"h": "Alemán (de)",
+		"p": "Español (es)",
+		"j": "Japonés (ja)",
+		"b": "Chino simplificado (zh-CN)",
+		"i": "Italiano (it)",
+		"l": "Portugués (pt)",
+		"k": "Coreano (ko)",
+		"o": "Ruso (ru)",
+		"a": "Árabe (ar)"
+	}
+};
+export { es_default as default };
+var fr_default = {
+	key: "preferences-section",
+	content: {
+		"m": "Préférences",
+		"e": "Notifications par email",
+		"n": "Recevoir des rapports hebdomadaires de benchmark",
+		"r": "Basculer les notifications",
+		"c": "Mode sombre",
+		"s": "Utiliser le schéma de couleurs sombres",
+		"q": "Basculer le mode sombre",
+		"d": "Langue par défaut",
+		"f": "Anglais (en)",
+		"g": "Français (fr)",
+		"h": "Allemand (de)",
+		"p": "Espagnol (es)",
+		"j": "Japonais (ja)",
+		"b": "Chinois simplifié (zh-CN)",
+		"i": "Italien (it)",
+		"l": "Portugais (pt)",
+		"k": "Coréen (ko)",
+		"o": "Russe (ru)",
+		"a": "Arabe (ar)"
+	}
+};
+export { fr_default as default };
+var it_default = {
+	key: "preferences-section",
+	content: {
+		"m": "Preferenze",
+		"e": "Notifiche via email",
+		"n": "Ricevi rapporti settimanali sui benchmark",
+		"r": "Attiva/disattiva notifiche",
+		"c": "Modalità scura",
+		"s": "Usa lo schema colori scuro",
+		"q": "Attiva/disattiva modalità scura",
+		"d": "Lingua predefinita",
+		"f": "Inglese (en)",
+		"g": "Francese (fr)",
+		"h": "Tedesco (de)",
+		"p": "Spagnolo (es)",
+		"j": "Giapponese (ja)",
+		"b": "Cinese semplificato (zh-CN)",
+		"i": "Italiano (it)",
+		"l": "Portoghese (pt)",
+		"k": "Coreano (ko)",
+		"o": "Russo (ru)",
+		"a": "Arabo (ar)"
+	}
+};
+export { it_default as default };
+var ja_default = {
+	key: "preferences-section",
+	content: {
+		"m": "設定",
+		"e": "メール通知",
+		"n": "毎週のベンチマークレポートを受け取る",
+		"r": "通知を切り替える",
+		"c": "ダークモード",
+		"s": "ダークカラースキームを使用する",
+		"q": "ダークモードを切り替える",
+		"d": "デフォルトの言語",
+		"f": "英語 (en)",
+		"g": "フランス語 (fr)",
+		"h": "ドイツ語 (de)",
+		"p": "スペイン語 (es)",
+		"j": "日本語 (ja)",
+		"b": "中国語（簡体字）（zh-CN）",
+		"i": "イタリア語 (it)",
+		"l": "ポルトガル語 (pt)",
+		"k": "韓国語 (ko)",
+		"o": "ロシア語 (ru)",
+		"a": "アラビア語 (ar)"
+	}
+};
+export { ja_default as default };
+var ko_default = {
+	key: "preferences-section",
+	content: {
+		"m": "환경 설정",
+		"e": "이메일 알림",
+		"n": "주간 벤치마크 보고서 받기",
+		"r": "알림 전환",
+		"c": "다크 모드",
+		"s": "다크 색상 테마 사용",
+		"q": "다크 모드 전환",
+		"d": "기본 언어",
+		"f": "영어 (en)",
+		"g": "프랑스어 (fr)",
+		"h": "독일어 (de)",
+		"p": "스페인어 (es)",
+		"j": "일본어 (ja)",
+		"b": "중국어 간체 (zh-CN)",
+		"i": "이탈리아어 (it)",
+		"l": "포르투갈어 (pt)",
+		"k": "한국어 (ko)",
+		"o": "러시아어 (ko)",
+		"a": "아랍어 (ar)"
+	}
+};
+export { ko_default as default };
+var pt_default = {
+	key: "preferences-section",
+	content: {
+		"m": "Preferências",
+		"e": "Notificações por e-mail",
+		"n": "Receba relatórios semanais de benchmark",
+		"r": "Alternar notificações",
+		"c": "Modo escuro",
+		"s": "Usar esquema de cores escuro",
+		"q": "Alternar modo escuro",
+		"d": "Idioma padrão",
+		"f": "Inglês (en)",
+		"g": "Francês (fr)",
+		"h": "Alemão (de)",
+		"p": "Espanhol (es)",
+		"j": "Japonês (ja)",
+		"b": "Chinês Simplificado (zh-CN)",
+		"i": "Italiano (it)",
+		"l": "Português (pt)",
+		"k": "Coreano (ko)",
+		"o": "Russo (ru)",
+		"a": "Árabe (ar)"
+	}
+};
+export { pt_default as default };
+var ru_default = {
+	key: "preferences-section",
+	content: {
+		"m": "Настройки",
+		"e": "Уведомления по электронной почте",
+		"n": "Получать еженедельные отчеты о бенчмарках",
+		"r": "Переключить уведомления",
+		"c": "Темная тема",
+		"s": "Использовать темную цветовую схему",
+		"q": "Переключить темную тему",
+		"d": "Язык по умолчанию",
+		"f": "Английский (en)",
+		"g": "Французский (fr)",
+		"h": "Немецкий (de)",
+		"p": "Испанский (es)",
+		"j": "Японский (ja)",
+		"b": "Китайский упрощенный (zh-CN)",
+		"i": "Итальянский (it)",
+		"l": "Португальский (pt)",
+		"k": "Корейский (ko)",
+		"o": "Русский (ru)",
+		"a": "Арабский (ar)"
+	}
+};
+export { ru_default as default };
+var zh_default = {
+	key: "preferences-section",
+	content: {
+		"m": "首选项",
+		"e": "电子邮件通知",
+		"n": "接收每周基准测试报告",
+		"r": "切换通知",
+		"c": "深色模式",
+		"s": "使用深色方案",
+		"q": "切换深色模式",
+		"d": "默认语言",
+		"f": "英语 (en)",
+		"g": "法语 (fr)",
+		"h": "德语 (de)",
+		"p": "西班牙语 (es)",
+		"j": "日语 (ja)",
+		"b": "简体中文 (zh-CN)",
+		"i": "意大利语 (it)",
+		"l": "葡萄牙语 (pt)",
+		"k": "韩语 (ko)",
+		"o": "俄语 (ru)",
+		"a": "阿拉伯语 (ar)"
+	}
+};
+export { zh_default as default };

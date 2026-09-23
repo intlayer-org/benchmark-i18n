@@ -6,12 +6,11 @@ export default function TeamHeader() {
     <>
       <MockBanner />
       <h1 className="mb-2 text-3xl font-bold text-foreground">
-        <T keyName="teamHeader.ourTeam" defaultValue="Our Team" />
+        <T keyName="teamHeader.ourTeam" />
       </h1>
       <p className="mb-10 text-muted-foreground">
         <T
           keyName="teamHeader.meetThePeopleBehindI18n"
-          defaultValue="Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
         />
       </p>
     </>

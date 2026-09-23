@@ -1,10 +1,6 @@
 import "react";
-import { Fragment as e, jsxDEV as t } from "react/jsx-dev-runtime";
+import { Fragment as e, jsx as t } from "react/jsx-runtime";
 var n = () => "";
-n = (e, t) => {
-	let n = t[e];
-	return n == null ? `[i18n-404:${e}]` : `[i18n-400:${e}(${n})]`;
-};
 function r(e, t = [], n = 1) {
 	let r = "";
 	for (let i = n; i < e.length; i++) {
@@ -71,17 +67,13 @@ var d = {
 	ja: [() => import("./shared.0.ja.compiled-CF_vYGhT.js")],
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
-}, f = c("shared", (e, t) => d[t][e](), 1), p = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/MockBanner.tsx", m = () => {
+}, f = c("shared", (e, t) => d[t][e](), 1), p = () => {
 	let e = f();
 	return t("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: e(21)
-	}, void 0, !1, {
-		fileName: p,
-		lineNumber: 8,
-		columnNumber: 3
-	}, void 0);
-}, h = {
+	});
+}, m = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
 	fr: [() => import("./shared.0.fr.compiled-DDY-COJ8.js")],
@@ -93,7 +85,20 @@ var d = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-c("about", (e, t) => h[t][e](), 1);
+c("about", (e, t) => m[t][e](), 1);
+var h = {
+	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
+	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
+	fr: [() => import("./shared.0.fr.compiled-DDY-COJ8.js")],
+	de: [() => import("./shared.0.de.compiled-DCmIzkyq.js")],
+	it: [() => import("./shared.0.it.compiled-VOv4SkIc.js")],
+	pt: [() => import("./shared.0.pt.compiled-DxguAjRI.js")],
+	zh: [() => import("./shared.0.zh.compiled-BQgPByDl.js")],
+	ja: [() => import("./shared.0.ja.compiled-CF_vYGhT.js")],
+	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
+	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
+};
+c("blog", (e, t) => h[t][e](), 1);
 var g = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -106,7 +111,7 @@ var g = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-c("blog", (e, t) => g[t][e](), 1);
+c("careers", (e, t) => g[t][e](), 1);
 var _ = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -119,7 +124,7 @@ var _ = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-c("careers", (e, t) => _[t][e](), 1);
+c("contact", (e, t) => _[t][e](), 1);
 var v = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -132,7 +137,7 @@ var v = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-c("contact", (e, t) => v[t][e](), 1);
+c("faq", (e, t) => v[t][e](), 1);
 var y = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -145,7 +150,7 @@ var y = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-c("faq", (e, t) => y[t][e](), 1);
+c("home", (e, t) => y[t][e](), 1);
 var b = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -158,7 +163,7 @@ var b = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-c("home", (e, t) => b[t][e](), 1);
+c("pricing", (e, t) => b[t][e](), 1);
 var x = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -171,7 +176,7 @@ var x = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-c("pricing", (e, t) => x[t][e](), 1);
+c("products", (e, t) => x[t][e](), 1);
 var S = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -184,7 +189,7 @@ var S = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-c("products", (e, t) => S[t][e](), 1);
+c("route", (e, t) => S[t][e](), 1);
 var C = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -197,7 +202,7 @@ var C = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-c("route", (e, t) => C[t][e](), 1);
+c("settings", (e, t) => C[t][e](), 1);
 var w = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -210,42 +215,14 @@ var w = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-c("settings", (e, t) => w[t][e](), 1);
-var T = {
-	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
-	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
-	fr: [() => import("./shared.0.fr.compiled-DDY-COJ8.js")],
-	de: [() => import("./shared.0.de.compiled-DCmIzkyq.js")],
-	it: [() => import("./shared.0.it.compiled-VOv4SkIc.js")],
-	pt: [() => import("./shared.0.pt.compiled-DxguAjRI.js")],
-	zh: [() => import("./shared.0.zh.compiled-BQgPByDl.js")],
-	ja: [() => import("./shared.0.ja.compiled-CF_vYGhT.js")],
-	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
-	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
-};
-c("team", (e, t) => T[t][e](), 1);
-var E = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
-u("en");
-function D({ children: n }) {
-	return t(e, { children: n }, void 0, !1, {
-		fileName: E,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+c("team", (e, t) => w[t][e](), 1), u("en");
+function T({ children: n }) {
+	return t(e, { children: n });
 }
-var O = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/MockBanner.wrapper.tsx";
-function k() {
-	return t(D, { children: t(m, {}, void 0, !1, {
-		fileName: O,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: O,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function E() {
+	return t(T, { children: t(p, {}) });
 }
-export { k as default };
+export { E as default };
 var e = [
 	"i18n Benchmark",
 	"Methodik",

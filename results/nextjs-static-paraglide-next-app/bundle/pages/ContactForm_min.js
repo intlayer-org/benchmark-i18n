@@ -1,6 +1,6 @@
 import { useEffect as e, useId as t, useLayoutEffect as n, useState as r } from "react";
-import { Fragment as i, jsxDEV as a } from "react/jsx-dev-runtime";
-import { useParams as o } from "next/navigation";
+import { Fragment as i, jsx as a, jsxs as o } from "react/jsx-runtime";
+import { useParams as ee } from "next/navigation";
 var s = {}, c = [
 	"en",
 	"fr",
@@ -12,57 +12,57 @@ var s = {}, c = [
 	"ja",
 	"ko",
 	"ru"
-], l = "PARAGLIDE_LOCALE", ee = 3456e4, u = [
+], l = "PARAGLIDE_LOCALE", u = 3456e4, d = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], d = [], f = typeof window > "u";
+], f = [], p = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var p, m = !1, h = () => {
-	let e = u;
-	!f && typeof window < "u" && window.location?.href && (e = k(window.location.href));
-	let t = te(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return m || (p = t, m = !0, _(t, { reload: !1 })), t;
+var m, h = !1, g = () => {
+	let e = d;
+	!p && typeof window < "u" && window.location?.href && (e = M(window.location.href));
+	let t = _(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return h || (m = t, h = !0, v(t, { reload: !1 })), t;
 	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function te(e, t) {
+function _(e, t) {
 	let n;
 	for (let t of e) {
 		if (t === "cookie") n = ae();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && p !== void 0) n = p;
-		else if (j(t) && A.has(t)) {
-			let e = A.get(t);
+		else if (t === "globalVariable" && m !== void 0) n = m;
+		else if (P(t) && N.has(t)) {
+			let e = N.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return re(t);
+				if (t !== void 0) return b(t);
 			}
 		}
-		let e = v(n);
+		let e = y(n);
 		if (e) return e;
 	}
 }
-var g = (e) => {
+var te = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, _ = (e, t) => {
+}, v = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = h();
+		r = g();
 	} catch {}
-	let i = [], a = u;
-	!f && typeof window < "u" && window.location?.href && (a = k(window.location.href));
-	for (let t of a) if (t === "globalVariable") p = e;
+	let i = [], a = d;
+	!p && typeof window < "u" && window.location?.href && (a = M(window.location.href));
+	for (let t of a) if (t === "globalVariable") m = e;
 	else if (t === "cookie") {
-		if (f || typeof document > "u" || typeof window > "u") continue;
-		let t = `${l}=${e}; path=/; max-age=${ee}`;
-		document.cookie = t, T();
+		if (p || typeof document > "u" || typeof window > "u") continue;
+		let t = `${l}=${e}; path=/; max-age=${u}`;
+		document.cookie = t, E();
 	} else if (t === "baseLocale") continue;
-	else if (j(t) && A.has(t)) {
-		let n = A.get(t);
+	else if (P(t) && N.has(t)) {
+		let n = N.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -71,249 +71,169 @@ var g = (e) => {
 		}
 	}
 	let o = () => {
-		!f && n.reload && window.location && e !== r && g(void 0);
+		!p && n.reload && window.location && e !== r && te(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
 		o();
 	});
 	o();
 }, ne = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
-function v(e) {
+function y(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
 	for (let e of c) if (e.toLowerCase() === t) return e;
 }
-function re(e) {
-	let t = v(e);
+function b(e) {
+	let t = y(e);
 	if (t) return t;
 	throw Error(`Invalid locale: ${e}. Expected one of: ${c.join(", ")}`);
 }
-function y(e) {
+function x(e) {
 	return e;
 }
-function b(e, t) {
+function S(e, t) {
 	return e.exec(t.href);
 }
-var x = l.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), S = RegExp(`(?:^|;\\s*)${x}=([^;]*)`), C = Symbol(), w = C;
-function T() {
-	w = C;
+var C = l.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), re = RegExp(`(?:^|;\\s*)${C}=([^;]*)`), w = Symbol(), T = w;
+function E() {
+	T = w;
 }
 function ie() {
-	typeof queueMicrotask == "function" ? queueMicrotask(T) : Promise.resolve().then(T);
+	typeof queueMicrotask == "function" ? queueMicrotask(E) : Promise.resolve().then(E);
 }
 function ae() {
 	if (typeof document > "u") return;
-	if (w !== C) return w;
-	let e = document.cookie.match(S)?.[1];
-	return w = v(e), ie(), w;
+	if (T !== w) return T;
+	let e = document.cookie.match(re)?.[1];
+	return T = y(e), ie(), T;
 }
-function oe(e) {
-	return se(e);
+function D(e) {
+	return O(e);
 }
-function se(e) {
-	let t = y(typeof e == "string" ? new URL(e, ne()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
-	return n.length > 0 && v(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), y(t);
-}
-var E, D;
 function O(e) {
-	if (d.length === 0) return;
+	let t = x(typeof e == "string" ? new URL(e, ne()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && y(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), x(t);
+}
+var k, A;
+function j(e) {
+	if (f.length === 0) return;
 	let t = typeof e == "string" ? e : e.href;
-	if (E === t) return D;
-	let n = y(new URL(t, "http://example.com")), r = oe(n), i = r.href === n.href ? [n] : [n, r], a;
+	if (k === t) return A;
+	let n = x(new URL(t, "http://example.com")), r = D(n), i = r.href === n.href ? [n] : [n, r], a;
 	for (let e of i) {
-		for (let t of d) if (b(new s(t.match, e.href), e)) {
+		for (let t of f) if (S(new s(t.match, e.href), e)) {
 			a = t;
 			break;
 		}
 		if (a) break;
 	}
-	return E = t, D = a, a;
+	return k = t, A = a, a;
 }
-function k(e) {
-	let t = O(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : u;
+function M(e) {
+	let t = j(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : d;
 }
-var A = /* @__PURE__ */ new Map();
-function j(e) {
+var N = /* @__PURE__ */ new Map();
+function P(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var M = () => "Bug Report", N = () => "Rapport de bug", P = () => "Informe de bug", F = () => "Fehlerbericht", I = () => "Segnalazione di bug", L = () => "Relatório de bug", R = () => "Bug 报告", z = () => "バグ報告", B = () => "버그 보고", V = () => "Отчет об ошибке", H = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? N(e) : n === "es" ? P(e) : n === "de" ? F(e) : n === "it" ? I(e) : n === "pt" ? L(e) : n === "zh" ? R(e) : n === "ja" ? z(e) : n === "ko" ? B(e) : n === "ru" ? V(e) : M(e);
-}), U = () => "Contribution", W = () => "Contribution", G = () => "Contribución", K = () => "Beitrag", ce = () => "Contributo", le = () => "Contribuição", ue = () => "贡献", de = () => "コントリビューション", fe = () => "기여", pe = () => "Вклад", q = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? W(e) : n === "es" ? G(e) : n === "de" ? K(e) : n === "it" ? ce(e) : n === "pt" ? le(e) : n === "zh" ? ue(e) : n === "ja" ? de(e) : n === "ko" ? fe(e) : n === "ru" ? pe(e) : U(e);
-}), me = () => "Describe your question or idea...", he = () => "Décrivez votre question ou idée...", ge = () => "Describe tu pregunta o idea...", _e = () => "Beschreiben Sie Ihre Frage oder Idee...", ve = () => "Descrivi la tua domanda o idea...", ye = () => "Descreva sua pergunta ou ideia...", be = () => "描述您的问题或想法...", xe = () => "質問やアイデアの詳細を記入してください...", Se = () => "질문이나 아이디어를 설명해주세요...", Ce = () => "Опишите ваш вопрос или идею...", we = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? he(e) : n === "es" ? ge(e) : n === "de" ? _e(e) : n === "it" ? ve(e) : n === "pt" ? ye(e) : n === "zh" ? be(e) : n === "ja" ? xe(e) : n === "ko" ? Se(e) : n === "ru" ? Ce(e) : me(e);
-}), Te = () => "Message", Ee = () => "Message", De = () => "Mensaje", Oe = () => "Nachricht", ke = () => "Messaggio", Ae = () => "Mensagem", je = () => "消息", Me = () => "メッセージ", Ne = () => "메시지", Pe = () => "Сообщение", J = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? Ee(e) : n === "es" ? De(e) : n === "de" ? Oe(e) : n === "it" ? ke(e) : n === "pt" ? Ae(e) : n === "zh" ? je(e) : n === "ja" ? Me(e) : n === "ko" ? Ne(e) : n === "ru" ? Pe(e) : Te(e);
-}), Fe = () => "Methodology Question", Ie = () => "Question sur la méthodologie", Le = () => "Pregunta sobre metodología", Re = () => "Frage zur Methodik", ze = () => "Domanda sulla metodologia", Be = () => "Pergunta sobre metodologia", Ve = () => "方法论问题", He = () => "方法論に関する質問", Ue = () => "방법론 질문", We = () => "Вопрос по методологии", Ge = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? Ie(e) : n === "es" ? Le(e) : n === "de" ? Re(e) : n === "it" ? ze(e) : n === "pt" ? Be(e) : n === "zh" ? Ve(e) : n === "ja" ? He(e) : n === "ko" ? Ue(e) : n === "ru" ? We(e) : Fe(e);
-}), Ke = () => "New Benchmark Idea", qe = () => "Nouvelle idée de benchmark", Je = () => "Nueva idea de benchmark", Ye = () => "Neue Benchmark-Idee", Xe = () => "Nuova idea di benchmark", Ze = () => "Nova ideia de benchmark", Qe = () => "新基准测试想法", $e = () => "新しいベンチマークのアイデア", et = () => "새로운 벤치마크 아이디어", tt = () => "Новая идея для бенчмарка", nt = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? qe(e) : n === "es" ? Je(e) : n === "de" ? Ye(e) : n === "it" ? Xe(e) : n === "pt" ? Ze(e) : n === "zh" ? Qe(e) : n === "ja" ? $e(e) : n === "ko" ? et(e) : n === "ru" ? tt(e) : Ke(e);
-}), rt = () => "Other", it = () => "Autre", at = () => "Otro", ot = () => "Andere", st = () => "Altro", ct = () => "Outro", lt = () => "其他", ut = () => "その他", dt = () => "기타", ft = () => "Другое", Y = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? it(e) : n === "es" ? at(e) : n === "de" ? ot(e) : n === "it" ? st(e) : n === "pt" ? ct(e) : n === "zh" ? lt(e) : n === "ja" ? ut(e) : n === "ko" ? dt(e) : n === "ru" ? ft(e) : rt(e);
-}), pt = () => "Send Message", mt = () => "Envoyer le message", ht = () => "Enviar mensaje", gt = () => "Nachricht senden", _t = () => "Invia messaggio", vt = () => "Enviar mensagem", yt = () => "发送消息", bt = () => "メッセージを送信", xt = () => "메시지 보내기", St = () => "Отправить сообщение", Ct = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? mt(e) : n === "es" ? ht(e) : n === "de" ? gt(e) : n === "it" ? _t(e) : n === "pt" ? vt(e) : n === "zh" ? yt(e) : n === "ja" ? bt(e) : n === "ko" ? xt(e) : n === "ru" ? St(e) : pt(e);
-}), wt = () => "Topic", Tt = () => "Sujet", Et = () => "Tema", Dt = () => "Thema", Ot = () => "Argomento", kt = () => "Assunto", At = () => "主题", jt = () => "トピック", Mt = () => "주제", Nt = () => "Теما", X = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? Tt(e) : n === "es" ? Et(e) : n === "de" ? Dt(e) : n === "it" ? Ot(e) : n === "pt" ? kt(e) : n === "zh" ? At(e) : n === "ja" ? jt(e) : n === "ko" ? Mt(e) : n === "ru" ? Nt(e) : wt(e);
-}), Pt = () => "Your name", Ft = () => "Votre nom", It = () => "Tu nombre", Lt = () => "Ihr Name", Rt = () => "Il tuo nome", zt = () => "Seu nome", Bt = () => "您的姓名", Vt = () => "お名前", Ht = () => "이름", Ut = () => "Ваше имя", Wt = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? Ft(e) : n === "es" ? It(e) : n === "de" ? Lt(e) : n === "it" ? Rt(e) : n === "pt" ? zt(e) : n === "zh" ? Bt(e) : n === "ja" ? Vt(e) : n === "ko" ? Ht(e) : n === "ru" ? Ut(e) : Pt(e);
-}), Gt = () => "Display Name", Kt = () => "Nom d'affichage", qt = () => "Nombre visible", Jt = () => "Anzeigename", Yt = () => "Nome visualizzato", Xt = () => "Nome de exibição", Zt = () => "显示名称", Qt = () => "表示名", $t = () => "표시 이름", en = () => "Отображаемое имя", tn = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? Kt(e) : n === "es" ? qt(e) : n === "de" ? Jt(e) : n === "it" ? Yt(e) : n === "pt" ? Xt(e) : n === "zh" ? Zt(e) : n === "ja" ? Qt(e) : n === "ko" ? $t(e) : n === "ru" ? en(e) : Gt(e);
-}), nn = () => "Email", Z = () => "Email", rn = () => "Correo electrónico", an = () => "E-Mail", on = () => "Email", sn = () => "E-mail", cn = () => "邮件地址", ln = () => "メールアドレス", un = () => "이메일 주소", dn = () => "Эл. почта", fn = ((e = {}, t = {}) => {
-	let n = t.locale ?? h();
-	return n === "fr" ? Z(e) : n === "es" ? rn(e) : n === "de" ? an(e) : n === "it" ? on(e) : n === "pt" ? sn(e) : n === "zh" ? cn(e) : n === "ja" ? ln(e) : n === "ko" ? un(e) : n === "ru" ? dn(e) : nn(e);
-}), Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/contact/ContactForm.tsx";
-function pn() {
+var F = () => "Bug Report", I = () => "Rapport de bug", L = () => "Informe de bug", R = () => "Fehlerbericht", z = () => "Segnalazione di bug", B = () => "Relatório de bug", V = () => "Bug 报告", H = () => "バグ報告", U = () => "버그 보고", W = () => "Отчет об ошибке", G = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? I(e) : n === "es" ? L(e) : n === "de" ? R(e) : n === "it" ? z(e) : n === "pt" ? B(e) : n === "zh" ? V(e) : n === "ja" ? H(e) : n === "ko" ? U(e) : n === "ru" ? W(e) : F(e);
+}), K = () => "Contribution", q = () => "Contribution", J = () => "Contribución", oe = () => "Beitrag", se = () => "Contributo", ce = () => "Contribuição", le = () => "贡献", ue = () => "コントリビューション", de = () => "기여", fe = () => "Вклад", Y = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? q(e) : n === "es" ? J(e) : n === "de" ? oe(e) : n === "it" ? se(e) : n === "pt" ? ce(e) : n === "zh" ? le(e) : n === "ja" ? ue(e) : n === "ko" ? de(e) : n === "ru" ? fe(e) : K(e);
+}), pe = () => "Describe your question or idea...", me = () => "Décrivez votre question ou idée...", he = () => "Describe tu pregunta o idea...", ge = () => "Beschreiben Sie Ihre Frage oder Idee...", _e = () => "Descrivi la tua domanda o idea...", ve = () => "Descreva sua pergunta ou ideia...", ye = () => "描述您的问题或想法...", be = () => "質問やアイデアの詳細を記入してください...", xe = () => "질문이나 아이디어를 설명해주세요...", Se = () => "Опишите ваш вопрос или идею...", Ce = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? me(e) : n === "es" ? he(e) : n === "de" ? ge(e) : n === "it" ? _e(e) : n === "pt" ? ve(e) : n === "zh" ? ye(e) : n === "ja" ? be(e) : n === "ko" ? xe(e) : n === "ru" ? Se(e) : pe(e);
+}), we = () => "Message", Te = () => "Message", Ee = () => "Mensaje", De = () => "Nachricht", Oe = () => "Messaggio", ke = () => "Mensagem", Ae = () => "消息", je = () => "メッセージ", Me = () => "메시지", Ne = () => "Сообщение", X = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Te(e) : n === "es" ? Ee(e) : n === "de" ? De(e) : n === "it" ? Oe(e) : n === "pt" ? ke(e) : n === "zh" ? Ae(e) : n === "ja" ? je(e) : n === "ko" ? Me(e) : n === "ru" ? Ne(e) : we(e);
+}), Pe = () => "Methodology Question", Fe = () => "Question sur la méthodologie", Ie = () => "Pregunta sobre metodología", Le = () => "Frage zur Methodik", Re = () => "Domanda sulla metodologia", ze = () => "Pergunta sobre metodologia", Be = () => "方法论问题", Ve = () => "方法論に関する質問", He = () => "방법론 질문", Ue = () => "Вопрос по методологии", We = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Fe(e) : n === "es" ? Ie(e) : n === "de" ? Le(e) : n === "it" ? Re(e) : n === "pt" ? ze(e) : n === "zh" ? Be(e) : n === "ja" ? Ve(e) : n === "ko" ? He(e) : n === "ru" ? Ue(e) : Pe(e);
+}), Ge = () => "New Benchmark Idea", Ke = () => "Nouvelle idée de benchmark", qe = () => "Nueva idea de benchmark", Je = () => "Neue Benchmark-Idee", Ye = () => "Nuova idea di benchmark", Xe = () => "Nova ideia de benchmark", Ze = () => "新基准测试想法", Qe = () => "新しいベンチマークのアイデア", $e = () => "새로운 벤치마크 아이디어", et = () => "Новая идея для бенчмарка", tt = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Ke(e) : n === "es" ? qe(e) : n === "de" ? Je(e) : n === "it" ? Ye(e) : n === "pt" ? Xe(e) : n === "zh" ? Ze(e) : n === "ja" ? Qe(e) : n === "ko" ? $e(e) : n === "ru" ? et(e) : Ge(e);
+}), nt = () => "Other", rt = () => "Autre", it = () => "Otro", at = () => "Andere", ot = () => "Altro", st = () => "Outro", ct = () => "其他", lt = () => "その他", ut = () => "기타", dt = () => "Другое", Z = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? rt(e) : n === "es" ? it(e) : n === "de" ? at(e) : n === "it" ? ot(e) : n === "pt" ? st(e) : n === "zh" ? ct(e) : n === "ja" ? lt(e) : n === "ko" ? ut(e) : n === "ru" ? dt(e) : nt(e);
+}), ft = () => "Send Message", pt = () => "Envoyer le message", mt = () => "Enviar mensaje", ht = () => "Nachricht senden", gt = () => "Invia messaggio", _t = () => "Enviar mensagem", vt = () => "发送消息", yt = () => "メッセージを送信", bt = () => "메시지 보내기", xt = () => "Отправить сообщение", St = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? pt(e) : n === "es" ? mt(e) : n === "de" ? ht(e) : n === "it" ? gt(e) : n === "pt" ? _t(e) : n === "zh" ? vt(e) : n === "ja" ? yt(e) : n === "ko" ? bt(e) : n === "ru" ? xt(e) : ft(e);
+}), Ct = () => "Topic", wt = () => "Sujet", Tt = () => "Tema", Et = () => "Thema", Dt = () => "Argomento", Ot = () => "Assunto", kt = () => "主题", At = () => "トピック", jt = () => "주제", Mt = () => "Теما", Q = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? wt(e) : n === "es" ? Tt(e) : n === "de" ? Et(e) : n === "it" ? Dt(e) : n === "pt" ? Ot(e) : n === "zh" ? kt(e) : n === "ja" ? At(e) : n === "ko" ? jt(e) : n === "ru" ? Mt(e) : Ct(e);
+}), Nt = () => "Your name", Pt = () => "Votre nom", Ft = () => "Tu nombre", It = () => "Ihr Name", Lt = () => "Il tuo nome", Rt = () => "Seu nome", zt = () => "您的姓名", Bt = () => "お名前", Vt = () => "이름", Ht = () => "Ваше имя", Ut = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Pt(e) : n === "es" ? Ft(e) : n === "de" ? It(e) : n === "it" ? Lt(e) : n === "pt" ? Rt(e) : n === "zh" ? zt(e) : n === "ja" ? Bt(e) : n === "ko" ? Vt(e) : n === "ru" ? Ht(e) : Nt(e);
+}), Wt = () => "Display Name", Gt = () => "Nom d'affichage", Kt = () => "Nombre visible", qt = () => "Anzeigename", Jt = () => "Nome visualizzato", Yt = () => "Nome de exibição", Xt = () => "显示名称", Zt = () => "表示名", Qt = () => "표시 이름", $t = () => "Отображаемое имя", en = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? Gt(e) : n === "es" ? Kt(e) : n === "de" ? qt(e) : n === "it" ? Jt(e) : n === "pt" ? Yt(e) : n === "zh" ? Xt(e) : n === "ja" ? Zt(e) : n === "ko" ? Qt(e) : n === "ru" ? $t(e) : Wt(e);
+}), $ = () => "Email", tn = () => "Email", nn = () => "Correo electrónico", rn = () => "E-Mail", an = () => "Email", on = () => "E-mail", sn = () => "邮件地址", cn = () => "メールアドレス", ln = () => "이메일 주소", un = () => "Эл. почта", dn = ((e = {}, t = {}) => {
+	let n = t.locale ?? g();
+	return n === "fr" ? tn(e) : n === "es" ? nn(e) : n === "de" ? rn(e) : n === "it" ? an(e) : n === "pt" ? on(e) : n === "zh" ? sn(e) : n === "ja" ? cn(e) : n === "ko" ? ln(e) : n === "ru" ? un(e) : $(e);
+});
+function fn() {
 	let e = t(), n = t(), r = t(), i = t();
-	return a("form", {
+	return o("form", {
 		className: "space-y-6",
 		children: [
-			a("div", {
+			o("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [a("div", { children: [a("label", {
+				children: [o("div", { children: [a("label", {
 					htmlFor: e,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: tn()
-				}, void 0, !1, {
-					fileName: Q,
-					lineNumber: 16,
-					columnNumber: 11
-				}, this), a("input", {
+					children: en()
+				}), a("input", {
 					id: e,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-					placeholder: Wt()
-				}, void 0, !1, {
-					fileName: Q,
-					lineNumber: 22,
-					columnNumber: 11
-				}, this)] }, void 0, !0, {
-					fileName: Q,
-					lineNumber: 15,
-					columnNumber: 9
-				}, this), a("div", { children: [a("label", {
+					placeholder: Ut()
+				})] }), o("div", { children: [a("label", {
 					htmlFor: n,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: fn()
-				}, void 0, !1, {
-					fileName: Q,
-					lineNumber: 29,
-					columnNumber: 11
-				}, this), a("input", {
+					children: dn()
+				}), a("input", {
 					id: n,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "you@example.com"
-				}, void 0, !1, {
-					fileName: Q,
-					lineNumber: 35,
-					columnNumber: 11
-				}, this)] }, void 0, !0, {
-					fileName: Q,
-					lineNumber: 28,
-					columnNumber: 9
-				}, this)]
-			}, void 0, !0, {
-				fileName: Q,
-				lineNumber: 14,
-				columnNumber: 7
-			}, this),
-			a("div", { children: [a("label", {
+				})] })]
+			}),
+			o("div", { children: [a("label", {
 				htmlFor: r,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: X ? X() : "Topic"
-			}, void 0, !1, {
-				fileName: Q,
-				lineNumber: 44,
-				columnNumber: 9
-			}, this), a("select", {
+				children: Q ? Q() : "Topic"
+			}), o("select", {
 				id: r,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					a("option", { children: H() }, void 0, !1, {
-						fileName: Q,
-						lineNumber: 54,
-						columnNumber: 11
-					}, this),
-					a("option", { children: nt() }, void 0, !1, {
-						fileName: Q,
-						lineNumber: 55,
-						columnNumber: 11
-					}, this),
-					a("option", { children: Ge() }, void 0, !1, {
-						fileName: Q,
-						lineNumber: 56,
-						columnNumber: 11
-					}, this),
-					a("option", { children: q ? q() : "Contribution" }, void 0, !1, {
-						fileName: Q,
-						lineNumber: 57,
-						columnNumber: 11
-					}, this),
-					a("option", { children: Y ? Y() : "Other" }, void 0, !1, {
-						fileName: Q,
-						lineNumber: 62,
-						columnNumber: 11
-					}, this)
+					a("option", { children: G() }),
+					a("option", { children: tt() }),
+					a("option", { children: We() }),
+					a("option", { children: Y ? Y() : "Contribution" }),
+					a("option", { children: Z ? Z() : "Other" })
 				]
-			}, void 0, !0, {
-				fileName: Q,
-				lineNumber: 50,
-				columnNumber: 9
-			}, this)] }, void 0, !0, {
-				fileName: Q,
-				lineNumber: 43,
-				columnNumber: 7
-			}, this),
-			a("div", { children: [a("label", {
+			})] }),
+			o("div", { children: [a("label", {
 				htmlFor: i,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: J ? J() : "Message"
-			}, void 0, !1, {
-				fileName: Q,
-				lineNumber: 68,
-				columnNumber: 9
-			}, this), a("textarea", {
+				children: X ? X() : "Message"
+			}), a("textarea", {
 				id: i,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-				placeholder: we()
-			}, void 0, !1, {
-				fileName: Q,
-				lineNumber: 74,
-				columnNumber: 9
-			}, this)] }, void 0, !0, {
-				fileName: Q,
-				lineNumber: 67,
-				columnNumber: 7
-			}, this),
+				placeholder: Ce()
+			})] }),
 			a("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-				children: Ct()
-			}, void 0, !1, {
-				fileName: Q,
-				lineNumber: 81,
-				columnNumber: 7
-			}, this)
+				children: St()
+			})
 		]
-	}, void 0, !0, {
-		fileName: Q,
-		lineNumber: 13,
-		columnNumber: 5
-	}, this);
+	});
 }
-function mn() {
+function pn() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -327,44 +247,25 @@ function mn() {
 		}
 	}
 }
-function hn(e, t) {
+function mn(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var gn = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
-function _n({ children: t }) {
-	let s = o().locale ?? "en", [c] = r(() => typeof performance < "u" ? performance.now() : 0);
+function hn({ children: t }) {
+	let o = ee().locale ?? "en", [s] = r(() => typeof performance < "u" ? performance.now() : 0);
 	return n(() => {
-		hn("AppRoot", c);
-	}, [c]), e(() => {
-		_(s, { reload: !1 }), document.documentElement.lang = s;
+		mn("AppRoot", s);
 	}, [s]), e(() => {
-		mn();
-	}, []), a(i, { children: t }, void 0, !1, {
-		fileName: gn,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+		v(o, { reload: !1 }), document.documentElement.lang = o;
+	}, [o]), e(() => {
+		pn();
+	}, []), a(i, { children: t });
 }
-var vn = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
-function yn({ children: e }) {
-	return a(_n, { children: e }, void 0, !1, {
-		fileName: vn,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+function gn({ children: e }) {
+	return a(hn, { children: e });
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/contact/ContactForm.wrapper.tsx";
-function bn() {
-	return a(yn, { children: a(pn, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function _n() {
+	return a(gn, { children: a(fn, {}) });
 }
-export { bn as default };
+export { _n as default };

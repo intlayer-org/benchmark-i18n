@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useRouter } from "next/router";
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -212,7 +212,6 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-translate-app/components/pages/careers/OpenPositions.tsx";
 function OpenPositions() {
 	const { t } = useTranslation("common");
 	const openings = [{
@@ -222,94 +221,46 @@ function OpenPositions() {
 		dept: "Engineering",
 		desc: t("careers.careersPositions.seniorFrontendEngineerDesc")
 	}];
-	return jsxDEV(Fragment, { children: [jsxDEV("h2", {
+	return jsxs(Fragment, { children: [jsx("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: t("careers.openPositions.openPositions")
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 20,
-		columnNumber: 7
-	}, this), jsxDEV("div", {
+	}), jsx("div", {
 		className: "space-y-4",
-		children: openings.map((o) => jsxDEV("div", {
+		children: openings.map((o) => jsxs("div", {
 			className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-			children: [jsxDEV("div", { children: [
-				jsxDEV("h3", {
+			children: [jsxs("div", { children: [
+				jsx("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: o.title
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 30,
-					columnNumber: 15
-				}, this),
-				jsxDEV("p", {
+				}),
+				jsx("p", {
 					className: "text-sm text-muted-foreground",
 					children: o.desc
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 33,
-					columnNumber: 15
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "mt-2 flex gap-2",
 					children: [
-						jsxDEV("span", {
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.dept
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 35,
-							columnNumber: 17
-						}, this),
-						jsxDEV("span", {
+						}),
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.location
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 38,
-							columnNumber: 17
-						}, this),
-						jsxDEV("span", {
+						}),
+						jsx("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: o.type
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 41,
-							columnNumber: 17
-						}, this)
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 34,
-					columnNumber: 15
-				}, this)
-			] }, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 29,
-				columnNumber: 13
-			}, this), jsxDEV("button", {
+				})
+			] }), jsx("button", {
 				type: "button",
 				className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: t("careers.openPositions.applyNow")
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 46,
-				columnNumber: 13
-			}, this)]
-		}, o.title, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 25,
-			columnNumber: 11
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 23,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 19,
-		columnNumber: 5
-	}, this);
+			})]
+		}, o.title))
+	})] });
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -2954,7 +2905,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -2966,13 +2916,8 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-translate-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const locale = "en";
 	const [translations, setTranslations] = useState({});
@@ -2991,33 +2936,16 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		lang: locale,
 		namespaces: { common: translations },
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 37,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 36,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-translate-app/components/pages/careers/OpenPositions.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(OpenPositions, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(OpenPositions, {}) });
 }
 export { Wrapped as default };

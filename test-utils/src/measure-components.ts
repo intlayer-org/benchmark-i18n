@@ -296,10 +296,15 @@ const loadAppConfig = async (configRoot: string) => {
       configRoot,
     );
 
-    // Also resolve the config to get the final 'define' values and other resolved properties
+    // Also resolve the config to get the final 'define' values and other resolved properties.
+    // The fourth argument is `defaultNodeEnv`: left out, Vite sets
+    // process.env.NODE_ENV to "development" for the rest of the process, so every
+    // later build emits jsxDEV calls and resolves packages' development export
+    // condition (@tolgee/web's development entry tree-shakes to an empty chunk).
     const resolved = await resolveConfig(
       { root: configRoot },
       "build",
+      "production",
       "production",
     );
 

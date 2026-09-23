@@ -1,11 +1,6 @@
 import "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 var onInvalidFunc = () => "";
-onInvalidFunc = (i, c) => {
-	const item = c[i];
-	if (item == null) return `[i18n-404:${i}]`;
-	return `[i18n-400:${i}(${item})]`;
-};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -94,7 +89,6 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("home", loadCatalog$11, 1);
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/home/ResultsTable.tsx";
 function ResultsTable() {
 	const _w_runtime_ = getRuntimeRx();
 	const results = [
@@ -123,120 +117,56 @@ function ResultsTable() {
 			lazy: _w_runtime_(32)
 		}
 	];
-	return jsxDEV("section", { children: [jsxDEV("h2", {
+	return jsxs("section", { children: [jsx("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: _w_runtime_(33)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 32,
-		columnNumber: 7
-	}, this), jsxDEV("div", {
+	}), jsx("div", {
 		className: "overflow-x-auto rounded-lg border border-border",
-		children: jsxDEV("table", {
+		children: jsxs("table", {
 			className: "w-full text-sm",
-			children: [jsxDEV("thead", {
+			children: [jsx("thead", {
 				className: "bg-muted",
-				children: jsxDEV("tr", { children: [
-					jsxDEV("th", {
+				children: jsxs("tr", { children: [
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: _w_runtime_(34)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 39,
-						columnNumber: 15
-					}, this),
-					jsxDEV("th", {
+					}),
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: _w_runtime_(35)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 42,
-						columnNumber: 15
-					}, this),
-					jsxDEV("th", {
+					}),
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: _w_runtime_(36)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 45,
-						columnNumber: 15
-					}, this),
-					jsxDEV("th", {
+					}),
+					jsx("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: _w_runtime_(37)
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 48,
-						columnNumber: 15
-					}, this)
-				] }, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 38,
-					columnNumber: 13
-				}, this)
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 37,
-				columnNumber: 11
-			}, this), jsxDEV("tbody", { children: results.map((r) => jsxDEV("tr", {
+					})
+				] })
+			}), jsx("tbody", { children: results.map((r) => jsxs("tr", {
 				className: "border-t border-border",
 				children: [
-					jsxDEV("td", {
+					jsx("td", {
 						className: "px-4 py-3 font-medium text-foreground",
 						children: r.lib
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 56,
-						columnNumber: 17
-					}, this),
-					jsxDEV("td", {
+					}),
+					jsx("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.size
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 59,
-						columnNumber: 17
-					}, this),
-					jsxDEV("td", {
+					}),
+					jsx("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.time
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 60,
-						columnNumber: 17
-					}, this),
-					jsxDEV("td", {
+					}),
+					jsx("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.lazy
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 61,
-						columnNumber: 17
-					}, this)
+					})
 				]
-			}, r.lib, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 55,
-				columnNumber: 15
-			}, this)) }, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 53,
-				columnNumber: 11
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 36,
-			columnNumber: 9
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 35,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 5
-	}, this);
+			}, r.lib)) })]
+		})
+	})] });
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -414,26 +344,12 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/home/ResultsTable.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ResultsTable, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ResultsTable, {}) });
 }
 export { Wrapped as default };
 var c = [

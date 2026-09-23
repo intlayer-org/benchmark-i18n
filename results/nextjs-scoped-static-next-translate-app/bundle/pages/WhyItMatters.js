@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
+import { Fragment, jsx, jsxs } from "react/jsx-runtime";
 import { useRouter } from "next/router";
 var __assign$3 = function() {
 	__assign$3 = Object.assign || function(t) {
@@ -212,98 +212,49 @@ function useTranslation(defaultNS) {
 	var appDir = globalThis.__NEXT_TRANSLATE__;
 	return ((appDir === null || appDir === void 0 ? void 0 : appDir.config) ? createTranslation : useTranslationInPages)(defaultNS);
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-translate-app/components/pages/home/WhyItMatters.tsx";
 function WhyItMatters() {
 	const { t } = useTranslation("common");
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mb-16",
-		children: [jsxDEV("h2", {
+		children: [jsx("h2", {
 			className: "mb-6 text-2xl font-bold text-foreground",
 			children: t("home.whyItMatters.whyTheseMetricsMatter")
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this), jsxDEV("div", {
+		}), jsxs("div", {
 			className: "grid gap-6 md:grid-cols-3",
 			children: [
-				jsxDEV("div", {
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("home.whyItMatters.bundleSize")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 14,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("home.whyItMatters.theBundleIsTheData")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 17,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 13,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+					})]
+				}),
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("home.whyItMatters.renderingHydration")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 22,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("home.whyItMatters.connectingALargeJson")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 25,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 21,
-					columnNumber: 9
-				}, this),
-				jsxDEV("div", {
+					})]
+				}),
+				jsxs("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsxDEV("h3", {
+					children: [jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("home.whyItMatters.dynamicLoading")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 30,
-						columnNumber: 11
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("home.whyItMatters.loadingAllTranslationsUpfront")
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 33,
-						columnNumber: 11
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 29,
-					columnNumber: 9
-				}, this)
+					})]
+				})
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 12,
-			columnNumber: 7
-		}, this)]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+		})]
+	});
 }
 var __assign = function() {
 	__assign = Object.assign || function(t) {
@@ -2948,7 +2899,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-translate-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -2960,13 +2910,8 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(Fragment, { children }, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 31,
-		columnNumber: 10
-	}, this);
+	return jsx(Fragment, { children });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-translate-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const locale = "en";
 	const [translations, setTranslations] = useState({});
@@ -2985,33 +2930,16 @@ function Wrapper({ children }) {
 		loadTranslations();
 	}, [locale]);
 	if (!isLoaded) return null;
-	return jsxDEV(I18nProvider, {
+	return jsx(I18nProvider, {
 		lang: locale,
 		namespaces: { common: translations },
-		children: jsxDEV(AppProviders, {
+		children: jsx(AppProviders, {
 			locale,
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 37,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 36,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-translate-app/components/pages/home/WhyItMatters.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(WhyItMatters, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(WhyItMatters, {}) });
 }
 export { Wrapped as default };

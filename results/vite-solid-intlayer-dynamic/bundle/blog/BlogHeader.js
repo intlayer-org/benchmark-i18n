@@ -1,16 +1,16 @@
 import { Dynamic, createComponent, insert, template } from "solid-js/web";
 import { createContext, createMemo, useContext } from "solid-js";
 var content$1 = {
-	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/de.json").then((m) => m.default),
-	"en": () => import("./en-Z_yiz0cB.js").then((m) => m.default),
-	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/es.json").then((m) => m.default),
-	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/fr.json").then((m) => m.default),
-	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/it.json").then((m) => m.default),
-	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/ja.json").then((m) => m.default),
-	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/ko.json").then((m) => m.default),
-	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/pt.json").then((m) => m.default),
-	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/ru.json").then((m) => m.default),
-	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/blog-header/zh.json").then((m) => m.default)
+	"de": () => import("./de-BAMZPQxm.js").then((m) => m.default),
+	"en": () => import("./en-Bzrgl9k3.js").then((m) => m.default),
+	"es": () => import("./es-7_9nhj5Z.js").then((m) => m.default),
+	"fr": () => import("./fr-DZwCquez.js").then((m) => m.default),
+	"it": () => import("./it-B8nzpRZE.js").then((m) => m.default),
+	"ja": () => import("./ja-DinE8QMS.js").then((m) => m.default),
+	"ko": () => import("./ko-BB89BzQ9.js").then((m) => m.default),
+	"pt": () => import("./pt-hadbHB-y.js").then((m) => m.default),
+	"ru": () => import("./ru-C-TCHXfr.js").then((m) => m.default),
+	"zh": () => import("./zh-B_Pud_wK.js").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,7 +230,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-}, S$1 = {
+};
+var S = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -238,7 +239,8 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: o.children,
 		children: o.children
 	})
-}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+};
+var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -246,7 +248,12 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
+};
+var T = fallbackPlugin;
+var D = fallbackPlugin;
+var O = fallbackPlugin;
+var k = /* @__PURE__ */ new Map();
+var A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -256,7 +263,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S$1,
+		S,
 		C,
 		T,
 		D,
@@ -275,7 +282,8 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-}, localeStorageOptions = {
+};
+var localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -293,7 +301,9 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
+};
+var a$1 = getLocaleFromStorageClient(localeStorageOptions);
+var y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -312,22 +322,24 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+};
+var t = /* @__PURE__ */ new Map();
+var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
 };
 var content = {
-	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((m) => m.default),
-	"en": () => import("./en-qdOC_UpI.js").then((m) => m.default),
-	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((m) => m.default),
-	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((m) => m.default),
-	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((m) => m.default),
-	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((m) => m.default),
-	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((m) => m.default),
-	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((m) => m.default),
-	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((m) => m.default),
-	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((m) => m.default)
+	"de": () => import("./de-D-3dRX0-.js").then((m) => m.default),
+	"en": () => import("./en-BvSJVZrM.js").then((m) => m.default),
+	"es": () => import("./es-Cap_wKuL.js").then((m) => m.default),
+	"fr": () => import("./fr-x_XBoEM9.js").then((m) => m.default),
+	"it": () => import("./it-D8U5da9I.js").then((m) => m.default),
+	"ja": () => import("./ja-Cv5luclr.js").then((m) => m.default),
+	"ko": () => import("./ko-BKmHU8M4.js").then((m) => m.default),
+	"pt": () => import("./pt-gOzKjx1S.js").then((m) => m.default),
+	"ru": () => import("./ru-Dy3xWoJx.js").then((m) => m.default),
+	"zh": () => import("./zh-VyB3A78f.js").then((m) => m.default)
 };
 var _tmpl$$1 = template(`<div class="mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground">`);
 function MockBanner() {
@@ -338,7 +350,8 @@ function MockBanner() {
 		return _el$;
 	})();
 }
-var _tmpl$ = template(`<h1 class="mb-2 text-3xl font-bold text-foreground">`), _tmpl$2 = template(`<p class="mb-10 text-muted-foreground">`);
+var _tmpl$ = template(`<h1 class="mb-2 text-3xl font-bold text-foreground">`);
+var _tmpl$2 = template(`<p class="mb-10 text-muted-foreground">`);
 function BlogHeader() {
 	const content = a(content$1, "blog-header");
 	return [
@@ -356,6 +369,24 @@ function BlogHeader() {
 	];
 }
 export { BlogHeader as default };
+var de_default = {
+	key: "blog-header",
+	content: {
+		"a": "Blog",
+		"b": "Einblicke, Tutorials und Analysen aus der i18n-Community."
+	}
+};
+export { de_default as default };
+var de_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
+};
+export { de_default as default };
+var en_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
+};
+export { en_default as default };
 var en_default = {
 	key: "blog-header",
 	content: {
@@ -364,8 +395,107 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var en_default = {
-	key: "mock-banner",
-	content: { "a": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
+var es_default = {
+	key: "blog-header",
+	content: {
+		"a": "Blog",
+		"b": "Información, tutoriales y análisis de la comunidad i18n."
+	}
 };
-export { en_default as default };
+export { es_default as default };
+var es_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
+};
+export { es_default as default };
+var fr_default = {
+	key: "blog-header",
+	content: {
+		"a": "Blog",
+		"b": "Idées, tutoriels et analyses de la communauté i18n."
+	}
+};
+export { fr_default as default };
+var fr_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
+};
+export { fr_default as default };
+var it_default = {
+	key: "blog-header",
+	content: {
+		"a": "Blog",
+		"b": "Approfondimenti, tutorial e analisi dalla comunità i18n."
+	}
+};
+export { it_default as default };
+var it_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
+};
+export { it_default as default };
+var ja_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
+};
+export { ja_default as default };
+var ja_default = {
+	key: "blog-header",
+	content: {
+		"a": "ブログ",
+		"b": "i18nコミュニティからのインサイト、チュートリアル、分析。"
+	}
+};
+export { ja_default as default };
+var ko_default = {
+	key: "blog-header",
+	content: {
+		"a": "블로그",
+		"b": "i18n 커뮤니티의 인사이트, 튜토리얼 및 분석."
+	}
+};
+export { ko_default as default };
+var ko_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
+};
+export { ko_default as default };
+var pt_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
+};
+export { pt_default as default };
+var pt_default = {
+	key: "blog-header",
+	content: {
+		"a": "Blog",
+		"b": "Insights, tutoriais e análises da comunidade i18n."
+	}
+};
+export { pt_default as default };
+var ru_default = {
+	key: "blog-header",
+	content: {
+		"a": "Блог",
+		"b": "Инсайты, учебные пособия и анализ от сообщества i18n."
+	}
+};
+export { ru_default as default };
+var ru_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
+};
+export { ru_default as default };
+var zh_default = {
+	key: "blog-header",
+	content: {
+		"a": "博客",
+		"b": "来自 i18n 社区的见解、教程和分析。"
+	}
+};
+export { zh_default as default };
+var zh_default = {
+	key: "mock-banner",
+	content: { "a": "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务 or 服务无关。" }
+};
+export { zh_default as default };

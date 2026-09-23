@@ -1,0 +1,133 @@
+import { useEffect, useLayoutEffect, useState } from "react";
+
+import {
+  HeadContent,
+  Link,
+  Scripts,
+  createRootRoute,
+  useMatches,
+} from "@tanstack/react-router";
+import { TolgeeProvider } from "@tolgee/react";
+import { T } from "../i18n/tolgee";
+import { Route as LocaleRoute } from "./$locale/route";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import { tolgee } from "../i18n/tolgee";
+import { mergeMessages, type Messages } from "../i18n/getMessages";
+import { defaultLocale } from "../i18n/config";
+
+import appCss from "../styles.css?url";
+
+import { recordHydrationDuration, recordRenderTime } from 'test-utils/browser-metrics';
+
+
+const THEME_INIT_SCRIPT = `(function(){try{
+  var stored=window.localStorage.getItem('theme');var mode=(stored==='light'||stored==='dark'||stored==='auto')?stored:'auto';var prefersDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var resolved=mode==='auto'?(prefersDark?'dark':'light'):mode;var root=document.documentElement;root.classList.remove('light','dark');root.classList.add(resolved);if(mode==='auto'){root.removeAttribute('data-theme')}else{root.setAttribute('data-theme',mode)}root.style.colorScheme=resolved;performance.mark('hydration_start');}catch(e){}})();`;
+
+export const Route = createRootRoute({
+  head: () => ({
+    meta: [
+      {
+        charSet: "utf-8",
+      },
+      {
+        name: "viewport",
+        content: "width=device-width, initial-scale=1",
+      },
+      {
+        title: "i18n Benchmark",
+      },
+    ],
+    links: [
+      {
+        rel: "stylesheet",
+        href: appCss,
+      },
+    ],
+  }),
+  shellComponent: RootDocument,
+  notFoundComponent: () => {
+    return (
+      <div className="flex min-h-[60vh] items-center justify-center bg-muted/30">
+      <div className="text-center">
+          <h1 className="mb-4 text-4xl font-bold">404</h1>
+          <p className="mb-4 text-xl text-muted-foreground">
+            <T
+              keyName="route.oopsPageNotFound"
+            />
+          </p>
+          <Link
+            to="/$locale"
+            params={{ locale: defaultLocale || "en" }}
+            className="text-primary underline hover:text-primary/90"
+          >
+            <T keyName="route.returnToHome" />
+          </Link>
+      </div>
+      </div>
+    );
+  },
+});
+
+function RootDocument({ children }: { children: React.ReactNode }) {
+  const [renderStart] = useState(() =>
+    typeof performance !== "undefined" ? performance.now() : 0
+  );
+
+  useLayoutEffect(() => {
+    recordRenderTime("AppRoot", renderStart);
+  }, [renderStart]);
+
+  useEffect(() => {
+    recordHydrationDuration();
+  }, []);
+
+  const { locale = defaultLocale } = LocaleRoute.useParams();
+  const matches = useMatches();
+  const routeMessages = matches.reduce<Messages>((acc, match) => {
+    const data = match.loaderData as { messages?: Messages } | undefined;
+    if (data?.messages) {
+      Object.assign(acc, data.messages);
+    }
+    return acc;
+  }, {});
+  // Loaders ran on the server, so on hydration their namespaces reach the client
+  // only through this dehydrated loader data.
+  const staticData = { [locale]: mergeMessages(locale, routeMessages) };
+
+  // Set language on server-side or if it changed
+  if (typeof window === "undefined" || tolgee.getLanguage() !== locale) {
+    tolgee.changeLanguage(locale);
+  }
+
+  useEffect(() => {
+    if (tolgee.getLanguage() !== locale) {
+      tolgee.changeLanguage(locale);
+    }
+  }, [locale]);
+
+  return (
+    <html lang={locale} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      <HeadContent />
+      </head>
+      <body className="antialiased [overflow-wrap:anywhere]">
+          <TolgeeProvider
+            tolgee={tolgee}
+            fallback={<div>Loading translations...</div>}
+            options={{ useSuspense: false }}
+            ssr={{
+              language: locale,
+              staticData,
+            }}
+          >
+            <Header />
+            {children}
+            <Footer />
+          </TolgeeProvider>
+      <Scripts />
+      </body>
+    </html>
+  );
+}

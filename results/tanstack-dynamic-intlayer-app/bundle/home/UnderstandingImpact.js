@@ -1,6 +1,5 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -57,12 +56,12 @@ var getLocaleFromDomain = (hostname, domains) => {
 var PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
 var LOCALES = ["en"];
 var resolveRoutingConfig = (options = {}) => ({
-	defaultLocale: internationalization?.defaultLocale ?? "en",
-	mode: routing?.mode ?? "prefix-no-default",
-	locales: internationalization?.locales ?? LOCALES,
-	rewrite: routing?.rewrite,
-	domains: routing?.domains,
-	...options
+	...options,
+	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
+	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
+	locales: options.locales ?? internationalization?.locales ?? LOCALES,
+	rewrite: options.rewrite ?? routing?.rewrite,
+	domains: options.domains ?? routing?.domains
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -780,198 +779,95 @@ var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const plainLoaders = dictionaryPromise;
 	return getDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, plainLoaders[localeTarget]?.()), localeTarget);
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/home/UnderstandingImpact.tsx";
 function UnderstandingImpact() {
 	const content$1 = useDictionaryDynamic(content, "understanding-impact");
-	return jsxDEV("section", {
+	return jsxs("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
-			jsxDEV("h2", {
+			jsx("h2", {
 				className: "text-2xl font-bold text-foreground",
 				children: content$1.o
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 7,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", {
+			}),
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsxDEV("h3", {
+					jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: content$1.t
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 10,
-						columnNumber: 9
-					}, this),
-					jsxDEV("p", {
+					}),
+					jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: content$1.g
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 11,
-						columnNumber: 9
-					}, this),
-					jsxDEV("ul", {
+					}),
+					jsxs("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							jsxDEV("li", { children: content$1.l }, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 13,
-								columnNumber: 11
-							}, this),
-							jsxDEV("li", { children: content$1.c }, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 14,
-								columnNumber: 11
-							}, this),
-							jsxDEV("li", { children: content$1.d }, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 15,
-								columnNumber: 11
-							}, this)
+							jsx("li", { children: content$1.l }),
+							jsx("li", { children: content$1.c }),
+							jsx("li", { children: content$1.d })
 						]
-					}, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 12,
-						columnNumber: 9
-					}, this)
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 9,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", {
+			}),
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsxDEV("h3", {
+					jsx("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: content$1.m
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 20,
-						columnNumber: 9
-					}, this),
-					jsxDEV("p", {
+					}),
+					jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: content$1.j
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 21,
-						columnNumber: 9
-					}, this),
-					jsxDEV("ul", {
+					}),
+					jsxs("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							jsxDEV("li", { children: [jsxDEV("strong", {
+							jsxs("li", { children: [jsx("strong", {
 								className: "text-foreground",
 								children: content$1.r
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 24,
-								columnNumber: 13
-							}, this), content$1.k] }, void 0, true, {
-								fileName: _jsxFileName$2,
-								lineNumber: 23,
-								columnNumber: 11
-							}, this),
-							jsxDEV("li", { children: [
-								jsxDEV("strong", {
+							}), content$1.k] }),
+							jsxs("li", { children: [
+								jsx("strong", {
 									className: "text-foreground",
 									children: content$1.e
-								}, void 0, false, {
-									fileName: _jsxFileName$2,
-									lineNumber: 26,
-									columnNumber: 13
-								}, this),
+								}),
 								" ",
 								content$1.q
-							] }, void 0, true, {
-								fileName: _jsxFileName$2,
-								lineNumber: 25,
-								columnNumber: 11
-							}, this),
-							jsxDEV("li", { children: [
-								jsxDEV("strong", {
+							] }),
+							jsxs("li", { children: [
+								jsx("strong", {
 									className: "text-foreground",
 									children: content$1.a
-								}, void 0, false, {
-									fileName: _jsxFileName$2,
-									lineNumber: 28,
-									columnNumber: 13
-								}, this),
+								}),
 								" ",
 								content$1.p
-							] }, void 0, true, {
-								fileName: _jsxFileName$2,
-								lineNumber: 27,
-								columnNumber: 11
-							}, this)
+							] })
 						]
-					}, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 22,
-						columnNumber: 9
-					}, this)
+					})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 19,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", {
+			}),
+			jsxs("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [jsxDEV("h3", {
+				children: [jsx("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: content$1.s
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 33,
-					columnNumber: 9
-				}, this), jsxDEV("p", {
+				}), jsx("p", {
 					className: "text-sm text-muted-foreground",
 					children: content$1.n
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 34,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 32,
-				columnNumber: 7
-			}, this)
+				})]
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/home/UnderstandingImpact.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(UnderstandingImpact, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(UnderstandingImpact, {}) });
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;
