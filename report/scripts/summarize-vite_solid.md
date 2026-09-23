@@ -26,6 +26,7 @@ _Generated: 2026-09-23_
 - [intlayer](#intlayer)
 - [paraglide-js](#paraglide-js)
 - [primitives-i18n](#primitives-i18n)
+- [tolgee](#tolgee)
 
 ## base
 
@@ -1222,14 +1223,257 @@ _Generated: 2026-09-23_
 
 ---
 
+## tolgee
+
+| Version | Lib size (gz) | Lib size (min) |
+| :--- | ---: | ---: |
+| — | 12.7 KB | 40.1 KB |
+
+| Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
+| :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Static | ✅ | 91.8 KB | 44.5% | 90.0% | 75.1 KB | 0.6 ms | — | 12.8 ms | 5.6 ms |
+| Dynamic | ↳ Static | 91.8 KB | 44.5% | 90.0% | 75.1 KB | 0.6 ms | — | 12.8 ms | 5.6 ms |
+| Scoped Static | ↳ Static | 91.8 KB | 44.5% | 90.0% | 75.1 KB | 0.6 ms | — | 12.8 ms | 5.6 ms |
+| Scoped Dynamic | ↳ Static | 91.8 KB | 44.5% | 90.0% | 75.1 KB | 0.6 ms | — | 12.8 ms | 5.6 ms |
+
+<details>
+<summary><strong>Static</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 92.1 KB | 40.4% | 38.5% |
+| `/en/about` | 91.5 KB | 40.4% | 61.5% |
+| `/en/blog` | 91.4 KB | 40.4% | 100.0% |
+| `/en/careers` | 92.1 KB | 40.4% | 100.0% |
+| `/en/contact` | 91.8 KB | 40.4% | 100.0% |
+| `/en/faq` | 91.3 KB | 40.4% | 100.0% |
+| `/en/pricing` | 91.8 KB | 40.4% | 100.0% |
+| `/en/products` | 91.5 KB | 40.4% | 100.0% |
+| `/en/settings` | 93.2 KB | 40.4% | 100.0% |
+| `/en/team` | 91.4 KB | 40.4% | 100.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 92.1 KB | 48.6% | 0.0% |
+| `/fr/about` | 91.5 KB | 48.6% | 100.0% |
+| `/fr/blog` | 91.4 KB | 48.6% | 100.0% |
+| `/fr/careers` | 92.1 KB | 48.6% | 100.0% |
+| `/fr/contact` | 91.8 KB | 48.6% | 100.0% |
+| `/fr/faq` | 91.3 KB | 48.6% | 100.0% |
+| `/fr/pricing` | 91.8 KB | 48.6% | 100.0% |
+| `/fr/products` | 91.5 KB | 48.6% | 100.0% |
+| `/fr/settings` | 93.2 KB | 48.6% | 100.0% |
+| `/fr/team` | 91.4 KB | 48.6% | 100.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-tolgee-static/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Static</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 0.6 ms | 0.4 ms | 1.1 ms | 0.0 ms |
+| `fr` | 0.6 ms | 0.5 ms | 0.9 ms | 0.0 ms |
+
+</details>
+
+<details>
+<summary><strong>Static</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 12.5 ms | 5.5 ms | 1.3 ms |
+| `fr` | 13.1 ms | 5.6 ms | 1.3 ms |
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 92.1 KB | 40.4% | 38.5% |
+| `/en/about` | 91.5 KB | 40.4% | 61.5% |
+| `/en/blog` | 91.4 KB | 40.4% | 100.0% |
+| `/en/careers` | 92.1 KB | 40.4% | 100.0% |
+| `/en/contact` | 91.8 KB | 40.4% | 100.0% |
+| `/en/faq` | 91.3 KB | 40.4% | 100.0% |
+| `/en/pricing` | 91.8 KB | 40.4% | 100.0% |
+| `/en/products` | 91.5 KB | 40.4% | 100.0% |
+| `/en/settings` | 93.2 KB | 40.4% | 100.0% |
+| `/en/team` | 91.4 KB | 40.4% | 100.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 92.1 KB | 48.6% | 0.0% |
+| `/fr/about` | 91.5 KB | 48.6% | 100.0% |
+| `/fr/blog` | 91.4 KB | 48.6% | 100.0% |
+| `/fr/careers` | 92.1 KB | 48.6% | 100.0% |
+| `/fr/contact` | 91.8 KB | 48.6% | 100.0% |
+| `/fr/faq` | 91.3 KB | 48.6% | 100.0% |
+| `/fr/pricing` | 91.8 KB | 48.6% | 100.0% |
+| `/fr/products` | 91.5 KB | 48.6% | 100.0% |
+| `/fr/settings` | 93.2 KB | 48.6% | 100.0% |
+| `/fr/team` | 91.4 KB | 48.6% | 100.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-tolgee-static/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 0.6 ms | 0.4 ms | 1.1 ms | 0.0 ms |
+| `fr` | 0.6 ms | 0.5 ms | 0.9 ms | 0.0 ms |
+
+</details>
+
+<details>
+<summary><strong>Dynamic</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 12.5 ms | 5.5 ms | 1.3 ms |
+| `fr` | 13.1 ms | 5.6 ms | 1.3 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 92.1 KB | 40.4% | 38.5% |
+| `/en/about` | 91.5 KB | 40.4% | 61.5% |
+| `/en/blog` | 91.4 KB | 40.4% | 100.0% |
+| `/en/careers` | 92.1 KB | 40.4% | 100.0% |
+| `/en/contact` | 91.8 KB | 40.4% | 100.0% |
+| `/en/faq` | 91.3 KB | 40.4% | 100.0% |
+| `/en/pricing` | 91.8 KB | 40.4% | 100.0% |
+| `/en/products` | 91.5 KB | 40.4% | 100.0% |
+| `/en/settings` | 93.2 KB | 40.4% | 100.0% |
+| `/en/team` | 91.4 KB | 40.4% | 100.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 92.1 KB | 48.6% | 0.0% |
+| `/fr/about` | 91.5 KB | 48.6% | 100.0% |
+| `/fr/blog` | 91.4 KB | 48.6% | 100.0% |
+| `/fr/careers` | 92.1 KB | 48.6% | 100.0% |
+| `/fr/contact` | 91.8 KB | 48.6% | 100.0% |
+| `/fr/faq` | 91.3 KB | 48.6% | 100.0% |
+| `/fr/pricing` | 91.8 KB | 48.6% | 100.0% |
+| `/fr/products` | 91.5 KB | 48.6% | 100.0% |
+| `/fr/settings` | 93.2 KB | 48.6% | 100.0% |
+| `/fr/team` | 91.4 KB | 48.6% | 100.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-tolgee-static/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 0.6 ms | 0.4 ms | 1.1 ms | 0.0 ms |
+| `fr` | 0.6 ms | 0.5 ms | 0.9 ms | 0.0 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Static</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 12.5 ms | 5.5 ms | 1.3 ms |
+| `fr` | 13.1 ms | 5.6 ms | 1.3 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 92.1 KB | 40.4% | 38.5% |
+| `/en/about` | 91.5 KB | 40.4% | 61.5% |
+| `/en/blog` | 91.4 KB | 40.4% | 100.0% |
+| `/en/careers` | 92.1 KB | 40.4% | 100.0% |
+| `/en/contact` | 91.8 KB | 40.4% | 100.0% |
+| `/en/faq` | 91.3 KB | 40.4% | 100.0% |
+| `/en/pricing` | 91.8 KB | 40.4% | 100.0% |
+| `/en/products` | 91.5 KB | 40.4% | 100.0% |
+| `/en/settings` | 93.2 KB | 40.4% | 100.0% |
+| `/en/team` | 91.4 KB | 40.4% | 100.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 92.1 KB | 48.6% | 0.0% |
+| `/fr/about` | 91.5 KB | 48.6% | 100.0% |
+| `/fr/blog` | 91.4 KB | 48.6% | 100.0% |
+| `/fr/careers` | 92.1 KB | 48.6% | 100.0% |
+| `/fr/contact` | 91.8 KB | 48.6% | 100.0% |
+| `/fr/faq` | 91.3 KB | 48.6% | 100.0% |
+| `/fr/pricing` | 91.8 KB | 48.6% | 100.0% |
+| `/fr/products` | 91.5 KB | 48.6% | 100.0% |
+| `/fr/settings` | 93.2 KB | 48.6% | 100.0% |
+| `/fr/team` | 91.4 KB | 48.6% | 100.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-solid-tolgee-static/bundle/rollup-visualizer.html)
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale reactivity</summary>
+
+| Locale | E2E avg | E2E min | E2E max | Profiler avg |
+| :---: | ---: | ---: | ---: | ---: |
+| `en` | 0.6 ms | 0.4 ms | 1.1 ms | 0.0 ms |
+| `fr` | 0.6 ms | 0.5 ms | 0.9 ms | 0.0 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale rendering</summary>
+
+| Locale | Page load | Hydration | React mount |
+| :---: | ---: | ---: | ---: |
+| `en` | 12.5 ms | 5.5 ms | 1.3 ms |
+| `fr` | 13.1 ms | 5.6 ms | 1.3 ms |
+
+</details>
+
+---
+
 ## Coverage
 
 | Metric | Count |
 | :--- | :--- |
-| Total libraries | 5 |
-| Total app entries | 6 |
-| With lib size data | 5 |
-| With page bundle data | 20 |
-| With component data | 20 |
-| With reactivity data | 18 |
-| With rendering data | 20 |
+| Total libraries | 6 |
+| Total app entries | 7 |
+| With lib size data | 6 |
+| With page bundle data | 24 |
+| With component data | 24 |
+| With reactivity data | 22 |
+| With rendering data | 24 |
