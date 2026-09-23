@@ -1,16 +1,16 @@
 import { Dynamic, createComponent, insert, template } from "solid-js/web";
 import { For, createContext, createMemo, useContext } from "solid-js";
 var content = {
-	"de": () => import("./de-DjVOeUfl.js").then((m) => m.default),
-	"en": () => import("./en-JghyQopd.js").then((m) => m.default),
-	"es": () => import("./es-Ce7rbWlv.js").then((m) => m.default),
-	"fr": () => import("./fr-BnWKdWlv.js").then((m) => m.default),
-	"it": () => import("./it-BdsTHnAt.js").then((m) => m.default),
-	"ja": () => import("./ja-Ouy-HIlY.js").then((m) => m.default),
-	"ko": () => import("./ko-d2zmgTvZ.js").then((m) => m.default),
-	"pt": () => import("./pt-cxwgiGcd.js").then((m) => m.default),
-	"ru": () => import("./ru-Yd5wns5J.js").then((m) => m.default),
-	"zh": () => import("./zh-BZ-vd3T-.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/de.json").then((m) => m.default),
+	"en": () => import("./en-DZqOU8kP.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/results-table/zh.json").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,8 +230,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-};
-var S = {
+}, S$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -239,8 +238,7 @@ var S = {
 		value: o.children,
 		children: o.children
 	})
-};
-var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -248,12 +246,7 @@ var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin :
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-};
-var T = fallbackPlugin;
-var D = fallbackPlugin;
-var O = fallbackPlugin;
-var k = /* @__PURE__ */ new Map();
-var A = (e, t = !0) => {
+}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -263,7 +256,7 @@ var A = (e, t = !0) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S,
+		S$1,
 		C,
 		T,
 		D,
@@ -282,8 +275,7 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-};
-var localeStorageOptions = {
+}, localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -301,9 +293,7 @@ var localeStorageOptions = {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-};
-var a$1 = getLocaleFromStorageClient(localeStorageOptions);
-var y = createContext({
+}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -322,15 +312,12 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-};
-var t = /* @__PURE__ */ new Map();
-var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
 };
-var _tmpl$ = template(`<section><h2 class="mb-6 text-2xl font-bold text-foreground"></h2><div class="overflow-x-auto rounded-lg border border-border"><table class="w-full text-sm"><thead class=bg-muted><tr><th class="px-4 py-3 text-left font-medium text-muted-foreground"></th><th class="px-4 py-3 text-left font-medium text-muted-foreground"></th><th class="px-4 py-3 text-left font-medium text-muted-foreground"></th><th class="px-4 py-3 text-left font-medium text-muted-foreground"></th></tr></thead><tbody>`);
-var _tmpl$2 = template(`<tr class="border-t border-border"><td class="px-4 py-3 font-medium text-foreground"></td><td class="px-4 py-3 text-muted-foreground"></td><td class="px-4 py-3 text-muted-foreground"></td><td class="px-4 py-3 text-muted-foreground">`);
+var _tmpl$ = template(`<section><h2 class="mb-6 text-2xl font-bold text-foreground"></h2><div class="overflow-x-auto rounded-lg border border-border"><table class="w-full text-sm"><thead class=bg-muted><tr><th class="px-4 py-3 text-left font-medium text-muted-foreground"></th><th class="px-4 py-3 text-left font-medium text-muted-foreground"></th><th class="px-4 py-3 text-left font-medium text-muted-foreground"></th><th class="px-4 py-3 text-left font-medium text-muted-foreground"></th></tr></thead><tbody>`), _tmpl$2 = template(`<tr class="border-t border-border"><td class="px-4 py-3 font-medium text-foreground"></td><td class="px-4 py-3 text-muted-foreground"></td><td class="px-4 py-3 text-muted-foreground"></td><td class="px-4 py-3 text-muted-foreground">`);
 function ResultsTable() {
 	const content$1 = a(content, "results-table");
 	const results = [
@@ -381,19 +368,6 @@ function ResultsTable() {
 	})();
 }
 export { ResultsTable as default };
-var de_default = {
-	key: "results-table",
-	content: {
-		"g": "Ja",
-		"e": "Manuell",
-		"f": "Beispielergebnisse",
-		"c": "Bibliothek",
-		"a": "Bundle-Größe",
-		"d": "Lookup-Zeit",
-		"b": "Lazy Loading"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "results-table",
 	content: {
@@ -407,107 +381,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "results-table",
-	content: {
-		"g": "Sí",
-		"e": "Manual",
-		"f": "Resultados de ejemplo",
-		"c": "Biblioteca",
-		"a": "Tamaño del bundle",
-		"d": "Tiempo de búsqueda",
-		"b": "Carga diferida"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "results-table",
-	content: {
-		"g": "Oui",
-		"e": "Manuel",
-		"f": "Exemples de résultats",
-		"c": "Bibliothèque",
-		"a": "Taille du bundle",
-		"d": "Temps de recherche",
-		"b": "Chargement différé"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "results-table",
-	content: {
-		"g": "Sì",
-		"e": "Manuale",
-		"f": "Risultati di esempio",
-		"c": "Libreria",
-		"a": "Dimensione del bundle",
-		"d": "Tempo di ricerca",
-		"b": "Caricamento lazy"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "results-table",
-	content: {
-		"g": "はい",
-		"e": "手動",
-		"f": "サンプル結果",
-		"c": "ライブラリ",
-		"a": "バンドルサイズ",
-		"d": "検索時間",
-		"b": "遅延ロード"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "results-table",
-	content: {
-		"g": "예",
-		"e": "수동",
-		"f": "샘플 결과",
-		"c": "라이브러리",
-		"a": "번들 크기",
-		"d": "검색 시간",
-		"b": "지연 로드"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "results-table",
-	content: {
-		"g": "Sim",
-		"e": "Manual",
-		"f": "Resultados de exemplo",
-		"c": "Biblioteca",
-		"a": "Tamanho do bundle",
-		"d": "Tempo de Busca",
-		"b": "Carregamento Lento"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "results-table",
-	content: {
-		"g": "Да",
-		"e": "Вручную",
-		"f": "Примеры результатов",
-		"c": "Библиотека",
-		"a": "Размер бандла",
-		"d": "Время поиска",
-		"b": "Ленивая загрузка"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "results-table",
-	content: {
-		"g": "是",
-		"e": "手动",
-		"f": "示例结果",
-		"c": "库",
-		"a": "捆绑包大小",
-		"d": "查找时间",
-		"b": "延迟加载"
-	}
-};
-export { zh_default as default };

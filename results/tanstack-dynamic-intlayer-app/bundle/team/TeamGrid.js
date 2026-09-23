@@ -1,5 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -56,12 +57,12 @@ var getLocaleFromDomain = (hostname, domains) => {
 var PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
 var LOCALES = ["en"];
 var resolveRoutingConfig = (options = {}) => ({
-	...options,
-	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
-	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
-	locales: options.locales ?? internationalization?.locales ?? LOCALES,
-	rewrite: options.rewrite ?? routing?.rewrite,
-	domains: options.domains ?? routing?.domains
+	defaultLocale: internationalization?.defaultLocale ?? "en",
+	mode: routing?.mode ?? "prefix-no-default",
+	locales: internationalization?.locales ?? LOCALES,
+	rewrite: routing?.rewrite,
+	domains: routing?.domains,
+	...options
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -779,6 +780,7 @@ var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const plainLoaders = dictionaryPromise;
 	return getDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, plainLoaders[localeTarget]?.()), localeTarget);
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/team/TeamGrid.tsx";
 function TeamGrid() {
 	const content$1 = useDictionaryDynamic(content, "team-grid");
 	const members = [
@@ -813,39 +815,77 @@ function TeamGrid() {
 			bio: content$1.k.value
 		}
 	];
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: members.map((m) => jsxs("div", {
+		children: members.map((m) => jsxDEV("div", {
 			className: "rounded-lg border border-border bg-card p-6 text-center",
 			children: [
-				jsx("div", {
+				jsxDEV("div", {
 					className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 					children: m.name.split(" ").map((n) => n[0]).join("")
-				}),
-				jsx("h3", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 46,
+					columnNumber: 11
+				}, this),
+				jsxDEV("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: m.name
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 52,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "mb-2 text-xs font-medium text-primary",
 					children: m.role
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 53,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "text-sm text-muted-foreground",
 					children: m.bio
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 54,
+					columnNumber: 11
+				}, this)
 			]
-		}, m.name))
-	});
+		}, m.name, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 42,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 40,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(IntlayerProvider, {
+	return jsxDEV(IntlayerProvider, {
 		locale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/team/TeamGrid.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(TeamGrid, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(TeamGrid, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

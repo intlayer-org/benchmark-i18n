@@ -1,5 +1,6 @@
 import React, { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var pricing_tiers_default = {
 	key: "pricing-tiers",
 	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"starter\":\"Starter\",\"price0\":\"$0\",\"forever\":\"forever\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} benchmark runs/day\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} libraries\"},\"communitySupport\":\"Community support\",\"publicResults\":\"Public results\",\"pro\":\"Pro\",\"price29\":\"$29\",\"month\":\"/month\",\"unlimitedRuns\":\"Unlimited runs\",\"allLibraries\":\"All libraries\",\"prioritySupport\":\"Priority support\",\"privateResults\":\"Private results\",\"ciIntegration\":\"CI integration\",\"historicalData\":\"Historical data\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Custom\",\"everythingInPro\":\"Everything in Pro\",\"onPremiseOption\":\"On-premise option\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Dedicated account manager\",\"customSlas\":\"Custom SLAs\",\"auditLogs\":\"Audit logs\",\"trainingSessions\":\"Training sessions\",\"contactSales\":\"Contact Sales\",\"getStarted\":\"Get Started\"},\"fr\":{\"starter\":\"Starter\",\"price0\":\"0 €\",\"forever\":\"pour toujours\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} passages de benchmark / jour\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliothèques\"},\"communitySupport\":\"Support communautaire\",\"publicResults\":\"Résultats publics\",\"pro\":\"Pro\",\"price29\":\"29 €\",\"month\":\"/ mois\",\"unlimitedRuns\":\"Passages illimités\",\"allLibraries\":\"Toutes les bibliothèques\",\"prioritySupport\":\"Support prioritaire\",\"privateResults\":\"Résultats privés\",\"ciIntegration\":\"Intégration CI\",\"historicalData\":\"Données historiques\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Sur mesure\",\"everythingInPro\":\"Tout ce qui est dans Pro\",\"onPremiseOption\":\"Option sur site (on-premise)\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Gestionnaire de compte dédié\",\"customSlas\":\"SLA personnalisés\",\"auditLogs\":\"Journaux d'audit\",\"trainingSessions\":\"Sessions de formation\",\"contactSales\":\"Contacter le service commercial\",\"getStarted\":\"Démarrer\"},\"es\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"para siempre\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} ejecuciones de benchmark/día\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliotecas\"},\"communitySupport\":\"Soporte de la comunidad\",\"publicResults\":\"Resultados públicos\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/mes\",\"unlimitedRuns\":\"Ejecuciones ilimitadas\",\"allLibraries\":\"Todas las bibliotecas\",\"prioritySupport\":\"Soporte prioritario\",\"privateResults\":\"Resultados privados\",\"ciIntegration\":\"Integración CI\",\"historicalData\":\"Datos históricos\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Personalizado\",\"everythingInPro\":\"Todo lo que hay en Pro\",\"onPremiseOption\":\"Opción on-premise\",\"ssoSaml\":\"SSO y SAML\",\"dedicatedAccountManager\":\"Gestor de cuentas dedicado\",\"customSlas\":\"SLA personalizados\",\"auditLogs\":\"Registros de auditoría\",\"trainingSessions\":\"Sesiones de formación\",\"contactSales\":\"Contactar con ventas\",\"getStarted\":\"Empezar\"},\"de\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"für immer\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} Benchmark-Durchläufe/Tag\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} Bibliotheken\"},\"communitySupport\":\"Community-Support\",\"publicResults\":\"Öffentliche Ergebnisse\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/Monat\",\"unlimitedRuns\":\"Unbegrenzte Durchläufe\",\"allLibraries\":\"Alle Bibliotheken\",\"prioritySupport\":\"Prioritäts-Support\",\"privateResults\":\"Private Ergebnisse\",\"ciIntegration\":\"CI-Integration\",\"historicalData\":\"Historische Daten\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Individuell\",\"everythingInPro\":\"Alles in Pro\",\"onPremiseOption\":\"On-Premise-Option\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Dedizierter Account-Manager\",\"customSlas\":\"Individuelle SLAs\",\"auditLogs\":\"Audit-Logs\",\"trainingSessions\":\"Schulungen\",\"contactSales\":\"Vertrieb kontaktieren\",\"getStarted\":\"Jetzt starten\"},\"it\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"per sempre\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} esecuzioni benchmark/giorno\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} librerie\"},\"communitySupport\":\"Supporto della comunità\",\"publicResults\":\"Risultati pubblici\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/mese\",\"unlimitedRuns\":\"Esecuzioni illimitate\",\"allLibraries\":\"Tutte le librerie\",\"prioritySupport\":\"Supporto prioritario\",\"privateResults\":\"Risultati privati\",\"ciIntegration\":\"Integrazione CI\",\"historicalData\":\"Dati storici\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Personalizzato\",\"everythingInPro\":\"Tutto quello che c'è in Pro\",\"onPremiseOption\":\"Opzione in locale\",\"ssoSaml\":\"SSO e SAML\",\"dedicatedAccountManager\":\"Account manager dedicato\",\"customSlas\":\"SLA personalizzati\",\"auditLogs\":\"Registri di controllo\",\"trainingSessions\":\"Sessioni di formazione\",\"contactSales\":\"Contatta l'ufficio vendite\",\"getStarted\":\"Inizia ora\"},\"pt\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"para sempre\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} execuções de benchmark por dia\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliotecas\"},\"communitySupport\":\"Suporte da comunidade\",\"publicResults\":\"Resultados públicos\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/mês\",\"unlimitedRuns\":\"Execuções ilimitadas\",\"allLibraries\":\"Todas as bibliotecas\",\"prioritySupport\":\"Suporte prioritário\",\"privateResults\":\"Resultados privados\",\"ciIntegration\":\"Integração CI\",\"historicalData\":\"Dados históricos\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Personalizado\",\"everythingInPro\":\"Tudo o que está no Pro\",\"onPremiseOption\":\"Opção on-premise\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Gerente de conta dedicado\",\"customSlas\":\"SLAs personalizados\",\"auditLogs\":\"Logs de auditoria\",\"trainingSessions\":\"Sessões de treinamento\",\"contactSales\":\"Contatar Vendas\",\"getStarted\":\"Começar\"},\"zh\":{\"starter\":\"入门版\",\"price0\":\"¥0\",\"forever\":\"永久\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"每天 {{runs}} 次基准测试运行\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} 个库\"},\"communitySupport\":\"社区支持\",\"publicResults\":\"公开结果\",\"pro\":\"专业版\",\"price29\":\"¥199\",\"month\":\"/月\",\"unlimitedRuns\":\"无限次运行\",\"allLibraries\":\"所有库\",\"prioritySupport\":\"优先支持\",\"privateResults\":\"私有结果\",\"ciIntegration\":\"CI 集成\",\"historicalData\":\"历史数据\",\"enterprise\":\"企业版\",\"customPrice\":\"定制\",\"everythingInPro\":\"包含专业版所有功能\",\"onPremiseOption\":\"本地部署选项\",\"ssoSaml\":\"SSO 和 SAML\",\"dedicatedAccountManager\":\"专属客户经理\",\"customSlas\":\"定制 SLA\",\"auditLogs\":\"审计日志\",\"trainingSessions\":\"培训课程\",\"contactSales\":\"联系销售\",\"getStarted\":\"开始使用\"},\"ja\":{\"starter\":\"スターター\",\"price0\":\"0円\",\"forever\":\"永久に無料\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"1日あたり {{runs}} 回のベンチマーク実行\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} ライブラリ\"},\"communitySupport\":\"コミュニティサポート\",\"publicResults\":\"結果を公開\",\"pro\":\"プロ\",\"price29\":\"3,900円\",\"month\":\"/月\",\"unlimitedRuns\":\"無制限の実行\",\"allLibraries\":\"すべてのライブラリ\",\"prioritySupport\":\"優先サポート\",\"privateResults\":\"結果を非公開\",\"ciIntegration\":\"CI統合\",\"historicalData\":\"履歴データ\",\"enterprise\":\"エンタープライズ\",\"customPrice\":\"カスタム\",\"everythingInPro\":\"Proのすべての機能を含む\",\"onPremiseOption\":\"オンプレミスオプション\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"専任のアカウントマネージャー\",\"customSlas\":\"カスタムSLA\",\"auditLogs\":\"監査ログ\",\"trainingSessions\":\"トレーニングセッション\",\"contactSales\":\"営業に問い合わせる\",\"getStarted\":\"始める\"},\"ko\":{\"starter\":\"스타터\",\"price0\":\"0원\",\"forever\":\"영원히\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"하루 {{runs}}회 벤치마크 실행\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}}개 라이브러리\"},\"communitySupport\":\"커뮤니티 지원\",\"publicResults\":\"결과 공개\",\"pro\":\"프로\",\"price29\":\"39,000원\",\"month\":\"/월\",\"unlimitedRuns\":\"무제한 실행\",\"allLibraries\":\"모든 라이브러리\",\"prioritySupport\":\"우선 지원\",\"privateResults\":\"결과 비공개\",\"ciIntegration\":\"CI 통합\",\"historicalData\":\"기록 데이터\",\"enterprise\":\"엔터프라이즈\",\"customPrice\":\"커스텀\",\"everythingInPro\":\"Pro의 모든 기능 포함\",\"onPremiseOption\":\"온프레미스 옵션\",\"ssoSaml\":\"SSO 및 SAML\",\"dedicatedAccountManager\":\"전담 어카운트 매니저\",\"customSlas\":\"맞춤형 SLA\",\"auditLogs\":\"감사 로그\",\"trainingSessions\":\"교육 세션\",\"contactSales\":\"영업팀 문의\",\"getStarted\":\"시작하기\"},\"ru\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"навсегда\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} запусков бенчмарка в день\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} библиотек\"},\"communitySupport\":\"Сообщество поддержки\",\"publicResults\":\"Публичные результаты\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/месяц\",\"unlimitedRuns\":\"Неограниченное количество запусков\",\"allLibraries\":\"Все библиотеки\",\"prioritySupport\":\"Приоритетная поддержка\",\"privateResults\":\"Приватные результаты\",\"ciIntegration\":\"Интеграция с CI\",\"historicalData\":\"Исторические данные\",\"enterprise\":\"Корпоративный\",\"customPrice\":\"Индивидуальная цена\",\"everythingInPro\":\"Все возможности Pro\",\"onPremiseOption\":\"Локальное развертывание\",\"ssoSaml\":\"SSO и SAML\",\"dedicatedAccountManager\":\"Выделенный менеджер\",\"customSlas\":\"Индивидуальные SLA\",\"auditLogs\":\"Журналы аудита\",\"trainingSessions\":\"Сессии обучения\",\"contactSales\":\"Связаться с отделом продаж\",\"getStarted\":\"Начать\"}}}")
@@ -1281,10 +1282,9 @@ var formatArgument = (value, type, style, locale) => {
 	} catch {}
 	return String(value);
 };
-var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (match, path, type, style) => {
+var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{}]+?)\s*\}\}/g, (match, path) => {
 	const value = resolveValuePath(values, path);
-	if (value === void 0) return match;
-	return type ? formatArgument(value, type, style, locale) : String(value);
+	return value === void 0 ? match : String(value);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
 	if (value === void 0) return match;
@@ -1338,17 +1338,15 @@ var resolveMessageNode = (node, values = {}, locale = "en") => {
 	}
 	return node;
 };
-var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
-	const resolved = resolveMessageNode(node, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: (message) => icuToIntlayerFormatter(message),
+	i18next: (message) => i18nextToIntlayerFormatter(message),
+	"vue-i18n": (message) => vueI18nToIntlayerFormatter(message)
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => {
+	const resolved = resolveMessageNode(typeof message === "string" ? DIALECT_FORMATTERS[dialect](message) : message, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
-var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var DIALECT_FORMATTERS = {
-	icu: icuToIntlayerFormatter,
-	i18next: i18nextToIntlayerFormatter,
-	"vue-i18n": vueI18nToIntlayerFormatter
-};
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var parseTaggedMessage = (message) => {
 	const tokens = [];
 	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
@@ -1698,6 +1696,7 @@ var IntlProvider = ({ locale, children, messages: _messages, formats: _formats, 
 		children
 	}, String(locale));
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
 	const t = useDictionary(pricing_tiers_default);
 	const tiers = [
@@ -1741,60 +1740,118 @@ function PricingTiers() {
 			]
 		}
 	];
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((tier) => jsxs("div", {
+		children: tiers.map((tier) => jsxDEV("div", {
 			className: `flex flex-col rounded-lg border p-6 ${tier.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsx("h3", {
+				jsxDEV("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: tier.name
-				}),
-				jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 59,
+					columnNumber: 11
+				}, this),
+				jsxDEV("div", {
 					className: "my-4",
-					children: [jsx("span", {
+					children: [jsxDEV("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: tier.price
-					}), jsx("span", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 61,
+						columnNumber: 13
+					}, this), jsxDEV("span", {
 						className: "text-sm text-muted-foreground",
 						children: tier.period
-					})]
-				}),
-				jsx("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 64,
+						columnNumber: 13
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 60,
+					columnNumber: 11
+				}, this),
+				jsxDEV("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: tier.features.map((f) => jsxs("li", {
+					children: tier.features.map((f) => jsxDEV("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsx("span", {
+							jsxDEV("span", {
 								className: "text-primary",
 								children: "✓"
-							}),
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 72,
+								columnNumber: 17
+							}, this),
 							" ",
 							f
 						]
-					}, f))
-				}),
-				jsx("button", {
+					}, f, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 68,
+						columnNumber: 15
+					}, this))
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 66,
+					columnNumber: 11
+				}, this),
+				jsxDEV("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${tier.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: tier.name === t("enterprise") ? t("contactSales") : t("getStarted")
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 76,
+					columnNumber: 11
+				}, this)
 			]
-		}, tier.name))
-	});
+		}, tier.name, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 51,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 49,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(React.Suspense, {
+	return jsxDEV(React.Suspense, {
 		fallback: null,
-		children: jsx(IntlProvider, {
+		children: jsxDEV(IntlProvider, {
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 9,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

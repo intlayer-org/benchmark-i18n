@@ -1,5 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -56,12 +57,12 @@ var getLocaleFromDomain = (hostname, domains) => {
 var PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
 var LOCALES = ["en"];
 var resolveRoutingConfig = (options = {}) => ({
-	...options,
-	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
-	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
-	locales: options.locales ?? internationalization?.locales ?? LOCALES,
-	rewrite: options.rewrite ?? routing?.rewrite,
-	domains: options.domains ?? routing?.domains
+	defaultLocale: internationalization?.defaultLocale ?? "en",
+	mode: routing?.mode ?? "prefix-no-default",
+	locales: internationalization?.locales ?? LOCALES,
+	rewrite: routing?.rewrite,
+	domains: routing?.domains,
+	...options
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -779,6 +780,7 @@ var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const plainLoaders = dictionaryPromise;
 	return getDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, plainLoaders[localeTarget]?.()), localeTarget);
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app/src/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
 	const content$1 = useDictionaryDynamic(content, "pricing-tiers");
 	const tiers = [
@@ -822,56 +824,110 @@ function PricingTiers() {
 			]
 		}
 	];
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((t) => jsxs("div", {
+		children: tiers.map((t) => jsxDEV("div", {
 			className: `flex flex-col rounded-lg border p-6 ${t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsx("h3", {
+				jsxDEV("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: t.name
-				}),
-				jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 60,
+					columnNumber: 11
+				}, this),
+				jsxDEV("div", {
 					className: "my-4",
-					children: [jsx("span", {
+					children: [jsxDEV("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: t.price
-					}), jsx("span", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 62,
+						columnNumber: 13
+					}, this), jsxDEV("span", {
 						className: "text-sm text-muted-foreground",
 						children: t.period
-					})]
-				}),
-				jsx("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 65,
+						columnNumber: 13
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 61,
+					columnNumber: 11
+				}, this),
+				jsxDEV("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: t.features.map((f, i) => jsxs("li", {
+					children: t.features.map((f, i) => jsxDEV("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsx("span", {
+							jsxDEV("span", {
 								className: "text-primary",
 								children: "✓"
-							}),
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 73,
+								columnNumber: 17
+							}, this),
 							" ",
 							f
 						]
-					}, i))
-				}),
-				jsx("button", {
+					}, i, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 69,
+						columnNumber: 15
+					}, this))
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 67,
+					columnNumber: 11
+				}, this),
+				jsxDEV("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: t.name === content$1.j ? content$1.f : content$1.m
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 77,
+					columnNumber: 11
+				}, this)
 			]
-		}, t.name.value))
-	});
+		}, t.name.value, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 52,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 50,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(IntlayerProvider, {
+	return jsxDEV(IntlayerProvider, {
 		locale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app/src/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

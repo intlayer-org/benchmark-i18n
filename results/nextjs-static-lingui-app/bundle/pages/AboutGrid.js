@@ -1,5 +1,6 @@
 import { cloneElement, createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -273,42 +274,87 @@ This often happens when multiple instances of @lingui/react are installed (e.g. 
 		lingui
 	});
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/about/AboutGrid.tsx";
 function AboutGrid() {
 	const { i18n } = useLingui();
-	return jsxs("div", {
+	return jsxDEV("div", {
 		className: "grid gap-8 md:grid-cols-2",
-		children: [jsxs("div", {
+		children: [jsxDEV("div", {
 			className: "rounded-lg border border-border bg-card p-6",
-			children: [jsx("h2", {
+			children: [jsxDEV("h2", {
 				className: "mb-3 text-xl font-semibold text-foreground",
-				children: jsx(Trans, {
+				children: jsxDEV(Trans, {
 					id: "about-grid.whyThisExists",
 					message: "Why This Exists"
-				})
-			}), jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 13,
+					columnNumber: 11
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 12,
+				columnNumber: 9
+			}, this), jsxDEV("p", {
 				className: "text-sm text-muted-foreground",
-				children: jsx(Trans, {
+				children: jsxDEV(Trans, {
 					id: "about-grid.choosingAnI18nLibraryIs",
 					message: "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
-				})
-			})]
-		}), jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 16,
+					columnNumber: 11
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 15,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 11,
+			columnNumber: 7
+		}, this), jsxDEV("div", {
 			className: "rounded-lg border border-border bg-card p-6",
-			children: [jsx("h2", {
+			children: [jsxDEV("h2", {
 				className: "mb-3 text-xl font-semibold text-foreground",
-				children: jsx(Trans, {
+				children: jsxDEV(Trans, {
 					id: "about-grid.methodology",
 					message: "Methodology"
-				})
-			}), jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 24,
+					columnNumber: 11
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 23,
+				columnNumber: 9
+			}, this), jsxDEV("p", {
 				className: "text-sm text-muted-foreground",
-				children: jsx(Trans, {
+				children: jsxDEV(Trans, {
 					id: "about-grid.theSame10PageApp",
 					message: "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
-				})
-			})]
-		})]
-	});
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 27,
+					columnNumber: 11
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 26,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 22,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 10,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1729,6 +1775,7 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const messages = useMemo(() => getMessages(locale), [locale]);
@@ -1743,15 +1790,33 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		i18n,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 35,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/about/AboutGrid.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(AboutGrid, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(AboutGrid, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

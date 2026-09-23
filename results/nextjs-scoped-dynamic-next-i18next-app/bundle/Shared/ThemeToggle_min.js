@@ -1,5 +1,5 @@
 import { createContext as e, createElement as t, useCallback as n, useContext as r, useEffect as i, useLayoutEffect as a, useMemo as o, useRef as s, useState as c } from "react";
-import { jsx as l } from "react/jsx-runtime";
+import { jsxDEV as l } from "react/jsx-dev-runtime";
 import { useParams as u } from "next/navigation";
 var d = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), f = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
@@ -1512,7 +1512,8 @@ function Re({ i18n: e, defaultNS: n, children: r }) {
 	}), [e, n]);
 	return t(Ae.Provider, { value: i }, r);
 }
-function ze() {
+var ze = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/ThemeToggle.tsx";
+function Be() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
@@ -1521,10 +1522,10 @@ function Q(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function Be() {
+function Ve() {
 	let { t: e } = Le("shared"), [t, n] = c("auto");
 	i(() => {
-		let e = ze();
+		let e = Be();
 		n(e), Q(e);
 	}, []), i(() => {
 		if (t !== "auto") return;
@@ -1545,9 +1546,13 @@ function Be() {
 		title: a,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: e(t === "auto" ? "themeToggle.themeAuto" : t === "dark" ? "themeToggle.themeDark" : "themeToggle.themeLight")
-	});
+	}, void 0, !1, {
+		fileName: ze,
+		lineNumber: 77,
+		columnNumber: 5
+	}, this);
 }
-function Ve() {
+function He() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -1561,17 +1566,17 @@ function Ve() {
 		}
 	}
 }
-function He(e, t) {
+function Ue(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var Ue = (e, t, n) => {
+var We = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, We = [
+}, Ge = [
 	"about",
 	"blog",
 	"careers",
@@ -1584,19 +1589,19 @@ var Ue = (e, t, n) => {
 	"settings",
 	"shared",
 	"team"
-], Ge = "shared", Ke = [
+], Ke = "shared", qe = [
 	"__proto__",
 	"constructor",
 	"prototype"
-], qe = function(e, t) {
-	return !(typeof e != "string" || e.length > 128 || Ke.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
+], Je = function(e, t) {
+	return !(typeof e != "string" || e.length > 128 || qe.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
 };
 q.use(ke).use(function(e) {
 	return {
 		type: "backend",
 		init: function(e, t, n) {},
 		read: function(t, n, r) {
-			if (!qe(t, !1) || !qe(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
+			if (!Je(t, !1) || !Je(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
 			if (typeof e == "function") {
 				if (e.length < 3) {
 					try {
@@ -1615,7 +1620,7 @@ q.use(ke).use(function(e) {
 			r(null, e && e[t] && e[t][n]);
 		}
 	};
-}((e, t) => Ue(Object.assign({
+}((e, t) => We(Object.assign({
 	"./locales/de/about.json": () => import("../i18n/locales/de/about.json"),
 	"./locales/de/blog.json": () => import("../i18n/locales/de/blog.json"),
 	"./locales/de/careers.json": () => import("../i18n/locales/de/careers.json"),
@@ -1740,36 +1745,54 @@ q.use(ke).use(function(e) {
 	resources: {},
 	lng: "en",
 	fallbackLng: "en",
-	ns: We,
-	defaultNS: Ge,
+	ns: Ge,
+	defaultNS: Ke,
 	interpolation: { escapeValue: !1 },
 	react: { useSuspense: !1 }
 });
-var $ = q;
-function Je({ children: e, initialResources: t }) {
+var $ = q, Ye = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/AppProviders.tsx";
+function Xe({ children: e, initialResources: t }) {
 	let n = u().locale ?? "en", [r] = c(() => typeof performance < "u" ? performance.now() : 0);
 	return c(() => {
 		t && Object.entries(t).forEach(([e, t]) => {
 			$.hasResourceBundle(n, e) || $.addResourceBundle(n, e, t, !0, !0);
 		}), $.language !== n && $.changeLanguage(n);
 	}), a(() => {
-		He("AppRoot", r);
+		Ue("AppRoot", r);
 	}, [r]), i(() => {
 		document.documentElement.lang = n;
 	}, [n]), i(() => {
-		Ve();
+		He();
 	}, []), l(Re, {
 		i18n: $,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: Ye,
+		lineNumber: 56,
+		columnNumber: 10
+	}, this);
 }
-function Ye({ children: e }) {
-	return l(Je, { children: e });
+var Ze = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/scripts/Wrapper.tsx";
+function Qe({ children: e }) {
+	return l(Xe, { children: e }, void 0, !1, {
+		fileName: Ze,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
-function Xe() {
-	return l(Ye, { children: l(Be, {}) });
+var $e = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/ThemeToggle.wrapper.tsx";
+function et() {
+	return l(Qe, { children: l(Ve, {}, void 0, !1, {
+		fileName: $e,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $e,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { Xe as default };
+export { et as default };
 var e = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",

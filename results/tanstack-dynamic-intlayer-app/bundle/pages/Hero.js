@@ -1,5 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -56,12 +57,12 @@ var getLocaleFromDomain = (hostname, domains) => {
 var PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
 var LOCALES = ["en"];
 var resolveRoutingConfig = (options = {}) => ({
-	...options,
-	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
-	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
-	locales: options.locales ?? internationalization?.locales ?? LOCALES,
-	rewrite: options.rewrite ?? routing?.rewrite,
-	domains: options.domains ?? routing?.domains
+	defaultLocale: internationalization?.defaultLocale ?? "en",
+	mode: routing?.mode ?? "prefix-no-default",
+	locales: internationalization?.locales ?? LOCALES,
+	rewrite: routing?.rewrite,
+	domains: routing?.domains,
+	...options
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -790,43 +791,82 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/home/Hero.tsx";
 function Hero() {
 	const content$1 = useDictionaryDynamic(content, "hero");
 	usePerformanceMeasure(content$1.b.value);
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "mb-16 text-center",
 		children: [
-			jsx("h1", {
+			jsxDEV("h1", {
 				className: "mb-4 text-4xl font-bold tracking-tight text-foreground",
 				children: content$1.c
-			}),
-			jsx("p", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 10,
+				columnNumber: 7
+			}, this),
+			jsxDEV("p", {
 				className: "mx-auto max-w-2xl text-lg text-muted-foreground",
 				children: content$1.a
-			}),
-			jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 13,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "mt-8 flex justify-center gap-4",
-				children: [jsx("button", {
+				children: [jsxDEV("button", {
 					type: "button",
 					className: "rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: content$1.e
-				}), jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 15,
+					columnNumber: 9
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: content$1.d
-				})]
-			})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 19,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 14,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(IntlayerProvider, {
+	return jsxDEV(IntlayerProvider, {
 		locale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/home/Hero.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Hero, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Hero, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

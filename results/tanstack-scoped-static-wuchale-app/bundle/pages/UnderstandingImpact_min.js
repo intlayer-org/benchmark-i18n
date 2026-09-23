@@ -1,7 +1,11 @@
 import "react";
-import { Fragment as e, jsx as t, jsxs as n } from "react/jsx-runtime";
-var r = () => "";
-function i(e, t = [], n = 1) {
+import { Fragment as e, jsxDEV as t } from "react/jsx-dev-runtime";
+var n = () => "";
+n = (e, t) => {
+	let n = t[e];
+	return n == null ? `[i18n-404:${e}]` : `[i18n-400:${e}(${n})]`;
+};
+function r(e, t = [], n = 1) {
 	let r = "";
 	for (let i = n; i < e.length; i++) {
 		let n = e[i];
@@ -9,24 +13,24 @@ function i(e, t = [], n = 1) {
 	}
 	return r;
 }
-function a(e = { c: [] }, t = "") {
-	let n = (t) => {
-		let n = e.c[t];
-		return typeof n == "string" ? [n] : Array.isArray(n) ? n : [r(t, e.c)];
-	}, a = (e, t = []) => i(n(e), t, 0);
-	return a._ = e, a.l = t, a.c = n, a.x = i, a.t = (e, t, r) => {
-		let i = [""], a = [];
-		for (let e of n(t)) {
+function i(e = { c: [] }, t = "") {
+	let i = (t) => {
+		let r = e.c[t];
+		return typeof r == "string" ? [r] : Array.isArray(r) ? r : [n(t, e.c)];
+	}, a = (e, t = []) => r(i(e), t, 0);
+	return a._ = e, a.l = t, a.c = i, a.x = r, a.t = (e, t, n) => {
+		let r = [""], a = [];
+		for (let e of i(t)) {
 			if (typeof e == "string") {
-				i[i.length - 1] += e;
+				r[r.length - 1] += e;
 				continue;
 			}
-			a.push(r?.[e]), i.push("");
+			a.push(n?.[e]), r.push("");
 		}
-		return e(Object.assign(i, { raw: i }), ...a);
-	}, a.p = (t, n) => e.c[t]?.map((e) => typeof e == "string" ? e : i(e, n, 0)) ?? [], a;
+		return e(Object.assign(r, { raw: r }), ...a);
+	}, a.p = (t, n) => e.c[t]?.map((e) => typeof e == "string" ? e : r(e, n, 0)) ?? [], a;
 }
-function o(e) {
+function a(e) {
 	return {
 		get: (t) => e[t],
 		set: (t, n) => {
@@ -34,29 +38,29 @@ function o(e) {
 		}
 	};
 }
-var s = {}, c = a();
-function l(e, t, n, r) {
-	s[e] = {
+var o = {}, s = i();
+function c(e, t, n, r) {
+	o[e] = {
 		load: t,
 		catalogs: Array(n).fill(void 0),
-		collection: r ?? o([])
+		collection: r ?? a([])
 	};
-	for (let t = 0; t < n; t++) s[e].collection.set(t, c);
-	return (t = 0) => s[e].collection.get(t);
+	for (let t = 0; t < n; t++) o[e].collection.set(t, s);
+	return (t = 0) => o[e].collection.get(t);
 }
-function u(e) {
-	for (let t of Object.values(s)) for (let [n, r] of t.catalogs.entries()) t.collection.set(n, a(r, e));
+function l(e) {
+	for (let t of Object.values(o)) for (let [n, r] of t.catalogs.entries()) t.collection.set(n, i(r, e));
 }
-async function d(e, t = !0) {
+async function u(e, t = !0) {
 	let n = [], r = [];
-	for (let t of Object.values(s)) for (let i = 0; i < t.catalogs.length; i++) n.push(t.load(i, e)), r.push([i, t]);
+	for (let t of Object.values(o)) for (let i = 0; i < t.catalogs.length; i++) n.push(t.load(i, e)), r.push([i, t]);
 	for (let [e, t] of (await Promise.all(n)).entries()) {
 		let [n, i] = r[e];
 		i.catalogs[n] = t;
 	}
-	t && u(e);
+	t && l(e);
 }
-var f = {
+var d = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
 	fr: [() => import("./shared.0.fr.compiled-DDY-COJ8.js")],
@@ -67,100 +71,200 @@ var f = {
 	ja: [() => import("./shared.0.ja.compiled-CF_vYGhT.js")],
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
-}, p = l("home", (e, t) => f[t][e](), 1);
-function m({ n: e, x: t, t: n, a: r }, i) {
+}, f = c("home", (e, t) => d[t][e](), 1);
+function p({ n: e, x: t, t: n, a: r }, i) {
 	if (typeof t == "string") return t;
 	if (typeof t == "number") return !e || i > 0 ? r[t] : void 0;
 	let a = n[t[0]];
 	return a == null ? "i18n-404:tag" : a(t);
 }
-var h = (e) => e.x.map((t, n) => m({
+var m = (e) => e.x.map((t, n) => p({
 	...e,
 	x: t
-}, n));
+}, n)), h = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/home/UnderstandingImpact.tsx";
 function g() {
-	let e = p();
-	return n("section", {
+	let e = f();
+	return t("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
 			t("h2", {
 				className: "text-2xl font-bold text-foreground",
 				children: e(38)
-			}),
-			n("div", {
+			}, void 0, !1, {
+				fileName: h,
+				lineNumber: 10,
+				columnNumber: 7
+			}, this),
+			t("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
 					t("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: e(39)
-					}),
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 15,
+						columnNumber: 9
+					}, this),
 					t("p", {
 						className: "text-sm text-muted-foreground",
 						children: e(40)
-					}),
-					n("ul", {
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 18,
+						columnNumber: 9
+					}, this),
+					t("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							t("li", { children: e(41) }),
-							t("li", { children: e(42) }),
-							t("li", { children: e(43) })
+							t("li", { children: e(41) }, void 0, !1, {
+								fileName: h,
+								lineNumber: 22,
+								columnNumber: 11
+							}, this),
+							t("li", { children: e(42) }, void 0, !1, {
+								fileName: h,
+								lineNumber: 25,
+								columnNumber: 11
+							}, this),
+							t("li", { children: e(43) }, void 0, !1, {
+								fileName: h,
+								lineNumber: 28,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, !0, {
+						fileName: h,
+						lineNumber: 21,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			n("div", {
+			}, void 0, !0, {
+				fileName: h,
+				lineNumber: 14,
+				columnNumber: 7
+			}, this),
+			t("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
 					t("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: e(44)
-					}),
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 35,
+						columnNumber: 9
+					}, this),
 					t("p", {
 						className: "text-sm text-muted-foreground",
 						children: e(45)
-					}),
-					n("ul", {
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 38,
+						columnNumber: 9
+					}, this),
+					t("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							t("li", { children: t(h, {
+							t("li", { children: t(m, {
 								t: [(n) => t("strong", {
 									className: "text-foreground",
 									children: e.x(n)
-								}, "_0")],
+								}, "_0", !1, {
+									fileName: h,
+									lineNumber: 43,
+									columnNumber: 35
+								}, this)],
 								x: e.c(46)
-							}) }),
-							t("li", { children: t(h, {
+							}, void 0, !1, {
+								fileName: h,
+								lineNumber: 43,
+								columnNumber: 13
+							}, this) }, void 0, !1, {
+								fileName: h,
+								lineNumber: 42,
+								columnNumber: 11
+							}, this),
+							t("li", { children: t(m, {
 								t: [(n) => t("strong", {
 									className: "text-foreground",
 									children: e.x(n)
-								}, "_1")],
+								}, "_1", !1, {
+									fileName: h,
+									lineNumber: 45,
+									columnNumber: 35
+								}, this)],
 								x: e.c(47),
 								a: [" "]
-							}) }),
-							t("li", { children: t(h, {
+							}, void 0, !1, {
+								fileName: h,
+								lineNumber: 45,
+								columnNumber: 13
+							}, this) }, void 0, !1, {
+								fileName: h,
+								lineNumber: 44,
+								columnNumber: 11
+							}, this),
+							t("li", { children: t(m, {
 								t: [(n) => t("strong", {
 									className: "text-foreground",
 									children: e.x(n)
-								}, "_2")],
+								}, "_2", !1, {
+									fileName: h,
+									lineNumber: 47,
+									columnNumber: 35
+								}, this)],
 								x: e.c(48),
 								a: [" "]
-							}) })
+							}, void 0, !1, {
+								fileName: h,
+								lineNumber: 47,
+								columnNumber: 13
+							}, this) }, void 0, !1, {
+								fileName: h,
+								lineNumber: 46,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, !0, {
+						fileName: h,
+						lineNumber: 41,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			n("div", {
+			}, void 0, !0, {
+				fileName: h,
+				lineNumber: 34,
+				columnNumber: 7
+			}, this),
+			t("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [t("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: e(49)
-				}), t("p", {
+				}, void 0, !1, {
+					fileName: h,
+					lineNumber: 52,
+					columnNumber: 9
+				}, this), t("p", {
 					className: "text-sm text-muted-foreground",
 					children: e(50)
-				})]
-			})
+				}, void 0, !1, {
+					fileName: h,
+					lineNumber: 55,
+					columnNumber: 9
+				}, this)]
+			}, void 0, !0, {
+				fileName: h,
+				lineNumber: 51,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, !0, {
+		fileName: h,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
 var _ = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
@@ -174,7 +278,7 @@ var _ = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("about", (e, t) => _[t][e](), 1);
+c("about", (e, t) => _[t][e](), 1);
 var v = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -187,7 +291,7 @@ var v = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("blog", (e, t) => v[t][e](), 1);
+c("blog", (e, t) => v[t][e](), 1);
 var y = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -200,7 +304,7 @@ var y = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("careers", (e, t) => y[t][e](), 1);
+c("careers", (e, t) => y[t][e](), 1);
 var b = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -213,7 +317,7 @@ var b = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("contact", (e, t) => b[t][e](), 1);
+c("contact", (e, t) => b[t][e](), 1);
 var x = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -226,7 +330,7 @@ var x = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("faq", (e, t) => x[t][e](), 1);
+c("faq", (e, t) => x[t][e](), 1);
 var S = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -239,7 +343,7 @@ var S = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("pricing", (e, t) => S[t][e](), 1);
+c("pricing", (e, t) => S[t][e](), 1);
 var C = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -252,7 +356,7 @@ var C = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("products", (e, t) => C[t][e](), 1);
+c("products", (e, t) => C[t][e](), 1);
 var w = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -265,7 +369,7 @@ var w = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("route", (e, t) => w[t][e](), 1);
+c("route", (e, t) => w[t][e](), 1);
 var T = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -278,7 +382,7 @@ var T = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("settings", (e, t) => T[t][e](), 1);
+c("settings", (e, t) => T[t][e](), 1);
 var E = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -291,7 +395,7 @@ var E = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("shared", (e, t) => E[t][e](), 1);
+c("shared", (e, t) => E[t][e](), 1);
 var D = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -304,14 +408,29 @@ var D = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("team", (e, t) => D[t][e](), 1), d("en");
-function O({ children: n }) {
-	return t(e, { children: n });
+c("team", (e, t) => D[t][e](), 1);
+var O = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
+u("en");
+function k({ children: n }) {
+	return t(e, { children: n }, void 0, !1, {
+		fileName: O,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
-function k() {
-	return t(O, { children: t(g, {}) });
+var A = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/home/UnderstandingImpact.wrapper.tsx";
+function j() {
+	return t(k, { children: t(g, {}, void 0, !1, {
+		fileName: A,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: A,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { k as default };
+export { j as default };
 var e = [
 	"i18n Benchmark",
 	"Methodik",

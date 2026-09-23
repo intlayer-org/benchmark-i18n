@@ -1,6 +1,7 @@
 import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useLayoutEffect, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx } from "react/jsx-runtime";
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -12,33 +13,58 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/home/Hero.tsx";
 function Hero() {
 	usePerformanceMeasure("Hero");
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "mb-16 text-center",
 		children: [
-			jsx("h1", {
+			jsxDEV("h1", {
 				className: "mb-4 text-4xl font-bold tracking-tight text-foreground",
 				children: "i18n Benchmark"
-			}),
-			jsx("p", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 9,
+				columnNumber: 7
+			}, this),
+			jsxDEV("p", {
 				className: "mx-auto max-w-2xl text-lg text-muted-foreground",
 				children: "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
-			}),
-			jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 12,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "mt-8 flex justify-center gap-4",
-				children: [jsx("button", {
+				children: [jsxDEV("button", {
 					type: "button",
 					className: "rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: "View Results"
-				}), jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 18,
+					columnNumber: 9
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: "Methodology"
-				})]
-			})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 24,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 17,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -272,14 +298,28 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/home/Hero.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Hero, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Hero, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 import { t as logger } from "./logger-CWLzb-Ic.js";

@@ -1,11 +1,11 @@
 {
   "app": "vite-vue-intlayer-static",
   "locale": "en",
-  "timestamp": "2026-09-09T19:25:12.725Z",
+  "timestamp": "2026-09-09T03:53:46.609Z",
   "fingerprintCounts": {
     "locale": {
       "en": 7,
-      "fr": 6
+      "fr": 17
     },
     "page": {
       "home": 7,
@@ -67,15 +67,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/UnderstandingImpact-CmWnQ305.js",
-          "size": 24460,
-          "gzipSize": 11136,
-          "type": "js"
-        },
-        {
           "url": "/assets/ResultsTable-CkxZ8Cwj.js",
           "size": 2905,
           "gzipSize": 1489,
+          "type": "js"
+        },
+        {
+          "url": "/assets/UnderstandingImpact-CmWnQ305.js",
+          "size": 24460,
+          "gzipSize": 11136,
           "type": "js"
         }
       ],
@@ -335,14 +335,15 @@
           ]
         },
         "fr": {
-          "count": 2,
+          "count": 3,
           "found": [
             "une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "benchmark i18n — projet open-source. construit avec vue, vite et vue router."
+            "benchmark i18n — projet open-source. construit avec vue, vite et vue router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel."
           ]
         }
       },
-      "localeLeakagePercent": 50,
+      "localeLeakagePercent": 60,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -427,15 +428,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/CareersHeader-CZtE6abs.js",
-          "size": 2963,
-          "gzipSize": 1754,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-CPh6o03d.js",
           "size": 1970,
           "gzipSize": 1329,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersHeader-CZtE6abs.js",
+          "size": 2963,
+          "gzipSize": 1754,
           "type": "js"
         },
         {
@@ -460,14 +461,15 @@
           ]
         },
         "fr": {
-          "count": 2,
+          "count": 3,
           "found": [
             "une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "benchmark i18n — projet open-source. construit avec vue, vite et vue router."
+            "benchmark i18n — projet open-source. construit avec vue, vite et vue router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel."
           ]
         }
       },
-      "localeLeakagePercent": 50,
+      "localeLeakagePercent": 60,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -579,14 +581,15 @@
           ]
         },
         "fr": {
-          "count": 2,
+          "count": 3,
           "found": [
             "une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "benchmark i18n — projet open-source. construit avec vue, vite et vue router."
+            "benchmark i18n — projet open-source. construit avec vue, vite et vue router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel."
           ]
         }
       },
-      "localeLeakagePercent": 50,
+      "localeLeakagePercent": 60,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -671,15 +674,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/FAQHeader-DrAeDOqG.js",
-          "size": 1391,
-          "gzipSize": 955,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-CPh6o03d.js",
           "size": 1970,
           "gzipSize": 1329,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQHeader-DrAeDOqG.js",
+          "size": 1391,
+          "gzipSize": 955,
           "type": "js"
         },
         {
@@ -698,14 +701,15 @@
           ]
         },
         "fr": {
-          "count": 2,
+          "count": 3,
           "found": [
             "une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "benchmark i18n — projet open-source. construit avec vue, vite et vue router."
+            "benchmark i18n — projet open-source. construit avec vue, vite et vue router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel."
           ]
         }
       },
-      "localeLeakagePercent": 50,
+      "localeLeakagePercent": 60,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -817,14 +821,15 @@
           ]
         },
         "fr": {
-          "count": 2,
+          "count": 3,
           "found": [
             "une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "benchmark i18n — projet open-source. construit avec vue, vite et vue router."
+            "benchmark i18n — projet open-source. construit avec vue, vite et vue router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel."
           ]
         }
       },
-      "localeLeakagePercent": 50,
+      "localeLeakagePercent": 60,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -936,14 +941,25 @@
           ]
         },
         "fr": {
-          "count": 2,
+          "count": 13,
           "found": [
             "une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "benchmark i18n — projet open-source. construit avec vue, vite et vue router."
+            "benchmark i18n — projet open-source. construit avec vue, vite et vue router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
+            "des outils et services pour rationaliser votre flux de travail d'internationalisation.",
+            "lancez des benchmarks en local. configurations personnalisées et ci.",
+            "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark enterprise",
+            "on-premise avec sso, journaux d'audit, sla et support dédié.",
+            "assistant de migration",
+            "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
+            "contrôles automatiques : clés manquantes, pluriels, contexte.",
+            "optimiseur de bundle",
+            "analyse et optimise votre bundle i18n en production (tree-shaking, découpage)."
           ]
         }
       },
-      "localeLeakagePercent": 50,
+      "localeLeakagePercent": 86.66666666666667,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -1073,14 +1089,15 @@
           ]
         },
         "fr": {
-          "count": 2,
+          "count": 3,
           "found": [
             "une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "benchmark i18n — projet open-source. construit avec vue, vite et vue router."
+            "benchmark i18n — projet open-source. construit avec vue, vite et vue router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel."
           ]
         }
       },
-      "localeLeakagePercent": 50,
+      "localeLeakagePercent": 60,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -1192,14 +1209,15 @@
           ]
         },
         "fr": {
-          "count": 2,
+          "count": 3,
           "found": [
             "une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "benchmark i18n — projet open-source. construit avec vue, vite et vue router."
+            "benchmark i18n — projet open-source. construit avec vue, vite et vue router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel."
           ]
         }
       },
-      "localeLeakagePercent": 50,
+      "localeLeakagePercent": 60,
       "pageLeakage": {
         "home": {
           "count": 0,

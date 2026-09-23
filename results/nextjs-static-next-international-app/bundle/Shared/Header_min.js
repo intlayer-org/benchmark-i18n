@@ -1,37 +1,54 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
 import r from "next/link";
 import { useParams as i, usePathname as a, useRouter as o } from "next/navigation";
-import { jsx as s, jsxs as c } from "react/jsx-runtime";
-import { ChevronDown as l } from "lucide-react";
-var u = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), d = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as s } from "react/jsx-dev-runtime";
+import { ChevronDown as c } from "lucide-react";
+var l = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), u = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), f = (e) => /^https?:\/\//.test(e ?? "");
+}), d = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/Link.tsx", f = (e) => /^https?:\/\//.test(e ?? "");
 function p(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
 var m = ({ href: e, children: t, ...n }) => {
 	let a = i().locale ?? "en";
-	return e == null || typeof e != "string" || f(e) ? s(r, {
+	return e == null || typeof e != "string" ? s(r, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}) : s(r, {
+	}, void 0, !1, {
+		fileName: d,
+		lineNumber: 23,
+		columnNumber: 7
+	}, void 0) : f(e) ? s(r, {
+		href: e,
+		prefetch: !1,
+		...n,
+		children: t
+	}, void 0, !1, {
+		fileName: d,
+		lineNumber: 30,
+		columnNumber: 7
+	}, void 0) : s(r, {
 		href: p(e, a),
 		prefetch: !1,
 		...n,
 		children: t
-	});
-}, h = u((() => {})), g = u(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, s = Object.getPrototypeOf, c = Object.prototype.hasOwnProperty, l = Object.prototype.propertyIsEnumerable, u = (e, t, n) => t in e ? r(e, t, {
+	}, void 0, !1, {
+		fileName: d,
+		lineNumber: 36,
+		columnNumber: 5
+	}, void 0);
+}, h = l((() => {})), g = l(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, s = Object.getPrototypeOf, c = Object.prototype.hasOwnProperty, l = Object.prototype.propertyIsEnumerable, d = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
 		value: n
 	}) : e[t] = n, f = (e, t) => {
-		for (var n in t ||= {}) c.call(t, n) && u(e, n, t[n]);
-		if (o) for (var n of o(t)) l.call(t, n) && u(e, n, t[n]);
+		for (var n in t ||= {}) c.call(t, n) && d(e, n, t[n]);
+		if (o) for (var n of o(t)) l.call(t, n) && d(e, n, t[n]);
 		return e;
 	}, p = (e, t) => {
 		for (var n in t) r(e, n, {
@@ -49,7 +66,7 @@ var m = ({ href: e, children: t, ...n }) => {
 		enumerable: !0
 	}) : i, e)), _ = (e) => m(r({}, "__esModule", { value: !0 }), e), v = {};
 	p(v, { createI18nClient: () => V }), t.exports = _(v), h();
-	var y = d("next/navigation"), b = g(d("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => f(f({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	var y = u("next/navigation"), b = g(u("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => f(f({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -73,7 +90,7 @@ var m = ({ href: e, children: t, ...n }) => {
 			}, i));
 		};
 	}
-	var D = d("react"), O = d("react"), k = d("react");
+	var D = u("react"), O = u("react"), k = u("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -107,7 +124,7 @@ var m = ({ href: e, children: t, ...n }) => {
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = d("react");
+	var M = u("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -115,7 +132,7 @@ var m = ({ href: e, children: t, ...n }) => {
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = d("next/navigation");
+	var P = u("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -137,7 +154,7 @@ var m = ({ href: e, children: t, ...n }) => {
 			return e;
 		};
 	}
-	var L = d("next/navigation"), R = d("react"), z = "locale";
+	var L = u("next/navigation"), R = u("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -4874,31 +4891,31 @@ var y = v(_), b = v({
 function A() {
 	return k.useI18n();
 }
-var { useScopedI18n: j, I18nProviderClient: M, useChangeLocale: N, useCurrentLocale: P } = k;
-function F() {
+var { useScopedI18n: j, I18nProviderClient: M, useChangeLocale: N, useCurrentLocale: P } = k, F = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/ThemeToggle.tsx";
+function I() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 }
-function I(e) {
+function L(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function L() {
+function R() {
 	let t = A(), [r, i] = n("auto");
 	e(() => {
-		let e = F();
-		i(e), I(e);
+		let e = I();
+		i(e), L(e);
 	}, []), e(() => {
 		if (r !== "auto") return;
-		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => I("auto");
+		let e = window.matchMedia("(prefers-color-scheme: dark)"), t = () => L("auto");
 		return e.addEventListener("change", t), () => {
 			e.removeEventListener("change", t);
 		};
 	}, [r]);
 	function a() {
 		let e = r === "light" ? "dark" : r === "dark" ? "auto" : "light";
-		i(e), I(e), window.localStorage.setItem("theme", e);
+		i(e), L(e), window.localStorage.setItem("theme", e);
 	}
 	let o = t(r === "auto" ? "theme-toggle.themeModeAutoSystemClick" : r === "light" ? "theme-toggle.themeModeLightClick" : "theme-toggle.themeModeDarkClick");
 	return s("button", {
@@ -4908,9 +4925,13 @@ function L() {
 		title: o,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: t(r === "auto" ? "theme-toggle.themeAuto" : r === "dark" ? "theme-toggle.themeDark" : "theme-toggle.themeLight")
-	});
+	}, void 0, !1, {
+		fileName: F,
+		lineNumber: 77,
+		columnNumber: 5
+	}, this);
 }
-var R = [
+var z = [
 	"en",
 	"fr",
 	"es",
@@ -4921,15 +4942,15 @@ var R = [
 	"ja",
 	"ko",
 	"ru"
-], z = (e) => {
+], B = (e) => {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
 	} catch {
 		return e.toUpperCase();
 	}
-};
-function B() {
+}, V = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/LocaleSwitcher.tsx";
+function H() {
 	let e = i().locale ?? "en", t = a(), n = o(), r = (r) => {
 		let i = t.replace(`/${e}`, `/${r}`);
 		n.push(i);
@@ -4940,14 +4961,26 @@ function B() {
 			value: e,
 			onChange: (e) => r(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: R.map((e) => s("option", {
+			children: z.map((e) => s("option", {
 				value: e,
-				children: z(e)
-			}, e))
-		})
-	});
+				children: B(e)
+			}, e, !1, {
+				fileName: V,
+				lineNumber: 25,
+				columnNumber: 11
+			}, this))
+		}, void 0, !1, {
+			fileName: V,
+			lineNumber: 19,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: V,
+		lineNumber: 18,
+		columnNumber: 5
+	}, this);
 }
-function V(e) {
+function U(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), t(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
@@ -4957,10 +4990,11 @@ function V(e) {
 		}
 	}, [e]);
 }
-function H() {
+var W = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/Header.tsx";
+function G() {
 	let e = A();
-	V("Header");
-	let [t, r] = n(!1), o = i(), u = a(), d = o.locale ?? "en", f = [
+	U("Header");
+	let [t, r] = n(!1), o = i(), l = a(), u = o.locale ?? "en", d = [
 		{
 			href: "/products",
 			label: e("header.products")
@@ -4996,63 +5030,107 @@ function H() {
 	];
 	return s("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: c("nav", {
+		children: s("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [c("div", {
+			children: [s("div", {
 				className: "flex items-center gap-8",
 				children: [s(m, {
 					href: "/",
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Bench"
-				}), c("div", {
+				}, void 0, !1, {
+					fileName: W,
+					lineNumber: 44,
+					columnNumber: 11
+				}, this), s("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
 						s(m, {
 							href: "/",
-							className: `nav-link${((e) => u === p(e, d))("/") ? " is-active" : ""}`,
+							className: `nav-link${((e) => l === p(e, u))("/") ? " is-active" : ""}`,
 							children: e("header.home")
-						}),
+						}, void 0, !1, {
+							fileName: W,
+							lineNumber: 52,
+							columnNumber: 13
+						}, this),
 						s(m, {
 							href: "/about",
 							className: `nav-link${((e) => {
-								let t = p(e, d);
-								return u.startsWith(t) && (e !== "/" || u === t);
+								let t = p(e, u);
+								return l.startsWith(t) && (e !== "/" || l === t);
 							})("/about") ? " is-active" : ""}`,
 							children: e("footer.methodology")
-						}),
-						c("div", {
+						}, void 0, !1, {
+							fileName: W,
+							lineNumber: 58,
+							columnNumber: 13
+						}, this),
+						s("div", {
 							className: "relative",
-							children: [c("button", {
+							children: [s("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => r(!0),
 								onMouseLeave: () => r(!1),
 								onClick: () => r(!t),
-								children: [e("header.mockPages"), s(l, {
+								children: [e("header.mockPages"), s(c, {
 									size: 14,
 									className: `transition-transform ${t ? "rotate-180" : ""}`
-								})]
-							}), t && s("div", {
+								}, void 0, !1, {
+									fileName: W,
+									lineNumber: 74,
+									columnNumber: 17
+								}, this)]
+							}, void 0, !0, {
+								fileName: W,
+								lineNumber: 66,
+								columnNumber: 15
+							}, this), t && s("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => r(!0),
 								onMouseLeave: () => r(!1),
 								children: s("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: f.map((e) => s(m, {
+									children: d.map((e) => s(m, {
 										href: e.href,
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => r(!1),
 										children: e.label
-									}, e.href))
-								})
-							})]
-						})
+									}, e.href, !1, {
+										fileName: W,
+										lineNumber: 88,
+										columnNumber: 23
+									}, this))
+								}, void 0, !1, {
+									fileName: W,
+									lineNumber: 86,
+									columnNumber: 19
+								}, this)
+							}, void 0, !1, {
+								fileName: W,
+								lineNumber: 81,
+								columnNumber: 17
+							}, this)]
+						}, void 0, !0, {
+							fileName: W,
+							lineNumber: 65,
+							columnNumber: 13
+						}, this)
 					]
-				})]
-			}), c("div", {
+				}, void 0, !0, {
+					fileName: W,
+					lineNumber: 51,
+					columnNumber: 11
+				}, this)]
+			}, void 0, !0, {
+				fileName: W,
+				lineNumber: 43,
+				columnNumber: 9
+			}, this), s("div", {
 				className: "flex items-center gap-4",
 				children: [
-					c("a", {
+					s("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
@@ -5060,7 +5138,11 @@ function H() {
 						children: [s("span", {
 							className: "sr-only",
 							children: e("header.goToGithub")
-						}), s("svg", {
+						}, void 0, !1, {
+							fileName: W,
+							lineNumber: 111,
+							columnNumber: 13
+						}, this), s("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
@@ -5068,17 +5150,49 @@ function H() {
 							children: s("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							})
-						})]
-					}),
-					s(B, {}),
-					s(L, {})
+							}, void 0, !1, {
+								fileName: W,
+								lineNumber: 113,
+								columnNumber: 15
+							}, this)
+						}, void 0, !1, {
+							fileName: W,
+							lineNumber: 112,
+							columnNumber: 13
+						}, this)]
+					}, void 0, !0, {
+						fileName: W,
+						lineNumber: 105,
+						columnNumber: 11
+					}, this),
+					s(H, {}, void 0, !1, {
+						fileName: W,
+						lineNumber: 119,
+						columnNumber: 11
+					}, this),
+					s(R, {}, void 0, !1, {
+						fileName: W,
+						lineNumber: 120,
+						columnNumber: 11
+					}, this)
 				]
-			})]
-		})
-	});
+			}, void 0, !0, {
+				fileName: W,
+				lineNumber: 104,
+				columnNumber: 9
+			}, this)]
+		}, void 0, !0, {
+			fileName: W,
+			lineNumber: 42,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: W,
+		lineNumber: 41,
+		columnNumber: 5
+	}, this);
 }
-function U() {
+function K() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -5092,32 +5206,50 @@ function U() {
 		}
 	}
 }
-function W(e, t) {
+function q(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function G({ children: r, locale: i }) {
+var J = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/AppProviders.tsx";
+function Y({ children: r, locale: i }) {
 	let [a] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		W("AppRoot", a);
+		q("AppRoot", a);
 	}, [a]), e(() => {
 		document.documentElement.lang = i;
 	}, [i]), e(() => {
-		U();
+		K();
 	}, []), s(M, {
 		locale: i,
 		children: r
-	});
+	}, void 0, !1, {
+		fileName: J,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var K = "en";
-function q({ children: e }) {
-	return s(G, {
-		locale: K,
+var X = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/scripts/Wrapper.tsx", Z = "en";
+function Q({ children: e }) {
+	return s(Y, {
+		locale: Z,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: X,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function J() {
-	return s(q, { children: s(H, {}) });
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/Header.wrapper.tsx";
+function ee() {
+	return s(Q, { children: s(G, {}, void 0, !1, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { J as default };
+export { ee as default };

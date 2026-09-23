@@ -1,10 +1,10 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsx as r, jsxs as i } from "react/jsx-runtime";
-var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), o = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as r } from "react/jsx-dev-runtime";
+var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), s = a((() => {})), c = (0, a(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, c = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
+}), o = i((() => {})), s = (0, i(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, s = Object.getOwnPropertyNames, c = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
@@ -18,18 +18,18 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			get: t[n],
 			enumerable: !0
 		});
-	}, h = (e, t, n, o) => {
-		if (t && typeof t == "object" || typeof t == "function") for (let s of a(t)) !u.call(e, s) && s !== n && r(e, s, {
-			get: () => t[s],
-			enumerable: !(o = i(t, s)) || o.enumerable
+	}, h = (e, t, n, a) => {
+		if (t && typeof t == "object" || typeof t == "function") for (let o of s(t)) !u.call(e, o) && o !== n && r(e, o, {
+			get: () => t[o],
+			enumerable: !(a = i(t, o)) || a.enumerable
 		});
 		return e;
 	}, g = (e, t, i) => (i = e == null ? {} : n(l(e)), h(t || !e || !e.__esModule ? r(i, "default", {
 		value: e,
 		enumerable: !0
 	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), s();
-	var y = o("next/navigation"), b = g(o("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	m(v, { createI18nClient: () => V }), t.exports = _(v), o();
+	var y = a("next/navigation"), b = g(a("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -53,7 +53,7 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			}, i));
 		};
 	}
-	var D = o("react"), O = o("react"), k = o("react");
+	var D = a("react"), O = a("react"), k = a("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -87,7 +87,7 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = o("react");
+	var M = a("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -95,7 +95,7 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = o("next/navigation");
+	var P = a("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -117,7 +117,7 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return e;
 		};
 	}
-	var L = o("next/navigation"), R = o("react"), z = "locale";
+	var L = a("next/navigation"), R = a("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -151,37 +151,65 @@ var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	ja: () => import("./ja-DqPSQzIN.js"),
 	ko: () => import("./ko-D6aZpc6n.js"),
 	ru: () => import("./ru-DTmdo1G_.js")
-}), l = c.useScopedI18n, { I18nProviderClient: u, useChangeLocale: d, useCurrentLocale: f } = c;
+}), c = s.useScopedI18n, { I18nProviderClient: l, useChangeLocale: u, useCurrentLocale: d } = s, f = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/pages/home/ResultsTable.tsx";
 function p() {
-	let e = l("results-table");
-	return i("section", { children: [r("h2", {
+	let e = c("results-table");
+	return r("section", { children: [r("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: e("sampleResults")
-	}), r("div", {
+	}, void 0, !1, {
+		fileName: f,
+		lineNumber: 31,
+		columnNumber: 7
+	}, this), r("div", {
 		className: "overflow-x-auto rounded-lg border border-border",
-		children: i("table", {
+		children: r("table", {
 			className: "w-full text-sm",
 			children: [r("thead", {
 				className: "bg-muted",
-				children: i("tr", { children: [
+				children: r("tr", { children: [
 					r("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: "Library"
-					}),
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 38,
+						columnNumber: 15
+					}, this),
 					r("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: e("bundleSize")
-					}),
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 41,
+						columnNumber: 15
+					}, this),
 					r("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: e("lookupTime")
-					}),
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 44,
+						columnNumber: 15
+					}, this),
 					r("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: e("lazyLoading")
-					})
-				] })
-			}), r("tbody", { children: [
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 47,
+						columnNumber: 15
+					}, this)
+				] }, void 0, !0, {
+					fileName: f,
+					lineNumber: 37,
+					columnNumber: 13
+				}, this)
+			}, void 0, !1, {
+				fileName: f,
+				lineNumber: 36,
+				columnNumber: 11
+			}, this), r("tbody", { children: [
 				{
 					lib: "react-i18next",
 					size: "42.3 kB",
@@ -206,29 +234,65 @@ function p() {
 					time: "0.05ms",
 					lazy: "Built-in"
 				}
-			].map((e) => i("tr", {
+			].map((e) => r("tr", {
 				className: "border-t border-border",
 				children: [
 					r("td", {
 						className: "px-4 py-3 font-medium text-foreground",
 						children: e.lib
-					}),
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 55,
+						columnNumber: 17
+					}, this),
 					r("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: e.size
-					}),
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 58,
+						columnNumber: 17
+					}, this),
 					r("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: e.time
-					}),
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 59,
+						columnNumber: 17
+					}, this),
 					r("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: e.lazy
-					})
+					}, void 0, !1, {
+						fileName: f,
+						lineNumber: 60,
+						columnNumber: 17
+					}, this)
 				]
-			}, e.lib)) })]
-		})
-	})] });
+			}, e.lib, !0, {
+				fileName: f,
+				lineNumber: 54,
+				columnNumber: 15
+			}, this)) }, void 0, !1, {
+				fileName: f,
+				lineNumber: 52,
+				columnNumber: 11
+			}, this)]
+		}, void 0, !0, {
+			fileName: f,
+			lineNumber: 35,
+			columnNumber: 9
+		}, this)
+	}, void 0, !1, {
+		fileName: f,
+		lineNumber: 34,
+		columnNumber: 7
+	}, this)] }, void 0, !0, {
+		fileName: f,
+		lineNumber: 30,
+		columnNumber: 5
+	}, this);
 }
 function m() {
 	if (!(typeof window > "u")) {
@@ -249,7 +313,8 @@ function h(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function g({ children: i, locale: a }) {
+var g = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
+function _({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
 		h("AppRoot", o);
@@ -257,22 +322,39 @@ function g({ children: i, locale: a }) {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
 		m();
-	}, []), r(u, {
+	}, []), r(l, {
 		locale: a,
 		children: i
-	});
+	}, void 0, !1, {
+		fileName: g,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var _ = "en";
-function v({ children: e }) {
-	return r(g, {
-		locale: _,
+var v = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx", y = "en";
+function b({ children: e }) {
+	return r(_, {
+		locale: y,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: v,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function y() {
-	return r(v, { children: r(p, {}) });
+var x = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/pages/home/ResultsTable.wrapper.tsx";
+function S() {
+	return r(b, { children: r(p, {}, void 0, !1, {
+		fileName: x,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: x,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { y as default };
+export { S as default };
 import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../../../messages/de/about.json";
 import r from "../../../messages/de/blog.json";

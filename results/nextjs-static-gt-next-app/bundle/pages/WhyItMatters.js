@@ -1,5 +1,6 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
+import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3908,7 +3909,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => false) === true) return "development";
+	if (readImportMetaEnv(() => true) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6018,48 +6019,125 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/components/pages/home/WhyItMatters.tsx";
 function WhyItMatters() {
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "mb-16",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-6 text-2xl font-bold text-foreground",
-			children: jsx(a$2, { children: "Why These Metrics Matter" })
-		}), jsxs("div", {
+			children: jsxDEV(a$2, { children: "Why These Metrics Matter" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 7,
+				columnNumber: 9
+			}, this)
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 6,
+			columnNumber: 7
+		}, this), jsxDEV("div", {
 			className: "grid gap-6 md:grid-cols-3",
 			children: [
-				jsxs("div", {
+				jsxDEV("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsx("h3", {
+					children: [jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: jsx(a$2, { children: "Bundle Size" })
-					}), jsx("p", {
+						children: jsxDEV(a$2, { children: "Bundle Size" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 12,
+							columnNumber: 13
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 11,
+						columnNumber: 11
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
-						children: jsx(a$2, { children: "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves." })
-					})]
-				}),
-				jsxs("div", {
+						children: jsxDEV(a$2, { children: "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves." }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 15,
+							columnNumber: 13
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 14,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 10,
+					columnNumber: 9
+				}, this),
+				jsxDEV("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsx("h3", {
+					children: [jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: jsx(a$2, { children: "Rendering & Hydration" })
-					}), jsx("p", {
+						children: jsxDEV(a$2, { children: "Rendering & Hydration" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 26,
+							columnNumber: 13
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 25,
+						columnNumber: 11
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
-						children: jsx(a$2, { children: "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)." })
-					})]
-				}),
-				jsxs("div", {
+						children: jsxDEV(a$2, { children: "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)." }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 29,
+							columnNumber: 13
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 28,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 24,
+					columnNumber: 9
+				}, this),
+				jsxDEV("div", {
 					className: "rounded-lg border border-border bg-card p-6",
-					children: [jsx("h3", {
+					children: [jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
-						children: jsx(a$2, { children: "Dynamic Loading" })
-					}), jsx("p", {
+						children: jsxDEV(a$2, { children: "Dynamic Loading" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 41,
+							columnNumber: 13
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 40,
+						columnNumber: 11
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
-						children: jsx(a$2, { children: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential." })
-					})]
-				})
+						children: jsxDEV(a$2, { children: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential." }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 44,
+							columnNumber: 13
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 43,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 39,
+					columnNumber: 9
+				}, this)
 			]
-		})]
-	});
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 9,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 5,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6083,6 +6161,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6094,19 +6173,41 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment$1, { children });
+	return jsxDEV(Fragment$1, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 33,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(BrowserGTProvider, {
+	return jsxDEV(BrowserGTProvider, {
 		locale,
-		children: jsx(AppProviders, {
+		children: jsxDEV(AppProviders, {
 			locale,
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 14,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 13,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/components/pages/home/WhyItMatters.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(WhyItMatters, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(WhyItMatters, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var EventEmitter = class {
 	_events = /* @__PURE__ */ new Map();
 	on(event, listener) {
@@ -996,10 +997,9 @@ var formatArgument = (value, type, style, locale) => {
 	} catch {}
 	return String(value);
 };
-var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (match, path, type, style) => {
+var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{}]+?)\s*\}\}/g, (match, path) => {
 	const value = resolveValuePath(values, path);
-	if (value === void 0) return match;
-	return type ? formatArgument(value, type, style, locale) : String(value);
+	return value === void 0 ? match : String(value);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
 	if (value === void 0) return match;
@@ -1053,17 +1053,15 @@ var resolveMessageNode = (node, values = {}, locale = "en") => {
 	}
 	return node;
 };
-var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
-	const resolved = resolveMessageNode(node, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: (message) => icuToIntlayerFormatter(message),
+	i18next: (message) => i18nextToIntlayerFormatter(message),
+	"vue-i18n": (message) => vueI18nToIntlayerFormatter(message)
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => {
+	const resolved = resolveMessageNode(typeof message === "string" ? DIALECT_FORMATTERS[dialect](message) : message, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
-var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var DIALECT_FORMATTERS = {
-	icu: icuToIntlayerFormatter,
-	i18next: i18nextToIntlayerFormatter,
-	"vue-i18n": vueI18nToIntlayerFormatter
-};
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var I18nClass = class extends EventEmitter {
 	_locale;
 	_locales;
@@ -1691,8 +1689,8 @@ var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent,
 		children
 	]
 });
-var { defaultLocale, locales: availableLocales } = internationalization ?? {};
 var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
+	const { defaultLocale, locales: availableLocales } = internationalization ?? {};
 	const { locale, setLocale: setLocaleState, isCookieEnabled: isCookieEnabledContext } = useContext(IntlayerClientContext) ?? {};
 	return {
 		locale,
@@ -1759,6 +1757,7 @@ var setupI18n = (params) => new I18nClass({
 	registry: createRegistryResolver()
 });
 setupI18n({ locale: "en" });
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/pages/team/TeamGrid.tsx";
 function TeamGrid() {
 	const { i18n } = useLingui();
 	const members = [
@@ -1847,44 +1846,82 @@ function TeamGrid() {
 			})
 		}
 	];
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: members.map((m) => jsxs("div", {
+		children: members.map((m) => jsxDEV("div", {
 			className: "rounded-lg border border-border bg-card p-6 text-center",
 			children: [
-				jsx("div", {
+				jsxDEV("div", {
 					className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 					children: m.name.split(" ").map((n) => n[0]).join("")
-				}),
-				jsx("h3", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 76,
+					columnNumber: 11
+				}, this),
+				jsxDEV("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: m.name
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 82,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "mb-2 text-xs font-medium text-primary",
 					children: m.role
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 83,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "text-sm text-muted-foreground",
 					children: m.bio
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 84,
+					columnNumber: 11
+				}, this)
 			]
-		}, m.name))
-	});
+		}, m.name, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 72,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 70,
+		columnNumber: 5
+	}, this);
 }
 function initLingui(locale, _messages) {
 	const lingui = setupI18n();
 	lingui.activate(locale);
 	return lingui;
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const i18n = useMemo(() => initLingui("en"), []);
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		i18n,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/pages/team/TeamGrid.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(TeamGrid, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(TeamGrid, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

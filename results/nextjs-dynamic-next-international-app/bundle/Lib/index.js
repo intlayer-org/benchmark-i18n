@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
@@ -210,31 +210,40 @@ var client = (0, __commonJSMin(((exports, module) => {
 	}
 	0 && (module.exports = { createI18nClient });
 }))().createI18nClient)({
-	en: () => import("../locales/en.ts"),
-	fr: () => import("../locales/fr.ts"),
-	es: () => import("../locales/es.ts"),
-	de: () => import("../locales/de.ts"),
-	it: () => import("../locales/it.ts"),
-	pt: () => import("../locales/pt.ts"),
-	zh: () => import("../locales/zh.ts"),
-	ja: () => import("../locales/ja.ts"),
-	ko: () => import("../locales/ko.ts"),
-	ru: () => import("../locales/ru.ts")
+	en: () => import("./en-DdZxHrkY.js"),
+	fr: () => import("./fr-BH690cXy.js"),
+	es: () => import("./es-CEkpLbnV.js"),
+	de: () => import("./de-CzaYaEfU.js"),
+	it: () => import("./it-zwHlYiDM.js"),
+	pt: () => import("./pt-DwF7iRTi.js"),
+	zh: () => import("./zh-CDC8y4Nn.js"),
+	ja: () => import("./ja-C27OBTzI.js"),
+	ko: () => import("./ko-CY7_P8I0.js"),
+	ru: () => import("./ru-BhWOgESx.js")
 });
 function useI18n() {
 	return client.useI18n();
 }
 var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
 	useI18n();
 	return null;
 };
 function EmptyComponent() {
 	const locale = useCurrentLocale();
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
-		children: jsx(TestComponent, {})
-	});
+		children: jsxDEV(TestComponent, {}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 15,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 14,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -258,6 +267,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -269,19 +279,87 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/EmptyComponent.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(EmptyComponent, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
+import messages from "../messages/de.json";
+var de_default = flattenMessages(messages);
+export { de_default as default };
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
+import messages from "../messages/en.json";
+var en_default = flattenMessages(messages);
+export { en_default as default };
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
+import messages from "../messages/es.json";
+var es_default = flattenMessages(messages);
+export { es_default as default };
+function flattenMessages(obj, prefix = "") {
+	const result = {};
+	for (const key in obj) {
+		const fullKey = prefix ? `${prefix}.${key}` : key;
+		if (typeof obj[key] === "object" && obj[key] !== null) Object.assign(result, flattenMessages(obj[key], fullKey));
+		else result[fullKey] = String(obj[key]);
+	}
+	return result;
+}
+export { flattenMessages as t };
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
+import messages from "../messages/fr.json";
+var fr_default = flattenMessages(messages);
+export { fr_default as default };
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
+import messages from "../messages/it.json";
+var it_default = flattenMessages(messages);
+export { it_default as default };
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
+import messages from "../messages/ja.json";
+var ja_default = flattenMessages(messages);
+export { ja_default as default };
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
+import messages from "../messages/ko.json";
+var ko_default = flattenMessages(messages);
+export { ko_default as default };
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
+import messages from "../messages/pt.json";
+var pt_default = flattenMessages(messages);
+export { pt_default as default };
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
+import messages from "../messages/ru.json";
+var ru_default = flattenMessages(messages);
+export { ru_default as default };
+import { t as flattenMessages } from "./flatten-C1nycfDa.js";
+import messages from "../messages/zh.json";
+var zh_default = flattenMessages(messages);
+export { zh_default as default };

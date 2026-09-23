@@ -1,6 +1,11 @@
 import "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var onInvalidFunc = () => "";
+onInvalidFunc = (i, c) => {
+	const item = c[i];
+	if (item == null) return `[i18n-404:${i}]`;
+	return `[i18n-400:${i}(${item})]`;
+};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -89,6 +94,7 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("team", loadCatalog$11, 1);
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/team/TeamGrid.tsx";
 function TeamGrid() {
 	const _w_runtime_ = getRuntimeRx();
 	const members = [
@@ -123,30 +129,54 @@ function TeamGrid() {
 			bio: _w_runtime_(224)
 		}
 	];
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: members.map((m) => jsxs("div", {
+		children: members.map((m) => jsxDEV("div", {
 			className: "rounded-lg border border-border bg-card p-6 text-center",
 			children: [
-				jsx("div", {
+				jsxDEV("div", {
 					className: "mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground",
 					children: m.name.split(" ").map((n) => n[0]).join("")
-				}),
-				jsx("h3", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 48,
+					columnNumber: 11
+				}, this),
+				jsxDEV("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: m.name
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 54,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "mb-2 text-xs font-medium text-primary",
 					children: m.role
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 55,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "text-sm text-muted-foreground",
 					children: m.bio
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 56,
+					columnNumber: 11
+				}, this)
 			]
-		}, m.name))
-	});
+		}, m.name, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 44,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 42,
+		columnNumber: 5
+	}, this);
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -324,12 +354,26 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("shared", loadCatalog, 1);
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/team/TeamGrid.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(TeamGrid, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(TeamGrid, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var c = [

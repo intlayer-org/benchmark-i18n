@@ -1,6 +1,6 @@
 import e, { createContext as t, useContext as n, useEffect as r, useLayoutEffect as i, useMemo as a, useState as o } from "react";
 import { useRouter as s } from "next/router";
-import { Fragment as c, jsx as l } from "react/jsx-runtime";
+import { Fragment as c, jsxDEV as l } from "react/jsx-dev-runtime";
 import u from "../locales/en.json";
 import d from "../locales/fr.json";
 import f from "../locales/es.json";
@@ -213,18 +213,26 @@ function B(t) {
 function V() {
 	return typeof window > "u" ? {} : window.__NEXT_DATA__?.props?.__namespaces || {};
 }
-var H = () => {
+var H = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/scripts/EmptyComponent.tsx", U = () => {
 	let { t: e } = L("common");
 	return null;
 };
-function U() {
+function W() {
 	return l(B, {
 		lang: "en",
 		namespaces: {},
-		children: l(H, {})
-	});
+		children: l(U, {}, void 0, !1, {
+			fileName: H,
+			lineNumber: 16,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: H,
+		lineNumber: 15,
+		columnNumber: 5
+	}, this);
 }
-var W = {
+var G = {
 	en: u,
 	fr: d,
 	es: f,
@@ -235,7 +243,7 @@ var W = {
 	ja: _,
 	ko: v,
 	ru: y
-}, G = {
+}, K = {
 	locales: [
 		"en",
 		"fr",
@@ -252,9 +260,9 @@ var W = {
 	keySeparator: !1,
 	nsSeparator: !1,
 	pages: { "*": ["common"] },
-	loadLocaleFrom: async (e) => W[e]
+	loadLocaleFrom: async (e) => G[e]
 };
-function K() {
+function q() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -268,27 +276,33 @@ function K() {
 		}
 	}
 }
-function q(e, t) {
+function J(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function J({ children: e, locale: t }) {
+var Y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/components/AppProviders.tsx";
+function X({ children: e, locale: t }) {
 	let [n] = o(() => typeof performance < "u" ? performance.now() : 0);
 	return i(() => {
-		q("AppRoot", n);
+		J("AppRoot", n);
 	}, [n]), r(() => {
 		document.documentElement.lang = t;
 	}, [t]), r(() => {
-		K();
-	}, []), l(c, { children: e });
+		q();
+	}, []), l(c, { children: e }, void 0, !1, {
+		fileName: Y,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
-function Y({ children: e }) {
+var Z = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/scripts/Wrapper.tsx";
+function Q({ children: e }) {
 	let [t, n] = o({}), [i, a] = o(!1);
 	return r(() => {
 		(async () => {
 			try {
-				let e = await G.loadLocaleFrom?.("en", "common");
+				let e = await K.loadLocaleFrom?.("en", "common");
 				n(e ?? {}), a(!0);
 			} catch (e) {
 				console.error("Failed to load translations:", e), a(!0);
@@ -297,13 +311,30 @@ function Y({ children: e }) {
 	}, ["en"]), i ? l(B, {
 		lang: "en",
 		namespaces: { common: t },
-		children: l(J, {
+		children: l(X, {
 			locale: "en",
 			children: e
-		})
-	}) : null;
+		}, void 0, !1, {
+			fileName: Z,
+			lineNumber: 37,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: Z,
+		lineNumber: 36,
+		columnNumber: 5
+	}, this) : null;
 }
-function X() {
-	return l(Y, { children: l(U, {}) });
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-translate-app/scripts/EmptyComponent.wrapper.tsx";
+function ee() {
+	return l(Q, { children: l(W, {}, void 0, !1, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { X as default };
+export { ee as default };

@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, watch } from "vue";
 var settings_header_default = {
 	key: "settings-header",
 	content: {
@@ -239,8 +239,7 @@ var getBasePlugins = (locale, fallback = true) => [
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
-});
-var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
+}), getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 	const props = {
 		dictionaryKey: dictionary.key,
 		dictionaryPath: dictionary.filePath,
@@ -248,8 +247,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-};
-var b$1 = {
+}, b$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { children: n, ...r }) => {
@@ -271,12 +269,7 @@ var b$1 = {
 		}
 		return markRaw(c);
 	}
-};
-var S = fallbackPlugin;
-var w = fallbackPlugin;
-var T = fallbackPlugin;
-var E = /* @__PURE__ */ new Map();
-var D = (e, t = !0) => {
+}, S = fallbackPlugin, w = fallbackPlugin, T = fallbackPlugin, E = /* @__PURE__ */ new Map(), D = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (E.has(n)) return E.get(n);
 	let r = [
@@ -292,14 +285,8 @@ var D = (e, t = !0) => {
 		T
 	];
 	return E.set(n, r), r;
-};
-var n = (n, r) => getDictionary(n, r, D(r));
-var i = Symbol("intlayer");
-var m = (e, t) => t.reduce((e, t) => e?.[t], e);
-var h$1 = (e) => typeof e == "object" && !!e;
-var g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e);
-var _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e;
-var v = (e) => markRaw(defineComponent({
+}, n = (n, r) => getDictionary(n, r, D(r)), i = Symbol("intlayer");
+var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "object" && !!e, g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e), _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, v = (e) => markRaw(defineComponent({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -307,8 +294,7 @@ var v = (e) => markRaw(defineComponent({
 			return t == null ? null : g(t) ? h(t) : Array.isArray(t) ? h("span", t) : t;
 		};
 	}
-}));
-var y = (e) => new Proxy({}, {
+})), y = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -330,8 +316,7 @@ var y = (e) => new Proxy({}, {
 			configurable: !0
 		};
 	}
-});
-var b = (r, a) => {
+}), b = (r, a) => {
 	let c = getCurrentInstance() ? inject(i) : void 0, b = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), x = computed(() => (a === void 0 ? void 0 : toValue(a)) ?? b.value), S = shallowRef({});
 	watch([() => toValue(r), () => x.value], ([t, n$2]) => {
 		S.value = n(t, n$2);
@@ -387,29 +372,52 @@ var mock_banner_default = {
 		}
 	}
 };
-var _hoisted_1$1 = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" };
-var MockBanner_default = defineComponent({
+var MockBanner_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "MockBanner",
-	setup(__props) {
+	setup(__props, { expose: __expose }) {
+		__expose();
 		const { a: message } = b(mock_banner_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$1, toDisplayString(unref(message)), 1);
+		const __returned__ = { message };
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+var _hoisted_1$1 = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" };
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1$1, toDisplayString($setup.message), 1);
+}
+var MockBanner_default = _plugin_vue_export_helper_default(MockBanner_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/MockBanner.vue"]]);
+var SettingsHeader_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "SettingsHeader",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const __returned__ = {
+			content: b(settings_header_default),
+			MockBanner: MockBanner_default
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
 var _hoisted_1 = { class: "mb-2 text-3xl font-bold text-foreground" };
 var _hoisted_2 = { class: "mb-8 text-muted-foreground" };
-var SettingsHeader_default = defineComponent({
-	__name: "SettingsHeader",
-	setup(__props) {
-		const content = b(settings_header_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock(Fragment, null, [
-				createVNode(MockBanner_default),
-				createElementVNode("h1", _hoisted_1, toDisplayString(unref(content).settings), 1),
-				createElementVNode("p", _hoisted_2, toDisplayString(unref(content).manageYourAccountPreferencesAnd), 1)
-			], 64);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock(Fragment, null, [
+		createVNode($setup["MockBanner"]),
+		createElementVNode("h1", _hoisted_1, toDisplayString($setup.content.settings), 1),
+		createElementVNode("p", _hoisted_2, toDisplayString($setup.content.manageYourAccountPreferencesAnd), 1)
+	], 64);
+}
+var SettingsHeader_default = _plugin_vue_export_helper_default(SettingsHeader_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/pages/settings/SettingsHeader.vue"]]);
 export { SettingsHeader_default as default };

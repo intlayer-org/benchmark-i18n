@@ -2,6 +2,35 @@ import { createComponent, delegateEvents, effect, insert, memo, mergeProps, setA
 import { A, useLocation, useNavigate, useParams } from "@solidjs/router";
 import { For, Suspense, createContext, createEffect, createMemo, createSignal, lazy, on, onMount, untrack, useContext } from "solid-js";
 import { recordHydrationDuration, recordRenderTime } from "test-utils/browser-metrics";
+var e = {
+	constructor: "constructor",
+	length: "length",
+	slice: "slice",
+	promiseThen: "then",
+	toString: "toString",
+	valueOf: "valueOf",
+	value: "value"
+};
+var t = (e) => typeof e == "string" && /^\d+$/.test(e);
+var n$1 = ({ children: n, value: r, additionalProps: i }) => {
+	let a = [n];
+	if (a.value = r, i) for (let e in i) a[e] = i[e];
+	return new Proxy(a, { get(n, i, a) {
+		if (i === e.value) return r;
+		if (i === Symbol.toPrimitive) return (e) => e === "number" ? Number(r) : r ?? "";
+		if (i === e.toString) return () => String(r ?? "");
+		if (i === e.valueOf) return () => r;
+		if (i === e.slice) return Reflect.get(n, i, a);
+		if (r != null && typeof i == "string" && i !== e.constructor && i !== e.length && !t(i)) {
+			let e = Object(r);
+			if (i in e) {
+				let t = Reflect.get(e, i);
+				return typeof t == "function" ? t.bind(r) : t;
+			}
+		}
+		return Reflect.get(n, i, a);
+	} });
+};
 var internationalization = {
 	"locales": [
 		"en",
@@ -42,134 +71,6 @@ var routing = {
 	},
 	"basePath": ""
 };
-var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
-	const requestedLocales = [selectedLocale].flat();
-	const normalize = (locale) => locale.trim().toLowerCase();
-	try {
-		for (const requested of requestedLocales) {
-			const normalizedRequested = normalize(requested);
-			const exactMatch = locales.find((locale) => normalize(locale) === normalizedRequested);
-			if (exactMatch) return exactMatch;
-			const [requestedLang] = normalizedRequested.split("-");
-			const partialMatch = locales.find((locale) => normalize(locale).split("-")[0] === requestedLang);
-			if (partialMatch) return partialMatch;
-		}
-	} catch {}
-	return defaultLocale;
-};
-var resolveExpiresToTimestamp = (expires) => {
-	if (typeof expires === "number") return Date.now() + expires * 1e3;
-	if (typeof expires === "string") {
-		const time = Date.parse(expires);
-		return Number.isNaN(time) ? void 0 : time;
-	}
-};
-var buildCookieString = (name, value, attributes) => {
-	const parts = [`${name}=${encodeURIComponent(value)}`];
-	if (attributes.path) parts.push(`Path=${attributes.path}`);
-	if (attributes.domain) parts.push(`Domain=${attributes.domain}`);
-	const expiresTimestamp = resolveExpiresToTimestamp(attributes.expires);
-	if (expiresTimestamp !== void 0) parts.push(`Expires=${new Date(expiresTimestamp).toUTCString()}`);
-	if (attributes.secure) parts.push("Secure");
-	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
-	return parts.join("; ");
-};
-var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
-process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var localeStorageOptions = {
-	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
-	getLocaleStorage: (name) => localStorage.getItem(name),
-	getSessionStorage: (name) => sessionStorage.getItem(name),
-	isCookieEnabled: true,
-	setCookieStore: (name, value, attributes) => cookieStore.set({
-		name,
-		value,
-		path: attributes.path,
-		domain: attributes.domain,
-		expires: attributes.expires,
-		sameSite: attributes.sameSite
-	}),
-	setCookieString: (_name, cookie) => {
-		document.cookie = cookie;
-	},
-	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
-	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-};
-var getLocaleFromStorageClient = (options = localeStorageOptions) => {
-	const { locales } = internationalization;
-	if (options?.isCookieEnabled === false) return void 0;
-	const isValidLocale = (value) => !!value && locales.includes(value);
-	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
-		const value = options?.getCookie?.(routing.storage.cookies[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-};
-var setLocaleInStorageClient = (locale, options) => {
-	if (options?.isCookieEnabled === false) return;
-	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
-		const { name, attributes } = routing.storage.cookies[i];
-		try {
-			if (options?.setCookieStore) options.setCookieStore(name, locale, {
-				...attributes,
-				expires: resolveExpiresToTimestamp(attributes.expires)
-			});
-		} catch {
-			try {
-				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
-			} catch {}
-		}
-	}
-};
-var a$1 = getLocaleFromStorageClient(localeStorageOptions);
-var s = (e, t) => setLocaleInStorageClient(e, {
-	...localeStorageOptions,
-	isCookieEnabled: t
-});
-var setIntlayerIdentifier = () => {
-	if (typeof window !== "undefined") window.intlayer = { enabled: true };
-};
-var v = null;
-var y = null;
-var b = createContext({
-	locale: () => a$1 ?? internationalization?.defaultLocale,
-	setLocale: () => null
-});
-var S = (r) => {
-	let { defaultLocale: i, locales: c } = internationalization ?? {}, f = r.locale ?? a$1 ?? r.defaultLocale ?? i, [h, g] = createSignal(f), v = r.setLocale ?? ((e) => {
-		if (h().toString() !== e.toString()) {
-			if (!c?.map(String).includes(e)) {
-				console.error(`Locale ${e} is not available`);
-				return;
-			}
-			g(e), s(e, r.isCookieEnabled);
-		}
-	}), y = createMemo(() => localeResolver(h()));
-	return createEffect(on(() => r.locale, (e) => {
-		e && e !== untrack(h) && g(e);
-	}, { defer: !0 })), onMount(() => {
-		setIntlayerIdentifier();
-	}), createComponent(b.Provider, {
-		value: {
-			locale: y,
-			setLocale: v,
-			variant: () => r.variant
-		},
-		get children() {
-			return r.children;
-		}
-	});
-};
-var C = (e) => createComponent(S, mergeProps(e, { get children() {
-	return [
-		memo(() => memo(() => false)() && createComponent(Suspense, { get children() {
-			return createComponent(v, {});
-		} })),
-		memo(() => memo(() => false)() && createComponent(Suspense, { get children() {
-			return createComponent(y, {});
-		} })),
-		memo(() => e.children)
-	];
-} }));
 var pluginsIdentities = /* @__PURE__ */ new WeakMap();
 var nextPluginsIdentity = 0;
 var getPluginsCacheKey = (plugins) => {
@@ -439,45 +340,16 @@ var getDictionary = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
-var e = {
-	constructor: "constructor",
-	length: "length",
-	slice: "slice",
-	promiseThen: "then",
-	toString: "toString",
-	valueOf: "valueOf",
-	value: "value"
-};
-var t = (e) => typeof e == "string" && /^\d+$/.test(e);
-var n$1 = ({ children: n, value: r, additionalProps: i }) => {
-	let a = [n];
-	if (a.value = r, i) for (let e in i) a[e] = i[e];
-	return new Proxy(a, { get(n, i, a) {
-		if (i === e.value) return r;
-		if (i === Symbol.toPrimitive) return (e) => e === "number" ? Number(r) : r ?? "";
-		if (i === e.toString) return () => String(r ?? "");
-		if (i === e.valueOf) return () => r;
-		if (i === e.slice) return Reflect.get(n, i, a);
-		if (r != null && typeof i == "string" && i !== e.constructor && i !== e.length && !t(i)) {
-			let e = Object(r);
-			if (i in e) {
-				let t = Reflect.get(e, i);
-				return typeof t == "function" ? t.bind(r) : t;
-			}
-		}
-		return Reflect.get(n, i, a);
-	} });
-};
 var w = null;
 var T = null;
 w?.catch(() => {}), T?.catch(() => {});
 var E = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (n, { plugins: i, ...o }) => n$1({
-		...o,
-		value: o.children,
-		children: o.children
+	transform: (n, { plugins: o, ...s }) => n$1({
+		...s,
+		value: s.children,
+		children: s.children
 	})
 };
 var D = fallbackPlugin;
@@ -511,14 +383,142 @@ var L = (e, t = !0) => {
 var n = (n, r) => {
 	return getDictionary(n, r, L(typeof r == "object" && r ? r.locale : r));
 };
+var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
+	const requestedLocales = [selectedLocale].flat();
+	const normalize = (locale) => locale.trim().toLowerCase();
+	try {
+		for (const requested of requestedLocales) {
+			const normalizedRequested = normalize(requested);
+			const exactMatch = locales.find((locale) => normalize(locale) === normalizedRequested);
+			if (exactMatch) return exactMatch;
+			const [requestedLang] = normalizedRequested.split("-");
+			const partialMatch = locales.find((locale) => normalize(locale).split("-")[0] === requestedLang);
+			if (partialMatch) return partialMatch;
+		}
+	} catch {}
+	return defaultLocale;
+};
+var resolveExpiresToTimestamp = (expires) => {
+	if (typeof expires === "number") return Date.now() + expires * 1e3;
+	if (typeof expires === "string") {
+		const time = Date.parse(expires);
+		return Number.isNaN(time) ? void 0 : time;
+	}
+};
+var buildCookieString = (name, value, attributes) => {
+	const parts = [`${name}=${encodeURIComponent(value)}`];
+	if (attributes.path) parts.push(`Path=${attributes.path}`);
+	if (attributes.domain) parts.push(`Domain=${attributes.domain}`);
+	const expiresTimestamp = resolveExpiresToTimestamp(attributes.expires);
+	if (expiresTimestamp !== void 0) parts.push(`Expires=${new Date(expiresTimestamp).toUTCString()}`);
+	if (attributes.secure) parts.push("Secure");
+	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
+	return parts.join("; ");
+};
+var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var localeStorageOptions = {
+	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
+	getLocaleStorage: (name) => localStorage.getItem(name),
+	getSessionStorage: (name) => sessionStorage.getItem(name),
+	isCookieEnabled: true,
+	setCookieStore: (name, value, attributes) => cookieStore.set({
+		name,
+		value,
+		path: attributes.path,
+		domain: attributes.domain,
+		expires: attributes.expires,
+		sameSite: attributes.sameSite
+	}),
+	setCookieString: (_name, cookie) => {
+		document.cookie = cookie;
+	},
+	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
+	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
+};
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
+	const { locales } = internationalization;
+	if (options?.isCookieEnabled === false) return void 0;
+	const isValidLocale = (value) => !!value && locales.includes(value);
+	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
+		const value = options?.getCookie?.(routing.storage.cookies[i].name);
+		if (isValidLocale(value)) return value;
+	} catch {}
+};
+var setLocaleInStorageClient = (locale, options) => {
+	if (options?.isCookieEnabled === false) return;
+	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
+		const { name, attributes } = routing.storage.cookies[i];
+		try {
+			if (options?.setCookieStore) options.setCookieStore(name, locale, {
+				...attributes,
+				expires: resolveExpiresToTimestamp(attributes.expires)
+			});
+		} catch {
+			try {
+				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
+			} catch {}
+		}
+	}
+};
+var a$1 = getLocaleFromStorageClient(localeStorageOptions);
+var s = (e, t) => setLocaleInStorageClient(e, {
+	...localeStorageOptions,
+	isCookieEnabled: t
+});
+var setIntlayerIdentifier = () => {
+	if (typeof window !== "undefined") window.intlayer = { enabled: true };
+};
+var v = null;
+var y = null;
+var b = createContext({
+	locale: () => a$1 ?? internationalization?.defaultLocale,
+	setLocale: () => null
+});
+var S = (r) => {
+	let { defaultLocale: i, locales: o } = internationalization ?? {}, s$1 = r.locale ?? a$1 ?? r.defaultLocale ?? i, [d, h] = createSignal(s$1), v = r.setLocale ?? ((e) => {
+		if (d().toString() !== e.toString()) {
+			if (!o?.map(String).includes(e)) {
+				console.error(`Locale ${e} is not available`);
+				return;
+			}
+			h(e), s(e, r.isCookieEnabled);
+		}
+	}), y = createMemo(() => localeResolver(d()));
+	return createEffect(on(() => r.locale, (e) => {
+		e && e !== untrack(d) && h(e);
+	}, { defer: !0 })), onMount(() => {
+		setIntlayerIdentifier();
+	}), createComponent(b.Provider, {
+		value: {
+			locale: y,
+			setLocale: v,
+			variant: () => r.variant
+		},
+		get children() {
+			return r.children;
+		}
+	});
+};
+var C = (e) => createComponent(S, mergeProps(e, { get children() {
+	return [
+		memo(() => memo(() => false)() && createComponent(Suspense, { get children() {
+			return createComponent(v, {});
+		} })),
+		memo(() => memo(() => false)() && createComponent(Suspense, { get children() {
+			return createComponent(y, {});
+		} })),
+		memo(() => e.children)
+	];
+} }));
 var a = Symbol("LOADABLE_SETTLED_VALUE");
 var h = (e) => {
 	if (!(e === null || typeof e != "object" && typeof e != "function")) return e[a];
 };
 var o = (o, s) => {
 	let c = useContext(b) ?? {}, l = createMemo(() => {
-		let e = c?.locale?.();
-		return n(h(o) ?? o, s ?? e);
+		let t = c?.locale?.();
+		return n(h(o) ?? o, s ?? t);
 	});
 	return new Proxy(l, {
 		get(e, t) {

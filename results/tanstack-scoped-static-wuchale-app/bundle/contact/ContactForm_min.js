@@ -1,7 +1,11 @@
 import { useId as e } from "react";
-import { Fragment as t, jsx as n, jsxs as r } from "react/jsx-runtime";
-var i = () => "";
-function a(e, t = [], n = 1) {
+import { Fragment as t, jsxDEV as n } from "react/jsx-dev-runtime";
+var r = () => "";
+r = (e, t) => {
+	let n = t[e];
+	return n == null ? `[i18n-404:${e}]` : `[i18n-400:${e}(${n})]`;
+};
+function i(e, t = [], n = 1) {
 	let r = "";
 	for (let i = n; i < e.length; i++) {
 		let n = e[i];
@@ -9,12 +13,12 @@ function a(e, t = [], n = 1) {
 	}
 	return r;
 }
-function o(e = { c: [] }, t = "") {
+function a(e = { c: [] }, t = "") {
 	let n = (t) => {
 		let n = e.c[t];
-		return typeof n == "string" ? [n] : Array.isArray(n) ? n : [i(t, e.c)];
-	}, r = (e, t = []) => a(n(e), t, 0);
-	return r._ = e, r.l = t, r.c = n, r.x = a, r.t = (e, t, r) => {
+		return typeof n == "string" ? [n] : Array.isArray(n) ? n : [r(t, e.c)];
+	}, a = (e, t = []) => i(n(e), t, 0);
+	return a._ = e, a.l = t, a.c = n, a.x = i, a.t = (e, t, r) => {
 		let i = [""], a = [];
 		for (let e of n(t)) {
 			if (typeof e == "string") {
@@ -24,9 +28,9 @@ function o(e = { c: [] }, t = "") {
 			a.push(r?.[e]), i.push("");
 		}
 		return e(Object.assign(i, { raw: i }), ...a);
-	}, r.p = (t, n) => e.c[t]?.map((e) => typeof e == "string" ? e : a(e, n, 0)) ?? [], r;
+	}, a.p = (t, n) => e.c[t]?.map((e) => typeof e == "string" ? e : i(e, n, 0)) ?? [], a;
 }
-function s(e) {
+function o(e) {
 	return {
 		get: (t) => e[t],
 		set: (t, n) => {
@@ -34,29 +38,29 @@ function s(e) {
 		}
 	};
 }
-var c = {}, l = o();
-function u(e, t, n, r) {
-	c[e] = {
+var s = {}, c = a();
+function l(e, t, n, r) {
+	s[e] = {
 		load: t,
 		catalogs: Array(n).fill(void 0),
-		collection: r ?? s([])
+		collection: r ?? o([])
 	};
-	for (let t = 0; t < n; t++) c[e].collection.set(t, l);
-	return (t = 0) => c[e].collection.get(t);
+	for (let t = 0; t < n; t++) s[e].collection.set(t, c);
+	return (t = 0) => s[e].collection.get(t);
 }
-function d(e) {
-	for (let t of Object.values(c)) for (let [n, r] of t.catalogs.entries()) t.collection.set(n, o(r, e));
+function u(e) {
+	for (let t of Object.values(s)) for (let [n, r] of t.catalogs.entries()) t.collection.set(n, a(r, e));
 }
-async function f(e, t = !0) {
+async function d(e, t = !0) {
 	let n = [], r = [];
-	for (let t of Object.values(c)) for (let i = 0; i < t.catalogs.length; i++) n.push(t.load(i, e)), r.push([i, t]);
+	for (let t of Object.values(s)) for (let i = 0; i < t.catalogs.length; i++) n.push(t.load(i, e)), r.push([i, t]);
 	for (let [e, t] of (await Promise.all(n)).entries()) {
 		let [n, i] = r[e];
 		i.catalogs[n] = t;
 	}
-	t && d(e);
+	t && u(e);
 }
-var p = {
+var f = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
 	fr: [() => import("./shared.0.fr.compiled-DDY-COJ8.js")],
@@ -67,65 +71,145 @@ var p = {
 	ja: [() => import("./shared.0.ja.compiled-CF_vYGhT.js")],
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
-}, m = u("contact", (e, t) => p[t][e](), 1);
+}, p = l("contact", (e, t) => f[t][e](), 1), m = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/contact/ContactForm.tsx";
 function h() {
-	let t = e(), i = e(), a = e(), o = e(), s = m();
-	return r("form", {
+	let t = e(), r = e(), i = e(), a = e(), o = p();
+	return n("form", {
 		className: "space-y-6",
 		children: [
-			r("div", {
+			n("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [r("div", { children: [n("label", {
+				children: [n("div", { children: [n("label", {
 					htmlFor: t,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: s(111)
-				}), n("input", {
+					children: o(111)
+				}, void 0, !1, {
+					fileName: m,
+					lineNumber: 19,
+					columnNumber: 11
+				}, this), n("input", {
 					id: t,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-					placeholder: s(112)
-				})] }), r("div", { children: [n("label", {
-					htmlFor: i,
+					placeholder: o(112)
+				}, void 0, !1, {
+					fileName: m,
+					lineNumber: 25,
+					columnNumber: 11
+				}, this)] }, void 0, !0, {
+					fileName: m,
+					lineNumber: 18,
+					columnNumber: 9
+				}, this), n("div", { children: [n("label", {
+					htmlFor: r,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: s(113)
-				}), n("input", {
-					id: i,
+					children: o(113)
+				}, void 0, !1, {
+					fileName: m,
+					lineNumber: 32,
+					columnNumber: 11
+				}, this), n("input", {
+					id: r,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "you@example.com"
-				})] })]
-			}),
-			r("div", { children: [n("label", {
-				htmlFor: a,
+				}, void 0, !1, {
+					fileName: m,
+					lineNumber: 38,
+					columnNumber: 11
+				}, this)] }, void 0, !0, {
+					fileName: m,
+					lineNumber: 31,
+					columnNumber: 9
+				}, this)]
+			}, void 0, !0, {
+				fileName: m,
+				lineNumber: 17,
+				columnNumber: 7
+			}, this),
+			n("div", { children: [n("label", {
+				htmlFor: i,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: s(114)
-			}), r("select", {
-				id: a,
+				children: o(114)
+			}, void 0, !1, {
+				fileName: m,
+				lineNumber: 47,
+				columnNumber: 9
+			}, this), n("select", {
+				id: i,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					n("option", { children: s(115) }),
-					n("option", { children: s(116) }),
-					n("option", { children: s(117) }),
-					n("option", { children: s(118) }),
-					n("option", { children: s(119) })
+					n("option", { children: o(115) }, void 0, !1, {
+						fileName: m,
+						lineNumber: 57,
+						columnNumber: 11
+					}, this),
+					n("option", { children: o(116) }, void 0, !1, {
+						fileName: m,
+						lineNumber: 58,
+						columnNumber: 11
+					}, this),
+					n("option", { children: o(117) }, void 0, !1, {
+						fileName: m,
+						lineNumber: 59,
+						columnNumber: 11
+					}, this),
+					n("option", { children: o(118) }, void 0, !1, {
+						fileName: m,
+						lineNumber: 60,
+						columnNumber: 11
+					}, this),
+					n("option", { children: o(119) }, void 0, !1, {
+						fileName: m,
+						lineNumber: 61,
+						columnNumber: 11
+					}, this)
 				]
-			})] }),
-			r("div", { children: [n("label", {
-				htmlFor: o,
+			}, void 0, !0, {
+				fileName: m,
+				lineNumber: 53,
+				columnNumber: 9
+			}, this)] }, void 0, !0, {
+				fileName: m,
+				lineNumber: 46,
+				columnNumber: 7
+			}, this),
+			n("div", { children: [n("label", {
+				htmlFor: a,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: s(120)
-			}), n("textarea", {
-				id: o,
+				children: o(120)
+			}, void 0, !1, {
+				fileName: m,
+				lineNumber: 65,
+				columnNumber: 9
+			}, this), n("textarea", {
+				id: a,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-				placeholder: s(121)
-			})] }),
+				placeholder: o(121)
+			}, void 0, !1, {
+				fileName: m,
+				lineNumber: 71,
+				columnNumber: 9
+			}, this)] }, void 0, !0, {
+				fileName: m,
+				lineNumber: 64,
+				columnNumber: 7
+			}, this),
 			n("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-				children: s(122)
-			})
+				children: o(122)
+			}, void 0, !1, {
+				fileName: m,
+				lineNumber: 78,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, !0, {
+		fileName: m,
+		lineNumber: 16,
+		columnNumber: 5
+	}, this);
 }
 var g = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
@@ -139,7 +223,7 @@ var g = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("about", (e, t) => g[t][e](), 1);
+l("about", (e, t) => g[t][e](), 1);
 var _ = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -152,7 +236,7 @@ var _ = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("blog", (e, t) => _[t][e](), 1);
+l("blog", (e, t) => _[t][e](), 1);
 var v = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -165,7 +249,7 @@ var v = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("careers", (e, t) => v[t][e](), 1);
+l("careers", (e, t) => v[t][e](), 1);
 var y = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -178,7 +262,7 @@ var y = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("faq", (e, t) => y[t][e](), 1);
+l("faq", (e, t) => y[t][e](), 1);
 var b = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -191,7 +275,7 @@ var b = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("home", (e, t) => b[t][e](), 1);
+l("home", (e, t) => b[t][e](), 1);
 var x = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -204,7 +288,7 @@ var x = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("pricing", (e, t) => x[t][e](), 1);
+l("pricing", (e, t) => x[t][e](), 1);
 var S = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -217,7 +301,7 @@ var S = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("products", (e, t) => S[t][e](), 1);
+l("products", (e, t) => S[t][e](), 1);
 var C = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -230,7 +314,7 @@ var C = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("route", (e, t) => C[t][e](), 1);
+l("route", (e, t) => C[t][e](), 1);
 var w = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -243,7 +327,7 @@ var w = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("settings", (e, t) => w[t][e](), 1);
+l("settings", (e, t) => w[t][e](), 1);
 var T = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -256,7 +340,7 @@ var T = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("shared", (e, t) => T[t][e](), 1);
+l("shared", (e, t) => T[t][e](), 1);
 var E = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -269,14 +353,29 @@ var E = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-u("team", (e, t) => E[t][e](), 1), f("en");
-function D({ children: e }) {
-	return n(t, { children: e });
+l("team", (e, t) => E[t][e](), 1);
+var D = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
+d("en");
+function O({ children: e }) {
+	return n(t, { children: e }, void 0, !1, {
+		fileName: D,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
-function O() {
-	return n(D, { children: n(h, {}) });
+var k = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/contact/ContactForm.wrapper.tsx";
+function A() {
+	return n(O, { children: n(h, {}, void 0, !1, {
+		fileName: k,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: k,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { O as default };
+export { A as default };
 var e = [
 	"i18n Benchmark",
 	"Methodik",

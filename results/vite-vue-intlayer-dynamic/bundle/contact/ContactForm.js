@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, unref, watch, withModifiers } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, watch, withModifiers } from "vue";
 var contact_form_default = {
 	key: "contact-form",
 	content: {
@@ -369,8 +369,7 @@ var getBasePlugins = (locale, fallback = true) => [
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
-});
-var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
+}), getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 	const props = {
 		dictionaryKey: dictionary.key,
 		dictionaryPath: dictionary.filePath,
@@ -378,8 +377,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-};
-var b$1 = {
+}, b$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { children: n, ...r }) => {
@@ -401,12 +399,7 @@ var b$1 = {
 		}
 		return markRaw(c);
 	}
-};
-var S = fallbackPlugin;
-var w = fallbackPlugin;
-var T = fallbackPlugin;
-var E = /* @__PURE__ */ new Map();
-var D = (e, t = !0) => {
+}, S = fallbackPlugin, w = fallbackPlugin, T = fallbackPlugin, E = /* @__PURE__ */ new Map(), D = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (E.has(n)) return E.get(n);
 	let r = [
@@ -422,14 +415,8 @@ var D = (e, t = !0) => {
 		T
 	];
 	return E.set(n, r), r;
-};
-var n = (n, r) => getDictionary(n, r, D(r));
-var i = Symbol("intlayer");
-var m = (e, t) => t.reduce((e, t) => e?.[t], e);
-var h$1 = (e) => typeof e == "object" && !!e;
-var g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e);
-var _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e;
-var v = (e) => markRaw(defineComponent({
+}, n = (n, r) => getDictionary(n, r, D(r)), i = Symbol("intlayer");
+var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "object" && !!e, g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e), _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, v = (e) => markRaw(defineComponent({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -437,8 +424,7 @@ var v = (e) => markRaw(defineComponent({
 			return t == null ? null : g(t) ? h(t) : Array.isArray(t) ? h("span", t) : t;
 		};
 	}
-}));
-var y = (e) => new Proxy({}, {
+})), y = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -460,8 +446,7 @@ var y = (e) => new Proxy({}, {
 			configurable: !0
 		};
 	}
-});
-var b = (r, a) => {
+}), b = (r, a) => {
 	let c = getCurrentInstance() ? inject(i) : void 0, b = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), x = computed(() => (a === void 0 ? void 0 : toValue(a)) ?? b.value), S = shallowRef({});
 	watch([() => toValue(r), () => x.value], ([t, n$2]) => {
 		S.value = n(t, n$2);
@@ -499,6 +484,34 @@ var b = (r, a) => {
 	});
 	return C([]);
 };
+var ContactForm_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "ContactForm",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { e: nameLabel, f: namePlaceholder, a: emailLabel, b: emailPlaceholder, h: topicLabel, i: topics, c: messageLabel, d: messagePlaceholder, g: sendMessage } = b(contact_form_default);
+		const __returned__ = {
+			nameLabel,
+			namePlaceholder,
+			emailLabel,
+			emailPlaceholder,
+			topicLabel,
+			topics,
+			messageLabel,
+			messagePlaceholder,
+			sendMessage
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "grid gap-4 md:grid-cols-2" };
 var _hoisted_2 = {
 	for: "name",
@@ -527,37 +540,32 @@ var _hoisted_10 = {
 	type: "submit",
 	class: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
 };
-var ContactForm_default = defineComponent({
-	__name: "ContactForm",
-	setup(__props) {
-		const { e: nameLabel, f: namePlaceholder, a: emailLabel, b: emailPlaceholder, h: topicLabel, i: topics, c: messageLabel, d: messagePlaceholder, g: sendMessage } = b(contact_form_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("form", {
-				class: "space-y-6",
-				onSubmit: _cache[0] || (_cache[0] = withModifiers(() => {}, ["prevent"]))
-			}, [
-				createElementVNode("div", _hoisted_1, [createElementVNode("div", null, [createElementVNode("label", _hoisted_2, toDisplayString(unref(nameLabel)), 1), createElementVNode("input", {
-					id: "name",
-					class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-					placeholder: unref(namePlaceholder)
-				}, null, 8, _hoisted_3)]), createElementVNode("div", null, [createElementVNode("label", _hoisted_4, toDisplayString(unref(emailLabel)), 1), createElementVNode("input", {
-					id: "email",
-					type: "email",
-					class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-					placeholder: unref(emailPlaceholder)
-				}, null, 8, _hoisted_5)])]),
-				createElementVNode("div", null, [createElementVNode("label", _hoisted_6, toDisplayString(unref(topicLabel)), 1), createElementVNode("select", _hoisted_7, [(openBlock(true), createElementBlock(Fragment, null, renderList(unref(topics), (t) => {
-					return openBlock(), createElementBlock("option", { key: t }, toDisplayString(t), 1);
-				}), 128))])]),
-				createElementVNode("div", null, [createElementVNode("label", _hoisted_8, toDisplayString(unref(messageLabel)), 1), createElementVNode("textarea", {
-					id: "message",
-					rows: "5",
-					class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
-					placeholder: unref(messagePlaceholder)
-				}, null, 8, _hoisted_9)]),
-				createElementVNode("button", _hoisted_10, toDisplayString(unref(sendMessage)), 1)
-			], 32);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("form", {
+		class: "space-y-6",
+		onSubmit: _cache[0] || (_cache[0] = withModifiers(() => {}, ["prevent"]))
+	}, [
+		createElementVNode("div", _hoisted_1, [createElementVNode("div", null, [createElementVNode("label", _hoisted_2, toDisplayString($setup.nameLabel), 1), createElementVNode("input", {
+			id: "name",
+			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
+			placeholder: $setup.namePlaceholder
+		}, null, 8, _hoisted_3)]), createElementVNode("div", null, [createElementVNode("label", _hoisted_4, toDisplayString($setup.emailLabel), 1), createElementVNode("input", {
+			id: "email",
+			type: "email",
+			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
+			placeholder: $setup.emailPlaceholder
+		}, null, 8, _hoisted_5)])]),
+		createElementVNode("div", null, [createElementVNode("label", _hoisted_6, toDisplayString($setup.topicLabel), 1), createElementVNode("select", _hoisted_7, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.topics, (t) => {
+			return openBlock(), createElementBlock("option", { key: t }, toDisplayString(t), 1);
+		}), 128))])]),
+		createElementVNode("div", null, [createElementVNode("label", _hoisted_8, toDisplayString($setup.messageLabel), 1), createElementVNode("textarea", {
+			id: "message",
+			rows: "5",
+			class: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
+			placeholder: $setup.messagePlaceholder
+		}, null, 8, _hoisted_9)]),
+		createElementVNode("button", _hoisted_10, toDisplayString($setup.sendMessage), 1)
+	], 32);
+}
+var ContactForm_default = _plugin_vue_export_helper_default(ContactForm_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/pages/contact/ContactForm.vue"]]);
 export { ContactForm_default as default };

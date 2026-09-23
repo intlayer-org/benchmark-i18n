@@ -1,7 +1,7 @@
 {
   "app": "vite-svelte-i18n-static",
   "locale": "fr",
-  "timestamp": "2026-09-09T19:21:55.309Z",
+  "timestamp": "2026-09-09T04:07:26.811Z",
   "fingerprintCounts": {
     "locale": {
       "en": 99,
@@ -871,16 +871,16 @@
           "type": "html"
         },
         {
-          "url": "/assets/performanceMeasure-B5hZaBIS.js",
-          "size": 314,
-          "gzipSize": 178,
-          "type": "js"
-        },
-        {
           "url": "/assets/index-C3wJIVTR.css",
           "size": 24724,
           "gzipSize": 5110,
           "type": "css"
+        },
+        {
+          "url": "/assets/performanceMeasure-B5hZaBIS.js",
+          "size": 314,
+          "gzipSize": 178,
+          "type": "js"
         },
         {
           "url": "/assets/legacy-BVzZ9a_g.js",
@@ -1294,16 +1294,16 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-C3wJIVTR.css",
-          "size": 24724,
-          "gzipSize": 5110,
-          "type": "css"
-        },
-        {
           "url": "/assets/performanceMeasure-B5hZaBIS.js",
           "size": 314,
           "gzipSize": 178,
           "type": "js"
+        },
+        {
+          "url": "/assets/index-C3wJIVTR.css",
+          "size": 24724,
+          "gzipSize": 5110,
+          "type": "css"
         },
         {
           "url": "/assets/legacy-BVzZ9a_g.js",
@@ -2563,16 +2563,16 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-C3wJIVTR.css",
-          "size": 24724,
-          "gzipSize": 5110,
-          "type": "css"
-        },
-        {
           "url": "/assets/performanceMeasure-B5hZaBIS.js",
           "size": 314,
           "gzipSize": 178,
           "type": "js"
+        },
+        {
+          "url": "/assets/index-C3wJIVTR.css",
+          "size": 24724,
+          "gzipSize": 5110,
+          "type": "css"
         },
         {
           "url": "/assets/legacy-BVzZ9a_g.js",
@@ -3421,15 +3421,15 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-DUu1Qv1e.js",
-          "size": 213196,
-          "gzipSize": 70255,
-          "type": "js"
-        },
-        {
           "url": "/assets/legacy-BVzZ9a_g.js",
           "size": 101099,
           "gzipSize": 33918,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-DUu1Qv1e.js",
+          "size": 213196,
+          "gzipSize": 70255,
           "type": "js"
         },
         {

@@ -1,16 +1,16 @@
 import { Dynamic as e, className as t, createComponent as n, effect as r, insert as i, memo as a, template as o } from "solid-js/web";
 import { For as s, createContext as c, createMemo as l, useContext as u } from "solid-js";
 var d = {
-	de: () => import("./de-CtGbhIVe.js").then((e) => e.default),
-	en: () => import("./en-CzIH8kQo.js").then((e) => e.default),
-	es: () => import("./es-NrcGsiwh.js").then((e) => e.default),
-	fr: () => import("./fr-CAoupp9K.js").then((e) => e.default),
-	it: () => import("./it-DHVvYPni.js").then((e) => e.default),
-	ja: () => import("./ja-CvusqgLz.js").then((e) => e.default),
-	ko: () => import("./ko-CUnPhgd_.js").then((e) => e.default),
-	pt: () => import("./pt-imTKI86I.js").then((e) => e.default),
-	ru: () => import("./ru-gpAuYgej.js").then((e) => e.default),
-	zh: () => import("./zh-BQrcaQyc.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/de.json").then((e) => e.default),
+	en: () => import("./en-Byn-ttCk.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/zh.json").then((e) => e.default)
 }, f = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var d = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (b(e) && b(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : x(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : x(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -342,36 +342,6 @@ var e = {
 	key: "pricing-tiers",
 	content: {
 		u: "Starter",
-		x: "5 Benchmark-Läufe/Tag",
-		f: "Community-Support",
-		s: "Öffentliche Ergebnisse",
-		r: "Pro",
-		w: "Unbegrenzte Läufe",
-		a: "Alle Bibliotheken",
-		p: "Prioritäts-Support",
-		q: "Private Ergebnisse",
-		e: "CI-Integration",
-		n: "Historische Daten",
-		k: "Enterprise",
-		h: "Benutzerdefiniert",
-		l: "Alles in Pro",
-		o: "On-Premise-Option",
-		t: "SSO & SAML",
-		j: "Dedizierter Account Manager",
-		i: "Benutzerdefinierte SLAs",
-		b: "Audit-Protokolle",
-		v: "Schulungen",
-		d: "border-primary bg-primary/5 ring-1 ring-primary",
-		c: "border border-border text-foreground hover:bg-accent",
-		g: "Vertrieb kontaktieren",
-		m: "Erste Schritte"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		u: "Starter",
 		x: "5 benchmark runs/day",
 		f: "Community support",
 		s: "Public results",
@@ -395,246 +365,6 @@ var e = {
 		c: "border border-border text-foreground hover:bg-accent",
 		g: "Contact Sales",
 		m: "Get Started"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		u: "Starter",
-		x: "5 ejecuciones de benchmark al día",
-		f: "Soporte de la comunidad",
-		s: "Resultados públicos",
-		r: "Pro",
-		w: "Ejecuciones ilimitadas",
-		a: "Todas las bibliotecas",
-		p: "Soporte prioritario",
-		q: "Resultados privados",
-		e: "Integración de CI",
-		n: "Datos históricos",
-		k: "Enterprise",
-		h: "Personalizado",
-		l: "Todo en Pro",
-		o: "Opción on-premise",
-		t: "SSO y SAML",
-		j: "Gestor de cuentas dedicado",
-		i: "SLAs personalizados",
-		b: "Registros de auditoría",
-		v: "Sesiones de formación",
-		d: "border-primary bg-primary/5 ring-1 ring-primary",
-		c: "border border-border text-foreground hover:bg-accent",
-		g: "Contactar con ventas",
-		m: "Empezar"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		u: "Débutant",
-		x: "5 exécutions de benchmark/jour",
-		f: "Support communautaire",
-		s: "Résultats publics",
-		r: "Pro",
-		w: "Exécutions illimitées",
-		a: "Toutes les bibliothèques",
-		p: "Support prioritaire",
-		q: "Résultats privés",
-		e: "Intégration CI",
-		n: "Données historiques",
-		k: "Entreprise",
-		h: "Personnalisé",
-		l: "Tout ce qui est dans Pro",
-		o: "Option sur site",
-		t: "SSO et SAML",
-		j: "Gestionnaire de compte dédié",
-		i: "SLA personnalisés",
-		b: "Logs d'audit",
-		v: "Sessions de formation",
-		d: "border-primary bg-primary/5 ring-1 ring-primary",
-		c: "border border-border text-foreground hover:bg-accent",
-		g: "Contacter le service commercial",
-		m: "Démarrer"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		u: "Starter",
-		x: "5 esecuzioni di benchmark al giorno",
-		f: "Supporto della comunità",
-		s: "Risultati pubblici",
-		r: "Pro",
-		w: "Esecuzioni illimitate",
-		a: "Tutte le librerie",
-		p: "Supporto prioritario",
-		q: "Risultati privati",
-		e: "Integrazione CI",
-		n: "Dati storici",
-		k: "Enterprise",
-		h: "Personalizzato",
-		l: "Tutto quello che c'è in Pro",
-		o: "Opzione on-premise",
-		t: "SSO e SAML",
-		j: "Account manager dedicato",
-		i: "SLA personalizzati",
-		b: "Log di audit",
-		v: "Sessioni di formazione",
-		d: "border-primary bg-primary/5 ring-1 ring-primary",
-		c: "border border-border text-foreground hover:bg-accent",
-		g: "Contatta l'ufficio vendite",
-		m: "Inizia subito"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		u: "スターター",
-		x: "1日5回のベンチマーク実行",
-		f: "コミュニティサポート",
-		s: "公開結果",
-		r: "プロ",
-		w: "実行無制限",
-		a: "すべてのライブラリ",
-		p: "優先サポート",
-		q: "プライベートな結果",
-		e: "CI 統合",
-		n: "履歴データ",
-		k: "エンタープライズ",
-		h: "カスタム",
-		l: "プロのすべての機能",
-		o: "オンプレミスオプション",
-		t: "SSO と SAML",
-		j: "専任のアカウントマネージャー",
-		i: "カスタムSLA",
-		b: "監査ログ",
-		v: "トレーニングセッション",
-		d: "border-primary bg-primary/5 ring-1 ring-primary",
-		c: "border border-border text-foreground hover:bg-accent",
-		g: "営業に連絡",
-		m: "始める"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		u: "스타터",
-		x: "일일 5회 벤치마크 실행",
-		f: "커뮤니티 지원",
-		s: "공개 결과",
-		r: "프로",
-		w: "무제한 실행",
-		a: "모든 라이브러리",
-		p: "우선 지원",
-		q: "비공개 결과",
-		e: "CI 통합",
-		n: "기록 데이터",
-		k: "엔터프라이즈",
-		h: "커스텀",
-		l: "Pro의 모든 기능 포함",
-		o: "온프레미스 옵션",
-		t: "SSO 및 SAML",
-		j: "전담 어카운트 매니저",
-		i: "맞춤형 SLA",
-		b: "감사 로그",
-		v: "교육 세션",
-		d: "border-primary bg-primary/5 ring-1 ring-primary",
-		c: "border border-border text-foreground hover:bg-accent",
-		g: "영업팀 문의",
-		m: "시작하기"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		u: "Starter",
-		x: "5 execuções de benchmark/dia",
-		f: "Suporte da comunidade",
-		s: "Resultados públicos",
-		r: "Pro",
-		w: "Execuções ilimitadas",
-		a: "Todas as biblioteche",
-		p: "Suporte prioritário",
-		q: "Resultados privados",
-		e: "Integração CI",
-		n: "Dados históricos",
-		k: "Enterprise",
-		h: "Personalizado",
-		l: "Tudo no Pro",
-		o: "Opção on-premise",
-		t: "SSO e SAML",
-		j: "Gerente de conta dedicado",
-		i: "SLAs personalizados",
-		b: "Logs de auditoria",
-		v: "Sessões de treinamento",
-		d: "border-primary bg-primary/5 ring-1 ring-primary",
-		c: "border border-border text-foreground hover:bg-accent",
-		g: "Contatar Vendas",
-		m: "Começar"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		u: "Стартовый",
-		x: "5 запусков бенчмарка в день",
-		f: "Поддержка сообщества",
-		s: "Публичные результаты",
-		r: "Профи",
-		w: "Безлимитные запуски",
-		a: "Все библиотеки",
-		p: "Приоритетная поддержка",
-		q: "Приватные результаты",
-		e: "Интеграция с CI",
-		n: "Исторические данные",
-		k: "Корпоративный",
-		h: "Индивидуальный",
-		l: "Все, что в Профи",
-		o: "Локальная установка",
-		t: "SSO и SAML",
-		j: "Выделенный менеджер",
-		i: "Индивидуальные SLA",
-		b: "Журналы аудита",
-		v: "Обучающие сессии",
-		d: "border-primary bg-primary/5 ring-1 ring-primary",
-		c: "border border-border text-foreground hover:bg-accent",
-		g: "Связаться с отделом продаж",
-		m: "Начать"
-	}
-};
-export { e as default };
-var e = {
-	key: "pricing-tiers",
-	content: {
-		u: "入门版",
-		x: "每天 5 次基准测试运行",
-		f: "社区支持",
-		s: "公开结果",
-		r: "专业版",
-		w: "无限次运行",
-		a: "所有库",
-		p: "优先支持",
-		q: "私人结果",
-		e: "CI 集成",
-		n: "历史数据",
-		k: "企业版",
-		h: "自定义",
-		l: "包含专业版所有功能",
-		o: "本地部署选项",
-		t: "SSO 和 SAML",
-		j: "专属客户经理",
-		i: "自定义 SLA",
-		b: "审核日志",
-		v: "培训课程",
-		d: "border-primary bg-primary/5 ring-1 ring-primary",
-		c: "border border-border text-foreground hover:bg-accent",
-		g: "联系销售",
-		m: "开始使用"
 	}
 };
 export { e as default };

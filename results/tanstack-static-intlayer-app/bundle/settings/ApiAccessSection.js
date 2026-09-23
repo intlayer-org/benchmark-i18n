@@ -1,5 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useId, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var api_access_section_default = {
 	key: "api-access-section",
 	content: {
@@ -728,47 +729,94 @@ var useDictionary = (dictionary, localeOrSelector) => {
 	const argumentIdentity = typeof argument === "object" && argument !== null ? `${argument.locale ?? ""}|${getDictionarySelectorCacheKey(argument)}` : argument;
 	return useMemo(() => getDictionary(dictionary, argument), [dictionary.key, argumentIdentity]);
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/settings/ApiAccessSection.tsx";
 function ApiAccessSection() {
 	const content = useDictionary(api_access_section_default);
 	const apiKeyId = useId();
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: content.a
-		}), jsxs("div", { children: [
-			jsx("label", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 11,
+			columnNumber: 7
+		}, this), jsxDEV("div", { children: [
+			jsxDEV("label", {
 				htmlFor: apiKeyId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: content.b
-			}),
-			jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 13,
+				columnNumber: 9
+			}, this),
+			jsxDEV("div", {
 				className: "flex gap-2",
-				children: [jsx("input", {
+				children: [jsxDEV("input", {
 					id: apiKeyId,
 					readOnly: true,
 					defaultValue: "sk_bench_xxxxxxxxxxxxxxxxxxxx",
 					className: "flex-1 rounded-md border border-input bg-muted px-3 py-2 text-sm text-muted-foreground"
-				}), jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 18,
+					columnNumber: 11
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: content.c
-				})]
-			}),
-			jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 24,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 17,
+				columnNumber: 9
+			}, this),
+			jsxDEV("p", {
 				className: "mt-1 text-xs text-muted-foreground",
 				children: content.d
-			})
-		] })]
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 29,
+				columnNumber: 9
+			}, this)
+		] }, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 10,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(IntlayerProvider, {
+	return jsxDEV(IntlayerProvider, {
 		locale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/settings/ApiAccessSection.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ApiAccessSection, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ApiAccessSection, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

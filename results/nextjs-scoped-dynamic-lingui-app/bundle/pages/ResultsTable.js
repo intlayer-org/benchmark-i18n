@@ -1,5 +1,6 @@
 import { cloneElement, createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
@@ -272,42 +273,79 @@ This often happens when multiple instances of @lingui/react are installed (e.g. 
 		lingui
 	});
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/pages/home/ResultsTable.tsx";
 function ResultsTable() {
 	const { i18n } = useLingui();
-	return jsxs("section", { children: [jsx("h2", {
+	return jsxDEV("section", { children: [jsxDEV("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
-		children: jsx(Trans, {
+		children: jsxDEV(Trans, {
 			id: "results-table.sampleResults",
 			message: "Sample Results"
-		})
-	}), jsx("div", {
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 34,
+			columnNumber: 9
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 33,
+		columnNumber: 7
+	}, this), jsxDEV("div", {
 		className: "overflow-x-auto rounded-lg border border-border",
-		children: jsxs("table", {
+		children: jsxDEV("table", {
 			className: "w-full text-sm",
-			children: [jsx("thead", {
+			children: [jsxDEV("thead", {
 				className: "bg-muted",
-				children: jsxs("tr", { children: [
-					jsx("th", {
+				children: jsxDEV("tr", { children: [
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
-						children: jsx(Trans, {
+						children: jsxDEV(Trans, {
 							id: "results-table.library",
 							message: "Library"
-						})
-					}),
-					jsx("th", {
+						}, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 41,
+							columnNumber: 17
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 40,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: i18n._("results-table.bundleSize")
-					}),
-					jsx("th", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 43,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: i18n._("results-table.lookupTime")
-					}),
-					jsx("th", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 46,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: i18n._("results-table.lazyLoading")
-					})
-				] })
-			}), jsx("tbody", { children: [
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 49,
+						columnNumber: 15
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 39,
+					columnNumber: 13
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 38,
+				columnNumber: 11
+			}, this), jsxDEV("tbody", { children: [
 				{
 					lib: "react-i18next",
 					size: "42.3 kB",
@@ -332,29 +370,65 @@ function ResultsTable() {
 					time: "0.05ms",
 					lazy: "Built-in"
 				}
-			].map((r) => jsxs("tr", {
+			].map((r) => jsxDEV("tr", {
 				className: "border-t border-border",
 				children: [
-					jsx("td", {
+					jsxDEV("td", {
 						className: "px-4 py-3 font-medium text-foreground",
 						children: r.lib
-					}),
-					jsx("td", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 57,
+						columnNumber: 17
+					}, this),
+					jsxDEV("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.size
-					}),
-					jsx("td", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 60,
+						columnNumber: 17
+					}, this),
+					jsxDEV("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.time
-					}),
-					jsx("td", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 61,
+						columnNumber: 17
+					}, this),
+					jsxDEV("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.lazy
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 62,
+						columnNumber: 17
+					}, this)
 				]
-			}, r.lib)) })]
-		})
-	})] });
+			}, r.lib, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 56,
+				columnNumber: 15
+			}, this)) }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 54,
+				columnNumber: 11
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 37,
+			columnNumber: 9
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 36,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 32,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1923,6 +1997,7 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children, locale, messages }) {
 	const i18n = useMemo(() => initLingui(locale, messages), [locale, messages]);
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -1935,21 +2010,39 @@ function AppProviders({ children, locale, messages }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		i18n,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 40,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/scripts/Wrapper.tsx";
 async function Wrapper({ children }) {
 	const enMessages = await loadNamespaces("en", LINGUI_ALL_NAMESPACES);
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale: "en",
 		messages: enMessages,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/lingui-app/components/pages/home/ResultsTable.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ResultsTable, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ResultsTable, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var messages = JSON.parse("{\"about-grid.choosingAnI18nLibraryIs\":[\"选择 i18n 库是一项具有长期影响的架构决策。大多数比较侧重于 API 的易用性，但很少衡量性能成本：库为包增加了多少权重？加载数千个翻译键时它如何影响渲染？延迟加载是否真的有帮助，还是只是转移了成本？本基准测试用真实数据回答了这些问题。\"],\"about-grid.methodology\":[\"方法论\"],\"about-grid.theSame10PageApp\":[\"同一个 10 页应用为每个库构建一次。我们测量生产包（通过 rollup-plugin-visualizer），运行 Lighthouse 审计以获取加载指标，并使用 React Profiler 捕获语言切换期间的渲染时间。所有测试都在一致的硬件上在 CI 中运行，以确保结果的可复现性。\"],\"about-grid.whyThisExists\":[\"为什么存在这个基准测试\"],\"about-header.aboutThisBenchmark\":[\"关于本基准测试\"],\"about-header.thisIsAnOpenSource\":[\"这是一个开源测试应用程序 —— 不是产品或公司。其唯一目的是提供一个现实的多页面 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。\"],\"what-we-measure.bundleSizeImpact\":[\"包大小影响\"],\"what-we-measure.duringSsrTranslationDataIs\":[\"在 SSR 期间，翻译数据被序列化到 HTML 中。大型字典会增加 HTML 负载并减慢注水速度 —— 即页面变得可交互的时刻。\"],\"what-we-measure.howFastTheAppCan\":[\"应用在运行时从一种语言切换到另一种语言的速度 —— 包括获取新翻译、重新渲染组件和更新 DOM。\"],\"what-we-measure.howMuchExtraTimeThe\":[\"库为 React 渲染周期增加了多少额外时间。通过单个上下文提供者注入翻译的库可能会在整个组件树中导致不必要的重新渲染。\"],\"what-we-measure.hydrationCost\":[\"注水成本\"],\"what-we-measure.lazyLoadingEffectiveness\":[\"延迟加载有效性\"],\"what-we-measure.localeSwitchSpeed\":[\"语言切换速度\"],\"what-we-measure.renderingOverhead\":[\"渲染开销\"],\"what-we-measure.theAdditionalJavascriptBytesSent\":[\"包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络下的下载时间。\"],\"what-we-measure.whatWeMeasure\":[\"我们测量什么\"],\"what-we-measure.whetherSplittingTranslationsByRoute\":[\"按路由或命名空间拆分翻译是否真的减少了初始负载，以及它引入了哪些权衡（瀑布流请求、FOUC、缓存复杂性）。\"]}");

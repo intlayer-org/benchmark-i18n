@@ -1,11 +1,9 @@
 import { Fragment, createElementBlock, createElementVNode, defineComponent, openBlock, renderList, toDisplayString } from "vue";
-var _hoisted_1 = { class: "mx-auto max-w-3xl space-y-4" };
-var _hoisted_2 = { class: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors" };
-var _hoisted_3 = { class: "px-6 pb-4 text-sm text-muted-foreground" };
-var FAQList_default = defineComponent({
+var FAQList_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "FAQList",
-	setup(__props) {
-		const faqs = [
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const __returned__ = { faqs: [
 			{
 				q: "What is i18n Benchmark?",
 				a: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications."
@@ -38,15 +36,29 @@ var FAQList_default = defineComponent({
 				q: "How can I contribute?",
 				a: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
 			}
-		];
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(), createElementBlock(Fragment, null, renderList(faqs, (f) => {
-				return createElementVNode("details", {
-					key: f.q,
-					class: "group rounded-lg border border-border bg-card"
-				}, [createElementVNode("summary", _hoisted_2, toDisplayString(f.q), 1), createElementVNode("p", _hoisted_3, toDisplayString(f.a), 1)]);
-			}), 64))]);
-		};
+		] };
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+var _hoisted_1 = { class: "mx-auto max-w-3xl space-y-4" };
+var _hoisted_2 = { class: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors" };
+var _hoisted_3 = { class: "px-6 pb-4 text-sm text-muted-foreground" };
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(), createElementBlock(Fragment, null, renderList($setup.faqs, (f) => {
+		return createElementVNode("details", {
+			key: f.q,
+			class: "group rounded-lg border border-border bg-card"
+		}, [createElementVNode("summary", _hoisted_2, toDisplayString(f.q), 1), createElementVNode("p", _hoisted_3, toDisplayString(f.a), 1)]);
+	}), 64))]);
+}
+var FAQList_default = _plugin_vue_export_helper_default(FAQList_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/pages/faq/FAQList.vue"]]);
 export { FAQList_default as default };

@@ -1,5 +1,5 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { Fragment as r, jsx as i } from "react/jsx-runtime";
+import { Fragment as r, jsxDEV as i } from "react/jsx-dev-runtime";
 import { useParams as a } from "next/navigation";
 var o = {}, s = [
 	"en",
@@ -20,7 +20,7 @@ var o = {}, s = [
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
 var f, p = !1, m = () => {
 	let e = l;
-	!d && typeof window < "u" && window.location?.href && (e = N(window.location.href));
+	!d && typeof window < "u" && window.location?.href && (e = M(window.location.href));
 	let t = te(e, typeof window < "u" ? window.location?.href : void 0);
 	if (t) return p || (f = t, p = !0, g(t, { reload: !1 })), t;
 	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
@@ -28,11 +28,11 @@ var f, p = !1, m = () => {
 function te(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = D();
+		if (t === "cookie") n = E();
 		else if (t === "baseLocale") n = "en";
 		else if (t === "globalVariable" && f !== void 0) n = f;
-		else if (F(t) && P.has(t)) {
-			let e = P.get(t);
+		else if (P(t) && N.has(t)) {
+			let e = N.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
@@ -54,15 +54,15 @@ var h = (e) => {
 		r = m();
 	} catch {}
 	let i = [], a = l;
-	!d && typeof window < "u" && window.location?.href && (a = N(window.location.href));
+	!d && typeof window < "u" && window.location?.href && (a = M(window.location.href));
 	for (let t of a) if (t === "globalVariable") f = e;
 	else if (t === "cookie") {
 		if (d || typeof document > "u" || typeof window > "u") continue;
 		let t = `${c}=${e}; path=/; max-age=${ee}`;
 		document.cookie = t, T();
 	} else if (t === "baseLocale") continue;
-	else if (F(t) && P.has(t)) {
-		let n = P.get(t);
+	else if (P(t) && N.has(t)) {
+		let n = N.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -98,28 +98,28 @@ var x = c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), S = RegExp(`(?:^|;\\s*)${x}=([
 function T() {
 	w = C;
 }
-function E() {
+function re() {
 	typeof queueMicrotask == "function" ? queueMicrotask(T) : Promise.resolve().then(T);
 }
-function D() {
+function E() {
 	if (typeof document > "u") return;
 	if (w !== C) return w;
 	let e = document.cookie.match(S)?.[1];
-	return w = _(e), E(), w;
+	return w = _(e), re(), w;
+}
+function D(e) {
+	return O(e);
 }
 function O(e) {
-	return k(e);
-}
-function k(e) {
 	let t = y(typeof e == "string" ? new URL(e, ne()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
 	return n.length > 0 && _(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), y(t);
 }
-var A, j;
-function M(e) {
+var k, A;
+function j(e) {
 	if (u.length === 0) return;
 	let t = typeof e == "string" ? e : e.href;
-	if (A === t) return j;
-	let n = y(new URL(t, "http://example.com")), r = O(n), i = r.href === n.href ? [n] : [n, r], a;
+	if (k === t) return A;
+	let n = y(new URL(t, "http://example.com")), r = D(n), i = r.href === n.href ? [n] : [n, r], a;
 	for (let e of i) {
 		for (let t of u) if (b(new o(t.match, e.href), e)) {
 			a = t;
@@ -127,71 +127,75 @@ function M(e) {
 		}
 		if (a) break;
 	}
-	return A = t, j = a, a;
+	return k = t, A = a, a;
 }
-function N(e) {
-	let t = M(e);
+function M(e) {
+	let t = j(e);
 	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : l;
 }
-var P = /* @__PURE__ */ new Map();
-function F(e) {
+var N = /* @__PURE__ */ new Map();
+function P(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var I = () => "Theme: Auto", L = () => "Thème : Auto", R = () => "Tema: Auto", z = () => "Thema: Auto", B = () => "Tema: Auto", V = () => "Tema: Auto", H = () => "主题：自动", U = () => "テーマ：自動", W = () => "테마: 자동", G = () => "Тема: Авто", K = ((e = {}, t = {}) => {
+var F = () => "Theme: Auto", I = () => "Thème : Auto", L = () => "Tema: Auto", R = () => "Thema: Auto", z = () => "Tema: Auto", B = () => "Tema: Auto", V = () => "主题：自动", H = () => "テーマ：自動", U = () => "테마: 자동", W = () => "Тема: Авто", G = ((e = {}, t = {}) => {
 	let n = t.locale ?? m();
-	return n === "fr" ? L(e) : n === "es" ? R(e) : n === "de" ? z(e) : n === "it" ? B(e) : n === "pt" ? V(e) : n === "zh" ? H(e) : n === "ja" ? U(e) : n === "ko" ? W(e) : n === "ru" ? G(e) : I(e);
-}), q = () => "Theme: Dark", J = () => "Thème : Sombre", Y = () => "Tema: Oscuro", X = () => "Thema: Dunkel", Z = () => "Tema: Scuro", re = () => "Tema: Escuro", ie = () => "主题：暗黑", ae = () => "テーマ：ダーク", oe = () => "테마: 다크", se = () => "Тема: Темная", ce = ((e = {}, t = {}) => {
+	return n === "fr" ? I(e) : n === "es" ? L(e) : n === "de" ? R(e) : n === "it" ? z(e) : n === "pt" ? B(e) : n === "zh" ? V(e) : n === "ja" ? H(e) : n === "ko" ? U(e) : n === "ru" ? W(e) : F(e);
+}), K = () => "Theme: Dark", q = () => "Thème : Sombre", J = () => "Tema: Oscuro", Y = () => "Thema: Dunkel", X = () => "Tema: Scuro", ie = () => "Tema: Escuro", ae = () => "主题：暗黑", oe = () => "テーマ：ダーク", se = () => "테마: 다크", ce = () => "Тема: Темная", le = ((e = {}, t = {}) => {
 	let n = t.locale ?? m();
-	return n === "fr" ? J(e) : n === "es" ? Y(e) : n === "de" ? X(e) : n === "it" ? Z(e) : n === "pt" ? re(e) : n === "zh" ? ie(e) : n === "ja" ? ae(e) : n === "ko" ? oe(e) : n === "ru" ? se(e) : q(e);
-}), le = () => "Theme: Light", ue = () => "Thème : Clair", de = () => "Tema: Claro", fe = () => "Thema: Hell", pe = () => "Tema: Chiaro", me = () => "Tema: Claro", he = () => "主题：明亮", ge = () => "テーマ：ライト", _e = () => "테마: 라이트", ve = () => "Тема: Светлая", ye = ((e = {}, t = {}) => {
+	return n === "fr" ? q(e) : n === "es" ? J(e) : n === "de" ? Y(e) : n === "it" ? X(e) : n === "pt" ? ie(e) : n === "zh" ? ae(e) : n === "ja" ? oe(e) : n === "ko" ? se(e) : n === "ru" ? ce(e) : K(e);
+}), ue = () => "Theme: Light", de = () => "Thème : Clair", fe = () => "Tema: Claro", pe = () => "Thema: Hell", me = () => "Tema: Chiaro", he = () => "Tema: Claro", ge = () => "主题：明亮", _e = () => "テーマ：ライト", ve = () => "테마: 라이트", ye = () => "Тема: Светлая", be = ((e = {}, t = {}) => {
 	let n = t.locale ?? m();
-	return n === "fr" ? ue(e) : n === "es" ? de(e) : n === "de" ? fe(e) : n === "it" ? pe(e) : n === "pt" ? me(e) : n === "zh" ? he(e) : n === "ja" ? ge(e) : n === "ko" ? _e(e) : n === "ru" ? ve(e) : le(e);
-}), be = () => "Theme mode: auto (system). Click to switch to light mode.", xe = () => "Mode thématique : auto (système). Cliquez pour passer en mode clair.", Se = () => "Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.", Ce = () => "Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.", we = () => "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.", Te = () => "Modo de tema: automático (sistema). Clique para mudar para o modo claro.", Ee = () => "主题模式：自动（系统）。点击切换到明亮模式。", De = () => "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。", Oe = () => "테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.", ke = () => "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.", Ae = ((e = {}, t = {}) => {
+	return n === "fr" ? de(e) : n === "es" ? fe(e) : n === "de" ? pe(e) : n === "it" ? me(e) : n === "pt" ? he(e) : n === "zh" ? ge(e) : n === "ja" ? _e(e) : n === "ko" ? ve(e) : n === "ru" ? ye(e) : ue(e);
+}), xe = () => "Theme mode: auto (system). Click to switch to light mode.", Se = () => "Mode thématique : auto (système). Cliquez pour passer en mode clair.", Ce = () => "Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.", we = () => "Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.", Te = () => "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.", Ee = () => "Modo de tema: automático (sistema). Clique para mudar para o modo claro.", De = () => "主题模式：自动（系统）。点击切换到明亮模式。", Oe = () => "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。", ke = () => "테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.", Ae = () => "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.", je = ((e = {}, t = {}) => {
 	let n = t.locale ?? m();
-	return n === "fr" ? xe(e) : n === "es" ? Se(e) : n === "de" ? Ce(e) : n === "it" ? we(e) : n === "pt" ? Te(e) : n === "zh" ? Ee(e) : n === "ja" ? De(e) : n === "ko" ? Oe(e) : n === "ru" ? ke(e) : be(e);
-}), je = () => "Theme mode: dark. Click to switch to auto (system) mode.", Me = () => "Mode thématique : sombre. Cliquez pour passer en mode auto (système).", Ne = () => "Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).", Pe = () => "Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.", Fe = () => "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).", Ie = () => "Modo de tema: escuro. Clique para mudar para o modo automático (sistema).", Le = () => "主题模式：暗黑。点击切换到自动（系统）模式。", Re = () => "テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。", ze = () => "테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.", Be = () => "Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.", Ve = ((e = {}, t = {}) => {
+	return n === "fr" ? Se(e) : n === "es" ? Ce(e) : n === "de" ? we(e) : n === "it" ? Te(e) : n === "pt" ? Ee(e) : n === "zh" ? De(e) : n === "ja" ? Oe(e) : n === "ko" ? ke(e) : n === "ru" ? Ae(e) : xe(e);
+}), Me = () => "Theme mode: dark. Click to switch to auto (system) mode.", Ne = () => "Mode thématique : sombre. Cliquez pour passer en mode auto (système).", Pe = () => "Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).", Fe = () => "Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.", Ie = () => "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).", Le = () => "Modo de tema: escuro. Clique para mudar para o modo automático (sistema).", Re = () => "主题模式：暗黑。点击切换到自动（系统）模式。", ze = () => "テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。", Be = () => "테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.", Ve = () => "Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.", He = ((e = {}, t = {}) => {
 	let n = t.locale ?? m();
-	return n === "fr" ? Me(e) : n === "es" ? Ne(e) : n === "de" ? Pe(e) : n === "it" ? Fe(e) : n === "pt" ? Ie(e) : n === "zh" ? Le(e) : n === "ja" ? Re(e) : n === "ko" ? ze(e) : n === "ru" ? Be(e) : je(e);
-}), He = () => "Theme mode: light. Click to switch to dark mode.", Ue = () => "Mode thématique : clair. Cliquez pour passer en mode sombre.", We = () => "Modo de tema: claro. Haz clic para cambiar al modo oscuro.", Ge = () => "Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.", Ke = () => "Modalità tema: chiara. Clicca per passare alla modalità scura.", qe = () => "Modo de tema: claro. Clique para mudar para o modo escuro.", Je = () => "主题模式：明亮。点击切换到暗黑模式。", Ye = () => "テーマモード：ライト。クリックしてダークモードに切り替えます。", Q = () => "테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.", Xe = () => "Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.", Ze = ((e = {}, t = {}) => {
+	return n === "fr" ? Ne(e) : n === "es" ? Pe(e) : n === "de" ? Fe(e) : n === "it" ? Ie(e) : n === "pt" ? Le(e) : n === "zh" ? Re(e) : n === "ja" ? ze(e) : n === "ko" ? Be(e) : n === "ru" ? Ve(e) : Me(e);
+}), Ue = () => "Theme mode: light. Click to switch to dark mode.", We = () => "Mode thématique : clair. Cliquez pour passer en mode sombre.", Ge = () => "Modo de tema: claro. Haz clic para cambiar al modo oscuro.", Ke = () => "Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.", qe = () => "Modalità tema: chiara. Clicca per passare alla modalità scura.", Je = () => "Modo de tema: claro. Clique para mudar para o modo escuro.", Ye = () => "主题模式：明亮。点击切换到暗黑模式。", Xe = () => "テーマモード：ライト。クリックしてダークモードに切り替えます。", Z = () => "테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.", Ze = () => "Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.", Qe = ((e = {}, t = {}) => {
 	let n = t.locale ?? m();
-	return n === "fr" ? Ue(e) : n === "es" ? We(e) : n === "de" ? Ge(e) : n === "it" ? Ke(e) : n === "pt" ? qe(e) : n === "zh" ? Je(e) : n === "ja" ? Ye(e) : n === "ko" ? Q(e) : n === "ru" ? Xe(e) : He(e);
-});
-function Qe() {
+	return n === "fr" ? We(e) : n === "es" ? Ge(e) : n === "de" ? Ke(e) : n === "it" ? qe(e) : n === "pt" ? Je(e) : n === "zh" ? Ye(e) : n === "ja" ? Xe(e) : n === "ko" ? Z(e) : n === "ru" ? Ze(e) : Ue(e);
+}), $e = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/ThemeToggle.tsx";
+function et() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 }
-function $(e) {
+function Q(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function $e() {
+function tt() {
 	let [t, r] = n("auto");
 	e(() => {
-		let e = Qe();
-		r(e), $(e);
+		let e = et();
+		r(e), Q(e);
 	}, []), e(() => {
 		if (t !== "auto") return;
-		let e = window.matchMedia("(prefers-color-scheme: dark)"), n = () => $("auto");
+		let e = window.matchMedia("(prefers-color-scheme: dark)"), n = () => Q("auto");
 		return e.addEventListener("change", n), () => {
 			e.removeEventListener("change", n);
 		};
 	}, [t]);
 	function a() {
 		let e = t === "light" ? "dark" : t === "dark" ? "auto" : "light";
-		r(e), $(e), window.localStorage.setItem("theme", e);
+		r(e), Q(e), window.localStorage.setItem("theme", e);
 	}
-	let o = t === "auto" ? Ae() : t === "light" ? Ze() : Ve();
+	let o = t === "auto" ? je() : t === "light" ? Qe() : He();
 	return i("button", {
 		type: "button",
 		onClick: a,
 		"aria-label": o,
 		title: o,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
-		children: t === "auto" ? K() : t === "dark" ? ce() : ye()
-	});
+		children: t === "auto" ? G() : t === "dark" ? le() : be()
+	}, void 0, !1, {
+		fileName: $e,
+		lineNumber: 76,
+		columnNumber: 5
+	}, this);
 }
-function et() {
+function nt() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -205,25 +209,44 @@ function et() {
 		}
 	}
 }
-function tt(e, t) {
+function rt(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function nt({ children: o }) {
+var it = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
+function at({ children: o }) {
 	let s = a().locale ?? "en", [c] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		tt("AppRoot", c);
+		rt("AppRoot", c);
 	}, [c]), e(() => {
 		g(s, { reload: !1 }), document.documentElement.lang = s;
 	}, [s]), e(() => {
-		et();
-	}, []), i(r, { children: o });
+		nt();
+	}, []), i(r, { children: o }, void 0, !1, {
+		fileName: it,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
-function rt({ children: e }) {
-	return i(nt, { children: e });
+var ot = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
+function st({ children: e }) {
+	return i(at, { children: e }, void 0, !1, {
+		fileName: ot,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
-function it() {
-	return i(rt, { children: i($e, {}) });
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/ThemeToggle.wrapper.tsx";
+function ct() {
+	return i(st, { children: i(tt, {}, void 0, !1, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { it as default };
+export { ct as default };

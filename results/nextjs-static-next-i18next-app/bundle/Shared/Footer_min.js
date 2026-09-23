@@ -1,27 +1,44 @@
 import { createContext as e, createElement as t, useCallback as n, useContext as r, useEffect as i, useLayoutEffect as a, useMemo as o, useRef as s, useState as c } from "react";
 import l from "next/link";
 import { useParams as u } from "next/navigation";
-import { jsx as d, jsxs as f } from "react/jsx-runtime";
-var p = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), m = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as d } from "react/jsx-dev-runtime";
+var f = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), p = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), h = (e) => /^https?:\/\//.test(e ?? "");
+}), m = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/Link.tsx", h = (e) => /^https?:\/\//.test(e ?? "");
 function g(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
 var _ = ({ href: e, children: t, ...n }) => {
 	let r = u().locale ?? "en";
-	return e == null || typeof e != "string" || h(e) ? d(l, {
+	return e == null || typeof e != "string" ? d(l, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}) : d(l, {
+	}, void 0, !1, {
+		fileName: m,
+		lineNumber: 23,
+		columnNumber: 7
+	}, void 0) : h(e) ? d(l, {
+		href: e,
+		prefetch: !1,
+		...n,
+		children: t
+	}, void 0, !1, {
+		fileName: m,
+		lineNumber: 30,
+		columnNumber: 7
+	}, void 0) : d(l, {
 		href: g(e, r),
 		prefetch: !1,
 		...n,
 		children: t
-	});
+	}, void 0, !1, {
+		fileName: m,
+		lineNumber: 36,
+		columnNumber: 5
+	}, void 0);
 }, v = (e) => typeof e == "string", y = () => {
 	let e, t, n = new Promise((n, r) => {
 		e = n, t = r;
@@ -1322,7 +1339,7 @@ var be = (e, t, n, r) => {
 	init(e) {
 		ke(e.options.react), Me(e);
 	}
-}, Q = e(), Fe = class {
+}, Fe = e(), Ie = class {
 	constructor() {
 		this.usedNamespaces = {};
 	}
@@ -1334,8 +1351,8 @@ var be = (e, t, n, r) => {
 	getUsedNamespaces() {
 		return Object.keys(this.usedNamespaces);
 	}
-}, Ie = p(((e) => {
-	var t = m("react");
+}, Le = f(((e) => {
+	var t = p("react");
 	function n(e, t) {
 		return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
 	}
@@ -1372,7 +1389,7 @@ var be = (e, t, n, r) => {
 	}
 	var d = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? u : c;
 	e.useSyncExternalStore = t.useSyncExternalStore === void 0 ? d : t.useSyncExternalStore;
-})), Le = p(((e) => {
+})), Re = f(((e) => {
 	process.env.NODE_ENV !== "production" && (function() {
 		function t(e, t) {
 			return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
@@ -1415,12 +1432,12 @@ var be = (e, t, n, r) => {
 			return t();
 		}
 		typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-		var a = m("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, c = a.useEffect, l = a.useLayoutEffect, u = a.useDebugValue, d = !1, f = !1, p = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
-		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? p : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
+		var a = p("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, c = a.useEffect, l = a.useLayoutEffect, u = a.useDebugValue, d = !1, f = !1, m = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
+		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? m : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 	})();
-})), Re = p(((e, t) => {
-	t.exports = process.env.NODE_ENV === "production" ? Ie() : Le();
-}))(), ze = {
+})), ze = f(((e, t) => {
+	t.exports = process.env.NODE_ENV === "production" ? Le() : Re();
+}))(), Be = {
 	t: (e, t) => {
 		if (X(t)) return t;
 		if (Te(t) && X(t.defaultValue)) return t.defaultValue;
@@ -1432,9 +1449,9 @@ var be = (e, t, n, r) => {
 		return e;
 	},
 	ready: !1
-}, Be = () => () => {}, Ve = (e, t = {}) => {
-	let { i18n: a } = t, { i18n: l, defaultNS: u } = r(Q) || {}, d = a || l || Ne();
-	d && !d.reportNamespaces && (d.reportNamespaces = new Fe()), d || J(d, "NO_I18NEXT_INSTANCE", "useTranslation: You will need to pass in an i18next instance by using initReactI18next or by passing it via props or context. In monorepo setups, make sure there is only one instance of react-i18next.");
+}, Ve = () => () => {}, He = (e, t = {}) => {
+	let { i18n: a } = t, { i18n: l, defaultNS: u } = r(Fe) || {}, d = a || l || Ne();
+	d && !d.reportNamespaces && (d.reportNamespaces = new Ie()), d || J(d, "NO_I18NEXT_INSTANCE", "useTranslation: You will need to pass in an i18next instance by using initReactI18next or by passing it via props or context. In monorepo setups, make sure there is only one instance of react-i18next.");
 	let f = o(() => ({
 		...Ae(),
 		...d?.options?.react,
@@ -1442,7 +1459,7 @@ var be = (e, t, n, r) => {
 	}), [d, t]), { useSuspense: p, keyPrefix: m } = f, h = e || u || d?.options?.defaultNS, g = X(h) ? [h] : h || ["translation"], _ = o(() => g, g);
 	d?.reportNamespaces?.addUsedNamespaces?.(_);
 	let v = s(0), y = n((e) => {
-		if (!d) return Be;
+		if (!d) return Ve;
 		let { bindI18n: t, bindI18nStore: n } = f, r = () => {
 			v.current += 1, e();
 		};
@@ -1450,7 +1467,7 @@ var be = (e, t, n, r) => {
 			t && t.split(" ").forEach((e) => d.off(e, r)), n && n.split(" ").forEach((e) => d.store.off(e, r));
 		};
 	}, [d, f]), b = s(), x = n(() => {
-		if (!d) return ze;
+		if (!d) return Be;
 		let e = !!(d.isInitialized || d.initializedStoreOnce) && _.every((e) => we(e, d, f)), n = t.lng || d.language, r = v.current, i = b.current;
 		if (i && i.ready === e && i.lng === n && i.keyPrefix === m && i.revision === r) return i;
 		let a = {
@@ -1467,7 +1484,7 @@ var be = (e, t, n, r) => {
 		m,
 		f,
 		t.lng
-	]), [S, C] = c(0), { t: w, ready: T } = (0, Re.useSyncExternalStore)(y, x, x);
+	]), [S, C] = c(0), { t: w, ready: T } = (0, ze.useSyncExternalStore)(y, x, x);
 	i(() => {
 		if (d && !T && !p) {
 			let e = () => C((e) => e + 1);
@@ -1523,15 +1540,16 @@ var be = (e, t, n, r) => {
 	}
 	return A;
 };
-function He({ i18n: e, defaultNS: n, children: r }) {
+function Ue({ i18n: e, defaultNS: n, children: r }) {
 	let i = o(() => ({
 		i18n: e,
 		defaultNS: n
 	}), [e, n]);
-	return t(Q.Provider, { value: i }, r);
+	return t(Fe.Provider, { value: i }, r);
 }
-function Ue() {
-	let { t: e } = Ve(), t = [
+var Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/Footer.tsx";
+function We() {
+	let { t: e } = He(), t = [
 		{
 			label: e("shared.footer.github"),
 			href: "https://github.com/intlayer-org/benchmark-i18n",
@@ -1550,51 +1568,115 @@ function Ue() {
 	];
 	return d("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: f("div", {
+		children: d("div", {
 			className: "container py-8",
-			children: [f("div", {
+			children: [d("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					f("div", { children: [d("h3", {
+					d("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), d("p", {
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 32,
+						columnNumber: 13
+					}, this), d("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("shared.footer.anOpenSourceTestApplication")
-					})] }),
-					f("div", { children: [d("h3", {
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 35,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: Q,
+						lineNumber: 31,
+						columnNumber: 11
+					}, this),
+					d("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("shared.footer.resources")
-					}), d("ul", {
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 40,
+						columnNumber: 13
+					}, this), d("ul", {
 						className: "space-y-1",
 						children: t.map((e) => d("li", { children: e.isInternal ? d(_, {
 							href: e.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}) : d("a", {
+						}, void 0, !1, {
+							fileName: Q,
+							lineNumber: 47,
+							columnNumber: 21
+						}, this) : d("a", {
 							href: e.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}) }, e.label))
-					})] }),
-					f("div", { children: [d("h3", {
+						}, void 0, !1, {
+							fileName: Q,
+							lineNumber: 54,
+							columnNumber: 21
+						}, this) }, e.label, !1, {
+							fileName: Q,
+							lineNumber: 45,
+							columnNumber: 17
+						}, this))
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 43,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: Q,
+						lineNumber: 39,
+						columnNumber: 11
+					}, this),
+					d("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("shared.footer.contact")
-					}), d("p", {
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 68,
+						columnNumber: 13
+					}, this), d("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					})] })
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 71,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: Q,
+						lineNumber: 67,
+						columnNumber: 11
+					}, this)
 				]
-			}), d("div", {
+			}, void 0, !0, {
+				fileName: Q,
+				lineNumber: 30,
+				columnNumber: 9
+			}, this), d("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: e("shared.footer.builtWith")
-			})]
-		})
-	});
+			}, void 0, !1, {
+				fileName: Q,
+				lineNumber: 76,
+				columnNumber: 9
+			}, this)]
+		}, void 0, !0, {
+			fileName: Q,
+			lineNumber: 29,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: Q,
+		lineNumber: 28,
+		columnNumber: 5
+	}, this);
 }
-function We() {
+function Ge() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -1608,7 +1690,7 @@ function We() {
 		}
 	}
 }
-function Ge(e, t) {
+function Ke(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
@@ -3771,26 +3853,44 @@ q.use(Pe).init({
 	keySeparator: !1,
 	nsSeparator: !1
 });
-var $ = q;
-function Ke({ children: e }) {
+var $ = q, qe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/AppProviders.tsx";
+function Je({ children: e }) {
 	let t = u().locale ?? "en", [n] = c(() => typeof performance < "u" ? performance.now() : 0);
 	return a(() => {
-		Ge("AppRoot", n);
+		Ke("AppRoot", n);
 	}, [n]), i(() => {
 		$.language !== t && $.changeLanguage(t);
 	}, [t]), i(() => {
 		document.documentElement.lang = t;
 	}, [t]), i(() => {
-		We();
-	}, []), d(He, {
+		Ge();
+	}, []), d(Ue, {
 		i18n: $,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: qe,
+		lineNumber: 38,
+		columnNumber: 7
+	}, this);
 }
-function qe({ children: e }) {
-	return d(Ke, { children: e });
+var Ye = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/scripts/Wrapper.tsx";
+function Xe({ children: e }) {
+	return d(Je, { children: e }, void 0, !1, {
+		fileName: Ye,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
-function Je() {
-	return d(qe, { children: d(Ue, {}) });
+var Ze = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/Footer.wrapper.tsx";
+function Qe() {
+	return d(Xe, { children: d(We, {}, void 0, !1, {
+		fileName: Ze,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: Ze,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { Je as default };
+export { Qe as default };

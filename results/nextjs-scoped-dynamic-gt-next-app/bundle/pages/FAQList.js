@@ -1,5 +1,6 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
+import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3908,7 +3909,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => false) === true) return "development";
+	if (readImportMetaEnv(() => true) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6018,53 +6019,135 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/faq/FAQList.tsx";
 function FAQList() {
-	return jsx("div", {
+	const faqs = [
+		{
+			q: jsxDEV(a$2, { children: "What is i18n Benchmark?" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 6,
+				columnNumber: 10
+			}, this),
+			a: jsxDEV(a$2, { children: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 8,
+				columnNumber: 9
+			}, this)
+		},
+		{
+			q: jsxDEV(a$2, { children: "How are benchmarks conducted?" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 16,
+				columnNumber: 10
+			}, this),
+			a: jsxDEV(a$2, { children: "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 18,
+				columnNumber: 9
+			}, this)
+		},
+		{
+			q: jsxDEV(a$2, { children: "Which libraries are currently supported?" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 27,
+				columnNumber: 10
+			}, this),
+			a: jsxDEV(a$2, { children: "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 29,
+				columnNumber: 9
+			}, this)
+		},
+		{
+			q: jsxDEV(a$2, { children: "Can I submit my own benchmarks?" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 37,
+				columnNumber: 10
+			}, this),
+			a: jsxDEV(a$2, { children: "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 39,
+				columnNumber: 9
+			}, this)
+		},
+		{
+			q: jsxDEV(a$2, { children: "How often are benchmarks updated?" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 47,
+				columnNumber: 10
+			}, this),
+			a: jsxDEV(a$2, { children: "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 49,
+				columnNumber: 9
+			}, this)
+		},
+		{
+			q: jsxDEV(a$2, { children: "Is the data reliable?" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 57,
+				columnNumber: 10
+			}, this),
+			a: jsxDEV(a$2, { children: "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 59,
+				columnNumber: 9
+			}, this)
+		},
+		{
+			q: jsxDEV(a$2, { children: "Do you offer consulting services?" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 67,
+				columnNumber: 10
+			}, this),
+			a: jsxDEV(a$2, { children: "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 69,
+				columnNumber: 9
+			}, this)
+		},
+		{
+			q: jsxDEV(a$2, { children: "How can I contribute?" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 77,
+				columnNumber: 10
+			}, this),
+			a: jsxDEV(a$2, { children: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 79,
+				columnNumber: 9
+			}, this)
+		}
+	];
+	return jsxDEV("div", {
 		className: "mx-auto max-w-3xl space-y-4",
-		children: [
-			{
-				q: jsx(a$2, { children: "What is i18n Benchmark?" }),
-				a: jsx(a$2, { children: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications." })
-			},
-			{
-				q: jsx(a$2, { children: "How are benchmarks conducted?" }),
-				a: jsx(a$2, { children: "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository." })
-			},
-			{
-				q: jsx(a$2, { children: "Which libraries are currently supported?" }),
-				a: jsx(a$2, { children: "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee." })
-			},
-			{
-				q: jsx(a$2, { children: "Can I submit my own benchmarks?" }),
-				a: jsx(a$2, { children: "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions." })
-			},
-			{
-				q: jsx(a$2, { children: "How often are benchmarks updated?" }),
-				a: jsx(a$2, { children: "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle." })
-			},
-			{
-				q: jsx(a$2, { children: "Is the data reliable?" }),
-				a: jsx(a$2, { children: "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency." })
-			},
-			{
-				q: jsx(a$2, { children: "Do you offer consulting services?" }),
-				a: jsx(a$2, { children: "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints." })
-			},
-			{
-				q: jsx(a$2, { children: "How can I contribute?" }),
-				a: jsx(a$2, { children: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details." })
-			}
-		].map((f, i) => jsxs("details", {
+		children: faqs.map((f, i) => jsxDEV("details", {
 			className: "group rounded-lg border border-border bg-card",
-			children: [jsx("summary", {
+			children: [jsxDEV("summary", {
 				className: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors",
 				children: f.q
-			}), jsx("p", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 95,
+				columnNumber: 11
+			}, this), jsxDEV("p", {
 				className: "px-6 pb-4 text-sm text-muted-foreground",
 				children: f.a
-			})]
-		}, i))
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 98,
+				columnNumber: 11
+			}, this)]
+		}, i, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 91,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 89,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6088,6 +6171,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6099,19 +6183,41 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment$1, { children });
+	return jsxDEV(Fragment$1, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 33,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(BrowserGTProvider, {
+	return jsxDEV(BrowserGTProvider, {
 		locale,
-		children: jsx(AppProviders, {
+		children: jsxDEV(AppProviders, {
 			locale,
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 14,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 13,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/faq/FAQList.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(FAQList, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(FAQList, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

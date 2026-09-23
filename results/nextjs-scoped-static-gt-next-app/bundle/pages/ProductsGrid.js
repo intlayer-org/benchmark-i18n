@@ -1,5 +1,6 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
+import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3908,7 +3909,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => false) === true) return "development";
+	if (readImportMetaEnv(() => true) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6018,61 +6019,159 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/pages/products/ProductsGrid.tsx";
 function ProductsGrid() {
-	return jsx("div", {
+	const products = [
+		{
+			name: jsxDEV(a$2, { children: "Benchmark CLI" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 6,
+				columnNumber: 13
+			}, this),
+			desc: jsxDEV(a$2, { children: "Run benchmarks locally from your terminal. Supports custom configurations and CI integration." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 8,
+				columnNumber: 9
+			}, this),
+			price: jsxDEV(a$2, { children: "Free" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 13,
+				columnNumber: 14
+			}, this)
+		},
+		{
+			name: jsxDEV(a$2, { children: "Benchmark Cloud" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 16,
+				columnNumber: 13
+			}, this),
+			desc: jsxDEV(a$2, { children: "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 18,
+				columnNumber: 9
+			}, this),
+			price: "$29/mo"
+		},
+		{
+			name: jsxDEV(a$2, { children: "Benchmark Enterprise" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 26,
+				columnNumber: 13
+			}, this),
+			desc: jsxDEV(a$2, { children: "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 28,
+				columnNumber: 9
+			}, this),
+			price: jsxDEV(a$2, { children: "Contact Us" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 33,
+				columnNumber: 14
+			}, this)
+		},
+		{
+			name: jsxDEV(a$2, { children: "Migration Assistant" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 36,
+				columnNumber: 13
+			}, this),
+			desc: jsxDEV(a$2, { children: "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 38,
+				columnNumber: 9
+			}, this),
+			price: jsxDEV(a$2, { children: "$99 one-time" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 43,
+				columnNumber: 14
+			}, this)
+		},
+		{
+			name: jsxDEV(a$2, { children: "Translation QA" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 46,
+				columnNumber: 13
+			}, this),
+			desc: jsxDEV(a$2, { children: "Automated quality checks for missing translations, pluralization issues, and context errors." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 48,
+				columnNumber: 9
+			}, this),
+			price: "$19/mo"
+		},
+		{
+			name: jsxDEV(a$2, { children: "Bundle Optimizer" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 56,
+				columnNumber: 13
+			}, this),
+			desc: jsxDEV(a$2, { children: "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 58,
+				columnNumber: 9
+			}, this),
+			price: "$49/mo"
+		}
+	];
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: [
-			{
-				name: jsx(a$2, { children: "Benchmark CLI" }),
-				desc: jsx(a$2, { children: "Run benchmarks locally from your terminal. Supports custom configurations and CI integration." }),
-				price: jsx(a$2, { children: "Free" })
-			},
-			{
-				name: jsx(a$2, { children: "Benchmark Cloud" }),
-				desc: jsx(a$2, { children: "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards." }),
-				price: "$29/mo"
-			},
-			{
-				name: jsx(a$2, { children: "Benchmark Enterprise" }),
-				desc: jsx(a$2, { children: "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support." }),
-				price: jsx(a$2, { children: "Contact Us" })
-			},
-			{
-				name: jsx(a$2, { children: "Migration Assistant" }),
-				desc: jsx(a$2, { children: "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime." }),
-				price: jsx(a$2, { children: "$99 one-time" })
-			},
-			{
-				name: jsx(a$2, { children: "Translation QA" }),
-				desc: jsx(a$2, { children: "Automated quality checks for missing translations, pluralization issues, and context errors." }),
-				price: "$19/mo"
-			},
-			{
-				name: jsx(a$2, { children: "Bundle Optimizer" }),
-				desc: jsx(a$2, { children: "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting." }),
-				price: "$49/mo"
-			}
-		].map((p) => jsxs("div", {
+		children: products.map((p) => jsxDEV("div", {
 			className: "flex flex-col justify-between rounded-lg border border-border bg-card p-6",
-			children: [jsxs("div", { children: [jsx("h3", {
+			children: [jsxDEV("div", { children: [jsxDEV("h3", {
 				className: "mb-2 text-lg font-semibold text-foreground",
 				children: p.name
-			}), jsx("p", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 75,
+				columnNumber: 13
+			}, this), jsxDEV("p", {
 				className: "mb-4 text-sm text-muted-foreground",
 				children: p.desc
-			})] }), jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 78,
+				columnNumber: 13
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 74,
+				columnNumber: 11
+			}, this), jsxDEV("div", {
 				className: "flex items-center justify-between",
-				children: [jsx("span", {
+				children: [jsxDEV("span", {
 					className: "text-sm font-bold text-primary",
 					children: p.price
-				}), jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 81,
+					columnNumber: 13
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-					children: jsx(a$2, { children: "Learn More" })
-				})]
-			})]
-		}, p.name?.toString() || ""))
-	});
+					children: jsxDEV(a$2, { children: "Learn More" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 86,
+						columnNumber: 15
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 82,
+					columnNumber: 13
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 80,
+				columnNumber: 11
+			}, this)]
+		}, p.name?.toString() || "", true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 70,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 68,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6096,6 +6195,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6107,19 +6207,41 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment$1, { children });
+	return jsxDEV(Fragment$1, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 33,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(BrowserGTProvider, {
+	return jsxDEV(BrowserGTProvider, {
 		locale,
-		children: jsx(AppProviders, {
+		children: jsxDEV(AppProviders, {
 			locale,
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 14,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 13,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/gt-next-app/components/pages/products/ProductsGrid.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ProductsGrid, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ProductsGrid, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

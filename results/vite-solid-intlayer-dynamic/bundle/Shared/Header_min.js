@@ -2,16 +2,16 @@ import { Dynamic as e, createComponent as t, delegateEvents as n, effect as r, i
 import { For as c, createContext as l, createEffect as u, createMemo as d, createSignal as f, onMount as p, useContext as m } from "solid-js";
 import { A as h, useLocation as g, useNavigate as _, useParams as v } from "@solidjs/router";
 var y = {
-	de: () => import("./de-Cghlwthx.js").then((e) => e.default),
-	en: () => import("./en-B0O-AJEp.js").then((e) => e.default),
-	es: () => import("./es-C41cu62B.js").then((e) => e.default),
-	fr: () => import("./fr-BcrvnMyF.js").then((e) => e.default),
-	it: () => import("./it-DG-iFp5r.js").then((e) => e.default),
-	ja: () => import("./ja-tziK3IRE.js").then((e) => e.default),
-	ko: () => import("./ko-CPoBZ8e6.js").then((e) => e.default),
-	pt: () => import("./pt-BrNl2-cb.js").then((e) => e.default),
-	ru: () => import("./ru-Cm7pnU1p.js").then((e) => e.default),
-	zh: () => import("./zh-DLSRSeH7.js").then((e) => e.default)
+	de: () => import("../../.intlayer/dynamic_dictionary/json/header/de.json").then((e) => e.default),
+	en: () => import("./en-BnXbwaIt.js").then((e) => e.default),
+	es: () => import("../../.intlayer/dynamic_dictionary/json/header/es.json").then((e) => e.default),
+	fr: () => import("../../.intlayer/dynamic_dictionary/json/header/fr.json").then((e) => e.default),
+	it: () => import("../../.intlayer/dynamic_dictionary/json/header/it.json").then((e) => e.default),
+	ja: () => import("../../.intlayer/dynamic_dictionary/json/header/ja.json").then((e) => e.default),
+	ko: () => import("../../.intlayer/dynamic_dictionary/json/header/ko.json").then((e) => e.default),
+	pt: () => import("../../.intlayer/dynamic_dictionary/json/header/pt.json").then((e) => e.default),
+	ru: () => import("../../.intlayer/dynamic_dictionary/json/header/ru.json").then((e) => e.default),
+	zh: () => import("../../.intlayer/dynamic_dictionary/json/header/zh.json").then((e) => e.default)
 }, b = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -124,7 +124,7 @@ var y = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (E(e) && E(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : D(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : D(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -299,8 +299,7 @@ var le = [
 }, de = s("<div class=\"flex items-center gap-2\"><select class=\"h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary\">"), fe = s("<option>");
 function pe() {
 	let e = v(), n = _(), a = g(), o = (e) => {
-		let t = a.pathname.replace(/^\/[^/]+/, `/${e}`);
-		n(`${t}${a.search}${a.hash}`);
+		n(`${a.pathname.replace(/^\/[^/]+/, `/${e}`)}${a.search}${a.hash}`);
 	};
 	return (() => {
 		var n = de(), a = n.firstChild;
@@ -314,16 +313,16 @@ function pe() {
 	})();
 }
 var me = {
-	de: () => import("./de-7VUDwmBl.js").then((e) => e.default),
-	en: () => import("./en-jkxS6-DV.js").then((e) => e.default),
-	es: () => import("./es-CIspf5D3.js").then((e) => e.default),
-	fr: () => import("./fr-YmmgtERO.js").then((e) => e.default),
-	it: () => import("./it-DU31rHaG.js").then((e) => e.default),
-	ja: () => import("./ja-DM8e2iCP.js").then((e) => e.default),
-	ko: () => import("./ko-AZ6Ztjar.js").then((e) => e.default),
-	pt: () => import("./pt-C-srSz5f.js").then((e) => e.default),
-	ru: () => import("./ru-M_3J5buD.js").then((e) => e.default),
-	zh: () => import("./zh-BafddiL4.js").then((e) => e.default)
+	de: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((e) => e.default),
+	en: () => import("./en-BxoOJuDa.js").then((e) => e.default),
+	es: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/es.json").then((e) => e.default),
+	fr: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/fr.json").then((e) => e.default),
+	it: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/it.json").then((e) => e.default),
+	ja: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ja.json").then((e) => e.default),
+	ko: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ko.json").then((e) => e.default),
+	pt: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/pt.json").then((e) => e.default),
+	ru: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ru.json").then((e) => e.default),
+	zh: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/zh.json").then((e) => e.default)
 }, Q = s("<button type=button class=\"rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80\">");
 function he() {
 	if (typeof window > "u") return "auto";
@@ -464,35 +463,6 @@ function xe() {
 n(["click"]);
 export { xe as default };
 var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
-		a: "Design: Auto",
-		b: "Design: Dunkel",
-		c: "Design: Hell"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "Header",
-		k: "Produkte",
-		j: "Preise",
-		m: "Team",
-		a: "Blog",
-		b: "Karriere",
-		d: "FAQ",
-		c: "Kontakt",
-		l: "Einstellungen",
-		g: "Home",
-		h: "Methodik",
-		i: "Testseiten",
-		e: "Zu GitHub"
-	}
-};
-export { e as default };
-var e = {
 	key: "header",
 	content: {
 		f: "Header",
@@ -518,238 +488,6 @@ var e = {
 		a: "Theme: Auto",
 		b: "Theme: Dark",
 		c: "Theme: Light"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "Encabezado",
-		k: "Productos",
-		j: "Precios",
-		m: "Equipo",
-		a: "Blog",
-		b: "Carreras",
-		d: "FAQ",
-		c: "Contacto",
-		l: "Ajustes",
-		g: "Inicio",
-		h: "Metodología",
-		i: "Páginas de prueba",
-		e: "Ir a GitHub"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
-		a: "Tema: Automático",
-		b: "Tema: Oscuro",
-		c: "Tema: Claro"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "En-tête",
-		k: "Produits",
-		j: "Tarification",
-		m: "Équipe",
-		a: "Blog",
-		b: "Carrières",
-		d: "FAQ",
-		c: "Contact",
-		l: "Paramètres",
-		g: "Accueil",
-		h: "Méthodologie",
-		i: "Pages fictives",
-		e: "Aller sur GitHub"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Mode thématique : auto (système). Cliquez pour passer en mode clair.",
-		a: "Thème : Auto",
-		b: "Thème : Sombre",
-		c: "Thème : Clair"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "Intestazione",
-		k: "Prodotti",
-		j: "Prezzi",
-		m: "Team",
-		a: "Blog",
-		b: "Carriere",
-		d: "FAQ",
-		c: "Contatti",
-		l: "Impostazioni",
-		g: "Home",
-		h: "Metodologia",
-		i: "Pagine di prova",
-		e: "Vai su GitHub"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
-		a: "Tema: Auto",
-		b: "Tema: Scuro",
-		c: "Tema: Chiaro"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-		a: "テーマ：自動",
-		b: "テーマ：ダーク",
-		c: "テーマ：ライト"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "ヘッダー",
-		k: "製品",
-		j: "価格設定",
-		m: "チーム",
-		a: "ブログ",
-		b: "採用情報",
-		d: "よくある質問",
-		c: "お問い合わせ",
-		l: "設定",
-		g: "ホーム",
-		h: "方法論",
-		i: "モックページ",
-		e: "GitHub へ"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
-		a: "테마: 자동",
-		b: "테마: 다크",
-		c: "테마: 라이트"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "헤더",
-		k: "제품",
-		j: "가격",
-		m: "팀",
-		a: "블로그",
-		b: "채용",
-		d: "자주 묻는 질문",
-		c: "문의",
-		l: "설정",
-		g: "홈",
-		h: "방법론",
-		i: "모ック 페이지",
-		e: "GitHub으로 이동"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "Cabeçalho",
-		k: "Produtos",
-		j: "Preços",
-		m: "Equipe",
-		a: "Blog",
-		b: "Carreiras",
-		d: "FAQ",
-		c: "Contato",
-		l: "Configurações",
-		g: "Início",
-		h: "Metodologia",
-		i: "Páginas de Teste",
-		e: "Ir para o GitHub"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-		a: "Tema: Automático",
-		b: "Tema: Escuro",
-		c: "Tema: Claro"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "Заголовок",
-		k: "Продукты",
-		j: "Цены",
-		m: "Команда",
-		a: "Блог",
-		b: "Вакансии",
-		d: "FAQ",
-		c: "Контакт",
-		l: "Настройки",
-		g: "Главная",
-		h: "Методология",
-		i: "Мок-страницы",
-		e: "Перейти на GitHub"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
-		a: "Тема: Авто",
-		b: "Тема: Темная",
-		c: "Тема: Светлая"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "主题模式：自动（系统）。点击切换到亮色模式。",
-		a: "主题：自动",
-		b: "主题：深色",
-		c: "主题：亮色"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "页眉",
-		k: "产品",
-		j: "定价",
-		m: "团队",
-		a: "博客",
-		b: "职业",
-		d: "常见问题",
-		c: "联系我们",
-		l: "设置",
-		g: "首页",
-		h: "方法论",
-		i: "模拟页面",
-		e: "前往 GitHub"
 	}
 };
 export { e as default };

@@ -1,5 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -56,12 +57,12 @@ var getLocaleFromDomain = (hostname, domains) => {
 var PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
 var LOCALES = ["en"];
 var resolveRoutingConfig = (options = {}) => ({
-	...options,
-	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
-	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
-	locales: options.locales ?? internationalization?.locales ?? LOCALES,
-	rewrite: options.rewrite ?? routing?.rewrite,
-	domains: options.domains ?? routing?.domains
+	defaultLocale: internationalization?.defaultLocale ?? "en",
+	mode: routing?.mode ?? "prefix-no-default",
+	locales: internationalization?.locales ?? LOCALES,
+	rewrite: routing?.rewrite,
+	domains: routing?.domains,
+	...options
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -779,6 +780,7 @@ var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const plainLoaders = dictionaryPromise;
 	return getDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, plainLoaders[localeTarget]?.()), localeTarget);
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/blog/BlogList.tsx";
 function BlogList() {
 	const content$1 = useDictionaryDynamic(content, "blog-list");
 	const posts = [
@@ -819,46 +821,92 @@ function BlogList() {
 			category: content$1.o.value
 		}
 	];
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2",
-		children: posts.map((p) => jsxs("article", {
+		children: posts.map((p) => jsxDEV("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				jsxs("div", {
+				jsxDEV("div", {
 					className: "mb-3 flex items-center gap-3",
-					children: [jsx("span", {
+					children: [jsxDEV("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: p.category
-					}), jsx("span", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 53,
+						columnNumber: 13
+					}, this), jsxDEV("span", {
 						className: "text-xs text-muted-foreground",
 						children: p.date
-					})]
-				}),
-				jsx("h2", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 56,
+						columnNumber: 13
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 52,
+					columnNumber: 11
+				}, this),
+				jsxDEV("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: p.title
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 58,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: p.excerpt
-				}),
-				jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 61,
+					columnNumber: 11
+				}, this),
+				jsxDEV("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
 					children: content$1.s
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 62,
+					columnNumber: 11
+				}, this)
 			]
-		}, p.title))
-	});
+		}, p.title, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 48,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 46,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(IntlayerProvider, {
+	return jsxDEV(IntlayerProvider, {
 		locale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/blog/BlogList.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(BlogList, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(BlogList, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

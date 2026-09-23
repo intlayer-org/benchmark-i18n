@@ -1,22 +1,22 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import de from "../locales/de.ts";
-import en from "../locales/en.ts";
-import es from "../locales/es.ts";
-import fr from "../locales/fr.ts";
-import it from "../locales/it.ts";
-import ja from "../locales/ja.ts";
-import ko from "../locales/ko.ts";
-import pt from "../locales/pt.ts";
-import ru from "../locales/ru.ts";
-import zh from "../locales/zh.ts";
-import { jsx } from "react/jsx-runtime";
+import messages from "../messages/de.json";
+import messages$1 from "../messages/en.json";
+import messages$2 from "../messages/es.json";
+import messages$3 from "../messages/fr.json";
+import messages$4 from "../messages/it.json";
+import messages$5 from "../messages/ja.json";
+import messages$6 from "../messages/ko.json";
+import messages$7 from "../messages/pt.json";
+import messages$8 from "../messages/ru.json";
+import messages$9 from "../messages/zh.json";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
 });
 var require_client_only = __commonJSMin((() => {}));
-var client = (0, __commonJSMin(((exports, module) => {
+var import_client = __commonJSMin(((exports, module) => {
 	var __create = Object.create;
 	var __defProp = Object.defineProperty;
 	var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -219,31 +219,60 @@ var client = (0, __commonJSMin(((exports, module) => {
 		};
 	}
 	0 && (module.exports = { createI18nClient });
-}))().createI18nClient)({
-	en: () => Promise.resolve({ default: en }),
-	fr: () => Promise.resolve({ default: fr }),
-	es: () => Promise.resolve({ default: es }),
-	de: () => Promise.resolve({ default: de }),
-	it: () => Promise.resolve({ default: it }),
-	pt: () => Promise.resolve({ default: pt }),
-	zh: () => Promise.resolve({ default: zh }),
-	ja: () => Promise.resolve({ default: ja }),
-	ko: () => Promise.resolve({ default: ko }),
-	ru: () => Promise.resolve({ default: ru })
+}))();
+function flattenMessages(obj, prefix = "") {
+	const result = {};
+	for (const key in obj) {
+		const fullKey = prefix ? `${prefix}.${key}` : key;
+		if (typeof obj[key] === "object" && obj[key] !== null) Object.assign(result, flattenMessages(obj[key], fullKey));
+		else result[fullKey] = String(obj[key]);
+	}
+	return result;
+}
+var de_default = flattenMessages(messages);
+var en_default = flattenMessages(messages$1);
+var es_default = flattenMessages(messages$2);
+var fr_default = flattenMessages(messages$3);
+var it_default = flattenMessages(messages$4);
+var ja_default = flattenMessages(messages$5);
+var ko_default = flattenMessages(messages$6);
+var pt_default = flattenMessages(messages$7);
+var ru_default = flattenMessages(messages$8);
+var zh_default = flattenMessages(messages$9);
+var client = (0, import_client.createI18nClient)({
+	en: () => Promise.resolve({ default: en_default }),
+	fr: () => Promise.resolve({ default: fr_default }),
+	es: () => Promise.resolve({ default: es_default }),
+	de: () => Promise.resolve({ default: de_default }),
+	it: () => Promise.resolve({ default: it_default }),
+	pt: () => Promise.resolve({ default: pt_default }),
+	zh: () => Promise.resolve({ default: zh_default }),
+	ja: () => Promise.resolve({ default: ja_default }),
+	ko: () => Promise.resolve({ default: ko_default }),
+	ru: () => Promise.resolve({ default: ru_default })
 });
 function useI18n() {
 	return client.useI18n();
 }
 var { useScopedI18n, I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
 	useI18n();
 	return null;
 };
 function EmptyComponent() {
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale: "en",
-		children: jsx(TestComponent, {})
-	});
+		children: jsxDEV(TestComponent, {}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 13,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -267,6 +296,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -278,19 +308,37 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/scripts/EmptyComponent.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(EmptyComponent, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

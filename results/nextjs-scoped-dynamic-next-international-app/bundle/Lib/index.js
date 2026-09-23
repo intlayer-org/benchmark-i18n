@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
@@ -210,29 +210,38 @@ var client = (0, __commonJSMin(((exports, module) => {
 	}
 	0 && (module.exports = { createI18nClient });
 }))().createI18nClient)({
-	en: () => import("../locales/en.ts"),
-	fr: () => import("../locales/fr.ts"),
-	es: () => import("../locales/es.ts"),
-	de: () => import("../locales/de.ts"),
-	it: () => import("../locales/it.ts"),
-	pt: () => import("../locales/pt.ts"),
-	zh: () => import("../locales/zh.ts"),
-	ja: () => import("../locales/ja.ts"),
-	ko: () => import("../locales/ko.ts"),
-	ru: () => import("../locales/ru.ts")
+	en: () => import("./en-B6z9XUeP.js"),
+	fr: () => import("./fr-Bq6Vg87A.js"),
+	es: () => import("./es-DWfMqWMv.js"),
+	de: () => import("./de-CPZ8XliA.js"),
+	it: () => import("./it-fhyjUQSR.js"),
+	pt: () => import("./pt-DQHErvYe.js"),
+	zh: () => import("./zh-C9Vs1ypo.js"),
+	ja: () => import("./ja-Ccz1w8YZ.js"),
+	ko: () => import("./ko-CQGGNPkI.js"),
+	ru: () => import("./ru-Cp_Zq82O.js")
 });
 var useScopedI18n = client.useScopedI18n;
 var { I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
 	useScopedI18n("header");
 	return null;
 };
 function EmptyComponent() {
 	const locale = useCurrentLocale();
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
-		children: jsx(TestComponent, {})
-	});
+		children: jsxDEV(TestComponent, {}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 17,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 16,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -256,6 +265,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -267,19 +277,345 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/EmptyComponent.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(EmptyComponent, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
+import deAbout from "../messages/de/about.json";
+import deBlog from "../messages/de/blog.json";
+import deCareers from "../messages/de/careers.json";
+import deContact from "../messages/de/contact.json";
+import deFaq from "../messages/de/faq.json";
+import deHome from "../messages/de/home.json";
+import dePricing from "../messages/de/pricing.json";
+import deProducts from "../messages/de/products.json";
+import deRoute from "../messages/de/route.json";
+import deSettings from "../messages/de/settings.json";
+import deShared from "../messages/de/shared.json";
+import deTeam from "../messages/de/team.json";
+var de_default = mergeAll([
+	nestify(deAbout),
+	nestify(deBlog),
+	nestify(deCareers),
+	nestify(deContact),
+	nestify(deFaq),
+	nestify(deHome),
+	nestify(dePricing),
+	nestify(deProducts),
+	nestify(deRoute),
+	nestify(deSettings),
+	nestify(deShared),
+	nestify(deTeam)
+]);
+export { de_default as default };
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
+import enAbout from "../messages/en/about.json";
+import enBlog from "../messages/en/blog.json";
+import enCareers from "../messages/en/careers.json";
+import enContact from "../messages/en/contact.json";
+import enFaq from "../messages/en/faq.json";
+import enHome from "../messages/en/home.json";
+import enPricing from "../messages/en/pricing.json";
+import enProducts from "../messages/en/products.json";
+import enRoute from "../messages/en/route.json";
+import enSettings from "../messages/en/settings.json";
+import enShared from "../messages/en/shared.json";
+import enTeam from "../messages/en/team.json";
+var en_default = mergeAll([
+	nestify(enAbout),
+	nestify(enBlog),
+	nestify(enCareers),
+	nestify(enContact),
+	nestify(enFaq),
+	nestify(enHome),
+	nestify(enPricing),
+	nestify(enProducts),
+	nestify(enRoute),
+	nestify(enSettings),
+	nestify(enShared),
+	nestify(enTeam)
+]);
+export { en_default as default };
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
+import esAbout from "../messages/es/about.json";
+import esBlog from "../messages/es/blog.json";
+import esCareers from "../messages/es/careers.json";
+import esContact from "../messages/es/contact.json";
+import esFaq from "../messages/es/faq.json";
+import esHome from "../messages/es/home.json";
+import esPricing from "../messages/es/pricing.json";
+import esProducts from "../messages/es/products.json";
+import esRoute from "../messages/es/route.json";
+import esSettings from "../messages/es/settings.json";
+import esShared from "../messages/es/shared.json";
+import esTeam from "../messages/es/team.json";
+var es_default = mergeAll([
+	nestify(esAbout),
+	nestify(esBlog),
+	nestify(esCareers),
+	nestify(esContact),
+	nestify(esFaq),
+	nestify(esHome),
+	nestify(esPricing),
+	nestify(esProducts),
+	nestify(esRoute),
+	nestify(esSettings),
+	nestify(esShared),
+	nestify(esTeam)
+]);
+export { es_default as default };
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
+import frAbout from "../messages/fr/about.json";
+import frBlog from "../messages/fr/blog.json";
+import frCareers from "../messages/fr/careers.json";
+import frContact from "../messages/fr/contact.json";
+import frFaq from "../messages/fr/faq.json";
+import frHome from "../messages/fr/home.json";
+import frPricing from "../messages/fr/pricing.json";
+import frProducts from "../messages/fr/products.json";
+import frRoute from "../messages/fr/route.json";
+import frSettings from "../messages/fr/settings.json";
+import frShared from "../messages/fr/shared.json";
+import frTeam from "../messages/fr/team.json";
+var fr_default = mergeAll([
+	nestify(frAbout),
+	nestify(frBlog),
+	nestify(frCareers),
+	nestify(frContact),
+	nestify(frFaq),
+	nestify(frHome),
+	nestify(frPricing),
+	nestify(frProducts),
+	nestify(frRoute),
+	nestify(frSettings),
+	nestify(frShared),
+	nestify(frTeam)
+]);
+export { fr_default as default };
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
+import itAbout from "../messages/it/about.json";
+import itBlog from "../messages/it/blog.json";
+import itCareers from "../messages/it/careers.json";
+import itContact from "../messages/it/contact.json";
+import itFaq from "../messages/it/faq.json";
+import itHome from "../messages/it/home.json";
+import itPricing from "../messages/it/pricing.json";
+import itProducts from "../messages/it/products.json";
+import itRoute from "../messages/it/route.json";
+import itSettings from "../messages/it/settings.json";
+import itShared from "../messages/it/shared.json";
+import itTeam from "../messages/it/team.json";
+var it_default = mergeAll([
+	nestify(itAbout),
+	nestify(itBlog),
+	nestify(itCareers),
+	nestify(itContact),
+	nestify(itFaq),
+	nestify(itHome),
+	nestify(itPricing),
+	nestify(itProducts),
+	nestify(itRoute),
+	nestify(itSettings),
+	nestify(itShared),
+	nestify(itTeam)
+]);
+export { it_default as default };
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
+import jaAbout from "../messages/ja/about.json";
+import jaBlog from "../messages/ja/blog.json";
+import jaCareers from "../messages/ja/careers.json";
+import jaContact from "../messages/ja/contact.json";
+import jaFaq from "../messages/ja/faq.json";
+import jaHome from "../messages/ja/home.json";
+import jaPricing from "../messages/ja/pricing.json";
+import jaProducts from "../messages/ja/products.json";
+import jaRoute from "../messages/ja/route.json";
+import jaSettings from "../messages/ja/settings.json";
+import jaShared from "../messages/ja/shared.json";
+import jaTeam from "../messages/ja/team.json";
+var ja_default = mergeAll([
+	nestify(jaAbout),
+	nestify(jaBlog),
+	nestify(jaCareers),
+	nestify(jaContact),
+	nestify(jaFaq),
+	nestify(jaHome),
+	nestify(jaPricing),
+	nestify(jaProducts),
+	nestify(jaRoute),
+	nestify(jaSettings),
+	nestify(jaShared),
+	nestify(jaTeam)
+]);
+export { ja_default as default };
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
+import koAbout from "../messages/ko/about.json";
+import koBlog from "../messages/ko/blog.json";
+import koCareers from "../messages/ko/careers.json";
+import koContact from "../messages/ko/contact.json";
+import koFaq from "../messages/ko/faq.json";
+import koHome from "../messages/ko/home.json";
+import koPricing from "../messages/ko/pricing.json";
+import koProducts from "../messages/ko/products.json";
+import koRoute from "../messages/ko/route.json";
+import koSettings from "../messages/ko/settings.json";
+import koShared from "../messages/ko/shared.json";
+import koTeam from "../messages/ko/team.json";
+var ko_default = mergeAll([
+	nestify(koAbout),
+	nestify(koBlog),
+	nestify(koCareers),
+	nestify(koContact),
+	nestify(koFaq),
+	nestify(koHome),
+	nestify(koPricing),
+	nestify(koProducts),
+	nestify(koRoute),
+	nestify(koSettings),
+	nestify(koShared),
+	nestify(koTeam)
+]);
+export { ko_default as default };
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
+import ptAbout from "../messages/pt/about.json";
+import ptBlog from "../messages/pt/blog.json";
+import ptCareers from "../messages/pt/careers.json";
+import ptContact from "../messages/pt/contact.json";
+import ptFaq from "../messages/pt/faq.json";
+import ptHome from "../messages/pt/home.json";
+import ptPricing from "../messages/pt/pricing.json";
+import ptProducts from "../messages/pt/products.json";
+import ptRoute from "../messages/pt/route.json";
+import ptSettings from "../messages/pt/settings.json";
+import ptShared from "../messages/pt/shared.json";
+import ptTeam from "../messages/pt/team.json";
+var pt_default = mergeAll([
+	nestify(ptAbout),
+	nestify(ptBlog),
+	nestify(ptCareers),
+	nestify(ptContact),
+	nestify(ptFaq),
+	nestify(ptHome),
+	nestify(ptPricing),
+	nestify(ptProducts),
+	nestify(ptRoute),
+	nestify(ptSettings),
+	nestify(ptShared),
+	nestify(ptTeam)
+]);
+export { pt_default as default };
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
+import ruAbout from "../messages/ru/about.json";
+import ruBlog from "../messages/ru/blog.json";
+import ruCareers from "../messages/ru/careers.json";
+import ruContact from "../messages/ru/contact.json";
+import ruFaq from "../messages/ru/faq.json";
+import ruHome from "../messages/ru/home.json";
+import ruPricing from "../messages/ru/pricing.json";
+import ruProducts from "../messages/ru/products.json";
+import ruRoute from "../messages/ru/route.json";
+import ruSettings from "../messages/ru/settings.json";
+import ruShared from "../messages/ru/shared.json";
+import ruTeam from "../messages/ru/team.json";
+var ru_default = mergeAll([
+	nestify(ruAbout),
+	nestify(ruBlog),
+	nestify(ruCareers),
+	nestify(ruContact),
+	nestify(ruFaq),
+	nestify(ruHome),
+	nestify(ruPricing),
+	nestify(ruProducts),
+	nestify(ruRoute),
+	nestify(ruSettings),
+	nestify(ruShared),
+	nestify(ruTeam)
+]);
+export { ru_default as default };
+function nestify(flat) {
+	const root = {};
+	for (const [key, value] of Object.entries(flat)) {
+		const parts = key.split(".");
+		let cur = root;
+		for (let i = 0; i < parts.length - 1; i++) {
+			const p = parts[i];
+			const next = cur[p];
+			if (typeof next !== "object" || next === null || Array.isArray(next)) cur[p] = {};
+			cur = cur[p];
+		}
+		cur[parts[parts.length - 1]] = value;
+	}
+	return root;
+}
+function deepMerge(a, b) {
+	const out = { ...a };
+	for (const [k, v] of Object.entries(b)) {
+		const existing = out[k];
+		if (v !== null && typeof v === "object" && !Array.isArray(v) && existing !== null && typeof existing === "object" && !Array.isArray(existing)) out[k] = deepMerge(existing, v);
+		else out[k] = v;
+	}
+	return out;
+}
+function mergeAll(parts) {
+	return parts.reduce((acc, p) => deepMerge(acc, p), {});
+}
+export { nestify as n, mergeAll as t };
+import { n as nestify, t as mergeAll } from "./scopedMessages-BHCAh11m.js";
+import zhAbout from "../messages/zh/about.json";
+import zhBlog from "../messages/zh/blog.json";
+import zhCareers from "../messages/zh/careers.json";
+import zhContact from "../messages/zh/contact.json";
+import zhFaq from "../messages/zh/faq.json";
+import zhHome from "../messages/zh/home.json";
+import zhPricing from "../messages/zh/pricing.json";
+import zhProducts from "../messages/zh/products.json";
+import zhRoute from "../messages/zh/route.json";
+import zhSettings from "../messages/zh/settings.json";
+import zhShared from "../messages/zh/shared.json";
+import zhTeam from "../messages/zh/team.json";
+var zh_default = mergeAll([
+	nestify(zhAbout),
+	nestify(zhBlog),
+	nestify(zhCareers),
+	nestify(zhContact),
+	nestify(zhFaq),
+	nestify(zhHome),
+	nestify(zhPricing),
+	nestify(zhProducts),
+	nestify(zhRoute),
+	nestify(zhSettings),
+	nestify(zhShared),
+	nestify(zhTeam)
+]);
+export { zh_default as default };

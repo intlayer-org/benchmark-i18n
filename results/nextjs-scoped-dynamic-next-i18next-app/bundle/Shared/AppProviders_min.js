@@ -1,6 +1,6 @@
 import { createContext as e, createElement as t, useEffect as n, useLayoutEffect as r, useMemo as i, useState as a } from "react";
 import { useParams as o } from "next/navigation";
-import { jsx as s } from "react/jsx-runtime";
+import { jsxDEV as s } from "react/jsx-dev-runtime";
 var c = (e) => typeof e == "string", l = () => {
 	let e, t, n = new Promise((n, r) => {
 		e = n, t = r;
@@ -1290,17 +1290,17 @@ function ge() {
 		}
 	}
 }
-function X(e, t) {
+function _e(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-var _e = (e, t, n) => {
+var ve = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, ve = [
+}, ye = [
 	"about",
 	"blog",
 	"careers",
@@ -1313,19 +1313,19 @@ var _e = (e, t, n) => {
 	"settings",
 	"shared",
 	"team"
-], ye = "shared", be = [
+], be = "shared", xe = [
 	"__proto__",
 	"constructor",
 	"prototype"
-], Z = function(e, t) {
-	return !(typeof e != "string" || e.length > 128 || be.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
+], X = function(e, t) {
+	return !(typeof e != "string" || e.length > 128 || xe.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
 };
 J.use(pe).use(function(e) {
 	return {
 		type: "backend",
 		init: function(e, t, n) {},
 		read: function(t, n, r) {
-			if (!Z(t, !1) || !Z(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
+			if (!X(t, !1) || !X(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
 			if (typeof e == "function") {
 				if (e.length < 3) {
 					try {
@@ -1344,7 +1344,7 @@ J.use(pe).use(function(e) {
 			r(null, e && e[t] && e[t][n]);
 		}
 	};
-}((e, t) => _e(Object.assign({
+}((e, t) => ve(Object.assign({
 	"./locales/de/about.json": () => import("../i18n/locales/de/about.json"),
 	"./locales/de/blog.json": () => import("../i18n/locales/de/blog.json"),
 	"./locales/de/careers.json": () => import("../i18n/locales/de/careers.json"),
@@ -1469,36 +1469,54 @@ J.use(pe).use(function(e) {
 	resources: {},
 	lng: "en",
 	fallbackLng: "en",
-	ns: ve,
-	defaultNS: ye,
+	ns: ye,
+	defaultNS: be,
 	interpolation: { escapeValue: !1 },
 	react: { useSuspense: !1 }
 });
-var Q = J;
-function $({ children: e, initialResources: t }) {
+var Z = J, Se = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/AppProviders.tsx";
+function Q({ children: e, initialResources: t }) {
 	let i = o().locale ?? "en", [c] = a(() => typeof performance < "u" ? performance.now() : 0);
 	return a(() => {
 		t && Object.entries(t).forEach(([e, t]) => {
-			Q.hasResourceBundle(i, e) || Q.addResourceBundle(i, e, t, !0, !0);
-		}), Q.language !== i && Q.changeLanguage(i);
+			Z.hasResourceBundle(i, e) || Z.addResourceBundle(i, e, t, !0, !0);
+		}), Z.language !== i && Z.changeLanguage(i);
 	}), r(() => {
-		X("AppRoot", c);
+		_e("AppRoot", c);
 	}, [c]), n(() => {
 		document.documentElement.lang = i;
 	}, [i]), n(() => {
 		ge();
 	}, []), s(he, {
-		i18n: Q,
+		i18n: Z,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: Se,
+		lineNumber: 56,
+		columnNumber: 10
+	}, this);
 }
-function xe({ children: e }) {
-	return s($, { children: e });
+var Ce = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/scripts/Wrapper.tsx";
+function we({ children: e }) {
+	return s(Q, { children: e }, void 0, !1, {
+		fileName: Ce,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
-function Se() {
-	return s(xe, { children: s($, {}) });
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-i18next-app/components/AppProviders.wrapper.tsx";
+function Te() {
+	return s(we, { children: s(Q, {}, void 0, !1, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { Se as default };
+export { Te as default };
 var e = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",

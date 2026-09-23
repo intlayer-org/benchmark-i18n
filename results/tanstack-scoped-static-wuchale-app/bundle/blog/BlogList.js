@@ -1,6 +1,11 @@
 import "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var onInvalidFunc = () => "";
+onInvalidFunc = (i, c) => {
+	const item = c[i];
+	if (item == null) return `[i18n-404:${i}]`;
+	return `[i18n-400:${i}(${item})]`;
+};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -89,6 +94,7 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("blog", loadCatalog$11, 1);
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/blog/BlogList.tsx";
 function BlogList() {
 	const _w_runtime_ = getRuntimeRx();
 	const posts = [
@@ -129,37 +135,69 @@ function BlogList() {
 			category: _w_runtime_(97)
 		}
 	];
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2",
-		children: posts.map((p) => jsxs("article", {
+		children: posts.map((p) => jsxDEV("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				jsxs("div", {
+				jsxDEV("div", {
 					className: "mb-3 flex items-center gap-3",
-					children: [jsx("span", {
+					children: [jsxDEV("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: p.category
-					}), jsx("span", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 61,
+						columnNumber: 13
+					}, this), jsxDEV("span", {
 						className: "text-xs text-muted-foreground",
 						children: p.date
-					})]
-				}),
-				jsx("h2", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 64,
+						columnNumber: 13
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 60,
+					columnNumber: 11
+				}, this),
+				jsxDEV("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: p.title
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 66,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: p.excerpt
-				}),
-				jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 69,
+					columnNumber: 11
+				}, this),
+				jsxDEV("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
 					children: _w_runtime_(75)
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 70,
+					columnNumber: 11
+				}, this)
 			]
-		}, p.title))
-	});
+		}, p.title, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 56,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 54,
+		columnNumber: 5
+	}, this);
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -337,12 +375,26 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/blog/BlogList.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(BlogList, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(BlogList, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var c = [

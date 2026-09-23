@@ -41,6 +41,35 @@ var routing = {
 	},
 	"basePath": ""
 };
+var e = {
+	constructor: "constructor",
+	length: "length",
+	slice: "slice",
+	promiseThen: "then",
+	toString: "toString",
+	valueOf: "valueOf",
+	value: "value"
+};
+var t = (e) => typeof e == "string" && /^\d+$/.test(e);
+var n$1 = ({ children: n, value: r, additionalProps: i }) => {
+	let a = [n];
+	if (a.value = r, i) for (let e in i) a[e] = i[e];
+	return new Proxy(a, { get(n, i, a) {
+		if (i === e.value) return r;
+		if (i === Symbol.toPrimitive) return (e) => e === "number" ? Number(r) : r ?? "";
+		if (i === e.toString) return () => String(r ?? "");
+		if (i === e.valueOf) return () => r;
+		if (i === e.slice) return Reflect.get(n, i, a);
+		if (r != null && typeof i == "string" && i !== e.constructor && i !== e.length && !t(i)) {
+			let e = Object(r);
+			if (i in e) {
+				let t = Reflect.get(e, i);
+				return typeof t == "function" ? t.bind(r) : t;
+			}
+		}
+		return Reflect.get(n, i, a);
+	} });
+};
 var pluginsIdentities = /* @__PURE__ */ new WeakMap();
 var nextPluginsIdentity = 0;
 var getPluginsCacheKey = (plugins) => {
@@ -310,6 +339,49 @@ var getDictionary = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
+var w = null;
+var T = null;
+w?.catch(() => {}), T?.catch(() => {});
+var E = {
+	id: "intlayer-node-plugin",
+	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
+	transform: (n, { plugins: o, ...s }) => n$1({
+		...s,
+		value: s.children,
+		children: s.children
+	})
+};
+var D = fallbackPlugin;
+var k = fallbackPlugin;
+lazy(() => w.then((e) => ({ default: e.MarkdownRenderer })));
+lazy(() => w.then((e) => ({ default: e.MarkdownMetadataRenderer })));
+var N = fallbackPlugin;
+lazy(() => T.then((e) => ({ default: e })));
+var F = fallbackPlugin;
+var I = /* @__PURE__ */ new Map();
+var L = (e, t = !0) => {
+	let n = `${e ?? internationalization.defaultLocale}_${t}`;
+	if (I.has(n)) return I.get(n);
+	let r = [
+		translationPlugin(e ?? internationalization.defaultLocale, t ? internationalization.defaultLocale : void 0),
+		enumerationPlugin,
+		pluralPlugin(e ?? internationalization.defaultLocale),
+		conditionPlugin,
+		nestedPlugin(e ?? internationalization.defaultLocale),
+		filePlugin,
+		genderPlugin,
+		selectPlugin,
+		E,
+		D,
+		k,
+		N,
+		F
+	];
+	return I.set(n, r), r;
+};
+var n = (n, r) => {
+	return getDictionary(n, r, L(typeof r == "object" && r ? r.locale : r));
+};
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
 	const requestedLocales = [selectedLocale].flat();
 	const normalize = (locale) => locale.trim().toLowerCase();
@@ -403,17 +475,17 @@ var b = createContext({
 	setLocale: () => null
 });
 var S = (r) => {
-	let { defaultLocale: i, locales: c } = internationalization ?? {}, f = r.locale ?? a$1 ?? r.defaultLocale ?? i, [h, g] = createSignal(f), v = r.setLocale ?? ((e) => {
-		if (h().toString() !== e.toString()) {
-			if (!c?.map(String).includes(e)) {
+	let { defaultLocale: i, locales: o } = internationalization ?? {}, s$1 = r.locale ?? a$1 ?? r.defaultLocale ?? i, [d, h] = createSignal(s$1), v = r.setLocale ?? ((e) => {
+		if (d().toString() !== e.toString()) {
+			if (!o?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			g(e), s(e, r.isCookieEnabled);
+			h(e), s(e, r.isCookieEnabled);
 		}
-	}), y = createMemo(() => localeResolver(h()));
+	}), y = createMemo(() => localeResolver(d()));
 	return createEffect(on(() => r.locale, (e) => {
-		e && e !== untrack(h) && g(e);
+		e && e !== untrack(d) && h(e);
 	}, { defer: !0 })), onMount(() => {
 		setIntlayerIdentifier();
 	}), createComponent(b.Provider, {
@@ -438,86 +510,14 @@ var C = (e) => createComponent(S, mergeProps(e, { get children() {
 		memo(() => e.children)
 	];
 } }));
-var e = {
-	constructor: "constructor",
-	length: "length",
-	slice: "slice",
-	promiseThen: "then",
-	toString: "toString",
-	valueOf: "valueOf",
-	value: "value"
-};
-var t = (e) => typeof e == "string" && /^\d+$/.test(e);
-var n$1 = ({ children: n, value: r, additionalProps: i }) => {
-	let a = [n];
-	if (a.value = r, i) for (let e in i) a[e] = i[e];
-	return new Proxy(a, { get(n, i, a) {
-		if (i === e.value) return r;
-		if (i === Symbol.toPrimitive) return (e) => e === "number" ? Number(r) : r ?? "";
-		if (i === e.toString) return () => String(r ?? "");
-		if (i === e.valueOf) return () => r;
-		if (i === e.slice) return Reflect.get(n, i, a);
-		if (r != null && typeof i == "string" && i !== e.constructor && i !== e.length && !t(i)) {
-			let e = Object(r);
-			if (i in e) {
-				let t = Reflect.get(e, i);
-				return typeof t == "function" ? t.bind(r) : t;
-			}
-		}
-		return Reflect.get(n, i, a);
-	} });
-};
-var w = null;
-var T = null;
-w?.catch(() => {}), T?.catch(() => {});
-var E = {
-	id: "intlayer-node-plugin",
-	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (n, { plugins: i, ...o }) => n$1({
-		...o,
-		value: o.children,
-		children: o.children
-	})
-};
-var D = fallbackPlugin;
-var k = fallbackPlugin;
-lazy(() => w.then((e) => ({ default: e.MarkdownRenderer })));
-lazy(() => w.then((e) => ({ default: e.MarkdownMetadataRenderer })));
-var N = fallbackPlugin;
-lazy(() => T.then((e) => ({ default: e })));
-var F = fallbackPlugin;
-var I = /* @__PURE__ */ new Map();
-var L = (e, t = !0) => {
-	let n = `${e ?? internationalization.defaultLocale}_${t}`;
-	if (I.has(n)) return I.get(n);
-	let r = [
-		translationPlugin(e ?? internationalization.defaultLocale, t ? internationalization.defaultLocale : void 0),
-		enumerationPlugin,
-		pluralPlugin(e ?? internationalization.defaultLocale),
-		conditionPlugin,
-		nestedPlugin(e ?? internationalization.defaultLocale),
-		filePlugin,
-		genderPlugin,
-		selectPlugin,
-		E,
-		D,
-		k,
-		N,
-		F
-	];
-	return I.set(n, r), r;
-};
-var n = (n, r) => {
-	return getDictionary(n, r, L(typeof r == "object" && r ? r.locale : r));
-};
 var a = Symbol("LOADABLE_SETTLED_VALUE");
 var h = (e) => {
 	if (!(e === null || typeof e != "object" && typeof e != "function")) return e[a];
 };
 var o = (o, s) => {
 	let c = useContext(b) ?? {}, l = createMemo(() => {
-		let e = c?.locale?.();
-		return n(h(o) ?? o, s ?? e);
+		let t = c?.locale?.();
+		return n(h(o) ?? o, s ?? t);
 	});
 	return new Proxy(l, {
 		get(e, t) {

@@ -1,10 +1,16 @@
 import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
+import { jsxDEV } from "react/jsx-dev-runtime";
 import { jsx } from "react/jsx-runtime";
-var MockBanner = () => jsx("div", {
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/MockBanner.tsx";
+var MockBanner = () => jsxDEV("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 	children: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
-});
+}, void 0, false, {
+	fileName: _jsxFileName$2,
+	lineNumber: 2,
+	columnNumber: 3
+}, void 0);
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
 	if (!serverUrl) return {};
@@ -237,14 +243,28 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/MockBanner.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(MockBanner, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(MockBanner, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 import { t as logger } from "./logger-CWLzb-Ic.js";

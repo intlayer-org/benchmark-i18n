@@ -1,5 +1,5 @@
 import { createContext, createElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -2433,16 +2433,29 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/pages/about/AboutHeader.tsx";
 function AboutHeader() {
 	const { t } = useTranslation();
 	usePerformanceMeasure("AboutHeader");
-	return jsxs(Fragment, { children: [jsx("h1", {
+	return jsxDEV(Fragment, { children: [jsxDEV("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: t("about.aboutHeader.methodology")
-	}), jsx("p", {
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 11,
+		columnNumber: 7
+	}, this), jsxDEV("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: t("about.aboutHeader.weDesignedThisBenchmarkTo")
-	})] });
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 14,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 10,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -4625,6 +4638,7 @@ instance.use(initReactI18next).init({
 	nsSeparator: false
 });
 var i18n_default = instance;
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -4640,15 +4654,33 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nextProvider, {
+	return jsxDEV(I18nextProvider, {
 		i18n: i18n_default,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 38,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/pages/about/AboutHeader.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(AboutHeader, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(AboutHeader, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

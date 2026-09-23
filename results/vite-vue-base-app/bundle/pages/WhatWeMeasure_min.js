@@ -1,8 +1,9 @@
 import { Fragment as e, createElementBlock as t, createElementVNode as n, defineComponent as r, openBlock as i, renderList as a, toDisplayString as o } from "vue";
-var s = { class: "mt-12 mx-auto max-w-3xl" }, c = { class: "space-y-4" }, l = { class: "block text-sm font-bold text-primary" }, u = { class: "block mt-1 text-sm text-muted-foreground" }, d = r({
+var s = r({
 	__name: "WhatWeMeasure",
-	setup(r) {
-		let d = [
+	setup(e, { expose: t }) {
+		t();
+		let n = { metrics: [
 			{
 				metric: "Bundle size impact",
 				desc: "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
@@ -23,11 +24,22 @@ var s = { class: "mt-12 mx-auto max-w-3xl" }, c = { class: "space-y-4" }, l = { 
 				metric: "Locale switch speed",
 				desc: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
 			}
-		];
-		return (r, f) => (i(), t("section", s, [f[0] ||= n("h2", { class: "mb-4 text-2xl font-bold text-foreground" }, " What We Measure ", -1), n("ul", c, [(i(), t(e, null, a(d, (e) => n("li", {
-			key: e.metric,
-			class: "rounded-md border border-border p-4"
-		}, [n("span", l, o(e.metric), 1), n("span", u, o(e.desc), 1)])), 64))])]));
+		] };
+		return Object.defineProperty(n, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), n;
 	}
-});
-export { d as default };
+}), c = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, l = { class: "mt-12 mx-auto max-w-3xl" }, u = { class: "space-y-4" }, d = { class: "block text-sm font-bold text-primary" }, f = { class: "block mt-1 text-sm text-muted-foreground" };
+function p(r, s, c, p, m, h) {
+	return i(), t("section", l, [s[0] ||= n("h2", { class: "mb-4 text-2xl font-bold text-foreground" }, " What We Measure ", -1), n("ul", u, [(i(), t(e, null, a(p.metrics, (e) => n("li", {
+		key: e.metric,
+		class: "rounded-md border border-border p-4"
+	}, [n("span", d, o(e.metric), 1), n("span", f, o(e.desc), 1)])), 64))])]);
+}
+var m = c(s, [["render", p], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/pages/about/WhatWeMeasure.vue"]]);
+export { m as default };

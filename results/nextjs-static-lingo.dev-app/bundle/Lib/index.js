@@ -1,6 +1,7 @@
 import { t as logger } from "./logger-CWLzb-Ic.js";
 import react, { createContext, useCallback, useEffect, useRef, useState } from "react";
 import { jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
 	if (!serverUrl) return {};
@@ -282,17 +283,36 @@ configuration.schemas;
 configuration.plugins;
 var { defaultLocale } = internationalization ?? {};
 var locale = getServerContext(createServerContext(defaultLocale));
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/EmptyComponent.tsx";
 function EmptyComponent() {
-	return jsx(LingoProvider, { initialLocale: locale });
+	return jsxDEV(LingoProvider, { initialLocale: locale }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 5,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/EmptyComponent.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(EmptyComponent, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 import { t as logger } from "./logger-CWLzb-Ic.js";

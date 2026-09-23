@@ -1,5 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useId, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -56,12 +57,12 @@ var getLocaleFromDomain = (hostname, domains) => {
 var PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
 var LOCALES = ["en"];
 var resolveRoutingConfig = (options = {}) => ({
-	...options,
-	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
-	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
-	locales: options.locales ?? internationalization?.locales ?? LOCALES,
-	rewrite: options.rewrite ?? routing?.rewrite,
-	domains: options.domains ?? routing?.domains
+	defaultLocale: internationalization?.defaultLocale ?? "en",
+	mode: routing?.mode ?? "prefix-no-default",
+	locales: internationalization?.locales ?? LOCALES,
+	rewrite: routing?.rewrite,
+	domains: routing?.domains,
+	...options
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -779,77 +780,172 @@ var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const plainLoaders = dictionaryPromise;
 	return getDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, plainLoaders[localeTarget]?.()), localeTarget);
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app/src/components/pages/contact/ContactForm.tsx";
 function ContactForm() {
 	const content$1 = useDictionaryDynamic(content, "contact-form");
 	const nameId = useId();
 	const emailId = useId();
 	const topicId = useId();
 	const messageId = useId();
-	return jsxs("form", {
+	return jsxDEV("form", {
 		className: "space-y-6",
 		children: [
-			jsxs("div", {
+			jsxDEV("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [jsxs("div", { children: [jsx("label", {
+				children: [jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: nameId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: content$1.g
-				}), jsx("input", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 16,
+					columnNumber: 11
+				}, this), jsxDEV("input", {
 					id: nameId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: content$1.l.value
-				})] }), jsxs("div", { children: [jsx("label", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 20,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 15,
+					columnNumber: 9
+				}, this), jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: emailId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: content$1.d
-				}), jsx("input", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 27,
+					columnNumber: 11
+				}, this), jsxDEV("input", {
 					id: emailId,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "you@example.com"
-				})] })]
-			}),
-			jsxs("div", { children: [jsx("label", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 31,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 26,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 14,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: topicId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: content$1.k
-			}), jsxs("select", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 40,
+				columnNumber: 9
+			}, this), jsxDEV("select", {
 				id: topicId,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					jsx("option", { children: content$1.a }),
-					jsx("option", { children: content$1.h }),
-					jsx("option", { children: content$1.f }),
-					jsx("option", { children: content$1.b }),
-					jsx("option", { children: content$1.i })
+					jsxDEV("option", { children: content$1.a }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 48,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: content$1.h }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 49,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: content$1.f }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 50,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: content$1.b }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 51,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: content$1.i }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 52,
+						columnNumber: 11
+					}, this)
 				]
-			})] }),
-			jsxs("div", { children: [jsx("label", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 44,
+				columnNumber: 9
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 39,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: messageId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: content$1.e
-			}), jsx("textarea", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 56,
+				columnNumber: 9
+			}, this), jsxDEV("textarea", {
 				id: messageId,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				placeholder: content$1.c.value
-			})] }),
-			jsx("button", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 60,
+				columnNumber: 9
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 55,
+				columnNumber: 7
+			}, this),
+			jsxDEV("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: content$1.j
-			})
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 67,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 13,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(IntlayerProvider, {
+	return jsxDEV(IntlayerProvider, {
 		locale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app/src/components/pages/contact/ContactForm.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ContactForm, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ContactForm, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

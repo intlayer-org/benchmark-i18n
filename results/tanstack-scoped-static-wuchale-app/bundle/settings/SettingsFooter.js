@@ -1,6 +1,11 @@
 import "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var onInvalidFunc = () => "";
+onInvalidFunc = (i, c) => {
+	const item = c[i];
+	if (item == null) return `[i18n-404:${i}]`;
+	return `[i18n-400:${i}(${item})]`;
+};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -89,20 +94,33 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("settings", loadCatalog$11, 1);
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/settings/SettingsFooter.tsx";
 function SettingsFooter() {
 	const _w_runtime_ = getRuntimeRx();
-	return jsxs("div", {
+	return jsxDEV("div", {
 		className: "flex justify-end gap-3",
-		children: [jsx("button", {
+		children: [jsxDEV("button", {
 			type: "button",
 			className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 			children: _w_runtime_(202)
-		}), jsx("button", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 10,
+			columnNumber: 7
+		}, this), jsxDEV("button", {
 			type: "submit",
 			className: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 			children: _w_runtime_(203)
-		})]
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 16,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -280,12 +298,26 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/settings/SettingsFooter.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(SettingsFooter, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(SettingsFooter, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var c = [

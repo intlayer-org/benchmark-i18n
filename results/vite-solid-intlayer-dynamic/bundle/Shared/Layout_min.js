@@ -114,7 +114,7 @@ var x = ({ children: e, value: t, additionalProps: n }) => {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (E(e) && E(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : D(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : D(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -318,16 +318,16 @@ var ue = (e, t, n) => {
 	let { locale: r } = b(Y) ?? {}, i = C.defaultLocale, a = n ?? r?.() ?? i;
 	return ve(be(`${String(t)}.${a}`, e[a]?.()), a);
 }, xe = {
-	de: () => import("./de-D6JRgoHe.js").then((e) => e.default),
-	en: () => import("./en-z44Pr_OU.js").then((e) => e.default),
-	es: () => import("./es-CRQIszlB.js").then((e) => e.default),
-	fr: () => import("./fr-DK-QI1ll.js").then((e) => e.default),
-	it: () => import("./it-D0J9fdah.js").then((e) => e.default),
-	ja: () => import("./ja-pEVBiZit.js").then((e) => e.default),
-	ko: () => import("./ko-yaUST9ZN.js").then((e) => e.default),
-	pt: () => import("./pt-BW71kHXU.js").then((e) => e.default),
-	ru: () => import("./ru-Bbo5xo9D.js").then((e) => e.default),
-	zh: () => import("./zh-oAAX77oc.js").then((e) => e.default)
+	de: () => import("../../.intlayer/dynamic_dictionary/json/footer/de.json").then((e) => e.default),
+	en: () => import("./en-DHuUQGYp.js").then((e) => e.default),
+	es: () => import("../../.intlayer/dynamic_dictionary/json/footer/es.json").then((e) => e.default),
+	fr: () => import("../../.intlayer/dynamic_dictionary/json/footer/fr.json").then((e) => e.default),
+	it: () => import("../../.intlayer/dynamic_dictionary/json/footer/it.json").then((e) => e.default),
+	ja: () => import("../../.intlayer/dynamic_dictionary/json/footer/ja.json").then((e) => e.default),
+	ko: () => import("../../.intlayer/dynamic_dictionary/json/footer/ko.json").then((e) => e.default),
+	pt: () => import("../../.intlayer/dynamic_dictionary/json/footer/pt.json").then((e) => e.default),
+	ru: () => import("../../.intlayer/dynamic_dictionary/json/footer/ru.json").then((e) => e.default),
+	zh: () => import("../../.intlayer/dynamic_dictionary/json/footer/zh.json").then((e) => e.default)
 }, Se = c("<footer class=\"mt-20 border-t border-border bg-card\"><div class=\"container py-8\"><div class=\"grid gap-8 md:grid-cols-3\"><div><h3 class=\"mb-2 text-sm font-semibold text-foreground\">i18n Benchmark</h3><p class=\"text-sm text-muted-foreground\"></p></div><div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"></h3><ul class=space-y-1><li><a href=https://github.com/intlayer-org/benchmark-i18n target=_blank rel=noreferrer class=\"text-sm text-muted-foreground transition-colors hover:text-foreground\">GitHub</a></li><li></li><li></li></ul></div><div><h3 class=\"mb-2 text-sm font-semibold text-foreground\"></h3><p class=\"text-sm text-muted-foreground\">contact@intlayer.org</p></div></div><div class=\"mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground\">");
 function Ce() {
 	let e = Z(xe, "footer"), n = f(), r = () => n.locale ?? "en";
@@ -353,16 +353,16 @@ function Ce() {
 	})();
 }
 var we = {
-	de: () => import("./de-Cghlwthx.js").then((e) => e.default),
-	en: () => import("./en-B0O-AJEp.js").then((e) => e.default),
-	es: () => import("./es-C41cu62B.js").then((e) => e.default),
-	fr: () => import("./fr-BcrvnMyF.js").then((e) => e.default),
-	it: () => import("./it-DG-iFp5r.js").then((e) => e.default),
-	ja: () => import("./ja-tziK3IRE.js").then((e) => e.default),
-	ko: () => import("./ko-CPoBZ8e6.js").then((e) => e.default),
-	pt: () => import("./pt-BrNl2-cb.js").then((e) => e.default),
-	ru: () => import("./ru-Cm7pnU1p.js").then((e) => e.default),
-	zh: () => import("./zh-DLSRSeH7.js").then((e) => e.default)
+	de: () => import("../../.intlayer/dynamic_dictionary/json/header/de.json").then((e) => e.default),
+	en: () => import("./en-CxdfCj46.js").then((e) => e.default),
+	es: () => import("../../.intlayer/dynamic_dictionary/json/header/es.json").then((e) => e.default),
+	fr: () => import("../../.intlayer/dynamic_dictionary/json/header/fr.json").then((e) => e.default),
+	it: () => import("../../.intlayer/dynamic_dictionary/json/header/it.json").then((e) => e.default),
+	ja: () => import("../../.intlayer/dynamic_dictionary/json/header/ja.json").then((e) => e.default),
+	ko: () => import("../../.intlayer/dynamic_dictionary/json/header/ko.json").then((e) => e.default),
+	pt: () => import("../../.intlayer/dynamic_dictionary/json/header/pt.json").then((e) => e.default),
+	ru: () => import("../../.intlayer/dynamic_dictionary/json/header/ru.json").then((e) => e.default),
+	zh: () => import("../../.intlayer/dynamic_dictionary/json/header/zh.json").then((e) => e.default)
 };
 function Te(e) {
 	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), y(() => {
@@ -395,8 +395,7 @@ var Ee = [
 }, Oe = c("<div class=\"flex items-center gap-2\"><select class=\"h-8 rounded-md border border-border bg-card px-2 text-xs font-medium transition-colors focus:outline-none focus:ring-1 focus:ring-primary\">"), Q = c("<option>");
 function ke() {
 	let e = f(), n = d(), a = u(), o = (e) => {
-		let t = a.pathname.replace(/^\/[^/]+/, `/${e}`);
-		n(`${t}${a.search}${a.hash}`);
+		n(`${a.pathname.replace(/^\/[^/]+/, `/${e}`)}${a.search}${a.hash}`);
 	};
 	return (() => {
 		var n = Oe(), a = n.firstChild;
@@ -410,16 +409,16 @@ function ke() {
 	})();
 }
 var Ae = {
-	de: () => import("./de-7VUDwmBl.js").then((e) => e.default),
-	en: () => import("./en-jkxS6-DV.js").then((e) => e.default),
-	es: () => import("./es-CIspf5D3.js").then((e) => e.default),
-	fr: () => import("./fr-YmmgtERO.js").then((e) => e.default),
-	it: () => import("./it-DU31rHaG.js").then((e) => e.default),
-	ja: () => import("./ja-DM8e2iCP.js").then((e) => e.default),
-	ko: () => import("./ko-AZ6Ztjar.js").then((e) => e.default),
-	pt: () => import("./pt-C-srSz5f.js").then((e) => e.default),
-	ru: () => import("./ru-M_3J5buD.js").then((e) => e.default),
-	zh: () => import("./zh-BafddiL4.js").then((e) => e.default)
+	de: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((e) => e.default),
+	en: () => import("./en-v7WjiG7B.js").then((e) => e.default),
+	es: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/es.json").then((e) => e.default),
+	fr: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/fr.json").then((e) => e.default),
+	it: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/it.json").then((e) => e.default),
+	ja: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ja.json").then((e) => e.default),
+	ko: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ko.json").then((e) => e.default),
+	pt: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/pt.json").then((e) => e.default),
+	ru: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ru.json").then((e) => e.default),
+	zh: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/zh.json").then((e) => e.default)
 }, je = c("<button type=button class=\"rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80\">");
 function Me() {
 	if (typeof window > "u") return "auto";
@@ -579,47 +578,6 @@ function ze(e) {
 }
 export { ze as default };
 var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
-		a: "Design: Auto",
-		b: "Design: Dunkel",
-		c: "Design: Hell"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "Header",
-		k: "Produkte",
-		j: "Preise",
-		m: "Team",
-		a: "Blog",
-		b: "Karriere",
-		d: "FAQ",
-		c: "Kontakt",
-		l: "Einstellungen",
-		g: "Home",
-		h: "Methodik",
-		i: "Testseiten",
-		e: "Zu GitHub"
-	}
-};
-export { e as default };
-var e = {
-	key: "footer",
-	content: {
-		a: "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.",
-		f: "Ressourcen",
-		e: "Methodik",
-		c: "Beitragen",
-		b: "Kontakt",
-		d: "i18n Benchmark — Open-Source-Projekt. Erstellt mit Solid, Vite & Solid Router."
-	}
-};
-export { e as default };
-var e = {
 	key: "header",
 	content: {
 		f: "Header",
@@ -639,16 +597,6 @@ var e = {
 };
 export { e as default };
 var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Theme mode: auto (system). Click to switch to light mode.",
-		a: "Theme: Auto",
-		b: "Theme: Dark",
-		c: "Theme: Light"
-	}
-};
-export { e as default };
-var e = {
 	key: "footer",
 	content: {
 		a: "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
@@ -661,330 +609,12 @@ var e = {
 };
 export { e as default };
 var e = {
-	key: "header",
-	content: {
-		f: "Encabezado",
-		k: "Productos",
-		j: "Precios",
-		m: "Equipo",
-		a: "Blog",
-		b: "Carreras",
-		d: "FAQ",
-		c: "Contacto",
-		l: "Ajustes",
-		g: "Inicio",
-		h: "Metodología",
-		i: "Páginas de prueba",
-		e: "Ir a GitHub"
-	}
-};
-export { e as default };
-var e = {
 	key: "theme-toggle",
 	content: {
-		d: "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
-		a: "Tema: Automático",
-		b: "Tema: Oscuro",
-		c: "Tema: Claro"
-	}
-};
-export { e as default };
-var e = {
-	key: "footer",
-	content: {
-		a: "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
-		f: "Recursos",
-		e: "Metodología",
-		c: "Contribución",
-		b: "Contacto",
-		d: "i18n Benchmark — Proyecto de código abierto. Construido con Solid, Vite y Solid Router."
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "En-tête",
-		k: "Produits",
-		j: "Tarification",
-		m: "Équipe",
-		a: "Blog",
-		b: "Carrières",
-		d: "FAQ",
-		c: "Contact",
-		l: "Paramètres",
-		g: "Accueil",
-		h: "Méthodologie",
-		i: "Pages fictives",
-		e: "Aller sur GitHub"
-	}
-};
-export { e as default };
-var e = {
-	key: "footer",
-	content: {
-		a: "Une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-		f: "Ressources",
-		e: "Méthodologie",
-		c: "Contribuer",
-		b: "Contact",
-		d: "i18n Benchmark — Projet open source. Construit avec Solid, Vite & Solid Router."
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Mode thématique : auto (système). Cliquez pour passer en mode clair.",
-		a: "Thème : Auto",
-		b: "Thème : Sombre",
-		c: "Thème : Clair"
-	}
-};
-export { e as default };
-var e = {
-	key: "footer",
-	content: {
-		a: "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
-		f: "Risorse",
-		e: "Metodologia",
-		c: "Contribuire",
-		b: "Contatti",
-		d: "i18n Benchmark — Progetto open source. Creato con Solid, Vite & Solid Router."
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "Intestazione",
-		k: "Prodotti",
-		j: "Prezzi",
-		m: "Team",
-		a: "Blog",
-		b: "Carriere",
-		d: "FAQ",
-		c: "Contatti",
-		l: "Impostazioni",
-		g: "Home",
-		h: "Metodologia",
-		i: "Pagine di prova",
-		e: "Vai su GitHub"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
-		a: "Tema: Auto",
-		b: "Tema: Scuro",
-		c: "Tema: Chiaro"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-		a: "テーマ：自動",
-		b: "テーマ：ダーク",
-		c: "テーマ：ライト"
-	}
-};
-export { e as default };
-var e = {
-	key: "footer",
-	content: {
-		a: "国際化ライブラリがバンドルサイズ、ロード時間、アプリの反応性に与える実際の影響を測定するためのオープンソーステストアプリケーションです。",
-		f: "リソース",
-		e: "方法論",
-		c: "貢献する",
-		b: "お問い合わせ",
-		d: "i18n Benchmark — オープンソースプロジェクト。Solid、Vite、Solid Routerで構築されています。"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "ヘッダー",
-		k: "製品",
-		j: "価格設定",
-		m: "チーム",
-		a: "ブログ",
-		b: "採用情報",
-		d: "よくある質問",
-		c: "お問い合わせ",
-		l: "設定",
-		g: "ホーム",
-		h: "方法論",
-		i: "モックページ",
-		e: "GitHub へ"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
-		a: "테마: 자동",
-		b: "테마: 다크",
-		c: "테마: 라이트"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "헤더",
-		k: "제품",
-		j: "가격",
-		m: "팀",
-		a: "블로그",
-		b: "채용",
-		d: "자주 묻는 질문",
-		c: "문의",
-		l: "설정",
-		g: "홈",
-		h: "방법론",
-		i: "모ック 페이지",
-		e: "GitHub으로 이동"
-	}
-};
-export { e as default };
-var e = {
-	key: "footer",
-	content: {
-		a: "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플ри케이션입니다.",
-		f: "리소스",
-		e: "방법론",
-		c: "기여",
-		b: "문의",
-		d: "i18n Benchmark — 오픈 소스 프로젝트. Solid, Vite 및 Solid Router로 제작되었습니다."
-	}
-};
-export { e as default };
-var e = {
-	key: "footer",
-	content: {
-		a: "Uma aplicação de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no tempo de carregamento e na reatividade da aplicação.",
-		f: "Recursos",
-		e: "Metodologia",
-		c: "Contribuindo",
-		b: "Contato",
-		d: "i18n Benchmark — Projeto de código aberto. Construído com Solid, Vite & Solid Router."
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "Cabeçalho",
-		k: "Produtos",
-		j: "Preços",
-		m: "Equipe",
-		a: "Blog",
-		b: "Carreiras",
-		d: "FAQ",
-		c: "Contato",
-		l: "Configurações",
-		g: "Início",
-		h: "Metodologia",
-		i: "Páginas de Teste",
-		e: "Ir para o GitHub"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-		a: "Tema: Automático",
-		b: "Tema: Escuro",
-		c: "Tema: Claro"
-	}
-};
-export { e as default };
-var e = {
-	key: "footer",
-	content: {
-		a: "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
-		f: "Ресурсы",
-		e: "Методология",
-		c: "Вклад",
-		b: "Контакт",
-		d: "i18n Benchmark — проект с открытым исходным кодом. Построен на Solid, Vite и Solid Router."
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "Заголовок",
-		k: "Продукты",
-		j: "Цены",
-		m: "Команда",
-		a: "Блог",
-		b: "Вакансии",
-		d: "FAQ",
-		c: "Контакт",
-		l: "Настройки",
-		g: "Главная",
-		h: "Методология",
-		i: "Мок-страницы",
-		e: "Перейти на GitHub"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
-		a: "Тема: Авто",
-		b: "Тема: Темная",
-		c: "Тема: Светлая"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "主题模式：自动（系统）。点击切换到亮色模式。",
-		a: "主题：自动",
-		b: "主题：深色",
-		c: "主题：亮色"
-	}
-};
-export { e as default };
-var e = {
-	key: "header",
-	content: {
-		f: "页眉",
-		k: "产品",
-		j: "定价",
-		m: "团队",
-		a: "博客",
-		b: "职业",
-		d: "常见问题",
-		c: "联系我们",
-		l: "设置",
-		g: "首页",
-		h: "方法论",
-		i: "模拟页面",
-		e: "前往 GitHub"
-	}
-};
-export { e as default };
-var e = {
-	key: "footer",
-	content: {
-		a: "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的真实影响。",
-		f: "资源",
-		e: "方法论",
-		c: "贡献",
-		b: "联系我们",
-		d: "i18n Benchmark — 开源项目。使用 Solid、Vite 和 Solid Router 构建。"
+		d: "Theme mode: auto (system). Click to switch to light mode.",
+		a: "Theme: Auto",
+		b: "Theme: Dark",
+		c: "Theme: Light"
 	}
 };
 export { e as default };

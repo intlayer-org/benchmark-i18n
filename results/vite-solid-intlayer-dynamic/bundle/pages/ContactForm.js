@@ -1,16 +1,16 @@
 import { Dynamic, effect, insert, setAttribute, template } from "solid-js/web";
 import { createContext, createMemo, createUniqueId, useContext } from "solid-js";
 var content = {
-	"de": () => import("./de-DGf0_QO3.js").then((m) => m.default),
-	"en": () => import("./en-CeH5nd5I.js").then((m) => m.default),
-	"es": () => import("./es-B2xu9HCF.js").then((m) => m.default),
-	"fr": () => import("./fr-BjAfcMok.js").then((m) => m.default),
-	"it": () => import("./it-XwzCbbCs.js").then((m) => m.default),
-	"ja": () => import("./ja-785Udwqg.js").then((m) => m.default),
-	"ko": () => import("./ko-C5edV9rU.js").then((m) => m.default),
-	"pt": () => import("./pt-CGRVuMzH.js").then((m) => m.default),
-	"ru": () => import("./ru-ALdWzoqU.js").then((m) => m.default),
-	"zh": () => import("./zh-fPdlrcx_.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/de.json").then((m) => m.default),
+	"en": () => import("./en-C1eMFXaG.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/zh.json").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,8 +230,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-};
-var S = {
+}, S$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -239,8 +238,7 @@ var S = {
 		value: o.children,
 		children: o.children
 	})
-};
-var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -248,12 +246,7 @@ var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin :
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-};
-var T = fallbackPlugin;
-var D = fallbackPlugin;
-var O = fallbackPlugin;
-var k = /* @__PURE__ */ new Map();
-var A = (e, t = !0) => {
+}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -263,7 +256,7 @@ var A = (e, t = !0) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S,
+		S$1,
 		C,
 		T,
 		D,
@@ -282,8 +275,7 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-};
-var localeStorageOptions = {
+}, localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -301,9 +293,7 @@ var localeStorageOptions = {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-};
-var a$1 = getLocaleFromStorageClient(localeStorageOptions);
-var y = createContext({
+}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -322,9 +312,7 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-};
-var t = /* @__PURE__ */ new Map();
-var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
@@ -369,24 +357,6 @@ function ContactForm() {
 	})();
 }
 export { ContactForm as default };
-var de_default = {
-	key: "contact-form",
-	content: {
-		"g": "Name",
-		"l": "Ihr Name",
-		"d": "E-Mail",
-		"k": "Thema",
-		"a": "Fehlerbericht",
-		"h": "Neue Benchmark-Idee",
-		"f": "Frage zur Methodik",
-		"b": "Beitrag",
-		"i": "Sonstiges",
-		"e": "Nachricht",
-		"c": "Beschreiben Sie Ihre Frage oder Idee...",
-		"j": "Nachricht senden"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "contact-form",
 	content: {
@@ -405,147 +375,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "contact-form",
-	content: {
-		"g": "Nombre",
-		"l": "Tu nombre",
-		"d": "Correo electrónico",
-		"k": "Tema",
-		"a": "Reporte de error",
-		"h": "Nueva idea de benchmark",
-		"f": "Pregunta sobre metodología",
-		"b": "Contribución",
-		"i": "Otro",
-		"e": "Mensaje",
-		"c": "Describe tu pregunta o idea...",
-		"j": "Enviar mensaje"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "contact-form",
-	content: {
-		"g": "Nom",
-		"l": "Votre nom",
-		"d": "Email",
-		"k": "Sujet",
-		"a": "Rapport de bug",
-		"h": "Nouvelle idée de benchmark",
-		"f": "Question sur la méthodologie",
-		"b": "Contribution",
-		"i": "Autre",
-		"e": "Message",
-		"c": "Décrivez votre question ou idée...",
-		"j": "Envoyer le message"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "contact-form",
-	content: {
-		"g": "Nome",
-		"l": "Il tuo nome",
-		"d": "Email",
-		"k": "Argomento",
-		"a": "Segnalazione bug",
-		"h": "Nuova idea di benchmark",
-		"f": "Domanda sulla metodologia",
-		"b": "Contributo",
-		"i": "Altro",
-		"e": "Messaggio",
-		"c": "Descrivi la tua domanda o idea...",
-		"j": "Invia messaggio"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "contact-form",
-	content: {
-		"g": "名前",
-		"l": "あなたの名前",
-		"d": "メールアドレス",
-		"k": "トピック",
-		"a": "バグ報告",
-		"h": "新しいベンチマークのアイデア",
-		"f": "方法論に関する質問",
-		"b": "貢献",
-		"i": "その他",
-		"e": "メッセージ",
-		"c": "質問やアイデアを説明してください...",
-		"j": "メッセージを送信"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "contact-form",
-	content: {
-		"g": "이름",
-		"l": "귀하의 성함",
-		"d": "이메일",
-		"k": "주제",
-		"a": "버그 보고",
-		"h": "새로운 벤치마크 아이디어",
-		"f": "방법론 질문",
-		"b": "기여",
-		"i": "기타",
-		"e": "메시지",
-		"c": "질문이나 아이디어를 설명해 주세요...",
-		"j": "메시지 보내기"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "contact-form",
-	content: {
-		"g": "Nome",
-		"l": "Seu nome",
-		"d": "E-mail",
-		"k": "Tópico",
-		"a": "Relato de bug",
-		"h": "Nova ideia de benchmark",
-		"f": "Pergunta sobre metodologia",
-		"b": "Contribuição",
-		"i": "Outro",
-		"e": "Mensagem",
-		"c": "Descreva sua pergunta ou ideia...",
-		"j": "Enviar mensagem"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "contact-form",
-	content: {
-		"g": "Имя",
-		"l": "Ваше имя",
-		"d": "Электронная почта",
-		"k": "Тема",
-		"a": "Отчет об ошибке",
-		"h": "Новая идея бенчмарка",
-		"f": "Вопрос по методологии",
-		"b": "Вклад",
-		"i": "Другое",
-		"e": "Сообщение",
-		"c": "Опишите ваш вопрос или идею...",
-		"j": "Отправить сообщение"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "contact-form",
-	content: {
-		"g": "姓名",
-		"l": "您的姓名",
-		"d": "电子邮件",
-		"k": "主题",
-		"a": "报告错误",
-		"h": "新的基准测试想法",
-		"f": "方法论问题",
-		"b": "贡献",
-		"i": "其他",
-		"e": "消息",
-		"c": "描述您的问题或想法...",
-		"j": "发送消息"
-	}
-};
-export { zh_default as default };

@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var URLPattern = {};
 var locales = [
 	"en",
@@ -186,170 +186,221 @@ var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_profile_section_displayname1 = () => {
+var profile_section_displayname1$10 = () => {
 	return `Display Name`;
 };
-var fr_profile_section_displayname1 = () => {
+var profile_section_email$10 = () => {
+	return `Email`;
+};
+var profile_section_profile$10 = () => {
+	return `Profile`;
+};
+var profile_section_displayname1$9 = () => {
 	return `Nom d'affichage`;
 };
-var es_profile_section_displayname1 = () => {
+var profile_section_email$9 = () => {
+	return `Email`;
+};
+var profile_section_profile$9 = () => {
+	return `Profil`;
+};
+var profile_section_displayname1$8 = () => {
 	return `Nombre visible`;
 };
-var de_profile_section_displayname1 = () => {
+var profile_section_email$8 = () => {
+	return `Correo electrónico`;
+};
+var profile_section_profile$8 = () => {
+	return `Perfil`;
+};
+var profile_section_displayname1$7 = () => {
 	return `Anzeigename`;
 };
-var it_profile_section_displayname1 = () => {
+var profile_section_email$7 = () => {
+	return `E-Mail`;
+};
+var profile_section_profile$7 = () => {
+	return `Profil`;
+};
+var profile_section_displayname1$6 = () => {
 	return `Nome visualizzato`;
 };
-var pt_profile_section_displayname1 = () => {
+var profile_section_email$6 = () => {
+	return `Email`;
+};
+var profile_section_profile$6 = () => {
+	return `Profilo`;
+};
+var profile_section_displayname1$5 = () => {
 	return `Nome de exibição`;
 };
-var zh_profile_section_displayname1 = () => {
+var profile_section_email$5 = () => {
+	return `E-mail`;
+};
+var profile_section_profile$5 = () => {
+	return `Perfil`;
+};
+var profile_section_displayname1$4 = () => {
 	return `显示名称`;
 };
-var ja_profile_section_displayname1 = () => {
+var profile_section_email$4 = () => {
+	return `邮件地址`;
+};
+var profile_section_profile$4 = () => {
+	return `个人资料`;
+};
+var profile_section_displayname1$3 = () => {
 	return `表示名`;
 };
-var ko_profile_section_displayname1 = () => {
+var profile_section_email$3 = () => {
+	return `メールアドレス`;
+};
+var profile_section_profile$3 = () => {
+	return `プロファイル`;
+};
+var profile_section_displayname1$2 = () => {
 	return `표시 이름`;
 };
-var ru_profile_section_displayname1 = () => {
+var profile_section_email$2 = () => {
+	return `이메일 주소`;
+};
+var profile_section_profile$2 = () => {
+	return `프로필`;
+};
+var profile_section_displayname1$1 = () => {
 	return `Отображаемое имя`;
+};
+var profile_section_email$1 = () => {
+	return `Эл. почта`;
+};
+var profile_section_profile$1 = () => {
+	return `Профиль`;
 };
 var profile_section_displayname1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_profile_section_displayname1(inputs);
-	if (locale === "es") return es_profile_section_displayname1(inputs);
-	if (locale === "de") return de_profile_section_displayname1(inputs);
-	if (locale === "it") return it_profile_section_displayname1(inputs);
-	if (locale === "pt") return pt_profile_section_displayname1(inputs);
-	if (locale === "zh") return zh_profile_section_displayname1(inputs);
-	if (locale === "ja") return ja_profile_section_displayname1(inputs);
-	if (locale === "ko") return ko_profile_section_displayname1(inputs);
-	if (locale === "ru") return ru_profile_section_displayname1(inputs);
-	return en_profile_section_displayname1(inputs);
+	if (locale === "fr") return profile_section_displayname1$9(inputs);
+	if (locale === "es") return profile_section_displayname1$8(inputs);
+	if (locale === "de") return profile_section_displayname1$7(inputs);
+	if (locale === "it") return profile_section_displayname1$6(inputs);
+	if (locale === "pt") return profile_section_displayname1$5(inputs);
+	if (locale === "zh") return profile_section_displayname1$4(inputs);
+	if (locale === "ja") return profile_section_displayname1$3(inputs);
+	if (locale === "ko") return profile_section_displayname1$2(inputs);
+	if (locale === "ru") return profile_section_displayname1$1(inputs);
+	return profile_section_displayname1$10(inputs);
 });
-var en_profile_section_email = () => {
-	return `Email`;
-};
-var fr_profile_section_email = () => {
-	return `Email`;
-};
-var es_profile_section_email = () => {
-	return `Correo electrónico`;
-};
-var de_profile_section_email = () => {
-	return `E-Mail`;
-};
-var it_profile_section_email = () => {
-	return `Email`;
-};
-var pt_profile_section_email = () => {
-	return `E-mail`;
-};
-var zh_profile_section_email = () => {
-	return `邮件地址`;
-};
-var ja_profile_section_email = () => {
-	return `メールアドレス`;
-};
-var ko_profile_section_email = () => {
-	return `이메일 주소`;
-};
-var ru_profile_section_email = () => {
-	return `Эл. почта`;
-};
 var profile_section_email = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_profile_section_email(inputs);
-	if (locale === "es") return es_profile_section_email(inputs);
-	if (locale === "de") return de_profile_section_email(inputs);
-	if (locale === "it") return it_profile_section_email(inputs);
-	if (locale === "pt") return pt_profile_section_email(inputs);
-	if (locale === "zh") return zh_profile_section_email(inputs);
-	if (locale === "ja") return ja_profile_section_email(inputs);
-	if (locale === "ko") return ko_profile_section_email(inputs);
-	if (locale === "ru") return ru_profile_section_email(inputs);
-	return en_profile_section_email(inputs);
+	if (locale === "fr") return profile_section_email$9(inputs);
+	if (locale === "es") return profile_section_email$8(inputs);
+	if (locale === "de") return profile_section_email$7(inputs);
+	if (locale === "it") return profile_section_email$6(inputs);
+	if (locale === "pt") return profile_section_email$5(inputs);
+	if (locale === "zh") return profile_section_email$4(inputs);
+	if (locale === "ja") return profile_section_email$3(inputs);
+	if (locale === "ko") return profile_section_email$2(inputs);
+	if (locale === "ru") return profile_section_email$1(inputs);
+	return profile_section_email$10(inputs);
 });
-var en_profile_section_profile = () => {
-	return `Profile`;
-};
-var fr_profile_section_profile = () => {
-	return `Profil`;
-};
-var es_profile_section_profile = () => {
-	return `Perfil`;
-};
-var de_profile_section_profile = () => {
-	return `Profil`;
-};
-var it_profile_section_profile = () => {
-	return `Profilo`;
-};
-var pt_profile_section_profile = () => {
-	return `Perfil`;
-};
-var zh_profile_section_profile = () => {
-	return `个人资料`;
-};
-var ja_profile_section_profile = () => {
-	return `プロファイル`;
-};
-var ko_profile_section_profile = () => {
-	return `프로필`;
-};
-var ru_profile_section_profile = () => {
-	return `Профиль`;
-};
 var profile_section_profile = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_profile_section_profile(inputs);
-	if (locale === "es") return es_profile_section_profile(inputs);
-	if (locale === "de") return de_profile_section_profile(inputs);
-	if (locale === "it") return it_profile_section_profile(inputs);
-	if (locale === "pt") return pt_profile_section_profile(inputs);
-	if (locale === "zh") return zh_profile_section_profile(inputs);
-	if (locale === "ja") return ja_profile_section_profile(inputs);
-	if (locale === "ko") return ko_profile_section_profile(inputs);
-	if (locale === "ru") return ru_profile_section_profile(inputs);
-	return en_profile_section_profile(inputs);
+	if (locale === "fr") return profile_section_profile$9(inputs);
+	if (locale === "es") return profile_section_profile$8(inputs);
+	if (locale === "de") return profile_section_profile$7(inputs);
+	if (locale === "it") return profile_section_profile$6(inputs);
+	if (locale === "pt") return profile_section_profile$5(inputs);
+	if (locale === "zh") return profile_section_profile$4(inputs);
+	if (locale === "ja") return profile_section_profile$3(inputs);
+	if (locale === "ko") return profile_section_profile$2(inputs);
+	if (locale === "ru") return profile_section_profile$1(inputs);
+	return profile_section_profile$10(inputs);
 });
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/ProfileSection.tsx";
 function ProfileSection() {
 	const displayNameId = useId();
 	const emailId = useId();
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: profile_section_profile()
-		}), jsxs("div", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 10,
+			columnNumber: 7
+		}, this), jsxDEV("div", {
 			className: "space-y-4",
-			children: [jsxs("div", { children: [jsx("label", {
+			children: [jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: displayNameId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: profile_section_displayname1()
-			}), jsx("input", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 15,
+				columnNumber: 11
+			}, this), jsxDEV("input", {
 				id: displayNameId,
 				defaultValue: "John Developer",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			})] }), jsxs("div", { children: [jsx("label", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 21,
+				columnNumber: 11
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 14,
+				columnNumber: 9
+			}, this), jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: emailId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: profile_section_email()
-			}), jsx("input", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 28,
+				columnNumber: 11
+			}, this), jsxDEV("input", {
 				id: emailId,
 				defaultValue: "john@example.com",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			})] })]
-		})]
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 34,
+				columnNumber: 11
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 27,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 13,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 setLocale("en", { reload: false });
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/ProfileSection.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ProfileSection, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ProfileSection, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

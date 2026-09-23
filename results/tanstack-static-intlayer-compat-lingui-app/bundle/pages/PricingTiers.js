@@ -1,5 +1,6 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var EventEmitter = class {
 	_events = /* @__PURE__ */ new Map();
 	on(event, listener) {
@@ -996,10 +997,9 @@ var formatArgument = (value, type, style, locale) => {
 	} catch {}
 	return String(value);
 };
-var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (match, path, type, style) => {
+var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{}]+?)\s*\}\}/g, (match, path) => {
 	const value = resolveValuePath(values, path);
-	if (value === void 0) return match;
-	return type ? formatArgument(value, type, style, locale) : String(value);
+	return value === void 0 ? match : String(value);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
 	if (value === void 0) return match;
@@ -1053,17 +1053,15 @@ var resolveMessageNode = (node, values = {}, locale = "en") => {
 	}
 	return node;
 };
-var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
-	const resolved = resolveMessageNode(node, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: (message) => icuToIntlayerFormatter(message),
+	i18next: (message) => i18nextToIntlayerFormatter(message),
+	"vue-i18n": (message) => vueI18nToIntlayerFormatter(message)
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => {
+	const resolved = resolveMessageNode(typeof message === "string" ? DIALECT_FORMATTERS[dialect](message) : message, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
-var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var DIALECT_FORMATTERS = {
-	icu: icuToIntlayerFormatter,
-	i18next: i18nextToIntlayerFormatter,
-	"vue-i18n": vueI18nToIntlayerFormatter
-};
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var I18nClass = class extends EventEmitter {
 	_locale;
 	_locales;
@@ -1691,8 +1689,8 @@ var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent,
 		children
 	]
 });
-var { defaultLocale, locales: availableLocales } = internationalization ?? {};
 var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
+	const { defaultLocale, locales: availableLocales } = internationalization ?? {};
 	const { locale, setLocale: setLocaleState, isCookieEnabled: isCookieEnabledContext } = useContext(IntlayerClientContext) ?? {};
 	return {
 		locale,
@@ -1759,6 +1757,7 @@ var setupI18n = (params) => new I18nClass({
 	registry: createRegistryResolver()
 });
 setupI18n({ locale: "en" });
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
 	const { i18n } = useLingui();
 	const tiers = [
@@ -1891,61 +1890,115 @@ function PricingTiers() {
 			})
 		}
 	];
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((tier) => jsxs("div", {
+		children: tiers.map((tier) => jsxDEV("div", {
 			className: `flex flex-col rounded-lg border p-6 ${tier.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsx("h3", {
+				jsxDEV("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: tier.name
-				}),
-				jsxs("div", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 76,
+					columnNumber: 11
+				}, this),
+				jsxDEV("div", {
 					className: "my-4",
-					children: [jsx("span", {
+					children: [jsxDEV("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: tier.price
-					}), jsx("span", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 78,
+						columnNumber: 13
+					}, this), jsxDEV("span", {
 						className: "text-sm text-muted-foreground",
 						children: tier.period
-					})]
-				}),
-				jsx("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 81,
+						columnNumber: 13
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 77,
+					columnNumber: 11
+				}, this),
+				jsxDEV("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: tier.features.map((f, i) => jsxs("li", {
+					children: tier.features.map((f, i) => jsxDEV("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsx("span", {
+							jsxDEV("span", {
 								className: "text-primary",
 								children: "✓"
-							}),
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 89,
+								columnNumber: 17
+							}, this),
 							" ",
 							f
 						]
-					}, i))
-				}),
-				jsx("button", {
+					}, i, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 85,
+						columnNumber: 15
+					}, this))
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 83,
+					columnNumber: 11
+				}, this),
+				jsxDEV("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${tier.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: tier.cta
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 93,
+					columnNumber: 11
+				}, this)
 			]
-		}, tier.name))
-	});
+		}, tier.name, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 68,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 66,
+		columnNumber: 5
+	}, this);
 }
 function initLingui(locale, _messages) {
 	const lingui = setupI18n();
 	lingui.activate(locale);
 	return lingui;
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const i18n = useMemo(() => initLingui("en"), []);
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		i18n,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-lingui-app/src/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

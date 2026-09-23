@@ -1,8 +1,10 @@
 import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx } from "react/jsx-runtime";
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/careers/CareersBenefits.tsx";
 function CareersBenefits() {
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
 		children: [
 			{
@@ -17,17 +19,33 @@ function CareersBenefits() {
 				label: "Open source time",
 				value: "20% time for OSS contributions"
 			}
-		].map((b) => jsxs("div", {
+		].map((b) => jsxDEV("div", {
 			className: "rounded-lg border border-border bg-card p-4 text-center",
-			children: [jsx("p", {
+			children: [jsxDEV("p", {
 				className: "text-sm font-semibold text-foreground",
 				children: b.label
-			}), jsx("p", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 18,
+				columnNumber: 11
+			}, this), jsxDEV("p", {
 				className: "text-xs text-muted-foreground",
 				children: b.value
-			})]
-		}, b.label))
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 19,
+				columnNumber: 11
+			}, this)]
+		}, b.label, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 14,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -261,14 +279,28 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/careers/CareersBenefits.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(CareersBenefits, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(CareersBenefits, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 import { t as logger } from "./logger-CWLzb-Ic.js";

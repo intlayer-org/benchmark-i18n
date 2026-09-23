@@ -1,5 +1,5 @@
 import "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var URLPattern = {};
 var locales = [
 	"en",
@@ -186,111 +186,138 @@ var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_settings_footer_cancel = () => {
+var settings_footer_cancel$10 = () => {
 	return `Cancel`;
 };
-var fr_settings_footer_cancel = () => {
+var settings_footer_savechanges1$10 = () => {
+	return `Save Changes`;
+};
+var settings_footer_cancel$9 = () => {
 	return `Annuler`;
 };
-var es_settings_footer_cancel = () => {
+var settings_footer_savechanges1$9 = () => {
+	return `Enregistrer les modifications`;
+};
+var settings_footer_cancel$8 = () => {
 	return `Cancelar`;
 };
-var de_settings_footer_cancel = () => {
+var settings_footer_savechanges1$8 = () => {
+	return `Guardar cambios`;
+};
+var settings_footer_cancel$7 = () => {
 	return `Abbrechen`;
 };
-var it_settings_footer_cancel = () => {
+var settings_footer_savechanges1$7 = () => {
+	return `Änderungen speichern`;
+};
+var settings_footer_cancel$6 = () => {
 	return `Annulla`;
 };
-var pt_settings_footer_cancel = () => {
+var settings_footer_savechanges1$6 = () => {
+	return `Salva modifiche`;
+};
+var settings_footer_cancel$5 = () => {
 	return `Cancelar`;
 };
-var zh_settings_footer_cancel = () => {
+var settings_footer_savechanges1$5 = () => {
+	return `Salvar alterações`;
+};
+var settings_footer_cancel$4 = () => {
 	return `取消`;
 };
-var ja_settings_footer_cancel = () => {
+var settings_footer_savechanges1$4 = () => {
+	return `保存更改`;
+};
+var settings_footer_cancel$3 = () => {
 	return `キャンセル`;
 };
-var ko_settings_footer_cancel = () => {
+var settings_footer_savechanges1$3 = () => {
+	return `変更を保存`;
+};
+var settings_footer_cancel$2 = () => {
 	return `취소`;
 };
-var ru_settings_footer_cancel = () => {
+var settings_footer_savechanges1$2 = () => {
+	return `변경 사항 저장`;
+};
+var settings_footer_cancel$1 = () => {
 	return `Отмена`;
+};
+var settings_footer_savechanges1$1 = () => {
+	return `Сохранить изменения`;
 };
 var settings_footer_cancel = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_settings_footer_cancel(inputs);
-	if (locale === "es") return es_settings_footer_cancel(inputs);
-	if (locale === "de") return de_settings_footer_cancel(inputs);
-	if (locale === "it") return it_settings_footer_cancel(inputs);
-	if (locale === "pt") return pt_settings_footer_cancel(inputs);
-	if (locale === "zh") return zh_settings_footer_cancel(inputs);
-	if (locale === "ja") return ja_settings_footer_cancel(inputs);
-	if (locale === "ko") return ko_settings_footer_cancel(inputs);
-	if (locale === "ru") return ru_settings_footer_cancel(inputs);
-	return en_settings_footer_cancel(inputs);
+	if (locale === "fr") return settings_footer_cancel$9(inputs);
+	if (locale === "es") return settings_footer_cancel$8(inputs);
+	if (locale === "de") return settings_footer_cancel$7(inputs);
+	if (locale === "it") return settings_footer_cancel$6(inputs);
+	if (locale === "pt") return settings_footer_cancel$5(inputs);
+	if (locale === "zh") return settings_footer_cancel$4(inputs);
+	if (locale === "ja") return settings_footer_cancel$3(inputs);
+	if (locale === "ko") return settings_footer_cancel$2(inputs);
+	if (locale === "ru") return settings_footer_cancel$1(inputs);
+	return settings_footer_cancel$10(inputs);
 });
-var en_settings_footer_savechanges1 = () => {
-	return `Save Changes`;
-};
-var fr_settings_footer_savechanges1 = () => {
-	return `Enregistrer les modifications`;
-};
-var es_settings_footer_savechanges1 = () => {
-	return `Guardar cambios`;
-};
-var de_settings_footer_savechanges1 = () => {
-	return `Änderungen speichern`;
-};
-var it_settings_footer_savechanges1 = () => {
-	return `Salva modifiche`;
-};
-var pt_settings_footer_savechanges1 = () => {
-	return `Salvar alterações`;
-};
-var zh_settings_footer_savechanges1 = () => {
-	return `保存更改`;
-};
-var ja_settings_footer_savechanges1 = () => {
-	return `変更を保存`;
-};
-var ko_settings_footer_savechanges1 = () => {
-	return `변경 사항 저장`;
-};
-var ru_settings_footer_savechanges1 = () => {
-	return `Сохранить изменения`;
-};
 var settings_footer_savechanges1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_settings_footer_savechanges1(inputs);
-	if (locale === "es") return es_settings_footer_savechanges1(inputs);
-	if (locale === "de") return de_settings_footer_savechanges1(inputs);
-	if (locale === "it") return it_settings_footer_savechanges1(inputs);
-	if (locale === "pt") return pt_settings_footer_savechanges1(inputs);
-	if (locale === "zh") return zh_settings_footer_savechanges1(inputs);
-	if (locale === "ja") return ja_settings_footer_savechanges1(inputs);
-	if (locale === "ko") return ko_settings_footer_savechanges1(inputs);
-	if (locale === "ru") return ru_settings_footer_savechanges1(inputs);
-	return en_settings_footer_savechanges1(inputs);
+	if (locale === "fr") return settings_footer_savechanges1$9(inputs);
+	if (locale === "es") return settings_footer_savechanges1$8(inputs);
+	if (locale === "de") return settings_footer_savechanges1$7(inputs);
+	if (locale === "it") return settings_footer_savechanges1$6(inputs);
+	if (locale === "pt") return settings_footer_savechanges1$5(inputs);
+	if (locale === "zh") return settings_footer_savechanges1$4(inputs);
+	if (locale === "ja") return settings_footer_savechanges1$3(inputs);
+	if (locale === "ko") return settings_footer_savechanges1$2(inputs);
+	if (locale === "ru") return settings_footer_savechanges1$1(inputs);
+	return settings_footer_savechanges1$10(inputs);
 });
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/SettingsFooter.tsx";
 function SettingsFooter() {
-	return jsxs("div", {
+	return jsxDEV("div", {
 		className: "flex justify-end gap-3",
-		children: [jsx("button", {
+		children: [jsxDEV("button", {
 			type: "button",
 			className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 			children: settings_footer_cancel()
-		}), jsx("button", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 6,
+			columnNumber: 7
+		}, this), jsxDEV("button", {
 			type: "submit",
 			className: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 			children: settings_footer_savechanges1()
-		})]
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 5,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 setLocale("en", { reload: false });
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/SettingsFooter.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(SettingsFooter, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(SettingsFooter, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

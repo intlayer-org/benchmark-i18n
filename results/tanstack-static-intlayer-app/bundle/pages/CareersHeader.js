@@ -1,5 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment as Fragment$2, jsxDEV } from "react/jsx-dev-runtime";
 var careers_header_default = {
 	key: "careers-header",
 	content: {
@@ -726,34 +727,70 @@ var mock_banner_default = {
 		}
 	}
 };
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/MockBanner.tsx";
 var MockBanner = () => {
 	const content = useDictionary(mock_banner_default);
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: content.a
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 5,
+		columnNumber: 3
+	}, void 0);
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/careers/CareersHeader.tsx";
 function CareersHeader() {
 	const content = useDictionary(careers_header_default);
-	return jsxs(Fragment$1, { children: [
-		jsx(MockBanner, {}),
-		jsx("h1", {
+	return jsxDEV(Fragment$2, { children: [
+		jsxDEV(MockBanner, {}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 9,
+			columnNumber: 7
+		}, this),
+		jsxDEV("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: content.b
-		}),
-		jsx("p", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 10,
+			columnNumber: 7
+		}, this),
+		jsxDEV("p", {
 			className: "mb-4 text-muted-foreground",
 			children: content.a
-		})
-	] });
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 11,
+			columnNumber: 7
+		}, this)
+	] }, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(IntlayerProvider, {
+	return jsxDEV(IntlayerProvider, {
 		locale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/careers/CareersHeader.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(CareersHeader, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(CareersHeader, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

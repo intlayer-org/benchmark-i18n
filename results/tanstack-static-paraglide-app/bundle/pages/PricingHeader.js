@@ -1,5 +1,5 @@
 import "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var URLPattern = {};
 var locales = [
 	"en",
@@ -186,156 +186,196 @@ var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_mockbanner1 = () => {
+var mockbanner1$10 = () => {
 	return `⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.`;
 };
-var fr_mockbanner1 = () => {
+var pricing_header_choosetheplanthatfits4$10 = () => {
+	return `Choose the plan that fits your team. No hidden fees.`;
+};
+var pricing_header_simpletransparentpricing2$10 = () => {
+	return `Simple, Transparent Pricing`;
+};
+var mockbanner1$9 = () => {
 	return `⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.`;
 };
-var es_mockbanner1 = () => {
+var pricing_header_choosetheplanthatfits4$9 = () => {
+	return `Choisissez l'offre qui convient à votre équipe. Pas de frais cachés.`;
+};
+var pricing_header_simpletransparentpricing2$9 = () => {
+	return `Une tarification simple et transparente`;
+};
+var mockbanner1$8 = () => {
 	return `⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.`;
 };
-var de_mockbanner1 = () => {
+var pricing_header_choosetheplanthatfits4$8 = () => {
+	return `Elige el plan que se adapte a tu equipo. Sin cargos ocultos.`;
+};
+var pricing_header_simpletransparentpricing2$8 = () => {
+	return `Precios simples y transparentes`;
+};
+var mockbanner1$7 = () => {
 	return `⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.`;
 };
-var it_mockbanner1 = () => {
+var pricing_header_choosetheplanthatfits4$7 = () => {
+	return `Wählen Sie den Plan, der zu Ihrem Team passt. Keine versteckten Gebühren.`;
+};
+var pricing_header_simpletransparentpricing2$7 = () => {
+	return `Einfache, transparente Preisgestaltung`;
+};
+var mockbanner1$6 = () => {
 	return `⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.`;
 };
-var pt_mockbanner1 = () => {
+var pricing_header_choosetheplanthatfits4$6 = () => {
+	return `Scegli il piano adatto al tuo team. Nessun costo nascosto.`;
+};
+var pricing_header_simpletransparentpricing2$6 = () => {
+	return `Prezzi Semplici e Trasparenti`;
+};
+var mockbanner1$5 = () => {
 	return `⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.`;
 };
-var zh_mockbanner1 = () => {
+var pricing_header_choosetheplanthatfits4$5 = () => {
+	return `Escolha o plano que se adapta à sua equipe. Sem taxas ocultas.`;
+};
+var pricing_header_simpletransparentpricing2$5 = () => {
+	return `Preços Simples e Trasparentes`;
+};
+var mockbanner1$4 = () => {
 	return `⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。`;
 };
-var ja_mockbanner1 = () => {
+var pricing_header_choosetheplanthatfits4$4 = () => {
+	return `选择适合您团队的计划。无隐藏费用。`;
+};
+var pricing_header_simpletransparentpricing2$4 = () => {
+	return `简单透明的定价`;
+};
+var mockbanner1$3 = () => {
 	return `⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。`;
 };
-var ko_mockbanner1 = () => {
+var pricing_header_choosetheplanthatfits4$3 = () => {
+	return `チームに最適なプランをお選びください。隠れた費用はありません。`;
+};
+var pricing_header_simpletransparentpricing2$3 = () => {
+	return `シンプルで透明な価格設定`;
+};
+var mockbanner1$2 = () => {
 	return `⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.`;
 };
-var ru_mockbanner1 = () => {
+var pricing_header_choosetheplanthatfits4$2 = () => {
+	return `팀에 맞는 플랜을 선택하세요. 숨겨진 수수료는 없습니다.`;
+};
+var pricing_header_simpletransparentpricing2$2 = () => {
+	return `심플하고 투명한 요금제`;
+};
+var mockbanner1$1 = () => {
 	return `⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.`;
+};
+var pricing_header_choosetheplanthatfits4$1 = () => {
+	return `Выберите план, который подходит вашей команде. Никаких скрытых комиссий.`;
+};
+var pricing_header_simpletransparentpricing2$1 = () => {
+	return `Простое и прозрачное ценообразование`;
 };
 var mockbanner1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_mockbanner1(inputs);
-	if (locale === "es") return es_mockbanner1(inputs);
-	if (locale === "de") return de_mockbanner1(inputs);
-	if (locale === "it") return it_mockbanner1(inputs);
-	if (locale === "pt") return pt_mockbanner1(inputs);
-	if (locale === "zh") return zh_mockbanner1(inputs);
-	if (locale === "ja") return ja_mockbanner1(inputs);
-	if (locale === "ko") return ko_mockbanner1(inputs);
-	if (locale === "ru") return ru_mockbanner1(inputs);
-	return en_mockbanner1(inputs);
+	if (locale === "fr") return mockbanner1$9(inputs);
+	if (locale === "es") return mockbanner1$8(inputs);
+	if (locale === "de") return mockbanner1$7(inputs);
+	if (locale === "it") return mockbanner1$6(inputs);
+	if (locale === "pt") return mockbanner1$5(inputs);
+	if (locale === "zh") return mockbanner1$4(inputs);
+	if (locale === "ja") return mockbanner1$3(inputs);
+	if (locale === "ko") return mockbanner1$2(inputs);
+	if (locale === "ru") return mockbanner1$1(inputs);
+	return mockbanner1$10(inputs);
 });
-var en_pricing_header_choosetheplanthatfits4 = () => {
-	return `Choose the plan that fits your team. No hidden fees.`;
-};
-var fr_pricing_header_choosetheplanthatfits4 = () => {
-	return `Choisissez l'offre qui convient à votre équipe. Pas de frais cachés.`;
-};
-var es_pricing_header_choosetheplanthatfits4 = () => {
-	return `Elige el plan que se adapte a tu equipo. Sin cargos ocultos.`;
-};
-var de_pricing_header_choosetheplanthatfits4 = () => {
-	return `Wählen Sie den Plan, der zu Ihrem Team passt. Keine versteckten Gebühren.`;
-};
-var it_pricing_header_choosetheplanthatfits4 = () => {
-	return `Scegli il piano adatto al tuo team. Nessun costo nascosto.`;
-};
-var pt_pricing_header_choosetheplanthatfits4 = () => {
-	return `Escolha o plano que se adapta à sua equipe. Sem taxas ocultas.`;
-};
-var zh_pricing_header_choosetheplanthatfits4 = () => {
-	return `选择适合您团队的计划。无隐藏费用。`;
-};
-var ja_pricing_header_choosetheplanthatfits4 = () => {
-	return `チームに最適なプランをお選びください。隠れた費用はありません。`;
-};
-var ko_pricing_header_choosetheplanthatfits4 = () => {
-	return `팀에 맞는 플랜을 선택하세요. 숨겨진 수수료는 없습니다.`;
-};
-var ru_pricing_header_choosetheplanthatfits4 = () => {
-	return `Выберите план, который подходит вашей команде. Никаких скрытых комиссий.`;
-};
 var pricing_header_choosetheplanthatfits4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_pricing_header_choosetheplanthatfits4(inputs);
-	if (locale === "es") return es_pricing_header_choosetheplanthatfits4(inputs);
-	if (locale === "de") return de_pricing_header_choosetheplanthatfits4(inputs);
-	if (locale === "it") return it_pricing_header_choosetheplanthatfits4(inputs);
-	if (locale === "pt") return pt_pricing_header_choosetheplanthatfits4(inputs);
-	if (locale === "zh") return zh_pricing_header_choosetheplanthatfits4(inputs);
-	if (locale === "ja") return ja_pricing_header_choosetheplanthatfits4(inputs);
-	if (locale === "ko") return ko_pricing_header_choosetheplanthatfits4(inputs);
-	if (locale === "ru") return ru_pricing_header_choosetheplanthatfits4(inputs);
-	return en_pricing_header_choosetheplanthatfits4(inputs);
+	if (locale === "fr") return pricing_header_choosetheplanthatfits4$9(inputs);
+	if (locale === "es") return pricing_header_choosetheplanthatfits4$8(inputs);
+	if (locale === "de") return pricing_header_choosetheplanthatfits4$7(inputs);
+	if (locale === "it") return pricing_header_choosetheplanthatfits4$6(inputs);
+	if (locale === "pt") return pricing_header_choosetheplanthatfits4$5(inputs);
+	if (locale === "zh") return pricing_header_choosetheplanthatfits4$4(inputs);
+	if (locale === "ja") return pricing_header_choosetheplanthatfits4$3(inputs);
+	if (locale === "ko") return pricing_header_choosetheplanthatfits4$2(inputs);
+	if (locale === "ru") return pricing_header_choosetheplanthatfits4$1(inputs);
+	return pricing_header_choosetheplanthatfits4$10(inputs);
 });
-var en_pricing_header_simpletransparentpricing2 = () => {
-	return `Simple, Transparent Pricing`;
-};
-var fr_pricing_header_simpletransparentpricing2 = () => {
-	return `Une tarification simple et transparente`;
-};
-var es_pricing_header_simpletransparentpricing2 = () => {
-	return `Precios simples y transparentes`;
-};
-var de_pricing_header_simpletransparentpricing2 = () => {
-	return `Einfache, transparente Preisgestaltung`;
-};
-var it_pricing_header_simpletransparentpricing2 = () => {
-	return `Prezzi Semplici e Trasparenti`;
-};
-var pt_pricing_header_simpletransparentpricing2 = () => {
-	return `Preços Simples e Trasparentes`;
-};
-var zh_pricing_header_simpletransparentpricing2 = () => {
-	return `简单透明的定价`;
-};
-var ja_pricing_header_simpletransparentpricing2 = () => {
-	return `シンプルで透明な価格設定`;
-};
-var ko_pricing_header_simpletransparentpricing2 = () => {
-	return `심플하고 투명한 요금제`;
-};
-var ru_pricing_header_simpletransparentpricing2 = () => {
-	return `Простое и прозрачное ценообразование`;
-};
 var pricing_header_simpletransparentpricing2 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_pricing_header_simpletransparentpricing2(inputs);
-	if (locale === "es") return es_pricing_header_simpletransparentpricing2(inputs);
-	if (locale === "de") return de_pricing_header_simpletransparentpricing2(inputs);
-	if (locale === "it") return it_pricing_header_simpletransparentpricing2(inputs);
-	if (locale === "pt") return pt_pricing_header_simpletransparentpricing2(inputs);
-	if (locale === "zh") return zh_pricing_header_simpletransparentpricing2(inputs);
-	if (locale === "ja") return ja_pricing_header_simpletransparentpricing2(inputs);
-	if (locale === "ko") return ko_pricing_header_simpletransparentpricing2(inputs);
-	if (locale === "ru") return ru_pricing_header_simpletransparentpricing2(inputs);
-	return en_pricing_header_simpletransparentpricing2(inputs);
+	if (locale === "fr") return pricing_header_simpletransparentpricing2$9(inputs);
+	if (locale === "es") return pricing_header_simpletransparentpricing2$8(inputs);
+	if (locale === "de") return pricing_header_simpletransparentpricing2$7(inputs);
+	if (locale === "it") return pricing_header_simpletransparentpricing2$6(inputs);
+	if (locale === "pt") return pricing_header_simpletransparentpricing2$5(inputs);
+	if (locale === "zh") return pricing_header_simpletransparentpricing2$4(inputs);
+	if (locale === "ja") return pricing_header_simpletransparentpricing2$3(inputs);
+	if (locale === "ko") return pricing_header_simpletransparentpricing2$2(inputs);
+	if (locale === "ru") return pricing_header_simpletransparentpricing2$1(inputs);
+	return pricing_header_simpletransparentpricing2$10(inputs);
 });
-var MockBanner = () => jsx("div", {
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/MockBanner.tsx";
+var MockBanner = () => jsxDEV("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 	children: mockbanner1()
-});
+}, void 0, false, {
+	fileName: _jsxFileName$3,
+	lineNumber: 4,
+	columnNumber: 3
+}, void 0);
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/pricing/PricingHeader.tsx";
 function PricingHeader() {
-	return jsxs(Fragment, { children: [jsx(MockBanner, {}), jsxs("div", {
+	return jsxDEV(Fragment, { children: [jsxDEV(MockBanner, {}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 7,
+		columnNumber: 7
+	}, this), jsxDEV("div", {
 		className: "mb-12 text-center",
-		children: [jsx("h1", {
+		children: [jsxDEV("h1", {
 			className: "mb-3 text-3xl font-bold text-foreground",
 			children: pricing_header_simpletransparentpricing2()
-		}), jsx("p", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 9,
+			columnNumber: 9
+		}, this), jsxDEV("p", {
 			className: "text-muted-foreground",
 			children: pricing_header_choosetheplanthatfits4()
-		})]
-	})] });
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 12,
+			columnNumber: 9
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 8,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 setLocale("en", { reload: false });
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/pricing/PricingHeader.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(PricingHeader, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(PricingHeader, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

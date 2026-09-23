@@ -7,5 +7,5 @@ var n = (e, t) => {
 function a(n, r) {
 	return t(), e("div", i, " ⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service. ");
 }
-var o = n(r, [["render", a]]);
+var o = n(r, [["render", a], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/MockBanner.vue"]]);
 export { o as default };

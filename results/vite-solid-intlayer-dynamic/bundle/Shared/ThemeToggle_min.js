@@ -1,16 +1,16 @@
 import { Dynamic as e, delegateEvents as t, effect as n, insert as r, setAttribute as i, template as a } from "solid-js/web";
 import { createContext as o, createEffect as s, createMemo as c, createSignal as l, onMount as u, useContext as d } from "solid-js";
 var ee = {
-	de: () => import("./de-7VUDwmBl.js").then((e) => e.default),
-	en: () => import("./en-jkxS6-DV.js").then((e) => e.default),
-	es: () => import("./es-CIspf5D3.js").then((e) => e.default),
-	fr: () => import("./fr-YmmgtERO.js").then((e) => e.default),
-	it: () => import("./it-DU31rHaG.js").then((e) => e.default),
-	ja: () => import("./ja-DM8e2iCP.js").then((e) => e.default),
-	ko: () => import("./ko-AZ6Ztjar.js").then((e) => e.default),
-	pt: () => import("./pt-C-srSz5f.js").then((e) => e.default),
-	ru: () => import("./ru-M_3J5buD.js").then((e) => e.default),
-	zh: () => import("./zh-BafddiL4.js").then((e) => e.default)
+	de: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/de.json").then((e) => e.default),
+	en: () => import("./en-rKJCsWfV.js").then((e) => e.default),
+	es: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/es.json").then((e) => e.default),
+	fr: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/fr.json").then((e) => e.default),
+	it: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/it.json").then((e) => e.default),
+	ja: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ja.json").then((e) => e.default),
+	ko: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ko.json").then((e) => e.default),
+	pt: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/pt.json").then((e) => e.default),
+	ru: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/ru.json").then((e) => e.default),
+	zh: () => import("../../.intlayer/dynamic_dictionary/json/theme-toggle/zh.json").then((e) => e.default)
 }, f = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var ee = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (b(e) && b(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : x(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : x(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -309,100 +309,10 @@ export { ne as default };
 var e = {
 	key: "theme-toggle",
 	content: {
-		d: "Design-Modus: Auto (System). Klicken Sie hier, um in den hellen Modus zu wechseln.",
-		a: "Design: Auto",
-		b: "Design: Dunkel",
-		c: "Design: Hell"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
 		d: "Theme mode: auto (system). Click to switch to light mode.",
 		a: "Theme: Auto",
 		b: "Theme: Dark",
 		c: "Theme: Light"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Modo de tema: automático (sistema). Haga clic para cambiar al modo claro.",
-		a: "Tema: Automático",
-		b: "Tema: Oscuro",
-		c: "Tema: Claro"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Mode thématique : auto (système). Cliquez pour passer en mode clair.",
-		a: "Thème : Auto",
-		b: "Thème : Sombre",
-		c: "Thème : Clair"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Modalità tema: auto (sistema). Fai clic per passare alla modalità chiara.",
-		a: "Tema: Auto",
-		b: "Tema: Scuro",
-		c: "Tema: Chiaro"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
-		a: "テーマ：自動",
-		b: "テーマ：ダーク",
-		c: "テーマ：ライト"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "테마 모드: 자동(시스템). 라이트 모드로 전환하려면 클릭하세요.",
-		a: "테마: 자동",
-		b: "테마: 다크",
-		c: "테마: 라이트"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-		a: "Tema: Automático",
-		b: "Tema: Escuro",
-		c: "Tema: Claro"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "Режим темы: авто (системный). Нажмите, чтобы перейти в светлую тему.",
-		a: "Тема: Авто",
-		b: "Тема: Темная",
-		c: "Тема: Светлая"
-	}
-};
-export { e as default };
-var e = {
-	key: "theme-toggle",
-	content: {
-		d: "主题模式：自动（系统）。点击切换到亮色模式。",
-		a: "主题：自动",
-		b: "主题：深色",
-		c: "主题：亮色"
 	}
 };
 export { e as default };

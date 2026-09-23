@@ -1,5 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useId, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var profile_section_default = {
 	key: "profile-section",
 	content: {
@@ -718,44 +719,95 @@ var useDictionary = (dictionary, localeOrSelector) => {
 	const argumentIdentity = typeof argument === "object" && argument !== null ? `${argument.locale ?? ""}|${getDictionarySelectorCacheKey(argument)}` : argument;
 	return useMemo(() => getDictionary(dictionary, argument), [dictionary.key, argumentIdentity]);
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/settings/ProfileSection.tsx";
 function ProfileSection() {
 	const content = useDictionary(profile_section_default);
 	const displayNameId = useId();
 	const emailId = useId();
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: content.c
-		}), jsxs("div", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this), jsxDEV("div", {
 			className: "space-y-4",
-			children: [jsxs("div", { children: [jsx("label", {
+			children: [jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: displayNameId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: content.a
-			}), jsx("input", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 15,
+				columnNumber: 11
+			}, this), jsxDEV("input", {
 				id: displayNameId,
 				defaultValue: "John Developer",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			})] }), jsxs("div", { children: [jsx("label", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 19,
+				columnNumber: 11
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 14,
+				columnNumber: 9
+			}, this), jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: emailId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: content.b
-			}), jsx("input", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 26,
+				columnNumber: 11
+			}, this), jsxDEV("input", {
 				id: emailId,
 				defaultValue: "john@example.com",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			})] })]
-		})]
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 30,
+				columnNumber: 11
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 25,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 13,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 11,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(IntlayerProvider, {
+	return jsxDEV(IntlayerProvider, {
 		locale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/settings/ProfileSection.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ProfileSection, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ProfileSection, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

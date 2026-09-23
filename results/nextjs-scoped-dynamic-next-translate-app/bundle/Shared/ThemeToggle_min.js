@@ -1,5 +1,5 @@
 import e, { createContext as t, useContext as n, useEffect as r, useLayoutEffect as i, useMemo as a, useState as o } from "react";
-import { Fragment as s, jsx as c } from "react/jsx-runtime";
+import { Fragment as s, jsxDEV as c } from "react/jsx-dev-runtime";
 import { useRouter as l } from "next/router";
 var u = function() {
 	return u = Object.assign || function(e) {
@@ -167,30 +167,31 @@ function E(e) {
 function D(e) {
 	return (globalThis.__NEXT_TRANSLATE__?.config ? w : E)(e);
 }
-function O() {
+var O = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/ThemeToggle.tsx";
+function k() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
 }
-function k(e) {
+function A(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function A() {
+function j() {
 	let { t: e } = D("shared"), [t, n] = o("auto");
 	r(() => {
-		let e = O();
-		n(e), k(e);
+		let e = k();
+		n(e), A(e);
 	}, []), r(() => {
 		if (t !== "auto") return;
-		let e = window.matchMedia("(prefers-color-scheme: dark)"), n = () => k("auto");
+		let e = window.matchMedia("(prefers-color-scheme: dark)"), n = () => A("auto");
 		return e.addEventListener("change", n), () => {
 			e.removeEventListener("change", n);
 		};
 	}, [t]);
 	function i() {
 		let e = t === "light" ? "dark" : t === "dark" ? "auto" : "light";
-		n(e), k(e), window.localStorage.setItem("theme", e);
+		n(e), A(e), window.localStorage.setItem("theme", e);
 	}
 	let a = e(t === "auto" ? "themeToggle.themeModeAutoSystemClick" : t === "light" ? "themeToggle.themeModeLightClick" : "themeToggle.themeModeDarkClick");
 	return c("button", {
@@ -200,19 +201,23 @@ function A() {
 		title: a,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: e(t === "auto" ? "themeToggle.themeAuto" : t === "dark" ? "themeToggle.themeDark" : "themeToggle.themeLight")
-	});
+	}, void 0, !1, {
+		fileName: O,
+		lineNumber: 77,
+		columnNumber: 5
+	}, this);
 }
-var j = function() {
-	return j = Object.assign || function(e) {
+var M = function() {
+	return M = Object.assign || function(e) {
 		for (var t, n = 1, r = arguments.length; n < r; n++) for (var i in t = arguments[n], t) Object.prototype.hasOwnProperty.call(t, i) && (e[i] = t[i]);
 		return e;
-	}, j.apply(this, arguments);
-}, M = t({
+	}, M.apply(this, arguments);
+}, N = t({
 	ns: {},
 	config: {}
 });
-function N(t) {
-	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, u = c === void 0 ? {} : c, d = D().lang, f = l() || {}, m = f.locale, g = f.defaultLocale, _ = n(M), y = j(j(j({}, P()), _.ns), o), b = r || d || m || g || "", x = j(j({}, _.config), u), S = x.localesToIgnore || ["default"], C = !b || S.includes(b), w = a(function() {
+function P(t) {
+	var r = t.lang, i = t.namespaces, o = i === void 0 ? {} : i, s = t.children, c = t.config, u = c === void 0 ? {} : c, d = D().lang, f = l() || {}, m = f.locale, g = f.defaultLocale, _ = n(N), y = M(M(M({}, F()), _.ns), o), b = r || d || m || g || "", x = M(M({}, _.config), u), S = x.localesToIgnore || ["default"], C = !b || S.includes(b), w = a(function() {
 		return h(C ? void 0 : b);
 	}, [C, b]), T = a(function() {
 		return v({
@@ -230,20 +235,20 @@ function N(t) {
 	return e.createElement(p.Provider, { value: {
 		lang: b,
 		t: T
-	} }, e.createElement(M.Provider, { value: {
+	} }, e.createElement(N.Provider, { value: {
 		ns: y,
 		config: x
 	} }, s));
 }
-function P() {
+function F() {
 	return typeof window > "u" ? {} : window.__NEXT_DATA__?.props?.__namespaces || {};
 }
-var F = (e, t, n) => {
+var I = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, I = {
+}, L = {
 	locales: [
 		"en",
 		"fr",
@@ -272,7 +277,7 @@ var F = (e, t, n) => {
 		"/[lang]/settings": ["settings"],
 		"/[lang]/team": ["team"]
 	},
-	loadLocaleFrom: (e, t) => F(Object.assign({
+	loadLocaleFrom: (e, t) => I(Object.assign({
 		"./locales/de/about.json": () => import("../locales/de/about.json"),
 		"./locales/de/blog.json": () => import("../locales/de/blog.json"),
 		"./locales/de/careers.json": () => import("../locales/de/careers.json"),
@@ -395,7 +400,7 @@ var F = (e, t, n) => {
 		"./locales/zh/team.json": () => import("../locales/zh/team.json")
 	}), `./locales/${e}/${t}.json`, 4).then((e) => e.default)
 };
-function L() {
+function R() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -409,22 +414,27 @@ function L() {
 		}
 	}
 }
-function R(e, t) {
+function z(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function z({ children: e, locale: t }) {
+var B = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/AppProviders.tsx";
+function V({ children: e, locale: t }) {
 	let [n] = o(() => typeof performance < "u" ? performance.now() : 0);
 	return i(() => {
-		R("AppRoot", n);
+		z("AppRoot", n);
 	}, [n]), r(() => {
 		document.documentElement.lang = t;
 	}, [t]), r(() => {
-		L();
-	}, []), c(s, { children: e });
+		R();
+	}, []), c(s, { children: e }, void 0, !1, {
+		fileName: B,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
-var B = [
+var H = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/scripts/Wrapper.tsx", U = [
 	"about",
 	"blog",
 	"careers",
@@ -438,30 +448,47 @@ var B = [
 	"shared",
 	"team"
 ];
-function V({ children: e }) {
+function W({ children: e }) {
 	let [t, n] = o({}), [i, a] = o(!1);
 	return r(() => {
 		(async () => {
 			try {
-				let e = await Promise.all(B.map(async (e) => [e, await I.loadLocaleFrom?.("en", e) ?? {}]));
+				let e = await Promise.all(U.map(async (e) => [e, await L.loadLocaleFrom?.("en", e) ?? {}]));
 				n(Object.fromEntries(e)), a(!0);
 			} catch (e) {
 				console.error("Failed to load translations:", e), a(!0);
 			}
 		})();
-	}, ["en"]), i ? c(N, {
+	}, ["en"]), i ? c(P, {
 		lang: "en",
 		namespaces: t,
-		children: c(z, {
+		children: c(V, {
 			locale: "en",
 			children: e
-		})
-	}) : null;
+		}, void 0, !1, {
+			fileName: H,
+			lineNumber: 58,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: H,
+		lineNumber: 57,
+		columnNumber: 5
+	}, this) : null;
 }
-function H() {
-	return c(V, { children: c(A, {}) });
+var G = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-translate-app/components/ThemeToggle.wrapper.tsx";
+function K() {
+	return c(W, { children: c(j, {}, void 0, !1, {
+		fileName: G,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: G,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { H as default };
+export { K as default };
 var e = {
 	"aboutHeader.methodology": "Methodology",
 	"aboutHeader.weDesignedThisBenchmarkTo": "We designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. Here's our approach.",

@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, createVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, openBlock, ref, shallowRef, toDisplayString, toValue, watch } from "vue";
 var settings_header_default = {
 	key: "settings-header",
 	content: {
@@ -47,35 +47,48 @@ var settings_header_default = {
 		}
 	}
 };
-var internationalization = {
-	"locales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"requiredLocales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"strictMode": "inclusive",
-	"defaultLocale": "en"
+var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
+	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
+	if (Object.assign(l, {
+		render: c,
+		toString: () => String(o.value ?? ""),
+		valueOf: () => o.value,
+		[Symbol.toPrimitive]: () => o.value,
+		toJSON: () => o.value,
+		get raw() {
+			return o.value;
+		},
+		set raw(e) {
+			o.value = e;
+		},
+		get value() {
+			return o.value;
+		},
+		use(e) {
+			return n$1({
+				value: o.value,
+				children: () => s(e),
+				additionalProps: a
+			});
+		},
+		__update(e) {
+			s = e.render, this.raw = e.raw;
+		},
+		...a
+	}), r != null) {
+		let e = Object(r), t = Object.getPrototypeOf(e);
+		for (let n of Object.getOwnPropertyNames(t)) {
+			if (n === "constructor" || n in l) continue;
+			let t = e[n];
+			typeof t == "function" && Object.defineProperty(l, n, {
+				value: t.bind(r),
+				writable: !0,
+				configurable: !0
+			});
+		}
+	}
+	return markRaw(l);
 };
-var i = Symbol("intlayer");
 var pluginsIdentities = /* @__PURE__ */ new WeakMap();
 var nextPluginsIdentity = 0;
 var getPluginsCacheKey = (plugins) => {
@@ -227,6 +240,34 @@ var getDictionarySelectorCacheKey = (selector) => {
 		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
 	}).join("|");
 };
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
+};
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
 	if (typeof value.then === "function") return false;
@@ -345,72 +386,30 @@ var getDictionary = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
-var n$1 = ({ value: r, children: i, additionalProps: a = {} }) => {
-	let o = ref(r), s = typeof i == "function" ? (e) => i(e) : () => i, c = (e) => (o.value, s(e)), l = ((e) => c(e));
-	if (Object.assign(l, {
-		render: c,
-		toString: () => String(o.value ?? ""),
-		valueOf: () => o.value,
-		[Symbol.toPrimitive]: () => o.value,
-		toJSON: () => o.value,
-		get raw() {
-			return o.value;
-		},
-		set raw(e) {
-			o.value = e;
-		},
-		get value() {
-			return o.value;
-		},
-		use(e) {
-			return n$1({
-				value: o.value,
-				children: () => s(e),
-				additionalProps: a
-			});
-		},
-		__update(e) {
-			s = e.render, this.raw = e.raw;
-		},
-		...a
-	}), r != null) {
-		let e = Object(r), t = Object.getPrototypeOf(e);
-		for (let n of Object.getOwnPropertyNames(t)) {
-			if (n === "constructor" || n in l) continue;
-			let t = e[n];
-			typeof t == "function" && Object.defineProperty(l, n, {
-				value: t.bind(r),
-				writable: !0,
-				configurable: !0
-			});
-		}
-	}
-	return markRaw(l);
-};
 var T = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (t, { children: n, ...a }) => {
-		let o = (e) => n$1({
-			...a,
-			value: e,
-			children: e
-		}), s = o(n);
-		if (typeof n != "function") return s;
-		let u = (...e) => {
-			let t = n(...e);
-			return o(t);
+	transform: (n, { children: r, ...i }) => {
+		let a = (t) => n$1({
+			...i,
+			value: t,
+			children: t
+		}), c = a(r);
+		if (typeof r != "function") return c;
+		let l = (...e) => {
+			let t = r(...e);
+			return a(t);
 		};
-		Object.setPrototypeOf(u, Object.getPrototypeOf(s));
-		for (let e of Object.getOwnPropertyNames(s)) {
-			let t = Object.getOwnPropertyDescriptor(s, e);
-			t && Object.defineProperty(u, e, t);
+		Object.setPrototypeOf(l, Object.getPrototypeOf(c));
+		for (let e of Object.getOwnPropertyNames(c)) {
+			let t = Object.getOwnPropertyDescriptor(c, e);
+			t && Object.defineProperty(l, e, t);
 		}
-		for (let e of Object.getOwnPropertySymbols(s)) {
-			let t = Object.getOwnPropertyDescriptor(s, e);
-			t && Object.defineProperty(u, e, t);
+		for (let e of Object.getOwnPropertySymbols(c)) {
+			let t = Object.getOwnPropertyDescriptor(c, e);
+			t && Object.defineProperty(l, e, t);
 		}
-		return markRaw(u);
+		return markRaw(l);
 	}
 };
 var D = fallbackPlugin;
@@ -439,6 +438,7 @@ var M = (e, t = !0) => {
 var n = (n, r) => {
 	return getDictionary(n, r, M(typeof r == "object" && r ? r.locale : r));
 };
+var i = Symbol("intlayer");
 var g = (e, t) => t.reduce((e, t) => e?.[t], e);
 var _ = (e) => typeof e == "object" && !!e;
 var v = (e) => typeof e == "function" || _(e) && ("render" in e || "setup" in e);
@@ -475,39 +475,39 @@ var x = (e) => new Proxy({}, {
 		};
 	}
 });
-var S = (i$1, o) => {
-	let l = getCurrentInstance() ? inject(i) : void 0, S = isRef(l?.locale) ? l.locale : ref(l?.locale ?? internationalization.defaultLocale), C = computed(() => {
+var S = (r, a) => {
+	let c = getCurrentInstance() ? inject(i) : void 0, S = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), C = computed(() => {
 		return {
 			selector: void 0,
-			locale: o === void 0 ? void 0 : toValue(o)
+			locale: a === void 0 ? void 0 : toValue(a)
 		};
 	}), w = computed(() => C.value.locale ?? S.value), T = shallowRef({});
 	watch([
-		() => toValue(i$1),
+		() => toValue(r),
 		() => w.value,
 		() => C.value.selector
-	], ([e, n$2, r]) => {
-		T.value = r ? n(e, {
+	], ([t, n$2, r]) => {
+		T.value = r ? n(t, {
 			...r,
 			locale: n$2
-		}) : n(e, n$2);
+		}) : n(t, n$2);
 	}, {
 		immediate: !0,
 		flush: "sync"
 	});
 	let E = (e) => new Proxy({}, {
-		get(t, n, i) {
+		get(t, r, i) {
 			let a = computed(() => g(T.value, e));
-			if (typeof n == "symbol" || typeof n == "string" && (n.startsWith("__") || n.startsWith("$"))) return n === "__v_isRef" ? !0 : n === "$raw" ? a : n === Symbol.toPrimitive ? () => String(a.value ?? "") : Reflect.get(t, n, i);
-			if (n === "value") return a.value ?? "";
-			if (n === "then") return;
-			if (n === "c" || n === "asComponent") return b(() => a.value);
-			let o = e.concat(n), s = g(T.value, o);
+			if (typeof r == "symbol" || typeof r == "string" && (r.startsWith("__") || r.startsWith("$"))) return r === "__v_isRef" ? !0 : r === "$raw" ? a : r === Symbol.toPrimitive ? () => String(a.value ?? "") : Reflect.get(t, r, i);
+			if (r === "value") return a.value ?? "";
+			if (r === "then") return;
+			if (r === "c" || r === "asComponent") return b(() => a.value);
+			let o = e.concat(r), s = g(T.value, o);
 			if (s === void 0 || _(s) && !v(s)) return E(o);
 			if (y(s)) return x(computed(() => g(T.value, o)));
 			if (typeof s == "function") {
 				let t = g(T.value, e);
-				return t != null && !Object.hasOwn(t, n) ? s.bind(t) : (...e) => g(T.value, o)?.(...e);
+				return t != null && !Object.hasOwn(t, r) ? s.bind(t) : (...e) => g(T.value, o)?.(...e);
 			}
 			let c = computed(() => g(T.value, o));
 			return new Proxy(c, { get(e, t, n) {
@@ -545,29 +545,52 @@ var mock_banner_default = {
 		}
 	}
 };
-var _hoisted_1$1 = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" };
-var MockBanner_default = defineComponent({
+var MockBanner_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "MockBanner",
-	setup(__props) {
+	setup(__props, { expose: __expose }) {
+		__expose();
 		const { a: message } = S(mock_banner_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1$1, toDisplayString(unref(message)), 1);
+		const __returned__ = { message };
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+var _hoisted_1$1 = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" };
+function _sfc_render$1(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1$1, toDisplayString($setup.message), 1);
+}
+var MockBanner_default = _plugin_vue_export_helper_default(MockBanner_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/MockBanner.vue"]]);
+var SettingsHeader_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "SettingsHeader",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const __returned__ = {
+			content: S(settings_header_default),
+			MockBanner: MockBanner_default
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
 var _hoisted_1 = { class: "mb-2 text-3xl font-bold text-foreground" };
 var _hoisted_2 = { class: "mb-8 text-muted-foreground" };
-var SettingsHeader_default = defineComponent({
-	__name: "SettingsHeader",
-	setup(__props) {
-		const content = S(settings_header_default);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock(Fragment, null, [
-				createVNode(MockBanner_default),
-				createElementVNode("h1", _hoisted_1, toDisplayString(unref(content).settings), 1),
-				createElementVNode("p", _hoisted_2, toDisplayString(unref(content).manageYourAccountPreferencesAnd), 1)
-			], 64);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock(Fragment, null, [
+		createVNode($setup["MockBanner"]),
+		createElementVNode("h1", _hoisted_1, toDisplayString($setup.content.settings), 1),
+		createElementVNode("p", _hoisted_2, toDisplayString($setup.content.manageYourAccountPreferencesAnd), 1)
+	], 64);
+}
+var SettingsHeader_default = _plugin_vue_export_helper_default(SettingsHeader_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/pages/settings/SettingsHeader.vue"]]);
 export { SettingsHeader_default as default };

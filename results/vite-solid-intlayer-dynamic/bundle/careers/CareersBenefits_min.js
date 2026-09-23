@@ -1,16 +1,16 @@
 import { Dynamic as e, createComponent as t, insert as n, template as r } from "solid-js/web";
 import { For as i, createContext as a, createMemo as o, useContext as s } from "solid-js";
 var c = {
-	de: () => import("./de-DqGZpz0n.js").then((e) => e.default),
-	en: () => import("./en-CUAw2EER.js").then((e) => e.default),
-	es: () => import("./es-Dc_yg5Xl.js").then((e) => e.default),
-	fr: () => import("./fr-Bq5hEV6e.js").then((e) => e.default),
-	it: () => import("./it-D3PBDoij.js").then((e) => e.default),
-	ja: () => import("./ja-DIDckJQY.js").then((e) => e.default),
-	ko: () => import("./ko-DsQVYIcX.js").then((e) => e.default),
-	pt: () => import("./pt-DPkA-mhD.js").then((e) => e.default),
-	ru: () => import("./ru-CIq_gLlN.js").then((e) => e.default),
-	zh: () => import("./zh-fZ-jUh4k.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/de.json").then((e) => e.default),
+	en: () => import("./en-CoF2wXpH.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/zh.json").then((e) => e.default)
 }, l = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var c = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (_(e) && _(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : v(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : v(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -297,110 +297,11 @@ export { Z as default };
 var e = {
 	key: "careers-benefits",
 	content: {
-		d: "Arbeiten Sie von überall auf der Welt",
-		a: "Wettbewerbsfähige Bezahlung",
-		c: "Marktführende Vergütung",
-		b: "Open-Source-Zeit",
-		e: "20 % Zeit für OSS-Beiträge"
-	}
-};
-export { e as default };
-var e = {
-	key: "careers-benefits",
-	content: {
 		d: "Work from anywhere in the world",
 		a: "Competitive pay",
 		c: "Top-of-market compensation",
 		b: "Open source time",
 		e: "20% time for OSS contributions"
-	}
-};
-export { e as default };
-var e = {
-	key: "careers-benefits",
-	content: {
-		d: "Trabaje desde cualquier lugar del mundo",
-		a: "Salario competitivo",
-		c: "Compensación de nivel superior en el mercado",
-		b: "Tiempo de código abierto",
-		e: "20% de tiempo para contribuciones de OSS"
-	}
-};
-export { e as default };
-var e = {
-	key: "careers-benefits",
-	content: {
-		d: "Travailler de n'importe où dans le monde",
-		a: "Salaire compétitif",
-		c: "Rémunération au sommet du marché",
-		b: "Temps pour l'open source",
-		e: "20 % du temps pour les contributions OSS"
-	}
-};
-export { e as default };
-var e = {
-	key: "careers-benefits",
-	content: {
-		d: "Lavora da qualsiasi parte del mondo",
-		a: "Retribuzione competitiva",
-		c: "Compensi ai vertici del mercato",
-		b: "Tempo per l'open source",
-		e: "20% del tempo per contributi OSS"
-	}
-};
-export { e as default };
-var e = {
-	key: "careers-benefits",
-	content: {
-		d: "世界中のどこからでも仕事ができます",
-		a: "競争力のある給与",
-		c: "市場トップクラスの報酬",
-		b: "オープンソース時間",
-		e: "OSSへの貢献に20％の時間"
-	}
-};
-export { e as default };
-var e = {
-	key: "careers-benefits",
-	content: {
-		d: "전 세계 어디에서나 근무 가능",
-		a: "경쟁력 있는 급여",
-		c: "업계 최고 수준의 보상",
-		b: "오픈 소스 시간",
-		e: "OSS 기여를 위한 20% 시간"
-	}
-};
-export { e as default };
-var e = {
-	key: "careers-benefits",
-	content: {
-		d: "Trabalhe de qualquer lugar do mundo",
-		a: "Salário competitivo",
-		c: "Compensação acima do mercado",
-		b: "Tempo para open source",
-		e: "20% do tempo para contribuições OSS"
-	}
-};
-export { e as default };
-var e = {
-	key: "careers-benefits",
-	content: {
-		d: "Работайте из любой точки мира",
-		a: "Конкурентоспособная оплата",
-		c: "Компенсация на уровне лидеров рынка",
-		b: "Время на open source",
-		e: "20% времени на вклад в OSS"
-	}
-};
-export { e as default };
-var e = {
-	key: "careers-benefits",
-	content: {
-		d: "在全球任何地方工作",
-		a: "具有竞争力的薪酬",
-		c: "市场顶尖的薪酬",
-		b: "开源时间",
-		e: "20% 的时间用于 OSS 贡献"
 	}
 };
 export { e as default };

@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-23T21:01:51.467Z",
+  "timestamp": "2026-09-09T01:25:14.915Z",
   "packageName": "tanstack-static-paraglide-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 7218,
-    "totalMinifiedBytes": 3908,
-    "totalGzipBytes": 1658
+    "totalUnminifiedBytes": 8064,
+    "totalMinifiedBytes": 4645,
+    "totalGzipBytes": 1853
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 7218,
-      "unminifiedGzipBytes": 2303,
-      "minifiedBytes": 3908,
-      "minifiedGzipBytes": 1658
+      "unminifiedBytes": 8064,
+      "unminifiedGzipBytes": 2491,
+      "minifiedBytes": 4645,
+      "minifiedGzipBytes": 1853
     }
   ]
 }

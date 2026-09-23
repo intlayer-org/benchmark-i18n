@@ -1,11 +1,11 @@
 {
   "app": "tanstack-static-tolgee-app",
   "locale": "en",
-  "timestamp": "2026-09-23T22:02:06.850Z",
+  "timestamp": "2026-04-20T21:35:29.951Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 99,
-      "fr": 113
+      "en": 98,
+      "fr": 112
     },
     "page": {
       "home": 24,
@@ -25,75 +25,105 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 748065,
-      "totalGzipSize": 225188,
-      "jsSize": 710707,
-      "jsGzipSize": 215285,
-      "cssSize": 23706,
-      "cssGzipSize": 5018,
-      "htmlSize": 13652,
-      "htmlGzipSize": 4885,
-      "fileCount": 9,
-      "jsFileCount": 7,
+      "totalSize": 721368,
+      "totalGzipSize": 218160,
+      "jsSize": 682948,
+      "jsGzipSize": 208050,
+      "cssSize": 23926,
+      "cssGzipSize": 4991,
+      "htmlSize": 14494,
+      "htmlGzipSize": 5119,
+      "fileCount": 14,
+      "jsFileCount": 12,
       "bundleFiles": [
         {
           "url": "/en",
-          "size": 13652,
-          "gzipSize": 4885,
+          "size": 14494,
+          "gzipSize": 5119,
           "type": "html"
         },
         {
-          "url": "/assets/styles-babeamda.css",
-          "size": 23706,
-          "gzipSize": 5018,
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/preload-helper-Bll5m_3I.js",
+          "size": 1194,
+          "gzipSize": 682,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-DFk6ZRfw.css",
+          "size": 23926,
+          "gzipSize": 4991,
           "type": "css"
         },
         {
-          "url": "/assets/route-BFBW0XYW.js",
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/config-BIcv9Wkp.js",
+          "size": 29479,
+          "gzipSize": 10291,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-C92NkmpP.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/_locale-Cm-lM2dp.js",
-          "size": 1240,
-          "gzipSize": 465,
+          "url": "/assets/_locale-D7fn2gQM.js",
+          "size": 1375,
+          "gzipSize": 529,
           "type": "js"
         },
         {
-          "url": "/assets/index-BZ4nSoqE.js",
-          "size": 702680,
-          "gzipSize": 212707,
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/Hero-D3S-b76X.js",
-          "size": 932,
-          "gzipSize": 450,
+          "url": "/assets/main-3V21yn2k.js",
+          "size": 562435,
+          "gzipSize": 167398,
           "type": "js"
         },
         {
-          "url": "/assets/WhyItMatters-08GCCknu.js",
-          "size": 1412,
-          "gzipSize": 413,
+          "url": "/assets/Hero-DbMWtajH.js",
+          "size": 1244,
+          "gzipSize": 598,
           "type": "js"
         },
         {
-          "url": "/assets/UnderstandingImpact-Co7vnjS1.js",
-          "size": 2641,
-          "gzipSize": 637,
+          "url": "/assets/WhyItMatters-DWX-klYu.js",
+          "size": 2623,
+          "gzipSize": 990,
           "type": "js"
         },
         {
-          "url": "/assets/ResultsTable-CD7bEen5.js",
-          "size": 1731,
-          "gzipSize": 527,
+          "url": "/assets/UnderstandingImpact-k4Njsx9U.js",
+          "size": 4612,
+          "gzipSize": 1491,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ResultsTable-D0GxlS9s.js",
+          "size": 1901,
+          "gzipSize": 592,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 95,
+          "count": 94,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -134,7 +164,6 @@
             "migrating from react-i18next to lingui",
             "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
@@ -193,7 +222,7 @@
           ]
         },
         "fr": {
-          "count": 109,
+          "count": 108,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -238,7 +267,6 @@
             "migrer de react-i18next vers lingui",
             "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
             "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmarking, y compris les environnements de test, les méthodes statistiques et la reproductibilité.",
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
@@ -307,7 +335,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.431372549019606,
+      "localeLeakagePercent": 53.46534653465347,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -458,69 +486,99 @@
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 740241,
-      "totalGzipSize": 223555,
-      "jsSize": 706176,
-      "jsGzipSize": 214370,
-      "cssSize": 23706,
-      "cssGzipSize": 5018,
-      "htmlSize": 10359,
-      "htmlGzipSize": 4167,
-      "fileCount": 8,
-      "jsFileCount": 6,
+      "totalSize": 712111,
+      "totalGzipSize": 216046,
+      "jsSize": 676974,
+      "jsGzipSize": 206650,
+      "cssSize": 23926,
+      "cssGzipSize": 4991,
+      "htmlSize": 11211,
+      "htmlGzipSize": 4405,
+      "fileCount": 13,
+      "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/about",
-          "size": 10359,
-          "gzipSize": 4167,
+          "size": 11211,
+          "gzipSize": 4405,
           "type": "html"
         },
         {
-          "url": "/assets/styles-babeamda.css",
-          "size": 23706,
-          "gzipSize": 5018,
-          "type": "css"
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
         },
         {
-          "url": "/assets/route-BFBW0XYW.js",
+          "url": "/assets/preload-helper-Bll5m_3I.js",
+          "size": 1194,
+          "gzipSize": 682,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-C92NkmpP.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/about-bdz8811v.js",
-          "size": 997,
-          "gzipSize": 431,
+          "url": "/assets/about-C-faTy0g.js",
+          "size": 1130,
+          "gzipSize": 492,
           "type": "js"
         },
         {
-          "url": "/assets/index-BZ4nSoqE.js",
-          "size": 702680,
-          "gzipSize": 212707,
+          "url": "/assets/config-BIcv9Wkp.js",
+          "size": 29479,
+          "gzipSize": 10291,
           "type": "js"
         },
         {
-          "url": "/assets/AboutGrid-DqKIEl-Q.js",
-          "size": 845,
-          "gzipSize": 332,
+          "url": "/assets/styles-DFk6ZRfw.css",
+          "size": 23926,
+          "gzipSize": 4991,
+          "type": "css"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/AboutHeader-F78kTxJa.js",
-          "size": 424,
-          "gzipSize": 275,
+          "url": "/assets/main-3V21yn2k.js",
+          "size": 562435,
+          "gzipSize": 167398,
           "type": "js"
         },
         {
-          "url": "/assets/WhatWeMeasure-8vLQzoOy.js",
-          "size": 1159,
-          "gzipSize": 539,
+          "url": "/assets/AboutHeader-B59gdzUp.js",
+          "size": 786,
+          "gzipSize": 475,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutGrid-C8VcgADY.js",
+          "size": 1672,
+          "gzipSize": 774,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhatWeMeasure-BAy9Ggvn.js",
+          "size": 2193,
+          "gzipSize": 1059,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 95,
+          "count": 94,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -561,7 +619,6 @@
             "migrating from react-i18next to lingui",
             "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
@@ -620,7 +677,7 @@
           ]
         },
         "fr": {
-          "count": 109,
+          "count": 108,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -665,7 +722,6 @@
             "migrer de react-i18next vers lingui",
             "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
             "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmarking, y compris les environnements de test, les méthodes statistiques et la reproductibilité.",
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
@@ -734,7 +790,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.431372549019606,
+      "localeLeakagePercent": 53.46534653465347,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -885,69 +941,99 @@
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 741146,
-      "totalGzipSize": 223331,
-      "jsSize": 706153,
-      "jsGzipSize": 214453,
-      "cssSize": 23706,
-      "cssGzipSize": 5018,
-      "htmlSize": 11287,
-      "htmlGzipSize": 3860,
-      "fileCount": 8,
-      "jsFileCount": 6,
+      "totalSize": 712271,
+      "totalGzipSize": 215344,
+      "jsSize": 676208,
+      "jsGzipSize": 206253,
+      "cssSize": 23926,
+      "cssGzipSize": 4991,
+      "htmlSize": 12137,
+      "htmlGzipSize": 4100,
+      "fileCount": 13,
+      "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/blog",
-          "size": 11287,
-          "gzipSize": 3860,
+          "size": 12137,
+          "gzipSize": 4100,
           "type": "html"
         },
         {
-          "url": "/assets/styles-babeamda.css",
-          "size": 23706,
-          "gzipSize": 5018,
-          "type": "css"
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
         },
         {
-          "url": "/assets/route-BFBW0XYW.js",
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-C92NkmpP.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/blog-bNNPPqa_.js",
-          "size": 786,
-          "gzipSize": 406,
+          "url": "/assets/preload-helper-Bll5m_3I.js",
+          "size": 1194,
+          "gzipSize": 682,
           "type": "js"
         },
         {
-          "url": "/assets/index-BZ4nSoqE.js",
-          "size": 702680,
-          "gzipSize": 212707,
+          "url": "/assets/config-BIcv9Wkp.js",
+          "size": 29479,
+          "gzipSize": 10291,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Co3OX0Vu.js",
-          "size": 252,
-          "gzipSize": 202,
+          "url": "/assets/blog-CDieORGt.js",
+          "size": 872,
+          "gzipSize": 451,
           "type": "js"
         },
         {
-          "url": "/assets/BlogHeader-O4sjFxxm.js",
-          "size": 445,
-          "gzipSize": 282,
+          "url": "/assets/styles-DFk6ZRfw.css",
+          "size": 23926,
+          "gzipSize": 4991,
+          "type": "css"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/BlogList-DPHr-qqS.js",
-          "size": 1919,
-          "gzipSize": 770,
+          "url": "/assets/main-3V21yn2k.js",
+          "size": 562435,
+          "gzipSize": 167398,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogHeader-D30U5Fak.js",
+          "size": 574,
+          "gzipSize": 342,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-DmYo1XJo.js",
+          "size": 421,
+          "gzipSize": 324,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogList-PO7Voedb.js",
+          "size": 3148,
+          "gzipSize": 1286,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 95,
+          "count": 94,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -988,7 +1074,6 @@
             "migrating from react-i18next to lingui",
             "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
@@ -1047,7 +1132,7 @@
           ]
         },
         "fr": {
-          "count": 109,
+          "count": 108,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -1092,7 +1177,6 @@
             "migrer de react-i18next vers lingui",
             "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
             "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmarking, y compris les environnements de test, les méthodes statistiques et la reproductibilité.",
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
@@ -1161,7 +1245,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.431372549019606,
+      "localeLeakagePercent": 53.46534653465347,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1312,75 +1396,105 @@
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 743537,
-      "totalGzipSize": 223775,
-      "jsSize": 707506,
-      "jsGzipSize": 214840,
-      "cssSize": 23706,
-      "cssGzipSize": 5018,
-      "htmlSize": 12325,
-      "htmlGzipSize": 3917,
-      "fileCount": 9,
-      "jsFileCount": 7,
+      "totalSize": 714603,
+      "totalGzipSize": 215794,
+      "jsSize": 677496,
+      "jsGzipSize": 206648,
+      "cssSize": 23926,
+      "cssGzipSize": 4991,
+      "htmlSize": 13181,
+      "htmlGzipSize": 4155,
+      "fileCount": 14,
+      "jsFileCount": 12,
       "bundleFiles": [
         {
           "url": "/en/careers",
-          "size": 12325,
-          "gzipSize": 3917,
+          "size": 13181,
+          "gzipSize": 4155,
           "type": "html"
         },
         {
-          "url": "/assets/styles-babeamda.css",
-          "size": 23706,
-          "gzipSize": 5018,
-          "type": "css"
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
         },
         {
-          "url": "/assets/route-BFBW0XYW.js",
+          "url": "/assets/preload-helper-Bll5m_3I.js",
+          "size": 1194,
+          "gzipSize": 682,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-C92NkmpP.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/careers-B7T0U-51.js",
-          "size": 1052,
-          "gzipSize": 457,
+          "url": "/assets/styles-DFk6ZRfw.css",
+          "size": 23926,
+          "gzipSize": 4991,
+          "type": "css"
+        },
+        {
+          "url": "/assets/careers-B34JA-JD.js",
+          "size": 1140,
+          "gzipSize": 495,
           "type": "js"
         },
         {
-          "url": "/assets/index-BZ4nSoqE.js",
-          "size": 702680,
-          "gzipSize": 212707,
+          "url": "/assets/config-BIcv9Wkp.js",
+          "size": 29479,
+          "gzipSize": 10291,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Co3OX0Vu.js",
-          "size": 252,
-          "gzipSize": 202,
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/CareersHeader-B507IgOO.js",
-          "size": 439,
-          "gzipSize": 272,
+          "url": "/assets/main-3V21yn2k.js",
+          "size": 562435,
+          "gzipSize": 167398,
           "type": "js"
         },
         {
-          "url": "/assets/OpenPositions-DwbTXP_8.js",
-          "size": 2282,
-          "gzipSize": 731,
+          "url": "/assets/MockBanner-DmYo1XJo.js",
+          "size": 421,
+          "gzipSize": 324,
           "type": "js"
         },
         {
-          "url": "/assets/CareersBenefits-Btu11kwI.js",
-          "size": 730,
-          "gzipSize": 385,
+          "url": "/assets/CareersHeader-DupPrBEI.js",
+          "size": 661,
+          "gzipSize": 393,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersBenefits-BHXqSWid.js",
+          "size": 916,
+          "gzipSize": 487,
+          "type": "js"
+        },
+        {
+          "url": "/assets/OpenPositions-CxCa_vn5.js",
+          "size": 3165,
+          "gzipSize": 1099,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 95,
+          "count": 94,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1421,7 +1535,6 @@
             "migrating from react-i18next to lingui",
             "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
@@ -1480,7 +1593,7 @@
           ]
         },
         "fr": {
-          "count": 109,
+          "count": 108,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -1525,7 +1638,6 @@
             "migrer de react-i18next vers lingui",
             "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
             "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmarking, y compris les environnements de test, les méthodes statistiques et la reproductibilité.",
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
@@ -1594,7 +1706,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.431372549019606,
+      "localeLeakagePercent": 53.46534653465347,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1745,69 +1857,99 @@
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 739709,
-      "totalGzipSize": 222961,
-      "jsSize": 706946,
-      "jsGzipSize": 214401,
-      "cssSize": 23706,
-      "cssGzipSize": 5018,
-      "htmlSize": 9057,
-      "htmlGzipSize": 3542,
-      "fileCount": 8,
-      "jsFileCount": 6,
+      "totalSize": 709952,
+      "totalGzipSize": 214609,
+      "jsSize": 676113,
+      "jsGzipSize": 205835,
+      "cssSize": 23926,
+      "cssGzipSize": 4991,
+      "htmlSize": 9913,
+      "htmlGzipSize": 3783,
+      "fileCount": 13,
+      "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/contact",
-          "size": 9057,
-          "gzipSize": 3542,
+          "size": 9913,
+          "gzipSize": 3783,
           "type": "html"
         },
         {
-          "url": "/assets/styles-babeamda.css",
-          "size": 23706,
-          "gzipSize": 5018,
-          "type": "css"
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
         },
         {
-          "url": "/assets/route-BFBW0XYW.js",
+          "url": "/assets/preload-helper-Bll5m_3I.js",
+          "size": 1194,
+          "gzipSize": 682,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/config-BIcv9Wkp.js",
+          "size": 29479,
+          "gzipSize": 10291,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-C92NkmpP.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/contact-C7EFSdm2.js",
-          "size": 856,
-          "gzipSize": 425,
+          "url": "/assets/contact-Bc5Pjfxm.js",
+          "size": 942,
+          "gzipSize": 468,
           "type": "js"
         },
         {
-          "url": "/assets/index-BZ4nSoqE.js",
-          "size": 702680,
-          "gzipSize": 212707,
+          "url": "/assets/styles-DFk6ZRfw.css",
+          "size": 23926,
+          "gzipSize": 4991,
+          "type": "css"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/ContactHeader-DqU3kVU-.js",
-          "size": 586,
-          "gzipSize": 346,
+          "url": "/assets/main-3V21yn2k.js",
+          "size": 562435,
+          "gzipSize": 167398,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Co3OX0Vu.js",
-          "size": 252,
-          "gzipSize": 202,
+          "url": "/assets/MockBanner-DmYo1XJo.js",
+          "size": 421,
+          "gzipSize": 324,
           "type": "js"
         },
         {
-          "url": "/assets/ContactForm-bfp97gcQ.js",
-          "size": 2501,
-          "gzipSize": 635,
+          "url": "/assets/ContactHeader-BWhvJGYI.js",
+          "size": 752,
+          "gzipSize": 431,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactForm-B_KE0M-N.js",
+          "size": 2805,
+          "gzipSize": 762,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 95,
+          "count": 94,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1848,7 +1990,6 @@
             "migrating from react-i18next to lingui",
             "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
@@ -1907,7 +2048,7 @@
           ]
         },
         "fr": {
-          "count": 109,
+          "count": 108,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -1952,7 +2093,6 @@
             "migrer de react-i18next vers lingui",
             "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
             "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmarking, y compris les environnements de test, les méthodes statistiques et la reproductibilité.",
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
@@ -2021,7 +2161,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.431372549019606,
+      "localeLeakagePercent": 53.46534653465347,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2172,69 +2312,99 @@
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 740217,
-      "totalGzipSize": 223487,
-      "jsSize": 705487,
-      "jsGzipSize": 214336,
-      "cssSize": 23706,
-      "cssGzipSize": 5018,
-      "htmlSize": 11024,
-      "htmlGzipSize": 4133,
-      "fileCount": 8,
-      "jsFileCount": 6,
+      "totalSize": 711935,
+      "totalGzipSize": 215830,
+      "jsSize": 676137,
+      "jsGzipSize": 206466,
+      "cssSize": 23926,
+      "cssGzipSize": 4991,
+      "htmlSize": 11872,
+      "htmlGzipSize": 4373,
+      "fileCount": 13,
+      "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/faq",
-          "size": 11024,
-          "gzipSize": 4133,
+          "size": 11872,
+          "gzipSize": 4373,
           "type": "html"
         },
         {
-          "url": "/assets/styles-babeamda.css",
-          "size": 23706,
-          "gzipSize": 5018,
-          "type": "css"
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
         },
         {
-          "url": "/assets/route-BFBW0XYW.js",
+          "url": "/assets/preload-helper-Bll5m_3I.js",
+          "size": 1194,
+          "gzipSize": 682,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/config-BIcv9Wkp.js",
+          "size": 29479,
+          "gzipSize": 10291,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-C92NkmpP.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/faq-yZNDeiQZ.js",
-          "size": 782,
-          "gzipSize": 409,
+          "url": "/assets/faq-t0u6b_Lv.js",
+          "size": 868,
+          "gzipSize": 451,
           "type": "js"
         },
         {
-          "url": "/assets/index-BZ4nSoqE.js",
-          "size": 702680,
-          "gzipSize": 212707,
+          "url": "/assets/styles-DFk6ZRfw.css",
+          "size": 23926,
+          "gzipSize": 4991,
+          "type": "css"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Co3OX0Vu.js",
-          "size": 252,
-          "gzipSize": 202,
+          "url": "/assets/main-3V21yn2k.js",
+          "size": 562435,
+          "gzipSize": 167398,
           "type": "js"
         },
         {
-          "url": "/assets/FAQHeader-DLTAQun9.js",
-          "size": 458,
-          "gzipSize": 295,
+          "url": "/assets/MockBanner-DmYo1XJo.js",
+          "size": 421,
+          "gzipSize": 324,
           "type": "js"
         },
         {
-          "url": "/assets/FAQList-BEWenTJR.js",
-          "size": 1244,
-          "gzipSize": 637,
+          "url": "/assets/FAQHeader-CH_WhD-t.js",
+          "size": 600,
+          "gzipSize": 357,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQList-D58I1hKh.js",
+          "size": 3055,
+          "gzipSize": 1484,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 95,
+          "count": 94,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2275,7 +2445,6 @@
             "migrating from react-i18next to lingui",
             "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
@@ -2334,7 +2503,7 @@
           ]
         },
         "fr": {
-          "count": 109,
+          "count": 108,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -2379,7 +2548,6 @@
             "migrer de react-i18next vers lingui",
             "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
             "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmarking, y compris les environnements de test, les méthodes statistiques et la reproductibilité.",
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
@@ -2448,7 +2616,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.431372549019606,
+      "localeLeakagePercent": 53.46534653465347,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2599,69 +2767,99 @@
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 740924,
-      "totalGzipSize": 223175,
-      "jsSize": 706412,
-      "jsGzipSize": 214520,
-      "cssSize": 23706,
-      "cssGzipSize": 5018,
-      "htmlSize": 10806,
-      "htmlGzipSize": 3637,
-      "fileCount": 8,
-      "jsFileCount": 6,
+      "totalSize": 711345,
+      "totalGzipSize": 214862,
+      "jsSize": 675757,
+      "jsGzipSize": 205994,
+      "cssSize": 23926,
+      "cssGzipSize": 4991,
+      "htmlSize": 11662,
+      "htmlGzipSize": 3877,
+      "fileCount": 13,
+      "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/pricing",
-          "size": 10806,
-          "gzipSize": 3637,
+          "size": 11662,
+          "gzipSize": 3877,
           "type": "html"
         },
         {
-          "url": "/assets/styles-babeamda.css",
-          "size": 23706,
-          "gzipSize": 5018,
-          "type": "css"
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
         },
         {
-          "url": "/assets/route-BFBW0XYW.js",
+          "url": "/assets/preload-helper-Bll5m_3I.js",
+          "size": 1194,
+          "gzipSize": 682,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/config-BIcv9Wkp.js",
+          "size": 29479,
+          "gzipSize": 10291,
+          "type": "js"
+        },
+        {
+          "url": "/assets/pricing-CfydOTPN.js",
+          "size": 886,
+          "gzipSize": 454,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-C92NkmpP.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/pricing-Bel2Yms3.js",
-          "size": 800,
-          "gzipSize": 411,
+          "url": "/assets/styles-DFk6ZRfw.css",
+          "size": 23926,
+          "gzipSize": 4991,
+          "type": "css"
+        },
+        {
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/index-BZ4nSoqE.js",
-          "size": 702680,
-          "gzipSize": 212707,
+          "url": "/assets/main-3V21yn2k.js",
+          "size": 562435,
+          "gzipSize": 167398,
           "type": "js"
         },
         {
-          "url": "/assets/PricingHeader-CQXkZeXo.js",
-          "size": 507,
-          "gzipSize": 297,
+          "url": "/assets/MockBanner-DmYo1XJo.js",
+          "size": 421,
+          "gzipSize": 324,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Co3OX0Vu.js",
-          "size": 252,
-          "gzipSize": 202,
+          "url": "/assets/PricingHeader-DdfKp0Fc.js",
+          "size": 638,
+          "gzipSize": 355,
           "type": "js"
         },
         {
-          "url": "/assets/PricingTiers-3YVRuU5A.js",
-          "size": 2102,
-          "gzipSize": 817,
+          "url": "/assets/PricingTiers-fGSf7KcP.js",
+          "size": 2619,
+          "gzipSize": 1011,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 95,
+          "count": 94,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2702,7 +2900,6 @@
             "migrating from react-i18next to lingui",
             "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
@@ -2761,7 +2958,7 @@
           ]
         },
         "fr": {
-          "count": 109,
+          "count": 108,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -2806,7 +3003,6 @@
             "migrer de react-i18next vers lingui",
             "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
             "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmarking, y compris les environnements de test, les méthodes statistiques et la reproductibilité.",
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
@@ -2875,7 +3071,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.431372549019606,
+      "localeLeakagePercent": 53.46534653465347,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3026,69 +3222,99 @@
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 739067,
-      "totalGzipSize": 222906,
-      "jsSize": 705623,
-      "jsGzipSize": 214308,
-      "cssSize": 23706,
-      "cssGzipSize": 5018,
-      "htmlSize": 9738,
-      "htmlGzipSize": 3580,
-      "fileCount": 8,
-      "jsFileCount": 6,
+      "totalSize": 709571,
+      "totalGzipSize": 214689,
+      "jsSize": 675049,
+      "jsGzipSize": 205878,
+      "cssSize": 23926,
+      "cssGzipSize": 4991,
+      "htmlSize": 10596,
+      "htmlGzipSize": 3820,
+      "fileCount": 13,
+      "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/products",
-          "size": 9738,
-          "gzipSize": 3580,
+          "size": 10596,
+          "gzipSize": 3820,
           "type": "html"
         },
         {
-          "url": "/assets/styles-babeamda.css",
-          "size": 23706,
-          "gzipSize": 5018,
-          "type": "css"
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
         },
         {
-          "url": "/assets/route-BFBW0XYW.js",
+          "url": "/assets/preload-helper-Bll5m_3I.js",
+          "size": 1194,
+          "gzipSize": 682,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-C92NkmpP.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/products-ocUTx4DQ.js",
-          "size": 802,
-          "gzipSize": 411,
+          "url": "/assets/products-QNp7RZRB.js",
+          "size": 888,
+          "gzipSize": 456,
           "type": "js"
         },
         {
-          "url": "/assets/index-BZ4nSoqE.js",
-          "size": 702680,
-          "gzipSize": 212707,
+          "url": "/assets/styles-DFk6ZRfw.css",
+          "size": 23926,
+          "gzipSize": 4991,
+          "type": "css"
+        },
+        {
+          "url": "/assets/config-BIcv9Wkp.js",
+          "size": 29479,
+          "gzipSize": 10291,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Co3OX0Vu.js",
-          "size": 252,
-          "gzipSize": 202,
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/ProductsHeader-CqzwoHZK.js",
-          "size": 447,
-          "gzipSize": 277,
+          "url": "/assets/main-3V21yn2k.js",
+          "size": 562435,
+          "gzipSize": 167398,
           "type": "js"
         },
         {
-          "url": "/assets/ProductsGrid-D7OH8D29.js",
-          "size": 1371,
-          "gzipSize": 625,
+          "url": "/assets/MockBanner-DmYo1XJo.js",
+          "size": 421,
+          "gzipSize": 324,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsHeader-KYRvswtT.js",
+          "size": 597,
+          "gzipSize": 354,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsGrid-DQISe5qm.js",
+          "size": 1950,
+          "gzipSize": 894,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 95,
+          "count": 94,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3129,7 +3355,6 @@
             "migrating from react-i18next to lingui",
             "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
@@ -3188,7 +3413,7 @@
           ]
         },
         "fr": {
-          "count": 109,
+          "count": 108,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -3233,7 +3458,6 @@
             "migrer de react-i18next vers lingui",
             "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
             "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmarking, y compris les environnements de test, les méthodes statistiques et la reproductibilité.",
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
@@ -3302,7 +3526,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.431372549019606,
+      "localeLeakagePercent": 53.46534653465347,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3453,87 +3677,117 @@
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 744809,
-      "totalGzipSize": 224604,
-      "jsSize": 710479,
-      "jsGzipSize": 215756,
-      "cssSize": 23706,
-      "cssGzipSize": 5018,
-      "htmlSize": 10624,
-      "htmlGzipSize": 3830,
-      "fileCount": 11,
-      "jsFileCount": 9,
+      "totalSize": 715699,
+      "totalGzipSize": 216501,
+      "jsSize": 680205,
+      "jsGzipSize": 207401,
+      "cssSize": 23926,
+      "cssGzipSize": 4991,
+      "htmlSize": 11568,
+      "htmlGzipSize": 4109,
+      "fileCount": 16,
+      "jsFileCount": 14,
       "bundleFiles": [
         {
           "url": "/en/settings",
-          "size": 10624,
-          "gzipSize": 3830,
+          "size": 11568,
+          "gzipSize": 4109,
           "type": "html"
         },
         {
-          "url": "/assets/route-BFBW0XYW.js",
+          "url": "/assets/preload-helper-Bll5m_3I.js",
+          "size": 1194,
+          "gzipSize": 682,
+          "type": "js"
+        },
+        {
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
+        },
+        {
+          "url": "/assets/config-BIcv9Wkp.js",
+          "size": 29479,
+          "gzipSize": 10291,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-C92NkmpP.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/styles-babeamda.css",
-          "size": 23706,
-          "gzipSize": 5018,
+          "url": "/assets/settings-CTT3tXaP.js",
+          "size": 1761,
+          "gzipSize": 596,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-DFk6ZRfw.css",
+          "size": 23926,
+          "gzipSize": 4991,
           "type": "css"
         },
         {
-          "url": "/assets/settings-c3IwnZYt.js",
-          "size": 1669,
-          "gzipSize": 558,
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/index-BZ4nSoqE.js",
-          "size": 702680,
-          "gzipSize": 212707,
+          "url": "/assets/main-3V21yn2k.js",
+          "size": 562435,
+          "gzipSize": 167398,
           "type": "js"
         },
         {
-          "url": "/assets/SettingsHeader-BxQrqYrv.js",
-          "size": 445,
-          "gzipSize": 275,
+          "url": "/assets/MockBanner-DmYo1XJo.js",
+          "size": 421,
+          "gzipSize": 324,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Co3OX0Vu.js",
-          "size": 252,
-          "gzipSize": 202,
+          "url": "/assets/SettingsHeader-Rl5mh5Ji.js",
+          "size": 570,
+          "gzipSize": 330,
           "type": "js"
         },
         {
-          "url": "/assets/ProfileSection-BrYSh9xn.js",
-          "size": 1134,
-          "gzipSize": 419,
+          "url": "/assets/ProfileSection-N4d-IzRc.js",
+          "size": 1308,
+          "gzipSize": 493,
           "type": "js"
         },
         {
-          "url": "/assets/PreferencesSection-Oq_gWT7H.js",
-          "size": 2573,
-          "gzipSize": 717,
+          "url": "/assets/PreferencesSection-Cy-FDtqD.js",
+          "size": 2981,
+          "gzipSize": 876,
           "type": "js"
         },
         {
-          "url": "/assets/SettingsFooter-CvxMpM5h.js",
-          "size": 584,
-          "gzipSize": 320,
+          "url": "/assets/ApiAccessSection-BXi8XPH2.js",
+          "size": 1302,
+          "gzipSize": 573,
           "type": "js"
         },
         {
-          "url": "/assets/ApiAccessSection-DFFppOLd.js",
-          "size": 1071,
-          "gzipSize": 472,
+          "url": "/assets/SettingsFooter-DHtcQrj7.js",
+          "size": 669,
+          "gzipSize": 359,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 95,
+          "count": 94,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3574,7 +3828,6 @@
             "migrating from react-i18next to lingui",
             "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
@@ -3633,7 +3886,7 @@
           ]
         },
         "fr": {
-          "count": 109,
+          "count": 108,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -3678,7 +3931,6 @@
             "migrer de react-i18next vers lingui",
             "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
             "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmarking, y compris les environnements de test, les méthodes statistiques et la reproductibilité.",
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
@@ -3747,7 +3999,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.431372549019606,
+      "localeLeakagePercent": 53.46534653465347,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3898,69 +4150,99 @@
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 739667,
-      "totalGzipSize": 223164,
-      "jsSize": 705637,
-      "jsGzipSize": 214357,
-      "cssSize": 23706,
-      "cssGzipSize": 5018,
-      "htmlSize": 10324,
-      "htmlGzipSize": 3789,
-      "fileCount": 8,
-      "jsFileCount": 6,
+      "totalSize": 710376,
+      "totalGzipSize": 215040,
+      "jsSize": 675276,
+      "jsGzipSize": 206021,
+      "cssSize": 23926,
+      "cssGzipSize": 4991,
+      "htmlSize": 11174,
+      "htmlGzipSize": 4028,
+      "fileCount": 13,
+      "jsFileCount": 11,
       "bundleFiles": [
         {
           "url": "/en/team",
-          "size": 10324,
-          "gzipSize": 3789,
+          "size": 11174,
+          "gzipSize": 4028,
           "type": "html"
         },
         {
-          "url": "/assets/styles-babeamda.css",
-          "size": 23706,
-          "gzipSize": 5018,
-          "type": "css"
+          "url": "/assets/usePerformanceMeasure-Db4YRdyo.js",
+          "size": 370,
+          "gzipSize": 220,
+          "type": "js"
         },
         {
-          "url": "/assets/route-BFBW0XYW.js",
+          "url": "/assets/jsx-runtime-CUBmso4R.js",
+          "size": 8399,
+          "gzipSize": 3202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/preload-helper-Bll5m_3I.js",
+          "size": 1194,
+          "gzipSize": 682,
+          "type": "js"
+        },
+        {
+          "url": "/assets/config-BIcv9Wkp.js",
+          "size": 29479,
+          "gzipSize": 10291,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-C92NkmpP.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/team-BytzFPO3.js",
-          "size": 786,
-          "gzipSize": 406,
+          "url": "/assets/styles-DFk6ZRfw.css",
+          "size": 23926,
+          "gzipSize": 4991,
+          "type": "css"
+        },
+        {
+          "url": "/assets/team-BtLw-BYM.js",
+          "size": 872,
+          "gzipSize": 449,
           "type": "js"
         },
         {
-          "url": "/assets/index-BZ4nSoqE.js",
-          "size": 702680,
-          "gzipSize": 212707,
+          "url": "/assets/Match--ukx7GUf.js",
+          "size": 69245,
+          "gzipSize": 21971,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-Co3OX0Vu.js",
-          "size": 252,
-          "gzipSize": 202,
+          "url": "/assets/main-3V21yn2k.js",
+          "size": 562435,
+          "gzipSize": 167398,
           "type": "js"
         },
         {
-          "url": "/assets/TeamHeader-CY_1_QMv.js",
-          "size": 443,
-          "gzipSize": 282,
+          "url": "/assets/MockBanner-DmYo1XJo.js",
+          "size": 421,
+          "gzipSize": 324,
           "type": "js"
         },
         {
-          "url": "/assets/TeamGrid-9fnk0yKH.js",
-          "size": 1405,
-          "gzipSize": 674,
+          "url": "/assets/TeamHeader-DOntVe6c.js",
+          "size": 625,
+          "gzipSize": 381,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamGrid-CChsLyfL.js",
+          "size": 2165,
+          "gzipSize": 1017,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 95,
+          "count": 94,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -4001,7 +4283,6 @@
             "migrating from react-i18next to lingui",
             "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
@@ -4060,7 +4341,7 @@
           ]
         },
         "fr": {
-          "count": 109,
+          "count": 108,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -4105,7 +4386,6 @@
             "migrer de react-i18next vers lingui",
             "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
             "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmarking, y compris les environnements de test, les méthodes statistiques et la reproductibilité.",
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
@@ -4174,7 +4454,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.431372549019606,
+      "localeLeakagePercent": 53.46534653465347,
       "pageLeakage": {
         "home": {
           "count": 16,

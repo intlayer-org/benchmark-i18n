@@ -1,16 +1,16 @@
 import { Dynamic as e, createComponent as t, insert as n, template as r } from "solid-js/web";
 import { createContext as i, createMemo as a, useContext as o } from "solid-js";
 var s = {
-	de: () => import("./de-CsQcmTT4.js").then((e) => e.default),
-	en: () => import("./en-B7eeRsdx.js").then((e) => e.default),
-	es: () => import("./es-tsX2nlAw.js").then((e) => e.default),
-	fr: () => import("./fr-DpZiWOfL.js").then((e) => e.default),
-	it: () => import("./it-CgeXmKeN.js").then((e) => e.default),
-	ja: () => import("./ja-CfPG_7TC.js").then((e) => e.default),
-	ko: () => import("./ko-uKip404w.js").then((e) => e.default),
-	pt: () => import("./pt-Cj3OEqQs.js").then((e) => e.default),
-	ru: () => import("./ru-DAPg3tYm.js").then((e) => e.default),
-	zh: () => import("./zh-CoV53YHE.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/de.json").then((e) => e.default),
+	en: () => import("./en-CBUJVfp0.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/products-header/zh.json").then((e) => e.default)
 }, c = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var s = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (g(e) && g(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : _(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : _(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -267,16 +267,16 @@ var z = (e = B) => {
 	let { locale: r } = o(H) ?? {}, i = u.defaultLocale, a = n ?? r?.() ?? i;
 	return U(K(`${String(t)}.${a}`, e[a]?.()), a);
 }, J = {
-	de: () => import("./de-DZjVcrEr.js").then((e) => e.default),
-	en: () => import("./en-BIpIqFyC.js").then((e) => e.default),
-	es: () => import("./es-DjApjMna.js").then((e) => e.default),
-	fr: () => import("./fr-B5zdWQYr.js").then((e) => e.default),
-	it: () => import("./it-BV2gaUYH.js").then((e) => e.default),
-	ja: () => import("./ja-BRK6b6e8.js").then((e) => e.default),
-	ko: () => import("./ko-b4l7esQz.js").then((e) => e.default),
-	pt: () => import("./pt-BHCuLMOi.js").then((e) => e.default),
-	ru: () => import("./ru-CGOfbfvo.js").then((e) => e.default),
-	zh: () => import("./zh-BMK-ZYp4.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((e) => e.default),
+	en: () => import("./en-B4WwrKbL.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((e) => e.default)
 }, Y = r("<div class=\"mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground\">");
 function X() {
 	let e = q(J, "mock-banner");
@@ -302,16 +302,8 @@ function $() {
 }
 export { $ as default };
 var e = {
-	key: "products-header",
-	content: {
-		a: "Produkte",
-		b: "Tools und Dienstleistungen zur Optimierung Ihres Internationalisierungs-Workflows."
-	}
-};
-export { e as default };
-var e = {
 	key: "mock-banner",
-	content: { a: "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
+	content: { a: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
 };
 export { e as default };
 var e = {
@@ -319,115 +311,6 @@ var e = {
 	content: {
 		a: "Products",
 		b: "Tools and services to streamline your internationalization workflow."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { a: "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { a: "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		a: "Productos",
-		b: "Herramientas y servicios para simplificar su flujo de trabajo de internacionalización."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { a: "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		a: "Produits",
-		b: "Des outils et services pour rationaliser votre flux de travail d'internationalisation."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { a: "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		a: "Prodotti",
-		b: "Strumenti e servizi per semplificare il flusso di lavoro di internazionalizzazione."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { a: "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		a: "製品",
-		b: "国際化ワークフローを合理化するためのツールとサービス。"
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { a: "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		a: "제품",
-		b: "국제화 워크플로우를 간소화하는 도구 및 서비스."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { a: "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		a: "Produtos",
-		b: "Ferramentas e serviços para simplificar seu fluxo de trabalho de internacionalização."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { a: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		a: "Продукты",
-		b: "Инструменты и услуги для оптимизации рабочего процесса интернационализации."
-	}
-};
-export { e as default };
-var e = {
-	key: "mock-banner",
-	content: { a: "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务 or 服务无关。" }
-};
-export { e as default };
-var e = {
-	key: "products-header",
-	content: {
-		a: "产品",
-		b: "简化国际化工作流程的工具和服务。"
 	}
 };
 export { e as default };

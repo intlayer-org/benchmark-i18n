@@ -1,5 +1,6 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
+import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3908,7 +3909,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => false) === true) return "development";
+	if (readImportMetaEnv(() => true) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6018,75 +6019,209 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/blog/BlogList.tsx";
 function BlogList() {
-	return jsx("div", {
+	const posts = [
+		{
+			title: jsxDEV(a$2, { children: "Comparing i18n Libraries in 2026: A Deep Dive" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 6,
+				columnNumber: 14
+			}, this),
+			date: jsxDEV(a$2, { children: "March 15, 2026" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 7,
+				columnNumber: 13
+			}, this),
+			excerpt: jsxDEV(a$2, { children: "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 9,
+				columnNumber: 9
+			}, this),
+			category: jsxDEV(a$2, { children: "Benchmark" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 14,
+				columnNumber: 17
+			}, this)
+		},
+		{
+			title: jsxDEV(a$2, { children: "How to Reduce Your i18n Bundle by 60%" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 17,
+				columnNumber: 14
+			}, this),
+			date: jsxDEV(a$2, { children: "March 8, 2026" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 18,
+				columnNumber: 13
+			}, this),
+			excerpt: jsxDEV(a$2, { children: "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 20,
+				columnNumber: 9
+			}, this),
+			category: jsxDEV(a$2, { children: "Tutorial" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 25,
+				columnNumber: 17
+			}, this)
+		},
+		{
+			title: jsxDEV(a$2, { children: "The State of Internationalization in React" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 28,
+				columnNumber: 14
+			}, this),
+			date: jsxDEV(a$2, { children: "February 28, 2026" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 29,
+				columnNumber: 13
+			}, this),
+			excerpt: jsxDEV(a$2, { children: "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 31,
+				columnNumber: 9
+			}, this),
+			category: jsxDEV(a$2, { children: "Analysis" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 36,
+				columnNumber: 17
+			}, this)
+		},
+		{
+			title: jsxDEV(a$2, { children: "Migrating from react-i18next to Lingui" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 39,
+				columnNumber: 14
+			}, this),
+			date: jsxDEV(a$2, { children: "February 15, 2026" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 40,
+				columnNumber: 13
+			}, this),
+			excerpt: jsxDEV(a$2, { children: "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 42,
+				columnNumber: 9
+			}, this),
+			category: jsxDEV(a$2, { children: "Tutorial" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 47,
+				columnNumber: 17
+			}, this)
+		},
+		{
+			title: jsxDEV(a$2, { children: "Server Components and i18n: What Changes?" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 50,
+				columnNumber: 14
+			}, this),
+			date: jsxDEV(a$2, { children: "February 1, 2026" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 51,
+				columnNumber: 13
+			}, this),
+			excerpt: jsxDEV(a$2, { children: "React Server Components introduce new patterns for internationalization. We explore the implications and best practices." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 53,
+				columnNumber: 9
+			}, this),
+			category: jsxDEV(a$2, { children: "Analysis" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 58,
+				columnNumber: 17
+			}, this)
+		},
+		{
+			title: jsxDEV(a$2, { children: "Benchmark Methodology: How We Test" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 61,
+				columnNumber: 14
+			}, this),
+			date: jsxDEV(a$2, { children: "January 20, 2026" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 62,
+				columnNumber: 13
+			}, this),
+			excerpt: jsxDEV(a$2, { children: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility." }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 64,
+				columnNumber: 9
+			}, this),
+			category: jsxDEV(a$2, { children: "Meta" }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 69,
+				columnNumber: 17
+			}, this)
+		}
+	];
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2",
-		children: [
-			{
-				title: jsx(a$2, { children: "Comparing i18n Libraries in 2026: A Deep Dive" }),
-				date: jsx(a$2, { children: "March 15, 2026" }),
-				excerpt: jsx(a$2, { children: "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results." }),
-				category: jsx(a$2, { children: "Benchmark" })
-			},
-			{
-				title: jsx(a$2, { children: "How to Reduce Your i18n Bundle by 60%" }),
-				date: jsx(a$2, { children: "March 8, 2026" }),
-				excerpt: jsx(a$2, { children: "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations." }),
-				category: jsx(a$2, { children: "Tutorial" })
-			},
-			{
-				title: jsx(a$2, { children: "The State of Internationalization in React" }),
-				date: jsx(a$2, { children: "February 28, 2026" }),
-				excerpt: jsx(a$2, { children: "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences." }),
-				category: jsx(a$2, { children: "Analysis" })
-			},
-			{
-				title: jsx(a$2, { children: "Migrating from react-i18next to Lingui" }),
-				date: jsx(a$2, { children: "February 15, 2026" }),
-				excerpt: jsx(a$2, { children: "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui." }),
-				category: jsx(a$2, { children: "Tutorial" })
-			},
-			{
-				title: jsx(a$2, { children: "Server Components and i18n: What Changes?" }),
-				date: jsx(a$2, { children: "February 1, 2026" }),
-				excerpt: jsx(a$2, { children: "React Server Components introduce new patterns for internationalization. We explore the implications and best practices." }),
-				category: jsx(a$2, { children: "Analysis" })
-			},
-			{
-				title: jsx(a$2, { children: "Benchmark Methodology: How We Test" }),
-				date: jsx(a$2, { children: "January 20, 2026" }),
-				excerpt: jsx(a$2, { children: "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility." }),
-				category: jsx(a$2, { children: "Meta" })
-			}
-		].map((p, i) => jsxs("article", {
+		children: posts.map((p, i) => jsxDEV("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				jsxs("div", {
+				jsxDEV("div", {
 					className: "mb-3 flex items-center gap-3",
-					children: [jsx("span", {
+					children: [jsxDEV("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: p.category
-					}), jsx("span", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 81,
+						columnNumber: 13
+					}, this), jsxDEV("span", {
 						className: "text-xs text-muted-foreground",
 						children: p.date
-					})]
-				}),
-				jsx("h2", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 84,
+						columnNumber: 13
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 80,
+					columnNumber: 11
+				}, this),
+				jsxDEV("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: p.title
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 86,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: p.excerpt
-				}),
-				jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 89,
+					columnNumber: 11
+				}, this),
+				jsxDEV("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
-					children: jsx(a$2, { children: "Read More →" })
-				})
+					children: jsxDEV(a$2, { children: "Read More →" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 94,
+						columnNumber: 13
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 90,
+					columnNumber: 11
+				}, this)
 			]
-		}, i))
-	});
+		}, i, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 76,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 74,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6110,6 +6245,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6121,19 +6257,41 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment$1, { children });
+	return jsxDEV(Fragment$1, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 33,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(BrowserGTProvider, {
+	return jsxDEV(BrowserGTProvider, {
 		locale,
-		children: jsx(AppProviders, {
+		children: jsxDEV(AppProviders, {
 			locale,
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 14,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 13,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/blog/BlogList.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(BlogList, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(BlogList, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

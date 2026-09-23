@@ -1,16 +1,16 @@
 import { Dynamic as e, insert as t, template as n } from "solid-js/web";
 import { createContext as r, createMemo as i, onMount as a, useContext as o } from "solid-js";
 var s = {
-	de: () => import("./de-BythG71s.js").then((e) => e.default),
-	en: () => import("./en-BE9ljaMS.js").then((e) => e.default),
-	es: () => import("./es-D05ENegw.js").then((e) => e.default),
-	fr: () => import("./fr-DceGKSt7.js").then((e) => e.default),
-	it: () => import("./it-pey-kIvX.js").then((e) => e.default),
-	ja: () => import("./ja-D-T0OIsa.js").then((e) => e.default),
-	ko: () => import("./ko-Bx9Vjxuq.js").then((e) => e.default),
-	pt: () => import("./pt-hwDu6M2I.js").then((e) => e.default),
-	ru: () => import("./ru-eKCwdjlP.js").then((e) => e.default),
-	zh: () => import("./zh-BAMIoc32.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/de.json").then((e) => e.default),
+	en: () => import("./en-jZAnOlkK.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/about-header/zh.json").then((e) => e.default)
 }, c = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var s = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (g(e) && g(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : _(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : _(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -292,80 +292,8 @@ export { Z as default };
 var e = {
 	key: "about-header",
 	content: {
-		a: "Über diesen Benchmark",
-		b: "Dies ist eine Open-Source-Testanwendung — kein Produkt oder Unternehmen. Ihr einziger Zweck besteht darin, eine realistische, mehrseitige React-App bereitzustellen, in die verschiedene i18n-Bibliotheken integriert und unter identischen Bedingungen gemessen werden können."
-	}
-};
-export { e as default };
-var e = {
-	key: "about-header",
-	content: {
 		a: "About This Benchmark",
 		b: "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
-	}
-};
-export { e as default };
-var e = {
-	key: "about-header",
-	content: {
-		a: "Acerca de este benchmark",
-		b: "Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación React realista de varias páginas donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas."
-	}
-};
-export { e as default };
-var e = {
-	key: "about-header",
-	content: {
-		a: "À propos de ce benchmark",
-		b: "Il s'agit d'une application de test open source, pas d'un produit ou d'une entreprise. Son seul but est de fournir une application React multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques."
-	}
-};
-export { e as default };
-var e = {
-	key: "about-header",
-	content: {
-		a: "Informazioni su questo benchmark",
-		b: "Questa è un'applicazione di test open source — non un prodotto o un'azienda. Il suo unico scopo è quello di fornire un'app React multipagina realistica in cui diverse librerie i18n possono essere integrate e misurate in condizioni identiche."
-	}
-};
-export { e as default };
-var e = {
-	key: "about-header",
-	content: {
-		a: "このベンチマークについて",
-		b: "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、さまざまなi18nライブラリを統合し、同一条件下で測定できる現実的なマルチページReactアプリを提供することです。"
-	}
-};
-export { e as default };
-var e = {
-	key: "about-header",
-	content: {
-		a: "이 벤치마크 정보",
-		b: "이것은 오픈 소스 테스트 애플리케이션이며 제품이나 회사가 아닙니다. 유일한 목적은 동일한 조건에서 다양한 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 React 앱을 제공하는 것입니다."
-	}
-};
-export { e as default };
-var e = {
-	key: "about-header",
-	content: {
-		a: "Sobre este benchmark",
-		b: "Este é um aplicativo de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer um aplicativo React de várias páginas realista, onde diferentes bibliotecas i18n possam ser integradas e medidas em condições idênticas."
-	}
-};
-export { e as default };
-var e = {
-	key: "about-header",
-	content: {
-		a: "Об этом бенчмарке",
-		b: "Это открытое тестовое приложение — не продукт и не компания. Его единственная цель — предоставить реалистичное многостраничное React-приложение, в которое можно интегрировать и измерять различные библиотеки i18n в идентичных условиях."
-	}
-};
-export { e as default };
-var e = {
-	key: "about-header",
-	content: {
-		a: "关于此基准测试",
-		b: "这是一个开源测试应用程序——不是产品或公司。其唯一目的是提供一个真实的、多页面的 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。"
 	}
 };
 export { e as default };

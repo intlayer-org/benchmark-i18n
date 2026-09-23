@@ -1,5 +1,5 @@
-import { computed as e, createElementBlock as t, defineComponent as n, getCurrentInstance as r, h as i, inject as a, isRef as o, markRaw as s, openBlock as c, ref as l, shallowRef as ee, toDisplayString as u, toValue as d, unref as f, watch as p } from "vue";
-var m = {
+import { computed as e, createElementBlock as t, defineComponent as n, getCurrentInstance as r, h as i, inject as a, isRef as o, markRaw as s, openBlock as c, ref as l, shallowRef as u, toDisplayString as d, toValue as f, watch as ee } from "vue";
+var p = {
 	key: "mock-banner",
 	content: {
 		nodeType: "translation",
@@ -16,51 +16,65 @@ var m = {
 			ru: { a: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
 		}
 	}
-}, h = {
-	locales: [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	requiredLocales: [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	strictMode: "inclusive",
-	defaultLocale: "en"
-}, te = Symbol("intlayer"), g = /* @__PURE__ */ new WeakMap(), _ = 0, v = (e) => {
+}, m = ({ value: e, children: t, additionalProps: n = {} }) => {
+	let r = l(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
+	if (Object.assign(o, {
+		render: a,
+		toString: () => String(r.value ?? ""),
+		valueOf: () => r.value,
+		[Symbol.toPrimitive]: () => r.value,
+		toJSON: () => r.value,
+		get raw() {
+			return r.value;
+		},
+		set raw(e) {
+			r.value = e;
+		},
+		get value() {
+			return r.value;
+		},
+		use(e) {
+			return m({
+				value: r.value,
+				children: () => i(e),
+				additionalProps: n
+			});
+		},
+		__update(e) {
+			i = e.render, this.raw = e.raw;
+		},
+		...n
+	}), e != null) {
+		let t = Object(e), n = Object.getPrototypeOf(t);
+		for (let r of Object.getOwnPropertyNames(n)) {
+			if (r === "constructor" || r in o) continue;
+			let n = t[r];
+			typeof n == "function" && Object.defineProperty(o, r, {
+				value: n.bind(e),
+				writable: !0,
+				configurable: !0
+			});
+		}
+	}
+	return s(o);
+}, h = /* @__PURE__ */ new WeakMap(), g = 0, _ = (e) => {
 	if (!e) return "base";
-	let t = g.get(e);
+	let t = h.get(e);
 	if (t) return t;
-	_ += 1;
-	let n = `p${_}`;
-	return g.set(e, n), n;
-}, y = 256, b = /* @__PURE__ */ new WeakMap(), x = (e) => typeof e == "object" && !!e, ne = (e, t, n) => `${e}_${t}_${v(n)}`, re = (e, t) => {
-	if (!x(e)) return { hit: !1 };
-	let n = b.get(e);
+	g += 1;
+	let n = `p${g}`;
+	return h.set(e, n), n;
+}, v = 256, y = /* @__PURE__ */ new WeakMap(), b = (e) => typeof e == "object" && !!e, te = (e, t, n) => `${e}_${t}_${_(n)}`, x = (e, t) => {
+	if (!b(e)) return { hit: !1 };
+	let n = y.get(e);
 	return n?.has(t) ? {
 		hit: !0,
 		content: n.get(t)
 	} : { hit: !1 };
 }, S = (e, t, n) => {
-	if (!x(e)) return n;
-	let r = b.get(e);
-	return r || (r = /* @__PURE__ */ new Map(), b.set(e, r)), r.size >= y && r.clear(), r.set(t, n), n;
+	if (!b(e)) return n;
+	let r = y.get(e);
+	return r || (r = /* @__PURE__ */ new Map(), y.set(e, r)), r.size >= v && r.clear(), r.set(t, n), n;
 }, C = "translation", w = "object", T = "array", E = (e, t) => {
 	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => E(e, t));
 	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
@@ -100,17 +114,17 @@ var m = {
 		});
 	}
 	return n;
-}, D = "default", O = /[^A-Za-z0-9._&=-]/g, k = /[^A-Za-z0-9._-]/g, ie = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, A = (e, t) => {
+}, D = "default", ne = /[^A-Za-z0-9._&=-]/g, O = /[^A-Za-z0-9._-]/g, k = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, A = (e, t) => {
 	if (e === "") return "%";
-	let n = e.replace(t, ie);
+	let n = e.replace(t, k);
 	return n === "." || n === ".." ? n.replace(/\./g, "%002E") : n;
-}, j = (e) => e === void 0 ? D : typeof e == "string" ? A(e, O) : Object.keys(e).sort().map((t) => `${A(t, k)}=${A(String(e[t]), k)}`).join("&"), M = (e) => Array.isArray(e) ? e.length === 0 ? [D] : e.map(j) : [j(e)], ae = (e, t) => {
+}, j = (e) => e === void 0 ? D : typeof e == "string" ? A(e, ne) : Object.keys(e).sort().map((t) => `${A(t, O)}=${A(String(e[t]), O)}`).join("&"), M = (e) => Array.isArray(e) ? e.length === 0 ? [D] : e.map(j) : [j(e)], re = (e, t) => {
 	for (let n of e) if (t(n)) return n;
 	return t("default") ? D : e[0] ?? "default";
-}, oe = (e, t, n, r) => {
+}, ie = (e, t, n, r) => {
 	let i = e.split("/");
 	return t.every((e, t) => e === "variant" ? i[t] === r : n?.item === void 0 || i[t] === String(n.item));
-}, se = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, ce = (e, t) => {
+}, ae = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, oe = (e, t) => {
 	let n = t.split("/"), r = {
 		key: e.key,
 		content: e.content[t]
@@ -118,30 +132,57 @@ var m = {
 	return e.qualifierTypes.forEach((e, t) => {
 		e === "variant" ? r.variant = n[t] : e === "item" && (r.item = Number(n[t]));
 	}), r;
-}, le = (e, t) => {
-	if (!se(e)) return e;
-	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? D : ae(M(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => oe(e, n, t, s)).map((t) => ce(e, t));
+}, se = (e, t) => {
+	if (!ae(e)) return e;
+	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? D : re(M(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => ie(e, n, t, s)).map((t) => oe(e, t));
 	return i ? c.sort((e, t) => (e.item ?? 0) - (t.item ?? 0)) : c[0] ?? null;
-}, ue = (e) => typeof e == "object" && e ? {
+}, ce = (e) => typeof e == "object" && e ? {
 	locale: e.locale,
 	selector: e
-} : { locale: e }, de = (e) => e ? Object.keys(e).filter((e) => e !== "locale").sort().map((t) => {
+} : { locale: e }, le = (e) => e ? Object.keys(e).filter((e) => e !== "locale").sort().map((t) => {
 	let n = e[t];
 	return `${t}:${t === "variant" ? M(n).join(",") : String(n)}`;
-}).join("|") : "", N = (e) => {
+}).join("|") : "", N = {
+	locales: [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	requiredLocales: [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	strictMode: "inclusive",
+	defaultLocale: "en"
+}, P = (e) => {
 	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
 	let t = Object.getPrototypeOf(e);
 	return t === Object.prototype || t === null || Array.isArray(e);
-}, P = (e, t) => {
+}, F = (e, t) => {
 	if (e === void 0) return t;
 	if (t === void 0 || Array.isArray(e)) return e;
-	if (N(e) && N(t)) {
+	if (P(e) && P(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : P(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : F(e[r], t[r]));
 		return n;
 	}
 	return e;
-}, F = (e, t, n) => {
+}, I = (e, t, n) => {
 	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
 		e && !i.has(e) && (i.add(e), a.push(e));
 	};
@@ -157,12 +198,12 @@ var m = {
 			s.push(t);
 		}
 	}
-	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => P(e, t));
-}, I = {
+	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => F(e, t));
+}, L = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, L = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? I : {
+}, R = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? L : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -178,24 +219,24 @@ var m = {
 			};
 			o[e] = i(a[e], t);
 		}
-		return F(o, e, t);
+		return I(o, e, t);
 	}
-}, R = I, z = (e) => I, B = I, V = I, H = I, U = I, W = (e) => I, G = I, fe = (e, t = !0) => [
-	L(e ?? h.defaultLocale, t ? h.defaultLocale : void 0),
-	R,
-	B,
+}, z = L, B = (e) => L, V = L, H = L, U = L, W = L, G = (e) => L, K = L, ue = (e, t = !0) => [
+	R(e ?? N.defaultLocale, t ? N.defaultLocale : void 0),
+	z,
 	V,
-	W(e ?? h.defaultLocale),
-	G,
 	H,
-	U
-], pe = (e, t, n = []) => E(e, {
+	G(e ?? N.defaultLocale),
+	K,
+	U,
+	W
+], q = (e, t, n = []) => E(e, {
 	...t,
 	plugins: n
-}), me = (e, t, n) => {
-	let { locale: r, selector: i } = ue(t), a = ne(r ?? h.defaultLocale, de(i), n), o = re(e, a);
+}), de = (e, t, n) => {
+	let { locale: r, selector: i } = ce(t), a = te(r ?? N.defaultLocale, le(i), n), o = x(e, a);
 	if (o.hit) return o.content;
-	let s = n ?? fe(r), c = le(e, i), l = (e) => {
+	let s = n ?? ue(r), c = se(e, i), l = (e) => {
 		let t = {
 			dictionaryKey: e.key,
 			dictionaryPath: e.filePath,
@@ -203,55 +244,14 @@ var m = {
 			plugins: s,
 			nestedDictionaries: e.nestedDictionaries
 		};
-		return pe(e.content, t, s);
+		return q(e.content, t, s);
 	};
 	return c === null ? S(e, a, null) : Array.isArray(c) ? S(e, a, c.map(l)) : S(e, a, l(c));
-}, K = ({ value: e, children: t, additionalProps: n = {} }) => {
-	let r = l(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
-	if (Object.assign(o, {
-		render: a,
-		toString: () => String(r.value ?? ""),
-		valueOf: () => r.value,
-		[Symbol.toPrimitive]: () => r.value,
-		toJSON: () => r.value,
-		get raw() {
-			return r.value;
-		},
-		set raw(e) {
-			r.value = e;
-		},
-		get value() {
-			return r.value;
-		},
-		use(e) {
-			return K({
-				value: r.value,
-				children: () => i(e),
-				additionalProps: n
-			});
-		},
-		__update(e) {
-			i = e.render, this.raw = e.raw;
-		},
-		...n
-	}), e != null) {
-		let t = Object(e), n = Object.getPrototypeOf(t);
-		for (let r of Object.getOwnPropertyNames(n)) {
-			if (r === "constructor" || r in o) continue;
-			let n = t[r];
-			typeof n == "function" && Object.defineProperty(o, r, {
-				value: n.bind(e),
-				writable: !0,
-				configurable: !0
-			});
-		}
-	}
-	return s(o);
-}, he = {
+}, fe = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => K({
+		let r = (e) => m({
 			...n,
 			value: e,
 			children: e
@@ -272,25 +272,25 @@ var m = {
 		}
 		return s(a);
 	}
-}, ge = I, _e = I, ve = I, q = /* @__PURE__ */ new Map(), J = (e, t = !0) => {
-	let n = `${e ?? h.defaultLocale}_${t}`;
-	if (q.has(n)) return q.get(n);
+}, pe = L, me = L, he = L, J = /* @__PURE__ */ new Map(), ge = (e, t = !0) => {
+	let n = `${e ?? N.defaultLocale}_${t}`;
+	if (J.has(n)) return J.get(n);
 	let r = [
-		L(e ?? h.defaultLocale, t ? h.defaultLocale : void 0),
-		R,
-		z(e ?? h.defaultLocale),
-		B,
-		W(e ?? h.defaultLocale),
-		G,
-		H,
+		R(e ?? N.defaultLocale, t ? N.defaultLocale : void 0),
+		z,
+		B(e ?? N.defaultLocale),
+		V,
+		G(e ?? N.defaultLocale),
+		K,
 		U,
-		he,
-		ge,
-		_e,
-		ve
+		W,
+		fe,
+		pe,
+		me,
+		he
 	];
-	return q.set(n, r), r;
-}, Y = (e, t) => me(e, t, J(typeof t == "object" && t ? t.locale : t)), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), ye = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => s(n({
+	return J.set(n, r), r;
+}, Y = (e, t) => de(e, t, ge(typeof t == "object" && t ? t.locale : t)), _e = Symbol("intlayer"), X = (e, t) => t.reduce((e, t) => e?.[t], e), Z = (e) => typeof e == "object" && !!e, Q = (e) => typeof e == "function" || Z(e) && ("render" in e || "setup" in e), ve = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => s(n({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -298,7 +298,7 @@ var m = {
 			return t == null ? null : Q(t) ? i(t) : Array.isArray(t) ? i("span", t) : t;
 		};
 	}
-})), be = (e) => new Proxy({}, {
+})), ye = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -320,17 +320,17 @@ var m = {
 			configurable: !0
 		};
 	}
-}), xe = (t, n) => {
-	let i = r() ? a(te) : void 0, s = o(i?.locale) ? i.locale : l(i?.locale ?? h.defaultLocale), c = e(() => ({
+}), be = (t, n) => {
+	let i = r() ? a(_e) : void 0, s = o(i?.locale) ? i.locale : l(i?.locale ?? N.defaultLocale), c = e(() => ({
 		selector: void 0,
-		locale: n === void 0 ? void 0 : d(n)
-	})), u = e(() => c.value.locale ?? s.value), f = ee({});
-	p([
-		() => d(t),
-		() => u.value,
+		locale: n === void 0 ? void 0 : f(n)
+	})), d = e(() => c.value.locale ?? s.value), p = u({});
+	ee([
+		() => f(t),
+		() => d.value,
 		() => c.value.selector
 	], ([e, t, n]) => {
-		f.value = n ? Y(e, {
+		p.value = n ? Y(e, {
 			...n,
 			locale: t
 		}) : Y(e, t);
@@ -340,25 +340,25 @@ var m = {
 	});
 	let m = (t) => new Proxy({}, {
 		get(n, r, i) {
-			let a = e(() => X(f.value, t));
+			let a = e(() => X(p.value, t));
 			if (typeof r == "symbol" || typeof r == "string" && (r.startsWith("__") || r.startsWith("$"))) return r === "__v_isRef" ? !0 : r === "$raw" ? a : r === Symbol.toPrimitive ? () => String(a.value ?? "") : Reflect.get(n, r, i);
 			if (r === "value") return a.value ?? "";
 			if (r === "then") return;
 			if (r === "c" || r === "asComponent") return $(() => a.value);
-			let o = t.concat(r), s = X(f.value, o);
+			let o = t.concat(r), s = X(p.value, o);
 			if (s === void 0 || Z(s) && !Q(s)) return m(o);
-			if (ye(s)) return be(e(() => X(f.value, o)));
+			if (ve(s)) return ye(e(() => X(p.value, o)));
 			if (typeof s == "function") {
-				let e = X(f.value, t);
-				return e != null && !Object.hasOwn(e, r) ? s.bind(e) : (...e) => X(f.value, o)?.(...e);
+				let e = X(p.value, t);
+				return e != null && !Object.hasOwn(e, r) ? s.bind(e) : (...e) => X(p.value, o)?.(...e);
 			}
-			let c = e(() => X(f.value, o));
+			let c = e(() => X(p.value, o));
 			return new Proxy(c, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let e = X(f.value, t);
+			let e = X(p.value, t);
 			return Z(e) ? Reflect.ownKeys(e) : [];
 		},
 		getOwnPropertyDescriptor() {
@@ -369,11 +369,23 @@ var m = {
 		}
 	});
 	return m([]);
-}, Se = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" }, Ce = n({
+}, xe = n({
 	__name: "MockBanner",
-	setup(e) {
-		let { a: n } = xe(m);
-		return (e, r) => (c(), t("div", Se, u(f(n)), 1));
+	setup(e, { expose: t }) {
+		t();
+		let { a: n } = be(p), r = { message: n };
+		return Object.defineProperty(r, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), r;
 	}
-});
-export { Ce as default };
+}), Se = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Ce = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" };
+function we(e, n, r, i, a, o) {
+	return c(), t("div", Ce, d(i.message), 1);
+}
+var Te = Se(xe, [["render", we], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/MockBanner.vue"]]);
+export { Te as default };

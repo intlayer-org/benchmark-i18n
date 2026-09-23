@@ -1,5 +1,5 @@
-import { Fragment as e, computed as t, createElementBlock as n, createElementVNode as r, createTextVNode as i, defineComponent as a, getCurrentInstance as o, h as s, inject as c, isRef as l, markRaw as u, normalizeClass as d, openBlock as f, ref as p, renderList as m, shallowRef as h, toDisplayString as g, toValue as _, unref as v, watch as y } from "vue";
-var b = {
+import { Fragment as e, computed as t, createElementBlock as n, createElementVNode as r, createTextVNode as i, defineComponent as a, getCurrentInstance as o, h as s, inject as c, isRef as l, markRaw as u, normalizeClass as d, openBlock as f, ref as p, renderList as m, shallowRef as h, toDisplayString as g, toValue as _, watch as v } from "vue";
+var y = {
 	key: "pricing-tiers",
 	content: {
 		nodeType: "translation",
@@ -366,7 +366,7 @@ var b = {
 			}
 		}
 	}
-}, x = ({ value: e, children: t, additionalProps: n = {} }) => {
+}, b = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = p(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -384,7 +384,7 @@ var b = {
 			return r.value;
 		},
 		use(e) {
-			return x({
+			return b({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -395,14 +395,14 @@ var b = {
 		},
 		...n
 	}), u(o);
-}, S = "translation", C = "object", w = "array", T = (e, t) => {
-	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => T(e, t));
+}, x = "translation", S = "object", C = "array", w = (e, t) => {
+	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => w(e, t));
 	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
-	if (Array.isArray(e)) return e.map((e, n) => T(e, {
+	if (Array.isArray(e)) return e.map((e, n) => w(e, {
 		...t,
 		children: e,
 		keyPath: [...t.keyPath, {
-			type: w,
+			type: C,
 			key: n
 		}]
 	}));
@@ -415,10 +415,10 @@ var b = {
 				...t,
 				children: e[r],
 				keyPath: [...t.keyPath, {
-					type: C,
+					type: S,
 					key: r
 				}]
-			}, i = T(e[r], n);
+			}, i = w(e[r], n);
 			return Object.defineProperty(this, r, {
 				value: i,
 				enumerable: !0,
@@ -427,7 +427,7 @@ var b = {
 		}
 	});
 	return n;
-}, E = {
+}, T = {
 	locales: [
 		"en",
 		"fr",
@@ -454,20 +454,20 @@ var b = {
 	],
 	strictMode: "inclusive",
 	defaultLocale: "en"
-}, D = (e) => {
+}, E = (e) => {
 	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
 	let t = Object.getPrototypeOf(e);
 	return t === Object.prototype || t === null || Array.isArray(e);
-}, O = (e, t) => {
+}, D = (e, t) => {
 	if (e === void 0) return t;
 	if (t === void 0 || Array.isArray(e)) return e;
-	if (D(e) && D(t)) {
+	if (E(e) && E(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : O(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : D(e[r], t[r]));
 		return n;
 	}
 	return e;
-}, k = (e, t, n) => {
+}, O = (e, t, n) => {
 	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
 		e && !i.has(e) && (i.add(e), a.push(e));
 	};
@@ -483,12 +483,12 @@ var b = {
 			s.push(t);
 		}
 	}
-	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => O(e, t));
-}, A = {
+	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => D(e, t));
+}, k = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, j = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? A : {
+}, A = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? k : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -498,38 +498,38 @@ var b = {
 				...r,
 				children: a[e],
 				keyPath: [...r.keyPath, {
-					type: S,
+					type: x,
 					key: e
 				}]
 			};
 			o[e] = i(a[e], t);
 		}
-		return k(o, e, t);
+		return O(o, e, t);
 	}
-}, M = A, N = A, P = A, F = A, I = (e) => A, L = A, R = (e, t = !0) => [
-	j(e ?? E.defaultLocale, t ? E.defaultLocale : void 0),
+}, j = k, M = k, ee = k, N = k, P = (e) => k, F = k, I = (e, t = !0) => [
+	A(e ?? T.defaultLocale, t ? T.defaultLocale : void 0),
+	j,
 	M,
-	N,
-	P,
-	I(e ?? E.defaultLocale),
-	L,
-	F
-], z = (e, t, n = []) => T(e, {
+	ee,
+	P(e ?? T.defaultLocale),
+	F,
+	N
+], L = (e, t, n = []) => w(e, {
 	...t,
 	plugins: n
-}), B = (e, t, n = R(t)) => {
+}), R = (e, t, n = I(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return z(e.content, r, n);
-}, V = {
+	return L(e.content, r, n);
+}, z = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => x({
+		let r = (e) => b({
 			...n,
 			value: e,
 			children: e
@@ -547,38 +547,38 @@ var b = {
 		}
 		return u(a);
 	}
-}, H = A, U = A, W = A, G = /* @__PURE__ */ new Map(), K = (e, t = !0) => {
-	let n = `${e ?? E.defaultLocale}_${t}`;
-	if (G.has(n)) return G.get(n);
+}, B = k, V = k, H = k, U = /* @__PURE__ */ new Map(), W = (e, t = !0) => {
+	let n = `${e ?? T.defaultLocale}_${t}`;
+	if (U.has(n)) return U.get(n);
 	let r = [
-		j(e ?? E.defaultLocale, t ? E.defaultLocale : void 0),
+		A(e ?? T.defaultLocale, t ? T.defaultLocale : void 0),
+		j,
 		M,
-		N,
-		I(e ?? E.defaultLocale),
-		L,
+		P(e ?? T.defaultLocale),
 		F,
+		N,
+		z,
+		B,
 		V,
-		H,
-		U,
-		W
+		H
 	];
-	return G.set(n, r), r;
-}, q = (e, t) => B(e, t, K(t)), J = Symbol("intlayer"), Y = (e, t) => t.reduce((e, t) => e?.[t], e), X = (e) => typeof e == "object" && !!e, Z = (e) => typeof e == "function" || X(e) && ("render" in e || "setup" in e), Q = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, $ = (e) => u(a({
+	return U.set(n, r), r;
+}, G = (e, t) => R(e, t, W(t)), K = Symbol("intlayer"), q = (e, t) => t.reduce((e, t) => e?.[t], e), J = (e) => typeof e == "object" && !!e, Y = (e) => typeof e == "function" || J(e) && ("render" in e || "setup" in e), X = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, Z = (e) => u(a({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : Z(t) ? s(t) : Array.isArray(t) ? s("span", t) : t;
+			return t == null ? null : Y(t) ? s(t) : Array.isArray(t) ? s("span", t) : t;
 		};
 	}
-})), ee = (e) => new Proxy({}, {
+})), Q = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
 		if (n === "value") return r ?? "";
 		if (n === "$raw") return e;
 		if (n === "__v_skip") return !0;
-		if (n === "c" || n === "asComponent") return $(() => e.value);
+		if (n === "c" || n === "asComponent") return Z(() => e.value);
 		if (r == null) return n === Symbol.toPrimitive || n === "toString" ? () => "" : void 0;
 		let i = r[n];
 		return typeof i == "function" ? i.bind(r) : i;
@@ -594,9 +594,9 @@ var b = {
 		};
 	}
 }), te = (e, n) => {
-	let r = o() ? c(J) : void 0, i = l(r?.locale) ? r.locale : p(r?.locale ?? E.defaultLocale), a = t(() => (n === void 0 ? void 0 : _(n)) ?? i.value), s = h({});
-	y([() => _(e), () => a.value], ([e, t]) => {
-		s.value = q(e, t);
+	let r = o() ? c(K) : void 0, i = l(r?.locale) ? r.locale : p(r?.locale ?? T.defaultLocale), a = t(() => (n === void 0 ? void 0 : _(n)) ?? i.value), s = h({});
+	v([() => _(e), () => a.value], ([e, t]) => {
+		s.value = G(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -604,23 +604,23 @@ var b = {
 	let u = (e) => new Proxy({}, {
 		get(n, r, i) {
 			if (r === "__v_isRef") return !0;
-			let a = t(() => Y(s.value, e));
+			let a = t(() => q(s.value, e));
 			if (r === "value") return a.value ?? "";
 			if (r === "then") return;
-			if (r === "c" || r === "asComponent") return $(() => a.value);
+			if (r === "c" || r === "asComponent") return Z(() => a.value);
 			if (r === "$raw") return a;
 			if (r === Symbol.toPrimitive) return () => a.value;
-			let o = e.concat(r), c = Y(s.value, o);
-			if (c === void 0 || X(c) && !Z(c)) return u(o);
-			if (Q(c)) return ee(t(() => Y(s.value, o)));
-			let l = t(() => Y(s.value, o));
+			let o = e.concat(r), c = q(s.value, o);
+			if (c === void 0 || J(c) && !Y(c)) return u(o);
+			if (X(c)) return Q(t(() => q(s.value, o)));
+			let l = t(() => q(s.value, o));
 			return new Proxy(l, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let t = Y(s.value, e);
-			return X(t) ? Reflect.ownKeys(t) : [];
+			let t = q(s.value, e);
+			return J(t) ? Reflect.ownKeys(t) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -630,45 +630,73 @@ var b = {
 		}
 	});
 	return u([]);
-}, ne = { class: "grid gap-6 md:grid-cols-3" }, re = { class: "text-lg font-semibold text-foreground" }, ie = { class: "my-4" }, ae = { class: "text-3xl font-bold text-foreground" }, oe = { class: "text-sm text-muted-foreground" }, se = { class: "mb-6 flex-1 space-y-2" }, ce = a({
+}, ne = a({
 	__name: "PricingTiers",
-	setup(a) {
-		let { l: o, n: s, m: c, k: l, h: u, j: p, i: h, g: _, c: y, e: x, d: S, b: C, a: w, f: T } = te(b), E = t(() => [
-			{
-				name: o.value,
-				price: s.value,
-				period: c.value,
-				features: l.value
-			},
-			{
-				name: u.value,
-				price: p.value,
-				period: h.value,
-				features: _.value,
-				highlighted: !0
-			},
-			{
-				name: y.value,
-				price: x.value,
-				period: S.value,
-				features: C.value
-			}
-		]);
-		return (t, a) => (f(), n("div", ne, [(f(!0), n(e, null, m(E.value, (t) => (f(), n("div", {
-			key: t.name,
-			class: d(["flex flex-col rounded-lg border p-6", t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"])
-		}, [
-			r("h3", re, g(t.name), 1),
-			r("div", ie, [r("span", ae, g(t.price), 1), r("span", oe, g(t.period), 1)]),
-			r("ul", se, [(f(!0), n(e, null, m(t.features, (e) => (f(), n("li", {
-				key: e,
-				class: "flex items-center gap-2 text-sm text-muted-foreground"
-			}, [a[0] ||= r("span", { class: "text-primary" }, "✓", -1), i(" " + g(e), 1)]))), 128))]),
-			r("button", {
-				type: "button",
-				class: d(["w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90", t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"])
-			}, g(t.name === v(y) ? v(w) : v(T)), 3)
-		], 2))), 128))]));
+	setup(e, { expose: n }) {
+		n();
+		let { l: r, n: i, m: a, k: o, h: s, j: c, i: l, g: u, c: d, e: f, d: p, b: m, a: h, f: g } = te(y), _ = {
+			starterName: r,
+			starterPrice: i,
+			starterPeriod: a,
+			starterFeatures: o,
+			proName: s,
+			proPrice: c,
+			proPeriod: l,
+			proFeatures: u,
+			enterpriseName: d,
+			enterprisePrice: f,
+			enterprisePeriod: p,
+			enterpriseFeatures: m,
+			contactSales: h,
+			getStarted: g,
+			tiers: t(() => [
+				{
+					name: r.value,
+					price: i.value,
+					period: a.value,
+					features: o.value
+				},
+				{
+					name: s.value,
+					price: c.value,
+					period: l.value,
+					features: u.value,
+					highlighted: !0
+				},
+				{
+					name: d.value,
+					price: f.value,
+					period: p.value,
+					features: m.value
+				}
+			])
+		};
+		return Object.defineProperty(_, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), _;
 	}
-});
-export { ce as default };
+}), re = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, ie = { class: "grid gap-6 md:grid-cols-3" }, ae = { class: "text-lg font-semibold text-foreground" }, $ = { class: "my-4" }, oe = { class: "text-3xl font-bold text-foreground" }, se = { class: "text-sm text-muted-foreground" }, ce = { class: "mb-6 flex-1 space-y-2" };
+function le(t, a, o, s, c, l) {
+	return f(), n("div", ie, [(f(!0), n(e, null, m(s.tiers, (t) => (f(), n("div", {
+		key: t.name,
+		class: d(["flex flex-col rounded-lg border p-6", t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"])
+	}, [
+		r("h3", ae, g(t.name), 1),
+		r("div", $, [r("span", oe, g(t.price), 1), r("span", se, g(t.period), 1)]),
+		r("ul", ce, [(f(!0), n(e, null, m(t.features, (e) => (f(), n("li", {
+			key: e,
+			class: "flex items-center gap-2 text-sm text-muted-foreground"
+		}, [a[0] ||= r("span", { class: "text-primary" }, "✓", -1), i(" " + g(e), 1)]))), 128))]),
+		r("button", {
+			type: "button",
+			class: d(["w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90", t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"])
+		}, g(t.name === s.enterpriseName ? s.contactSales : s.getStarted), 3)
+	], 2))), 128))]);
+}
+var ue = re(ne, [["render", le], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/pages/pricing/PricingTiers.vue"]]);
+export { ue as default };

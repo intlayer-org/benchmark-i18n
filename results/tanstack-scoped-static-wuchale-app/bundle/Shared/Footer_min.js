@@ -1,8 +1,12 @@
 import "react";
 import { Link as e, useParams as t } from "@tanstack/react-router";
-import { Fragment as n, jsx as r, jsxs as i } from "react/jsx-runtime";
-var a = () => "";
-function o(e, t = [], n = 1) {
+import { Fragment as n, jsxDEV as r } from "react/jsx-dev-runtime";
+var i = () => "";
+i = (e, t) => {
+	let n = t[e];
+	return n == null ? `[i18n-404:${e}]` : `[i18n-400:${e}(${n})]`;
+};
+function a(e, t = [], n = 1) {
 	let r = "";
 	for (let i = n; i < e.length; i++) {
 		let n = e[i];
@@ -10,12 +14,12 @@ function o(e, t = [], n = 1) {
 	}
 	return r;
 }
-function s(e = { c: [] }, t = "") {
+function o(e = { c: [] }, t = "") {
 	let n = (t) => {
 		let n = e.c[t];
-		return typeof n == "string" ? [n] : Array.isArray(n) ? n : [a(t, e.c)];
-	}, r = (e, t = []) => o(n(e), t, 0);
-	return r._ = e, r.l = t, r.c = n, r.x = o, r.t = (e, t, r) => {
+		return typeof n == "string" ? [n] : Array.isArray(n) ? n : [i(t, e.c)];
+	}, r = (e, t = []) => a(n(e), t, 0);
+	return r._ = e, r.l = t, r.c = n, r.x = a, r.t = (e, t, r) => {
 		let i = [""], a = [];
 		for (let e of n(t)) {
 			if (typeof e == "string") {
@@ -25,9 +29,9 @@ function s(e = { c: [] }, t = "") {
 			a.push(r?.[e]), i.push("");
 		}
 		return e(Object.assign(i, { raw: i }), ...a);
-	}, r.p = (t, n) => e.c[t]?.map((e) => typeof e == "string" ? e : o(e, n, 0)) ?? [], r;
+	}, r.p = (t, n) => e.c[t]?.map((e) => typeof e == "string" ? e : a(e, n, 0)) ?? [], r;
 }
-function c(e) {
+function s(e) {
 	return {
 		get: (t) => e[t],
 		set: (t, n) => {
@@ -35,29 +39,29 @@ function c(e) {
 		}
 	};
 }
-var l = {}, u = s();
-function d(e, t, n, r) {
-	l[e] = {
+var c = {}, l = o();
+function u(e, t, n, r) {
+	c[e] = {
 		load: t,
 		catalogs: Array(n).fill(void 0),
-		collection: r ?? c([])
+		collection: r ?? s([])
 	};
-	for (let t = 0; t < n; t++) l[e].collection.set(t, u);
-	return (t = 0) => l[e].collection.get(t);
+	for (let t = 0; t < n; t++) c[e].collection.set(t, l);
+	return (t = 0) => c[e].collection.get(t);
 }
-function f(e) {
-	for (let t of Object.values(l)) for (let [n, r] of t.catalogs.entries()) t.collection.set(n, s(r, e));
+function d(e) {
+	for (let t of Object.values(c)) for (let [n, r] of t.catalogs.entries()) t.collection.set(n, o(r, e));
 }
-async function p(e, t = !0) {
+async function f(e, t = !0) {
 	let n = [], r = [];
-	for (let t of Object.values(l)) for (let i = 0; i < t.catalogs.length; i++) n.push(t.load(i, e)), r.push([i, t]);
+	for (let t of Object.values(c)) for (let i = 0; i < t.catalogs.length; i++) n.push(t.load(i, e)), r.push([i, t]);
 	for (let [e, t] of (await Promise.all(n)).entries()) {
 		let [n, i] = r[e];
 		i.catalogs[n] = t;
 	}
-	t && f(e);
+	t && d(e);
 }
-var m = {
+var p = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
 	fr: [() => import("./shared.0.fr.compiled-DDY-COJ8.js")],
@@ -68,72 +72,136 @@ var m = {
 	ja: [() => import("./shared.0.ja.compiled-CF_vYGhT.js")],
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
-}, h = d("shared", (e, t) => m[t][e](), 1);
+}, m = u("shared", (e, t) => p[t][e](), 1), h = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/Footer.tsx";
 function g() {
-	let n = t({ strict: !1 }).locale ?? "en", a = h(), o = [
+	let n = t({ strict: !1 }).locale ?? "en", i = m(), a = [
 		{
-			label: a(7),
+			label: i(7),
 			href: "https://github.com/intlayer-org/benchmark-i18n",
 			isInternal: !1
 		},
 		{
-			label: a(1),
+			label: i(1),
 			to: "/$locale/about",
 			isInternal: !0
 		},
 		{
-			label: a(8),
+			label: i(8),
 			to: "/$locale/contact",
 			isInternal: !0
 		}
 	];
 	return r("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: i("div", {
+		children: r("div", {
 			className: "container py-8",
-			children: [i("div", {
+			children: [r("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					i("div", { children: [r("h3", {
+					r("div", { children: [r("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: a(0)
-					}), r("p", {
+						children: i(0)
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 32,
+						columnNumber: 13
+					}, this), r("p", {
 						className: "text-sm text-muted-foreground",
-						children: a(9)
-					})] }),
-					i("div", { children: [r("h3", {
+						children: i(9)
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 35,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: h,
+						lineNumber: 31,
+						columnNumber: 11
+					}, this),
+					r("div", { children: [r("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: a(10)
-					}), r("ul", {
+						children: i(10)
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 40,
+						columnNumber: 13
+					}, this), r("ul", {
 						className: "space-y-1",
-						children: o.map((t) => r("li", { children: t.isInternal ? r(e, {
+						children: a.map((t) => r("li", { children: t.isInternal ? r(e, {
 							preload: !1,
 							to: t.to,
 							params: { locale: n },
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: t.label
-						}) : r("a", {
+						}, void 0, !1, {
+							fileName: h,
+							lineNumber: 47,
+							columnNumber: 21
+						}, this) : r("a", {
 							href: t.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: t.label
-						}) }, t.label))
-					})] }),
-					i("div", { children: [r("h3", {
+						}, void 0, !1, {
+							fileName: h,
+							lineNumber: 56,
+							columnNumber: 21
+						}, this) }, t.label, !1, {
+							fileName: h,
+							lineNumber: 45,
+							columnNumber: 17
+						}, this))
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 43,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: h,
+						lineNumber: 39,
+						columnNumber: 11
+					}, this),
+					r("div", { children: [r("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: a(11)
-					}), r("p", {
+						children: i(11)
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 70,
+						columnNumber: 13
+					}, this), r("p", {
 						className: "text-sm text-muted-foreground",
-						children: a(12)
-					})] })
+						children: i(12)
+					}, void 0, !1, {
+						fileName: h,
+						lineNumber: 73,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: h,
+						lineNumber: 69,
+						columnNumber: 11
+					}, this)
 				]
-			}), r("div", {
+			}, void 0, !0, {
+				fileName: h,
+				lineNumber: 30,
+				columnNumber: 9
+			}, this), r("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
-				children: a(13)
-			})]
-		})
-	});
+				children: i(13)
+			}, void 0, !1, {
+				fileName: h,
+				lineNumber: 78,
+				columnNumber: 9
+			}, this)]
+		}, void 0, !0, {
+			fileName: h,
+			lineNumber: 29,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: h,
+		lineNumber: 28,
+		columnNumber: 5
+	}, this);
 }
 var _ = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
@@ -147,7 +215,7 @@ var _ = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-d("about", (e, t) => _[t][e](), 1);
+u("about", (e, t) => _[t][e](), 1);
 var v = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -160,7 +228,7 @@ var v = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-d("blog", (e, t) => v[t][e](), 1);
+u("blog", (e, t) => v[t][e](), 1);
 var y = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -173,7 +241,7 @@ var y = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-d("careers", (e, t) => y[t][e](), 1);
+u("careers", (e, t) => y[t][e](), 1);
 var b = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -186,7 +254,7 @@ var b = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-d("contact", (e, t) => b[t][e](), 1);
+u("contact", (e, t) => b[t][e](), 1);
 var x = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -199,7 +267,7 @@ var x = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-d("faq", (e, t) => x[t][e](), 1);
+u("faq", (e, t) => x[t][e](), 1);
 var S = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -212,7 +280,7 @@ var S = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-d("home", (e, t) => S[t][e](), 1);
+u("home", (e, t) => S[t][e](), 1);
 var C = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -225,7 +293,7 @@ var C = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-d("pricing", (e, t) => C[t][e](), 1);
+u("pricing", (e, t) => C[t][e](), 1);
 var w = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -238,7 +306,7 @@ var w = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-d("products", (e, t) => w[t][e](), 1);
+u("products", (e, t) => w[t][e](), 1);
 var T = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -251,7 +319,7 @@ var T = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-d("route", (e, t) => T[t][e](), 1);
+u("route", (e, t) => T[t][e](), 1);
 var E = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -264,7 +332,7 @@ var E = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-d("settings", (e, t) => E[t][e](), 1);
+u("settings", (e, t) => E[t][e](), 1);
 var D = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -277,14 +345,29 @@ var D = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-d("team", (e, t) => D[t][e](), 1), p("en");
-function O({ children: e }) {
-	return r(n, { children: e });
+u("team", (e, t) => D[t][e](), 1);
+var O = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
+f("en");
+function k({ children: e }) {
+	return r(n, { children: e }, void 0, !1, {
+		fileName: O,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
-function k() {
-	return r(O, { children: r(g, {}) });
+var A = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/Footer.wrapper.tsx";
+function j() {
+	return r(k, { children: r(g, {}, void 0, !1, {
+		fileName: A,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: A,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { k as default };
+export { j as default };
 var e = [
 	"i18n Benchmark",
 	"Methodik",

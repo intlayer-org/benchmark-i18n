@@ -1,5 +1,5 @@
 import { createContext, createElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -2422,90 +2422,179 @@ function I18nextProvider({ i18n, defaultNS, children }) {
 	}), [i18n, defaultNS]);
 	return createElement(I18nContext.Provider, { value }, children);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/pages/home/UnderstandingImpact.tsx";
 function UnderstandingImpact() {
 	const { t } = useTranslation("home");
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
-			jsx("h2", {
+			jsxDEV("h2", {
 				className: "text-2xl font-bold text-foreground",
 				children: t("understandingImpact.understandingTheImpact")
-			}),
-			jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 9,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsx("h3", {
+					jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("understandingImpact.whyASingleLargeJson")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 14,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("understandingImpact.manyI18nLibrariesStoreTranslations")
-					}),
-					jsxs("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 17,
+						columnNumber: 9
+					}, this),
+					jsxDEV("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							jsx("li", { children: t("understandingImpact.theJsonMustBeParsed") }),
-							jsx("li", { children: t("understandingImpact.contextBasedArchitecturesCanCause") }),
-							jsx("li", { children: t("understandingImpact.duringServerSideRenderingThe") })
+							jsxDEV("li", { children: t("understandingImpact.theJsonMustBeParsed") }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 21,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: t("understandingImpact.contextBasedArchitecturesCanCause") }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 22,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: t("understandingImpact.duringServerSideRenderingThe") }, void 0, false, {
+								fileName: _jsxFileName$3,
+								lineNumber: 23,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 20,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 13,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsx("h3", {
+					jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: t("understandingImpact.theTradeOffsOfDynamic")
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 28,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("understandingImpact.splittingTranslationsIntoPerRoute")
-					}),
-					jsxs("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 31,
+						columnNumber: 9
+					}, this),
+					jsxDEV("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							jsxs("li", { children: [
-								jsx("strong", {
+							jsxDEV("li", { children: [
+								jsxDEV("strong", {
 									className: "text-foreground",
 									children: t("understandingImpact.waterfallRequests")
-								}),
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 36,
+									columnNumber: 13
+								}, this),
 								" ",
 								"the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
-							] }),
-							jsxs("li", { children: [
-								jsx("strong", {
+							] }, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 35,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: [
+								jsxDEV("strong", {
 									className: "text-foreground",
 									children: t("understandingImpact.flashOfUntranslatedContentFouc")
-								}),
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 43,
+									columnNumber: 13
+								}, this),
 								" ",
 								"users may briefly see translation keys or a fallback language before the chunk arrives."
-							] }),
-							jsxs("li", { children: [
-								jsx("strong", {
+							] }, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 42,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: [
+								jsxDEV("strong", {
 									className: "text-foreground",
 									children: t("understandingImpact.cacheInvalidation")
-								}),
+								}, void 0, false, {
+									fileName: _jsxFileName$3,
+									lineNumber: 50,
+									columnNumber: 13
+								}, this),
 								" ",
 								"updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
-							] })
+							] }, void 0, true, {
+								fileName: _jsxFileName$3,
+								lineNumber: 49,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 34,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 27,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [jsx("h3", {
+				children: [jsxDEV("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: t("understandingImpact.whatThisBenchmarkMeasures")
-				}), jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 60,
+					columnNumber: 9
+				}, this), jsxDEV("p", {
 					className: "text-sm text-muted-foreground",
 					children: t("understandingImpact.thisTestAppProvidesA")
-				})]
-			})
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 63,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 59,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -5192,6 +5281,7 @@ instance.use(initReactI18next).init({
 	react: { useSuspense: false }
 });
 var i18n_default = instance;
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -5207,15 +5297,33 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nextProvider, {
+	return jsxDEV(I18nextProvider, {
 		i18n: i18n_default,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 38,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/pages/home/UnderstandingImpact.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(UnderstandingImpact, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(UnderstandingImpact, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

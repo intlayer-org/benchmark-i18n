@@ -1,5 +1,5 @@
 import "react";
-import { Fragment, jsx } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var URLPattern = {};
 var locales = [
 	"en",
@@ -186,14 +186,33 @@ var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/EmptyComponent.tsx";
 function EmptyComponent() {
-	return jsx(Fragment, {});
+	return jsxDEV(Fragment, {}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 22,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/LibWrapper.tsx";
 setLocale("en", { reload: false });
 function LibWrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 7,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/EmptyComponent.wrapper.tsx";
 function Wrapped() {
-	return jsx(LibWrapper, { children: jsx(EmptyComponent, {}) });
+	return jsxDEV(LibWrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

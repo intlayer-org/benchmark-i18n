@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
@@ -236,16 +236,29 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/about/AboutHeader.tsx";
 function AboutHeader() {
 	const t = useI18n();
 	usePerformanceMeasure("AboutHeader");
-	return jsxs(Fragment, { children: [jsx("h1", {
+	return jsxDEV(Fragment, { children: [jsxDEV("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: t("about.about-header.aboutThisBenchmark")
-	}), jsx("p", {
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 11,
+		columnNumber: 7
+	}, this), jsxDEV("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: t("about.about-header.thisIsAnOpenSource")
-	})] });
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 14,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 10,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -269,6 +282,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -280,20 +294,38 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/pages/about/AboutHeader.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(AboutHeader, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(AboutHeader, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 import { t as flattenMessages } from "./flatten-C1nycfDa.js";

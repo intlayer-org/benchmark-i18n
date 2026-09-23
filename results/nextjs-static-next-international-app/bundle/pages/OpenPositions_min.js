@@ -1,17 +1,17 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { Fragment as r, jsx as i, jsxs as a } from "react/jsx-runtime";
-var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), s = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { Fragment as r, jsxDEV as i } from "react/jsx-dev-runtime";
+var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), o = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), c = o((() => {})), l = o(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
+}), s = a((() => {})), c = a(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, c = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
 		value: n
 	}) : e[t] = n, p = (e, t) => {
 		for (var n in t ||= {}) u.call(t, n) && f(e, n, t[n]);
-		if (o) for (var n of o(t)) d.call(t, n) && f(e, n, t[n]);
+		if (c) for (var n of c(t)) d.call(t, n) && f(e, n, t[n]);
 		return e;
 	}, m = (e, t) => {
 		for (var n in t) r(e, n, {
@@ -28,8 +28,8 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		value: e,
 		enumerable: !0
 	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), c();
-	var y = s("next/navigation"), b = g(s("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	m(v, { createI18nClient: () => V }), t.exports = _(v), s();
+	var y = o("next/navigation"), b = g(o("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -53,7 +53,7 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			}, i));
 		};
 	}
-	var D = s("react"), O = s("react"), k = s("react");
+	var D = o("react"), O = o("react"), k = o("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -87,7 +87,7 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = s("react");
+	var M = o("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -95,7 +95,7 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = s("next/navigation");
+	var P = o("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -117,7 +117,7 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return e;
 		};
 	}
-	var L = s("next/navigation"), R = s("react"), z = "locale";
+	var L = o("next/navigation"), R = o("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -140,7 +140,7 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		};
 	}
 	0 && (t.exports = { createI18nClient: V });
-}))(), u = {
+}))(), l = {
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -610,15 +610,15 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
 };
-function d(e, t = "") {
+function u(e, t = "") {
 	let n = {};
 	for (let r in e) {
 		let i = t ? `${t}.${r}` : r;
-		typeof e[r] == "object" && e[r] !== null ? Object.assign(n, d(e[r], i)) : n[i] = String(e[r]);
+		typeof e[r] == "object" && e[r] !== null ? Object.assign(n, u(e[r], i)) : n[i] = String(e[r]);
 	}
 	return n;
 }
-var f = d(u), p = d({
+var d = u(l), f = u({
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -1087,7 +1087,7 @@ var f = d(u), p = d({
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}), m = d({
+}), p = u({
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -1556,7 +1556,7 @@ var f = d(u), p = d({
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}), h = d({
+}), m = u({
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -2025,7 +2025,7 @@ var f = d(u), p = d({
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}), g = d({
+}), h = u({
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -2494,7 +2494,7 @@ var f = d(u), p = d({
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}), _ = d({
+}), g = u({
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -2963,7 +2963,7 @@ var f = d(u), p = d({
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}), v = d({
+}), _ = u({
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -3432,7 +3432,7 @@ var f = d(u), p = d({
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}), y = d({
+}), v = u({
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -3901,7 +3901,7 @@ var f = d(u), p = d({
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}), b = d({
+}), y = u({
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -4370,7 +4370,7 @@ var f = d(u), p = d({
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}), x = d({
+}), b = u({
 	"careers-header": {
 		title: "Careers",
 		joinOurMissionToImprove: "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
@@ -4839,24 +4839,24 @@ var f = d(u), p = d({
 		dynamicLoading: "Dynamic Loading",
 		loadingAllTranslationsUpfrontOverloads: "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
 	}
-}), S = (0, l.createI18nClient)({
-	en: () => Promise.resolve({ default: p }),
-	fr: () => Promise.resolve({ default: h }),
-	es: () => Promise.resolve({ default: m }),
-	de: () => Promise.resolve({ default: f }),
-	it: () => Promise.resolve({ default: g }),
-	pt: () => Promise.resolve({ default: y }),
-	zh: () => Promise.resolve({ default: x }),
-	ja: () => Promise.resolve({ default: _ }),
-	ko: () => Promise.resolve({ default: v }),
-	ru: () => Promise.resolve({ default: b })
+}), x = (0, c.createI18nClient)({
+	en: () => Promise.resolve({ default: f }),
+	fr: () => Promise.resolve({ default: m }),
+	es: () => Promise.resolve({ default: p }),
+	de: () => Promise.resolve({ default: d }),
+	it: () => Promise.resolve({ default: h }),
+	pt: () => Promise.resolve({ default: v }),
+	zh: () => Promise.resolve({ default: b }),
+	ja: () => Promise.resolve({ default: g }),
+	ko: () => Promise.resolve({ default: _ }),
+	ru: () => Promise.resolve({ default: y })
 });
-function C() {
-	return S.useI18n();
+function S() {
+	return x.useI18n();
 }
-var { useScopedI18n: w, I18nProviderClient: T, useChangeLocale: E, useCurrentLocale: D } = S;
+var { useScopedI18n: C, I18nProviderClient: w, useChangeLocale: T, useCurrentLocale: E } = x, D = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/pages/careers/OpenPositions.tsx";
 function O() {
-	let e = C(), t = [
+	let e = S(), t = [
 		{
 			title: e("careers.open-positions.seniorFrontendEngineer"),
 			location: e("careers.open-positions.remote"),
@@ -4893,46 +4893,94 @@ function O() {
 			description: e("careers.open-positions.ensureTheAccuracyAndReliability")
 		}
 	];
-	return a(r, { children: [i("h2", {
+	return i(r, { children: [i("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: e("careers.open-positions.openPositions")
-	}), i("div", {
+	}, void 0, !1, {
+		fileName: D,
+		lineNumber: 48,
+		columnNumber: 7
+	}, this), i("div", {
 		className: "space-y-4",
-		children: t.map((t) => a("div", {
+		children: t.map((t) => i("div", {
 			className: "flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between",
-			children: [a("div", { children: [
+			children: [i("div", { children: [
 				i("h3", {
 					className: "text-base font-semibold text-foreground",
 					children: t.title
-				}),
+				}, void 0, !1, {
+					fileName: D,
+					lineNumber: 58,
+					columnNumber: 15
+				}, this),
 				i("p", {
 					className: "text-sm text-muted-foreground",
 					children: t.description
-				}),
-				a("div", {
+				}, void 0, !1, {
+					fileName: D,
+					lineNumber: 61,
+					columnNumber: 15
+				}, this),
+				i("div", {
 					className: "mt-2 flex gap-2",
 					children: [
 						i("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: t.dept
-						}),
+						}, void 0, !1, {
+							fileName: D,
+							lineNumber: 63,
+							columnNumber: 17
+						}, this),
 						i("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: t.location
-						}),
+						}, void 0, !1, {
+							fileName: D,
+							lineNumber: 66,
+							columnNumber: 17
+						}, this),
 						i("span", {
 							className: "rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground",
 							children: t.type
-						})
+						}, void 0, !1, {
+							fileName: D,
+							lineNumber: 69,
+							columnNumber: 17
+						}, this)
 					]
-				})
-			] }), i("button", {
+				}, void 0, !0, {
+					fileName: D,
+					lineNumber: 62,
+					columnNumber: 15
+				}, this)
+			] }, void 0, !0, {
+				fileName: D,
+				lineNumber: 57,
+				columnNumber: 13
+			}, this), i("button", {
 				type: "button",
 				className: "shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: e("careers.open-positions.applyNow")
-			})]
-		}, t.title))
-	})] });
+			}, void 0, !1, {
+				fileName: D,
+				lineNumber: 74,
+				columnNumber: 13
+			}, this)]
+		}, t.title, !0, {
+			fileName: D,
+			lineNumber: 53,
+			columnNumber: 11
+		}, this))
+	}, void 0, !1, {
+		fileName: D,
+		lineNumber: 51,
+		columnNumber: 7
+	}, this)] }, void 0, !0, {
+		fileName: D,
+		lineNumber: 47,
+		columnNumber: 5
+	}, this);
 }
 function k() {
 	if (!(typeof window > "u")) {
@@ -4953,7 +5001,8 @@ function A(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function j({ children: r, locale: a }) {
+var j = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/AppProviders.tsx";
+function M({ children: r, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
 		A("AppRoot", o);
@@ -4961,19 +5010,36 @@ function j({ children: r, locale: a }) {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
 		k();
-	}, []), i(T, {
+	}, []), i(w, {
 		locale: a,
 		children: r
-	});
+	}, void 0, !1, {
+		fileName: j,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var M = "en";
-function N({ children: e }) {
-	return i(j, {
-		locale: M,
+var N = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/scripts/Wrapper.tsx", P = "en";
+function F({ children: e }) {
+	return i(M, {
+		locale: P,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: N,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function P() {
-	return i(N, { children: i(O, {}) });
+var I = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/pages/careers/OpenPositions.wrapper.tsx";
+function L() {
+	return i(F, { children: i(O, {}, void 0, !1, {
+		fileName: I,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: I,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { P as default };
+export { L as default };

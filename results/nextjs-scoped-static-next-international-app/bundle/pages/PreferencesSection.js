@@ -1,5 +1,5 @@
 import { useEffect, useId, useLayoutEffect, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
 	if (typeof require !== "undefined") return require.apply(this, arguments);
@@ -3151,67 +3151,168 @@ var client = (0, import_client.createI18nClient)({
 });
 var useScopedI18n = client.useScopedI18n;
 var { I18nProviderClient, useChangeLocale, useCurrentLocale } = client;
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-international-app/components/pages/settings/PreferencesSection.tsx";
 function PreferencesSection() {
 	const scopedT = useScopedI18n("preferences-section");
 	const languageId = useId();
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: scopedT("preferences")
-		}), jsxs("div", {
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this), jsxDEV("div", {
 			className: "space-y-4",
 			children: [
-				jsxs("div", {
+				jsxDEV("div", {
 					className: "flex items-center justify-between",
-					children: [jsxs("div", { children: [jsx("p", {
+					children: [jsxDEV("div", { children: [jsxDEV("p", {
 						className: "text-sm font-medium text-foreground",
 						children: scopedT("emailNotifications")
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 18,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-xs text-muted-foreground",
 						children: scopedT("receiveWeeklyBenchmarkReports")
-					})] }), jsx("button", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 21,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 17,
+						columnNumber: 11
+					}, this), jsxDEV("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-primary transition-colors",
 						"aria-label": scopedT("toggleNotifications"),
-						children: jsx("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
-					})]
-				}),
-				jsxs("div", {
+						children: jsxDEV("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 30,
+							columnNumber: 13
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 25,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 16,
+					columnNumber: 9
+				}, this),
+				jsxDEV("div", {
 					className: "flex items-center justify-between",
-					children: [jsxs("div", { children: [jsx("p", {
+					children: [jsxDEV("div", { children: [jsxDEV("p", {
 						className: "text-sm font-medium text-foreground",
 						children: scopedT("darkMode")
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 35,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-xs text-muted-foreground",
 						children: scopedT("useDarkColorScheme")
-					})] }), jsx("button", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 38,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 34,
+						columnNumber: 11
+					}, this), jsxDEV("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-muted transition-colors",
 						"aria-label": scopedT("toggleDarkMode"),
-						children: jsx("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
-					})]
-				}),
-				jsxs("div", { children: [jsx("label", {
+						children: jsxDEV("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 47,
+							columnNumber: 13
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 42,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 33,
+					columnNumber: 9
+				}, this),
+				jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: languageId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: scopedT("defaultLanguage")
-				}), jsxs("select", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 51,
+					columnNumber: 11
+				}, this), jsxDEV("select", {
 					id: languageId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					children: [
-						jsx("option", { children: scopedT("englishEn") }),
-						jsx("option", { children: scopedT("frenchFr") }),
-						jsx("option", { children: scopedT("germanDe") }),
-						jsx("option", { children: scopedT("spanishEs") }),
-						jsx("option", { children: scopedT("japaneseJa") }),
-						jsx("option", { children: scopedT("chineseSimplifiedZhCn") }),
-						jsx("option", { children: scopedT("arabicAr") })
+						jsxDEV("option", { children: scopedT("englishEn") }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 61,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: scopedT("frenchFr") }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 62,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: scopedT("germanDe") }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 63,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: scopedT("spanishEs") }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 64,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: scopedT("japaneseJa") }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 65,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: scopedT("chineseSimplifiedZhCn") }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 66,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: scopedT("arabicAr") }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 67,
+							columnNumber: 13
+						}, this)
 					]
-				})] })
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 57,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 50,
+					columnNumber: 9
+				}, this)
 			]
-		})]
-	});
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 15,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 11,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -3235,6 +3336,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-international-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -3246,19 +3348,37 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProviderClient, {
+	return jsxDEV(I18nProviderClient, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-international-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(AppProviders, {
+	return jsxDEV(AppProviders, {
 		locale,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-international-app/components/pages/settings/PreferencesSection.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(PreferencesSection, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(PreferencesSection, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

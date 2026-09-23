@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-09-23T23:30:23.739Z",
+  "packageName": "vite-svelte-tolgee-static",
+  "framework": "svelte",
+  "summary": {
+    "totalComponents": 1,
+    "totalUnminifiedBytes": 65324,
+    "totalMinifiedBytes": 42203,
+    "totalGzipBytes": 13361
+  },
+  "components": [
+    {
+      "name": "EmptyComponent.svelte",
+      "category": "Synthetic",
+      "unminifiedBytes": 65324,
+      "unminifiedGzipBytes": 16971,
+      "minifiedBytes": 42203,
+      "minifiedGzipBytes": 13361
+    }
+  ]
+}

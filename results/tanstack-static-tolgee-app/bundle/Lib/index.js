@@ -1,18 +1,6 @@
 import React, { Suspense, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { jsx } from "react/jsx-runtime";
-import en from "../src/i18n/locales/en.json";
-import de from "../src/i18n/locales/de.json";
-import es from "../src/i18n/locales/es.json";
-import fr from "../src/i18n/locales/fr.json";
-import it from "../src/i18n/locales/it.json";
-import ja from "../src/i18n/locales/ja.json";
-import ko from "../src/i18n/locales/ko.json";
-import pt from "../src/i18n/locales/pt.json";
-import ru from "../src/i18n/locales/ru.json";
-import zh from "../src/i18n/locales/zh.json";
 var __defProp = Object.defineProperty;
-var __defProps = Object.defineProperties;
-var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
 var __getOwnPropSymbols = Object.getOwnPropertySymbols;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __propIsEnum = Object.prototype.propertyIsEnumerable;
@@ -29,7 +17,6 @@ var __spreadValues = (a, b) => {
 	}
 	return a;
 };
-var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var _a;
 function _mergeNamespaces(n, m) {
 	for (var i = 0; i < m.length; i++) {
@@ -93,7 +80,7 @@ function unique(arr) {
 function sanitizeUrl(url) {
 	return url ? url.replace(/\/+$/, "") : url;
 }
-function getErrorMessage$1(error) {
+function getErrorMessage(error) {
 	if (typeof error === "string") return error;
 	else if (typeof (error === null || error === void 0 ? void 0 : error.message) === "string") return error.message;
 }
@@ -101,59 +88,30 @@ var defaultFetchFunction = (input, options) => fetch(input, options);
 function headersInitToRecord(headersInit) {
 	return Object.fromEntries(new Headers(headersInit).entries());
 }
-var sdkHeaders = () => ({
-	"x-tolgee-sdk-type": "JS",
-	"x-tolgee-sdk-version": "prerelease"
-});
 var createFetchFunction = (fetchFn = defaultFetchFunction) => {
 	return (input, init) => {
 		let headers = headersInitToRecord(init === null || init === void 0 ? void 0 : init.headers);
-		if (headers["x-api-key"]) headers = Object.assign(Object.assign({}, sdkHeaders()), headers);
+		if (headers["x-api-key"]) headers = Object.assign({
+			"x-tolgee-sdk-type": "JS",
+			"x-tolgee-sdk-version": "prerelease"
+		}, headers);
 		return fetchFn(input, Object.assign(Object.assign({}, init), { headers }));
 	};
 };
-var flattenTranslationsToMap = (data) => {
-	const result = /* @__PURE__ */ new Map();
-	Object.entries(data).forEach(([key, value]) => {
-		if (value === void 0 || value === null) return;
-		if (typeof value === "object") {
-			flattenTranslationsToMap(value).forEach((flatValue, flatKey) => {
-				result.set(key + "." + flatKey, flatValue);
-			});
-			return;
-		}
-		result.set(key, value);
-	});
-	return result;
-};
-var flattenTranslations = (data) => {
-	return Object.fromEntries(flattenTranslationsToMap(data).entries());
-};
-var decodeCacheKey = (key) => {
-	const [firstPart, ...rest] = key.split(":");
-	return {
-		language: firstPart,
-		namespace: rest.join(":") || ""
-	};
-};
-var encodeCacheKey = ({ language, namespace }) => {
-	if (namespace) return `${language}:${namespace}`;
-	else return language;
-};
 var EventEmitter = (type, isActive) => {
-	const handlers = /* @__PURE__ */ new Set();
+	let handlers = [];
 	return {
 		listen(handler) {
 			const handlerWrapper = (e) => {
 				handler(e);
 			};
-			handlers.add(handlerWrapper);
+			handlers.push(handlerWrapper);
 			return { unsubscribe() {
-				handlers.delete(handlerWrapper);
+				handlers = handlers.filter((i) => handlerWrapper !== i);
 			} };
 		},
 		emit(data) {
-			if (isActive()) Array.from(handlers).forEach((handler) => handler({
+			if (isActive()) handlers.forEach((handler) => handler({
 				type,
 				value: data
 			}));
@@ -161,13 +119,13 @@ var EventEmitter = (type, isActive) => {
 	};
 };
 function EventEmitterCombined(isActive) {
-	const handlers = /* @__PURE__ */ new Set();
+	let handlers = [];
 	let queue = [];
 	function solveQueue() {
 		if (queue.length === 0) return;
 		const queueCopy = queue;
 		queue = [];
-		Array.from(handlers).forEach((handler) => {
+		handlers.forEach((handler) => {
 			handler(queueCopy);
 		});
 	}
@@ -176,9 +134,9 @@ function EventEmitterCombined(isActive) {
 			const handlerWrapper = (events) => {
 				handler(events);
 			};
-			handlers.add(handlerWrapper);
+			handlers.push(handlerWrapper);
 			return { unsubscribe() {
-				handlers.delete(handlerWrapper);
+				handlers = handlers.filter((i) => handlerWrapper !== i);
 			} };
 		},
 		emit(e, delayed) {
@@ -255,6 +213,34 @@ var LanguageStorageError = class extends Error {
 		this.cause = cause;
 		this.name = "LanguageStorageError";
 	}
+};
+var flattenTranslationsToMap = (data) => {
+	const result = /* @__PURE__ */ new Map();
+	Object.entries(data).forEach(([key, value]) => {
+		if (value === void 0 || value === null) return;
+		if (typeof value === "object") {
+			flattenTranslationsToMap(value).forEach((flatValue, flatKey) => {
+				result.set(key + "." + flatKey, flatValue);
+			});
+			return;
+		}
+		result.set(key, value);
+	});
+	return result;
+};
+var flattenTranslations = (data) => {
+	return Object.fromEntries(flattenTranslationsToMap(data).entries());
+};
+var decodeCacheKey = (key) => {
+	const [firstPart, ...rest] = key.split(":");
+	return {
+		language: firstPart,
+		namespace: rest.join(":") || ""
+	};
+};
+var encodeCacheKey = ({ language, namespace }) => {
+	if (namespace) return `${language}:${namespace}`;
+	else return language;
 };
 function Cache(events, backendGetRecord, backendGetDevRecord, withDefaultNs, isInitialLoading, fetchingObserver, loadingObserver) {
 	const asyncRequests = /* @__PURE__ */ new Map();
@@ -619,10 +605,9 @@ function Plugins(getLanguage, getInitialOptions, getAvailableLanguages, getFallb
 		findPositions,
 		run() {
 			var _a2, _b;
-			const { apiKey, transport, apiUrl, projectId, branch, observerOptions, tagNewKeys, filterTag } = getInitialOptions();
+			const { apiKey, apiUrl, projectId, branch, observerOptions, tagNewKeys, filterTag } = getInitialOptions();
 			instances.ui = (_a2 = plugins.ui) === null || _a2 === void 0 ? void 0 : _a2.call(plugins, {
 				apiKey,
-				transport,
 				apiUrl,
 				projectId,
 				branch,
@@ -675,11 +660,10 @@ function Plugins(getLanguage, getInitialOptions, getAvailableLanguages, getFallb
 		},
 		getBackendDevRecord: async ({ language, namespace }) => {
 			var _a2;
-			const { apiKey, transport, apiUrl, projectId, branch, filterTag } = getInitialOptions();
-			if (!apiKey && !transport || !apiUrl || !self2.hasDevBackend()) return;
+			const { apiKey, apiUrl, projectId, branch, filterTag } = getInitialOptions();
+			if (!apiKey || !apiUrl || !self2.hasDevBackend()) return;
 			return (_a2 = instances.devBackend) === null || _a2 === void 0 ? void 0 : _a2.getRecord(Object.assign({
 				apiKey,
-				transport,
 				apiUrl,
 				projectId,
 				branch,
@@ -749,7 +733,7 @@ function Plugins(getLanguage, getInitialOptions, getAvailableLanguages, getFallb
 				});
 			} catch (e) {
 				console.error(e);
-				const errorMessage = getErrorMessage$1(e) || DEFAULT_FORMAT_ERROR;
+				const errorMessage = getErrorMessage(e) || DEFAULT_FORMAT_ERROR;
 				const onFormatError = getInitialOptions().onFormatError;
 				const formatErrorType = typeof onFormatError;
 				if (formatErrorType === "string") result = onFormatError;
@@ -816,12 +800,7 @@ function State(onLanguageChange, onPendingLanguageChange, onRunningChange) {
 			}
 		},
 		getInitialOptions() {
-			const merged = Object.assign(Object.assign({}, state.initialOptions), devCredentials);
-			if (devCredentials && (devCredentials.apiKey || devCredentials.transport)) {
-				merged.apiKey = devCredentials.apiKey;
-				merged.transport = devCredentials.transport;
-			}
-			return merged;
+			return Object.assign(Object.assign({}, state.initialOptions), devCredentials);
 		},
 		addActiveNs(ns) {
 			getFallbackArray(ns).forEach((namespace) => {
@@ -1085,8 +1064,7 @@ function Controller({ options }) {
 			return pluginService.formatTranslation(Object.assign(Object.assign({}, params), { translation }));
 		},
 		isDev() {
-			const options2 = state.getInitialOptions();
-			return Boolean((options2.apiKey || options2.transport) && options2.apiUrl);
+			return Boolean(state.getInitialOptions().apiKey && state.getInitialOptions().apiUrl);
 		},
 		async loadRequired(options2) {
 			if (!(options2 === null || options2 === void 0 ? void 0 : options2.language)) await initializeLanguage();
@@ -1190,9 +1168,7 @@ var TolgeeCore = () => {
 	});
 	return tolgeeChain;
 };
-var ERROR_PARAM_EMPTY = 0;
-var ERROR_UNEXPECTED_CHAR = 1;
-var ERROR_UNEXPECTED_END = 2;
+var ERROR_PARAM_EMPTY = 0, ERROR_UNEXPECTED_CHAR = 1, ERROR_UNEXPECTED_END = 2;
 var FormatError = class extends Error {
 	constructor(code, index, text) {
 		let error;
@@ -1210,18 +1186,14 @@ var FormatError = class extends Error {
 function isWhitespace(ch) {
 	return /\s/.test(ch);
 }
-var STATE_TEXT = 0;
-var STATE_ESCAPE_MAYBE = 1;
-var STATE_ESCAPE = 2;
-var STATE_PARAM = 3;
-var STATE_PARAM_AFTER = 4;
-var END_STATES = /* @__PURE__ */ new Set([
+var STATE_TEXT = 0, STATE_ESCAPE_MAYBE = 1, STATE_ESCAPE = 2, STATE_PARAM = 3, STATE_PARAM_AFTER = 4;
+var END_STATES = new Set([
 	STATE_ESCAPE,
 	STATE_ESCAPE_MAYBE,
 	STATE_TEXT
 ]);
 var CHAR_ESCAPE = "'";
-var ESCAPABLE = /* @__PURE__ */ new Set([
+var ESCAPABLE = new Set([
 	"{",
 	"}",
 	CHAR_ESCAPE
@@ -1323,10 +1295,6 @@ var FormatSimple = () => (tolgee, tools) => {
 	tools.setFinalFormatter(createFormatSimple());
 	return tolgee;
 };
-function isSSR() {
-	var _a2, _b;
-	return typeof ((_b = (_a2 = globalThis.window) == null ? void 0 : _a2.document) == null ? void 0 : _b.createElement) === "undefined";
-}
 String(Number.MAX_SAFE_INTEGER);
 var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
 var text_min = {};
@@ -1339,7 +1307,7 @@ var text_min = {};
 		return Buffer.from(r);
 	};
 	function h(r) {
-		for (var e = 0, f = Math.min(65536, r.length + 1), n = new Uint16Array(f), i = [], o = 0;;) {
+		for (var e = 0, f = Math.min(256 * 256, r.length + 1), n = new Uint16Array(f), i = [], o = 0;;) {
 			var t = e < r.length;
 			if (!t || o >= f - 1) {
 				var m = n.subarray(0, o);
@@ -1441,285 +1409,6 @@ var FastTextEncoding = _mergeNamespaces({
 }, [text_min]);
 (_a = console.assert) == null || _a.call(console, FastTextEncoding);
 RegExp(`([${["‌", "‍"].join("")}]{9})+`, "g");
-function getErrorMessage(code, status) {
-	if (status) return `${status}: ${code}`;
-	return code;
-}
-var HttpError = class HttpError extends Error {
-	constructor(code, status, params) {
-		super(getErrorMessage(code, status));
-		this.code = code;
-		this.status = status;
-		this.params = params;
-		Object.setPrototypeOf(this, HttpError.prototype);
-	}
-};
-function isHttpError(error) {
-	return error instanceof Error && typeof error.code === "string";
-}
-var EXTENSION_PROTOCOL_VERSION = 2;
-var EXTENSION_REQUEST_TIMEOUT_MS = 35e3;
-var TOLGEE_API_REQUEST = "TOLGEE_API_REQUEST";
-var TOLGEE_API_RESPONSE = "TOLGEE_API_RESPONSE";
-var TOLGEE_PROXY_PING = "TOLGEE_PROXY_PING";
-var TOLGEE_PROXY_PONG = "TOLGEE_PROXY_PONG";
-function isExtensionSessionKind(value) {
-	return value === "oauth" || value === "apiKey";
-}
-var ExtensionRpcError = class ExtensionRpcError extends Error {
-	constructor(kind, message) {
-		super(message);
-		this.kind = kind;
-		this.name = "ExtensionRpcError";
-		Object.setPrototypeOf(this, ExtensionRpcError.prototype);
-	}
-};
-var RELAY_DISCOVERY_TIMEOUT_MS = 3e3;
-var RELAY_PING_INTERVAL_MS = 200;
-var counter = 0;
-var pending = /* @__PURE__ */ new Map();
-var listening = false;
-var relayReady;
-var onRelayPong;
-async function requestFromExtension({ type, replyType, payload, timeoutMs = EXTENSION_REQUEST_TIMEOUT_MS, progressType, onProgress }) {
-	ensureListener();
-	const deadline = Date.now() + timeoutMs;
-	await awaitRelay(Math.min(deadline, Date.now() + RELAY_DISCOVERY_TIMEOUT_MS));
-	const remaining = deadline - Date.now();
-	if (remaining <= 0) throw noAnswerInTime(type);
-	const id = nextId();
-	return new Promise((resolve, reject) => {
-		const timer = setTimeout(() => {
-			pending.delete(id);
-			forgetRelay();
-			reject(noAnswerInTime(type));
-		}, remaining);
-		pending.set(id, {
-			replyType,
-			progressType,
-			onProgress,
-			resolve,
-			reject,
-			timer
-		});
-		window.postMessage({
-			type,
-			data: __spreadValues({ id }, payload)
-		}, window.origin);
-	});
-}
-var noAnswerInTime = (type) => new ExtensionRpcError("unavailable", `the Tolgee browser extension did not answer ${type} in time`);
-var nextId = () => `${Date.now()}-${counter++}-${Math.random()}`;
-function ensureListener() {
-	if (listening) return;
-	listening = true;
-	window.addEventListener("message", (event) => {
-		var _a2, _b, _c;
-		if (event.source !== window || event.origin !== window.location.origin) return;
-		const type = (_a2 = event.data) == null ? void 0 : _a2.type;
-		if (type === TOLGEE_PROXY_PONG) {
-			onRelayPong?.();
-			return;
-		}
-		const data = (_b = event.data) == null ? void 0 : _b.data;
-		if (typeof (data == null ? void 0 : data.id) !== "string") return;
-		const entry = pending.get(data.id);
-		if (!entry) return;
-		if (type === entry.progressType) {
-			(_c = entry.onProgress) == null || _c.call(entry);
-			return;
-		}
-		if (type !== entry.replyType) return;
-		pending.delete(data.id);
-		clearTimeout(entry.timer);
-		if (data.error) entry.reject(new ExtensionRpcError(data.error.kind, data.error.message));
-		else entry.resolve(data);
-	});
-}
-function awaitRelay(deadline) {
-	if (!relayReady) relayReady = new Promise((resolve, reject) => {
-		const ping = () => window.postMessage({ type: TOLGEE_PROXY_PING }, window.origin);
-		const giveUp = () => {
-			clearInterval(timer);
-			forgetRelay();
-			onRelayPong = void 0;
-			reject(new ExtensionRpcError("unavailable", "the Tolgee browser extension did not answer"));
-		};
-		const timer = setInterval(() => {
-			if (Date.now() > deadline) {
-				giveUp();
-				return;
-			}
-			ping();
-		}, RELAY_PING_INTERVAL_MS);
-		onRelayPong = () => {
-			clearInterval(timer);
-			resolve();
-		};
-		ping();
-	});
-	return relayReady;
-}
-function forgetRelay() {
-	relayReady = void 0;
-}
-function proxyTransport() {
-	return async (request) => {
-		const body = await encodeBody(request.body);
-		let reply;
-		try {
-			reply = await requestFromExtension({
-				type: TOLGEE_API_REQUEST,
-				replyType: TOLGEE_API_RESPONSE,
-				payload: {
-					path: request.path,
-					method: request.method,
-					headers: request.headers,
-					body
-				}
-			});
-		} catch (e) {
-			throw httpErrorFromExtension(e);
-		}
-		if (!reply.response) throw new HttpError("fetch_error");
-		return toResponseLike(reply.response);
-	};
-}
-async function encodeBody(body) {
-	if (body === void 0) return { kind: "none" };
-	if (typeof body === "string") return {
-		kind: "json",
-		text: body
-	};
-	const entries = [];
-	body.forEach((value, name) => {
-		if (typeof value === "string") {
-			entries.push(Promise.resolve({
-				name,
-				value
-			}));
-			return;
-		}
-		entries.push(blobToBase64(value).then((base64) => ({
-			name,
-			file: {
-				name: value.name || "blob",
-				type: value.type,
-				base64
-			}
-		})));
-	});
-	return {
-		kind: "form",
-		entries: await Promise.all(entries)
-	};
-}
-var blobToBase64 = (blob) => new Promise((resolve, reject) => {
-	const reader = new FileReader();
-	reader.onload = () => resolve(String(reader.result).replace(/^data:[^,]*,/, ""));
-	reader.onerror = () => reject(reader.error);
-	reader.readAsDataURL(blob);
-});
-function toResponseLike(response) {
-	var _a2;
-	const headers = Object.fromEntries(Object.entries((_a2 = response.headers) != null ? _a2 : {}).map(([name, value]) => [name.toLowerCase(), value]));
-	return {
-		ok: response.status >= 200 && response.status < 300,
-		status: response.status,
-		statusText: response.statusText,
-		headers: { get: (name) => {
-			var _a3;
-			return (_a3 = headers[name.toLowerCase()]) != null ? _a3 : null;
-		} },
-		text: () => Promise.resolve(response.body),
-		json: async () => JSON.parse(response.body)
-	};
-}
-function httpErrorFromExtension(e) {
-	if (isHttpError(e)) return e;
-	if (e instanceof ExtensionRpcError) switch (e.kind) {
-		case "no_session": return new HttpError("extension_session_missing", 401);
-		case "too_large": return new HttpError("extension_request_too_large");
-		default:
-			console.warn(`Tolgee: the browser extension did not serve the request (${e.kind}): ${e.message}`);
-			return new HttpError("fetch_error");
-	}
-	return new HttpError("fetch_error");
-}
-var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-function readChar(char) {
-	const idx = alphabet.indexOf(char);
-	if (idx === -1) throw new Error("Invalid character found: " + char);
-	return idx;
-}
-function arrayBufferToString(buffer) {
-	const bufView = new Uint8Array(buffer);
-	const length = bufView.length;
-	let result = "";
-	let addition = Math.pow(2, 16) - 1;
-	for (let i = 0; i < length; i += addition) {
-		if (i + addition > length) addition = length - i;
-		result += String.fromCharCode.apply(null, bufView.subarray(i, i + addition));
-	}
-	return result;
-}
-function base32Decode(input) {
-	input = input.toUpperCase();
-	const length = input.length;
-	let bits = 0;
-	let value = 0;
-	let index = 0;
-	const output = new Uint8Array(length * 5 / 8 | 0);
-	for (let i = 0; i < length; i++) {
-		value = value << 5 | readChar(input[i]);
-		bits += 5;
-		if (bits >= 8) {
-			output[index++] = value >>> bits - 8 & 255;
-			bits -= 8;
-		}
-	}
-	return arrayBufferToString(output.buffer);
-}
-function getProjectIdFromApiKey(key) {
-	if (!key) return;
-	try {
-		const [prefix, rest] = key.split("_");
-		if (prefix === "tgpak") {
-			const [projectId] = base32Decode(rest).split("_");
-			return /^\d+$/.test(projectId) ? Number(projectId) : void 0;
-		}
-	} catch (e) {
-		console.warn("Tolgee: Api key can't be parsed");
-	}
-}
-function getApiKeyType(key) {
-	if (!key) return;
-	const [prefix] = key.split("_");
-	if (prefix === "tgpak") return "tgpak";
-	else if (prefix === "tgpat") return "tgpat";
-	return "legacy";
-}
-function resolveLiveCredential(credentials) {
-	var _a2;
-	const { apiKey, projectId, transport } = credentials;
-	if (transport) return {
-		authHeader: {},
-		viaExtension: true,
-		hasCredential: true,
-		projectId,
-		requiresExplicitProject: true
-	};
-	return {
-		authHeader: buildAuthHeader(apiKey),
-		viaExtension: false,
-		hasCredential: Boolean(apiKey),
-		projectId: (_a2 = getProjectIdFromApiKey(apiKey)) != null ? _a2 : projectId,
-		requiresExplicitProject: getApiKeyType(apiKey) === "tgpat"
-	};
-}
-function buildAuthHeader(apiKey) {
-	return apiKey ? { "X-API-Key": apiKey } : {};
-}
 function listen(type, callback) {
 	const handler = (e) => {
 		var _a2, _b;
@@ -1786,41 +1475,10 @@ function Handshaker() {
 	}
 	return { update };
 }
-var TOLGEE_EXTENSION_SESSION_STORAGE_PREFIX = "__tolgee_";
-var API_KEY_SESSION_STORAGE = `${TOLGEE_EXTENSION_SESSION_STORAGE_PREFIX}apiKey`;
-var API_URL_SESSION_STORAGE = `${TOLGEE_EXTENSION_SESSION_STORAGE_PREFIX}apiUrl`;
-var BRANCH_SESSION_STORAGE = `${TOLGEE_EXTENSION_SESSION_STORAGE_PREFIX}branch`;
-var PROJECT_ID_SESSION_STORAGE = `${TOLGEE_EXTENSION_SESSION_STORAGE_PREFIX}projectId`;
-var EXTENSION_SESSION_STORAGE = `${TOLGEE_EXTENSION_SESSION_STORAGE_PREFIX}session`;
 var IN_CONTEXT_FILE = "tolgee-in-context-tools.umd.min.js";
 var IN_CONTEXT_UMD_NAME = "@tolgee/in-context-tools";
 var IN_CONTEXT_EXPORT_NAME = "InContextTools";
 var CDN_URL = "https://cdn.jsdelivr.net/npm";
-var injectPromise = null;
-function loadInContextLib(version) {
-	if (!injectPromise) injectPromise = injectScript(inContextLibSrc(version)).then(() => {
-		return window[IN_CONTEXT_UMD_NAME][IN_CONTEXT_EXPORT_NAME];
-	});
-	return injectPromise;
-}
-function inContextLibSrc(version) {
-	return trustedOverrideUrl() || `${CDN_URL}/@tolgee/web@${version}/dist/${IN_CONTEXT_FILE}`;
-}
-function trustedOverrideUrl() {
-	if (isSSR()) return;
-	const override = window.__TOLGEE_IN_CONTEXT_URL__;
-	return isTrustedInContextUrl(override, window.location) ? override : void 0;
-}
-var isDevHost = (hostname) => hostname === "localhost" || hostname === "127.0.0.1" || hostname === "::1" || hostname === "[::1]";
-function isTrustedInContextUrl(override, location) {
-	if (!override || !isDevHost(location.hostname)) return false;
-	try {
-		const url = new URL(override, location.href);
-		return url.origin === location.origin || isDevHost(url.hostname);
-	} catch (e) {
-		return false;
-	}
-}
 function injectScript(src) {
 	return new Promise((resolve, reject) => {
 		const script = document.createElement("script");
@@ -1830,29 +1488,30 @@ function injectScript(src) {
 		document.head.appendChild(script);
 	});
 }
+var injectPromise = null;
+function loadInContextLib(version) {
+	if (!injectPromise) injectPromise = injectScript(`${CDN_URL}/@tolgee/web@${version}/dist/${IN_CONTEXT_FILE}`).then(() => {
+		return window[IN_CONTEXT_UMD_NAME][IN_CONTEXT_EXPORT_NAME];
+	});
+	return injectPromise;
+}
+var API_KEY_LOCAL_STORAGE = "__tolgee_apiKey";
+var API_URL_LOCAL_STORAGE = "__tolgee_apiUrl";
+var BRANCH_LOCAL_STORAGE = "__tolgee_branch";
 function getCredentials() {
-	const apiKey = sessionStorage.getItem(API_KEY_SESSION_STORAGE) || void 0;
-	const apiUrl = sessionStorage.getItem(API_URL_SESSION_STORAGE) || void 0;
-	const branch = sessionStorage.getItem(BRANCH_SESSION_STORAGE) || void 0;
-	const projectId = sessionStorage.getItem(PROJECT_ID_SESSION_STORAGE) || void 0;
-	const viaExtension = isExtensionSessionKind(sessionStorage.getItem(EXTENSION_SESSION_STORAGE));
-	if (!apiUrl) return;
-	const common = __spreadValues(__spreadValues({ apiUrl }, projectId !== void 0 ? { projectId } : {}), branch !== void 0 ? { branch } : {});
-	if (apiKey) return __spreadProps(__spreadValues({}, common), { apiKey });
-	if (viaExtension && projectId) return __spreadProps(__spreadValues({}, common), { transport: proxyTransport() });
+	const apiKey = sessionStorage.getItem(API_KEY_LOCAL_STORAGE) || void 0;
+	const apiUrl = sessionStorage.getItem(API_URL_LOCAL_STORAGE) || void 0;
+	const branch = sessionStorage.getItem(BRANCH_LOCAL_STORAGE) || void 0;
+	if (!apiKey || !apiUrl) return;
+	return __spreadValues({
+		apiKey,
+		apiUrl
+	}, branch !== void 0 ? { branch } : {});
 }
 function clearSessionStorage() {
-	const keysToRemove = [];
-	for (let i = 0; i < sessionStorage.length; i++) {
-		const key = sessionStorage.key(i);
-		if (key == null ? void 0 : key.startsWith(TOLGEE_EXTENSION_SESSION_STORAGE_PREFIX)) keysToRemove.push(key);
-	}
-	keysToRemove.forEach((key) => sessionStorage.removeItem(key));
-}
-function warnIfProjectIdMissing(tolgee) {
-	if (!tolgee.isDev()) return;
-	const { requiresExplicitProject, projectId } = resolveLiveCredential(tolgee.getInitialOptions());
-	if (requiresExplicitProject && projectId === void 0) console.warn("Tolgee: `projectId` is missing from the SDK configuration. It is required when authenticating with a PAT or connecting through the Tolgee browser extension. See https://docs.tolgee.io/js-sdk/api/core_package/options#projectid");
+	sessionStorage.removeItem(API_KEY_LOCAL_STORAGE);
+	sessionStorage.removeItem(API_URL_LOCAL_STORAGE);
+	sessionStorage.removeItem(BRANCH_LOCAL_STORAGE);
 }
 function onDocumentReady(callback) {
 	if (document.readyState !== "loading") Promise.resolve().then(() => {
@@ -1872,21 +1531,16 @@ var sessionStorageAvailable = () => {
 };
 if (sessionStorageAvailable()) BrowserExtensionPlugin = () => (tolgee) => {
 	const handshaker = Handshaker();
-	const getConfig = () => {
-		const options = tolgee.getInitialOptions();
-		return {
-			uiPresent: true,
-			uiVersion: void 0,
-			protocolVersion: EXTENSION_PROTOCOL_VERSION,
-			mode: tolgee.isDev() ? "development" : "production",
-			config: {
-				apiUrl: options.apiUrl || "",
-				apiKey: options.transport ? "" : options.apiKey || "",
-				projectId: options.projectId,
-				branch: options.branch
-			}
-		};
-	};
+	const getConfig = () => ({
+		uiPresent: true,
+		uiVersion: void 0,
+		mode: tolgee.isDev() ? "development" : "production",
+		config: {
+			apiUrl: tolgee.getInitialOptions().apiUrl || "",
+			apiKey: tolgee.getInitialOptions().apiKey || "",
+			branch: tolgee.getInitialOptions().branch
+		}
+	});
 	const getTolgeePlugin = async () => {
 		const InContextTools = await loadInContextLib("prerelease");
 		return (tolgee2) => {
@@ -1895,7 +1549,6 @@ if (sessionStorageAvailable()) BrowserExtensionPlugin = () => (tolgee) => {
 			return tolgee2;
 		};
 	};
-	warnIfProjectIdMissing(tolgee);
 	tolgee.on("running", ({ value: isRunning }) => {
 		if (isRunning) onDocumentReady(() => {
 			handshaker.update(getConfig()).catch(clearSessionStorage);
@@ -1940,8 +1593,8 @@ function useTolgeeSSR(tolgeeInstance, language, data, enabled = true) {
 		if (!tolgeeInstance.isLoaded() && enabled) {
 			const requiredRecords = tolgeeInstance.getRequiredDescriptors(language);
 			const providedRecords = tolgeeInstance.getAllRecords();
-			const missingRecords = requiredRecords.map((descriptor) => encodeCacheKey(descriptor)).filter((key) => !providedRecords.find((r) => (r === null || r === void 0 ? void 0 : r.cacheKey) === key));
-			if (missingRecords.length) console.warn(`Tolgee: Missing records in "staticData" for proper SSR functionality: ${missingRecords.map((key) => `"${key}"`).join(", ")}`);
+			const missingRecords = requiredRecords.map(({ namespace, language }) => namespace ? `${namespace}:${language}` : language).filter((key) => !providedRecords.find((r) => (r === null || r === void 0 ? void 0 : r.cacheKey) === key));
+			console.warn(`Tolgee: Missing records in "staticData" for proper SSR functionality: ${missingRecords.map((key) => `"${key}"`).join(", ")}`);
 		}
 	});
 	return initialRender ? noWrappingTolgee : tolgeeInstance;
@@ -1980,9 +1633,12 @@ var TolgeeProvider = ({ tolgee, options, children, fallback, ssr }) => {
 		options: optionsWithDefault
 	} }, loading ? fallback : children);
 };
+var globalContext;
+function getGlobalContext() {
+	return globalContext;
+}
 var useTolgeeContext = () => {
-	const TolgeeProviderContext = getProviderInstance();
-	const context = useContext(TolgeeProviderContext) || void 0;
+	const context = useContext(getProviderInstance()) || getGlobalContext();
 	if (!context) throw new Error("Couldn't find tolgee instance, did you forgot to use `TolgeeProvider`?");
 	return context;
 };
@@ -2029,8 +1685,7 @@ var useTranslate$1 = (ns, options) => {
 	const { t: tInternal, isLoading } = useTranslateInternal(ns, options);
 	return {
 		t: useCallback((...params) => {
-			const props = getTranslateProps(...params);
-			return tInternal(props);
+			return tInternal(getTranslateProps(...params));
 		}, [tInternal]),
 		isLoading
 	};
@@ -2050,10 +1705,10 @@ function useTranslate() {
 	const { t, ...rest } = useTranslate$1();
 	return {
 		...rest,
-		t: (key) => t(key)
+		t: (key, defaultValue) => t(key, defaultValue)
 	};
 }
-var tolgee$1 = Tolgee().use(FormatSimple()).init({ language: "en" });
+var tolgee = Tolgee().use(FormatSimple()).init({ language: "en" });
 var TestComponent = () => {
 	const tolgee = useTolgee();
 	const { t } = useTranslate();
@@ -2062,52 +1717,9 @@ var TestComponent = () => {
 };
 function EmptyComponent() {
 	return jsx(TolgeeProvider, {
-		tolgee: tolgee$1,
+		tolgee,
 		options: { useSuspense: false },
 		children: jsx(TestComponent, {})
 	});
 }
-var tolgee = Tolgee().use(FormatSimple()).init({
-	language: "en",
-	apiUrl: void 0,
-	apiKey: void 0,
-	staticData: {
-		en,
-		de,
-		es,
-		fr,
-		it,
-		ja,
-		ko,
-		pt,
-		ru,
-		zh
-	}
-});
-var messageModules = {
-	de,
-	en,
-	es,
-	fr,
-	it,
-	ja,
-	ko,
-	pt,
-	ru,
-	zh
-};
-function Wrapper({ children }) {
-	return jsx(TolgeeProvider, {
-		tolgee,
-		options: { useSuspense: false },
-		ssr: {
-			language: "en",
-			staticData: messageModules
-		},
-		children
-	});
-}
-function Wrapped() {
-	return jsx(Wrapper, { children: jsx(EmptyComponent, {}) });
-}
-export { Wrapped as default };
+export { EmptyComponent as default };

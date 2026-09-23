@@ -6,16 +6,24 @@ var _plugin_vue_export_helper_default = (sfc, props) => {
 };
 var _sfc_main = {};
 var _hoisted_1 = { class: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground" };
-function _sfc_render(_ctx, _cache) {
+function _sfc_render$1(_ctx, _cache) {
 	return openBlock(), createElementBlock("div", _hoisted_1, " ⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service. ");
 }
-var MockBanner_default = _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render]]);
-var PricingHeader_default = defineComponent({
+var MockBanner_default = _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render$1], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/MockBanner.vue"]]);
+var PricingHeader_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "PricingHeader",
-	setup(__props) {
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock(Fragment, null, [createVNode(MockBanner_default), _cache[0] || (_cache[0] = createElementVNode("div", { class: "mb-12 text-center" }, [createElementVNode("h1", { class: "mb-3 text-3xl font-bold text-foreground" }, " Simple, Transparent Pricing "), createElementVNode("p", { class: "text-muted-foreground" }, " Choose the plan that fits your team. No hidden fees. ")], -1))], 64);
-		};
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const __returned__ = { MockBanner: MockBanner_default };
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock(Fragment, null, [createVNode($setup["MockBanner"]), _cache[0] || (_cache[0] = createElementVNode("div", { class: "mb-12 text-center" }, [createElementVNode("h1", { class: "mb-3 text-3xl font-bold text-foreground" }, " Simple, Transparent Pricing "), createElementVNode("p", { class: "text-muted-foreground" }, " Choose the plan that fits your team. No hidden fees. ")], -1))], 64);
+}
+var PricingHeader_default = _plugin_vue_export_helper_default(PricingHeader_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/pages/pricing/PricingHeader.vue"]]);
 export { PricingHeader_default as default };

@@ -1,7 +1,11 @@
 import "react";
-import { Fragment as e, jsx as t, jsxs as n } from "react/jsx-runtime";
-var r = () => "";
-function i(e, t = [], n = 1) {
+import { Fragment as e, jsxDEV as t } from "react/jsx-dev-runtime";
+var n = () => "";
+n = (e, t) => {
+	let n = t[e];
+	return n == null ? `[i18n-404:${e}]` : `[i18n-400:${e}(${n})]`;
+};
+function r(e, t = [], n = 1) {
 	let r = "";
 	for (let i = n; i < e.length; i++) {
 		let n = e[i];
@@ -9,24 +13,24 @@ function i(e, t = [], n = 1) {
 	}
 	return r;
 }
-function a(e = { c: [] }, t = "") {
-	let n = (t) => {
-		let n = e.c[t];
-		return typeof n == "string" ? [n] : Array.isArray(n) ? n : [r(t, e.c)];
-	}, a = (e, t = []) => i(n(e), t, 0);
-	return a._ = e, a.l = t, a.c = n, a.x = i, a.t = (e, t, r) => {
-		let i = [""], a = [];
-		for (let e of n(t)) {
+function i(e = { c: [] }, t = "") {
+	let i = (t) => {
+		let r = e.c[t];
+		return typeof r == "string" ? [r] : Array.isArray(r) ? r : [n(t, e.c)];
+	}, a = (e, t = []) => r(i(e), t, 0);
+	return a._ = e, a.l = t, a.c = i, a.x = r, a.t = (e, t, n) => {
+		let r = [""], a = [];
+		for (let e of i(t)) {
 			if (typeof e == "string") {
-				i[i.length - 1] += e;
+				r[r.length - 1] += e;
 				continue;
 			}
-			a.push(r?.[e]), i.push("");
+			a.push(n?.[e]), r.push("");
 		}
-		return e(Object.assign(i, { raw: i }), ...a);
-	}, a.p = (t, n) => e.c[t]?.map((e) => typeof e == "string" ? e : i(e, n, 0)) ?? [], a;
+		return e(Object.assign(r, { raw: r }), ...a);
+	}, a.p = (t, n) => e.c[t]?.map((e) => typeof e == "string" ? e : r(e, n, 0)) ?? [], a;
 }
-function o(e) {
+function a(e) {
 	return {
 		get: (t) => e[t],
 		set: (t, n) => {
@@ -34,29 +38,29 @@ function o(e) {
 		}
 	};
 }
-var s = {}, c = a();
-function l(e, t, n, r) {
-	s[e] = {
+var o = {}, s = i();
+function c(e, t, n, r) {
+	o[e] = {
 		load: t,
 		catalogs: Array(n).fill(void 0),
-		collection: r ?? o([])
+		collection: r ?? a([])
 	};
-	for (let t = 0; t < n; t++) s[e].collection.set(t, c);
-	return (t = 0) => s[e].collection.get(t);
+	for (let t = 0; t < n; t++) o[e].collection.set(t, s);
+	return (t = 0) => o[e].collection.get(t);
 }
-function u(e) {
-	for (let t of Object.values(s)) for (let [n, r] of t.catalogs.entries()) t.collection.set(n, a(r, e));
+function l(e) {
+	for (let t of Object.values(o)) for (let [n, r] of t.catalogs.entries()) t.collection.set(n, i(r, e));
 }
-async function d(e, t = !0) {
+async function u(e, t = !0) {
 	let n = [], r = [];
-	for (let t of Object.values(s)) for (let i = 0; i < t.catalogs.length; i++) n.push(t.load(i, e)), r.push([i, t]);
+	for (let t of Object.values(o)) for (let i = 0; i < t.catalogs.length; i++) n.push(t.load(i, e)), r.push([i, t]);
 	for (let [e, t] of (await Promise.all(n)).entries()) {
 		let [n, i] = r[e];
 		i.catalogs[n] = t;
 	}
-	t && u(e);
+	t && l(e);
 }
-var f = {
+var d = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
 	fr: [() => import("./shared.0.fr.compiled-DDY-COJ8.js")],
@@ -67,9 +71,9 @@ var f = {
 	ja: [() => import("./shared.0.ja.compiled-CF_vYGhT.js")],
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
-}, p = l("products", (e, t) => f[t][e](), 1);
+}, f = c("products", (e, t) => d[t][e](), 1), p = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/products/ProductsGrid.tsx";
 function m() {
-	let e = p(), r = [
+	let e = f(), n = [
 		{
 			name: e(166),
 			desc: e(167),
@@ -103,27 +107,59 @@ function m() {
 	];
 	return t("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: r.map((r) => n("div", {
+		children: n.map((n) => t("div", {
 			className: "flex flex-col justify-between rounded-lg border border-border bg-card p-6",
-			children: [n("div", { children: [t("h3", {
+			children: [t("div", { children: [t("h3", {
 				className: "mb-2 text-lg font-semibold text-foreground",
-				children: r.name
-			}), t("p", {
+				children: n.name
+			}, void 0, !1, {
+				fileName: p,
+				lineNumber: 49,
+				columnNumber: 13
+			}, this), t("p", {
 				className: "mb-4 text-sm text-muted-foreground",
-				children: r.desc
-			})] }), n("div", {
+				children: n.desc
+			}, void 0, !1, {
+				fileName: p,
+				lineNumber: 52,
+				columnNumber: 13
+			}, this)] }, void 0, !0, {
+				fileName: p,
+				lineNumber: 48,
+				columnNumber: 11
+			}, this), t("div", {
 				className: "flex items-center justify-between",
 				children: [t("span", {
 					className: "text-sm font-bold text-primary",
-					children: r.price
-				}), t("button", {
+					children: n.price
+				}, void 0, !1, {
+					fileName: p,
+					lineNumber: 55,
+					columnNumber: 13
+				}, this), t("button", {
 					type: "button",
 					className: "rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: e(164)
-				})]
-			})]
-		}, r.name))
-	});
+				}, void 0, !1, {
+					fileName: p,
+					lineNumber: 56,
+					columnNumber: 13
+				}, this)]
+			}, void 0, !0, {
+				fileName: p,
+				lineNumber: 54,
+				columnNumber: 11
+			}, this)]
+		}, n.name, !0, {
+			fileName: p,
+			lineNumber: 44,
+			columnNumber: 9
+		}, this))
+	}, void 0, !1, {
+		fileName: p,
+		lineNumber: 42,
+		columnNumber: 5
+	}, this);
 }
 var h = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
@@ -137,7 +173,7 @@ var h = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("about", (e, t) => h[t][e](), 1);
+c("about", (e, t) => h[t][e](), 1);
 var g = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -150,7 +186,7 @@ var g = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("blog", (e, t) => g[t][e](), 1);
+c("blog", (e, t) => g[t][e](), 1);
 var _ = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -163,7 +199,7 @@ var _ = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("careers", (e, t) => _[t][e](), 1);
+c("careers", (e, t) => _[t][e](), 1);
 var v = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -176,7 +212,7 @@ var v = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("contact", (e, t) => v[t][e](), 1);
+c("contact", (e, t) => v[t][e](), 1);
 var y = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -189,7 +225,7 @@ var y = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("faq", (e, t) => y[t][e](), 1);
+c("faq", (e, t) => y[t][e](), 1);
 var b = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -202,7 +238,7 @@ var b = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("home", (e, t) => b[t][e](), 1);
+c("home", (e, t) => b[t][e](), 1);
 var x = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -215,7 +251,7 @@ var x = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("pricing", (e, t) => x[t][e](), 1);
+c("pricing", (e, t) => x[t][e](), 1);
 var S = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -228,7 +264,7 @@ var S = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("route", (e, t) => S[t][e](), 1);
+c("route", (e, t) => S[t][e](), 1);
 var C = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -241,7 +277,7 @@ var C = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("settings", (e, t) => C[t][e](), 1);
+c("settings", (e, t) => C[t][e](), 1);
 var w = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -254,7 +290,7 @@ var w = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("shared", (e, t) => w[t][e](), 1);
+c("shared", (e, t) => w[t][e](), 1);
 var T = {
 	en: [() => import("./shared.0.en.compiled-CQ_661pl.js")],
 	es: [() => import("./shared.0.es.compiled-lGDcXlbO.js")],
@@ -267,14 +303,29 @@ var T = {
 	ko: [() => import("./shared.0.ko.compiled-BWEU8l3e.js")],
 	ru: [() => import("./shared.0.ru.compiled-CCCUdcMH.js")]
 };
-l("team", (e, t) => T[t][e](), 1), d("en");
-function E({ children: n }) {
-	return t(e, { children: n });
+c("team", (e, t) => T[t][e](), 1);
+var E = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
+u("en");
+function D({ children: n }) {
+	return t(e, { children: n }, void 0, !1, {
+		fileName: E,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
-function D() {
-	return t(E, { children: t(m, {}) });
+var O = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/products/ProductsGrid.wrapper.tsx";
+function k() {
+	return t(D, { children: t(m, {}, void 0, !1, {
+		fileName: O,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: O,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { D as default };
+export { k as default };
 var e = [
 	"i18n Benchmark",
 	"Methodik",

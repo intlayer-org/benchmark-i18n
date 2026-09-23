@@ -1,5 +1,5 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsx as r } from "react/jsx-runtime";
+import { jsxDEV as r } from "react/jsx-dev-runtime";
 var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -171,7 +171,8 @@ function f(e, t) {
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function p({ children: i, locale: a }) {
+var p = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
+function m({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
 		f("AppRoot", o);
@@ -182,19 +183,36 @@ function p({ children: i, locale: a }) {
 	}, []), r(c, {
 		locale: a,
 		children: i
-	});
+	}, void 0, !1, {
+		fileName: p,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var m = "en";
-function h({ children: e }) {
-	return r(p, {
-		locale: m,
+var h = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx", g = "en";
+function _({ children: e }) {
+	return r(m, {
+		locale: g,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: h,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function g() {
-	return r(h, { children: r(p, {}) });
+var v = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.wrapper.tsx";
+function y() {
+	return r(_, { children: r(m, {}, void 0, !1, {
+		fileName: v,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: v,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { g as default };
+export { y as default };
 import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/de.json";
 var n = e(t);

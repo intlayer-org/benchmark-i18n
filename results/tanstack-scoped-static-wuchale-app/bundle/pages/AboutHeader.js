@@ -1,5 +1,5 @@
 import { useLayoutEffect } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
 	useLayoutEffect(() => {
@@ -12,6 +12,11 @@ function usePerformanceMeasure(name) {
 	}, [name]);
 }
 var onInvalidFunc = () => "";
+onInvalidFunc = (i, c) => {
+	const item = c[i];
+	if (item == null) return `[i18n-404:${i}]`;
+	return `[i18n-400:${i}(${item})]`;
+};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -100,16 +105,29 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("about", loadCatalog$11, 1);
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/about/AboutHeader.tsx";
 function AboutHeader() {
 	const _w_runtime_ = getRuntimeRx();
 	usePerformanceMeasure(_w_runtime_(60));
-	return jsxs(Fragment, { children: [jsx("h1", {
+	return jsxDEV(Fragment, { children: [jsxDEV("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: _w_runtime_(61)
-	}), jsx("p", {
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 13,
+		columnNumber: 7
+	}, this), jsxDEV("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: _w_runtime_(62)
-	})] });
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 16,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -287,12 +305,26 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/about/AboutHeader.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(AboutHeader, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(AboutHeader, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var c = [

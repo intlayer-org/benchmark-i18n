@@ -1,5 +1,5 @@
 import { createContext, createElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -2422,36 +2422,65 @@ function I18nextProvider({ i18n, defaultNS, children }) {
 	}), [i18n, defaultNS]);
 	return createElement(I18nContext.Provider, { value }, children);
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/pages/home/ResultsTable.tsx";
 function ResultsTable() {
 	const { t } = useTranslation("home");
-	return jsxs("section", { children: [jsx("h2", {
+	return jsxDEV("section", { children: [jsxDEV("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: t("resultsTable.sampleResults")
-	}), jsx("div", {
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 31,
+		columnNumber: 7
+	}, this), jsxDEV("div", {
 		className: "overflow-x-auto rounded-lg border border-border",
-		children: jsxs("table", {
+		children: jsxDEV("table", {
 			className: "w-full text-sm",
-			children: [jsx("thead", {
+			children: [jsxDEV("thead", {
 				className: "bg-muted",
-				children: jsxs("tr", { children: [
-					jsx("th", {
+				children: jsxDEV("tr", { children: [
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: "Library"
-					}),
-					jsx("th", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 38,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: t("resultsTable.bundleSize")
-					}),
-					jsx("th", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 41,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: t("resultsTable.lookupTime")
-					}),
-					jsx("th", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 44,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: t("resultsTable.lazyLoading")
-					})
-				] })
-			}), jsx("tbody", { children: [
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 47,
+						columnNumber: 15
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 37,
+					columnNumber: 13
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 36,
+				columnNumber: 11
+			}, this), jsxDEV("tbody", { children: [
 				{
 					lib: "react-i18next",
 					size: "42.3 kB",
@@ -2476,29 +2505,65 @@ function ResultsTable() {
 					time: "0.05ms",
 					lazy: "Built-in"
 				}
-			].map((r) => jsxs("tr", {
+			].map((r) => jsxDEV("tr", {
 				className: "border-t border-border",
 				children: [
-					jsx("td", {
+					jsxDEV("td", {
 						className: "px-4 py-3 font-medium text-foreground",
 						children: r.lib
-					}),
-					jsx("td", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 55,
+						columnNumber: 17
+					}, this),
+					jsxDEV("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.size
-					}),
-					jsx("td", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 58,
+						columnNumber: 17
+					}, this),
+					jsxDEV("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.time
-					}),
-					jsx("td", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 59,
+						columnNumber: 17
+					}, this),
+					jsxDEV("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.lazy
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 60,
+						columnNumber: 17
+					}, this)
 				]
-			}, r.lib)) })]
-		})
-	})] });
+			}, r.lib, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 54,
+				columnNumber: 15
+			}, this)) }, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 52,
+				columnNumber: 11
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 35,
+			columnNumber: 9
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 34,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 30,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -5185,6 +5250,7 @@ instance.use(initReactI18next).init({
 	react: { useSuspense: false }
 });
 var i18n_default = instance;
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -5200,15 +5266,33 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nextProvider, {
+	return jsxDEV(I18nextProvider, {
 		i18n: i18n_default,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 38,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-i18next-app/components/pages/home/ResultsTable.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ResultsTable, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ResultsTable, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

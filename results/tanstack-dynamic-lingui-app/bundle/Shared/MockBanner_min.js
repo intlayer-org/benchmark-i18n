@@ -1,59 +1,72 @@
 import { createContext as e, useContext as t, useMemo as n } from "react";
 import { jsx as r } from "react/jsx-runtime";
-var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as i } from "react/jsx-dev-runtime";
+var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), o = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), o = i(((e) => {
-	var t = a("react");
-	function n(e, t) {
-		return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
-	}
-	var r = typeof Object.is == "function" ? Object.is : n, i = t.useState, o = t.useEffect, s = t.useLayoutEffect, c = t.useDebugValue;
-	function l(e, t) {
-		var n = t(), r = i({ inst: {
-			value: n,
-			getSnapshot: t
-		} }), a = r[0].inst, l = r[1];
-		return s(function() {
-			a.value = n, a.getSnapshot = t, u(a) && l({ inst: a });
-		}, [
-			e,
-			n,
-			t
-		]), o(function() {
-			return u(a) && l({ inst: a }), e(function() {
-				u(a) && l({ inst: a });
-			});
-		}, [e]), c(n), n;
-	}
-	function u(e) {
-		var t = e.getSnapshot;
-		e = e.value;
-		try {
-			var n = t();
-			return !r(e, n);
-		} catch {
-			return !0;
+}), s = a(((e) => {
+	(function() {
+		function t(e, t) {
+			return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
 		}
-	}
-	function d(e, t) {
-		return t();
-	}
-	var f = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? d : l;
-	e.useSyncExternalStore = t.useSyncExternalStore === void 0 ? f : t.useSyncExternalStore;
-})), s = i(((e, t) => {
-	t.exports = o();
-}))(), c = e(null), l = (e) => t(c);
-function u() {
-	return l();
+		function n(e, t) {
+			f || a.startTransition === void 0 || (f = !0, console.error("You are using an outdated, pre-release alpha of React 18 that does not support useSyncExternalStore. The use-sync-external-store shim will not work correctly. Upgrade to a newer pre-release."));
+			var n = t();
+			if (!p) {
+				var i = t();
+				s(n, i) || (console.error("The result of getSnapshot should be cached to avoid an infinite loop"), p = !0);
+			}
+			i = c({ inst: {
+				value: n,
+				getSnapshot: t
+			} });
+			var o = i[0].inst, m = i[1];
+			return u(function() {
+				o.value = n, o.getSnapshot = t, r(o) && m({ inst: o });
+			}, [
+				e,
+				n,
+				t
+			]), l(function() {
+				return r(o) && m({ inst: o }), e(function() {
+					r(o) && m({ inst: o });
+				});
+			}, [e]), d(n), n;
+		}
+		function r(e) {
+			var t = e.getSnapshot;
+			e = e.value;
+			try {
+				var n = t();
+				return !s(e, n);
+			} catch {
+				return !0;
+			}
+		}
+		function i(e, t) {
+			return t();
+		}
+		typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
+		var a = o("react"), s = typeof Object.is == "function" ? Object.is : t, c = a.useState, l = a.useEffect, u = a.useLayoutEffect, d = a.useDebugValue, f = !1, p = !1, m = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
+		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? m : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
+	})();
+})), c = a(((e, t) => {
+	t.exports = s();
+}))(), l = e(null), u = (e) => {
+	let n = t(l);
+	if (n == null) throw Error(e ?? "useLingui hook was used without I18nProvider.\n\nThis often happens when multiple instances of @lingui/react are installed (e.g. due to a version mismatch or misconfiguration in a monorepo). Verify you have only one version installed by running: npm ls @lingui/react (or pnpm why @lingui/react / yarn why @lingui/react).");
+	return n;
+};
+function d() {
+	return u();
 }
-var d = (e, t) => ({
+var f = (e, t) => ({
 	i18n: new Proxy(e, {}),
 	defaultComponent: t,
 	_: e.t.bind(e)
-}), f = (e, t) => {
-	let n = e.locale, r = d(e, t), i = () => {
-		n = e.locale, r = d(e, t);
+}), p = (e, t) => {
+	let n = e.locale, r = f(e, t), i = () => {
+		n = e.locale, r = f(e, t);
 	};
 	return {
 		getSnapshot: () => (n !== e.locale && i(), r),
@@ -61,29 +74,973 @@ var d = (e, t) => ({
 			i(), t();
 		})
 	};
-}, p = ({ i18n: e, defaultComponent: t, children: i }) => {
-	let a = n(() => f(e, t), [e, t]), o = (0, s.useSyncExternalStore)(a.subscribe, a.getSnapshot, a.getSnapshot);
-	return o.i18n.locale ? r(c.Provider, {
+}, m = ({ i18n: e, defaultComponent: t, children: i }) => {
+	let a = n(() => p(e, t), [e, t]), o = (0, c.useSyncExternalStore)(a.subscribe, a.getSnapshot, a.getSnapshot);
+	return o.i18n.locale ? r(l.Provider, {
 		value: o,
 		children: i
-	}) : null;
-}, m = () => {
-	let { i18n: e } = u();
-	return r("div", {
+	}) : (console.log("I18nProvider rendered `null`. A call to `i18n.activate` needs to happen in order for translations to be activated and for the I18nProvider to render.This is not an error but an informational message logged only in development."), null);
+}, h = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/lingui-app/src/components/MockBanner.tsx", g = () => {
+	let { i18n: e } = d();
+	return i("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: e._("mockBanner")
-	});
-}, h = (e, t, n) => {
+	}, void 0, !1, {
+		fileName: h,
+		lineNumber: 6,
+		columnNumber: 5
+	}, void 0);
+}, _ = (e, t, n) => {
 	let r = t.lastIndexOf("?"), i = e[r === -1 || r < t.lastIndexOf("/") ? t : t.slice(0, r)];
 	return i ? typeof i == "function" ? i() : Promise.resolve(i) : new Promise((e, r) => {
 		(typeof queueMicrotask == "function" ? queueMicrotask : setTimeout)(r.bind(null, /* @__PURE__ */ Error("Unknown variable dynamic import: " + t + (t.split("/").length === n ? "" : ". Note that variables only represent file names one level deep."))));
 	});
-}, g = (e) => typeof e == "string", _ = (e) => typeof e == "function", v = /* @__PURE__ */ new Map(), y = "en";
-function b(e) {
-	return [...Array.isArray(e) ? e : [e], y];
+}, v = a(((e, t) => {
+	(function(e, n) {
+		typeof define == "function" && define.amd ? define([], n) : typeof t == "object" && t.exports ? t.exports = n() : e.moo = n();
+	})(e, function() {
+		var e = Object.prototype.hasOwnProperty, t = Object.prototype.toString, n = typeof (/* @__PURE__ */ RegExp()).sticky == "boolean";
+		function r(e) {
+			return e && t.call(e) === "[object RegExp]";
+		}
+		function i(e) {
+			return e && typeof e == "object" && !r(e) && !Array.isArray(e);
+		}
+		function a(e) {
+			return e.replace(/[-\/\\^$*+?.()|[\]{}]/g, function(e) {
+				return e === "-" ? "\\x2d" : "\\" + e;
+			});
+		}
+		function o(e) {
+			return RegExp("|" + e).exec("").length - 1;
+		}
+		function s(e) {
+			return "(" + e + ")";
+		}
+		function c(e) {
+			return e.length ? "(?:" + e.map(function(e) {
+				return "(?:" + e + ")";
+			}).join("|") + ")" : "(?!)";
+		}
+		function l(e) {
+			if (typeof e == "string") return "(?:" + a(e) + ")";
+			if (r(e)) {
+				if (e.ignoreCase) throw Error("RegExp /i flag not allowed");
+				if (e.global) throw Error("RegExp /g flag is implied");
+				if (e.sticky) throw Error("RegExp /y flag is implied");
+				if (e.multiline) throw Error("RegExp /m flag is implied");
+				return e.source;
+			}
+			throw Error("Not a pattern: " + e);
+		}
+		function u(e, t) {
+			return e.length > t ? e : Array(t - e.length + 1).join(" ") + e;
+		}
+		function d(e, t) {
+			for (var n = e.length, r = 0;;) {
+				var i = e.lastIndexOf("\n", n - 1);
+				if (i === -1 || (r++, n = i, r === t) || n === 0) break;
+			}
+			var a = r < t ? 0 : n + 1;
+			return e.substring(a).split("\n");
+		}
+		function f(e) {
+			for (var t = Object.getOwnPropertyNames(e), n = [], r = 0; r < t.length; r++) {
+				var a = t[r], o = e[a], s = [].concat(o);
+				if (a === "include") {
+					for (var c = 0; c < s.length; c++) n.push({ include: s[c] });
+					continue;
+				}
+				var l = [];
+				s.forEach(function(e) {
+					i(e) ? (l.length && n.push(m(a, l)), n.push(m(a, e)), l = []) : l.push(e);
+				}), l.length && n.push(m(a, l));
+			}
+			return n;
+		}
+		function p(e) {
+			for (var t = [], n = 0; n < e.length; n++) {
+				var r = e[n];
+				if (r.include) {
+					for (var i = [].concat(r.include), a = 0; a < i.length; a++) t.push({ include: i[a] });
+					continue;
+				}
+				if (!r.type) throw Error("Rule has no type: " + JSON.stringify(r));
+				t.push(m(r.type, r));
+			}
+			return t;
+		}
+		function m(t, n) {
+			if (i(n) || (n = { match: n }), n.include) throw Error("Matching rules cannot also include states");
+			var a = {
+				defaultType: t,
+				lineBreaks: !!n.error || !!n.fallback,
+				pop: !1,
+				next: null,
+				push: null,
+				error: !1,
+				fallback: !1,
+				value: null,
+				type: null,
+				shouldThrow: !1
+			};
+			for (var o in n) e.call(n, o) && (a[o] = n[o]);
+			if (typeof a.type == "string" && t !== a.type) throw Error("Type transform cannot be a string (type '" + a.type + "' for token '" + t + "')");
+			var s = a.match;
+			return a.match = Array.isArray(s) ? s : s ? [s] : [], a.match.sort(function(e, t) {
+				return r(e) && r(t) ? 0 : r(t) ? -1 : r(e) ? 1 : t.length - e.length;
+			}), a;
+		}
+		function h(e) {
+			return Array.isArray(e) ? p(e) : f(e);
+		}
+		var g = m("error", {
+			lineBreaks: !0,
+			shouldThrow: !0
+		});
+		function _(e, t) {
+			for (var i = null, a = Object.create(null), u = !0, d = null, f = [], p = [], m = 0; m < e.length; m++) e[m].fallback && (u = !1);
+			for (var m = 0; m < e.length; m++) {
+				var h = e[m];
+				if (h.include) throw Error("Inheritance is not allowed in stateless lexers");
+				if (h.error || h.fallback) {
+					if (i) throw !h.fallback == !i.fallback ? Error("Multiple " + (h.fallback ? "fallback" : "error") + " rules not allowed (for token '" + h.defaultType + "')") : Error("fallback and error are mutually exclusive (for token '" + h.defaultType + "')");
+					i = h;
+				}
+				var _ = h.match.slice();
+				if (u) for (; _.length && typeof _[0] == "string" && _[0].length === 1;) {
+					var v = _.shift();
+					a[v.charCodeAt(0)] = h;
+				}
+				if (h.pop || h.push || h.next) {
+					if (!t) throw Error("State-switching options are not allowed in stateless lexers (for token '" + h.defaultType + "')");
+					if (h.fallback) throw Error("State-switching options are not allowed on fallback tokens (for token '" + h.defaultType + "')");
+				}
+				if (_.length !== 0) {
+					u = !1, f.push(h);
+					for (var y = 0; y < _.length; y++) {
+						var b = _[y];
+						if (r(b)) {
+							if (d === null) d = b.unicode;
+							else if (d !== b.unicode && h.fallback === !1) throw Error("If one rule is /u then all must be");
+						}
+					}
+					var x = c(_.map(l)), S = new RegExp(x);
+					if (S.test("")) throw Error("RegExp matches empty string: " + S);
+					if (o(x) > 0) throw Error("RegExp has capture groups: " + S + "\nUse (?: … ) instead");
+					if (!h.lineBreaks && S.test("\n")) throw Error("Rule should declare lineBreaks: " + S);
+					p.push(s(x));
+				}
+			}
+			var C = i && i.fallback, w = n && !C ? "ym" : "gm", T = n || C ? "" : "|";
+			return d === !0 && (w += "u"), {
+				regexp: new RegExp(c(p) + T, w),
+				groups: f,
+				fast: a,
+				error: i || g
+			};
+		}
+		function v(e) {
+			return new S({ start: _(h(e)) }, "start");
+		}
+		function y(e, t, n) {
+			var r = e && (e.push || e.next);
+			if (r && !n[r]) throw Error("Missing state '" + r + "' (in token '" + e.defaultType + "' of state '" + t + "')");
+			if (e && e.pop && +e.pop != 1) throw Error("pop must be 1 (in token '" + e.defaultType + "' of state '" + t + "')");
+		}
+		function b(e, t) {
+			var n = e.$all ? h(e.$all) : [];
+			delete e.$all;
+			var r = Object.getOwnPropertyNames(e);
+			t ||= r[0];
+			for (var i = Object.create(null), a = 0; a < r.length; a++) {
+				var o = r[a];
+				i[o] = h(e[o]).concat(n);
+			}
+			for (var a = 0; a < r.length; a++) for (var o = r[a], s = i[o], c = Object.create(null), l = 0; l < s.length; l++) {
+				var u = s[l];
+				if (u.include) {
+					var d = [l, 1];
+					if (u.include !== o && !c[u.include]) {
+						c[u.include] = !0;
+						var f = i[u.include];
+						if (!f) throw Error("Cannot include nonexistent state '" + u.include + "' (in state '" + o + "')");
+						for (var p = 0; p < f.length; p++) {
+							var m = f[p];
+							s.indexOf(m) === -1 && d.push(m);
+						}
+					}
+					s.splice.apply(s, d), l--;
+				}
+			}
+			for (var g = Object.create(null), a = 0; a < r.length; a++) {
+				var o = r[a];
+				g[o] = _(i[o], !0);
+			}
+			for (var a = 0; a < r.length; a++) {
+				for (var v = r[a], b = g[v], x = b.groups, l = 0; l < x.length; l++) y(x[l], v, g);
+				for (var C = Object.getOwnPropertyNames(b.fast), l = 0; l < C.length; l++) y(b.fast[C[l]], v, g);
+			}
+			return new S(g, t);
+		}
+		function x(e) {
+			for (var t = typeof Map < "u", n = t ? /* @__PURE__ */ new Map() : Object.create(null), r = Object.getOwnPropertyNames(e), i = 0; i < r.length; i++) {
+				var a = r[i], o = e[a];
+				(Array.isArray(o) ? o : [o]).forEach(function(e) {
+					if (typeof e != "string") throw Error("keyword must be string (in keyword '" + a + "')");
+					t ? n.set(e, a) : n[e] = a;
+				});
+			}
+			return function(e) {
+				return t ? n.get(e) : n[e];
+			};
+		}
+		var S = function(e, t) {
+			this.startState = t, this.states = e, this.buffer = "", this.stack = [], this.reset();
+		};
+		S.prototype.reset = function(e, t) {
+			return this.buffer = e || "", this.index = 0, this.line = t ? t.line : 1, this.col = t ? t.col : 1, this.queuedToken = t ? t.queuedToken : null, this.queuedText = t ? t.queuedText : "", this.queuedThrow = t ? t.queuedThrow : null, this.setState(t ? t.state : this.startState), this.stack = t && t.stack ? t.stack.slice() : [], this;
+		}, S.prototype.save = function() {
+			return {
+				line: this.line,
+				col: this.col,
+				state: this.state,
+				stack: this.stack.slice(),
+				queuedToken: this.queuedToken,
+				queuedText: this.queuedText,
+				queuedThrow: this.queuedThrow
+			};
+		}, S.prototype.setState = function(e) {
+			if (e && this.state !== e) {
+				this.state = e;
+				var t = this.states[e];
+				this.groups = t.groups, this.error = t.error, this.re = t.regexp, this.fast = t.fast;
+			}
+		}, S.prototype.popState = function() {
+			this.setState(this.stack.pop());
+		}, S.prototype.pushState = function(e) {
+			this.stack.push(this.state), this.setState(e);
+		};
+		var C = n ? function(e, t) {
+			return e.exec(t);
+		} : function(e, t) {
+			var n = e.exec(t);
+			return n[0].length === 0 ? null : n;
+		};
+		S.prototype._getGroup = function(e) {
+			for (var t = this.groups.length, n = 0; n < t; n++) if (e[n + 1] !== void 0) return this.groups[n];
+			throw Error("Cannot find token type for matched text");
+		};
+		function w() {
+			return this.value;
+		}
+		if (S.prototype.next = function() {
+			var e = this.index;
+			if (this.queuedGroup) {
+				var t = this._token(this.queuedGroup, this.queuedText, e);
+				return this.queuedGroup = null, this.queuedText = "", t;
+			}
+			var n = this.buffer;
+			if (e !== n.length) {
+				var r = this.fast[n.charCodeAt(e)];
+				if (r) return this._token(r, n.charAt(e), e);
+				var i = this.re;
+				i.lastIndex = e;
+				var a = C(i, n), o = this.error;
+				if (a == null) return this._token(o, n.slice(e, n.length), e);
+				var r = this._getGroup(a), s = a[0];
+				return o.fallback && a.index !== e ? (this.queuedGroup = r, this.queuedText = s, this._token(o, n.slice(e, a.index), e)) : this._token(r, s, e);
+			}
+		}, S.prototype._token = function(e, t, n) {
+			var r = 0;
+			if (e.lineBreaks) {
+				var i = /\n/g, a = 1;
+				if (t === "\n") r = 1;
+				else for (; i.exec(t);) r++, a = i.lastIndex;
+			}
+			var o = {
+				type: typeof e.type == "function" && e.type(t) || e.defaultType,
+				value: typeof e.value == "function" ? e.value(t) : t,
+				text: t,
+				toString: w,
+				offset: n,
+				lineBreaks: r,
+				line: this.line,
+				col: this.col
+			}, s = t.length;
+			if (this.index += s, this.line += r, r === 0 ? this.col += s : this.col = s - a + 1, e.shouldThrow) throw Error(this.formatError(o, "invalid syntax"));
+			return e.pop ? this.popState() : e.push ? this.pushState(e.push) : e.next && this.setState(e.next), o;
+		}, typeof Symbol < "u" && Symbol.iterator) {
+			var T = function(e) {
+				this.lexer = e;
+			};
+			T.prototype.next = function() {
+				var e = this.lexer.next();
+				return {
+					value: e,
+					done: !e
+				};
+			}, T.prototype[Symbol.iterator] = function() {
+				return this;
+			}, S.prototype[Symbol.iterator] = function() {
+				return new T(this);
+			};
+		}
+		return S.prototype.formatError = function(e, t) {
+			if (e == null) var n = this.buffer.slice(this.index), e = {
+				text: n,
+				offset: this.index,
+				lineBreaks: n.indexOf("\n") === -1 ? 0 : 1,
+				line: this.line,
+				col: this.col
+			};
+			var r = 2, i = Math.max(e.line - r, 1), a = e.line + r, o = String(a).length, s = d(this.buffer, this.line - e.line + r + 1).slice(0, 5), c = [];
+			c.push(t + " at line " + e.line + " col " + e.col + ":"), c.push("");
+			for (var l = 0; l < s.length; l++) {
+				var f = s[l], p = i + l;
+				c.push(u(String(p), o) + "  " + f), p === e.line && c.push(u("", o + e.col + 1) + "^");
+			}
+			return c.join("\n");
+		}, S.prototype.clone = function() {
+			return new S(this.states, this.state);
+		}, S.prototype.has = function(e) {
+			return !0;
+		}, {
+			compile: v,
+			states: b,
+			error: Object.freeze({ error: !0 }),
+			fallback: Object.freeze({ fallback: !0 }),
+			keywords: x
+		};
+	});
+})), y = a(((e) => {
+	var t = e && e.__importDefault || function(e) {
+		return e && e.__esModule ? e : { default: e };
+	};
+	Object.defineProperty(e, "__esModule", { value: !0 }), e.lexer = e.states = void 0;
+	var n = t(v());
+	e.states = {
+		body: {
+			doubleapos: {
+				match: "''",
+				value: () => "'"
+			},
+			quoted: {
+				lineBreaks: !0,
+				match: /'[{}#](?:[^']|'')*'(?!')/u,
+				value: (e) => e.slice(1, -1).replace(/''/g, "'")
+			},
+			argument: {
+				lineBreaks: !0,
+				match: /\{\s*[^\p{Pat_Syn}\p{Pat_WS}]+\s*/u,
+				push: "arg",
+				value: (e) => e.substring(1).trim()
+			},
+			octothorpe: "#",
+			end: {
+				match: "}",
+				pop: 1
+			},
+			content: {
+				lineBreaks: !0,
+				match: /[^][^{}#']*/u
+			}
+		},
+		arg: {
+			select: {
+				lineBreaks: !0,
+				match: /,\s*(?:plural|select|selectordinal)\s*,\s*/u,
+				next: "select",
+				value: (e) => e.split(",")[1].trim()
+			},
+			"func-args": {
+				lineBreaks: !0,
+				match: /,\s*[^\p{Pat_Syn}\p{Pat_WS}]+\s*,/u,
+				next: "body",
+				value: (e) => e.split(",")[1].trim()
+			},
+			"func-simple": {
+				lineBreaks: !0,
+				match: /,\s*[^\p{Pat_Syn}\p{Pat_WS}]+\s*/u,
+				value: (e) => e.substring(1).trim()
+			},
+			end: {
+				match: "}",
+				pop: 1
+			}
+		},
+		select: {
+			offset: {
+				lineBreaks: !0,
+				match: /\s*offset\s*:\s*\d+\s*/u,
+				value: (e) => e.split(":")[1].trim()
+			},
+			case: {
+				lineBreaks: !0,
+				match: /\s*(?:=\d+|[^\p{Pat_Syn}\p{Pat_WS}]+)\s*\{/u,
+				push: "body",
+				value: (e) => e.substring(0, e.indexOf("{")).trim()
+			},
+			end: {
+				match: /\s*\}/u,
+				pop: 1
+			}
+		}
+	}, e.lexer = n.default.states(e.states);
+})), b = a(((e) => {
+	Object.defineProperty(e, "__esModule", { value: !0 }), e.ParseError = void 0, e.parse = l;
+	var t = y(), n = (e) => ({
+		offset: e.offset,
+		line: e.line,
+		col: e.col,
+		text: e.text,
+		lineBreaks: e.lineBreaks
+	}), r = (e) => e === "plural" || e === "select" || e === "selectordinal";
+	function i(e, t) {
+		let n = "", r = "";
+		for (let i of t) {
+			let t = i.ctx.text;
+			switch (r += t, i.type) {
+				case "content":
+					n += i.value;
+					break;
+				case "argument":
+				case "function":
+				case "octothorpe":
+					n += t;
+					break;
+				default: throw new s(e, `Unsupported part in strict mode function arg style: ${t}`);
+			}
+		}
+		return [{
+			type: "content",
+			value: n.trim(),
+			ctx: Object.assign({}, t[0].ctx, { text: r })
+		}];
+	}
+	var a = [
+		"number",
+		"date",
+		"time",
+		"spellout",
+		"ordinal",
+		"duration"
+	], o = [
+		"zero",
+		"one",
+		"two",
+		"few",
+		"many",
+		"other"
+	], s = class extends Error {
+		constructor(e, n) {
+			super(t.lexer.formatError(e, n));
+		}
+	};
+	e.ParseError = s;
+	var c = class {
+		constructor(e, n) {
+			this.lexer = t.lexer.reset(e), this.cardinalKeys = n?.cardinal ?? o, this.ordinalKeys = n?.ordinal ?? o, this.strict = n?.strict ?? !1, this.strictPluralKeys = n?.strictPluralKeys ?? !0;
+		}
+		parse() {
+			return this.parseBody(!1, !0);
+		}
+		checkSelectKey(e, t, n) {
+			if (n[0] === "=") {
+				if (t === "select") throw new s(e, `The case ${n} is not valid with select`);
+			} else if (t !== "select") {
+				let r = t === "plural" ? this.cardinalKeys : this.ordinalKeys;
+				if (this.strictPluralKeys && r.length > 0 && !r.includes(n)) throw new s(e, `The ${t} case ${n} is not valid in this locale`);
+			}
+		}
+		parseSelect({ value: e }, t, r, i) {
+			let a = {
+				type: i,
+				arg: e,
+				cases: [],
+				ctx: r
+			};
+			i === "plural" || i === "selectordinal" ? t = !0 : this.strict && (t = !1);
+			for (let e of this.lexer) switch (e.type) {
+				case "offset":
+					if (i === "select") throw new s(e, "Unexpected plural offset for select");
+					if (a.cases.length > 0) throw new s(e, "Plural offset must be set before cases");
+					a.pluralOffset = Number(e.value), r.text += e.text, r.lineBreaks += e.lineBreaks;
+					break;
+				case "case":
+					this.checkSelectKey(e, i, e.value), a.cases.push({
+						key: e.value,
+						tokens: this.parseBody(t),
+						ctx: n(e)
+					});
+					break;
+				case "end": return a;
+				default: throw new s(e, `Unexpected lexer token: ${e.type}`);
+			}
+			throw new s(null, "Unexpected message end");
+		}
+		parseArgToken(e, t) {
+			let o = n(e), c = this.lexer.next();
+			if (!c) throw new s(null, "Unexpected message end");
+			if (o.text += c.text, o.lineBreaks += c.lineBreaks, this.strict && (c.type === "func-simple" || c.type === "func-args") && !a.includes(c.value)) throw new s(e, `Invalid strict mode function arg type: ${c.value}`);
+			switch (c.type) {
+				case "end": return {
+					type: "argument",
+					arg: e.value,
+					ctx: o
+				};
+				case "func-simple": {
+					let t = this.lexer.next();
+					if (!t) throw new s(null, "Unexpected message end");
+					if (t.type !== "end") throw new s(t, `Unexpected lexer token: ${t.type}`);
+					if (o.text += t.text, r(c.value.toLowerCase())) throw new s(c, `Invalid type identifier: ${c.value}`);
+					return {
+						type: "function",
+						arg: e.value,
+						key: c.value,
+						ctx: o
+					};
+				}
+				case "func-args": {
+					if (r(c.value.toLowerCase())) throw new s(c, `Invalid type identifier: ${c.value}`);
+					let n = this.parseBody(!this.strict && t);
+					return this.strict && n.length > 0 && (n = i(e, n)), {
+						type: "function",
+						arg: e.value,
+						key: c.value,
+						param: n,
+						ctx: o
+					};
+				}
+				case "select":
+					if (r(c.value)) return this.parseSelect(e, t, o, c.value);
+					throw new s(c, `Unexpected select type ${c.value}`);
+				default: throw new s(c, `Unexpected lexer token: ${c.type}`);
+			}
+		}
+		parseBody(e, t) {
+			let r = [], i = null;
+			for (let a of this.lexer) if (a.type === "argument") i &&= null, r.push(this.parseArgToken(a, e));
+			else if (a.type === "octothorpe" && e) i &&= null, r.push({
+				type: "octothorpe",
+				ctx: n(a)
+			});
+			else if (a.type === "end" && !t) return r;
+			else {
+				let t = a.value;
+				if (!e && a.type === "quoted" && t[0] === "#") {
+					if (t.includes("{")) throw new s(a, `Unsupported escape pattern: ${t}`);
+					t = a.text;
+				}
+				i ? (i.value += t, i.ctx.text += a.text, i.ctx.lineBreaks += a.lineBreaks) : (i = {
+					type: "content",
+					value: t,
+					ctx: n(a)
+				}, r.push(i));
+			}
+			if (t) return r;
+			throw new s(null, "Unexpected message end");
+		}
+	};
+	function l(e, t = {}) {
+		return new c(e, t).parse();
+	}
+}))(), x = class extends Error {
+	constructor(e, t, n) {
+		super(e), this.token = t, this.type = n || "error";
+	}
+}, S = (e) => e < 4 ? "short" : e === 4 ? "long" : "narrow", C = (e) => e % 2 == 0 ? "2-digit" : "numeric";
+function w(e, t) {
+	switch (e.char) {
+		case "y": return { year: C(e.width) };
+		case "r": return {
+			calendar: "gregory",
+			year: "numeric"
+		};
+		default: return t(`${e.desc} is not supported; falling back to year:numeric`, x.WARNING), { year: "numeric" };
+	}
 }
-function x(e, t, n) {
-	let r = b(e);
+function T(e, t) {
+	switch (e.width) {
+		case 1: return "numeric";
+		case 2: return "2-digit";
+		case 3: return "short";
+		case 4: return "long";
+		case 5: return "narrow";
+		default:
+			t(`${e.desc} is not supported with width ${e.width}`);
+			return;
+	}
+}
+function E(e, t) {
+	let { char: n, desc: r, width: i } = e;
+	if (n === "d") return C(i);
+	t(`${r} is not supported`);
+}
+function ee(e, t) {
+	let { char: n, desc: r, width: i } = e;
+	return (n === "c" || n === "e") && i < 3 && t(`Numeric value is not supported for ${r}; falling back to weekday:short`, x.WARNING), S(i);
+}
+function te(e) {
+	let t = C(e.width), n;
+	switch (e.char) {
+		case "h":
+			n = "h12";
+			break;
+		case "H":
+			n = "h23";
+			break;
+		case "k":
+			n = "h24";
+			break;
+		case "K": n = "h11";
+	}
+	return n ? {
+		hour: t,
+		hourCycle: n
+	} : { hour: t };
+}
+function D(e, t) {
+	let { char: n, desc: r, width: i } = e;
+	switch (n) {
+		case "v":
+		case "z": return i === 4 ? "long" : "short";
+		case "V":
+			if (i === 4) return "long";
+			t(`${r} is not supported with width ${i}`);
+			return;
+		case "X":
+			t(`${r} is not supported`);
+			return;
+	}
+	return "short";
+}
+function O(e, t) {
+	switch (e.field) {
+		case "era": return { era: S(e.width) };
+		case "year": return w(e, t);
+		case "month": return { month: T(e, t) };
+		case "day": return { day: E(e, t) };
+		case "weekday": return { weekday: ee(e, t) };
+		case "period": return;
+		case "hour": return te(e);
+		case "min": return { minute: C(e.width) };
+		case "sec": return { second: C(e.width) };
+		case "tz": return { timeZoneName: D(e, t) };
+		case "quarter":
+		case "week":
+		case "sec-frac":
+		case "ms": t(`${e.desc} is not supported`);
+	}
+}
+function k(e, t, n = (e) => {
+	throw e;
+}) {
+	let r = { timeZone: t }, i = [];
+	for (let t of e) {
+		let { error: e, field: a, str: o } = t;
+		if (e) {
+			let r = new x(e.message, t);
+			r.stack = e.stack, n(r);
+		}
+		o && n(new x(`Ignoring string part: ${o}`, t, x.WARNING)), a && (i.indexOf(a) === -1 ? i.push(a) : n(new x(`Duplicate ${a} token`, t)));
+		let s = O(t, (e, r) => n(new x(e, t, r)));
+		s && Object.assign(r, s);
+	}
+	return r;
+}
+var A = {
+	G: {
+		field: "era",
+		desc: "Era"
+	},
+	y: {
+		field: "year",
+		desc: "Year"
+	},
+	Y: {
+		field: "year",
+		desc: "Year of \"Week of Year\""
+	},
+	u: {
+		field: "year",
+		desc: "Extended year"
+	},
+	U: {
+		field: "year",
+		desc: "Cyclic year name"
+	},
+	r: {
+		field: "year",
+		desc: "Related Gregorian year"
+	},
+	Q: {
+		field: "quarter",
+		desc: "Quarter"
+	},
+	q: {
+		field: "quarter",
+		desc: "Stand-alone quarter"
+	},
+	M: {
+		field: "month",
+		desc: "Month in year"
+	},
+	L: {
+		field: "month",
+		desc: "Stand-alone month in year"
+	},
+	w: {
+		field: "week",
+		desc: "Week of year"
+	},
+	W: {
+		field: "week",
+		desc: "Week of month"
+	},
+	d: {
+		field: "day",
+		desc: "Day in month"
+	},
+	D: {
+		field: "day",
+		desc: "Day of year"
+	},
+	F: {
+		field: "day",
+		desc: "Day of week in month"
+	},
+	g: {
+		field: "day",
+		desc: "Modified julian day"
+	},
+	E: {
+		field: "weekday",
+		desc: "Day of week"
+	},
+	e: {
+		field: "weekday",
+		desc: "Local day of week"
+	},
+	c: {
+		field: "weekday",
+		desc: "Stand-alone local day of week"
+	},
+	a: {
+		field: "period",
+		desc: "AM/PM marker"
+	},
+	b: {
+		field: "period",
+		desc: "AM/PM/noon/midnight marker"
+	},
+	B: {
+		field: "period",
+		desc: "Flexible day period"
+	},
+	h: {
+		field: "hour",
+		desc: "Hour in AM/PM (1~12)"
+	},
+	H: {
+		field: "hour",
+		desc: "Hour in day (0~23)"
+	},
+	k: {
+		field: "hour",
+		desc: "Hour in day (1~24)"
+	},
+	K: {
+		field: "hour",
+		desc: "Hour in AM/PM (0~11)"
+	},
+	j: {
+		field: "hour",
+		desc: "Hour in preferred cycle"
+	},
+	J: {
+		field: "hour",
+		desc: "Hour in preferred cycle without marker"
+	},
+	C: {
+		field: "hour",
+		desc: "Hour in preferred cycle with flexible marker"
+	},
+	m: {
+		field: "min",
+		desc: "Minute in hour"
+	},
+	s: {
+		field: "sec",
+		desc: "Second in minute"
+	},
+	S: {
+		field: "sec-frac",
+		desc: "Fractional second"
+	},
+	A: {
+		field: "ms",
+		desc: "Milliseconds in day"
+	},
+	z: {
+		field: "tz",
+		desc: "Time Zone: specific non-location"
+	},
+	Z: {
+		field: "tz",
+		desc: "Time Zone"
+	},
+	O: {
+		field: "tz",
+		desc: "Time Zone: localized"
+	},
+	v: {
+		field: "tz",
+		desc: "Time Zone: generic non-location"
+	},
+	V: {
+		field: "tz",
+		desc: "Time Zone: ID"
+	},
+	X: {
+		field: "tz",
+		desc: "Time Zone: ISO8601 with Z"
+	},
+	x: {
+		field: "tz",
+		desc: "Time Zone: ISO8601"
+	}
+}, j = (e) => e >= "A" && e <= "Z" || e >= "a" && e <= "z";
+function M(e, t) {
+	let n = e[t], r = 1;
+	for (; e[++t] === n;) ++r;
+	let i = A[n];
+	if (!i) {
+		let e = `The letter ${n} is not a valid field identifier`;
+		return {
+			char: n,
+			error: Error(e),
+			width: r
+		};
+	}
+	return {
+		char: n,
+		field: i.field,
+		desc: i.desc,
+		width: r
+	};
+}
+function N(e, t) {
+	let n = e[++t], r = 2;
+	if (n === "'") return {
+		char: "'",
+		str: n,
+		width: r
+	};
+	for (;;) {
+		let i = e[++t];
+		if (++r, i === void 0) {
+			let t = `Unterminated quoted literal in pattern: ${n || e}`;
+			return {
+				char: "'",
+				error: Error(t),
+				str: n,
+				width: r
+			};
+		}
+		if (i === "'") {
+			if (e[++t] !== "'") return {
+				char: "'",
+				str: n,
+				width: r
+			};
+			++r;
+		}
+		n += i;
+	}
+}
+function P(e, t) {
+	let n = e[t];
+	if (!n) return null;
+	if (j(n)) return M(e, t);
+	if (n === "'") return N(e, t);
+	let r = n, i = 1;
+	for (;;) {
+		let a = e[++t];
+		if (!a || j(a) || a === "'") return {
+			char: n,
+			str: r,
+			width: i
+		};
+		r += a, i += 1;
+	}
+}
+function F(e) {
+	let t = [], n = 0;
+	for (;;) {
+		let r = P(e, n);
+		if (!r) return t;
+		t.push(r), n += r.width;
+	}
+}
+function I(e, t) {
+	return e.filter((e) => e.type !== "content").length ? e.map((e) => {
+		if (e.type === "content") return t(e.value);
+		if (e.type === "octothorpe") return "#";
+		if (e.type === "argument") return [e.arg];
+		if (e.type === "function") {
+			let t = e?.param?.[0];
+			if (e.key === "date" && t) {
+				let n = ne(t.value.trim(), (e) => {
+					throw Error(`Unable to compile date expression: ${e.message}`);
+				});
+				return [
+					e.arg,
+					e.key,
+					n
+				];
+			}
+			return t ? [
+				e.arg,
+				e.key,
+				t.value.trim()
+			] : [e.arg, e.key];
+		}
+		let n = e.pluralOffset, r = {};
+		return e.cases.forEach(({ key: e, tokens: n }) => {
+			let i = e[0] === "=" ? e.slice(1) : e;
+			r[i] = I(n, t);
+		}), [
+			e.arg,
+			e.type,
+			{
+				offset: n,
+				...r
+			}
+		];
+	}) : e.map((e) => t(e.value));
+}
+function ne(e, t) {
+	return /^::/.test(e) ? k(F(e.substring(2)), void 0, t) : e;
+}
+function re(e, t = (e) => e) {
+	return I((0, b.parse)(e), t);
+}
+function ie(e, t = (e) => e) {
+	try {
+		return re(e, t);
+	} catch (t) {
+		return console.error(`${t.message} 
+
+Message: ${e}`), [e];
+	}
+}
+var L = (e) => typeof e == "string", R = (e) => typeof e == "function", z = /* @__PURE__ */ new Map(), B = "en";
+function V(e) {
+	return [...Array.isArray(e) ? e : [e], B];
+}
+function H(e, t, n) {
+	let r = V(e);
 	n ||= "default";
 	let i;
 	if (typeof n == "string") switch (i = {
@@ -98,9 +1055,9 @@ function x(e, t, n) {
 		case "short": i.month = "numeric";
 	}
 	else i = n;
-	return T(() => E("date", r, n), () => new Intl.DateTimeFormat(r, i)).format(g(t) ? new Date(t) : t);
+	return K(() => q("date", r, n), () => new Intl.DateTimeFormat(r, i)).format(L(t) ? new Date(t) : t);
 }
-function S(e, t, n) {
+function U(e, t, n) {
 	let r;
 	if (n ||= "default", typeof n == "string") switch (r = {
 		second: "numeric",
@@ -114,24 +1071,24 @@ function S(e, t, n) {
 		case "short": delete r.second;
 	}
 	else r = n;
-	return x(e, t, r);
+	return H(e, t, r);
 }
-function C(e, t, n) {
-	let r = b(e);
-	return T(() => E("number", r, n), () => new Intl.NumberFormat(r, n)).format(t);
+function W(e, t, n) {
+	let r = V(e);
+	return K(() => q("number", r, n), () => new Intl.NumberFormat(r, n)).format(t);
 }
-function w(e, t, n, { offset: r = 0, ...i }) {
-	let a = b(e), o = t ? T(() => E("plural-ordinal", a), () => new Intl.PluralRules(a, { type: "ordinal" })) : T(() => E("plural-cardinal", a), () => new Intl.PluralRules(a, { type: "cardinal" }));
+function G(e, t, n, { offset: r = 0, ...i }) {
+	let a = V(e), o = t ? K(() => q("plural-ordinal", a), () => new Intl.PluralRules(a, { type: "ordinal" })) : K(() => q("plural-cardinal", a), () => new Intl.PluralRules(a, { type: "cardinal" }));
 	return i[n] ?? i[o.select(n - r)] ?? i.other;
 }
-function T(e, t) {
-	let n = e(), r = v.get(n);
-	return r || (r = t(), v.set(n, r)), r;
+function K(e, t) {
+	let n = e(), r = z.get(n);
+	return r || (r = t(), z.set(n, r)), r;
 }
-function E(e, t, n) {
+function q(e, t, n) {
 	return `${e}-${t.join("-")}-${JSON.stringify(n)}`;
 }
-var D = /\\u[a-fA-F0-9]{4}|\\x[a-fA-F0-9]{2}/, O = (e) => e.replace(/\\u([a-fA-F0-9]{4})|\\x([a-fA-F0-9]{2})/g, (e, t, n) => {
+var J = /\\u[a-fA-F0-9]{4}|\\x[a-fA-F0-9]{2}/, Y = (e) => e.replace(/\\u([a-fA-F0-9]{4})|\\x([a-fA-F0-9]{2})/g, (e, t, n) => {
 	if (t) {
 		let e = parseInt(t, 16);
 		return String.fromCharCode(e);
@@ -140,31 +1097,31 @@ var D = /\\u[a-fA-F0-9]{4}|\\x[a-fA-F0-9]{2}/, O = (e) => e.replace(/\\u([a-fA-F
 		let e = parseInt(n, 16);
 		return String.fromCharCode(e);
 	}
-}), k = "%__lingui_octothorpe__%", A = (e, t, n = {}) => {
+}), X = "%__lingui_octothorpe__%", ae = (e, t, n = {}) => {
 	let r = t || e, i = (e) => typeof e == "object" ? e : n[e], a = (e, t) => {
-		let a = Object.keys(n).length ? i("number") : void 0, o = C(r, e, a);
-		return t.replace(new RegExp(k, "g"), o);
+		let a = Object.keys(n).length ? i("number") : void 0, o = W(r, e, a);
+		return t.replace(new RegExp(X, "g"), o);
 	};
 	return {
 		plural: (e, t) => {
-			let { offset: n = 0 } = t, i = w(r, !1, e, t);
+			let { offset: n = 0 } = t, i = G(r, !1, e, t);
 			return a(e - n, i);
 		},
 		selectordinal: (e, t) => {
-			let { offset: n = 0 } = t, i = w(r, !0, e, t);
+			let { offset: n = 0 } = t, i = G(r, !0, e, t);
 			return a(e - n, i);
 		},
-		select: j,
-		number: (e, t) => C(r, e, i(t) || { style: t }),
-		date: (e, t) => x(r, e, i(t) || t),
-		time: (e, t) => S(r, e, i(t) || t)
+		select: oe,
+		number: (e, t) => W(r, e, i(t) || { style: t }),
+		date: (e, t) => H(r, e, i(t) || t),
+		time: (e, t) => U(r, e, i(t) || t)
 	};
-}, j = (e, t) => t[e] ?? t.other;
-function M(e, t, n) {
+}, oe = (e, t) => t[e] ?? t.other;
+function se(e, t, n) {
 	return (r = {}, i) => {
-		let a = A(t, n, i), o = (e, t = !1) => Array.isArray(e) ? e.reduce((e, n) => {
-			if (n === "#" && t) return e + k;
-			if (g(n)) return e + n;
+		let a = ae(t, n, i), o = (e, t = !1) => Array.isArray(e) ? e.reduce((e, n) => {
+			if (n === "#" && t) return e + X;
+			if (L(n)) return e + n;
 			let [i, s, c] = n, l = {};
 			s === "plural" || s === "selectordinal" || s === "select" ? Object.entries(c).forEach(([e, t]) => {
 				l[e] = o(t, s === "plural" || s === "selectordinal");
@@ -176,10 +1133,10 @@ function M(e, t, n) {
 			} else u = r[i];
 			return u == null ? e : e + u;
 		}, "") : e, s = o(e);
-		return g(s) && D.test(s) ? O(s) : g(s) ? s : s ? String(s) : "";
+		return L(s) && J.test(s) ? Y(s) : L(s) ? s : s ? String(s) : "";
 	};
 }
-var N = class {
+var ce = class {
 	_events = {};
 	on(e, t) {
 		return this._events[e] ??= /* @__PURE__ */ new Set(), this._events[e].add(t), () => this.removeListener(e, t);
@@ -192,14 +1149,14 @@ var N = class {
 		let n = this._events[e];
 		if (n) for (let e of [...n]) e.apply(this, t);
 	}
-}, P = class extends N {
+}, Z = class extends ce {
 	_locale = "";
 	_locales;
 	_messages = {};
 	_missing;
 	_messageCompiler;
 	constructor(e) {
-		super(), e.missing != null && (this._missing = e.missing), e.messages != null && this.load(e.messages), (typeof e.locale == "string" || e.locales) && this.activate(e.locale ?? y, e.locales);
+		super(), this.setMessagesCompiler(ie), e.missing != null && (this._missing = e.missing), e.messages != null && this.load(e.messages), (typeof e.locale == "string" || e.locales) && this.activate(e.locale ?? B, e.locales);
 	}
 	get locale() {
 		return this._locale;
@@ -224,20 +1181,20 @@ var N = class {
 		this._locale = e, this._locales = t || void 0, this._messages[this._locale] = n, this.emit("change");
 	}
 	activate(e, t) {
-		this._locale = e, this._locales = t, this.emit("change");
+		this._messages[e] || console.warn(`Messages for locale "${e}" not loaded.`), this._locale = e, this._locales = t, this.emit("change");
 	}
 	_(e, t, n) {
 		if (!this.locale) throw Error("Lingui: Attempted to call a translation function without setting a locale.\nMake sure to call `i18n.activate(locale)` before using Lingui functions.\nThis issue may also occur due to a race condition in your initialization logic.");
 		let r = n?.message;
-		e ||= "", g(e) || (t = e.values || t, r = e.message, e = e.id);
+		e ||= "", L(e) || (t = e.values || t, r = e.message, e = e.id);
 		let i = this.messages[e], a = i === void 0, o = this._missing;
-		if (o && a) return _(o) ? o(this._locale, e) : o;
+		if (o && a) return R(o) ? o(this._locale, e) : o;
 		a && this.emit("missing", {
 			id: e,
 			locale: this._locale
 		});
 		let s = i || r || e;
-		return g(s) && (this._messageCompiler ? s = this._messageCompiler(s) : console.warn(`Uncompiled message detected! Message:
+		return L(s) && (this._messageCompiler ? s = this._messageCompiler(s) : console.warn(`Uncompiled message detected! Message:
 
 > ${s}
 
@@ -245,32 +1202,31 @@ That means you use raw catalog or your catalog doesn't have a translation for th
 ICU features such as interpolation and plurals will not work properly for that message.
 
 Please compile your catalog first.
-`)), g(s) && D.test(s) ? O(s) : g(s) ? s : M(s, this._locale, this._locales)(t, n?.formats);
+`)), L(s) && J.test(s) ? Y(s) : L(s) ? s : se(s, this._locale, this._locales)(t, n?.formats);
 	}
 	t = this._.bind(this);
 	date(e, t) {
-		return x(this._locales || this._locale, e, t);
+		return H(this._locales || this._locale, e, t);
 	}
 	number(e, t) {
-		return C(this._locales || this._locale, e, t);
+		return W(this._locales || this._locale, e, t);
 	}
 };
-function F(e = {}) {
-	return new P(e);
+function Q(e = {}) {
+	return new Z(e);
 }
-F();
-async function I(e, t = ["shared", "route"]) {
+Q();
+async function le(e, t = ["shared", "route"]) {
 	let n = {};
 	return await Promise.all(t.map(async (t) => {
 		try {
-			let r = await h(Object.assign({
+			let r = await _(Object.assign({
 				"../locales/de/about.mjs": () => import("./about-BKzBMAkN.js"),
 				"../locales/de/blog.mjs": () => import("./blog-Br5iSzgS.js"),
 				"../locales/de/careers.mjs": () => import("./careers-DW0brcrn.js"),
 				"../locales/de/contact.mjs": () => import("./contact-Cfk-sFkz.js"),
 				"../locales/de/faq.mjs": () => import("./faq-BGDlzsPo.js"),
 				"../locales/de/home.mjs": () => import("./home-BLr_0fd0.js"),
-				"../locales/de/messages.mjs": () => import("./messages-CTLSAkj-.js"),
 				"../locales/de/pricing.mjs": () => import("./pricing-DU83RWBL.js"),
 				"../locales/de/products.mjs": () => import("./products-ulQc55ZF.js"),
 				"../locales/de/route.mjs": () => import("./route-02UJYWiB.js"),
@@ -283,7 +1239,6 @@ async function I(e, t = ["shared", "route"]) {
 				"../locales/en/contact.mjs": () => import("./contact-DEf9tuDy.js"),
 				"../locales/en/faq.mjs": () => import("./faq-3jlf7vVh.js"),
 				"../locales/en/home.mjs": () => import("./home-DP3Ay3rY.js"),
-				"../locales/en/messages.mjs": () => import("./messages-CopR66MW.js"),
 				"../locales/en/pricing.mjs": () => import("./pricing-8QD8twM0.js"),
 				"../locales/en/products.mjs": () => import("./products-BPaWso0t.js"),
 				"../locales/en/route.mjs": () => import("./route-KRUuJaDJ.js"),
@@ -296,7 +1251,6 @@ async function I(e, t = ["shared", "route"]) {
 				"../locales/es/contact.mjs": () => import("./contact-DSODE4eZ.js"),
 				"../locales/es/faq.mjs": () => import("./faq-I3obfZ1L.js"),
 				"../locales/es/home.mjs": () => import("./home-_RDl7N2A.js"),
-				"../locales/es/messages.mjs": () => import("./messages-ifrLe5bF.js"),
 				"../locales/es/pricing.mjs": () => import("./pricing-BvSaHNaH.js"),
 				"../locales/es/products.mjs": () => import("./products-DKLQO39q.js"),
 				"../locales/es/route.mjs": () => import("./route-Bqgg2yu9.js"),
@@ -309,7 +1263,6 @@ async function I(e, t = ["shared", "route"]) {
 				"../locales/fr/contact.mjs": () => import("./contact-C9AUx0Hm.js"),
 				"../locales/fr/faq.mjs": () => import("./faq-DsSGBrEy.js"),
 				"../locales/fr/home.mjs": () => import("./home-CPZLJ-rM.js"),
-				"../locales/fr/messages.mjs": () => import("./messages-BuE4o0Zv.js"),
 				"../locales/fr/pricing.mjs": () => import("./pricing-C044S1Hk.js"),
 				"../locales/fr/products.mjs": () => import("./products-8AlMdPhV.js"),
 				"../locales/fr/route.mjs": () => import("./route-CgXnZsvs.js"),
@@ -322,7 +1275,6 @@ async function I(e, t = ["shared", "route"]) {
 				"../locales/it/contact.mjs": () => import("./contact-GLeCd9d8.js"),
 				"../locales/it/faq.mjs": () => import("./faq-Cpx1sKfp.js"),
 				"../locales/it/home.mjs": () => import("./home-Cc7egteV.js"),
-				"../locales/it/messages.mjs": () => import("./messages-BvBh7ZVc.js"),
 				"../locales/it/pricing.mjs": () => import("./pricing-C2Namy33.js"),
 				"../locales/it/products.mjs": () => import("./products-9HyVkutw.js"),
 				"../locales/it/route.mjs": () => import("./route-14mrAln1.js"),
@@ -335,7 +1287,6 @@ async function I(e, t = ["shared", "route"]) {
 				"../locales/ja/contact.mjs": () => import("./contact-DZXnc9Oo.js"),
 				"../locales/ja/faq.mjs": () => import("./faq-6PYf4PIT.js"),
 				"../locales/ja/home.mjs": () => import("./home-BMf9FPD8.js"),
-				"../locales/ja/messages.mjs": () => import("./messages-DKkN0zVD.js"),
 				"../locales/ja/pricing.mjs": () => import("./pricing-C2L_bEjk.js"),
 				"../locales/ja/products.mjs": () => import("./products-5Nu6cxz5.js"),
 				"../locales/ja/route.mjs": () => import("./route-Cqx13V5z.js"),
@@ -348,7 +1299,6 @@ async function I(e, t = ["shared", "route"]) {
 				"../locales/ko/contact.mjs": () => import("./contact-CqTU0fvB.js"),
 				"../locales/ko/faq.mjs": () => import("./faq-CByaC2mr.js"),
 				"../locales/ko/home.mjs": () => import("./home-CUWhGF1K.js"),
-				"../locales/ko/messages.mjs": () => import("./messages-8GcdW4Xw.js"),
 				"../locales/ko/pricing.mjs": () => import("./pricing-BGuV5jfH.js"),
 				"../locales/ko/products.mjs": () => import("./products-CqxIxfFO.js"),
 				"../locales/ko/route.mjs": () => import("./route-wR6rcZQM.js"),
@@ -361,7 +1311,6 @@ async function I(e, t = ["shared", "route"]) {
 				"../locales/pt/contact.mjs": () => import("./contact-CPVkBpaM.js"),
 				"../locales/pt/faq.mjs": () => import("./faq-DpNhAr_w.js"),
 				"../locales/pt/home.mjs": () => import("./home-7epLRuq1.js"),
-				"../locales/pt/messages.mjs": () => import("./messages-KIPHiJ1g.js"),
 				"../locales/pt/pricing.mjs": () => import("./pricing-ClOPrUiu.js"),
 				"../locales/pt/products.mjs": () => import("./products-D5cyApWd.js"),
 				"../locales/pt/route.mjs": () => import("./route-yfaLSDE9.js"),
@@ -374,7 +1323,6 @@ async function I(e, t = ["shared", "route"]) {
 				"../locales/ru/contact.mjs": () => import("./contact-CAHRKpPu.js"),
 				"../locales/ru/faq.mjs": () => import("./faq-0VpZxxOq.js"),
 				"../locales/ru/home.mjs": () => import("./home-CWgR3iQj.js"),
-				"../locales/ru/messages.mjs": () => import("./messages-DIot8Ves.js"),
 				"../locales/ru/pricing.mjs": () => import("./pricing-Cy24BD8T.js"),
 				"../locales/ru/products.mjs": () => import("./products-xLi501Qp.js"),
 				"../locales/ru/route.mjs": () => import("./route-BhSvTERt.js"),
@@ -387,7 +1335,6 @@ async function I(e, t = ["shared", "route"]) {
 				"../locales/zh/contact.mjs": () => import("./contact-CZdMOF6a.js"),
 				"../locales/zh/faq.mjs": () => import("./faq-CEE9ey20.js"),
 				"../locales/zh/home.mjs": () => import("./home-BZPpp25v.js"),
-				"../locales/zh/messages.mjs": () => import("./messages-CJHvW8aw.js"),
 				"../locales/zh/pricing.mjs": () => import("./pricing-BoyayaGe.js"),
 				"../locales/zh/products.mjs": () => import("./products-DVi_3j0H.js"),
 				"../locales/zh/route.mjs": () => import("./route-CO9yqWTb.js"),
@@ -401,21 +1348,35 @@ async function I(e, t = ["shared", "route"]) {
 		}
 	})), n;
 }
-function L(e, t) {
-	let n = F();
+function ue(e, t) {
+	let n = Q();
 	return n.load(e, t), n.activate(e), n;
 }
-function R({ children: e }) {
-	let t = n(() => I("en"), []), i = n(() => L("en", t), [t]);
-	return r(p, {
-		i18n: i,
+var de = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/lingui-app/scripts/Wrapper.tsx";
+function fe({ children: e }) {
+	let t = n(() => le("en"), []), r = n(() => ue("en", t), [t]);
+	return i(m, {
+		i18n: r,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: de,
+		lineNumber: 10,
+		columnNumber: 5
+	}, this);
 }
-function z() {
-	return r(R, { children: r(m, {}) });
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/lingui-app/src/components/MockBanner.wrapper.tsx";
+function pe() {
+	return i(fe, { children: i(g, {}, void 0, !1, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { z as default };
+export { pe as default };
 var e = JSON.parse("{\"about-grid.choosingAnI18nLibraryIs\":[\"Elegir una biblioteca i18n es una decisión arquitectónica con consecuencias a largo plazo. La mayoría de las comparaciones se centran en la ergonomía de la API, pero pocas miden el costo de rendimiento: ¿cuánto peso añade la biblioteca al paquete? ¿Cómo afecta al renderizado cuando se cargan miles de claves de traducción? ¿Ayuda realmente la carga diferida o simplemente traslada el costo? Este benchmark responde a esas preguntas con datos reales.\"],\"about-grid.methodology\":[\"Metodología\"],\"about-grid.theSame10PageApp\":[\"La misma aplicación de 10 páginas se construye una vez por biblioteca. Medimos el paquete de producción (a través de rollup-plugin-visualizer), realizamos auditorías de Lighthouse para las métricas de carga y utilizamos React Profiler para capturar los tiempos de renderizado durante los cambios de idioma. Todas las pruebas se ejecutan en CI en hardware consistente para garantizar resultados reproducibles.\"],\"about-grid.whyThisExists\":[\"Por qué existe esto\"],\"about-header.aboutThisBenchmark\":[\"Sobre este benchmark\"],\"about-header.thisIsAnOpenSource\":[\"Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación React de varias páginas realista donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas.\"],\"what-we-measure.bundleSizeImpact\":[\"Impacto en el tamaño del paquete\"],\"what-we-measure.duringSsrTranslationDataIs\":[\"Durante el SSR, los datos de traducción se serializan en el HTML. Los diccionarios grandes aumentan la carga útil de HTML y ralentizan la hidratación: el momento en que la página se vuelve interactiva.\"],\"what-we-measure.howFastTheAppCan\":[\"Qué tan rápido puede la aplicación cambiar de un idioma a otro en tiempo de ejecución, incluyendo la obtención de nuevas traducciones, el renderizado de componentes y la actualización del DOM.\"],\"what-we-measure.howMuchExtraTimeThe\":[\"Cuánto tiempo extra añade la biblioteca al ciclo de renderizado de React. Las bibliotecas que inyectan traducciones a través de un único proveedor de contexto pueden causar renderizados innecesarios en todo el árbol de componentes.\"],\"what-we-measure.hydrationCost\":[\"Costo de hidratación\"],\"what-we-measure.lazyLoadingEffectiveness\":[\"Eficacia de la carga diferida\"],\"what-we-measure.localeSwitchSpeed\":[\"Velocidad de cambio de idioma\"],\"what-we-measure.renderingOverhead\":[\"Sobrecarga de renderizado\"],\"what-we-measure.theAdditionalJavascriptBytesSent\":[\"Los bytes de JavaScript adicionales enviados a los usuarios cuando se incluyen la biblioteca i18n y sus archivos de traducción. Esto afecta directamente al tiempo de descarga en redes lentas.\"],\"what-we-measure.whatWeMeasure\":[\"Lo que medimos\"],\"what-we-measure.whetherSplittingTranslationsByRoute\":[\"Si dividir las traducciones por ruta o espacio de nombres reduce realmente la carga inicial y qué compensaciones introduce (solicitudes en cascada, FOUC, complejidad de la caché).\"]}");
 export { e as messages };
 var e = JSON.parse("{\"about-grid.choosingAnI18nLibraryIs\":[\"选择 i18n 库是一项具有长期影响的架构决策。大多数比较侧重于 API 的易用性，但很少衡量性能成本：库为包增加了多少权重？加载数千个翻译键时它如何影响渲染？延迟加载是否真的有帮助，还是只是转移了成本？本基准测试用真实数据回答了这些问题。\"],\"about-grid.methodology\":[\"方法论\"],\"about-grid.theSame10PageApp\":[\"同一个 10 页应用为每个库构建一次。我们测量生产包（通过 rollup-plugin-visualizer），运行 Lighthouse 审计以获取加载指标，并使用 React Profiler 捕获语言切换期间的渲染时间。所有测试都在一致的硬件上在 CI 中运行，以确保结果的可复现性。\"],\"about-grid.whyThisExists\":[\"为什么存在这个基准测试\"],\"about-header.aboutThisBenchmark\":[\"关于本基准测试\"],\"about-header.thisIsAnOpenSource\":[\"这是一个开源测试应用程序 —— 不是产品或公司。其唯一目的是提供一个现实的多页面 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。\"],\"what-we-measure.bundleSizeImpact\":[\"包大小影响\"],\"what-we-measure.duringSsrTranslationDataIs\":[\"在 SSR 期间，翻译数据被序列化到 HTML 中。大型字典会增加 HTML 负载并减慢注水速度 —— 即页面变得可交互的时刻。\"],\"what-we-measure.howFastTheAppCan\":[\"应用在运行时从一种语言切换到另一种语言的速度 —— 包括获取新翻译、重新渲染组件和更新 DOM。\"],\"what-we-measure.howMuchExtraTimeThe\":[\"库为 React 渲染周期增加了多少额外时间。通过单个上下文提供者注入翻译的库可能会在整个组件树中导致不必要的重新渲染。\"],\"what-we-measure.hydrationCost\":[\"注水成本\"],\"what-we-measure.lazyLoadingEffectiveness\":[\"延迟加载有效性\"],\"what-we-measure.localeSwitchSpeed\":[\"语言切换速度\"],\"what-we-measure.renderingOverhead\":[\"渲染开销\"],\"what-we-measure.theAdditionalJavascriptBytesSent\":[\"包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络下的下载时间。\"],\"what-we-measure.whatWeMeasure\":[\"我们测量什么\"],\"what-we-measure.whetherSplittingTranslationsByRoute\":[\"按路由或命名空间拆分翻译是否真的减少了初始负载，以及它引入了哪些权衡（瀑布流请求、FOUC、缓存复杂性）。\"]}");
@@ -535,26 +1496,6 @@ export { e as messages };
 var e = JSON.parse("{\"hero.aTestApplicationDesignedTo\":[\"A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.\"],\"hero.viewResults\":[\"View Results\"],\"results-table.bundleSize\":[\"Bundle Size\"],\"results-table.lazyLoading\":[\"Lazy Loading\"],\"results-table.lookupTime\":[\"Lookup Time\"],\"results-table.sampleResults\":[\"Sample Results\"],\"understanding-impact.cacheInvalidation\":[\"Cache invalidation:\"],\"understanding-impact.contextBasedArchitecturesCanCause\":[\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\"],\"understanding-impact.duringServerSideRenderingThe\":[\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\"],\"understanding-impact.flashOfUntranslatedContentFouc\":[\"Flash of untranslated content (FOUC):\"],\"understanding-impact.manyI18nLibrariesStoreTranslations\":[\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\"],\"understanding-impact.splittingTranslationsIntoPerRoute\":[\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\"],\"understanding-impact.theJsonMustBeParsed\":[\"The JSON must be parsed on every page load — blocking the main thread.\"],\"understanding-impact.theTradeOffsOfDynamic\":[\"The trade-offs of dynamic loading\"],\"understanding-impact.thisTestAppProvidesA\":[\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"],\"understanding-impact.understandingTheImpact\":[\"Understanding the Impact\"],\"understanding-impact.waterfallRequests\":[\"Waterfall requests:\"],\"understanding-impact.whatThisBenchmarkMeasures\":[\"What this benchmark measures\"],\"understanding-impact.whyASingleLargeJson\":[\"Why a single large JSON can hurt performance\"],\"why-it-matters.bundleSize\":[\"Bundle Size\"],\"why-it-matters.connectingALargeJsonDictionary\":[\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\"],\"why-it-matters.dynamicLoading\":[\"Dynamic Loading\"],\"why-it-matters.loadingAllTranslationsUpfrontOverloads\":[\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"],\"why-it-matters.renderingHydration\":[\"Rendering & Hydration\"],\"why-it-matters.theBundleIsTheData\":[\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\"],\"why-it-matters.whyTheseMetricsMatter\":[\"Why These Metrics Matter\"]}");
 export { e as messages };
 var e = JSON.parse("{\"hero.aTestApplicationDesignedTo\":[\"Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el rendimiento de carga y la reactividad de renderizado.\"],\"hero.viewResults\":[\"Ver resultados\"],\"results-table.bundleSize\":[\"Tamaño del paquete\"],\"results-table.lazyLoading\":[\"Carga diferida\"],\"results-table.lookupTime\":[\"Tiempo de búsqueda\"],\"results-table.sampleResults\":[\"Resultados de muestra\"],\"understanding-impact.cacheInvalidation\":[\"Invalidación de la caché:\"],\"understanding-impact.contextBasedArchitecturesCanCause\":[\"Las arquitecturas basadas en el contexto pueden causar renderizados en cascada cuando cambia el local, porque cada consumidor es notificado incluso si sus claves específicas no han cambiado.\"],\"understanding-impact.duringServerSideRenderingThe\":[\"Durante la renderización del lado del servidor, el diccionario completo se serializa en la carga útil de HTML, aumentando el tamaño del documento que debe descargarse e hidratarse.\"],\"understanding-impact.flashOfUntranslatedContentFouc\":[\"Parpadeo de contenido no traducido (FOUC):\"],\"understanding-impact.manyI18nLibrariesStoreTranslations\":[\"Muchas bibliotecas i18n almacenan las traducciones en un solo objeto JSON proporcionado a través del contexto de React. Cuando este objeto es grande (miles de claves), cada componente que consume traducciones mantiene una referencia a todo el diccionario. Esto significa:\"],\"understanding-impact.splittingTranslationsIntoPerRoute\":[\"Dividir las traducciones en fragmentos por ruta o por espacio de nombres puede reducir drásticamente la carga útil inicial. Pero introduce nuevos desafíos:\"],\"understanding-impact.theJsonMustBeParsed\":[\"El JSON debe ser analizado en cada carga de página — bloqueando el hilo principal.\"],\"understanding-impact.theTradeOffsOfDynamic\":[\"Las compensaciones de la carga dinámica\"],\"understanding-impact.thisTestAppProvidesA\":[\"Esta aplicación de prueba proporciona un entorno controlado — 10 páginas con contenido realista — para comparar las bibliotecas i18n en tres ejes: el peso que añaden a su paquete de JavaScript, el tiempo dedicado a analizar y renderizar el contenido traducido y la eficacia de sus estrategias de división de código y carga diferida. Cada biblioteca se integra en la misma aplicación para que los resultados sean directamente comparables.\"],\"understanding-impact.understandingTheImpact\":[\"Entendiendo el impacto\"],\"understanding-impact.waterfallRequests\":[\"Solicitudes en cascada:\"],\"understanding-impact.whatThisBenchmarkMeasures\":[\"Lo que mide este benchmark\"],\"understanding-impact.whyASingleLargeJson\":[\"Por qué un solo JSON grande puede perjudicar el rendimiento\"],\"why-it-matters.bundleSize\":[\"Tamaño del paquete\"],\"why-it-matters.connectingALargeJsonDictionary\":[\"Conectar un gran diccionario JSON a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede desencadenar nuevos renderizados en todo el árbol. Durante la hidratación de SSR, el análisis y la anexión de objetos de traducción masivos añaden latencia antes de que la página se vuelva interactiva — impactando directamente el tiempo de interacción (TTI).\"],\"why-it-matters.dynamicLoading\":[\"Carga dinámica\"],\"why-it-matters.loadingAllTranslationsUpfrontOverloads\":[\"Cargar todas las traducciones por adelantado sobrecarga la carga útil inicial. La carga dinámica (lazy) divide las traducciones por ruta o espacio de nombres, enviando solo lo que la página actual necesita. Sin embargo, el lazy loading introduce sus propias compensaciones: solicitudes en cascada, parpadeo de contenido no traducido y complejidad de la caché. Medir ambas estrategias es esencial.\"],\"why-it-matters.renderingHydration\":[\"Renderizado e hidratación\"],\"why-it-matters.theBundleIsTheData\":[\"El paquete representa los datos enviados a cada usuario en todo el mundo. Un paquete más grande significa tiempos de descarga más largos — especialmente en conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código de tiempo de ejecución, además de los propios archivos de traducción.\"],\"why-it-matters.whyTheseMetricsMatter\":[\"Por qué son importantes estas métricas\"]}");
-export { e as messages };
-var e = JSON.parse("{}");
-export { e as messages };
-var e = JSON.parse("{}");
-export { e as messages };
-var e = JSON.parse("{}");
-export { e as messages };
-var e = JSON.parse("{}");
-export { e as messages };
-var e = JSON.parse("{}");
-export { e as messages };
-var e = JSON.parse("{}");
-export { e as messages };
-var e = JSON.parse("{}");
-export { e as messages };
-var e = JSON.parse("{}");
-export { e as messages };
-var e = JSON.parse("{}");
-export { e as messages };
-var e = JSON.parse("{}");
 export { e as messages };
 var e = JSON.parse("{\"pricing-header.chooseThePlanThatFits\":[\"Choose the plan that fits your team. No hidden fees.\"],\"pricing-header.simpleTransparentPricing\":[\"Simple, Transparent Pricing\"],\"pricing-tiers.allLibraries\":[\"All libraries\"],\"pricing-tiers.auditLogs\":[\"Audit logs\"],\"pricing-tiers.benchmarkRunPerDay\":[[\"runs\"],\" benchmark runs/day\"],\"pricing-tiers.ciIntegration\":[\"CI integration\"],\"pricing-tiers.communitySupport\":[\"Community support\"],\"pricing-tiers.contactSales\":[\"Contact Sales\"],\"pricing-tiers.customPrice\":[\"Custom\"],\"pricing-tiers.customSlas\":[\"Custom SLAs\"],\"pricing-tiers.dedicatedAccountManager\":[\"Dedicated account manager\"],\"pricing-tiers.enterprise\":[\"Enterprise\"],\"pricing-tiers.everythingInPro\":[\"Everything in Pro\"],\"pricing-tiers.forever\":[\"forever\"],\"pricing-tiers.getStarted\":[\"Get Started\"],\"pricing-tiers.historicalData\":[\"Historical data\"],\"pricing-tiers.librariesNumber\":[[\"libs\"],\" libraries\"],\"pricing-tiers.month\":[\"/month\"],\"pricing-tiers.onPremiseOption\":[\"On-premise option\"],\"pricing-tiers.price0\":[\"$0\"],\"pricing-tiers.price29\":[\"$29\"],\"pricing-tiers.prioritySupport\":[\"Priority support\"],\"pricing-tiers.privateResults\":[\"Private results\"],\"pricing-tiers.pro\":[\"Pro\"],\"pricing-tiers.publicResults\":[\"Public results\"],\"pricing-tiers.ssoSaml\":[\"SSO & SAML\"],\"pricing-tiers.starter\":[\"Starter\"],\"pricing-tiers.trainingSessions\":[\"Training sessions\"],\"pricing-tiers.unlimitedRuns\":[\"Unlimited runs\"]}");
 export { e as messages };

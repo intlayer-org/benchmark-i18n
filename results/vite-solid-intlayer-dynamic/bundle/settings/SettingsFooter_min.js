@@ -1,16 +1,16 @@
 import { Dynamic as e, insert as t, template as n } from "solid-js/web";
 import { createContext as r, createMemo as i, useContext as a } from "solid-js";
 var o = {
-	de: () => import("./de-DEw5eDu3.js").then((e) => e.default),
-	en: () => import("./en-7X0ITdkG.js").then((e) => e.default),
-	es: () => import("./es-BqIGBm0q.js").then((e) => e.default),
-	fr: () => import("./fr-DL5wTz_T.js").then((e) => e.default),
-	it: () => import("./it-OoUl0jOg.js").then((e) => e.default),
-	ja: () => import("./ja-BGwzwHTk.js").then((e) => e.default),
-	ko: () => import("./ko-Dr49Mcqi.js").then((e) => e.default),
-	pt: () => import("./pt-DxEXYfa6.js").then((e) => e.default),
-	ru: () => import("./ru-CZ8LhG58.js").then((e) => e.default),
-	zh: () => import("./zh-CnIOCnLr.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/de.json").then((e) => e.default),
+	en: () => import("./en-DR2bd73T.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/settings-footer/zh.json").then((e) => e.default)
 }, s = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var o = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (h(e) && h(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : g(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : g(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -278,80 +278,8 @@ export { J as default };
 var e = {
 	key: "settings-footer",
 	content: {
-		a: "Abbrechen",
-		b: "Änderungen speichern"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
 		a: "Cancel",
 		b: "Save Changes"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		a: "Cancelar",
-		b: "Guardar cambios"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		a: "Annuler",
-		b: "Enregistrer les modifications"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		a: "Annulla",
-		b: "Salva modifiche"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		a: "キャンセル",
-		b: "変更を保存"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		a: "취소",
-		b: "변경 사항 저장"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		a: "Cancelar",
-		b: "Salvar alterações"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		a: "Отмена",
-		b: "Сохранить изменения"
-	}
-};
-export { e as default };
-var e = {
-	key: "settings-footer",
-	content: {
-		a: "取消",
-		b: "保存更改"
 	}
 };
 export { e as default };

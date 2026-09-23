@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Link, useParams } from "@tanstack/react-router";
 import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var EventEmitter = class {
 	_events = /* @__PURE__ */ new Map();
 	on(event, listener) {
@@ -997,10 +998,9 @@ var formatArgument = (value, type, style, locale) => {
 	} catch {}
 	return String(value);
 };
-var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (match, path, type, style) => {
+var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{}]+?)\s*\}\}/g, (match, path) => {
 	const value = resolveValuePath(values, path);
-	if (value === void 0) return match;
-	return type ? formatArgument(value, type, style, locale) : String(value);
+	return value === void 0 ? match : String(value);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
 	if (value === void 0) return match;
@@ -1054,17 +1054,15 @@ var resolveMessageNode = (node, values = {}, locale = "en") => {
 	}
 	return node;
 };
-var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
-	const resolved = resolveMessageNode(node, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: (message) => icuToIntlayerFormatter(message),
+	i18next: (message) => i18nextToIntlayerFormatter(message),
+	"vue-i18n": (message) => vueI18nToIntlayerFormatter(message)
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => {
+	const resolved = resolveMessageNode(typeof message === "string" ? DIALECT_FORMATTERS[dialect](message) : message, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
-var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var DIALECT_FORMATTERS = {
-	icu: icuToIntlayerFormatter,
-	i18next: i18nextToIntlayerFormatter,
-	"vue-i18n": vueI18nToIntlayerFormatter
-};
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var I18nClass = class extends EventEmitter {
 	_locale;
 	_locales;
@@ -1692,8 +1690,8 @@ var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent,
 		children
 	]
 });
-var { defaultLocale, locales: availableLocales } = internationalization ?? {};
 var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
+	const { defaultLocale, locales: availableLocales } = internationalization ?? {};
 	const { locale, setLocale: setLocaleState, isCookieEnabled: isCookieEnabledContext } = useContext(IntlayerClientContext) ?? {};
 	return {
 		locale,
@@ -1760,6 +1758,7 @@ var setupI18n = (params) => new I18nClass({
 	registry: createRegistryResolver()
 });
 setupI18n({ locale: "en" });
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-lingui-app/src/components/Footer.tsx";
 function Footer() {
 	const { i18n } = useLingui();
 	const t = (id) => i18n._(`footer.${id}`);
@@ -1781,67 +1780,145 @@ function Footer() {
 			isInternal: true
 		}
 	];
-	return jsx("footer", {
+	return jsxDEV("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: jsxs("div", {
+		children: jsxDEV("div", {
 			className: "container py-8",
-			children: [jsxs("div", {
+			children: [jsxDEV("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					jsxs("div", { children: [jsx("h3", {
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 34,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: t("anOpenSourceTestApplication")
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 37,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 33,
+						columnNumber: 11
+					}, this),
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("resources")
-					}), jsx("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 42,
+						columnNumber: 13
+					}, this), jsxDEV("ul", {
 						className: "space-y-1",
-						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
+						children: footerLinks.map((linkEl) => jsxDEV("li", { children: linkEl.isInternal ? jsxDEV(Link, {
 							preload: false,
 							to: linkEl.to,
 							params: { locale: currentLocale },
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}) : jsx("a", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 49,
+							columnNumber: 21
+						}, this) : jsxDEV("a", {
 							href: linkEl.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}) }, linkEl.label))
-					})] }),
-					jsxs("div", { children: [jsx("h3", {
+						}, void 0, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 58,
+							columnNumber: 21
+						}, this) }, linkEl.label, false, {
+							fileName: _jsxFileName$2,
+							lineNumber: 47,
+							columnNumber: 17
+						}, this))
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 45,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 41,
+						columnNumber: 11
+					}, this),
+					jsxDEV("div", { children: [jsxDEV("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: t("contact")
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 72,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					})] })
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 75,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 71,
+						columnNumber: 11
+					}, this)
 				]
-			}), jsx("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 32,
+				columnNumber: 9
+			}, this), jsxDEV("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: t("builtWith")
-			})]
-		})
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 80,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 31,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 30,
+		columnNumber: 5
+	}, this);
 }
 function initLingui(locale, _messages) {
 	const lingui = setupI18n();
 	lingui.activate(locale);
 	return lingui;
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
 	const i18n = useMemo(() => initLingui("en"), []);
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		i18n,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-lingui-app/src/components/Footer.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(Footer, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(Footer, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

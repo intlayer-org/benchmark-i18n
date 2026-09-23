@@ -1,5 +1,5 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsx as r } from "react/jsx-runtime";
+import { jsxDEV as r } from "react/jsx-dev-runtime";
 var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -141,25 +141,33 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	}
 	0 && (t.exports = { createI18nClient: V });
 }))().createI18nClient)({
-	en: () => import("../locales/en.ts"),
-	fr: () => import("../locales/fr.ts"),
-	es: () => import("../locales/es.ts"),
-	de: () => import("../locales/de.ts"),
-	it: () => import("../locales/it.ts"),
-	pt: () => import("../locales/pt.ts"),
-	zh: () => import("../locales/zh.ts"),
-	ja: () => import("../locales/ja.ts"),
-	ko: () => import("../locales/ko.ts"),
-	ru: () => import("../locales/ru.ts")
-}), c = s.useScopedI18n, { I18nProviderClient: l, useChangeLocale: u, useCurrentLocale: d } = s, f = () => (c("header"), null);
-function p() {
+	en: () => import("./en-DIYX5nj9.js"),
+	fr: () => import("./fr-CasHq4og.js"),
+	es: () => import("./es-b0L9lZ98.js"),
+	de: () => import("./de-CqAONIB7.js"),
+	it: () => import("./it-YCXrqntH.js"),
+	pt: () => import("./pt-oi5cbcQN.js"),
+	zh: () => import("./zh-D9HG8cPB.js"),
+	ja: () => import("./ja-B1S-GRLK.js"),
+	ko: () => import("./ko-C6DeYIDJ.js"),
+	ru: () => import("./ru-GMiu7d6N.js")
+}), c = s.useScopedI18n, { I18nProviderClient: l, useChangeLocale: u, useCurrentLocale: d } = s, f = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/EmptyComponent.tsx", p = () => (c("header"), null);
+function m() {
 	let e = d();
 	return r(l, {
 		locale: e,
-		children: r(f, {})
-	});
+		children: r(p, {}, void 0, !1, {
+			fileName: f,
+			lineNumber: 17,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: f,
+		lineNumber: 16,
+		columnNumber: 5
+	}, this);
 }
-function m() {
+function h() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -173,32 +181,354 @@ function m() {
 		}
 	}
 }
-function h(e, t) {
+function g(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function g({ children: i, locale: a }) {
+var _ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
+function v({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		h("AppRoot", o);
+		g("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
-		m();
+		h();
 	}, []), r(l, {
 		locale: a,
 		children: i
-	});
+	}, void 0, !1, {
+		fileName: _,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var _ = "en";
-function v({ children: e }) {
-	return r(g, {
-		locale: _,
+var y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx", b = "en";
+function x({ children: e }) {
+	return r(v, {
+		locale: b,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: y,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function y() {
-	return r(v, { children: r(p, {}) });
+var S = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/EmptyComponent.wrapper.tsx";
+function C() {
+	return r(x, { children: r(m, {}, void 0, !1, {
+		fileName: S,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: S,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { y as default };
+export { C as default };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
+import n from "../messages/de/about.json";
+import r from "../messages/de/blog.json";
+import i from "../messages/de/careers.json";
+import a from "../messages/de/contact.json";
+import o from "../messages/de/faq.json";
+import s from "../messages/de/home.json";
+import c from "../messages/de/pricing.json";
+import l from "../messages/de/products.json";
+import u from "../messages/de/route.json";
+import d from "../messages/de/settings.json";
+import f from "../messages/de/shared.json";
+import p from "../messages/de/team.json";
+var m = t([
+	e(n),
+	e(r),
+	e(i),
+	e(a),
+	e(o),
+	e(s),
+	e(c),
+	e(l),
+	e(u),
+	e(d),
+	e(f),
+	e(p)
+]);
+export { m as default };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
+import n from "../messages/en/about.json";
+import r from "../messages/en/blog.json";
+import i from "../messages/en/careers.json";
+import a from "../messages/en/contact.json";
+import o from "../messages/en/faq.json";
+import s from "../messages/en/home.json";
+import c from "../messages/en/pricing.json";
+import l from "../messages/en/products.json";
+import u from "../messages/en/route.json";
+import d from "../messages/en/settings.json";
+import f from "../messages/en/shared.json";
+import p from "../messages/en/team.json";
+var m = t([
+	e(n),
+	e(r),
+	e(i),
+	e(a),
+	e(o),
+	e(s),
+	e(c),
+	e(l),
+	e(u),
+	e(d),
+	e(f),
+	e(p)
+]);
+export { m as default };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
+import n from "../messages/es/about.json";
+import r from "../messages/es/blog.json";
+import i from "../messages/es/careers.json";
+import a from "../messages/es/contact.json";
+import o from "../messages/es/faq.json";
+import s from "../messages/es/home.json";
+import c from "../messages/es/pricing.json";
+import l from "../messages/es/products.json";
+import u from "../messages/es/route.json";
+import d from "../messages/es/settings.json";
+import f from "../messages/es/shared.json";
+import p from "../messages/es/team.json";
+var m = t([
+	e(n),
+	e(r),
+	e(i),
+	e(a),
+	e(o),
+	e(s),
+	e(c),
+	e(l),
+	e(u),
+	e(d),
+	e(f),
+	e(p)
+]);
+export { m as default };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
+import n from "../messages/fr/about.json";
+import r from "../messages/fr/blog.json";
+import i from "../messages/fr/careers.json";
+import a from "../messages/fr/contact.json";
+import o from "../messages/fr/faq.json";
+import s from "../messages/fr/home.json";
+import c from "../messages/fr/pricing.json";
+import l from "../messages/fr/products.json";
+import u from "../messages/fr/route.json";
+import d from "../messages/fr/settings.json";
+import f from "../messages/fr/shared.json";
+import p from "../messages/fr/team.json";
+var m = t([
+	e(n),
+	e(r),
+	e(i),
+	e(a),
+	e(o),
+	e(s),
+	e(c),
+	e(l),
+	e(u),
+	e(d),
+	e(f),
+	e(p)
+]);
+export { m as default };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
+import n from "../messages/it/about.json";
+import r from "../messages/it/blog.json";
+import i from "../messages/it/careers.json";
+import a from "../messages/it/contact.json";
+import o from "../messages/it/faq.json";
+import s from "../messages/it/home.json";
+import c from "../messages/it/pricing.json";
+import l from "../messages/it/products.json";
+import u from "../messages/it/route.json";
+import d from "../messages/it/settings.json";
+import f from "../messages/it/shared.json";
+import p from "../messages/it/team.json";
+var m = t([
+	e(n),
+	e(r),
+	e(i),
+	e(a),
+	e(o),
+	e(s),
+	e(c),
+	e(l),
+	e(u),
+	e(d),
+	e(f),
+	e(p)
+]);
+export { m as default };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
+import n from "../messages/ja/about.json";
+import r from "../messages/ja/blog.json";
+import i from "../messages/ja/careers.json";
+import a from "../messages/ja/contact.json";
+import o from "../messages/ja/faq.json";
+import s from "../messages/ja/home.json";
+import c from "../messages/ja/pricing.json";
+import l from "../messages/ja/products.json";
+import u from "../messages/ja/route.json";
+import d from "../messages/ja/settings.json";
+import f from "../messages/ja/shared.json";
+import p from "../messages/ja/team.json";
+var m = t([
+	e(n),
+	e(r),
+	e(i),
+	e(a),
+	e(o),
+	e(s),
+	e(c),
+	e(l),
+	e(u),
+	e(d),
+	e(f),
+	e(p)
+]);
+export { m as default };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
+import n from "../messages/ko/about.json";
+import r from "../messages/ko/blog.json";
+import i from "../messages/ko/careers.json";
+import a from "../messages/ko/contact.json";
+import o from "../messages/ko/faq.json";
+import s from "../messages/ko/home.json";
+import c from "../messages/ko/pricing.json";
+import l from "../messages/ko/products.json";
+import u from "../messages/ko/route.json";
+import d from "../messages/ko/settings.json";
+import f from "../messages/ko/shared.json";
+import p from "../messages/ko/team.json";
+var m = t([
+	e(n),
+	e(r),
+	e(i),
+	e(a),
+	e(o),
+	e(s),
+	e(c),
+	e(l),
+	e(u),
+	e(d),
+	e(f),
+	e(p)
+]);
+export { m as default };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
+import n from "../messages/pt/about.json";
+import r from "../messages/pt/blog.json";
+import i from "../messages/pt/careers.json";
+import a from "../messages/pt/contact.json";
+import o from "../messages/pt/faq.json";
+import s from "../messages/pt/home.json";
+import c from "../messages/pt/pricing.json";
+import l from "../messages/pt/products.json";
+import u from "../messages/pt/route.json";
+import d from "../messages/pt/settings.json";
+import f from "../messages/pt/shared.json";
+import p from "../messages/pt/team.json";
+var m = t([
+	e(n),
+	e(r),
+	e(i),
+	e(a),
+	e(o),
+	e(s),
+	e(c),
+	e(l),
+	e(u),
+	e(d),
+	e(f),
+	e(p)
+]);
+export { m as default };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
+import n from "../messages/ru/about.json";
+import r from "../messages/ru/blog.json";
+import i from "../messages/ru/careers.json";
+import a from "../messages/ru/contact.json";
+import o from "../messages/ru/faq.json";
+import s from "../messages/ru/home.json";
+import c from "../messages/ru/pricing.json";
+import l from "../messages/ru/products.json";
+import u from "../messages/ru/route.json";
+import d from "../messages/ru/settings.json";
+import f from "../messages/ru/shared.json";
+import p from "../messages/ru/team.json";
+var m = t([
+	e(n),
+	e(r),
+	e(i),
+	e(a),
+	e(o),
+	e(s),
+	e(c),
+	e(l),
+	e(u),
+	e(d),
+	e(f),
+	e(p)
+]);
+export { m as default };
+function e(e) {
+	let t = {};
+	for (let [n, r] of Object.entries(e)) {
+		let e = n.split("."), i = t;
+		for (let t = 0; t < e.length - 1; t++) {
+			let n = e[t], r = i[n];
+			(typeof r != "object" || !r || Array.isArray(r)) && (i[n] = {}), i = i[n];
+		}
+		i[e[e.length - 1]] = r;
+	}
+	return t;
+}
+function t(e, n) {
+	let r = { ...e };
+	for (let [e, i] of Object.entries(n)) {
+		let n = r[e];
+		r[e] = typeof i == "object" && i && !Array.isArray(i) && typeof n == "object" && n && !Array.isArray(n) ? t(n, i) : i;
+	}
+	return r;
+}
+function n(e) {
+	return e.reduce((e, n) => t(e, n), {});
+}
+export { e as n, n as t };
+import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
+import n from "../messages/zh/about.json";
+import r from "../messages/zh/blog.json";
+import i from "../messages/zh/careers.json";
+import a from "../messages/zh/contact.json";
+import o from "../messages/zh/faq.json";
+import s from "../messages/zh/home.json";
+import c from "../messages/zh/pricing.json";
+import l from "../messages/zh/products.json";
+import u from "../messages/zh/route.json";
+import d from "../messages/zh/settings.json";
+import f from "../messages/zh/shared.json";
+import p from "../messages/zh/team.json";
+var m = t([
+	e(n),
+	e(r),
+	e(i),
+	e(a),
+	e(o),
+	e(s),
+	e(c),
+	e(l),
+	e(u),
+	e(d),
+	e(f),
+	e(p)
+]);
+export { m as default };

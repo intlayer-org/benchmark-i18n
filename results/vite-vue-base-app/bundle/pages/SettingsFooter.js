@@ -15,5 +15,5 @@ function _sfc_render(_ctx, _cache) {
 		class: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
 	}, " Save Changes ", -1)])]);
 }
-var SettingsFooter_default = _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render]]);
+var SettingsFooter_default = _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/pages/settings/SettingsFooter.vue"]]);
 export { SettingsFooter_default as default };

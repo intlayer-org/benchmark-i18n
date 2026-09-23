@@ -568,7 +568,7 @@ const LIBRARY_PACKAGES: Record<string, string[]> = {
   "paraglide-next": ["@inlang/paraglide-next", "@inlang/paraglide-js"],
   paraglide: ["@inlang/paraglide-js"],
   "paraglide-js": ["@inlang/paraglide-js"],
-  tolgee: ["@tolgee/react", "@tolgee/vue"],
+  tolgee: ["@tolgee/react", "@tolgee/vue", "@tolgee/svelte", "@tolgee/web"],
   "react-i18next": ["react-i18next"],
   "use-intl": ["use-intl"],
   "react-intl": ["react-intl"],

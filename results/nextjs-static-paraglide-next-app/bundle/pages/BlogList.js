@@ -1,5 +1,5 @@
 import { useEffect, useLayoutEffect, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 var URLPattern = {};
 var locales = [
@@ -961,6 +961,7 @@ var blog_list_wetested12differentinternationalization3 = ((inputs = {}, options 
 	if (locale === "ru") return ru_blog_list_wetested12differentinternationalization3(inputs);
 	return en_blog_list_wetested12differentinternationalization3(inputs);
 });
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/blog/BlogList.tsx";
 function BlogList() {
 	const posts = [
 		{
@@ -1000,37 +1001,69 @@ function BlogList() {
 			category: "Meta"
 		}
 	];
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2",
-		children: posts.map((p) => jsxs("article", {
+		children: posts.map((p) => jsxDEV("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				jsxs("div", {
+				jsxDEV("div", {
 					className: "mb-3 flex items-center gap-3",
-					children: [jsx("span", {
+					children: [jsxDEV("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: p.category
-					}), jsx("span", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 53,
+						columnNumber: 13
+					}, this), jsxDEV("span", {
 						className: "text-xs text-muted-foreground",
 						children: p.date
-					})]
-				}),
-				jsx("h2", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 56,
+						columnNumber: 13
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 52,
+					columnNumber: 11
+				}, this),
+				jsxDEV("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: p.title
-				}),
-				jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 58,
+					columnNumber: 11
+				}, this),
+				jsxDEV("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: p.excerpt
-				}),
-				jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 61,
+					columnNumber: 11
+				}, this),
+				jsxDEV("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
 					children: blog_list_readmore1()
-				})
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 62,
+					columnNumber: 11
+				}, this)
 			]
-		}, p.title))
-	});
+		}, p.title, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 48,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 46,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1054,6 +1087,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -1067,12 +1101,30 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/blog/BlogList.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(BlogList, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(BlogList, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

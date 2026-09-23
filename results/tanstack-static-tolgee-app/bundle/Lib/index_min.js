@@ -1,26 +1,16 @@
 import e, { Suspense as t, useCallback as n, useContext as r, useEffect as i, useMemo as a, useRef as o, useState as s } from "react";
 import { jsx as c } from "react/jsx-runtime";
-import l from "../src/i18n/locales/en.json";
-import u from "../src/i18n/locales/de.json";
-import d from "../src/i18n/locales/es.json";
-import f from "../src/i18n/locales/fr.json";
-import p from "../src/i18n/locales/it.json";
-import m from "../src/i18n/locales/ja.json";
-import h from "../src/i18n/locales/ko.json";
-import g from "../src/i18n/locales/pt.json";
-import _ from "../src/i18n/locales/ru.json";
-import v from "../src/i18n/locales/zh.json";
-var y = Object.defineProperty, b = Object.defineProperties, x = Object.getOwnPropertyDescriptors, S = Object.getOwnPropertySymbols, ee = Object.prototype.hasOwnProperty, te = Object.prototype.propertyIsEnumerable, C = (e, t, n) => t in e ? y(e, t, {
+var l = Object.defineProperty, u = Object.getOwnPropertySymbols, d = Object.prototype.hasOwnProperty, f = Object.prototype.propertyIsEnumerable, p = (e, t, n) => t in e ? l(e, t, {
 	enumerable: !0,
 	configurable: !0,
 	writable: !0,
 	value: n
-}) : e[t] = n, w = (e, t) => {
-	for (var n in t ||= {}) ee.call(t, n) && C(e, n, t[n]);
-	if (S) for (var n of S(t)) te.call(t, n) && C(e, n, t[n]);
+}) : e[t] = n, m = (e, t) => {
+	for (var n in t ||= {}) d.call(t, n) && p(e, n, t[n]);
+	if (u) for (var n of u(t)) f.call(t, n) && p(e, n, t[n]);
 	return e;
-}, T = (e, t) => b(e, x(t)), ne;
-function re(e, t) {
+}, h;
+function g(e, t) {
 	for (var n = 0; n < t.length; n++) {
 		let r = t[n];
 		if (typeof r != "string" && !Array.isArray(r)) {
@@ -35,105 +25,86 @@ function re(e, t) {
 	}
 	return Object.freeze(Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }));
 }
-function E(e) {
+function _(e) {
 	return !!(e && typeof e.then == "function");
 }
-function D(e, t) {
-	return E(e) ? Promise.resolve(e).then(t) : t(e);
+function v(e, t) {
+	return _(e) ? Promise.resolve(e).then(t) : t(e);
 }
-function O(e, t, n) {
+function y(e, t, n) {
 	function r(n) {
 		let r = t(n);
 		throw e.emit(r), console.error(r), r;
 	}
 	try {
 		let e = n();
-		return E(e) ? e.catch(r) : e;
+		return _(e) ? e.catch(r) : e;
 	} catch (e) {
 		r(e);
 	}
 }
-function k(e) {
+function b(e) {
 	let t = (Array.isArray(e) ? e : [e]).map((e) => `'${e}'`), n = t.slice(-2).join(" or ");
 	return `Tolgee: You need to specify ${[...t.slice(0, -2), n].join(", ")} option`;
 }
-function ie(e) {
+function x(e) {
 	return typeof e == "object" && !Array.isArray(e) && e !== null;
 }
-function ae(e) {
+function S(e) {
 	if (typeof e == "string") return [e];
 	if (Array.isArray(e)) return e;
 }
-function A(e) {
-	return ae(e) || [];
+function C(e) {
+	return S(e) || [];
 }
-function oe(e, t) {
-	return ie(t) ? A(t?.[e]) : A(t);
+function w(e, t) {
+	return x(t) ? C(t?.[e]) : C(t);
 }
-function j(e) {
+function T(e) {
 	return Array.from(new Set(e));
 }
-function se(e) {
+function E(e) {
 	return e && e.replace(/\/+$/, "");
 }
-function ce(e) {
+function D(e) {
 	if (typeof e == "string") return e;
 	if (typeof e?.message == "string") return e.message;
 }
-var le = (e, t) => fetch(e, t);
-function ue(e) {
+var O = (e, t) => fetch(e, t);
+function k(e) {
 	return Object.fromEntries(new Headers(e).entries());
 }
-var de = () => ({
-	"x-tolgee-sdk-type": "JS",
-	"x-tolgee-sdk-version": "prerelease"
-}), fe = (e = le) => (t, n) => {
-	let r = ue(n?.headers);
-	return r["x-api-key"] && (r = Object.assign(Object.assign({}, de()), r)), e(t, Object.assign(Object.assign({}, n), { headers: r }));
-}, pe = (e) => {
-	let t = /* @__PURE__ */ new Map();
-	return Object.entries(e).forEach(([e, n]) => {
-		if (n != null) {
-			if (typeof n == "object") {
-				pe(n).forEach((n, r) => {
-					t.set(e + "." + r, n);
-				});
-				return;
-			}
-			t.set(e, n);
-		}
-	}), t;
-}, M = (e) => Object.fromEntries(pe(e).entries()), N = (e) => {
-	let [t, ...n] = e.split(":");
-	return {
-		language: t,
-		namespace: n.join(":") || ""
-	};
-}, P = ({ language: e, namespace: t }) => t ? `${e}:${t}` : e, F = (e, t) => {
-	let n = /* @__PURE__ */ new Set();
+var A = (e = O) => (t, n) => {
+	let r = k(n?.headers);
+	return r["x-api-key"] && (r = Object.assign({
+		"x-tolgee-sdk-type": "JS",
+		"x-tolgee-sdk-version": "prerelease"
+	}, r)), e(t, Object.assign(Object.assign({}, n), { headers: r }));
+}, j = (e, t) => {
+	let n = [];
 	return {
 		listen(e) {
 			let t = (t) => {
 				e(t);
 			};
-			return n.add(t), { unsubscribe() {
-				n.delete(t);
+			return n.push(t), { unsubscribe() {
+				n = n.filter((e) => t !== e);
 			} };
 		},
 		emit(r) {
-			t() && Array.from(n).forEach((t) => t({
+			t() && n.forEach((t) => t({
 				type: e,
 				value: r
 			}));
 		}
 	};
 };
-function me(e) {
-	let t = /* @__PURE__ */ new Set(), n = [];
+function ee(e) {
+	let t = [], n = [];
 	function r() {
 		if (n.length === 0) return;
 		let e = n;
-		n = [], Array.from(t).forEach((t) => {
+		n = [], t.forEach((t) => {
 			t(e);
 		});
 	}
@@ -142,8 +113,8 @@ function me(e) {
 			let n = (t) => {
 				e(t);
 			};
-			return t.add(n), { unsubscribe() {
-				t.delete(n);
+			return t.push(n), { unsubscribe() {
+				t = t.filter((e) => n !== e);
 			} };
 		},
 		emit(t, i) {
@@ -151,22 +122,22 @@ function me(e) {
 		}
 	});
 }
-function he() {
+function te() {
 	let e = !0;
 	function t() {
 		return e;
 	}
 	let n = Object.freeze({
-		onPendingLanguageChange: F("pendingLanguage", t),
-		onLanguageChange: F("language", t),
-		onLoadingChange: F("loading", t),
-		onFetchingChange: F("fetching", t),
-		onInitialLoaded: F("initialLoad", t),
-		onRunningChange: F("running", t),
-		onCacheChange: F("cache", t),
-		onPermanentChange: F("permanentChange", t),
-		onError: F("error", t),
-		onUpdate: me(t),
+		onPendingLanguageChange: j("pendingLanguage", t),
+		onLanguageChange: j("language", t),
+		onLoadingChange: j("loading", t),
+		onFetchingChange: j("fetching", t),
+		onInitialLoaded: j("initialLoad", t),
+		onRunningChange: j("running", t),
+		onCacheChange: j("cache", t),
+		onPermanentChange: j("permanentChange", t),
+		onError: j("error", t),
+		onUpdate: ee(t),
 		setEmitterActive(t) {
 			e = t;
 		},
@@ -187,40 +158,59 @@ function he() {
 	});
 	return n.onInitialLoaded.listen((e) => n.onUpdate.emit(e, !1)), n.onLanguageChange.listen((e) => n.onUpdate.emit(e, !1)), n.onCacheChange.listen((e) => n.onUpdate.emit(e, !0)), n;
 }
-var ge = class extends Error {
+var M = class extends Error {
 	constructor(e, t, n = !1) {
 		let { language: r, namespace: i } = e;
 		super(`Tolgee: Failed to fetch record for "${r}"${i && ` and "${i}"`}`), this.cause = t, this.isDev = n, this.name = "RecordFetchError", this.language = r, this.namespace = i;
 	}
-}, _e = class extends Error {
+}, ne = class extends Error {
 	constructor(e, t) {
 		super(e), this.cause = t, this.name = "LanguageDetectorError";
 	}
-}, ve = class extends Error {
+}, N = class extends Error {
 	constructor(e, t) {
 		super(e), this.cause = t, this.name = "LanguageStorageError";
 	}
-};
-function ye(e, t, n, r, i, a, o) {
+}, P = (e) => {
+	let t = /* @__PURE__ */ new Map();
+	return Object.entries(e).forEach(([e, n]) => {
+		if (n != null) {
+			if (typeof n == "object") {
+				P(n).forEach((n, r) => {
+					t.set(e + "." + r, n);
+				});
+				return;
+			}
+			t.set(e, n);
+		}
+	}), t;
+}, F = (e) => Object.fromEntries(P(e).entries()), I = (e) => {
+	let [t, ...n] = e.split(":");
+	return {
+		language: t,
+		namespace: n.join(":") || ""
+	};
+}, L = ({ language: e, namespace: t }) => t ? `${e}:${t}` : e;
+function re(e, t, n, r, i, a, o) {
 	let s = /* @__PURE__ */ new Map(), c = /* @__PURE__ */ new Map(), l = {}, u = 0;
 	function d(t, n, r) {
-		let i = P(t);
+		let i = L(t);
 		c.set(i, {
-			data: M(n),
+			data: F(n),
 			version: r
-		}), e.onCacheChange.emit(N(i));
+		}), e.onCacheChange.emit(I(i));
 	}
 	async function f(n) {
 		function r(t) {
-			let r = new ge(n, t);
+			let r = new M(n, t);
 			throw e.onError.emit(r), console.error(r), r;
 		}
 		let i = t(n);
-		if (E(i)) {
+		if (_(i)) {
 			let e = await i.catch(r);
 			if (e !== void 0) return e;
 		}
-		let a = l[P(n)];
+		let a = l[L(n)];
 		if (typeof a == "function") try {
 			return await a();
 		} catch (e) {
@@ -233,7 +223,7 @@ function ye(e, t, n, r, i, a, o) {
 		if (r) try {
 			i = await n(t);
 		} catch (n) {
-			let r = new ge(t, n, !0);
+			let r = new M(t, n, !0);
 			e.onError.emit(r), console.warn(r);
 		}
 		return i ||= await f(t), i;
@@ -241,13 +231,13 @@ function ye(e, t, n, r, i, a, o) {
 	let m = Object.freeze({
 		addStaticData(e) {
 			if (Array.isArray(e)) for (let t of e) {
-				let e = P(t), n = c.get(e);
-				(!n || n.version === 0) && d(t, M(t.data), 0);
+				let e = L(t), n = c.get(e);
+				(!n || n.version === 0) && d(t, F(t.data), 0);
 			}
 			else e && (l = Object.assign(Object.assign({}, l), e), Object.entries(e).forEach(([e, t]) => {
 				if (typeof t != "function") {
-					let n = N(e), r = c.get(e);
-					(!r || r.version === 0) && d(n, M(t), 0);
+					let n = I(e), r = c.get(e);
+					(!r || r.version === 0) && d(n, F(t), 0);
 				}
 			}));
 		},
@@ -255,35 +245,35 @@ function ye(e, t, n, r, i, a, o) {
 			s.clear(), u += 1;
 		},
 		addRecord(e, t) {
-			d(e, M(t), u);
+			d(e, F(t), u);
 		},
 		exists(e, t = !1) {
-			let n = c.get(P(e));
+			let n = c.get(L(e));
 			return n && t ? n.version === u : !!n;
 		},
 		getRecord(e) {
-			let t = r(e), n = P(t), i = c.get(n);
+			let t = r(e), n = L(t), i = c.get(n);
 			if (i) return Object.assign(Object.assign({}, t), {
 				cacheKey: n,
 				data: i.data
 			});
 		},
 		getAllRecords() {
-			return Array.from(c.entries()).map(([e]) => m.getRecord(N(e)));
+			return Array.from(c.entries()).map(([e]) => m.getRecord(I(e)));
 		},
 		getTranslation(e, t) {
-			return c.get(P(e))?.data[t];
+			return c.get(L(e))?.data[t];
 		},
 		getTranslationNs(e, t, n) {
-			for (let r of e) for (let e of t) if (c.get(P({
+			for (let r of e) for (let e of t) if (c.get(L({
 				language: e,
 				namespace: r
 			}))?.data[n] != null) return [r];
-			return j(e);
+			return T(e);
 		},
 		getTranslationFallback(e, t, n) {
 			for (let r of e) for (let e of t) {
-				let t = c.get(P({
+				let t = c.get(L({
 					language: e,
 					namespace: r
 				}))?.data[n];
@@ -291,19 +281,19 @@ function ye(e, t, n, r, i, a, o) {
 			}
 		},
 		changeTranslation(t, n, r) {
-			let i = c.get(P(t))?.data;
+			let i = c.get(L(t))?.data;
 			i && (i[n] = r, e.onCacheChange.emit(Object.assign(Object.assign({}, t), { key: n })));
 		},
 		isFetching(e) {
 			if (i()) return !0;
 			if (e === void 0) return s.size > 0;
-			let t = A(e);
-			return !!Array.from(s.keys()).find((e) => t.includes(N(e).namespace));
+			let t = C(e);
+			return !!Array.from(s.keys()).find((e) => t.includes(I(e).namespace));
 		},
 		isLoading(e, t) {
-			let n = A(t);
+			let n = C(t);
 			return i() ? !0 : !!Array.from(s.keys()).find((t) => {
-				let r = N(t);
+				let r = I(t);
 				return (!n.length || n.includes(r.namespace)) && !m.exists({
 					namespace: r.namespace,
 					language: e
@@ -312,7 +302,7 @@ function ye(e, t, n, r, i, a, o) {
 		},
 		async loadRecords(e, t) {
 			let n = e.map((e) => {
-				let n = r(e), i = P(n);
+				let n = r(e), i = L(n);
 				if (t?.useCache && m.exists(n, !0)) return Object.assign(Object.assign({}, n), {
 					new: !1,
 					cacheKey: i,
@@ -334,7 +324,7 @@ function ye(e, t, n, r, i, a, o) {
 			a.notify(), o.notify();
 			let i = n.map((e) => e.promise).filter(Boolean), c = await Promise.all(i);
 			return n.forEach((e) => {
-				e.promise && (e.data = M(c[0] ?? {}), c.shift());
+				e.promise && (e.data = F(c[0] ?? {}), c.shift());
 				let t = s.get(e.cacheKey) !== e.promise;
 				e.new && !t && (s.delete(e.cacheKey), e.data ? m.addRecord(e, e.data) : m.getRecord(e) || m.addRecord(e, {}));
 			}), a.notify(), o.notify(), n.map((e) => ({
@@ -347,13 +337,13 @@ function ye(e, t, n, r, i, a, o) {
 	});
 	return m;
 }
-function be(e, t) {
+function ie(e, t) {
 	var n = {};
 	for (var r in e) Object.prototype.hasOwnProperty.call(e, r) && t.indexOf(r) < 0 && (n[r] = e[r]);
 	if (e != null && typeof Object.getOwnPropertySymbols == "function") for (var i = 0, r = Object.getOwnPropertySymbols(e); i < r.length; i++) t.indexOf(r[i]) < 0 && Object.prototype.propertyIsEnumerable.call(e, r[i]) && (n[r[i]] = e[r[i]]);
 	return n;
 }
-var xe = {
+var ae = {
 	tagAttributes: {
 		textarea: ["placeholder"],
 		input: ["value", "placeholder"],
@@ -368,23 +358,23 @@ var xe = {
 	inputSuffix: "%-%",
 	passToParent: ["option", "optgroup"],
 	fullKeyEncode: !1
-}, I = "invalid", Se = {
-	observerOptions: xe,
+}, R = "invalid", oe = {
+	observerOptions: ae,
 	observerType: "invisible",
-	onFormatError: I,
+	onFormatError: R,
 	apiUrl: "https://app.tolgee.io",
 	autoLoadRequiredData: !0,
-	fetch: fe(),
+	fetch: A(),
 	onTranslationMissing: ({ key: e }) => e
-}, L = (...e) => {
+}, z = (...e) => {
 	let t = {};
 	return e.forEach((e) => {
 		t = Object.assign(Object.assign(Object.assign({}, t), e), { observerOptions: Object.assign(Object.assign({}, t.observerOptions), e?.observerOptions) });
 	}), t;
 };
-function Ce(e, t) {
-	let n = L(Se, t?.initialOptions, e);
-	return n.apiUrl = se(n.apiUrl), e?.fetch && (n.fetch = fe(e.fetch)), {
+function B(e, t) {
+	let n = z(oe, t?.initialOptions, e);
+	return n.apiUrl = E(n.apiUrl), e?.fetch && (n.fetch = A(e.fetch)), {
 		initialOptions: n,
 		activeNamespaces: t?.activeNamespaces || /* @__PURE__ */ new Map(),
 		language: t?.language,
@@ -393,7 +383,7 @@ function Ce(e, t) {
 		isRunning: !1
 	};
 }
-function we(e, t, n, r, i, a, o, s) {
+function se(e, t, n, r, i, a, o, s) {
 	let c = { ui: void 0 }, l = {
 		formatters: [],
 		finalFormatter: void 0,
@@ -425,7 +415,7 @@ function we(e, t, n, r, i, a, o, s) {
 			key: e.key,
 			ns: e.ns
 		});
-		return T.formatTranslation(Object.assign(Object.assign({}, e), {
+		return A.formatTranslation(Object.assign(Object.assign({}, e), {
 			translation: t,
 			formatEnabled: !0
 		}));
@@ -445,67 +435,66 @@ function we(e, t, n, r, i, a, o, s) {
 	function _(e) {
 		l.finalFormatter = e;
 	}
-	function v(e) {
+	function b(e) {
 		c.ui = e;
 	}
-	function y() {
+	function x() {
 		return !!c.ui;
 	}
-	function b(e) {
+	function S(e) {
 		l.languageStorage = e;
 	}
-	function x(e) {
+	function C(e) {
 		l.languageDetector = e;
 	}
-	function S() {
-		return O(s.onError, (e) => new ve("Tolgee: Failed to load language", e), () => l.languageStorage?.getLanguage(p()));
+	function w() {
+		return y(s.onError, (e) => new N("Tolgee: Failed to load language", e), () => l.languageStorage?.getLanguage(p()));
 	}
-	function ee() {
+	function T() {
 		if (!l.languageDetector) return;
 		let e = n();
-		return O(s.onError, (e) => new _e("Tolgee: Failed to detect language", e), () => l.languageDetector?.getLanguage(Object.assign({ availableLanguages: e }, p())));
+		return y(s.onError, (e) => new ne("Tolgee: Failed to detect language", e), () => l.languageDetector?.getLanguage(Object.assign({ availableLanguages: e }, p())));
 	}
-	function te(e) {
+	function E(e) {
 		e && l.backends.push(e);
 	}
-	function C(e) {
+	function O(e) {
 		l.devBackend = e;
 	}
-	function w(e, t) {
+	function k(e, t) {
 		t(e, Object.freeze({
 			setFinalFormatter: _,
 			addFormatter: g,
 			setObserver: m,
 			hasObserver: h,
-			setUi: v,
-			hasUi: y,
-			setDevBackend: C,
-			addBackend: te,
-			setLanguageDetector: x,
-			setLanguageStorage: b
+			setUi: b,
+			hasUi: x,
+			setDevBackend: O,
+			addBackend: E,
+			setLanguageDetector: C,
+			setLanguageStorage: S
 		}));
 	}
-	let T = Object.freeze({
-		addPlugin: w,
+	let A = Object.freeze({
+		addPlugin: k,
 		findPositions: d,
 		run() {
 			var e;
-			let { apiKey: n, transport: r, apiUrl: i, projectId: a, branch: p, observerOptions: m, tagNewKeys: h, filterTag: g } = t();
+			let { apiKey: n, apiUrl: r, projectId: i, branch: a, observerOptions: p, tagNewKeys: m, filterTag: h } = t();
 			l.ui = c.ui?.call(c, {
 				apiKey: n,
-				transport: r,
-				apiUrl: i,
-				projectId: a,
-				branch: p,
-				highlight: T.highlight,
+				apiUrl: r,
+				projectId: i,
+				branch: a,
+				highlight: A.highlight,
 				changeTranslation: o,
 				findPositions: d,
 				onPermanentChange: (e) => s.onPermanentChange.emit(e),
-				tagNewKeys: h,
-				filterTag: g
+				tagNewKeys: m,
+				filterTag: h
 			}), (e = l.observer) == null || e.run({
 				mouseHighlight: !!l.ui,
-				options: m,
+				options: p,
 				translate: f,
 				onClick: u
 			});
@@ -519,10 +508,10 @@ function we(e, t, n, r, i, a, o, s) {
 		},
 		getInitialLanguage() {
 			let e = n();
-			return D(S(), (t) => (!e || e.includes(t)) && t ? t : ee());
+			return v(w(), (t) => (!e || e.includes(t)) && t ? t : T());
 		},
 		setStoredLanguage(e) {
-			return O(s.onError, (e) => new ve("Tolgee: Failed to store language", e), () => l.languageStorage?.setLanguage(e, p()));
+			return y(s.onError, (e) => new N("Tolgee: Failed to store language", e), () => l.languageStorage?.setLanguage(e, p()));
 		},
 		getDevBackend() {
 			return l.devBackend;
@@ -537,16 +526,15 @@ function we(e, t, n, r, i, a, o, s) {
 			}
 		},
 		getBackendDevRecord: async ({ language: e, namespace: n }) => {
-			let { apiKey: r, transport: i, apiUrl: a, projectId: o, branch: s, filterTag: c } = t();
-			if ((r || i) && a && T.hasDevBackend()) return l.devBackend?.getRecord(Object.assign({
+			let { apiKey: r, apiUrl: i, projectId: a, branch: o, filterTag: s } = t();
+			if (!(!r || !i || !A.hasDevBackend())) return l.devBackend?.getRecord(Object.assign({
 				apiKey: r,
-				transport: i,
-				apiUrl: a,
-				projectId: o,
-				branch: s,
+				apiUrl: i,
+				projectId: a,
+				branch: o,
 				language: e,
 				namespace: n,
-				filterTag: c
+				filterTag: s
 			}, p()));
 		},
 		getLanguageDetector() {
@@ -570,10 +558,10 @@ function we(e, t, n, r, i, a, o, s) {
 			return l.observer ? l.observer?.wrap(e) : e.translation;
 		},
 		hasDevBackend() {
-			return !!T.getDevBackend();
+			return !!A.getDevBackend();
 		},
 		formatTranslation(n) {
-			var { formatEnabled: r } = n, i = be(n, ["formatEnabled"]);
+			var { formatEnabled: r } = n, i = ie(n, ["formatEnabled"]);
 			let { key: a, translation: o, defaultValue: s, noWrap: c, params: u, ns: d, orEmpty: f } = i, p = o ?? s, m = "";
 			o ?? (m = t().onTranslationMissing(i));
 			let h = p ?? (f ? "" : m), g = e(), _ = r || !l.observer?.outputNotFormattable, v = (e) => l.observer && !c ? l.observer.wrap({
@@ -597,15 +585,15 @@ function we(e, t, n, r, i, a, o, s) {
 				}));
 			} catch (e) {
 				console.error(e);
-				let n = ce(e) || I, r = t().onFormatError, a = typeof r;
-				h = a === "string" ? r : a === "function" ? r(n, i) : I, h = v(h);
+				let n = D(e) || R, r = t().onFormatError, a = typeof r;
+				h = a === "string" ? r : a === "function" ? r(n, i) : R, h = v(h);
 			}
 			return h;
 		}
 	});
-	return T;
+	return A;
 }
-var Te = (e, t, n) => {
+var V = (e, t, n) => {
 	let r = e;
 	return Object.freeze({
 		init(e) {
@@ -617,10 +605,10 @@ var Te = (e, t, n) => {
 		}
 	});
 };
-function Ee(e, t, n) {
-	let r = Ce(), i, a = Object.freeze({
+function ce(e, t, n) {
+	let r = B(), i, a = Object.freeze({
 		init(e) {
-			r = Ce(e, r);
+			r = B(e, r);
 		},
 		isRunning() {
 			return r.isRunning;
@@ -647,35 +635,34 @@ function Ee(e, t, n) {
 			r.pendingLanguage !== e && (r.pendingLanguage = e, t.emit(e));
 		},
 		getInitialOptions() {
-			let e = Object.assign(Object.assign({}, r.initialOptions), i);
-			return i && (i.apiKey || i.transport) && (e.apiKey = i.apiKey, e.transport = i.transport), e;
+			return Object.assign(Object.assign({}, r.initialOptions), i);
 		},
 		addActiveNs(e) {
-			A(e).forEach((e) => {
+			C(e).forEach((e) => {
 				let t = r.activeNamespaces.get(e);
 				t === void 0 ? r.activeNamespaces.set(e, 1) : r.activeNamespaces.set(e, t + 1);
 			});
 		},
 		removeActiveNs(e) {
-			A(e).forEach((e) => {
+			C(e).forEach((e) => {
 				let t = r.activeNamespaces.get(e);
 				t !== void 0 && t > 1 ? r.activeNamespaces.set(e, t - 1) : r.activeNamespaces.delete(e);
 			});
 		},
 		getRequiredNamespaces() {
-			return j([
+			return T([
 				a.getDefaultNs(),
 				...r.initialOptions.ns || [],
-				...A(r.initialOptions.fallbackNs),
+				...C(r.initialOptions.fallbackNs),
 				...r.activeNamespaces.keys()
 			]);
 		},
 		getFallbackLangs(e) {
 			let t = e || a.getLanguage();
-			return t ? j([t, ...oe(t, r.initialOptions.fallbackLanguage)]) : [];
+			return t ? T([t, ...w(t, r.initialOptions.fallbackLanguage)]) : [];
 		},
 		getFallbackNs() {
-			return A(r.initialOptions.fallbackNs);
+			return C(r.initialOptions.fallbackNs);
 		},
 		getNs() {
 			return r.initialOptions.ns?.length ? r.initialOptions.ns : [r.initialOptions.defaultNs ?? ""];
@@ -686,7 +673,7 @@ function Ee(e, t, n) {
 		getAvailableLanguages() {
 			if (r.initialOptions.availableLanguages) return r.initialOptions.availableLanguages;
 			if (r.initialOptions.staticData) {
-				let e = Object.keys(r.initialOptions.staticData).map((e) => N(e).language);
+				let e = Object.keys(r.initialOptions.staticData).map((e) => I(e).language);
 				return Array.from(new Set(e));
 			}
 		},
@@ -700,13 +687,13 @@ function Ee(e, t, n) {
 			};
 		},
 		overrideCredentials(e) {
-			i = e ? Object.assign(Object.assign({}, e), { apiUrl: se(e.apiUrl) }) : void 0;
+			i = e ? Object.assign(Object.assign({}, e), { apiUrl: E(e.apiUrl) }) : void 0;
 		}
 	});
 	return a;
 }
-function De(e) {
-	var { ns: t, noWrap: n, orEmpty: r, params: i, language: a } = e, o = be(e, [
+function le(e) {
+	var { ns: t, noWrap: n, orEmpty: r, params: i, language: a } = e, o = ie(e, [
 		"ns",
 		"noWrap",
 		"orEmpty",
@@ -720,12 +707,12 @@ function De(e) {
 		language: a
 	}), { params: Object.assign({}, o) });
 }
-var R = (e, ...t) => {
+var H = (e, ...t) => {
 	let n = {}, r;
-	return typeof e == "object" && e ? n = e : (n.key = e, typeof t[0] == "string" ? (n.defaultValue = t[0], r = t[1]) : typeof t[0] == "object" && (r = t[0])), r && (n = Object.assign(Object.assign({}, De(r)), n)), n;
+	return typeof e == "object" && e ? n = e : (n.key = e, typeof t[0] == "string" ? (n.defaultValue = t[0], r = t[1]) : typeof t[0] == "object" && (r = t[0])), r && (n = Object.assign(Object.assign({}, le(r)), n)), n;
 };
-function Oe({ options: e }) {
-	let t = he(), n = Te(!1, () => o.isFetching(), t.onFetchingChange.emit), r = Te(!1, () => S.isLoading(), t.onLoadingChange.emit), i = Ee(t.onLanguageChange, t.onPendingLanguageChange, t.onRunningChange), a = we(i.getLanguage, i.getInitialOptions, i.getAvailableLanguages, u, _, v, f, t), o = ye(t, a.getBackendRecord, a.getBackendDevRecord, i.withDefaultNs, i.isInitialLoading, n, r);
+function ue({ options: e }) {
+	let t = te(), n = V(!1, () => o.isFetching(), t.onFetchingChange.emit), r = V(!1, () => D.isLoading(), t.onLoadingChange.emit), i = ce(t.onLanguageChange, t.onPendingLanguageChange, t.onRunningChange), a = se(i.getLanguage, i.getInitialOptions, i.getAvailableLanguages, u, y, x, f, t), o = re(t, a.getBackendRecord, a.getBackendDevRecord, i.withDefaultNs, i.isInitialLoading, n, r);
 	e && p(e);
 	let s;
 	t.onUpdate.listen(() => {
@@ -738,10 +725,10 @@ function Oe({ options: e }) {
 		return i.getDefaultNs(e);
 	}
 	function u(e) {
-		return j([...A(l(e)), ...c()]);
+		return T([...C(l(e)), ...c()]);
 	}
 	function d(e) {
-		return j([...A(e ?? l()), ...i.getRequiredNamespaces()]);
+		return T([...C(e ?? l()), ...i.getRequiredNamespaces()]);
 	}
 	function f(e, t, n) {
 		let r = i.withDefaultNs(e), a = o.getTranslation(r, t);
@@ -770,14 +757,14 @@ function Oe({ options: e }) {
 		let t = [], n = [];
 		if (Array.isArray(e.languages)) t = e.languages;
 		else if (e.languages === "all") {
-			let e = S.getAvailableLanguages();
-			if (!e) throw Error(k("availableLanguages"));
+			let e = D.getAvailableLanguages();
+			if (!e) throw Error(b("availableLanguages"));
 			t = e;
 		}
 		if (Array.isArray(e.namespaces)) n = e.namespaces;
 		else if (e.namespaces === "all") {
-			let e = S.getAvailableNs();
-			if (!e) throw Error(k("availableNs"));
+			let e = D.getAvailableNs();
+			if (!e) throw Error(b("availableNs"));
 			n = e;
 		}
 		let r = [];
@@ -790,50 +777,50 @@ function Oe({ options: e }) {
 			});
 		}), r;
 	}
-	function _({ key: e, ns: t }) {
+	function y({ key: e, ns: t }) {
 		let n = i.getFallbackLangs(), r = u(t ?? void 0);
 		return o.getTranslationNs(r, n, e);
 	}
-	function v({ key: e, ns: t, language: n }) {
+	function x({ key: e, ns: t, language: n }) {
 		let r = u(t ?? void 0), a = i.getFallbackLangs(n);
 		return o.getTranslationFallback(r, a, e);
 	}
-	function y() {
-		let e = D(b(), () => {
+	function S() {
+		let e = v(w(), () => {
 			let e = h();
 			if (e.length && i.getInitialOptions().autoLoadRequiredData) return o.loadRecords(e, { useCache: !0 });
 		});
-		if (E(e)) return i.setInitialLoading(!0), n.notify(), r.notify(), Promise.resolve(e).then(() => {
+		if (_(e)) return i.setInitialLoading(!0), n.notify(), r.notify(), Promise.resolve(e).then(() => {
 			i.setInitialLoading(!1), n.notify(), r.notify(), t.onInitialLoaded.emit();
 		});
 		t.onInitialLoaded.emit();
 	}
-	function b() {
-		if (!i.getLanguage()) return D(a.getInitialLanguage(), (e) => {
+	function w() {
+		if (!i.getLanguage()) return v(a.getInitialLanguage(), (e) => {
 			let t = e || i.getInitialOptions().defaultLanguage;
 			t && i.setLanguage(t);
 		});
 	}
-	function x() {
-		if ((a.getLanguageDetector() || a.getLanguageStorage()) && !i.getAvailableLanguages()) throw Error(k("availableLanguages"));
-		if (!i.getLanguage() && !i.getInitialOptions().defaultLanguage) throw Error(k(["defaultLanguage", "language"]));
+	function E() {
+		if ((a.getLanguageDetector() || a.getLanguageStorage()) && !i.getAvailableLanguages()) throw Error(b("availableLanguages"));
+		if (!i.getLanguage() && !i.getInitialOptions().defaultLanguage) throw Error(b(["defaultLanguage", "language"]));
 	}
-	let S = Object.freeze(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, t), i), a), o), {
+	let D = Object.freeze(Object.assign(Object.assign(Object.assign(Object.assign(Object.assign({}, t), i), a), o), {
 		init: p,
-		getTranslation: v,
+		getTranslation: x,
 		changeTranslation: f,
-		getTranslationNs: _,
+		getTranslationNs: y,
 		getDefaultAndFallbackNs: u,
 		findPositions: a.findPositions,
 		getRequiredDescriptors: m,
 		async changeLanguage(e) {
-			(i.getPendingLanguage() !== e || i.getLanguage() !== e) && (i.setPendingLanguage(e), i.isRunning() && i.getInitialOptions().autoLoadRequiredData && await o.loadRecords(m(e), { useCache: !0 }), e === i.getPendingLanguage() && (i.setLanguage(e), await a.setStoredLanguage(e)));
+			i.getPendingLanguage() === e && i.getLanguage() === e || (i.setPendingLanguage(e), i.isRunning() && i.getInitialOptions().autoLoadRequiredData && await o.loadRecords(m(e), { useCache: !0 }), e === i.getPendingLanguage() && (i.setLanguage(e), await a.setStoredLanguage(e)));
 		},
 		async addActiveNs(e, t) {
 			t || i.addActiveNs(e), i.isRunning() && await o.loadRecords(m(void 0, e), { useCache: !0 });
 		},
 		async loadRecord(e, t) {
-			return (await S.loadRecords([e], t))[0]?.data;
+			return (await D.loadRecords([e], t))[0]?.data;
 		},
 		isLoading(e) {
 			return o.isLoading(i.getLanguage(), e);
@@ -855,33 +842,32 @@ function Oe({ options: e }) {
 			}), a.length === 0;
 		},
 		t: (...e) => {
-			let t = R(...e), n = v(t);
+			let t = H(...e), n = x(t);
 			return a.formatTranslation(Object.assign(Object.assign({}, t), { translation: n }));
 		},
 		isDev() {
-			let e = i.getInitialOptions();
-			return !!((e.apiKey || e.transport) && e.apiUrl);
+			return !!(i.getInitialOptions().apiKey && i.getInitialOptions().apiUrl);
 		},
 		async loadRequired(e) {
-			e?.language || await b();
+			e?.language || await w();
 			let t = m(e?.language);
-			return S.loadRecords(t, e);
+			return D.loadRecords(t, e);
 		},
 		async loadMatrix(e) {
 			let t = g(e);
-			return S.loadRecords(t, e);
+			return D.loadRecords(t, e);
 		},
 		run() {
-			return x(), i.isRunning() || (i.setRunning(!0), a.run(), s = y()), Promise.resolve(s);
+			return E(), i.isRunning() || (i.setRunning(!0), a.run(), s = S()), Promise.resolve(s);
 		},
 		stop() {
 			i.isRunning() && (a.stop(), i.setRunning(!1));
 		}
 	}));
-	return S;
+	return D;
 }
-function ke(e) {
-	let t = Oe({ options: e });
+function de(e) {
+	let t = ue({ options: e });
 	t.isDev() && t.invalidate();
 	function n(e) {
 		let n = t.isRunning();
@@ -930,7 +916,7 @@ function ke(e) {
 	});
 	return r;
 }
-var Ae = () => {
+var fe = () => {
 	let e = {
 		plugins: [],
 		options: {}
@@ -939,63 +925,63 @@ var Ae = () => {
 			return e.plugins.push(n), t;
 		},
 		updateDefaults(n) {
-			return e.options = L(e.options, n), t;
+			return e.options = z(e.options, n), t;
 		},
 		init(t) {
-			let n = ke(L(e.options, t));
+			let n = de(z(e.options, t));
 			return e.plugins.forEach(n.addPlugin), n;
 		}
 	});
 	return t;
-}, je = 0, z = 1, Me = 2, Ne = class extends Error {
+}, U = 0, W = 1, pe = 2, me = class extends Error {
 	constructor(e, t, n) {
 		let r, i = "";
-		e === je ? r = "Empty parameter" : e === z ? (r = "Unexpected character", i = "Did you forget to use FormatIcu to render ICU message syntax?") : r = "Unexpected end", super(`Tolgee parser: ${r} at ${t} in "${n}"` + (i ? "\n" + i : "")), this.code = e, this.index = t;
+		e === U ? r = "Empty parameter" : e === W ? (r = "Unexpected character", i = "Did you forget to use FormatIcu to render ICU message syntax?") : r = "Unexpected end", super(`Tolgee parser: ${r} at ${t} in "${n}"` + (i ? "\n" + i : "")), this.code = e, this.index = t;
 	}
 };
-function Pe(e) {
+function G(e) {
 	return /\s/.test(e);
 }
-var B = 0, V = 1, H = 2, U = 3, W = 4, Fe = /* @__PURE__ */ new Set([
-	H,
-	V,
-	B
-]), G = "'", Ie = /* @__PURE__ */ new Set([
+var K = 0, q = 1, J = 2, Y = 3, X = 4, he = new Set([
+	J,
+	q,
+	K
+]), Z = "'", ge = new Set([
 	"{",
 	"}",
-	G
-]), Le = (e) => /[0-9a-zA-Z_]/.test(e);
-function Re(e) {
-	let t = B, n = "", r = "", i = "", a = [], o = [], s = 0;
+	Z
+]), _e = (e) => /[0-9a-zA-Z_]/.test(e);
+function ve(e) {
+	let t = K, n = "", r = "", i = "", a = [], o = [], s = 0;
 	function c(t) {
-		throw new Ne(t, s, e);
+		throw new me(t, s, e);
 	}
 	let l = () => {
 		a.push(n), n = "";
 	}, u = () => {
-		Le(i) || c(z), r += i;
+		_e(i) || c(W), r += i;
 	}, d = () => {
-		r === "" && c(je), o.push(r), r = "";
+		r === "" && c(U), o.push(r), r = "";
 	};
 	for (s = 0; s < e.length; s++) switch (i = e[s], t) {
-		case B:
-			i === G ? (n += i, t = V) : i === "{" ? (l(), t = U) : (n += i, t = B);
+		case K:
+			i === Z ? (n += i, t = q) : i === "{" ? (l(), t = Y) : (n += i, t = K);
 			break;
-		case V:
-			Ie.has(i) ? (n = n.slice(0, -1) + i, t = H) : (n += i, t = B);
+		case q:
+			ge.has(i) ? (n = n.slice(0, -1) + i, t = J) : (n += i, t = K);
 			break;
-		case H:
-			i === G ? t = B : (n += i, t = H);
+		case J:
+			i === Z ? t = K : (n += i, t = J);
 			break;
-		case U:
-			i === "}" ? (d(), t = B) : Pe(i) ? r !== "" && (d(), t = W) : (u(), t = U);
+		case Y:
+			i === "}" ? (d(), t = K) : G(i) ? r !== "" && (d(), t = X) : (u(), t = Y);
 			break;
-		case W: i == "}" ? t = B : Pe(i) ? t = W : c(z);
+		case X: i == "}" ? t = K : G(i) ? t = X : c(W);
 	}
-	return Fe.has(t) || c(Me), l(), [a, o];
+	return he.has(t) || c(pe), l(), [a, o];
 }
-function ze(e, t) {
-	let [n, r] = Re(e), i = [n[0]];
+function ye(e, t) {
+	let [n, r] = ve(e), i = [n[0]];
 	for (let a = 1; a < n.length; a++) {
 		let o = t?.[r[a - 1]];
 		if (o === void 0) throw Error(`Missing parameter "${r[a - 1]}" in "${e}"`);
@@ -1003,23 +989,20 @@ function ze(e, t) {
 	}
 	return i.join("");
 }
-function Be() {
-	return { format: ({ translation: e, params: t }) => ze(e, t) };
+function be() {
+	return { format: ({ translation: e, params: t }) => ye(e, t) };
 }
-var Ve = () => (e, t) => (t.setFinalFormatter(Be()), e);
-function He() {
-	return globalThis.window?.document?.createElement === void 0;
-}
-var Ue = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, We = {};
+var xe = () => (e, t) => (t.setFinalFormatter(be()), e), Se = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : typeof global < "u" ? global : typeof self < "u" ? self : {}, Ce = {};
 (function(e) {
 	function t(e, t) {
-		return (e instanceof Buffer ? e : Buffer.from(e.buffer, e.byteOffset, e.byteLength)).toString(t);
+		var n;
+		return n = e instanceof Buffer ? e : Buffer.from(e.buffer, e.byteOffset, e.byteLength), n.toString(t);
 	}
 	var n = function(e) {
 		return Buffer.from(e);
 	};
 	function r(e) {
-		for (var t = 0, n = Math.min(65536, e.length + 1), r = new Uint16Array(n), i = [], a = 0;;) {
+		for (var t = 0, n = Math.min(256 * 256, e.length + 1), r = new Uint16Array(n), i = [], a = 0;;) {
 			var o = t < e.length;
 			if (!o || a >= n - 1) {
 				var s = r.subarray(0, a);
@@ -1058,8 +1041,7 @@ var Ue = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
 			if (!(o & 4294967168)) {
 				a[r++] = o;
 				continue;
-			}
-			if (!(o & 4294965248)) a[r++] = o >>> 6 & 31 | 192;
+			} else if (!(o & 4294965248)) a[r++] = o >>> 6 & 31 | 192;
 			else if (!(o & 4294901760)) a[r++] = o >>> 12 & 15 | 224, a[r++] = o >>> 6 & 63 | 128;
 			else if (!(o & 4292870144)) a[r++] = o >>> 18 & 7 | 240, a[r++] = o >>> 12 & 63 | 128, a[r++] = o >>> 6 & 63 | 128;
 			else continue;
@@ -1101,231 +1083,23 @@ var Ue = typeof globalThis < "u" ? globalThis : typeof window < "u" ? window : t
 	});
 	var m = "construct 'TextDecoder'", h = `${a} ${m}: the `;
 	function g(e, t) {
-		if (o(t && t.fatal, m, "fatal"), e ||= "utf-8", !(s ? Buffer.isEncoding(e) : f.indexOf(e.toLowerCase()) !== -1)) throw RangeError(`${h} encoding label provided ('${e}') is invalid.`);
+		o(t && t.fatal, m, "fatal"), e ||= "utf-8";
+		var n;
+		if (n = s ? Buffer.isEncoding(e) : f.indexOf(e.toLowerCase()) !== -1, !n) throw RangeError(`${h} encoding label provided ('${e}') is invalid.`);
 		this.encoding = e, this.fatal = !1, this.ignoreBOM = !1;
 	}
 	g.prototype.decode = function(e, t) {
 		o(t && t.stream, "decode", "stream");
-		var n = e instanceof Uint8Array ? e : e.buffer instanceof ArrayBuffer ? new Uint8Array(e.buffer) : new Uint8Array(e);
-		return p(n, this.encoding);
+		var n;
+		return n = e instanceof Uint8Array ? e : e.buffer instanceof ArrayBuffer ? new Uint8Array(e.buffer) : new Uint8Array(e), p(n, this.encoding);
 	}, e.TextEncoder = e.TextEncoder || l, e.TextDecoder = e.TextDecoder || g;
-})(typeof window < "u" ? window : Ue);
-var Ge = re({
+})(typeof window < "u" ? window : Se);
+var we = g({
 	__proto__: null,
-	default: We
-}, [We]);
-(ne = console.assert) == null || ne.call(console, Ge), RegExp(`([${["‌", "‍"].join("")}]{9})+`, "g");
-function Ke(e, t) {
-	return t ? `${t}: ${e}` : e;
-}
-var K = class e extends Error {
-	constructor(t, n, r) {
-		super(Ke(t, n)), this.code = t, this.status = n, this.params = r, Object.setPrototypeOf(this, e.prototype);
-	}
-};
-function qe(e) {
-	return e instanceof Error && typeof e.code == "string";
-}
-var Je = 2, Ye = 35e3, Xe = "TOLGEE_API_REQUEST", Ze = "TOLGEE_API_RESPONSE", Qe = "TOLGEE_PROXY_PING", $e = "TOLGEE_PROXY_PONG";
-function et(e) {
-	return e === "oauth" || e === "apiKey";
-}
-var q = class e extends Error {
-	constructor(t, n) {
-		super(n), this.kind = t, this.name = "ExtensionRpcError", Object.setPrototypeOf(this, e.prototype);
-	}
-}, tt = 3e3, nt = 200, rt = 0, J = /* @__PURE__ */ new Map(), it = !1, Y, X;
-async function at({ type: e, replyType: t, payload: n, timeoutMs: r = Ye, progressType: i, onProgress: a }) {
-	ct();
-	let o = Date.now() + r;
-	await lt(Math.min(o, Date.now() + tt));
-	let s = o - Date.now();
-	if (s <= 0) throw ot(e);
-	let c = st();
-	return new Promise((r, o) => {
-		let l = setTimeout(() => {
-			J.delete(c), ut(), o(ot(e));
-		}, s);
-		J.set(c, {
-			replyType: t,
-			progressType: i,
-			onProgress: a,
-			resolve: r,
-			reject: o,
-			timer: l
-		}), window.postMessage({
-			type: e,
-			data: w({ id: c }, n)
-		}, window.origin);
-	});
-}
-var ot = (e) => new q("unavailable", `the Tolgee browser extension did not answer ${e} in time`), st = () => `${Date.now()}-${rt++}-${Math.random()}`;
-function ct() {
-	it || (it = !0, window.addEventListener("message", (e) => {
-		var t;
-		if (e.source !== window || e.origin !== window.location.origin) return;
-		let n = e.data?.type;
-		if (n === $e) {
-			X?.();
-			return;
-		}
-		let r = e.data?.data;
-		if (typeof r?.id != "string") return;
-		let i = J.get(r.id);
-		if (i) {
-			if (n === i.progressType) {
-				(t = i.onProgress) == null || t.call(i);
-				return;
-			}
-			n === i.replyType && (J.delete(r.id), clearTimeout(i.timer), r.error ? i.reject(new q(r.error.kind, r.error.message)) : i.resolve(r));
-		}
-	}));
-}
-function lt(e) {
-	return Y ||= new Promise((t, n) => {
-		let r = () => window.postMessage({ type: Qe }, window.origin), i = () => {
-			clearInterval(a), ut(), X = void 0, n(new q("unavailable", "the Tolgee browser extension did not answer"));
-		}, a = setInterval(() => {
-			if (Date.now() > e) {
-				i();
-				return;
-			}
-			r();
-		}, nt);
-		X = () => {
-			clearInterval(a), t();
-		}, r();
-	}), Y;
-}
-function ut() {
-	Y = void 0;
-}
-function dt() {
-	return async (e) => {
-		let t = await ft(e.body), n;
-		try {
-			n = await at({
-				type: Xe,
-				replyType: Ze,
-				payload: {
-					path: e.path,
-					method: e.method,
-					headers: e.headers,
-					body: t
-				}
-			});
-		} catch (e) {
-			throw ht(e);
-		}
-		if (!n.response) throw new K("fetch_error");
-		return mt(n.response);
-	};
-}
-async function ft(e) {
-	if (e === void 0) return { kind: "none" };
-	if (typeof e == "string") return {
-		kind: "json",
-		text: e
-	};
-	let t = [];
-	return e.forEach((e, n) => {
-		if (typeof e == "string") {
-			t.push(Promise.resolve({
-				name: n,
-				value: e
-			}));
-			return;
-		}
-		t.push(pt(e).then((t) => ({
-			name: n,
-			file: {
-				name: e.name || "blob",
-				type: e.type,
-				base64: t
-			}
-		})));
-	}), {
-		kind: "form",
-		entries: await Promise.all(t)
-	};
-}
-var pt = (e) => new Promise((t, n) => {
-	let r = new FileReader();
-	r.onload = () => t(String(r.result).replace(/^data:[^,]*,/, "")), r.onerror = () => n(r.error), r.readAsDataURL(e);
-});
-function mt(e) {
-	let t = Object.fromEntries(Object.entries(e.headers ?? {}).map(([e, t]) => [e.toLowerCase(), t]));
-	return {
-		ok: e.status >= 200 && e.status < 300,
-		status: e.status,
-		statusText: e.statusText,
-		headers: { get: (e) => t[e.toLowerCase()] ?? null },
-		text: () => Promise.resolve(e.body),
-		json: async () => JSON.parse(e.body)
-	};
-}
-function ht(e) {
-	if (qe(e)) return e;
-	if (e instanceof q) switch (e.kind) {
-		case "no_session": return new K("extension_session_missing", 401);
-		case "too_large": return new K("extension_request_too_large");
-		default: return console.warn(`Tolgee: the browser extension did not serve the request (${e.kind}): ${e.message}`), new K("fetch_error");
-	}
-	return new K("fetch_error");
-}
-var gt = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567";
-function _t(e) {
-	let t = gt.indexOf(e);
-	if (t === -1) throw Error("Invalid character found: " + e);
-	return t;
-}
-function vt(e) {
-	let t = new Uint8Array(e), n = t.length, r = "", i = 2 ** 16 - 1;
-	for (let e = 0; e < n; e += i) e + i > n && (i = n - e), r += String.fromCharCode.apply(null, t.subarray(e, e + i));
-	return r;
-}
-function yt(e) {
-	e = e.toUpperCase();
-	let t = e.length, n = 0, r = 0, i = 0, a = new Uint8Array(t * 5 / 8 | 0);
-	for (let o = 0; o < t; o++) r = r << 5 | _t(e[o]), n += 5, n >= 8 && (a[i++] = r >>> n - 8 & 255, n -= 8);
-	return vt(a.buffer);
-}
-function bt(e) {
-	if (e) try {
-		let [t, n] = e.split("_");
-		if (t === "tgpak") {
-			let [e] = yt(n).split("_");
-			return /^\d+$/.test(e) ? Number(e) : void 0;
-		}
-	} catch {
-		console.warn("Tolgee: Api key can't be parsed");
-	}
-}
-function xt(e) {
-	if (!e) return;
-	let [t] = e.split("_");
-	return t === "tgpak" ? "tgpak" : t === "tgpat" ? "tgpat" : "legacy";
-}
-function St(e) {
-	let { apiKey: t, projectId: n, transport: r } = e;
-	return r ? {
-		authHeader: {},
-		viaExtension: !0,
-		hasCredential: !0,
-		projectId: n,
-		requiresExplicitProject: !0
-	} : {
-		authHeader: Ct(t),
-		viaExtension: !1,
-		hasCredential: !!t,
-		projectId: bt(t) ?? n,
-		requiresExplicitProject: xt(t) === "tgpat"
-	};
-}
-function Ct(e) {
-	return e ? { "X-API-Key": e } : {};
-}
-function wt(e, t) {
+	default: Ce
+}, [Ce]);
+(h = console.assert) == null || h.call(console, we), RegExp(`([${["‌", "‍"].join("")}]{9})+`, "g");
+function Te(e, t) {
 	let n = (n) => {
 		e.includes(n.data?.type) && t(n.data?.data);
 	};
@@ -1333,9 +1107,9 @@ function wt(e, t) {
 		window.removeEventListener("message", n);
 	} };
 }
-function Tt({ message: e, recievingMessage: t, data: n, attempts: r = 1, timeout: i = 300 }) {
+function Ee({ message: e, recievingMessage: t, data: n, attempts: r = 1, timeout: i = 300 }) {
 	let a = !1, o = () => new Promise((r, a) => {
-		let o = wt(t, c);
+		let o = Te(t, c);
 		window.postMessage({
 			type: e,
 			data: n
@@ -1369,11 +1143,11 @@ function Tt({ message: e, recievingMessage: t, data: n, attempts: r = 1, timeout
 		})()
 	};
 }
-function Et() {
+function De() {
 	let e;
 	async function t(t) {
 		e?.();
-		let { cancel: n, promise: r } = Tt({
+		let { cancel: n, promise: r } = Ee({
 			message: "TOLGEE_READY",
 			recievingMessage: ["TOLGEE_PLUGIN_READY", "TOLGEE_PLUGIN_UPDATED"],
 			data: t,
@@ -1383,60 +1157,34 @@ function Et() {
 	}
 	return { update: t };
 }
-var Z = "__tolgee_", Dt = `${Z}apiKey`, Ot = `${Z}apiUrl`, kt = `${Z}branch`, At = `${Z}projectId`, jt = `${Z}session`, Mt = "tolgee-in-context-tools.umd.min.js", Nt = "@tolgee/in-context-tools", Pt = "InContextTools", Ft = "https://cdn.jsdelivr.net/npm", It = null;
-function Lt(e) {
-	return It ||= Ht(Rt(e)).then(() => window[Nt][Pt]), It;
-}
-function Rt(e) {
-	return zt() || `${Ft}/@tolgee/web@${e}/dist/${Mt}`;
-}
-function zt() {
-	if (He()) return;
-	let e = window.__TOLGEE_IN_CONTEXT_URL__;
-	return Vt(e, window.location) ? e : void 0;
-}
-var Bt = (e) => e === "localhost" || e === "127.0.0.1" || e === "::1" || e === "[::1]";
-function Vt(e, t) {
-	if (!e || !Bt(t.hostname)) return !1;
-	try {
-		let n = new URL(e, t.href);
-		return n.origin === t.origin || Bt(n.hostname);
-	} catch {
-		return !1;
-	}
-}
-function Ht(e) {
+var Oe = "tolgee-in-context-tools.umd.min.js", ke = "@tolgee/in-context-tools", Ae = "InContextTools", je = "https://cdn.jsdelivr.net/npm";
+function Me(e) {
 	return new Promise((t, n) => {
 		let r = document.createElement("script");
 		r.src = e, r.addEventListener("load", () => t()), r.addEventListener("error", (e) => n(e.error)), document.head.appendChild(r);
 	});
 }
-function Ut() {
-	let e = sessionStorage.getItem(Dt) || void 0, t = sessionStorage.getItem(Ot) || void 0, n = sessionStorage.getItem(kt) || void 0, r = sessionStorage.getItem(At) || void 0, i = et(sessionStorage.getItem(jt));
-	if (!t) return;
-	let a = w(w({ apiUrl: t }, r === void 0 ? {} : { projectId: r }), n === void 0 ? {} : { branch: n });
-	if (e) return T(w({}, a), { apiKey: e });
-	if (i && r) return T(w({}, a), { transport: dt() });
+var Ne = null;
+function Pe(e) {
+	return Ne ||= Me(`${je}/@tolgee/web@${e}/dist/${Oe}`).then(() => window[ke][Ae]), Ne;
 }
-function Wt() {
-	let e = [];
-	for (let t = 0; t < sessionStorage.length; t++) {
-		let n = sessionStorage.key(t);
-		n?.startsWith(Z) && e.push(n);
-	}
-	e.forEach((e) => sessionStorage.removeItem(e));
+var Fe = "__tolgee_apiKey", Ie = "__tolgee_apiUrl", Le = "__tolgee_branch";
+function Re() {
+	let e = sessionStorage.getItem(Fe) || void 0, t = sessionStorage.getItem(Ie) || void 0, n = sessionStorage.getItem(Le) || void 0;
+	if (!(!e || !t)) return m({
+		apiKey: e,
+		apiUrl: t
+	}, n === void 0 ? {} : { branch: n });
 }
-function Gt(e) {
-	if (!e.isDev()) return;
-	let { requiresExplicitProject: t, projectId: n } = St(e.getInitialOptions());
-	t && n === void 0 && console.warn("Tolgee: `projectId` is missing from the SDK configuration. It is required when authenticating with a PAT or connecting through the Tolgee browser extension. See https://docs.tolgee.io/js-sdk/api/core_package/options#projectid");
+function ze() {
+	sessionStorage.removeItem(Fe), sessionStorage.removeItem(Ie), sessionStorage.removeItem(Le);
 }
-function Kt(e) {
+function Be(e) {
 	document.readyState === "loading" ? document.addEventListener && document.addEventListener("DOMContentLoaded", e) : Promise.resolve().then(() => {
 		e();
 	});
 }
-var qt = () => (e) => e;
+var Ve = () => (e) => e;
 (() => {
 	if (typeof window > "u") return !1;
 	try {
@@ -1444,30 +1192,25 @@ var qt = () => (e) => e;
 	} catch (e) {
 		return console.error("sessionStorage not available", e), !1;
 	}
-})() && (qt = () => (e) => {
-	let t = Et(), n = () => {
-		let t = e.getInitialOptions();
-		return {
-			uiPresent: !0,
-			uiVersion: void 0,
-			protocolVersion: Je,
-			mode: e.isDev() ? "development" : "production",
-			config: {
-				apiUrl: t.apiUrl || "",
-				apiKey: t.transport ? "" : t.apiKey || "",
-				projectId: t.projectId,
-				branch: t.branch
-			}
-		};
-	};
-	return Gt(e), e.on("running", ({ value: e }) => {
-		e && Kt(() => {
-			t.update(n()).catch(Wt);
+})() && (Ve = () => (e) => {
+	let t = De(), n = () => ({
+		uiPresent: !0,
+		uiVersion: void 0,
+		mode: e.isDev() ? "development" : "production",
+		config: {
+			apiUrl: e.getInitialOptions().apiUrl || "",
+			apiKey: e.getInitialOptions().apiKey || "",
+			branch: e.getInitialOptions().branch
+		}
+	});
+	return e.on("running", ({ value: e }) => {
+		e && Be(() => {
+			t.update(n()).catch(ze);
 		});
-	}), Ut() && (async () => {
-		let e = await Lt("prerelease");
+	}), Re() && (async () => {
+		let e = await Pe("prerelease");
 		return (t) => {
-			let n = Ut();
+			let n = Re();
 			return t.addPlugin(e({ credentials: n })), t;
 		};
 	})().then((t) => {
@@ -1476,17 +1219,17 @@ var qt = () => (e) => e;
 		console.error("Tolgee: Failed to load in-context tools"), console.error(e);
 	}), e;
 });
-function Q() {
-	return Ae().use(qt());
+function He() {
+	return fe().use(Ve());
 }
-function Jt(e) {
+function Ue(e) {
 	return Object.assign(Object.assign({}, e), { t(...t) {
-		let n = R(...t);
+		let n = H(...t);
 		return e.t(Object.assign(Object.assign({}, n), { noWrap: !0 }));
 	} });
 }
-function Yt(e, t, n, r = !0) {
-	let [o] = s(() => Jt(e)), [c, l] = s(r);
+function We(e, t, n, r = !0) {
+	let [o] = s(() => Ue(e)), [c, l] = s(r);
 	return i(() => {
 		l(!1);
 	}, []), a(() => {
@@ -1497,12 +1240,12 @@ function Yt(e, t, n, r = !0) {
 		e
 	]), s(() => {
 		if (!e.isLoaded() && r) {
-			let n = e.getRequiredDescriptors(t), r = e.getAllRecords(), i = n.map((e) => P(e)).filter((e) => !r.find((t) => t?.cacheKey === e));
-			i.length && console.warn(`Tolgee: Missing records in "staticData" for proper SSR functionality: ${i.map((e) => `"${e}"`).join(", ")}`);
+			let n = e.getRequiredDescriptors(t), r = e.getAllRecords(), i = n.map(({ namespace: e, language: t }) => e ? `${e}:${t}` : t).filter((e) => !r.find((t) => t?.cacheKey === e));
+			console.warn(`Tolgee: Missing records in "staticData" for proper SSR functionality: ${i.map((e) => `"${e}"`).join(", ")}`);
 		}
 	}), c ? o : e;
 }
-var Xt = { useSuspense: !1 }, Zt, Qt = () => (Zt ||= e.createContext(void 0), Zt), $ = void 0, $t = ({ tolgee: n, options: r, children: a, fallback: o, ssr: c }) => {
+var Ge = { useSuspense: !1 }, Q, Ke = () => (Q ||= e.createContext(void 0), Q), $ = void 0, qe = ({ tolgee: n, options: r, children: a, fallback: o, ssr: c }) => {
 	i(() => {
 		$?.run !== n.run && ($ && $.stop(), $ = n, n.run().catch((e) => {
 			console.error(e);
@@ -1511,8 +1254,8 @@ var Xt = { useSuspense: !1 }, Zt, Qt = () => (Zt ||= e.createContext(void 0), Zt
 		}));
 	}, [n]);
 	let l = n, { language: u, staticData: d } = typeof c == "object" ? c : {};
-	l = Yt(n, u, d, !!c);
-	let [f, p] = s(!l.isLoaded()), m = Object.assign(Object.assign({}, Xt), r), h = Qt();
+	l = We(n, u, d, !!c);
+	let [f, p] = s(!l.isLoaded()), m = Object.assign(Object.assign({}, Ge), r), h = Ke();
 	return m.useSuspense ? e.createElement(h.Provider, { value: {
 		tolgee: l,
 		options: m
@@ -1520,11 +1263,15 @@ var Xt = { useSuspense: !1 }, Zt, Qt = () => (Zt ||= e.createContext(void 0), Zt
 		tolgee: l,
 		options: m
 	} }, f ? o : a);
-}, en = () => {
-	let e = Qt(), t = r(e) || void 0;
-	if (!t) throw Error("Couldn't find tolgee instance, did you forgot to use `TolgeeProvider`?");
-	return t;
-}, tn = () => {
+}, Je;
+function Ye() {
+	return Je;
+}
+var Xe = () => {
+	let e = r(Ke()) || Ye();
+	if (!e) throw Error("Couldn't find tolgee instance, did you forgot to use `TolgeeProvider`?");
+	return e;
+}, Ze = () => {
 	let [e, t] = s(0);
 	return {
 		instance: e,
@@ -1532,8 +1279,8 @@ var Xt = { useSuspense: !1 }, Zt, Qt = () => (Zt ||= e.createContext(void 0), Zt
 			t((e) => e + 1);
 		}, [t])
 	};
-}, nn = (e, t) => {
-	let { tolgee: r, options: a } = en(), s = ae(e), c = A(s).join(":"), l = Object.assign(Object.assign({}, a), t), { rerender: u, instance: d } = tn(), f = o([]);
+}, Qe = (e, t) => {
+	let { tolgee: r, options: a } = Xe(), s = S(e), c = C(s).join(":"), l = Object.assign(Object.assign({}, a), t), { rerender: u, instance: d } = Ze(), f = o([]);
 	f.current = [];
 	let p = r.isLoaded(s);
 	i(() => {
@@ -1551,17 +1298,14 @@ var Xt = { useSuspense: !1 }, Zt, Qt = () => (Zt ||= e.createContext(void 0), Zt
 		t: m,
 		isLoading: !p
 	};
-}, rn = (e, t) => {
-	let { t: r, isLoading: i } = nn(e, t);
+}, $e = (e, t) => {
+	let { t: r, isLoading: i } = Qe(e, t);
 	return {
-		t: n((...e) => {
-			let t = R(...e);
-			return r(t);
-		}, [r]),
+		t: n((...e) => r(H(...e)), [r]),
 		isLoading: i
 	};
-}, an = (e) => {
-	let { tolgee: t } = en(), { rerender: n } = tn();
+}, et = (e) => {
+	let { tolgee: t } = Xe(), { rerender: n } = Ze();
 	return i(() => {
 		let r = e?.map((e) => t.on(e, n));
 		return () => {
@@ -1569,64 +1313,22 @@ var Xt = { useSuspense: !1 }, Zt, Qt = () => (Zt ||= e.createContext(void 0), Zt
 		};
 	}, [e?.join(":")]), t;
 };
-function on() {
-	let { t: e, ...t } = rn();
+function tt() {
+	let { t: e, ...t } = $e();
 	return {
 		...t,
-		t: (t) => e(t)
+		t: (t, n) => e(t, n)
 	};
 }
-var sn = Q().use(Ve()).init({ language: "en" }), cn = () => {
-	let e = an(), { t } = on();
+var nt = He().use(xe()).init({ language: "en" }), rt = () => {
+	let e = et(), { t } = tt();
 	return e.getLanguage(), null;
 };
-function ln() {
-	return c($t, {
-		tolgee: sn,
+function it() {
+	return c(qe, {
+		tolgee: nt,
 		options: { useSuspense: !1 },
-		children: c(cn, {})
+		children: c(rt, {})
 	});
 }
-var un = Q().use(Ve()).init({
-	language: "en",
-	apiUrl: void 0,
-	apiKey: void 0,
-	staticData: {
-		en: l,
-		de: u,
-		es: d,
-		fr: f,
-		it: p,
-		ja: m,
-		ko: h,
-		pt: g,
-		ru: _,
-		zh: v
-	}
-}), dn = {
-	de: u,
-	en: l,
-	es: d,
-	fr: f,
-	it: p,
-	ja: m,
-	ko: h,
-	pt: g,
-	ru: _,
-	zh: v
-};
-function fn({ children: e }) {
-	return c($t, {
-		tolgee: un,
-		options: { useSuspense: !1 },
-		ssr: {
-			language: "en",
-			staticData: dn
-		},
-		children: e
-	});
-}
-function pn() {
-	return c(fn, { children: c(ln, {}) });
-}
-export { pn as default };
+export { it as default };

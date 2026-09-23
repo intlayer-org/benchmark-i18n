@@ -1,16 +1,16 @@
 import { Dynamic as e, effect as t, insert as n, setAttribute as r, template as i } from "solid-js/web";
 import { createContext as a, createMemo as o, createUniqueId as s, useContext as c } from "solid-js";
 var l = {
-	de: () => import("./de-nOKInNNj.js").then((e) => e.default),
-	en: () => import("./en-k7BeEJm-.js").then((e) => e.default),
-	es: () => import("./es-BJ0sRRhS.js").then((e) => e.default),
-	fr: () => import("./fr-C43ZMMoM.js").then((e) => e.default),
-	it: () => import("./it-DOWC0-k1.js").then((e) => e.default),
-	ja: () => import("./ja-Dzt-_WDx.js").then((e) => e.default),
-	ko: () => import("./ko-wh0KvDFd.js").then((e) => e.default),
-	pt: () => import("./pt-CbJ1en5o.js").then((e) => e.default),
-	ru: () => import("./ru-DoeKBtTU.js").then((e) => e.default),
-	zh: () => import("./zh-Bsrghke8.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/de.json").then((e) => e.default),
+	en: () => import("./en-vAp9Ok5f.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/contact-form/zh.json").then((e) => e.default)
 }, u = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var l = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (v(e) && v(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : y(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : y(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -285,24 +285,6 @@ var e = {
 	key: "contact-form",
 	content: {
 		g: "Name",
-		l: "Ihr Name",
-		d: "E-Mail",
-		k: "Thema",
-		a: "Fehlerbericht",
-		h: "Neue Benchmark-Idee",
-		f: "Frage zur Methodik",
-		b: "Beitrag",
-		i: "Sonstiges",
-		e: "Nachricht",
-		c: "Beschreiben Sie Ihre Frage oder Idee...",
-		j: "Nachricht senden"
-	}
-};
-export { e as default };
-var e = {
-	key: "contact-form",
-	content: {
-		g: "Name",
 		l: "Your name",
 		d: "Email",
 		k: "Topic",
@@ -314,150 +296,6 @@ var e = {
 		e: "Message",
 		c: "Describe your question or idea...",
 		j: "Send Message"
-	}
-};
-export { e as default };
-var e = {
-	key: "contact-form",
-	content: {
-		g: "Nombre",
-		l: "Tu nombre",
-		d: "Correo electrónico",
-		k: "Tema",
-		a: "Reporte de error",
-		h: "Nueva idea de benchmark",
-		f: "Pregunta sobre metodología",
-		b: "Contribución",
-		i: "Otro",
-		e: "Mensaje",
-		c: "Describe tu pregunta o idea...",
-		j: "Enviar mensaje"
-	}
-};
-export { e as default };
-var e = {
-	key: "contact-form",
-	content: {
-		g: "Nom",
-		l: "Votre nom",
-		d: "Email",
-		k: "Sujet",
-		a: "Rapport de bug",
-		h: "Nouvelle idée de benchmark",
-		f: "Question sur la méthodologie",
-		b: "Contribution",
-		i: "Autre",
-		e: "Message",
-		c: "Décrivez votre question ou idée...",
-		j: "Envoyer le message"
-	}
-};
-export { e as default };
-var e = {
-	key: "contact-form",
-	content: {
-		g: "Nome",
-		l: "Il tuo nome",
-		d: "Email",
-		k: "Argomento",
-		a: "Segnalazione bug",
-		h: "Nuova idea di benchmark",
-		f: "Domanda sulla metodologia",
-		b: "Contributo",
-		i: "Altro",
-		e: "Messaggio",
-		c: "Descrivi la tua domanda o idea...",
-		j: "Invia messaggio"
-	}
-};
-export { e as default };
-var e = {
-	key: "contact-form",
-	content: {
-		g: "名前",
-		l: "あなたの名前",
-		d: "メールアドレス",
-		k: "トピック",
-		a: "バグ報告",
-		h: "新しいベンチマークのアイデア",
-		f: "方法論に関する質問",
-		b: "貢献",
-		i: "その他",
-		e: "メッセージ",
-		c: "質問やアイデアを説明してください...",
-		j: "メッセージを送信"
-	}
-};
-export { e as default };
-var e = {
-	key: "contact-form",
-	content: {
-		g: "이름",
-		l: "귀하의 성함",
-		d: "이메일",
-		k: "주제",
-		a: "버그 보고",
-		h: "새로운 벤치마크 아이디어",
-		f: "방법론 질문",
-		b: "기여",
-		i: "기타",
-		e: "메시지",
-		c: "질문이나 아이디어를 설명해 주세요...",
-		j: "메시지 보내기"
-	}
-};
-export { e as default };
-var e = {
-	key: "contact-form",
-	content: {
-		g: "Nome",
-		l: "Seu nome",
-		d: "E-mail",
-		k: "Tópico",
-		a: "Relato de bug",
-		h: "Nova ideia de benchmark",
-		f: "Pergunta sobre metodologia",
-		b: "Contribuição",
-		i: "Outro",
-		e: "Mensagem",
-		c: "Descreva sua pergunta ou ideia...",
-		j: "Enviar mensagem"
-	}
-};
-export { e as default };
-var e = {
-	key: "contact-form",
-	content: {
-		g: "Имя",
-		l: "Ваше имя",
-		d: "Электронная почта",
-		k: "Тема",
-		a: "Отчет об ошибке",
-		h: "Новая идея бенчмарка",
-		f: "Вопрос по методологии",
-		b: "Вклад",
-		i: "Другое",
-		e: "Сообщение",
-		c: "Опишите ваш вопрос или идею...",
-		j: "Отправить сообщение"
-	}
-};
-export { e as default };
-var e = {
-	key: "contact-form",
-	content: {
-		g: "姓名",
-		l: "您的姓名",
-		d: "电子邮件",
-		k: "主题",
-		a: "报告错误",
-		h: "新的基准测试想法",
-		f: "方法论问题",
-		b: "贡献",
-		i: "其他",
-		e: "消息",
-		c: "描述您的问题或想法...",
-		j: "发送消息"
 	}
 };
 export { e as default };

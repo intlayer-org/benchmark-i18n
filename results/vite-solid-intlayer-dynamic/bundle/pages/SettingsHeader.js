@@ -1,16 +1,16 @@
 import { Dynamic, createComponent, insert, template } from "solid-js/web";
 import { createContext, createMemo, useContext } from "solid-js";
 var content$1 = {
-	"de": () => import("./de-CCAd_DNr.js").then((m) => m.default),
-	"en": () => import("./en-DdVwbK4N.js").then((m) => m.default),
-	"es": () => import("./es-CQ2yqs6d.js").then((m) => m.default),
-	"fr": () => import("./fr-BsVBsfVt.js").then((m) => m.default),
-	"it": () => import("./it-BoA2rO_Y.js").then((m) => m.default),
-	"ja": () => import("./ja-_FDdqEvi.js").then((m) => m.default),
-	"ko": () => import("./ko-C5Fy43C8.js").then((m) => m.default),
-	"pt": () => import("./pt-C4zD-lkw.js").then((m) => m.default),
-	"ru": () => import("./ru-Snar9PoJ.js").then((m) => m.default),
-	"zh": () => import("./zh-D8P_Wrvw.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-header/de.json").then((m) => m.default),
+	"en": () => import("./en-VbleMx0Q.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-header/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-header/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-header/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-header/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-header/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-header/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-header/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/settings-header/zh.json").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,8 +230,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-};
-var S = {
+}, S$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -239,8 +238,7 @@ var S = {
 		value: o.children,
 		children: o.children
 	})
-};
-var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -248,12 +246,7 @@ var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin :
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-};
-var T = fallbackPlugin;
-var D = fallbackPlugin;
-var O = fallbackPlugin;
-var k = /* @__PURE__ */ new Map();
-var A = (e, t = !0) => {
+}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -263,7 +256,7 @@ var A = (e, t = !0) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S,
+		S$1,
 		C,
 		T,
 		D,
@@ -282,8 +275,7 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-};
-var localeStorageOptions = {
+}, localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -301,9 +293,7 @@ var localeStorageOptions = {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-};
-var a$1 = getLocaleFromStorageClient(localeStorageOptions);
-var y = createContext({
+}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -322,24 +312,22 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-};
-var t = /* @__PURE__ */ new Map();
-var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
 };
 var content = {
-	"de": () => import("./de-D-3dRX0-.js").then((m) => m.default),
-	"en": () => import("./en-BvSJVZrM.js").then((m) => m.default),
-	"es": () => import("./es-Cap_wKuL.js").then((m) => m.default),
-	"fr": () => import("./fr-x_XBoEM9.js").then((m) => m.default),
-	"it": () => import("./it-D8U5da9I.js").then((m) => m.default),
-	"ja": () => import("./ja-Cv5luclr.js").then((m) => m.default),
-	"ko": () => import("./ko-BKmHU8M4.js").then((m) => m.default),
-	"pt": () => import("./pt-gOzKjx1S.js").then((m) => m.default),
-	"ru": () => import("./ru-Dy3xWoJx.js").then((m) => m.default),
-	"zh": () => import("./zh-VyB3A78f.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/de.json").then((m) => m.default),
+	"en": () => import("./en-CGf8RV2H.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/mock-banner/zh.json").then((m) => m.default)
 };
 var _tmpl$$1 = template(`<div class="mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground">`);
 function MockBanner() {
@@ -350,8 +338,7 @@ function MockBanner() {
 		return _el$;
 	})();
 }
-var _tmpl$ = template(`<h1 class="mb-2 text-3xl font-bold text-foreground">`);
-var _tmpl$2 = template(`<p class="mb-8 text-muted-foreground">`);
+var _tmpl$ = template(`<h1 class="mb-2 text-3xl font-bold text-foreground">`), _tmpl$2 = template(`<p class="mb-8 text-muted-foreground">`);
 function SettingsHeader() {
 	const content = a(content$1, "settings-header");
 	return [
@@ -369,19 +356,6 @@ function SettingsHeader() {
 	];
 }
 export { SettingsHeader as default };
-var de_default = {
-	key: "settings-header",
-	content: {
-		"b": "Einstellungen",
-		"a": "Verwalten Sie Ihre Kontoeinstellungen und -konfigurationen."
-	}
-};
-export { de_default as default };
-var de_default = {
-	key: "mock-banner",
-	content: { "a": "⚠️ Diese Seite enthält Mock-Daten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder einer echten Dienstleistung." }
-};
-export { de_default as default };
 var en_default = {
 	key: "mock-banner",
 	content: { "a": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service." }
@@ -395,107 +369,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "settings-header",
-	content: {
-		"b": "Ajustes",
-		"a": "Gestione las preferencias y la configuración de su cuenta."
-	}
-};
-export { es_default as default };
-var es_default = {
-	key: "mock-banner",
-	content: { "a": "⚠️ Esta página contiene datos de prueba solo para fines de benchmarking. No está relacionada con ninguna empresa o servicio real." }
-};
-export { es_default as default };
-var fr_default = {
-	key: "settings-header",
-	content: {
-		"b": "Paramètres",
-		"a": "Gérez vos préférences de compte et votre configuration."
-	}
-};
-export { fr_default as default };
-var fr_default = {
-	key: "mock-banner",
-	content: { "a": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel." }
-};
-export { fr_default as default };
-var it_default = {
-	key: "settings-header",
-	content: {
-		"b": "Impostazioni",
-		"a": "Gestisci le preferenze e la configurazione del tuo account."
-	}
-};
-export { it_default as default };
-var it_default = {
-	key: "mock-banner",
-	content: { "a": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale." }
-};
-export { it_default as default };
-var ja_default = {
-	key: "mock-banner",
-	content: { "a": "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。" }
-};
-export { ja_default as default };
-var ja_default = {
-	key: "settings-header",
-	content: {
-		"b": "設定",
-		"a": "アカウント設定と構成を管理します。"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "mock-banner",
-	content: { "a": "⚠️ 이 페이지에는 벤치마킹 목적의 모의 데이터만 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다." }
-};
-export { ko_default as default };
-var ko_default = {
-	key: "settings-header",
-	content: {
-		"b": "설정",
-		"a": "계정 환경 설정 및 구성을 관리하세요."
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "settings-header",
-	content: {
-		"b": "Configurações",
-		"a": "Gerencie suas preferências de conta e configuração."
-	}
-};
-export { pt_default as default };
-var pt_default = {
-	key: "mock-banner",
-	content: { "a": "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada a nenhum negócio ou serviço real." }
-};
-export { pt_default as default };
-var ru_default = {
-	key: "mock-banner",
-	content: { "a": "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
-};
-export { ru_default as default };
-var ru_default = {
-	key: "settings-header",
-	content: {
-		"b": "Настройки",
-		"a": "Управляйте настройками и конфигурацией вашего аккаунта."
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "settings-header",
-	content: {
-		"b": "设置",
-		"a": "管理您的帐户首选项和配置。"
-	}
-};
-export { zh_default as default };
-var zh_default = {
-	key: "mock-banner",
-	content: { "a": "⚠️ 本页面包含仅用于基准测试目的的模拟数据。它与任何真实的业务 or 服务无关。" }
-};
-export { zh_default as default };

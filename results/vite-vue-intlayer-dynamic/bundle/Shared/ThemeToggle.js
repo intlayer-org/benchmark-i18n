@@ -1,4 +1,4 @@
-import { computed, createElementBlock, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onMounted, onUnmounted, openBlock, ref, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { computed, createElementBlock, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, onMounted, onUnmounted, openBlock, ref, shallowRef, toDisplayString, toValue, watch } from "vue";
 var theme_toggle_default = {
 	key: "theme-toggle",
 	content: {
@@ -279,8 +279,7 @@ var getBasePlugins = (locale, fallback = true) => [
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
-});
-var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
+}), getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 	const props = {
 		dictionaryKey: dictionary.key,
 		dictionaryPath: dictionary.filePath,
@@ -288,8 +287,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-};
-var b$1 = {
+}, b$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { children: n, ...r }) => {
@@ -311,12 +309,7 @@ var b$1 = {
 		}
 		return markRaw(c);
 	}
-};
-var S = fallbackPlugin;
-var w = fallbackPlugin;
-var T = fallbackPlugin;
-var E = /* @__PURE__ */ new Map();
-var D = (e, t = !0) => {
+}, S = fallbackPlugin, w = fallbackPlugin, T = fallbackPlugin, E = /* @__PURE__ */ new Map(), D = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (E.has(n)) return E.get(n);
 	let r = [
@@ -332,14 +325,8 @@ var D = (e, t = !0) => {
 		T
 	];
 	return E.set(n, r), r;
-};
-var n = (n, r) => getDictionary(n, r, D(r));
-var i = Symbol("intlayer");
-var m = (e, t) => t.reduce((e, t) => e?.[t], e);
-var h$1 = (e) => typeof e == "object" && !!e;
-var g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e);
-var _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e;
-var v = (e) => markRaw(defineComponent({
+}, n = (n, r) => getDictionary(n, r, D(r)), i = Symbol("intlayer");
+var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "object" && !!e, g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e), _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, v = (e) => markRaw(defineComponent({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -347,8 +334,7 @@ var v = (e) => markRaw(defineComponent({
 			return t == null ? null : g(t) ? h(t) : Array.isArray(t) ? h("span", t) : t;
 		};
 	}
-}));
-var y = (e) => new Proxy({}, {
+})), y = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -370,8 +356,7 @@ var y = (e) => new Proxy({}, {
 			configurable: !0
 		};
 	}
-});
-var b = (r, a) => {
+}), b = (r, a) => {
 	let c = getCurrentInstance() ? inject(i) : void 0, b = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), x = computed(() => (a === void 0 ? void 0 : toValue(a)) ?? b.value), S = shallowRef({});
 	watch([() => toValue(r), () => x.value], ([t, n$2]) => {
 		S.value = n(t, n$2);
@@ -409,10 +394,10 @@ var b = (r, a) => {
 	});
 	return C([]);
 };
-var _hoisted_1 = ["aria-label", "title"];
-var ThemeToggle_default = defineComponent({
+var ThemeToggle_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "ThemeToggle",
-	setup(__props) {
+	setup(__props, { expose: __expose }) {
+		__expose();
 		const { d: auto, e: dark, f: light, a: ariaLabelAuto, c: ariaLabelLight, b: ariaLabelDark } = b(theme_toggle_default);
 		const mode = ref("auto");
 		function getInitialMode() {
@@ -456,15 +441,46 @@ var ThemeToggle_default = defineComponent({
 			window.localStorage.setItem("theme", nextMode);
 		}
 		const getLabel = () => mode.value === "auto" ? ariaLabelAuto.value : mode.value === "light" ? ariaLabelLight.value : ariaLabelDark.value;
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("button", {
-				type: "button",
-				onClick: toggleMode,
-				"aria-label": getLabel(),
-				title: getLabel(),
-				class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-			}, toDisplayString(mode.value === "auto" ? unref(auto) : mode.value === "dark" ? unref(dark) : unref(light)), 9, _hoisted_1);
+		const __returned__ = {
+			auto,
+			dark,
+			light,
+			ariaLabelAuto,
+			ariaLabelLight,
+			ariaLabelDark,
+			mode,
+			getInitialMode,
+			applyThemeMode,
+			get mediaQueryListener() {
+				return mediaQueryListener;
+			},
+			set mediaQueryListener(v) {
+				mediaQueryListener = v;
+			},
+			toggleMode,
+			getLabel
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+var _hoisted_1 = ["aria-label", "title"];
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("button", {
+		type: "button",
+		onClick: $setup.toggleMode,
+		"aria-label": $setup.getLabel(),
+		title: $setup.getLabel(),
+		class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+	}, toDisplayString($setup.mode === "auto" ? $setup.auto : $setup.mode === "dark" ? $setup.dark : $setup.light), 9, _hoisted_1);
+}
+var ThemeToggle_default = _plugin_vue_export_helper_default(ThemeToggle_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/ThemeToggle.vue"]]);
 export { ThemeToggle_default as default };

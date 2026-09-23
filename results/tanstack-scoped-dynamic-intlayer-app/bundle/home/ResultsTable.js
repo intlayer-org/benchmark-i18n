@@ -1,5 +1,6 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -56,12 +57,12 @@ var getLocaleFromDomain = (hostname, domains) => {
 var PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
 var LOCALES = ["en"];
 var resolveRoutingConfig = (options = {}) => ({
-	...options,
-	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
-	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
-	locales: options.locales ?? internationalization?.locales ?? LOCALES,
-	rewrite: options.rewrite ?? routing?.rewrite,
-	domains: options.domains ?? routing?.domains
+	defaultLocale: internationalization?.defaultLocale ?? "en",
+	mode: routing?.mode ?? "prefix-no-default",
+	locales: internationalization?.locales ?? LOCALES,
+	rewrite: routing?.rewrite,
+	domains: routing?.domains,
+	...options
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -779,6 +780,7 @@ var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const plainLoaders = dictionaryPromise;
 	return getDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, plainLoaders[localeTarget]?.()), localeTarget);
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app/src/components/pages/home/ResultsTable.tsx";
 function ResultsTable() {
 	const content$1 = useDictionaryDynamic(content, "results-table");
 	const results = [
@@ -807,65 +809,143 @@ function ResultsTable() {
 			lazy: content$1.a.value
 		}
 	];
-	return jsxs("section", { children: [jsx("h2", {
+	return jsxDEV("section", { children: [jsxDEV("h2", {
 		className: "mb-6 text-2xl font-bold text-foreground",
 		children: content$1.i
-	}), jsx("div", {
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 34,
+		columnNumber: 7
+	}, this), jsxDEV("div", {
 		className: "overflow-x-auto rounded-lg border border-border",
-		children: jsxs("table", {
+		children: jsxDEV("table", {
 			className: "w-full text-sm",
-			children: [jsx("thead", {
+			children: [jsxDEV("thead", {
 				className: "bg-muted",
-				children: jsxs("tr", { children: [
-					jsx("th", {
+				children: jsxDEV("tr", { children: [
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: content$1.e
-					}),
-					jsx("th", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 39,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: content$1.b
-					}),
-					jsx("th", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 40,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: content$1.f
-					}),
-					jsx("th", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 41,
+						columnNumber: 15
+					}, this),
+					jsxDEV("th", {
 						className: "px-4 py-3 text-left font-medium text-muted-foreground",
 						children: content$1.d
-					})
-				] })
-			}), jsx("tbody", { children: results.map((r) => jsxs("tr", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 42,
+						columnNumber: 15
+					}, this)
+				] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 38,
+					columnNumber: 13
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 37,
+				columnNumber: 11
+			}, this), jsxDEV("tbody", { children: results.map((r) => jsxDEV("tr", {
 				className: "border-t border-border",
 				children: [
-					jsx("td", {
+					jsxDEV("td", {
 						className: "px-4 py-3 font-medium text-foreground",
 						children: r.lib
-					}),
-					jsx("td", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 48,
+						columnNumber: 17
+					}, this),
+					jsxDEV("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.size
-					}),
-					jsx("td", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 51,
+						columnNumber: 17
+					}, this),
+					jsxDEV("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.time
-					}),
-					jsx("td", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 52,
+						columnNumber: 17
+					}, this),
+					jsxDEV("td", {
 						className: "px-4 py-3 text-muted-foreground",
 						children: r.lazy
-					})
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 53,
+						columnNumber: 17
+					}, this)
 				]
-			}, r.lib)) })]
-		})
-	})] });
+			}, r.lib, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 47,
+				columnNumber: 15
+			}, this)) }, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 45,
+				columnNumber: 11
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 36,
+			columnNumber: 9
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 35,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 33,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(IntlayerProvider, {
+	return jsxDEV(IntlayerProvider, {
 		locale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-dynamic/intlayer-app/src/components/pages/home/ResultsTable.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ResultsTable, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ResultsTable, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

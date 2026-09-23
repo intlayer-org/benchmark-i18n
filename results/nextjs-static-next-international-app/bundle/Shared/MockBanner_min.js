@@ -1,5 +1,5 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsx as r } from "react/jsx-runtime";
+import { jsxDEV as r } from "react/jsx-dev-runtime";
 var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -4854,14 +4854,18 @@ var u = l(c), d = l({
 function x() {
 	return b.useI18n();
 }
-var { useScopedI18n: S, I18nProviderClient: C, useChangeLocale: w, useCurrentLocale: T } = b, E = () => {
+var { useScopedI18n: S, I18nProviderClient: C, useChangeLocale: w, useCurrentLocale: T } = b, E = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/MockBanner.tsx", D = () => {
 	let e = x();
 	return r("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: e("mockBanner")
-	});
+	}, void 0, !1, {
+		fileName: E,
+		lineNumber: 8,
+		columnNumber: 5
+	}, void 0);
 };
-function D() {
+function O() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -4875,32 +4879,50 @@ function D() {
 		}
 	}
 }
-function O(e, t) {
+function k(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function k({ children: i, locale: a }) {
+var A = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/AppProviders.tsx";
+function j({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		O("AppRoot", o);
+		k("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
-		D();
+		O();
 	}, []), r(C, {
 		locale: a,
 		children: i
-	});
+	}, void 0, !1, {
+		fileName: A,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var A = "en";
-function j({ children: e }) {
-	return r(k, {
-		locale: A,
+var M = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/scripts/Wrapper.tsx", N = "en";
+function P({ children: e }) {
+	return r(j, {
+		locale: N,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: M,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function M() {
-	return r(j, { children: r(E, {}) });
+var F = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-international-app/components/MockBanner.wrapper.tsx";
+function I() {
+	return r(P, { children: r(D, {}, void 0, !1, {
+		fileName: F,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: F,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { M as default };
+export { I as default };

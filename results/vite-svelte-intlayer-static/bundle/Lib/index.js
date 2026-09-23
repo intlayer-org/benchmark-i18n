@@ -32,52 +32,87 @@ var internationalization = {
 	"strictMode": "inclusive",
 	"defaultLocale": "en"
 };
-var defaultLocale = internationalization?.defaultLocale;
-var createIntlayerStore = () => {
-	const { subscribe, set, update } = writable({ locale: defaultLocale });
+var pluginsIdentities = /* @__PURE__ */ new WeakMap();
+var nextPluginsIdentity = 0;
+var getPluginsCacheKey = (plugins) => {
+	if (!plugins) return "base";
+	const existingIdentity = pluginsIdentities.get(plugins);
+	if (existingIdentity) return existingIdentity;
+	nextPluginsIdentity += 1;
+	const identity = `p${nextPluginsIdentity}`;
+	pluginsIdentities.set(plugins, identity);
+	return identity;
+};
+var MAX_ENTRIES_PER_DICTIONARY = 256;
+var transformCache = /* @__PURE__ */ new WeakMap();
+var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
+var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
+var readTransformCache = (dictionary, cacheKey) => {
+	if (!isMemoizableDictionary(dictionary)) return { hit: false };
+	const entries = transformCache.get(dictionary);
+	if (!entries?.has(cacheKey)) return { hit: false };
 	return {
-		subscribe,
-		setLocale: (locale) => update((store) => ({
-			...store,
-			locale
-		})),
-		getLocale: () => derived({ subscribe }, ($store) => $store.locale),
-		reset: () => set({ locale: defaultLocale })
+		hit: true,
+		content: entries.get(cacheKey)
 	};
 };
-var intlayerStore = createIntlayerStore();
-var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
-var setIntlayerContext = (context) => {
-	setContext(INTLAYER_CONTEXT_KEY, context);
+var writeTransformCache = (dictionary, cacheKey, content) => {
+	if (!isMemoizableDictionary(dictionary)) return content;
+	let entries = transformCache.get(dictionary);
+	if (!entries) {
+		entries = /* @__PURE__ */ new Map();
+		transformCache.set(dictionary, entries);
+	}
+	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
+	entries.set(cacheKey, content);
+	return content;
 };
-var getIntlayerContext = () => {
-	return getContext(INTLAYER_CONTEXT_KEY);
-};
-var setIntlayerIdentifier = () => {
-	if (typeof window !== "undefined") window.intlayer = { enabled: true };
-};
-var setupIntlayer = (initialLocale, initialVariant) => {
-	setIntlayerIdentifier();
-	let locale = $.state($.proxy(initialLocale));
-	let variant = $.state($.proxy(initialVariant));
-	if (initialLocale) intlayerStore.setLocale(initialLocale);
-	const contextValue = {
-		get locale() {
-			return $.get(locale) ?? internationalization.defaultLocale;
-		},
-		setLocale: (newLocale) => {
-			$.set(locale, newLocale, true);
-			intlayerStore.setLocale(newLocale);
-		},
-		get variant() {
-			return $.get(variant);
-		},
-		setVariant: (newVariant) => {
-			$.set(variant, newVariant, true);
+var TRANSLATION = "translation";
+var OBJECT = "object";
+var ARRAY = "array";
+var deepTransformNode = (node, props) => {
+	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
+	if (node === null || typeof node !== "object") return node;
+	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0 || typeof node === "function") return node;
+	if (Array.isArray(node)) return node.map((child, index) => {
+		return deepTransformNode(child, {
+			...props,
+			children: child,
+			keyPath: [...props.keyPath, {
+				type: ARRAY,
+				key: index
+			}]
+		});
+	});
+	const result = {};
+	for (const key in node) {
+		const childProps = {
+			...props,
+			children: node[key],
+			keyPath: [...props.keyPath, {
+				type: OBJECT,
+				key
+			}]
+		};
+		if (props.eager) {
+			result[key] = deepTransformNode(node[key], childProps);
+			continue;
 		}
-	};
-	setIntlayerContext(contextValue);
-	return contextValue;
+		Object.defineProperty(result, key, {
+			enumerable: true,
+			configurable: true,
+			get: function() {
+				const transformed = deepTransformNode(node[key], childProps);
+				Object.defineProperty(this, key, {
+					value: transformed,
+					enumerable: true,
+					configurable: true
+				});
+				return transformed;
+			}
+		});
+	}
+	return result;
 };
 var DEFAULT_VARIANT_ID = "default";
 var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
@@ -147,123 +182,6 @@ var getDictionarySelectorCacheKey = (selector) => {
 		const value = selector[selectorKey];
 		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
 	}).join("|");
-};
-var TRANSLATION = "translation";
-var OBJECT = "object";
-var ARRAY = "array";
-var deepTransformNode = (node, props) => {
-	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
-	if (node === null || typeof node !== "object") return node;
-	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0 || typeof node === "function") return node;
-	if (Array.isArray(node)) return node.map((child, index) => {
-		return deepTransformNode(child, {
-			...props,
-			children: child,
-			keyPath: [...props.keyPath, {
-				type: ARRAY,
-				key: index
-			}]
-		});
-	});
-	const result = {};
-	for (const key in node) {
-		const childProps = {
-			...props,
-			children: node[key],
-			keyPath: [...props.keyPath, {
-				type: OBJECT,
-				key
-			}]
-		};
-		if (props.eager) {
-			result[key] = deepTransformNode(node[key], childProps);
-			continue;
-		}
-		Object.defineProperty(result, key, {
-			enumerable: true,
-			configurable: true,
-			get: function() {
-				const transformed = deepTransformNode(node[key], childProps);
-				Object.defineProperty(this, key, {
-					value: transformed,
-					enumerable: true,
-					configurable: true
-				});
-				return transformed;
-			}
-		});
-	}
-	return result;
-};
-var pluginsIdentities = /* @__PURE__ */ new WeakMap();
-var nextPluginsIdentity = 0;
-var getPluginsCacheKey = (plugins) => {
-	if (!plugins) return "base";
-	const existingIdentity = pluginsIdentities.get(plugins);
-	if (existingIdentity) return existingIdentity;
-	nextPluginsIdentity += 1;
-	const identity = `p${nextPluginsIdentity}`;
-	pluginsIdentities.set(plugins, identity);
-	return identity;
-};
-var MAX_ENTRIES_PER_DICTIONARY = 256;
-var transformCache = /* @__PURE__ */ new WeakMap();
-var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
-var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
-var readTransformCache = (dictionary, cacheKey) => {
-	if (!isMemoizableDictionary(dictionary)) return { hit: false };
-	const entries = transformCache.get(dictionary);
-	if (!entries?.has(cacheKey)) return { hit: false };
-	return {
-		hit: true,
-		content: entries.get(cacheKey)
-	};
-};
-var writeTransformCache = (dictionary, cacheKey, content) => {
-	if (!isMemoizableDictionary(dictionary)) return content;
-	let entries = transformCache.get(dictionary);
-	if (!entries) {
-		entries = /* @__PURE__ */ new Map();
-		transformCache.set(dictionary, entries);
-	}
-	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
-	entries.set(cacheKey, content);
-	return content;
-};
-var getBasePlugins = (locale, fallback = true) => [
-	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-	enumerationPlugin,
-	conditionPlugin,
-	insertionPlugin$1,
-	nestedPlugin(locale ?? internationalization.defaultLocale),
-	filePlugin,
-	genderPlugin,
-	selectPlugin
-];
-var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
-	...nodeProps,
-	plugins
-});
-var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
-	const { locale, selector } = parseDictionarySelector(localeOrSelector);
-	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
-	const cached = readTransformCache(dictionary, cacheKey);
-	if (cached.hit) return cached.content;
-	const appliedPlugins = plugins ?? getBasePlugins(locale);
-	const resolved = resolveQualifiedDictionary(dictionary, selector);
-	const transformDictionary = (resolvedDictionary) => {
-		const props = {
-			dictionaryKey: resolvedDictionary.key,
-			dictionaryPath: resolvedDictionary.filePath,
-			keyPath: [],
-			plugins: appliedPlugins,
-			nestedDictionaries: resolvedDictionary.nestedDictionaries
-		};
-		return getContent(resolvedDictionary.content, props, appliedPlugins);
-	};
-	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
-	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
-	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -348,6 +266,88 @@ var genderPlugin = fallbackPlugin;
 var selectPlugin = fallbackPlugin;
 var nestedPlugin = (locale) => fallbackPlugin;
 var filePlugin = fallbackPlugin;
+var getBasePlugins = (locale, fallback = true) => [
+	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
+	enumerationPlugin,
+	conditionPlugin,
+	insertionPlugin$1,
+	nestedPlugin(locale ?? internationalization.defaultLocale),
+	filePlugin,
+	genderPlugin,
+	selectPlugin
+];
+var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
+	...nodeProps,
+	plugins
+});
+var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
+	const { locale, selector } = parseDictionarySelector(localeOrSelector);
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+	const cached = readTransformCache(dictionary, cacheKey);
+	if (cached.hit) return cached.content;
+	const appliedPlugins = plugins ?? getBasePlugins(locale);
+	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const transformDictionary = (resolvedDictionary) => {
+		const props = {
+			dictionaryKey: resolvedDictionary.key,
+			dictionaryPath: resolvedDictionary.filePath,
+			keyPath: [],
+			plugins: appliedPlugins,
+			nestedDictionaries: resolvedDictionary.nestedDictionaries
+		};
+		return getContent(resolvedDictionary.content, props, appliedPlugins);
+	};
+	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
+	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
+	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
+};
+var defaultLocale = internationalization?.defaultLocale;
+var createIntlayerStore = () => {
+	const { subscribe, set, update } = writable({ locale: defaultLocale });
+	return {
+		subscribe,
+		setLocale: (locale) => update((store) => ({
+			...store,
+			locale
+		})),
+		getLocale: () => derived({ subscribe }, ($store) => $store.locale),
+		reset: () => set({ locale: defaultLocale })
+	};
+};
+var intlayerStore = createIntlayerStore();
+var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
+var setIntlayerContext = (context) => {
+	setContext(INTLAYER_CONTEXT_KEY, context);
+};
+var getIntlayerContext = () => {
+	return getContext(INTLAYER_CONTEXT_KEY);
+};
+var setIntlayerIdentifier = () => {
+	if (typeof window !== "undefined") window.intlayer = { enabled: true };
+};
+var setupIntlayer = (initialLocale, initialVariant) => {
+	setIntlayerIdentifier();
+	let locale = $.state($.proxy(initialLocale));
+	let variant = $.state($.proxy(initialVariant));
+	if (initialLocale) intlayerStore.setLocale(initialLocale);
+	const contextValue = {
+		get locale() {
+			return $.get(locale) ?? internationalization.defaultLocale;
+		},
+		setLocale: (newLocale) => {
+			$.set(locale, newLocale, true);
+			intlayerStore.setLocale(newLocale);
+		},
+		get variant() {
+			return $.get(variant);
+		},
+		setVariant: (newVariant) => {
+			$.set(variant, newVariant, true);
+		}
+	};
+	setIntlayerContext(contextValue);
+	return contextValue;
+};
 function IntlayerNodeWrapper($$anchor, $$props) {
 	$.push($$props, false);
 	let Renderer = $.prop($$props, "Renderer", 8, void 0);

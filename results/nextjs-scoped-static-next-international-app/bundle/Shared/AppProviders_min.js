@@ -1,5 +1,5 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsx as r } from "react/jsx-runtime";
+import { jsxDEV as r } from "react/jsx-dev-runtime";
 var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -1020,7 +1020,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"faq-list.yesOurEnterprisePlanIncludes": "Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen bewerten. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Umfang und Einschränkungen geben.",
 	"faq-list.howCanIContribute": "Wie kann ich beitragen?",
 	"faq-list.thereAreManyWaysTo": "Es gibt viele Möglichkeiten, beizutragen: Reichen Sie Benchmarks ein, verbessern Sie die Dokumentation, melden Sie Fehler, schlagen Sie neue Metriken vor oder sponsern Sie das Projekt. Besuchen Sie unser GitHub-Repository für weitere Details."
-}, H = {
+}, se = {
 	"results-table.sampleResults": "Beispielergebnisse",
 	"results-table.library": "Bibliothek",
 	"results-table.bundleSize": "Bundle-Größe",
@@ -1051,7 +1051,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"why-it-matters.loadingAllTranslationsUpfrontOverloads": "Das Vorabladen aller Übersetzungen überlastet die anfängliche Payload. Dynamisches (Lazy) Laden teilt Übersetzungen nach Route oder Namensraum auf und sendet nur das, was die aktuelle Seite benötigt. Lazy Loading bringt jedoch eigene Kompromisse mit sich: Waterfall-Anfragen, Aufblitzen von nicht übersetztem Inhalt und Caching-Komplexität. Die Messung beider Strategien ist unerlässlich.",
 	"hero.aTestApplicationDesignedTo": "Eine Testanwendung, die entwickelt wurde, um die realen Auswirkungen von Internationalisierungs-Bibliotheken auf die Bundle-Größe, Ladeleistung und Rendering-Reaktivität zu messen.",
 	"hero.viewResults": "Ergebnisse anzeigen"
-}, U = {
+}, H = {
 	"pricing-tiers.starter": "Starter",
 	"pricing-tiers.price0": "0 $",
 	"pricing-tiers.forever": "für immer",
@@ -1081,7 +1081,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"pricing-tiers.getStarted": "Erste Schritte",
 	"pricing-header.simpleTransparentPricing": "Einfache, transparente Preisgestaltung",
 	"pricing-header.chooseThePlanThatFits": "Wählen Sie den Plan, der zu Ihrem Team passt. Keine versteckten Gebühren."
-}, W = {
+}, U = {
 	"products-grid.benchmarkCli": "Benchmark CLI",
 	"products-grid.runBenchmarksLocallyFromYour": "Führen Sie Benchmarks lokal von Ihrem Terminal aus durch. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.",
 	"products-grid.benchmarkCloud": "Benchmark Cloud",
@@ -1102,11 +1102,11 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"products-grid.price99oneTime": "$99 one-time",
 	"products-grid.price19mo": "$19/mo",
 	"products-grid.price49mo": "$49/mo"
-}, G = {
+}, W = {
 	"route.oopsPageNotFound": "Hoppla! Seite nicht gefunden",
 	"route.returnToHome": "Zurück zur Startseite",
 	"route.couldNotMeasureHydrationDuration": "Hydratisierungsdauer konnte nicht gemessen werden:"
-}, K = {
+}, G = {
 	"preferences-section.preferences": "Einstellungen",
 	"preferences-section.emailNotifications": "E-Mail-Benachrichtigungen",
 	"preferences-section.receiveWeeklyBenchmarkReports": "Wöchentliche Benchmark-Berichte erhalten",
@@ -1132,7 +1132,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"api-access-section.apiKey": "API-Schlüssel",
 	"api-access-section.useThisKeyToAccess": "Verwenden Sie diesen Schlüssel, um programmgesteuert auf die Benchmarking-API zuzugreifen.",
 	"api-access-section.copy": "Kopieren"
-}, q = {
+}, K = {
 	"header.home": "Startseite",
 	"header.methodology": "Methodik",
 	"header.mockPages": "Testseiten",
@@ -1159,7 +1159,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"theme-toggle.themeDark": "Design: Dunkel",
 	"theme-toggle.themeLight": "Design: Hell",
 	"mock-banner.mockBanner": "⚠️ Diese Seite enthält Beispieldaten nur zu Benchmarking-Zwecken. Sie steht in keinem Zusammenhang mit einem echten Unternehmen oder Dienst."
-}, se = {
+}, ce = {
 	"team-header.ourTeam": "Unser Team",
 	"team-header.meetThePeopleBehindI18n": "Lernen Sie die Menschen hinter i18n Benchmark kennen. Ein vielfältiges Team, das durch eine gemeinsame Leidenschaft für großartige Entwicklertools vereint ist.",
 	"team-grid.sarahChen": "Sarah Chen",
@@ -1180,7 +1180,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"team-grid.elenaKowalski": "Elena Kowalski",
 	"team-grid.communityManager": "Community-Manager",
 	"team-grid.managesCommunityContributionsPartnershipsAnd": "Verwaltet Community-Beiträge, Partnerschaften und Veranstaltungen. Hintergrund in Open-Source-Governance."
-}, ce = {
+}, le = {
 	"about-grid.whyThisExists": "Perché esiste questo progetto",
 	"about-grid.choosingAnI18nLibraryIs": "La scelta di una libreria i18n è una decisione architettonica con conseguenze a lungo termine. La maggior parte dei confronti si concentra sull'ergonomia dell'API, ma pochi misurano il costo in termini di prestazioni: quanto peso aggiunge la libreria al bundle? In che modo influisce sul rendering quando vengono caricate migliaia di chiavi di traduzione? Il caricamento lento aiuta davvero o sposta solo il costo? Questo benchmark risponde a queste domande con dati reali.",
 	"about-grid.methodology": "Metodologia",
@@ -1198,7 +1198,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"what-we-measure.localeSwitchSpeed": "Velocità di cambio lingua",
 	"what-we-measure.howFastTheAppCan": "Quanto velocemente l'app può passare da una lingua all'altra in fase di esecuzione, incluso il recupero di nuove traduzioni, il nuovo rendering dei componenti e l'aggiornamento del DOM.",
 	"what-we-measure.whatWeMeasure": "Cosa misuriamo"
-}, le = {
+}, ue = {
 	"blog-header.insightsTutorialsAndAnalysisFrom": "Approfondimenti, tutorial e analisi dalla comunità i18n.",
 	"blog-list.comparingI18nLibrariesIn2026": "Confronto tra librerie i18n nel 2026: un'analisi approfondita",
 	"blog-list.weTested12DifferentInternationalization": "Abbiamo testato 12 diverse librerie di internazionalizzazione in base a prestazioni, dimensioni del bundle e DX. Ecco i risultati sorprendenti.",
@@ -1218,7 +1218,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"blog-list.january202026": "20 gennaio 2026",
 	"blog-list.aTransparentLookAtOur": "Uno sguardo trasparente alla nostra metodologia di benchmark, inclusi ambienti di test, metodi statistici e riproducibilità.",
 	"blog-list.readMore": "Leggi di più →"
-}, ue = {
+}, de = {
 	"open-positions.seniorFrontendEngineer": "Ingegnere frontend senior",
 	"open-positions.buildAndMaintainOurBenchmarking": "Crea e gestisci la nostra dashboard di benchmarking e gli strumenti per sviluppatori utilizzando React, TypeScript e Vite.",
 	"open-positions.backendEngineer": "Ingegnere backend",
@@ -1245,7 +1245,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"careers-header.title": "Carriere",
 	"careers-header.joinOurMissionToImprove": "Unisciti alla nostra missione per migliorare l'ecosistema di internazionalizzazione. Siamo un team remote-first che valorizza l'impatto, la trasparenza e l'apprendimento continuo.",
 	"careers-benefits.twentyPercentTime": "20% time for OSS"
-}, de = {
+}, fe = {
 	"contact-form.name": "Nome",
 	"contact-form.yourName": "Il tuo nome",
 	"contact-form.email": "Email",
@@ -1261,7 +1261,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"contact-form.sendMessage": "Invia messaggio",
 	"contact-header.getInTouch": "Mettiti in contatto",
 	"contact-header.haveIdeasFoundABug": "Hai delle idee, hai trovato un bug o vuoi contribuire con un benchmark? Contattaci all'indirizzo"
-}, fe = {
+}, pe = {
 	"faq-header1.frequentlyAskedQuestions": "Domande frequenti",
 	"faq-header1.everythingYouNeedToKnow": "Tutto quello che c'è da sapere su i18n Benchmark.",
 	"faq-list.whatIsI18nBenchmark": "Cos'è i18n Benchmark?",
@@ -1280,7 +1280,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"faq-list.yesOurEnterprisePlanIncludes": "Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano le soluzioni i18n. Possiamo fornire consigli su misura in base al tuo caso d'uso specifico, alle dimensioni e ai vincoli.",
 	"faq-list.howCanIContribute": "Come posso contribuire?",
 	"faq-list.thereAreManyWaysTo": "Esistono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per ulteriori dettagli."
-}, pe = {
+}, me = {
 	"results-table.sampleResults": "Risultati del campione",
 	"results-table.library": "Biblioteca",
 	"results-table.bundleSize": "Dimensioni del bundle",
@@ -1311,7 +1311,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"why-it-matters.loadingAllTranslationsUpfrontOverloads": "Il caricamento preventivo di tutte le traduzioni sovraccarica il payload iniziale. Il caricamento dinamico (lazy) suddivide le traduzioni per percorso o namespace, inviando solo ciò di cui la pagina corrente ha bisogno. Tuttavia, il lazy loading introduce i propri compromis: richieste a cascata (waterfall), flash di contenuti non tradotti e complessità del caching. Misurare entrambe le strategie è essenziale.",
 	"hero.aTestApplicationDesignedTo": "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.",
 	"hero.viewResults": "Visualizza i risultati"
-}, me = {
+}, he = {
 	"pricing-tiers.starter": "Starter",
 	"pricing-tiers.price0": "0 $",
 	"pricing-tiers.forever": "per sempre",
@@ -1341,7 +1341,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"pricing-tiers.getStarted": "Inizia ora",
 	"pricing-header.simpleTransparentPricing": "Prezzi semplici e trasparenti",
 	"pricing-header.chooseThePlanThatFits": "Scegli il piano più adatto al tuo team. Nessun costo nascosto."
-}, he = {
+}, ge = {
 	"products-grid.benchmarkCli": "CLI di benchmark",
 	"products-grid.runBenchmarksLocallyFromYour": "Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.",
 	"products-grid.benchmarkCloud": "Benchmark cloud",
@@ -1362,11 +1362,11 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"products-grid.price99oneTime": "$99 one-time",
 	"products-grid.price19mo": "$19/mo",
 	"products-grid.price49mo": "$49/mo"
-}, ge = {
+}, _e = {
 	"route.oopsPageNotFound": "Ops! Pagina non trovata",
 	"route.returnToHome": "Torna alla Home",
 	"route.couldNotMeasureHydrationDuration": "Impossibile misurare la durata dell'idratazione:"
-}, _e = {
+}, ve = {
 	"preferences-section.preferences": "Preferenze",
 	"preferences-section.emailNotifications": "Notifiche email",
 	"preferences-section.receiveWeeklyBenchmarkReports": "Ricevi rapporti settimanali sui benchmark",
@@ -1392,7 +1392,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"api-access-section.apiKey": "Chiave API",
 	"api-access-section.useThisKeyToAccess": "Usa questa chiave per accedere alla API di benchmarking in modo programmatico.",
 	"api-access-section.copy": "Copia"
-}, ve = {
+}, ye = {
 	"header.home": "Home",
 	"header.methodology": "Metodologia",
 	"header.mockPages": "Pagine di test",
@@ -1419,7 +1419,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"theme-toggle.themeDark": "Tema: Scuro",
 	"theme-toggle.themeLight": "Tema: Chiaro",
 	"mock-banner.mockBanner": "⚠️ Questa pagina contiene dati di esempio solo a scopo di benchmarking. Non è correlata ad alcuna attività o servizio reale."
-}, ye = {
+}, be = {
 	"team-header.ourTeam": "Il nostro team",
 	"team-header.meetThePeopleBehindI18n": "Incontra le persone dietro i18n Benchmark. Un team diversificato unito da una passione condivisa per i grandi strumenti per sviluppatori.",
 	"team-grid.sarahChen": "Sarah Chen",
@@ -1440,7 +1440,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"team-grid.elenaKowalski": "Elena Kowalski",
 	"team-grid.communityManager": "Community manager",
 	"team-grid.managesCommunityContributionsPartnershipsAnd": "Gestisce i contributi della comunità, le partnership e gli eventi. Esperienza nella governance open source."
-}, be = {
+}, xe = {
 	"about-grid.whyThisExists": "Por que isso existe",
 	"about-grid.choosingAnI18nLibraryIs": "Escolher uma biblioteca de i18n é uma decisão arquitetônica com consequências a longo prazo. A maioria das comparações foca na ergonomia da API, mas poucas medem o custo de desempenho: quanto peso a biblioteca adiciona ao bundle? Como isso afeta a renderização quando milhares de chaves de tradução são carregadas? O carregamento lento realmente ajuda ou apenas muda o custo? Este benchmark responde a essas perguntas com dados reais.",
 	"about-grid.methodology": "Metodologia",
@@ -1458,7 +1458,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"what-we-measure.localeSwitchSpeed": "Velocidade de troca de idioma",
 	"what-we-measure.howFastTheAppCan": "Quão rápido o aplicativo pode mudar de um idioma para outro em tempo de execução — incluindo a busca de novas traduções, a re-renderização de componentes e a atualização do DOM.",
 	"what-we-measure.whatWeMeasure": "O que medimos"
-}, xe = {
+}, Se = {
 	"blog-header.insightsTutorialsAndAnalysisFrom": "Insights, tutoriais e análises da comunidade i18n.",
 	"blog-list.comparingI18nLibrariesIn2026": "Comparando bibliotecas i18n em 2026: um mergulho profundo",
 	"blog-list.weTested12DifferentInternationalization": "Testamos 12 bibliotecas de internacionalização diferentes em desempenho, tamanho do bundle e DX. Aqui estão os resultados surpreendentes.",
@@ -1478,7 +1478,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"blog-list.january202026": "20 de janeiro de 2026",
 	"blog-list.aTransparentLookAtOur": "Um olhar transparente sobre nossa metodologia de benchmarking, incluindo ambientes de teste, métodos estadísticos e reprodutibilidade.",
 	"blog-list.readMore": "Leia mais →"
-}, Se = {
+}, Ce = {
 	"open-positions.seniorFrontendEngineer": "Engenheiro Frontend Sênior",
 	"open-positions.buildAndMaintainOurBenchmarking": "Crie e mantenha nosso painel de benchmarking e ferramentas de desenvolvedor usando React, TypeScript e Vite.",
 	"open-positions.backendEngineer": "Engenheiro Backend",
@@ -1505,7 +1505,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"careers-header.title": "Carreiras",
 	"careers-header.joinOurMissionToImprove": "Junte-se à nossa missão de melhorar o ecossistema de internacionalização. Somos uma equipe que prioriza o trabalho remoto e que valoriza o impacto, a transparência e o aprendizado contínuo.",
 	"careers-benefits.twentyPercentTime": "20% do tempo para OSS"
-}, Ce = {
+}, we = {
 	"contact-form.name": "Nome",
 	"contact-form.yourName": "Seu nome",
 	"contact-form.email": "E-mail",
@@ -1521,7 +1521,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"contact-form.sendMessage": "Enviar Mensagem",
 	"contact-header.getInTouch": "Entre em contato",
 	"contact-header.haveIdeasFoundABug": "Tem ideias, encontrou um bug ou quer contribuir com um benchmark? Entre em contato conosco em"
-}, we = {
+}, Te = {
 	"faq-header1.frequentlyAskedQuestions": "Perguntas Frequentes",
 	"faq-header1.everythingYouNeedToKnow": "Tudo o que você precisa saber sobre o i18n Benchmark.",
 	"faq-list.whatIsI18nBenchmark": "O que é o i18n Benchmark?",
@@ -1540,7 +1540,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"faq-list.yesOurEnterprisePlanIncludes": "Sim, nosso plano Enterprise inclui horas de consultoria para equipes que avaliam soluções i18n. Podemos fornecer recomendações personalizadas com base em seu caso de uso, escala e restrições específicos.",
 	"faq-list.howCanIContribute": "Como posso contribuir?",
 	"faq-list.thereAreManyWaysTo": "Existem muitas maneiras de contribuir: enviar benchmarks, melhorar a documentação, relatar bugs, sugerir novas métricas ou patrocinar o projeto. Visite nosso repositório no GitHub para mais detalhes."
-}, Te = {
+}, Ee = {
 	"results-table.sampleResults": "Resultados de amostra",
 	"results-table.library": "Biblioteca",
 	"results-table.bundleSize": "Tamanho do bundle",
@@ -1571,7 +1571,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"why-it-matters.loadingAllTranslationsUpfrontOverloads": "Carregar todas as traduções antecipadamente sobrecarrega a carga útil inicial. O carregamento dinâmico (lazy) divide as traduções por rota ou namespace, enviando apenas o que a página atual precisa. No entanto, o carregamento preguiçoso introduz suas próprias compensações: solicitações em cascada, flash de conteúdo não traduzido e complexidade de cache. Medir ambas as estratégias é essencial.",
 	"hero.aTestApplicationDesignedTo": "Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade da renderização.",
 	"hero.viewResults": "Ver Resultados"
-}, Ee = {
+}, De = {
 	"pricing-tiers.starter": "Iniciante",
 	"pricing-tiers.price0": "0 $",
 	"pricing-tiers.forever": "para sempre",
@@ -1601,7 +1601,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"pricing-tiers.getStarted": "Começar",
 	"pricing-header.simpleTransparentPricing": "Preços Simples e Transparentes",
 	"pricing-header.chooseThePlanThatFits": "Escolha o plano que melhor se adapta à sua equipe. Sem taxas ocultas."
-}, De = {
+}, Oe = {
 	"products-grid.benchmarkCli": "CLI do Benchmark",
 	"products-grid.runBenchmarksLocallyFromYour": "Execute benchmarks localmente em seu terminal. Suporta configurações personalizadas e integração de CI.",
 	"products-grid.benchmarkCloud": "Benchmark Cloud",
@@ -1622,11 +1622,11 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"products-grid.price99oneTime": "$99 pagamento único",
 	"products-grid.price19mo": "$19/mês",
 	"products-grid.price49mo": "$49/mês"
-}, Oe = {
+}, ke = {
 	"route.oopsPageNotFound": "Ops! Página não encontrada",
 	"route.returnToHome": "Voltar para o Início",
 	"route.couldNotMeasureHydrationDuration": "Não foi possível medir a duración da hidratação:"
-}, ke = {
+}, Ae = {
 	"preferences-section.preferences": "Preferências",
 	"preferences-section.emailNotifications": "Notificações por e-mail",
 	"preferences-section.receiveWeeklyBenchmarkReports": "Receber relatórios semanais de benchmarks",
@@ -1652,7 +1652,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"api-access-section.apiKey": "Chave da API",
 	"api-access-section.useThisKeyToAccess": "Utilize esta chave para aceder à API de benchmarking de forma programática.",
 	"api-access-section.copy": "Copiar"
-}, Ae = {
+}, je = {
 	"header.home": "Início",
 	"header.methodology": "Metodologia",
 	"header.mockPages": "Páginas de teste",
@@ -1679,7 +1679,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"theme-toggle.themeDark": "Tema: Escuro",
 	"theme-toggle.themeLight": "Tema: Claro",
 	"mock-banner.mockBanner": "⚠️ Esta página contém dados fictícios apenas para fins de benchmarking. Não está relacionada com qualquer negócio ou serviço real."
-}, je = {
+}, Me = {
 	"team-header.ourTeam": "Nossa Equipe",
 	"team-header.meetThePeopleBehindI18n": "Conheça as pessoas por trás do i18n Benchmark. Uma equipe diversificada unida por uma paixão compartilhada por ótimas ferramentas de desenvolvedor.",
 	"team-grid.sarahChen": "Sarah Chen",
@@ -1700,7 +1700,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"team-grid.elenaKowalski": "Elena Kowalski",
 	"team-grid.communityManager": "Gerente de Comunidade",
 	"team-grid.managesCommunityContributionsPartnershipsAnd": "Gerencia contribuições da comunidade, parcerias e eventos. Experiência em governança de código aberto."
-}, Me = {
+}, Ne = {
 	"about-grid.whyThisExists": "为什么存在这个项目",
 	"about-grid.choosingAnI18nLibraryIs": "选择 i18n 库是一个具有长期影响的架构决策。大多数比较都侧重于 API 的易用性，但很少有人衡量性能成本：该库为包增加了多少权重？当加载数千个翻译键时，它如何影响渲染？延迟加载真的有帮助还是只是转移了成本？本基准测试用真实数据回答了这些问题。",
 	"about-grid.methodology": "方法学",
@@ -1718,7 +1718,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"what-we-measure.localeSwitchSpeed": "本地语言切换速度",
 	"what-we-measure.howFastTheAppCan": "应用程序在运行时从一种语言切换到另一种语言的速度——包括获取新翻译、重新渲染组件和更新 DOM。",
 	"what-we-measure.whatWeMeasure": "我们测量什么"
-}, Ne = {
+}, Pe = {
 	"blog-header.insightsTutorialsAndAnalysisFrom": "来自 i18n 社区 de 见解、教程和分析。",
 	"blog-list.comparingI18nLibrariesIn2026": "2026 年 i18n 库对比：深度分析",
 	"blog-list.weTested12DifferentInternationalization": "我们针对性能、包大小和 DX 测试了 12 种不同的国际化库。以下是令人惊讶的结果。",
@@ -1738,7 +1738,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"blog-list.january202026": "2026年1月20日",
 	"blog-list.aTransparentLookAtOur": "透明地了解我们的基准测试方法，包括测试环境、统计方法和可重现性。",
 	"blog-list.readMore": "阅读更多 →"
-}, Pe = {
+}, Fe = {
 	"open-positions.seniorFrontendEngineer": "高级前端工程师",
 	"open-positions.buildAndMaintainOurBenchmarking": "使用 React、TypeScript 和 Vite 构建和维护我们的基准测试仪表板和开发人员工具。",
 	"open-positions.backendEngineer": "后端工程师",
@@ -1765,7 +1765,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"careers-header.title": "职业",
 	"careers-header.joinOurMissionToImprove": "加入我们改善国际化生态系统的使命。我们是一个远程优先的团队，重视影响力、透明度和持续学习。",
 	"careers-benefits.twentyPercentTime": "20% time for OSS"
-}, Fe = {
+}, Ie = {
 	"contact-form.name": "姓名",
 	"contact-form.yourName": "您的姓名",
 	"contact-form.email": "电子邮件",
@@ -1781,7 +1781,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"contact-form.sendMessage": "发送消息",
 	"contact-header.getInTouch": "联系我们",
 	"contact-header.haveIdeasFoundABug": "有想法、发现了错误或想贡献基准测试？请通过以下方式联系我们"
-}, Ie = {
+}, Le = {
 	"faq-header1.frequentlyAskedQuestions": "常见问题",
 	"faq-header1.everythingYouNeedToKnow": "您需要了解的有关 i18n Benchmark 的一切。",
 	"faq-list.whatIsI18nBenchmark": "什么是 i18n Benchmark？",
@@ -1800,7 +1800,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"faq-list.yesOurEnterprisePlanIncludes": "是的，我们的企业版计划包括为评估 i18n 解决方案的团队提供的咨询时间。我们可以根据您的具体用例、规模和约束提供定制建议。",
 	"faq-list.howCanIContribute": "我该如何贡献？",
 	"faq-list.thereAreManyWaysTo": "有很多贡献方式：提交基准测试、改进文档、报告错误、建议新指标或赞助项目。访问我们的 GitHub 存储库了解更多详情。"
-}, Le = {
+}, Re = {
 	"results-table.sampleResults": "样本结果",
 	"results-table.library": "库",
 	"results-table.bundleSize": "包大小",
@@ -1831,7 +1831,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"why-it-matters.loadingAllTranslationsUpfrontOverloads": "预先加载所有翻译会使初始有效载荷过载。动态（懒）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，懒加载也会带来自身的权衡：瀑布请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。",
 	"hero.aTestApplicationDesignedTo": "一个测试应用程序，旨在衡量国际化库对包大小、加载性能和渲染反应性的实际影响。",
 	"hero.viewResults": "查看结果"
-}, Re = {
+}, ze = {
 	"pricing-tiers.starter": "入门版",
 	"pricing-tiers.price0": "0 $",
 	"pricing-tiers.forever": "永久",
@@ -1861,7 +1861,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"pricing-tiers.getStarted": "开始使用",
 	"pricing-header.simpleTransparentPricing": "简单透明的定价",
 	"pricing-header.chooseThePlanThatFits": "选择适合您团队的计划。无隐藏费用。"
-}, ze = {
+}, Be = {
 	"products-grid.benchmarkCli": "基准测试 CLI",
 	"products-grid.runBenchmarksLocallyFromYour": "在终端本地运行基准测试。支持自定义配置和 CI 集成。",
 	"products-grid.benchmarkCloud": "基准测试云",
@@ -1882,11 +1882,11 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"products-grid.price99oneTime": "$99 one-time",
 	"products-grid.price19mo": "$19/mo",
 	"products-grid.price49mo": "$49/mo"
-}, Be = {
+}, Ve = {
 	"route.oopsPageNotFound": "糟糕！找不到页面",
 	"route.returnToHome": "返回首页",
 	"route.couldNotMeasureHydrationDuration": "无法测量注水时长："
-}, Ve = {
+}, He = {
 	"preferences-section.preferences": "偏好设置",
 	"preferences-section.emailNotifications": "邮件通知",
 	"preferences-section.receiveWeeklyBenchmarkReports": "接收每周基准测试报告",
@@ -1912,7 +1912,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"api-access-section.apiKey": "API 密钥",
 	"api-access-section.useThisKeyToAccess": "使用此密钥以编程方式访问基准测试 API。",
 	"api-access-section.copy": "复制"
-}, He = {
+}, Ue = {
 	"header.home": "首页",
 	"header.methodology": "方法学",
 	"header.mockPages": "模拟页面",
@@ -1939,7 +1939,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"theme-toggle.themeDark": "主题：深色",
 	"theme-toggle.themeLight": "主题：浅色",
 	"mock-banner.mockBanner": "⚠️ 此页面仅包含用于基准测试的模拟数据。它与任何真实的业务或服务无关。"
-}, Ue = {
+}, We = {
 	"team-header.ourTeam": "我们的团队",
 	"team-header.meetThePeopleBehindI18n": "认识 i18n Benchmark 背后的团队。一支多元化的团队，因为对优秀开发人员工具的共同热情而团结在一起。",
 	"team-grid.sarahChen": "陈莎拉 (Sarah Chen)",
@@ -1960,7 +1960,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"team-grid.elenaKowalski": "埃琳娜·科瓦尔斯基 (Elena Kowalski)",
 	"team-grid.communityManager": "社区经理",
 	"team-grid.managesCommunityContributionsPartnershipsAnd": "管理社区贡献、合作伙伴关系和活动。具有开源治理背景。"
-}, We = {
+}, Ge = {
 	"about-grid.whyThisExists": "なぜこれが存在するのか",
 	"about-grid.choosingAnI18nLibraryIs": "i18nライブラリの選択は、長期的な影響を伴うアーキテクチャ上の決定です。ほとんどの比較はAPIの使い勝手に焦点を当てていますが、パフォーマンスコストを測定しているものはほとんどありません。ライブラリがバンドルにどれだけの重量を追加するか？数千の翻訳キーが読み込まれたときにレンダリングにどのように影響するか？遅延読み込みは本当に役立っているのか、それとも単にコストを先送りしているだけなのか？このベンチマークは、実際のデータでこれらの問いに答えます。",
 	"about-grid.methodology": "メソッド",
@@ -1978,7 +1978,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"what-we-measure.localeSwitchSpeed": "ロケール切り替え速度",
 	"what-we-measure.howFastTheAppCan": "実行時にアプリが1つの言語から別の言語にどれだけ速く切り替えられるか（新しい翻訳の取得、コンポーネントの再レンダリング、DOMの更新を含む）。",
 	"what-we-measure.whatWeMeasure": "測定するもの"
-}, Ge = {
+}, Ke = {
 	"blog-header.insightsTutorialsAndAnalysisFrom": "i18nコミュニティからの洞察、チュートリアル、分析。",
 	"blog-list.comparingI18nLibrariesIn2026": "2026年のi18nライブラリ比較：詳細分析",
 	"blog-list.weTested12DifferentInternationalization": "パフォーマンス、バンドルサイズ、DXについて12種類の国際化ライブラリをテストしました。驚くべき結果はこちらです。",
@@ -1998,7 +1998,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"blog-list.january202026": "2026年1月20日",
 	"blog-list.aTransparentLookAtOur": "テスト環境、統計手法、再現性を含む、私たちのベンチマーク手法の透明な公開。",
 	"blog-list.readMore": "続きを読む →"
-}, Ke = {
+}, qe = {
 	"open-positions.seniorFrontendEngineer": "シニアフロントエンドエンジニア",
 	"open-positions.buildAndMaintainOurBenchmarking": "React、TypeScript、Viteを使用して、ベンチマークダッシュボードと開発者ツールを構築および保守します。",
 	"open-positions.backendEngineer": "バックエンドエンジニア",
@@ -2025,7 +2025,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"careers-header.title": "採用",
 	"careers-header.joinOurMissionToImprove": "国際化エコシステムを改善するという私たちのミッションに参加してください。私たちは、影響力、透明性、そして継続的な学習を重視するリモートファーストのチームです。",
 	"careers-benefits.twentyPercentTime": "20% time for OSS"
-}, qe = {
+}, Je = {
 	"contact-form.name": "お名前",
 	"contact-form.yourName": "お名前",
 	"contact-form.email": "メールアドレス",
@@ -2041,7 +2041,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"contact-form.sendMessage": "メッセージを送信",
 	"contact-header.getInTouch": "お問い合わせ",
 	"contact-header.haveIdeasFoundABug": "アイデアがある、バグを見つけた、またはベンチマークに貢献したいですか？以下までご連絡ください"
-}, Je = {
+}, Ye = {
 	"faq-header1.frequentlyAskedQuestions": "よくある質問",
 	"faq-header1.everythingYouNeedToKnow": "i18n Benchmarkについて知っておくべきすべてのこと。",
 	"faq-list.whatIsI18nBenchmark": "i18n Benchmarkとは何ですか？",
@@ -2060,7 +2060,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"faq-list.yesOurEnterprisePlanIncludes": "はい、Enterpriseプランには、i18nソリューションを評価するチーム向けのコンサルティング時間が含まれています。特定のユースケース、規模、および制約に基づいたカスタマイズされた推奨事項を提供できます。",
 	"faq-list.howCanIContribute": "どのように貢献できますか？",
 	"faq-list.thereAreManyWaysTo": "貢献する方法はたくさんあります。ベンチマークの提出、ドキュメントの改善、バグの報告、新しい指標の提案、またはプロジェクトへのスポンサー提供などです。詳細はGitHubリポジトリをご覧ください。"
-}, Ye = {
+}, Xe = {
 	"results-table.sampleResults": "サンプル結果",
 	"results-table.library": "ライブラリ",
 	"results-table.bundleSize": "バンドルサイズ",
@@ -2091,7 +2091,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"why-it-matters.loadingAllTranslationsUpfrontOverloads": "すべての翻訳を事前に読み込むと、初期ペイロードが過負荷になります。動的（遅延）読み込みは、ルートまたは名前空間ごとに翻訳を分割し、現在のページが必要なものだけを送信します。ただし、遅延読み込みには、ウォーターフォールリクエスト、未翻訳コンテンツのフラッシュ、キャッシュの複雑さといった独自のトレードオフが伴います。両方の戦略を測定することが不可欠です。",
 	"hero.aTestApplicationDesignedTo": "国際化ライブラリがバンドルサイズ、読み込みパフォーマンス、レンダリングの反応性に与える実際の影響を測定するために設計されたテストアプリケーション。",
 	"hero.viewResults": "結果を表示"
-}, Xe = {
+}, Ze = {
 	"pricing-tiers.starter": "スターター",
 	"pricing-tiers.price0": "0 $",
 	"pricing-tiers.forever": "永久に",
@@ -2121,7 +2121,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"pricing-tiers.getStarted": "今すぐ始める",
 	"pricing-header.simpleTransparentPricing": "シンプルで透明性の高い料金体系",
 	"pricing-header.chooseThePlanThatFits": "チームに最適なプランをお選びください。隠れた費用はありません。"
-}, Ze = {
+}, Qe = {
 	"products-grid.benchmarkCli": "Benchmark CLI",
 	"products-grid.runBenchmarksLocallyFromYour": "ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートします。",
 	"products-grid.benchmarkCloud": "Benchmark Cloud",
@@ -2142,11 +2142,11 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"products-grid.price99oneTime": "$99 one-time",
 	"products-grid.price19mo": "$19/mo",
 	"products-grid.price49mo": "$49/mo"
-}, Qe = {
+}, $e = {
 	"route.oopsPageNotFound": "おっと！ページが見つかりません",
 	"route.returnToHome": "ホームに戻る",
 	"route.couldNotMeasureHydrationDuration": "ハイドレーション時間を測定できませんでした："
-}, $e = {
+}, et = {
 	"preferences-section.preferences": "設定",
 	"preferences-section.emailNotifications": "メール通知",
 	"preferences-section.receiveWeeklyBenchmarkReports": "ベンチマーク週報を受け取る",
@@ -2172,7 +2172,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"api-access-section.apiKey": "APIキー",
 	"api-access-section.useThisKeyToAccess": "このキーを使用して、ベンチマークAPIにプログラムでアクセスします。",
 	"api-access-section.copy": "コピー"
-}, et = {
+}, tt = {
 	"header.home": "ホーム",
 	"header.methodology": "メソッド",
 	"header.mockPages": "テストページ",
@@ -2199,7 +2199,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"theme-toggle.themeDark": "テーマ：ダーク",
 	"theme-toggle.themeLight": "テーマ：ライト",
 	"mock-banner.mockBanner": "⚠️ このページにはベンチマークのみを目的とした模擬データが含まれています。実際のビジネスやサービスとは関係ありません。"
-}, tt = {
+}, nt = {
 	"team-header.ourTeam": "私たちのチーム",
 	"team-header.meetThePeopleBehindI18n": "i18n Benchmarkを支える人々を紹介します。優れた開発者ツールへの情熱によって団結した多様なチームです。",
 	"team-grid.sarahChen": "サラ・チェン (Sarah Chen)",
@@ -2220,7 +2220,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"team-grid.elenaKowalski": "エレナ・コワルスキー (Elena Kowalski)",
 	"team-grid.communityManager": "コミュニティマネージャー",
 	"team-grid.managesCommunityContributionsPartnershipsAnd": "コミュニティの貢献、パートナーシップ、イベントを管理。オープンソース・ガバナンスの経歴を持つ。"
-}, nt = {
+}, rt = {
 	"about-grid.whyThisExists": "이 프로젝트가 존재하는 이유",
 	"about-grid.choosingAnI18nLibraryIs": "i18n 라이브러리 선택은 장기적인 결과를 초래하는 아키텍처 결정입니다. 대부분의 비교는 API의 편의성에 집중하지만 성능 비용을 측정하는 경우는 드뭅니다: 라이브러리가 번들에 얼마나 무게를 추가하는가? 수천 개의 번역 키를 로드할 때 렌더링에 어떤 영향을 미치는가? 지연 로딩이 실제로 도움이 되는가 아니면 비용을 미룰 뿐인가? 이 벤치마크는 실제 데이터로 이러한 질문에 답합니다.",
 	"about-grid.methodology": "방법론",
@@ -2238,7 +2238,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"what-we-measure.localeSwitchSpeed": "로케일 전환 속도",
 	"what-we-measure.howFastTheAppCan": "실행 중에 앱이 한 언어에서 다른 언어로 얼마나 빨리 전환할 수 있는지(새 번역 가져오기, 구성 요소 다시 렌더링, DOM 업데이트 포함) 측정합니다.",
 	"what-we-measure.whatWeMeasure": "측정 항목"
-}, rt = {
+}, it = {
 	"blog-header.insightsTutorialsAndAnalysisFrom": "i18n 커뮤니티의 통찰력, 튜토리얼 및 분석.",
 	"blog-list.comparingI18nLibrariesIn2026": "2026년 i18n 라이브러리 비교: 심층 분석",
 	"blog-list.weTested12DifferentInternationalization": "성능, 번들 크기 및 DX에 대해 12가지 서로 다른 국제화 라이브러리를 테스트했습니다. 놀라운 결과는 다음과 같습니다.",
@@ -2258,7 +2258,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"blog-list.january202026": "2026년 1월 20일",
 	"blog-list.aTransparentLookAtOur": "테스트 환경, 통계적 방법 및 재현성을 포함한 벤치마크 방법론에 대한 투명한 공개.",
 	"blog-list.readMore": "더 읽어보기 →"
-}, it = {
+}, at = {
 	"open-positions.seniorFrontendEngineer": "시니어 프론트엔드 엔지니어",
 	"open-positions.buildAndMaintainOurBenchmarking": "React, TypeScript 및 Vite를 사용하여 벤치마크 대시보드 및 개발자 도구를 구축하고 유지 관리합니다.",
 	"open-positions.backendEngineer": "백엔드 엔지니어",
@@ -2285,7 +2285,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"careers-header.title": "채용",
 	"careers-header.joinOurMissionToImprove": "국제화 생태계를 개선하려는 우리의 미션에 동참하세요. 우리는 영향력, 투명성 및 지속적인 학습을 소중히 여기는 원격 우선 팀입니다.",
 	"careers-benefits.twentyPercentTime": "20% time for OSS"
-}, at = {
+}, ot = {
 	"contact-form.name": "이름",
 	"contact-form.yourName": "성함",
 	"contact-form.email": "이메일",
@@ -2301,7 +2301,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"contact-form.sendMessage": "메시지 보내기",
 	"contact-header.getInTouch": "문의처",
 	"contact-header.haveIdeasFoundABug": "아이디어가 있거나, 버그를 발견했거나, 벤치마크에 기여하고 싶으신가요? 다음으로 문의해 주세요"
-}, ot = {
+}, st = {
 	"faq-header1.frequentlyAskedQuestions": "자주 묻는 질문",
 	"faq-header1.everythingYouNeedToKnow": "i18n Benchmark에 대해 알아야 할 모든 것.",
 	"faq-list.whatIsI18nBenchmark": "i18n Benchmark란 무엇인가요?",
@@ -2320,7 +2320,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"faq-list.yesOurEnterprisePlanIncludes": "네, 엔터프라이즈 플랜에는 i18n 솔루션을 평가하는 팀을 위한 컨설팅 시간이 포함되어 있습니다. 특정 사용 사례, 규모 및 제약 조건에 따른 맞춤형 권장 사항을 제공할 수 있습니다.",
 	"faq-list.howCanIContribute": "어떻게 기여할 수 있나요?",
 	"faq-list.thereAreManyWaysTo": "기여할 수 있는 방법은 많습니다: 벤치마크 제출, 문서 개선, 버그 보고, 새로운 지표 제안 또는 프로젝트 후원. 자세한 내용은 GitHub 저장소를 방문하세요."
-}, st = {
+}, ct = {
 	"results-table.sampleResults": "샘플 결과",
 	"results-table.library": "라이브러리",
 	"results-table.bundleSize": "번들 크기",
@@ -2351,7 +2351,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"why-it-matters.loadingAllTranslationsUpfrontOverloads": "모든 번역을 미리 로드하면 초기 페이로드가 과부하됩니다. 동적(지연) 로딩은 경로 또는 네임스페이스별로 번역을 분할하여 현재 페이지에 필요한 것만 전송합니다. 그러나 지연 로딩은 워터포럴 요청, 번역되지 않은 콘텐츠의 플래시, 캐싱 복잡성 등의 자체적인 트레이드오프가 있습니다. 두 전략을 모두 측정하는 것이 필수적입니다.",
 	"hero.aTestApplicationDesignedTo": "국제화 라이브러리가 번들 크기, 로드 성능 및 렌더링 반응성에 미치는 실제 영향을 측정하도록 설계된 테스트 애플리케이션입니다.",
 	"hero.viewResults": "결과 보기"
-}, ct = {
+}, lt = {
 	"pricing-tiers.starter": "스타터",
 	"pricing-tiers.price0": "0 $",
 	"pricing-tiers.forever": "영원히",
@@ -2381,7 +2381,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"pricing-tiers.getStarted": "시작하기",
 	"pricing-header.simpleTransparentPricing": "심플하고 투명한 요금제",
 	"pricing-header.chooseThePlanThatFits": "팀에 맞는 플랜을 선택하세요. 숨겨진 수수료는 없습니다."
-}, lt = {
+}, ut = {
 	"products-grid.benchmarkCli": "벤치마크 CLI",
 	"products-grid.runBenchmarksLocallyFromYour": "터미널에서 로컬로 벤치마크를 실행합니다. 커스텀 구성 및 CI 통합을 지원합니다.",
 	"products-grid.benchmarkCloud": "벤치마크 클라우드",
@@ -2402,11 +2402,11 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"products-grid.price99oneTime": "$99 one-time",
 	"products-grid.price19mo": "$19/mo",
 	"products-grid.price49mo": "$49/mo"
-}, ut = {
+}, dt = {
 	"route.oopsPageNotFound": "앗! 페이지를 찾을 수 없습니다",
 	"route.returnToHome": "홈으로 돌아가기",
 	"route.couldNotMeasureHydrationDuration": "하이드레이션 시간을 측정할 수 없습니다:"
-}, dt = {
+}, ft = {
 	"preferences-section.preferences": "기본 설정",
 	"preferences-section.emailNotifications": "이메일 알림",
 	"preferences-section.receiveWeeklyBenchmarkReports": "주간 벤치마크 보고서 받기",
@@ -2432,7 +2432,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"api-access-section.apiKey": "API 키",
 	"api-access-section.useThisKeyToAccess": "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오.",
 	"api-access-section.copy": "복사"
-}, ft = {
+}, pt = {
 	"header.home": "홈",
 	"header.methodology": "방법론",
 	"header.mockPages": "테스트 페이지",
@@ -2459,7 +2459,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"theme-toggle.themeDark": "테마: 다크",
 	"theme-toggle.themeLight": "테마: 라이트",
 	"mock-banner.mockBanner": "⚠️ 이 페이지는 벤치마킹 목적으로만 사용되는 모의 데이터를 포함하고 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다."
-}, pt = {
+}, mt = {
 	"team-header.ourTeam": "우리 팀",
 	"team-header.meetThePeopleBehindI18n": "i18n Benchmark를 만드는 사람들을 만나보세요. 훌륭한 개발자 도구에 대한 열정으로 뭉친 다양한 팀입니다.",
 	"team-grid.sarahChen": "사라 첸 (Sarah Chen)",
@@ -2480,7 +2480,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"team-grid.elenaKowalski": "엘레나 코발스키 (Elena Kowalski)",
 	"team-grid.communityManager": "커뮤니티 매니저",
 	"team-grid.managesCommunityContributionsPartnershipsAnd": "커뮤니티 기여, 파트너십 및 이벤트를 관리합니다. 오픈 소스 거버넌스 배경 보유."
-}, mt = {
+}, ht = {
 	"about-grid.whyThisExists": "Почему это существует",
 	"about-grid.choosingAnI18nLibraryIs": "Выбор библиотеки i18n — это архитектурное решение с долгосрочными последствиями. Большинство сравнений сосредоточены на эргономике API, но немногие измеряют стоимость производительности: какой вес библиотека добавляет в бандл? Как она влияет на рендеринг при загрузке тысяч ключей перевода? Помогает ли ленивая загрузка на самом деле или просто переносит затраты? Этот бенчмарк отвечает на эти вопросы с помощью реальных данных.",
 	"about-grid.methodology": "Методология",
@@ -2498,7 +2498,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"what-we-measure.localeSwitchSpeed": "Скорость переключения языка",
 	"what-we-measure.howFastTheAppCan": "Как быстро приложение может переключаться с одного языка на другой во время выполнения — включая получение новых переводов, повторный рендеринг компонентов и обновление DOM.",
 	"what-we-measure.whatWeMeasure": "Что мы измеряем"
-}, ht = {
+}, gt = {
 	"blog-header.insightsTutorialsAndAnalysisFrom": "Инсайты, руководства и анализ от сообщества i18n.",
 	"blog-list.comparingI18nLibrariesIn2026": "Сравнение библиотек i18n в 2026 году: глубокое погружение",
 	"blog-list.weTested12DifferentInternationalization": "Мы протестировали 12 различных библиотек интернационализации по производительности, размеру бандла и DX. Вот удивительные результаты.",
@@ -2518,7 +2518,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"blog-list.january202026": "20 января 2026 года",
 	"blog-list.aTransparentLookAtOur": "Прозрачный взгляд на нашу методологию бенчмаркинга, включая тестовые среды, статистические методы и воспроизводимость.",
 	"blog-list.readMore": "Читать далее →"
-}, gt = {
+}, _t = {
 	"open-positions.seniorFrontendEngineer": "Старший фронтенд-инженер",
 	"open-positions.buildAndMaintainOurBenchmarking": "Создание и поддержка нашей панели тестирования и инструментов разработчика с использованием React, TypeScript и Vite.",
 	"open-positions.backendEngineer": "Бэкенд-инженер",
@@ -2545,7 +2545,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"careers-header.title": "Карьера",
 	"careers-header.joinOurMissionToImprove": "Присоединяйтесь к нашей миссии по улучшению экосистемы интернационализации. Мы команда, работающая удаленно, которая ценит влияние, прозрачность и непрерывное обучение.",
 	"careers-benefits.twentyPercentTime": "20% time for OSS"
-}, _t = {
+}, vt = {
 	"contact-form.name": "Имя",
 	"contact-form.yourName": "Ваше имя",
 	"contact-form.email": "Email",
@@ -2561,7 +2561,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"contact-form.sendMessage": "Отправить сообщение",
 	"contact-header.getInTouch": "Связаться с нами",
 	"contact-header.haveIdeasFoundABug": "Есть идеи, нашли баг или хотите предложить бенчмарк? Свяжитесь с нами по адресу"
-}, vt = {
+}, yt = {
 	"faq-header1.frequentlyAskedQuestions": "Часто задаваемые вопросы",
 	"faq-header1.everythingYouNeedToKnow": "Все, что вам нужно знать об i18n Benchmark.",
 	"faq-list.whatIsI18nBenchmark": "Что такое i18n Benchmark ?",
@@ -2580,7 +2580,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"faq-list.yesOurEnterprisePlanIncludes": "Да, наш корпоративный план включает консультационные часы для команд, оценивающих решения i18n. Мы можем предоставить индивидуальные рекомендации, основанные на вашем конкретном случае использования, масштабе и ограничениях.",
 	"faq-list.howCanIContribute": "Как я могу помочь ?",
 	"faq-list.thereAreManyWaysTo": "Есть много способов внести свой вклад: отправить бенчмарки, улучшить документацию, сообщить о багах, предложить новые метрики или спонсировать проект. Посетите наш репозиторий GitHub для более подробной информации."
-}, yt = {
+}, bt = {
 	"results-table.sampleResults": "Примеры результатов",
 	"results-table.library": "Библиотека",
 	"results-table.bundleSize": "Размер бандла",
@@ -2611,7 +2611,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"why-it-matters.loadingAllTranslationsUpfrontOverloads": "Загрузка всех переводов сразу перегружает начальную полезную нагрузку. Динамическая (ленивая) загрузка разделяет переводы по маршрутам или пространствам имен, отправляя только то, что нужно для текущей страницы. Однако ленивая загрузка вносит свои компромиссы: каскадные запросы (waterfall), мерцание непереведенного контента и сложность кэширования. Измерение обеих стратегий необходимо.",
 	"hero.aTestApplicationDesignedTo": "Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.",
 	"hero.viewResults": "Посмотреть результаты"
-}, bt = {
+}, xt = {
 	"pricing-tiers.starter": "Starter",
 	"pricing-tiers.price0": "0 $",
 	"pricing-tiers.forever": "навсегда",
@@ -2641,7 +2641,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"pricing-tiers.getStarted": "Начать",
 	"pricing-header.simpleTransparentPricing": "Простое и прозрачное ценообразование",
 	"pricing-header.chooseThePlanThatFits": "Выберите план, который подходит вашей команде. Никаких скрытых комиссий."
-}, xt = {
+}, St = {
 	"products-grid.benchmarkCli": "CLI для бенчмаркинга",
 	"products-grid.runBenchmarksLocallyFromYour": "Запуск тестов локально из терминала. Поддержка пользовательских конфигураций и интеграции с CI.",
 	"products-grid.benchmarkCloud": "Облачный бенчмаркинг",
@@ -2662,11 +2662,11 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"products-grid.price99oneTime": "$99 one-time",
 	"products-grid.price19mo": "$19/mo",
 	"products-grid.price49mo": "$49/mo"
-}, St = {
+}, Ct = {
 	"route.oopsPageNotFound": "Упс! Страница не найдена",
 	"route.returnToHome": "Вернуться на главную",
 	"route.couldNotMeasureHydrationDuration": "Не удалось измерить продолжительность гидратации:"
-}, Ct = {
+}, wt = {
 	"preferences-section.preferences": "Предпочтения",
 	"preferences-section.emailNotifications": "Email-уведомления",
 	"preferences-section.receiveWeeklyBenchmarkReports": "Получать еженедельные отчеты о бенчмарках",
@@ -2692,7 +2692,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"api-access-section.apiKey": "Ключ API",
 	"api-access-section.useThisKeyToAccess": "Используйте этот ключ для программного доступа к API бенчмарков.",
 	"api-access-section.copy": "Копировать"
-}, wt = {
+}, Tt = {
 	"header.home": "Главная",
 	"header.methodology": "Методология",
 	"header.mockPages": "Тестовые страницы",
@@ -2719,7 +2719,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"theme-toggle.themeDark": "Тема: Темная",
 	"theme-toggle.themeLight": "Тема: Светлая",
 	"mock-banner.mockBanner": "⚠️ Эта страница содержит макетные данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой."
-}, Tt = {
+}, Et = {
 	"team-header.ourTeam": "Наша команда",
 	"team-header.meetThePeopleBehindI18n": "Познакомьтесь с людьми, стоящими за i18n Benchmark. Разнообразная команда, объединенная общей страстью к отличным инструментам для разработчиков.",
 	"team-grid.sarahChen": "Сара Чен (Sarah Chen)",
@@ -2740,7 +2740,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"team-grid.elenaKowalski": "Елена Ковальски (Elena Kowalski)",
 	"team-grid.communityManager": "Комьюнити-менеджер",
 	"team-grid.managesCommunityContributionsPartnershipsAnd": "Управляет вкладом сообщества, партнерствами и мероприятиями. Опыт в управлении проектами с открытым исходным кодом."
-}, Et = [
+}, Dt = [
 	"about",
 	"blog",
 	"careers",
@@ -2753,7 +2753,7 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	"settings",
 	"shared",
 	"team"
-], J = {
+], q = {
 	en: {
 		about: c,
 		blog: l,
@@ -2802,100 +2802,100 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		careers: ie,
 		contact: ae,
 		faq: oe,
-		home: H,
-		pricing: U,
-		products: W,
-		route: G,
-		settings: K,
-		shared: q,
-		team: se
+		home: se,
+		pricing: H,
+		products: U,
+		route: W,
+		settings: G,
+		shared: K,
+		team: ce
 	},
 	it: {
-		about: ce,
-		blog: le,
-		careers: ue,
-		contact: de,
-		faq: fe,
-		home: pe,
-		pricing: me,
-		products: he,
-		route: ge,
-		settings: _e,
-		shared: ve,
-		team: ye
+		about: le,
+		blog: ue,
+		careers: de,
+		contact: fe,
+		faq: pe,
+		home: me,
+		pricing: he,
+		products: ge,
+		route: _e,
+		settings: ve,
+		shared: ye,
+		team: be
 	},
 	pt: {
-		about: be,
-		blog: xe,
-		careers: Se,
-		contact: Ce,
-		faq: we,
-		home: Te,
-		pricing: Ee,
-		products: De,
-		route: Oe,
-		settings: ke,
-		shared: Ae,
-		team: je
+		about: xe,
+		blog: Se,
+		careers: Ce,
+		contact: we,
+		faq: Te,
+		home: Ee,
+		pricing: De,
+		products: Oe,
+		route: ke,
+		settings: Ae,
+		shared: je,
+		team: Me
 	},
 	zh: {
-		about: Me,
-		blog: Ne,
-		careers: Pe,
-		contact: Fe,
-		faq: Ie,
-		home: Le,
-		pricing: Re,
-		products: ze,
-		route: Be,
-		settings: Ve,
-		shared: He,
-		team: Ue
+		about: Ne,
+		blog: Pe,
+		careers: Fe,
+		contact: Ie,
+		faq: Le,
+		home: Re,
+		pricing: ze,
+		products: Be,
+		route: Ve,
+		settings: He,
+		shared: Ue,
+		team: We
 	},
 	ja: {
-		about: We,
-		blog: Ge,
-		careers: Ke,
-		contact: qe,
-		faq: Je,
-		home: Ye,
-		pricing: Xe,
-		products: Ze,
-		route: Qe,
-		settings: $e,
-		shared: et,
-		team: tt
+		about: Ge,
+		blog: Ke,
+		careers: qe,
+		contact: Je,
+		faq: Ye,
+		home: Xe,
+		pricing: Ze,
+		products: Qe,
+		route: $e,
+		settings: et,
+		shared: tt,
+		team: nt
 	},
 	ko: {
-		about: nt,
-		blog: rt,
-		careers: it,
-		contact: at,
-		faq: ot,
-		home: st,
-		pricing: ct,
-		products: lt,
-		route: ut,
-		settings: dt,
-		shared: ft,
-		team: pt
+		about: rt,
+		blog: it,
+		careers: at,
+		contact: ot,
+		faq: st,
+		home: ct,
+		pricing: lt,
+		products: ut,
+		route: dt,
+		settings: ft,
+		shared: pt,
+		team: mt
 	},
 	ru: {
-		about: mt,
-		blog: ht,
-		careers: gt,
-		contact: _t,
-		faq: vt,
-		home: yt,
-		pricing: bt,
-		products: xt,
-		route: St,
-		settings: Ct,
-		shared: wt,
-		team: Tt
+		about: ht,
+		blog: gt,
+		careers: _t,
+		contact: vt,
+		faq: yt,
+		home: bt,
+		pricing: xt,
+		products: St,
+		route: Ct,
+		settings: wt,
+		shared: Tt,
+		team: Et
 	}
 };
-function Dt(e) {
+function Ot(e) {
 	let t = {};
 	for (let [n, r] of Object.entries(e)) {
 		let e = n.split("."), i = t;
@@ -2907,45 +2907,45 @@ function Dt(e) {
 	}
 	return t;
 }
-function Y(e, t) {
+function J(e, t) {
 	let n = { ...e };
 	for (let [e, r] of Object.entries(t)) {
 		let t = n[e];
-		n[e] = typeof r == "object" && r && !Array.isArray(r) && typeof t == "object" && t && !Array.isArray(t) ? Y(t, r) : r;
+		n[e] = typeof r == "object" && r && !Array.isArray(r) && typeof t == "object" && t && !Array.isArray(t) ? J(t, r) : r;
 	}
 	return n;
 }
-function Ot(e) {
-	return e.reduce((e, t) => Y(e, t), {});
+function kt(e) {
+	return e.reduce((e, t) => J(e, t), {});
 }
-function X(e, t) {
-	let n = J[e] ?? J.en, r = new Set(t);
+function Y(e, t) {
+	let n = q[e] ?? q.en, r = new Set(t);
 	r.add("shared");
 	let i = [];
 	for (let e of r) {
 		let t = n[e];
-		t && i.push(Dt(t));
+		t && i.push(Ot(t));
 	}
-	return Ot(i);
+	return kt(i);
 }
-function Z(e) {
-	return X(e, Et);
+function X(e) {
+	return Y(e, Dt);
 }
-var kt = Z("de"), At = Z("en"), jt = Z("es"), Mt = Z("fr"), Nt = Z("it"), Pt = Z("ja"), Ft = Z("ko"), It = Z("pt"), Lt = Z("ru"), Rt = Z("zh"), Q = (0, s.createI18nClient)({
-	en: () => Promise.resolve({ default: At }),
-	fr: () => Promise.resolve({ default: Mt }),
-	es: () => Promise.resolve({ default: jt }),
-	de: () => Promise.resolve({ default: kt }),
-	it: () => Promise.resolve({ default: Nt }),
-	pt: () => Promise.resolve({ default: It }),
-	zh: () => Promise.resolve({ default: Rt }),
-	ja: () => Promise.resolve({ default: Pt }),
-	ko: () => Promise.resolve({ default: Ft }),
-	ru: () => Promise.resolve({ default: Lt })
+var At = X("de"), jt = X("en"), Mt = X("es"), Nt = X("fr"), Pt = X("it"), Ft = X("ja"), It = X("ko"), Lt = X("pt"), Rt = X("ru"), zt = X("zh"), Z = (0, s.createI18nClient)({
+	en: () => Promise.resolve({ default: jt }),
+	fr: () => Promise.resolve({ default: Nt }),
+	es: () => Promise.resolve({ default: Mt }),
+	de: () => Promise.resolve({ default: At }),
+	it: () => Promise.resolve({ default: Pt }),
+	pt: () => Promise.resolve({ default: Lt }),
+	zh: () => Promise.resolve({ default: zt }),
+	ja: () => Promise.resolve({ default: Ft }),
+	ko: () => Promise.resolve({ default: It }),
+	ru: () => Promise.resolve({ default: Rt })
 });
-Q.useScopedI18n;
-var { I18nProviderClient: zt, useChangeLocale: Bt, useCurrentLocale: Vt } = Q;
-function Ht() {
+Z.useScopedI18n;
+var { I18nProviderClient: Bt, useChangeLocale: Vt, useCurrentLocale: Ht } = Z;
+function Ut() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -2959,32 +2959,50 @@ function Ht() {
 		}
 	}
 }
-function Ut(e, t) {
+function Wt(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function $({ children: i, locale: a }) {
+var Gt = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-international-app/components/AppProviders.tsx";
+function Q({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		Ut("AppRoot", o);
+		Wt("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
-		Ht();
-	}, []), r(zt, {
+		Ut();
+	}, []), r(Bt, {
 		locale: a,
 		children: i
-	});
+	}, void 0, !1, {
+		fileName: Gt,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var Wt = "en";
-function Gt({ children: e }) {
-	return r($, {
-		locale: Wt,
+var Kt = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-international-app/scripts/Wrapper.tsx", qt = "en";
+function Jt({ children: e }) {
+	return r(Q, {
+		locale: qt,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: Kt,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function Kt() {
-	return r(Gt, { children: r($, {}) });
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-static/next-international-app/components/AppProviders.wrapper.tsx";
+function Yt() {
+	return r(Jt, { children: r(Q, {}, void 0, !1, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { Kt as default };
+export { Yt as default };

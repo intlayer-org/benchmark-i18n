@@ -1,6 +1,7 @@
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-base-app/components/pages/careers/CareersBenefits.tsx";
 function CareersBenefits() {
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
 		children: [
 			{
@@ -15,16 +16,32 @@ function CareersBenefits() {
 				label: "Open source time",
 				value: "20% time for OSS contributions"
 			}
-		].map((b) => jsxs("div", {
+		].map((b) => jsxDEV("div", {
 			className: "rounded-lg border border-border bg-card p-4 text-center",
-			children: [jsx("p", {
+			children: [jsxDEV("p", {
 				className: "text-sm font-semibold text-foreground",
 				children: b.label
-			}), jsx("p", {
+			}, void 0, false, {
+				fileName: _jsxFileName,
+				lineNumber: 18,
+				columnNumber: 11
+			}, this), jsxDEV("p", {
 				className: "text-xs text-muted-foreground",
 				children: b.value
-			})]
-		}, b.label))
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName,
+				lineNumber: 19,
+				columnNumber: 11
+			}, this)]
+		}, b.label, true, {
+			fileName: _jsxFileName,
+			lineNumber: 14,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
 export { CareersBenefits as default };

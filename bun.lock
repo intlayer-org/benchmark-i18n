@@ -2757,6 +2757,30 @@
         "vite-intlayer": "^9.5.6",
       },
     },
+    "apps-benchmark/vite-svelte-static/tolgee-app": {
+      "name": "vite-svelte-tolgee-static",
+      "version": "0.0.0",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "@tolgee/svelte": "^7.2.1",
+        "@tolgee/web": "^7.2.1",
+        "lucide-svelte": "^1.0.1",
+        "tailwindcss": "^4.3.3",
+        "test-utils": "workspace:*",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@sveltejs/vite-plugin-svelte": "^7.3.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@tsconfig/svelte": "^5.0.8",
+        "@types/node": "^26",
+        "bun": "^1.4.2",
+        "svelte": "^5.57.0",
+        "svelte-check": "^4.7.6",
+        "typescript": "~7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
     "apps-benchmark/vite-vue-base-app": {
       "name": "vite-vue-base-app",
       "version": "0.0.0",
@@ -3867,6 +3891,8 @@
     "@tolgee/core": ["@tolgee/core@7.2.0", "", {}, "sha512-zj1pJmmXpSgbGxMyhsqYNI3I497GRqSmirs1/d76ETzFQ6cPjlw32j8cPGGhnPcuRZs5Uh9e3EpUdxm8KP6LVg=="],
 
     "@tolgee/react": ["@tolgee/react@7.2.0", "", { "dependencies": { "@tolgee/web": "7.2.0" }, "peerDependencies": { "react": "^16.14.0 || ^17.0.1 || ^18.1.0 || ^19" } }, "sha512-nhI9jglIrniX+ytuqcAunYyNZN2wfYedOAEhrBeW6aZxLjlI/bdaagW+JgtS0mnC/evM7k3wfFP7bG4UxOuH7A=="],
+
+    "@tolgee/svelte": ["@tolgee/svelte@7.2.1", "", { "dependencies": { "@tolgee/web": "7.2.1" }, "peerDependencies": { "svelte": "^4.0.0 || ^5.0.0" } }, "sha512-wSdZvUMNStvztUGhXnrHmkAIfsLGwLO2McgCanHpvIZ/036esATFGHl3ua/MgE+QmPPhxFdOcFa+LWhLmiPSuw=="],
 
     "@tolgee/vue": ["@tolgee/vue@7.2.1", "", { "dependencies": { "@tolgee/web": "7.2.1" }, "peerDependencies": { "vue": "^3.0.0" } }, "sha512-rxfi9DZ5Pm5PNx7L1J9xQTCYk8aL/t8wKzdfrujBC5p8FAIOeebGC9TueVBhAeS985ZMWU5jN+e4UaCLp/WrGg=="],
 
@@ -5938,6 +5964,8 @@
 
     "vite-svelte-paraglide-js-static": ["vite-svelte-paraglide-js-static@workspace:apps-benchmark/vite-svelte-static/paraglide-js-app"],
 
+    "vite-svelte-tolgee-static": ["vite-svelte-tolgee-static@workspace:apps-benchmark/vite-svelte-static/tolgee-app"],
+
     "vite-tsconfig-paths": ["vite-tsconfig-paths@6.1.1", "", { "dependencies": { "debug": "^4.1.1", "globrex": "^0.1.2", "tsconfck": "^3.0.3" }, "peerDependencies": { "vite": "*" } }, "sha512-2cihq7zliibCCZ8P9cKJrQBkfgdvcFkOOc3Y02o3GWUDLgqjWsZudaoiuOwO/gzTzy17cS5F7ZPo4bsnS4DGkg=="],
 
     "vite-vue-base-app": ["vite-vue-base-app@workspace:apps-benchmark/vite-vue-base-app"],
@@ -6317,6 +6345,8 @@
     "@tanstack/start-server-core/seroval": ["seroval@1.6.7", "", {}, "sha512-AeDcLh0yO2SFm9W71essgnSzLV9DI8ZH0x0knXn2DMnUZj728mpLbxjlbB6IqKCmqh8JA3cEqRyGoNkt584JcQ=="],
 
     "@testing-library/dom/@babel/runtime": ["@babel/runtime@7.29.2", "", {}, "sha512-JiDShH45zKHWyGe4ZNVRrCjBz8Nh9TMmZG1kh4QTK8hCBTWBi8Da+i7s1fJw7/lYpM4ccepSNfqzZ/QvABBi5g=="],
+
+    "@tolgee/svelte/@tolgee/web": ["@tolgee/web@7.2.1", "", { "dependencies": { "@tolgee/core": "7.2.1" } }, "sha512-rCbXY/jGuOsckbAkuFZr5j41YcDFuBnub/sYIybBjbCMgG0aRil1JywGHQ5x/bASvNhcFfuv2LlxP3YGbQZqnA=="],
 
     "@tolgee/vue/@tolgee/web": ["@tolgee/web@7.2.1", "", { "dependencies": { "@tolgee/core": "7.2.1" } }, "sha512-rCbXY/jGuOsckbAkuFZr5j41YcDFuBnub/sYIybBjbCMgG0aRil1JywGHQ5x/bASvNhcFfuv2LlxP3YGbQZqnA=="],
 
@@ -6713,6 +6743,8 @@
     "vite-svelte-intlayer-static/intlayer": ["intlayer@9.5.6", "", { "dependencies": { "@intlayer/cli": "9.5.6", "@intlayer/config": "9.5.6", "@intlayer/core": "9.5.6", "@intlayer/types": "9.5.6" }, "bin": { "intlayer": "dist/cjs/cli/script.cjs" } }, "sha512-o4UdsJZX6GvfejfQVoFPMx16b3Fb+ARNQ/bkgIdT5vFuAL09fVqlvx0eylx2KVyN1KuW0Seg1wrspiJmXGeXTQ=="],
 
     "vite-svelte-intlayer-static/vite-intlayer": ["vite-intlayer@9.5.6", "", { "dependencies": { "@intlayer/babel": "9.5.6", "@intlayer/config": "9.5.6", "@intlayer/core": "9.5.6", "@intlayer/dictionaries-entry": "9.5.6", "@intlayer/engine": "9.5.6", "@intlayer/types": "9.5.6" }, "peerDependencies": { "@babel/core": ">=6.0.0", "@intlayer/svelte-compiler": "9.5.6", "@intlayer/vue-compiler": "9.5.6", "h3": ">=1.0.0", "vite": ">=4.0.0" }, "optionalPeers": ["@babel/core", "@intlayer/svelte-compiler", "@intlayer/vue-compiler", "h3"] }, "sha512-wsikLeH35CKFOihGPv26gZUHAPfK1NPLVLgxALtL3lXZVuB6geZ+hn+iDQXhFjOTyMQYCQdn0rzFDZ6x5yn1mw=="],
+
+    "vite-svelte-tolgee-static/@tolgee/web": ["@tolgee/web@7.2.1", "", { "dependencies": { "@tolgee/core": "7.2.1" } }, "sha512-rCbXY/jGuOsckbAkuFZr5j41YcDFuBnub/sYIybBjbCMgG0aRil1JywGHQ5x/bASvNhcFfuv2LlxP3YGbQZqnA=="],
 
     "vite-vue-intlayer-dynamic/intlayer": ["intlayer@9.5.6", "", { "dependencies": { "@intlayer/cli": "9.5.6", "@intlayer/config": "9.5.6", "@intlayer/core": "9.5.6", "@intlayer/types": "9.5.6" }, "bin": { "intlayer": "dist/cjs/cli/script.cjs" } }, "sha512-o4UdsJZX6GvfejfQVoFPMx16b3Fb+ARNQ/bkgIdT5vFuAL09fVqlvx0eylx2KVyN1KuW0Seg1wrspiJmXGeXTQ=="],
 
@@ -7172,6 +7204,8 @@
 
     "@tanstack/start-plugin-core/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.29.7", "", {}, "sha512-qehxGkRj55h/ff8EMaJ+cYhyaKlHIxqYDn682wQD7RNp9UujOQsHog2uS0r2vzr4pW+sXf90NeeayjcNaX3fFg=="],
 
+    "@tolgee/svelte/@tolgee/web/@tolgee/core": ["@tolgee/core@7.2.1", "", {}, "sha512-JA47ZTm413auqyALjsiElgIAZRg04Pmr2EciC5q5HHNSIn/E8oY14E12+c3YoLz7jVfQ6Psyt6fu8VGpgp+jwA=="],
+
     "@tolgee/vue/@tolgee/web/@tolgee/core": ["@tolgee/core@7.2.1", "", {}, "sha512-JA47ZTm413auqyALjsiElgIAZRg04Pmr2EciC5q5HHNSIn/E8oY14E12+c3YoLz7jVfQ6Psyt6fu8VGpgp+jwA=="],
 
     "@typescript-eslint/typescript-estree/tinyglobby/picomatch": ["picomatch@4.0.4", "", {}, "sha512-QP88BAKvMam/3NxH6vj2o21R6MjxZUAd6nlwAS/pnGvN9IVLocLHxGYIzFhg6fUQ+5th6P4dv4eW9jX3DSIj7A=="],
@@ -7567,6 +7601,8 @@
     "vite-svelte-intlayer-static/vite-intlayer/@intlayer/engine": ["@intlayer/engine@9.5.6", "", { "dependencies": { "@intlayer/api": "9.5.6", "@intlayer/config": "9.5.6", "@intlayer/core": "9.5.6", "@intlayer/dictionaries-entry": "9.5.6", "@intlayer/types": "9.5.6", "@parcel/watcher": "2.6.0", "defu": "6.1.7", "fast-glob": "3.3.3", "recast": "0.24.0", "simple-git": "3.36.0", "zod-to-ts": "2.1.0" }, "peerDependencies": { "@intlayer/babel": "9.5.6" }, "optionalPeers": ["@intlayer/babel"] }, "sha512-Zid2TVdwlcJw6LCXegjTWnPXa1BI4EpWFxnytZAOFeXkMB3huKBiNNJcNTrfzncTvU0FdgRbVVt7OdTS724rIA=="],
 
     "vite-svelte-intlayer-static/vite-intlayer/@intlayer/types": ["@intlayer/types@9.5.6", "", {}, "sha512-SICaX8m5MCYkzYrBWashaM1E8AENL8CtRohihMdxZZ1ERbffkS54wtL7HSvWBgCQK3yZKMHNjboqruYdJUMKug=="],
+
+    "vite-svelte-tolgee-static/@tolgee/web/@tolgee/core": ["@tolgee/core@7.2.1", "", {}, "sha512-JA47ZTm413auqyALjsiElgIAZRg04Pmr2EciC5q5HHNSIn/E8oY14E12+c3YoLz7jVfQ6Psyt6fu8VGpgp+jwA=="],
 
     "vite-vue-intlayer-dynamic/intlayer/@intlayer/cli": ["@intlayer/cli@9.5.6", "", { "dependencies": { "@clack/prompts": "1.7.0", "@intlayer/api": "9.5.6", "@intlayer/babel": "9.5.6", "@intlayer/config": "9.5.6", "@intlayer/core": "9.5.6", "@intlayer/dictionaries-entry": "9.5.6", "@intlayer/engine": "9.5.6", "@intlayer/types": "9.5.6", "commander": "15.0.0", "enquirer": "2.4.1", "eventsource": "5.1.1", "fast-glob": "3.3.3" }, "peerDependencies": { "@intlayer/ai": "9.5.6" }, "optionalPeers": ["@intlayer/ai"] }, "sha512-lKalSJWMgYa4W778m3tRGvx3ScHLxOGPcqGoVwIna5JkBOfL9tzUpSHSxjSoWYK/U4BxWHFn33bia7cBg/4YjA=="],
 

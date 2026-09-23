@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-23T21:59:03.486Z",
+  "timestamp": "2026-09-09T18:48:09.623Z",
   "packageName": "nextjs-static-tolgee-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 72164,
-    "totalMinifiedBytes": 46428,
-    "totalGzipBytes": 14691
+    "totalUnminifiedBytes": 0,
+    "totalMinifiedBytes": 0,
+    "totalGzipBytes": 20
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 72164,
-      "unminifiedGzipBytes": 18703,
-      "minifiedBytes": 46428,
-      "minifiedGzipBytes": 14691
+      "unminifiedBytes": 0,
+      "unminifiedGzipBytes": 20,
+      "minifiedBytes": 0,
+      "minifiedGzipBytes": 20
     }
   ]
 }

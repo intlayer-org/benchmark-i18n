@@ -1,16 +1,16 @@
 import { Dynamic, createComponent, insert, template } from "solid-js/web";
 import { For, createContext, createMemo, useContext } from "solid-js";
 var content = {
-	"de": () => import("./de-BBZqC0el.js").then((m) => m.default),
-	"en": () => import("./en-BQd8KfnI.js").then((m) => m.default),
-	"es": () => import("./es-_760T_lx.js").then((m) => m.default),
-	"fr": () => import("./fr-B92KgLQ9.js").then((m) => m.default),
-	"it": () => import("./it-BnpHvIXE.js").then((m) => m.default),
-	"ja": () => import("./ja-D-2X8EY6.js").then((m) => m.default),
-	"ko": () => import("./ko-ChHy_U_O.js").then((m) => m.default),
-	"pt": () => import("./pt-Bwi59KxB.js").then((m) => m.default),
-	"ru": () => import("./ru-CjPZWZ8x.js").then((m) => m.default),
-	"zh": () => import("./zh-B6OdpIju.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/de.json").then((m) => m.default),
+	"en": () => import("./en-CtgHzrh5.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/zh.json").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,8 +230,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-};
-var S = {
+}, S$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -239,8 +238,7 @@ var S = {
 		value: o.children,
 		children: o.children
 	})
-};
-var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -248,12 +246,7 @@ var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin :
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-};
-var T = fallbackPlugin;
-var D = fallbackPlugin;
-var O = fallbackPlugin;
-var k = /* @__PURE__ */ new Map();
-var A = (e, t = !0) => {
+}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -263,7 +256,7 @@ var A = (e, t = !0) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S,
+		S$1,
 		C,
 		T,
 		D,
@@ -282,8 +275,7 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-};
-var localeStorageOptions = {
+}, localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -301,9 +293,7 @@ var localeStorageOptions = {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-};
-var a$1 = getLocaleFromStorageClient(localeStorageOptions);
-var y = createContext({
+}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -322,16 +312,12 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-};
-var t = /* @__PURE__ */ new Map();
-var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
 };
-var _tmpl$ = template(`<h2 class="mb-6 text-2xl font-bold text-foreground">`);
-var _tmpl$2 = template(`<div class=space-y-4>`);
-var _tmpl$3 = template(`<div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"><div><h3 class="text-base font-semibold text-foreground"></h3><p class="text-sm text-muted-foreground"></p><div class="mt-2 flex gap-2"><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span></div></div><button type=button class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">`);
+var _tmpl$ = template(`<h2 class="mb-6 text-2xl font-bold text-foreground">`), _tmpl$2 = template(`<div class=space-y-4>`), _tmpl$3 = template(`<div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"><div><h3 class="text-base font-semibold text-foreground"></h3><p class="text-sm text-muted-foreground"></p><div class="mt-2 flex gap-2"><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"></span></div></div><button type=button class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90">`);
 function OpenPositions() {
 	const content$1 = a(content, "open-positions");
 	const openings = [
@@ -394,29 +380,6 @@ function OpenPositions() {
 	})()];
 }
 export { OpenPositions as default };
-var de_default = {
-	key: "open-positions",
-	content: {
-		"p": "Senior Frontend Engineer",
-		"n": "Remote",
-		"j": "Engineering",
-		"c": "Erstellen und warten Sie unser Benchmarking-Dashboard und unsere Entwicklertools mit React, TypeScript und Vite.",
-		"b": "Backend Engineer",
-		"f": "Entwerfen und skalieren Sie unsere Cloud-Benchmarking-Infrastruktur, die täglich Tausende von automatisierten Durchläufen verarbeitet.",
-		"q": "Technical Writer",
-		"h": "Dokumentation",
-		"e": "Erstellen Sie umfassende Leitfäden, API-Referenzen und Tutorials für unsere Benchmarking-Plattform.",
-		"g": "DevRel Engineer",
-		"o": "San Francisco / Remote",
-		"d": "Community",
-		"i": "Engagieren Sie sich in der i18n-Community durch Vorträge, Workshops, Blog-Posts und Open-Source-Beiträge.",
-		"m": "QA Engineer",
-		"k": "Stellen Sie die Genauigkeit und Zuverlässigkeit der Benchmark-Ergebnisse durch strenge Tests und Validierungen sicher.",
-		"l": "Offene Stellen",
-		"a": "Jetzt bewerben"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "open-positions",
 	content: {
@@ -440,187 +403,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "open-positions",
-	content: {
-		"p": "Ingeniero Frontend Senior",
-		"n": "Remoto",
-		"j": "Ingeniería",
-		"c": "Cree y mantenga nuestro panel de benchmarking y herramientas de desarrollo utilizando React, TypeScript y Vite.",
-		"b": "Ingeniero Backend",
-		"f": "Diseñe y escale nuestra infraestructura de benchmarking en la nube que maneja miles de ejecuciones automatizadas diariamente.",
-		"q": "Redactor Técnico",
-		"h": "Documentación",
-		"e": "Cree guías completas, referencias de API y tutoriales para nuestra plataforma de benchmarking.",
-		"g": "Ingeniero DevRel",
-		"o": "San Francisco / Remoto",
-		"d": "Comunidad",
-		"i": "Participe con la comunidad i18n a través de charlas, talleres, publicaciones de blog y contribuciones de código abierto.",
-		"m": "Ingeniero QA",
-		"k": "Garantice la precisión y fiabilidad de los resultados del benchmark mediante pruebas y validaciones rigurosas.",
-		"l": "Posiciones abiertas",
-		"a": "Postular ahora"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "open-positions",
-	content: {
-		"p": "Ingénieur Frontend Senior",
-		"n": "À distance",
-		"j": "Ingénierie",
-		"c": "Construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant React, TypeScript et Vite.",
-		"b": "Ingénieur Backend",
-		"f": "Concevoir et mettre à l’échelle notre infrastructure de benchmarking cloud gérant des milliers d’exécutions automatisées chaque jour.",
-		"q": "Rédacteur Technique",
-		"h": "Documentation",
-		"e": "Créer des guides complets, des références API et des tutoriels pour notre plateforme de benchmarking.",
-		"g": "Ingénieur DevRel",
-		"o": "San Francisco / À distance",
-		"d": "Communauté",
-		"i": "Interagir avec la communauté i18n par des conférences, des ateliers, des articles de blog et des contributions open source.",
-		"m": "Ingénieur QA",
-		"k": "Assurer l'exactitude et la fiabilité des résultats de benchmark grâce à des tests et des validations rigoureux.",
-		"l": "Postes Ouverts",
-		"a": "Postuler Maintenant"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "open-positions",
-	content: {
-		"p": "Ingegnere Frontend Senior",
-		"n": "Remoto",
-		"j": "Ingegneria",
-		"c": "Costruisci e mantieni la nostra dashboard di benchmarking e gli strumenti per sviluppatori utilizzando React, TypeScript e Vite.",
-		"b": "Backend Engineer",
-		"f": "Progetta e scala la nostra infrastruttura di benchmarking cloud che gestisce migliaia di esecuzioni automatizzate ogni giorno.",
-		"q": "Scrittore tecnico",
-		"h": "Documentazione",
-		"e": "Crea guide complete, riferimenti API e tutorial per la nostra piattaforma di benchmarking.",
-		"g": "Ingegnere DevRel",
-		"o": "San Francisco / Remoto",
-		"d": "Comunità",
-		"i": "Interagisci con la comunità i18n attraverso talk, workshop, post sul blog e contributi open source.",
-		"m": "Ingegnere QA",
-		"k": "Garantisci l'accuratezza e l'affidabilità dei risultati dei benchmark attraverso test e validazioni rigorosi.",
-		"l": "Posizioni aperte",
-		"a": "Candidati ora"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "open-positions",
-	content: {
-		"p": "シニアフロントエンドエンジニア",
-		"n": "リモート",
-		"j": "エンジニアリング",
-		"c": "React、TypeScript、およびViteを使用して、ベンチマークダッシュボードと開発者ツールを構築および保守します。",
-		"b": "バックエンドエンジニア",
-		"f": "毎日数千の自動実行を処理するクラウドベンチマークインフラストラクチャを設計およびスケールします。",
-		"q": "テクニカルライター",
-		"h": "ドキュメント",
-		"e": "ベンチマークプラットフォームの包括的なガイド、APIリファレンス、およびチュートリアルを作成します。",
-		"g": "DevRelエンジニア",
-		"o": "サンフランシスコ / リモート",
-		"d": "コミュニティ",
-		"i": "トーク、ワークショップ、ブログ投稿、およびオープンソースへの貢献を通じて、i18nコミュニティと交流します。",
-		"m": "QAエンジニア",
-		"k": "厳格なテストと検証を通じて、ベンチマーク結果の正確性と信頼性を確保します。",
-		"l": "募集中の職種",
-		"a": "今すぐ応募"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "open-positions",
-	content: {
-		"p": "시니어 프론트엔드 엔지니어",
-		"n": "원격",
-		"j": "엔지니어링",
-		"c": "React, TypeScript 및 Vite를 사용하여 벤치마킹 대시보드 및 개발자 도구를 구축하고 유지 관리합니다.",
-		"b": "백엔드 엔지니어",
-		"f": "매일 수천 건의 자동화된 실행을 처리하는 클라우드 벤치마킹 인프라를 설계하고 확장합니다.",
-		"q": "테크니컬 라이터",
-		"h": "문서",
-		"e": "벤치마킹 플랫폼을 위한 포괄적인 가이드, API 참조 및 튜토리얼을 만듭니다.",
-		"g": "DevRel 엔지니어",
-		"o": "샌프란시스코 / 원격",
-		"d": "커뮤니티",
-		"i": "강연, 워크숍, 블로그 게시물 및 오픈 소스 기여를 통해 i18n 커뮤니티와 소통하십시오.",
-		"m": "QA 엔지니어",
-		"k": "엄격한 테스트 및 검증을 통해 벤치마크 결과의 정확성과 신뢰성을 보장합니다.",
-		"l": "채용 중인 직무",
-		"a": "지금 지원하기"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "open-positions",
-	content: {
-		"p": "Engenheiro Frontend Sênior",
-		"n": "Remoto",
-		"j": "Engenharia",
-		"c": "Crie e mantenha nosso painel de benchmarking e ferramentas de desenvolvedor usando React, TypeScript e Vite.",
-		"b": "Engenheiro Backend",
-		"f": "Projete e dimensione nossa infraestrutura de benchmarking em nuvem que lida com milhares de execuções automatizadas diariamente.",
-		"q": "Escritor Técnico",
-		"h": "Documentação",
-		"e": "Crie guias abrangentes, referências de API e tutoriais para nossa plataforma de benchmarking.",
-		"g": "Engenheiro DevRel",
-		"o": "San Francisco / Remoto",
-		"d": "Comunidade",
-		"i": "Envolva-se com a comunidade i18n por meio de palestras, workshops, postagens em blogs e contribuições de código aberto.",
-		"m": "Engenheiro de QA",
-		"k": "Garanta a precisão e a confiabilidade dos resultados do benchmark por meio de testes e validação rigorosos.",
-		"l": "Vagas abertas",
-		"a": "Candidatar-se agora"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "open-positions",
-	content: {
-		"p": "Старший фронтенд-инженер",
-		"n": "Удаленно",
-		"j": "Разработка",
-		"c": "Создание и поддержка нашего дашборда для бенчмаркинга и инструментов разработки с использованием React, TypeScript и Vite.",
-		"b": "Бэкенд-инженер",
-		"f": "Проектирование и масштабирование нашей облачной инфраструктуры для бенчмаркинга, обрабатывающей тысячи автоматических запусков ежедневно.",
-		"q": "Технический писатель",
-		"h": "Документация",
-		"e": "Создание подробных руководств, справочников по API и учебных пособий для нашей платформы бенчмаркинга.",
-		"g": "DevRel-инженер",
-		"o": "Сан-Франциско / Удаленно",
-		"d": "Сообщество",
-		"i": "Взаимодействие с сообществом i18n посредством выступлений, семинаров, постов в блогах и вклада в open source.",
-		"m": "QA-инженер",
-		"k": "Обеспечение точности и надежности результатов бенчмарков путем тщательного тестирования и валидации.",
-		"l": "Открытые вакансии",
-		"a": "Подать заявку"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "open-positions",
-	content: {
-		"p": "高级前端工程师",
-		"n": "远程",
-		"j": "工程",
-		"c": "使用 React、TypeScript 和 Vite 构建和维护我们的基准测试仪表板和开发人员工具。",
-		"b": "后端工程师",
-		"f": "设计并扩展我们的云基准测试基础设施，每天处理数千次自动化运行。",
-		"q": "技术文档工程师",
-		"h": "文档",
-		"e": "为我们的基准测试平台创建全面的指南、API 参考和教程。",
-		"g": "开发者关系工程师",
-		"o": "旧金山 / 远程",
-		"d": "社区",
-		"i": "通过演讲、工作坊、博客文章和开源贡献与 i18n 社区互动。",
-		"m": "质量保证工程师",
-		"k": "通过严格的测试和验证，确保基准测试结果的准确性和可靠性。",
-		"l": "开放职位",
-		"a": "现在申请"
-	}
-};
-export { zh_default as default };

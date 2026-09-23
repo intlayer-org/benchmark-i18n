@@ -1,5 +1,5 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { jsx as r } from "react/jsx-runtime";
+import { jsxDEV as r } from "react/jsx-dev-runtime";
 var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), a = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
@@ -155,14 +155,18 @@ var i = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 function c() {
 	return s.useI18n();
 }
-var { useScopedI18n: l, I18nProviderClient: u, useChangeLocale: d, useCurrentLocale: f } = s, p = () => {
+var { useScopedI18n: l, I18nProviderClient: u, useChangeLocale: d, useCurrentLocale: f } = s, p = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/MockBanner.tsx", m = () => {
 	let e = c();
 	return r("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: e("mockBanner")
-	});
+	}, void 0, !1, {
+		fileName: p,
+		lineNumber: 8,
+		columnNumber: 5
+	}, void 0);
 };
-function m() {
+function h() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -176,35 +180,53 @@ function m() {
 		}
 	}
 }
-function h(e, t) {
+function g(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function g({ children: i, locale: a }) {
+var _ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/AppProviders.tsx";
+function v({ children: i, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		h("AppRoot", o);
+		g("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
-		m();
+		h();
 	}, []), r(u, {
 		locale: a,
 		children: i
-	});
+	}, void 0, !1, {
+		fileName: _,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var _ = "en";
-function v({ children: e }) {
-	return r(g, {
-		locale: _,
+var y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/scripts/Wrapper.tsx", b = "en";
+function x({ children: e }) {
+	return r(v, {
+		locale: b,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: y,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function y() {
-	return r(v, { children: r(p, {}) });
+var S = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-international-app/components/MockBanner.wrapper.tsx";
+function C() {
+	return r(x, { children: r(m, {}, void 0, !1, {
+		fileName: S,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: S,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { y as default };
+export { C as default };
 import { t as e } from "./flatten-DDFH6wLI.js";
 import t from "../messages/de.json";
 var n = e(t);

@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-23T20:40:57.021Z",
+  "timestamp": "2026-09-09T18:50:03.282Z",
   "packageName": "nextjs-static-next-translate-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 13762,
-    "totalMinifiedBytes": 9380,
-    "totalGzipBytes": 3309
+    "totalUnminifiedBytes": 15015,
+    "totalMinifiedBytes": 10452,
+    "totalGzipBytes": 3557
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 13762,
-      "unminifiedGzipBytes": 3980,
-      "minifiedBytes": 9380,
-      "minifiedGzipBytes": 3309
+      "unminifiedBytes": 15015,
+      "unminifiedGzipBytes": 4212,
+      "minifiedBytes": 10452,
+      "minifiedGzipBytes": 3557
     }
   ]
 }

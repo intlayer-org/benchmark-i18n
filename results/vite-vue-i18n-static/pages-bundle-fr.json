@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-i18n-static",
   "locale": "fr",
-  "timestamp": "2026-09-09T19:23:26.135Z",
+  "timestamp": "2026-09-09T03:54:44.476Z",
   "fingerprintCounts": {
     "locale": {
       "en": 26,
@@ -1615,15 +1615,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/TeamHeader-BL5Z5ULr.js",
-          "size": 429,
-          "gzipSize": 300,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-CCkTbV9b.js",
           "size": 303,
           "gzipSize": 236,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamHeader-BL5Z5ULr.js",
+          "size": 429,
+          "gzipSize": 300,
           "type": "js"
         },
         {

@@ -1,17 +1,17 @@
 import { useEffect as e, useLayoutEffect as t, useState as n } from "react";
-import { Fragment as r, jsx as i, jsxs as a } from "react/jsx-runtime";
-var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), s = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { Fragment as r, jsxDEV as i } from "react/jsx-dev-runtime";
+var a = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), o = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), c = o((() => {})), l = (0, o(((e, t) => {
-	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, o = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
+}), s = a((() => {})), c = (0, a(((e, t) => {
+	var n = Object.create, r = Object.defineProperty, i = Object.getOwnPropertyDescriptor, a = Object.getOwnPropertyNames, c = Object.getOwnPropertySymbols, l = Object.getPrototypeOf, u = Object.prototype.hasOwnProperty, d = Object.prototype.propertyIsEnumerable, f = (e, t, n) => t in e ? r(e, t, {
 		enumerable: !0,
 		configurable: !0,
 		writable: !0,
 		value: n
 	}) : e[t] = n, p = (e, t) => {
 		for (var n in t ||= {}) u.call(t, n) && f(e, n, t[n]);
-		if (o) for (var n of o(t)) d.call(t, n) && f(e, n, t[n]);
+		if (c) for (var n of c(t)) d.call(t, n) && f(e, n, t[n]);
 		return e;
 	}, m = (e, t) => {
 		for (var n in t) r(e, n, {
@@ -28,8 +28,8 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 		value: e,
 		enumerable: !0
 	}) : i, e)), _ = (e) => h(r({}, "__esModule", { value: !0 }), e), v = {};
-	m(v, { createI18nClient: () => V }), t.exports = _(v), c();
-	var y = s("next/navigation"), b = g(s("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
+	m(v, { createI18nClient: () => V }), t.exports = _(v), s();
+	var y = o("next/navigation"), b = g(o("react")), x = (e, t = "") => Object.entries(e).reduce((e, [n, r]) => p(p({}, e), typeof r == "string" ? { [t + n]: r } : x(r, `${t}${n}.`)), {});
 	function S(e, t) {
 		return process.env.NODE_ENV !== "production" && console[e](`[next-international] ${t}`), null;
 	}
@@ -53,7 +53,7 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			}, i));
 		};
 	}
-	var D = s("react"), O = s("react"), k = s("react");
+	var D = o("react"), O = o("react"), k = o("react");
 	function A(e, t) {
 		let { localeContent: n, fallbackLocale: r } = e, i = r && typeof n == "string" ? r : Object.assign(r ?? {}, n), a = new Set(Object.keys(i).filter((e) => e.includes("#")).map((e) => e.split("#", 1)[0])), o = new Intl.PluralRules(e.locale);
 		function s(e) {
@@ -87,7 +87,7 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return (0, O.useMemo)(() => A(t, void 0), [t]);
 		};
 	}
-	var M = s("react");
+	var M = o("react");
 	function N(e) {
 		return function(t) {
 			let n = (0, M.useContext)(e);
@@ -95,7 +95,7 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return (0, M.useMemo)(() => A(n, t), [n, t]);
 		};
 	}
-	var P = s("next/navigation");
+	var P = o("next/navigation");
 	function F(e, t, n) {
 		return function(r) {
 			let { push: i, refresh: a } = (0, P.useRouter)(), o = e(), s = (0, P.usePathname)(), c = r?.preserveSearchParams ? (0, P.useSearchParams)().toString() : void 0, l = c ? `?${c}` : "", u = s;
@@ -117,7 +117,7 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 			return e;
 		};
 	}
-	var L = s("next/navigation"), R = s("react"), z = "locale";
+	var L = o("next/navigation"), R = o("react"), z = "locale";
 	function B(e, t) {
 		return function() {
 			let n = (0, L.useParams)()[t.segmentName ?? z];
@@ -151,28 +151,48 @@ var o = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t
 	ja: () => import("./ja-DqPSQzIN.js"),
 	ko: () => import("./ko-D6aZpc6n.js"),
 	ru: () => import("./ru-DTmdo1G_.js")
-}), u = l.useScopedI18n, { I18nProviderClient: d, useChangeLocale: f, useCurrentLocale: p } = l, m = () => {
-	let e = u("mock-banner");
+}), l = c.useScopedI18n, { I18nProviderClient: u, useChangeLocale: d, useCurrentLocale: f } = c, p = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/MockBanner.tsx", m = () => {
+	let e = l("mock-banner");
 	return i("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: e("mockBanner")
-	});
-};
-function h() {
-	let e = u("team-header");
-	return a(r, { children: [
-		i(m, {}),
+	}, void 0, !1, {
+		fileName: p,
+		lineNumber: 8,
+		columnNumber: 5
+	}, void 0);
+}, h = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/pages/team/TeamHeader.tsx";
+function g() {
+	let e = l("team-header");
+	return i(r, { children: [
+		i(m, {}, void 0, !1, {
+			fileName: h,
+			lineNumber: 10,
+			columnNumber: 7
+		}, this),
 		i("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: e("ourTeam")
-		}),
+		}, void 0, !1, {
+			fileName: h,
+			lineNumber: 11,
+			columnNumber: 7
+		}, this),
 		i("p", {
 			className: "mb-10 text-muted-foreground",
 			children: e("meetThePeopleBehindI18n")
-		})
-	] });
+		}, void 0, !1, {
+			fileName: h,
+			lineNumber: 14,
+			columnNumber: 7
+		}, this)
+	] }, void 0, !0, {
+		fileName: h,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
-function g() {
+function _() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -186,35 +206,53 @@ function g() {
 		}
 	}
 }
-function _(e, t) {
+function v(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function v({ children: r, locale: a }) {
+var y = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/AppProviders.tsx";
+function b({ children: r, locale: a }) {
 	let [o] = n(() => typeof performance < "u" ? performance.now() : 0);
 	return t(() => {
-		_("AppRoot", o);
+		v("AppRoot", o);
 	}, [o]), e(() => {
 		document.documentElement.lang = a;
 	}, [a]), e(() => {
-		g();
-	}, []), i(d, {
+		_();
+	}, []), i(u, {
 		locale: a,
 		children: r
-	});
+	}, void 0, !1, {
+		fileName: y,
+		lineNumber: 30,
+		columnNumber: 7
+	}, this);
 }
-var y = "en";
-function b({ children: e }) {
-	return i(v, {
-		locale: y,
+var x = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/scripts/Wrapper.tsx", S = "en";
+function C({ children: e }) {
+	return i(b, {
+		locale: S,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: x,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
-function x() {
-	return i(b, { children: i(h, {}) });
+var w = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/next-international-app/components/pages/team/TeamHeader.wrapper.tsx";
+function T() {
+	return i(C, { children: i(g, {}, void 0, !1, {
+		fileName: w,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: w,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { x as default };
+export { T as default };
 import { n as e, t } from "./scopedMessages-DrpBZPpZ.js";
 import n from "../../../messages/de/about.json";
 import r from "../../../messages/de/blog.json";

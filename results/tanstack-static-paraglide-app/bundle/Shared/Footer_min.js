@@ -1,7 +1,7 @@
 import "react";
 import { Link as e, useParams as t } from "@tanstack/react-router";
-import { Fragment as n, jsx as r, jsxs as i } from "react/jsx-runtime";
-var a = {}, o = [
+import { Fragment as n, jsxDEV as r } from "react/jsx-dev-runtime";
+var i = {}, a = [
 	"en",
 	"fr",
 	"es",
@@ -12,57 +12,57 @@ var a = {}, o = [
 	"ja",
 	"ko",
 	"ru"
-], s = "PARAGLIDE_LOCALE", ee = 3456e4, c = [
+], o = "PARAGLIDE_LOCALE", ee = 3456e4, s = [
 	"cookie",
 	"globalVariable",
 	"baseLocale"
-], l = [], u = typeof window > "u";
+], c = [], l = typeof window > "u";
 globalThis.__paraglide = globalThis.__paraglide ?? {}, globalThis.__paraglide.ssr = globalThis.__paraglide.ssr ?? {};
-var d, f = !1, p = () => {
-	let e = c;
-	!u && typeof window < "u" && window.location?.href && (e = N(window.location.href));
-	let t = m(e, typeof window < "u" ? window.location?.href : void 0);
-	if (t) return f || (d = t, f = !0, g(t, { reload: !1 })), t;
+var u, d = !1, f = () => {
+	let e = s;
+	!l && typeof window < "u" && window.location?.href && (e = A(window.location.href));
+	let t = te(e, typeof window < "u" ? window.location?.href : void 0);
+	if (t) return d || (u = t, d = !0, m(t, { reload: !1 })), t;
 	throw Error("No locale found. Read the docs https://paraglidejs.com/errors#no-locale-found");
 };
-function m(e, t) {
+function te(e, t) {
 	let n;
 	for (let t of e) {
-		if (t === "cookie") n = D();
+		if (t === "cookie") n = w();
 		else if (t === "baseLocale") n = "en";
-		else if (t === "globalVariable" && d !== void 0) n = d;
-		else if (F(t) && P.has(t)) {
-			let e = P.get(t);
+		else if (t === "globalVariable" && u !== void 0) n = u;
+		else if (M(t) && j.has(t)) {
+			let e = j.get(t);
 			if (e) {
 				let t = e.getLocale();
 				if (t instanceof Promise) continue;
-				if (t !== void 0) return v(t);
+				if (t !== void 0) return g(t);
 			}
 		}
-		let e = _(n);
+		let e = h(n);
 		if (e) return e;
 	}
 }
-var h = (e) => {
+var p = (e) => {
 	e ? window.location.href = e : window.location.reload();
-}, g = (e, t) => {
+}, m = (e, t) => {
 	let n = {
 		reload: !0,
 		...t
 	}, r;
 	try {
-		r = p();
+		r = f();
 	} catch {}
-	let i = [], a = c;
-	!u && typeof window < "u" && window.location?.href && (a = N(window.location.href));
-	for (let t of a) if (t === "globalVariable") d = e;
+	let i = [], a = s;
+	!l && typeof window < "u" && window.location?.href && (a = A(window.location.href));
+	for (let t of a) if (t === "globalVariable") u = e;
 	else if (t === "cookie") {
-		if (u || typeof document > "u" || typeof window > "u") continue;
-		let t = `${s}=${e}; path=/; max-age=${ee}`;
-		document.cookie = t, T();
+		if (l || typeof document > "u" || typeof window > "u") continue;
+		let t = `${o}=${e}; path=/; max-age=${ee}`;
+		document.cookie = t, C();
 	} else if (t === "baseLocale") continue;
-	else if (F(t) && P.has(t)) {
-		let n = P.get(t);
+	else if (M(t) && j.has(t)) {
+		let n = j.get(t);
 		if (n) {
 			let r = n.setLocale(e);
 			r instanceof Promise && (r = r.catch((e) => {
@@ -70,166 +70,244 @@ var h = (e) => {
 			}), i.push(r));
 		}
 	}
-	let o = () => {
-		!u && n.reload && window.location && e !== r && h(void 0);
+	let c = () => {
+		!l && n.reload && window.location && e !== r && p(void 0);
 	};
 	if (i.length) return Promise.all(i).then(() => {
-		o();
+		c();
 	});
-	o();
-}, te = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
-function _(e) {
+	c();
+}, ne = () => typeof window < "u" ? window.location.origin : "http://fallback.com";
+function h(e) {
 	if (typeof e != "string") return;
 	let t = e.toLowerCase();
-	for (let e of o) if (e.toLowerCase() === t) return e;
+	for (let e of a) if (e.toLowerCase() === t) return e;
 }
-function v(e) {
-	let t = _(e);
+function g(e) {
+	let t = h(e);
 	if (t) return t;
-	throw Error(`Invalid locale: ${e}. Expected one of: ${o.join(", ")}`);
+	throw Error(`Invalid locale: ${e}. Expected one of: ${a.join(", ")}`);
 }
-function y(e) {
+function _(e) {
 	return e;
 }
-function b(e, t) {
+function v(e, t) {
 	return e.exec(t.href);
 }
-var x = s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), S = RegExp(`(?:^|;\\s*)${x}=([^;]*)`), C = Symbol(), w = C;
-function T() {
-	w = C;
+var y = o.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), b = RegExp(`(?:^|;\\s*)${y}=([^;]*)`), x = Symbol(), S = x;
+function C() {
+	S = x;
 }
-function E() {
-	typeof queueMicrotask == "function" ? queueMicrotask(T) : Promise.resolve().then(T);
+function re() {
+	typeof queueMicrotask == "function" ? queueMicrotask(C) : Promise.resolve().then(C);
 }
-function D() {
+function w() {
 	if (typeof document > "u") return;
-	if (w !== C) return w;
-	let e = document.cookie.match(S)?.[1];
-	return w = _(e), E(), w;
+	if (S !== x) return S;
+	let e = document.cookie.match(b)?.[1];
+	return S = h(e), re(), S;
 }
-function O(e) {
-	return k(e);
+function T(e) {
+	return E(e);
 }
+function E(e) {
+	let t = _(typeof e == "string" ? new URL(e, ne()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
+	return n.length > 0 && h(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), _(t);
+}
+var D, O;
 function k(e) {
-	let t = y(typeof e == "string" ? new URL(e, te()) : new URL(e)), n = t.pathname.split("/").filter(Boolean);
-	return n.length > 0 && _(n[0]) && (t.pathname = "/" + n.slice(1).join("/")), y(t);
-}
-var A, j;
-function M(e) {
-	if (l.length === 0) return;
+	if (c.length === 0) return;
 	let t = typeof e == "string" ? e : e.href;
-	if (A === t) return j;
-	let n = y(new URL(t, "http://example.com")), r = O(n), i = r.href === n.href ? [n] : [n, r], o;
-	for (let e of i) {
-		for (let t of l) if (b(new a(t.match, e.href), e)) {
+	if (D === t) return O;
+	let n = _(new URL(t, "http://example.com")), r = T(n), a = r.href === n.href ? [n] : [n, r], o;
+	for (let e of a) {
+		for (let t of c) if (v(new i(t.match, e.href), e)) {
 			o = t;
 			break;
 		}
 		if (o) break;
 	}
-	return A = t, j = o, o;
+	return D = t, O = o, o;
 }
-function N(e) {
-	let t = M(e);
-	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : c;
+function A(e) {
+	let t = k(e);
+	return t && t.exclude !== !0 && Array.isArray(t.strategy) ? t.strategy : s;
 }
-var P = /* @__PURE__ */ new Map();
-function F(e) {
+var j = /* @__PURE__ */ new Map();
+function M(e) {
 	return typeof e == "string" && /^custom-[A-Za-z0-9_-]+$/.test(e);
 }
-var I = () => "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.", L = () => "Une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.", R = () => "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el tiempo de carga y la reactividad de la aplicación.", z = () => "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungs-Bibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.", B = () => "Un'applicazione di test open-source per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sui tempi di caricamento e sulla reattività dell'app.", V = () => "Uma aplicação de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo.", H = () => "一个用于测量国际化库对包大小、加载时间和应用反应性实际影响的开源测试应用程序。", U = () => "国際化ライブラリがバンドルサイズ、ロード時間、アプリの反応性に与える実際の影響を測定するためのオープンソースのテストアプリケーション。", W = () => "국제화 라이브러리가 번들 크기, 로딩 시간 및 앱 반응성에 미치는 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.", G = () => "Открытое приложение для тестирования реального влияния библиотек интернационализации на размер бандла, время загрузки и отзывчивость приложения.", K = ((e = {}, t = {}) => {
-	let n = t.locale ?? p();
-	return n === "fr" ? L(e) : n === "es" ? R(e) : n === "de" ? z(e) : n === "it" ? B(e) : n === "pt" ? V(e) : n === "zh" ? H(e) : n === "ja" ? U(e) : n === "ko" ? W(e) : n === "ru" ? G(e) : I(e);
-}), q = () => "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.", J = () => "i18n Benchmark — Projet open source. Construit avec React, Vite & TanStack Router.", Y = () => "i18n Benchmark — Proyecto de código abierto. Construido con React, Vite y TanStack Router.", X = () => "i18n Benchmark — Open-Source-Projekt. Erstellt mit React, Vite & TanStack Router.", Z = () => "i18n Benchmark — Progetto open-source. Costruito con React, Vite e TanStack Router.", Q = () => "i18n Benchmark — Projeto de código aberto. Construído com React, Vite & TanStack Router.", ne = () => "i18n Benchmark — 开源项目。使用 React, Vite & TanStack Router 构建。", re = () => "i18n Benchmark — オープンソースプロジェクト。React、Vite、TanStack Routerで構築されています。", ie = () => "i18n Benchmark — 오픈 소스 프로젝트. React, Vite 및 TanStack Router로 구축되었습니다.", ae = () => "i18n Benchmark — Открытый проект. Построен на React, Vite и TanStack Router.", oe = ((e = {}, t = {}) => {
-	let n = t.locale ?? p();
-	return n === "fr" ? J(e) : n === "es" ? Y(e) : n === "de" ? X(e) : n === "it" ? Z(e) : n === "pt" ? Q(e) : n === "zh" ? ne(e) : n === "ja" ? re(e) : n === "ko" ? ie(e) : n === "ru" ? ae(e) : q(e);
-}), se = () => "Contact", ce = () => "Contact", le = () => "Contacto", ue = () => "Kontakt", de = () => "Contatti", fe = () => "Contato", pe = () => "联系我们", me = () => "お問い合わせ", he = () => "문의하기", ge = () => "Контакт", _e = ((e = {}, t = {}) => {
-	let n = t.locale ?? p();
-	return n === "fr" ? ce(e) : n === "es" ? le(e) : n === "de" ? ue(e) : n === "it" ? de(e) : n === "pt" ? fe(e) : n === "zh" ? pe(e) : n === "ja" ? me(e) : n === "ko" ? he(e) : n === "ru" ? ge(e) : se(e);
-}), ve = () => "Contributing", ye = () => "Contribuer", be = () => "Contribuir", xe = () => "Beitragen", Se = () => "Contribuire", Ce = () => "Contribuir", we = () => "贡献", Te = () => "貢献する", Ee = () => "기여하기", De = () => "Вклад", Oe = ((e = {}, t = {}) => {
-	let n = t.locale ?? p();
-	return n === "fr" ? ye(e) : n === "es" ? be(e) : n === "de" ? xe(e) : n === "it" ? Se(e) : n === "pt" ? Ce(e) : n === "zh" ? we(e) : n === "ja" ? Te(e) : n === "ko" ? Ee(e) : n === "ru" ? De(e) : ve(e);
-}), ke = () => "GitHub", Ae = () => "GitHub", je = () => "GitHub", Me = () => "GitHub", Ne = () => "GitHub", Pe = () => "GitHub", Fe = () => "GitHub", Ie = () => "GitHub", Le = () => "GitHub", Re = () => "GitHub", ze = ((e = {}, t = {}) => {
-	let n = t.locale ?? p();
-	return n === "fr" ? Ae(e) : n === "es" ? je(e) : n === "de" ? Me(e) : n === "it" ? Ne(e) : n === "pt" ? Pe(e) : n === "zh" ? Fe(e) : n === "ja" ? Ie(e) : n === "ko" ? Le(e) : n === "ru" ? Re(e) : ke(e);
-}), Be = () => "Methodology", Ve = () => "Méthodologie", He = () => "Metodología", Ue = () => "Methodik", We = () => "Metodologia", Ge = () => "Metodologia", Ke = () => "方法论", qe = () => "方法論", Je = () => "방법론", $ = () => "Методология", Ye = ((e = {}, t = {}) => {
-	let n = t.locale ?? p();
-	return n === "fr" ? Ve(e) : n === "es" ? He(e) : n === "de" ? Ue(e) : n === "it" ? We(e) : n === "pt" ? Ge(e) : n === "zh" ? Ke(e) : n === "ja" ? qe(e) : n === "ko" ? Je(e) : n === "ru" ? $(e) : Be(e);
-}), Xe = () => "Resources", Ze = () => "Ressources", Qe = () => "Recursos", $e = () => "Ressourcen", et = () => "Risorse", tt = () => "Recursos", nt = () => "资源", rt = () => "リソース", it = () => "리소스", at = () => "Ресурсы", ot = ((e = {}, t = {}) => {
-	let n = t.locale ?? p();
-	return n === "fr" ? Ze(e) : n === "es" ? Qe(e) : n === "de" ? $e(e) : n === "it" ? et(e) : n === "pt" ? tt(e) : n === "zh" ? nt(e) : n === "ja" ? rt(e) : n === "ko" ? it(e) : n === "ru" ? at(e) : Xe(e);
-});
-function st() {
-	let n = t({ strict: !1 }).locale ?? "en", a = [
+var N = () => "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.", P = () => "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.", F = () => "Contact", I = () => "Contributing", L = () => "GitHub", R = () => "Methodology", z = () => "Resources", B = () => "Une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.", V = () => "i18n Benchmark — Projet open source. Construit avec React, Vite & TanStack Router.", H = () => "Contact", U = () => "Contribuer", W = () => "GitHub", G = () => "Méthodologie", K = () => "Ressources", q = () => "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el tiempo de carga y la reactividad de la aplicación.", J = () => "i18n Benchmark — Proyecto de código abierto. Construido con React, Vite y TanStack Router.", Y = () => "Contacto", X = () => "Contribuir", ie = () => "GitHub", ae = () => "Metodología", oe = () => "Recursos", se = () => "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungs-Bibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.", ce = () => "i18n Benchmark — Open-Source-Projekt. Erstellt mit React, Vite & TanStack Router.", le = () => "Kontakt", ue = () => "Beitragen", de = () => "GitHub", fe = () => "Methodik", pe = () => "Ressourcen", me = () => "Un'applicazione di test open-source per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sui tempi di caricamento e sulla reattività dell'app.", he = () => "i18n Benchmark — Progetto open-source. Costruito con React, Vite e TanStack Router.", ge = () => "Contatti", _e = () => "Contribuire", ve = () => "GitHub", ye = () => "Metodologia", be = () => "Risorse", xe = () => "Uma aplicação de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo.", Se = () => "i18n Benchmark — Projeto de código aberto. Construído com React, Vite & TanStack Router.", Ce = () => "Contato", we = () => "Contribuir", Te = () => "GitHub", Ee = () => "Metodologia", De = () => "Recursos", Oe = () => "一个用于测量国际化库对包大小、加载时间和应用反应性实际影响的开源测试应用程序。", ke = () => "i18n Benchmark — 开源项目。使用 React, Vite & TanStack Router 构建。", Ae = () => "联系我们", je = () => "贡献", Me = () => "GitHub", Ne = () => "方法论", Pe = () => "资源", Fe = () => "国際化ライブラリがバンドルサイズ、ロード時間、アプリの反応性に与える実際の影響を測定するためのオープンソースのテストアプリケーション。", Ie = () => "i18n Benchmark — オープンソースプロジェクト。React、Vite、TanStack Routerで構築されています。", Le = () => "お問い合わせ", Re = () => "貢献する", ze = () => "GitHub", Be = () => "方法論", Ve = () => "リソース", He = () => "국제화 라이브러리가 번들 크기, 로딩 시간 및 앱 반응성에 미치는 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다.", Ue = () => "i18n Benchmark — 오픈 소스 프로젝트. React, Vite 및 TanStack Router로 구축되었습니다.", We = () => "문의하기", Ge = () => "기여하기", Ke = () => "GitHub", qe = () => "방법론", Je = () => "리소스", Ye = () => "Открытое приложение для тестирования реального влияния библиотек интернационализации на размер бандла, время загрузки и отзывчивость приложения.", Xe = () => "i18n Benchmark — Открытый проект. Построен на React, Vite и TanStack Router.", Ze = () => "Контакт", Qe = () => "Вклад", $e = () => "GitHub", et = () => "Методология", tt = () => "Ресурсы", nt = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? B(e) : n === "es" ? q(e) : n === "de" ? se(e) : n === "it" ? me(e) : n === "pt" ? xe(e) : n === "zh" ? Oe(e) : n === "ja" ? Fe(e) : n === "ko" ? He(e) : n === "ru" ? Ye(e) : N(e);
+}), rt = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? V(e) : n === "es" ? J(e) : n === "de" ? ce(e) : n === "it" ? he(e) : n === "pt" ? Se(e) : n === "zh" ? ke(e) : n === "ja" ? Ie(e) : n === "ko" ? Ue(e) : n === "ru" ? Xe(e) : P(e);
+}), Z = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? H(e) : n === "es" ? Y(e) : n === "de" ? le(e) : n === "it" ? ge(e) : n === "pt" ? Ce(e) : n === "zh" ? Ae(e) : n === "ja" ? Le(e) : n === "ko" ? We(e) : n === "ru" ? Ze(e) : F(e);
+}), it = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? U(e) : n === "es" ? X(e) : n === "de" ? ue(e) : n === "it" ? _e(e) : n === "pt" ? we(e) : n === "zh" ? je(e) : n === "ja" ? Re(e) : n === "ko" ? Ge(e) : n === "ru" ? Qe(e) : I(e);
+}), at = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? W(e) : n === "es" ? ie(e) : n === "de" ? de(e) : n === "it" ? ve(e) : n === "pt" ? Te(e) : n === "zh" ? Me(e) : n === "ja" ? ze(e) : n === "ko" ? Ke(e) : n === "ru" ? $e(e) : L(e);
+}), ot = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? G(e) : n === "es" ? ae(e) : n === "de" ? fe(e) : n === "it" ? ye(e) : n === "pt" ? Ee(e) : n === "zh" ? Ne(e) : n === "ja" ? Be(e) : n === "ko" ? qe(e) : n === "ru" ? et(e) : R(e);
+}), st = ((e = {}, t = {}) => {
+	let n = t.locale ?? f();
+	return n === "fr" ? K(e) : n === "es" ? oe(e) : n === "de" ? pe(e) : n === "it" ? be(e) : n === "pt" ? De(e) : n === "zh" ? Pe(e) : n === "ja" ? Ve(e) : n === "ko" ? Je(e) : n === "ru" ? tt(e) : z(e);
+}), Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/Footer.tsx";
+function ct() {
+	let n = t({ strict: !1 }).locale ?? "en", i = [
 		{
-			label: ze(),
+			label: at(),
 			href: "https://github.com/intlayer-org/benchmark-i18n",
 			isInternal: !1
 		},
 		{
-			label: Ye(),
+			label: ot(),
 			to: "/$locale/about",
 			isInternal: !0
 		},
 		{
-			label: Oe(),
+			label: it(),
 			to: "/$locale/contact",
 			isInternal: !0
 		}
 	];
 	return r("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: i("div", {
+		children: r("div", {
 			className: "container py-8",
-			children: [i("div", {
+			children: [r("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					i("div", { children: [r("h3", {
+					r("div", { children: [r("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), r("p", {
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 31,
+						columnNumber: 13
+					}, this), r("p", {
 						className: "text-sm text-muted-foreground",
-						children: K()
-					})] }),
-					i("div", { children: [r("h3", {
+						children: nt()
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 34,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: Q,
+						lineNumber: 30,
+						columnNumber: 11
+					}, this),
+					r("div", { children: [r("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: ot()
-					}), r("ul", {
+						children: st()
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 39,
+						columnNumber: 13
+					}, this), r("ul", {
 						className: "space-y-1",
-						children: a.map((t) => r("li", { children: t.isInternal ? r(e, {
+						children: i.map((t) => r("li", { children: t.isInternal ? r(e, {
 							preload: !1,
 							to: t.to,
 							params: { locale: n },
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: t.label
-						}) : r("a", {
+						}, void 0, !1, {
+							fileName: Q,
+							lineNumber: 46,
+							columnNumber: 21
+						}, this) : r("a", {
 							href: t.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: t.label
-						}) }, t.label))
-					})] }),
-					i("div", { children: [r("h3", {
+						}, void 0, !1, {
+							fileName: Q,
+							lineNumber: 55,
+							columnNumber: 21
+						}, this) }, t.label, !1, {
+							fileName: Q,
+							lineNumber: 44,
+							columnNumber: 17
+						}, this))
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 42,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: Q,
+						lineNumber: 38,
+						columnNumber: 11
+					}, this),
+					r("div", { children: [r("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
-						children: _e()
-					}), r("p", {
+						children: Z()
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 69,
+						columnNumber: 13
+					}, this), r("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					})] })
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 72,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: Q,
+						lineNumber: 68,
+						columnNumber: 11
+					}, this)
 				]
-			}), r("div", {
+			}, void 0, !0, {
+				fileName: Q,
+				lineNumber: 29,
+				columnNumber: 9
+			}, this), r("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
-				children: oe()
-			})]
-		})
-	});
+				children: rt()
+			}, void 0, !1, {
+				fileName: Q,
+				lineNumber: 77,
+				columnNumber: 9
+			}, this)]
+		}, void 0, !0, {
+			fileName: Q,
+			lineNumber: 28,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: Q,
+		lineNumber: 27,
+		columnNumber: 5
+	}, this);
 }
-g("en", { reload: !1 });
-function ct({ children: e }) {
-	return r(n, { children: e });
+var lt = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
+m("en", { reload: !1 });
+function ut({ children: e }) {
+	return r(n, { children: e }, void 0, !1, {
+		fileName: lt,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
-function lt() {
-	return r(ct, { children: r(st, {}) });
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/Footer.wrapper.tsx";
+function dt() {
+	return r(ut, { children: r(ct, {}, void 0, !1, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { lt as default };
+export { dt as default };

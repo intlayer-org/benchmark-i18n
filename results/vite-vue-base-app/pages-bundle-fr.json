@@ -1,11 +1,11 @@
 {
   "app": "vite-vue-base-app",
   "locale": "fr",
-  "timestamp": "2026-09-09T19:24:20.209Z",
+  "timestamp": "2026-09-09T03:51:37.760Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 0,
-      "fr": 0
+      "en": 23,
+      "fr": 9
     },
     "page": {
       "home": 24,
@@ -14,9 +14,9 @@
       "careers": 0,
       "contact": 0,
       "faq": 0,
-      "pricing": 0,
+      "pricing": 4,
       "products": 0,
-      "settings": 0,
+      "settings": 5,
       "team": 0
     }
   },
@@ -209,15 +209,26 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "about this benchmark",
+            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
+            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
+            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
+            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
+            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
+            "lazy loading effectiveness",
+            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+          ]
         },
         "fr": {
           "count": 0,
           "found": []
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 100,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -322,15 +333,29 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 0,
-          "found": []
+          "count": 13,
+          "found": [
+            "insights, tutorials, and analysis from the i18n community.",
+            "comparing i18n libraries in 2026: a deep dive",
+            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
+            "how to reduce your i18n bundle by 60%",
+            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+            "the state of internationalization in react",
+            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
+            "migrating from react-i18next to lingui",
+            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
+            "server components and i18n: what changes?",
+            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
+            "benchmark methodology: how we test",
+            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+          ]
         },
         "fr": {
           "count": 0,
           "found": []
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 100,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -784,8 +809,13 @@
           "found": []
         },
         "fr": {
-          "count": 0,
-          "found": []
+          "count": 4,
+          "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
+            "5 benchmark runs/day",
+            "dedicated account manager"
+          ]
         }
       },
       "localeLeakagePercent": 0,
@@ -815,8 +845,13 @@
           "found": []
         },
         "pricing": {
-          "count": 0,
-          "found": []
+          "count": 4,
+          "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
+            "5 benchmark runs/day",
+            "dedicated account manager"
+          ]
         },
         "products": {
           "count": 0,
@@ -1004,9 +1039,9 @@
           "type": "js"
         },
         {
-          "url": "/assets/PreferencesSection-BP9VCfJq.js",
-          "size": 1695,
-          "gzipSize": 714,
+          "url": "/assets/SettingsFooter-B-HiY2mC.js",
+          "size": 534,
+          "gzipSize": 331,
           "type": "js"
         },
         {
@@ -1016,9 +1051,9 @@
           "type": "js"
         },
         {
-          "url": "/assets/SettingsFooter-B-HiY2mC.js",
-          "size": 534,
-          "gzipSize": 331,
+          "url": "/assets/PreferencesSection-BP9VCfJq.js",
+          "size": 1695,
+          "gzipSize": 714,
           "type": "js"
         }
       ],
@@ -1028,8 +1063,14 @@
           "found": []
         },
         "fr": {
-          "count": 0,
-          "found": []
+          "count": 5,
+          "found": [
+            "manage your account preferences and configuration.",
+            "receive weekly benchmark reports",
+            "use dark color scheme",
+            "chinese simplified (zh-cn)",
+            "use this key to access the benchmarking api programmatically."
+          ]
         }
       },
       "localeLeakagePercent": 0,
@@ -1067,8 +1108,14 @@
           "found": []
         },
         "settings": {
-          "count": 0,
-          "found": []
+          "count": 5,
+          "found": [
+            "manage your account preferences and configuration.",
+            "receive weekly benchmark reports",
+            "use dark color scheme",
+            "chinese simplified (zh-cn)",
+            "use this key to access the benchmarking api programmatically."
+          ]
         },
         "team": {
           "count": 0,
@@ -1117,15 +1164,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/TeamHeader-D6T8MhO8.js",
-          "size": 467,
-          "gzipSize": 339,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-D_S5Oae6.js",
           "size": 375,
           "gzipSize": 297,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamHeader-D6T8MhO8.js",
+          "size": 467,
+          "gzipSize": 339,
           "type": "js"
         },
         {

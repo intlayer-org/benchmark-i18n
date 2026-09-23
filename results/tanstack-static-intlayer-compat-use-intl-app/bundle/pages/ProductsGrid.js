@@ -1,5 +1,6 @@
 import React, { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var products_grid_default = {
 	key: "products-grid",
 	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"benchmarkCli\":\"Benchmark CLI\",\"runBenchmarksLocallyFromYour\":\"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.\",\"contactUs\":\"Contact Us\",\"migrationAssistant\":\"Migration Assistant\",\"aiPoweredToolThatHelps\":\"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.\",\"translationQa\":\"Translation QA\",\"automatedQualityChecksForMissing\":\"Automated quality checks for missing translations, pluralization issues, and context errors.\",\"bundleOptimizer\":\"Bundle Optimizer\",\"analyzesAndOptimizesYourI18n\":\"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.\",\"learnMore\":\"Learn More\"},\"fr\":{\"benchmarkCli\":\"CLI Benchmark\",\"runBenchmarksLocallyFromYour\":\"Exécutez des benchmarks localement depuis votre terminal. Supporte les configurations personnalisées et l'intégration CI.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"Déploiement sur site avec SSO, journaux d'audit, SLA personnalisés et support dédié.\",\"contactUs\":\"Contactez-nous\",\"migrationAssistant\":\"Assistant de migration\",\"aiPoweredToolThatHelps\":\"Outil alimenté par l'IA qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.\",\"translationQa\":\"QA de traduction\",\"automatedQualityChecksForMissing\":\"Contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.\",\"bundleOptimizer\":\"Optimiseur de bundle\",\"analyzesAndOptimizesYourI18n\":\"Analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code.\",\"learnMore\":\"En savoir plus\"},\"es\":{\"benchmarkCli\":\"CLI de Benchmark\",\"runBenchmarksLocallyFromYour\":\"Ejecuta benchmarks localmente desde tu terminal. Soporta configuraciones personalizadas e integración CI.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Benchmarking automatizado basado en la nube con seguimiento histórico, alertas y paneles de equipo.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"Despliegue on-premise con SSO, registros de auditoría, SLA personalizados y soporte dedicado.\",\"contactUs\":\"Contáctanos\",\"migrationAssistant\":\"Asistente de migración\",\"aiPoweredToolThatHelps\":\"Herramienta basada en IA que ayuda a migrar tu código base entre bibliotecas i18n sin tiempo de inactividad.\",\"translationQa\":\"QA de traducción\",\"automatedQualityChecksForMissing\":\"Controles de calidad automatizados para traducciones faltantes, problemas de pluralización y errores de contexto.\",\"bundleOptimizer\":\"Optimizador de bundle\",\"analyzesAndOptimizesYourI18n\":\"Analiza y optimiza tu bundle i18n para producción con tree-shaking y división de código.\",\"learnMore\":\"Más información\"},\"de\":{\"benchmarkCli\":\"Benchmark CLI\",\"runBenchmarksLocallyFromYour\":\"Führen Sie Benchmarks lokal von Ihrem Terminal aus. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Automatisierte Cloud-basierte Benchmarks mit Verlaufsverfolgung, Warnungen und Team-Dashboards.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"On-Premise-Bereitstellung mit SSO, Audit-Logs, individuellen SLAs und dediziertem Support.\",\"contactUs\":\"Kontaktieren Sie uns\",\"migrationAssistant\":\"Migrationsassistent\",\"aiPoweredToolThatHelps\":\"KI-gestütztes Tool, das hilft, Ihre Codebasis ohne Ausfallzeiten zwischen i18n-Bibliotheken zu migrieren.\",\"translationQa\":\"Übersetzungs-QA\",\"automatedQualityChecksForMissing\":\"Automatisierte Qualitätsprüfungen für fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.\",\"bundleOptimizer\":\"Bundle-Optimierer\",\"analyzesAndOptimizesYourI18n\":\"Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code-Splitting.\",\"learnMore\":\"Mehr erfahren\"},\"it\":{\"benchmarkCli\":\"CLI del Benchmark\",\"runBenchmarksLocallyFromYour\":\"Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"Distribuzione in locale con SSO, log di controllo, SLA personalizzati e supporto dedicato.\",\"contactUs\":\"Contattaci\",\"migrationAssistant\":\"Assistente alla Migrazione\",\"aiPoweredToolThatHelps\":\"Strumento basato sull'IA che aiuta a migrare la tua codebase tra librerie i18n con tempi di inattività minimi.\",\"translationQa\":\"QA delle Traduzioni\",\"automatedQualityChecksForMissing\":\"Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.\",\"bundleOptimizer\":\"Ottimizzatore del Bundle\",\"analyzesAndOptimizesYourI18n\":\"Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.\",\"learnMore\":\"Scopri di più\"},\"pt\":{\"benchmarkCli\":\"CLI de Benchmark\",\"runBenchmarksLocallyFromYour\":\"Execute benchmarks localmente pelo seu terminal. Suporta configurações personalizadas e integração CI.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Benchmarking automatizado baseado em nuvem com rastreamento histórico, alertas e painéis de equipe.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"Implantação on-premise com SSO, logs de auditoria, SLAs personalizados e suporte dedicado.\",\"contactUs\":\"Contate-nos\",\"migrationAssistant\":\"Assistente de Migração\",\"aiPoweredToolThatHelps\":\"Ferramenta baseada em IA que ajuda a migrar sua base de código entre bibliotecas i18n sem tempo de inatividade.\",\"translationQa\":\"QA de Tradução\",\"automatedQualityChecksForMissing\":\"Verificações automatizadas de qualidade para traduções ausentes, problemas de pluralização e erros de contexto.\",\"bundleOptimizer\":\"Otimizador de Bundle\",\"analyzesAndOptimizesYourI18n\":\"Analisa e optimiza o seu bundle i18n para produção com tree-shaking e divisão de código.\",\"learnMore\":\"Saiba Mais\"},\"zh\":{\"benchmarkCli\":\"基准测试 CLI\",\"runBenchmarksLocallyFromYour\":\"从终端本地运行基准测试。支持自定义配置和 CI 集成。\",\"benchmarkCloud\":\"基准测试云\",\"automatedCloudBasedBenchmarkingWith\":\"自动化的基于云的基准测试，具有历史跟踪、警报和团队仪表板。\",\"benchmarkEnterprise\":\"基准测试企业版\",\"onPremiseDeploymentWithSso\":\"本地部署，具有 SSO、审计日志、定制 SLA 和专属支持。\",\"contactUs\":\"联系我们\",\"migrationAssistant\":\"迁移助手\",\"aiPoweredToolThatHelps\":\"人工智能驱动的工具，可帮助您在 i18n 库之间无缝迁移代码库。\",\"translationQa\":\"翻译质检\",\"automatedQualityChecksForMissing\":\"针对翻译缺失、复数形式问题和上下文错误的自动化质量检查。\",\"bundleOptimizer\":\"捆绑包优化器\",\"analyzesAndOptimizesYourI18n\":\"分析并优化用于生产的 i18n 捆绑包，采用摇树优化 (tree-shaking) 和代码拆分。\",\"learnMore\":\"了解更多\"},\"ja\":{\"benchmarkCli\":\"Benchmark CLI\",\"runBenchmarksLocallyFromYour\":\"ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートします。\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"履歴追跡、アラート、チームダッシュボードを備えた自動化されたクラウドベースのベンチマーク。\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"SSO、監査ログ、カスタムSLA、専任のサポートを備えたオンプレミス展開。\",\"contactUs\":\"お問い合わせ\",\"migrationAssistant\":\"移行アシスタント\",\"aiPoweredToolThatHelps\":\"ダウンタイムなしでi18nライブラリ間でコードベースを移行するのに役立つAI搭載ツール。\",\"translationQa\":\"翻訳QA\",\"automatedQualityChecksForMissing\":\"欠落している翻訳、複数形の問題、コンテキストエラーに対する自動品質チェック。\",\"bundleOptimizer\":\"バンドルオプティマイザー\",\"analyzesAndOptimizesYourI18n\":\"プロダクション用にi18nバンドルを分析し、ツリーシェイキングやコード分割によって最適化します。\",\"learnMore\":\"詳しく見る\"},\"ko\":{\"benchmarkCli\":\"Benchmark CLI\",\"runBenchmarksLocallyFromYour\":\"터미널에서 로컬로 벤치마크를 실행합니다. 맞춤형 구성 및 CI 통합을 지원합니다.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"기록 추적, 알림 및 팀 대시보드를 갖춘 자동화된 클라우드 기반 벤치마킹.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"SSO, 감사 로그, 맞춤형 SLA 및 전담 지원을 포함한 온프레미스 배포.\",\"contactUs\":\"문의하기\",\"migrationAssistant\":\"마이그레이션 어시스턴트\",\"aiPoweredToolThatHelps\":\"다운타임 없이 i18n 라이브러리 간에 코드베이스를 마이그레이션하도록 도와주는 AI 기반 도구입니다.\",\"translationQa\":\"번역 QA\",\"automatedQualityChecksForMissing\":\"누락된 번역, 복수형 문제 및 컨텍스트 오류에 대한 자동화된 품질 검사.\",\"bundleOptimizer\":\"번들 옵티마이저\",\"analyzesAndOptimizesYourI18n\":\"트리 쉐이킹(tree-shaking) 및 코드 분할을 통해 프로덕션용 i18n 번들을 분석하고 최적화합니다.\",\"learnMore\":\"더 알아보기\"},\"ru\":{\"benchmarkCli\":\"CLI для бенчмаркинга\",\"runBenchmarksLocallyFromYour\":\"Запуск тестов локально из терминала. Поддержка пользовательских конфигураций и интеграции с CI.\",\"benchmarkCloud\":\"Облачный бенчмаркинг\",\"automatedCloudBasedBenchmarkingWith\":\"Автоматизированное облачное тестирование с отслеживанием истории, оповещениями и командными панелями.\",\"benchmarkEnterprise\":\"Корпоративный бенчмаркинг\",\"onPremiseDeploymentWithSso\":\"Локальное развертывание с поддержкой SSO, журналами аудита, настраиваемыми SLA и выделенной поддержкой.\",\"contactUs\":\"Связаться с нами\",\"migrationAssistant\":\"Помощник по миграции\",\"aiPoweredToolThatHelps\":\"Инструмент на базе ИИ, помогающий мигрировать вашу кодовую базу между библиотеками i18n без простоев.\",\"translationQa\":\"Контроль качества перевода\",\"automatedQualityChecksForMissing\":\"Автоматизированная проверка качества на предмет отсутствующих переводов, проблем с плюрализацией и контекстных ошибок.\",\"bundleOptimizer\":\"Оптимизатор бандлов\",\"analyzesAndOptimizesYourI18n\":\"Анализирует и оптимизирует ваш бандл i18n для продакшна с использованием tree-shaking и разделения кода.\",\"learnMore\":\"Узнать больше\"}}}")
@@ -1281,10 +1282,9 @@ var formatArgument = (value, type, style, locale) => {
 	} catch {}
 	return String(value);
 };
-var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (match, path, type, style) => {
+var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{}]+?)\s*\}\}/g, (match, path) => {
 	const value = resolveValuePath(values, path);
-	if (value === void 0) return match;
-	return type ? formatArgument(value, type, style, locale) : String(value);
+	return value === void 0 ? match : String(value);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
 	if (value === void 0) return match;
@@ -1338,17 +1338,15 @@ var resolveMessageNode = (node, values = {}, locale = "en") => {
 	}
 	return node;
 };
-var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
-	const resolved = resolveMessageNode(node, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: (message) => icuToIntlayerFormatter(message),
+	i18next: (message) => i18nextToIntlayerFormatter(message),
+	"vue-i18n": (message) => vueI18nToIntlayerFormatter(message)
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => {
+	const resolved = resolveMessageNode(typeof message === "string" ? DIALECT_FORMATTERS[dialect](message) : message, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
-var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var DIALECT_FORMATTERS = {
-	icu: icuToIntlayerFormatter,
-	i18next: i18nextToIntlayerFormatter,
-	"vue-i18n": vueI18nToIntlayerFormatter
-};
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var parseTaggedMessage = (message) => {
 	const tokens = [];
 	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
@@ -1698,6 +1696,7 @@ var IntlProvider = ({ locale, children, messages: _messages, formats: _formats, 
 		children
 	}, String(locale));
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/pages/products/ProductsGrid.tsx";
 function ProductsGrid() {
 	const t = useDictionary(products_grid_default);
 	const products = [
@@ -1732,42 +1731,92 @@ function ProductsGrid() {
 			price: "$49/mo"
 		}
 	];
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "grid gap-6 md:grid-cols-2 lg:grid-cols-3",
-		children: products.map((p) => jsxs("div", {
+		children: products.map((p) => jsxDEV("div", {
 			className: "flex flex-col justify-between rounded-lg border border-border bg-card p-6",
-			children: [jsxs("div", { children: [jsx("h3", {
+			children: [jsxDEV("div", { children: [jsxDEV("h3", {
 				className: "mb-2 text-lg font-semibold text-foreground",
 				children: p.name
-			}), jsx("p", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 47,
+				columnNumber: 13
+			}, this), jsxDEV("p", {
 				className: "mb-4 text-sm text-muted-foreground",
 				children: p.desc
-			})] }), jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 50,
+				columnNumber: 13
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 46,
+				columnNumber: 11
+			}, this), jsxDEV("div", {
 				className: "flex items-center justify-between",
-				children: [jsx("span", {
+				children: [jsxDEV("span", {
 					className: "text-sm font-bold text-primary",
 					children: p.price
-				}), jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 53,
+					columnNumber: 13
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 					children: t("learnMore")
-				})]
-			})]
-		}, p.name))
-	});
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 54,
+					columnNumber: 13
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 52,
+				columnNumber: 11
+			}, this)]
+		}, p.name, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 42,
+			columnNumber: 9
+		}, this))
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 40,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(React.Suspense, {
+	return jsxDEV(React.Suspense, {
 		fallback: null,
-		children: jsx(IntlProvider, {
+		children: jsxDEV(IntlProvider, {
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 9,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/pages/products/ProductsGrid.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ProductsGrid, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ProductsGrid, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

@@ -1,6 +1,11 @@
 import { useId } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var onInvalidFunc = () => "";
+onInvalidFunc = (i, c) => {
+	const item = c[i];
+	if (item == null) return `[i18n-404:${i}]`;
+	return `[i18n-400:${i}(${item})]`;
+};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -89,36 +94,73 @@ var loadCatalog$11 = (loadID, locale) => {
 	return catalogs$11[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("settings", loadCatalog$11, 1);
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/settings/ProfileSection.tsx";
 function ProfileSection() {
 	const displayNameId = useId();
 	const emailId = useId();
 	const _w_runtime_ = getRuntimeRx();
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: _w_runtime_(199)
-		}), jsxs("div", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 15,
+			columnNumber: 7
+		}, this), jsxDEV("div", {
 			className: "space-y-4",
-			children: [jsxs("div", { children: [jsx("label", {
+			children: [jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: displayNameId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: _w_runtime_(200)
-			}), jsx("input", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 18,
+				columnNumber: 11
+			}, this), jsxDEV("input", {
 				id: displayNameId,
 				defaultValue: _w_runtime_(201),
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			})] }), jsxs("div", { children: [jsx("label", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 24,
+				columnNumber: 11
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 17,
+				columnNumber: 9
+			}, this), jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: emailId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: _w_runtime_(113)
-			}), jsx("input", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 31,
+				columnNumber: 11
+			}, this), jsxDEV("input", {
 				id: emailId,
 				defaultValue: "john@example.com",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			})] })]
-		})]
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 37,
+				columnNumber: 11
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 30,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 16,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 14,
+		columnNumber: 5
+	}, this);
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -296,12 +338,26 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/settings/ProfileSection.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ProfileSection, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ProfileSection, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var c = [

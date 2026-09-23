@@ -1,5 +1,38 @@
 import React, { Fragment, createContext, useContext, useEffect, useMemo, useRef, useState } from "react";
+import _1rvheg2x557 from "../.intlayer/dictionary/products-grid.json";
+import _1qrrhddl6dd from "../.intlayer/dictionary/preferences-section.json";
+import _ikowr58hmp from "../.intlayer/dictionary/header.json";
+import _1adsi1c7arh from "../.intlayer/dictionary/open-positions.json";
+import _1cp2j643wy7 from "../.intlayer/dictionary/careers-benefits.json";
+import _1gdfzvd71cl from "../.intlayer/dictionary/footer.json";
+import _1y9rebw8eb8 from "../.intlayer/dictionary/results-table.json";
+import _245fmlgtr2y from "../.intlayer/dictionary/settings-header.json";
+import _1ops1ohnum0 from "../.intlayer/dictionary/contact-form.json";
+import _u6gn5c1x0v from "../.intlayer/dictionary/contact-header.json";
+import _1wa8hj7divy from "../.intlayer/dictionary/about-grid.json";
+import _1i665ahueg7 from "../.intlayer/dictionary/pricing-tiers.json";
+import _2d9f06374d8 from "../.intlayer/dictionary/mockBanner.json";
+import _25zslpneq4c from "../.intlayer/dictionary/settings-footer.json";
+import _bgjg6dvgm5 from "../.intlayer/dictionary/theme-toggle.json";
+import _2emep3oyf8d from "../.intlayer/dictionary/about-header.json";
+import _18ys7jlt499 from "../.intlayer/dictionary/profile-section.json";
+import _256g6z3sux9 from "../.intlayer/dictionary/faq-header1.json";
+import _b1qzqr84q4 from "../.intlayer/dictionary/pricing-header.json";
+import _1f30jyccm0x from "../.intlayer/dictionary/blog-header.json";
+import _47kwf37f9i from "../.intlayer/dictionary/team-header.json";
+import _1vhzy8mzqnh from "../.intlayer/dictionary/route.json";
+import _j5e6s0nxr7 from "../.intlayer/dictionary/faq-list.json";
+import _hmeg1xpwkz from "../.intlayer/dictionary/careers-header.json";
+import _2arhw6ksb9j from "../.intlayer/dictionary/products-header.json";
+import _1ya87n6vf2o from "../.intlayer/dictionary/what-we-measure.json";
+import _6ajsx0n7or from "../.intlayer/dictionary/blog-list.json";
+import _qddddkdkyt from "../.intlayer/dictionary/understanding-impact.json";
+import _37kr1sjilv from "../.intlayer/dictionary/team-grid.json";
+import _1ds3jw9xrsq from "../.intlayer/dictionary/api-access-section.json";
+import _1me8lk0lo0s from "../.intlayer/dictionary/why-it-matters.json";
+import _zn1gnv2j47 from "../.intlayer/dictionary/hero.json";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 var pluginsIdentities = /* @__PURE__ */ new WeakMap();
 var nextPluginsIdentity = 0;
 var getPluginsCacheKey = (plugins) => {
@@ -255,7 +288,41 @@ var colorizeKey = (keyPath, color = BEIGE, reset = RESET) => [keyPath].flat().ma
 colorize("✗", RED);
 colorize("✓", GREEN);
 colorize("⏲", BLUE);
-var getDictionaries = () => ({});
+var dictionaries = {
+	"products-grid": _1rvheg2x557,
+	"preferences-section": _1qrrhddl6dd,
+	"header": _ikowr58hmp,
+	"open-positions": _1adsi1c7arh,
+	"careers-benefits": _1cp2j643wy7,
+	"footer": _1gdfzvd71cl,
+	"results-table": _1y9rebw8eb8,
+	"settings-header": _245fmlgtr2y,
+	"contact-form": _1ops1ohnum0,
+	"contact-header": _u6gn5c1x0v,
+	"about-grid": _1wa8hj7divy,
+	"pricing-tiers": _1i665ahueg7,
+	"mockBanner": _2d9f06374d8,
+	"settings-footer": _25zslpneq4c,
+	"theme-toggle": _bgjg6dvgm5,
+	"about-header": _2emep3oyf8d,
+	"profile-section": _18ys7jlt499,
+	"faq-header1": _256g6z3sux9,
+	"pricing-header": _b1qzqr84q4,
+	"blog-header": _1f30jyccm0x,
+	"team-header": _47kwf37f9i,
+	"route": _1vhzy8mzqnh,
+	"faq-list": _j5e6s0nxr7,
+	"careers-header": _hmeg1xpwkz,
+	"products-header": _2arhw6ksb9j,
+	"what-we-measure": _1ya87n6vf2o,
+	"blog-list": _6ajsx0n7or,
+	"understanding-impact": _qddddkdkyt,
+	"team-grid": _37kr1sjilv,
+	"api-access-section": _1ds3jw9xrsq,
+	"why-it-matters": _1me8lk0lo0s,
+	"hero": _zn1gnv2j47
+};
+var getDictionaries = () => dictionaries;
 var PROTOTYPE_METHOD_NAMES = /* @__PURE__ */ new Set([
 	"hasOwnProperty",
 	"isPrototypeOf",
@@ -1288,10 +1355,9 @@ var formatArgument = (value, type, style, locale) => {
 	} catch {}
 	return String(value);
 };
-var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (match, path, type, style) => {
+var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{}]+?)\s*\}\}/g, (match, path) => {
 	const value = resolveValuePath(values, path);
-	if (value === void 0) return match;
-	return type ? formatArgument(value, type, style, locale) : String(value);
+	return value === void 0 ? match : String(value);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
 	if (value === void 0) return match;
@@ -1345,17 +1411,15 @@ var resolveMessageNode = (node, values = {}, locale = "en") => {
 	}
 	return node;
 };
-var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
-	const resolved = resolveMessageNode(node, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: (message) => icuToIntlayerFormatter(message),
+	i18next: (message) => i18nextToIntlayerFormatter(message),
+	"vue-i18n": (message) => vueI18nToIntlayerFormatter(message)
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => {
+	const resolved = resolveMessageNode(typeof message === "string" ? DIALECT_FORMATTERS[dialect](message) : message, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
-var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var DIALECT_FORMATTERS = {
-	icu: icuToIntlayerFormatter,
-	i18next: i18nextToIntlayerFormatter,
-	"vue-i18n": vueI18nToIntlayerFormatter
-};
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var parseTaggedMessage = (message) => {
 	const tokens = [];
 	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
@@ -1618,29 +1682,56 @@ var useTranslations = ((namespace) => {
 	const { locale: currentLocale } = useContext(IntlayerClientContext) ?? {};
 	return useMemo(() => createNamespaceTranslator(currentLocale, namespace), [currentLocale, namespace]);
 });
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/scripts/EmptyComponent.tsx";
 var TestComponent = () => {
 	useTranslations();
 	return null;
 };
 function EmptyComponent() {
-	return jsx(IntlProvider, {
+	return jsxDEV(IntlProvider, {
 		locale: "en",
 		timeZone: "UTC",
-		children: jsx(TestComponent, {})
-	});
+		children: jsxDEV(TestComponent, {}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 13,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(React.Suspense, {
+	return jsxDEV(React.Suspense, {
 		fallback: null,
-		children: jsx(IntlProvider, {
+		children: jsxDEV(IntlProvider, {
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 9,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/scripts/EmptyComponent.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(EmptyComponent, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(EmptyComponent, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

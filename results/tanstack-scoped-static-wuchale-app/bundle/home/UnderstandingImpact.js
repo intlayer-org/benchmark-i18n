@@ -1,6 +1,11 @@
 import "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var onInvalidFunc = () => "";
+onInvalidFunc = (i, c) => {
+	const item = c[i];
+	if (item == null) return `[i18n-404:${i}]`;
+	return `[i18n-400:${i}(${item})]`;
+};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -105,89 +110,190 @@ var runtime_default = (props) => {
 		x: fragment
 	}, i));
 };
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/home/UnderstandingImpact.tsx";
 function UnderstandingImpact() {
 	const _w_runtime_ = getRuntimeRx();
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "mb-16 mx-auto max-w-3xl space-y-6",
 		children: [
-			jsx("h2", {
+			jsxDEV("h2", {
 				className: "text-2xl font-bold text-foreground",
 				children: _w_runtime_(38)
-			}),
-			jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 10,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsx("h3", {
+					jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: _w_runtime_(39)
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 15,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: _w_runtime_(40)
-					}),
-					jsxs("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 18,
+						columnNumber: 9
+					}, this),
+					jsxDEV("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							jsx("li", { children: _w_runtime_(41) }),
-							jsx("li", { children: _w_runtime_(42) }),
-							jsx("li", { children: _w_runtime_(43) })
+							jsxDEV("li", { children: _w_runtime_(41) }, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 22,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: _w_runtime_(42) }, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 25,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: _w_runtime_(43) }, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 28,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 21,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 14,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
 				children: [
-					jsx("h3", {
+					jsxDEV("h3", {
 						className: "mb-2 text-lg font-semibold text-foreground",
 						children: _w_runtime_(44)
-					}),
-					jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 35,
+						columnNumber: 9
+					}, this),
+					jsxDEV("p", {
 						className: "text-sm text-muted-foreground",
 						children: _w_runtime_(45)
-					}),
-					jsxs("ul", {
+					}, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 38,
+						columnNumber: 9
+					}, this),
+					jsxDEV("ul", {
 						className: "mt-3 space-y-2 text-sm text-muted-foreground list-disc pl-5",
 						children: [
-							jsx("li", { children: jsx(runtime_default, {
-								t: [(_w_ctx_) => jsx("strong", {
+							jsxDEV("li", { children: jsxDEV(runtime_default, {
+								t: [(_w_ctx_) => jsxDEV("strong", {
 									className: "text-foreground",
 									children: _w_runtime_.x(_w_ctx_)
-								}, "_0")],
+								}, "_0", false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 43,
+									columnNumber: 35
+								}, this)],
 								x: _w_runtime_.c(46)
-							}) }),
-							jsx("li", { children: jsx(runtime_default, {
-								t: [(_w_ctx_) => jsx("strong", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 43,
+								columnNumber: 13
+							}, this) }, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 42,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: jsxDEV(runtime_default, {
+								t: [(_w_ctx_) => jsxDEV("strong", {
 									className: "text-foreground",
 									children: _w_runtime_.x(_w_ctx_)
-								}, "_1")],
+								}, "_1", false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 45,
+									columnNumber: 35
+								}, this)],
 								x: _w_runtime_.c(47),
 								a: [" "]
-							}) }),
-							jsx("li", { children: jsx(runtime_default, {
-								t: [(_w_ctx_) => jsx("strong", {
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 45,
+								columnNumber: 13
+							}, this) }, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 44,
+								columnNumber: 11
+							}, this),
+							jsxDEV("li", { children: jsxDEV(runtime_default, {
+								t: [(_w_ctx_) => jsxDEV("strong", {
 									className: "text-foreground",
 									children: _w_runtime_.x(_w_ctx_)
-								}, "_2")],
+								}, "_2", false, {
+									fileName: _jsxFileName$2,
+									lineNumber: 47,
+									columnNumber: 35
+								}, this)],
 								x: _w_runtime_.c(48),
 								a: [" "]
-							}) })
+							}, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 47,
+								columnNumber: 13
+							}, this) }, void 0, false, {
+								fileName: _jsxFileName$2,
+								lineNumber: 46,
+								columnNumber: 11
+							}, this)
 						]
-					})
+					}, void 0, true, {
+						fileName: _jsxFileName$2,
+						lineNumber: 41,
+						columnNumber: 9
+					}, this)
 				]
-			}),
-			jsxs("div", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 34,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", {
 				className: "rounded-lg border border-border bg-card p-6",
-				children: [jsx("h3", {
+				children: [jsxDEV("h3", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: _w_runtime_(49)
-				}), jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 52,
+					columnNumber: 9
+				}, this), jsxDEV("p", {
 					className: "text-sm text-muted-foreground",
 					children: _w_runtime_(50)
-				})]
-			})
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 55,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 51,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -365,12 +471,26 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/home/UnderstandingImpact.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(UnderstandingImpact, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(UnderstandingImpact, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var c = [

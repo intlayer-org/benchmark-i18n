@@ -1,5 +1,5 @@
 import { createContext, createElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -2422,25 +2422,51 @@ function I18nextProvider({ i18n, defaultNS, children }) {
 	}), [i18n, defaultNS]);
 	return createElement(I18nContext.Provider, { value }, children);
 }
+var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/MockBanner.tsx";
 var MockBanner = () => {
 	const { t } = useTranslation();
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: t("shared.mockBanner.text")
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$4,
+		lineNumber: 8,
+		columnNumber: 5
+	}, void 0);
 };
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/pages/pricing/PricingHeader.tsx";
 function PricingHeader() {
 	const { t } = useTranslation();
-	return jsxs(Fragment, { children: [jsx(MockBanner, {}), jsxs("div", {
+	return jsxDEV(Fragment, { children: [jsxDEV(MockBanner, {}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 10,
+		columnNumber: 7
+	}, this), jsxDEV("div", {
 		className: "mb-12 text-center",
-		children: [jsx("h1", {
+		children: [jsxDEV("h1", {
 			className: "mb-3 text-3xl font-bold text-foreground",
 			children: t("pricing.pricingHeader.pricing")
-		}), jsx("p", {
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 12,
+			columnNumber: 9
+		}, this), jsxDEV("p", {
 			className: "text-muted-foreground",
 			children: t("pricing.pricingHeader.transparentPricingForEvery")
-		})]
-	})] });
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 15,
+			columnNumber: 9
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 11,
+		columnNumber: 7
+	}, this)] }, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -4623,6 +4649,7 @@ instance.use(initReactI18next).init({
 	nsSeparator: false
 });
 var i18n_default = instance;
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -4638,15 +4665,33 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nextProvider, {
+	return jsxDEV(I18nextProvider, {
 		i18n: i18n_default,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 38,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-i18next-app/components/pages/pricing/PricingHeader.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(PricingHeader, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(PricingHeader, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

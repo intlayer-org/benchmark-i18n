@@ -1,5 +1,5 @@
 import { useId } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var URLPattern = {};
 var locales = [
 	"en",
@@ -186,214 +186,261 @@ var customClientStrategies = /* @__PURE__ */ new Map();
 function isCustomStrategy(strategy) {
 	return typeof strategy === "string" && /^custom-[A-Za-z0-9_-]+$/.test(strategy);
 }
-var en_api_access_section_apiaccess1 = () => {
+var api_access_section_apiaccess1$10 = () => {
 	return `API Access`;
 };
-var fr_api_access_section_apiaccess1 = () => {
+var api_access_section_apikey1$10 = () => {
+	return `API Key`;
+};
+var api_access_section_copy$10 = () => "api-access-section.copy";
+var api_access_section_usethiskeytoaccess4$10 = () => {
+	return `Use this key to access the benchmarking API programmatically.`;
+};
+var api_access_section_apiaccess1$9 = () => {
 	return `Accès API`;
 };
-var es_api_access_section_apiaccess1 = () => {
+var api_access_section_apikey1$9 = () => {
+	return `Clé API`;
+};
+var api_access_section_copy$9 = () => {
+	return `Copier`;
+};
+var api_access_section_usethiskeytoaccess4$9 = () => {
+	return `Utilisez cette clé pour accéder à l'API de benchmarking par programmation.`;
+};
+var api_access_section_apiaccess1$8 = () => {
 	return `Acceso API`;
 };
-var de_api_access_section_apiaccess1 = () => {
+var api_access_section_apikey1$8 = () => {
+	return `Llave API`;
+};
+var api_access_section_copy$8 = () => {
+	return `Copiar`;
+};
+var api_access_section_usethiskeytoaccess4$8 = () => {
+	return `Usa esta llave para acceder a la API de benchmarking de forma programática.`;
+};
+var api_access_section_apiaccess1$7 = () => {
 	return `API-Zugriff`;
 };
-var it_api_access_section_apiaccess1 = () => {
+var api_access_section_apikey1$7 = () => {
+	return `API-Schlüssel`;
+};
+var api_access_section_copy$7 = () => {
+	return `Kopieren`;
+};
+var api_access_section_usethiskeytoaccess4$7 = () => {
+	return `Verwenden Sie diesen Schlüssel, um programmgesteuert auf die Benchmarking-API zuzugreifen.`;
+};
+var api_access_section_apiaccess1$6 = () => {
 	return `Accesso API`;
 };
-var pt_api_access_section_apiaccess1 = () => {
+var api_access_section_apikey1$6 = () => {
+	return `Chiave API`;
+};
+var api_access_section_copy$6 = () => {
+	return `Copia`;
+};
+var api_access_section_usethiskeytoaccess4$6 = () => {
+	return `Usa questa chiave per accedere programmaticamente alle API di benchmarking.`;
+};
+var api_access_section_apiaccess1$5 = () => {
 	return `Acesso à API`;
 };
-var zh_api_access_section_apiaccess1 = () => {
+var api_access_section_apikey1$5 = () => {
+	return `Chave da API`;
+};
+var api_access_section_copy$5 = () => {
+	return `Copiar`;
+};
+var api_access_section_usethiskeytoaccess4$5 = () => {
+	return `Utilize esta chave para acessar a API de benchmarking de forma programática.`;
+};
+var api_access_section_apiaccess1$4 = () => {
 	return `API 访问`;
 };
-var ja_api_access_section_apiaccess1 = () => {
+var api_access_section_apikey1$4 = () => {
+	return `API 密钥`;
+};
+var api_access_section_copy$4 = () => {
+	return `复制`;
+};
+var api_access_section_usethiskeytoaccess4$4 = () => {
+	return `使用此密钥从程序访问基准测试 API。`;
+};
+var api_access_section_apiaccess1$3 = () => {
 	return `APIアクセス`;
 };
-var ko_api_access_section_apiaccess1 = () => {
+var api_access_section_apikey1$3 = () => {
+	return `APIキー`;
+};
+var api_access_section_copy$3 = () => {
+	return `コピー`;
+};
+var api_access_section_usethiskeytoaccess4$3 = () => {
+	return `このキーを使用して、プログラムからベンチマークAPIにアクセスします。`;
+};
+var api_access_section_apiaccess1$2 = () => {
 	return `API 액세스`;
 };
-var ru_api_access_section_apiaccess1 = () => {
+var api_access_section_apikey1$2 = () => {
+	return `API 키`;
+};
+var api_access_section_copy$2 = () => {
+	return `복사`;
+};
+var api_access_section_usethiskeytoaccess4$2 = () => {
+	return `이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오.`;
+};
+var api_access_section_apiaccess1$1 = () => {
 	return `Доступ к API`;
+};
+var api_access_section_apikey1$1 = () => {
+	return `Ключ API`;
+};
+var api_access_section_copy$1 = () => {
+	return `Копировать`;
+};
+var api_access_section_usethiskeytoaccess4$1 = () => {
+	return `Используйте этот ключ для программного доступа к API бенчмаркинга.`;
 };
 var api_access_section_apiaccess1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_api_access_section_apiaccess1(inputs);
-	if (locale === "es") return es_api_access_section_apiaccess1(inputs);
-	if (locale === "de") return de_api_access_section_apiaccess1(inputs);
-	if (locale === "it") return it_api_access_section_apiaccess1(inputs);
-	if (locale === "pt") return pt_api_access_section_apiaccess1(inputs);
-	if (locale === "zh") return zh_api_access_section_apiaccess1(inputs);
-	if (locale === "ja") return ja_api_access_section_apiaccess1(inputs);
-	if (locale === "ko") return ko_api_access_section_apiaccess1(inputs);
-	if (locale === "ru") return ru_api_access_section_apiaccess1(inputs);
-	return en_api_access_section_apiaccess1(inputs);
+	if (locale === "fr") return api_access_section_apiaccess1$9(inputs);
+	if (locale === "es") return api_access_section_apiaccess1$8(inputs);
+	if (locale === "de") return api_access_section_apiaccess1$7(inputs);
+	if (locale === "it") return api_access_section_apiaccess1$6(inputs);
+	if (locale === "pt") return api_access_section_apiaccess1$5(inputs);
+	if (locale === "zh") return api_access_section_apiaccess1$4(inputs);
+	if (locale === "ja") return api_access_section_apiaccess1$3(inputs);
+	if (locale === "ko") return api_access_section_apiaccess1$2(inputs);
+	if (locale === "ru") return api_access_section_apiaccess1$1(inputs);
+	return api_access_section_apiaccess1$10(inputs);
 });
-var en_api_access_section_apikey1 = () => {
-	return `API Key`;
-};
-var fr_api_access_section_apikey1 = () => {
-	return `Clé API`;
-};
-var es_api_access_section_apikey1 = () => {
-	return `Llave API`;
-};
-var de_api_access_section_apikey1 = () => {
-	return `API-Schlüssel`;
-};
-var it_api_access_section_apikey1 = () => {
-	return `Chiave API`;
-};
-var pt_api_access_section_apikey1 = () => {
-	return `Chave da API`;
-};
-var zh_api_access_section_apikey1 = () => {
-	return `API 密钥`;
-};
-var ja_api_access_section_apikey1 = () => {
-	return `APIキー`;
-};
-var ko_api_access_section_apikey1 = () => {
-	return `API 키`;
-};
-var ru_api_access_section_apikey1 = () => {
-	return `Ключ API`;
-};
 var api_access_section_apikey1 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_api_access_section_apikey1(inputs);
-	if (locale === "es") return es_api_access_section_apikey1(inputs);
-	if (locale === "de") return de_api_access_section_apikey1(inputs);
-	if (locale === "it") return it_api_access_section_apikey1(inputs);
-	if (locale === "pt") return pt_api_access_section_apikey1(inputs);
-	if (locale === "zh") return zh_api_access_section_apikey1(inputs);
-	if (locale === "ja") return ja_api_access_section_apikey1(inputs);
-	if (locale === "ko") return ko_api_access_section_apikey1(inputs);
-	if (locale === "ru") return ru_api_access_section_apikey1(inputs);
-	return en_api_access_section_apikey1(inputs);
+	if (locale === "fr") return api_access_section_apikey1$9(inputs);
+	if (locale === "es") return api_access_section_apikey1$8(inputs);
+	if (locale === "de") return api_access_section_apikey1$7(inputs);
+	if (locale === "it") return api_access_section_apikey1$6(inputs);
+	if (locale === "pt") return api_access_section_apikey1$5(inputs);
+	if (locale === "zh") return api_access_section_apikey1$4(inputs);
+	if (locale === "ja") return api_access_section_apikey1$3(inputs);
+	if (locale === "ko") return api_access_section_apikey1$2(inputs);
+	if (locale === "ru") return api_access_section_apikey1$1(inputs);
+	return api_access_section_apikey1$10(inputs);
 });
-var fr_api_access_section_copy = () => {
-	return `Copier`;
-};
-var es_api_access_section_copy = () => {
-	return `Copiar`;
-};
-var de_api_access_section_copy = () => {
-	return `Kopieren`;
-};
-var it_api_access_section_copy = () => {
-	return `Copia`;
-};
-var pt_api_access_section_copy = () => {
-	return `Copiar`;
-};
-var zh_api_access_section_copy = () => {
-	return `复制`;
-};
-var ja_api_access_section_copy = () => {
-	return `コピー`;
-};
-var ko_api_access_section_copy = () => {
-	return `복사`;
-};
-var ru_api_access_section_copy = () => {
-	return `Копировать`;
-};
-var en_api_access_section_copy = () => "api-access-section.copy";
 var api_access_section_copy = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_api_access_section_copy(inputs);
-	if (locale === "es") return es_api_access_section_copy(inputs);
-	if (locale === "de") return de_api_access_section_copy(inputs);
-	if (locale === "it") return it_api_access_section_copy(inputs);
-	if (locale === "pt") return pt_api_access_section_copy(inputs);
-	if (locale === "zh") return zh_api_access_section_copy(inputs);
-	if (locale === "ja") return ja_api_access_section_copy(inputs);
-	if (locale === "ko") return ko_api_access_section_copy(inputs);
-	if (locale === "ru") return ru_api_access_section_copy(inputs);
-	return en_api_access_section_copy(inputs);
+	if (locale === "fr") return api_access_section_copy$9(inputs);
+	if (locale === "es") return api_access_section_copy$8(inputs);
+	if (locale === "de") return api_access_section_copy$7(inputs);
+	if (locale === "it") return api_access_section_copy$6(inputs);
+	if (locale === "pt") return api_access_section_copy$5(inputs);
+	if (locale === "zh") return api_access_section_copy$4(inputs);
+	if (locale === "ja") return api_access_section_copy$3(inputs);
+	if (locale === "ko") return api_access_section_copy$2(inputs);
+	if (locale === "ru") return api_access_section_copy$1(inputs);
+	return api_access_section_copy$10(inputs);
 });
-var en_api_access_section_usethiskeytoaccess4 = () => {
-	return `Use this key to access the benchmarking API programmatically.`;
-};
-var fr_api_access_section_usethiskeytoaccess4 = () => {
-	return `Utilisez cette clé pour accéder à l'API de benchmarking par programmation.`;
-};
-var es_api_access_section_usethiskeytoaccess4 = () => {
-	return `Usa esta llave para acceder a la API de benchmarking de forma programática.`;
-};
-var de_api_access_section_usethiskeytoaccess4 = () => {
-	return `Verwenden Sie diesen Schlüssel, um programmgesteuert auf die Benchmarking-API zuzugreifen.`;
-};
-var it_api_access_section_usethiskeytoaccess4 = () => {
-	return `Usa questa chiave per accedere programmaticamente alle API di benchmarking.`;
-};
-var pt_api_access_section_usethiskeytoaccess4 = () => {
-	return `Utilize esta chave para acessar a API de benchmarking de forma programática.`;
-};
-var zh_api_access_section_usethiskeytoaccess4 = () => {
-	return `使用此密钥从程序访问基准测试 API。`;
-};
-var ja_api_access_section_usethiskeytoaccess4 = () => {
-	return `このキーを使用して、プログラムからベンチマークAPIにアクセスします。`;
-};
-var ko_api_access_section_usethiskeytoaccess4 = () => {
-	return `이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오.`;
-};
-var ru_api_access_section_usethiskeytoaccess4 = () => {
-	return `Используйте этот ключ для программного доступа к API бенчмаркинга.`;
-};
 var api_access_section_usethiskeytoaccess4 = ((inputs = {}, options = {}) => {
 	const locale = options.locale ?? getLocale();
-	if (locale === "fr") return fr_api_access_section_usethiskeytoaccess4(inputs);
-	if (locale === "es") return es_api_access_section_usethiskeytoaccess4(inputs);
-	if (locale === "de") return de_api_access_section_usethiskeytoaccess4(inputs);
-	if (locale === "it") return it_api_access_section_usethiskeytoaccess4(inputs);
-	if (locale === "pt") return pt_api_access_section_usethiskeytoaccess4(inputs);
-	if (locale === "zh") return zh_api_access_section_usethiskeytoaccess4(inputs);
-	if (locale === "ja") return ja_api_access_section_usethiskeytoaccess4(inputs);
-	if (locale === "ko") return ko_api_access_section_usethiskeytoaccess4(inputs);
-	if (locale === "ru") return ru_api_access_section_usethiskeytoaccess4(inputs);
-	return en_api_access_section_usethiskeytoaccess4(inputs);
+	if (locale === "fr") return api_access_section_usethiskeytoaccess4$9(inputs);
+	if (locale === "es") return api_access_section_usethiskeytoaccess4$8(inputs);
+	if (locale === "de") return api_access_section_usethiskeytoaccess4$7(inputs);
+	if (locale === "it") return api_access_section_usethiskeytoaccess4$6(inputs);
+	if (locale === "pt") return api_access_section_usethiskeytoaccess4$5(inputs);
+	if (locale === "zh") return api_access_section_usethiskeytoaccess4$4(inputs);
+	if (locale === "ja") return api_access_section_usethiskeytoaccess4$3(inputs);
+	if (locale === "ko") return api_access_section_usethiskeytoaccess4$2(inputs);
+	if (locale === "ru") return api_access_section_usethiskeytoaccess4$1(inputs);
+	return api_access_section_usethiskeytoaccess4$10(inputs);
 });
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/ApiAccessSection.tsx";
 function ApiAccessSection() {
 	const apiKeyId = useId();
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: api_access_section_apiaccess1()
-		}), jsxs("div", { children: [
-			jsx("label", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 9,
+			columnNumber: 7
+		}, this), jsxDEV("div", { children: [
+			jsxDEV("label", {
 				htmlFor: apiKeyId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: api_access_section_apikey1()
-			}),
-			jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 13,
+				columnNumber: 9
+			}, this),
+			jsxDEV("div", {
 				className: "flex gap-2",
-				children: [jsx("input", {
+				children: [jsxDEV("input", {
 					id: apiKeyId,
 					readOnly: true,
 					defaultValue: "sk_bench_xxxxxxxxxxxxxxxxxxxx",
 					className: "flex-1 rounded-md border border-input bg-muted px-3 py-2 text-sm text-muted-foreground"
-				}), jsx("button", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 20,
+					columnNumber: 11
+				}, this), jsxDEV("button", {
 					type: "button",
 					className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
 					children: api_access_section_copy()
-				})]
-			}),
-			jsx("p", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 26,
+					columnNumber: 11
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 19,
+				columnNumber: 9
+			}, this),
+			jsxDEV("p", {
 				className: "mt-1 text-xs text-muted-foreground",
 				children: api_access_section_usethiskeytoaccess4()
-			})
-		] })]
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 33,
+				columnNumber: 9
+			}, this)
+		] }, void 0, true, {
+			fileName: _jsxFileName$2,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 8,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 setLocale("en", { reload: false });
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/pages/settings/ApiAccessSection.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ApiAccessSection, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ApiAccessSection, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

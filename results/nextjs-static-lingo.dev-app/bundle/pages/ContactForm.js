@@ -1,67 +1,149 @@
 import { t as logger } from "./logger-CWLzb-Ic.js";
 import { createContext, useCallback, useEffect, useId, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
+import { jsx } from "react/jsx-runtime";
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/contact/ContactForm.tsx";
 function ContactForm() {
 	const nameId = useId();
 	const emailId = useId();
 	const topicId = useId();
 	const messageId = useId();
-	return jsxs("form", {
+	return jsxDEV("form", {
 		className: "space-y-6",
 		children: [
-			jsxs("div", {
+			jsxDEV("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [jsxs("div", { children: [jsx("label", {
+				children: [jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: nameId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: "Name"
-				}), jsx("input", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 15,
+					columnNumber: 11
+				}, this), jsxDEV("input", {
 					id: nameId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "Your name"
-				})] }), jsxs("div", { children: [jsx("label", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 21,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 14,
+					columnNumber: 9
+				}, this), jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: emailId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: "Email"
-				}), jsx("input", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 28,
+					columnNumber: 11
+				}, this), jsxDEV("input", {
 					id: emailId,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "you@example.com"
-				})] })]
-			}),
-			jsxs("div", { children: [jsx("label", {
+				}, void 0, false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 34,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$2,
+					lineNumber: 27,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 13,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: topicId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: "Topic"
-			}), jsxs("select", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 43,
+				columnNumber: 9
+			}, this), jsxDEV("select", {
 				id: topicId,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					jsx("option", { children: "Bug Report" }),
-					jsx("option", { children: "New Benchmark Idea" }),
-					jsx("option", { children: "Methodology Question" }),
-					jsx("option", { children: "Contribution" }),
-					jsx("option", { children: "Other" })
+					jsxDEV("option", { children: "Bug Report" }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 53,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: "New Benchmark Idea" }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 54,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: "Methodology Question" }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 55,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: "Contribution" }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 56,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: "Other" }, void 0, false, {
+						fileName: _jsxFileName$2,
+						lineNumber: 57,
+						columnNumber: 11
+					}, this)
 				]
-			})] }),
-			jsxs("div", { children: [jsx("label", {
+			}, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 49,
+				columnNumber: 9
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 42,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: messageId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: "Message"
-			}), jsx("textarea", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 61,
+				columnNumber: 9
+			}, this), jsxDEV("textarea", {
 				id: messageId,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				placeholder: "Describe your question or idea..."
-			})] }),
-			jsx("button", {
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 67,
+				columnNumber: 9
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$2,
+				lineNumber: 60,
+				columnNumber: 7
+			}, this),
+			jsxDEV("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: "Send Message"
-			})
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 74,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 12,
+		columnNumber: 5
+	}, this);
 }
 var LingoContext = createContext(null);
 async function fetchTranslations(targetLocale, hashes, serverUrl) {
@@ -295,14 +377,28 @@ function LingoProvider__Dev({ initialLocale, initialTranslations = {}, router, d
 		children
 	});
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(LingoProvider, {
+	return jsxDEV(LingoProvider, {
 		initialLocale: "en",
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 6,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingo.dev-app/components/pages/contact/ContactForm.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ContactForm, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ContactForm, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 import { t as logger } from "./logger-CWLzb-Ic.js";

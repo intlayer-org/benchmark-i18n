@@ -1,11 +1,11 @@
 {
   "app": "tanstack-static-intlayer-compat-use-intl-app",
   "locale": "en",
-  "timestamp": "2026-09-11T20:14:48.335Z",
+  "timestamp": "2026-09-07T00:23:32.175Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 93,
-      "fr": 110
+      "en": 94,
+      "fr": 111
     },
     "page": {
       "home": 24,
@@ -25,69 +25,69 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 490567,
-      "totalGzipSize": 159928,
-      "jsSize": 453182,
-      "jsGzipSize": 150007,
-      "cssSize": 23734,
-      "cssGzipSize": 5027,
-      "htmlSize": 13651,
-      "htmlGzipSize": 4894,
+      "totalSize": 473529,
+      "totalGzipSize": 152367,
+      "jsSize": 435607,
+      "jsGzipSize": 142353,
+      "cssSize": 23933,
+      "cssGzipSize": 4994,
+      "htmlSize": 13989,
+      "htmlGzipSize": 5020,
       "fileCount": 9,
       "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en",
-          "size": 13651,
-          "gzipSize": 4894,
+          "size": 13989,
+          "gzipSize": 5020,
           "type": "html"
         },
         {
-          "url": "/assets/styles-Do1bEqep.css",
-          "size": 23734,
-          "gzipSize": 5027,
+          "url": "/assets/route-51Y6dh-R.js",
+          "size": 114,
+          "gzipSize": 122,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-DQRlybE-.css",
+          "size": 23933,
+          "gzipSize": 4994,
           "type": "css"
         },
         {
-          "url": "/assets/route--hEdOKE9.js",
-          "size": 115,
-          "gzipSize": 125,
+          "url": "/assets/_locale-5vkvjluE.js",
+          "size": 1238,
+          "gzipSize": 466,
           "type": "js"
         },
         {
-          "url": "/assets/_locale-BCfFNbIr.js",
-          "size": 1240,
-          "gzipSize": 465,
+          "url": "/assets/main-CYTeAc_x.js",
+          "size": 387953,
+          "gzipSize": 121564,
           "type": "js"
         },
         {
-          "url": "/assets/index-Cs8EnZYK.js",
-          "size": 405521,
-          "gzipSize": 129208,
+          "url": "/assets/Hero-BSBkxk4P.js",
+          "size": 3526,
+          "gzipSize": 1905,
           "type": "js"
         },
         {
-          "url": "/assets/Hero-CGmA-7HS.js",
-          "size": 3527,
-          "gzipSize": 1906,
+          "url": "/assets/WhyItMatters-DM3qUBtJ.js",
+          "size": 16761,
+          "gzipSize": 7615,
           "type": "js"
         },
         {
-          "url": "/assets/ResultsTable-DGoCtK_Y.js",
-          "size": 2974,
-          "gzipSize": 1194,
+          "url": "/assets/ResultsTable-FxMX7yUw.js",
+          "size": 2973,
+          "gzipSize": 1191,
           "type": "js"
         },
         {
-          "url": "/assets/WhyItMatters-B0bsrPTG.js",
-          "size": 16762,
-          "gzipSize": 7617,
-          "type": "js"
-        },
-        {
-          "url": "/assets/UnderstandingImpact-Fk_KqBcK.js",
-          "size": 23043,
-          "gzipSize": 9492,
+          "url": "/assets/UnderstandingImpact-lwTrh8bd.js",
+          "size": 23042,
+          "gzipSize": 9490,
           "type": "js"
         }
       ],
@@ -205,63 +205,63 @@
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 472329,
-      "totalGzipSize": 153958,
-      "jsSize": 438213,
-      "jsGzipSize": 144749,
-      "cssSize": 23734,
-      "cssGzipSize": 5027,
-      "htmlSize": 10382,
-      "htmlGzipSize": 4182,
+      "totalSize": 455302,
+      "totalGzipSize": 146405,
+      "jsSize": 420639,
+      "jsGzipSize": 137101,
+      "cssSize": 23933,
+      "cssGzipSize": 4994,
+      "htmlSize": 10730,
+      "htmlGzipSize": 4310,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/en/about",
-          "size": 10382,
-          "gzipSize": 4182,
+          "size": 10730,
+          "gzipSize": 4310,
           "type": "html"
         },
         {
-          "url": "/assets/styles-Do1bEqep.css",
-          "size": 23734,
-          "gzipSize": 5027,
-          "type": "css"
-        },
-        {
-          "url": "/assets/route--hEdOKE9.js",
-          "size": 115,
-          "gzipSize": 125,
+          "url": "/assets/route-51Y6dh-R.js",
+          "size": 114,
+          "gzipSize": 122,
           "type": "js"
         },
         {
-          "url": "/assets/about-8r5GVzar.js",
-          "size": 997,
+          "url": "/assets/about-C-s-S1-c.js",
+          "size": 995,
           "gzipSize": 430,
           "type": "js"
         },
         {
-          "url": "/assets/index-Cs8EnZYK.js",
-          "size": 405521,
-          "gzipSize": 129208,
+          "url": "/assets/styles-DQRlybE-.css",
+          "size": 23933,
+          "gzipSize": 4994,
+          "type": "css"
+        },
+        {
+          "url": "/assets/main-CYTeAc_x.js",
+          "size": 387953,
+          "gzipSize": 121564,
           "type": "js"
         },
         {
-          "url": "/assets/AboutHeader-yM1BG8_6.js",
-          "size": 3919,
-          "gzipSize": 2187,
+          "url": "/assets/AboutHeader-D8rTcdjL.js",
+          "size": 3918,
+          "gzipSize": 2185,
           "type": "js"
         },
         {
-          "url": "/assets/AboutGrid-DC5EEs4d.js",
-          "size": 11425,
-          "gzipSize": 5697,
+          "url": "/assets/AboutGrid-D18H3O2j.js",
+          "size": 11424,
+          "gzipSize": 5696,
           "type": "js"
         },
         {
-          "url": "/assets/WhatWeMeasure--rxz76Jp.js",
-          "size": 16236,
-          "gzipSize": 7102,
+          "url": "/assets/WhatWeMeasure-FT_9FwBX.js",
+          "size": 16235,
+          "gzipSize": 7104,
           "type": "js"
         }
       ],
@@ -365,72 +365,73 @@
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 462359,
-      "totalGzipSize": 146576,
-      "jsSize": 427472,
-      "jsGzipSize": 137749,
-      "cssSize": 23734,
-      "cssGzipSize": 5027,
-      "htmlSize": 11153,
-      "htmlGzipSize": 3800,
+      "totalSize": 446969,
+      "totalGzipSize": 140113,
+      "jsSize": 411429,
+      "jsGzipSize": 131122,
+      "cssSize": 23933,
+      "cssGzipSize": 4994,
+      "htmlSize": 11607,
+      "htmlGzipSize": 3997,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/en/blog",
-          "size": 11153,
-          "gzipSize": 3800,
+          "size": 11607,
+          "gzipSize": 3997,
           "type": "html"
         },
         {
-          "url": "/assets/styles-Do1bEqep.css",
-          "size": 23734,
-          "gzipSize": 5027,
-          "type": "css"
-        },
-        {
-          "url": "/assets/route--hEdOKE9.js",
-          "size": 115,
-          "gzipSize": 125,
+          "url": "/assets/route-51Y6dh-R.js",
+          "size": 114,
+          "gzipSize": 122,
           "type": "js"
         },
         {
-          "url": "/assets/blog-DItK858M.js",
-          "size": 786,
+          "url": "/assets/blog-D6baJ33Q.js",
+          "size": 784,
           "gzipSize": 407,
           "type": "js"
         },
         {
-          "url": "/assets/index-Cs8EnZYK.js",
-          "size": 405521,
-          "gzipSize": 129208,
+          "url": "/assets/styles-DQRlybE-.css",
+          "size": 23933,
+          "gzipSize": 4994,
+          "type": "css"
+        },
+        {
+          "url": "/assets/main-CYTeAc_x.js",
+          "size": 387953,
+          "gzipSize": 121564,
           "type": "js"
         },
         {
-          "url": "/assets/BlogHeader-B0fODH4k.js",
-          "size": 1483,
-          "gzipSize": 791,
+          "url": "/assets/MockBanner-Cyfl3TRG.js",
+          "size": 1887,
+          "gzipSize": 1293,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-MdwUccCC.js",
-          "size": 367,
-          "gzipSize": 274,
+          "url": "/assets/BlogHeader-BvWpVoEk.js",
+          "size": 1492,
+          "gzipSize": 794,
           "type": "js"
         },
         {
-          "url": "/assets/BlogList-CxPNFfgk.js",
-          "size": 19200,
-          "gzipSize": 6944,
+          "url": "/assets/BlogList-DFZ3ZrMg.js",
+          "size": 19199,
+          "gzipSize": 6942,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 15,
+          "count": 16,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "insights, tutorials, and analysis from the i18n community.",
             "comparing i18n libraries in 2026: a deep dive",
             "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
@@ -447,10 +448,11 @@
           ]
         },
         "fr": {
-          "count": 15,
+          "count": 16,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
             "aperçus, tutoriels et analyses de la communauté i18n.",
             "comparaison des bibliothèques i18n en 2026 : une analyse approfondie",
             "nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et le dx. voici les résultats surprenants.",
@@ -530,78 +532,79 @@
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 463778,
-      "totalGzipSize": 147645,
-      "jsSize": 427804,
-      "jsGzipSize": 138755,
-      "cssSize": 23734,
-      "cssGzipSize": 5027,
-      "htmlSize": 12240,
-      "htmlGzipSize": 3863,
+      "totalSize": 448383,
+      "totalGzipSize": 141173,
+      "jsSize": 411750,
+      "jsGzipSize": 132121,
+      "cssSize": 23933,
+      "cssGzipSize": 4994,
+      "htmlSize": 12700,
+      "htmlGzipSize": 4058,
       "fileCount": 9,
       "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/careers",
-          "size": 12240,
-          "gzipSize": 3863,
+          "size": 12700,
+          "gzipSize": 4058,
           "type": "html"
         },
         {
-          "url": "/assets/styles-Do1bEqep.css",
-          "size": 23734,
-          "gzipSize": 5027,
+          "url": "/assets/route-51Y6dh-R.js",
+          "size": 114,
+          "gzipSize": 122,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-DQRlybE-.css",
+          "size": 23933,
+          "gzipSize": 4994,
           "type": "css"
         },
         {
-          "url": "/assets/route--hEdOKE9.js",
-          "size": 115,
-          "gzipSize": 125,
+          "url": "/assets/careers-eqhLaZhx.js",
+          "size": 1050,
+          "gzipSize": 452,
           "type": "js"
         },
         {
-          "url": "/assets/careers-COYV2c-q.js",
-          "size": 1052,
-          "gzipSize": 453,
+          "url": "/assets/main-CYTeAc_x.js",
+          "size": 387953,
+          "gzipSize": 121564,
           "type": "js"
         },
         {
-          "url": "/assets/index-Cs8EnZYK.js",
-          "size": 405521,
-          "gzipSize": 129208,
+          "url": "/assets/MockBanner-Cyfl3TRG.js",
+          "size": 1887,
+          "gzipSize": 1293,
           "type": "js"
         },
         {
-          "url": "/assets/CareersHeader-Bqos1C-Z.js",
-          "size": 2935,
-          "gzipSize": 1736,
+          "url": "/assets/CareersHeader-CwycCr6d.js",
+          "size": 2934,
+          "gzipSize": 1735,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-MdwUccCC.js",
-          "size": 367,
-          "gzipSize": 274,
+          "url": "/assets/CareersBenefits-CYTIhOLg.js",
+          "size": 2898,
+          "gzipSize": 1432,
           "type": "js"
         },
         {
-          "url": "/assets/CareersBenefits-Bk_Qc878.js",
-          "size": 2899,
-          "gzipSize": 1435,
-          "type": "js"
-        },
-        {
-          "url": "/assets/OpenPositions-BPEpAmSl.js",
-          "size": 14915,
-          "gzipSize": 5524,
+          "url": "/assets/OpenPositions-7V4OHpoY.js",
+          "size": 14914,
+          "gzipSize": 5523,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 12,
+          "count": 13,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
@@ -615,10 +618,11 @@
           ]
         },
         "fr": {
-          "count": 14,
+          "count": 15,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
             "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
             "travaillez de n'importe où dans le monde",
             "rémunération compétitive",
@@ -634,7 +638,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.84615384615385,
+      "localeLeakagePercent": 53.57142857142857,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -695,86 +699,88 @@
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 446724,
-      "totalGzipSize": 141637,
-      "jsSize": 413912,
-      "jsGzipSize": 133084,
-      "cssSize": 23734,
-      "cssGzipSize": 5027,
-      "htmlSize": 9078,
-      "htmlGzipSize": 3526,
+      "totalSize": 431335,
+      "totalGzipSize": 135168,
+      "jsSize": 397864,
+      "jsGzipSize": 126451,
+      "cssSize": 23933,
+      "cssGzipSize": 4994,
+      "htmlSize": 9538,
+      "htmlGzipSize": 3723,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/en/contact",
-          "size": 9078,
-          "gzipSize": 3526,
+          "size": 9538,
+          "gzipSize": 3723,
           "type": "html"
         },
         {
-          "url": "/assets/route--hEdOKE9.js",
-          "size": 115,
-          "gzipSize": 125,
+          "url": "/assets/route-51Y6dh-R.js",
+          "size": 114,
+          "gzipSize": 122,
           "type": "js"
         },
         {
-          "url": "/assets/styles-Do1bEqep.css",
-          "size": 23734,
-          "gzipSize": 5027,
+          "url": "/assets/contact-EmS81Snv.js",
+          "size": 854,
+          "gzipSize": 423,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-DQRlybE-.css",
+          "size": 23933,
+          "gzipSize": 4994,
           "type": "css"
         },
         {
-          "url": "/assets/contact-CEGFQWt3.js",
-          "size": 856,
-          "gzipSize": 426,
+          "url": "/assets/main-CYTeAc_x.js",
+          "size": 387953,
+          "gzipSize": 121564,
           "type": "js"
         },
         {
-          "url": "/assets/index-Cs8EnZYK.js",
-          "size": 405521,
-          "gzipSize": 129208,
+          "url": "/assets/MockBanner-Cyfl3TRG.js",
+          "size": 1887,
+          "gzipSize": 1293,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-MdwUccCC.js",
-          "size": 367,
-          "gzipSize": 274,
+          "url": "/assets/ContactHeader-BBut2UcZ.js",
+          "size": 2236,
+          "gzipSize": 1318,
           "type": "js"
         },
         {
-          "url": "/assets/ContactForm-DsvZhZPF.js",
-          "size": 4816,
+          "url": "/assets/ContactForm-y3CoAKeP.js",
+          "size": 4820,
           "gzipSize": 1731,
-          "type": "js"
-        },
-        {
-          "url": "/assets/ContactHeader-DkU1SsQb.js",
-          "size": 2237,
-          "gzipSize": 1320,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 3,
+          "count": 4,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "methodology question"
           ]
         },
         "fr": {
-          "count": 4,
+          "count": 5,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
             "nouvelle idée de benchmark",
             "question sur la méthodologie"
           ]
         }
       },
-      "localeLeakagePercent": 57.14285714285714,
+      "localeLeakagePercent": 55.55555555555556,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -825,72 +831,73 @@
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 471096,
-      "totalGzipSize": 150920,
-      "jsSize": 436423,
-      "jsGzipSize": 141808,
-      "cssSize": 23734,
-      "cssGzipSize": 5027,
-      "htmlSize": 10939,
-      "htmlGzipSize": 4085,
+      "totalSize": 455694,
+      "totalGzipSize": 144451,
+      "jsSize": 420370,
+      "jsGzipSize": 135176,
+      "cssSize": 23933,
+      "cssGzipSize": 4994,
+      "htmlSize": 11391,
+      "htmlGzipSize": 4281,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/en/faq",
-          "size": 10939,
-          "gzipSize": 4085,
+          "size": 11391,
+          "gzipSize": 4281,
           "type": "html"
         },
         {
-          "url": "/assets/styles-Do1bEqep.css",
-          "size": 23734,
-          "gzipSize": 5027,
-          "type": "css"
-        },
-        {
-          "url": "/assets/route--hEdOKE9.js",
-          "size": 115,
-          "gzipSize": 125,
+          "url": "/assets/route-51Y6dh-R.js",
+          "size": 114,
+          "gzipSize": 122,
           "type": "js"
         },
         {
-          "url": "/assets/faq-Ckp4stoU.js",
-          "size": 782,
+          "url": "/assets/styles-DQRlybE-.css",
+          "size": 23933,
+          "gzipSize": 4994,
+          "type": "css"
+        },
+        {
+          "url": "/assets/faq-DpX3ZJTK.js",
+          "size": 780,
           "gzipSize": 408,
           "type": "js"
         },
         {
-          "url": "/assets/index-Cs8EnZYK.js",
-          "size": 405521,
-          "gzipSize": 129208,
+          "url": "/assets/main-CYTeAc_x.js",
+          "size": 387953,
+          "gzipSize": 121564,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-MdwUccCC.js",
-          "size": 367,
-          "gzipSize": 274,
+          "url": "/assets/MockBanner-Cyfl3TRG.js",
+          "size": 1887,
+          "gzipSize": 1293,
           "type": "js"
         },
         {
-          "url": "/assets/FAQHeader-DVaMmZV_.js",
-          "size": 1833,
-          "gzipSize": 903,
+          "url": "/assets/FAQHeader-DjrIW96w.js",
+          "size": 1832,
+          "gzipSize": 901,
           "type": "js"
         },
         {
-          "url": "/assets/FAQList--0sxP4lk.js",
-          "size": 27805,
-          "gzipSize": 10890,
+          "url": "/assets/FAQList-CGJN1UUg.js",
+          "size": 27804,
+          "gzipSize": 10888,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 12,
+          "count": 13,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
             "what is i18n benchmark?",
@@ -904,10 +911,11 @@
           ]
         },
         "fr": {
-          "count": 11,
+          "count": 12,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
             "tout ce que vous devez savoir sur i18n benchmark.",
             "qu'est-ce qu'i18n benchmark ?",
             "comment les benchmarks sont-ils menés ?",
@@ -920,7 +928,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 47.82608695652174,
+      "localeLeakagePercent": 48,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -980,72 +988,73 @@
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 456127,
-      "totalGzipSize": 143822,
-      "jsSize": 421380,
-      "jsGzipSize": 135212,
-      "cssSize": 23734,
-      "cssGzipSize": 5027,
-      "htmlSize": 11013,
-      "htmlGzipSize": 3583,
+      "totalSize": 440733,
+      "totalGzipSize": 137352,
+      "jsSize": 405327,
+      "jsGzipSize": 128576,
+      "cssSize": 23933,
+      "cssGzipSize": 4994,
+      "htmlSize": 11473,
+      "htmlGzipSize": 3782,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/en/pricing",
-          "size": 11013,
-          "gzipSize": 3583,
+          "size": 11473,
+          "gzipSize": 3782,
           "type": "html"
         },
         {
-          "url": "/assets/styles-Do1bEqep.css",
-          "size": 23734,
-          "gzipSize": 5027,
+          "url": "/assets/route-51Y6dh-R.js",
+          "size": 114,
+          "gzipSize": 122,
+          "type": "js"
+        },
+        {
+          "url": "/assets/pricing-7R1x4bg4.js",
+          "size": 798,
+          "gzipSize": 408,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-DQRlybE-.css",
+          "size": 23933,
+          "gzipSize": 4994,
           "type": "css"
         },
         {
-          "url": "/assets/route--hEdOKE9.js",
-          "size": 115,
-          "gzipSize": 125,
+          "url": "/assets/main-CYTeAc_x.js",
+          "size": 387953,
+          "gzipSize": 121564,
           "type": "js"
         },
         {
-          "url": "/assets/pricing-BkrIgH5D.js",
-          "size": 800,
-          "gzipSize": 411,
+          "url": "/assets/MockBanner-Cyfl3TRG.js",
+          "size": 1887,
+          "gzipSize": 1293,
           "type": "js"
         },
         {
-          "url": "/assets/index-Cs8EnZYK.js",
-          "size": 405521,
-          "gzipSize": 129208,
+          "url": "/assets/PricingHeader-CVmIB9eJ.js",
+          "size": 2210,
+          "gzipSize": 1225,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-MdwUccCC.js",
-          "size": 367,
-          "gzipSize": 274,
-          "type": "js"
-        },
-        {
-          "url": "/assets/PricingHeader-DVrgHFEH.js",
-          "size": 2211,
-          "gzipSize": 1227,
-          "type": "js"
-        },
-        {
-          "url": "/assets/PricingTiers-CYBfPSpC.js",
-          "size": 12366,
-          "gzipSize": 3967,
+          "url": "/assets/PricingTiers-C3DBCF7t.js",
+          "size": 12365,
+          "gzipSize": 3964,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 6,
+          "count": 7,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "simple, transparent pricing",
             "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
@@ -1053,10 +1062,11 @@
           ]
         },
         "fr": {
-          "count": 11,
+          "count": 12,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
             "une tarification simple et transparente",
             "choisissez l'offre qui convient à votre équipe. pas de frais cachés.",
             "support communautaire",
@@ -1069,7 +1079,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 64.70588235294117,
+      "localeLeakagePercent": 63.1578947368421,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -1123,72 +1133,73 @@
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 456378,
-      "totalGzipSize": 144859,
-      "jsSize": 421858,
-      "jsGzipSize": 136187,
-      "cssSize": 23734,
-      "cssGzipSize": 5027,
-      "htmlSize": 10786,
-      "htmlGzipSize": 3645,
+      "totalSize": 440996,
+      "totalGzipSize": 138385,
+      "jsSize": 405815,
+      "jsGzipSize": 129555,
+      "cssSize": 23933,
+      "cssGzipSize": 4994,
+      "htmlSize": 11248,
+      "htmlGzipSize": 3836,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/en/products",
-          "size": 10786,
-          "gzipSize": 3645,
+          "size": 11248,
+          "gzipSize": 3836,
           "type": "html"
         },
         {
-          "url": "/assets/styles-Do1bEqep.css",
-          "size": 23734,
-          "gzipSize": 5027,
+          "url": "/assets/route-51Y6dh-R.js",
+          "size": 114,
+          "gzipSize": 122,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-DQRlybE-.css",
+          "size": 23933,
+          "gzipSize": 4994,
           "type": "css"
         },
         {
-          "url": "/assets/products-BxZDqw86.js",
-          "size": 802,
-          "gzipSize": 411,
+          "url": "/assets/products--JQXfr-z.js",
+          "size": 800,
+          "gzipSize": 408,
           "type": "js"
         },
         {
-          "url": "/assets/route--hEdOKE9.js",
-          "size": 115,
-          "gzipSize": 125,
+          "url": "/assets/main-CYTeAc_x.js",
+          "size": 387953,
+          "gzipSize": 121564,
           "type": "js"
         },
         {
-          "url": "/assets/index-Cs8EnZYK.js",
-          "size": 405521,
-          "gzipSize": 129208,
+          "url": "/assets/MockBanner-Cyfl3TRG.js",
+          "size": 1887,
+          "gzipSize": 1293,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-MdwUccCC.js",
-          "size": 367,
-          "gzipSize": 274,
+          "url": "/assets/ProductsHeader-gxFFKtW0.js",
+          "size": 1675,
+          "gzipSize": 940,
           "type": "js"
         },
         {
-          "url": "/assets/ProductsHeader-CRC1E33p.js",
-          "size": 1666,
-          "gzipSize": 938,
-          "type": "js"
-        },
-        {
-          "url": "/assets/ProductsGrid-vIyCircR.js",
-          "size": 13387,
-          "gzipSize": 5231,
+          "url": "/assets/ProductsGrid-DuCC1keY.js",
+          "size": 13386,
+          "gzipSize": 5228,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 9,
+          "count": 10,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
@@ -1199,10 +1210,11 @@
           ]
         },
         "fr": {
-          "count": 11,
+          "count": 12,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
             "des outils et services pour rationaliser votre flux de travail d'internationalisation.",
             "exécutez des benchmarks localement depuis votre terminal. supporte les configurations personnalisées et l'intégration ci.",
             "benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
@@ -1215,7 +1227,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 55.00000000000001,
+      "localeLeakagePercent": 54.54545454545454,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -1273,90 +1285,91 @@
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 456972,
-      "totalGzipSize": 145257,
-      "jsSize": 422613,
-      "jsGzipSize": 136409,
-      "cssSize": 23734,
-      "cssGzipSize": 5027,
-      "htmlSize": 10625,
-      "htmlGzipSize": 3821,
+      "totalSize": 441587,
+      "totalGzipSize": 138789,
+      "jsSize": 406567,
+      "jsGzipSize": 129778,
+      "cssSize": 23933,
+      "cssGzipSize": 4994,
+      "htmlSize": 11087,
+      "htmlGzipSize": 4017,
       "fileCount": 11,
       "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/en/settings",
-          "size": 10625,
-          "gzipSize": 3821,
+          "size": 11087,
+          "gzipSize": 4017,
           "type": "html"
         },
         {
-          "url": "/assets/styles-Do1bEqep.css",
-          "size": 23734,
-          "gzipSize": 5027,
+          "url": "/assets/route-51Y6dh-R.js",
+          "size": 114,
+          "gzipSize": 122,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-DQRlybE-.css",
+          "size": 23933,
+          "gzipSize": 4994,
           "type": "css"
         },
         {
-          "url": "/assets/route--hEdOKE9.js",
-          "size": 115,
-          "gzipSize": 125,
+          "url": "/assets/settings-k_UiK6y5.js",
+          "size": 1667,
+          "gzipSize": 555,
           "type": "js"
         },
         {
-          "url": "/assets/settings-dCOqMlVB.js",
-          "size": 1669,
-          "gzipSize": 554,
+          "url": "/assets/main-CYTeAc_x.js",
+          "size": 387953,
+          "gzipSize": 121564,
           "type": "js"
         },
         {
-          "url": "/assets/index-Cs8EnZYK.js",
-          "size": 405521,
-          "gzipSize": 129208,
+          "url": "/assets/MockBanner-Cyfl3TRG.js",
+          "size": 1887,
+          "gzipSize": 1293,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-MdwUccCC.js",
-          "size": 367,
-          "gzipSize": 274,
+          "url": "/assets/SettingsHeader-GRIKkegA.js",
+          "size": 1476,
+          "gzipSize": 814,
           "type": "js"
         },
         {
-          "url": "/assets/SettingsHeader-CkuZrbr0.js",
-          "size": 1467,
-          "gzipSize": 809,
+          "url": "/assets/ProfileSection-BcmwlfA9.js",
+          "size": 1924,
+          "gzipSize": 875,
           "type": "js"
         },
         {
-          "url": "/assets/ProfileSection-BzBK_EpY.js",
-          "size": 1925,
-          "gzipSize": 876,
+          "url": "/assets/ApiAccessSection-BZLuYeOC.js",
+          "size": 2606,
+          "gzipSize": 1270,
           "type": "js"
         },
         {
-          "url": "/assets/ApiAccessSection-BtwEbf2S.js",
-          "size": 2607,
-          "gzipSize": 1272,
+          "url": "/assets/SettingsFooter-vrgrlC3e.js",
+          "size": 1192,
+          "gzipSize": 669,
           "type": "js"
         },
         {
-          "url": "/assets/SettingsFooter-_FEuU4ks.js",
-          "size": 1193,
-          "gzipSize": 672,
-          "type": "js"
-        },
-        {
-          "url": "/assets/PreferencesSection-O5UxjNks.js",
-          "size": 7749,
-          "gzipSize": 2619,
+          "url": "/assets/PreferencesSection-rEKz7Ibc.js",
+          "size": 7748,
+          "gzipSize": 2616,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 7,
+          "count": 8,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "manage your account preferences and configuration.",
             "receive weekly benchmark reports",
             "use dark color scheme",
@@ -1365,10 +1378,11 @@
           ]
         },
         "fr": {
-          "count": 9,
+          "count": 10,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
             "gérez vos préférences de compte et votre configuration.",
             "notifications par email",
             "recevoir des rapports hebdomadaires de benchmark",
@@ -1379,7 +1393,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 56.25,
+      "localeLeakagePercent": 55.55555555555556,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -1434,72 +1448,73 @@
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 459170,
-      "totalGzipSize": 145604,
-      "jsSize": 425197,
-      "jsGzipSize": 136839,
-      "cssSize": 23734,
-      "cssGzipSize": 5027,
-      "htmlSize": 10239,
-      "htmlGzipSize": 3738,
+      "totalSize": 443770,
+      "totalGzipSize": 139132,
+      "jsSize": 409144,
+      "jsGzipSize": 130206,
+      "cssSize": 23933,
+      "cssGzipSize": 4994,
+      "htmlSize": 10693,
+      "htmlGzipSize": 3932,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/en/team",
-          "size": 10239,
-          "gzipSize": 3738,
+          "size": 10693,
+          "gzipSize": 3932,
           "type": "html"
         },
         {
-          "url": "/assets/styles-Do1bEqep.css",
-          "size": 23734,
-          "gzipSize": 5027,
+          "url": "/assets/route-51Y6dh-R.js",
+          "size": 114,
+          "gzipSize": 122,
+          "type": "js"
+        },
+        {
+          "url": "/assets/team-B5fuL6c3.js",
+          "size": 784,
+          "gzipSize": 404,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-DQRlybE-.css",
+          "size": 23933,
+          "gzipSize": 4994,
           "type": "css"
         },
         {
-          "url": "/assets/route--hEdOKE9.js",
-          "size": 115,
-          "gzipSize": 125,
+          "url": "/assets/main-CYTeAc_x.js",
+          "size": 387953,
+          "gzipSize": 121564,
           "type": "js"
         },
         {
-          "url": "/assets/team-D1jxuwPk.js",
-          "size": 786,
-          "gzipSize": 407,
+          "url": "/assets/MockBanner-Cyfl3TRG.js",
+          "size": 1887,
+          "gzipSize": 1293,
           "type": "js"
         },
         {
-          "url": "/assets/index-Cs8EnZYK.js",
-          "size": 405521,
-          "gzipSize": 129208,
+          "url": "/assets/TeamHeader-CE2eIyih.js",
+          "size": 2585,
+          "gzipSize": 1497,
           "type": "js"
         },
         {
-          "url": "/assets/TeamHeader-BkvAz6P7.js",
-          "size": 2586,
-          "gzipSize": 1499,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-MdwUccCC.js",
-          "size": 367,
-          "gzipSize": 274,
-          "type": "js"
-        },
-        {
-          "url": "/assets/TeamGrid-Bbol_aXL.js",
-          "size": 15822,
+          "url": "/assets/TeamGrid-qOkFDCkW.js",
+          "size": 15821,
           "gzipSize": 5326,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 12,
+          "count": 13,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
             "founder & lead engineer",
             "former google engineer with 10 years of experience building internationalization systems at scale.",
@@ -1513,10 +1528,11 @@
           ]
         },
         "fr": {
-          "count": 13,
+          "count": 14,
           "found": [
             "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
             "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour d'excellents outils de développement.",
             "fondatrice & ingénieure principale",
             "ancienne ingénieure google avec 10 ans d'expérience dans la construction de systèmes d'internationalisation à grande échelle.",
@@ -1531,7 +1547,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 52,
+      "localeLeakagePercent": 51.85185185185185,
       "pageLeakage": {
         "home": {
           "count": 0,

@@ -1,5 +1,6 @@
 import { cloneElement, createContext, useContext, useEffect, useId, useLayoutEffect, useMemo, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -273,45 +274,94 @@ This often happens when multiple instances of @lingui/react are installed (e.g. 
 		lingui
 	});
 }
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/settings/ProfileSection.tsx";
 function ProfileSection() {
 	const { i18n } = useLingui();
 	const displayNameId = useId();
 	const emailId = useId();
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: jsx(Trans, {
+			children: jsxDEV(Trans, {
 				id: "settings.profile.title",
 				message: "Profile"
-			})
-		}), jsxs("div", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 15,
+				columnNumber: 9
+			}, this)
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 14,
+			columnNumber: 7
+		}, this), jsxDEV("div", {
 			className: "space-y-4",
-			children: [jsxs("div", { children: [jsx("label", {
+			children: [jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: displayNameId,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: jsx(Trans, {
+				children: jsxDEV(Trans, {
 					id: "settings.profile.displayName",
 					message: "Display Name"
-				})
-			}), jsx("input", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 23,
+					columnNumber: 13
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 19,
+				columnNumber: 11
+			}, this), jsxDEV("input", {
 				id: displayNameId,
 				defaultValue: "John Developer",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			})] }), jsxs("div", { children: [jsx("label", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 25,
+				columnNumber: 11
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 18,
+				columnNumber: 9
+			}, this), jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: emailId,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: jsx(Trans, {
+				children: jsxDEV(Trans, {
 					id: "settings.profile.email",
 					message: "Email"
-				})
-			}), jsx("input", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 36,
+					columnNumber: 13
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 32,
+				columnNumber: 11
+			}, this), jsxDEV("input", {
 				id: emailId,
 				defaultValue: "john@example.com",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			})] })]
-		})]
-	});
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 38,
+				columnNumber: 11
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 31,
+				columnNumber: 9
+			}, this)]
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 17,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 13,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1732,6 +1782,7 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const messages = useMemo(() => getMessages(locale), [locale]);
@@ -1746,15 +1797,33 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		i18n,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 35,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/settings/ProfileSection.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ProfileSection, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ProfileSection, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

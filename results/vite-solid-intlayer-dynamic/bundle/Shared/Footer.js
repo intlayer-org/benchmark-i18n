@@ -2,16 +2,16 @@ import { Dynamic, createComponent, insert, template } from "solid-js/web";
 import { createContext, createMemo, useContext } from "solid-js";
 import { A, useParams } from "@solidjs/router";
 var content = {
-	"de": () => import("./de-BZNCBkMK.js").then((m) => m.default),
-	"en": () => import("./en-Cscpx02U.js").then((m) => m.default),
-	"es": () => import("./es-DfR_uGFF.js").then((m) => m.default),
-	"fr": () => import("./fr-wLVuXAsc.js").then((m) => m.default),
-	"it": () => import("./it-C5G2Xu26.js").then((m) => m.default),
-	"ja": () => import("./ja-D1j_INO8.js").then((m) => m.default),
-	"ko": () => import("./ko-Ul7WDoHT.js").then((m) => m.default),
-	"pt": () => import("./pt-2Bk2ke1a.js").then((m) => m.default),
-	"ru": () => import("./ru-CTnAJuC9.js").then((m) => m.default),
-	"zh": () => import("./zh-DVm-1_Z1.js").then((m) => m.default)
+	"de": () => import("../../.intlayer/dynamic_dictionary/json/footer/de.json").then((m) => m.default),
+	"en": () => import("./en-DHhlOEhJ.js").then((m) => m.default),
+	"es": () => import("../../.intlayer/dynamic_dictionary/json/footer/es.json").then((m) => m.default),
+	"fr": () => import("../../.intlayer/dynamic_dictionary/json/footer/fr.json").then((m) => m.default),
+	"it": () => import("../../.intlayer/dynamic_dictionary/json/footer/it.json").then((m) => m.default),
+	"ja": () => import("../../.intlayer/dynamic_dictionary/json/footer/ja.json").then((m) => m.default),
+	"ko": () => import("../../.intlayer/dynamic_dictionary/json/footer/ko.json").then((m) => m.default),
+	"pt": () => import("../../.intlayer/dynamic_dictionary/json/footer/pt.json").then((m) => m.default),
+	"ru": () => import("../../.intlayer/dynamic_dictionary/json/footer/ru.json").then((m) => m.default),
+	"zh": () => import("../../.intlayer/dynamic_dictionary/json/footer/zh.json").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -231,8 +231,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-};
-var S = {
+}, S$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -240,8 +239,7 @@ var S = {
 		value: o.children,
 		children: o.children
 	})
-};
-var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -249,12 +247,7 @@ var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin :
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-};
-var T = fallbackPlugin;
-var D = fallbackPlugin;
-var O = fallbackPlugin;
-var k = /* @__PURE__ */ new Map();
-var A$1 = (e, t = !0) => {
+}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A$1 = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -264,7 +257,7 @@ var A$1 = (e, t = !0) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S,
+		S$1,
 		C,
 		T,
 		D,
@@ -283,8 +276,7 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-};
-var localeStorageOptions = {
+}, localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -302,9 +294,7 @@ var localeStorageOptions = {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-};
-var a$1 = getLocaleFromStorageClient(localeStorageOptions);
-var y = createContext({
+}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -323,9 +313,7 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-};
-var t = /* @__PURE__ */ new Map();
-var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
@@ -363,18 +351,6 @@ function Footer() {
 	})();
 }
 export { Footer as default };
-var de_default = {
-	key: "footer",
-	content: {
-		"a": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungsbibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität.",
-		"f": "Ressourcen",
-		"e": "Methodik",
-		"c": "Beitragen",
-		"b": "Kontakt",
-		"d": "i18n Benchmark — Open-Source-Projekt. Erstellt mit Solid, Vite & Solid Router."
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "footer",
 	content: {
@@ -387,99 +363,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "footer",
-	content: {
-		"a": "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el tiempo de carga y la reactividad de la aplicación.",
-		"f": "Recursos",
-		"e": "Metodología",
-		"c": "Contribución",
-		"b": "Contacto",
-		"d": "i18n Benchmark — Proyecto de código abierto. Construido con Solid, Vite y Solid Router."
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "footer",
-	content: {
-		"a": "Une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-		"f": "Ressources",
-		"e": "Méthodologie",
-		"c": "Contribuer",
-		"b": "Contact",
-		"d": "i18n Benchmark — Projet open source. Construit avec Solid, Vite & Solid Router."
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "footer",
-	content: {
-		"a": "Un'applicazione di test open source per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sui tempi di caricamento e sulla reattività dell'app.",
-		"f": "Risorse",
-		"e": "Metodologia",
-		"c": "Contribuire",
-		"b": "Contatti",
-		"d": "i18n Benchmark — Progetto open source. Creato con Solid, Vite & Solid Router."
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "footer",
-	content: {
-		"a": "国際化ライブラリがバンドルサイズ、ロード時間、アプリの反応性に与える実際の影響を測定するためのオープンソーステストアプリケーションです。",
-		"f": "リソース",
-		"e": "方法論",
-		"c": "貢献する",
-		"b": "お問い合わせ",
-		"d": "i18n Benchmark — オープンソースプロジェクト。Solid、Vite、Solid Routerで構築されています。"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "footer",
-	content: {
-		"a": "번들 크기, 로딩 시간 및 앱 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위한 오픈 소스 테스트 애플ри케이션입니다.",
-		"f": "리소스",
-		"e": "방법론",
-		"c": "기여",
-		"b": "문의",
-		"d": "i18n Benchmark — 오픈 소스 프로젝트. Solid, Vite 및 Solid Router로 제작되었습니다."
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "footer",
-	content: {
-		"a": "Uma aplicação de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no tempo de carregamento e na reatividade da aplicação.",
-		"f": "Recursos",
-		"e": "Metodologia",
-		"c": "Contribuindo",
-		"b": "Contato",
-		"d": "i18n Benchmark — Projeto de código aberto. Construído com Solid, Vite & Solid Router."
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "footer",
-	content: {
-		"a": "Тестовое приложение с открытым исходным кодом для измерения реального влияния библиотек интернационализации на размер бандла, время загрузки и реактивность приложения.",
-		"f": "Ресурсы",
-		"e": "Методология",
-		"c": "Вклад",
-		"b": "Контакт",
-		"d": "i18n Benchmark — проект с открытым исходным кодом. Построен на Solid, Vite и Solid Router."
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "footer",
-	content: {
-		"a": "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的真实影响。",
-		"f": "资源",
-		"e": "方法论",
-		"c": "贡献",
-		"b": "联系我们",
-		"d": "i18n Benchmark — 开源项目。使用 Solid、Vite 和 Solid Router 构建。"
-	}
-};
-export { zh_default as default };

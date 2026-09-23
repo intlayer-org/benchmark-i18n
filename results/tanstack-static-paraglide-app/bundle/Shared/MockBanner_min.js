@@ -1,5 +1,5 @@
 import "react";
-import { Fragment as e, jsx as t } from "react/jsx-runtime";
+import { Fragment as e, jsxDEV as t } from "react/jsx-dev-runtime";
 var n = {}, r = [
 	"en",
 	"fr",
@@ -139,15 +139,32 @@ function P(e) {
 var F = () => "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.", I = () => "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.", L = () => "⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.", R = () => "⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.", z = () => "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.", B = () => "⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.", V = () => "⚠️ 此页面包含仅用于基准测试目的的模拟数据。它与任何真实的商业或服务无关。", H = () => "⚠️ このページには、ベンチマーク目的のみのモックデータが含まれています。実際のビジネスやサービスとは関係ありません。", U = () => "⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.", W = () => "⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой.", G = ((e = {}, t = {}) => {
 	let n = t.locale ?? d();
 	return n === "fr" ? I(e) : n === "es" ? L(e) : n === "de" ? R(e) : n === "it" ? z(e) : n === "pt" ? B(e) : n === "zh" ? V(e) : n === "ja" ? H(e) : n === "ko" ? U(e) : n === "ru" ? W(e) : F(e);
-}), K = () => t("div", {
+}), K = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/MockBanner.tsx", q = () => t("div", {
 	className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 	children: G()
-});
+}, void 0, !1, {
+	fileName: K,
+	lineNumber: 4,
+	columnNumber: 3
+}, void 0), J = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/scripts/Wrapper.tsx";
 m("en", { reload: !1 });
-function q({ children: n }) {
-	return t(e, { children: n });
+function Y({ children: n }) {
+	return t(e, { children: n }, void 0, !1, {
+		fileName: J,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
-function J() {
-	return t(q, { children: t(K, {}) });
+var X = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/paraglide-app/src/components/MockBanner.wrapper.tsx";
+function Z() {
+	return t(Y, { children: t(q, {}, void 0, !1, {
+		fileName: X,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: X,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { J as default };
+export { Z as default };

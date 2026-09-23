@@ -1,11 +1,11 @@
 {
   "app": "vite-vue-base-app",
   "locale": "en",
-  "timestamp": "2026-09-09T19:24:06.637Z",
+  "timestamp": "2026-09-09T03:51:23.696Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 11,
-      "fr": 0
+      "en": 0,
+      "fr": 3
     },
     "page": {
       "home": 24,
@@ -13,7 +13,7 @@
       "blog": 0,
       "careers": 0,
       "contact": 0,
-      "faq": 11,
+      "faq": 0,
       "pricing": 0,
       "products": 0,
       "settings": 0,
@@ -322,17 +322,17 @@
       ],
       "localeLeakage": {
         "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
           "count": 1,
           "found": [
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
           ]
-        },
-        "fr": {
-          "count": 0,
-          "found": []
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 100,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -355,10 +355,8 @@
           "found": []
         },
         "faq": {
-          "count": 1,
-          "found": [
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
-          ]
+          "count": 0,
+          "found": []
         },
         "pricing": {
           "count": 0,
@@ -377,7 +375,7 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 100
+      "pageLeakagePercent": 0
     },
     {
       "path": "/en/careers",
@@ -445,17 +443,17 @@
       ],
       "localeLeakage": {
         "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
           "count": 1,
           "found": [
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
           ]
-        },
-        "fr": {
-          "count": 0,
-          "found": []
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 100,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -478,10 +476,8 @@
           "found": []
         },
         "faq": {
-          "count": 1,
-          "found": [
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
-          ]
+          "count": 0,
+          "found": []
         },
         "pricing": {
           "count": 0,
@@ -500,7 +496,7 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 100
+      "pageLeakagePercent": 0
     },
     {
       "path": "/en/contact",
@@ -562,17 +558,18 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
-          "found": [
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
-          ]
-        },
-        "fr": {
           "count": 0,
           "found": []
+        },
+        "fr": {
+          "count": 2,
+          "found": [
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "methodology question"
+          ]
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 100,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -595,10 +592,8 @@
           "found": []
         },
         "faq": {
-          "count": 1,
-          "found": [
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
-          ]
+          "count": 0,
+          "found": []
         },
         "pricing": {
           "count": 0,
@@ -617,7 +612,7 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 100
+      "pageLeakagePercent": 0
     },
     {
       "path": "/en/faq",
@@ -679,27 +674,17 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 11,
-          "found": [
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?"
-          ]
-        },
-        "fr": {
           "count": 0,
           "found": []
+        },
+        "fr": {
+          "count": 1,
+          "found": [
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
+          ]
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 100,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -722,20 +707,8 @@
           "found": []
         },
         "faq": {
-          "count": 11,
-          "found": [
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?"
-          ]
+          "count": 0,
+          "found": []
         },
         "pricing": {
           "count": 0,
@@ -816,17 +789,17 @@
       ],
       "localeLeakage": {
         "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
           "count": 1,
           "found": [
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
           ]
-        },
-        "fr": {
-          "count": 0,
-          "found": []
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 100,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -849,10 +822,8 @@
           "found": []
         },
         "faq": {
-          "count": 1,
-          "found": [
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
-          ]
+          "count": 0,
+          "found": []
         },
         "pricing": {
           "count": 0,
@@ -871,7 +842,7 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 100
+      "pageLeakagePercent": 0
     },
     {
       "path": "/en/products",
@@ -933,17 +904,17 @@
       ],
       "localeLeakage": {
         "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
           "count": 1,
           "found": [
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
           ]
-        },
-        "fr": {
-          "count": 0,
-          "found": []
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 100,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -966,10 +937,8 @@
           "found": []
         },
         "faq": {
-          "count": 1,
-          "found": [
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
-          ]
+          "count": 0,
+          "found": []
         },
         "pricing": {
           "count": 0,
@@ -988,7 +957,7 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 100
+      "pageLeakagePercent": 0
     },
     {
       "path": "/en/settings",
@@ -1030,15 +999,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/SettingsHeader-DoG8KR-P.js",
-          "size": 413,
-          "gzipSize": 300,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-D_S5Oae6.js",
           "size": 375,
           "gzipSize": 297,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsHeader-DoG8KR-P.js",
+          "size": 413,
+          "gzipSize": 300,
           "type": "js"
         },
         {
@@ -1048,15 +1017,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/PreferencesSection-BP9VCfJq.js",
-          "size": 1695,
-          "gzipSize": 714,
-          "type": "js"
-        },
-        {
           "url": "/assets/ApiAccessSection-AjMwS0ET.js",
           "size": 871,
           "gzipSize": 492,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PreferencesSection-BP9VCfJq.js",
+          "size": 1695,
+          "gzipSize": 714,
           "type": "js"
         },
         {
@@ -1068,17 +1037,17 @@
       ],
       "localeLeakage": {
         "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
           "count": 1,
           "found": [
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
           ]
-        },
-        "fr": {
-          "count": 0,
-          "found": []
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 100,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -1101,10 +1070,8 @@
           "found": []
         },
         "faq": {
-          "count": 1,
-          "found": [
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
-          ]
+          "count": 0,
+          "found": []
         },
         "pricing": {
           "count": 0,
@@ -1123,7 +1090,7 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 100
+      "pageLeakagePercent": 0
     },
     {
       "path": "/en/team",
@@ -1185,17 +1152,17 @@
       ],
       "localeLeakage": {
         "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
           "count": 1,
           "found": [
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
           ]
-        },
-        "fr": {
-          "count": 0,
-          "found": []
         }
       },
-      "localeLeakagePercent": 0,
+      "localeLeakagePercent": 100,
       "pageLeakage": {
         "home": {
           "count": 0,
@@ -1218,10 +1185,8 @@
           "found": []
         },
         "faq": {
-          "count": 1,
-          "found": [
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
-          ]
+          "count": 0,
+          "found": []
         },
         "pricing": {
           "count": 0,
@@ -1240,7 +1205,7 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 100
+      "pageLeakagePercent": 0
     }
   ]
 }

@@ -1,5 +1,6 @@
 import a, { Children, Fragment, cloneElement, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useId, useLayoutEffect, useMemo, useRef, useState, useSyncExternalStore } from "react";
-import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
+import { Fragment as Fragment$1, jsxDEV } from "react/jsx-dev-runtime";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 function getRuntimeCredentials() {
 	return {
@@ -3908,7 +3909,7 @@ function getRuntimeEnvironment() {
 	if (typeof process === "object" && process.env.NODE_ENV === "development") return "development";
 	const importMetaMode = readImportMetaEnv(() => "production");
 	if (importMetaMode) return importMetaMode === "development" ? "development" : "production";
-	if (readImportMetaEnv(() => false) === true) return "development";
+	if (readImportMetaEnv(() => true) === true) return "development";
 	return "production";
 }
 function readImportMetaEnv(readValue) {
@@ -6018,67 +6019,188 @@ function BrowserGTProvider(props) {
 	});
 }
 initializeGTClient();
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/contact/ContactForm.tsx";
 function ContactForm() {
 	const nameId = useId();
 	const emailId = useId();
 	const topicId = useId();
 	const messageId = useId();
-	return jsxs("form", {
+	return jsxDEV("form", {
 		className: "space-y-6",
 		children: [
-			jsxs("div", {
+			jsxDEV("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [jsxs("div", { children: [jsx("label", {
+				children: [jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: nameId,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: jsx(a$2, { children: "Name" })
-				}), jsx("input", {
+					children: jsxDEV(a$2, { children: "Name" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 18,
+						columnNumber: 13
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 14,
+					columnNumber: 11
+				}, this), jsxDEV("input", {
 					id: nameId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "Your name"
-				})] }), jsxs("div", { children: [jsx("label", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 20,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 13,
+					columnNumber: 9
+				}, this), jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: emailId,
 					className: "mb-1 block text-sm font-medium text-foreground",
-					children: jsx(a$2, { children: "Email" })
-				}), jsx("input", {
+					children: jsxDEV(a$2, { children: "Email" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 31,
+						columnNumber: 13
+					}, this)
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 27,
+					columnNumber: 11
+				}, this), jsxDEV("input", {
 					id: emailId,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "you@example.com"
-				})] })]
-			}),
-			jsxs("div", { children: [jsx("label", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 33,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 26,
+					columnNumber: 9
+				}, this)]
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 12,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: topicId,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: jsx(a$2, { children: "Topic" })
-			}), jsxs("select", {
+				children: jsxDEV(a$2, { children: "Topic" }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 46,
+					columnNumber: 11
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 42,
+				columnNumber: 9
+			}, this), jsxDEV("select", {
 				id: topicId,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					jsx("option", { children: jsx(a$2, { children: "Bug Report" }) }),
-					jsx("option", { children: jsx(a$2, { children: "New Benchmark Idea" }) }),
-					jsx("option", { children: jsx(a$2, { children: "Methodology Question" }) }),
-					jsx("option", { children: jsx(a$2, { children: "Contribution" }) }),
-					jsx("option", { children: jsx(a$2, { children: "Other" }) })
+					jsxDEV("option", { children: jsxDEV(a$2, { children: "Bug Report" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 53,
+						columnNumber: 13
+					}, this) }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 52,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: jsxDEV(a$2, { children: "New Benchmark Idea" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 56,
+						columnNumber: 13
+					}, this) }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 55,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: jsxDEV(a$2, { children: "Methodology Question" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 59,
+						columnNumber: 13
+					}, this) }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 58,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: jsxDEV(a$2, { children: "Contribution" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 62,
+						columnNumber: 13
+					}, this) }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 61,
+						columnNumber: 11
+					}, this),
+					jsxDEV("option", { children: jsxDEV(a$2, { children: "Other" }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 65,
+						columnNumber: 13
+					}, this) }, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 64,
+						columnNumber: 11
+					}, this)
 				]
-			})] }),
-			jsxs("div", { children: [jsx("label", {
+			}, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 48,
+				columnNumber: 9
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 41,
+				columnNumber: 7
+			}, this),
+			jsxDEV("div", { children: [jsxDEV("label", {
 				htmlFor: messageId,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: jsx(a$2, { children: "Message" })
-			}), jsx("textarea", {
+				children: jsxDEV(a$2, { children: "Message" }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 74,
+					columnNumber: 11
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 70,
+				columnNumber: 9
+			}, this), jsxDEV("textarea", {
 				id: messageId,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				placeholder: "Describe your question or idea..."
-			})] }),
-			jsx("button", {
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 76,
+				columnNumber: 9
+			}, this)] }, void 0, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 69,
+				columnNumber: 7
+			}, this),
+			jsxDEV("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
-				children: jsx(a$2, { children: "Send Message" })
-			})
+				children: jsxDEV(a$2, { children: "Send Message" }, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 87,
+					columnNumber: 9
+				}, this)
+			}, void 0, false, {
+				fileName: _jsxFileName$3,
+				lineNumber: 83,
+				columnNumber: 7
+			}, this)
 		]
-	});
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 11,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -6102,6 +6224,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -6113,19 +6236,41 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment$1, { children });
+	return jsxDEV(Fragment$1, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 33,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/scripts/Wrapper.tsx";
 var locale = "en";
 function Wrapper({ children }) {
-	return jsx(BrowserGTProvider, {
+	return jsxDEV(BrowserGTProvider, {
 		locale,
-		children: jsx(AppProviders, {
+		children: jsxDEV(AppProviders, {
 			locale,
 			children
-		})
-	});
+		}, void 0, false, {
+			fileName: _jsxFileName$1,
+			lineNumber: 14,
+			columnNumber: 7
+		}, this)
+	}, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 13,
+		columnNumber: 5
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-scoped-dynamic/gt-next-app/components/pages/contact/ContactForm.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ContactForm, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ContactForm, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

@@ -1,5 +1,5 @@
-import { Fragment as e, computed as t, createElementBlock as n, createElementVNode as r, createTextVNode as i, createVNode as a, defineComponent as o, getCurrentInstance as s, h as c, inject as l, isRef as u, markRaw as d, openBlock as f, ref as p, shallowRef as m, toDisplayString as h, toValue as g, unref as _, watch as v } from "vue";
-var y = {
+import { Fragment as e, computed as t, createElementBlock as n, createElementVNode as r, createTextVNode as i, createVNode as a, defineComponent as o, getCurrentInstance as s, h as c, inject as l, isRef as u, markRaw as d, openBlock as f, ref as p, shallowRef as m, toDisplayString as h, toValue as g, watch as _ } from "vue";
+var v = {
 	key: "contact-header",
 	content: {
 		nodeType: "translation",
@@ -46,7 +46,7 @@ var y = {
 			}
 		}
 	}
-}, b = ({ value: e, children: t, additionalProps: n = {} }) => {
+}, y = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = p(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -64,7 +64,7 @@ var y = {
 			return r.value;
 		},
 		use(e) {
-			return b({
+			return y({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -75,14 +75,14 @@ var y = {
 		},
 		...n
 	}), d(o);
-}, x = "translation", ee = "object", te = "array", S = (e, t) => {
+}, ee = "translation", b = "object", x = "array", S = (e, t) => {
 	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => S(e, t));
 	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
 	if (Array.isArray(e)) return e.map((e, n) => S(e, {
 		...t,
 		children: e,
 		keyPath: [...t.keyPath, {
-			type: te,
+			type: x,
 			key: n
 		}]
 	}));
@@ -95,7 +95,7 @@ var y = {
 				...t,
 				children: e[r],
 				keyPath: [...t.keyPath, {
-					type: ee,
+					type: b,
 					key: r
 				}]
 			}, i = S(e[r], n);
@@ -143,11 +143,11 @@ var y = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (w(e) && w(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : T(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : T(e[r], t[r]));
 		return n;
 	}
 	return e;
-}, E = (e, t, n) => {
+}, te = (e, t, n) => {
 	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
 		e && !i.has(e) && (i.add(e), a.push(e));
 	};
@@ -164,11 +164,11 @@ var y = {
 		}
 	}
 	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => T(e, t));
-}, D = {
+}, E = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, O = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? D : {
+}, D = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? E : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -178,38 +178,38 @@ var y = {
 				...r,
 				children: a[e],
 				keyPath: [...r.keyPath, {
-					type: x,
+					type: ee,
 					key: e
 				}]
 			};
 			o[e] = i(a[e], t);
 		}
-		return E(o, e, t);
+		return te(o, e, t);
 	}
-}, k = D, A = D, j = D, M = D, N = (e) => D, P = D, F = (e, t = !0) => [
-	O(e ?? C.defaultLocale, t ? C.defaultLocale : void 0),
+}, O = E, k = E, A = E, j = E, M = (e) => E, N = E, P = (e, t = !0) => [
+	D(e ?? C.defaultLocale, t ? C.defaultLocale : void 0),
+	O,
 	k,
 	A,
-	j,
-	N(e ?? C.defaultLocale),
-	P,
-	M
-], I = (e, t, n = []) => S(e, {
+	M(e ?? C.defaultLocale),
+	N,
+	j
+], F = (e, t, n = []) => S(e, {
 	...t,
 	plugins: n
-}), L = (e, t, n = F(t)) => {
+}), I = (e, t, n = P(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return I(e.content, r, n);
-}, R = {
+	return F(e.content, r, n);
+}, L = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => b({
+		let r = (e) => y({
 			...n,
 			value: e,
 			children: e
@@ -227,38 +227,38 @@ var y = {
 		}
 		return d(a);
 	}
-}, z = D, B = D, V = D, H = /* @__PURE__ */ new Map(), U = (e, t = !0) => {
+}, R = E, z = E, B = E, V = /* @__PURE__ */ new Map(), H = (e, t = !0) => {
 	let n = `${e ?? C.defaultLocale}_${t}`;
-	if (H.has(n)) return H.get(n);
+	if (V.has(n)) return V.get(n);
 	let r = [
-		O(e ?? C.defaultLocale, t ? C.defaultLocale : void 0),
+		D(e ?? C.defaultLocale, t ? C.defaultLocale : void 0),
+		O,
 		k,
-		A,
-		N(e ?? C.defaultLocale),
-		P,
-		M,
+		M(e ?? C.defaultLocale),
+		N,
+		j,
+		L,
 		R,
 		z,
-		B,
-		V
+		B
 	];
-	return H.set(n, r), r;
-}, W = (e, t) => L(e, t, U(t)), G = Symbol("intlayer"), K = (e, t) => t.reduce((e, t) => e?.[t], e), q = (e) => typeof e == "object" && !!e, J = (e) => typeof e == "function" || q(e) && ("render" in e || "setup" in e), Y = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, X = (e) => d(o({
+	return V.set(n, r), r;
+}, U = (e, t) => I(e, t, H(t)), W = Symbol("intlayer"), G = (e, t) => t.reduce((e, t) => e?.[t], e), K = (e) => typeof e == "object" && !!e, q = (e) => typeof e == "function" || K(e) && ("render" in e || "setup" in e), J = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, Y = (e) => d(o({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : J(t) ? c(t) : Array.isArray(t) ? c("span", t) : t;
+			return t == null ? null : q(t) ? c(t) : Array.isArray(t) ? c("span", t) : t;
 		};
 	}
-})), Z = (e) => new Proxy({}, {
+})), X = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
 		if (n === "value") return r ?? "";
 		if (n === "$raw") return e;
 		if (n === "__v_skip") return !0;
-		if (n === "c" || n === "asComponent") return X(() => e.value);
+		if (n === "c" || n === "asComponent") return Y(() => e.value);
 		if (r == null) return n === Symbol.toPrimitive || n === "toString" ? () => "" : void 0;
 		let i = r[n];
 		return typeof i == "function" ? i.bind(r) : i;
@@ -273,10 +273,10 @@ var y = {
 			configurable: !0
 		};
 	}
-}), Q = (e, n) => {
-	let r = s() ? l(G) : void 0, i = u(r?.locale) ? r.locale : p(r?.locale ?? C.defaultLocale), a = t(() => (n === void 0 ? void 0 : g(n)) ?? i.value), o = m({});
-	v([() => g(e), () => a.value], ([e, t]) => {
-		o.value = W(e, t);
+}), Z = (e, n) => {
+	let r = s() ? l(W) : void 0, i = u(r?.locale) ? r.locale : p(r?.locale ?? C.defaultLocale), a = t(() => (n === void 0 ? void 0 : g(n)) ?? i.value), o = m({});
+	_([() => g(e), () => a.value], ([e, t]) => {
+		o.value = U(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
@@ -284,23 +284,23 @@ var y = {
 	let c = (e) => new Proxy({}, {
 		get(n, r, i) {
 			if (r === "__v_isRef") return !0;
-			let a = t(() => K(o.value, e));
+			let a = t(() => G(o.value, e));
 			if (r === "value") return a.value ?? "";
 			if (r === "then") return;
-			if (r === "c" || r === "asComponent") return X(() => a.value);
+			if (r === "c" || r === "asComponent") return Y(() => a.value);
 			if (r === "$raw") return a;
 			if (r === Symbol.toPrimitive) return () => a.value;
-			let s = e.concat(r), l = K(o.value, s);
-			if (l === void 0 || q(l) && !J(l)) return c(s);
-			if (Y(l)) return Z(t(() => K(o.value, s)));
-			let u = t(() => K(o.value, s));
+			let s = e.concat(r), l = G(o.value, s);
+			if (l === void 0 || K(l) && !q(l)) return c(s);
+			if (J(l)) return X(t(() => G(o.value, s)));
+			let u = t(() => G(o.value, s));
 			return new Proxy(u, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let t = K(o.value, e);
-			return q(t) ? Reflect.ownKeys(t) : [];
+			let t = G(o.value, e);
+			return K(t) ? Reflect.ownKeys(t) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -310,7 +310,7 @@ var y = {
 		}
 	});
 	return c([]);
-}, $ = {
+}, ne = {
 	key: "mock-banner",
 	content: {
 		nodeType: "translation",
@@ -327,28 +327,51 @@ var y = {
 			ru: { a: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
 		}
 	}
-}, ne = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" }, re = o({
+}, re = o({
 	__name: "MockBanner",
-	setup(e) {
-		let { a: t } = Q($);
-		return (e, r) => (f(), n("div", ne, h(_(t)), 1));
+	setup(e, { expose: t }) {
+		t();
+		let { a: n } = Z(ne), r = { message: n };
+		return Object.defineProperty(r, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), r;
 	}
-}), ie = { class: "mb-2 text-3xl font-bold text-foreground" }, ae = { class: "mb-8 text-muted-foreground" }, oe = o({
+}), Q = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, ie = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" };
+function ae(e, t, r, i, a, o) {
+	return f(), n("div", ie, h(i.message), 1);
+}
+var oe = Q(re, [["render", ae], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/MockBanner.vue"]]), se = o({
 	__name: "ContactHeader",
-	setup(t) {
-		let o = Q(y);
-		return (t, s) => (f(), n(e, null, [
-			a(re),
-			r("h1", ie, h(_(o).getInTouch), 1),
-			r("p", ae, [
-				i(h(_(o).haveIdeasFoundABug), 1),
-				s[0] ||= r("a", {
-					href: "mailto:contact@intlayer.org",
-					class: "text-primary hover:underline"
-				}, " contact@intlayer.org ", -1),
-				s[1] ||= i(" . ", -1)
-			])
-		], 64));
+	setup(e, { expose: t }) {
+		t();
+		let n = {
+			content: Z(v),
+			MockBanner: oe
+		};
+		return Object.defineProperty(n, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), n;
 	}
-});
-export { oe as default };
+}), ce = { class: "mb-2 text-3xl font-bold text-foreground" }, le = { class: "mb-8 text-muted-foreground" };
+function $(t, o, s, c, l, u) {
+	return f(), n(e, null, [
+		a(c.MockBanner),
+		r("h1", ce, h(c.content.getInTouch), 1),
+		r("p", le, [
+			i(h(c.content.haveIdeasFoundABug), 1),
+			o[0] ||= r("a", {
+				href: "mailto:contact@intlayer.org",
+				class: "text-primary hover:underline"
+			}, " contact@intlayer.org ", -1),
+			o[1] ||= i(" . ", -1)
+		])
+	], 64);
+}
+var ue = Q(se, [["render", $], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/pages/contact/ContactHeader.vue"]]);
+export { ue as default };

@@ -1,5 +1,5 @@
 import { useEffect, useId, useLayoutEffect, useState } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 var URLPattern = {};
 var locales = [
@@ -832,66 +832,167 @@ var preferences_section_usedarkcolorscheme3 = ((inputs = {}, options = {}) => {
 	if (locale === "ru") return ru_preferences_section_usedarkcolorscheme3(inputs);
 	return en_preferences_section_usedarkcolorscheme3(inputs);
 });
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/settings/PreferencesSection.tsx";
 function PreferencesSection() {
 	const languageId = useId();
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
 			children: preferences_section_preferences()
-		}), jsxs("div", {
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 11,
+			columnNumber: 7
+		}, this), jsxDEV("div", {
 			className: "space-y-4",
 			children: [
-				jsxs("div", {
+				jsxDEV("div", {
 					className: "flex items-center justify-between",
-					children: [jsxs("div", { children: [jsx("p", {
+					children: [jsxDEV("div", { children: [jsxDEV("p", {
 						className: "text-sm font-medium text-foreground",
 						children: preferences_section_emailnotifications1()
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 17,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-xs text-muted-foreground",
 						children: preferences_section_receiveweeklybenchmarkreports3()
-					})] }), jsx("button", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 20,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 16,
+						columnNumber: 11
+					}, this), jsxDEV("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-primary transition-colors",
 						"aria-label": preferences_section_togglenotifications1(),
-						children: jsx("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" })
-					})]
-				}),
-				jsxs("div", {
+						children: jsxDEV("span", { className: "block h-5 w-5 translate-x-5 rounded-full bg-primary-foreground transition-transform" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 29,
+							columnNumber: 13
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 24,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 15,
+					columnNumber: 9
+				}, this),
+				jsxDEV("div", {
 					className: "flex items-center justify-between",
-					children: [jsxs("div", { children: [jsx("p", {
+					children: [jsxDEV("div", { children: [jsxDEV("p", {
 						className: "text-sm font-medium text-foreground",
 						children: preferences_section_darkmode1()
-					}), jsx("p", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 34,
+						columnNumber: 13
+					}, this), jsxDEV("p", {
 						className: "text-xs text-muted-foreground",
 						children: preferences_section_usedarkcolorscheme3()
-					})] }), jsx("button", {
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 37,
+						columnNumber: 13
+					}, this)] }, void 0, true, {
+						fileName: _jsxFileName$3,
+						lineNumber: 33,
+						columnNumber: 11
+					}, this), jsxDEV("button", {
 						type: "button",
 						className: "h-6 w-11 rounded-full bg-muted transition-colors",
 						"aria-label": preferences_section_toggledarkmode2(),
-						children: jsx("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" })
-					})]
-				}),
-				jsxs("div", { children: [jsx("label", {
+						children: jsxDEV("span", { className: "block h-5 w-5 translate-x-0.5 rounded-full bg-foreground/20 transition-transform" }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 46,
+							columnNumber: 13
+						}, this)
+					}, void 0, false, {
+						fileName: _jsxFileName$3,
+						lineNumber: 41,
+						columnNumber: 11
+					}, this)]
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 32,
+					columnNumber: 9
+				}, this),
+				jsxDEV("div", { children: [jsxDEV("label", {
 					htmlFor: languageId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: preferences_section_defaultlanguage1()
-				}), jsxs("select", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 50,
+					columnNumber: 11
+				}, this), jsxDEV("select", {
 					id: languageId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					children: [
-						jsx("option", { children: preferences_section_englishen1() }),
-						jsx("option", { children: preferences_section_frenchfr1() }),
-						jsx("option", { children: preferences_section_germande1() }),
-						jsx("option", { children: preferences_section_spanishes1() }),
-						jsx("option", { children: preferences_section_japaneseja1() }),
-						jsx("option", { children: preferences_section_chinesesimplifiedzhcn3() }),
-						jsx("option", { children: preferences_section_arabicar1() })
+						jsxDEV("option", { children: preferences_section_englishen1() }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 60,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: preferences_section_frenchfr1() }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 61,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: preferences_section_germande1() }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 62,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: preferences_section_spanishes1() }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 63,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: preferences_section_japaneseja1() }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 64,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: preferences_section_chinesesimplifiedzhcn3() }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 65,
+							columnNumber: 13
+						}, this),
+						jsxDEV("option", { children: preferences_section_arabicar1() }, void 0, false, {
+							fileName: _jsxFileName$3,
+							lineNumber: 66,
+							columnNumber: 13
+						}, this)
 					]
-				})] })
+				}, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 56,
+					columnNumber: 11
+				}, this)] }, void 0, true, {
+					fileName: _jsxFileName$3,
+					lineNumber: 49,
+					columnNumber: 9
+				}, this)
 			]
-		})]
-	});
+		}, void 0, true, {
+			fileName: _jsxFileName$3,
+			lineNumber: 14,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 10,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -915,6 +1016,7 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
@@ -928,12 +1030,30 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 31,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/paraglide-next-app/components/pages/settings/PreferencesSection.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(PreferencesSection, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(PreferencesSection, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

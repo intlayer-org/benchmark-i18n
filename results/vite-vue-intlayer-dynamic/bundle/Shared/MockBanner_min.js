@@ -1,5 +1,5 @@
-import { computed as e, createElementBlock as t, defineComponent as n, getCurrentInstance as r, h as i, inject as a, isRef as o, markRaw as s, openBlock as c, ref as l, shallowRef as u, toDisplayString as d, toValue as f, unref as p, watch as m } from "vue";
-var h = {
+import { computed as e, createElementBlock as t, defineComponent as n, getCurrentInstance as r, h as i, inject as a, isRef as o, markRaw as s, openBlock as c, ref as l, shallowRef as u, toDisplayString as d, toValue as f, watch as p } from "vue";
+var m = {
 	key: "mock-banner",
 	content: {
 		nodeType: "translation",
@@ -16,7 +16,7 @@ var h = {
 			ru: { a: "⚠️ Эта страница содержит мок-данные только для целей бенчмаркинга. Она не связана с каким-либо реальным бизнесом или услугой." }
 		}
 	}
-}, g = ({ value: e, children: t, additionalProps: n = {} }) => {
+}, h = ({ value: e, children: t, additionalProps: n = {} }) => {
 	let r = l(e), i = typeof t == "function" ? (e) => t(e) : () => t, a = (e) => (r.value, i(e)), o = ((e) => a(e));
 	return Object.setPrototypeOf(o, String.prototype), Object.assign(o, {
 		render: a,
@@ -34,7 +34,7 @@ var h = {
 			return r.value;
 		},
 		use(e) {
-			return g({
+			return h({
 				value: r.value,
 				children: () => i(e),
 				additionalProps: n
@@ -45,14 +45,14 @@ var h = {
 		},
 		...n
 	}), s(o);
-}, _ = "translation", v = "object", y = "array", b = (e, t) => {
-	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => b(e, t));
+}, g = "translation", _ = "object", v = "array", y = (e, t) => {
+	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => y(e, t));
 	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
-	if (Array.isArray(e)) return e.map((e, n) => b(e, {
+	if (Array.isArray(e)) return e.map((e, n) => y(e, {
 		...t,
 		children: e,
 		keyPath: [...t.keyPath, {
-			type: y,
+			type: v,
 			key: n
 		}]
 	}));
@@ -65,10 +65,10 @@ var h = {
 				...t,
 				children: e[r],
 				keyPath: [...t.keyPath, {
-					type: v,
+					type: _,
 					key: r
 				}]
-			}, i = b(e[r], n);
+			}, i = y(e[r], n);
 			return Object.defineProperty(this, r, {
 				value: i,
 				enumerable: !0,
@@ -77,7 +77,7 @@ var h = {
 		}
 	});
 	return n;
-}, x = {
+}, b = {
 	locales: [
 		"en",
 		"fr",
@@ -104,20 +104,20 @@ var h = {
 	],
 	strictMode: "inclusive",
 	defaultLocale: "en"
-}, S = (e) => {
+}, x = (e) => {
 	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
 	let t = Object.getPrototypeOf(e);
 	return t === Object.prototype || t === null || Array.isArray(e);
-}, C = (e, t) => {
+}, S = (e, t) => {
 	if (e === void 0) return t;
 	if (t === void 0 || Array.isArray(e)) return e;
-	if (S(e) && S(t)) {
+	if (x(e) && x(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : C(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : S(e[r], t[r]));
 		return n;
 	}
 	return e;
-}, w = (e, t, n) => {
+}, C = (e, t, n) => {
 	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
 		e && !i.has(e) && (i.add(e), a.push(e));
 	};
@@ -133,12 +133,12 @@ var h = {
 			s.push(t);
 		}
 	}
-	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => C(e, t));
-}, T = {
+	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => S(e, t));
+}, w = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, E = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? T : {
+}, T = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? w : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -148,38 +148,38 @@ var h = {
 				...r,
 				children: a[e],
 				keyPath: [...r.keyPath, {
-					type: _,
+					type: g,
 					key: e
 				}]
 			};
 			o[e] = i(a[e], t);
 		}
-		return w(o, e, t);
+		return C(o, e, t);
 	}
-}, D = T, O = T, k = T, A = T, j = (e) => T, M = T, N = (e, t = !0) => [
-	E(e ?? x.defaultLocale, t ? x.defaultLocale : void 0),
+}, E = w, D = w, O = w, k = w, A = (e) => w, j = w, M = (e, t = !0) => [
+	T(e ?? b.defaultLocale, t ? b.defaultLocale : void 0),
+	E,
 	D,
 	O,
-	k,
-	j(e ?? x.defaultLocale),
-	M,
-	A
-], P = (e, t, n = []) => b(e, {
+	A(e ?? b.defaultLocale),
+	j,
+	k
+], N = (e, t, n = []) => y(e, {
 	...t,
 	plugins: n
-}), F = (e, t, n = N(t)) => {
+}), P = (e, t, n = M(t)) => {
 	let r = {
 		dictionaryKey: e.key,
 		dictionaryPath: e.filePath,
 		keyPath: [],
 		plugins: n
 	};
-	return P(e.content, r, n);
-}, I = {
+	return N(e.content, r, n);
+}, F = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (e, { children: t, ...n }) => {
-		let r = (e) => g({
+		let r = (e) => h({
 			...n,
 			value: e,
 			children: e
@@ -197,38 +197,38 @@ var h = {
 		}
 		return s(a);
 	}
-}, L = T, R = T, z = T, B = /* @__PURE__ */ new Map(), V = (e, t = !0) => {
-	let n = `${e ?? x.defaultLocale}_${t}`;
-	if (B.has(n)) return B.get(n);
+}, I = w, L = w, R = w, z = /* @__PURE__ */ new Map(), B = (e, t = !0) => {
+	let n = `${e ?? b.defaultLocale}_${t}`;
+	if (z.has(n)) return z.get(n);
 	let r = [
-		E(e ?? x.defaultLocale, t ? x.defaultLocale : void 0),
+		T(e ?? b.defaultLocale, t ? b.defaultLocale : void 0),
+		E,
 		D,
-		O,
-		j(e ?? x.defaultLocale),
-		M,
-		A,
+		A(e ?? b.defaultLocale),
+		j,
+		k,
+		F,
 		I,
 		L,
-		R,
-		z
+		R
 	];
-	return B.set(n, r), r;
-}, H = (e, t) => F(e, t, V(t)), U = Symbol("intlayer"), W = (e, t) => t.reduce((e, t) => e?.[t], e), G = (e) => typeof e == "object" && !!e, K = (e) => typeof e == "function" || G(e) && ("render" in e || "setup" in e), q = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, J = (e) => s(n({
+	return z.set(n, r), r;
+}, V = (e, t) => P(e, t, B(t)), H = Symbol("intlayer"), U = (e, t) => t.reduce((e, t) => e?.[t], e), W = (e) => typeof e == "object" && !!e, G = (e) => typeof e == "function" || W(e) && ("render" in e || "setup" in e), K = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, q = (e) => s(n({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
 			let t = e();
-			return t == null ? null : K(t) ? i(t) : Array.isArray(t) ? i("span", t) : t;
+			return t == null ? null : G(t) ? i(t) : Array.isArray(t) ? i("span", t) : t;
 		};
 	}
-})), Y = (e) => new Proxy({}, {
+})), J = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
 		if (n === "value") return r ?? "";
 		if (n === "$raw") return e;
 		if (n === "__v_skip") return !0;
-		if (n === "c" || n === "asComponent") return J(() => e.value);
+		if (n === "c" || n === "asComponent") return q(() => e.value);
 		if (r == null) return n === Symbol.toPrimitive || n === "toString" ? () => "" : void 0;
 		let i = r[n];
 		return typeof i == "function" ? i.bind(r) : i;
@@ -243,34 +243,34 @@ var h = {
 			configurable: !0
 		};
 	}
-}), X = (t, n) => {
-	let i = r() ? a(U) : void 0, s = o(i?.locale) ? i.locale : l(i?.locale ?? x.defaultLocale), c = e(() => (n === void 0 ? void 0 : f(n)) ?? s.value), d = u({});
-	m([() => f(t), () => c.value], ([e, t]) => {
-		d.value = H(e, t);
+}), Y = (t, n) => {
+	let i = r() ? a(H) : void 0, s = o(i?.locale) ? i.locale : l(i?.locale ?? b.defaultLocale), c = e(() => (n === void 0 ? void 0 : f(n)) ?? s.value), d = u({});
+	p([() => f(t), () => c.value], ([e, t]) => {
+		d.value = V(e, t);
 	}, {
 		immediate: !0,
 		flush: "sync"
 	});
-	let p = (t) => new Proxy({}, {
+	let m = (t) => new Proxy({}, {
 		get(n, r, i) {
 			if (r === "__v_isRef") return !0;
-			let a = e(() => W(d.value, t));
+			let a = e(() => U(d.value, t));
 			if (r === "value") return a.value ?? "";
 			if (r === "then") return;
-			if (r === "c" || r === "asComponent") return J(() => a.value);
+			if (r === "c" || r === "asComponent") return q(() => a.value);
 			if (r === "$raw") return a;
 			if (r === Symbol.toPrimitive) return () => a.value;
-			let o = t.concat(r), s = W(d.value, o);
-			if (s === void 0 || G(s) && !K(s)) return p(o);
-			if (q(s)) return Y(e(() => W(d.value, o)));
-			let c = e(() => W(d.value, o));
+			let o = t.concat(r), s = U(d.value, o);
+			if (s === void 0 || W(s) && !G(s)) return m(o);
+			if (K(s)) return J(e(() => U(d.value, o)));
+			let c = e(() => U(d.value, o));
 			return new Proxy(c, { get(e, t, n) {
 				return t === "value" ? e.value ?? "" : Reflect.get(e, t, n);
 			} });
 		},
 		ownKeys() {
-			let e = W(d.value, t);
-			return G(e) ? Reflect.ownKeys(e) : [];
+			let e = U(d.value, t);
+			return W(e) ? Reflect.ownKeys(e) : [];
 		},
 		getOwnPropertyDescriptor() {
 			return {
@@ -279,12 +279,24 @@ var h = {
 			};
 		}
 	});
-	return p([]);
-}, Z = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" }, Q = n({
+	return m([]);
+}, X = n({
 	__name: "MockBanner",
-	setup(e) {
-		let { a: n } = X(h);
-		return (e, r) => (c(), t("div", Z, d(p(n)), 1));
+	setup(e, { expose: t }) {
+		t();
+		let { a: n } = Y(m), r = { message: n };
+		return Object.defineProperty(r, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), r;
 	}
-});
-export { Q as default };
+}), Z = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, Q = { class: "mb-8 rounded-lg border border-yellow-500/20 bg-yellow-500/10 p-4 text-sm text-yellow-600 dark:text-yellow-400" };
+function $(e, n, r, i, a, o) {
+	return c(), t("div", Q, d(i.message), 1);
+}
+var ee = Z(X, [["render", $], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/MockBanner.vue"]]);
+export { ee as default };

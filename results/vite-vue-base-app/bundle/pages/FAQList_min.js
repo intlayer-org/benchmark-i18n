@@ -1,8 +1,9 @@
 import { Fragment as e, createElementBlock as t, createElementVNode as n, defineComponent as r, openBlock as i, renderList as a, toDisplayString as o } from "vue";
-var s = { class: "mx-auto max-w-3xl space-y-4" }, c = { class: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors" }, l = { class: "px-6 pb-4 text-sm text-muted-foreground" }, u = r({
+var s = r({
 	__name: "FAQList",
-	setup(r) {
-		let u = [
+	setup(e, { expose: t }) {
+		t();
+		let n = { faqs: [
 			{
 				q: "What is i18n Benchmark?",
 				a: "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications."
@@ -35,11 +36,22 @@ var s = { class: "mx-auto max-w-3xl space-y-4" }, c = { class: "cursor-pointer p
 				q: "How can I contribute?",
 				a: "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
 			}
-		];
-		return (r, d) => (i(), t("div", s, [(i(), t(e, null, a(u, (e) => n("details", {
-			key: e.q,
-			class: "group rounded-lg border border-border bg-card"
-		}, [n("summary", c, o(e.q), 1), n("p", l, o(e.a), 1)])), 64))]));
+		] };
+		return Object.defineProperty(n, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), n;
 	}
-});
-export { u as default };
+}), c = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+}, l = { class: "mx-auto max-w-3xl space-y-4" }, u = { class: "cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors" }, d = { class: "px-6 pb-4 text-sm text-muted-foreground" };
+function f(r, s, c, f, p, m) {
+	return i(), t("div", l, [(i(), t(e, null, a(f.faqs, (e) => n("details", {
+		key: e.q,
+		class: "group rounded-lg border border-border bg-card"
+	}, [n("summary", u, o(e.q), 1), n("p", d, o(e.a), 1)])), 64))]);
+}
+var p = c(s, [["render", f], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/pages/faq/FAQList.vue"]]);
+export { p as default };

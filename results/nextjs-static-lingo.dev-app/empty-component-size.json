@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-23T20:39:04.787Z",
+  "timestamp": "2026-09-09T18:55:28.285Z",
   "packageName": "nextjs-static-lingo.dev-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 24827,
-    "totalMinifiedBytes": 20246,
-    "totalGzipBytes": 7805
+    "totalUnminifiedBytes": 25667,
+    "totalMinifiedBytes": 20978,
+    "totalGzipBytes": 7986
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 24827,
-      "unminifiedGzipBytes": 8229,
-      "minifiedBytes": 20246,
-      "minifiedGzipBytes": 7805
+      "unminifiedBytes": 25667,
+      "unminifiedGzipBytes": 8419,
+      "minifiedBytes": 20978,
+      "minifiedGzipBytes": 7986
     }
   ]
 }

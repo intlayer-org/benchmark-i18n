@@ -1,16 +1,16 @@
 import { Dynamic, insert, setAttribute, template } from "solid-js/web";
 import { createContext, createMemo, createUniqueId, useContext } from "solid-js";
 var content = {
-	"de": () => import("./de-CSRDW9uq.js").then((m) => m.default),
-	"en": () => import("./en-CmI_g8PA.js").then((m) => m.default),
-	"es": () => import("./es-CXc1PMFk.js").then((m) => m.default),
-	"fr": () => import("./fr-BEll8TdB.js").then((m) => m.default),
-	"it": () => import("./it-B-mUVs0m.js").then((m) => m.default),
-	"ja": () => import("./ja-vrXCRAlc.js").then((m) => m.default),
-	"ko": () => import("./ko-AAt-fW2U.js").then((m) => m.default),
-	"pt": () => import("./pt-Bybm4Hbu.js").then((m) => m.default),
-	"ru": () => import("./ru-DhV1Ionk.js").then((m) => m.default),
-	"zh": () => import("./zh-CC6q6Ip4.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/de.json").then((m) => m.default),
+	"en": () => import("./en-4krx0gwl.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/zh.json").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,8 +230,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-};
-var S = {
+}, S$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -239,8 +238,7 @@ var S = {
 		value: o.children,
 		children: o.children
 	})
-};
-var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -248,12 +246,7 @@ var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin :
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-};
-var T = fallbackPlugin;
-var D = fallbackPlugin;
-var O = fallbackPlugin;
-var k = /* @__PURE__ */ new Map();
-var A = (e, t = !0) => {
+}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -263,7 +256,7 @@ var A = (e, t = !0) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S,
+		S$1,
 		C,
 		T,
 		D,
@@ -282,8 +275,7 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-};
-var localeStorageOptions = {
+}, localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -301,9 +293,7 @@ var localeStorageOptions = {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-};
-var a$1 = getLocaleFromStorageClient(localeStorageOptions);
-var y = createContext({
+}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -322,9 +312,7 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-};
-var t = /* @__PURE__ */ new Map();
-var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
@@ -347,15 +335,6 @@ function ProfileSection() {
 	})();
 }
 export { ProfileSection as default };
-var de_default = {
-	key: "profile-section",
-	content: {
-		"c": "Profil",
-		"a": "Anzeigename",
-		"b": "E-Mail"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "profile-section",
 	content: {
@@ -365,75 +344,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "profile-section",
-	content: {
-		"c": "Perfil",
-		"a": "Nombre de usuario",
-		"b": "Correo electrónico"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "profile-section",
-	content: {
-		"c": "Profil",
-		"a": "Nom d'affichage",
-		"b": "Email"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "profile-section",
-	content: {
-		"c": "Profilo",
-		"a": "Nome visualizzato",
-		"b": "Email"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "profile-section",
-	content: {
-		"c": "プロフィール",
-		"a": "表示名",
-		"b": "メールアドレス"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "profile-section",
-	content: {
-		"c": "프로필",
-		"a": "표시 이름",
-		"b": "이메일"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "profile-section",
-	content: {
-		"c": "Perfil",
-		"a": "Nome de exibição",
-		"b": "E-mail"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "profile-section",
-	content: {
-		"c": "Профиль",
-		"a": "Отображаемое имя",
-		"b": "Электронная почта"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "profile-section",
-	content: {
-		"c": "个人资料",
-		"a": "显示名称",
-		"b": "电子邮件"
-	}
-};
-export { zh_default as default };

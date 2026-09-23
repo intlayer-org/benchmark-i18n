@@ -1,27 +1,44 @@
 import { createContext as e, createElement as t, useCallback as n, useContext as r, useEffect as i, useLayoutEffect as a, useMemo as o, useRef as s, useState as c } from "react";
 import l from "next/link";
 import { useParams as u } from "next/navigation";
-import { jsx as d, jsxs as f } from "react/jsx-runtime";
-var p = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), m = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
+import { jsxDEV as d } from "react/jsx-dev-runtime";
+var f = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports), p = ((e) => typeof require < "u" ? require : typeof Proxy < "u" ? new Proxy(e, { get: (e, t) => (typeof require < "u" ? require : e)[t] }) : e)(function(e) {
 	if (typeof require < "u") return require.apply(this, arguments);
 	throw Error("Calling `require` for \"" + e + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
-}), h = (e) => /^https?:\/\//.test(e ?? "");
+}), m = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/components/Link.tsx", h = (e) => /^https?:\/\//.test(e ?? "");
 function g(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
 var _ = ({ href: e, children: t, ...n }) => {
 	let r = u().locale ?? "en";
-	return e == null || typeof e != "string" || h(e) ? d(l, {
+	return e == null || typeof e != "string" ? d(l, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}) : d(l, {
+	}, void 0, !1, {
+		fileName: m,
+		lineNumber: 23,
+		columnNumber: 7
+	}, void 0) : h(e) ? d(l, {
+		href: e,
+		prefetch: !1,
+		...n,
+		children: t
+	}, void 0, !1, {
+		fileName: m,
+		lineNumber: 30,
+		columnNumber: 7
+	}, void 0) : d(l, {
 		href: g(e, r),
 		prefetch: !1,
 		...n,
 		children: t
-	});
+	}, void 0, !1, {
+		fileName: m,
+		lineNumber: 36,
+		columnNumber: 5
+	}, void 0);
 }, v = (e) => typeof e == "string", y = () => {
 	let e, t, n = new Promise((n, r) => {
 		e = n, t = r;
@@ -1334,8 +1351,8 @@ var be = (e, t, n, r) => {
 	getUsedNamespaces() {
 		return Object.keys(this.usedNamespaces);
 	}
-}, Le = p(((e) => {
-	var t = m("react");
+}, Le = f(((e) => {
+	var t = p("react");
 	function n(e, t) {
 		return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
 	}
@@ -1372,7 +1389,7 @@ var be = (e, t, n, r) => {
 	}
 	var d = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? u : c;
 	e.useSyncExternalStore = t.useSyncExternalStore === void 0 ? d : t.useSyncExternalStore;
-})), Re = p(((e) => {
+})), Re = f(((e) => {
 	process.env.NODE_ENV !== "production" && (function() {
 		function t(e, t) {
 			return e === t && (e !== 0 || 1 / e == 1 / t) || e !== e && t !== t;
@@ -1415,10 +1432,10 @@ var be = (e, t, n, r) => {
 			return t();
 		}
 		typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(Error());
-		var a = m("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, c = a.useEffect, l = a.useLayoutEffect, u = a.useDebugValue, d = !1, f = !1, p = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
-		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? p : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
+		var a = p("react"), o = typeof Object.is == "function" ? Object.is : t, s = a.useState, c = a.useEffect, l = a.useLayoutEffect, u = a.useDebugValue, d = !1, f = !1, m = typeof window > "u" || window.document === void 0 || window.document.createElement === void 0 ? i : n;
+		e.useSyncExternalStore = a.useSyncExternalStore === void 0 ? m : a.useSyncExternalStore, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(Error());
 	})();
-})), ze = p(((e, t) => {
+})), ze = f(((e, t) => {
 	t.exports = process.env.NODE_ENV === "production" ? Le() : Re();
 }))(), Be = {
 	t: (e, t) => {
@@ -1530,6 +1547,7 @@ function Ue({ i18n: e, defaultNS: n, children: r }) {
 	}), [e, n]);
 	return t(Fe.Provider, { value: i }, r);
 }
+var Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/components/Footer.tsx";
 function We() {
 	let { t: e } = He(), t = [
 		{
@@ -1550,49 +1568,113 @@ function We() {
 	];
 	return d("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: f("div", {
+		children: d("div", {
 			className: "container py-8",
-			children: [f("div", {
+			children: [d("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					f("div", { children: [d("h3", {
+					d("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: "i18n Benchmark"
-					}), d("p", {
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 32,
+						columnNumber: 13
+					}, this), d("p", {
 						className: "text-sm text-muted-foreground",
 						children: e("shared.footer.anOpenSourceTestApplication")
-					})] }),
-					f("div", { children: [d("h3", {
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 35,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: Q,
+						lineNumber: 31,
+						columnNumber: 11
+					}, this),
+					d("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("shared.footer.resources")
-					}), d("ul", {
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 40,
+						columnNumber: 13
+					}, this), d("ul", {
 						className: "space-y-1",
 						children: t.map((e) => d("li", { children: e.isInternal ? d(_, {
 							href: e.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}) : d("a", {
+						}, void 0, !1, {
+							fileName: Q,
+							lineNumber: 47,
+							columnNumber: 21
+						}, this) : d("a", {
 							href: e.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: e.label
-						}) }, e.label))
-					})] }),
-					f("div", { children: [d("h3", {
+						}, void 0, !1, {
+							fileName: Q,
+							lineNumber: 54,
+							columnNumber: 21
+						}, this) }, e.label, !1, {
+							fileName: Q,
+							lineNumber: 45,
+							columnNumber: 17
+						}, this))
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 43,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: Q,
+						lineNumber: 39,
+						columnNumber: 11
+					}, this),
+					d("div", { children: [d("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: e("shared.footer.contact")
-					}), d("p", {
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 68,
+						columnNumber: 13
+					}, this), d("p", {
 						className: "text-sm text-muted-foreground",
 						children: "contact@intlayer.org"
-					})] })
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 71,
+						columnNumber: 13
+					}, this)] }, void 0, !0, {
+						fileName: Q,
+						lineNumber: 67,
+						columnNumber: 11
+					}, this)
 				]
-			}), d("div", {
+			}, void 0, !0, {
+				fileName: Q,
+				lineNumber: 30,
+				columnNumber: 9
+			}, this), d("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: e("shared.footer.builtWith")
-			})]
-		})
-	});
+			}, void 0, !1, {
+				fileName: Q,
+				lineNumber: 76,
+				columnNumber: 9
+			}, this)]
+		}, void 0, !0, {
+			fileName: Q,
+			lineNumber: 29,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: Q,
+		lineNumber: 28,
+		columnNumber: 5
+	}, this);
 }
 function Ge() {
 	if (!(typeof window > "u")) {
@@ -1622,7 +1704,7 @@ var qe = (e, t, n) => {
 	"__proto__",
 	"constructor",
 	"prototype"
-], Q = function(e, t) {
+], Ye = function(e, t) {
 	return !(typeof e != "string" || e.length > 128 || Je.indexOf(e) > -1 || e.indexOf("..") > -1 || e.indexOf("\\") > -1 || !t && e.indexOf("/") > -1 || /[\x00-\x1F\x7F]/.test(e));
 };
 q.use(Pe).use(function(e) {
@@ -1630,7 +1712,7 @@ q.use(Pe).use(function(e) {
 		type: "backend",
 		init: function(e, t, n) {},
 		read: function(t, n, r) {
-			if (!Q(t, !1) || !Q(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
+			if (!Ye(t, !1) || !Ye(n, !0)) return r(/* @__PURE__ */ Error("i18next-resources-to-backend: unsafe language/namespace value"), !1);
 			if (typeof e == "function") {
 				if (e.length < 3) {
 					try {
@@ -1668,8 +1750,8 @@ q.use(Pe).use(function(e) {
 	keySeparator: !1,
 	nsSeparator: !1
 });
-var $ = q;
-function Ye({ children: e }) {
+var $ = q, Xe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/components/AppProviders.tsx";
+function Ze({ children: e }) {
 	let t = u().locale ?? "en", [n] = c(() => typeof performance < "u" ? performance.now() : 0);
 	return a(() => {
 		Ke("AppRoot", n);
@@ -1682,15 +1764,33 @@ function Ye({ children: e }) {
 	}, []), d(Ue, {
 		i18n: $,
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: Xe,
+		lineNumber: 38,
+		columnNumber: 7
+	}, this);
 }
-function Xe({ children: e }) {
-	return d(Ye, { children: e });
+var Qe = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/scripts/Wrapper.tsx";
+function $e({ children: e }) {
+	return d(Ze, { children: e }, void 0, !1, {
+		fileName: Qe,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
-function Ze() {
-	return d(Xe, { children: d(We, {}) });
+var et = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-i18next-app/components/Footer.wrapper.tsx";
+function tt() {
+	return d($e, { children: d(We, {}, void 0, !1, {
+		fileName: et,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: et,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { Ze as default };
+export { tt as default };
 var e = {
 	"faq.faqList.howAreTheBenchmarks": "How are the benchmarks run?",
 	"faq.faqList.allBenchmarksAreRun": "All benchmarks are run using Playwright on a consistent hardware setup (M2 MacBook Pro) with simulated 4G network conditions. Each test runs 50 iterations and we report median, P95, and P99 values.",

@@ -1,6 +1,11 @@
 import "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, jsxDEV } from "react/jsx-dev-runtime";
 var onInvalidFunc = () => "";
+onInvalidFunc = (i, c) => {
+	const item = c[i];
+	if (item == null) return `[i18n-404:${i}]`;
+	return `[i18n-400:${i}(${item})]`;
+};
 function mixedToString(ctx, args = [], start = 1) {
 	let txt = "";
 	for (let i = start; i < ctx.length; i++) {
@@ -105,12 +110,17 @@ var runtime_default = (props) => {
 		x: fragment
 	}, i));
 };
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/MockBanner.tsx";
 var MockBanner = () => {
 	const _w_runtime_ = getRuntimeRx$1();
-	return jsx("div", {
+	return jsxDEV("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: _w_runtime_(21)
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$3,
+		lineNumber: 8,
+		columnNumber: 3
+	}, void 0);
 };
 var catalogs$10 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -128,27 +138,52 @@ var loadCatalog$10 = (loadID, locale) => {
 	return catalogs$10[locale][loadID]();
 };
 var getRuntimeRx = registerLoaders("contact", loadCatalog$10, 1);
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/contact/ContactHeader.tsx";
 function ContactHeader() {
 	const _w_runtime_ = getRuntimeRx();
-	return jsxs(Fragment, { children: [
-		jsx(MockBanner, {}),
-		jsx("h1", {
+	return jsxDEV(Fragment, { children: [
+		jsxDEV(MockBanner, {}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 12,
+			columnNumber: 7
+		}, this),
+		jsxDEV("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: _w_runtime_(123)
-		}),
-		jsx("p", {
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 13,
+			columnNumber: 7
+		}, this),
+		jsxDEV("p", {
 			className: "mb-8 text-muted-foreground",
-			children: jsx(runtime_default, {
-				t: [(_w_ctx_) => jsx("a", {
+			children: jsxDEV(runtime_default, {
+				t: [(_w_ctx_) => jsxDEV("a", {
 					href: "mailto:contact@intlayer.org",
 					className: "text-primary hover:underline",
 					children: _w_runtime_.x(_w_ctx_)
-				}, "_0")],
+				}, "_0", false, {
+					fileName: _jsxFileName$2,
+					lineNumber: 15,
+					columnNumber: 31
+				}, this)],
 				x: _w_runtime_.c(124),
 				a: [" "]
-			})
-		})
-	] });
+			}, void 0, false, {
+				fileName: _jsxFileName$2,
+				lineNumber: 15,
+				columnNumber: 9
+			}, this)
+		}, void 0, false, {
+			fileName: _jsxFileName$2,
+			lineNumber: 14,
+			columnNumber: 7
+		}, this)
+	] }, void 0, true, {
+		fileName: _jsxFileName$2,
+		lineNumber: 11,
+		columnNumber: 5
+	}, this);
 }
 var catalogs$9 = {
 	en: [() => import("./shared.0.en.compiled-CroCXge_.js")],
@@ -310,12 +345,26 @@ var loadCatalog = (loadID, locale) => {
 	return catalogs[locale][loadID]();
 };
 registerLoaders("team", loadCatalog, 1);
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/scripts/Wrapper.tsx";
 loadLocale("en");
 function Wrapper({ children }) {
-	return jsx(Fragment, { children });
+	return jsxDEV(Fragment, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 8,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-scoped-static/wuchale-app/src/components/pages/contact/ContactHeader.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(ContactHeader, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(ContactHeader, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };
 var c = [

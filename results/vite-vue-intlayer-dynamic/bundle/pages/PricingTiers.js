@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, createTextVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, normalizeClass, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, createTextVNode, defineComponent, getCurrentInstance, h, inject, isRef, markRaw, normalizeClass, openBlock, ref, renderList, shallowRef, toDisplayString, toValue, watch } from "vue";
 var pricing_tiers_default = {
 	key: "pricing-tiers",
 	content: {
@@ -559,8 +559,7 @@ var getBasePlugins = (locale, fallback = true) => [
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
-});
-var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
+}), getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 	const props = {
 		dictionaryKey: dictionary.key,
 		dictionaryPath: dictionary.filePath,
@@ -568,8 +567,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-};
-var b$1 = {
+}, b$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { children: n, ...r }) => {
@@ -591,12 +589,7 @@ var b$1 = {
 		}
 		return markRaw(c);
 	}
-};
-var S = fallbackPlugin;
-var w = fallbackPlugin;
-var T = fallbackPlugin;
-var E = /* @__PURE__ */ new Map();
-var D = (e, t = !0) => {
+}, S = fallbackPlugin, w = fallbackPlugin, T = fallbackPlugin, E = /* @__PURE__ */ new Map(), D = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (E.has(n)) return E.get(n);
 	let r = [
@@ -612,14 +605,8 @@ var D = (e, t = !0) => {
 		T
 	];
 	return E.set(n, r), r;
-};
-var n = (n, r) => getDictionary(n, r, D(r));
-var i = Symbol("intlayer");
-var m = (e, t) => t.reduce((e, t) => e?.[t], e);
-var h$1 = (e) => typeof e == "object" && !!e;
-var g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e);
-var _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e;
-var v = (e) => markRaw(defineComponent({
+}, n = (n, r) => getDictionary(n, r, D(r)), i = Symbol("intlayer");
+var m = (e, t) => t.reduce((e, t) => e?.[t], e), h$1 = (e) => typeof e == "object" && !!e, g = (e) => typeof e == "function" || h$1(e) && ("render" in e || "setup" in e), _ = (e) => e != null && (typeof e == "object" || typeof e == "function") && "__update" in e && "render" in e && "raw" in e, v = (e) => markRaw(defineComponent({
 	name: "IntlayerLeaf",
 	setup() {
 		return () => {
@@ -627,8 +614,7 @@ var v = (e) => markRaw(defineComponent({
 			return t == null ? null : g(t) ? h(t) : Array.isArray(t) ? h("span", t) : t;
 		};
 	}
-}));
-var y = (e) => new Proxy({}, {
+})), y = (e) => new Proxy({}, {
 	get(t, n) {
 		let r = e.value;
 		if (n === "__v_isRef") return !0;
@@ -650,8 +636,7 @@ var y = (e) => new Proxy({}, {
 			configurable: !0
 		};
 	}
-});
-var b = (r, a) => {
+}), b = (r, a) => {
 	let c = getCurrentInstance() ? inject(i) : void 0, b = isRef(c?.locale) ? c.locale : ref(c?.locale ?? internationalization.defaultLocale), x = computed(() => (a === void 0 ? void 0 : toValue(a)) ?? b.value), S = shallowRef({});
 	watch([() => toValue(r), () => x.value], ([t, n$2]) => {
 		S.value = n(t, n$2);
@@ -689,58 +674,86 @@ var b = (r, a) => {
 	});
 	return C([]);
 };
+var PricingTiers_vue_vue_type_script_setup_true_lang_default = defineComponent({
+	__name: "PricingTiers",
+	setup(__props, { expose: __expose }) {
+		__expose();
+		const { l: starterName, n: starterPrice, m: starterPeriod, k: starterFeatures, h: proName, j: proPrice, i: proPeriod, g: proFeatures, c: enterpriseName, e: enterprisePrice, d: enterprisePeriod, b: enterpriseFeatures, a: contactSales, f: getStarted } = b(pricing_tiers_default);
+		const __returned__ = {
+			starterName,
+			starterPrice,
+			starterPeriod,
+			starterFeatures,
+			proName,
+			proPrice,
+			proPeriod,
+			proFeatures,
+			enterpriseName,
+			enterprisePrice,
+			enterprisePeriod,
+			enterpriseFeatures,
+			contactSales,
+			getStarted,
+			tiers: computed(() => [
+				{
+					name: starterName.value,
+					price: starterPrice.value,
+					period: starterPeriod.value,
+					features: starterFeatures.value
+				},
+				{
+					name: proName.value,
+					price: proPrice.value,
+					period: proPeriod.value,
+					features: proFeatures.value,
+					highlighted: true
+				},
+				{
+					name: enterpriseName.value,
+					price: enterprisePrice.value,
+					period: enterprisePeriod.value,
+					features: enterpriseFeatures.value
+				}
+			])
+		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
+	}
+});
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
 var _hoisted_1 = { class: "grid gap-6 md:grid-cols-3" };
 var _hoisted_2 = { class: "text-lg font-semibold text-foreground" };
 var _hoisted_3 = { class: "my-4" };
 var _hoisted_4 = { class: "text-3xl font-bold text-foreground" };
 var _hoisted_5 = { class: "text-sm text-muted-foreground" };
 var _hoisted_6 = { class: "mb-6 flex-1 space-y-2" };
-var PricingTiers_default = defineComponent({
-	__name: "PricingTiers",
-	setup(__props) {
-		const { l: starterName, n: starterPrice, m: starterPeriod, k: starterFeatures, h: proName, j: proPrice, i: proPeriod, g: proFeatures, c: enterpriseName, e: enterprisePrice, d: enterprisePeriod, b: enterpriseFeatures, a: contactSales, f: getStarted } = b(pricing_tiers_default);
-		const tiers = computed(() => [
-			{
-				name: starterName.value,
-				price: starterPrice.value,
-				period: starterPeriod.value,
-				features: starterFeatures.value
-			},
-			{
-				name: proName.value,
-				price: proPrice.value,
-				period: proPeriod.value,
-				features: proFeatures.value,
-				highlighted: true
-			},
-			{
-				name: enterpriseName.value,
-				price: enterprisePrice.value,
-				period: enterprisePeriod.value,
-				features: enterpriseFeatures.value
-			}
-		]);
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(true), createElementBlock(Fragment, null, renderList(tiers.value, (t) => {
-				return openBlock(), createElementBlock("div", {
-					key: t.name,
-					class: normalizeClass(["flex flex-col rounded-lg border p-6", t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"])
-				}, [
-					createElementVNode("h3", _hoisted_2, toDisplayString(t.name), 1),
-					createElementVNode("div", _hoisted_3, [createElementVNode("span", _hoisted_4, toDisplayString(t.price), 1), createElementVNode("span", _hoisted_5, toDisplayString(t.period), 1)]),
-					createElementVNode("ul", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList(t.features, (f) => {
-						return openBlock(), createElementBlock("li", {
-							key: f,
-							class: "flex items-center gap-2 text-sm text-muted-foreground"
-						}, [_cache[0] || (_cache[0] = createElementVNode("span", { class: "text-primary" }, "✓", -1)), createTextVNode(" " + toDisplayString(f), 1)]);
-					}), 128))]),
-					createElementVNode("button", {
-						type: "button",
-						class: normalizeClass(["w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90", t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"])
-					}, toDisplayString(t.name === unref(enterpriseName) ? unref(contactSales) : unref(getStarted)), 3)
-				], 2);
-			}), 128))]);
-		};
-	}
-});
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.tiers, (t) => {
+		return openBlock(), createElementBlock("div", {
+			key: t.name,
+			class: normalizeClass(["flex flex-col rounded-lg border p-6", t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"])
+		}, [
+			createElementVNode("h3", _hoisted_2, toDisplayString(t.name), 1),
+			createElementVNode("div", _hoisted_3, [createElementVNode("span", _hoisted_4, toDisplayString(t.price), 1), createElementVNode("span", _hoisted_5, toDisplayString(t.period), 1)]),
+			createElementVNode("ul", _hoisted_6, [(openBlock(true), createElementBlock(Fragment, null, renderList(t.features, (f) => {
+				return openBlock(), createElementBlock("li", {
+					key: f,
+					class: "flex items-center gap-2 text-sm text-muted-foreground"
+				}, [_cache[0] || (_cache[0] = createElementVNode("span", { class: "text-primary" }, "✓", -1)), createTextVNode(" " + toDisplayString(f), 1)]);
+			}), 128))]),
+			createElementVNode("button", {
+				type: "button",
+				class: normalizeClass(["w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90", t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"])
+			}, toDisplayString(t.name === $setup.enterpriseName ? $setup.contactSales : $setup.getStarted), 3)
+		], 2);
+	}), 128))]);
+}
+var PricingTiers_default = _plugin_vue_export_helper_default(PricingTiers_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-dynamic/vue-intlayer-app/src/components/pages/pricing/PricingTiers.vue"]]);
 export { PricingTiers_default as default };

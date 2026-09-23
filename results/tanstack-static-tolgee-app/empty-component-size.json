@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-23T22:03:02.178Z",
+  "timestamp": "2026-04-20T03:53:07.246Z",
   "packageName": "tanstack-static-tolgee-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 70158,
-    "totalMinifiedBytes": 44881,
-    "totalGzipBytes": 14159
+    "totalUnminifiedBytes": 58092,
+    "totalMinifiedBytes": 36723,
+    "totalGzipBytes": 11324
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 70158,
-      "unminifiedGzipBytes": 18123,
-      "minifiedBytes": 44881,
-      "minifiedGzipBytes": 14159
+      "unminifiedBytes": 58092,
+      "unminifiedGzipBytes": 14569,
+      "minifiedBytes": 36723,
+      "minifiedGzipBytes": 11324
     }
   ]
 }

@@ -1,9 +1,10 @@
-import { Fragment as e, createContext as t, createElement as n, isValidElement as r, useContext as i, useEffect as a, useLayoutEffect as o, useMemo as s, useState as c } from "react";
-import { Fragment as l, jsx as u, jsxs as d } from "react/jsx-runtime";
-var ee = {
+import { Fragment as e, createContext as t, createElement as n, isValidElement as r, useContext as i, useEffect as a, useLayoutEffect as o, useMemo as s, useRef as c, useState as l } from "react";
+import { Fragment as u, jsx as d, jsxs as f } from "react/jsx-runtime";
+import { jsxDEV as p } from "react/jsx-dev-runtime";
+var m = {
 	key: "blog-list",
 	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"g\":\"Comparing i18n Libraries in 2026: A Deep Dive\",\"m\":\"March 15, 2026\",\"w\":\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\",\"k\":\"How to Reduce Your i18n Bundle by 60%\",\"n\":\"March 8, 2026\",\"q\":\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\",\"u\":\"The State of Internationalization in React\",\"j\":\"February 28, 2026\",\"c\":\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\",\"p\":\"Migrating from react-i18next to Lingui\",\"i\":\"February 15, 2026\",\"a\":\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\",\"t\":\"Server Components and i18n: What Changes?\",\"h\":\"February 1, 2026\",\"r\":\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\",\"f\":\"Benchmark Methodology: How We Test\",\"l\":\"January 20, 2026\",\"b\":\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\",\"s\":\"Read More →\",\"e\":\"Benchmark\",\"v\":\"Tutorial\",\"d\":\"Analysis\",\"o\":\"Meta\"},\"fr\":{\"g\":\"Comparer les bibliothèques i18n en 2026 : une analyse approfondie\",\"m\":\"15 mars 2026\",\"w\":\"Nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et la DX. Voici les résultats surprenants.\",\"k\":\"Comment réduire votre bundle i18n de 60 %\",\"n\":\"8 mars 2026\",\"q\":\"Stratégies pratiques pour optimiser les bundles de traduction, y compris le lazy loading, le fractionnement du code et les optimisations au moment de la compilation.\",\"u\":\"L'état de l'internationalisation dans React\",\"j\":\"28 février 2026\",\"c\":\"Un aperçu de l'écosystème i18n actuel dans React, couvrant les tendances, les modèles émergents et les préférences de la communauté.\",\"p\":\"Migrer de react-i18next vers Lingui\",\"i\":\"15 février 2026\",\"a\":\"Un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers Lingui.\",\"t\":\"Server Components et i18n : qu'est-ce qui change ?\",\"h\":\"1er février 2026\",\"r\":\"Les React Server Components introduisent de nouveaux modèles pour l'internationalisation. Nous explorons les implications et les meilleures pratiques.\",\"f\":\"Méthodologie du Benchmark : comment nous testons\",\"l\":\"20 janvier 2026\",\"b\":\"Un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.\",\"s\":\"Lire la suite →\",\"e\":\"Benchmark\",\"v\":\"Tutoriel\",\"d\":\"Analyse\",\"o\":\"Méta\"},\"es\":{\"g\":\"Comparativa de bibliotecas i18n en 2026: un análisis profundo\",\"m\":\"15 de marzo de 2026\",\"w\":\"Probamos 12 bibliotecas de internacionalización diferentes en cuanto a rendimiento, tamaño del bundle y DX. Estos son los resultados sorprendentes.\",\"k\":\"Cómo reducir su bundle i18n en un 60 %\",\"n\":\"8 de marzo de 2026\",\"q\":\"Estrategias prácticas para optimizar los conjuntos de traducción, incluido el lazy loading, la división del código y las optimizaciones en el momento de la compilación.\",\"u\":\"El estado de la internacionalización en React\",\"j\":\"28 de febrero de 2026\",\"c\":\"Una visión general del ecosistema actual de i18n en React, que cubre tendencias, patrones emergentes y preferencias de la comunidad.\",\"p\":\"Migración de react-i18next a Lingui\",\"i\":\"15 de febrero de 2026\",\"a\":\"Una guía paso a paso sobre la migración de una aplicación de producción con 50.000 claves de traducción de react-i18next a Lingui.\",\"t\":\"Server Components e i18n: ¿Qué cambia?\",\"h\":\"1 de febrero de 2026\",\"r\":\"Los React Server Components introducen nuevos patrones para la internacionalización. Exploramos las implicaciones y las mejores prácticas.\",\"f\":\"Metodología del Benchmark: Cómo probamos\",\"l\":\"20 de enero de 2026\",\"b\":\"Una mirada transparente a nuestra metodología de benchmarking, incluidos los entornos de prueba, los métodos estadísticos y la reproducibilidad.\",\"s\":\"Leer más →\",\"e\":\"Benchmark\",\"v\":\"Tutorial\",\"d\":\"Análisis\",\"o\":\"Meta\"},\"de\":{\"g\":\"i18n-Bibliotheken im Jahr 2026 im Vergleich: Eine tiefgehende Analyse\",\"m\":\"15. März 2026\",\"w\":\"Wir haben 12 verschiedene Internationalisierungs-Bibliotheken in Bezug auf Leistung, Bundle-Größe und DX getestet. Hier sind die überraschenden Ergebnisse.\",\"k\":\"So reduzieren Sie Ihr i18n-Bundle um 60 %\",\"n\":\"8. März 2026\",\"q\":\"Praktische Strategien zur Optimierung von Übersetzungs-Bundles, einschließlich Lazy Loading, Code Splitting und Optimierungen zur Kompilierzeit.\",\"u\":\"Der Stand der Internationalisierung in React\",\"j\":\"28. Februar 2026\",\"c\":\"Ein Überblick über das aktuelle i18n-Ökosystem in React, einschließlich Trends, aufkommender Muster und Vorlieben der Community.\",\"p\":\"Migration von react-i18next zu Lingui\",\"i\":\"15. Februar 2026\",\"a\":\"Eine Schritt-für-Schritt-Anleitung zur Migration einer Produktions-App mit 50.000 Übersetzungsschlüsseln von react-i18next zu Lingui.\",\"t\":\"Server Components und i18n: Was ändert sich?\",\"h\":\"1. Februar 2026\",\"r\":\"React Server Components führen neue Muster für die Internationalisierung ein. Wir untersuchen die Auswirkungen und Best Practices.\",\"f\":\"Benchmark-Methodik: Wie wir testen\",\"l\":\"20. Januar 2026\",\"b\":\"Ein transparenter Blick auf unsere Benchmark-Methodik, einschließlich Testumgebungen, statistischer Methoden und Reproduzierbarkeit.\",\"s\":\"Weiterlesen →\",\"e\":\"Benchmark\",\"v\":\"Tutorial\",\"d\":\"Analyse\",\"o\":\"Meta\"},\"it\":{\"g\":\"Confronto tra librerie i18n nel 2026: un’analisi approfondita\",\"m\":\"15 marzo 2026\",\"w\":\"Abbiamo testato 12 diverse librerie di internazionalizzazione in base a prestazioni, dimensioni del bundle e DX. Ecco i risultati sorprendenti.\",\"k\":\"Come ridurre il bundle i18n del 60%\",\"n\":\"8 marzo 2026\",\"q\":\"Strategie pratiche per ottimizzare i bundle di traduzione tra cui caricamento lento, suddivisione del codice e ottimizzazioni in fase di compilazione.\",\"u\":\"Lo stato dell'internazionalizzazione in React\",\"j\":\"28 febbraio 2026\",\"c\":\"Una panoramica dell’attuale ecosistema i18n in React, con tendenze, pattern emergenti e preferenze della comunità.\",\"p\":\"Migrazione da react-i18next a Lingui\",\"i\":\"15 febbraio 2026\",\"a\":\"Una guida dettagliata sulla migrazione di un’app di produzione con 50.000 chiavi di traduzione da react-i18next a Lingui.\",\"t\":\"Server Components e i18n: cosa cambia?\",\"h\":\"1 febbraio 2026\",\"r\":\"I React Server Components introducono nuovi pattern per l’internazionalizzazione. Esploriamo implicazioni e best practice.\",\"f\":\"Metodologia del benchmark: come testiamo\",\"l\":\"20 gennaio 2026\",\"b\":\"Uno sguardo trasparente alla nostra metodologia di benchmark, inclusi ambienti di test, metodi statistici e riproducibilità.\",\"s\":\"Leggi di più →\",\"e\":\"Benchmark\",\"v\":\"Tutorial\",\"d\":\"Analisi\",\"o\":\"Meta\"},\"pt\":{\"g\":\"Comparando bibliotecas i18n em 2026: um mergulho profundo\",\"m\":\"15 de março de 2026\",\"w\":\"Testamos 12 bibliotecas de internacionalização diferentes em desempenho, tamanho do bundle e DX. Aqui estão os resultados surpreendentes.\",\"k\":\"Como reduzir seu bundle i18n em 60%\",\"n\":\"8 de março de 2026\",\"q\":\"Estratégias práticas para otimizar bundles de tradução, incluindo lazy loading, divisão de código e otimizações em tempo de compilação.\",\"u\":\"O estado da internacionalização no React\",\"j\":\"28 de fevereiro de 2026\",\"c\":\"Uma visão geral do ecossistema i18n atual no React, cobrindo tendências, padrões emergentes e preferências da comunidade.\",\"p\":\"Migrando do react-i18next para o Lingui\",\"i\":\"15 de fevereiro de 2026\",\"a\":\"Um guia passo a passo sobre a migração de um aplicativo de produção com 50.000 chaves de tradução do react-i18next para o Lingui.\",\"t\":\"componentes de servidor e i18n: o que muda?\",\"h\":\"1 de fevereiro de 2026\",\"r\":\"Os React Server Components introduzem novos padrões para internacionalização. Exploramos as implicações e as melhores práticas.\",\"f\":\"Metodologia de Benchmark: como testamos\",\"l\":\"20 de janeiro de 2026\",\"b\":\"Um olhar transparente sobre nossa metodologia de benchmarking, incluindo ambientes de teste, métodos estadísticos e reprodutibilidade.\",\"s\":\"Leia mais →\",\"e\":\"Benchmark\",\"v\":\"Tutorial\",\"d\":\"Análise\",\"o\":\"Meta\"},\"zh\":{\"g\":\"2026 年 i18n 库对比：深度分析\",\"m\":\"2026年3月15日\",\"w\":\"我们针对性能、包大小和 DX 测试了 12 种不同的国际化库。以下是令人惊讶的结果。\",\"k\":\"如何将 i18n 包大小减少 60%\",\"n\":\"2026年3月8日\",\"q\":\"优化翻译包的实用策略，包括延迟加载、代码拆分和编译时优化。\",\"u\":\"React 国际化的现状\",\"j\":\"2026年2月28日\",\"c\":\"React 当前 i18n 生态系统概览，涵盖趋势、新兴模式和社区偏好。\",\"p\":\"从 react-i18next 迁移到 Lingui\",\"i\":\"2026年2月15日\",\"a\":\"从 react-i18next 迁移拥有 50,000 个翻译键的生产应用程序到 Lingui 的逐步指南。\",\"t\":\"服务器组件和 i18n：有什么变化？\",\"h\":\"2026年2月1日\",\"r\":\"React Server Components 为国际化引入了新模式。我们探讨了其影响和最佳实践。\",\"f\":\"基准测试方法学：我们如何测试\",\"l\":\"2026年1月20日\",\"b\":\"透明地了解我们的基准测试方法，包括测试环境、统计方法和可重现性。\",\"s\":\"阅读更多 →\",\"e\":\"基准测试\",\"v\":\"教程\",\"d\":\"分析\",\"o\":\"元数据\"},\"ja\":{\"g\":\"2026 年の i18n ライブラリの比較：詳細な分析\",\"m\":\"2026年3月15日\",\"w\":\"パフォーマンス、バンドルサイズ、DX にわたって 12 の異なる国際化ライブラリをテストしました。驚くべき結果が得られました。\",\"k\":\"i18n バンドルを 60% 削減する方法\",\"n\":\"2026年3月8日\",\"q\":\"遅延読み込み、コード分割、コンパイル時の最適化などの翻訳バンドルを最適化するための実用的な戦略。\",\"u\":\"React における国際化の現状\",\"j\":\"2026年2月28日\",\"c\":\"トレンド、新たなパターン、コミュニティの好みなど、React における現在の i18n エコシステムの概要。\",\"p\":\"react-i18next から Lingui への移行\",\"i\":\"2026年2月15日\",\"a\":\"50,000 の翻訳キーを持つプロダクションアプリを react-i18next から Lingui に移行するためのステップバイステップガイド。\",\"t\":\"サーバーコンポーネントと i18n：何が変わるのか？\",\"h\":\"2026年2月1日\",\"r\":\"React サーバーコンポーネントは、国際化のための新しいパターンを導入します。その影響とベストプラクティスを検討します。\",\"f\":\"ベンチマークの方法論：テスト方法\",\"l\":\"2026年1月20日\",\"b\":\"テスト環境、統計手法、再現性など、当社のベンチマーク方法論を透過的に公開します。\",\"s\":\"続きを読む →\",\"e\":\"ベンチマーク\",\"v\":\"チュートリアル\",\"d\":\"分析\",\"o\":\"メタ\"},\"ko\":{\"g\":\"2026년 i18n 라이브러리 비교: 심층 분석\",\"m\":\"2026년 3월 15일\",\"w\":\"성능, 번들 크기 및 DX 전반에 걸쳐 12가지 서로 다른 국제화 라이브러리를 테스트했습니다. 여기 놀라운 결과가 있습니다.\",\"k\":\"i18n 번들을 60% 줄이는 방법\",\"n\":\"2026년 3월 8일\",\"q\":\"지연 로딩, 코드 분할 및 컴파일 시간 최적화를 포함한 번역 번들 최적화를위한 실용적인 전략.\",\"u\":\"React의 국제화 현황\",\"j\":\"2026년 2월 28일\",\"c\":\"React의 현재 i18n 생태계에 대한 개요로, 트렌드, 떠오르는 패턴 및 커뮤니티 선호도를 다룹니다.\",\"p\":\"react-i18next에서 Lingui로 마이그레이션\",\"i\":\"2026년 2월 15일\",\"a\":\"50,000 개의 번역 키가있는 프로덕션 앱을 react-i18next에서 Lingui로 마이그레이션하는 단계별 가이드.\",\"t\":\"서버 구성 요소 및 i18n: 무엇이 변합니까?\",\"h\":\"2026년 2월 1일\",\"r\":\"React Server Components는 국제화를위한 새로운 패턴을 도입합니다. 우리는 그 함의와 모범 사례를 탐구합니다.\",\"f\":\"벤치 마크 방법론 : 테스트 방법\",\"l\":\"2026년 1월 20일\",\"b\":\"테스트 환경, 통계 방법 및 재현성을 포함한 벤치 마크 방법론에 대한 투명한 살펴보기.\",\"s\":\"더 읽어보기 →\",\"e\":\"벤치마크\",\"v\":\"튜토리얼\",\"d\":\"분석\",\"o\":\"메타\"},\"ru\":{\"g\":\"Сравнение библиотек i18n в 2026 году: глубокое погружение\",\"m\":\"15 марта 2026 года\",\"w\":\"Мы протестировали 12 различных библиотек интернационализации по производительности, размеру бандла и DX. Вот удивительные результаты.\",\"k\":\"Как уменьшить бандл i18n на 60%\",\"n\":\"8 марта 2026 года\",\"q\":\"Практические стратегии для оптимизации бандлов перевода, включая ленивую загрузку, разделение кода и оптимизации во время компиляции.\",\"u\":\"Состояние интернационализации в React\",\"j\":\"28 февраля 2026 года\",\"c\":\"Обзор текущей экосистемы i18n в React, охватывающий тенденции, возникающие паттерны и предпочтения сообщества.\",\"p\":\"Миграция с react-i18next на Lingui\",\"i\":\"15 февраля 2026 года\",\"a\":\"Пошаговое руководство по миграции продакшн-приложения с 50 000 ключами перевода с react-i18next на Lingui.\",\"t\":\"Server Components и i18n: что меняется?\",\"h\":\"1 февраля 2026 года\",\"r\":\"React Server Components представляют новые паттерны для интернационализации. Мы исследуем последствия и лучшие практики.\",\"f\":\"Методология бенчмарка: как мы тестируем\",\"l\":\"20 января 2026 года\",\"b\":\"Прозрачный взгляд на нашу методологию бенчмаркинга, включая тестовые среды, статистические методы и воспроизводимость.\",\"s\":\"Читать далее →\",\"e\":\"Бенчмарк\",\"v\":\"Руководство\",\"d\":\"Анализ\",\"o\":\"Мета\"}}}")
-}, f = {
+}, h = {
 	locales: [
 		"en",
 		"fr",
@@ -30,7 +31,7 @@ var ee = {
 	],
 	strictMode: "inclusive",
 	defaultLocale: "en"
-}, p = {
+}, g = {
 	mode: "prefix-all",
 	storage: {
 		cookies: [{
@@ -40,8 +41,8 @@ var ee = {
 		headers: [{ name: "x-intlayer-locale" }]
 	},
 	basePath: ""
-}, m = ({ children: e, value: t, additionalProps: n }) => {
-	let i = r(e) ? e : u(l, { children: e });
+}, ee = ({ children: e, value: t, additionalProps: n }) => {
+	let i = r(e) ? e : d(u, { children: e });
 	return new Proxy(i, { get(e, r, i) {
 		if (r === "value") return t;
 		if (r === Symbol.toPrimitive) return () => t ?? "";
@@ -57,32 +58,32 @@ var ee = {
 		}
 		return Reflect.get(e, r, i);
 	} });
-}, h = /* @__PURE__ */ new WeakMap(), g = 0, _ = (e) => {
+}, _ = /* @__PURE__ */ new WeakMap(), v = 0, te = (e) => {
 	if (!e) return "base";
-	let t = h.get(e);
+	let t = _.get(e);
 	if (t) return t;
-	g += 1;
-	let n = `p${g}`;
-	return h.set(e, n), n;
-}, te = 256, v = /* @__PURE__ */ new WeakMap(), y = (e) => typeof e == "object" && !!e, b = (e, t, n) => `${e}_${t}_${_(n)}`, x = (e, t) => {
-	if (!y(e)) return { hit: !1 };
-	let n = v.get(e);
+	v += 1;
+	let n = `p${v}`;
+	return _.set(e, n), n;
+}, ne = 256, y = /* @__PURE__ */ new WeakMap(), b = (e) => typeof e == "object" && !!e, re = (e, t, n) => `${e}_${t}_${te(n)}`, ie = (e, t) => {
+	if (!b(e)) return { hit: !1 };
+	let n = y.get(e);
 	return n?.has(t) ? {
 		hit: !0,
 		content: n.get(t)
 	} : { hit: !1 };
-}, S = (e, t, n) => {
-	if (!y(e)) return n;
-	let r = v.get(e);
-	return r || (r = /* @__PURE__ */ new Map(), v.set(e, r)), r.size >= te && r.clear(), r.set(t, n), n;
-}, ne = "translation", C = "insertion", re = "object", ie = "array", w = "markdown", T = "html", E = (e, t) => {
-	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => E(e, t));
+}, x = (e, t, n) => {
+	if (!b(e)) return n;
+	let r = y.get(e);
+	return r || (r = /* @__PURE__ */ new Map(), y.set(e, r)), r.size >= ne && r.clear(), r.set(t, n), n;
+}, ae = "translation", S = "insertion", oe = "object", se = "array", C = "markdown", w = "html", T = (e, t) => {
+	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => T(e, t));
 	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
-	if (Array.isArray(e)) return e.map((e, n) => E(e, {
+	if (Array.isArray(e)) return e.map((e, n) => T(e, {
 		...t,
 		children: e,
 		keyPath: [...t.keyPath, {
-			type: ie,
+			type: se,
 			key: n
 		}]
 	}));
@@ -92,19 +93,19 @@ var ee = {
 			...t,
 			children: e[r],
 			keyPath: [...t.keyPath, {
-				type: re,
+				type: oe,
 				key: r
 			}]
 		};
 		if (t.eager) {
-			n[r] = E(e[r], i);
+			n[r] = T(e[r], i);
 			continue;
 		}
 		Object.defineProperty(n, r, {
 			enumerable: !0,
 			configurable: !0,
 			get: function() {
-				let t = E(e[r], i);
+				let t = T(e[r], i);
 				return Object.defineProperty(this, r, {
 					value: t,
 					enumerable: !0,
@@ -114,17 +115,17 @@ var ee = {
 		});
 	}
 	return n;
-}, D = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), O = "default", k = /[^A-Za-z0-9._&=-]/g, A = /[^A-Za-z0-9._-]/g, ae = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, j = (e, t) => {
+}, E = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), D = "default", ce = /[^A-Za-z0-9._&=-]/g, O = /[^A-Za-z0-9._-]/g, le = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, k = (e, t) => {
 	if (e === "") return "%";
-	let n = e.replace(t, ae);
+	let n = e.replace(t, le);
 	return n === "." || n === ".." ? n.replace(/\./g, "%002E") : n;
-}, M = (e) => e === void 0 ? O : typeof e == "string" ? j(e, k) : Object.keys(e).sort().map((t) => `${j(t, A)}=${j(String(e[t]), A)}`).join("&"), N = (e) => Array.isArray(e) ? e.length === 0 ? [O] : e.map(M) : [M(e)], oe = (e, t) => {
+}, A = (e) => e === void 0 ? D : typeof e == "string" ? k(e, ce) : Object.keys(e).sort().map((t) => `${k(t, O)}=${k(String(e[t]), O)}`).join("&"), j = (e) => Array.isArray(e) ? e.length === 0 ? [D] : e.map(A) : [A(e)], ue = (e, t) => {
 	for (let n of e) if (t(n)) return n;
-	return t("default") ? O : e[0] ?? "default";
-}, se = (e, t, n, r) => {
+	return t("default") ? D : e[0] ?? "default";
+}, de = (e, t, n, r) => {
 	let i = e.split("/");
 	return t.every((e, t) => e === "variant" ? i[t] === r : n?.item === void 0 || i[t] === String(n.item));
-}, ce = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, le = (e, t) => {
+}, fe = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, pe = (e, t) => {
 	let n = t.split("/"), r = {
 		key: e.key,
 		content: e.content[t]
@@ -132,30 +133,30 @@ var ee = {
 	return e.qualifierTypes.forEach((e, t) => {
 		e === "variant" ? r.variant = n[t] : e === "item" && (r.item = Number(n[t]));
 	}), r;
-}, ue = (e, t) => {
-	if (!ce(e)) return e;
-	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? O : oe(N(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => se(e, n, t, s)).map((t) => le(e, t));
+}, me = (e, t) => {
+	if (!fe(e)) return e;
+	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? D : ue(j(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => de(e, n, t, s)).map((t) => pe(e, t));
 	return i ? c.sort((e, t) => (e.item ?? 0) - (t.item ?? 0)) : c[0] ?? null;
-}, de = (e) => typeof e == "object" && e ? {
+}, he = (e) => typeof e == "object" && e ? {
 	locale: e.locale,
 	selector: e
-} : { locale: e }, P = (e) => e ? Object.keys(e).filter((e) => e !== "locale").sort().map((t) => {
+} : { locale: e }, M = (e) => e ? Object.keys(e).filter((e) => e !== "locale").sort().map((t) => {
 	let n = e[t];
-	return `${t}:${t === "variant" ? N(n).join(",") : String(n)}`;
-}).join("|") : "", F = (e) => {
+	return `${t}:${t === "variant" ? j(n).join(",") : String(n)}`;
+}).join("|") : "", N = (e) => {
 	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
 	let t = Object.getPrototypeOf(e);
 	return t === Object.prototype || t === null || Array.isArray(e);
-}, I = (e, t) => {
+}, P = (e, t) => {
 	if (e === void 0) return t;
 	if (t === void 0 || Array.isArray(e)) return e;
-	if (F(e) && F(t)) {
+	if (N(e) && N(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : I(e[r], t[r]));
+		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : P(e[r], t[r]));
 		return n;
 	}
 	return e;
-}, L = (e, t, n) => {
+}, ge = (e, t, n) => {
 	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
 		e && !i.has(e) && (i.add(e), a.push(e));
 	};
@@ -171,36 +172,36 @@ var ee = {
 			s.push(t);
 		}
 	}
-	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => I(e, t));
-}, R = (e) => {
+	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => P(e, t));
+}, F = (e) => {
 	if (typeof e != "object" || !e || !("nodeType" in e)) return !1;
 	let { nodeType: t } = e;
 	return !1;
-}, z = (e) => {
+}, _e = (e) => {
 	if (typeof e == "string") return e;
-	if (R(e)) return e.nodeType === "html" ? e[T] : e[w];
-}, B = (e, t) => {
+	if (F(e)) return e.nodeType === "html" ? e[w] : e[C];
+}, ve = (e, t) => {
 	if (typeof e == "string") return t;
-	if (R(e)) {
-		let n = e.nodeType === "html" ? T : w;
+	if (F(e)) {
+		let n = e.nodeType === "html" ? w : C;
 		return {
 			...e,
 			[n]: t
 		};
 	}
 	return e;
-}, V = (e, t, n, r, i) => {
-	let a = B(e, D(z(e), t));
+}, I = (e, t, n, r, i) => {
+	let a = ve(e, E(_e(e), t));
 	return i(a, {
 		...n,
 		plugins: r,
 		children: a
 	});
-}, H = {
+}, L = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, U = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? H : {
+}, R = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? L : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
@@ -210,30 +211,30 @@ var ee = {
 				...r,
 				children: a[e],
 				keyPath: [...r.keyPath, {
-					type: ne,
+					type: ae,
 					key: e
 				}]
 			};
 			o[e] = i(a[e], t);
 		}
-		return L(o, e, t);
+		return ge(o, e, t);
 	}
-}, W = H, fe = (e) => H, G = H, pe = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? H : {
+}, z = L, ye = (e) => L, B = L, be = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? L : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
-		let r = [...t.keyPath, { type: C }], i = e[C], a = {
+		let r = [...t.keyPath, { type: S }], i = e[S], a = {
 			id: "insertion-string-plugin",
-			canHandle: (e) => typeof e == "string" || R(e),
+			canHandle: (e) => typeof e == "string" || F(e),
 			transform: (e, n, r) => {
-				if (R(e)) return (i) => V(e, i, n, t.plugins, r);
+				if (F(e)) return (i) => I(e, i, n, t.plugins, r);
 				let i = r(e, {
 					...n,
 					children: e,
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = D(i, e);
+					let a = E(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -249,22 +250,22 @@ var ee = {
 			plugins: [a, ...t.plugins ?? []]
 		});
 	}
-}, K = H, q = H, J = (e) => H, Y = H, me = (e, t = !0) => [
-	U(e ?? f.defaultLocale, t ? f.defaultLocale : void 0),
+}, V = L, H = L, U = (e) => L, W = L, xe = (e, t = !0) => [
+	R(e ?? h.defaultLocale, t ? h.defaultLocale : void 0),
+	z,
+	B,
+	be,
+	U(e ?? h.defaultLocale),
 	W,
-	G,
-	pe,
-	J(e ?? f.defaultLocale),
-	Y,
-	K,
-	q
-], he = (e, t, n = []) => E(e, {
+	V,
+	H
+], Se = (e, t, n = []) => T(e, {
 	...t,
 	plugins: n
-}), ge = (e, t, n) => {
-	let { locale: r, selector: i } = de(t), a = b(r ?? f.defaultLocale, P(i), n), o = x(e, a);
+}), Ce = (e, t, n) => {
+	let { locale: r, selector: i } = he(t), a = re(r ?? h.defaultLocale, M(i), n), o = ie(e, a);
 	if (o.hit) return o.content;
-	let s = n ?? me(r), c = ue(e, i), l = (e) => {
+	let s = n ?? xe(r), c = me(e, i), l = (e) => {
 		let t = {
 			dictionaryKey: e.key,
 			dictionaryPath: e.filePath,
@@ -272,15 +273,15 @@ var ee = {
 			plugins: s,
 			nestedDictionaries: e.nestedDictionaries
 		};
-		return he(e.content, t, s);
+		return Se(e.content, t, s);
 	};
-	return c === null ? S(e, a, null) : Array.isArray(c) ? S(e, a, c.map(l)) : S(e, a, l(c));
-}, _e = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", X = /\{\{\s*(.*?)\s*\}\}/g, ve = (e, t = {}) => {
-	if (!Object.values(t).some(_e)) return {
+	return c === null ? x(e, a, null) : Array.isArray(c) ? x(e, a, c.map(l)) : x(e, a, l(c));
+}, we = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", G = /\{\{\s*(.*?)\s*\}\}/g, Te = (e, t = {}) => {
+	if (!Object.values(t).some(we)) return {
 		isSimple: !0,
-		parts: e.replace(X, (e, n) => (t[n.trim()] ?? "").toString())
+		parts: e.replace(G, (e, n) => (t[n.trim()] ?? "").toString())
 	};
-	let n = e.split(X), r = [];
+	let n = e.split(G), r = [];
 	for (let e = 0; e < n.length; e++) if (e % 2 == 0) n[e] && r.push(n[e]);
 	else {
 		let i = t[n[e].trim()];
@@ -290,33 +291,33 @@ var ee = {
 		isSimple: !1,
 		parts: r
 	};
-}, ye = {
+}, Ee = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { plugins: t, ...n }) => m({
+	transform: (e, { plugins: t, ...n }) => ee({
 		...n,
 		value: n.children,
 		children: n.children
 	})
-}, be = H, xe = (t, r) => {
-	let i = ve(t, r);
+}, De = L, Oe = (t, r) => {
+	let i = Te(t, r);
 	return i.isSimple ? i.parts : n(e, null, ...i.parts.map((t, r) => n(e, { key: r }, t)));
-}, Se = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? H : {
+}, ke = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? L : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
-		let r = [...t.keyPath, { type: C }], i = e[C], a = {
+		let r = [...t.keyPath, { type: S }], i = e[S], a = {
 			id: "insertion-string-plugin",
-			canHandle: (e) => typeof e == "string" || R(e),
+			canHandle: (e) => typeof e == "string" || F(e),
 			transform: (e, n, r) => {
-				if (R(e)) return (i) => V(e, i, n, t.plugins, r);
+				if (F(e)) return (i) => I(e, i, n, t.plugins, r);
 				let i = r(e, {
 					...n,
 					children: e,
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = xe(i, e);
+					let a = Oe(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -335,28 +336,39 @@ var ee = {
 			return typeof n == "function" ? n(e) : n;
 		} : o;
 	}
-}, Ce = H, we = H, Z = /* @__PURE__ */ new Map(), Te = (e, t = !0) => {
-	let n = `${e ?? f.defaultLocale}_${t}`;
-	if (Z.has(n)) return Z.get(n);
+}, Ae = L, je = L, K = /* @__PURE__ */ new Map(), Me = (e, t = !0) => {
+	let n = `${e ?? h.defaultLocale}_${t}`;
+	if (K.has(n)) return K.get(n);
 	let r = [
-		U(e ?? f.defaultLocale, t ? f.defaultLocale : void 0),
+		R(e ?? h.defaultLocale, t ? h.defaultLocale : void 0),
+		z,
+		ye(e ?? h.defaultLocale),
+		B,
+		U(e ?? h.defaultLocale),
 		W,
-		fe(e ?? f.defaultLocale),
-		G,
-		J(e ?? f.defaultLocale),
-		Y,
-		K,
-		q,
-		ye,
-		be,
-		Se,
-		Ce,
-		we
+		V,
+		H,
+		Ee,
+		De,
+		ke,
+		Ae,
+		je
 	];
-	return Z.set(n, r), r;
-}, Ee = (e, t) => ge(e, t, Te(typeof t == "object" && t ? t.locale : t)), De = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+	return K.set(n, r), r;
+}, Ne = (e, t) => Ce(e, t, Me(typeof t == "object" && t ? t.locale : t)), q = (e) => {
+	if (typeof e == "number") return Date.now() + e * 1e3;
+	if (typeof e == "string") {
+		let t = Date.parse(e);
+		return Number.isNaN(t) ? void 0 : t;
+	}
+}, Pe = (e, t, n) => {
+	let r = [`${e}=${encodeURIComponent(t)}`];
+	n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`);
+	let i = q(n.expires);
+	return i !== void 0 && r.push(`Expires=${new Date(i).toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
+}, J = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var Q = {
+var Y = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -374,24 +386,96 @@ var Q = {
 	},
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
-}, $ = ((e = Q) => {
-	let { locales: t } = f;
+}, Fe = (e = Y) => {
+	let { locales: t } = h;
 	if (e?.isCookieEnabled === !1) return;
 	let n = (e) => !!e && t.includes(e);
-	if (!De) for (let t = 0; t < (p.storage.cookies ?? []).length; t++) try {
-		let r = e?.getCookie?.(p.storage.cookies[t].name);
+	if (!J) for (let t = 0; t < (g.storage.cookies ?? []).length; t++) try {
+		let r = e?.getCookie?.(g.storage.cookies[t].name);
 		if (n(r)) return r;
 	} catch {}
-})(Q), Oe = t({
-	locale: $ ?? f?.defaultLocale,
+}, Ie = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && !J && g.storage.cookies) for (let n = 0; n < g.storage.cookies.length; n++) {
+		let { name: r, attributes: i } = g.storage.cookies[n];
+		try {
+			t?.setCookieStore && t.setCookieStore(r, e, {
+				...i,
+				expires: q(i.expires)
+			});
+		} catch {
+			try {
+				t?.setCookieString && t.setCookieString(r, Pe(r, e, i));
+			} catch {}
+		}
+	}
+}, X = Fe(Y), Le = (e, t) => Ie(e, {
+	...Y,
+	isCookieEnabled: t
+}), Re = () => {
+	let { locale: e } = i(Z) ?? {}, t = c(null);
+	a(() => {}, []), a(() => {
+		e && t.current && t.current.currentLocale.set(e);
+	}, [e]);
+}, ze = ({ children: e }) => (Re(), e), Be = () => {
+	let { locale: e } = i(Z) ?? {}, t = c(null);
+	a(() => {}, []), a(() => {
+		e && t.current && (t.current.setLocale(e), t.current.trackPageView({ reason: "locale_change" }));
+	}, [e]);
+}, Ve = ({ children: e }) => (Be(), e), He = () => {
+	typeof window < "u" && (window.intlayer = { enabled: !0 });
+}, Ue = (e, t = h?.locales, n = h?.defaultLocale) => {
+	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
+	try {
+		for (let e of r) {
+			let n = i(e), r = t.find((e) => i(e) === n);
+			if (r) return r;
+			let [a] = n.split("-"), o = t.find((e) => i(e).split("-")[0] === a);
+			if (o) return o;
+		}
+	} catch {}
+	return n;
+}, Z = t({
+	locale: X ?? h?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: !0
-}), ke = (e, t) => {
-	let { locale: n, variant: r } = i(Oe) ?? {}, a = t ?? n, o = typeof a == "object" && a ? `${a.locale ?? ""}|${P(a)}` : a;
-	return s(() => Ee(e, a), [e.key, o]);
-};
-function Ae() {
-	let e = ke(ee), t = [
+}), We = ({ locale: e, defaultLocale: t, variant: n, children: r, setLocale: i, disableEditor: o, isCookieEnabled: s }) => {
+	let { locales: c, defaultLocale: u } = h ?? {}, [f, p] = l(e ?? X ?? t ?? u);
+	a(() => {
+		e && e !== f && p(e);
+	}, [e]), a(() => {
+		He();
+	}, []);
+	let m = i ?? ((e) => {
+		if (f.toString() !== e.toString()) {
+			if (!c?.map(String).includes(e)) {
+				console.error(`Locale ${e} is not available`);
+				return;
+			}
+			p(e), Le(e, s);
+		}
+	}), g = Ue(f);
+	return d(Z.Provider, {
+		value: {
+			locale: g,
+			setLocale: m,
+			variant: n,
+			disableEditor: o
+		},
+		children: r
+	});
+}, Ge = ({ children: e, ...t }) => f(We, {
+	...t,
+	children: [
+		d(ze, {}),
+		d(Ve, {}),
+		e
+	]
+}), Ke = (e, t) => {
+	let { locale: n, variant: r } = i(Z) ?? {}, a = t ?? n, o = typeof a == "object" && a ? `${a.locale ?? ""}|${M(a)}` : a;
+	return s(() => Ne(e, a), [e.key, o]);
+}, qe = (e) => d(Ge, { ...e }), Q = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/src/components/pages/blog/BlogList.tsx";
+function Je() {
+	let e = Ke(m), t = [
 		{
 			title: e.g.value,
 			date: e.m.value,
@@ -429,39 +513,71 @@ function Ae() {
 			category: e.o.value
 		}
 	];
-	return u("div", {
+	return p("div", {
 		className: "grid gap-6 md:grid-cols-2",
-		children: t.map((t) => d("article", {
+		children: t.map((t) => p("article", {
 			className: "rounded-lg border border-border bg-card p-6",
 			children: [
-				d("div", {
+				p("div", {
 					className: "mb-3 flex items-center gap-3",
-					children: [u("span", {
+					children: [p("span", {
 						className: "rounded-full bg-accent px-3 py-0.5 text-xs font-medium text-accent-foreground",
 						children: t.category
-					}), u("span", {
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 55,
+						columnNumber: 13
+					}, this), p("span", {
 						className: "text-xs text-muted-foreground",
 						children: t.date
-					})]
-				}),
-				u("h2", {
+					}, void 0, !1, {
+						fileName: Q,
+						lineNumber: 58,
+						columnNumber: 13
+					}, this)]
+				}, void 0, !0, {
+					fileName: Q,
+					lineNumber: 54,
+					columnNumber: 11
+				}, this),
+				p("h2", {
 					className: "mb-2 text-lg font-semibold text-foreground",
 					children: t.title
-				}),
-				u("p", {
+				}, void 0, !1, {
+					fileName: Q,
+					lineNumber: 60,
+					columnNumber: 11
+				}, this),
+				p("p", {
 					className: "mb-4 text-sm text-muted-foreground",
 					children: t.excerpt
-				}),
-				u("button", {
+				}, void 0, !1, {
+					fileName: Q,
+					lineNumber: 63,
+					columnNumber: 11
+				}, this),
+				p("button", {
 					type: "button",
 					className: "text-sm font-medium text-primary hover:underline",
 					children: e.s
-				})
+				}, void 0, !1, {
+					fileName: Q,
+					lineNumber: 64,
+					columnNumber: 11
+				}, this)
 			]
-		}, t.title))
-	});
+		}, t.title, !0, {
+			fileName: Q,
+			lineNumber: 50,
+			columnNumber: 9
+		}, this))
+	}, void 0, !1, {
+		fileName: Q,
+		lineNumber: 48,
+		columnNumber: 5
+	}, this);
 }
-function je() {
+function Ye() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -475,28 +591,50 @@ function je() {
 		}
 	}
 }
-function Me(e, t) {
+function Xe(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function Ne({ children: e, locale: t }) {
-	let [n] = c(() => typeof performance < "u" ? performance.now() : 0);
+var Ze = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/src/components/AppProviders.tsx";
+function Qe({ children: e, locale: t }) {
+	let [n] = l(() => typeof performance < "u" ? performance.now() : 0);
 	return o(() => {
-		Me("AppRoot", n);
+		Xe("AppRoot", n);
 	}, [n]), a(() => {
 		t && (document.documentElement.lang = t);
 	}, [t]), a(() => {
-		je();
-	}, []), e;
+		Ye();
+	}, []), p(qe, {
+		locale: t,
+		children: e
+	}, void 0, !1, {
+		fileName: Ze,
+		lineNumber: 35,
+		columnNumber: 5
+	}, this);
 }
-function Pe({ children: e }) {
-	return u(Ne, {
+var $e = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/scripts/Wrapper.tsx";
+function et({ children: e }) {
+	return p(Qe, {
 		locale: "en",
 		children: e
-	});
+	}, void 0, !1, {
+		fileName: $e,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
-function Fe() {
-	return u(Pe, { children: u(Ae, {}) });
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/next-intlayer-app/src/components/pages/blog/BlogList.wrapper.tsx";
+function tt() {
+	return p(et, { children: p(Je, {}, void 0, !1, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: $,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { Fe as default };
+export { tt as default };

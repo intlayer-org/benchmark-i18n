@@ -1,16 +1,16 @@
 import { Dynamic as e, insert as t, setAttribute as n, template as r } from "solid-js/web";
 import { createContext as i, createMemo as a, createUniqueId as o, useContext as s } from "solid-js";
 var c = {
-	de: () => import("./de-COeyitse.js").then((e) => e.default),
-	en: () => import("./en-D4Fl6swX.js").then((e) => e.default),
-	es: () => import("./es-BEtiobAR.js").then((e) => e.default),
-	fr: () => import("./fr-DypVhanR.js").then((e) => e.default),
-	it: () => import("./it-CFXAO-R1.js").then((e) => e.default),
-	ja: () => import("./ja-n-lihS_p.js").then((e) => e.default),
-	ko: () => import("./ko-0v9nSdBQ.js").then((e) => e.default),
-	pt: () => import("./pt-JI4r--yc.js").then((e) => e.default),
-	ru: () => import("./ru-CjEApXtS.js").then((e) => e.default),
-	zh: () => import("./zh-DY7EORI9.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/de.json").then((e) => e.default),
+	en: () => import("./en-CLT_nCUU.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/profile-section/zh.json").then((e) => e.default)
 }, l = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var c = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (_(e) && _(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : v(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : v(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -278,90 +278,9 @@ export { X as default };
 var e = {
 	key: "profile-section",
 	content: {
-		c: "Profil",
-		a: "Anzeigename",
-		b: "E-Mail"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
 		c: "Profile",
 		a: "Display Name",
 		b: "Email"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		c: "Perfil",
-		a: "Nombre de usuario",
-		b: "Correo electrónico"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		c: "Profil",
-		a: "Nom d'affichage",
-		b: "Email"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		c: "Profilo",
-		a: "Nome visualizzato",
-		b: "Email"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		c: "プロフィール",
-		a: "表示名",
-		b: "メールアドレス"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		c: "프로필",
-		a: "표시 이름",
-		b: "이메일"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		c: "Perfil",
-		a: "Nome de exibição",
-		b: "E-mail"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		c: "Профиль",
-		a: "Отображаемое имя",
-		b: "Электронная почта"
-	}
-};
-export { e as default };
-var e = {
-	key: "profile-section",
-	content: {
-		c: "个人资料",
-		a: "显示名称",
-		b: "电子邮件"
 	}
 };
 export { e as default };

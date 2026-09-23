@@ -1,16 +1,16 @@
 import { Dynamic as e, effect as t, insert as n, setAttribute as r, template as i } from "solid-js/web";
 import { createContext as a, createMemo as o, createUniqueId as s, useContext as c } from "solid-js";
 var l = {
-	de: () => import("./de-DP5Dr0RD.js").then((e) => e.default),
-	en: () => import("./en-CCv4xf5A.js").then((e) => e.default),
-	es: () => import("./es-DLElASjM.js").then((e) => e.default),
-	fr: () => import("./fr-BDDljLYC.js").then((e) => e.default),
-	it: () => import("./it-CUMxrnzf.js").then((e) => e.default),
-	ja: () => import("./ja-gNmmiu3a.js").then((e) => e.default),
-	ko: () => import("./ko-BFkubRfP.js").then((e) => e.default),
-	pt: () => import("./pt-CRr-Cl2R.js").then((e) => e.default),
-	ru: () => import("./ru-CHcI3jOC.js").then((e) => e.default),
-	zh: () => import("./zh-DOnS66TX.js").then((e) => e.default)
+	de: () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/de.json").then((e) => e.default),
+	en: () => import("./en-CRC5eXXY.js").then((e) => e.default),
+	es: () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/es.json").then((e) => e.default),
+	fr: () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/fr.json").then((e) => e.default),
+	it: () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/it.json").then((e) => e.default),
+	ja: () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/ja.json").then((e) => e.default),
+	ko: () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/ko.json").then((e) => e.default),
+	pt: () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/pt.json").then((e) => e.default),
+	ru: () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/ru.json").then((e) => e.default),
+	zh: () => import("../../../../.intlayer/dynamic_dictionary/json/preferences-section/zh.json").then((e) => e.default)
 }, u = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
 	if (r.value = t, n) for (let e in n) r[e] = n[e];
@@ -123,7 +123,7 @@ var l = {
 	if (t === void 0 || Array.isArray(e)) return e;
 	if (v(e) && v(t)) {
 		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : y(e[r], t[r]));
+		for (let r of Object.keys(t)) r === "__proto__" || r === "constructor" || t[r] === void 0 || (n[r] = e[r] === void 0 ? t[r] : y(e[r], t[r]));
 		return n;
 	}
 	return e;
@@ -284,31 +284,6 @@ export { Z as default };
 var e = {
 	key: "preferences-section",
 	content: {
-		m: "Einstellungen",
-		e: "E-Mail-Benachrichtigungen",
-		n: "Erhalten Sie wöchentliche Benchmark-Berichte",
-		r: "Benachrichtigungen umschalten",
-		c: "Dunkelmodus",
-		s: "Dunkles Farbschema verwenden",
-		q: "Dunkelmodus umschalten",
-		d: "Standardsprache",
-		f: "Englisch (en)",
-		g: "Französisch (fr)",
-		h: "Deutsch (de)",
-		p: "Spanisch (es)",
-		j: "Japanisch (ja)",
-		b: "Chinesisch (Vereinfacht) (zh-CN)",
-		i: "Italienisch (it)",
-		l: "Portugiesisch (pt)",
-		k: "Koreanisch (ko)",
-		o: "Russisch (ru)",
-		a: "Arabisch (ar)"
-	}
-};
-export { e as default };
-var e = {
-	key: "preferences-section",
-	content: {
 		m: "Preferences",
 		e: "Email Notifications",
 		n: "Receive weekly benchmark reports",
@@ -328,206 +303,6 @@ var e = {
 		k: "Korean (ko)",
 		o: "Russian (ru)",
 		a: "Arabic (ar)"
-	}
-};
-export { e as default };
-var e = {
-	key: "preferences-section",
-	content: {
-		m: "Preferencias",
-		e: "Notificaciones por correo electrónico",
-		n: "Recibe informes semanales de benchmarks",
-		r: "Alternar notificaciones",
-		c: "Modo oscuro",
-		s: "Usar combinación de colores oscuros",
-		q: "Alternar modo oscuro",
-		d: "Idioma predeterminado",
-		f: "Inglés (en)",
-		g: "Francés (fr)",
-		h: "Alemán (de)",
-		p: "Español (es)",
-		j: "Japonés (ja)",
-		b: "Chino simplificado (zh-CN)",
-		i: "Italiano (it)",
-		l: "Portugués (pt)",
-		k: "Coreano (ko)",
-		o: "Ruso (ru)",
-		a: "Árabe (ar)"
-	}
-};
-export { e as default };
-var e = {
-	key: "preferences-section",
-	content: {
-		m: "Préférences",
-		e: "Notifications par email",
-		n: "Recevoir des rapports hebdomadaires de benchmark",
-		r: "Basculer les notifications",
-		c: "Mode sombre",
-		s: "Utiliser le schéma de couleurs sombres",
-		q: "Basculer le mode sombre",
-		d: "Langue par défaut",
-		f: "Anglais (en)",
-		g: "Français (fr)",
-		h: "Allemand (de)",
-		p: "Espagnol (es)",
-		j: "Japonais (ja)",
-		b: "Chinois simplifié (zh-CN)",
-		i: "Italien (it)",
-		l: "Portugais (pt)",
-		k: "Coréen (ko)",
-		o: "Russe (ru)",
-		a: "Arabe (ar)"
-	}
-};
-export { e as default };
-var e = {
-	key: "preferences-section",
-	content: {
-		m: "Preferenze",
-		e: "Notifiche via email",
-		n: "Ricevi rapporti settimanali sui benchmark",
-		r: "Attiva/disattiva notifiche",
-		c: "Modalità scura",
-		s: "Usa lo schema colori scuro",
-		q: "Attiva/disattiva modalità scura",
-		d: "Lingua predefinita",
-		f: "Inglese (en)",
-		g: "Francese (fr)",
-		h: "Tedesco (de)",
-		p: "Spagnolo (es)",
-		j: "Giapponese (ja)",
-		b: "Cinese semplificato (zh-CN)",
-		i: "Italiano (it)",
-		l: "Portoghese (pt)",
-		k: "Coreano (ko)",
-		o: "Russo (ru)",
-		a: "Arabo (ar)"
-	}
-};
-export { e as default };
-var e = {
-	key: "preferences-section",
-	content: {
-		m: "設定",
-		e: "メール通知",
-		n: "毎週のベンチマークレポートを受け取る",
-		r: "通知を切り替える",
-		c: "ダークモード",
-		s: "ダークカラースキームを使用する",
-		q: "ダークモードを切り替える",
-		d: "デフォルトの言語",
-		f: "英語 (en)",
-		g: "フランス語 (fr)",
-		h: "ドイツ語 (de)",
-		p: "スペイン語 (es)",
-		j: "日本語 (ja)",
-		b: "中国語（簡体字）（zh-CN）",
-		i: "イタリア語 (it)",
-		l: "ポルトガル語 (pt)",
-		k: "韓国語 (ko)",
-		o: "ロシア語 (ru)",
-		a: "アラビア語 (ar)"
-	}
-};
-export { e as default };
-var e = {
-	key: "preferences-section",
-	content: {
-		m: "환경 설정",
-		e: "이메일 알림",
-		n: "주간 벤치마크 보고서 받기",
-		r: "알림 전환",
-		c: "다크 모드",
-		s: "다크 색상 테마 사용",
-		q: "다크 모드 전환",
-		d: "기본 언어",
-		f: "영어 (en)",
-		g: "프랑스어 (fr)",
-		h: "독일어 (de)",
-		p: "스페인어 (es)",
-		j: "일본어 (ja)",
-		b: "중국어 간체 (zh-CN)",
-		i: "이탈리아어 (it)",
-		l: "포르투갈어 (pt)",
-		k: "한국어 (ko)",
-		o: "러시아어 (ko)",
-		a: "아랍어 (ar)"
-	}
-};
-export { e as default };
-var e = {
-	key: "preferences-section",
-	content: {
-		m: "Preferências",
-		e: "Notificações por e-mail",
-		n: "Receba relatórios semanais de benchmark",
-		r: "Alternar notificações",
-		c: "Modo escuro",
-		s: "Usar esquema de cores escuro",
-		q: "Alternar modo escuro",
-		d: "Idioma padrão",
-		f: "Inglês (en)",
-		g: "Francês (fr)",
-		h: "Alemão (de)",
-		p: "Espanhol (es)",
-		j: "Japonês (ja)",
-		b: "Chinês Simplificado (zh-CN)",
-		i: "Italiano (it)",
-		l: "Português (pt)",
-		k: "Coreano (ko)",
-		o: "Russo (ru)",
-		a: "Árabe (ar)"
-	}
-};
-export { e as default };
-var e = {
-	key: "preferences-section",
-	content: {
-		m: "Настройки",
-		e: "Уведомления по электронной почте",
-		n: "Получать еженедельные отчеты о бенчмарках",
-		r: "Переключить уведомления",
-		c: "Темная тема",
-		s: "Использовать темную цветовую схему",
-		q: "Переключить темную тему",
-		d: "Язык по умолчанию",
-		f: "Английский (en)",
-		g: "Французский (fr)",
-		h: "Немецкий (de)",
-		p: "Испанский (es)",
-		j: "Японский (ja)",
-		b: "Китайский упрощенный (zh-CN)",
-		i: "Итальянский (it)",
-		l: "Португальский (pt)",
-		k: "Корейский (ko)",
-		o: "Русский (ru)",
-		a: "Арабский (ar)"
-	}
-};
-export { e as default };
-var e = {
-	key: "preferences-section",
-	content: {
-		m: "首选项",
-		e: "电子邮件通知",
-		n: "接收每周基准测试报告",
-		r: "切换通知",
-		c: "深色模式",
-		s: "使用深色方案",
-		q: "切换深色模式",
-		d: "默认语言",
-		f: "英语 (en)",
-		g: "法语 (fr)",
-		h: "德语 (de)",
-		p: "西班牙语 (es)",
-		j: "日语 (ja)",
-		b: "简体中文 (zh-CN)",
-		i: "意大利语 (it)",
-		l: "葡萄牙语 (pt)",
-		k: "韩语 (ko)",
-		o: "俄语 (ru)",
-		a: "阿拉伯语 (ar)"
 	}
 };
 export { e as default };

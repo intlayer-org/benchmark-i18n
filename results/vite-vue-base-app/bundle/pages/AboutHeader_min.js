@@ -13,8 +13,21 @@ function s(e) {
 }
 var c = r({
 	__name: "AboutHeader",
-	setup(r) {
-		return s("AboutHeader"), (r, i) => (o(), t(e, null, [i[0] ||= n("h1", { class: "mb-4 text-3xl font-bold text-foreground" }, " About This Benchmark ", -1), i[1] ||= n("p", { class: "mb-8 max-w-3xl text-muted-foreground" }, " This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions. ", -1)], 64));
+	setup(e, { expose: t }) {
+		t(), s("AboutHeader");
+		let n = {};
+		return Object.defineProperty(n, "__isScriptSetup", {
+			enumerable: !1,
+			value: !0
+		}), n;
 	}
-});
-export { c as default };
+}), l = (e, t) => {
+	let n = e.__vccOpts || e;
+	for (let [e, r] of t) n[e] = r;
+	return n;
+};
+function u(r, i, a, s, c, l) {
+	return o(), t(e, null, [i[0] ||= n("h1", { class: "mb-4 text-3xl font-bold text-foreground" }, " About This Benchmark ", -1), i[1] ||= n("p", { class: "mb-8 max-w-3xl text-muted-foreground" }, " This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions. ", -1)], 64);
+}
+var d = l(c, [["render", u], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/pages/about/AboutHeader.vue"]]);
+export { d as default };

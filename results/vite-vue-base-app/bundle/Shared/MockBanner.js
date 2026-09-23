@@ -9,5 +9,5 @@ var _hoisted_1 = { class: "mb-6 rounded-md border border-border bg-muted px-4 py
 function _sfc_render(_ctx, _cache) {
 	return openBlock(), createElementBlock("div", _hoisted_1, " ⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service. ");
 }
-var MockBanner_default = _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render]]);
+var MockBanner_default = _plugin_vue_export_helper_default(_sfc_main, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-base-app/src/components/MockBanner.vue"]]);
 export { MockBanner_default as default };

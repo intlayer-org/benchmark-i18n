@@ -1,4 +1,4 @@
-import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, inject, openBlock, renderList, toDisplayString, unref, watch } from "vue";
+import { Fragment, computed, createElementBlock, createElementVNode, defineComponent, inject, openBlock, renderList, toDisplayString, watch } from "vue";
 import { useRoute, useRouter } from "vue-router";
 var internationalization = {
 	"locales": [
@@ -105,22 +105,22 @@ var setLocaleInStorageClient = (locale, options) => {
 	}
 };
 getLocaleFromStorageClient(localeStorageOptions);
-var s$1 = (e, t) => setLocaleInStorageClient(e, {
+var s = (e, t) => setLocaleInStorageClient(e, {
 	...localeStorageOptions,
 	isCookieEnabled: t
 });
-var { defaultLocale: a, locales: o } = internationalization ?? {}, s = ({ isCookieEnabled: n, onLocaleChange: s } = {}) => {
-	let c = inject(i);
+var a = ({ isCookieEnabled: a, onLocaleChange: o } = {}) => {
+	let { defaultLocale: s$1, locales: c } = internationalization ?? {}, l = inject(i);
 	return {
-		locale: computed(() => c?.locale?.value ?? a),
-		defaultLocale: a,
-		availableLocales: o,
+		locale: computed(() => l?.locale?.value ?? s$1),
+		defaultLocale: s$1,
+		availableLocales: c,
 		setLocale: (e) => {
-			if (!o?.map(String).includes(e)) {
+			if (!c?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			c && c.setLocale(e), s$1(e, n ?? c?.isCookieEnabled ?? !0), s?.(e);
+			l && l.setLocale(e), s(e, a ?? l?.isCookieEnabled ?? !0), o?.(e);
 		}
 	};
 };
@@ -135,15 +135,13 @@ var getLocaleName = (locale) => {
 		return locale.toUpperCase();
 	}
 };
-var _hoisted_1 = { class: "flex items-center gap-2" };
-var _hoisted_2 = ["value"];
-var _hoisted_3 = ["value"];
-var LocaleSwitcher_default = defineComponent({
+var LocaleSwitcher_vue_vue_type_script_setup_true_lang_default = defineComponent({
 	__name: "LocaleSwitcher",
-	setup(__props) {
+	setup(__props, { expose: __expose }) {
+		__expose();
 		const route = useRoute();
 		const router = useRouter();
-		const { setLocale } = s();
+		const { setLocale } = a();
 		const currentLocale = computed(() => route.params.locale || "en");
 		const handleLocaleChange = (newLocale) => {
 			setLocale(newLocale);
@@ -157,18 +155,45 @@ var LocaleSwitcher_default = defineComponent({
 		watch(currentLocale, (newLocale) => {
 			setLocale(newLocale);
 		}, { immediate: true });
-		return (_ctx, _cache) => {
-			return openBlock(), createElementBlock("div", _hoisted_1, [createElementVNode("select", {
-				value: currentLocale.value,
-				onChange: _cache[0] || (_cache[0] = (e) => handleLocaleChange(e.target.value)),
-				class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-			}, [(openBlock(true), createElementBlock(Fragment, null, renderList(unref(locales), (localeItem) => {
-				return openBlock(), createElementBlock("option", {
-					key: localeItem,
-					value: localeItem
-				}, toDisplayString(unref(getLocaleName)(localeItem)), 9, _hoisted_3);
-			}), 128))], 40, _hoisted_2)]);
+		const __returned__ = {
+			route,
+			router,
+			setLocale,
+			currentLocale,
+			handleLocaleChange,
+			get locales() {
+				return locales;
+			},
+			get getLocaleName() {
+				return getLocaleName;
+			}
 		};
+		Object.defineProperty(__returned__, "__isScriptSetup", {
+			enumerable: false,
+			value: true
+		});
+		return __returned__;
 	}
 });
+var _plugin_vue_export_helper_default = (sfc, props) => {
+	const target = sfc.__vccOpts || sfc;
+	for (const [key, val] of props) target[key] = val;
+	return target;
+};
+var _hoisted_1 = { class: "flex items-center gap-2" };
+var _hoisted_2 = ["value"];
+var _hoisted_3 = ["value"];
+function _sfc_render(_ctx, _cache, $props, $setup, $data, $options) {
+	return openBlock(), createElementBlock("div", _hoisted_1, [createElementVNode("select", {
+		value: $setup.currentLocale,
+		onChange: _cache[0] || (_cache[0] = (e) => $setup.handleLocaleChange(e.target.value)),
+		class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+	}, [(openBlock(true), createElementBlock(Fragment, null, renderList($setup.locales, (localeItem) => {
+		return openBlock(), createElementBlock("option", {
+			key: localeItem,
+			value: localeItem
+		}, toDisplayString($setup.getLocaleName(localeItem)), 9, _hoisted_3);
+	}), 128))], 40, _hoisted_2)]);
+}
+var LocaleSwitcher_default = _plugin_vue_export_helper_default(LocaleSwitcher_vue_vue_type_script_setup_true_lang_default, [["render", _sfc_render], ["__file", "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/vite-vue-static/vue-intlayer-app/src/components/LocaleSwitcher.vue"]]);
 export { LocaleSwitcher_default as default };

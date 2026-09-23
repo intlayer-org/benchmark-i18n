@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { jsx } from "react/jsx-runtime";
+import { jsxDEV } from "react/jsx-dev-runtime";
 import { useParams } from "next/navigation";
 var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
 var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
@@ -161,6 +162,7 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		children
 	});
 };
+var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/about/WhatWeMeasure.tsx";
 function WhatWeMeasure() {
 	const { i18n } = useLingui();
 	const metrics = [
@@ -185,25 +187,49 @@ function WhatWeMeasure() {
 			desc: i18n._("what-we-measure.howFastTheAppCan")
 		}
 	];
-	return jsxs("section", {
+	return jsxDEV("section", {
 		className: "mt-12 mx-auto max-w-3xl",
-		children: [jsx("h2", {
+		children: [jsxDEV("h2", {
 			className: "mb-4 text-2xl font-bold text-foreground",
 			children: i18n._("what-we-measure.whatWeMeasure")
-		}), jsx("ul", {
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 33,
+			columnNumber: 7
+		}, this), jsxDEV("ul", {
 			className: "space-y-4",
-			children: metrics.map((m) => jsxs("li", {
+			children: metrics.map((m) => jsxDEV("li", {
 				className: "rounded-md border border-border p-4",
-				children: [jsx("span", {
+				children: [jsxDEV("span", {
 					className: "block text-sm font-bold text-primary",
 					children: m.metric
-				}), jsx("span", {
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 39,
+					columnNumber: 13
+				}, this), jsxDEV("span", {
 					className: "block mt-1 text-sm text-muted-foreground",
 					children: m.desc
-				})]
-			}, m.metric))
-		})]
-	});
+				}, void 0, false, {
+					fileName: _jsxFileName$3,
+					lineNumber: 42,
+					columnNumber: 13
+				}, this)]
+			}, m.metric, true, {
+				fileName: _jsxFileName$3,
+				lineNumber: 38,
+				columnNumber: 11
+			}, this))
+		}, void 0, false, {
+			fileName: _jsxFileName$3,
+			lineNumber: 36,
+			columnNumber: 7
+		}, this)]
+	}, void 0, true, {
+		fileName: _jsxFileName$3,
+		lineNumber: 32,
+		columnNumber: 5
+	}, this);
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1624,6 +1650,7 @@ function initLingui(locale, messages) {
 	lingui.activate(locale);
 	return lingui;
 }
+var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/AppProviders.tsx";
 function AppProviders({ children }) {
 	const locale = useParams().locale ?? "en";
 	const messages = useMemo(() => getMessages(locale), [locale]);
@@ -1638,15 +1665,33 @@ function AppProviders({ children }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsx(I18nProvider, {
+	return jsxDEV(I18nProvider, {
 		i18n,
 		children
-	});
+	}, void 0, false, {
+		fileName: _jsxFileName$2,
+		lineNumber: 35,
+		columnNumber: 7
+	}, this);
 }
+var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsx(AppProviders, { children });
+	return jsxDEV(AppProviders, { children }, void 0, false, {
+		fileName: _jsxFileName$1,
+		lineNumber: 9,
+		columnNumber: 10
+	}, this);
 }
+var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/lingui-app/components/pages/about/WhatWeMeasure.wrapper.tsx";
 function Wrapped() {
-	return jsx(Wrapper, { children: jsx(WhatWeMeasure, {}) });
+	return jsxDEV(Wrapper, { children: jsxDEV(WhatWeMeasure, {}, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, false, {
+		fileName: _jsxFileName,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
 export { Wrapped as default };

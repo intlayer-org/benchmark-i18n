@@ -1,16 +1,16 @@
 import { Dynamic, createComponent, insert, template } from "solid-js/web";
 import { For, createContext, createMemo, useContext } from "solid-js";
 var content = {
-	"de": () => import("./de-BVYfVQ-y.js").then((m) => m.default),
-	"en": () => import("./en-LMuixBWc.js").then((m) => m.default),
-	"es": () => import("./es-CVRQ8qvG.js").then((m) => m.default),
-	"fr": () => import("./fr-Blt7hzHC.js").then((m) => m.default),
-	"it": () => import("./it-BLtWig1D.js").then((m) => m.default),
-	"ja": () => import("./ja-BDsMQ7di.js").then((m) => m.default),
-	"ko": () => import("./ko-OBr_8zdN.js").then((m) => m.default),
-	"pt": () => import("./pt-N1nizi0K.js").then((m) => m.default),
-	"ru": () => import("./ru-vTAk41Ri.js").then((m) => m.default),
-	"zh": () => import("./zh-G9wko0In.js").then((m) => m.default)
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/de.json").then((m) => m.default),
+	"en": () => import("./en-JQyrmtDK.js").then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/careers-benefits/zh.json").then((m) => m.default)
 };
 var e$1 = ({ children: e, value: t, additionalProps: n }) => {
 	let r = [e];
@@ -230,8 +230,7 @@ var getDictionary = (dictionary, locale, plugins = getBasePlugins(locale)) => {
 		plugins
 	};
 	return getContent(dictionary.content, props, plugins);
-};
-var S = {
+}, S$1 = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
 	transform: (t, { plugins: a, ...o }) => e$1({
@@ -239,8 +238,7 @@ var S = {
 		value: o.children,
 		children: o.children
 	})
-};
-var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
+}, C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin : {
 	id: "solid-node-plugin",
 	canHandle: (e) => typeof e == "object" && e?.props !== void 0 || typeof Node < "u" && e instanceof Node,
 	transform: (a, { plugins: o, ...s }) => e$1({
@@ -248,12 +246,7 @@ var C = process.env.INTLAYER_NODE_TYPE_SOLID_NODE === "false" ? fallbackPlugin :
 		value: "[[solid-element]]",
 		children: typeof Node < "u" && a instanceof Node ? a : t$1(a)
 	})
-};
-var T = fallbackPlugin;
-var D = fallbackPlugin;
-var O = fallbackPlugin;
-var k = /* @__PURE__ */ new Map();
-var A = (e, t = !0) => {
+}, T = fallbackPlugin, D = fallbackPlugin, O = fallbackPlugin, k = /* @__PURE__ */ new Map(), A = (e, t = !0) => {
 	let n = `${e ?? internationalization.defaultLocale}_${t}`;
 	if (k.has(n)) return k.get(n);
 	let r = [
@@ -263,7 +256,7 @@ var A = (e, t = !0) => {
 		nestedPlugin(e ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		S,
+		S$1,
 		C,
 		T,
 		D,
@@ -282,8 +275,7 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-};
-var localeStorageOptions = {
+}, localeStorageOptions = {
 	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
 	getLocaleStorage: (name) => localStorage.getItem(name),
 	getSessionStorage: (name) => sessionStorage.getItem(name),
@@ -301,9 +293,7 @@ var localeStorageOptions = {
 	},
 	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
 	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-};
-var a$1 = getLocaleFromStorageClient(localeStorageOptions);
-var y = createContext({
+}, a$1 = getLocaleFromStorageClient(localeStorageOptions), y = createContext({
 	locale: () => a$1 ?? internationalization?.defaultLocale,
 	setLocale: () => null
 });
@@ -322,15 +312,12 @@ var e = (e) => {
 		if (t === "error") throw n;
 		return n;
 	} };
-};
-var t = /* @__PURE__ */ new Map();
-var n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
+}, t = /* @__PURE__ */ new Map(), n = (n, r) => (t.has(n) || t.set(n, e(r)), t.get(n).read());
 var a = (a, o, s) => {
 	let { locale: c } = useContext(y) ?? {}, l = internationalization.defaultLocale, u = s ?? c?.() ?? l;
 	return i(n(`${String(o)}.${u}`, a[u]?.()), u);
 };
-var _tmpl$ = template(`<div class="mb-12 grid gap-4 md:grid-cols-3">`);
-var _tmpl$2 = template(`<div class="rounded-lg border border-border bg-card p-4 text-center"><p class="text-sm font-semibold text-foreground"></p><p class="text-xs text-muted-foreground">`);
+var _tmpl$ = template(`<div class="mb-12 grid gap-4 md:grid-cols-3">`), _tmpl$2 = template(`<div class="rounded-lg border border-border bg-card p-4 text-center"><p class="text-sm font-semibold text-foreground"></p><p class="text-xs text-muted-foreground">`);
 function CareersBenefits() {
 	const content$1 = a(content, "careers-benefits");
 	const benefits = [
@@ -362,17 +349,6 @@ function CareersBenefits() {
 	})();
 }
 export { CareersBenefits as default };
-var de_default = {
-	key: "careers-benefits",
-	content: {
-		"d": "Arbeiten Sie von überall auf der Welt",
-		"a": "Wettbewerbsfähige Bezahlung",
-		"c": "Marktführende Vergütung",
-		"b": "Open-Source-Zeit",
-		"e": "20 % Zeit für OSS-Beiträge"
-	}
-};
-export { de_default as default };
 var en_default = {
 	key: "careers-benefits",
 	content: {
@@ -384,91 +360,3 @@ var en_default = {
 	}
 };
 export { en_default as default };
-var es_default = {
-	key: "careers-benefits",
-	content: {
-		"d": "Trabaje desde cualquier lugar del mundo",
-		"a": "Salario competitivo",
-		"c": "Compensación de nivel superior en el mercado",
-		"b": "Tiempo de código abierto",
-		"e": "20% de tiempo para contribuciones de OSS"
-	}
-};
-export { es_default as default };
-var fr_default = {
-	key: "careers-benefits",
-	content: {
-		"d": "Travailler de n'importe où dans le monde",
-		"a": "Salaire compétitif",
-		"c": "Rémunération au sommet du marché",
-		"b": "Temps pour l'open source",
-		"e": "20 % du temps pour les contributions OSS"
-	}
-};
-export { fr_default as default };
-var it_default = {
-	key: "careers-benefits",
-	content: {
-		"d": "Lavora da qualsiasi parte del mondo",
-		"a": "Retribuzione competitiva",
-		"c": "Compensi ai vertici del mercato",
-		"b": "Tempo per l'open source",
-		"e": "20% del tempo per contributi OSS"
-	}
-};
-export { it_default as default };
-var ja_default = {
-	key: "careers-benefits",
-	content: {
-		"d": "世界中のどこからでも仕事ができます",
-		"a": "競争力のある給与",
-		"c": "市場トップクラスの報酬",
-		"b": "オープンソース時間",
-		"e": "OSSへの貢献に20％の時間"
-	}
-};
-export { ja_default as default };
-var ko_default = {
-	key: "careers-benefits",
-	content: {
-		"d": "전 세계 어디에서나 근무 가능",
-		"a": "경쟁력 있는 급여",
-		"c": "업계 최고 수준의 보상",
-		"b": "오픈 소스 시간",
-		"e": "OSS 기여를 위한 20% 시간"
-	}
-};
-export { ko_default as default };
-var pt_default = {
-	key: "careers-benefits",
-	content: {
-		"d": "Trabalhe de qualquer lugar do mundo",
-		"a": "Salário competitivo",
-		"c": "Compensação acima do mercado",
-		"b": "Tempo para open source",
-		"e": "20% do tempo para contribuições OSS"
-	}
-};
-export { pt_default as default };
-var ru_default = {
-	key: "careers-benefits",
-	content: {
-		"d": "Работайте из любой точки мира",
-		"a": "Конкурентоспособная оплата",
-		"c": "Компенсация на уровне лидеров рынка",
-		"b": "Время на open source",
-		"e": "20% времени на вклад в OSS"
-	}
-};
-export { ru_default as default };
-var zh_default = {
-	key: "careers-benefits",
-	content: {
-		"d": "在全球任何地方工作",
-		"a": "具有竞争力的薪酬",
-		"c": "市场顶尖的薪酬",
-		"b": "开源时间",
-		"e": "20% 的时间用于 OSS 贡献"
-	}
-};
-export { zh_default as default };

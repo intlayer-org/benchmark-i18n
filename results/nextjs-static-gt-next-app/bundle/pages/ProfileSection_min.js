@@ -1,5 +1,6 @@
 import e, { Children as t, Fragment as n, cloneElement as r, createContext as i, createElement as a, isValidElement as o, useCallback as s, useContext as c, useEffect as l, useId as u, useLayoutEffect as d, useMemo as f, useRef as p, useState as m, useSyncExternalStore as h } from "react";
-import { Fragment as g, jsx as _, jsxs as v } from "react/jsx-runtime";
+import { jsx as g } from "react/jsx-runtime";
+import { Fragment as _, jsxDEV as v } from "react/jsx-dev-runtime";
 var y = (e, t) => () => (t || (e((t = { exports: {} }).exports, t), e = null), t.exports);
 function ee() {
 	return {
@@ -13,11 +14,11 @@ var b = class extends Error {
 		super(e), this.name = "ApiError", this.code = t, this.message = n;
 	}
 }, te = 6e4;
-function x(e) {
+function ne(e) {
 	let t = e.trim();
 	return t ? /[.!?)]$/.test(t) ? t : `${t}.` : "";
 }
-function S(e) {
+function x(e) {
 	let t = e.trim(), n = t.length;
 	for (; n > 0;) {
 		let e = t[n - 1];
@@ -26,42 +27,42 @@ function S(e) {
 	}
 	return t.slice(0, n);
 }
-function ne(e) {
+function re(e) {
 	if (!e) return "";
 	let t = Array.isArray(e) ? e.join(", ") : e;
-	return t.trim() ? x(`Details: ${t}`) : "";
+	return t.trim() ? ne(`Details: ${t}`) : "";
 }
-function re(e) {
+function ie(e) {
 	if (e != null) return String(e);
 }
-function C({ source: e, severity: t, whatHappened: n, reassurance: r, why: i, fix: a, wayOut: o, details: s, docsUrl: c }) {
-	let l = e ? t ? `${e} ${t}:` : `${e}:` : t ? `${t}:` : "", u = i ? `${S(n)} because ${S(i)}` : n, d = !!a && !!o && /^[a-z]/.test(S(o)), f = [
+function S({ source: e, severity: t, whatHappened: n, reassurance: r, why: i, fix: a, wayOut: o, details: s, docsUrl: c }) {
+	let l = e ? t ? `${e} ${t}:` : `${e}:` : t ? `${t}:` : "", u = i ? `${x(n)} because ${x(i)}` : n, d = !!a && !!o && /^[a-z]/.test(x(o)), f = [
 		u,
 		r,
-		d ? `${S(a)}, or ${S(o)}` : a,
+		d ? `${x(a)}, or ${x(o)}` : a,
 		d ? void 0 : o,
-		ne(s)
-	].filter((e) => !!e).map(x);
+		re(s)
+	].filter((e) => !!e).map(ne);
 	c && f.push(`Learn more: ${c}`);
 	let p = f.join(" ");
 	return l ? `${l} ${p}` : p;
 }
-var ie = "https://cdn.gtx.dev";
-function ae(e) {
+var ae = "https://cdn.gtx.dev";
+function oe(e) {
 	return typeof e == "object" && !!e && "error" in e && typeof e.error == "string";
 }
-function oe(e) {
-	return ae(e.error) || typeof e.error == "string";
-}
 function se(e) {
+	return oe(e.error) || typeof e.error == "string";
+}
+function ce(e) {
 	if (e.data !== void 0) return e.data;
 	if (e.response) {
-		let t = ae(e.error) ? e.error.error : typeof e.error == "string" ? e.error : e.response.statusText;
+		let t = oe(e.error) ? e.error.error : typeof e.error == "string" ? e.error : e.response.statusText;
 		throw new b(t, e.response.status, t);
 	}
 	throw e.error;
 }
-var ce = (e) => e.client.post({
+var le = (e) => e.client.post({
 	security: [{
 		scheme: "bearer",
 		type: "http"
@@ -72,14 +73,14 @@ var ce = (e) => e.client.post({
 		"Content-Type": "application/json",
 		...e.headers
 	}
-}), le = 3, ue = 500, de = 6e4, fe = /* @__PURE__ */ new Set([
+}), ue = 3, de = 500, fe = 6e4, pe = /* @__PURE__ */ new Set([
 	"GET",
 	"HEAD",
 	"OPTIONS",
 	"PUT",
 	"DELETE"
-]), pe = 6e4;
-function me({ fetch: e = globalThis.fetch, timeoutMs: t = pe } = {}) {
+]), me = 6e4;
+function he({ fetch: e = globalThis.fetch, timeoutMs: t = me } = {}) {
 	return async (n, r) => {
 		if (t === !1) return e(n, r);
 		let i = new Request(n, r), a = new AbortController(), o = () => a.abort(i.signal.reason);
@@ -94,25 +95,25 @@ function me({ fetch: e = globalThis.fetch, timeoutMs: t = pe } = {}) {
 		}
 	};
 }
-var he = (e) => new Promise((t) => setTimeout(t, e));
-function ge(e) {
+var ge = (e) => new Promise((t) => setTimeout(t, e));
+function _e(e) {
 	if (!e) return;
 	let t = Number(e.split(",")[0].split(";")[0].trim());
 	return Number.isFinite(t) && t >= 0 ? t * 1e3 : void 0;
 }
-function _e(e) {
-	let t = ge(e);
+function ve(e) {
+	let t = _e(e);
 	if (t !== void 0) return t;
 	if (!e) return;
 	let n = Date.parse(e);
 	return Number.isNaN(n) ? void 0 : Math.max(n - Date.now(), 0);
 }
-function ve(e, t, n) {
-	return e?.status === 429 ? _e(e.headers.get("Retry-After")) ?? ge(e.headers.get("RateLimit-Reset")) ?? de : ue * (n === "linear" ? t + 1 : 2 ** t);
+function ye(e, t, n) {
+	return e?.status === 429 ? ve(e.headers.get("Retry-After")) ?? _e(e.headers.get("RateLimit-Reset")) ?? fe : de * (n === "linear" ? t + 1 : 2 ** t);
 }
-function ye({ fetch: e = globalThis.fetch, retryPolicy: t = "exponential" } = {}) {
+function be({ fetch: e = globalThis.fetch, retryPolicy: t = "exponential" } = {}) {
 	return async (n, r) => {
-		let i = new Request(n, r), a = t === "none" ? 0 : le, o = fe.has(i.method);
+		let i = new Request(n, r), a = t === "none" ? 0 : ue, o = pe.has(i.method);
 		for (let n = 0; n <= a; n++) {
 			let r;
 			try {
@@ -125,12 +126,12 @@ function ye({ fetch: e = globalThis.fetch, retryPolicy: t = "exponential" } = {}
 				if (r) return r;
 				throw i.signal.reason;
 			}
-			r?.body?.cancel(), await he(ve(r, n, t));
+			r?.body?.cancel(), await ge(ye(r, n, t));
 		}
 		throw Error("Max retries exceeded");
 	};
 }
-var be = { bodySerializer: (e) => JSON.stringify(e, (e, t) => typeof t == "bigint" ? t.toString() : t) }, xe = ({ onRequest: e, onSseError: t, onSseEvent: n, responseTransformer: r, responseValidator: i, sseDefaultRetryDelay: a, sseMaxRetryAttempts: o, sseMaxRetryDelay: s, sseSleepFn: c, url: l, ...u }) => {
+var xe = { bodySerializer: (e) => JSON.stringify(e, (e, t) => typeof t == "bigint" ? t.toString() : t) }, Se = ({ onRequest: e, onSseError: t, onSseEvent: n, responseTransformer: r, responseValidator: i, sseDefaultRetryDelay: a, sseMaxRetryAttempts: o, sseMaxRetryDelay: s, sseSleepFn: c, url: l, ...u }) => {
 	let d, f = c ?? ((e) => new Promise((t) => setTimeout(t, e)));
 	return { stream: async function* () {
 		let c = a ?? 3e3, p = 0, m = u.signal ?? new AbortController().signal;
@@ -199,30 +200,30 @@ var be = { bodySerializer: (e) => JSON.stringify(e, (e, t) => typeof t == "bigin
 			}
 		}
 	}() };
-}, Se = (e) => {
+}, Ce = (e) => {
 	switch (e) {
 		case "label": return ".";
 		case "matrix": return ";";
 		case "simple": return ",";
 		default: return "&";
 	}
-}, Ce = (e) => {
+}, we = (e) => {
 	switch (e) {
 		case "form": return ",";
 		case "pipeDelimited": return "|";
 		case "spaceDelimited": return "%20";
 		default: return ",";
 	}
-}, we = (e) => {
+}, Te = (e) => {
 	switch (e) {
 		case "label": return ".";
 		case "matrix": return ";";
 		case "simple": return ",";
 		default: return "&";
 	}
-}, Te = ({ allowReserved: e, explode: t, name: n, style: r, value: i }) => {
+}, Ee = ({ allowReserved: e, explode: t, name: n, style: r, value: i }) => {
 	if (!t) {
-		let t = (e ? i : i.map((e) => encodeURIComponent(e))).join(Ce(r));
+		let t = (e ? i : i.map((e) => encodeURIComponent(e))).join(we(r));
 		switch (r) {
 			case "label": return `.${t}`;
 			case "matrix": return `;${n}=${t}`;
@@ -230,17 +231,17 @@ var be = { bodySerializer: (e) => JSON.stringify(e, (e, t) => typeof t == "bigin
 			default: return `${n}=${t}`;
 		}
 	}
-	let a = Se(r), o = i.map((t) => r === "label" || r === "simple" ? e ? t : encodeURIComponent(t) : Ee({
+	let a = Ce(r), o = i.map((t) => r === "label" || r === "simple" ? e ? t : encodeURIComponent(t) : De({
 		allowReserved: e,
 		name: n,
 		value: t
 	})).join(a);
 	return r === "label" || r === "matrix" ? a + o : o;
-}, Ee = ({ allowReserved: e, name: t, value: n }) => {
+}, De = ({ allowReserved: e, name: t, value: n }) => {
 	if (n == null) return "";
 	if (typeof n == "object") throw Error("Deeply-nested arrays/objects aren’t supported. Provide your own `querySerializer()` to handle these.");
 	return `${t}=${e ? n : encodeURIComponent(n)}`;
-}, De = ({ allowReserved: e, explode: t, name: n, style: r, value: i, valueOnly: a }) => {
+}, Oe = ({ allowReserved: e, explode: t, name: n, style: r, value: i, valueOnly: a }) => {
 	if (i instanceof Date) return a ? i.toISOString() : `${n}=${i.toISOString()}`;
 	if (r !== "deepObject" && !t) {
 		let t = [];
@@ -259,21 +260,21 @@ var be = { bodySerializer: (e) => JSON.stringify(e, (e, t) => typeof t == "bigin
 			default: return a;
 		}
 	}
-	let o = we(r), s = Object.entries(i).map(([t, i]) => Ee({
+	let o = Te(r), s = Object.entries(i).map(([t, i]) => De({
 		allowReserved: e,
 		name: r === "deepObject" ? `${n}[${t}]` : t,
 		value: i
 	})).join(o);
 	return r === "label" || r === "matrix" ? o + s : s;
-}, Oe = /\{[^{}]+\}/g, ke = ({ path: e, url: t }) => {
-	let n = t, r = t.match(Oe);
+}, ke = /\{[^{}]+\}/g, Ae = ({ path: e, url: t }) => {
+	let n = t, r = t.match(ke);
 	if (r) for (let t of r) {
 		let r = !1, i = t.substring(1, t.length - 1), a = "simple";
 		i.endsWith("*") && (r = !0, i = i.substring(0, i.length - 1)), i.startsWith(".") ? (i = i.substring(1), a = "label") : i.startsWith(";") && (i = i.substring(1), a = "matrix");
 		let o = e[i];
 		if (o == null) continue;
 		if (Array.isArray(o)) {
-			n = n.replace(t, Te({
+			n = n.replace(t, Ee({
 				explode: r,
 				name: i,
 				style: a,
@@ -282,7 +283,7 @@ var be = { bodySerializer: (e) => JSON.stringify(e, (e, t) => typeof t == "bigin
 			continue;
 		}
 		if (typeof o == "object") {
-			n = n.replace(t, De({
+			n = n.replace(t, Oe({
 				explode: r,
 				name: i,
 				style: a,
@@ -292,7 +293,7 @@ var be = { bodySerializer: (e) => JSON.stringify(e, (e, t) => typeof t == "bigin
 			continue;
 		}
 		if (a === "matrix") {
-			n = n.replace(t, `;${Ee({
+			n = n.replace(t, `;${De({
 				name: i,
 				value: o
 			})}`);
@@ -302,31 +303,31 @@ var be = { bodySerializer: (e) => JSON.stringify(e, (e, t) => typeof t == "bigin
 		n = n.replace(t, s);
 	}
 	return n;
-}, Ae = ({ baseUrl: e, path: t, query: n, querySerializer: r, url: i }) => {
+}, je = ({ baseUrl: e, path: t, query: n, querySerializer: r, url: i }) => {
 	let a = i.startsWith("/") ? i : `/${i}`, o = (e ?? "") + a;
-	t && (o = ke({
+	t && (o = Ae({
 		path: t,
 		url: o
 	}));
 	let s = n ? r(n) : "";
 	return s.startsWith("?") && (s = s.substring(1)), s && (o += `?${s}`), o;
 };
-function je(e) {
+function Me(e) {
 	let t = e.body !== void 0;
 	if (t && e.bodySerializer) return "serializedBody" in e ? e.serializedBody !== void 0 && e.serializedBody !== "" ? e.serializedBody : null : e.body === "" ? null : e.body;
 	if (t) return e.body;
 }
-var Me = async (e, t) => {
+var Ne = async (e, t) => {
 	let n = typeof t == "function" ? await t(e) : t;
 	if (n) return e.scheme === "bearer" ? `Bearer ${n}` : e.scheme === "basic" ? `Basic ${btoa(n)}` : n;
-}, Ne = ({ parameters: e = {}, ...t } = {}) => (n) => {
+}, Pe = ({ parameters: e = {}, ...t } = {}) => (n) => {
 	let r = [];
 	if (n && typeof n == "object") for (let i in n) {
 		let a = n[i];
 		if (a == null) continue;
 		let o = e[i] || t;
 		if (Array.isArray(a)) {
-			let e = Te({
+			let e = Ee({
 				allowReserved: o.allowReserved,
 				explode: !0,
 				name: i,
@@ -336,7 +337,7 @@ var Me = async (e, t) => {
 			});
 			e && r.push(e);
 		} else if (typeof a == "object") {
-			let e = De({
+			let e = Oe({
 				allowReserved: o.allowReserved,
 				explode: !0,
 				name: i,
@@ -346,7 +347,7 @@ var Me = async (e, t) => {
 			});
 			e && r.push(e);
 		} else {
-			let e = Ee({
+			let e = De({
 				allowReserved: o.allowReserved,
 				name: i,
 				value: a
@@ -355,7 +356,7 @@ var Me = async (e, t) => {
 		}
 	}
 	return r.join("&");
-}, Pe = (e) => {
+}, Fe = (e) => {
 	if (!e) return "stream";
 	let t = e.split(";")[0]?.trim();
 	if (t) {
@@ -369,10 +370,10 @@ var Me = async (e, t) => {
 		].some((e) => t.startsWith(e))) return "blob";
 		if (t.startsWith("text/")) return "text";
 	}
-}, Fe = (e, t) => t ? !!(e.headers.has(t) || e.query?.[t] || e.headers.get("Cookie")?.includes(`${t}=`)) : !1, Ie = async ({ security: e, ...t }) => {
+}, Ie = (e, t) => t ? !!(e.headers.has(t) || e.query?.[t] || e.headers.get("Cookie")?.includes(`${t}=`)) : !1, Le = async ({ security: e, ...t }) => {
 	for (let n of e) {
-		if (Fe(t, n.name)) continue;
-		let e = await Me(n, t.auth);
+		if (Ie(t, n.name)) continue;
+		let e = await Ne(n, t.auth);
 		if (!e) continue;
 		let r = n.name ?? "Authorization";
 		switch (n.in) {
@@ -385,34 +386,34 @@ var Me = async (e, t) => {
 			default: t.headers.set(r, e);
 		}
 	}
-}, Le = (e) => Ae({
+}, Re = (e) => je({
 	baseUrl: e.baseUrl,
 	path: e.path,
 	query: e.query,
-	querySerializer: typeof e.querySerializer == "function" ? e.querySerializer : Ne(e.querySerializer),
+	querySerializer: typeof e.querySerializer == "function" ? e.querySerializer : Pe(e.querySerializer),
 	url: e.url
-}), Re = (e, t) => {
+}), ze = (e, t) => {
 	let n = {
 		...e,
 		...t
 	};
-	return n.baseUrl?.endsWith("/") && (n.baseUrl = n.baseUrl.substring(0, n.baseUrl.length - 1)), n.headers = Be(e.headers, t.headers), n;
-}, ze = (e) => {
+	return n.baseUrl?.endsWith("/") && (n.baseUrl = n.baseUrl.substring(0, n.baseUrl.length - 1)), n.headers = Ve(e.headers, t.headers), n;
+}, Be = (e) => {
 	let t = [];
 	return e.forEach((e, n) => {
 		t.push([n, e]);
 	}), t;
-}, Be = (...e) => {
+}, Ve = (...e) => {
 	let t = new Headers();
 	for (let n of e) {
 		if (!n) continue;
-		let e = n instanceof Headers ? ze(n) : Object.entries(n);
+		let e = n instanceof Headers ? Be(n) : Object.entries(n);
 		for (let [n, r] of e) if (r === null) t.delete(n);
 		else if (Array.isArray(r)) for (let e of r) t.append(n, e);
 		else r !== void 0 && t.set(n, typeof r == "object" ? JSON.stringify(r) : r);
 	}
 	return t;
-}, Ve = class {
+}, He = class {
 	fns = [];
 	clear() {
 		this.fns = [];
@@ -435,11 +436,11 @@ var Me = async (e, t) => {
 	use(e) {
 		return this.fns.push(e), this.fns.length - 1;
 	}
-}, He = () => ({
-	error: new Ve(),
-	request: new Ve(),
-	response: new Ve()
-}), Ue = Ne({
+}, Ue = () => ({
+	error: new He(),
+	request: new He(),
+	response: new He()
+}), We = Pe({
 	allowReserved: !1,
 	array: {
 		explode: !0,
@@ -449,33 +450,33 @@ var Me = async (e, t) => {
 		explode: !0,
 		style: "deepObject"
 	}
-}), We = { "Content-Type": "application/json" }, Ge = (e = {}) => ({
-	...be,
-	headers: We,
+}), Ge = { "Content-Type": "application/json" }, Ke = (e = {}) => ({
+	...xe,
+	headers: Ge,
 	parseAs: "auto",
-	querySerializer: Ue,
+	querySerializer: We,
 	...e
-}), Ke = (e = {}) => {
-	let t = Re(Ge(), e), n = () => ({ ...t }), r = (e) => (t = Re(t, e), n()), i = He(), a = async (e) => {
+}), qe = (e = {}) => {
+	let t = ze(Ke(), e), n = () => ({ ...t }), r = (e) => (t = ze(t, e), n()), i = Ue(), a = async (e) => {
 		let n = {
 			...t,
 			...e,
 			fetch: e.fetch ?? t.fetch ?? globalThis.fetch,
-			headers: Be(t.headers, e.headers),
+			headers: Ve(t.headers, e.headers),
 			serializedBody: void 0
 		};
-		return n.security && await Ie({
+		return n.security && await Le({
 			...n,
 			security: n.security
 		}), n.requestValidator && await n.requestValidator(n), n.body !== void 0 && n.bodySerializer && (n.serializedBody = n.bodySerializer(n.body)), (n.body === void 0 || n.serializedBody === "") && n.headers.delete("Content-Type"), {
 			opts: n,
-			url: Le(n)
+			url: Re(n)
 		};
 	}, o = async (e) => {
 		let { opts: t, url: n } = await a(e), r = {
 			redirect: "follow",
 			...t,
-			body: je(t)
+			body: Me(t)
 		}, o = new Request(n, r);
 		for (let e of i.request.fns) e && (o = await e(o, t));
 		let s = t.fetch, c;
@@ -497,7 +498,7 @@ var Me = async (e, t) => {
 			response: c
 		};
 		if (c.ok) {
-			let e = (t.parseAs === "auto" ? Pe(c.headers.get("Content-Type")) : t.parseAs) ?? "json";
+			let e = (t.parseAs === "auto" ? Fe(c.headers.get("Content-Type")) : t.parseAs) ?? "json";
 			if (c.status === 204 || c.headers.get("Content-Length") === "0") {
 				let n;
 				switch (e) {
@@ -554,7 +555,7 @@ var Me = async (e, t) => {
 		method: e
 	}), c = (e) => async (t) => {
 		let { opts: n, url: r } = await a(t);
-		return xe({
+		return Se({
 			...n,
 			body: n.body,
 			headers: n.headers,
@@ -568,7 +569,7 @@ var Me = async (e, t) => {
 		});
 	};
 	return {
-		buildUrl: Le,
+		buildUrl: Re,
 		connect: s("CONNECT"),
 		delete: s("DELETE"),
 		get: s("GET"),
@@ -595,12 +596,12 @@ var Me = async (e, t) => {
 		trace: s("TRACE")
 	};
 };
-function qe(e) {
+function Je(e) {
 	let t = new Headers({ "gt-api-version": e.apiVersion ?? "2026-03-06.v1" });
-	return e.apiKey && t.set("Authorization", `Bearer ${e.apiKey}`), e.projectId && t.set("gt-project-id", e.projectId), Ke({
+	return e.apiKey && t.set("Authorization", `Bearer ${e.apiKey}`), e.projectId && t.set("gt-project-id", e.projectId), qe({
 		baseUrl: e.baseUrl,
-		fetch: ye({
-			fetch: me({
+		fetch: be({
+			fetch: he({
 				fetch: e.fetch,
 				timeoutMs: e.timeoutMs
 			}),
@@ -609,7 +610,7 @@ function qe(e) {
 		headers: t
 	});
 }
-var w = {
+var C = {
 	literal: 0,
 	argument: 1,
 	number: 2,
@@ -619,10 +620,10 @@ var w = {
 	plural: 6,
 	pound: 7,
 	tag: 8
-}, Je = {
+}, Ye = {
 	number: 0,
 	dateTime: 1
-}, Ye = /^\.(?:(0+)(\*)?|(#+)|(0+)(#+))$/, Xe = /^@+(\+|#+)?[rs]?$/, Ze = /^(?:(?:\+|#+)[rs]?|[rs])$/, Qe = /(\*)(0+)|(#+)(0+)|(0+)/g, $e = /[\t-\r \x85\u200E\u200F\u2028\u2029]+/u, et = /(?:[Eec]{1,6}|G{1,5}|[Qq]{1,5}|(?:[yYur]+|U{1,5})|[ML]{1,5}|d{1,2}|D{1,3}|F|[abB]{1,5}|[hHkK]{1,2}|w{1,2}|W|m{1,2}|s{1,2}|[zZOvVxX]{1,4})(?=([^']*'[^']*')*[^']*$)/g, tt = {
+}, Xe = /^\.(?:(0+)(\*)?|(#+)|(0+)(#+))$/, Ze = /^@+(\+|#+)?[rs]?$/, Qe = /^(?:(?:\+|#+)[rs]?|[rs])$/, $e = /(\*)(0+)|(#+)(0+)|(0+)/g, et = /[\t-\r \x85\u200E\u200F\u2028\u2029]+/u, tt = /(?:[Eec]{1,6}|G{1,5}|[Qq]{1,5}|(?:[yYur]+|U{1,5})|[ML]{1,5}|d{1,2}|D{1,3}|F|[abB]{1,5}|[hHkK]{1,2}|w{1,2}|W|m{1,2}|s{1,2}|[zZOvVxX]{1,4})(?=([^']*'[^']*')*[^']*$)/g, nt = {
 	floor: "floor",
 	ceiling: "ceil",
 	down: "trunc",
@@ -630,14 +631,14 @@ var w = {
 	"half-even": "halfEven",
 	"half-down": "halfTrunc",
 	"half-up": "halfExpand"
-}, nt = {
+}, rt = {
 	h: "h12",
 	H: "h23",
 	K: "h11",
 	k: "h24"
 };
-function rt(e) {
-	let t = e.split($e).filter(Boolean);
+function it(e) {
+	let t = e.split(et).filter(Boolean);
 	if (t.length === 0) throw SyntaxError("Number skeleton cannot be empty.");
 	return t.map((e) => {
 		let [t, ...n] = e.split("/");
@@ -648,7 +649,7 @@ function rt(e) {
 		};
 	});
 }
-function it(e) {
+function at(e) {
 	let t = {};
 	for (let n of e) {
 		if (!n.stem) throw SyntaxError("Number skeleton token stem cannot be empty.");
@@ -678,7 +679,7 @@ function it(e) {
 				continue;
 			case "measure-unit":
 			case "unit":
-				at(n), t.style = "unit", t.unit = e.replace(/^(.*?)-/, "");
+				ot(n), t.style = "unit", t.unit = e.replace(/^(.*?)-/, "");
 				continue;
 			case "compact-short":
 			case "K":
@@ -691,7 +692,7 @@ function it(e) {
 			case "scientific":
 			case "engineering":
 				t.notation = n.stem;
-				for (let e of n.options) ot(t, e);
+				for (let e of n.options) st(t, e);
 				continue;
 			case "notation-simple":
 				t.notation = "standard";
@@ -712,12 +713,12 @@ function it(e) {
 				t.scale = parseFloat(e ?? "");
 				continue;
 			case "integer-width":
-				if (at(n), n.options.length > 1) throw RangeError("integer-width stems only accept a single optional option");
-				ct(t, e);
+				if (ot(n), n.options.length > 1) throw RangeError("integer-width stems only accept a single optional option");
+				lt(t, e);
 				continue;
 		}
 		if (n.stem.slice(0, 14) === "rounding-mode-") {
-			let e = tt[n.stem.slice(14)];
+			let e = nt[n.stem.slice(14)];
 			typeof e == "string" && (t.roundingMode = e);
 			continue;
 		}
@@ -725,21 +726,21 @@ function it(e) {
 			t.minimumIntegerDigits = n.stem.length;
 			continue;
 		}
-		if (!lt(t, n)) {
-			if (Xe.test(n.stem)) {
-				Object.assign(t, ut(n.stem));
+		if (!ut(t, n)) {
+			if (Ze.test(n.stem)) {
+				Object.assign(t, dt(n.stem));
 				continue;
 			}
-			if (Ze.test(n.stem)) throw SyntaxError("Significant precision must start with @.");
-			ot(t, n.stem) || st(t, n.stem);
+			if (Qe.test(n.stem)) throw SyntaxError("Significant precision must start with @.");
+			st(t, n.stem) || ct(t, n.stem);
 		}
 	}
 	return t;
 }
-function at(e) {
+function ot(e) {
 	if (!e.options[0]) throw SyntaxError(`${e.stem} requires an option.`);
 }
-function ot(e, t) {
+function st(e, t) {
 	switch (t) {
 		case "sign-auto": return e.signDisplay = "auto", !0;
 		case "sign-accounting":
@@ -757,37 +758,37 @@ function ot(e, t) {
 		default: return !1;
 	}
 }
-function st(e, t) {
+function ct(e, t) {
 	if (t[0] !== "E") return !1;
 	let n = /^(E{1,2})(\+!|\+\?)?(0+)$/u.exec(t);
 	if (!n) throw SyntaxError("Malformed concise eng/scientific notation");
-	return e.notation = n[1] === "EE" ? "engineering" : "scientific", n[2] && ot(e, n[2]), e.minimumIntegerDigits = n[3].length, !0;
+	return e.notation = n[1] === "EE" ? "engineering" : "scientific", n[2] && st(e, n[2]), e.minimumIntegerDigits = n[3].length, !0;
 }
-function ct(e, t) {
-	t.replace(Qe, (t, n, r, i, a, o) => {
+function lt(e, t) {
+	t.replace($e, (t, n, r, i, a, o) => {
 		if (n && r) e.minimumIntegerDigits = r.length;
 		else if (i && a) throw Error("We currently do not support maximum integer digits");
 		else if (o) throw Error("We currently do not support exact integer digits");
 		return "";
 	});
 }
-function lt(e, t) {
-	let n = Ye.exec(t.stem);
+function ut(e, t) {
+	let n = Xe.exec(t.stem);
 	if (!n) return !1;
 	if (t.options.length > 1) throw SyntaxError("Fraction precision accepts at most one option.");
 	let [, r, i, a, o, s] = n;
-	return i === "*" ? e.minimumFractionDigits = r.length : a ? e.maximumFractionDigits = a.length : o && s ? (e.minimumFractionDigits = o.length, e.maximumFractionDigits = o.length + s.length) : (e.minimumFractionDigits = r.length, e.maximumFractionDigits = r.length), t.options[0] === "w" ? e.trailingZeroDisplay = "stripIfInteger" : t.options[0] && Object.assign(e, ut(t.options[0])), !0;
-}
-function ut(e) {
-	let t = {};
-	if (e.endsWith("r") && (t.roundingPriority = "morePrecision"), e.endsWith("s") && (t.roundingPriority = "lessPrecision"), Ze.test(e)) throw SyntaxError("Significant precision must start with @.");
-	if (!Xe.test(e)) return t;
-	let n = e.replace(/[rs]$/u, ""), r = n.match(/^@+/u)?.[0] ?? "", i = n.slice(r.length);
-	return r && (t.minimumSignificantDigits = r.length), i === "+" || (i[0] === "#" ? t.maximumSignificantDigits = r.length + i.length : r && (t.maximumSignificantDigits = r.length)), t;
+	return i === "*" ? e.minimumFractionDigits = r.length : a ? e.maximumFractionDigits = a.length : o && s ? (e.minimumFractionDigits = o.length, e.maximumFractionDigits = o.length + s.length) : (e.minimumFractionDigits = r.length, e.maximumFractionDigits = r.length), t.options[0] === "w" ? e.trailingZeroDisplay = "stripIfInteger" : t.options[0] && Object.assign(e, dt(t.options[0])), !0;
 }
 function dt(e) {
 	let t = {};
-	for (let [n] of e.matchAll(et)) {
+	if (e.endsWith("r") && (t.roundingPriority = "morePrecision"), e.endsWith("s") && (t.roundingPriority = "lessPrecision"), Qe.test(e)) throw SyntaxError("Significant precision must start with @.");
+	if (!Ze.test(e)) return t;
+	let n = e.replace(/[rs]$/u, ""), r = n.match(/^@+/u)?.[0] ?? "", i = n.slice(r.length);
+	return r && (t.minimumSignificantDigits = r.length), i === "+" || (i[0] === "#" ? t.maximumSignificantDigits = r.length + i.length : r && (t.maximumSignificantDigits = r.length)), t;
+}
+function ft(e) {
+	let t = {};
+	for (let [n] of e.matchAll(tt)) {
 		let e = n.length;
 		switch (n[0]) {
 			case "G":
@@ -814,7 +815,7 @@ function dt(e) {
 				break;
 			case "e":
 			case "c":
-				if (e < 4) throw mt(n, "weekday");
+				if (e < 4) throw ht(n, "weekday");
 				t.weekday = [
 					"short",
 					"long",
@@ -829,7 +830,7 @@ function dt(e) {
 			case "H":
 			case "K":
 			case "k":
-				t.hourCycle = nt[n[0]], t.hour = e === 2 ? "2-digit" : "numeric";
+				t.hourCycle = rt[n[0]], t.hour = e === 2 ? "2-digit" : "numeric";
 				break;
 			case "m":
 				t.minute = e === 2 ? "2-digit" : "numeric";
@@ -840,14 +841,14 @@ function dt(e) {
 			case "z":
 				t.timeZoneName = e < 4 ? "short" : "long";
 				break;
-			default: throw mt(n, "date/time");
+			default: throw ht(n, "date/time");
 		}
 	}
 	return t;
 }
-function ft(e, t) {
+function pt(e, t) {
 	if (!t || !/[jJ]/u.test(e)) return e;
-	let n = pt(t), r = "";
+	let n = mt(t), r = "";
 	for (let t = 0; t < e.length; t += 1) {
 		let i = e[t];
 		if (i === "j") {
@@ -859,7 +860,7 @@ function ft(e, t) {
 	}
 	return r;
 }
-function pt(e) {
+function mt(e) {
 	let t = e;
 	switch (t.hourCycle ?? t.hourCycles?.[0] ?? new Intl.DateTimeFormat(e.toString(), { hour: "numeric" }).resolvedOptions().hourCycle) {
 		case "h11": return "K";
@@ -868,17 +869,17 @@ function pt(e) {
 		default: return "H";
 	}
 }
-function mt(e, t) {
+function ht(e, t) {
 	return /* @__PURE__ */ RangeError(`Unsupported ${t} skeleton field: ${e}.`);
 }
-var ht = /^[A-Za-z]$/u, gt = /^[-.0-9_A-Za-z\u00B7\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u037D\u037F-\u1FFF\u200C-\u200D\u203F-\u2040\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u{10000}-\u{EFFFF}]$/u;
-function _t(e) {
-	return ht.test(e ?? "");
-}
+var gt = /^[A-Za-z]$/u, _t = /^[-.0-9_A-Za-z\u00B7\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u037D\u037F-\u1FFF\u200C-\u200D\u203F-\u2040\u2070-\u218F\u2C00-\u2FEF\u3001-\uD7FF\uF900-\uFDCF\uFDF0-\uFFFD\u{10000}-\u{EFFFF}]$/u;
 function vt(e) {
-	return gt.test(e);
+	return gt.test(e ?? "");
 }
-var yt = /[\t-\r \x85\u200E\u200F\u2028\u2029]/u, bt = /[\t-\r \x85\xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\x21-\x2F\x3A-\x40\x5B-\x5E\x60\x7B-\x7E\xA1-\xA7\xA9\xAB\xAC\xAE\xB0\xB1\xB6\xBB\xBF\xD7\xF7\u2010-\u2027\u2030-\u203E\u2041-\u2053\u2055-\u205E\u2190-\u245F\u2500-\u2775\u2794-\u2BFF\u2E00-\u2E7F\u3001-\u3003\u3008-\u3020\u3030\uFD3E-\uFD3F\uFE45-\uFE46]/u, xt = class {
+function yt(e) {
+	return _t.test(e);
+}
+var bt = /[\t-\r \x85\u200E\u200F\u2028\u2029]/u, xt = /[\t-\r \x85\xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\x21-\x2F\x3A-\x40\x5B-\x5E\x60\x7B-\x7E\xA1-\xA7\xA9\xAB\xAC\xAE\xB0\xB1\xB6\xBB\xBF\xD7\xF7\u2010-\u2027\u2030-\u203E\u2041-\u2053\u2055-\u205E\u2190-\u245F\u2500-\u2775\u2794-\u2BFF\u2E00-\u2E7F\u3001-\u3003\u3008-\u3020\u3030\uFD3E-\uFD3F\uFE45-\uFE46]/u, St = class {
 	constructor(e, t) {
 		this.message = e, this.options = t, this.index = 0;
 	}
@@ -893,11 +894,11 @@ var yt = /[\t-\r \x85\u200E\u200F\u2028\u2029]/u, bt = /[\t-\r \x85\xA0\u1680\u2
 			else if (i === "}" && e) break;
 			else if (i === "#" && t) {
 				let e = this.index;
-				this.index += 1, r.push(this.withLocation({ type: w.pound }, e, this.index));
+				this.index += 1, r.push(this.withLocation({ type: C.pound }, e, this.index));
 			} else if (i === "<" && !this.options.ignoreTag && this.peek() === "/") {
 				if (n) break;
 				this.fail("UNMATCHED_CLOSING_TAG");
-			} else i === "<" && !this.options.ignoreTag && _t(this.peek()) ? r.push(this.parseTag(t)) : r.push(this.parseLiteral(e, t));
+			} else i === "<" && !this.options.ignoreTag && vt(this.peek()) ? r.push(this.parseTag(t)) : r.push(this.parseLiteral(e, t));
 		}
 		return r;
 	}
@@ -910,11 +911,11 @@ var yt = /[\t-\r \x85\u200E\u200F\u2028\u2029]/u, bt = /[\t-\r \x85\xA0\u1680\u2
 				continue;
 			}
 			let i = this.current();
-			if (i === "{" || i === "}" && e || i === "#" && t || i === "<" && !this.options.ignoreTag && (_t(this.peek()) || this.peek() === "/")) break;
+			if (i === "{" || i === "}" && e || i === "#" && t || i === "<" && !this.options.ignoreTag && (vt(this.peek()) || this.peek() === "/")) break;
 			r += i, this.index += i.length;
 		}
 		return this.withLocation({
-			type: w.literal,
+			type: C.literal,
 			value: r
 		}, n, this.index);
 	}
@@ -944,22 +945,22 @@ var yt = /[\t-\r \x85\u200E\u200F\u2028\u2029]/u, bt = /[\t-\r \x85\xA0\u1680\u2
 		this.index += 1;
 		let n = this.readTagName();
 		if (this.skipSpace(), this.consume("/>")) return this.withLocation({
-			type: w.literal,
+			type: C.literal,
 			value: `<${n}/>`
 		}, t, this.index);
 		this.consume(">") || this.fail("INVALID_TAG", t);
 		let r = this.parseMessage(!0, e, !0), i = this.index;
 		this.consume("</") || this.fail("UNCLOSED_TAG", t);
 		let a = this.index;
-		return _t(this.current()) || this.failAt("INVALID_TAG", i, this.index), this.readTagName() !== n && this.fail("UNMATCHED_CLOSING_TAG", a), this.skipSpace(), this.consume(">") || this.failAt("INVALID_TAG", i, this.index), this.withLocation({
-			type: w.tag,
+		return vt(this.current()) || this.failAt("INVALID_TAG", i, this.index), this.readTagName() !== n && this.fail("UNMATCHED_CLOSING_TAG", a), this.skipSpace(), this.consume(">") || this.failAt("INVALID_TAG", i, this.index), this.withLocation({
+			type: C.tag,
 			value: n,
 			children: r
 		}, t, this.index);
 	}
 	readTagName() {
 		let e = this.index;
-		for (_t(this.current()) || this.fail("INVALID_TAG", e), this.index += 1; !this.atEnd() && vt(this.current());) this.index += this.current().length;
+		for (vt(this.current()) || this.fail("INVALID_TAG", e), this.index += 1; !this.atEnd() && yt(this.current());) this.index += this.current().length;
 		return this.message.slice(e, this.index);
 	}
 	parseArgument(e) {
@@ -967,7 +968,7 @@ var yt = /[\t-\r \x85\u200E\u200F\u2028\u2029]/u, bt = /[\t-\r \x85\xA0\u1680\u2
 		this.index += 1, this.skipSpace(), this.atEnd() && this.fail("EXPECT_ARGUMENT_CLOSING_BRACE", t), this.current() === "}" && (this.index += 1, this.fail("EMPTY_ARGUMENT", t));
 		let n = this.readIdentifier();
 		if (n || this.fail("MALFORMED_ARGUMENT", t), this.skipSpace(), this.consume("}")) return this.withLocation({
-			type: w.argument,
+			type: C.argument,
 			value: n
 		}, t, this.index);
 		this.atEnd() && this.fail("EXPECT_ARGUMENT_CLOSING_BRACE", t), this.consume(",") || this.fail("MALFORMED_ARGUMENT", t), this.skipSpace(), this.atEnd() && this.fail("EXPECT_ARGUMENT_CLOSING_BRACE", t);
@@ -991,29 +992,29 @@ var yt = /[\t-\r \x85\u200E\u200F\u2028\u2029]/u, bt = /[\t-\r \x85\xA0\u1680\u2
 				if (n === "number") {
 					let e;
 					try {
-						e = rt(t);
+						e = it(t);
 					} catch {
 						this.failAt("INVALID_NUMBER_SKELETON", a, o);
 					}
 					r = {
-						type: Je.number,
+						type: Ye.number,
 						tokens: e,
 						...s ? { location: s } : {},
-						parsedOptions: this.options.shouldParseSkeletons ? it(e) : {}
+						parsedOptions: this.options.shouldParseSkeletons ? at(e) : {}
 					};
 				} else {
 					t || this.failAt("EXPECT_DATE_TIME_SKELETON", e, this.index);
-					let n = ft(t, this.options.locale);
+					let n = pt(t, this.options.locale);
 					r = {
-						type: Je.dateTime,
+						type: Ye.dateTime,
 						pattern: n,
 						...s ? { location: s } : {},
-						parsedOptions: this.options.shouldParseSkeletons ? dt(n) : {}
+						parsedOptions: this.options.shouldParseSkeletons ? ft(n) : {}
 					};
 				}
 			} else r = i;
 		}
-		let s = n === "number" ? w.number : n === "date" ? w.date : w.time;
+		let s = n === "number" ? C.number : n === "date" ? C.date : C.time;
 		return this.withLocation({
 			type: s,
 			value: t,
@@ -1052,11 +1053,11 @@ var yt = /[\t-\r \x85\u200E\u200F\u2028\u2029]/u, bt = /[\t-\r \x85\xA0\u1680\u2
 			}, l = !0, this.skipSpace(), u = this.index, s = this.readIdentifier();
 		}
 		return l || this.fail(n === "select" ? "EXPECT_SELECT_ARGUMENT_SELECTOR" : "EXPECT_PLURAL_ARGUMENT_SELECTOR"), this.options.requiresOtherClause && !("other" in c) && this.fail("MISSING_OTHER_CLAUSE", u), this.consume("}") || this.fail("EXPECT_ARGUMENT_CLOSING_BRACE", e), Object.setPrototypeOf(c, Object.prototype), n === "select" ? this.withLocation({
-			type: w.select,
+			type: C.select,
 			value: t,
 			options: c
 		}, e, this.index) : this.withLocation({
-			type: w.plural,
+			type: C.plural,
 			value: t,
 			options: c,
 			offset: a,
@@ -1074,21 +1075,21 @@ var yt = /[\t-\r \x85\u200E\u200F\u2028\u2029]/u, bt = /[\t-\r \x85\xA0\u1680\u2
 	}
 	readIdentifier() {
 		let e = this.index;
-		for (; !this.atEnd() && !bt.test(this.current());) this.index += this.current().length;
+		for (; !this.atEnd() && !xt.test(this.current());) this.index += this.current().length;
 		return this.message.slice(e, this.index);
 	}
 	skipSpace() {
-		for (; !this.atEnd() && yt.test(this.current());) this.index += this.current().length;
+		for (; !this.atEnd() && bt.test(this.current());) this.index += this.current().length;
 	}
 	consume(e) {
 		return this.message.slice(this.index, this.index + e.length) === e && (this.index += e.length, !0);
 	}
 	current() {
-		return Ct(this.message, this.index);
+		return wt(this.message, this.index);
 	}
 	peek() {
 		let e = this.current();
-		return Ct(this.message, this.index + e.length);
+		return wt(this.message, this.index + e.length);
 	}
 	atEnd() {
 		return this.index >= this.message.length;
@@ -1107,7 +1108,7 @@ var yt = /[\t-\r \x85\u200E\u200F\u2028\u2029]/u, bt = /[\t-\r \x85\xA0\u1680\u2
 		};
 	}
 	position(e) {
-		let t = this.positions ??= St(this.message);
+		let t = this.positions ??= Ct(this.message);
 		return {
 			offset: e,
 			line: t[0][e],
@@ -1125,33 +1126,33 @@ var yt = /[\t-\r \x85\u200E\u200F\u2028\u2029]/u, bt = /[\t-\r \x85\xA0\u1680\u2
 		}, r.originalMessage = this.message, r;
 	}
 };
-function St(e) {
+function Ct(e) {
 	let t = new Uint32Array(e.length + 1), n = new Uint32Array(e.length + 1), r = 0, i = 1, a = 1;
 	for (; r < e.length;) {
-		let o = Ct(e, r);
+		let o = wt(e, r);
 		t[r] = i, n[r] = a, o.length === 2 && (t[r + 1] = i, n[r + 1] = a + 1), r += o.length, o === "\n" ? (i += 1, a = 1) : a += 1;
 	}
 	return t[r] = i, n[r] = a, [t, n];
 }
-function Ct(e, t) {
+function wt(e, t) {
 	if (t >= e.length) return "\0";
 	let n = e.charCodeAt(t);
 	if (n < 55296 || n > 56319 || t + 1 >= e.length) return e.charAt(t);
 	let r = e.charCodeAt(t + 1);
 	return r >= 56320 && r <= 57343 ? e.slice(t, t + 2) : e.charAt(t);
 }
-function wt(e, t = {}) {
-	return new xt(e, {
+function Tt(e, t = {}) {
+	return new St(e, {
 		shouldParseSkeletons: !0,
 		requiresOtherClause: !0,
 		...t
 	}).parse();
 }
-var Tt = {
+var Et = {
 	integer: { maximumFractionDigits: 0 },
 	currency: { style: "currency" },
 	percent: { style: "percent" }
-}, Et = {
+}, Dt = {
 	short: {
 		month: "numeric",
 		day: "numeric",
@@ -1173,12 +1174,12 @@ var Tt = {
 		day: "numeric",
 		year: "numeric"
 	}
-}, Dt = {
+}, Ot = {
 	hour: "numeric",
 	minute: "numeric",
 	second: "numeric",
 	timeZoneName: "short"
-}, Ot = {
+}, kt = {
 	short: {
 		hour: "numeric",
 		minute: "numeric"
@@ -1188,76 +1189,76 @@ var Tt = {
 		minute: "numeric",
 		second: "numeric"
 	},
-	long: Dt,
-	full: Dt
+	long: Ot,
+	full: Ot
 };
-function kt(e, t = "en", n = {}) {
-	let r = At(wt(e, { locale: Bt(t) }), {
+function At(e, t = "en", n = {}) {
+	let r = jt(Tt(e, { locale: Vt(t) }), {
 		message: e,
 		locales: t,
 		variables: n
 	});
 	return r.length === 1 ? r[0] : r.length ? r : "";
 }
-function At(e, t, n) {
+function jt(e, t, n) {
 	let r = [], i = (e) => {
 		let t = r[r.length - 1];
 		typeof t == "string" && typeof e == "string" ? r[r.length - 1] = t + e : r.push(e);
 	};
 	for (let r of e) switch (r.type) {
-		case w.literal:
+		case C.literal:
 			i(r.value);
 			break;
-		case w.pound:
-			n !== void 0 && i(Mt(t).format(n));
+		case C.pound:
+			n !== void 0 && i(Nt(t).format(n));
 			break;
-		case w.argument: {
-			let e = T(t.variables, r.value);
+		case C.argument: {
+			let e = w(t.variables, r.value);
 			i(typeof e == "string" || typeof e == "number" ? String(e) : e || "");
 			break;
 		}
-		case w.number: {
-			let e = T(t.variables, r.value), { scale: n, ...a } = typeof r.style == "string" ? Tt[r.style] ?? {} : r.style?.type === Je.number ? r.style.parsedOptions : {}, o = jt(e, n);
-			i(Mt(t, a).format(o));
+		case C.number: {
+			let e = w(t.variables, r.value), { scale: n, ...a } = typeof r.style == "string" ? Et[r.style] ?? {} : r.style?.type === Ye.number ? r.style.parsedOptions : {}, o = Mt(e, n);
+			i(Nt(t, a).format(o));
 			break;
 		}
-		case w.date:
-		case w.time: {
-			let e = T(t.variables, r.value), n = r.type === w.date ? Et : Ot;
-			i(Nt(t, typeof r.style == "string" ? n[r.style] : r.style?.type === Je.dateTime ? r.style.parsedOptions : r.type === w.time ? Ot.medium : void 0).format(e));
+		case C.date:
+		case C.time: {
+			let e = w(t.variables, r.value), n = r.type === C.date ? Dt : kt;
+			i(Pt(t, typeof r.style == "string" ? n[r.style] : r.style?.type === Ye.dateTime ? r.style.parsedOptions : r.type === C.time ? kt.medium : void 0).format(e));
 			break;
 		}
-		case w.select: {
-			let e = String(T(t.variables, r.value)), n = Rt(r.options, e) ?? r.options.other;
-			if (!n) throw zt(r.value, e, r.options);
-			At(n.value, t).forEach(i);
+		case C.select: {
+			let e = String(w(t.variables, r.value)), n = zt(r.options, e) ?? r.options.other;
+			if (!n) throw Bt(r.value, e, r.options);
+			jt(n.value, t).forEach(i);
 			break;
 		}
-		case w.plural: {
-			let e = T(t.variables, r.value), n = `=${String(e)}`, a = Rt(r.options, n), o = typeof e == "bigint" ? e : Number(e), s = typeof o == "bigint" ? o - BigInt(r.offset) : o - r.offset;
-			if (!a && Lt(r.options)) {
-				let e = Pt(t, r.pluralType ?? "cardinal").select(It(s));
-				a = Rt(r.options, e);
+		case C.plural: {
+			let e = w(t.variables, r.value), n = `=${String(e)}`, a = zt(r.options, n), o = typeof e == "bigint" ? e : Number(e), s = typeof o == "bigint" ? o - BigInt(r.offset) : o - r.offset;
+			if (!a && Rt(r.options)) {
+				let e = Ft(t, r.pluralType ?? "cardinal").select(Lt(s));
+				a = zt(r.options, e);
 			}
-			if (a ??= r.options.other, !a) throw zt(r.value, e, r.options);
-			At(a.value, t, s).forEach(i);
+			if (a ??= r.options.other, !a) throw Bt(r.value, e, r.options);
+			jt(a.value, t, s).forEach(i);
 			break;
 		}
-		case w.tag: {
-			let e = T(t.variables, r.value);
+		case C.tag: {
+			let e = w(t.variables, r.value);
 			if (typeof e != "function") throw TypeError(`The ICU tag variable "${r.value}" must be a function.`);
-			let a = e(At(r.children, t, n));
+			let a = e(jt(r.children, t, n));
 			Array.isArray(a) ? a.forEach(i) : i(a);
 			break;
 		}
 	}
 	return r;
 }
-function T(e, t) {
+function w(e, t) {
 	if (!(t in e)) throw Error(`The ICU message variable "${t}" was not provided.`);
 	return e[t];
 }
-function jt(e, t) {
+function Mt(e, t) {
 	if (!t) return e;
 	if (typeof e == "bigint") {
 		if (!Number.isInteger(t)) throw RangeError(`Cannot apply fractional scale ${t} to a bigint value.`);
@@ -1265,62 +1266,62 @@ function jt(e, t) {
 	}
 	return Number(e) * t;
 }
-function Mt(e, t = {}) {
-	return Ft(e.numberFormats ??= /* @__PURE__ */ new Map(), JSON.stringify(t), () => new Intl.NumberFormat(e.locales, t));
-}
-function Nt(e, t) {
-	return Ft(e.dateTimeFormats ??= /* @__PURE__ */ new Map(), t ? JSON.stringify(t) : "", () => new Intl.DateTimeFormat(e.locales, t));
+function Nt(e, t = {}) {
+	return It(e.numberFormats ??= /* @__PURE__ */ new Map(), JSON.stringify(t), () => new Intl.NumberFormat(e.locales, t));
 }
 function Pt(e, t) {
+	return It(e.dateTimeFormats ??= /* @__PURE__ */ new Map(), t ? JSON.stringify(t) : "", () => new Intl.DateTimeFormat(e.locales, t));
+}
+function Ft(e, t) {
 	if (typeof Intl.PluralRules != "function") {
 		let t = /* @__PURE__ */ Error("Intl.PluralRules is not available in this environment.\nTry polyfilling it using \"@formatjs/intl-pluralrules\"\n");
 		throw t.code = "MISSING_INTL_API", t.originalMessage = e.message, t;
 	}
-	return Ft(e.pluralRules ??= /* @__PURE__ */ new Map(), t, () => new Intl.PluralRules(e.locales, { type: t }));
+	return It(e.pluralRules ??= /* @__PURE__ */ new Map(), t, () => new Intl.PluralRules(e.locales, { type: t }));
 }
-function Ft(e, t, n) {
+function It(e, t, n) {
 	let r = e.get(t);
 	if (r) return r;
 	let i = n();
 	return e.set(t, i), i;
 }
-function It(e) {
+function Lt(e) {
 	let t = Number(e);
 	if (typeof e == "bigint" && Math.abs(t) > 9007199254740991) throw RangeError(`Cannot select a plural category for bigint ${e} outside the safe integer range.`);
 	return t;
 }
-function Lt(e) {
+function Rt(e) {
 	return Object.keys(e).some((e) => e !== "other" && e[0] !== "=");
 }
-function Rt(e, t) {
+function zt(e, t) {
 	return Object.prototype.hasOwnProperty.call(e, t) ? e[t] : void 0;
 }
-function zt(e, t, n) {
+function Bt(e, t, n) {
 	return /* @__PURE__ */ RangeError(`The ICU variable "${e}" value ${JSON.stringify(String(t))} did not match any of: ${Object.keys(n).join(", ")}.`);
 }
-function Bt(e) {
+function Vt(e) {
 	if (Intl.Locale === void 0) return;
 	let t = Intl.NumberFormat.supportedLocalesOf(e)[0], n = typeof e == "string" ? e : e[0];
 	return new Intl.Locale(t ?? n);
 }
-function Vt({ icuString: e, shouldVisit: t, visitor: n, options: { recurseIntoVisited: r = !0, ...i } }) {
-	let a = wt(e, i);
+function Ht({ icuString: e, shouldVisit: t, visitor: n, options: { recurseIntoVisited: r = !0, ...i } }) {
+	let a = Tt(e, i);
 	return o(a), a;
 	function o(e) {
 		e.map(s);
 	}
 	function s(e) {
 		let i = !1;
-		t(e) && (n(e), i = !0), (!i || r) && (e.type === w.select || e.type === w.plural ? Object.values(e.options).map((e) => e.value).map(o) : e.type === w.tag && o(e.children));
+		t(e) && (n(e), i = !0), (!i || r) && (e.type === C.select || e.type === C.plural ? Object.values(e.options).map((e) => e.value).map(o) : e.type === C.tag && o(e.children));
 	}
 }
-var E = "_gt_";
-RegExp(`^${E}\\d+$`);
-var Ht = RegExp(`^${E}$`);
-function Ut(e) {
-	return e.type === w.select && Ht.test(e.value) && !!e.options.other && (e.options.other.value.length === 0 || e.options.other.value.length > 0 && e.options.other.value[0]?.type === w.literal);
-}
+var T = "_gt_";
+RegExp(`^${T}\\d+$`);
+var Ut = RegExp(`^${T}$`);
 function Wt(e) {
+	return e.type === C.select && Ut.test(e.value) && !!e.options.other && (e.options.other.value.length === 0 || e.options.other.value.length > 0 && e.options.other.value[0]?.type === C.literal);
+}
+function Gt(e) {
 	let t = e;
 	if (t && typeof t == "object" && typeof t.k == "string") {
 		let e = Object.keys(t);
@@ -1328,7 +1329,7 @@ function Wt(e) {
 	}
 	return !1;
 }
-var Gt = (e) => `generaltranslation Formatting Error: Invalid cutoff style: ${e}.`, Kt = "DEFAULT_TERMINATOR_KEY", qt = {
+var Kt = (e) => `generaltranslation Formatting Error: Invalid cutoff style: ${e}.`, qt = "DEFAULT_TERMINATOR_KEY", Jt = {
 	ellipsis: {
 		fr: {
 			terminator: "…",
@@ -1342,16 +1343,16 @@ var Gt = (e) => `generaltranslation Formatting Error: Invalid cutoff style: ${e}
 			terminator: "……",
 			separator: void 0
 		},
-		[Kt]: {
+		[qt]: {
 			terminator: "…",
 			separator: void 0
 		}
 	},
-	none: { [Kt]: {
+	none: { [qt]: {
 		terminator: void 0,
 		separator: void 0
 	} }
-}, Jt = class e {
+}, Yt = class e {
 	static resolveLocale(e) {
 		try {
 			let t = e ? Array.isArray(e) ? e.map(String) : [String(e)] : ["en"], [n] = Intl.getCanonicalLocales(t);
@@ -1363,8 +1364,8 @@ var Gt = (e) => `generaltranslation Formatting Error: Invalid cutoff style: ${e}
 	constructor(t, n = {}) {
 		this.locale = e.resolveLocale(t);
 		let r = n.style ?? "ellipsis";
-		if (!qt[r]) throw Error(Gt(r));
-		let i = n.maxChars === void 0 ? void 0 : qt[r][new Intl.Locale(this.locale).language] || qt[r].DEFAULT_TERMINATOR_KEY, a = n.terminator ?? i?.terminator, o = a == null ? void 0 : n.separator ?? i?.separator;
+		if (!Jt[r]) throw Error(Kt(r));
+		let i = n.maxChars === void 0 ? void 0 : Jt[r][new Intl.Locale(this.locale).language] || Jt[r].DEFAULT_TERMINATOR_KEY, a = n.terminator ?? i?.terminator, o = a == null ? void 0 : n.separator ?? i?.separator;
 		this.additionLength = (a?.length ?? 0) + (o?.length ?? 0), n.maxChars !== void 0 && Math.abs(n.maxChars) < this.additionLength && (a = void 0, o = void 0), this.options = {
 			maxChars: n.maxChars,
 			style: n.maxChars === void 0 ? void 0 : r,
@@ -1390,7 +1391,7 @@ var Gt = (e) => `generaltranslation Formatting Error: Invalid cutoff style: ${e}
 	resolvedOptions() {
 		return this.options;
 	}
-}, Yt = {
+}, Xt = {
 	Collator: Intl.Collator,
 	DateTimeFormat: Intl.DateTimeFormat,
 	DisplayNames: Intl.DisplayNames,
@@ -1400,8 +1401,8 @@ var Gt = (e) => `generaltranslation Formatting Error: Invalid cutoff style: ${e}
 	PluralRules: Intl.PluralRules,
 	RelativeTimeFormat: Intl.RelativeTimeFormat,
 	Segmenter: Intl.Segmenter,
-	CutoffFormat: Jt
-}, D = new class {
+	CutoffFormat: Yt
+}, E = new class {
 	constructor() {
 		this.cache = {};
 	}
@@ -1412,13 +1413,13 @@ var Gt = (e) => `generaltranslation Formatting Error: Invalid cutoff style: ${e}
 		let [n = "en", r = {}] = t, i = this.generateKey(n, r), a = this.cache[e];
 		a === void 0 && (a = {}, this.cache[e] = a);
 		let o = a[i];
-		return o === void 0 && (o = new Yt[e](...t), a[i] = o), o;
+		return o === void 0 && (o = new Xt[e](...t), a[i] = o), o;
 	}
 }();
-function Xt(e) {
-	return D.get("PluralRules", e);
+function Zt(e) {
+	return E.get("PluralRules", e);
 }
-var Zt = [
+var Qt = [
 	"singular",
 	"plural",
 	"dual",
@@ -1429,11 +1430,11 @@ var Zt = [
 	"many",
 	"other"
 ];
-function Qt(e) {
-	return Zt.includes(e);
+function $t(e) {
+	return Qt.includes(e);
 }
-function $t(e, t = Zt, n = ["en"]) {
-	let r = Xt(n).select(e), i = Math.abs(e);
+function en(e, t = Qt, n = ["en"]) {
+	let r = Zt(n).select(e), i = Math.abs(e);
 	if (i === 0 && t.includes("zero")) return "zero";
 	if (i === 1) {
 		if (t.includes("singular")) return "singular";
@@ -1446,17 +1447,17 @@ function $t(e, t = Zt, n = ["en"]) {
 	}
 	return r === "two" && t.includes("dual") ? "dual" : t.includes(r) ? r : t.includes("plural") ? "plural" : t.includes("other") ? "other" : "";
 }
-var en = {
+var tn = {
 	variable: "v",
 	number: "n",
 	datetime: "d",
 	currency: "c",
 	"relative-time": "rt"
 };
-function tn(e) {
-	return en[e];
-}
 function nn(e) {
+	return tn[e];
+}
+function rn(e) {
 	if (!e.includes("_gt_")) return e;
 	let t = [];
 	function n(e) {
@@ -1467,9 +1468,9 @@ function nn(e) {
 			otherEnd: e.options.other.location?.end.offset ?? 0
 		});
 	}
-	Vt({
+	Ht({
 		icuString: e,
-		shouldVisit: Ut,
+		shouldVisit: Wt,
 		visitor: n,
 		options: {
 			recurseIntoVisited: !1,
@@ -1479,40 +1480,40 @@ function nn(e) {
 	let r = [], i = 0;
 	for (let n = 0; n < t.length; n++) {
 		let { start: a, end: o, otherStart: s, otherEnd: c } = t[n];
-		r.push(e.slice(i, a)), r.push(e.slice(a, a + E.length + 1)), r.push(String(n + 1)), r.push(e.slice(a + E.length + 1, s)), r.push("{}"), r.push(e.slice(c, o)), i = o;
+		r.push(e.slice(i, a)), r.push(e.slice(a, a + T.length + 1)), r.push(String(n + 1)), r.push(e.slice(a + T.length + 1, s)), r.push("{}"), r.push(e.slice(c, o)), i = o;
 	}
 	return r.push(e.slice(i, e.length)), r.join("");
 }
-RegExp(`${E}\\d+`);
-function rn(e) {
-	return C({
+RegExp(`${T}\\d+`);
+function an(e) {
+	return S({
 		source: "gt-next",
 		...e
 	});
 }
-var an = () => rn({
+var on = () => an({
 	severity: "Error",
 	whatHappened: "loadTranslations() was found during the build but could not be resolved at runtime",
 	fix: "Export a loadTranslations() function from the configured file"
-}), on = y(((e) => {
+}), sn = y(((e) => {
 	throw Object.defineProperty(e, Symbol.toStringTag, { value: "Module" }), Error("Something has gone seriously wrong if you're seeing this error message. Check docs.generaltranslation.com for the latest documentation and make sure you've got the library configured properly.");
-})), O = void 0;
-function sn() {
-	if (O !== void 0) return O;
+})), D = void 0;
+function cn() {
+	if (D !== void 0) return D;
 	if (process.env._GENERALTRANSLATION_LOCAL_TRANSLATION_ENABLED !== "true") return;
 	let e;
 	try {
-		e = on();
+		e = sn();
 	} catch {}
-	if (O = e?.default || e?.loadTranslations, !O) {
-		O = async (e) => void 0;
-		let e = an();
+	if (D = e?.default || e?.loadTranslations, !D) {
+		D = async (e) => void 0;
+		let e = on();
 		if (process.env.NODE_ENV !== "production") throw Error(e);
 		console.error(e);
 	}
-	return O;
+	return D;
 }
-function cn() {
+function ln() {
 	let e = JSON.parse(process.env.NEXT_PUBLIC_GENERALTRANSLATION_I18N_CONFIG_PARAMS || "{}"), { projectId: t, devApiKey: n, apiKey: r } = ee(), i = {
 		defaultLocale: e.defaultLocale,
 		locales: e.locales,
@@ -1552,14 +1553,14 @@ function cn() {
 					fast: !0
 				}
 			},
-			loadTranslations: ln()
+			loadTranslations: un()
 		}
 	};
 }
-function ln() {
-	if (!(typeof window < "u")) return sn();
+function un() {
+	if (!(typeof window < "u")) return cn();
 }
-var un = {
+var dn = {
 	pl: "placeholder",
 	ti: "title",
 	alt: "alt",
@@ -1567,46 +1568,46 @@ var un = {
 	arb: "aria-labelledby",
 	ard: "aria-describedby"
 };
-function dn(e, t = "en", n = {}) {
-	return kt(e, t, n)?.toString() ?? "";
+function fn(e, t = "en", n = {}) {
+	return At(e, t, n)?.toString() ?? "";
 }
-function fn({ value: e, locales: t = ["en"], options: n = {} }) {
-	return D.get("NumberFormat", t, {
+function pn({ value: e, locales: t = ["en"], options: n = {} }) {
+	return E.get("NumberFormat", t, {
 		numberingSystem: "latn",
 		...n
 	}).format(e);
 }
-function pn({ value: e, locales: t = ["en"], options: n = {} }) {
-	return D.get("DateTimeFormat", t, {
+function mn({ value: e, locales: t = ["en"], options: n = {} }) {
+	return E.get("DateTimeFormat", t, {
 		calendar: "gregory",
 		numberingSystem: "latn",
 		...n
 	}).format(e);
 }
-function mn({ value: e, locales: t = ["en"], currency: n = "USD", options: r = {} }) {
-	return D.get("NumberFormat", t, {
+function hn({ value: e, locales: t = ["en"], currency: n = "USD", options: r = {} }) {
+	return E.get("NumberFormat", t, {
 		style: "currency",
 		currency: n,
 		numberingSystem: "latn",
 		...r
 	}).format(e);
 }
-function hn({ value: e, locales: t = ["en"], options: n = {} }) {
-	return D.get("ListFormat", t, {
+function gn({ value: e, locales: t = ["en"], options: n = {} }) {
+	return E.get("ListFormat", t, {
 		type: "conjunction",
 		style: "long",
 		...n
 	}).format(e.map(String));
 }
-function gn({ value: e, locales: t = ["en"], options: n = {} }) {
-	let r = D.get("ListFormat", t, {
+function _n({ value: e, locales: t = ["en"], options: n = {} }) {
+	let r = E.get("ListFormat", t, {
 		type: "conjunction",
 		style: "long",
 		...n
 	}).formatToParts(e.map(() => "1")), i = 0;
 	return r.map((t) => t.type === "element" ? e[i++] : t.value);
 }
-function _n(e, t) {
+function vn(e, t) {
 	let n = t.getTime(), r = e.getTime() - n, i = Math.abs(r), a = r < 0 ? -1 : 1, o = Math.floor(i / 1e3), s = Math.floor(i / 6e4), c = Math.floor(i / 36e5), l = Math.floor(i / 864e5), u = Math.floor(i / 6048e5), d = Math.floor(i / 2592e6), f = Math.floor(i / 31536e6);
 	return o < 60 ? {
 		value: a * o,
@@ -1631,71 +1632,71 @@ function _n(e, t) {
 		unit: "year"
 	};
 }
-function vn({ value: e, unit: t, locales: n = ["en"], options: r = {} }) {
-	return D.get("RelativeTimeFormat", n, {
+function yn({ value: e, unit: t, locales: n = ["en"], options: r = {} }) {
+	return E.get("RelativeTimeFormat", n, {
 		style: "long",
 		numeric: "auto",
 		...r
 	}).format(e, t);
 }
-function yn(e) {
+function bn(e) {
 	try {
-		return D.get("Locale", e).language;
+		return E.get("Locale", e).language;
 	} catch {
 		return;
 	}
 }
-function bn(...e) {
+function xn(...e) {
 	try {
-		let t = e.flat().map((e) => D.get("Locale", e).language);
+		let t = e.flat().map((e) => E.get("Locale", e).language);
 		return t.every((e) => e === t[0]);
 	} catch (e) {
 		return console.error(e), !1;
 	}
 }
-function xn(e) {
+function Sn(e) {
 	return typeof e == "object" && !!e;
 }
-var Sn = (e, t, n) => {
+var Cn = (e, t, n) => {
 	let r = e?.[t];
 	if (r) return typeof r == "string" ? n === "name" ? r : void 0 : r[n];
-}, k = (e, t) => {
+}, O = (e, t) => {
 	let n = e?.[t];
-	return xn(n) && typeof n.code == "string" ? n.code : void 0;
-}, Cn = /* @__PURE__ */ new Set([
+	return Sn(n) && typeof n.code == "string" ? n.code : void 0;
+}, wn = /* @__PURE__ */ new Set([
 	"Cham",
 	"Jamo",
 	"Kawi",
 	"Lisu",
 	"Toto",
 	"Thai"
-]), wn = (e) => e >= "qaa" && e <= "qtz", A = (e, t) => {
-	e = k(t, e) || e;
+]), Tn = (e) => e >= "qaa" && e <= "qtz", k = (e, t) => {
+	e = O(t, e) || e;
 	try {
-		let { language: t, region: n, script: r } = D.get("Locale", e), i = 1 + Number(!!n) + Number(!!r);
-		return !(e.split("-").length !== i || D.get("DisplayNames", ["en"], { type: "language" }).of(t) === t && !wn(t) || n && D.get("DisplayNames", ["en"], { type: "region" }).of(n) === n || r && D.get("DisplayNames", ["en"], { type: "script" }).of(r) === r && !Cn.has(r));
+		let { language: t, region: n, script: r } = E.get("Locale", e), i = 1 + Number(!!n) + Number(!!r);
+		return !(e.split("-").length !== i || E.get("DisplayNames", ["en"], { type: "language" }).of(t) === t && !Tn(t) || n && E.get("DisplayNames", ["en"], { type: "region" }).of(n) === n || r && E.get("DisplayNames", ["en"], { type: "script" }).of(r) === r && !wn.has(r));
 	} catch {
 		return !1;
 	}
-}, j = (e) => {
+}, A = (e) => {
 	try {
 		return Intl.getCanonicalLocales(e)[0];
 	} catch {
 		return e;
 	}
 };
-function Tn(e, t) {
+function En(e, t) {
 	let n = !0, r = /* @__PURE__ */ new Set(), i = /* @__PURE__ */ new Map();
 	for (let a of e) {
-		if (!A(a, t)) {
+		if (!k(a, t)) {
 			n = !1;
 			continue;
 		}
-		let e = yn(a);
+		let e = bn(a);
 		if (e === void 0) continue;
 		r.add(e);
 		let o = i.get(e);
-		o === void 0 && (o = /* @__PURE__ */ new Set(), i.set(e, o)), o.add(j(a));
+		o === void 0 && (o = /* @__PURE__ */ new Set(), i.set(e, o)), o.add(A(a));
 	}
 	return {
 		allValid: n,
@@ -1703,26 +1704,26 @@ function Tn(e, t) {
 		byLanguage: i
 	};
 }
-function En(...e) {
+function Dn(...e) {
 	try {
-		let t = e.flat().map((e) => D.get("Locale", j(e))), [n] = t, r = new Set(t.map(({ region: e }) => e).filter(Boolean)), i = new Set(t.map(({ script: e }) => e).filter(Boolean));
+		let t = e.flat().map((e) => E.get("Locale", A(e))), [n] = t, r = new Set(t.map(({ region: e }) => e).filter(Boolean)), i = new Set(t.map(({ script: e }) => e).filter(Boolean));
 		return t.every(({ language: e }) => e === n?.language) && r.size <= 1 && i.size <= 1;
 	} catch (e) {
 		return console.error(e), !1;
 	}
 }
-function Dn(e, t, n, r) {
-	if (n && !n.allValid || !A(e, r) || !A(t, r) || En(e, t)) return !1;
+function On(e, t, n, r) {
+	if (n && !n.allValid || !k(e, r) || !k(t, r) || Dn(e, t)) return !1;
 	if (!n) return !0;
-	let i = yn(t);
+	let i = bn(t);
 	return i !== void 0 && n.languages.has(i);
 }
-function On(e, t, n, r) {
-	return Dn(e, t, n ? Tn(n, r) : void 0, r);
+function kn(e, t, n, r) {
+	return On(e, t, n ? En(n, r) : void 0, r);
 }
-function kn(e) {
+function An(e) {
 	try {
-		let t = D.get("Locale", e), n = t.language, r = t.region || "", i = t.script || "";
+		let t = E.get("Locale", e), n = t.language, r = t.region || "", i = t.script || "";
 		if (!r || !i) {
 			let e = t.maximize();
 			r ||= e.region || "", i ||= e.script || "";
@@ -1734,7 +1735,7 @@ function kn(e) {
 			minimizedCode: t.minimize().toString()
 		};
 	} catch {
-		let t = A(e) ? j(e) : e, n = t.split("-");
+		let t = k(e) ? A(e) : e, n = t.split("-");
 		return {
 			languageCode: n[0] || t,
 			regionCode: n.length > 2 ? n[2] : n[1] || "",
@@ -1743,78 +1744,78 @@ function kn(e) {
 		};
 	}
 }
-function An(e, t) {
+function jn(e, t) {
 	if (t.has(e)) return e;
-	let { languageCode: n, regionCode: r, scriptCode: i, minimizedCode: a } = kn(e), o = `${n}-${r}`;
+	let { languageCode: n, regionCode: r, scriptCode: i, minimizedCode: a } = An(e), o = `${n}-${r}`;
 	if (t.has(o)) return o;
 	let s = `${n}-${i}`;
 	if (t.has(s)) return s;
 	if (t.has(a)) return a;
 }
-function jn(e, t, n) {
+function Mn(e, t, n) {
 	let r = Array.isArray(e) ? e : [e];
 	for (let e of r) {
-		if (!A(e, n)) continue;
-		let r = j(e), i = yn(r);
+		if (!k(e, n)) continue;
+		let r = A(e), i = bn(r);
 		if (i === void 0) continue;
 		let a = t.byLanguage.get(i);
 		if (a === void 0) continue;
-		let o = An(r, a) || An(i, a);
+		let o = jn(r, a) || jn(i, a);
 		if (o) return o;
 	}
 }
-function Mn(e, t, n) {
-	return jn(e, Tn(t, n), n);
+function Nn(e, t, n) {
+	return Mn(e, En(t, n), n);
 }
-function M(e, t) {
-	let n = k(t, e);
-	return n && A(n) ? n : e;
+function j(e, t) {
+	let n = O(t, e);
+	return n && k(n) ? n : e;
 }
-function Nn(e, t) {
+function Pn(e, t) {
 	let n = e;
-	e = M(e, t);
+	e = j(e, t);
 	try {
-		let r = j(e), i = D.get("Locale", r), { language: a, region: o } = i;
+		let r = A(e), i = E.get("Locale", r), { language: a, region: o } = i;
 		if (t) for (let i of [
 			n,
 			e,
 			r,
 			a
 		]) {
-			let e = Sn(t, i, "emoji");
+			let e = Cn(t, i, "emoji");
 			if (e) return e;
 		}
-		let s = o && Vn(o);
+		let s = o && Un(o);
 		if (s) return s;
 		let c = i.maximize();
-		return In[c.language] || Bn(c.region || "");
+		return Rn[c.language] || Hn(c.region || "");
 	} catch {
-		return Fn;
+		return Ln;
 	}
 }
-var N = "🌍", Pn = "🌏", Fn = N, In = {
-	ca: N,
-	eu: N,
-	ku: N,
-	bo: Pn,
-	ug: Pn,
+var Fn = "🌍", In = "🌏", Ln = Fn, Rn = {
+	ca: Fn,
+	eu: Fn,
+	ku: Fn,
+	bo: In,
+	ug: In,
 	gd: "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
 	cy: "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
 	gv: "🇮🇲",
 	grc: "🏺"
-}, Ln = {
+}, zn = {
 	EU: "🇪🇺",
 	419: "🌎"
-}, Rn = /* @__PURE__ */ new Set(/* @__PURE__ */ "AF.AX.AL.DZ.AS.AD.AO.AI.AQ.AG.AR.AM.AW.AU.AT.AZ.BS.BH.BD.BB.BY.BE.BZ.BJ.BM.BT.BO.BQ.BA.BW.BV.BR.IO.BN.BG.BF.BI.CV.KH.CM.CA.KY.CF.TD.CL.CN.CX.CC.CO.KM.CD.CG.CK.CR.CI.HR.CU.CW.CY.CZ.DK.DJ.DM.DO.EC.EG.SV.GQ.ER.EE.SZ.ET.FK.FO.FJ.FI.FR.GF.PF.TF.GA.GM.GE.DE.GH.GI.GR.GL.GD.GP.GU.GT.GG.GN.GW.GY.HT.HM.VA.HN.HK.HU.IS.IN.ID.IR.IQ.IE.IM.IL.IT.JM.JP.JE.JO.KZ.KE.KI.KP.KR.KW.KG.LA.LV.LB.LS.LR.LY.LI.LT.LU.MO.MG.MW.MY.MV.ML.MT.MH.MQ.MR.MU.YT.MX.FM.MD.MC.MN.ME.MS.MA.MZ.MM.NA.NR.NP.NL.NC.NZ.NI.NE.NG.NU.NF.MK.MP.NO.OM.PK.PW.PS.PA.PG.PY.PE.PH.PN.PL.PT.PR.QA.RE.RO.RU.RW.BL.SH.KN.LC.MF.PM.VC.WS.SM.ST.SA.SN.RS.SC.SL.SG.SX.SK.SI.SB.SO.ZA.GS.SS.ES.LK.SD.SR.SJ.SE.CH.SY.TW.TJ.TZ.TH.TL.TG.TK.TO.TT.TN.TR.TM.TC.TV.UG.UA.AE.GB.US.UM.UY.UZ.VU.VE.VN.VG.VI.WF.EH.YE.ZM.ZW".split(".")), zn = 127397;
-function Bn(e) {
-	return Vn(e) || "🌍";
+}, Bn = /* @__PURE__ */ new Set(/* @__PURE__ */ "AF.AX.AL.DZ.AS.AD.AO.AI.AQ.AG.AR.AM.AW.AU.AT.AZ.BS.BH.BD.BB.BY.BE.BZ.BJ.BM.BT.BO.BQ.BA.BW.BV.BR.IO.BN.BG.BF.BI.CV.KH.CM.CA.KY.CF.TD.CL.CN.CX.CC.CO.KM.CD.CG.CK.CR.CI.HR.CU.CW.CY.CZ.DK.DJ.DM.DO.EC.EG.SV.GQ.ER.EE.SZ.ET.FK.FO.FJ.FI.FR.GF.PF.TF.GA.GM.GE.DE.GH.GI.GR.GL.GD.GP.GU.GT.GG.GN.GW.GY.HT.HM.VA.HN.HK.HU.IS.IN.ID.IR.IQ.IE.IM.IL.IT.JM.JP.JE.JO.KZ.KE.KI.KP.KR.KW.KG.LA.LV.LB.LS.LR.LY.LI.LT.LU.MO.MG.MW.MY.MV.ML.MT.MH.MQ.MR.MU.YT.MX.FM.MD.MC.MN.ME.MS.MA.MZ.MM.NA.NR.NP.NL.NC.NZ.NI.NE.NG.NU.NF.MK.MP.NO.OM.PK.PW.PS.PA.PG.PY.PE.PH.PN.PL.PT.PR.QA.RE.RO.RU.RW.BL.SH.KN.LC.MF.PM.VC.WS.SM.ST.SA.SN.RS.SC.SL.SG.SX.SK.SI.SB.SO.ZA.GS.SS.ES.LK.SD.SR.SJ.SE.CH.SY.TW.TJ.TZ.TH.TL.TG.TK.TO.TT.TN.TR.TM.TC.TV.UG.UA.AE.GB.US.UM.UY.UZ.VU.VE.VN.VG.VI.WF.EH.YE.ZM.ZW".split(".")), Vn = 127397;
+function Hn(e) {
+	return Un(e) || "🌍";
 }
-function Vn(e) {
-	let t = e.toUpperCase(), n = Ln[t];
+function Un(e) {
+	let t = e.toUpperCase(), n = zn[t];
 	if (n) return n;
-	if (Rn.has(t)) return String.fromCodePoint(t.charCodeAt(0) + zn, t.charCodeAt(1) + zn);
+	if (Bn.has(t)) return String.fromCodePoint(t.charCodeAt(0) + Vn, t.charCodeAt(1) + Vn);
 }
-function Hn(e, t) {
+function Wn(e, t) {
 	if (!t) return;
 	let n = {};
 	for (let r of e) {
@@ -1826,11 +1827,11 @@ function Hn(e, t) {
 	}
 	return n;
 }
-function Un(e, t = "en", n) {
+function Gn(e, t = "en", n) {
 	let r = e;
-	e = M(e, n), t ||= "en";
+	e = j(e, n), t ||= "en";
 	try {
-		let i = j(e), a = D.get("Locale", e), o = a.language, s = Hn([
+		let i = A(e), a = E.get("Locale", e), o = a.language, s = Wn([
 			r,
 			e,
 			i,
@@ -1843,32 +1844,32 @@ function Un(e, t = "en", n) {
 			e,
 			t,
 			"en"
-		], g = D.get("DisplayNames", m, { type: "language" }), _ = D.get("DisplayNames", h, { type: "language" }), v = s?.name, y = s?.nativeName || s?.name, ee = v || g.of(e) || e, b = y || _.of(e) || e, te = s?.maximizedName || v || g.of(u) || e, x = s?.nativeMaximizedName || y || _.of(u) || e, S = s?.minimizedName || v || g.of(p) || e, ne = s?.nativeMinimizedName || y || _.of(p) || e, re = s?.languageName || v || g.of(o) || e, C = s?.nativeLanguageName || y || _.of(o) || e, ie = s?.nameWithRegionCode || (c ? `${re} (${c})` : ee), ae = s?.nativeNameWithRegionCode || (c ? `${C} (${c})` : b) || ie, oe = D.get("DisplayNames", m, { type: "region" }), se = D.get("DisplayNames", h, { type: "region" }), ce = s?.regionName || (d ? oe.of(d) : "") || "", le = s?.nativeRegionName || (d ? se.of(d) : "") || "", ue = D.get("DisplayNames", m, { type: "script" }), de = D.get("DisplayNames", h, { type: "script" });
+		], g = E.get("DisplayNames", m, { type: "language" }), _ = E.get("DisplayNames", h, { type: "language" }), v = s?.name, y = s?.nativeName || s?.name, ee = v || g.of(e) || e, b = y || _.of(e) || e, te = s?.maximizedName || v || g.of(u) || e, ne = s?.nativeMaximizedName || y || _.of(u) || e, x = s?.minimizedName || v || g.of(p) || e, re = s?.nativeMinimizedName || y || _.of(p) || e, ie = s?.languageName || v || g.of(o) || e, S = s?.nativeLanguageName || y || _.of(o) || e, ae = s?.nameWithRegionCode || (c ? `${ie} (${c})` : ee), oe = s?.nativeNameWithRegionCode || (c ? `${S} (${c})` : b) || ae, se = E.get("DisplayNames", m, { type: "region" }), ce = E.get("DisplayNames", h, { type: "region" }), le = s?.regionName || (d ? se.of(d) : "") || "", ue = s?.nativeRegionName || (d ? ce.of(d) : "") || "", de = E.get("DisplayNames", m, { type: "script" }), fe = E.get("DisplayNames", h, { type: "script" });
 		return {
 			code: i,
 			name: ee,
 			nativeName: b,
 			maximizedCode: u,
 			maximizedName: te,
-			nativeMaximizedName: x,
+			nativeMaximizedName: ne,
 			minimizedCode: p,
-			minimizedName: S,
-			nativeMinimizedName: ne,
+			minimizedName: x,
+			nativeMinimizedName: re,
 			languageCode: o,
-			languageName: re,
-			nativeLanguageName: C,
-			nameWithRegionCode: ie,
-			nativeNameWithRegionCode: ae,
+			languageName: ie,
+			nativeLanguageName: S,
+			nameWithRegionCode: ae,
+			nativeNameWithRegionCode: oe,
 			regionCode: d,
-			regionName: ce,
-			nativeRegionName: le,
+			regionName: le,
+			nativeRegionName: ue,
 			scriptCode: f,
-			scriptName: s?.scriptName || (f ? ue.of(f) : "") || "",
-			nativeScriptName: s?.nativeScriptName || (f ? de.of(f) : "") || "",
-			emoji: s?.emoji || Nn(i, n)
+			scriptName: s?.scriptName || (f ? de.of(f) : "") || "",
+			nativeScriptName: s?.nativeScriptName || (f ? fe.of(f) : "") || "",
+			emoji: s?.emoji || Pn(i, n)
 		};
 	} catch {
-		let t = A(e) ? j(e) : e, r = t.split("-"), i = r[0] || t, a = r.length > 2 ? r[2] : r[1] || "", o = r[3] || "", s = Hn([t, i], n);
+		let t = k(e) ? A(e) : e, r = t.split("-"), i = r[0] || t, a = r.length > 2 ? r[2] : r[1] || "", o = r[3] || "", s = Wn([t, i], n);
 		t = s?.code || t;
 		let c = s?.name || t, l = s?.nativeName || c, u = s?.maximizedCode || t, d = s?.maximizedName || c, f = s?.nativeMaximizedName || l, p = s?.minimizedCode || t, m = s?.minimizedName || c, h = s?.nativeMinimizedName || l;
 		i = s?.languageCode || i;
@@ -1876,7 +1877,7 @@ function Un(e, t = "en", n) {
 		a = s?.regionCode || a;
 		let v = s?.regionName || "", y = s?.nativeRegionName || "";
 		o = s?.scriptCode || o;
-		let ee = s?.scriptName || "", b = s?.nativeScriptName || "", te = s?.nameWithRegionCode || (v ? `${g} (${v})` : c), x = s?.nativeNameWithRegionCode || (y ? `${_} (${y})` : l), S = s?.emoji || "🌍";
+		let ee = s?.scriptName || "", b = s?.nativeScriptName || "", te = s?.nameWithRegionCode || (v ? `${g} (${v})` : c), ne = s?.nativeNameWithRegionCode || (y ? `${_} (${y})` : l), x = s?.emoji || "🌍";
 		return {
 			code: t,
 			name: c,
@@ -1891,32 +1892,32 @@ function Un(e, t = "en", n) {
 			languageName: g,
 			nativeLanguageName: _,
 			nameWithRegionCode: te,
-			nativeNameWithRegionCode: x,
+			nativeNameWithRegionCode: ne,
 			regionCode: a,
 			regionName: v,
 			nativeRegionName: y,
 			scriptCode: o,
 			scriptName: ee,
 			nativeScriptName: b,
-			emoji: S
+			emoji: x
 		};
 	}
 }
-function Wn(e, t = "en", n) {
+function Kn(e, t = "en", n) {
 	let r = e;
-	e = M(e, n), t ||= "en";
+	e = j(e, n), t ||= "en";
 	try {
-		let i = j(e);
+		let i = A(e);
 		if (n) for (let t of [
 			r,
 			e,
 			i,
-			D.get("Locale", i).language
+			E.get("Locale", i).language
 		]) {
-			let e = Sn(n, t, "name");
+			let e = Cn(n, t, "name");
 			if (e) return e;
 		}
-		return D.get("DisplayNames", [
+		return E.get("DisplayNames", [
 			t,
 			i,
 			"en"
@@ -1925,15 +1926,15 @@ function Wn(e, t = "en", n) {
 		return "";
 	}
 }
-function Gn(e) {
+function qn(e) {
 	try {
-		let t = Jn(D.get("Locale", e));
+		let t = Xn(E.get("Locale", e));
 		if (t) return t;
 	} catch {}
-	let { scriptCode: t, languageCode: n } = Un(e);
-	return t ? Kn.has(t.toLowerCase()) ? "rtl" : "ltr" : n && qn.has(n.toLowerCase()) ? "rtl" : "ltr";
+	let { scriptCode: t, languageCode: n } = Gn(e);
+	return t ? Jn.has(t.toLowerCase()) ? "rtl" : "ltr" : n && Yn.has(n.toLowerCase()) ? "rtl" : "ltr";
 }
-var Kn = /* @__PURE__ */ new Set([
+var Jn = /* @__PURE__ */ new Set([
 	"arab",
 	"adlm",
 	"hebr",
@@ -1943,7 +1944,7 @@ var Kn = /* @__PURE__ */ new Set([
 	"syrc",
 	"thaa",
 	"yezi"
-]), qn = /* @__PURE__ */ new Set([
+]), Yn = /* @__PURE__ */ new Set([
 	"ar",
 	"arc",
 	"ckb",
@@ -1962,22 +1963,22 @@ var Kn = /* @__PURE__ */ new Set([
 	"ur",
 	"yi"
 ]);
-function Jn(e) {
+function Xn(e) {
 	let t = "textInfo" in e && typeof e.textInfo == "object" && e.textInfo !== null && "direction" in e.textInfo ? e.textInfo.direction : void 0;
 	return t === "rtl" || t === "ltr" ? t : void 0;
 }
-function Yn(e, t) {
+function Zn(e, t) {
 	try {
-		let { language: n, region: r, script: i } = D.get("Locale", j(e)), { language: a, region: o, script: s } = D.get("Locale", j(t));
+		let { language: n, region: r, script: i } = E.get("Locale", A(e)), { language: a, region: o, script: s } = E.get("Locale", A(t));
 		return !(n !== a || r && r !== o || i && i !== s);
 	} catch (e) {
 		return console.error(e), !1;
 	}
 }
-function Xn(e, t) {
-	return t ? Object.keys(t).find((n) => k(t, n) === e) ?? e : e;
+function Qn(e, t) {
+	return t ? Object.keys(t).find((n) => O(t, n) === e) ?? e : e;
 }
-var Zn = class {
+var $n = class {
 	getResolutionScope() {
 		if (this.resolutionScope && this.isResolutionScopeCurrent(this.resolutionScope)) return this.resolutionScope;
 		let e = this.buildResolutionScope(this.locales);
@@ -1991,7 +1992,7 @@ var Zn = class {
 		if (e.approvedLocalePairs.length !== this.locales.length) return !1;
 		for (let t = 0; t < this.locales.length; t++) {
 			let n = this.locales[t], r = e.approvedLocalePairs[t];
-			if (r.locale !== n || r.canonicalLocale !== this.resolveCanonicalLocale(n) || e.canonicalMappingCodes[t] !== k(this.customMapping, r.canonicalLocale)) return !1;
+			if (r.locale !== n || r.canonicalLocale !== this.resolveCanonicalLocale(n) || e.canonicalMappingCodes[t] !== O(this.customMapping, r.canonicalLocale)) return !1;
 		}
 		return !0;
 	}
@@ -2002,8 +2003,8 @@ var Zn = class {
 		}));
 		return {
 			approvedLocalePairs: t,
-			canonicalMappingCodes: t.map(({ canonicalLocale: e }) => k(this.customMapping, e)),
-			approved: Tn(t.map(({ canonicalLocale: e }) => e), this.customMapping)
+			canonicalMappingCodes: t.map(({ canonicalLocale: e }) => O(this.customMapping, e)),
+			approved: En(t.map(({ canonicalLocale: e }) => e), this.customMapping)
 		};
 	}
 	constructor({ defaultLocale: e = "en", locales: t = [], customMapping: n } = {}) {
@@ -2018,7 +2019,7 @@ var Zn = class {
 	}
 	formatNum(e, t, n = {}) {
 		let { locales: r, ...i } = n;
-		return fn({
+		return pn({
 			value: e,
 			locales: this.getFormattingLocales(t, r),
 			options: i
@@ -2026,7 +2027,7 @@ var Zn = class {
 	}
 	formatDateTime(e, t, n = {}) {
 		let { locales: r, ...i } = n;
-		return pn({
+		return mn({
 			value: e,
 			locales: this.getFormattingLocales(t, r),
 			options: i
@@ -2034,7 +2035,7 @@ var Zn = class {
 	}
 	formatCurrency(e, t, n, r = {}) {
 		let { locales: i, ...a } = r;
-		return mn({
+		return hn({
 			value: e,
 			currency: t,
 			locales: this.getFormattingLocales(n, i),
@@ -2043,7 +2044,7 @@ var Zn = class {
 	}
 	formatRelativeTime(e, t, n, r = {}) {
 		let { locales: i, ...a } = r;
-		return vn({
+		return yn({
 			value: e,
 			unit: t,
 			locales: this.getFormattingLocales(n, i),
@@ -2051,8 +2052,8 @@ var Zn = class {
 		});
 	}
 	formatRelativeTimeFromDate(e, t, n = {}) {
-		let { locales: r, baseDate: i, ...a } = n, { value: o, unit: s } = _n(e, i ?? /* @__PURE__ */ new Date());
-		return vn({
+		let { locales: r, baseDate: i, ...a } = n, { value: o, unit: s } = vn(e, i ?? /* @__PURE__ */ new Date());
+		return yn({
 			value: o,
 			unit: s,
 			locales: this.getFormattingLocales(t, r),
@@ -2061,21 +2062,13 @@ var Zn = class {
 	}
 	formatCutoff(e, t, n = {}) {
 		let { locales: r, ...i } = n;
-		return D.get("CutoffFormat", this.getFormattingLocales(t, r), i).format(e);
+		return E.get("CutoffFormat", this.getFormattingLocales(t, r), i).format(e);
 	}
 	formatMessage(e, t, n = {}) {
 		let { locales: r, variables: i, dataFormat: a } = n;
-		return a === "STRING" ? e : dn(e, this.getFormattingLocales(t, r), i);
+		return a === "STRING" ? e : fn(e, this.getFormattingLocales(t, r), i);
 	}
 	formatList(e, t, n = {}) {
-		let { locales: r, ...i } = n;
-		return hn({
-			value: e,
-			locales: this.getFormattingLocales(t, r),
-			options: i
-		});
-	}
-	formatListToParts(e, t, n = {}) {
 		let { locales: r, ...i } = n;
 		return gn({
 			value: e,
@@ -2083,53 +2076,61 @@ var Zn = class {
 			options: i
 		});
 	}
+	formatListToParts(e, t, n = {}) {
+		let { locales: r, ...i } = n;
+		return _n({
+			value: e,
+			locales: this.getFormattingLocales(t, r),
+			options: i
+		});
+	}
 	getLocaleName(e) {
-		return Wn(e, this.defaultLocale, this.customMapping);
+		return Kn(e, this.defaultLocale, this.customMapping);
 	}
 	getLocaleEmoji(e) {
-		return Nn(e, this.customMapping);
+		return Pn(e, this.customMapping);
 	}
 	getLocaleProperties(e) {
-		return Un(e, this.defaultLocale, this.customMapping);
+		return Gn(e, this.defaultLocale, this.customMapping);
 	}
 	requiresTranslation(e, t = this.defaultLocale, n = this.locales.length ? this.locales : void 0) {
-		let r = n ? n === this.locales ? this.getResolutionScope().approved : Tn(n.map((e) => this.resolveCanonicalLocale(e)), this.customMapping) : void 0;
-		return Dn(this.resolveCanonicalLocale(t), this.resolveCanonicalLocale(e), r, this.customMapping);
+		let r = n ? n === this.locales ? this.getResolutionScope().approved : En(n.map((e) => this.resolveCanonicalLocale(e)), this.customMapping) : void 0;
+		return On(this.resolveCanonicalLocale(t), this.resolveCanonicalLocale(e), r, this.customMapping);
 	}
 	determineLocale(e, t = this.locales) {
-		let { approvedLocalePairs: n, approved: r } = t === this.locales ? this.getResolutionScope() : this.buildResolutionScope(t), i = jn(Array.isArray(e) ? e.map((e) => this.resolveCanonicalLocale(e)) : this.resolveCanonicalLocale(e), r, this.customMapping);
+		let { approvedLocalePairs: n, approved: r } = t === this.locales ? this.getResolutionScope() : this.buildResolutionScope(t), i = Mn(Array.isArray(e) ? e.map((e) => this.resolveCanonicalLocale(e)) : this.resolveCanonicalLocale(e), r, this.customMapping);
 		if (i) return n.find(({ canonicalLocale: e }) => e === i)?.locale ?? this.resolveAliasLocale(i);
 	}
 	getLocaleDirection(e) {
-		return Gn(this.resolveCanonicalLocale(e));
+		return qn(this.resolveCanonicalLocale(e));
 	}
 	isValidLocale(e) {
-		return A(e, this.customMapping);
+		return k(e, this.customMapping);
 	}
 	resolveCanonicalLocale(e) {
-		return M(e, this.customMapping);
+		return j(e, this.customMapping);
 	}
 	resolveAliasLocale(e) {
-		return Xn(e, this.customMapping);
+		return Qn(e, this.customMapping);
 	}
 	standardizeLocale(e) {
-		return j(e);
+		return A(e);
 	}
 	isSameDialect(...e) {
-		return En(...e.map((e) => Array.isArray(e) ? e.map((e) => this.resolveCanonicalLocale(e)) : this.resolveCanonicalLocale(e)));
+		return Dn(...e.map((e) => Array.isArray(e) ? e.map((e) => this.resolveCanonicalLocale(e)) : this.resolveCanonicalLocale(e)));
 	}
 	isSameLanguage(...e) {
-		return bn(...e.map((e) => Array.isArray(e) ? e.map((e) => this.resolveCanonicalLocale(e)) : this.resolveCanonicalLocale(e)));
+		return xn(...e.map((e) => Array.isArray(e) ? e.map((e) => this.resolveCanonicalLocale(e)) : this.resolveCanonicalLocale(e)));
 	}
 	isSupersetLocale(e, t) {
-		return Yn(this.resolveCanonicalLocale(e), this.resolveCanonicalLocale(t));
+		return Zn(this.resolveCanonicalLocale(e), this.resolveCanonicalLocale(t));
 	}
 };
-function Qn(e, t = "en", n) {
+function er(e, t = "en", n) {
 	t ||= "en";
-	let r = e, i = Fn;
+	let r = e, i = Ln;
 	try {
-		r = D.get("DisplayNames", [t, "en"], { type: "region" }).of(e) || e, i = Bn(e);
+		r = E.get("DisplayNames", [t, "en"], { type: "region" }).of(e) || e, i = Hn(e);
 	} catch {}
 	return {
 		code: e,
@@ -2138,69 +2139,69 @@ function Qn(e, t = "en", n) {
 		...n?.[e]
 	};
 }
-function P(e, t) {
-	return A(e, t);
+function M(e, t) {
+	return k(e, t);
 }
-function $n(e, t) {
-	return M(e, t);
+function tr(e, t) {
+	return j(e, t);
 }
-function er(e) {
-	return j(e);
+function nr(e) {
+	return A(e);
 }
-function tr(e, t, n, r) {
-	return On(e, t, n, r);
+function rr(e, t, n, r) {
+	return kn(e, t, n, r);
 }
-function nr(e, t = [], n = void 0) {
-	return Mn(e, t, n);
+function ir(e, t = [], n = void 0) {
+	return Nn(e, t, n);
 }
-function rr(e, t) {
-	return Xn(e, t);
+function ar(e, t) {
+	return Qn(e, t);
 }
-function ir(e) {
+function or(e) {
 	return e instanceof Uint8Array || ArrayBuffer.isView(e) && e.constructor.name === "Uint8Array" && "BYTES_PER_ELEMENT" in e && e.BYTES_PER_ELEMENT === 1;
 }
-function ar(e, t, n = "") {
-	let r = ir(e), i = e?.length, a = t !== void 0;
+function sr(e, t, n = "") {
+	let r = or(e), i = e?.length, a = t !== void 0;
 	if (!r || a && i !== t) {
 		let o = n && `"${n}" `, s = a ? ` of length ${t}` : "", c = r ? `length=${i}` : `type=${typeof e}`, l = o + "expected Uint8Array" + s + ", got " + c;
 		throw r ? RangeError(l) : TypeError(l);
 	}
 	return e;
 }
-function or(e, t = !0) {
+function cr(e, t = !0) {
 	if (e.destroyed) throw Error("Hash instance has been destroyed");
 	if (t && e.finished) throw Error("Hash#digest() has already been called");
 }
-function sr(e, t) {
-	ar(e, void 0, "digestInto() output");
+function lr(e, t) {
+	sr(e, void 0, "digestInto() output");
 	let n = t.outputLen;
 	if (e.length < n) throw RangeError("\"digestInto() output\" expected to be of length >=" + n);
 }
-function cr(...e) {
+function ur(...e) {
 	for (let t = 0; t < e.length; t++) e[t].fill(0);
 }
-function lr(e) {
+function dr(e) {
 	return new DataView(e.buffer, e.byteOffset, e.byteLength);
 }
-function F(e, t) {
+function N(e, t) {
 	return e << 32 - t | e >>> t;
 }
-var ur = typeof Uint8Array.from([]).toHex == "function" && typeof Uint8Array.fromHex == "function", dr = Array.from({ length: 256 }, (e, t) => t.toString(16).padStart(2, "0"));
-function fr(e) {
-	if (ar(e), ur) return e.toHex();
+var fr = typeof Uint8Array.from([]).toHex == "function" && typeof Uint8Array.fromHex == "function", pr = Array.from({ length: 256 }, (e, t) => t.toString(16).padStart(2, "0"));
+function mr(e) {
+	if (sr(e), fr) return e.toHex();
 	let t = "";
-	for (let n = 0; n < e.length; n++) t += dr[e[n]];
+	for (let n = 0; n < e.length; n++) t += pr[e[n]];
 	return t;
 }
-function pr(e) {
+function hr(e) {
 	if (typeof e != "string") throw TypeError("string expected");
 	return new Uint8Array(new TextEncoder().encode(e));
 }
-function mr(e, t = {}) {
+function gr(e, t = {}) {
 	let n = (t, n) => e(n).update(t).digest(), r = e(void 0);
 	return n.outputLen = r.outputLen, n.blockLen = r.blockLen, n.canXOF = r.canXOF, n.create = (t) => e(t), Object.assign(n, t), Object.freeze(n);
 }
-var hr = (e) => ({ oid: Uint8Array.from([
+var _r = (e) => ({ oid: Uint8Array.from([
 	6,
 	9,
 	96,
@@ -2213,13 +2214,13 @@ var hr = (e) => ({ oid: Uint8Array.from([
 	2,
 	e
 ]) });
-function gr(e, t, n) {
+function vr(e, t, n) {
 	return e & t ^ ~e & n;
 }
-function _r(e, t, n) {
+function yr(e, t, n) {
 	return e & t ^ e & n ^ t & n;
 }
-var vr = class {
+var br = class {
 	blockLen;
 	outputLen;
 	canXOF = !1;
@@ -2232,15 +2233,15 @@ var vr = class {
 	pos = 0;
 	destroyed = !1;
 	constructor(e, t, n, r) {
-		this.blockLen = e, this.outputLen = t, this.padOffset = n, this.isLE = r, this.buffer = new Uint8Array(e), this.view = lr(this.buffer);
+		this.blockLen = e, this.outputLen = t, this.padOffset = n, this.isLE = r, this.buffer = new Uint8Array(e), this.view = dr(this.buffer);
 	}
 	update(e) {
-		or(this), ar(e);
+		cr(this), sr(e);
 		let { view: t, buffer: n, blockLen: r } = this, i = e.length;
 		for (let a = 0; a < i;) {
 			let o = Math.min(r - this.pos, i - a);
 			if (o === r) {
-				let t = lr(e);
+				let t = dr(e);
 				for (; r <= i - a; a += r) this.process(t, a);
 				continue;
 			}
@@ -2249,12 +2250,12 @@ var vr = class {
 		return this.length += e.length, this.roundClean(), this;
 	}
 	digestInto(e) {
-		or(this), sr(e, this), this.finished = !0;
+		cr(this), lr(e, this), this.finished = !0;
 		let { buffer: t, view: n, blockLen: r, isLE: i } = this, { pos: a } = this;
-		t[a++] = 128, cr(this.buffer.subarray(a)), this.padOffset > r - a && (this.process(n, 0), a = 0);
+		t[a++] = 128, ur(this.buffer.subarray(a)), this.padOffset > r - a && (this.process(n, 0), a = 0);
 		for (let e = a; e < r; e++) t[e] = 0;
 		n.setBigUint64(r - 8, BigInt(this.length * 8), i), this.process(n, 0);
-		let o = lr(e), s = this.outputLen;
+		let o = dr(e), s = this.outputLen;
 		if (s % 4) throw Error("_sha2: outputLen must be aligned to 32bit");
 		let c = s / 4, l = this.get();
 		if (c > l.length) throw Error("_sha2: outputLen bigger than state");
@@ -2274,7 +2275,7 @@ var vr = class {
 	clone() {
 		return this._cloneInto();
 	}
-}, I = Uint32Array.from([
+}, P = Uint32Array.from([
 	1779033703,
 	3144134277,
 	1013904242,
@@ -2283,7 +2284,7 @@ var vr = class {
 	2600822924,
 	528734635,
 	1541459225
-]), yr = Uint32Array.from([
+]), xr = Uint32Array.from([
 	1116352408,
 	1899447441,
 	3049323471,
@@ -2348,7 +2349,7 @@ var vr = class {
 	2756734187,
 	3204031479,
 	3329325298
-]), L = /* @__PURE__ */ new Uint32Array(64), br = class extends vr {
+]), F = /* @__PURE__ */ new Uint32Array(64), Sr = class extends br {
 	constructor(e) {
 		super(64, e, 8, !1);
 	}
@@ -2369,63 +2370,63 @@ var vr = class {
 		this.A = e | 0, this.B = t | 0, this.C = n | 0, this.D = r | 0, this.E = i | 0, this.F = a | 0, this.G = o | 0, this.H = s | 0;
 	}
 	process(e, t) {
-		for (let n = 0; n < 16; n++, t += 4) L[n] = e.getUint32(t, !1);
+		for (let n = 0; n < 16; n++, t += 4) F[n] = e.getUint32(t, !1);
 		for (let e = 16; e < 64; e++) {
-			let t = L[e - 15], n = L[e - 2], r = F(t, 7) ^ F(t, 18) ^ t >>> 3, i = F(n, 17) ^ F(n, 19) ^ n >>> 10;
-			L[e] = i + L[e - 7] + r + L[e - 16] | 0;
+			let t = F[e - 15], n = F[e - 2], r = N(t, 7) ^ N(t, 18) ^ t >>> 3, i = N(n, 17) ^ N(n, 19) ^ n >>> 10;
+			F[e] = i + F[e - 7] + r + F[e - 16] | 0;
 		}
 		let { A: n, B: r, C: i, D: a, E: o, F: s, G: c, H: l } = this;
 		for (let e = 0; e < 64; e++) {
-			let t = F(o, 6) ^ F(o, 11) ^ F(o, 25), u = l + t + gr(o, s, c) + yr[e] + L[e] | 0, d = (F(n, 2) ^ F(n, 13) ^ F(n, 22)) + _r(n, r, i) | 0;
+			let t = N(o, 6) ^ N(o, 11) ^ N(o, 25), u = l + t + vr(o, s, c) + xr[e] + F[e] | 0, d = (N(n, 2) ^ N(n, 13) ^ N(n, 22)) + yr(n, r, i) | 0;
 			l = c, c = s, s = o, o = a + u | 0, a = i, i = r, r = n, n = u + d | 0;
 		}
 		n = n + this.A | 0, r = r + this.B | 0, i = i + this.C | 0, a = a + this.D | 0, o = o + this.E | 0, s = s + this.F | 0, c = c + this.G | 0, l = l + this.H | 0, this.set(n, r, i, a, o, s, c, l);
 	}
 	roundClean() {
-		cr(L);
+		ur(F);
 	}
 	destroy() {
-		this.destroyed = !0, this.set(0, 0, 0, 0, 0, 0, 0, 0), cr(this.buffer);
+		this.destroyed = !0, this.set(0, 0, 0, 0, 0, 0, 0, 0), ur(this.buffer);
 	}
-}, xr = class extends br {
-	A = I[0] | 0;
-	B = I[1] | 0;
-	C = I[2] | 0;
-	D = I[3] | 0;
-	E = I[4] | 0;
-	F = I[5] | 0;
-	G = I[6] | 0;
-	H = I[7] | 0;
+}, Cr = class extends Sr {
+	A = P[0] | 0;
+	B = P[1] | 0;
+	C = P[2] | 0;
+	D = P[3] | 0;
+	E = P[4] | 0;
+	F = P[5] | 0;
+	G = P[6] | 0;
+	H = P[7] | 0;
 	constructor() {
 		super(32);
 	}
-}, Sr = mr(() => new xr(), hr(1));
-function Cr(e) {
+}, wr = gr(() => new Cr(), _r(1));
+function Tr(e) {
 	if (e === void 0) return;
 	if (e === null) return "null";
 	if (typeof e == "number") return isFinite(e) ? "" + e : "null";
 	if (typeof e != "object") return JSON.stringify(e);
 	if (Array.isArray(e)) {
 		let t = "[";
-		for (let n = 0; n < e.length; n++) n && (t += ","), t += Cr(e[n]) || "null";
+		for (let n = 0; n < e.length; n++) n && (t += ","), t += Tr(e[n]) || "null";
 		return t + "]";
 	}
 	let t = Object.keys(e).sort(), n = "";
 	for (let r of t) {
-		let t = Cr(e[r]);
+		let t = Tr(e[r]);
 		t && (n && (n += ","), n += JSON.stringify(r) + ":" + t);
 	}
 	return "{" + n + "}";
 }
-function wr(e) {
-	return Cr(e) ?? "";
+function Er(e) {
+	return Tr(e) ?? "";
 }
-function Tr(e) {
-	return fr(Sr(pr(e))).slice(0, 16);
+function Dr(e) {
+	return mr(wr(hr(e))).slice(0, 16);
 }
-function Er({ source: e, context: t, id: n, maxChars: r, requiresReview: i, dataFormat: a }, o = Tr) {
+function Or({ source: e, context: t, id: n, maxChars: r, requiresReview: i, dataFormat: a }, o = Dr) {
 	let s;
-	return s = a === "JSX" ? Or(e) : e, o(wr({
+	return s = a === "JSX" ? Ar(e) : e, o(Er({
 		source: s,
 		...n && { id: n },
 		...t && { context: t },
@@ -2434,100 +2435,100 @@ function Er({ source: e, context: t, id: n, maxChars: r, requiresReview: i, data
 		...a && { dataFormat: a }
 	}));
 }
-var Dr = (e) => {
+var kr = (e) => {
 	if (e && typeof e == "object") {
 		let t = {};
-		if ("c" in e && e.c && (t.c = Or(e.c)), "d" in e) {
+		if ("c" in e && e.c && (t.c = Ar(e.c)), "d" in e) {
 			let n = e?.d;
-			n?.b && (t.b = Object.fromEntries(Object.entries(n.b).map(([e, t]) => [e, Or(t)]))), n?.t && (t.t = n.t);
+			n?.b && (t.b = Object.fromEntries(Object.entries(n.b).map(([e, t]) => [e, Ar(t)]))), n?.t && (t.t = n.t);
 		}
-		return Wt(e) ? {
+		return Gt(e) ? {
 			k: e.k,
 			...e.v && { v: e.v }
 		} : t;
 	}
 	return e;
 };
-function Or(e) {
-	return Array.isArray(e) ? e.map(Dr) : Dr(e);
+function Ar(e) {
+	return Array.isArray(e) ? e.map(kr) : kr(e);
 }
-var R = "GT", kr = (e) => C({
-	source: R,
+var I = "GT", jr = (e) => S({
+	source: I,
 	severity: "Error",
 	whatHappened: `Translation request timed out after ${e}ms`,
 	fix: "Try again, or increase the request timeout if the source content is large"
-}), Ar = (e, t, n) => C({
-	source: R,
+}), Mr = (e, t, n) => S({
+	source: I,
 	severity: "Error",
 	whatHappened: `The translation API returned ${e} ${t}`,
 	fix: "Check the request configuration and try again",
 	details: n
 });
-C({
-	source: R,
+S({
+	source: I,
 	severity: "Error",
 	whatHappened: "Authentication failed",
 	fix: "Check that your API key and project ID are correct"
 });
-var z = (e) => C({
-	source: R,
+var L = (e) => S({
+	source: I,
 	severity: "Error",
 	whatHappened: `Cannot call \`${e}\` without a specified locale`,
 	fix: `Pass a locale to \`${e}\` or specify targetLocale in the GT constructor`
-}), jr = (e) => C({
-	source: R,
+}), Nr = (e) => S({
+	source: I,
 	severity: "Error",
 	whatHappened: `Cannot call \`${e}\` without a specified locale`,
 	fix: `Pass a locale to \`${e}\` or specify sourceLocale in the GT constructor`
-}), Mr = (e) => C({
-	source: R,
+}), Pr = (e) => S({
+	source: I,
 	severity: "Error",
 	whatHappened: `Cannot call \`${e}\` without a specified project ID`,
 	fix: `Pass a project ID to \`${e}\` or specify projectId in the GT constructor`
-}), Nr = (e) => C({
-	source: R,
+}), Fr = (e) => S({
+	source: I,
 	severity: "Error",
 	whatHappened: `Cannot call \`${e}\` without a specified API key`,
 	fix: `Pass an API key to \`${e}\` or specify apiKey in the GT constructor`
-}), Pr = (e) => C({
-	source: R,
+}), Ir = (e) => S({
+	source: I,
 	severity: "Error",
 	whatHappened: `Locale "${e}" is not valid`,
 	fix: "Use a valid BCP 47 locale code or add a custom mapping"
-}), Fr = (e) => C({
-	source: R,
+}), Lr = (e) => S({
+	source: I,
 	severity: "Error",
 	whatHappened: `These locales are not valid: ${e.join(", ")}`,
 	fix: "Use valid BCP 47 locale codes or add custom mappings"
-}), Ir = {
+}), Rr = {
 	debug: 0,
 	info: 1,
 	warn: 2,
 	error: 3,
 	off: 4
-}, Lr = {
+}, zr = {
 	debug: "\x1B[36m",
 	info: "\x1B[32m",
 	warn: "\x1B[33m",
 	error: "\x1B[31m",
 	off: ""
-}, Rr = "\x1B[0m";
-function zr() {
+}, Br = "\x1B[0m";
+function Vr() {
 	if (typeof process < "u" && process.env?._GT_LOG_LEVEL) {
 		let e = process.env._GT_LOG_LEVEL.toLowerCase();
-		if (e in Ir) return e;
+		if (e in Rr) return e;
 	}
 	return "warn";
 }
-var Br = class {
+var Hr = class {
 	constructor(e) {
 		this.config = e;
 	}
 	handle(e) {
 		let t = [];
 		this.config.includeTimestamp && t.push(`[${e.timestamp.toISOString()}]`);
-		let n = Lr[e.level], r = `[${e.level.toUpperCase()}]`;
-		t.push(`${n}${r}${Rr}`), this.config.prefix && t.push(`[${this.config.prefix}]`), this.config.includeContext && e.context && t.push(`[${e.context}]`), t.push(e.message), e.metadata && Object.keys(e.metadata).length > 0 && t.push(`\n  Metadata: ${JSON.stringify(e.metadata, null, 2)}`);
+		let n = zr[e.level], r = `[${e.level.toUpperCase()}]`;
+		t.push(`${n}${r}${Br}`), this.config.prefix && t.push(`[${this.config.prefix}]`), this.config.includeContext && e.context && t.push(`[${e.context}]`), t.push(e.message), e.metadata && Object.keys(e.metadata).length > 0 && t.push(`\n  Metadata: ${JSON.stringify(e.metadata, null, 2)}`);
 		let i = t.join(" ");
 		switch (e.level) {
 			case "debug":
@@ -2542,16 +2543,16 @@ var Br = class {
 			case "error": console.error(i);
 		}
 	}
-}, Vr = class {
+}, Ur = class {
 	constructor(e = {}) {
 		this.config = {
-			level: zr(),
+			level: Vr(),
 			includeTimestamp: !0,
 			includeContext: !0,
 			enableConsole: !0,
 			handlers: [],
 			...e
-		}, this.handlers = [...this.config.handlers || []], this.config.enableConsole && this.handlers.push(new Br(this.config));
+		}, this.handlers = [...this.config.handlers || []], this.config.enableConsole && this.handlers.push(new Hr(this.config));
 	}
 	addHandler(e) {
 		this.handlers.push(e);
@@ -2567,7 +2568,7 @@ var Br = class {
 		};
 	}
 	shouldLog(e) {
-		return Ir[e] >= Ir[this.config.level];
+		return Rr[e] >= Rr[this.config.level];
 	}
 	log(e, t, n, r) {
 		if (!this.shouldLog(e)) return;
@@ -2599,12 +2600,12 @@ var Br = class {
 		this.log("error", e, t, n);
 	}
 	child(e) {
-		return new Hr(this, e);
+		return new Wr(this, e);
 	}
 	getConfig() {
 		return { ...this.config };
 	}
-}, Hr = class e {
+}, Wr = class e {
 	constructor(e, t) {
 		this.logger = e, this.context = t;
 	}
@@ -2623,15 +2624,15 @@ var Br = class {
 	child(t) {
 		return new e(this.logger, `${this.context}:${t}`);
 	}
-}, Ur = new Vr({
-	level: zr(),
+}, Gr = new Ur({
+	level: Vr(),
 	includeTimestamp: !0,
 	includeContext: !0,
 	prefix: "GT"
 });
-Ur.child("fetch");
-var Wr = Ur.child("GT instance");
-async function Gr(e, t, n) {
+Gr.child("fetch");
+var Kr = Gr.child("GT instance");
+async function qr(e, t, n) {
 	let r = new AbortController(), i = [r.signal];
 	t.signal && i.push(t.signal), e instanceof Request && i.push(e.signal);
 	let a = AbortSignal.any(i);
@@ -2643,12 +2644,12 @@ async function Gr(e, t, n) {
 			signal: a
 		});
 	} catch (e) {
-		throw e instanceof Error && e.name === "AbortError" ? kr(n) : e;
+		throw e instanceof Error && e.name === "AbortError" ? jr(n) : e;
 	} finally {
 		o && clearTimeout(o);
 	}
 }
-async function Kr(e) {
+async function Jr(e) {
 	if (!e.ok) {
 		let t = "Unknown error";
 		try {
@@ -2659,13 +2660,13 @@ async function Kr(e) {
 				t = n || "Unknown error";
 			}
 		} catch {}
-		throw new b(Ar(e.status, e.statusText, t), e.status, t);
+		throw new b(Mr(e.status, e.statusText, t), e.status, t);
 	}
 }
-async function qr(e, t, n, r) {
+async function Yr(e, t, n, r) {
 	let i = Array.isArray(e), a = i ? [] : void 0, o = {}, s = i ? e.map((e) => [void 0, e]) : Object.entries(e);
 	for (let [e, t] of s) {
-		let { source: n, metadata: r } = typeof t == "string" ? { source: t } : t, i = e ?? r?.hash ?? Er({
+		let { source: n, metadata: r } = typeof t == "string" ? { source: t } : t, i = e ?? r?.hash ?? Or({
 			source: n,
 			...r?.context && { context: r.context },
 			...r?.maxChars != null && { maxChars: r.maxChars },
@@ -2676,14 +2677,14 @@ async function qr(e, t, n, r) {
 			metadata: r
 		};
 	}
-	let c = qe({
+	let c = Je({
 		apiKey: n.apiKey,
 		baseUrl: n.baseUrl || "https://api.gtx.dev",
-		fetch: (e, t) => Gr(e, t ?? {}, r),
+		fetch: (e, t) => qr(e, t ?? {}, r),
 		projectId: n.projectId,
 		retryPolicy: "none",
 		timeoutMs: !1
-	}), l = await ce({
+	}), l = await le({
 		body: {
 			requests: o,
 			targetLocale: t.targetLocale,
@@ -2692,15 +2693,15 @@ async function qr(e, t, n, r) {
 		},
 		client: c
 	});
-	if (l.data === void 0 && l.response && !oe(l)) throw await Kr(l.response), l.error;
-	let u = se(l);
+	if (l.data === void 0 && l.response && !se(l)) throw await Jr(l.response), l.error;
+	let u = ce(l);
 	return a ? a.map((e) => u[e] ?? {
 		success: !1,
 		error: "No translation returned",
 		code: 500
 	}) : u;
 }
-var Jr = class {
+var Xr = class {
 	get localeConfig() {
 		return this._localeConfig;
 	}
@@ -2708,17 +2709,17 @@ var Jr = class {
 		typeof process < "u" && (this.apiKey ||= process.env?.GT_API_KEY, this.devApiKey ||= process.env?.GT_DEV_API_KEY, this.projectId ||= process.env?.GT_PROJECT_ID), this.setConfig(e);
 	}
 	setConfig({ apiKey: e, devApiKey: t, sourceLocale: n, targetLocale: r, locales: i, projectId: a, customMapping: o, baseUrl: s }) {
-		if (e && (this.apiKey = e), t && (this.devApiKey = t), a && (this.projectId = a), n && (this.sourceLocale = er(n), !P(this.sourceLocale, o))) throw Error(Pr(this.sourceLocale));
-		if (r && (this.targetLocale = er(r), !P(this.targetLocale, o))) throw Error(Pr(this.targetLocale));
+		if (e && (this.apiKey = e), t && (this.devApiKey = t), a && (this.projectId = a), n && (this.sourceLocale = nr(n), !M(this.sourceLocale, o))) throw Error(Ir(this.sourceLocale));
+		if (r && (this.targetLocale = nr(r), !M(this.targetLocale, o))) throw Error(Ir(this.targetLocale));
 		if (i) {
 			let e = [], t = [];
 			if (i.forEach((n) => {
-				let r = er(n);
-				P(r) ? e.push(r) : t.push(n);
-			}), t.length > 0) throw Error(Fr(t));
+				let r = nr(n);
+				M(r) ? e.push(r) : t.push(n);
+			}), t.length > 0) throw Error(Lr(t));
 			this.locales = e;
 		}
-		s && (this.baseUrl = s), o && (this.customMapping = o, this.reverseCustomMapping = Object.fromEntries(Object.entries(o).filter(([, e]) => e && typeof e == "object" && "code" in e).map(([e, t]) => [t.code, e]))), this._localeConfig = new Zn({
+		s && (this.baseUrl = s), o && (this.customMapping = o, this.reverseCustomMapping = Object.fromEntries(Object.entries(o).filter(([, e]) => e && typeof e == "object" && "code" in e).map(([e, t]) => [t.code, e]))), this._localeConfig = new $n({
 			defaultLocale: this.sourceLocale,
 			locales: this.locales ?? [],
 			customMapping: this.customMapping
@@ -2734,11 +2735,11 @@ var Jr = class {
 	_validateAuth(e) {
 		let t = [];
 		if (!this.apiKey && !this.devApiKey) {
-			let n = Nr(e);
+			let n = Fr(e);
 			t.push(n);
 		}
 		if (!this.projectId) {
-			let n = Mr(e);
+			let n = Pr(e);
 			t.push(n);
 		}
 		if (t.length) throw Error(t.join("\n"));
@@ -2747,12 +2748,12 @@ var Jr = class {
 		typeof t == "string" && (t = { targetLocale: t }), this._validateAuth("translate");
 		let r = t?.targetLocale || this.targetLocale;
 		if (!r) {
-			let e = z("translate");
-			throw Wr.error(e), Error(e);
+			let e = L("translate");
+			throw Kr.error(e), Error(e);
 		}
 		r = this.resolveCanonicalLocale(r);
 		let i = this.resolveCanonicalLocale(t?.sourceLocale || this.sourceLocale || "en");
-		return (await qr([e], {
+		return (await Yr([e], {
 			...t,
 			targetLocale: r,
 			sourceLocale: i
@@ -2762,12 +2763,12 @@ var Jr = class {
 		typeof t == "string" && (t = { targetLocale: t }), this._validateAuth("translateMany");
 		let r = t?.targetLocale || this.targetLocale;
 		if (!r) {
-			let e = z("translateMany");
-			throw Wr.error(e), Error(e);
+			let e = L("translateMany");
+			throw Kr.error(e), Error(e);
 		}
 		r = this.resolveCanonicalLocale(r);
 		let i = this.resolveCanonicalLocale(t?.sourceLocale || this.sourceLocale || "en");
-		return await qr(e, {
+		return await Yr(e, {
 			...t,
 			targetLocale: r,
 			sourceLocale: i
@@ -2801,15 +2802,15 @@ var Jr = class {
 		return this.localeConfig.formatRelativeTimeFromDate(e, this.targetLocale, t);
 	}
 	getLocaleName(e = this.targetLocale) {
-		if (!e) throw Error(z("getLocaleName"));
+		if (!e) throw Error(L("getLocaleName"));
 		return this.localeConfig.getLocaleName(e);
 	}
 	getLocaleEmoji(e = this.targetLocale) {
-		if (!e) throw Error(z("getLocaleEmoji"));
+		if (!e) throw Error(L("getLocaleEmoji"));
 		return this.localeConfig.getLocaleEmoji(e);
 	}
 	getLocaleProperties(e = this.targetLocale) {
-		if (!e) throw Error(z("getLocaleProperties"));
+		if (!e) throw Error(L("getLocaleProperties"));
 		return this.localeConfig.getLocaleProperties(e);
 	}
 	getRegionProperties(e = this.getLocaleProperties().regionCode, t) {
@@ -2828,34 +2829,34 @@ var Jr = class {
 			}
 			t = this.customRegionMapping;
 		}
-		return Qn(e, this.targetLocale, t);
+		return er(e, this.targetLocale, t);
 	}
 	requiresTranslation(e = this.sourceLocale, t = this.targetLocale, n = this.locales, r = this.customMapping) {
-		if (!e) throw Error(jr("requiresTranslation"));
-		if (!t) throw Error(z("requiresTranslation"));
-		return r === this.customMapping ? this.localeConfig.requiresTranslation(t, e, n) : tr(e, t, n, r);
+		if (!e) throw Error(Nr("requiresTranslation"));
+		if (!t) throw Error(L("requiresTranslation"));
+		return r === this.customMapping ? this.localeConfig.requiresTranslation(t, e, n) : rr(e, t, n, r);
 	}
 	determineLocale(e, t = this.locales || [], n = this.customMapping) {
-		return n === this.customMapping ? this.localeConfig.determineLocale(e, t ?? []) : nr(e, t, n);
+		return n === this.customMapping ? this.localeConfig.determineLocale(e, t ?? []) : ir(e, t, n);
 	}
 	getLocaleDirection(e = this.targetLocale) {
-		if (!e) throw Error(z("getLocaleDirection"));
+		if (!e) throw Error(L("getLocaleDirection"));
 		return this.localeConfig.getLocaleDirection(e);
 	}
 	isValidLocale(e = this.targetLocale, t = this.customMapping) {
-		if (!e) throw Error(z("isValidLocale"));
-		return t === this.customMapping ? this.localeConfig.isValidLocale(e) : P(e, t);
+		if (!e) throw Error(L("isValidLocale"));
+		return t === this.customMapping ? this.localeConfig.isValidLocale(e) : M(e, t);
 	}
 	resolveCanonicalLocale(e = this.targetLocale, t = this.customMapping) {
-		if (!e) throw Error(z("resolveCanonicalLocale"));
-		return t === this.customMapping ? this.localeConfig.resolveCanonicalLocale(e) : $n(e, t);
+		if (!e) throw Error(L("resolveCanonicalLocale"));
+		return t === this.customMapping ? this.localeConfig.resolveCanonicalLocale(e) : tr(e, t);
 	}
 	resolveAliasLocale(e, t = this.customMapping) {
-		if (!e) throw Error(z("resolveAliasLocale"));
-		return t === this.customMapping ? this.localeConfig.resolveAliasLocale(e) : rr(e, t);
+		if (!e) throw Error(L("resolveAliasLocale"));
+		return t === this.customMapping ? this.localeConfig.resolveAliasLocale(e) : ar(e, t);
 	}
 	standardizeLocale(e = this.targetLocale) {
-		if (!e) throw Error(z("standardizeLocale"));
+		if (!e) throw Error(L("standardizeLocale"));
 		return this.localeConfig.standardizeLocale(e);
 	}
 	isSameDialect(...e) {
@@ -2867,34 +2868,34 @@ var Jr = class {
 	isSupersetLocale(e, t) {
 		return this.localeConfig.isSupersetLocale(e, t);
 	}
-}, Yr = "DEBUG";
-function Xr() {
-	let e = Qr();
-	return e === void 0 ? $r(() => void 0) : e;
-}
-function Zr(e) {
-	return e?.toUpperCase() === Yr;
-}
+}, Zr = "DEBUG";
 function Qr() {
-	if (typeof process == "object") return process.env?._GENERALTRANSLATION_LOG_LEVEL;
+	let e = ei();
+	return e === void 0 ? ti(() => void 0) : e;
 }
 function $r(e) {
+	return e?.toUpperCase() === Zr;
+}
+function ei() {
+	if (typeof process == "object") return process.env?._GENERALTRANSLATION_LOG_LEVEL;
+}
+function ti(e) {
 	try {
 		return e();
 	} catch {
 		return;
 	}
 }
-function ei(e) {
+function ni(e) {
 	let t = globalThis;
 	return t.__generaltranslation ??= {}, t.__generaltranslation[e] ??= {}, t.__generaltranslation[e];
 }
-function ti(e) {
+function ri(e) {
 	return globalThis.__generaltranslation?.[e];
 }
-function B({ namespace: e, key: t, source: n, notInitialized: r }) {
+function R({ namespace: e, key: t, source: n, notInitialized: r }) {
 	function i() {
-		let n = ei(e)[t];
+		let n = ni(e)[t];
 		if (n == null) {
 			let e = r();
 			throw typeof e == "string" ? Error(e) : e;
@@ -2902,9 +2903,9 @@ function B({ namespace: e, key: t, source: n, notInitialized: r }) {
 		return n;
 	}
 	function a(r) {
-		let i = ei(e);
+		let i = ni(e);
 		if (i[t] !== void 0 && i[t] !== r) {
-			ni() && console.warn(C({
+			ii() && console.warn(S({
 				source: n,
 				severity: "Warning",
 				whatHappened: `Global ${t} singleton instance was already initialized`
@@ -2914,7 +2915,7 @@ function B({ namespace: e, key: t, source: n, notInitialized: r }) {
 		i[t] = r;
 	}
 	function o() {
-		return ei(e)[t] != null;
+		return ni(e)[t] != null;
 	}
 	return {
 		get: i,
@@ -2922,18 +2923,18 @@ function B({ namespace: e, key: t, source: n, notInitialized: r }) {
 		isInitialized: o
 	};
 }
-function ni() {
-	let e = ti("i18n")?.i18nConfig;
-	return ri(e) ? e.isDebugLoggingEnabled() : Zr(Xr());
+function ii() {
+	let e = ri("i18n")?.i18nConfig;
+	return ai(e) ? e.isDebugLoggingEnabled() : $r(Qr());
 }
-function ri(e) {
+function ai(e) {
 	return typeof e == "object" && !!e && typeof e.isDebugLoggingEnabled == "function";
 }
-var ii = B({
+var oi = R({
 	namespace: "i18n",
 	key: "i18nCache",
 	source: "gt-i18n",
-	notInitialized: () => C({
+	notInitialized: () => S({
 		source: "gt-i18n",
 		severity: "Error",
 		whatHappened: "Cannot read I18nCache before it has been initialized",
@@ -2941,32 +2942,32 @@ var ii = B({
 		fix: "Initialize GT before accessing I18nCache (call initializeGT() from your GT framework package)."
 	})
 });
-function ai() {
-	return ii.get();
-}
-function oi(e) {
-	ii.set(e);
-}
-function si(e) {
-	return e.loadTranslations ? "custom" : (e.cacheUrl === void 0 || e.cacheUrl === "https://cdn.gtx.dev") && e.projectId ? "gt-remote" : e.cacheUrl ? "remote" : "disabled";
+function si() {
+	return oi.get();
 }
 function ci(e) {
+	oi.set(e);
+}
+function li(e) {
+	return e.loadTranslations ? "custom" : (e.cacheUrl === void 0 || e.cacheUrl === "https://cdn.gtx.dev") && e.projectId ? "gt-remote" : e.cacheUrl ? "remote" : "disabled";
+}
+function ui(e) {
 	let t = e.runtimeUrl === void 0 || e.runtimeUrl === "https://api.gtx.dev";
 	return t && e.projectId && (e.devApiKey || e.apiKey) ? "gt" : e.runtimeUrl && !t ? "custom" : "disabled";
 }
-function li() {
+function di() {
 	if (typeof process == "object" && process.env.NODE_ENV === "development") return "development";
-	let e = ui(() => "production");
-	return e ? e === "development" ? "development" : "production" : ui(() => !1) === !0 ? "development" : "production";
+	let e = fi(() => "production");
+	return e ? e === "development" ? "development" : "production" : fi(() => !0) === !0 ? "development" : "production";
 }
-function ui(e) {
+function fi(e) {
 	try {
 		return e();
 	} catch {
 		return;
 	}
 }
-var V = {
+var z = {
 	warn(e) {
 		console.warn(e);
 	},
@@ -2980,12 +2981,12 @@ var V = {
 		console.debug(e);
 	}
 };
-function di(e, t) {
+function pi(e, t) {
 	if (!t) return;
-	let n = fi(e), r = pi(e), i = [...n, ...r];
+	let n = mi(e), r = hi(e), i = [...n, ...r];
 	if (i.forEach((e) => {
-		V.error(`I18nConfig: ${mi(e)}`);
-	}), i.length > 0) throw Error(C({
+		z.error(`I18nConfig: ${gi(e)}`);
+	}), i.length > 0) throw Error(S({
 		source: "gt-i18n",
 		severity: "Error",
 		whatHappened: "Invalid I18nConfig locale configuration",
@@ -2993,33 +2994,33 @@ function di(e, t) {
 		fix: "Use valid BCP 47 locale codes or add custom mappings."
 	}));
 }
-function fi({ defaultLocale: e, locales: t, customMapping: n }) {
+function mi({ defaultLocale: e, locales: t, customMapping: n }) {
 	let r = /* @__PURE__ */ new Set([...e ? [e] : [], ...t || []]);
-	return Array.from(r).filter((e) => !P(e, n));
+	return Array.from(r).filter((e) => !M(e, n));
 }
-function pi({ customMapping: e }) {
+function hi({ customMapping: e }) {
 	return Object.values(e || {}).flatMap((e) => {
 		let t = typeof e == "string" ? e : e.code;
-		return t && !P(t) ? [t] : [];
+		return t && !M(t) ? [t] : [];
 	});
 }
-function mi(e) {
-	return C({
+function gi(e) {
+	return S({
 		whatHappened: `Locale "${e}" is not valid`,
 		fix: "Use a valid BCP 47 locale code or add a custom mapping"
 	});
 }
-var hi = class extends Zn {
+var _i = class extends $n {
 	constructor(e = {}) {
-		let t = yi(e);
-		super(gi(e, t)), this.runtimeConfig = {
+		let t = xi(e);
+		super(vi(e, t)), this.runtimeConfig = {
 			projectId: e.projectId,
 			devApiKey: e.devApiKey,
 			apiKey: e.apiKey,
 			runtimeUrl: e.runtimeUrl,
 			_disableDevHotReload: e._disableDevHotReload,
 			_tagIds: e._tagIds
-		}, this.gtServicesEnabled = t, this.logLevel = Xr();
+		}, this.gtServicesEnabled = t, this.logLevel = Qr();
 	}
 	getDefaultLocale() {
 		return this.defaultLocale;
@@ -3052,16 +3053,16 @@ var hi = class extends Zn {
 		return t;
 	}
 	isDevHotReloadEnabled() {
-		return !this.runtimeConfig._disableDevHotReload && !!this.runtimeConfig.devApiKey && !!this.runtimeConfig.projectId && this.runtimeConfig.runtimeUrl !== null && this.runtimeConfig.runtimeUrl !== "" && li() === "development";
+		return !this.runtimeConfig._disableDevHotReload && !!this.runtimeConfig.devApiKey && !!this.runtimeConfig.projectId && this.runtimeConfig.runtimeUrl !== null && this.runtimeConfig.runtimeUrl !== "" && di() === "development";
 	}
 	isGTServicesEnabled() {
 		return this.gtServicesEnabled;
 	}
 	isDebugLoggingEnabled() {
-		return Zr(this.logLevel);
+		return $r(this.logLevel);
 	}
 	getGTClassClean(e) {
-		return new Jr({
+		return new Xr({
 			sourceLocale: this.getDefaultLocale(),
 			targetLocale: e,
 			locales: Array.from(new Set(this.getLocales().map((e) => this.resolveCanonicalLocale(e)))),
@@ -3073,15 +3074,15 @@ var hi = class extends Zn {
 		});
 	}
 	getLocaleConfig(e) {
-		return !e || !vi(e) ? this : new Zn(_i(e));
+		return !e || !bi(e) ? this : new $n(yi(e));
 	}
 	determineSupportedLocaleWithConfig(e, t) {
 		if (!(e == null || Array.isArray(e) && e.length === 0)) return t.determineLocale(e);
 	}
 };
-function gi(e, t) {
+function vi(e, t) {
 	let { defaultLocale: n = "en", locales: r = [], customMapping: i } = e;
-	return di({
+	return pi({
 		...e,
 		defaultLocale: n,
 		locales: r,
@@ -3092,34 +3093,34 @@ function gi(e, t) {
 		customMapping: i || {}
 	};
 }
-function _i({ defaultLocale: e = "en", locales: t = [], customMapping: n } = {}) {
+function yi({ defaultLocale: e = "en", locales: t = [], customMapping: n } = {}) {
 	return {
 		defaultLocale: e,
 		locales: t?.length ? t : [e],
 		customMapping: n || {}
 	};
 }
-function vi(e) {
+function bi(e) {
 	return e.defaultLocale !== void 0 || e.locales !== void 0 || e.customMapping !== void 0;
 }
-function yi(e) {
-	return si(e) === "gt-remote" || ci(e) === "gt";
+function xi(e) {
+	return li(e) === "gt-remote" || ui(e) === "gt";
 }
-var bi = B({
+var Si = R({
 	namespace: "i18n",
 	key: "i18nConfig",
 	source: "gt-i18n",
-	notInitialized: () => C({
+	notInitialized: () => S({
 		source: "gt-i18n",
 		severity: "Error",
 		whatHappened: "Cannot read I18nConfig before it has been initialized",
 		why: "the internal I18nConfig singleton is unavailable",
 		fix: "Initialize GT before reading locale config (call initializeGT() from your GT framework package)."
 	})
-}), H = bi.get, xi = bi.set;
-bi.isInitialized;
-function Si(e) {
-	let t = B({
+}), B = Si.get, Ci = Si.set;
+Si.isInitialized;
+function wi(e) {
+	let t = R({
 		namespace: "i18n",
 		key: "conditionStore",
 		source: "gt-i18n",
@@ -3131,24 +3132,24 @@ function Si(e) {
 		isConditionStoreInitialized: t.isInitialized
 	};
 }
-var { getConditionStore: Ci, setConditionStore: wi } = Si(C({
+var { getConditionStore: Ti, setConditionStore: Ei } = wi(S({
 	source: "gt-i18n",
 	severity: "Error",
 	whatHappened: "Cannot read the locale before GT has been initialized",
 	why: "the internal ConditionStore singleton is unavailable",
 	fix: "Initialize GT before calling translation functions (e.g. call initializeGT() from your GT framework package)."
 }));
-function Ti(e, t) {
+function Di(e, t) {
 	let n = t;
-	return n.$_hash == null ? Er({
-		source: t.$format === "ICU" ? nn(e) : e,
+	return n.$_hash == null ? Or({
+		source: t.$format === "ICU" ? rn(e) : e,
 		...n.$context && { context: n.$context },
 		...n.$maxChars != null && { maxChars: Math.abs(n.$maxChars) },
 		...n.$requiresReview === !0 && { requiresReview: !0 },
 		dataFormat: t.$format
 	}) : n.$_hash;
 }
-function Ei(e, t) {
+function Oi(e, t) {
 	let n = `${t}=`, r = e?.split(";").map((e) => e.trim()).find((e) => e.startsWith(n));
 	if (!r) return;
 	let i = r.slice(n.length);
@@ -3158,124 +3159,124 @@ function Ei(e, t) {
 		return i;
 	}
 }
-function Di(e) {
+function ki(e) {
 	let t = e ? e.split(".") : [];
-	for (let n of t) Oi(n, e);
+	for (let n of t) Ai(n, e);
 	return t;
 }
-function Oi(e, t) {
+function Ai(e, t) {
 	if (e === "__proto__" || e === "constructor" || e === "prototype") throw Error(`Dictionary path "${t}" contains an unsafe segment`);
 }
-function U(e) {
+function V(e) {
 	return typeof e == "object" && !!e && !Array.isArray(e);
 }
-function W(e) {
+function H(e) {
 	return e === void 0 || typeof e == "string" ? e : structuredClone(e);
 }
-function ki(e, t) {
+function ji(e, t) {
 	let n = e;
-	for (let e of Di(t)) {
-		if (!U(n)) return;
+	for (let e of ki(t)) {
+		if (!V(n)) return;
 		n = n[e];
 	}
 	return n;
 }
-function Ai(e, t, n) {
-	let r = Di(t);
-	if (U(n) && Li(n, t), r.length === 0) {
-		U(n) && Ii(e, n);
+function Mi(e, t, n) {
+	let r = ki(t);
+	if (V(n) && zi(n, t), r.length === 0) {
+		V(n) && Ri(e, n);
 		return;
 	}
 	let i = e;
 	for (let e of r.slice(0, -1)) {
 		let t = i[e];
-		U(t) || (i[e] = {}), i = i[e];
+		V(t) || (i[e] = {}), i = i[e];
 	}
 	let a = r[r.length - 1];
 	i[a] = n;
 }
-function G(e) {
-	if (Ni(e)) return {
+function U(e) {
+	if (Fi(e)) return {
 		entry: Array.isArray(e) ? e[0] : e,
 		options: Array.isArray(e) ? e[1] ?? {} : {}
 	};
 }
-function ji(e) {
+function Ni(e) {
 	return Object.keys(e.options).length === 0 ? e.entry : [e.entry, e.options];
 }
-function Mi(e) {
+function Pi(e) {
 	let { $format: t, ...n } = e;
 	return {
 		...n,
-		$format: Fi(t) ? t : "ICU"
+		$format: Li(t) ? t : "ICU"
 	};
 }
-function Ni(e) {
-	return typeof e == "string" ? !0 : !Array.isArray(e) || typeof e[0] != "string" ? !1 : e.length === 1 || e.length === 2 && Pi(e[1]);
+function Fi(e) {
+	return typeof e == "string" ? !0 : !Array.isArray(e) || typeof e[0] != "string" ? !1 : e.length === 1 || e.length === 2 && Ii(e[1]);
 }
-function Pi(e) {
+function Ii(e) {
 	if (typeof e != "object" || !e || Array.isArray(e)) return !1;
 	let t = e;
-	return (t.$context === void 0 || typeof t.$context == "string") && (t.$format === void 0 || Fi(t.$format)) && (t.$maxChars === void 0 || typeof t.$maxChars == "number");
+	return (t.$context === void 0 || typeof t.$context == "string") && (t.$format === void 0 || Li(t.$format)) && (t.$maxChars === void 0 || typeof t.$maxChars == "number");
 }
-function Fi(e) {
+function Li(e) {
 	return e === "ICU" || e === "I18NEXT" || e === "STRING";
 }
-function Ii(e, t) {
+function Ri(e, t) {
 	for (let t of Object.keys(e)) delete e[t];
 	for (let n of Object.keys(t)) e[n] = t[n];
 }
-function Li(e, t = "") {
+function zi(e, t = "") {
 	for (let [n, r] of Object.entries(e)) {
 		let e = t ? `${t}.${n}` : n;
-		Oi(n, e), U(r) && Li(r, e);
+		Ai(n, e), V(r) && zi(r, e);
 	}
 }
-function Ri(e, t, n = {}) {
+function Bi(e, t, n = {}) {
 	return (r) => (i) => e.translateMany(i, {
 		...n,
 		targetLocale: r
 	}, t);
 }
-function zi(e) {
-	let t = Bi(e);
+function Vi(e) {
+	let t = Hi(e);
 	return async (n) => {
-		n = $n(n, e.customMapping);
+		n = tr(n, e.customMapping);
 		let r = t.replace("[locale]", n), i = await fetch(r);
 		if (!i.ok) throw Error(`Failed to load translations from ${r}`);
 		return await i.json();
 	};
 }
-function Bi(e) {
-	let { cacheUrl: t = ie, projectId: n, _versionId: r, _branchId: i } = e, a = r ? `/${r}` : "", o = i ? `?branchId=${i}` : "";
+function Hi(e) {
+	let { cacheUrl: t = ae, projectId: n, _versionId: r, _branchId: i } = e, a = r ? `/${r}` : "", o = i ? `?branchId=${i}` : "";
 	return `${t}/${n}/[locale]` + a + o;
 }
-function Vi({ type: e, remoteTranslationLoaderParams: t, loadTranslations: n }) {
+function Ui({ type: e, remoteTranslationLoaderParams: t, loadTranslations: n }) {
 	let { cacheUrl: r, projectId: i, _versionId: a, _branchId: o } = t;
 	switch (e) {
 		case "remote":
-		case "gt-remote": return i ? zi({
+		case "gt-remote": return i ? Vi({
 			cacheUrl: r,
 			projectId: i,
 			_versionId: a,
 			_branchId: o,
-			customMapping: H().getCustomMapping()
-		}) : Hi(C({
+			customMapping: B().getCustomMapping()
+		}) : Wi(S({
 			whatHappened: "Loading translations from a remote store needs a projectId. No translations will be loaded.",
 			fix: "Add projectId to the I18nCache config, or set cacheUrl to null to disable translation loading"
 		}));
 		case "custom": return n;
-		case "disabled": return r === null ? async () => ({}) : Hi(C({
+		case "disabled": return r === null ? async () => ({}) : Wi(S({
 			whatHappened: "No translation loader found. No translations will be loaded.",
 			fix: "Add projectId to the I18nCache config (to load from the GT remote store), provide a loadTranslations function, or set cacheUrl to null to disable translation loading"
 		}));
 	}
 }
-function Hi(e) {
+function Wi(e) {
 	let t = !1;
-	return async (n) => (t || (t = !0, V.warn("I18nCache: " + e)), {});
+	return async (n) => (t || (t = !0, z.warn("I18nCache: " + e)), {});
 }
-async function Ui(e, t, n) {
+async function Gi(e, t, n) {
 	let r = e.get(t);
 	r || (r = n(), e.set(t, r));
 	try {
@@ -3284,7 +3285,7 @@ async function Ui(e, t, n) {
 		e.delete(t);
 	}
 }
-var Wi = class {
+var Ki = class {
 	constructor({ load: e, ttl: t }) {
 		this.cache = /* @__PURE__ */ new Map(), this.pendingLoads = /* @__PURE__ */ new Map(), this.loadResource = e, this.ttl = t === null ? -1 : t ?? 6e4;
 	}
@@ -3302,7 +3303,7 @@ var Wi = class {
 		return this.get(e) ?? await this.load(e);
 	}
 	load(e) {
-		return Ui(this.pendingLoads, e, () => this.loadResource(e).then((t) => (this.set(e, t), t)));
+		return Gi(this.pendingLoads, e, () => this.loadResource(e).then((t) => (this.set(e, t), t)));
 	}
 	getExpiresAt() {
 		return this.ttl <= 0 ? this.ttl : Date.now() + this.ttl;
@@ -3310,40 +3311,40 @@ var Wi = class {
 	isExpired(e) {
 		return e.expiresAt === 0 || e.expiresAt > 0 && e.expiresAt < Date.now();
 	}
-}, Gi = {
+}, qi = {
 	maxConcurrentRequests: 100,
 	maxBatchSize: 25,
 	batchInterval: 50
 };
-function Ki(e, t, n = !1) {
+function Ji(e, t, n = !1) {
 	if (e === void 0 || !Number.isFinite(e)) return t;
 	let r = n ? Math.trunc(e) : e;
 	return r > 0 ? r : t;
 }
-function qi(e) {
+function Yi(e) {
 	return {
-		maxConcurrentRequests: Ki(e?.maxConcurrentRequests, Gi.maxConcurrentRequests, !0),
-		maxBatchSize: Ki(e?.maxBatchSize, Gi.maxBatchSize, !0),
-		batchInterval: Ki(e?.batchInterval, Gi.batchInterval)
+		maxConcurrentRequests: Ji(e?.maxConcurrentRequests, qi.maxConcurrentRequests, !0),
+		maxBatchSize: Ji(e?.maxBatchSize, qi.maxBatchSize, !0),
+		batchInterval: Ji(e?.batchInterval, qi.batchInterval)
 	};
 }
-var Ji = class {
+var Xi = class {
 	constructor({ init: e, translateMany: t, onMiss: n, batchConfig: r }) {
-		this.pendingTranslations = /* @__PURE__ */ new Map(), this.queue = [], this.batchTimer = null, this.activeRequests = 0, this.cache = structuredClone(e), this.translateMany = t, this.batchConfig = qi(r), this.onMiss = n;
+		this.pendingTranslations = /* @__PURE__ */ new Map(), this.queue = [], this.batchTimer = null, this.activeRequests = 0, this.cache = structuredClone(e), this.translateMany = t, this.batchConfig = Yi(r), this.onMiss = n;
 	}
 	get(e) {
 		let t = this.getCacheKey(e);
 		return this.cache[t];
 	}
 	async miss(e) {
-		let t = this.getCacheKey(e), n = await Ui(this.pendingTranslations, t, () => this.translate(e));
+		let t = this.getCacheKey(e), n = await Gi(this.pendingTranslations, t, () => this.translate(e));
 		return n != null && this.onMiss?.(t, n), n;
 	}
 	getInternalCache() {
 		return structuredClone(this.cache);
 	}
 	getCacheKey(e) {
-		return Ti(e.message, e.options);
+		return Di(e.message, e.options);
 	}
 	translate(e) {
 		let t = this.enqueueTranslation(e);
@@ -3391,7 +3392,7 @@ var Ji = class {
 	}
 	async sendBatchRequest(e) {
 		this.activeRequests++;
-		let t = Yi(e), n = await this.sendBatchRequestWithErrorHandling(e, t);
+		let t = Zi(e), n = await this.sendBatchRequestWithErrorHandling(e, t);
 		n && this.handleTranslationResponse(e, n), this.activeRequests--;
 	}
 	async sendBatchRequestWithErrorHandling(e, t) {
@@ -3412,27 +3413,27 @@ var Ji = class {
 		}
 	}
 };
-function Yi(e) {
+function Zi(e) {
 	return e.reduce((e, t) => (e[t.key] = {
 		source: t.source,
 		metadata: t.metadata
 	}, e), {});
 }
-var K = class extends Error {
+var W = class extends Error {
 	constructor(e) {
 		super(`I18nCache: source dictionary entry ${e} is not defined`), this.name = "DictionarySourceNotFoundError";
 	}
 };
-async function Xi({ key: e, sourceValue: t, targetValue: n, translateEntry: r }) {
-	if (G(n) !== void 0 || U(n) && !U(t)) return W(n);
-	let i = G(t);
+async function Qi({ key: e, sourceValue: t, targetValue: n, translateEntry: r }) {
+	if (U(n) !== void 0 || V(n) && !V(t)) return H(n);
+	let i = U(t);
 	if (i !== void 0) return await r(e, i);
-	if (!U(t)) throw new K(e);
-	let a = U(n) ? n : {}, o = /* @__PURE__ */ new Set([...Object.keys(t), ...Object.keys(a)]), s = await Promise.all(Array.from(o).map(async (n) => {
+	if (!V(t)) throw new W(e);
+	let a = V(n) ? n : {}, o = /* @__PURE__ */ new Set([...Object.keys(t), ...Object.keys(a)]), s = await Promise.all(Array.from(o).map(async (n) => {
 		let i = e ? `${e}.${n}` : n;
-		Oi(n, i);
+		Ai(n, i);
 		let o = t[n];
-		return o === void 0 ? [n, W(a[n])] : [n, await Xi({
+		return o === void 0 ? [n, H(a[n])] : [n, await Qi({
 			key: i,
 			sourceValue: o,
 			targetValue: a[n],
@@ -3441,59 +3442,59 @@ async function Xi({ key: e, sourceValue: t, targetValue: n, translateEntry: r })
 	}));
 	return Object.fromEntries(s);
 }
-function Zi(e) {
+function $i(e) {
 	return {
 		entry: e.entry,
 		options: structuredClone(e.options)
 	};
 }
-var Qi = class {
+var ea = class {
 	constructor({ init: e, runtimeTranslate: t }) {
 		this.pendingTranslations = /* @__PURE__ */ new Map(), this.pendingMaterializations = /* @__PURE__ */ new Map(), this.cache = structuredClone(e), this.runtimeTranslate = t;
 	}
 	getEntry(e) {
-		let t = G(ki(this.cache, e));
-		if (t !== void 0) return Zi(t);
+		let t = U(ji(this.cache, e));
+		if (t !== void 0) return $i(t);
 	}
 	getValue(e) {
-		let t = ki(this.cache, e);
-		if (t !== void 0) return W(t);
+		let t = ji(this.cache, e);
+		if (t !== void 0) return H(t);
 	}
 	setValue(e, t) {
-		Ai(this.cache, e, W(t));
+		Mi(this.cache, e, H(t));
 	}
 	getInternalCache() {
-		return W(this.cache);
+		return H(this.cache);
 	}
 	update(e) {
-		$i(this.cache, e);
+		ta(this.cache, e);
 	}
-	async materializeValue(e, t, n = ki(this.cache, e)) {
-		return Ui(this.pendingMaterializations, e, () => Xi({
+	async materializeValue(e, t, n = ji(this.cache, e)) {
+		return Gi(this.pendingMaterializations, e, () => Qi({
 			key: e,
 			sourceValue: t,
 			targetValue: n,
-			translateEntry: async (e, t) => ji(await this.materializeEntry(e, t))
+			translateEntry: async (e, t) => Ni(await this.materializeEntry(e, t))
 		}).then((t) => (this.setValue(e, t), t)));
 	}
 	async materializeEntry(e, t) {
-		return Zi(await Ui(this.pendingTranslations, e, () => this.runtimeTranslate(e, t).then((t) => {
-			Ai(this.cache, e, t);
-			let n = G(t);
+		return $i(await Gi(this.pendingTranslations, e, () => this.runtimeTranslate(e, t).then((t) => {
+			Mi(this.cache, e, t);
+			let n = U(t);
 			if (n === void 0) throw Error("DictionaryCache materializeEntry did not return a DictionaryEntry");
-			return Zi(n);
+			return $i(n);
 		})));
 	}
 };
-function $i(e, t) {
+function ta(e, t) {
 	for (let [n, r] of Object.entries(t)) {
 		let t = e[n];
-		U(t) && U(r) ? $i(t, r) : e[n] = W(r);
+		V(t) && V(r) ? ta(t, r) : e[n] = H(r);
 	}
 }
-var ea = 12e3, ta = class {
+var na = 12e3, ra = class {
 	constructor(e) {
-		na(e), this.config = {
+		ia(e), this.config = {
 			projectId: e.projectId,
 			devApiKey: e.devApiKey,
 			apiKey: e.apiKey,
@@ -3504,9 +3505,9 @@ var ea = 12e3, ta = class {
 			runtimeTranslation: e.runtimeTranslation,
 			_versionId: e._versionId
 		};
-		let t = Vi({
+		let t = Ui({
 			loadTranslations: e.loadTranslations,
-			type: si(e),
+			type: li(e),
 			remoteTranslationLoaderParams: {
 				cacheUrl: e.cacheUrl,
 				projectId: e.projectId,
@@ -3514,23 +3515,23 @@ var ea = 12e3, ta = class {
 				_branchId: e._branchId
 			}
 		}), n = e.loadDictionary ?? (() => Promise.resolve({}));
-		this.createTranslateMany = Ri(H().getGTClass(), this.config.runtimeTranslation?.timeout ?? ea, {
+		this.createTranslateMany = Bi(B().getGTClass(), this.config.runtimeTranslation?.timeout ?? na, {
 			...this.config.modelProvider && { modelProvider: this.config.modelProvider },
 			...this.config.runtimeTranslation?.metadata
 		});
 		let r = this.config.cacheExpiryTime;
-		this.translations = new Wi({
+		this.translations = new Ki({
 			ttl: r,
 			load: async (e) => this.createTranslationsCache(e, await t(e))
-		}), this.dictionaries = new Wi({
+		}), this.dictionaries = new Ki({
 			ttl: r,
 			load: async (e) => this.createDictionaryCache(e, await n(e))
 		});
-		let i = H().getDefaultLocale();
+		let i = B().getDefaultLocale();
 		this.dictionaries.set(i, this.createDictionaryCache(i, e.dictionary ?? {}), { expiresAt: -1 });
 	}
 	createTranslationsCache(e, t) {
-		return new Ji({
+		return new Xi({
 			init: t,
 			translateMany: this.createTranslateMany(e),
 			batchConfig: this.config.batchConfig,
@@ -3542,7 +3543,7 @@ var ea = 12e3, ta = class {
 		});
 	}
 	createDictionaryCache(e, t) {
-		return new Qi({
+		return new ea({
 			init: t,
 			runtimeTranslate: (t, n) => this.translateDictionaryEntry(e, t, n)
 		});
@@ -3607,31 +3608,31 @@ var ea = 12e3, ta = class {
 			let r = await this.dictionaries.getOrLoad(n), i = r.getValue(t), a = this.getSourceDictionaryObject(t, { throwOnMissing: !1 });
 			if (a === void 0) {
 				if (i !== void 0) return i;
-				throw new K(t);
+				throw new W(t);
 			}
 			return await r.materializeValue(t, a, i);
 		});
 	}
 	async translateDictionaryEntry(e, t, n) {
-		let r = await this.lookupTranslationWithFallbackResolved(e, n.entry, Mi(n.options));
+		let r = await this.lookupTranslationWithFallbackResolved(e, n.entry, Pi(n.options));
 		if (typeof r != "string") throw Error(`Dictionary entry "${t}" could not be translated into a string. Check the source entry and translation loader output.`);
 		return r;
 	}
 	getSourceDictionaryEntry(e) {
 		let t = this.getDefaultDictionaryCache()?.getEntry(e);
-		if (t === void 0) throw new K(e);
+		if (t === void 0) throw new W(e);
 		return t;
 	}
 	getSourceDictionaryObject(e, { throwOnMissing: t = !0 } = {}) {
 		let n = this.getDefaultDictionaryCache()?.getValue(e);
-		if (n === void 0 && t) throw new K(e);
+		if (n === void 0 && t) throw new W(e);
 		return n;
 	}
 	getDefaultDictionaryCache() {
-		return this.dictionaries.get(H().getDefaultLocale());
+		return this.dictionaries.get(B().getDefaultLocale());
 	}
 	resolveDictionaryCacheLocale(e) {
-		return this._resolveCacheLocale(e) ?? H().getDefaultLocale();
+		return this._resolveCacheLocale(e) ?? B().getDefaultLocale();
 	}
 	lookupTranslation(e, t, n) {
 		return this.guard(void 0, () => {
@@ -3650,9 +3651,9 @@ var ea = 12e3, ta = class {
 			let t = this._resolveCacheLocale(e);
 			if (!t) return (e) => e;
 			let n = await this.translations.getOrLoad(t), r = async (e = []) => {
-				if (process.env.NODE_ENV !== "production" && H().isDevHotReloadEnabled()) {
-					let r = ra(e, t, (e) => this._resolveCacheLocale(e) ?? this._resolveLocale(e));
-					r.length !== e.length && V.warn(`I18nCache: getLookupTranslation(): prefetchEntries must all be the same locale, ignoring all entries that are not for ${t}`), await Promise.allSettled(r.filter((e) => n.get(e) == null).map((e) => n.miss(e)));
+				if (process.env.NODE_ENV !== "production" && B().isDevHotReloadEnabled()) {
+					let r = aa(e, t, (e) => this._resolveCacheLocale(e) ?? this._resolveLocale(e));
+					r.length !== e.length && z.warn(`I18nCache: getLookupTranslation(): prefetchEntries must all be the same locale, ignoring all entries that are not for ${t}`), await Promise.allSettled(r.filter((e) => n.get(e) == null).map((e) => n.miss(e)));
 				}
 			}, i = (e, r = {}) => this.guard(void 0, () => {
 				let { translationLocale: i, options: a } = this.resolveLookupParams(r.$locale ?? t, r);
@@ -3679,19 +3680,19 @@ var ea = 12e3, ta = class {
 		}
 	}
 	handleError(e) {
-		if (e instanceof K) throw e;
-		switch (li()) {
+		if (e instanceof W) throw e;
+		switch (di()) {
 			case "development": throw e;
-			default: V.error("I18nCache: " + e);
+			default: z.error("I18nCache: " + e);
 		}
 	}
 	_resolveLocale(e) {
-		let t = H(), n = t.determineLocale(e);
+		let t = B(), n = t.determineLocale(e);
 		if (!t.isValidLocale(e) || !n) throw Error(`Locale "${e}" is not valid. Use a valid BCP 47 locale code or add a custom mapping.`);
 		return n;
 	}
 	_resolveCacheLocale(e) {
-		let t = this._resolveLocale(e), n = H();
+		let t = this._resolveLocale(e), n = B();
 		if (n.requiresTranslation(t)) return t;
 		let r = n.resolveAliasLocale(n.standardizeLocale(e));
 		if (n.requiresTranslation(r)) return r;
@@ -3722,19 +3723,19 @@ var ea = 12e3, ta = class {
 		}), o;
 	}
 };
-function na(e) {
-	if (e.runtimeUrl && e.runtimeUrl !== "https://api.gtx.dev" && (e.projectId || V.warn("I18nCache: " + C({
+function ia(e) {
+	if (e.runtimeUrl && e.runtimeUrl !== "https://api.gtx.dev" && (e.projectId || z.warn("I18nCache: " + S({
 		whatHappened: "Runtime translation needs a projectId",
 		fix: "Add projectId to the I18nCache config or disable runtime translation"
-	})), !e.devApiKey && !e.apiKey && V.warn("I18nCache: " + C({
+	})), !e.devApiKey && !e.apiKey && z.warn("I18nCache: " + S({
 		whatHappened: "Runtime translation needs devApiKey or apiKey",
 		fix: "Add credentials to the I18nCache config or disable runtime translation"
-	}))), e.loadDictionary && !e.dictionary) throw V.error("I18nCache: " + C({
+	}))), e.loadDictionary && !e.dictionary) throw z.error("I18nCache: " + S({
 		whatHappened: "loadDictionary needs a source dictionary",
 		fix: "Provide dictionary so the default locale has source content"
 	})), Error("Validation errors occurred");
 }
-function ra(e, t, n) {
+function aa(e, t, n) {
 	return e.flatMap((e) => {
 		let r = e.options.$locale;
 		if (r == null) return [e];
@@ -3752,32 +3753,32 @@ function ra(e, t, n) {
 		}
 	});
 }
-function ia(e) {
-	let t = "hash" in e ? e.hash : Ti(e.message, e.options);
+function oa(e) {
+	let t = "hash" in e ? e.hash : Di(e.message, e.options);
 	return `${e.locale}:${t}`;
 }
-var aa = [];
-function oa({ locale: e, enableI18n: t, localesProp: n = aa }) {
-	let r = H().getDefaultLocale();
-	return t && H().requiresTranslation(e) ? [
+var sa = [];
+function ca({ locale: e, enableI18n: t, localesProp: n = sa }) {
+	let r = B().getDefaultLocale();
+	return t && B().requiresTranslation(e) ? [
 		...n,
 		e,
 		r
 	] : [r];
 }
-function q() {
-	return ai();
+function G() {
+	return si();
 }
-function sa(e) {
-	oi(e);
+function la(e) {
+	ci(e);
 }
-var ca = "generaltranslation.locale-reset", la = "server-render", ua = Symbol.for("generaltranslation.react-core.ReactI18nConfig"), da = class extends hi {
+var ua = "generaltranslation.locale-reset", da = "server-render", fa = Symbol.for("generaltranslation.react-core.ReactI18nConfig"), pa = class extends _i {
 	renderStrategy;
 	localeCookieName;
 	regionCookieName;
 	enableI18nCookieName;
-	constructor(e = {}, t = la) {
-		super(e), ma(t), Object.defineProperty(this, ua, { value: !0 }), this.renderStrategy = t, this.localeCookieName = e.localeCookieName ?? "generaltranslation.locale", this.regionCookieName = e.regionCookieName ?? "generaltranslation.region", this.enableI18nCookieName = e.enableI18nCookieName ?? "generaltranslation.enable-i18n";
+	constructor(e = {}, t = da) {
+		super(e), ga(t), Object.defineProperty(this, fa, { value: !0 }), this.renderStrategy = t, this.localeCookieName = e.localeCookieName ?? "generaltranslation.locale", this.regionCookieName = e.regionCookieName ?? "generaltranslation.region", this.enableI18nCookieName = e.enableI18nCookieName ?? "generaltranslation.enable-i18n";
 	}
 	getRenderStrategy() {
 		return this.renderStrategy;
@@ -3795,10 +3796,10 @@ var ca = "generaltranslation.locale-reset", la = "server-render", ua = Symbol.fo
 		return this.runtimeConfig._tagIds === !0;
 	}
 };
-function J() {
-	let e = H();
-	if (ha(e)) return e;
-	throw Error(C({
+function K() {
+	let e = B();
+	if (_a(e)) return e;
+	throw Error(S({
 		source: "@generaltranslation/react-core",
 		severity: "Error",
 		whatHappened: "Cannot read ReactI18nConfig after base I18nConfig setup.",
@@ -3806,15 +3807,15 @@ function J() {
 		fix: "Initialize GT through gt-react or @generaltranslation/react-core/pure."
 	}));
 }
-function fa(e) {
-	xi(e);
-}
-function pa(e = {}, t = la) {
-	let n = new da(e, t);
-	return fa(n), n;
-}
 function ma(e) {
-	if (e !== "SPA" && e !== "server-render") throw Error(C({
+	Ci(e);
+}
+function ha(e = {}, t = da) {
+	let n = new pa(e, t);
+	return ma(n), n;
+}
+function ga(e) {
+	if (e !== "SPA" && e !== "server-render") throw Error(S({
 		source: "@generaltranslation/react-core",
 		severity: "Error",
 		whatHappened: "Invalid React render strategy.",
@@ -3822,90 +3823,90 @@ function ma(e) {
 		fix: "Initialize GT through gt-react or pass a valid render strategy."
 	}));
 }
-function ha(e) {
-	if (e instanceof da) return !0;
+function _a(e) {
+	if (e instanceof pa) return !0;
 	let t = e;
-	return t[ua] === !0 && typeof t.getRenderStrategy == "function" && typeof t.getLocaleCookieName == "function" && typeof t.getRegionCookieName == "function" && typeof t.getEnableI18nCookieName == "function";
+	return t[fa] === !0 && typeof t.getRenderStrategy == "function" && typeof t.getLocaleCookieName == "function" && typeof t.getRegionCookieName == "function" && typeof t.getEnableI18nCookieName == "function";
 }
-var { getConditionStore: ga, setConditionStore: _a, isConditionStoreInitialized: va } = Si(C({
+var { getConditionStore: va, setConditionStore: ya, isConditionStoreInitialized: ba } = wi(S({
 	source: "@generaltranslation/react-core",
 	severity: "Error",
 	whatHappened: "Cannot read GT runtime context before it has been initialized",
 	why: "the internal ConditionStore is unavailable",
 	fix: "Call initializeGT() during setup (gt-next runs this automatically) and add a <GTProvider> at the root of your component tree."
 }));
-function ya({ Currency: e, GtInternalCurrency: t, DateTime: n, GtInternalDateTime: r, Num: i, GtInternalNum: a, RelativeTime: o, GtInternalRelativeTime: s, Var: c, GtInternalVar: l }) {
+function xa({ Currency: e, GtInternalCurrency: t, DateTime: n, GtInternalDateTime: r, Num: i, GtInternalNum: a, RelativeTime: o, GtInternalRelativeTime: s, Var: c, GtInternalVar: l }) {
 	return function({ variableType: u, variableValue: d, variableOptions: f, locales: p, enableI18n: m, injectionType: h }) {
-		let g = {
+		let _ = {
 			_locale: p[0] ?? "en",
 			_enableI18n: m
 		};
 		if (u === "n") {
 			let e = h === "automatic" ? i : a, t = f;
-			return _(e, {
-				...g,
+			return g(e, {
+				..._,
 				options: t,
 				children: d
 			});
 		}
 		if (u === "d") {
 			let e = h === "automatic" ? n : r, t = f;
-			return _(e, {
-				...g,
+			return g(e, {
+				..._,
 				options: t,
 				children: d
 			});
 		}
 		if (u === "c") {
 			let n = h === "automatic" ? e : t, r = f;
-			return _(n, {
-				...g,
+			return g(n, {
+				..._,
 				options: r,
 				children: d
 			});
 		}
 		if (u === "rt") {
 			let e = h === "automatic" ? o : s, t = f;
-			if (typeof d == "number" && t?.unit) return _(e, {
-				...g,
+			if (typeof d == "number" && t?.unit) return g(e, {
+				..._,
 				value: d,
 				unit: t.unit,
 				baseDate: t?.baseDate,
 				options: t
 			});
 			let n = d instanceof Date ? d : typeof d == "string" || typeof d == "number" ? new Date(d) : void 0;
-			return _(e, {
-				...g,
+			return g(e, {
+				..._,
 				date: n && !isNaN(n.getTime()) ? n : void 0,
 				baseDate: t?.baseDate,
 				options: t
 			});
 		}
 		let v = d;
-		return _(h === "automatic" ? l : c, {
-			...g,
+		return g(h === "automatic" ? l : c, {
+			..._,
 			children: v
 		});
 	};
 }
-var ba = {
+var Sa = {
 	variable: "value",
 	number: "n",
 	datetime: "date",
 	currency: "cost",
 	"relative-time": "time"
 };
-function xa(e = {}, t) {
-	return typeof e.name == "string" ? e.name : `_gt_${ba[t] || "value"}_${e["data-_gt"]?.id}`;
+function Ca(e = {}, t) {
+	return typeof e.name == "string" ? e.name : `_gt_${Sa[t] || "value"}_${e["data-_gt"]?.id}`;
 }
-function Sa(e) {
+function wa(e) {
 	return typeof e == "object" && !!e && "data-_gt" in e && typeof e["data-_gt"] == "object" && !!e["data-_gt"] && "transformation" in e["data-_gt"] && e["data-_gt"]?.transformation === "variable";
 }
-function Ca(e) {
+function Ta(e) {
 	let t = e["data-_gt"]?.variableType || "variable";
 	return {
-		variableName: xa(e, t),
-		variableType: tn(t),
+		variableName: Ca(e, t),
+		variableType: nn(t),
 		injectionType: e["data-_gt"]?.injectionType || "manual",
 		variableValue: (() => {
 			if (e.value !== void 0) return e.value;
@@ -3924,19 +3925,19 @@ function Ca(e) {
 		})()
 	};
 }
-function wa(e) {
+function Ea(e) {
 	return e && e.props && e.props["data-_gt"] ? e.props["data-_gt"] : null;
 }
-function Ta(e, t, n) {
+function Da(e, t, n) {
 	let r = "", i = null;
-	return typeof e == "number" && !i && n && (r = $t(e, Object.keys(n).filter(Qt), t)), r && !i && (i = n[r]), i;
+	return typeof e == "number" && !i && n && (r = en(e, Object.keys(n).filter($t), t)), r && !i && (i = n[r]), i;
 }
-function Ea({ renderVariable: t }) {
+function Oa({ renderVariable: t }) {
 	return function({ children: n, defaultLocale: r = "en", enableI18n: i }) {
 		let a = (n) => {
-			let a = wa(n);
-			if (Sa(n.props)) {
-				let { variableType: e, variableValue: a, variableOptions: o, injectionType: s } = Ca(n.props);
+			let a = Ea(n);
+			if (wa(n.props)) {
+				let { variableType: e, variableValue: a, variableOptions: o, injectionType: s } = Ta(n.props);
 				return t({
 					variableType: e,
 					variableValue: a,
@@ -3948,7 +3949,7 @@ function Ea({ renderVariable: t }) {
 			}
 			if (a?.transformation === "plural") {
 				let e = a.branches || {};
-				return typeof n.props.n == "number" ? s(Ta(n.props.n, [r], e) ?? n.props.children) : n.props.children == null ? null : s(n.props.children);
+				return typeof n.props.n == "number" ? s(Da(n.props.n, [r], e) ?? n.props.children) : n.props.children == null ? null : s(n.props.children);
 			}
 			if (a?.transformation === "branch") {
 				let { children: e, branch: t } = n.props, r = a.branches || {}, i = t == null || t === "" ? void 0 : t.toString();
@@ -3969,17 +3970,17 @@ function Ea({ renderVariable: t }) {
 		return s(n);
 	};
 }
-function Da({ renderVariable: t }) {
-	let n = Ea({ renderVariable: t });
+function ka({ renderVariable: t }) {
+	let n = Oa({ renderVariable: t });
 	function r({ sourceElement: t, targetElement: r, locales: a = ["en"], enableI18n: o }) {
 		let { props: s } = t, c = s["data-_gt"], l = c?.transformation, u = r.d, d = {};
-		if (u && Object.entries(un).forEach(([e, t]) => {
+		if (u && Object.entries(dn).forEach(([e, t]) => {
 			u[e] && (d[t] = u[e]);
 		}), l === "plural") {
 			let e = t.props.n;
 			return typeof e == "number" ? i({
-				source: Ta(e, a, c.branches || {}) ?? t.props.children,
-				target: Ta(e, a, r.d?.b || {}) ?? r.c,
+				source: Da(e, a, c.branches || {}) ?? t.props.children,
+				target: Da(e, a, r.d?.b || {}) ?? r.c,
 				locales: a,
 				enableI18n: o
 			}) : n({
@@ -4031,19 +4032,19 @@ function Da({ renderVariable: t }) {
 		if (Array.isArray(a) && !Array.isArray(i) && i && (i = [i]), Array.isArray(i) && Array.isArray(a)) {
 			let n = {}, c = {}, l = {}, u = i.filter((t) => {
 				if (e.isValidElement(t)) {
-					if (Sa(t.props)) {
-						let { variableName: e, variableValue: r, variableOptions: i, injectionType: a } = Ca(t.props);
+					if (wa(t.props)) {
+						let { variableName: e, variableValue: r, variableOptions: i, injectionType: a } = Ta(t.props);
 						n[e] = r, c[e] = i, l[e] = a;
 					} else return !0;
 				}
 				return !1;
 			}), d = (e) => u.find((t) => {
-				let n = wa(t);
+				let n = Ea(t);
 				return n?.id !== void 0 && n.id === e.i;
 			}) || u.shift();
 			return a.map((i, a) => {
-				if (typeof i == "string") return _(e.Fragment, { children: i }, `string_${a}`);
-				if (Wt(i)) return _(e.Fragment, { children: t({
+				if (typeof i == "string") return g(e.Fragment, { children: i }, `string_${a}`);
+				if (Gt(i)) return g(e.Fragment, { children: t({
 					variableType: i.v || "v",
 					variableValue: n[i.k],
 					variableOptions: c[i.k],
@@ -4052,7 +4053,7 @@ function Da({ renderVariable: t }) {
 					injectionType: l[i.k] || "manual"
 				}) }, `var_${a}`);
 				let u = d(i);
-				return u ? _(e.Fragment, { children: r({
+				return u ? g(e.Fragment, { children: r({
 					sourceElement: u,
 					targetElement: i,
 					locales: o,
@@ -4061,7 +4062,7 @@ function Da({ renderVariable: t }) {
 			});
 		}
 		if (a && typeof a == "object" && !Array.isArray(a)) {
-			let n = Wt(a) ? "variable" : "element";
+			let n = Gt(a) ? "variable" : "element";
 			if (e.isValidElement(i)) {
 				if (n === "element") return r({
 					sourceElement: i,
@@ -4069,8 +4070,8 @@ function Da({ renderVariable: t }) {
 					locales: o,
 					enableI18n: s
 				});
-				if (Sa(i.props)) {
-					let { variableValue: e, variableOptions: n, variableType: r, injectionType: a } = Ca(i.props);
+				if (wa(i.props)) {
+					let { variableValue: e, variableOptions: n, variableType: r, injectionType: a } = Ta(i.props);
 					return t({
 						variableType: r,
 						variableValue: e,
@@ -4090,32 +4091,32 @@ function Da({ renderVariable: t }) {
 	}
 	return i;
 }
-function Oa() {
-	let e = H();
+function Aa() {
+	let e = B();
 	return typeof e.isIdTaggingEnabled == "function" && e.isIdTaggingEnabled();
 }
-function ka(...e) {
-	if (!Oa()) return;
-	let t = Ti(...e);
+function ja(...e) {
+	if (!Aa()) return;
+	let t = Di(...e);
 	return e[1].$_hash = t, t;
 }
-var Aa = { display: "contents" }, ja = globalThis.navigator?.product === "ReactNative";
-function Ma(e) {
+var Ma = { display: "contents" }, Na = globalThis.navigator?.product === "ReactNative";
+function Pa(e) {
 	if (e == null || typeof e == "boolean" || e === "") return !0;
-	if (Array.isArray(e)) return !e.some((e) => !Ma(e));
+	if (Array.isArray(e)) return !e.some((e) => !Pa(e));
 	if (o(e) && e.type === n) {
 		let t = e.props.children;
-		return t == null || Ma(t);
+		return t == null || Pa(t);
 	}
 	return !1;
 }
-function Na(e, t) {
-	return ja || !Oa() ? e : o(e) && typeof e.type == "string" ? r(e, { "data-_gt-hash": t }) : Ma(e) ? e : a("span", {
+function Fa(e, t) {
+	return Na || !Aa() ? e : o(e) && typeof e.type == "string" ? r(e, { "data-_gt-hash": t }) : Pa(e) ? e : a("span", {
 		"data-_gt-hash": t,
-		style: Aa
+		style: Ma
 	}, e);
 }
-function Pa({ renderDefaultChildren: e, renderTranslatedChildren: t }) {
+function Ia({ renderDefaultChildren: e, renderTranslatedChildren: t }) {
 	function n({ taggedSourceChildren: e, targetJsxChildren: t, locale: n, defaultLocale: a, enableI18n: o, shouldTranslate: s, hash: c }) {
 		let l = !s || t == null ? r({
 			taggedSourceChildren: e,
@@ -4127,7 +4128,7 @@ function Pa({ renderDefaultChildren: e, renderTranslatedChildren: t }) {
 			locales: [n, a],
 			enableI18n: o
 		});
-		return c ? Na(l, c) : l;
+		return c ? Fa(l, c) : l;
 	}
 	function r({ taggedSourceChildren: t, defaultLocale: n, enableI18n: r }) {
 		return e({
@@ -4146,68 +4147,68 @@ function Pa({ renderDefaultChildren: e, renderTranslatedChildren: t }) {
 	}
 	return n;
 }
-function Fa(e) {
-	let t = ya(e), n = Ea({ renderVariable: t }), r = Da({ renderVariable: t });
+function La(e) {
+	let t = xa(e), n = Oa({ renderVariable: t }), r = ka({ renderVariable: t });
 	return {
 		renderVariable: t,
 		renderDefaultChildren: n,
 		renderTranslatedChildren: r,
-		renderPreparedT: Pa({
+		renderPreparedT: Ia({
 			renderDefaultChildren: n,
 			renderTranslatedChildren: r
 		})
 	};
 }
-var Ia = class extends ta {};
-function La(e) {
-	pa(e, "server-render"), sa(new Ia(e));
+var Ra = class extends ra {};
+function za(e) {
+	ha(e, "server-render"), la(new Ra(e));
 }
-var Ra = B({
+var Ba = R({
 	namespace: "reactCore",
 	key: "i18nStore",
 	source: "@generaltranslation/react-core",
-	notInitialized: () => Ba()
-}), za = Ra.get;
-Ra.set, Ra.isInitialized;
-function Ba() {
-	let e = C({
+	notInitialized: () => Ha()
+}), Va = Ba.get;
+Ba.set, Ba.isInitialized;
+function Ha() {
+	let e = S({
 		source: "@generaltranslation/react-core",
 		severity: "Error",
 		whatHappened: "Cannot access I18nStore before it is initialized.",
-		fix: J().getRenderStrategy() === "SPA" ? "Initialize GT before reading GT runtime context." : "Add a <GTProvider> at the root of your component tree."
+		fix: K().getRenderStrategy() === "SPA" ? "Initialize GT before reading GT runtime context." : "Add a <GTProvider> at the root of your component tree."
 	});
 	return Error(e);
 }
-function Va(e, t) {
+function q(e, t) {
 	return e.add(t), () => {
 		e.delete(t);
 	};
 }
-function Ha(e, t) {
-	let n = t.options.$_hash ?? Ti(t.message, t.options);
+function Ua(e, t) {
+	let n = t.options.$_hash ?? Di(t.message, t.options);
 	return e?.[t.locale]?.[n];
 }
-function Ua(e, t) {
-	return G(Ga(e, t));
-}
 function Wa(e, t) {
-	return Ga(e, t);
+	return U(Ka(e, t));
 }
-function Ga(e, { locale: t, id: n }) {
+function Ga(e, t) {
+	return Ka(e, t);
+}
+function Ka(e, { locale: t, id: n }) {
 	let r = e?.[t];
 	if (!r) return;
 	if (!n) return r;
 	let i = r;
 	for (let e of n.split(".")) {
-		if (!Ka(e) || !U(i) || !Object.prototype.hasOwnProperty.call(i, e)) return;
+		if (!qa(e) || !V(i) || !Object.prototype.hasOwnProperty.call(i, e)) return;
 		i = i[e];
 	}
 	return i;
 }
-function Ka(e) {
+function qa(e) {
 	return e !== "__proto__" && e !== "constructor" && e !== "prototype";
 }
-function qa(e) {
+function Ja(e) {
 	if (e instanceof Error) return `${e.name}|${e.message}`;
 	if (typeof e == "object" && e) try {
 		return `object|${JSON.stringify(e)}`;
@@ -4216,39 +4217,39 @@ function qa(e) {
 	}
 	return `${typeof e}|${String(e)}`;
 }
-var Ja = class {
+var Ya = class {
 	translateListeners = /* @__PURE__ */ new Set();
 	dictionaryEntryListeners = /* @__PURE__ */ new Set();
 	dictionaryObjectListeners = /* @__PURE__ */ new Set();
 	loggedRuntimeTranslationErrors = /* @__PURE__ */ new Set();
 	constructor() {}
 	updateTranslations = (e) => {
-		q().updateTranslations(e);
+		G().updateTranslations(e);
 	};
 	updateDictionaries = (e) => {
-		q().updateDictionaries(e);
+		G().updateDictionaries(e);
 	};
-	translate = async (e) => q().lookupTranslationWithFallback(e.locale, e.message, e.options).then(() => {
+	translate = async (e) => G().lookupTranslationWithFallback(e.locale, e.message, e.options).then(() => {
 		this.emitTranslateEvent(e);
 	}).catch((e) => this.logRuntimeTranslationError(e));
 	translateDictionaryEntry = (e) => {
-		q().lookupDictionaryWithFallback(e.locale, e.id).then(() => {
+		G().lookupDictionaryWithFallback(e.locale, e.id).then(() => {
 			this.emitDictionaryEvent(e);
 		}).catch((e) => this.logRuntimeTranslationError(e));
 	};
 	translateDictionaryObject = (e) => {
-		q().lookupDictionaryObjWithFallback(e.locale, e.id).then(() => {
+		G().lookupDictionaryObjWithFallback(e.locale, e.id).then(() => {
 			this.emitDictionaryEvent(e);
 		}).catch((e) => this.logRuntimeTranslationError(e));
 	};
 	logRuntimeTranslationError(e) {
-		let t = re(e), n = qa(e);
+		let t = ie(e), n = Ja(e);
 		if (!this.loggedRuntimeTranslationErrors.has(n)) {
 			if (this.loggedRuntimeTranslationErrors.add(n), this.loggedRuntimeTranslationErrors.size > 100) {
 				let e = this.loggedRuntimeTranslationErrors.values().next().value;
 				e !== void 0 && this.loggedRuntimeTranslationErrors.delete(e);
 			}
-			console.error(C({
+			console.error(S({
 				source: "@generaltranslation/react-core",
 				severity: "Error",
 				whatHappened: "A runtime translation request failed.",
@@ -4258,17 +4259,17 @@ var Ja = class {
 		}
 	}
 	subscribeToTranslate = (e, t) => {
-		let n = ia(e);
-		return Va(this.translateListeners, (e) => {
-			ia(e) === n && t();
+		let n = oa(e);
+		return q(this.translateListeners, (e) => {
+			oa(e) === n && t();
 		});
 	};
-	subscribeToTranslationEvents = (e) => Va(this.translateListeners, e);
-	subscribeToDictionaryEntryEvents = (e) => Va(this.dictionaryEntryListeners, e);
-	subscribeToDictionaryObjectEvents = (e) => Va(this.dictionaryObjectListeners, e);
-	getTranslateSnapshot = (e, t = {}) => Ha(t, e) ?? q().lookupTranslation(e.locale, e.message, e.options);
-	getDictionaryEntrySnapshot = (e, t = {}) => Ua(t, e) ?? q().lookupDictionary(e.locale, e.id);
-	getDictionaryObjectSnapshot = (e, t = {}) => Wa(t, e) ?? q().lookupDictionaryObj(e.locale, e.id);
+	subscribeToTranslationEvents = (e) => q(this.translateListeners, e);
+	subscribeToDictionaryEntryEvents = (e) => q(this.dictionaryEntryListeners, e);
+	subscribeToDictionaryObjectEvents = (e) => q(this.dictionaryObjectListeners, e);
+	getTranslateSnapshot = (e, t = {}) => Ua(t, e) ?? G().lookupTranslation(e.locale, e.message, e.options);
+	getDictionaryEntrySnapshot = (e, t = {}) => Wa(t, e) ?? G().lookupDictionary(e.locale, e.id);
+	getDictionaryObjectSnapshot = (e, t = {}) => Ga(t, e) ?? G().lookupDictionaryObj(e.locale, e.id);
 	emitTranslateEvent(e) {
 		this.translateListeners.forEach((t) => t(e));
 	}
@@ -4278,18 +4279,18 @@ var Ja = class {
 		});
 	}
 };
-function Ya({ i18nConfigParams: e, nextI18nCacheParams: t } = cn()) {
-	La({
+function Xa({ i18nConfigParams: e, nextI18nCacheParams: t } = ln()) {
+	za({
 		...e,
 		...t,
 		cacheExpiryTime: null
 	});
 }
-var Xa = B({
+var Za = R({
 	namespace: "reactCore",
 	key: "gtContext",
 	source: "@generaltranslation/react-core",
-	notInitialized: () => C({
+	notInitialized: () => S({
 		source: "@generaltranslation/react-core",
 		severity: "Error",
 		whatHappened: "Cannot read GTContext before it has been initialized",
@@ -4297,16 +4298,16 @@ var Xa = B({
 		fix: "Add a <GTProvider> at the root of your component tree."
 	})
 });
-function Za() {
-	return Xa.isInitialized() || Xa.set(i(void 0)), Xa.get();
-}
 function Qa() {
-	let e = c(Za());
-	if (e || J().getRenderStrategy() === "SPA") return e;
-	throw Error($a());
+	return Za.isInitialized() || Za.set(i(void 0)), Za.get();
 }
 function $a() {
-	return C({
+	let e = c(Qa());
+	if (e || K().getRenderStrategy() === "SPA") return e;
+	throw Error(eo());
+}
+function eo() {
+	return S({
 		source: "@generaltranslation/react-core",
 		severity: "Error",
 		whatHappened: "GT runtime context could not be read",
@@ -4314,48 +4315,48 @@ function $a() {
 		fix: "Add a <GTProvider> at the root of your component tree."
 	});
 }
-function eo() {
-	return Qa()?.conditionStore ?? ga();
+function to() {
+	return $a()?.conditionStore ?? va();
+}
+function J() {
+	return to().getLocale();
 }
 function Y() {
-	return eo().getLocale();
-}
-function X() {
-	return eo().getEnableI18n();
-}
-function to() {
-	return f(() => H().getDefaultLocale(), []);
+	return to().getEnableI18n();
 }
 function no() {
-	let e = X(), t = Y();
-	return e && H().requiresTranslation(t);
+	return f(() => B().getDefaultLocale(), []);
 }
 function ro() {
-	return Qa()?.i18nStore || za();
+	let e = Y(), t = J();
+	return e && B().requiresTranslation(t);
 }
 function io() {
-	return Qa()?.translationsSnapshot || {};
+	return $a()?.i18nStore || Va();
 }
-var ao = () => {};
-function oo() {
-	return ao;
+function ao() {
+	return $a()?.translationsSnapshot || {};
 }
+var oo = () => {};
 function so() {
-	return co(no());
+	return oo;
 }
-function co(e) {
-	let t = Qa()?.onMissingTranslation, n = uo(e);
+function co() {
+	return lo(ro());
+}
+function lo(e) {
+	let t = $a()?.onMissingTranslation, n = fo(e);
 	return s((e) => {
-		t ? t(e) : n(ia(e), {
+		t ? t(e) : n(oa(e), {
 			type: "translation",
 			lookup: e
 		});
 	}, [t, n]);
 }
-var lo = process.env.NODE_ENV === "production" ? oo : so;
+var uo = process.env.NODE_ENV === "production" ? so : co;
 process.env.NODE_ENV, process.env.NODE_ENV, process.env.NODE_ENV;
-function uo(e) {
-	let t = process.env.NODE_ENV !== "production" && H().isDevHotReloadEnabled(), n = ro(), r = /* @__PURE__ */ new Map();
+function fo(e) {
+	let t = process.env.NODE_ENV !== "production" && B().isDevHotReloadEnabled(), n = io(), r = /* @__PURE__ */ new Map();
 	return l(() => {
 		!t || !e || r.size === 0 || r.forEach(({ type: e, lookup: t }) => {
 			switch (e) {
@@ -4377,12 +4378,12 @@ function uo(e) {
 		r.set(e, t);
 	};
 }
-function fo({ _enableI18n: e, _locale: t, children: n, currency: r = "USD", options: i = {}, locales: a = [] }) {
-	let o = oa({
+function po({ _enableI18n: e, _locale: t, children: n, currency: r = "USD", options: i = {}, locales: a = [] }) {
+	let o = ca({
 		locale: t,
 		enableI18n: e,
 		localesProp: a
-	}), s = H().getGTClass();
+	}), s = B().getGTClass();
 	if (n == null) return null;
 	let c = typeof n == "string" ? parseFloat(n) : n;
 	return s.formatCurrency(c, r, {
@@ -4390,45 +4391,45 @@ function fo({ _enableI18n: e, _locale: t, children: n, currency: r = "USD", opti
 		...i
 	});
 }
-function po({ _enableI18n: e, _locale: t, ...n }) {
-	return fo({
+function mo({ _enableI18n: e, _locale: t, ...n }) {
+	return po({
 		...n,
-		_enableI18n: e ?? X(),
-		_locale: t ?? Y()
+		_enableI18n: e ?? Y(),
+		_locale: t ?? J()
 	});
 }
-function mo(e) {
-	return _(po, { ...e });
+function ho(e) {
+	return g(mo, { ...e });
 }
-po._gtt = "variable-currency-automatic", mo._gtt = "variable-currency";
-function ho({ _enableI18n: e, _locale: t, children: n, options: r = {}, locales: i = [] }) {
-	let a = oa({
+mo._gtt = "variable-currency-automatic", ho._gtt = "variable-currency";
+function go({ _enableI18n: e, _locale: t, children: n, options: r = {}, locales: i = [] }) {
+	let a = ca({
 		locale: t,
 		enableI18n: e,
 		localesProp: i
-	}), o = H().getGTClass();
+	}), o = B().getGTClass();
 	return n == null ? null : o.formatDateTime(n, {
 		locales: a,
 		...r
 	}).replace(/[\u200F\u202B\u202E]/g, "");
 }
-function go({ _enableI18n: e, _locale: t, ...n }) {
-	return ho({
+function _o({ _enableI18n: e, _locale: t, ...n }) {
+	return go({
 		...n,
-		_enableI18n: e ?? X(),
-		_locale: t ?? Y()
+		_enableI18n: e ?? Y(),
+		_locale: t ?? J()
 	});
 }
-function _o(e) {
-	return _(go, { ...e });
+function vo(e) {
+	return g(_o, { ...e });
 }
-go._gtt = "variable-datetime-automatic", _o._gtt = "variable-datetime";
-function vo({ _enableI18n: e, _locale: t, children: n, options: r = {}, locales: i = [] }) {
-	let a = oa({
+_o._gtt = "variable-datetime-automatic", vo._gtt = "variable-datetime";
+function yo({ _enableI18n: e, _locale: t, children: n, options: r = {}, locales: i = [] }) {
+	let a = ca({
 		locale: t,
 		enableI18n: e,
 		localesProp: i
-	}), o = H().getGTClass();
+	}), o = B().getGTClass();
 	if (n == null) return null;
 	let s = typeof n == "string" ? parseFloat(n) : n;
 	return o.formatNum(s, {
@@ -4436,23 +4437,23 @@ function vo({ _enableI18n: e, _locale: t, children: n, options: r = {}, locales:
 		...r
 	});
 }
-function yo({ _enableI18n: e, _locale: t, ...n }) {
-	return vo({
+function bo({ _enableI18n: e, _locale: t, ...n }) {
+	return yo({
 		...n,
-		_enableI18n: e ?? X(),
-		_locale: t ?? Y()
+		_enableI18n: e ?? Y(),
+		_locale: t ?? J()
 	});
 }
-function bo(e) {
-	return _(yo, { ...e });
+function xo(e) {
+	return g(bo, { ...e });
 }
-yo._gtt = "variable-number-automatic", bo._gtt = "variable-number";
-function xo({ _enableI18n: e, _locale: t, date: n, children: r, value: i, unit: a, baseDate: o, locales: s = [], options: c = {} }) {
-	let l = oa({
+bo._gtt = "variable-number-automatic", xo._gtt = "variable-number";
+function So({ _enableI18n: e, _locale: t, date: n, children: r, value: i, unit: a, baseDate: o, locales: s = [], options: c = {} }) {
+	let l = ca({
 		locale: t,
 		enableI18n: e,
 		localesProp: s
-	}), u = H().getGTClass(), d = n ?? r;
+	}), u = B().getGTClass(), d = n ?? r;
 	return process.env.NODE_ENV === "development" && i !== void 0 && !a && console.warn("<RelativeTime>: `value` was provided without `unit`. The `value` prop will be ignored."), i !== void 0 && a ? u.formatRelativeTime(i, a, {
 		locales: l,
 		numeric: c.numeric,
@@ -4466,44 +4467,44 @@ function xo({ _enableI18n: e, _locale: t, date: n, children: r, value: i, unit: 
 		localeMatcher: c.localeMatcher
 	});
 }
-function So({ _enableI18n: e, _locale: t, ...n }) {
-	return xo({
+function Co({ _enableI18n: e, _locale: t, ...n }) {
+	return So({
 		...n,
-		_enableI18n: e ?? X(),
-		_locale: t ?? Y()
+		_enableI18n: e ?? Y(),
+		_locale: t ?? J()
 	});
 }
-function Co(e) {
-	return _(So, { ...e });
+function wo(e) {
+	return g(Co, { ...e });
 }
-So._gtt = "variable-relative-time-automatic", Co._gtt = "variable-relative-time";
-function wo({ children: e }) {
+Co._gtt = "variable-relative-time-automatic", wo._gtt = "variable-relative-time";
+function To({ children: e }) {
 	return e;
 }
-function To({ children: e }) {
-	return wo({ children: e });
-}
 function Eo({ children: e }) {
-	return wo({ children: e });
+	return To({ children: e });
 }
-To._gtt = "variable-variable", Eo._gtt = "variable-variable-automatic";
-function Do(e) {
-	let t = ro(), n = io(), r = lo(), i = h((n) => t.subscribeToTranslate(e, n), () => t.getTranslateSnapshot(e, n), () => t.getTranslateSnapshot(e, n));
-	return process.env.NODE_ENV !== "production" && i == null && H().isDevHotReloadEnabled() && r(e), i;
+function Do({ children: e }) {
+	return To({ children: e });
 }
-var { renderVariable: Oo, renderDefaultChildren: ko, renderTranslatedChildren: Ao, renderPreparedT: jo } = Fa({
-	Currency: mo,
-	GtInternalCurrency: po,
-	DateTime: _o,
-	GtInternalDateTime: go,
-	Num: bo,
-	GtInternalNum: yo,
-	RelativeTime: Co,
-	GtInternalRelativeTime: So,
-	Var: To,
-	GtInternalVar: Eo
+Eo._gtt = "variable-variable", Do._gtt = "variable-variable-automatic";
+function Oo(e) {
+	let t = io(), n = ao(), r = uo(), i = h((n) => t.subscribeToTranslate(e, n), () => t.getTranslateSnapshot(e, n), () => t.getTranslateSnapshot(e, n));
+	return process.env.NODE_ENV !== "production" && i == null && B().isDevHotReloadEnabled() && r(e), i;
+}
+var { renderVariable: ko, renderDefaultChildren: Ao, renderTranslatedChildren: jo, renderPreparedT: Mo } = La({
+	Currency: ho,
+	GtInternalCurrency: mo,
+	DateTime: vo,
+	GtInternalDateTime: _o,
+	Num: xo,
+	GtInternalNum: bo,
+	RelativeTime: wo,
+	GtInternalRelativeTime: Co,
+	Var: Eo,
+	GtInternalVar: Do
 });
-function Mo(t, n = 0) {
+function No(t, n = 0) {
 	let r = n, i = (e) => {
 		let { type: t, props: n } = e;
 		r += 1;
@@ -4517,11 +4518,11 @@ function Mo(t, n = 0) {
 		if (a) {
 			let e = a.split("-");
 			if ((e[1] === "automatic" || e[2] === "automatic") && (i.injectionType = "automatic"), e[0] === "translate" && (e[0] = "fragment"), e[0] === "variable" && (i.variableType = e?.[1] || "variable"), e[0] === "plural") {
-				let e = Object.entries(n).reduce((e, [t, n]) => (Qt(t) && (e[t] = Mo(n, r)), e), {});
+				let e = Object.entries(n).reduce((e, [t, n]) => ($t(t) && (e[t] = No(n, r)), e), {});
 				Object.keys(e).length && (i.branches = e);
 			}
 			if (e[0] === "branch") {
-				let { children: e, branch: t, ...a } = n, o = Object.fromEntries(Object.entries(a).filter(([e]) => !e.startsWith("data-"))), s = Object.entries(o).reduce((e, [t, n]) => (e[t] = Mo(n, r), e), {});
+				let { children: e, branch: t, ...a } = n, o = Object.fromEntries(Object.entries(a).filter(([e]) => !e.startsWith("data-"))), s = Object.entries(o).reduce((e, [t, n]) => (e[t] = No(n, r), e), {});
 				Object.keys(s).length && (i.branches = s);
 			}
 			i.transformation = e[0];
@@ -4543,36 +4544,36 @@ function Mo(t, n = 0) {
 	}
 	return c(t);
 }
-function No(e) {
-	return Io(e, 0);
+function Po(e) {
+	return Lo(e, 0);
 }
-function Po(e, t) {
-	let { type: n, props: i } = e, a = Lo(n);
+function Fo(e, t) {
+	let { type: n, props: i } = e, a = Ro(n);
 	if (typeof i != "object" || !i) return e;
 	if (a) {
 		let { componentType: n, injectionType: o } = a;
 		if (n === "variable") return e;
-		if (n === "branch") return r(e, { ...Object.entries(i).reduce((e, [n, r]) => (e[n] = n !== "branch" && !n.startsWith("data-") ? Fo(r, t) : r, e), {}) });
-		if (n === "plural") return r(e, { ...Object.entries(i).reduce((e, [n, r]) => (e[n] = Qt(n) || n === "children" ? Fo(r, t) : r, e), {}) });
+		if (n === "branch") return r(e, { ...Object.entries(i).reduce((e, [n, r]) => (e[n] = n !== "branch" && !n.startsWith("data-") ? Io(r, t) : r, e), {}) });
+		if (n === "plural") return r(e, { ...Object.entries(i).reduce((e, [n, r]) => (e[n] = $t(n) || n === "children" ? Io(r, t) : r, e), {}) });
 		if (n === "derive") return r(e, {
 			...i,
-			..."children" in i && { children: Io(i.children, t + 1) }
+			..."children" in i && { children: Lo(i.children, t + 1) }
 		});
-		if (n === "translate" && o === "automatic" && t > 0) return "children" in i ? Io(i.children, t) : void 0;
-		n === "translate" && o === "automatic" && console.warn(Ro);
+		if (n === "translate" && o === "automatic" && t > 0) return "children" in i ? Lo(i.children, t) : void 0;
+		n === "translate" && o === "automatic" && console.warn(zo);
 	}
 	return r(e, {
 		...i,
-		..."children" in i && { children: Io(i.children, t) }
+		..."children" in i && { children: Lo(i.children, t) }
 	});
 }
-function Fo(e, t) {
-	return o(e) ? Po(e, t) : e;
+function Io(e, t) {
+	return o(e) ? Fo(e, t) : e;
 }
-function Io(e, n) {
-	return Array.isArray(e) ? t.map(e, (e) => Fo(e, n)) : Fo(e, n);
+function Lo(e, n) {
+	return Array.isArray(e) ? t.map(e, (e) => Io(e, n)) : Io(e, n);
 }
-function Lo(e) {
+function Ro(e) {
 	let t = typeof e == "function" && "_gtt" in e ? e._gtt : void 0;
 	if (t == null || typeof t != "string") return;
 	let n = t.split("-");
@@ -4581,11 +4582,11 @@ function Lo(e) {
 		injectionType: n[1] === "automatic" || n[2] === "automatic" ? "automatic" : "manual"
 	};
 }
-var Ro = "'@generaltranslation/react-core Warning: A <_T> component was found injected outside of a <Derive> boundary. This may affect translation resolution for this component.";
-function zo(t) {
+var zo = "'@generaltranslation/react-core Warning: A <_T> component was found injected outside of a <Derive> boundary. This may affect translation resolution for this component.";
+function Bo(t) {
 	return e.isValidElement(t);
 }
-var Bo = (e) => {
+var Vo = (e) => {
 	if (!e) return "";
 	let { type: t, props: n } = e;
 	if (t && typeof t == "function") {
@@ -4593,15 +4594,15 @@ var Bo = (e) => {
 		if ("name" in t && typeof t.name == "string" && t.name) return t.name;
 	}
 	return t && typeof t == "string" ? t : n.href ? "a" : n["data-_gt"]?.id ? `C${n["data-_gt"].id}` : "function";
-}, Vo = (e, t, n) => {
-	let r = Object.entries(un).reduce((e, [n, r]) => {
+}, Ho = (e, t, n) => {
+	let r = Object.entries(dn).reduce((e, [n, r]) => {
 		let i = t[r];
 		return typeof i == "string" && (e[n] = i), e;
 	}, {});
 	if ((e === "plural" || e === "branch") && n) {
 		let t = {};
 		Object.entries(n).forEach(([e, n]) => {
-			t[e] = Wo(n);
+			t[e] = Go(n);
 		}), r = {
 			...r,
 			b: t,
@@ -4609,49 +4610,49 @@ var Bo = (e) => {
 		};
 	}
 	return Object.keys(r).length ? r : void 0;
-}, Ho = (e) => {
-	let { props: t } = e, n = { t: Bo(e) };
+}, Uo = (e) => {
+	let { props: t } = e, n = { t: Vo(e) };
 	if (t["data-_gt"]) {
 		let e = t["data-_gt"], r = e.transformation;
 		if (r === "variable") {
-			let n = e.variableType || "variable", r = xa(t, n), i = tn(n);
+			let n = e.variableType || "variable", r = Ca(t, n), i = nn(n);
 			return {
 				i: e.id,
 				k: r,
 				v: i
 			};
 		}
-		n.i = e.id, n.d = Vo(r, t, e.branches);
+		n.i = e.id, n.d = Ho(r, t, e.branches);
 	}
-	return t.children && (n.c = Wo(t.children)), n;
-}, Uo = (e) => zo(e) ? Ho(e) : typeof e == "number" ? e.toString() : e;
-function Wo(e) {
-	return Array.isArray(e) ? e.map(Uo) : Uo(e);
+	return t.children && (n.c = Go(t.children)), n;
+}, Wo = (e) => Bo(e) ? Uo(e) : typeof e == "number" ? e.toString() : e;
+function Go(e) {
+	return Array.isArray(e) ? e.map(Wo) : Wo(e);
 }
-function Go({ sourceChildren: e, params: t, locale: n }) {
-	let r = Ko(e), i = qo(r), a = Jo({
-		options: Yo(t),
+function Ko({ sourceChildren: e, params: t, locale: n }) {
+	let r = qo(e), i = Jo(r), a = Yo({
+		options: Xo(t),
 		locale: n
 	});
-	return ka(i, a), {
+	return ja(i, a), {
 		taggedSourceChildren: r,
 		sourceJsxChildren: i,
 		targetOptions: a
 	};
 }
-function Ko(e) {
-	return Mo(No(e));
-}
 function qo(e) {
-	return Wo(e);
+	return No(Po(e));
 }
-function Jo({ options: e, locale: t }) {
+function Jo(e) {
+	return Go(e);
+}
+function Yo({ options: e, locale: t }) {
 	return {
 		...e,
 		$locale: t
 	};
 }
-function Yo(e) {
+function Xo(e) {
 	return {
 		...e,
 		$format: "JSX",
@@ -4662,14 +4663,14 @@ function Yo(e) {
 		$requiresReview: e.$requiresReview ?? e.requiresReview
 	};
 }
-function Xo({ sourceChildren: e, params: t, _locale: n, _enableI18n: r }) {
-	let i = Y(), a = X(), o = to(), s = n ?? i, c = r ?? a;
+function Zo({ sourceChildren: e, params: t, _locale: n, _enableI18n: r }) {
+	let i = J(), a = Y(), o = no(), s = n ?? i, c = r ?? a;
 	return {
 		defaultLocale: o,
 		enableI18n: c,
 		locale: s,
-		shouldTranslate: c && H().requiresTranslation(s),
-		...f(() => Go({
+		shouldTranslate: c && B().requiresTranslation(s),
+		...f(() => Ko({
 			sourceChildren: e,
 			params: t,
 			locale: s
@@ -4680,22 +4681,22 @@ function Xo({ sourceChildren: e, params: t, _locale: n, _enableI18n: r }) {
 		])
 	};
 }
-function Zo(e) {
-	return Qo(e);
+function Qo(e) {
+	return $o(e);
 }
-Zo._gtt = "translate-client";
-function Qo({ children: e, _locale: t, _enableI18n: n, _renderPreparedT: r = jo, ...i }) {
-	let { defaultLocale: a, locale: o, enableI18n: s, targetOptions: c, taggedSourceChildren: l, sourceJsxChildren: u, shouldTranslate: d } = Xo({
+Qo._gtt = "translate-client";
+function $o({ children: e, _locale: t, _enableI18n: n, _renderPreparedT: r = Mo, ...i }) {
+	let { defaultLocale: a, locale: o, enableI18n: s, targetOptions: c, taggedSourceChildren: l, sourceJsxChildren: u, shouldTranslate: d } = Zo({
 		sourceChildren: e,
 		params: i,
 		_locale: t,
 		_enableI18n: n
-	}), f = Do({
+	}), f = Oo({
 		locale: o,
 		message: u,
 		options: c
 	}), m = p(null);
-	if (process.env.NODE_ENV !== "production" && H().isDevHotReloadEnabled() && f == null && m.current != null && d) return m.current;
+	if (process.env.NODE_ENV !== "production" && B().isDevHotReloadEnabled() && f == null && m.current != null && d) return m.current;
 	let h = r({
 		taggedSourceChildren: l,
 		targetJsxChildren: f,
@@ -4707,8 +4708,8 @@ function Qo({ children: e, _locale: t, _enableI18n: n, _renderPreparedT: r = jo,
 	});
 	return m.current = h, h;
 }
-var $o = Za();
-function es({ children: e, translations: t, dictionaries: n, conditionStore: r, i18nStore: i, onMissingTranslation: a, onMissingDictionaryEntry: o, onMissingDictionaryObj: s }) {
+var es = Qa();
+function ts({ children: e, translations: t, dictionaries: n, conditionStore: r, i18nStore: i, onMissingTranslation: a, onMissingDictionaryEntry: o, onMissingDictionaryObj: s }) {
 	let c = f(() => ({
 		translationsSnapshot: t,
 		dictionariesSnapshot: n ?? {},
@@ -4732,51 +4733,51 @@ function es({ children: e, translations: t, dictionaries: n, conditionStore: r, 
 		t,
 		n,
 		i
-	]), _($o.Provider, {
+	]), g(es.Provider, {
 		value: c,
 		children: e
 	});
 }
-function Z({ cookieName: e }) {
-	if (!(typeof document > "u")) return Ei(document.cookie, e);
+function X({ cookieName: e }) {
+	if (!(typeof document > "u")) return Oi(document.cookie, e);
 }
-function Q({ cookieName: e, value: t }) {
+function Z({ cookieName: e, value: t }) {
 	typeof document > "u" || (document.cookie = `${e}=${t};path=/`);
 }
-function ts(e) {
-	let t = [], n = Z({ cookieName: e });
+function ns(e) {
+	let t = [], n = X({ cookieName: e });
 	n && t.push(n);
 	let r = navigator?.languages || [];
 	return t.push(...r), t;
 }
-var ns = class {
+var rs = class {
 	constructor(e) {
-		this.getLocale = () => rs(this.customGetLocale), this.setLocale = (e) => {
-			this.updateLocale(e), Q({
-				cookieName: ca,
+		this.getLocale = () => is(this.customGetLocale), this.setLocale = (e) => {
+			this.updateLocale(e), Z({
+				cookieName: ua,
 				value: "true"
 			}), this.reload();
-		}, this.getRegion = () => Z({ cookieName: J().getRegionCookieName() }) || this.customGetRegion?.(), this.setRegion = (e) => {
+		}, this.getRegion = () => X({ cookieName: K().getRegionCookieName() }) || this.customGetRegion?.(), this.setRegion = (e) => {
 			this.updateRegion(e), this.reload();
 		}, this.getEnableI18n = () => {
-			let e = Z({ cookieName: J().getEnableI18nCookieName() });
+			let e = X({ cookieName: K().getEnableI18nCookieName() });
 			return e === void 0 ? this.customGetEnableI18n?.() ?? !0 : e === "true";
 		}, this.setEnableI18n = (e) => {
 			this.updateEnableI18n(e), this.reload();
 		}, this.updateLocale = (e) => {
-			let t = J();
-			Q({
+			let t = K();
+			Z({
 				cookieName: t.getLocaleCookieName(),
 				value: t.resolveSupportedLocale(e)
 			});
 		}, this.updateRegion = (e) => {
-			Q({
-				cookieName: J().getRegionCookieName(),
+			Z({
+				cookieName: K().getRegionCookieName(),
 				value: e ?? ""
 			});
 		}, this.updateEnableI18n = (e) => {
-			Q({
-				cookieName: J().getEnableI18nCookieName(),
+			Z({
+				cookieName: K().getEnableI18nCookieName(),
 				value: e ? "true" : "false"
 			});
 		}, this.reload = () => {
@@ -4787,25 +4788,25 @@ var ns = class {
 			};
 			this.customReload(e);
 		};
-		let t = J();
-		this.customReload = e._reload ?? (() => typeof window < "u" ? window.location.reload() : void 0), this.customGetLocale = e._getLocale, this.customGetRegion = e._getRegion, this.customGetEnableI18n = e._getEnableI18n, Q({
+		let t = K();
+		this.customReload = e._reload ?? (() => typeof window < "u" ? window.location.reload() : void 0), this.customGetLocale = e._getLocale, this.customGetRegion = e._getRegion, this.customGetEnableI18n = e._getEnableI18n, Z({
 			cookieName: t.getLocaleCookieName(),
 			value: t.resolveSupportedLocale(e.locale)
-		}), e.region !== void 0 && Q({
+		}), e.region !== void 0 && Z({
 			cookieName: t.getRegionCookieName(),
 			value: e.region
 		}), this.updateEnableI18n(e.enableI18n ?? !0);
 	}
 };
-function rs(e) {
-	let t = J(), n = ts(t.getLocaleCookieName());
+function is(e) {
+	let t = K(), n = ns(t.getLocaleCookieName());
 	return e && n.push(e()), t.resolveSupportedLocale(n);
 }
-function is(e) {
+function as(e) {
 	let t = e.trim();
 	return t ? /[.!?)]$/.test(t) ? t : `${t}.` : "";
 }
-function $(e) {
+function Q(e) {
 	let t = e.trim(), n = t.length;
 	for (; n > 0;) {
 		let e = t[n - 1];
@@ -4814,100 +4815,149 @@ function $(e) {
 	}
 	return t.slice(0, n);
 }
-function as(e) {
+function os(e) {
 	if (!e) return "";
 	let t = Array.isArray(e) ? e.join(", ") : e;
-	return t.trim() ? is(`Details: ${t}`) : "";
+	return t.trim() ? as(`Details: ${t}`) : "";
 }
-function os({ source: e, severity: t, whatHappened: n, reassurance: r, why: i, fix: a, wayOut: o, details: s, docsUrl: c }) {
-	let l = e ? t ? `${e} ${t}:` : `${e}:` : t ? `${t}:` : "", u = i ? `${$(n)} because ${$(i)}` : n, d = !!a && !!o && /^[a-z]/.test($(o)), f = [
+function ss({ source: e, severity: t, whatHappened: n, reassurance: r, why: i, fix: a, wayOut: o, details: s, docsUrl: c }) {
+	let l = e ? t ? `${e} ${t}:` : `${e}:` : t ? `${t}:` : "", u = i ? `${Q(n)} because ${Q(i)}` : n, d = !!a && !!o && /^[a-z]/.test(Q(o)), f = [
 		u,
 		r,
-		d ? `${$(a)}, or ${$(o)}` : a,
+		d ? `${Q(a)}, or ${Q(o)}` : a,
 		d ? void 0 : o,
-		as(s)
-	].filter((e) => !!e).map(is);
+		os(s)
+	].filter((e) => !!e).map(as);
 	c && f.push(`Learn more: ${c}`);
 	let p = f.join(" ");
 	return l ? `${l} ${p}` : p;
 }
-var ss = os({
+var cs = ss({
 	source: "gt-react",
 	severity: "Error",
 	whatHappened: "Cannot read GT runtime context before it has been initialized",
 	why: "the internal ConditionStore singleton is unavailable",
 	fix: "Call initializeGT() (or initializeGTSPA() in SPA apps) before rendering and add a <GTProvider> at the root of your component tree."
-}), { setConditionStore: cs, isConditionStoreInitialized: ls } = Si(ss), { getConditionStore: us, setConditionStore: ds, isConditionStoreInitialized: fs } = Si(ss);
-function ps(e) {
-	let t = ms(e), n = hs(e), r = gs(e);
-	if (fs()) {
-		let e = us();
+}), { setConditionStore: ls, isConditionStoreInitialized: us } = wi(cs), { getConditionStore: ds, setConditionStore: fs, isConditionStoreInitialized: ps } = wi(cs);
+function ms(e) {
+	let t = hs(e), n = gs(e), r = _s(e);
+	if (ps()) {
+		let e = ds();
 		return e.updateLocale(t), n !== void 0 && e.updateRegion(n), e.updateEnableI18n(r), e;
 	}
-	let i = new ns({
+	let i = new rs({
 		...e,
 		locale: t,
 		region: n,
 		enableI18n: r
 	});
-	return ds(i), i;
+	return fs(i), i;
 }
-function ms({ _getLocale: e, locale: t }) {
-	let n = J(), r = [];
-	return t && r.push(...Array.isArray(t) ? t : [t]), e && r.push(e()), r.push(...ts(n.getLocaleCookieName())), n.resolveSupportedLocale(r);
+function hs({ _getLocale: e, locale: t }) {
+	let n = K(), r = [];
+	return t && r.push(...Array.isArray(t) ? t : [t]), e && r.push(e()), r.push(...ns(n.getLocaleCookieName())), n.resolveSupportedLocale(r);
 }
-function hs({ _getRegion: e, region: t }) {
-	return Z({ cookieName: J().getRegionCookieName() }) || e?.() || t;
+function gs({ _getRegion: e, region: t }) {
+	return X({ cookieName: K().getRegionCookieName() }) || e?.() || t;
 }
-function gs({ enableI18n: e, _getEnableI18n: t }) {
+function _s({ enableI18n: e, _getEnableI18n: t }) {
 	if (e !== void 0) return e;
-	let n = Z({ cookieName: J().getEnableI18nCookieName() });
+	let n = X({ cookieName: K().getEnableI18nCookieName() });
 	return n === void 0 ? t?.() ?? !0 : n === "true";
 }
-function _s(e) {
-	let t = f(() => ps(e), [
+function vs(e) {
+	let t = f(() => ms(e), [
 		e.locale,
 		e.region,
 		e.enableI18n,
 		e._reload
 	]), n = p(null);
-	return n.current ??= new Ja(), _(es, {
+	return n.current ??= new Ya(), g(ts, {
 		...e,
 		conditionStore: t,
 		i18nStore: n.current
 	});
 }
-Ya();
-function vs() {
+Xa();
+var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/components/pages/settings/ProfileSection.tsx";
+function ys() {
 	let e = u(), t = u();
 	return v("section", {
 		className: "rounded-lg border border-border bg-card p-6",
-		children: [_("h2", {
+		children: [v("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: _(Zo, { children: "Profile" })
-		}), v("div", {
+			children: v(Qo, { children: "Profile" }, void 0, !1, {
+				fileName: $,
+				lineNumber: 11,
+				columnNumber: 9
+			}, this)
+		}, void 0, !1, {
+			fileName: $,
+			lineNumber: 10,
+			columnNumber: 7
+		}, this), v("div", {
 			className: "space-y-4",
-			children: [v("div", { children: [_("label", {
+			children: [v("div", { children: [v("label", {
 				htmlFor: e,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: _(Zo, { children: "Display Name" })
-			}), _("input", {
+				children: v(Qo, { children: "Display Name" }, void 0, !1, {
+					fileName: $,
+					lineNumber: 19,
+					columnNumber: 13
+				}, this)
+			}, void 0, !1, {
+				fileName: $,
+				lineNumber: 15,
+				columnNumber: 11
+			}, this), v("input", {
 				id: e,
 				defaultValue: "John Developer",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			})] }), v("div", { children: [_("label", {
+			}, void 0, !1, {
+				fileName: $,
+				lineNumber: 21,
+				columnNumber: 11
+			}, this)] }, void 0, !0, {
+				fileName: $,
+				lineNumber: 14,
+				columnNumber: 9
+			}, this), v("div", { children: [v("label", {
 				htmlFor: t,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: _(Zo, { children: "Email" })
-			}), _("input", {
+				children: v(Qo, { children: "Email" }, void 0, !1, {
+					fileName: $,
+					lineNumber: 32,
+					columnNumber: 13
+				}, this)
+			}, void 0, !1, {
+				fileName: $,
+				lineNumber: 28,
+				columnNumber: 11
+			}, this), v("input", {
 				id: t,
 				defaultValue: "john@example.com",
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-			})] })]
-		})]
-	});
+			}, void 0, !1, {
+				fileName: $,
+				lineNumber: 34,
+				columnNumber: 11
+			}, this)] }, void 0, !0, {
+				fileName: $,
+				lineNumber: 27,
+				columnNumber: 9
+			}, this)]
+		}, void 0, !0, {
+			fileName: $,
+			lineNumber: 13,
+			columnNumber: 7
+		}, this)]
+	}, void 0, !0, {
+		fileName: $,
+		lineNumber: 9,
+		columnNumber: 5
+	}, this);
 }
-function ys() {
+function bs() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -4921,32 +4971,54 @@ function ys() {
 		}
 	}
 }
-function bs(e, t) {
+function xs(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function xs({ children: e, locale: t }) {
+var Ss = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/components/AppProviders.tsx";
+function Cs({ children: e, locale: t }) {
 	let [n] = m(() => typeof performance < "u" ? performance.now() : 0);
 	return d(() => {
-		bs("AppRoot", n);
+		xs("AppRoot", n);
 	}, [n]), l(() => {
 		document.documentElement.lang = t;
 	}, [t]), l(() => {
-		ys();
-	}, []), _(g, { children: e });
+		bs();
+	}, []), v(_, { children: e }, void 0, !1, {
+		fileName: Ss,
+		lineNumber: 33,
+		columnNumber: 10
+	}, this);
 }
-var Ss = "en";
-function Cs({ children: e }) {
-	return _(_s, {
-		locale: Ss,
-		children: _(xs, {
-			locale: Ss,
+var ws = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/scripts/Wrapper.tsx", Ts = "en";
+function Es({ children: e }) {
+	return v(vs, {
+		locale: Ts,
+		children: v(Cs, {
+			locale: Ts,
 			children: e
-		})
-	});
+		}, void 0, !1, {
+			fileName: ws,
+			lineNumber: 14,
+			columnNumber: 7
+		}, this)
+	}, void 0, !1, {
+		fileName: ws,
+		lineNumber: 13,
+		columnNumber: 5
+	}, this);
 }
-function ws() {
-	return _(Cs, { children: _(vs, {}) });
+var Ds = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-static/gt-next-app/components/pages/settings/ProfileSection.wrapper.tsx";
+function Os() {
+	return v(Es, { children: v(ys, {}, void 0, !1, {
+		fileName: Ds,
+		lineNumber: 9,
+		columnNumber: 11
+	}, this) }, void 0, !1, {
+		fileName: Ds,
+		lineNumber: 8,
+		columnNumber: 9
+	}, this);
 }
-export { ws as default };
+export { Os as default };
