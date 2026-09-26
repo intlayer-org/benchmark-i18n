@@ -2811,6 +2811,7 @@
       "name": "vite-svelte-intlayer-compat-svelte-i18n-static",
       "version": "0.0.0",
       "dependencies": {
+        "@intlayer/svelte-i18n": "^9.5.10",
         "@tailwindcss/vite": "^4.3.3",
         "intlayer": "^9.5.10",
         "lucide-svelte": "^1.0.1",
@@ -3597,6 +3598,8 @@
     "@intlayer/react-i18next": ["@intlayer/react-i18next@9.5.10", "", { "dependencies": { "@intlayer/config": "9.5.10", "@intlayer/core": "9.5.10", "@intlayer/engine": "9.5.10", "@intlayer/i18next": "9.5.10", "@intlayer/types": "9.5.10", "react-intlayer": "9.5.10", "vite-intlayer": "9.5.10" }, "peerDependencies": { "i18next": ">=20.0.0", "react": ">=16.0.0", "react-dom": ">=16.0.0", "react-i18next": ">=11.0.0", "vite": ">=4.0.0" }, "optionalPeers": ["vite"] }, "sha512-1UC7/Mmmfgf7X3wI0p//X05UrEeOcXljvIRoxSHFsKGTOQF2JWcoM1jNnvMhox3NsOgqK18cl5DlYqJov/rh0A=="],
 
     "@intlayer/svelte-compiler": ["@intlayer/svelte-compiler@9.5.10", "", { "dependencies": { "@babel/core": "8.0.1", "@intlayer/types": "9.5.10", "fast-glob": "3.3.3", "magic-string": "1.2.3" }, "peerDependencies": { "svelte": ">=4.0.0 || >=5.0.0", "vite": ">=4.0.0" }, "optionalPeers": ["svelte"] }, "sha512-dQq+A8t+qgaC3AJNm2aHCunMlxlDtKVU35mY5EWD3OgL57vMjdLbj6tomIiXI8/iYkGwysMmoZHjS03rTjr+Hw=="],
+
+    "@intlayer/svelte-i18n": ["@intlayer/svelte-i18n@9.5.10", "", { "dependencies": { "@intlayer/config": "9.5.10", "@intlayer/core": "9.5.10", "@intlayer/dictionaries-entry": "9.5.10", "@intlayer/engine": "9.5.10", "@intlayer/types": "9.5.10", "svelte-intlayer": "9.5.10", "vite-intlayer": "9.5.10" }, "peerDependencies": { "svelte": ">=5.0.0", "svelte-i18n": ">=4.0.1", "vite": ">=4.0.0" }, "optionalPeers": ["svelte-i18n", "vite"] }, "sha512-SLgPfmna7s7kOuJgb4vbGyHlwhXNdf67zi/nLTNIZZOyG4PuvxegWxSl4DO6y6Hv96giO5j3dJJMuHBv9mg42g=="],
 
     "@intlayer/swc": ["@intlayer/swc@9.5.10", "", {}, "sha512-2AObOS8ovTaRS+fLNYjBld1lLhg7QujQwn+zkCRe4kICe5YDQ2JPVtHptX47JHA0qc2Cwsjpj27Xy5QenFqxsA=="],
 
