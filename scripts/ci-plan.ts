@@ -9,8 +9,14 @@
  *
  * An app is affected when:
  *   - a file inside its directory changed
- *   - a shared input changed (test-utils, root package.json, turbo.json, CI files)
+ *   - a shared input changed (test-utils, turbo.json, CI files)
  *   - bun.lock changed a package it installs, directly or transitively
+ *
+ * Changes that cannot move a number are ignored: docs (IGNORED_FILES), root
+ * package.json scripts/workspaces/metadata (NON_BUILD_ROOT_FIELDS; dependency
+ * fields are covered by the bun.lock check), and lock changes confined to
+ * lint/type tooling (NON_BUILD_DEP). A lock change in the root workspace's own
+ * tree re-runs every app, since apps resolve hoisted root packages.
  *
  * Usage:
  *   bun scripts/ci-plan.ts --base <sha> [--head <sha>]
@@ -39,12 +45,14 @@ type App = {
 
 const SHARED_INPUTS = [
   "test-utils/",
-  "package.json",
   "turbo.json",
   "bunfig.toml",
   ".github/workflows/benchmark.yml",
   "scripts/ci-plan.ts",
 ];
+
+// Files that are never read by a build or a test.
+const IGNORED_FILES = /(\.md|(^|\/)LICENSE|(^|\/)\.gitignore)$/;
 
 const DEP_FIELDS = [
   "dependencies",
@@ -52,6 +60,27 @@ const DEP_FIELDS = [
   "optionalDependencies",
   "peerDependencies",
 ];
+
+// CI runs each app's own scripts, so root scripts and workspace globs cannot
+// change a result; root dependencies are compared through bun.lock instead.
+const NON_BUILD_ROOT_FIELDS = new Set([
+  ...DEP_FIELDS,
+  "scripts",
+  "workspaces",
+  "name",
+  "version",
+  "description",
+  "author",
+  "license",
+  "main",
+  "private",
+  "keywords",
+  "repository",
+]);
+
+// Lint, format and type-only tooling: never part of a build's output.
+const NON_BUILD_DEP =
+  /^(eslint|eslint-.*|@eslint\/.*|@next\/eslint-.*|typescript-eslint|@typescript-eslint\/.*|@types\/.*|@biomejs\/.*|prettier|prettier-.*|turbo)$/;
 
 // Apps that cannot build without a secret the current run does not have.
 const SECRET_GATED: Record<string, string> = {
@@ -72,7 +101,9 @@ const parseLockfile = (text: string): Lockfile =>
   JSON.parse(text.replace(/,(\s*[}\]])/g, "$1"));
 
 const depNames = (fields: Record<string, any> | undefined) =>
-  DEP_FIELDS.flatMap((field) => Object.keys(fields?.[field] ?? {}));
+  DEP_FIELDS.flatMap((field) => Object.keys(fields?.[field] ?? {})).filter(
+    (dep) => !NON_BUILD_DEP.test(dep),
+  );
 
 /** "@scope/a/b" → ["@scope/a", "b"] */
 const splitKey = (key: string) => {
@@ -104,30 +135,70 @@ const entryDeps = (lock: Lockfile, entry: LockEntry) => {
   );
 };
 
-/** Every lock entry a workspace installs, as key → serialized entry. */
-const resolvedEntries = (lock: Lockfile, path: string) => {
-  const entries = new Map<string, string>();
+/**
+ * Every dependency edge a workspace installs, as
+ * "<parent name@version> > <dep> = <serialized resolved entry>". Parents are
+ * named by package identity, not lock key, so a hoisting reshuffle caused by another
+ * app (`zod` moving to `@tanstack/router-plugin/zod` at the same version) does
+ * not count as a change.
+ */
+const resolvedEdges = (lock: Lockfile, path: string) => {
+  const edges = new Set<string>();
   const workspace = lock.workspaces[path];
-  if (!workspace) return entries;
+  if (!workspace) return edges;
 
-  const queue: [string[], string][] = depNames(workspace).map((dep) => [
-    [workspace.name],
-    dep,
-  ]);
+  const visited = new Set<string>();
+  const queue: [string[], string, string][] = depNames(workspace).map(
+    (dep) => [[workspace.name], dep, workspace.name],
+  );
   while (queue.length > 0) {
-    const [from, dep] = queue.pop()!;
+    const [from, dep, parent] = queue.pop()!;
     const key = resolveKey(lock, from, dep);
-    if (!key || entries.has(key)) continue;
+    if (!key) continue;
     const entry = lock.packages[key];
-    entries.set(key, JSON.stringify(entry));
+    edges.add(`${parent} > ${dep} = ${JSON.stringify(entry)}`);
+    if (visited.has(key)) continue;
+    visited.add(key);
     const segments = splitKey(key);
-    for (const next of entryDeps(lock, entry)) queue.push([segments, next]);
+    for (const next of entryDeps(lock, entry)) {
+      queue.push([segments, next, entry[0]]);
+    }
   }
-  return entries;
+  return edges;
 };
 
-const sameEntries = (a: Map<string, string>, b: Map<string, string>) =>
-  a.size === b.size && [...a].every(([key, value]) => b.get(key) === value);
+const sameEdges = (a: Set<string>, b: Set<string>) =>
+  a.size === b.size && [...a].every((edge) => b.has(edge));
+
+/** A workspace's declared dependencies, without lint/type tooling. */
+const buildDeps = (workspace: Record<string, any> | undefined) =>
+  JSON.stringify(
+    DEP_FIELDS.map((field) =>
+      Object.entries(workspace?.[field] ?? {}).filter(
+        ([dep]) => !NON_BUILD_DEP.test(dep),
+      ),
+    ),
+  );
+
+const sameWorkspaceTree = (before: Lockfile, after: Lockfile, path: string) =>
+  buildDeps(before.workspaces[path]) === buildDeps(after.workspaces[path]) &&
+  sameEdges(resolvedEdges(before, path), resolvedEdges(after, path));
+
+/** Root package.json fields that can change a build, e.g. overrides. */
+const rootBuildFields = (text: string) =>
+  JSON.stringify(
+    Object.entries(JSON.parse(text))
+      .filter(([field]) => !NON_BUILD_ROOT_FIELDS.has(field))
+      .sort(([a], [b]) => a.localeCompare(b)),
+  );
+
+const showFile = (rev: string, file: string) => {
+  try {
+    return git("show", `${rev}:${file}`);
+  } catch {
+    return "{}";
+  }
+};
 
 const head = getArg("--head");
 // Read the lockfile at --head so past ranges can be planned from any checkout.
@@ -178,7 +249,8 @@ const selectAffected = (): { apps: App[]; reason: string } => {
 
   const changedFiles = git("diff", "--name-only", `${base}...${head ?? "HEAD"}`)
     .split("\n")
-    .filter(Boolean);
+    .filter((file) => file && !IGNORED_FILES.test(file));
+  const mergeBase = git("merge-base", base, head ?? "HEAD").trim();
 
   const sharedChange = changedFiles.find((file) =>
     SHARED_INPUTS.some((input) =>
@@ -189,6 +261,14 @@ const selectAffected = (): { apps: App[]; reason: string } => {
     return { apps, reason: `shared input changed: ${sharedChange}` };
   }
 
+  if (
+    changedFiles.includes("package.json") &&
+    rootBuildFields(showFile(mergeBase, "package.json")) !==
+      rootBuildFields(showFile(head ?? "HEAD", "package.json"))
+  ) {
+    return { apps, reason: "root package.json build fields changed" };
+  }
+
   const affected = new Set<string>();
   for (const app of apps) {
     if (changedFiles.some((file) => file.startsWith(`${app.path}/`))) {
@@ -197,21 +277,12 @@ const selectAffected = (): { apps: App[]; reason: string } => {
   }
 
   if (changedFiles.includes("bun.lock")) {
-    const mergeBase = git("merge-base", base, head ?? "HEAD").trim();
     const before = parseLockfile(git("show", `${mergeBase}:bun.lock`));
+    if (!sameWorkspaceTree(before, lock, "")) {
+      return { apps, reason: "root workspace dependencies changed in bun.lock" };
+    }
     for (const app of apps) {
-      const workspaceChanged =
-        JSON.stringify(before.workspaces[app.path]) !==
-        JSON.stringify(lock.workspaces[app.path]);
-      if (
-        workspaceChanged ||
-        !sameEntries(
-          resolvedEntries(before, app.path),
-          resolvedEntries(lock, app.path),
-        )
-      ) {
-        affected.add(app.name);
-      }
+      if (!sameWorkspaceTree(before, lock, app.path)) affected.add(app.name);
     }
   }
 
