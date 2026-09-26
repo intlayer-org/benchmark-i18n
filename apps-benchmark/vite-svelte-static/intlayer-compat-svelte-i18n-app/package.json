@@ -1,0 +1,46 @@
+{
+  "name": "vite-svelte-intlayer-compat-svelte-i18n-static",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "scripts": {
+    "dev": "bun x --bun vite dev --port 3000",
+    "build": "bun x --bun vite build",
+    "preview": "bun x --bun vite preview --port 4173",
+    "test": "bun run build && playwright test pages.test.ts && bun run test:components && playwright test rendering.test.ts && playwright test reactivity.test.ts && bun run test:lib-size",
+    "test:components": "bun scripts/measure-svelte-components.ts",
+    "test:lib-size": "bun scripts/measure-lib-size.ts",
+    "test:pages": "playwright test pages.test.ts",
+    "test:reactivity": "playwright test reactivity.test.ts",
+    "test:rendering": "playwright test rendering.test.ts",
+    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
+    "test:content": "playwright test content-consistency.test.ts"
+  },
+  "dependencies": {
+    "@intlayer/svelte-i18n": "^9.5.10",
+    "@tailwindcss/vite": "^4.3.3",
+    "intlayer": "^9.5.10",
+    "lucide-svelte": "^1.0.1",
+    "svelte-i18n": "^4.0.1",
+    "svelte-intlayer": "^9.5.10",
+    "tailwindcss": "^4.3.3",
+    "test-utils": "workspace:*"
+  },
+  "devDependencies": {
+    "@intlayer/sync-json-plugin": "^9.5.10",
+    "@playwright/test": "^1.63.0",
+    "@sveltejs/vite-plugin-svelte": "^7.3.0",
+    "@tailwindcss/typography": "^0.5.20",
+    "@tsconfig/svelte": "^5.0.8",
+    "@types/node": "^26",
+    "bun": "^1.4.2",
+    "svelte": "^5.57.0",
+    "svelte-check": "^4.7.6",
+    "typescript": "~7.0.2",
+    "vite": "^8.2.2",
+    "vite-intlayer": "^9.5.10"
+  }
+}

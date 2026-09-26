@@ -2807,6 +2807,33 @@
         "vite-intlayer": "^9.5.10",
       },
     },
+    "apps-benchmark/vite-svelte-static/intlayer-compat-svelte-i18n-app": {
+      "name": "vite-svelte-intlayer-compat-svelte-i18n-static",
+      "version": "0.0.0",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "intlayer": "^9.5.10",
+        "lucide-svelte": "^1.0.1",
+        "svelte-i18n": "^4.0.1",
+        "svelte-intlayer": "^9.5.10",
+        "tailwindcss": "^4.3.3",
+        "test-utils": "workspace:*",
+      },
+      "devDependencies": {
+        "@intlayer/sync-json-plugin": "^9.5.10",
+        "@playwright/test": "^1.63.0",
+        "@sveltejs/vite-plugin-svelte": "^7.3.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@tsconfig/svelte": "^5.0.8",
+        "@types/node": "^26",
+        "bun": "^1.4.2",
+        "svelte": "^5.57.0",
+        "svelte-check": "^4.7.6",
+        "typescript": "~7.0.2",
+        "vite": "^8.2.2",
+        "vite-intlayer": "^9.5.10",
+      },
+    },
     "apps-benchmark/vite-svelte-static/paraglide-js-app": {
       "name": "vite-svelte-paraglide-js-static",
       "version": "0.0.0",
@@ -6116,6 +6143,8 @@
     "vite-svelte-i18n-dynamic": ["vite-svelte-i18n-dynamic@workspace:apps-benchmark/vite-svelte-dynamic/svelte-i18n-app"],
 
     "vite-svelte-i18n-static": ["vite-svelte-i18n-static@workspace:apps-benchmark/vite-svelte-static/svelte-i18n-app"],
+
+    "vite-svelte-intlayer-compat-svelte-i18n-static": ["vite-svelte-intlayer-compat-svelte-i18n-static@workspace:apps-benchmark/vite-svelte-static/intlayer-compat-svelte-i18n-app"],
 
     "vite-svelte-intlayer-dynamic": ["vite-svelte-intlayer-dynamic@workspace:apps-benchmark/vite-svelte-dynamic/svelte-intlayer-app"],
 

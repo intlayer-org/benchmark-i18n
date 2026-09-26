@@ -522,10 +522,10 @@ _Generated: 2026-09-26_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 35.4 KB | 50.0% | 0.0% | 6.5 KB | 1.1 ms | — | 11.0 ms | 3.2 ms |
-| Dynamic | 🔶 | 28.3 KB | 0.0% | 0.0% | 8.3 KB | 5.8 ms | — | 9.6 ms | 3.2 ms |
-| Scoped Static | ↳ Static | 35.4 KB | 50.0% | 0.0% | 6.5 KB | 1.1 ms | — | 11.0 ms | 3.2 ms |
-| Scoped Dynamic | ↳ Dynamic | 28.3 KB | 0.0% | 0.0% | 8.3 KB | 5.8 ms | — | 9.6 ms | 3.2 ms |
+| Static | ✅ | 35.4 KB | 50.0% | 0.0% | 6.5 KB | 1.2 ms | — | 10.6 ms | 3.4 ms |
+| Dynamic | 🔶 | 28.3 KB | 0.0% | 0.0% | 8.3 KB | 5.3 ms | — | 9.3 ms | 3.1 ms |
+| Scoped Static | ↳ Static | 35.4 KB | 50.0% | 0.0% | 6.5 KB | 1.2 ms | — | 10.6 ms | 3.4 ms |
+| Scoped Dynamic | ↳ Dynamic | 28.3 KB | 0.0% | 0.0% | 8.3 KB | 5.3 ms | — | 9.3 ms | 3.1 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -569,7 +569,7 @@ _Generated: 2026-09-26_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 1.2 ms | 0.8 ms | 2.8 ms | 0.0 ms |
+| `en` | 1.6 ms | 0.9 ms | 4.1 ms | 0.0 ms |
 | `fr` | 0.9 ms | 0.7 ms | 1.4 ms | 0.0 ms |
 
 </details>
@@ -579,8 +579,8 @@ _Generated: 2026-09-26_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 11.1 ms | 3.1 ms | 1.3 ms |
-| `fr` | 11.0 ms | 3.4 ms | 1.4 ms |
+| `en` | 11.3 ms | 3.6 ms | 1.3 ms |
+| `fr` | 9.9 ms | 3.1 ms | 1.2 ms |
 
 </details>
 
@@ -626,8 +626,8 @@ _Generated: 2026-09-26_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 6.1 ms | 4.7 ms | 10.5 ms | 0.0 ms |
-| `fr` | 5.5 ms | 4.5 ms | 6.9 ms | 0.0 ms |
+| `en` | 4.7 ms | 3.7 ms | 6.4 ms | 0.0 ms |
+| `fr` | 5.9 ms | 4.5 ms | 8.6 ms | 0.0 ms |
 
 </details>
 
@@ -636,8 +636,8 @@ _Generated: 2026-09-26_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 9.5 ms | 3.3 ms | 1.2 ms |
-| `fr` | 9.6 ms | 3.1 ms | 1.2 ms |
+| `en` | 9.7 ms | 3.2 ms | 1.2 ms |
+| `fr` | 8.8 ms | 3.1 ms | 1.4 ms |
 
 </details>
 
@@ -683,7 +683,7 @@ _Generated: 2026-09-26_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 1.2 ms | 0.8 ms | 2.8 ms | 0.0 ms |
+| `en` | 1.6 ms | 0.9 ms | 4.1 ms | 0.0 ms |
 | `fr` | 0.9 ms | 0.7 ms | 1.4 ms | 0.0 ms |
 
 </details>
@@ -693,8 +693,8 @@ _Generated: 2026-09-26_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 11.1 ms | 3.1 ms | 1.3 ms |
-| `fr` | 11.0 ms | 3.4 ms | 1.4 ms |
+| `en` | 11.3 ms | 3.6 ms | 1.3 ms |
+| `fr` | 9.9 ms | 3.1 ms | 1.2 ms |
 
 </details>
 
@@ -740,8 +740,8 @@ _Generated: 2026-09-26_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 6.1 ms | 4.7 ms | 10.5 ms | 0.0 ms |
-| `fr` | 5.5 ms | 4.5 ms | 6.9 ms | 0.0 ms |
+| `en` | 4.7 ms | 3.7 ms | 6.4 ms | 0.0 ms |
+| `fr` | 5.9 ms | 4.5 ms | 8.6 ms | 0.0 ms |
 
 </details>
 
@@ -750,8 +750,8 @@ _Generated: 2026-09-26_
 
 | Locale | Page load | Hydration | React mount |
 | :---: | ---: | ---: | ---: |
-| `en` | 9.5 ms | 3.3 ms | 1.2 ms |
-| `fr` | 9.6 ms | 3.1 ms | 1.2 ms |
+| `en` | 9.7 ms | 3.2 ms | 1.2 ms |
+| `fr` | 8.8 ms | 3.1 ms | 1.4 ms |
 
 </details>
 
