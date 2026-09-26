@@ -62,6 +62,10 @@ import {
   type TimingStats,
   aggregateTimingSamples,
   NAV_WAIT_UNTIL,
+  ratioToBaseline,
+  readBaselineResult,
+  runnerEnvironment,
+  warnIfNoisy,
 } from "./timing-utils";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -71,8 +75,8 @@ export interface ReactivityTestConfig {
   /** Package name of the app under test — used to name the output JSON file. */
   appName: string;
   /**
-   * Number of locale-switch iterations to average over.
-   * Default: 5
+   * Number of locale-switch iterations to take the median of.
+   * Default: `$ITERATIONS`, else 5
    */
   iterations?: number;
   /**
@@ -341,8 +345,13 @@ const printReactivitySummary = (
   profilerStats: TimingStats,
 ): void => {
   console.log(`\n--- REACTIVITY RESULTS [${activeLocale.toUpperCase()}] ---`);
-  console.log(`E2E avg:            ${e2eStats.avg.toFixed(2)}ms`);
-  console.log(`React Profiler avg: ${profilerStats.avg.toFixed(2)}ms`);
+  console.log(
+    `E2E median:            ${e2eStats.median.toFixed(2)}ms  (avg ${e2eStats.avg.toFixed(2)}, cv ${(e2eStats.cv * 100).toFixed(1)}%)`,
+  );
+  console.log(
+    `React Profiler median: ${profilerStats.median.toFixed(2)}ms  (avg ${profilerStats.avg.toFixed(2)}, cv ${(profilerStats.cv * 100).toFixed(1)}%)`,
+  );
+  warnIfNoisy(`[${activeLocale}] E2E reactivity`, e2eStats);
 };
 
 // ─── Persistence ──────────────────────────────────────────────────────────────
@@ -353,16 +362,20 @@ const saveReactivityResults = (
   iterationCount: number,
   e2eStats: TimingStats,
   profilerStats: TimingStats,
+  browserVersion: string | undefined,
 ): void => {
+  const fileName = `reactivity-${activeLocale}.json`;
+  const baseline = readBaselineResult<{
+    e2e?: Partial<TimingStats>;
+    reactProfiler?: Partial<TimingStats>;
+  }>(fileName);
+
   try {
     if (!fs.existsSync(resultsDirectory)) {
       fs.mkdirSync(resultsDirectory, { recursive: true });
     }
 
-    const outputFilePath = path.join(
-      resultsDirectory,
-      `reactivity-${activeLocale}.json`,
-    );
+    const outputFilePath = path.join(resultsDirectory, fileName);
 
     fs.writeFileSync(
       outputFilePath,
@@ -371,13 +384,16 @@ const saveReactivityResults = (
           locale: activeLocale,
           timestamp: new Date().toISOString(),
           iterations: iterationCount,
+          environment: runnerEnvironment(browserVersion),
           e2e: {
             description: "Perceived reactivity (ms)",
             ...e2eStats,
+            vsBaseline: ratioToBaseline(e2eStats, baseline?.e2e),
           },
           reactProfiler: {
             description: "Internal React render (ms)",
             ...profilerStats,
+            vsBaseline: ratioToBaseline(profilerStats, baseline?.reactProfiler),
           },
         },
         null,
@@ -393,7 +409,11 @@ const saveReactivityResults = (
 
 // ─── Test registration ────────────────────────────────────────────────────────
 
-export const registerReactivityTest = (test: any, expect: any, config: ReactivityTestConfig): void => {
+export const registerReactivityTest = (
+  test: any,
+  expect: any,
+  config: ReactivityTestConfig,
+): void => {
   const {
     appName,
     // benchmarkCategory,
@@ -457,6 +477,7 @@ export const registerReactivityTest = (test: any, expect: any, config: Reactivit
       iterationCount,
       e2eStats,
       profilerStats,
+      page.context().browser()?.version(),
     );
 
     expect(e2eDurations.length).toBe(iterationCount);

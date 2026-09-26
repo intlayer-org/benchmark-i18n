@@ -7,8 +7,14 @@ name: Benchmark
 #
 # Size metrics (pages bundle/leakage, component size, lib size) are byte counts
 # and stay stable on shared runners. Timing metrics (reactivity, rendering) are
-# only meaningful on a quiet, dedicated machine: they are opt-in via
-# workflow_dispatch, ideally with a self-hosted runner label.
+# opt-in via workflow_dispatch. Hosted runners do not share one CPU model and
+# each app lands on a different VM, so raw milliseconds are not comparable
+# across jobs. To make them comparable anyway, a timing run:
+#   - measures the framework's base app in the same job, right before the app,
+#     and stores the app's median relative to it (`vsBaseline`);
+#   - takes the median of $ITERATIONS samples and flags noisy runs (cv > 15 %);
+#   - records the CPU model, runner image and Chromium version with the result.
+# The image is pinned (ubuntu-24.04, not -latest) so it never changes silently.
 
 on:
   pull_request:
@@ -25,9 +31,9 @@ on:
         type: boolean
         default: false
       runner:
-        description: Runner label (use a self-hosted runner for timing tests)
+        description: Runner label
         type: string
-        default: ubuntu-latest
+        default: ubuntu-24.04
 
 concurrency:
   group: benchmark-${{ github.ref }}
@@ -35,7 +41,7 @@ concurrency:
 
 jobs:
   plan:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       apps: ${{ steps.plan.outputs.apps }}
       count: ${{ steps.plan.outputs.count }}
@@ -66,7 +72,7 @@ jobs:
     needs: plan
     if: needs.plan.outputs.count != '0'
     name: ${{ matrix.app.name }}
-    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
+    runs-on: ${{ inputs.runner || 'ubuntu-24.04' }}
     timeout-minutes: 90
     strategy:
       fail-fast: false
@@ -74,6 +80,10 @@ jobs:
         app: ${{ fromJSON(needs.plan.outputs.apps) }}
     env:
       LINGODOTDEV_API_KEY: ${{ secrets.LINGODOTDEV_API_KEY }}
+      TIMING: ${{ inputs.timing == true }}
+      BASE_NAME: ${{ matrix.app.base.name }}
+      # Samples per timing test; the median is reported.
+      ITERATIONS: 15
     steps:
       - uses: actions/checkout@v4
 
@@ -89,7 +99,12 @@ jobs:
           restore-keys: bun-${{ runner.os }}-${{ matrix.app.name }}-
 
       - name: Install app dependencies
-        run: bun install --frozen-lockfile --filter '${{ matrix.app.name }}'
+        run: |
+          filters=(--filter '${{ matrix.app.name }}')
+          if [ "$TIMING" = "true" ] && [ -n "$BASE_NAME" ]; then
+            filters+=(--filter "$BASE_NAME")
+          fi
+          bun install --frozen-lockfile "${filters[@]}"
 
       - name: Cache Playwright browsers
         uses: actions/cache@v4
@@ -112,6 +127,41 @@ jobs:
         working-directory: ${{ matrix.app.path }}
         run: bun run build
 
+      - name: Describe runner
+        run: |
+          {
+            echo "### Runner"
+            echo '```'
+            lscpu | grep -E '^(Model name|CPU\(s\)|Thread|MHz|Hypervisor)' || true
+            free -h | head -2
+            echo "Image: ${ImageOS:-?} ${ImageVersion:-?}"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      # Nothing below needs Docker; its daemons only add background CPU work.
+      - name: Quiet the runner
+        if: env.TIMING == 'true'
+        run: sudo systemctl stop docker.socket docker.service containerd.service || true
+
+      # Measured on this same VM, right before the app, so the app's timing can
+      # be reported relative to it.
+      - name: Baseline timing (${{ matrix.app.base.name }})
+        if: env.TIMING == 'true' && env.BASE_NAME != ''
+        working-directory: ${{ matrix.app.base.path }}
+        run: |
+          # results/ is committed: drop the old numbers so a failed run cannot
+          # leave a stale baseline behind.
+          rm -rf "$GITHUB_WORKSPACE/results/$BASE_NAME"
+          bun run build
+          for task in test:reactivity test:rendering; do
+            echo "::group::baseline $task"
+            bun run "$task" || echo "::warning::baseline $task failed; no vsBaseline ratio"
+            echo "::endgroup::"
+          done
+          mkdir -p "$RUNNER_TEMP/baseline"
+          cp "$GITHUB_WORKSPACE/results/$BASE_NAME"/{reactivity,rendering}-*.json "$RUNNER_TEMP/baseline/" 2>/dev/null || true
+          echo "BASELINE_RESULTS_DIR=$RUNNER_TEMP/baseline" >> "$GITHUB_ENV"
+
       - name: Benchmark
         working-directory: ${{ matrix.app.path }}
         run: |
@@ -119,8 +169,9 @@ jobs:
           rm -rf "$GITHUB_WORKSPACE/results"
 
           TASKS="test:pages test:components test:lib-size"
-          if [ "${{ inputs.timing }}" = "true" ]; then
-            TASKS="$TASKS test:reactivity test:rendering"
+          if [ "$TIMING" = "true" ]; then
+            # Timing first, so it runs right after the baseline in the same state.
+            TASKS="test:reactivity test:rendering $TASKS"
           fi
 
           status=0
@@ -152,7 +203,9 @@ jobs:
   report:
     needs: [plan, bench]
     if: always() && needs.plan.outputs.count != '0'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
     steps:
       - uses: actions/checkout@v4
 
@@ -186,3 +239,25 @@ jobs:
             report/scripts/summarize-*.md
             results/**
             !results/**/bundle/**
+
+      # Only main keeps results: PR numbers stay in the artifact above. Pushes made
+      # with GITHUB_TOKEN do not trigger workflows, so this cannot loop.
+      - name: Commit results
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add results report/scripts/summarize-*.json report/scripts/summarize-*.md
+          if git diff --cached --quiet; then
+            echo "No result changes to commit"
+            exit 0
+          fi
+          git commit -m "chore: update benchmark results [skip ci]" \
+            -m "Re-measured: $(echo '${{ needs.plan.outputs.apps }}' | jq -r 'map(.name) | join(", ")')"
+          # main may have moved while the benchmark ran; on conflicting result
+          # files, keep the numbers from this run.
+          for attempt in 1 2 3; do
+            git pull --rebase -X theirs origin main && git push origin HEAD:main && exit 0
+            sleep $((attempt * 5))
+          done
+          exit 1

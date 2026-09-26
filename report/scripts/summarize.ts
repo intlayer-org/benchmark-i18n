@@ -127,9 +127,13 @@ type DataStatus = "ok" | "missing" | "error" | "invalid";
 
 interface MetricStats {
   avg: number;
+  /** Median of the samples; equals `avg` for results older than the field. */
+  median: number;
   min: number;
   max: number;
   raw: number[];
+  /** median / base app median, measured in the same CI job. */
+  vsBaseline?: number;
 }
 
 interface LibSizeData {
@@ -204,8 +208,10 @@ interface ReactivityLocaleData {
 interface ReactivityData {
   status: DataStatus;
   byLocale: Record<string, ReactivityLocaleData>;
+  /** Mean across locales of each locale's median (the field name predates medians). */
   e2eAvgMs: number | null;
   profilerAvgMs: number | null;
+  e2eVsBaseline: number | null;
 }
 
 interface RenderingLocaleData {
@@ -219,9 +225,11 @@ interface RenderingLocaleData {
 interface RenderingData {
   status: DataStatus;
   byLocale: Record<string, RenderingLocaleData>;
+  /** Mean across locales of each locale's median (the field name predates medians). */
   e2ePageLoadAvgMs: number | null;
   hydrationAvgMs: number | null;
   reactMountAvgMs: number | null;
+  e2ePageLoadVsBaseline: number | null;
 }
 
 interface AppSummary {
@@ -340,9 +348,11 @@ interface RawComponentsFile {
 
 interface RawTimingStats {
   avg: number;
+  median?: number;
   min: number;
   max: number;
   raw?: number[];
+  vsBaseline?: number;
   description?: string;
 }
 
@@ -378,10 +388,14 @@ function fileExists(filePath: string): boolean {
 }
 
 function statsFromArray(nums: number[]): MetricStats {
-  if (nums.length === 0) return { avg: 0, min: 0, max: 0, raw: [] };
+  if (nums.length === 0) return { avg: 0, median: 0, min: 0, max: 0, raw: [] };
   const sum = nums.reduce((a, b) => a + b, 0);
+  const sorted = [...nums].sort((a, b) => a - b);
+  const mid = sorted.length >> 1;
   return {
     avg: sum / nums.length,
+    median:
+      sorted.length % 2 ? sorted[mid] : (sorted[mid - 1] + sorted[mid]) / 2,
     min: Math.min(...nums),
     max: Math.max(...nums),
     raw: nums,
@@ -404,9 +418,11 @@ function maxOf(nums: number[]): number {
 function rawStatsToMetric(s: RawTimingStats): MetricStats {
   return {
     avg: s.avg ?? 0,
+    median: s.median ?? s.avg ?? 0,
     min: s.min ?? 0,
     max: s.max ?? 0,
     raw: s.raw ?? [],
+    vsBaseline: s.vsBaseline,
   };
 }
 
@@ -992,6 +1008,7 @@ function collectReactivity(
       byLocale: {},
       e2eAvgMs: null,
       profilerAvgMs: null,
+      e2eVsBaseline: null,
     };
   }
 
@@ -1001,14 +1018,18 @@ function collectReactivity(
       byLocale: {},
       e2eAvgMs: null,
       profilerAvgMs: null,
+      e2eVsBaseline: null,
     };
   }
 
   const e2eValues = Object.values(byLocale)
-    .map((d) => d.e2e?.avg ?? 0)
+    .map((d) => d.e2e?.median ?? 0)
     .filter((v) => v > 0);
   const profilerValues = Object.values(byLocale)
-    .map((d) => d.profiler?.avg ?? 0)
+    .map((d) => d.profiler?.median ?? 0)
+    .filter((v) => v > 0);
+  const e2eRatios = Object.values(byLocale)
+    .map((d) => d.e2e?.vsBaseline ?? 0)
     .filter((v) => v > 0);
 
   const status: DataStatus = !anyData ? "invalid" : anyError ? "error" : "ok";
@@ -1018,6 +1039,7 @@ function collectReactivity(
     byLocale,
     e2eAvgMs: e2eValues.length > 0 ? avgOf(e2eValues) : null,
     profilerAvgMs: profilerValues.length > 0 ? avgOf(profilerValues) : null,
+    e2eVsBaseline: e2eRatios.length > 0 ? avgOf(e2eRatios) : null,
   };
 }
 
@@ -1068,6 +1090,7 @@ function collectRendering(
       e2ePageLoadAvgMs: null,
       hydrationAvgMs: null,
       reactMountAvgMs: null,
+      e2ePageLoadVsBaseline: null,
     };
   }
 
@@ -1078,17 +1101,21 @@ function collectRendering(
       e2ePageLoadAvgMs: null,
       hydrationAvgMs: null,
       reactMountAvgMs: null,
+      e2ePageLoadVsBaseline: null,
     };
   }
 
   const e2eValues = Object.values(byLocale)
-    .map((d) => d.e2ePageLoad?.avg ?? 0)
+    .map((d) => d.e2ePageLoad?.median ?? 0)
     .filter((v) => v > 0);
   const hydrationValues = Object.values(byLocale)
-    .map((d) => d.hydration?.avg ?? 0)
+    .map((d) => d.hydration?.median ?? 0)
     .filter((v) => v > 0);
   const mountValues = Object.values(byLocale)
-    .map((d) => d.reactMount?.avg ?? 0)
+    .map((d) => d.reactMount?.median ?? 0)
+    .filter((v) => v > 0);
+  const e2eRatios = Object.values(byLocale)
+    .map((d) => d.e2ePageLoad?.vsBaseline ?? 0)
     .filter((v) => v > 0);
 
   const status: DataStatus = !anyData ? "invalid" : anyError ? "error" : "ok";
@@ -1099,6 +1126,7 @@ function collectRendering(
     e2ePageLoadAvgMs: e2eValues.length > 0 ? avgOf(e2eValues) : null,
     hydrationAvgMs: hydrationValues.length > 0 ? avgOf(hydrationValues) : null,
     reactMountAvgMs: mountValues.length > 0 ? avgOf(mountValues) : null,
+    e2ePageLoadVsBaseline: e2eRatios.length > 0 ? avgOf(e2eRatios) : null,
   };
 }
 
@@ -1454,6 +1482,11 @@ function mdCell(
   return formatter(value);
 }
 
+/** " (×1.08)": median relative to the base app measured in the same CI job. */
+function vsBase(ratio: number | null): string {
+  return ratio ? ` (×${ratio.toFixed(2)})` : "";
+}
+
 const CATEGORY_LABELS: Record<string, string> = {
   static: "Static",
   dynamic: "Dynamic",
@@ -1501,13 +1534,13 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
     "| **Comp avg (gz)** | Average gzip size of individual components compiled in isolation |",
   );
   lines.push(
-    "| **E2E reactivity** | Wall-clock time from locale `<select>` change to `html[lang]` DOM update (ms) |",
+    "| **E2E reactivity** | Median wall-clock time from locale `<select>` change to `html[lang]` DOM update (ms); `×n` = relative to the base app in the same CI job |",
   );
   lines.push(
     "| **React Profiler** | Sum of React `actualDuration` during locale-switch re-renders (ms) |",
   );
   lines.push(
-    "| **Page load** | `PerformanceNavigationTiming.duration` — full page load time (ms) |",
+    "| **Page load** | Median `PerformanceNavigationTiming.duration` — full page load time (ms); `×n` = relative to the base app in the same CI job |",
   );
   lines.push(
     "| **Hydration avg** | Custom perf-mark delta for React hydration phase (ms); — = not instrumented |",
@@ -1586,7 +1619,7 @@ function renderMarkdownByLib(summary: FrameworkSummary): string {
         const rd = catData.rendering;
 
         lines.push(
-          `| ${label} | ${overallIcon} | ${mdCell(pb.jsGzipAvg, pb.status, kb)} | ${mdCell(pb.localeLeakAvgPct, pb.status, pct)} | ${mdCell(pb.otherPageContentLeakAvgPct, pb.status, pct)} | ${mdCell(co.gzipAvg, co.status, kb)} | ${mdCell(re.e2eAvgMs, re.status, ms)} | ${mdCell(re.profilerAvgMs, re.status, ms)} | ${mdCell(rd.e2ePageLoadAvgMs, rd.status, ms)} | ${mdCell(rd.hydrationAvgMs, rd.status, ms)} |`,
+          `| ${label} | ${overallIcon} | ${mdCell(pb.jsGzipAvg, pb.status, kb)} | ${mdCell(pb.localeLeakAvgPct, pb.status, pct)} | ${mdCell(pb.otherPageContentLeakAvgPct, pb.status, pct)} | ${mdCell(co.gzipAvg, co.status, kb)} | ${mdCell(re.e2eAvgMs, re.status, ms)}${vsBase(re.e2eVsBaseline)} | ${mdCell(re.profilerAvgMs, re.status, ms)} | ${mdCell(rd.e2ePageLoadAvgMs, rd.status, ms)}${vsBase(rd.e2ePageLoadVsBaseline)} | ${mdCell(rd.hydrationAvgMs, rd.status, ms)} |`,
         );
       }
       lines.push("");

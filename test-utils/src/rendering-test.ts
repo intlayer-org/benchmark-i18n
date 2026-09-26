@@ -73,6 +73,10 @@ import {
   type TimingStats,
   aggregateTimingSamples,
   NAV_WAIT_UNTIL,
+  ratioToBaseline,
+  readBaselineResult,
+  runnerEnvironment,
+  warnIfNoisy,
 } from "./timing-utils";
 
 // ─── Types ───────────────────────────────────────────────────────────────────
@@ -81,9 +85,9 @@ export interface RenderingTestConfig {
   /** Package name of the app under test — used to name the output JSON file. */
   appName: string;
   /**
-   * Number of full-page-load iterations to average over.
+   * Number of full-page-load iterations to take the median of.
    * More iterations reduce variance from JIT warm-up and GC pauses.
-   * Default: 5
+   * Default: `$ITERATIONS`, else 5
    */
   iterations?: number;
   /**
@@ -137,9 +141,8 @@ const readRenderingMetrics = async (
 
     // 2. Hydration duration — only available if the app calls recordHydrationDuration()
     //    from test-utils/browser-metrics inside its root useEffect.
-    const hydrationEntry = performance.getEntriesByName(
-      "hydration_duration",
-    )[0];
+    const hydrationEntry =
+      performance.getEntriesByName("hydration_duration")[0];
     const hydrationDuration = hydrationEntry ? hydrationEntry.duration : 0;
 
     // 3. React Profiler mount time — only available if the app wraps <AppRoot>
@@ -209,7 +212,7 @@ const runSingleIteration = async (
       : "";
   const mountNote =
     metrics.mountRenderTime === 0
-      ? " ⚠️  (0 = <Profiler id=\"AppRoot\"> or onRenderCallback not wired)"
+      ? ' ⚠️  (0 = <Profiler id="AppRoot"> or onRenderCallback not wired)'
       : "";
 
   console.log(
@@ -233,16 +236,15 @@ const printRenderingSummary = (
   hydrationStats: TimingStats,
   mountStats: TimingStats,
 ): void => {
+  const line = (label: string, stats: TimingStats) =>
+    console.log(
+      `${label}${stats.median.toFixed(2)}ms  (avg: ${stats.avg.toFixed(2)}  min: ${stats.min.toFixed(2)}  max: ${stats.max.toFixed(2)}  cv: ${(stats.cv * 100).toFixed(1)}%)`,
+    );
   console.log(`\n--- RENDERING RESULTS [${activeLocale.toUpperCase()}] ---`);
-  console.log(
-    `E2E Page Load avg:   ${navStats.avg.toFixed(2)}ms  (min: ${navStats.min.toFixed(2)}  max: ${navStats.max.toFixed(2)})`,
-  );
-  console.log(
-    `Hydration avg:       ${hydrationStats.avg.toFixed(2)}ms  (min: ${hydrationStats.min.toFixed(2)}  max: ${hydrationStats.max.toFixed(2)})`,
-  );
-  console.log(
-    `React Mount avg:     ${mountStats.avg.toFixed(2)}ms  (min: ${mountStats.min.toFixed(2)}  max: ${mountStats.max.toFixed(2)})`,
-  );
+  line("E2E Page Load median: ", navStats);
+  line("Hydration median:     ", hydrationStats);
+  line("React Mount median:   ", mountStats);
+  warnIfNoisy(`[${activeLocale}] Page load`, navStats);
 };
 
 // ─── Persistence ──────────────────────────────────────────────────────────────
@@ -254,16 +256,21 @@ const saveRenderingResults = (
   navStats: TimingStats,
   hydrationStats: TimingStats,
   mountStats: TimingStats,
+  browserVersion: string | undefined,
 ): void => {
+  const fileName = `rendering-${activeLocale}.json`;
+  const baseline = readBaselineResult<{
+    e2ePageLoad?: Partial<TimingStats>;
+    hydration?: Partial<TimingStats>;
+    reactMount?: Partial<TimingStats>;
+  }>(fileName);
+
   try {
     if (!fs.existsSync(resultsDirectory)) {
       fs.mkdirSync(resultsDirectory, { recursive: true });
     }
 
-    const outputFilePath = path.join(
-      resultsDirectory,
-      `rendering-${activeLocale}.json`,
-    );
+    const outputFilePath = path.join(resultsDirectory, fileName);
 
     fs.writeFileSync(
       outputFilePath,
@@ -272,20 +279,24 @@ const saveRenderingResults = (
           locale: activeLocale,
           timestamp: new Date().toISOString(),
           iterations: iterationCount,
+          environment: runnerEnvironment(browserVersion),
           e2ePageLoad: {
             description:
               "PerformanceNavigationTiming.duration — full page load wall-clock time including sub-resources (ms)",
             ...navStats,
+            vsBaseline: ratioToBaseline(navStats, baseline?.e2ePageLoad),
           },
           hydration: {
             description:
               "performance.measure('hydration_duration') — time between hydration_start mark (inline script) and hydration_end mark (useEffect) (ms). 0 means app is not instrumented.",
             ...hydrationStats,
+            vsBaseline: ratioToBaseline(hydrationStats, baseline?.hydration),
           },
           reactMount: {
             description:
               "React Profiler actualDuration for the mount phase of <AppRoot>. 0 means Profiler is not wired up (ms).",
             ...mountStats,
+            vsBaseline: ratioToBaseline(mountStats, baseline?.reactMount),
           },
         },
         null,
@@ -307,7 +318,11 @@ const saveRenderingResults = (
  * Call this at the top level of your `rendering.test.ts` file.
  * The Playwright project name is used as the locale label in output files.
  */
-export const registerRenderingTest = (test: any, expect: any, config: RenderingTestConfig): void => {
+export const registerRenderingTest = (
+  test: any,
+  expect: any,
+  config: RenderingTestConfig,
+): void => {
   const {
     appName,
     // benchmarkCategory,
@@ -315,7 +330,11 @@ export const registerRenderingTest = (test: any, expect: any, config: RenderingT
     locale = "fr",
   } = config;
 
-  test("Measure initial page rendering performance", async ({ page }: { page: Page }) => {
+  test("Measure initial page rendering performance", async ({
+    page,
+  }: {
+    page: Page;
+  }) => {
     test.slow(); // multiple cold-start navigations can take time
 
     const activeLocale = test.info().project.name;
@@ -328,8 +347,7 @@ export const registerRenderingTest = (test: any, expect: any, config: RenderingT
 
     // Surface browser console errors for easier diagnosis
     page.on("console", (msg) => {
-      if (msg.type() === "error")
-        console.log(`[BROWSER ERROR]: ${msg.text()}`);
+      if (msg.type() === "error") console.log(`[BROWSER ERROR]: ${msg.text()}`);
     });
 
     const cdpSession = await page.context().newCDPSession(page);
@@ -377,6 +395,7 @@ export const registerRenderingTest = (test: any, expect: any, config: RenderingT
       navStats,
       hydrationStats,
       mountStats,
+      page.context().browser()?.version(),
     );
 
     expect(navDurations.length).toBe(iterationCount);

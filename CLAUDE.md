@@ -64,7 +64,7 @@ Results JSON files are written to `results/<app-name>/` at repo root.
 
 ### CI
 
-`.github/workflows/benchmark.yml` benchmarks each app in its own job. `scripts/ci-plan.ts` picks the apps to run: those with changed files, those whose resolved dependency tree changed in `bun.lock`, or all apps when a shared input changes (`test-utils/`, root `package.json`, `turbo.json`). `turbo --affected` is not used because any `bun.lock` change marks every package as affected. Only the size tests run by default; the timing tests (reactivity, rendering) are opt-in through a manual run. The report job merges fresh results over the committed `results/`.
+`.github/workflows/benchmark.yml` benchmarks each app in its own job. `scripts/ci-plan.ts` picks the apps to run: those with changed files, those whose resolved dependency tree changed in `bun.lock`, or all apps when a shared input changes (`test-utils/`, root `package.json`, `turbo.json`). `turbo --affected` is not used because any `bun.lock` change marks every package as affected. Only the size tests run by default; the timing tests (reactivity, rendering) are opt-in through a manual run. Hosted runners vary in CPU model, so a timing run also measures the framework's base app in the same job (`base` in the plan, `BASELINE_RESULTS_DIR`) and stores each metric's `vsBaseline` ratio; timings are reported as medians of `$ITERATIONS` samples (15 in CI), with `cv` and the runner's CPU model saved alongside. The report job merges fresh results over the committed `results/`.
 
 ```bash
 bun scripts/ci-plan.ts --base origin/main   # preview which apps CI would run

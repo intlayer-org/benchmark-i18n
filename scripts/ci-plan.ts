@@ -17,40 +17,46 @@
  *   bun scripts/ci-plan.ts --all
  *   bun scripts/ci-plan.ts --apps nextjs-static-next-intlayer-app,tanstack-base-app
  *
- * Prints a JSON array of { name, path }. When GITHUB_OUTPUT is set, also
+ * Prints a JSON array of { name, path, base? }. `base` is the framework's
+ * base app (no i18n), which CI measures in the same job as the app so timing
+ * results can be reported relative to it. When GITHUB_OUTPUT is set, also
  * writes `apps` (that array) and `count`.
  */
 
-import { appendFileSync, existsSync, readFileSync } from 'fs';
-import { execFileSync } from 'child_process';
+import { appendFileSync, existsSync, readFileSync } from "fs";
+import { execFileSync } from "child_process";
 
 type LockEntry = [string, string?, Record<string, any>?, string?];
 type Lockfile = {
   workspaces: Record<string, { name: string } & Record<string, any>>;
   packages: Record<string, LockEntry>;
 };
-type App = { name: string; path: string };
+type App = {
+  name: string;
+  path: string;
+  base?: { name: string; path: string };
+};
 
 const SHARED_INPUTS = [
-  'test-utils/',
-  'package.json',
-  'turbo.json',
-  'bunfig.toml',
-  '.github/workflows/benchmark.yml',
-  'scripts/ci-plan.ts',
+  "test-utils/",
+  "package.json",
+  "turbo.json",
+  "bunfig.toml",
+  ".github/workflows/benchmark.yml",
+  "scripts/ci-plan.ts",
 ];
 
 const DEP_FIELDS = [
-  'dependencies',
-  'devDependencies',
-  'optionalDependencies',
-  'peerDependencies',
+  "dependencies",
+  "devDependencies",
+  "optionalDependencies",
+  "peerDependencies",
 ];
 
 // Apps that cannot build without a secret the current run does not have.
 const SECRET_GATED: Record<string, string> = {
-  'nextjs-static-lingo.dev-app': 'HAS_LINGO_KEY',
-  'tanstack-static-lingo.dev-app': 'HAS_LINGO_KEY',
+  "nextjs-static-lingo.dev-app": "HAS_LINGO_KEY",
+  "tanstack-static-lingo.dev-app": "HAS_LINGO_KEY",
 };
 
 const getArg = (flag: string) => {
@@ -59,22 +65,22 @@ const getArg = (flag: string) => {
 };
 
 const git = (...args: string[]) =>
-  execFileSync('git', args, { encoding: 'utf8', maxBuffer: 1024 ** 3 });
+  execFileSync("git", args, { encoding: "utf8", maxBuffer: 1024 ** 3 });
 
 /** bun.lock is JSON with trailing commas. */
 const parseLockfile = (text: string): Lockfile =>
-  JSON.parse(text.replace(/,(\s*[}\]])/g, '$1'));
+  JSON.parse(text.replace(/,(\s*[}\]])/g, "$1"));
 
 const depNames = (fields: Record<string, any> | undefined) =>
   DEP_FIELDS.flatMap((field) => Object.keys(fields?.[field] ?? {}));
 
 /** "@scope/a/b" → ["@scope/a", "b"] */
 const splitKey = (key: string) => {
-  const parts = key.split('/');
+  const parts = key.split("/");
   const segments: string[] = [];
   for (let i = 0; i < parts.length; i++) {
     segments.push(
-      parts[i].startsWith('@') ? `${parts[i]}/${parts[++i]}` : parts[i]
+      parts[i].startsWith("@") ? `${parts[i]}/${parts[++i]}` : parts[i],
     );
   }
   return segments;
@@ -86,15 +92,15 @@ const splitKey = (key: string) => {
  */
 const resolveKey = (lock: Lockfile, from: string[], dep: string) => {
   for (let i = from.length; i >= 0; i--) {
-    const key = [...from.slice(0, i), dep].join('/');
+    const key = [...from.slice(0, i), dep].join("/");
     if (key in lock.packages) return key;
   }
 };
 
 const entryDeps = (lock: Lockfile, entry: LockEntry) => {
-  const workspacePath = entry[0].split('@workspace:')[1];
+  const workspacePath = entry[0].split("@workspace:")[1];
   return depNames(
-    workspacePath === undefined ? entry[2] : lock.workspaces[workspacePath]
+    workspacePath === undefined ? entry[2] : lock.workspaces[workspacePath],
   );
 };
 
@@ -123,46 +129,61 @@ const resolvedEntries = (lock: Lockfile, path: string) => {
 const sameEntries = (a: Map<string, string>, b: Map<string, string>) =>
   a.size === b.size && [...a].every(([key, value]) => b.get(key) === value);
 
-const head = getArg('--head');
+const head = getArg("--head");
 // Read the lockfile at --head so past ranges can be planned from any checkout.
 const lock = parseLockfile(
-  head ? git('show', `${head}:bun.lock`) : readFileSync('bun.lock', 'utf8')
+  head ? git("show", `${head}:bun.lock`) : readFileSync("bun.lock", "utf8"),
 );
 const apps: App[] = Object.entries(lock.workspaces)
   // Stale entries of a local lockfile can point at deleted apps.
   .filter(
     ([path]) =>
-      path.startsWith('apps-benchmark/') && existsSync(`${path}/package.json`)
+      path.startsWith("apps-benchmark/") && existsSync(`${path}/package.json`),
   )
-  .map(([path, workspace]) => ({ name: workspace.name, path }))
+  .map(([path, workspace]): App => ({ name: workspace.name, path }))
   .sort((a, b) => a.name.localeCompare(b.name));
 
+/** apps-benchmark/nextjs-static/intlayer-app → apps-benchmark/nextjs-base-app */
+const baseApps = apps.filter((app) => app.path.endsWith("-base-app"));
+for (const app of apps) {
+  if (baseApps.includes(app)) continue;
+  const group = app.path.split("/")[1];
+  const base = baseApps
+    .filter((candidate) =>
+      group.startsWith(
+        `${candidate.path.split("/")[1].replace(/base-app$/, "")}`,
+      ),
+    )
+    .sort((a, b) => b.path.length - a.path.length)[0];
+  if (base) app.base = { name: base.name, path: base.path };
+}
+
 const selectAffected = (): { apps: App[]; reason: string } => {
-  const appsArg = getArg('--apps');
-  if (process.argv.includes('--all') || appsArg === 'all') {
-    return { apps, reason: 'full run requested' };
+  const appsArg = getArg("--apps");
+  if (process.argv.includes("--all") || appsArg === "all") {
+    return { apps, reason: "full run requested" };
   }
   if (appsArg) {
-    const wanted = new Set(appsArg.split(',').map((name) => name.trim()));
+    const wanted = new Set(appsArg.split(",").map((name) => name.trim()));
     return {
       apps: apps.filter((app) => wanted.has(app.name)),
-      reason: 'apps selected manually',
+      reason: "apps selected manually",
     };
   }
 
-  const base = getArg('--base');
+  const base = getArg("--base");
   if (!base || /^0+$/.test(base)) {
-    return { apps, reason: 'no base commit to diff against' };
+    return { apps, reason: "no base commit to diff against" };
   }
 
-  const changedFiles = git('diff', '--name-only', `${base}...${head ?? 'HEAD'}`)
-    .split('\n')
+  const changedFiles = git("diff", "--name-only", `${base}...${head ?? "HEAD"}`)
+    .split("\n")
     .filter(Boolean);
 
   const sharedChange = changedFiles.find((file) =>
     SHARED_INPUTS.some((input) =>
-      input.endsWith('/') ? file.startsWith(input) : file === input
-    )
+      input.endsWith("/") ? file.startsWith(input) : file === input,
+    ),
   );
   if (sharedChange) {
     return { apps, reason: `shared input changed: ${sharedChange}` };
@@ -175,9 +196,9 @@ const selectAffected = (): { apps: App[]; reason: string } => {
     }
   }
 
-  if (changedFiles.includes('bun.lock')) {
-    const mergeBase = git('merge-base', base, head ?? 'HEAD').trim();
-    const before = parseLockfile(git('show', `${mergeBase}:bun.lock`));
+  if (changedFiles.includes("bun.lock")) {
+    const mergeBase = git("merge-base", base, head ?? "HEAD").trim();
+    const before = parseLockfile(git("show", `${mergeBase}:bun.lock`));
     for (const app of apps) {
       const workspaceChanged =
         JSON.stringify(before.workspaces[app.path]) !==
@@ -186,7 +207,7 @@ const selectAffected = (): { apps: App[]; reason: string } => {
         workspaceChanged ||
         !sameEntries(
           resolvedEntries(before, app.path),
-          resolvedEntries(lock, app.path)
+          resolvedEntries(lock, app.path),
         )
       ) {
         affected.add(app.name);
@@ -203,7 +224,7 @@ const selectAffected = (): { apps: App[]; reason: string } => {
 const { apps: selected, reason } = selectAffected();
 const runnable = selected.filter((app) => {
   const gate = SECRET_GATED[app.name];
-  if (!gate || process.env[gate] === 'true' || !process.env.CI) return true;
+  if (!gate || process.env[gate] === "true" || !process.env.CI) return true;
   console.error(`::warning::Skipping ${app.name}: ${gate} is not set`);
   return false;
 });
@@ -214,6 +235,6 @@ console.log(JSON.stringify(runnable, null, 2));
 if (process.env.GITHUB_OUTPUT) {
   appendFileSync(
     process.env.GITHUB_OUTPUT,
-    `apps=${JSON.stringify(runnable)}\ncount=${runnable.length}\n`
+    `apps=${JSON.stringify(runnable)}\ncount=${runnable.length}\n`,
   );
 }
