@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useRef, useState } from "react";
+import React, { createContext, useCallback, useEffect, useMemo, useState } from "react";
 import { useNavigate, useParams } from "@tanstack/react-router";
 import { jsx, jsxs } from "react/jsx-runtime";
 var locales = [
@@ -166,8 +166,19 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		if (isValidLocale(value)) return value;
 	} catch {}
 };
+var isStoredLocaleCached = false;
+var storedLocale;
+var getCachedLocaleFromStorageClient = () => {
+	if (typeof window === "undefined") return getLocaleFromStorageClient(localeStorageOptions);
+	if (!isStoredLocaleCached) {
+		storedLocale = getLocaleFromStorageClient(localeStorageOptions);
+		isStoredLocaleCached = true;
+	}
+	return storedLocale;
+};
 var setLocaleInStorageClient = (locale, options) => {
 	if (options?.isCookieEnabled === false) return;
+	isStoredLocaleCached = false;
 	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
 		const { name, attributes } = routing.storage.cookies[i];
 		try {
@@ -182,42 +193,16 @@ var setLocaleInStorageClient = (locale, options) => {
 		}
 	}
 };
-var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
+var getLocaleInStorage = getCachedLocaleFromStorageClient;
 var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(locale, {
 	...localeStorageOptions,
 	isCookieEnabled
 });
-var useEditor = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const managerRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !managerRef.current) return;
-		managerRef.current.currentLocale.set(locale);
-	}, [locale]);
-};
-var EditorProvider = ({ children }) => {
-	useEditor();
-	return children;
-};
-var useAnalytics = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const clientRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !clientRef.current) return;
-		clientRef.current.setLocale(locale);
-		clientRef.current.trackPageView({ reason: "locale_change" });
-	}, [locale]);
-};
-var AnalyticsProvider = ({ children }) => {
-	useAnalytics();
-	return children;
-};
 var setIntlayerIdentifier = () => {
 	if (typeof window !== "undefined") window.intlayer = { enabled: true };
 };
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
+	if (locales?.includes(selectedLocale)) return selectedLocale;
 	const requestedLocales = [selectedLocale].flat();
 	const normalize = (locale) => locale.trim().toLowerCase();
 	try {
@@ -233,20 +218,24 @@ var localeResolver = (selectedLocale, locales = internationalization?.locales, d
 	return defaultLocale;
 };
 var IntlayerClientContext = createContext({
-	locale: localeInStorage ?? internationalization?.defaultLocale,
+	get locale() {
+		return getLocaleInStorage() ?? internationalization?.defaultLocale;
+	},
 	setLocale: () => null,
 	isCookieEnabled: true
 });
 var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocaleProp, variant, children, setLocale: setLocaleProp, disableEditor, isCookieEnabled }) => {
 	const { locales: availableLocales, defaultLocale: defaultLocaleConfig } = internationalization ?? {};
-	const [currentLocale, setCurrentLocale] = useState(localeProp ?? localeInStorage ?? defaultLocaleProp ?? defaultLocaleConfig);
-	useEffect(() => {
+	const [currentLocale, setCurrentLocale] = useState(() => localeProp ?? getLocaleInStorage() ?? defaultLocaleProp ?? defaultLocaleConfig);
+	const [adoptedLocaleProp, setAdoptedLocaleProp] = useState(localeProp);
+	if (localeProp !== adoptedLocaleProp) {
+		setAdoptedLocaleProp(localeProp);
 		if (localeProp && localeProp !== currentLocale) setCurrentLocale(localeProp);
-	}, [localeProp]);
+	}
 	useEffect(() => {
 		setIntlayerIdentifier();
 	}, []);
-	const setLocaleBase = (newLocale) => {
+	const setLocaleBase = useCallback((newLocale) => {
 		if (currentLocale.toString() === newLocale.toString()) return;
 		if (!availableLocales?.map(String).includes(newLocale)) {
 			console.error(`Locale ${newLocale} is not available`);
@@ -254,24 +243,34 @@ var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocal
 		}
 		setCurrentLocale(newLocale);
 		setLocaleInStorage(newLocale, isCookieEnabled);
-	};
+	}, [
+		currentLocale,
+		availableLocales,
+		isCookieEnabled
+	]);
 	const setLocale = setLocaleProp ?? setLocaleBase;
 	const resolvedLocale = localeResolver(currentLocale);
+	const contextValue = useMemo(() => ({
+		locale: resolvedLocale,
+		setLocale,
+		variant,
+		disableEditor
+	}), [
+		resolvedLocale,
+		setLocale,
+		variant,
+		disableEditor
+	]);
 	return jsx(IntlayerClientContext.Provider, {
-		value: {
-			locale: resolvedLocale,
-			setLocale,
-			variant,
-			disableEditor
-		},
+		value: contextValue,
 		children
 	});
 };
 var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent, {
 	...props,
 	children: [
-		jsx(EditorProvider, {}),
-		jsx(AnalyticsProvider, {}),
+		false,
+		false,
 		children
 	]
 });

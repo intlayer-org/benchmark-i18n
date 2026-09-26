@@ -164,8 +164,19 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		if (isValidLocale(value)) return value;
 	} catch {}
 };
+var isStoredLocaleCached = false;
+var storedLocale;
+var getCachedLocaleFromStorageClient = () => {
+	if (typeof window === "undefined") return getLocaleFromStorageClient(localeStorageOptions);
+	if (!isStoredLocaleCached) {
+		storedLocale = getLocaleFromStorageClient(localeStorageOptions);
+		isStoredLocaleCached = true;
+	}
+	return storedLocale;
+};
 var setLocaleInStorageClient = (locale, options) => {
 	if (options?.isCookieEnabled === false) return;
+	isStoredLocaleCached = false;
 	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
 		const { name, attributes } = routing.storage.cookies[i];
 		try {
@@ -180,13 +191,15 @@ var setLocaleInStorageClient = (locale, options) => {
 		}
 	}
 };
-var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
+var getLocaleInStorage = getCachedLocaleFromStorageClient;
 var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(locale, {
 	...localeStorageOptions,
 	isCookieEnabled
 });
 var IntlayerClientContext = createContext({
-	locale: localeInStorage ?? internationalization?.defaultLocale,
+	get locale() {
+		return getLocaleInStorage() ?? internationalization?.defaultLocale;
+	},
 	setLocale: () => null,
 	isCookieEnabled: true
 });

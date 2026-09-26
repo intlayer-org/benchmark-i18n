@@ -1,7 +1,9 @@
 {
+  "analysis": "Analysis",
   "anOverviewOfTheCurrent": "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
   "aStepByStepGuide": "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
   "aTransparentLookAtOur": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+  "benchmark": "Benchmark",
   "benchmarkMethodologyHowWeTest": "Benchmark Methodology: How We Test",
   "comparingI18nLibrariesIn2026": "Comparing i18n Libraries in 2026: A Deep Dive",
   "february12026": "February 1, 2026",
@@ -9,12 +11,15 @@
   "february282026": "February 28, 2026",
   "howToReduceYourI18n": "How to Reduce Your i18n Bundle by 60%",
   "january202026": "January 20, 2026",
+  "march152026": "March 15, 2026",
   "march82026": "March 8, 2026",
+  "meta": "Meta",
   "migratingFromReactI18nextTo": "Migrating from react-i18next to Lingui",
   "practicalStrategiesForOptimizingTranslation": "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
   "reactServerComponentsIntroduceNew": "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
   "readMore": "Read More →",
   "serverComponentsAndI18nWhat": "Server Components and i18n: What Changes?",
   "theStateOfInternationalizationIn": "The State of Internationalization in React",
+  "tutorial": "Tutorial",
   "weTested12DifferentInternationalization": "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
 }

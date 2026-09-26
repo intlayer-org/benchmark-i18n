@@ -1,7 +1,9 @@
 {
+  "analysis": "分析",
   "anOverviewOfTheCurrent": "トレンド、新たなパターン、コミュニティの好みなど、React における現在の i18n エコシステムの概要。",
   "aStepByStepGuide": "50,000 の翻訳キーを持つプロダクションアプリを react-i18next から Lingui に移行するためのステップバイステップガイド。",
   "aTransparentLookAtOur": "テスト環境、統計手法、再現性など、当社のベンチマーク方法論を透過的に公開します。",
+  "benchmark": "ベンチマーク",
   "benchmarkMethodologyHowWeTest": "ベンチマークの方法論：テスト方法",
   "comparingI18nLibrariesIn2026": "2026 年の i18n ライブラリの比較：詳細な分析",
   "february12026": "2026年2月1日",
@@ -9,12 +11,15 @@
   "february282026": "2026年2月28日",
   "howToReduceYourI18n": "i18n バンドルを 60% 削減する方法",
   "january202026": "2026年1月20日",
+  "march152026": "2026年3月15日",
   "march82026": "2026年3月8日",
+  "meta": "メタ",
   "migratingFromReactI18nextTo": "react-i18next から Lingui への移行",
   "practicalStrategiesForOptimizingTranslation": "遅延読み込み、コード分割、コンパイル時の最適化などの翻訳バンドルを最適化するための実用的な戦略。",
   "reactServerComponentsIntroduceNew": "React サーバーコンポーネントは、国際化のための新しいパターンを導入します。その影響とベストプラクティスを検討します。",
   "readMore": "続きを読む →",
   "serverComponentsAndI18nWhat": "サーバーコンポーネントと i18n：何が変わるのか？",
   "theStateOfInternationalizationIn": "React における国際化の現状",
+  "tutorial": "チュートリアル",
   "weTested12DifferentInternationalization": "パフォーマンス、バンドルサイズ、DX にわたって 12 の異なる国際化ライブラリをテストしました。驚くべき結果が得られました。"
 }

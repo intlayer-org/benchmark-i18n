@@ -1,7 +1,7 @@
 {
   "allLibraries": "Toutes les bibliothèques",
   "auditLogs": "Journaux d'audit",
-  "benchmarkRunPerDay": "{runs} lancements de benchmark/jour",
+  "benchmarkRunPerDay": "{{runs}} lancements de benchmark/jour",
   "ciIntegration": "Intégration CI",
   "communitySupport": "Support de la communauté",
   "contactSales": "Contacter les ventes",
@@ -13,7 +13,7 @@
   "forever": "pour toujours",
   "getStarted": "Commencer",
   "historicalData": "Données historiques",
-  "librariesNumber": "{libs} bibliothèques",
+  "librariesNumber": "{{libs}} bibliothèques",
   "month": "/mois",
   "onPremiseOption": "Option sur site",
   "price0": "0 $",

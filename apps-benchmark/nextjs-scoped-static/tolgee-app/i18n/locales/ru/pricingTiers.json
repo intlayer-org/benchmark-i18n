@@ -1,7 +1,7 @@
 {
   "allLibraries": "Все библиотеки",
   "auditLogs": "Журналы аудита",
-  "benchmarkRunPerDay": "{runs} запусков бенчмарка в день",
+  "benchmarkRunPerDay": "{{runs}} запусков бенчмарка в день",
   "ciIntegration": "Интеграция с CI",
   "communitySupport": "Сообщество поддержки",
   "contactSales": "Связаться с отделом продаж",
@@ -13,7 +13,7 @@
   "forever": "навсегда",
   "getStarted": "Начать",
   "historicalData": "Исторические данные",
-  "librariesNumber": "{libs} библиотек",
+  "librariesNumber": "{{libs}} библиотек",
   "month": "/месяц",
   "onPremiseOption": "Локальное развертывание",
   "price0": "0 $",

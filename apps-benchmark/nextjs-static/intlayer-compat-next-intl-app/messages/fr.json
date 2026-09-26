@@ -88,7 +88,12 @@
     "benchmarkMethodologyHowWeTest": "Méthodologie du Benchmark : comment nous testons",
     "january202026": "20 janvier 2026",
     "aTransparentLookAtOur": "Un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-    "readMore": "Lire la suite →"
+    "readMore": "Lire la suite →",
+    "march152026": "15 mars 2026",
+    "benchmark": "Benchmark",
+    "tutorial": "Tutoriel",
+    "analysis": "Analyse",
+    "meta": "Méta"
   },
   "understanding-impact": {
     "understandingTheImpact": "Comprendre l'impact",
@@ -128,12 +133,14 @@
       "spanishEs": "Espagnol (es)",
       "japaneseJa": "Japonais (ja)",
       "chineseSimplifiedZhCn": "Chinois simplifié (zh-CN)",
-      "arabicAr": "Arabe (ar)"
+      "arabicAr": "Arabe (ar)",
+      "preferences": "Préférences"
     },
     "api-access-section": {
       "apiAccess": "Accès API",
       "apiKey": "Clé API",
-      "useThisKeyToAccess": "Utilisez cette clé pour accéder à l'API de benchmarking par programmation."
+      "useThisKeyToAccess": "Utilisez cette clé pour accéder à l'API de benchmarking par programmation.",
+      "copy": "Copier"
     },
     "settings-footer": {
       "saveChanges": "Enregistrer les modifications",
@@ -231,40 +238,8 @@
     "sampleResults": "Résultats d'échantillon",
     "bundleSize": "Taille du Bundle",
     "lookupTime": "Temps de consultation",
-    "lazyLoading": "Chargement différé"
-  },
-  "careers": {
-    "careers-header": {
-      "title": "Carrières",
-      "joinOurMissionToImprove": "Rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. Nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu."
-    },
-    "careers-benefits": {
-      "workFromAnywhereInThe": "Travaillez de n'importe où dans le monde",
-      "competitivePay": "Rémunération compétitive",
-      "topOfMarketCompensation": "Rémunération au-dessus du marché",
-      "openSourceTime": "Temps dédié à l'open source"
-    },
-    "open-positions": {
-      "seniorFrontendEngineer": "Ingénieur Frontend Senior",
-      "buildAndMaintainOurBenchmarking": "Construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant React, TypeScript et Vite.",
-      "backendEngineer": "Ingénieur Backend",
-      "designAndScaleOurCloud": "Concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.",
-      "technicalWriter": "Rédacteur technique",
-      "createComprehensiveGuidesApiReferences": "Créer des guides complets, des références d'API et des tutoriels pour notre plateforme de benchmarking.",
-      "devrelEngineer": "Ingénieur DevRel",
-      "sanFranciscoRemote": "San Francisco / À distance",
-      "engageWithTheI18nCommunity": "Interagir avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
-      "qaEngineer": "Ingénieur QA",
-      "ensureTheAccuracyAndReliability": "Garantir l'exactitude et la fiabilité des résultats de benchmark par des tests et des validations rigoureux.",
-      "openPositions": "Postes ouverts",
-      "applyNow": "Postuler maintenant",
-      "remote": "À distance",
-      "fullTime": "Temps plein",
-      "partTime": "Temps partiel",
-      "engineering": "Ingénierie",
-      "documentation": "Documentation",
-      "community": "Communauté"
-    }
+    "lazyLoading": "Chargement différé",
+    "library": "Bibliothèque"
   },
   "header": {
     "home": "Accueil",
@@ -447,7 +422,9 @@
     "workFromAnywhereInThe": "Travailler de n'importe où dans le monde",
     "competitivePay": "Rémunération compétitive",
     "topOfMarketCompensation": "Rémunération au-dessus du marché",
-    "openSourceTime": "Temps alloué à l'open source"
+    "openSourceTime": "Temps alloué à l'open source",
+    "remoteFirst": "Télétravail d'abord",
+    "x20TimeForOssContributions": "20 % du temps pour les contributions OSS"
   },
   "why-it-matters": {
     "whyTheseMetricsMatter": "Pourquoi ces Métriques Comptent",

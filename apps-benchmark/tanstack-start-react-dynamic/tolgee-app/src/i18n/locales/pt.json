@@ -72,6 +72,7 @@
   "resultsTable": {
     "bundleSize": "Tamanho do bundle",
     "lazyLoading": "Carregamento lento",
+    "library": "Biblioteca",
     "lookupTime": "Tempo de consulta",
     "sampleResults": "Resultados de amostra"
   },
@@ -104,9 +105,11 @@
     "insightsTutorialsAndAnalysis": "Insights, tutoriais e análises da comunidade i18n."
   },
   "blogList": {
+    "analysis": "Análise",
     "anOverviewOfTheCurrent": "Uma visão geral do ecossistema i18n atual no React, cobrindo tendências, padrões emergentes e preferências da comunidade.",
     "aStepByStepGuide": "Um guia passo a passo sobre a migração de um aplicativo de produção com 50.000 chaves de tradução do react-i18next para o Lingui.",
     "aTransparentLookAtOur": "Um olhar transparente sobre nossa metodologia de benchmarking, incluindo ambientes de teste, métodos estadísticos e reprodutibilidade.",
+    "benchmark": "Benchmark",
     "benchmarkMethodologyHowWeTest": "Metodologia de Benchmark: como testamos",
     "comparingI18nLibrariesIn2026": "Comparando bibliotecas i18n em 2026: um mergulho profundo",
     "february12026": "1 de fevereiro de 2026",
@@ -114,13 +117,16 @@
     "february282026": "28 de fevereiro de 2026",
     "howToReduceYourI18n": "Como reduzir seu bundle i18n em 60%",
     "january202026": "20 de janeiro de 2026",
+    "march152026": "15 de março de 2026",
     "march82026": "8 de março de 2026",
+    "meta": "Meta",
     "migratingFromReactI18nextTo": "Migrando do react-i18next para o Lingui",
     "practicalStrategiesForOptimizingTranslation": "Estratégias práticas para otimizar bundles de tradução, incluindo lazy loading, divisão de código e otimizações em tempo de compilação.",
     "reactServerComponentsIntroduceNew": "Os React Server Components introduzem novos padrões para internacionalização. Exploramos as implicações e as melhores práticas.",
     "readMore": "Leia mais →",
     "serverComponentsAndI18nWhat": "componentes de servidor e i18n: o que muda?",
     "theStateOfInternationalizationIn": "O estado da internacionalização no React",
+    "tutorial": "Tutorial",
     "weTested12DifferentInternationalization": "Testamos 12 bibliotecas de internacionalização diferentes em desempenho, tamanho do bundle e DX. Aqui estão os resultados surpreendentes."
   },
   "careersHeader": {
@@ -130,8 +136,10 @@
   "careersBenefits": {
     "competitivePay": "Pagamento competitivo",
     "openSourceTime": "Tempo dedicado ao código aberto",
+    "remoteFirst": "Trabalho remoto primeiro",
     "topOfMarketCompensation": "Compensação acima do mercado",
-    "workFromAnywhereInThe": "Trabalhe de qualquer lugar do mundo"
+    "workFromAnywhereInThe": "Trabalhe de qualquer lugar do mundo",
+    "x20TimeForOssContributions": "20% de tempo para contribuições OSS"
   },
   "openPositions": {
     "applyNow": "Candidatar-se agora",
@@ -204,7 +212,7 @@
   "pricingTiers": {
     "allLibraries": "Todas as bibliotecas",
     "auditLogs": "Logs de auditoria",
-    "benchmarkRunPerDay": "{runs} execuções de benchmark/dia",
+    "benchmarkRunPerDay": "{{runs}} execuções de benchmark/dia",
     "ciIntegration": "Integração de CI",
     "communitySupport": "Suporte da comunidade",
     "contactSales": "Contatar Vendas",
@@ -216,7 +224,7 @@
     "forever": "para sempre",
     "getStarted": "Começar",
     "historicalData": "Dados históricos",
-    "librariesNumber": "{libs} bibliotecas",
+    "librariesNumber": "{{libs}} bibliotecas",
     "month": "/mês",
     "onPremiseOption": "Opção on-premise",
     "price0": "0 $",
@@ -274,6 +282,7 @@
     "frenchFr": "Francês (fr)",
     "germanDe": "Alemão (de)",
     "japaneseJa": "Japonês (ja)",
+    "preferences": "Preferências",
     "receiveWeeklyBenchmarkReports": "Receber relatórios semanais de benchmarks",
     "spanishEs": "Espanhol (es)",
     "toggleDarkMode": "Alternar modo escuro",
@@ -283,6 +292,7 @@
   "apiAccessSection": {
     "apiAccess": "Acesso à API",
     "apiKey": "Chave da API",
+    "copy": "Copiar",
     "useThisKeyToAccess": "Utilize esta chave para aceder à API de benchmarking de forma programática."
   },
   "settingsFooter": {

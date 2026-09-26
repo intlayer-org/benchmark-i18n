@@ -1,7 +1,7 @@
 {
   "allLibraries": "所有库",
   "auditLogs": "审核日志",
-  "benchmarkRunPerDay": "每天 {runs} 次基准测试运行",
+  "benchmarkRunPerDay": "每天 {{runs}} 次基准测试运行",
   "ciIntegration": "CI 集成",
   "communitySupport": "社区支持",
   "contactSales": "联系销售人员",
@@ -13,7 +13,7 @@
   "forever": "永久",
   "getStarted": "开始使用",
   "historicalData": "历史数据",
-  "librariesNumber": "{libs} 个库",
+  "librariesNumber": "{{libs}} 个库",
   "month": "/月",
   "onPremiseOption": "本地部署选项",
   "price0": "0 $",

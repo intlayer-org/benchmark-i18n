@@ -1,7 +1,7 @@
 {
   "allLibraries": "모든 라이브러리",
   "auditLogs": "감사 로그",
-  "benchmarkRunPerDay": "하루 {runs} 회의 벤치마크 실행",
+  "benchmarkRunPerDay": "하루 {{runs}} 회의 벤치마크 실행",
   "ciIntegration": "CI 통합",
   "communitySupport": "커뮤니티 지원",
   "contactSales": "영업 문의",
@@ -13,7 +13,7 @@
   "forever": "영구적",
   "getStarted": "시작하기",
   "historicalData": "기록 데이터",
-  "librariesNumber": "{libs} 개의 라이브러리",
+  "librariesNumber": "{{libs}} 개의 라이브러리",
   "month": "/월",
   "onPremiseOption": "온프레미스 옵션",
   "price0": "0 $",

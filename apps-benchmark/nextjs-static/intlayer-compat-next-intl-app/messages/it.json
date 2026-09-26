@@ -88,7 +88,12 @@
     "benchmarkMethodologyHowWeTest": "Benchmark Methodology: How We Test",
     "january202026": "January 20, 2026",
     "aTransparentLookAtOur": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-    "readMore": "Read More →"
+    "readMore": "Read More →",
+    "march152026": "15 marzo 2026",
+    "benchmark": "Benchmark",
+    "tutorial": "Tutorial",
+    "analysis": "Analisi",
+    "meta": "Meta"
   },
   "understanding-impact": {
     "understandingTheImpact": "Understanding the Impact",
@@ -128,12 +133,14 @@
       "spanishEs": "Spagnolo (es)",
       "japaneseJa": "Giapponese (ja)",
       "chineseSimplifiedZhCn": "Chinese semplificato (zh-CN)",
-      "arabicAr": "Arabo (ar)"
+      "arabicAr": "Arabo (ar)",
+      "preferences": "Preferenze"
     },
     "api-access-section": {
       "apiAccess": "Accesso API",
       "apiKey": "Chiave API",
-      "useThisKeyToAccess": "Usa questa chiave per accedere programmaticamente alle API di benchmarking."
+      "useThisKeyToAccess": "Usa questa chiave per accedere programmaticamente alle API di benchmarking.",
+      "copy": "Copia"
     },
     "settings-footer": {
       "saveChanges": "Salva modifiche",
@@ -231,40 +238,8 @@
     "sampleResults": "Sample Results",
     "bundleSize": "Bundle Size",
     "lookupTime": "Lookup Time",
-    "lazyLoading": "Lazy Loading"
-  },
-  "careers": {
-    "careers-header": {
-      "title": "Carriere",
-      "joinOurMissionToImprove": "Unisciti alla nostra missione per migliorare l'ecosistema dell'internazionalizzazione. Siamo un team che lavora principalmente in remoto e che valorizza l'impatto, la trasparenza e l'apprendimento continuo."
-    },
-    "careers-benefits": {
-      "workFromAnywhereInThe": "Lavora da qualsiasi parte del mondo",
-      "competitivePay": "Retribuzione competitiva",
-      "topOfMarketCompensation": "Compensazione ai vertici del mercato",
-      "openSourceTime": "Tempo dedicato all'open source"
-    },
-    "open-positions": {
-      "seniorFrontendEngineer": "Ingegnere Frontend Senior",
-      "buildAndMaintainOurBenchmarking": "Costruisci e mantieni la nostra dashboard di benchmarking e gli strumenti per sviluppatori utilizzando React, TypeScript e Vite.",
-      "backendEngineer": "Ingegnere Backend",
-      "designAndScaleOurCloud": "Progetta e scala la nostra infrastruttura di benchmarking cloud gestendo migliaia di esecuzioni automatiche giornaliere.",
-      "technicalWriter": "Scrittore tecnico",
-      "createComprehensiveGuidesApiReferences": "Crea guide complete, riferimenti API e tutorial per la nostra piattaforma di benchmarking.",
-      "devrelEngineer": "Ingegnere DevOps",
-      "sanFranciscoRemote": "San Francisco / Remoto",
-      "engageWithTheI18nCommunity": "Interagisci con la comunità i18n attraverso conferenze, workshop, post sul blog e contributi open source.",
-      "qaEngineer": "Ingegnere QA",
-      "ensureTheAccuracyAndReliability": "Garantisci l'accuratezza e l'affidabilità dei risultati dei benchmark attraverso test e validazioni rigorosi.",
-      "openPositions": "Posizioni aperte",
-      "applyNow": "Candidati ora",
-      "remote": "Remoto",
-      "fullTime": "Tempo pieno",
-      "partTime": "Part-time",
-      "engineering": "Ingegneria",
-      "documentation": "Documentazione",
-      "community": "Comunità"
-    }
+    "lazyLoading": "Lazy Loading",
+    "library": "Libreria"
   },
   "header": {
     "home": "Home",
@@ -447,7 +422,9 @@
     "workFromAnywhereInThe": "Work from anywhere in the world",
     "competitivePay": "Competitive pay",
     "topOfMarketCompensation": "Top-of-market compensation",
-    "openSourceTime": "Open source time"
+    "openSourceTime": "Open source time",
+    "remoteFirst": "Remote-first",
+    "x20TimeForOssContributions": "20% di tempo per contributi OSS"
   },
   "why-it-matters": {
     "whyTheseMetricsMatter": "Why These Metrics Matter",

@@ -8,39 +8,39 @@ export default function BlogList() {
   const posts = [
     {
       title: t("blogList.comparingI18nLibrariesIn2026"),
-      date: t("blogList.march82026"), // The en.ts has march82026 for the first one too? Let's check.
+      date: t("blogList.march152026"),
       excerpt: t("blogList.weTested12DifferentInternationalization"),
-      category: "Benchmark",
+      category: t("blogList.benchmark"),
     },
     {
       title: t("blogList.howToReduceYourI18n"),
       date: t("blogList.march82026"),
       excerpt: t("blogList.practicalStrategiesForOptimizingTranslation"),
-      category: "Tutorial",
+      category: t("blogList.tutorial"),
     },
     {
       title: t("blogList.theStateOfInternationalizationIn"),
       date: t("blogList.february282026"),
       excerpt: t("blogList.anOverviewOfTheCurrent"),
-      category: "Analysis",
+      category: t("blogList.analysis"),
     },
     {
       title: t("blogList.migratingFromReactI18nextTo"),
       date: t("blogList.february152026"),
       excerpt: t("blogList.aStepByStepGuide"),
-      category: "Tutorial",
+      category: t("blogList.tutorial"),
     },
     {
       title: t("blogList.serverComponentsAndI18nWhat"),
       date: t("blogList.february12026"),
       excerpt: t("blogList.reactServerComponentsIntroduceNew"),
-      category: "Analysis",
+      category: t("blogList.analysis"),
     },
     {
       title: t("blogList.benchmarkMethodologyHowWeTest"),
       date: t("blogList.january202026"),
       excerpt: t("blogList.aTransparentLookAtOur"),
-      category: "Meta",
+      category: t("blogList.meta"),
     },
   ];
 

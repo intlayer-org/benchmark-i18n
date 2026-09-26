@@ -1,4 +1,4 @@
-import React, { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
+import React, { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useMemo, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 var pricing_tiers_default = {
 	key: "pricing-tiers",
@@ -42,6 +42,7 @@ var writeTransformCache = (dictionary, cacheKey, content) => {
 var TRANSLATION = "translation";
 var ENUMERATION = "enumeration";
 var PLURAL = "plural";
+var CONDITION = "condition";
 var INSERTION = "insertion";
 var OBJECT = "object";
 var ARRAY = "array";
@@ -49,44 +50,34 @@ var MARKDOWN = "markdown";
 var HTML = "html";
 var GENDER = "gender";
 var SELECT = "select";
-var formatNodeType = (nodeType, content, additionalAttributes) => ({
-	...additionalAttributes,
-	nodeType,
-	[nodeType]: content
+var getChildProps = (props, children, keyPathSegment) => ({
+	...props,
+	children,
+	keyPath: [...props.keyPath, keyPathSegment]
 });
 var deepTransformNode = (node, props) => {
-	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
+	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, deepTransformNode);
 	if (node === null || typeof node !== "object") return node;
-	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0 || typeof node === "function") return node;
-	if (Array.isArray(node)) return node.map((child, index) => {
-		return deepTransformNode(child, {
-			...props,
-			children: child,
-			keyPath: [...props.keyPath, {
-				type: ARRAY,
-				key: index
-			}]
-		});
-	});
+	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0) return node;
+	if (Array.isArray(node)) return node.map((child, index) => deepTransformNode(child, getChildProps(props, child, {
+		type: ARRAY,
+		key: index
+	})));
 	const result = {};
 	for (const key in node) {
-		const childProps = {
-			...props,
-			children: node[key],
-			keyPath: [...props.keyPath, {
-				type: OBJECT,
-				key
-			}]
+		const keyPathSegment = {
+			type: OBJECT,
+			key
 		};
 		if (props.eager) {
-			result[key] = deepTransformNode(node[key], childProps);
+			result[key] = deepTransformNode(node[key], getChildProps(props, node[key], keyPathSegment));
 			continue;
 		}
 		Object.defineProperty(result, key, {
 			enumerable: true,
 			configurable: true,
 			get: function() {
-				const transformed = deepTransformNode(node[key], childProps);
+				const transformed = deepTransformNode(node[key], getChildProps(props, node[key], keyPathSegment));
 				Object.defineProperty(this, key, {
 					value: transformed,
 					enumerable: true,
@@ -115,75 +106,6 @@ var getEnumeration = (enumerationContent, quantity) => {
 var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
 	return (values[key.trim()] ?? "").toString();
 });
-var DEFAULT_VARIANT_ID = "default";
-var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
-var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
-var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
-var encodeSegmentText = (raw, unsafeChars) => {
-	if (raw === "") return "%";
-	const encoded = raw.replace(unsafeChars, percentEncodeChar);
-	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
-	return encoded;
-};
-var serializeVariant = (variant) => {
-	if (variant === void 0) return DEFAULT_VARIANT_ID;
-	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
-	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
-};
-var serializeVariantChain = (variant) => {
-	if (!Array.isArray(variant)) return [serializeVariant(variant)];
-	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
-	return variant.map(serializeVariant);
-};
-var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
-	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
-	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
-};
-var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
-	const segments = compositeId.split("/");
-	return qualifierTypes.every((qualifierType, index) => {
-		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
-		return selector?.item === void 0 || segments[index] === String(selector.item);
-	});
-};
-var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
-var reconstructQualifiedEntry = (group, compositeId) => {
-	const segments = compositeId.split("/");
-	const entry = {
-		key: group.key,
-		content: group.content[compositeId]
-	};
-	group.qualifierTypes.forEach((qualifierType, index) => {
-		if (qualifierType === "variant") entry.variant = segments[index];
-		else if (qualifierType === "item") entry.item = Number(segments[index]);
-	});
-	return entry;
-};
-var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
-	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
-	const { qualifierTypes, content } = dictionaryOrGroup;
-	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
-	const compositeIds = Object.keys(content);
-	const variantIndex = qualifierTypes.indexOf("variant");
-	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
-	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
-	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
-	return matchedEntries[0] ?? null;
-};
-var parseDictionarySelector = (localeOrSelector) => {
-	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
-		locale: localeOrSelector.locale,
-		selector: localeOrSelector
-	};
-	return { locale: localeOrSelector };
-};
-var getDictionarySelectorCacheKey = (selector) => {
-	if (!selector) return "";
-	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
-		const value = selector[selectorKey];
-		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
-	}).join("|");
-};
 var internationalization = {
 	"locales": [
 		"en",
@@ -346,39 +268,40 @@ var deepMerge = (target, source) => {
 	if (target === void 0) return source;
 	if (source === void 0) return target;
 	if (Array.isArray(target)) return target;
-	if (isPlainObject(target) && isPlainObject(source)) {
-		const result = { ...target };
-		for (const key of Object.keys(source)) {
-			if (key === "__proto__" || key === "constructor" || source[key] === void 0) continue;
-			result[key] = target[key] !== void 0 ? deepMerge(target[key], source[key]) : source[key];
-		}
-		return result;
+	if (!isPlainObject(target) || !isPlainObject(source)) return target;
+	let result = target;
+	for (const key of Object.keys(source)) {
+		const sourceValue = source[key];
+		if (key === "__proto__" || key === "constructor" || sourceValue === void 0) continue;
+		const targetValue = target[key];
+		const merged = targetValue === void 0 ? sourceValue : typeof targetValue === "object" ? deepMerge(targetValue, sourceValue) : targetValue;
+		if (merged === targetValue) continue;
+		if (result === target) result = { ...target };
+		result[key] = merged;
 	}
-	return target;
+	return result;
 };
 var getTranslation = (languageContent, locale, fallback) => {
-	const get = (loc) => languageContent[loc];
-	const seen = /* @__PURE__ */ new Set();
-	const locales = [];
-	const addLocale = (loc) => {
-		if (loc && !seen.has(loc)) {
-			seen.add(loc);
-			locales.push(loc);
-		}
-	};
-	addLocale(locale);
-	if (locale.includes("-")) addLocale(locale.split("-")[0]);
-	addLocale(fallback);
-	if (fallback?.includes("-")) addLocale(fallback.split("-")[0]);
+	const get = (localeEl) => languageContent[localeEl];
+	const exactMatch = get(locale);
+	if (typeof exactMatch === "string") return exactMatch;
+	const candidates = [
+		locale,
+		locale.split("-")[0],
+		fallback,
+		fallback?.split("-")[0]
+	];
 	const results = [];
-	for (const loc of locales) {
-		const val = get(loc);
-		if (val === void 0) continue;
-		if (typeof val === "string") {
-			if (results.length === 0) return val;
+	for (let index = 0; index < candidates.length; index++) {
+		const candidate = candidates[index];
+		if (!candidate || candidates.indexOf(candidate) < index) continue;
+		const value = get(candidate);
+		if (value === void 0) continue;
+		if (typeof value === "string") {
+			if (results.length === 0) return value;
 			continue;
 		}
-		results.push(val);
+		results.push(value);
 	}
 	if (results.length === 0) return void 0;
 	if (results.length === 1) return results[0];
@@ -418,24 +341,24 @@ var fallbackPlugin = {
 	canHandle: () => false,
 	transform: (node) => node
 };
+var isAwaitingValues = (branch) => {
+	if (typeof branch !== "function") return false;
+	const { value } = branch;
+	return value === void 0 || typeof value === "function";
+};
 var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
-		const original = node["translation"] ?? {};
-		const result = {};
-		for (const key in original) {
-			const childProps = {
-				...props,
-				children: original[key],
-				keyPath: [...props.keyPath, {
-					type: TRANSLATION,
-					key
-				}]
-			};
-			result[key] = deepTransformNode(original[key], childProps);
-		}
-		return getTranslation(result, locale, fallback);
+		const content = getTranslation(node["translation"] ?? {}, locale, fallback);
+		return deepTransformNode(content, {
+			...props,
+			children: content,
+			keyPath: [...props.keyPath, {
+				type: TRANSLATION,
+				key: locale
+			}]
+		});
 	}
 };
 var enumerationPlugin = fallbackPlugin;
@@ -467,14 +390,39 @@ var insertionPlugin$1 = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? f
 				};
 			}
 		};
-		return deepTransformNode(children, {
+		return resolveInsertedSelector(children, deepTransformNode(children, {
 			...props,
 			children,
 			keyPath: newKeyPath,
 			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
+		}));
 	}
 };
+var selectorNodeTypes = [
+	ENUMERATION,
+	CONDITION,
+	PLURAL,
+	GENDER,
+	SELECT
+];
+var bindInsertedValues = (children, result, values, areBranchesInterpolated = false) => {
+	const nodeType = children?.nodeType;
+	if (typeof result !== "function" || !nodeType || !selectorNodeTypes.includes(nodeType)) return result;
+	const isCountSelector = nodeType === "plural" || nodeType === "enumeration";
+	return (selector) => {
+		if (typeof selector === "object" && selector !== null) return result({
+			...values,
+			...selector
+		});
+		if (isCountSelector) return result({
+			...values,
+			count: selector
+		});
+		const selected = result(selector);
+		return !areBranchesInterpolated && isAwaitingValues(selected) ? selected(values) : selected;
+	};
+};
+var resolveInsertedSelector = (children, result) => typeof result === "function" && selectorNodeTypes.includes(children?.nodeType ?? "") ? (values) => bindInsertedValues(children, result, values) : result;
 var genderPlugin = fallbackPlugin;
 var selectPlugin = fallbackPlugin;
 var nestedPlugin = (locale) => fallbackPlugin;
@@ -482,33 +430,44 @@ var filePlugin = fallbackPlugin;
 var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
+	pluralPlugin(locale ?? internationalization.defaultLocale),
 	conditionPlugin,
 	insertionPlugin$1,
 	nestedPlugin(locale ?? internationalization.defaultLocale),
 	filePlugin,
 	genderPlugin,
 	selectPlugin
-];
+].filter((plugin) => plugin !== fallbackPlugin);
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
+var transformsInProgress = /* @__PURE__ */ new WeakSet();
 var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
-	const { locale, selector } = parseDictionarySelector(localeOrSelector);
-	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+	const { locale, selector } = {
+		locale: localeOrSelector,
+		selector: void 0
+	};
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, "", plugins);
 	const cached = readTransformCache(dictionary, cacheKey);
 	if (cached.hit) return cached.content;
 	const appliedPlugins = plugins ?? getBasePlugins(locale);
-	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const resolved = dictionary;
 	const transformDictionary = (resolvedDictionary) => {
 		const props = {
 			dictionaryKey: resolvedDictionary.key,
 			dictionaryPath: resolvedDictionary.filePath,
 			keyPath: [],
 			plugins: appliedPlugins,
-			nestedDictionaries: resolvedDictionary.nestedDictionaries
+			nestedDictionaries: resolvedDictionary.nestedDictionaries,
+			eager: !transformsInProgress.has(resolvedDictionary)
 		};
-		return getContent(resolvedDictionary.content, props, appliedPlugins);
+		transformsInProgress.add(resolvedDictionary);
+		try {
+			return getContent(resolvedDictionary.content, props, appliedPlugins);
+		} finally {
+			if (props.eager) transformsInProgress.delete(resolvedDictionary);
+		}
 	};
 	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
@@ -534,605 +493,6 @@ var splitInsertionTemplate = (template, values = {}) => {
 		parts
 	};
 };
-var enumeration = (content) => formatNodeType(ENUMERATION, content);
-var gender = (content) => formatNodeType(GENDER, content);
-var parseAttributes = (attributesString) => {
-	const attributes = {};
-	if (!attributesString?.trim()) return attributes;
-	[...attributesString.matchAll(/([a-zA-Z0-9-:_@]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^>\s]+))?/g)].forEach((match) => {
-		const attrName = match[1];
-		attributes[attrName] = "string";
-	});
-	return attributes;
-};
-var getHTMLCustomComponents = (content) => {
-	if (typeof content !== "string") throw new Error("content must be a string");
-	const matches = [...content.matchAll(/<(\/)?([a-zA-Z0-9.-]+)\s*([\s\S]*?)(\/?)>/g)];
-	const components = {};
-	matches.forEach((match) => {
-		const isClosing = !!match[1];
-		const tagName = match[2];
-		const attributesString = match[3];
-		const isSelfClosing = !!match[4];
-		if (/^[a-z][a-z0-9]*$/.test(tagName)) {
-			components[tagName] = true;
-			return;
-		}
-		if (!components[tagName]) components[tagName] = {};
-		if (components[tagName] === true) return;
-		if (isClosing) return;
-		const attributes = parseAttributes(attributesString);
-		const componentDef = components[tagName];
-		Object.assign(componentDef, attributes);
-		if (!isSelfClosing) componentDef.children = "string";
-	});
-	return components;
-};
-var VOID_HTML_ELEMENTS = /* @__PURE__ */ new Set([
-	"area",
-	"base",
-	"br",
-	"col",
-	"embed",
-	"hr",
-	"img",
-	"input",
-	"link",
-	"meta",
-	"source",
-	"track",
-	"wbr"
-]);
-var TAG_REGEX = /<(\/)?([a-zA-Z][a-zA-Z0-9.-]*)\s*((?:[^\n]|\n(?!\n))*?)(\/?)>/g;
-var validateHTML = (content) => {
-	const issues = [];
-	const stack = [];
-	for (const match of content.matchAll(TAG_REGEX)) {
-		const isClosing = !!match[1];
-		const tagName = match[2];
-		const attrs = match[3];
-		const isSelfClosing = !!match[4];
-		if (attrs.trimStart().startsWith("://") || attrs.trimStart().startsWith(":")) continue;
-		if (isClosing) {
-			if (stack.length === 0) issues.push({
-				type: "error",
-				message: `Closing tag </${tagName}> has no matching opening tag`
-			});
-			else {
-				const last = stack[stack.length - 1];
-				if (last.tag.toLowerCase() !== tagName.toLowerCase()) issues.push({
-					type: "error",
-					message: `Mismatched closing tag: expected </${last.tag}> but found </${tagName}>`
-				});
-				stack.pop();
-			}
-		} else {
-			const isVoidElement = VOID_HTML_ELEMENTS.has(tagName.toLowerCase());
-			if (!isSelfClosing && !isVoidElement) stack.push({ tag: tagName });
-		}
-	}
-	for (const unclosed of stack) issues.push({
-		type: "error",
-		message: `Unclosed HTML tag: <${unclosed.tag}>`
-	});
-	return {
-		valid: issues.filter((i) => i.type === "error").length === 0,
-		issues
-	};
-};
-var html = (content, components) => {
-	const getComponents = () => {
-		if (components) return components;
-		if (typeof content === "string") {
-			const { issues } = validateHTML(content);
-			for (const issue of issues) if (issue.type === "error") console.error(`[intlayer/html] ${issue.message}`);
-			else console.warn(`[intlayer/html] ${issue.message}`);
-			return getHTMLCustomComponents(content);
-		}
-		let stringContent;
-		if (typeof content === "function") stringContent = content();
-		else if (typeof content.then === "function") stringContent = async () => getHTMLCustomComponents(await content);
-		if (typeof stringContent === "string") return getHTMLCustomComponents(stringContent);
-		try {
-			return getHTMLCustomComponents(JSON.stringify(content));
-		} catch (_e) {
-			return [];
-		}
-	};
-	return formatNodeType(HTML, content, { tags: getComponents() });
-};
-var getInsertionValues = (content) => {
-	const matches = [...content.matchAll(/{{\s*(.*?)\s*}}/g)];
-	if (matches.length === 0) return [];
-	return [...new Set(matches.map((match) => match[1].trim()))].filter(Boolean);
-};
-var insertion = (content) => {
-	const getInsertions = () => {
-		if (typeof content === "string") return getInsertionValues(content);
-		let stringContent;
-		if (typeof content === "function") stringContent = content();
-		else if (typeof content.then === "function") stringContent = async () => getInsertionValues(await content);
-		if (typeof stringContent === "string") return getInsertionValues(stringContent);
-		try {
-			return getInsertionValues(JSON.stringify(content));
-		} catch (_e) {
-			return [];
-		}
-	};
-	return formatNodeType(INSERTION, content, { fields: getInsertions() });
-};
-var plural = (content) => formatNodeType(PLURAL, content);
-var select = (content, variable) => formatNodeType(SELECT, content, { variable });
-var parseICU = (text) => {
-	let index = 0;
-	const parseNodes = () => {
-		const nodes = [];
-		let currentText = "";
-		while (index < text.length) {
-			const char = text[index];
-			if (char === "{") {
-				if (currentText) {
-					nodes.push(currentText);
-					currentText = "";
-				}
-				index++;
-				nodes.push(parseArgument());
-			} else if (char === "}") break;
-			else if (char === "'") {
-				if (index + 1 < text.length && text[index + 1] === "'") {
-					currentText += "'";
-					index += 2;
-				} else {
-					const nextQuote = text.indexOf("'", index + 1);
-					if (nextQuote !== -1) {
-						currentText += text.substring(index + 1, nextQuote);
-						index = nextQuote + 1;
-					} else {
-						currentText += "'";
-						index++;
-					}
-				}
-			} else {
-				currentText += char;
-				index++;
-			}
-		}
-		if (currentText) nodes.push(currentText);
-		return nodes;
-	};
-	const parseArgument = () => {
-		let name = "";
-		while (index < text.length && /[^,}]/.test(text[index])) {
-			name += text[index];
-			index++;
-		}
-		name = name.trim();
-		if (index >= text.length) throw new Error("Unclosed argument");
-		if (text[index] === "}") {
-			index++;
-			return {
-				type: "argument",
-				name
-			};
-		}
-		if (text[index] === ",") {
-			index++;
-			let type = "";
-			while (index < text.length && /[^,}]/.test(text[index])) {
-				type += text[index];
-				index++;
-			}
-			type = type.trim();
-			if (index >= text.length) throw new Error("Unclosed argument");
-			if (text[index] === "}") {
-				index++;
-				return {
-					type: "argument",
-					name,
-					format: { type }
-				};
-			}
-			if (text[index] === ",") {
-				index++;
-				if (type === "plural" || type === "select" || type === "selectordinal") {
-					const options = {};
-					while (index < text.length && text[index] !== "}") {
-						while (index < text.length && /\s/.test(text[index])) index++;
-						let key = "";
-						while (index < text.length && /[^{\s]/.test(text[index])) {
-							key += text[index];
-							index++;
-						}
-						while (index < text.length && /\s/.test(text[index])) index++;
-						if (text[index] !== "{") throw new Error("Expected { after option key");
-						index++;
-						const value = parseNodes();
-						if (text[index] !== "}") throw new Error("Expected } after option value");
-						index++;
-						options[key] = value;
-						while (index < text.length && /\s/.test(text[index])) index++;
-					}
-					index++;
-					if (type === "plural") return {
-						type: "plural",
-						name,
-						options
-					};
-					else if (type === "select") return {
-						type: "select",
-						name,
-						options
-					};
-					else if (type === "selectordinal") return {
-						type: "selectordinal",
-						name,
-						options
-					};
-				} else {
-					let style = "";
-					while (index < text.length && text[index] !== "}") {
-						style += text[index];
-						index++;
-					}
-					if (index >= text.length) throw new Error("Unclosed argument");
-					style = style.trim();
-					index++;
-					return {
-						type: "argument",
-						name,
-						format: {
-							type,
-							style
-						}
-					};
-				}
-			}
-		}
-		throw new Error("Malformed argument");
-	};
-	return parseNodes();
-};
-var icuNodesToIntlayer = (nodes) => {
-	if (nodes.length === 0) return "";
-	if (nodes.length === 1 && typeof nodes[0] === "string") {
-		const node = nodes[0];
-		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
-		return node;
-	}
-	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
-		let str = "";
-		for (const node of nodes) if (typeof node === "string") str += node;
-		else if (typeof node !== "string" && node.type === "argument") {
-			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
-			else str += `{{${node.name}}}`;
-		}
-		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
-		return insertion(str);
-	}
-	if (nodes.length === 1) {
-		const node = nodes[0];
-		if (typeof node === "string") {
-			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
-			return node;
-		}
-		if (node.type === "argument") {
-			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
-			return insertion(`{{${node.name}}}`);
-		}
-		if (node.type === "plural") {
-			const options = {};
-			let hasExactMatch = false;
-			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
-				hasExactMatch = true;
-				break;
-			}
-			if (hasExactMatch) {
-				for (const [key, val] of Object.entries(node.options)) {
-					let newKey = key;
-					if (key.startsWith("=")) newKey = key.substring(1);
-					else if (key === "one") newKey = "1";
-					else if (key === "two") newKey = "2";
-					else if (key === "few") newKey = "<=3";
-					else if (key === "many") newKey = ">=4";
-					else if (key === "other") newKey = "fallback";
-					const replacedVal = val.map((v) => {
-						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
-						return v;
-					});
-					options[newKey] = icuNodesToIntlayer(replacedVal);
-				}
-				options.__intlayer_icu_var = node.name;
-				return enumeration(options);
-			} else {
-				for (const [key, val] of Object.entries(node.options)) options[key] = icuNodesToIntlayer(val.map((v) => {
-					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
-					return v;
-				}));
-				return plural(options);
-			}
-		}
-		if (node.type === "select") {
-			const options = {};
-			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = icuNodesToIntlayer(val);
-			const optionKeys = Object.keys(options);
-			if ((options.male || options.female) && optionKeys.every((k) => [
-				"male",
-				"female",
-				"other",
-				"fallback"
-			].includes(k))) return gender({
-				fallback: options.fallback,
-				male: options.male,
-				female: options.female
-			});
-			return select(options, node.name);
-		}
-		if (node.type === "selectordinal") {
-			const options = {};
-			for (const [key, val] of Object.entries(node.options)) {
-				const newKey = key.startsWith("=") ? key.substring(1) : key === "other" ? "fallback" : key;
-				options[newKey] = icuNodesToIntlayer(val.map((value) => {
-					if (typeof value === "string") return value.replace(/#/g, `{{${node.name}}}`);
-					return value;
-				}));
-			}
-			options.__intlayer_icu_var = node.name;
-			options.__intlayer_icu_ordinal = true;
-			return enumeration(options);
-		}
-	}
-	return nodes.map((node) => icuNodesToIntlayer([node]));
-};
-var icuToIntlayerPlugin = {
-	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
-	transform: (node) => {
-		try {
-			return icuNodesToIntlayer(parseICU(node));
-		} catch {
-			return node;
-		}
-	}
-};
-var icuToIntlayerFormatter = (message) => {
-	return deepTransformNode(message, {
-		dictionaryKey: "icu",
-		keyPath: [],
-		plugins: [{
-			id: "icu",
-			...icuToIntlayerPlugin
-		}]
-	});
-};
-var parseI18Next = (text) => {
-	let index = 0;
-	const parseNodes = () => {
-		const nodes = [];
-		let currentText = "";
-		while (index < text.length) {
-			const char = text[index];
-			if (char === "{" && text[index + 1] === "{") {
-				if (currentText) {
-					nodes.push(currentText);
-					currentText = "";
-				}
-				index += 2;
-				nodes.push(parseStandardArgument());
-			} else if (char === "{") {
-				if (currentText) {
-					nodes.push(currentText);
-					currentText = "";
-				}
-				index++;
-				nodes.push(parseICUArgument());
-			} else if (char === "}") break;
-			else {
-				currentText += char;
-				index++;
-			}
-		}
-		if (currentText) nodes.push(currentText);
-		return nodes;
-	};
-	const parseStandardArgument = () => {
-		let name = "";
-		while (index < text.length) {
-			if (text[index] === "}" && text[index + 1] === "}") {
-				index += 2;
-				return {
-					type: "argument",
-					name: name.trim()
-				};
-			}
-			name += text[index];
-			index++;
-		}
-		throw new Error("Unclosed i18next variable");
-	};
-	const parseICUArgument = () => {
-		let name = "";
-		while (index < text.length && /[^,}]/.test(text[index])) {
-			name += text[index];
-			index++;
-		}
-		name = name.trim();
-		if (index >= text.length) throw new Error("Unclosed argument");
-		if (text[index] === "}") {
-			index++;
-			return {
-				type: "argument",
-				name
-			};
-		}
-		if (text[index] === ",") {
-			index++;
-			let type = "";
-			while (index < text.length && /[^,}]/.test(text[index])) {
-				type += text[index];
-				index++;
-			}
-			type = type.trim();
-			if (index >= text.length) throw new Error("Unclosed argument");
-			if (text[index] === "}") {
-				index++;
-				return {
-					type: "argument",
-					name,
-					format: { type }
-				};
-			}
-			if (text[index] === ",") {
-				index++;
-				if (type === "plural" || type === "select") {
-					const options = {};
-					while (index < text.length && text[index] !== "}") {
-						while (index < text.length && /\s/.test(text[index])) index++;
-						let key = "";
-						while (index < text.length && /[^{\s]/.test(text[index])) {
-							key += text[index];
-							index++;
-						}
-						while (index < text.length && /\s/.test(text[index])) index++;
-						if (text[index] !== "{") throw new Error("Expected { after option key");
-						index++;
-						const value = parseNodes();
-						if (text[index] !== "}") throw new Error("Expected } after option value");
-						index++;
-						options[key] = value;
-						while (index < text.length && /\s/.test(text[index])) index++;
-					}
-					index++;
-					if (type === "plural") return {
-						type: "plural",
-						name,
-						options
-					};
-					else if (type === "select") return {
-						type: "select",
-						name,
-						options
-					};
-				} else {
-					let style = "";
-					while (index < text.length && text[index] !== "}") {
-						style += text[index];
-						index++;
-					}
-					if (index >= text.length) throw new Error("Unclosed argument");
-					style = style.trim();
-					index++;
-					return {
-						type: "argument",
-						name,
-						format: {
-							type,
-							style
-						}
-					};
-				}
-			}
-		}
-		throw new Error("Malformed argument");
-	};
-	return parseNodes();
-};
-var i18nextNodesToIntlayer = (nodes) => {
-	if (nodes.length === 0) return "";
-	if (nodes.length === 1 && typeof nodes[0] === "string") {
-		const node = nodes[0];
-		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
-		return node;
-	}
-	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
-		let str = "";
-		for (const node of nodes) if (typeof node === "string") str += node;
-		else if (typeof node !== "string" && node.type === "argument") {
-			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
-			else str += `{{${node.name}}}`;
-		}
-		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
-		return insertion(str);
-	}
-	if (nodes.length === 1) {
-		const node = nodes[0];
-		if (typeof node === "string") {
-			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
-			return node;
-		}
-		if (node.type === "argument") {
-			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
-			return insertion(`{{${node.name}}}`);
-		}
-		if (node.type === "plural") {
-			const options = {};
-			let hasExactMatch = false;
-			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
-				hasExactMatch = true;
-				break;
-			}
-			if (hasExactMatch) {
-				for (const [key, val] of Object.entries(node.options)) {
-					let newKey = key;
-					if (key.startsWith("=")) newKey = key.substring(1);
-					else if (key === "one") newKey = "1";
-					else if (key === "two") newKey = "2";
-					else if (key === "few") newKey = "<=3";
-					else if (key === "many") newKey = ">=4";
-					else if (key === "other") newKey = "fallback";
-					const replacedVal = val.map((v) => {
-						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
-						return v;
-					});
-					options[newKey] = i18nextNodesToIntlayer(replacedVal);
-				}
-				options.__intlayer_icu_var = node.name;
-				return enumeration(options);
-			} else {
-				for (const [key, val] of Object.entries(node.options)) options[key] = i18nextNodesToIntlayer(val.map((v) => {
-					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
-					return v;
-				}));
-				return plural(options);
-			}
-		}
-		if (node.type === "select") {
-			const options = {};
-			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = i18nextNodesToIntlayer(val);
-			const optionKeys = Object.keys(options);
-			if ((options.male || options.female) && optionKeys.every((k) => [
-				"male",
-				"female",
-				"other",
-				"fallback"
-			].includes(k))) return gender({
-				fallback: options.fallback,
-				male: options.male,
-				female: options.female
-			});
-			return select(options, node.name);
-		}
-	}
-	return nodes.map((node) => i18nextNodesToIntlayer([node]));
-};
-var i18nextToIntlayerPlugin = {
-	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
-	transform: (node) => {
-		try {
-			return i18nextNodesToIntlayer(parseI18Next(node));
-		} catch {
-			return node;
-		}
-	}
-};
-var i18nextToIntlayerFormatter = (message) => {
-	return deepTransformNode(message, {
-		dictionaryKey: "i18next",
-		keyPath: [],
-		plugins: [{
-			id: "i18next",
-			...i18nextToIntlayerPlugin
-		}]
-	});
-};
 var navigatePath = (contentValue, path, keySeparator = ".") => {
 	if (!path) return contentValue;
 	if (contentValue !== null && contentValue !== void 0 && typeof contentValue === "object") {
@@ -1146,105 +506,6 @@ var navigatePath = (contentValue, path, keySeparator = ".") => {
 		current = current[part];
 	}
 	return current;
-};
-var parseVueI18nPart = (text) => {
-	let index = 0;
-	const nodes = [];
-	let currentText = "";
-	while (index < text.length) {
-		const char = text[index];
-		if (char === "{") {
-			if (currentText) {
-				nodes.push(currentText);
-				currentText = "";
-			}
-			index++;
-			let name = "";
-			while (index < text.length && text[index] !== "}") {
-				name += text[index];
-				index++;
-			}
-			if (index < text.length) index++;
-			nodes.push({
-				type: "argument",
-				name: name.trim()
-			});
-		} else {
-			currentText += char;
-			index++;
-		}
-	}
-	if (currentText) nodes.push(currentText);
-	return nodes;
-};
-var parseVueI18n = (text) => {
-	const parts = [];
-	let currentPart = "";
-	let index = 0;
-	while (index < text.length) {
-		const char = text[index];
-		if (char === "\\" && index + 1 < text.length && text[index + 1] === "|") {
-			currentPart += "|";
-			index += 2;
-		} else if (char === "|") {
-			parts.push(currentPart.trim());
-			currentPart = "";
-			index++;
-		} else {
-			currentPart += char;
-			index++;
-		}
-	}
-	parts.push(currentPart.trim());
-	return parts.map(parseVueI18nPart);
-};
-var vueI18nPartToIntlayer = (nodes) => {
-	if (nodes.length === 0) return "";
-	if (nodes.length === 1 && typeof nodes[0] === "string") return nodes[0];
-	let str = "";
-	for (const node of nodes) if (typeof node === "string") str += node;
-	else str += `{{${node.name}}}`;
-	return insertion(str);
-};
-var vueI18nNodesToIntlayer = (parts) => {
-	if (parts.length === 1) return vueI18nPartToIntlayer(parts[0]);
-	const options = {};
-	const varName = "count";
-	if (parts.length === 2) return enumeration({
-		"1": vueI18nPartToIntlayer(parts[0]),
-		fallback: vueI18nPartToIntlayer(parts[1])
-	});
-	if (parts.length === 3) return enumeration({
-		"0": vueI18nPartToIntlayer(parts[0]),
-		"1": vueI18nPartToIntlayer(parts[1]),
-		fallback: vueI18nPartToIntlayer(parts[2])
-	});
-	parts.forEach((part, index) => {
-		if (index === parts.length - 1) options.fallback = vueI18nPartToIntlayer(part);
-		else options[index.toString()] = vueI18nPartToIntlayer(part);
-	});
-	options.__intlayer_vue_i18n_var = varName;
-	return enumeration(options);
-};
-var vueI18nToIntlayerPlugin = {
-	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("|")),
-	transform: (node) => {
-		try {
-			return vueI18nNodesToIntlayer(parseVueI18n(node));
-		} catch {
-			return node;
-		}
-	}
-};
-var vueI18nToIntlayerFormatter = (message) => {
-	return deepTransformNode(message, {
-		dictionaryKey: "vue-i18n",
-		keyPath: [],
-		plugins: [{
-			id: "vue-i18n",
-			...vueI18nToIntlayerPlugin
-		}]
-	});
 };
 var ENUMERATION_METADATA_KEYS = [
 	"__intlayer_icu_var",
@@ -1342,13 +603,6 @@ var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
 	const resolved = resolveMessageNode(node, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
-var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var DIALECT_FORMATTERS = {
-	icu: icuToIntlayerFormatter,
-	i18next: i18nextToIntlayerFormatter,
-	"vue-i18n": vueI18nToIntlayerFormatter
-};
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var parseTaggedMessage = (message) => {
 	const tokens = [];
 	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
@@ -1361,9 +615,9 @@ var parseTaggedMessage = (message) => {
 			tag: selfClosingTag,
 			children: []
 		});
-		else tokens.push({
+		else if (tag) tokens.push({
 			tag,
-			children: parseTaggedMessage(inner)
+			children: parseTaggedMessage(inner ?? "")
 		});
 		lastIndex = match.index + match[0].length;
 		match = tagRegex.exec(message);
@@ -1403,7 +657,7 @@ var createLookupTranslator = (locale, lookup, missingKeyFallback) => {
 	const resolveToString = (key, values = {}) => {
 		const rawValue = lookup(key);
 		if (rawValue === null || rawValue === void 0) return void 0;
-		return resolveMessage(rawValue, values, locale, "icu");
+		return resolveMessageNodeToString(rawValue, values, locale);
 	};
 	const translate = (key, values) => resolveToString(key, values) ?? missingKeyFallback(key);
 	return Object.assign(translate, {
@@ -1422,108 +676,6 @@ var createLookupTranslator = (locale, lookup, missingKeyFallback) => {
 			return renderMarkupTokens(parseTaggedMessage(message), renderers);
 		}
 	});
-};
-var renderIntlayerNode = ({ children, value, additionalProps }) => {
-	const element = isValidElement(children) ? children : jsx(Fragment$1, { children });
-	return new Proxy(element, { get(target, prop, receiver) {
-		if (prop === "value") return value;
-		if (prop === Symbol.toPrimitive) return () => value ?? "";
-		if (prop === "toString") return () => String(value ?? "");
-		if (prop === "valueOf") return () => value;
-		if (additionalProps && Object.hasOwn(additionalProps, prop)) return additionalProps[prop];
-		if (value !== null && value !== void 0 && typeof prop === "string" && prop !== "constructor" && !(prop in target)) {
-			const valObj = Object(value);
-			if (prop in valObj) {
-				const valProp = valObj[prop];
-				return typeof valProp === "function" ? valProp.bind(value) : valProp;
-			}
-		}
-		return Reflect.get(target, prop, receiver);
-	} });
-};
-var intlayerNodePlugins = {
-	id: "intlayer-node-plugin",
-	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
-	transform: (_node, { plugins, ...rest }) => {
-		return renderIntlayerNode({
-			...rest,
-			value: rest.children,
-			children: rest.children
-		});
-	}
-};
-var reactNodePlugins = fallbackPlugin;
-var splitAndJoinInsertion = (template, values) => {
-	const result = splitInsertionTemplate(template, values);
-	if (result.isSimple) return result.parts;
-	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
-};
-var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
-	id: "insertion-plugin",
-	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
-	transform: (node, props, deepTransformNode) => {
-		const newKeyPath = [...props.keyPath, { type: INSERTION }];
-		const children = node[INSERTION];
-		const insertionStringPlugin = {
-			id: "insertion-string-plugin",
-			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
-			transform: (node, subProps, deepTransformNode) => {
-				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
-				const transformedResult = deepTransformNode(node, {
-					...subProps,
-					children: node,
-					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-				});
-				return (values) => {
-					const result = splitAndJoinInsertion(transformedResult, values);
-					return deepTransformNode(result, {
-						...subProps,
-						plugins: props.plugins,
-						children: result
-					});
-				};
-			}
-		};
-		const result = deepTransformNode(children, {
-			...props,
-			children,
-			keyPath: newKeyPath,
-			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
-		if (typeof children === "object" && children !== null && "nodeType" in children && ["enumeration", "condition"].includes(children.nodeType)) return (values) => (arg) => {
-			const inner = result(arg);
-			if (typeof inner === "function") return inner(values);
-			return inner;
-		};
-		return result;
-	}
-};
-var markdownPlugin = fallbackPlugin;
-var htmlPlugin = fallbackPlugin;
-var pluginsCache = /* @__PURE__ */ new Map();
-var getPlugins = (locale, fallback = true) => {
-	const cacheKey = `${locale ?? internationalization.defaultLocale}_${fallback}`;
-	if (pluginsCache.has(cacheKey)) return pluginsCache.get(cacheKey);
-	const plugins = [
-		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-		enumerationPlugin,
-		pluralPlugin(locale ?? internationalization.defaultLocale),
-		conditionPlugin,
-		nestedPlugin(locale ?? internationalization.defaultLocale),
-		filePlugin,
-		genderPlugin,
-		selectPlugin,
-		intlayerNodePlugins,
-		reactNodePlugins,
-		insertionPlugin,
-		markdownPlugin,
-		htmlPlugin
-	];
-	pluginsCache.set(cacheKey, plugins);
-	return plugins;
-};
-var getDictionary = (dictionary, localeOrSelector) => {
-	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
 };
 var resolveExpiresToTimestamp = (expires) => {
 	if (typeof expires === "number") return Date.now() + expires * 1e3;
@@ -1572,8 +724,19 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		if (isValidLocale(value)) return value;
 	} catch {}
 };
+var isStoredLocaleCached = false;
+var storedLocale;
+var getCachedLocaleFromStorageClient = () => {
+	if (typeof window === "undefined") return getLocaleFromStorageClient(localeStorageOptions);
+	if (!isStoredLocaleCached) {
+		storedLocale = getLocaleFromStorageClient(localeStorageOptions);
+		isStoredLocaleCached = true;
+	}
+	return storedLocale;
+};
 var setLocaleInStorageClient = (locale, options) => {
 	if (options?.isCookieEnabled === false) return;
+	isStoredLocaleCached = false;
 	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
 		const { name, attributes } = routing.storage.cookies[i];
 		try {
@@ -1588,42 +751,134 @@ var setLocaleInStorageClient = (locale, options) => {
 		}
 	}
 };
-var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
+var prototypeCache = /* @__PURE__ */ new Map();
+var createIntlayerNodePrototype = (basePrototype, valuePrototype) => Object.create(new Proxy(basePrototype, {
+	get: (target, property, receiver) => {
+		if (typeof property !== "string" || property === "constructor" || property in target) return Reflect.get(target, property, receiver);
+		const { value } = receiver;
+		if (value === null || value === void 0) return void 0;
+		const member = Object(value)[property];
+		return typeof member === "function" ? member.bind(value) : member;
+	},
+	has: (target, property) => property in target || typeof property === "string" && property !== "constructor" && valuePrototype !== null && property in valuePrototype
+}), {
+	toString: { value() {
+		return String(this.value ?? "");
+	} },
+	valueOf: { value() {
+		return this.value;
+	} },
+	[Symbol.toPrimitive]: { value() {
+		return this.value ?? "";
+	} }
+});
+var getIntlayerNodePrototype = (value, basePrototype = Object.prototype) => {
+	const valueType = typeof value;
+	const valueKey = value === null || value === void 0 ? null : valueType === "object" || valueType === "function" ? Object.getPrototypeOf(value) : valueType;
+	let prototypes = prototypeCache.get(basePrototype);
+	if (!prototypes) {
+		prototypes = /* @__PURE__ */ new Map();
+		prototypeCache.set(basePrototype, prototypes);
+	}
+	let prototype = prototypes.get(valueKey);
+	if (!prototype) {
+		prototype = createIntlayerNodePrototype(basePrototype, valueKey === null ? null : Object.getPrototypeOf(Object(value)));
+		prototypes.set(valueKey, prototype);
+	}
+	return prototype;
+};
+var renderIntlayerNode = ({ children, value, additionalProps }) => Object.setPrototypeOf({
+	...isValidElement(children) ? children : jsx(Fragment$1, { children }),
+	value,
+	...additionalProps
+}, getIntlayerNodePrototype(value));
+var intlayerNodePlugins = {
+	id: "intlayer-node-plugin",
+	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
+	transform: (_node, props) => {
+		return renderIntlayerNode({
+			value: props.children,
+			children: props.children
+		});
+	}
+};
+var reactNodePlugins = fallbackPlugin;
+var splitAndJoinInsertion = (template, values) => {
+	const result = splitInsertionTemplate(template, values);
+	if (result.isSimple) return result.parts;
+	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
+};
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+	id: "insertion-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
+	transform: (node, props, deepTransformNode) => {
+		const newKeyPath = [...props.keyPath, { type: INSERTION }];
+		const children = node[INSERTION];
+		const insertionStringPlugin = {
+			id: "insertion-string-plugin",
+			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
+			transform: (node, subProps, deepTransformNode) => {
+				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
+				const transformedResult = deepTransformNode(node, {
+					...subProps,
+					children: node,
+					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
+				});
+				return (values) => {
+					const result = splitAndJoinInsertion(transformedResult, values);
+					return deepTransformNode(result, {
+						...subProps,
+						plugins: props.plugins,
+						children: result
+					});
+				};
+			}
+		};
+		return resolveInsertedSelector(children, deepTransformNode(children, {
+			...props,
+			children,
+			keyPath: newKeyPath,
+			plugins: [insertionStringPlugin, ...props.plugins ?? []]
+		}));
+	}
+};
+var markdownPlugin = fallbackPlugin;
+var htmlPlugin = fallbackPlugin;
+var pluginsCache = /* @__PURE__ */ new Map();
+var getPlugins = (locale, fallback = true) => {
+	const cacheKey = `${locale ?? internationalization.defaultLocale}_${fallback}`;
+	if (pluginsCache.has(cacheKey)) return pluginsCache.get(cacheKey);
+	const enabledPlugins = [
+		intlayerNodePlugins,
+		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
+		enumerationPlugin,
+		pluralPlugin(locale ?? internationalization.defaultLocale),
+		conditionPlugin,
+		nestedPlugin(locale ?? internationalization.defaultLocale),
+		filePlugin,
+		genderPlugin,
+		selectPlugin,
+		reactNodePlugins,
+		insertionPlugin,
+		markdownPlugin,
+		htmlPlugin
+	].filter((plugin) => plugin !== fallbackPlugin);
+	pluginsCache.set(cacheKey, enabledPlugins);
+	return enabledPlugins;
+};
+var getDictionary = (dictionary, localeOrSelector) => {
+	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
+};
+var getLocaleInStorage = getCachedLocaleFromStorageClient;
 var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(locale, {
 	...localeStorageOptions,
 	isCookieEnabled
 });
-var useEditor = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const managerRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !managerRef.current) return;
-		managerRef.current.currentLocale.set(locale);
-	}, [locale]);
-};
-var EditorProvider = ({ children }) => {
-	useEditor();
-	return children;
-};
-var useAnalytics = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const clientRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !clientRef.current) return;
-		clientRef.current.setLocale(locale);
-		clientRef.current.trackPageView({ reason: "locale_change" });
-	}, [locale]);
-};
-var AnalyticsProvider = ({ children }) => {
-	useAnalytics();
-	return children;
-};
 var setIntlayerIdentifier = () => {
 	if (typeof window !== "undefined") window.intlayer = { enabled: true };
 };
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
+	if (locales?.includes(selectedLocale)) return selectedLocale;
 	const requestedLocales = [selectedLocale].flat();
 	const normalize = (locale) => locale.trim().toLowerCase();
 	try {
@@ -1639,20 +894,24 @@ var localeResolver = (selectedLocale, locales = internationalization?.locales, d
 	return defaultLocale;
 };
 var IntlayerClientContext = createContext({
-	locale: localeInStorage ?? internationalization?.defaultLocale,
+	get locale() {
+		return getLocaleInStorage() ?? internationalization?.defaultLocale;
+	},
 	setLocale: () => null,
 	isCookieEnabled: true
 });
 var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocaleProp, variant, children, setLocale: setLocaleProp, disableEditor, isCookieEnabled }) => {
 	const { locales: availableLocales, defaultLocale: defaultLocaleConfig } = internationalization ?? {};
-	const [currentLocale, setCurrentLocale] = useState(localeProp ?? localeInStorage ?? defaultLocaleProp ?? defaultLocaleConfig);
-	useEffect(() => {
+	const [currentLocale, setCurrentLocale] = useState(() => localeProp ?? getLocaleInStorage() ?? defaultLocaleProp ?? defaultLocaleConfig);
+	const [adoptedLocaleProp, setAdoptedLocaleProp] = useState(localeProp);
+	if (localeProp !== adoptedLocaleProp) {
+		setAdoptedLocaleProp(localeProp);
 		if (localeProp && localeProp !== currentLocale) setCurrentLocale(localeProp);
-	}, [localeProp]);
+	}
 	useEffect(() => {
 		setIntlayerIdentifier();
 	}, []);
-	const setLocaleBase = (newLocale) => {
+	const setLocaleBase = useCallback((newLocale) => {
 		if (currentLocale.toString() === newLocale.toString()) return;
 		if (!availableLocales?.map(String).includes(newLocale)) {
 			console.error(`Locale ${newLocale} is not available`);
@@ -1660,31 +919,41 @@ var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocal
 		}
 		setCurrentLocale(newLocale);
 		setLocaleInStorage(newLocale, isCookieEnabled);
-	};
+	}, [
+		currentLocale,
+		availableLocales,
+		isCookieEnabled
+	]);
 	const setLocale = setLocaleProp ?? setLocaleBase;
 	const resolvedLocale = localeResolver(currentLocale);
+	const contextValue = useMemo(() => ({
+		locale: resolvedLocale,
+		setLocale,
+		variant,
+		disableEditor
+	}), [
+		resolvedLocale,
+		setLocale,
+		variant,
+		disableEditor
+	]);
 	return jsx(IntlayerClientContext.Provider, {
-		value: {
-			locale: resolvedLocale,
-			setLocale,
-			variant,
-			disableEditor
-		},
+		value: contextValue,
 		children
 	});
 };
 var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent, {
 	...props,
 	children: [
-		jsx(EditorProvider, {}),
-		jsx(AnalyticsProvider, {}),
+		false,
+		false,
 		children
 	]
 });
 var useDictionary$1 = (dictionary, localeOrSelector) => {
 	const { locale: currentLocale, variant: contextVariant } = useContext(IntlayerClientContext) ?? {};
 	const argument = localeOrSelector ?? currentLocale;
-	const argumentIdentity = typeof argument === "object" && argument !== null ? `${argument.locale ?? ""}|${getDictionarySelectorCacheKey(argument)}` : argument;
+	const argumentIdentity = argument;
 	return useMemo(() => getDictionary(dictionary, argument), [dictionary.key, argumentIdentity]);
 };
 var useDictionary = ((dictionary, namespacePrefix) => {

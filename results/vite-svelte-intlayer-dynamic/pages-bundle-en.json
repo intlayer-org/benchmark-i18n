@@ -1,7 +1,7 @@
 {
   "app": "vite-svelte-intlayer-dynamic",
   "locale": "en",
-  "timestamp": "2026-09-26T04:00:17.778Z",
+  "timestamp": "2026-09-26T05:34:09.942Z",
   "fingerprintCounts": {
     "locale": {
       "en": 99,
@@ -563,15 +563,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-BBMlgVaS.js",
-          "size": 2185,
-          "gzipSize": 748,
-          "type": "js"
-        },
-        {
           "url": "/assets/Careers-C1yJPuiC.js",
           "size": 7950,
           "gzipSize": 2101,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-BBMlgVaS.js",
+          "size": 2185,
+          "gzipSize": 748,
           "type": "js"
         },
         {
@@ -748,15 +748,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/Contact-CXNUzpY8.js",
-          "size": 6704,
-          "gzipSize": 1936,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-BBMlgVaS.js",
           "size": 2185,
           "gzipSize": 748,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Contact-CXNUzpY8.js",
+          "size": 6704,
+          "gzipSize": 1936,
           "type": "js"
         },
         {
@@ -913,15 +913,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/FAQ-CBP_F1_B.js",
-          "size": 4391,
-          "gzipSize": 1248,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-BBMlgVaS.js",
           "size": 2185,
           "gzipSize": 748,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQ-CBP_F1_B.js",
+          "size": 4391,
+          "gzipSize": 1248,
           "type": "js"
         },
         {
@@ -1267,15 +1267,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-BBMlgVaS.js",
-          "size": 2185,
-          "gzipSize": 748,
-          "type": "js"
-        },
-        {
           "url": "/assets/Products-5ClCLsat.js",
           "size": 5418,
           "gzipSize": 1640,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-BBMlgVaS.js",
+          "size": 2185,
+          "gzipSize": 748,
           "type": "js"
         },
         {

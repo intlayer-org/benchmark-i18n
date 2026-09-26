@@ -121,8 +121,8 @@ var E = {
 		let r = e?.getCookie?.(f.storage.cookies[t].name);
 		if (n(r)) return r;
 	} catch {}
-}, O = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !T && f.storage.cookies) for (let n = 0; n < f.storage.cookies.length; n++) {
+}, O = !1, k, A = () => typeof window > "u" ? D(E) : (O ||= (k = D(E), !0), k), j = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && (O = !1, !T && f.storage.cookies)) for (let n = 0; n < f.storage.cookies.length; n++) {
 		let { name: r, attributes: i } = f.storage.cookies[n];
 		try {
 			t?.setCookieStore && t.setCookieStore(r, e, {
@@ -135,33 +135,35 @@ var E = {
 			} catch {}
 		}
 	}
-}, k = D(E), A = (e, t) => O(e, {
+}, M = A, N = (e, t) => j(e, {
 	...E,
 	isCookieEnabled: t
-}), j = e({
-	locale: k ?? d?.defaultLocale,
+}), P = e({
+	get locale() {
+		return M() ?? d?.defaultLocale;
+	},
 	setLocale: () => null,
 	isCookieEnabled: !0
-}), { defaultLocale: M, locales: N } = d ?? {}, P = ({ isCookieEnabled: e, onLocaleChange: r } = {}) => {
-	let { locale: i, setLocale: a, isCookieEnabled: o } = n(j) ?? {};
+}), { defaultLocale: F, locales: I } = d ?? {}, L = ({ isCookieEnabled: e, onLocaleChange: r } = {}) => {
+	let { locale: i, setLocale: a, isCookieEnabled: o } = n(P) ?? {};
 	return {
 		locale: i,
-		defaultLocale: M,
-		availableLocales: N,
+		defaultLocale: F,
+		availableLocales: I,
 		setLocale: t((t) => {
-			if (!N?.map(String).includes(t)) {
+			if (!I?.map(String).includes(t)) {
 				console.error(`Locale ${t} is not available`);
 				return;
 			}
-			a(t), A(t, e ?? o ?? !0), r?.(t);
+			a(t), N(t, e ?? o ?? !0), r?.(t);
 		}, [
-			N,
+			I,
 			r,
 			a,
 			e
 		])
 	};
-}, F = () => {
+}, R = () => {
 	let e = l(), [t, n] = o("");
 	r(() => {
 		let e = typeof window < "u" ? window.location.search : "";
@@ -169,10 +171,10 @@ var E = {
 	}, [e]);
 	let i = t ? `${e}${t}` : e;
 	return a(() => h(i), [i]);
-}, I = ({ onChange: e = "replace", onLocaleChange: n, isCookieEnabled: r } = {}) => {
-	let { replace: i, push: a } = u(), o = F();
+}, z = ({ onChange: e = "replace", onLocaleChange: n, isCookieEnabled: r } = {}) => {
+	let { replace: i, push: a } = u(), o = R();
 	return {
-		...P({
+		...L({
 			onLocaleChange: t((t) => {
 				if (!e) return;
 				let r = S(o, t, { currentDomain: void 0 });
@@ -195,8 +197,8 @@ var E = {
 		}),
 		pathWithoutLocale: o
 	};
-}, L = (e) => /^https?:\/\//.test(e ?? ""), R = ({ href: e, children: t, ...n }) => {
-	let { locale: r } = I(), i = L(e.toString()), a = e && !i ? S(e.toString(), r) : e;
+}, B = (e) => /^https?:\/\//.test(e ?? ""), V = ({ href: e, children: t, ...n }) => {
+	let { locale: r } = z(), i = B(e.toString()), a = e && !i ? S(e.toString(), r) : e;
 	return c(s, {
 		href: a,
 		prefetch: !1,
@@ -204,7 +206,7 @@ var E = {
 		children: t
 	});
 };
-function z() {
+function H() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -218,28 +220,28 @@ function z() {
 		}
 	}
 }
-function B(e, t) {
+function U(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function V({ children: e, locale: t }) {
+function W({ children: e, locale: t }) {
 	let [n] = o(() => typeof performance < "u" ? performance.now() : 0);
 	return i(() => {
-		B("AppRoot", n);
+		U("AppRoot", n);
 	}, [n]), r(() => {
 		t && (document.documentElement.lang = t);
 	}, [t]), r(() => {
-		z();
+		H();
 	}, []), e;
 }
-function H({ children: e }) {
-	return c(V, {
+function G({ children: e }) {
+	return c(W, {
 		locale: "en",
 		children: e
 	});
 }
-function U() {
-	return c(H, { children: c(R, {}) });
+function K() {
+	return c(G, { children: c(V, {}) });
 }
-export { U as default };
+export { K as default };

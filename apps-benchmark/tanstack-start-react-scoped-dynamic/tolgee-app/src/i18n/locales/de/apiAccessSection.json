@@ -1,5 +1,6 @@
 {
   "apiAccess": "API-Zugriff",
   "apiKey": "API-Schlüssel",
+  "copy": "Kopieren",
   "useThisKeyToAccess": "Verwenden Sie diesen Schlüssel für den programmgesteuerten Zugriff auf die Benchmarking-API."
 }

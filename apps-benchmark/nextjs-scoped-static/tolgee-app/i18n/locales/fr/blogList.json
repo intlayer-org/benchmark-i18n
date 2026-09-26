@@ -1,7 +1,9 @@
 {
+  "analysis": "Analyse",
   "anOverviewOfTheCurrent": "Un aperçu de l'écosystème i18n actuel dans React, couvrant les tendances, les modèles émergents et les préférences de la communauté.",
   "aStepByStepGuide": "Un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers Lingui.",
   "aTransparentLookAtOur": "Un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
+  "benchmark": "Benchmark",
   "benchmarkMethodologyHowWeTest": "Méthodologie du Benchmark : comment nous testons",
   "comparingI18nLibrariesIn2026": "Comparer les bibliothèques i18n en 2026 : une analyse approfondie",
   "february12026": "1er février 2026",
@@ -9,12 +11,15 @@
   "february282026": "28 février 2026",
   "howToReduceYourI18n": "Comment réduire votre bundle i18n de 60 %",
   "january202026": "20 janvier 2026",
+  "march152026": "15 mars 2026",
   "march82026": "8 mars 2026",
+  "meta": "Méta",
   "migratingFromReactI18nextTo": "Migrer de react-i18next vers Lingui",
   "practicalStrategiesForOptimizingTranslation": "Stratégies pratiques pour optimiser les bundles de traduction, y compris le lazy loading, le fractionnement du code et les optimisations au moment de la compilation.",
   "reactServerComponentsIntroduceNew": "Les React Server Components introduisent de nouveaux modèles pour l'internationalisation. Nous explorons les implications et les meilleures pratiques.",
   "readMore": "Lire la suite →",
   "serverComponentsAndI18nWhat": "Server Components et i18n : qu'est-ce qui change ?",
   "theStateOfInternationalizationIn": "L'état de l'internationalisation dans React",
+  "tutorial": "Tutoriel",
   "weTested12DifferentInternationalization": "Nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et la DX. Voici les résultats surprenants."
 }

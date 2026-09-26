@@ -5,6 +5,6 @@
   "contactForm.message": "Message",
   "contactForm.sendMessage": "Envoyer le message",
   "contactForm.wellGetBackTo": "Nous vous répondrons dans les 48 heures.",
-  "contactHeader.contactUs": "Contactez-nous",
-  "contactHeader.haveQuestionsOrWantTo": "Vous avez des questions ou vous voulez contribuer ? Nous serions ravis de vous entendre."
+  "contactHeader.getInTouch": "Contactez-nous",
+  "contactHeader.haveIdeasFoundABug": "Vous avez des idées, trouvé un bug ou vous voulez contribuer à un benchmark ? Contactez-nous à"
 }

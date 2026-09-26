@@ -72,6 +72,7 @@
   "resultsTable": {
     "bundleSize": "Bundle Size",
     "lazyLoading": "Lazy Loading",
+    "library": "Library",
     "lookupTime": "Lookup Time",
     "sampleResults": "Sample Results"
   },
@@ -104,9 +105,11 @@
     "insightsTutorialsAndAnalysis": "Insights, tutorials, and analysis from the i18n community."
   },
   "blogList": {
+    "analysis": "Analysis",
     "anOverviewOfTheCurrent": "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
     "aStepByStepGuide": "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
     "aTransparentLookAtOur": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+    "benchmark": "Benchmark",
     "benchmarkMethodologyHowWeTest": "Benchmark Methodology: How We Test",
     "comparingI18nLibrariesIn2026": "Comparing i18n Libraries in 2026: A Deep Dive",
     "february12026": "February 1, 2026",
@@ -114,13 +117,16 @@
     "february282026": "February 28, 2026",
     "howToReduceYourI18n": "How to Reduce Your i18n Bundle by 60%",
     "january202026": "January 20, 2026",
+    "march152026": "March 15, 2026",
     "march82026": "March 8, 2026",
+    "meta": "Meta",
     "migratingFromReactI18nextTo": "Migrating from react-i18next to Lingui",
     "practicalStrategiesForOptimizingTranslation": "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
     "reactServerComponentsIntroduceNew": "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
     "readMore": "Read More →",
     "serverComponentsAndI18nWhat": "Server Components and i18n: What Changes?",
     "theStateOfInternationalizationIn": "The State of Internationalization in React",
+    "tutorial": "Tutorial",
     "weTested12DifferentInternationalization": "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
   },
   "careersHeader": {
@@ -130,8 +136,10 @@
   "careersBenefits": {
     "competitivePay": "Competitive pay",
     "openSourceTime": "Open source time",
+    "remoteFirst": "Remote-first",
     "topOfMarketCompensation": "Top-of-market compensation",
-    "workFromAnywhereInThe": "Work from anywhere in the world"
+    "workFromAnywhereInThe": "Work from anywhere in the world",
+    "x20TimeForOssContributions": "20% time for OSS contributions"
   },
   "openPositions": {
     "applyNow": "Apply Now",
@@ -204,7 +212,7 @@
   "pricingTiers": {
     "allLibraries": "All libraries",
     "auditLogs": "Audit logs",
-    "benchmarkRunPerDay": "{runs} benchmark runs/day",
+    "benchmarkRunPerDay": "{{runs}} benchmark runs/day",
     "ciIntegration": "CI integration",
     "communitySupport": "Community support",
     "contactSales": "Contact Sales",
@@ -216,7 +224,7 @@
     "forever": "forever",
     "getStarted": "Get Started",
     "historicalData": "Historical data",
-    "librariesNumber": "{libs} libraries",
+    "librariesNumber": "{{libs}} libraries",
     "month": "/month",
     "onPremiseOption": "On-premise option",
     "price0": "$0",
@@ -274,6 +282,7 @@
     "frenchFr": "French (fr)",
     "germanDe": "German (de)",
     "japaneseJa": "Japanese (ja)",
+    "preferences": "Preferences",
     "receiveWeeklyBenchmarkReports": "Receive weekly benchmark reports",
     "spanishEs": "Spanish (es)",
     "toggleDarkMode": "Toggle dark mode",
@@ -283,6 +292,7 @@
   "apiAccessSection": {
     "apiAccess": "API Access",
     "apiKey": "API Key",
+    "copy": "Copy",
     "useThisKeyToAccess": "Use this key to access the benchmarking API programmatically."
   },
   "settingsFooter": {

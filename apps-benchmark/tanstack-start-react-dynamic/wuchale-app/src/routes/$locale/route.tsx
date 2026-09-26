@@ -16,8 +16,9 @@ export const Route = createFileRoute("/$locale")({
     // On the server, we need to populate the runtimes object (fire-and-forget)
     initServerLoadersFn().catch(() => {});
 
-    // Kick off locale loading without blocking navigation commit
-    loadLocale(locale).catch(() => {});
+    // Wait for the locale's catalog before the route renders: rendering first
+    // leaves strings computed during render (lists) blank until a remount.
+    if (typeof window !== "undefined") await loadLocale(locale);
 
     return { locale };
   },

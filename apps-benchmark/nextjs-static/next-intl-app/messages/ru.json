@@ -88,7 +88,12 @@
     "benchmarkMethodologyHowWeTest": "Benchmark Methodology: How We Test",
     "january202026": "January 20, 2026",
     "aTransparentLookAtOur": "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-    "readMore": "Read More →"
+    "readMore": "Read More →",
+    "march152026": "15 марта 2026 года",
+    "benchmark": "Бенчмарк",
+    "tutorial": "Руководство",
+    "analysis": "Анализ",
+    "meta": "Мета"
   },
   "understanding-impact": {
     "understandingTheImpact": "Understanding the Impact",
@@ -128,12 +133,14 @@
       "spanishEs": "Испанский (es)",
       "japaneseJa": "Японский (ja)",
       "chineseSimplifiedZhCn": "Китайский упрощенный (zh-CN)",
-      "arabicAr": "Арабский (ar)"
+      "arabicAr": "Арабский (ar)",
+      "preferences": "Настройки"
     },
     "api-access-section": {
       "apiAccess": "Доступ к API",
       "apiKey": "Ключ API",
-      "useThisKeyToAccess": "Используйте этот ключ для программного доступа к API бенчмаркинга."
+      "useThisKeyToAccess": "Используйте этот ключ для программного доступа к API бенчмаркинга.",
+      "copy": "Копировать"
     },
     "settings-footer": {
       "saveChanges": "Сохранить изменения",
@@ -231,40 +238,8 @@
     "sampleResults": "Sample Results",
     "bundleSize": "Bundle Size",
     "lookupTime": "Lookup Time",
-    "lazyLoading": "Lazy Loading"
-  },
-  "careers": {
-    "careers-header": {
-      "title": "Карьера",
-      "joinOurMissionToImprove": "Присоединяйтесь к нашей миссии по улучшению экосистемы интернационализации. Мы команда, работающая удаленно, которая ценит влияние, прозрачность и непрерывное обучение."
-    },
-    "careers-benefits": {
-      "workFromAnywhereInThe": "Работайте из любой точки мира",
-      "competitivePay": "Конкурентоспособная оплата",
-      "topOfMarketCompensation": "Компенсация выше рыночной",
-      "openSourceTime": "Время на open source"
-    },
-    "open-positions": {
-      "seniorFrontendEngineer": "Старший фронтенд-инженер",
-      "buildAndMaintainOurBenchmarking": "Создание и поддержка нашей панели тестирования и инструментов разработчика с использованием React, TypeScript и Vite.",
-      "backendEngineer": "Бэкенд-инженер",
-      "designAndScaleOurCloud": "Проектирование и масштабирование нашей облачной инфраструктуры для тестирования, обрабатывающей тысячи автоматических запусков ежедневно.",
-      "technicalWriter": "Технический писатель",
-      "createComprehensiveGuidesApiReferences": "Создание подробных руководств, справочников по API и учебных пособий для нашей платформы тестирования.",
-      "devrelEngineer": "DevRel-инженер",
-      "sanFranciscoRemote": "Сан-Франциско / Удаленно",
-      "engageWithTheI18nCommunity": "Взаимодействие с сообществом i18n через выступления, семинары, посты в блоге и вклад в открытый исходный код.",
-      "qaEngineer": "QA-инженер",
-      "ensureTheAccuracyAndReliability": "Обеспечение точности и надежности результатов тестирования посредством строгого тестирования и валидации.",
-      "openPositions": "Открытые вакансии",
-      "applyNow": "Подать заявку",
-      "remote": "Удаленно",
-      "fullTime": "Полный рабочий день",
-      "partTime": "Неполный рабочий день",
-      "engineering": "Разработка",
-      "documentation": "Документация",
-      "community": "Сообщество"
-    }
+    "lazyLoading": "Lazy Loading",
+    "library": "Библиотека"
   },
   "header": {
     "home": "Home",
@@ -447,7 +422,9 @@
     "workFromAnywhereInThe": "Work from anywhere in the world",
     "competitivePay": "Competitive pay",
     "topOfMarketCompensation": "Top-of-market compensation",
-    "openSourceTime": "Open source time"
+    "openSourceTime": "Open source time",
+    "remoteFirst": "Удаленная работа прежде всего",
+    "x20TimeForOssContributions": "20% времени на вклад в OSS"
   },
   "why-it-matters": {
     "whyTheseMetricsMatter": "Why These Metrics Matter",

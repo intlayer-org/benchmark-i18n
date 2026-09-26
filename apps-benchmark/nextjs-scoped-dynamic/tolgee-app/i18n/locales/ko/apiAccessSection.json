@@ -1,5 +1,6 @@
 {
   "apiAccess": "API 액세스",
   "apiKey": "API 키",
+  "copy": "복사",
   "useThisKeyToAccess": "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오."
 }

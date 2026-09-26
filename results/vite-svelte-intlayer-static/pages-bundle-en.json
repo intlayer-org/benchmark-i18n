@@ -1,7 +1,7 @@
 {
   "app": "vite-svelte-intlayer-static",
   "locale": "en",
-  "timestamp": "2026-09-26T03:39:44.379Z",
+  "timestamp": "2026-09-26T05:44:03.728Z",
   "fingerprintCounts": {
     "locale": {
       "en": 99,
@@ -808,15 +808,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-DBO6MjJ9.js",
-          "size": 2121,
-          "gzipSize": 1394,
-          "type": "js"
-        },
-        {
           "url": "/assets/Contact-CQSgbsI8.js",
           "size": 8791,
           "gzipSize": 3660,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-DBO6MjJ9.js",
+          "size": 2121,
+          "gzipSize": 1394,
           "type": "js"
         }
       ],
@@ -1714,6 +1714,12 @@
           "type": "html"
         },
         {
+          "url": "/assets/index-tDY0cyWJ.css",
+          "size": 24720,
+          "gzipSize": 5108,
+          "type": "css"
+        },
+        {
           "url": "/assets/index-CHVoCcKI.js",
           "size": 80109,
           "gzipSize": 30713,
@@ -1724,12 +1730,6 @@
           "size": 57272,
           "gzipSize": 21655,
           "type": "js"
-        },
-        {
-          "url": "/assets/index-tDY0cyWJ.css",
-          "size": 24720,
-          "gzipSize": 5108,
-          "type": "css"
         },
         {
           "url": "/assets/MockBanner-DBO6MjJ9.js",

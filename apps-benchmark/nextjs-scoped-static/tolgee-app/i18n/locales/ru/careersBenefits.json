@@ -1,6 +1,8 @@
 {
   "competitivePay": "Конкурентоспособная оплата",
   "openSourceTime": "Время на open source",
+  "remoteFirst": "Удаленная работа прежде всего",
   "topOfMarketCompensation": "Компенсация выше рыночной",
-  "workFromAnywhereInThe": "Работайте из любой точки мира"
+  "workFromAnywhereInThe": "Работайте из любой точки мира",
+  "x20TimeForOssContributions": "20% времени на вклад в OSS"
 }

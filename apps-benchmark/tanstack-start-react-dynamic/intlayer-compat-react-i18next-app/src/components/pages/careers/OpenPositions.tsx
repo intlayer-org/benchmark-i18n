@@ -2,35 +2,41 @@ import { useTranslation } from "react-i18next";
 
 export default function OpenPositions() {
   const { t } = useTranslation();
-
   const openings = [
     {
-      title: t("openPositions.seniorPerformanceEngineer"),
+      title: t("openPositions.seniorFrontendEngineer"),
       location: t("openPositions.remote"),
       type: t("openPositions.fullTime"),
-      dept: "Engineering",
-      desc: t("openPositions.leadBenchmarkDesignAnd"),
+      dept: t("openPositions.engineering"),
+      desc: t("openPositions.buildAndMaintainOurBenchmarking"),
+    },
+    {
+      title: t("openPositions.backendEngineer"),
+      location: t("openPositions.remote"),
+      type: t("openPositions.fullTime"),
+      dept: t("openPositions.engineering"),
+      desc: t("openPositions.designAndScaleOurCloud"),
     },
     {
       title: t("openPositions.technicalWriter"),
       location: t("openPositions.remote"),
       type: t("openPositions.partTime"),
-      dept: "Documentation",
-      desc: t("openPositions.createAndMaintainDocumentation"),
+      dept: t("openPositions.documentation"),
+      desc: t("openPositions.createComprehensiveGuidesApiReferences"),
     },
     {
-      title: t("openPositions.frontendDeveloper"),
-      location: t("openPositions.remote"),
+      title: t("openPositions.devrelEngineer"),
+      location: t("openPositions.sanFranciscoRemote"),
       type: t("openPositions.fullTime"),
-      dept: "Engineering",
-      desc: t("openPositions.buildAndMaintainThe"),
+      dept: t("openPositions.community"),
+      desc: t("openPositions.engageWithTheI18nCommunity"),
     },
     {
-      title: t("openPositions.devOpsEngineer"),
+      title: t("openPositions.qaEngineer"),
       location: t("openPositions.remote"),
       type: t("openPositions.fullTime"),
-      dept: "Engineering",
-      desc: t("openPositions.designAndMaintainThe"),
+      dept: t("openPositions.engineering"),
+      desc: t("openPositions.ensureTheAccuracyAndReliability"),
     },
   ];
 

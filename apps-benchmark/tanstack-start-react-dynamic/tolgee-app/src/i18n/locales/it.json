@@ -72,6 +72,7 @@
   "resultsTable": {
     "bundleSize": "Dimensioni del bundle",
     "lazyLoading": "Caricamento lento",
+    "library": "Libreria",
     "lookupTime": "Tempo di ricerca",
     "sampleResults": "Risultati del campione"
   },
@@ -104,9 +105,11 @@
     "insightsTutorialsAndAnalysis": "Approfondimenti, tutorial e analisi dalla comunità i18n."
   },
   "blogList": {
+    "analysis": "Analisi",
     "anOverviewOfTheCurrent": "Una panoramica dell’attuale ecosistema i18n in React, con tendenze, pattern emergenti e preferenze della comunità.",
     "aStepByStepGuide": "Una guida dettagliata sulla migrazione di un’app di produzione con 50.000 chiavi di traduzione da react-i18next a Lingui.",
     "aTransparentLookAtOur": "Uno sguardo trasparente alla nostra metodologia di benchmark, inclusi ambienti di test, metodi statistici e riproducibilità.",
+    "benchmark": "Benchmark",
     "benchmarkMethodologyHowWeTest": "Metodologia del benchmark: come testiamo",
     "comparingI18nLibrariesIn2026": "Confronto tra librerie i18n nel 2026: un’analisi approfondita",
     "february12026": "1 febbraio 2026",
@@ -114,13 +117,16 @@
     "february282026": "28 febbraio 2026",
     "howToReduceYourI18n": "Come ridurre il bundle i18n del 60%",
     "january202026": "20 gennaio 2026",
+    "march152026": "15 marzo 2026",
     "march82026": "8 marzo 2026",
+    "meta": "Meta",
     "migratingFromReactI18nextTo": "Migrazione da react-i18next a Lingui",
     "practicalStrategiesForOptimizingTranslation": "Strategie pratiche per ottimizzare i bundle di traduzione tra cui caricamento lento, suddivisione del codice e ottimizzazioni in fase di compilazione.",
     "reactServerComponentsIntroduceNew": "I React Server Components introducono nuovi pattern per l’internazionalizzazione. Esploriamo implicazioni e best practice.",
     "readMore": "Leggi di più →",
     "serverComponentsAndI18nWhat": "Server Components e i18n: cosa cambia?",
     "theStateOfInternationalizationIn": "Lo stato dell'internazionalizzazione in React",
+    "tutorial": "Tutorial",
     "weTested12DifferentInternationalization": "Abbiamo testato 12 diverse librerie di internazionalizzazione in base a prestazioni, dimensioni del bundle e DX. Ecco i risultati sorprendenti."
   },
   "careersHeader": {
@@ -130,8 +136,10 @@
   "careersBenefits": {
     "competitivePay": "Retribuzione competitiva",
     "openSourceTime": "Tempo per l'open source",
+    "remoteFirst": "Remote-first",
     "topOfMarketCompensation": "Compensi ai vertici del mercato",
-    "workFromAnywhereInThe": "Lavora da qualsiasi parte del mondo"
+    "workFromAnywhereInThe": "Lavora da qualsiasi parte del mondo",
+    "x20TimeForOssContributions": "20% di tempo per contributi OSS"
   },
   "openPositions": {
     "applyNow": "Candidati ora",
@@ -204,7 +212,7 @@
   "pricingTiers": {
     "allLibraries": "Tutte le librerie",
     "auditLogs": "Log di audit",
-    "benchmarkRunPerDay": "{runs} esecuzioni di benchmark/giorno",
+    "benchmarkRunPerDay": "{{runs}} esecuzioni di benchmark/giorno",
     "ciIntegration": "Integrazione CI",
     "communitySupport": "Supporto della comunità",
     "contactSales": "Contatta le vendite",
@@ -216,7 +224,7 @@
     "forever": "per sempre",
     "getStarted": "Inizia ora",
     "historicalData": "Dati storici",
-    "librariesNumber": "{libs} librerie",
+    "librariesNumber": "{{libs}} librerie",
     "month": "/mese",
     "onPremiseOption": "Opzione on-premise",
     "price0": "0 $",
@@ -274,6 +282,7 @@
     "frenchFr": "Francese (fr)",
     "germanDe": "Tedesco (de)",
     "japaneseJa": "Giapponese (ja)",
+    "preferences": "Preferenze",
     "receiveWeeklyBenchmarkReports": "Ricevi rapporti settimanali sui benchmark",
     "spanishEs": "Spagnolo (es)",
     "toggleDarkMode": "Attiva/disattiva modalità scura",
@@ -283,6 +292,7 @@
   "apiAccessSection": {
     "apiAccess": "Accesso API",
     "apiKey": "Chiave API",
+    "copy": "Copia",
     "useThisKeyToAccess": "Usa questa chiave per accedere programmaticamente all'API di benchmarking."
   },
   "settingsFooter": {

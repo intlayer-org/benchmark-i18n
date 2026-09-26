@@ -2,46 +2,41 @@ import { useTranslate } from "../../../i18n/tolgee";
 
 export default function OpenPositions() {
   const { t } = useTranslate();
-
   const openings = [
     {
       title: t("openPositions.seniorFrontendEngineer"),
       location: t("openPositions.remote"),
       type: t("openPositions.fullTime"),
       dept: t("openPositions.engineering"),
-      desc: t("openPositions.seniorFrontendEngineer"), // Wait, en.ts has seniorFrontendEngineer: "Senior Frontend Engineer" but no description key?
-      // Actually, en.ts has: seniorFrontendEngineer: "Senior Frontend Engineer",
-      // buildAndMaintainOurBenchmarking: "Build and maintain our...",
-      // Let's use those.
-      description: t("openPositions.buildAndMaintainOurBenchmarking"),
+      desc: t("openPositions.buildAndMaintainOurBenchmarking"),
     },
     {
       title: t("openPositions.backendEngineer"),
       location: t("openPositions.remote"),
       type: t("openPositions.fullTime"),
       dept: t("openPositions.engineering"),
-      description: t("openPositions.designAndScaleOurCloud"),
+      desc: t("openPositions.designAndScaleOurCloud"),
     },
     {
       title: t("openPositions.technicalWriter"),
       location: t("openPositions.remote"),
       type: t("openPositions.partTime"),
       dept: t("openPositions.documentation"),
-      description: t("openPositions.createComprehensiveGuidesApiReferences"),
+      desc: t("openPositions.createComprehensiveGuidesApiReferences"),
     },
     {
       title: t("openPositions.devrelEngineer"),
       location: t("openPositions.sanFranciscoRemote"),
       type: t("openPositions.fullTime"),
       dept: t("openPositions.community"),
-      description: t("openPositions.engageWithTheI18nCommunity"),
+      desc: t("openPositions.engageWithTheI18nCommunity"),
     },
     {
       title: t("openPositions.qaEngineer"),
       location: t("openPositions.remote"),
       type: t("openPositions.fullTime"),
       dept: t("openPositions.engineering"),
-      description: t("openPositions.ensureTheAccuracyAndReliability"),
+      desc: t("openPositions.ensureTheAccuracyAndReliability"),
     },
   ];
 
@@ -60,7 +55,7 @@ export default function OpenPositions() {
               <h3 className="text-base font-semibold text-foreground">
                 {o.title}
               </h3>
-              <p className="text-sm text-muted-foreground">{o.description}</p>
+              <p className="text-sm text-muted-foreground">{o.desc}</p>
               <div className="mt-2 flex gap-2">
                 <span className="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground">
                   {o.dept}

@@ -1,20 +1,5 @@
-import { computed, defineComponent, getCurrentInstance, h, inject, readonly, ref, renderSlot } from "vue";
-import _16rhw3kbzm1 from "../.intlayer/dictionary/faq.json";
-import _1ny4ad9gw6e from "../.intlayer/dictionary/header.json";
-import _2ckjnptcmiu from "../.intlayer/dictionary/settings.json";
-import _11hn6jza04y from "../.intlayer/dictionary/footer.json";
-import _1h1e3dimqu8 from "../.intlayer/dictionary/mockBanner.json";
-import _habnq427mb from "../.intlayer/dictionary/shared.json";
-import _25c8j2hahqv from "../.intlayer/dictionary/careers.json";
-import _iauyk88f4i from "../.intlayer/dictionary/notFound.json";
-import _1ws5g6nc4g1 from "../.intlayer/dictionary/pricing.json";
-import _1dnalctr3 from "../.intlayer/dictionary/products.json";
-import _4bpwb9fw6u from "../.intlayer/dictionary/contact.json";
-import _29yg3lvf27s from "../.intlayer/dictionary/themeToggle.json";
-import _12fgv4iyd8c from "../.intlayer/dictionary/about.json";
-import _fnv5y1kt6s from "../.intlayer/dictionary/home.json";
-import _1v3o9b1l47a from "../.intlayer/dictionary/team.json";
-import _r6cntw5k3d from "../.intlayer/dictionary/blog.json";
+import { a as getDictionaries, i as l, n as c, o as internationalization, r as s$1, s as log, t as a$1 } from "./installIntlayer-B3PaLvcq.js";
+import { computed, defineComponent, getCurrentInstance, h, inject, renderSlot } from "vue";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -39,6 +24,7 @@ var formatNumberValue = (value, formatOrOptions, locale, numberFormats) => {
 var TRANSLATION = "translation";
 var ENUMERATION = "enumeration";
 var PLURAL = "plural";
+var CONDITION = "condition";
 var INSERTION = "insertion";
 var OBJECT = "object";
 var ARRAY = "array";
@@ -46,39 +32,34 @@ var MARKDOWN = "markdown";
 var HTML = "html";
 var GENDER = "gender";
 var SELECT = "select";
+var getChildProps = (props, children, keyPathSegment) => ({
+	...props,
+	children,
+	keyPath: [...props.keyPath, keyPathSegment]
+});
 var deepTransformNode = (node, props) => {
-	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
+	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, deepTransformNode);
 	if (node === null || typeof node !== "object") return node;
-	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0 || typeof node === "function") return node;
-	if (Array.isArray(node)) return node.map((child, index) => {
-		return deepTransformNode(child, {
-			...props,
-			children: child,
-			keyPath: [...props.keyPath, {
-				type: ARRAY,
-				key: index
-			}]
-		});
-	});
+	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0) return node;
+	if (Array.isArray(node)) return node.map((child, index) => deepTransformNode(child, getChildProps(props, child, {
+		type: ARRAY,
+		key: index
+	})));
 	const result = {};
 	for (const key in node) {
-		const childProps = {
-			...props,
-			children: node[key],
-			keyPath: [...props.keyPath, {
-				type: OBJECT,
-				key
-			}]
+		const keyPathSegment = {
+			type: OBJECT,
+			key
 		};
 		if (props.eager) {
-			result[key] = deepTransformNode(node[key], childProps);
+			result[key] = deepTransformNode(node[key], getChildProps(props, node[key], keyPathSegment));
 			continue;
 		}
 		Object.defineProperty(result, key, {
 			enumerable: true,
 			configurable: true,
 			get: function() {
-				const transformed = deepTransformNode(node[key], childProps);
+				const transformed = deepTransformNode(node[key], getChildProps(props, node[key], keyPathSegment));
 				Object.defineProperty(this, key, {
 					value: transformed,
 					enumerable: true,
@@ -117,50 +98,6 @@ var findMatchingCondition = (enumerationContent, quantity) => {
 };
 var getEnumeration = (enumerationContent, quantity) => {
 	return enumerationContent[findMatchingCondition(enumerationContent, quantity) ?? "fallback"];
-};
-var internationalization = {
-	"locales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"requiredLocales": [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	"strictMode": "inclusive",
-	"defaultLocale": "en"
-};
-var routing = {
-	"mode": "prefix-all",
-	"enableProxy": false,
-	"storage": {
-		"cookies": [{
-			"name": "INTLAYER_LOCALE",
-			"attributes": { "path": "/" }
-		}],
-		"headers": [{ "name": "x-intlayer-locale" }]
-	},
-	"basePath": ""
-};
-var log = {
-	"mode": "default",
-	"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
 };
 var MAX_CACHE_SIZE = 50;
 var cache = /* @__PURE__ */ new Map();
@@ -438,94 +375,6 @@ var writeTransformCache = (dictionary, cacheKey, content) => {
 var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
 	return (values[key.trim()] ?? "").toString();
 });
-var DEFAULT_VARIANT_ID = "default";
-var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
-var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
-var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
-var encodeSegmentText = (raw, unsafeChars) => {
-	if (raw === "") return "%";
-	const encoded = raw.replace(unsafeChars, percentEncodeChar);
-	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
-	return encoded;
-};
-var serializeVariant = (variant) => {
-	if (variant === void 0) return DEFAULT_VARIANT_ID;
-	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
-	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
-};
-var serializeVariantChain = (variant) => {
-	if (!Array.isArray(variant)) return [serializeVariant(variant)];
-	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
-	return variant.map(serializeVariant);
-};
-var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
-	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
-	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
-};
-var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
-	const segments = compositeId.split("/");
-	return qualifierTypes.every((qualifierType, index) => {
-		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
-		return selector?.item === void 0 || segments[index] === String(selector.item);
-	});
-};
-var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
-var reconstructQualifiedEntry = (group, compositeId) => {
-	const segments = compositeId.split("/");
-	const entry = {
-		key: group.key,
-		content: group.content[compositeId]
-	};
-	group.qualifierTypes.forEach((qualifierType, index) => {
-		if (qualifierType === "variant") entry.variant = segments[index];
-		else if (qualifierType === "item") entry.item = Number(segments[index]);
-	});
-	return entry;
-};
-var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
-	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
-	const { qualifierTypes, content } = dictionaryOrGroup;
-	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
-	const compositeIds = Object.keys(content);
-	const variantIndex = qualifierTypes.indexOf("variant");
-	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
-	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
-	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
-	return matchedEntries[0] ?? null;
-};
-var parseDictionarySelector = (localeOrSelector) => {
-	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
-		locale: localeOrSelector.locale,
-		selector: localeOrSelector
-	};
-	return { locale: localeOrSelector };
-};
-var getDictionarySelectorCacheKey = (selector) => {
-	if (!selector) return "";
-	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
-		const value = selector[selectorKey];
-		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
-	}).join("|");
-};
-var dictionaries = {
-	"faq": _16rhw3kbzm1,
-	"header": _1ny4ad9gw6e,
-	"settings": _2ckjnptcmiu,
-	"footer": _11hn6jza04y,
-	"mockBanner": _1h1e3dimqu8,
-	"shared": _habnq427mb,
-	"careers": _25c8j2hahqv,
-	"notFound": _iauyk88f4i,
-	"pricing": _1ws5g6nc4g1,
-	"products": _1dnalctr3,
-	"contact": _4bpwb9fw6u,
-	"themeToggle": _29yg3lvf27s,
-	"about": _12fgv4iyd8c,
-	"home": _fnv5y1kt6s,
-	"team": _1v3o9b1l47a,
-	"blog": _r6cntw5k3d
-};
-var getDictionaries = () => dictionaries;
 var PROTOTYPE_METHOD_NAMES = /* @__PURE__ */ new Set([
 	"hasOwnProperty",
 	"isPrototypeOf",
@@ -566,39 +415,40 @@ var deepMerge = (target, source) => {
 	if (target === void 0) return source;
 	if (source === void 0) return target;
 	if (Array.isArray(target)) return target;
-	if (isPlainObject(target) && isPlainObject(source)) {
-		const result = { ...target };
-		for (const key of Object.keys(source)) {
-			if (key === "__proto__" || key === "constructor" || source[key] === void 0) continue;
-			result[key] = target[key] !== void 0 ? deepMerge(target[key], source[key]) : source[key];
-		}
-		return result;
+	if (!isPlainObject(target) || !isPlainObject(source)) return target;
+	let result = target;
+	for (const key of Object.keys(source)) {
+		const sourceValue = source[key];
+		if (key === "__proto__" || key === "constructor" || sourceValue === void 0) continue;
+		const targetValue = target[key];
+		const merged = targetValue === void 0 ? sourceValue : typeof targetValue === "object" ? deepMerge(targetValue, sourceValue) : targetValue;
+		if (merged === targetValue) continue;
+		if (result === target) result = { ...target };
+		result[key] = merged;
 	}
-	return target;
+	return result;
 };
 var getTranslation = (languageContent, locale, fallback) => {
-	const get = (loc) => languageContent[loc];
-	const seen = /* @__PURE__ */ new Set();
-	const locales = [];
-	const addLocale = (loc) => {
-		if (loc && !seen.has(loc)) {
-			seen.add(loc);
-			locales.push(loc);
-		}
-	};
-	addLocale(locale);
-	if (locale.includes("-")) addLocale(locale.split("-")[0]);
-	addLocale(fallback);
-	if (fallback?.includes("-")) addLocale(fallback.split("-")[0]);
+	const get = (localeEl) => languageContent[localeEl];
+	const exactMatch = get(locale);
+	if (typeof exactMatch === "string") return exactMatch;
+	const candidates = [
+		locale,
+		locale.split("-")[0],
+		fallback,
+		fallback?.split("-")[0]
+	];
 	const results = [];
-	for (const loc of locales) {
-		const val = get(loc);
-		if (val === void 0) continue;
-		if (typeof val === "string") {
-			if (results.length === 0) return val;
+	for (let index = 0; index < candidates.length; index++) {
+		const candidate = candidates[index];
+		if (!candidate || candidates.indexOf(candidate) < index) continue;
+		const value = get(candidate);
+		if (value === void 0) continue;
+		if (typeof value === "string") {
+			if (results.length === 0) return value;
 			continue;
 		}
-		results.push(val);
+		results.push(value);
 	}
 	if (results.length === 0) return void 0;
 	if (results.length === 1) return results[0];
@@ -638,27 +488,28 @@ var fallbackPlugin = {
 	canHandle: () => false,
 	transform: (node) => node
 };
+var isAwaitingValues = (branch) => {
+	if (typeof branch !== "function") return false;
+	const { value } = branch;
+	return value === void 0 || typeof value === "function";
+};
 var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
-		const original = node["translation"] ?? {};
-		const result = {};
-		for (const key in original) {
-			const childProps = {
-				...props,
-				children: original[key],
-				keyPath: [...props.keyPath, {
-					type: TRANSLATION,
-					key
-				}]
-			};
-			result[key] = deepTransformNode(original[key], childProps);
-		}
-		return getTranslation(result, locale, fallback);
+		const content = getTranslation(node["translation"] ?? {}, locale, fallback);
+		return deepTransformNode(content, {
+			...props,
+			children: content,
+			keyPath: [...props.keyPath, {
+				type: TRANSLATION,
+				key: locale
+			}]
+		});
 	}
 };
 var enumerationPlugin = fallbackPlugin;
+var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
 var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
 	id: "insertion-plugin",
@@ -686,14 +537,39 @@ var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fal
 				};
 			}
 		};
-		return deepTransformNode(children, {
+		return resolveInsertedSelector(children, deepTransformNode(children, {
 			...props,
 			children,
 			keyPath: newKeyPath,
 			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
+		}));
 	}
 };
+var selectorNodeTypes = [
+	ENUMERATION,
+	CONDITION,
+	PLURAL,
+	GENDER,
+	SELECT
+];
+var bindInsertedValues = (children, result, values, areBranchesInterpolated = false) => {
+	const nodeType = children?.nodeType;
+	if (typeof result !== "function" || !nodeType || !selectorNodeTypes.includes(nodeType)) return result;
+	const isCountSelector = nodeType === "plural" || nodeType === "enumeration";
+	return (selector) => {
+		if (typeof selector === "object" && selector !== null) return result({
+			...values,
+			...selector
+		});
+		if (isCountSelector) return result({
+			...values,
+			count: selector
+		});
+		const selected = result(selector);
+		return !areBranchesInterpolated && isAwaitingValues(selected) ? selected(values) : selected;
+	};
+};
+var resolveInsertedSelector = (children, result) => typeof result === "function" && selectorNodeTypes.includes(children?.nodeType ?? "") ? (values) => bindInsertedValues(children, result, values) : result;
 var genderPlugin = fallbackPlugin;
 var selectPlugin = fallbackPlugin;
 process.env.INTLAYER_OPTIMIZED_NESTING;
@@ -702,143 +578,61 @@ var filePlugin = fallbackPlugin;
 var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
+	pluralPlugin(locale ?? internationalization.defaultLocale),
 	conditionPlugin,
 	insertionPlugin,
 	nestedPlugin(locale ?? internationalization.defaultLocale),
 	filePlugin,
 	genderPlugin,
 	selectPlugin
-];
+].filter((plugin) => plugin !== fallbackPlugin);
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
+var transformsInProgress = /* @__PURE__ */ new WeakSet();
 var getDictionary = (dictionary, localeOrSelector, plugins) => {
-	const { locale, selector } = parseDictionarySelector(localeOrSelector);
-	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+	const { locale, selector } = {
+		locale: localeOrSelector,
+		selector: void 0
+	};
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, "", plugins);
 	const cached = readTransformCache(dictionary, cacheKey);
 	if (cached.hit) return cached.content;
 	const appliedPlugins = plugins ?? getBasePlugins(locale);
-	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const resolved = dictionary;
 	const transformDictionary = (resolvedDictionary) => {
 		const props = {
 			dictionaryKey: resolvedDictionary.key,
 			dictionaryPath: resolvedDictionary.filePath,
 			keyPath: [],
 			plugins: appliedPlugins,
-			nestedDictionaries: resolvedDictionary.nestedDictionaries
+			nestedDictionaries: resolvedDictionary.nestedDictionaries,
+			eager: !transformsInProgress.has(resolvedDictionary)
 		};
-		return getContent(resolvedDictionary.content, props, appliedPlugins);
+		transformsInProgress.add(resolvedDictionary);
+		try {
+			return getContent(resolvedDictionary.content, props, appliedPlugins);
+		} finally {
+			if (props.eager) transformsInProgress.delete(resolvedDictionary);
+		}
 	};
 	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
-var setIntlayerIdentifier = () => {
-	if (typeof window !== "undefined") window.intlayer = { enabled: true };
-};
-var i = Symbol("intlayer");
-var a$2 = null;
-var o$1 = (i, o = !0, s) => {
-	if (a$2) return a$2;
-	setIntlayerIdentifier();
-	let { defaultLocale: c } = internationalization ?? {}, l = ref(i ?? c), u = (e) => {
-		l.value = e;
-	}, d = ref(s);
-	return a$2 = {
-		locale: readonly(l),
-		setLocale: u,
-		variant: readonly(d),
-		setVariant: (e) => {
-			d.value = e;
-		},
-		isCookieEnabled: o
-	}, a$2;
-};
-var s$2 = (e, t) => {
-	let { locale: n, isCookieEnabled: r, variant: a } = t ?? {}, s = o$1(n, r, a);
-	return e.provide(i, s), e;
-};
-var resolveExpiresToTimestamp = (expires) => {
-	if (typeof expires === "number") return Date.now() + expires * 1e3;
-	if (typeof expires === "string") {
-		const time = Date.parse(expires);
-		return Number.isNaN(time) ? void 0 : time;
-	}
-};
-var buildCookieString = (name, value, attributes) => {
-	const parts = [`${name}=${encodeURIComponent(value)}`];
-	if (attributes.path) parts.push(`Path=${attributes.path}`);
-	if (attributes.domain) parts.push(`Domain=${attributes.domain}`);
-	const expiresTimestamp = resolveExpiresToTimestamp(attributes.expires);
-	if (expiresTimestamp !== void 0) parts.push(`Expires=${new Date(expiresTimestamp).toUTCString()}`);
-	if (attributes.secure) parts.push("Secure");
-	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
-	return parts.join("; ");
-};
-var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
-process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var localeStorageOptions = {
-	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
-	getLocaleStorage: (name) => localStorage.getItem(name),
-	getSessionStorage: (name) => sessionStorage.getItem(name),
-	isCookieEnabled: true,
-	setCookieStore: (name, value, attributes) => cookieStore.set({
-		name,
-		value,
-		path: attributes.path,
-		domain: attributes.domain,
-		expires: attributes.expires,
-		sameSite: attributes.sameSite
-	}),
-	setCookieString: (_name, cookie) => {
-		document.cookie = cookie;
-	},
-	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
-	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-};
-var getLocaleFromStorageClient = (options = localeStorageOptions) => {
-	const { locales } = internationalization;
-	if (options?.isCookieEnabled === false) return void 0;
-	const isValidLocale = (value) => !!value && locales.includes(value);
-	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
-		const value = options?.getCookie?.(routing.storage.cookies[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-};
-var setLocaleInStorageClient = (locale, options) => {
-	if (options?.isCookieEnabled === false) return;
-	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
-		const { name, attributes } = routing.storage.cookies[i];
-		try {
-			if (options?.setCookieStore) options.setCookieStore(name, locale, {
-				...attributes,
-				expires: resolveExpiresToTimestamp(attributes.expires)
-			});
-		} catch {
-			try {
-				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
-			} catch {}
-		}
-	}
-};
-getLocaleFromStorageClient(localeStorageOptions);
-var s$1 = (e, t) => setLocaleInStorageClient(e, {
-	...localeStorageOptions,
-	isCookieEnabled: t
-});
-var { defaultLocale: a, locales: o } = internationalization ?? {}, s = ({ isCookieEnabled: i$1, onLocaleChange: s } = {}) => {
-	let c = inject(i);
+var { defaultLocale: a, locales: o } = internationalization ?? {}, s = ({ isCookieEnabled: n, onLocaleChange: s } = {}) => {
+	let c = inject(a$1);
 	return {
 		locale: computed(() => c?.locale?.value ?? a),
 		defaultLocale: a,
 		availableLocales: o,
-		setLocale: (e) => {
-			if (!o?.map(String).includes(e)) {
-				console.error(`Locale ${e} is not available`);
+		setLocale: (t) => {
+			if (!o?.map(String).includes(t)) {
+				console.error(`Locale ${t} is not available`);
 				return;
 			}
-			c && c.setLocale(e), s$1(e, i$1 ?? c?.isCookieEnabled ?? !0), s?.(e);
+			c && c.setLocale(t), l(t, n ?? c?.isCookieEnabled ?? !0), s?.(t);
 		}
 	};
 };
@@ -893,7 +687,7 @@ var warnDeprecatedRuntimeMessages = (location) => {
 var createI18n = ((options = {}) => {
 	const fallbackMessages = options.messages;
 	if (options.messages !== void 0 && true) getAppLogger({ log })(`${colorize("createI18n", CYAN)}: the ${colorize("`messages`", CYAN)} option is used as a fallback. For optimal bundle size, remove the locale JSON imports and use ${colorize("useDictionary", CYAN)} or compile your intlayer dictionaries instead:\n  ${colorize("Before:", GREY)} createI18n({ messages: { en, fr, … } })\n  ${colorize("After: ", GREY)} createI18n({})`);
-	const client = o$1(options.locale);
+	const client = s$1(options.locale);
 	const datetimeFormats = options.datetimeFormats;
 	const numberFormats = options.numberFormats;
 	const currentLocale = () => String(client.locale.value);
@@ -964,7 +758,7 @@ var createI18n = ((options = {}) => {
 		mode: options.legacy === true ? "legacy" : "composition",
 		__optionsMessages: fallbackMessages,
 		install(app) {
-			s$2(app, { locale: options.locale });
+			c(app, { locale: options.locale });
 			app.provide(I18nInjectionKey, i18nInstance);
 			app.config.globalProperties.$t = globalTranslate;
 			app.config.globalProperties.$tc = globalTranslate;
@@ -1038,3 +832,454 @@ var EmptyComponent_wrapper_default = { render() {
 	return h(LibWrapper_default, {}, { default: () => h(EmptyComponent_default) });
 } };
 export { EmptyComponent_wrapper_default as default };
+import { a as getDictionaries, i as l, o as internationalization, r as s$1 } from "./installIntlayer-B3PaLvcq.js";
+import { watch } from "vue";
+var e = (e) => typeof e == "object" && !!e && !Array.isArray(e);
+var t$1 = (t) => e(t) && t.nodeType === "translation" && e(t.translation);
+var n$1 = (e) => {
+	if (typeof e == "string") return e;
+	try {
+		return JSON.stringify(e) ?? String(e);
+	} catch {
+		return String(e);
+	}
+};
+var r$1 = (i, a, o) => {
+	let s = a.length === 0 ? "(root)" : a.join(".");
+	if (t$1(i)) {
+		o[s] = i.translation;
+		return;
+	}
+	if (e(i) && typeof i.nodeType == "string") {
+		o[s] = n$1(i[i.nodeType]);
+		return;
+	}
+	if (Array.isArray(i)) {
+		i.forEach((e, t) => {
+			r$1(e, [...a, String(t)], o);
+		});
+		return;
+	}
+	if (e(i)) {
+		for (let [e, t] of Object.entries(i)) r$1(t, [...a, e], o);
+		return;
+	}
+	a.length > 0 && (o[a.join(".")] = n$1(i));
+};
+var i$1 = (e) => {
+	let t = {};
+	return r$1(e.content, [], t), t;
+};
+var t = "intlayer-locales", n = "locale:", r = ":current", { locales: i } = internationalization ?? {}, a = (e) => e.startsWith(n), o = (e) => e.slice(7).replace(r, ""), s = (e) => {
+	let a = i ?? [];
+	return {
+		id: t,
+		label: "Locales",
+		children: (e && a.includes(e) ? [e, ...a.filter((t) => t !== e)] : a).map((t) => ({
+			id: `${n}${t}${t === e ? r : ""}`,
+			label: t,
+			tags: t === e ? [{
+				label: "current",
+				textColor: 16777215,
+				backgroundColor: 4372611
+			}] : []
+		}))
+	};
+};
+function getDevtoolsGlobalHook() {
+	return getTarget().__VUE_DEVTOOLS_GLOBAL_HOOK__;
+}
+function getTarget() {
+	return typeof navigator !== "undefined" && typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : {};
+}
+var isProxyAvailable = typeof Proxy === "function";
+var HOOK_SETUP = "devtools-plugin:setup";
+var HOOK_PLUGIN_SETTINGS_SET = "plugin:settings:set";
+var supported;
+var perf;
+function isPerformanceSupported() {
+	var _a;
+	if (supported !== void 0) return supported;
+	if (typeof window !== "undefined" && window.performance) {
+		supported = true;
+		perf = window.performance;
+	} else if (typeof globalThis !== "undefined" && ((_a = globalThis.perf_hooks) === null || _a === void 0 ? void 0 : _a.performance)) {
+		supported = true;
+		perf = globalThis.perf_hooks.performance;
+	} else supported = false;
+	return supported;
+}
+function now() {
+	return isPerformanceSupported() ? perf.now() : Date.now();
+}
+var ApiProxy = class {
+	constructor(plugin, hook) {
+		this.target = null;
+		this.targetQueue = [];
+		this.onQueue = [];
+		this.plugin = plugin;
+		this.hook = hook;
+		const defaultSettings = {};
+		if (plugin.settings) for (const id in plugin.settings) defaultSettings[id] = plugin.settings[id].defaultValue;
+		const localSettingsSaveId = `__vue-devtools-plugin-settings__${plugin.id}`;
+		let currentSettings = Object.assign({}, defaultSettings);
+		try {
+			const raw = localStorage.getItem(localSettingsSaveId);
+			const data = JSON.parse(raw);
+			Object.assign(currentSettings, data);
+		} catch (e) {}
+		this.fallbacks = {
+			getSettings() {
+				return currentSettings;
+			},
+			setSettings(value) {
+				try {
+					localStorage.setItem(localSettingsSaveId, JSON.stringify(value));
+				} catch (e) {}
+				currentSettings = value;
+			},
+			now() {
+				return now();
+			}
+		};
+		if (hook) hook.on(HOOK_PLUGIN_SETTINGS_SET, (pluginId, value) => {
+			if (pluginId === this.plugin.id) this.fallbacks.setSettings(value);
+		});
+		this.proxiedOn = new Proxy({}, { get: (_target, prop) => {
+			if (this.target) return this.target.on[prop];
+			else return (...args) => {
+				this.onQueue.push({
+					method: prop,
+					args
+				});
+			};
+		} });
+		this.proxiedTarget = new Proxy({}, { get: (_target, prop) => {
+			if (this.target) return this.target[prop];
+			else if (prop === "on") return this.proxiedOn;
+			else if (Object.keys(this.fallbacks).includes(prop)) return (...args) => {
+				this.targetQueue.push({
+					method: prop,
+					args,
+					resolve: () => {}
+				});
+				return this.fallbacks[prop](...args);
+			};
+			else return (...args) => {
+				return new Promise((resolve) => {
+					this.targetQueue.push({
+						method: prop,
+						args,
+						resolve
+					});
+				});
+			};
+		} });
+	}
+	async setRealTarget(target) {
+		this.target = target;
+		for (const item of this.onQueue) this.target.on[item.method](...item.args);
+		for (const item of this.targetQueue) item.resolve(await this.target[item.method](...item.args));
+	}
+};
+function setupDevtoolsPlugin(pluginDescriptor, setupFn) {
+	const descriptor = pluginDescriptor;
+	const target = getTarget();
+	const hook = getDevtoolsGlobalHook();
+	const enableProxy = isProxyAvailable && descriptor.enableEarlyProxy;
+	if (hook && (target.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !enableProxy)) hook.emit(HOOK_SETUP, pluginDescriptor, setupFn);
+	else {
+		const proxy = enableProxy ? new ApiProxy(descriptor, hook) : null;
+		(target.__VUE_DEVTOOLS_PLUGINS__ = target.__VUE_DEVTOOLS_PLUGINS__ || []).push({
+			pluginDescriptor: descriptor,
+			setupFn,
+			proxy
+		});
+		if (proxy) setupFn(proxy.proxiedTarget);
+	}
+}
+var u = "intlayer", d = "intlayer-dictionaries-inspector", { defaultLocale: f, locales: p } = internationalization ?? {}, m = setupDevtoolsPlugin, h = (o$2) => {
+	m({
+		id: u,
+		label: "Intlayer",
+		packageName: "vue-intlayer",
+		homepage: "https://intlayer.org",
+		componentStateTypes: [u],
+		app: o$2
+	}, (o$1) => {
+		o$1.addInspector({
+			id: d,
+			label: "Intlayer",
+			icon: "language",
+			treeFilterPlaceholder: "Search dictionaries",
+			nodeActions: [{
+				icon: "check",
+				tooltip: "Set as current locale",
+				action: (n) => {
+					if (!a(n)) return;
+					let r = o(n);
+					if (!p?.map(String).includes(r)) {
+						console.error(`Locale ${r} is not available`);
+						return;
+					}
+					let s = s$1();
+					s.setLocale(r), l(r, s.isCookieEnabled ?? !0), o$1.sendInspectorTree(d), o$1.sendInspectorState(d);
+				}
+			}]
+		}), watch(() => s$1().locale.value, () => {
+			o$1.sendInspectorTree(d), o$1.sendInspectorState(d);
+		}), o$1.on.getInspectorTree((e) => {
+			if (e.inspectorId !== "intlayer-dictionaries-inspector") return;
+			let n = getDictionaries(), i = Object.keys(n), a = s$1().locale.value ?? f;
+			e.rootNodes = [...i.length === 0 ? [{
+				id: "intlayer-no-dictionaries",
+				label: "No dictionaries loaded. Add an Intlayer build plugin (e.g. vite-intlayer) to generate them."
+			}] : i.map((e) => ({
+				id: e,
+				label: e
+			})), s(a)];
+		}), o$1.on.getInspectorState((e) => {
+			if (e.inspectorId !== "intlayer-dictionaries-inspector") return;
+			let r = s$1().locale.value ?? f;
+			if (e.nodeId === "intlayer-locales") {
+				e.state = { Locales: (p ?? []).map((e) => ({
+					key: e,
+					value: e === r ? "current" : "",
+					editable: !1
+				})) };
+				return;
+			}
+			if (a(e.nodeId)) {
+				let t = o(e.nodeId);
+				e.state = { Locale: [{
+					key: "locale",
+					value: t,
+					editable: !1
+				}, {
+					key: "current",
+					value: t === r,
+					editable: !1
+				}] };
+				return;
+			}
+			let o$3 = getDictionaries()[e.nodeId];
+			if (!o$3) {
+				e.state = {};
+				return;
+			}
+			let s = i$1(o$3);
+			e.state = {
+				Translations: Object.entries(s).map(([e, t]) => ({
+					key: e,
+					value: t,
+					editable: !1
+				})),
+				Metadata: [
+					{
+						key: "key",
+						value: o$3.key,
+						editable: !1
+					},
+					{
+						key: "title",
+						value: o$3.title ?? "",
+						editable: !1
+					},
+					{
+						key: "description",
+						value: o$3.description ?? "",
+						editable: !1
+					}
+				]
+			};
+		});
+	});
+};
+export { h as enableIntlayerDevtools };
+import { readonly, ref } from "vue";
+import _16rhw3kbzm1 from "../.intlayer/dictionary/faq.json";
+import _1ny4ad9gw6e from "../.intlayer/dictionary/header.json";
+import _2ckjnptcmiu from "../.intlayer/dictionary/settings.json";
+import _11hn6jza04y from "../.intlayer/dictionary/footer.json";
+import _1h1e3dimqu8 from "../.intlayer/dictionary/mockBanner.json";
+import _habnq427mb from "../.intlayer/dictionary/shared.json";
+import _25c8j2hahqv from "../.intlayer/dictionary/careers.json";
+import _iauyk88f4i from "../.intlayer/dictionary/notFound.json";
+import _1ws5g6nc4g1 from "../.intlayer/dictionary/pricing.json";
+import _1dnalctr3 from "../.intlayer/dictionary/products.json";
+import _4bpwb9fw6u from "../.intlayer/dictionary/contact.json";
+import _29yg3lvf27s from "../.intlayer/dictionary/themeToggle.json";
+import _12fgv4iyd8c from "../.intlayer/dictionary/about.json";
+import _fnv5y1kt6s from "../.intlayer/dictionary/home.json";
+import _1v3o9b1l47a from "../.intlayer/dictionary/team.json";
+import _r6cntw5k3d from "../.intlayer/dictionary/blog.json";
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
+};
+var routing = {
+	"mode": "prefix-all",
+	"enableProxy": false,
+	"storage": {
+		"cookies": [{
+			"name": "INTLAYER_LOCALE",
+			"attributes": { "path": "/" }
+		}],
+		"headers": [{ "name": "x-intlayer-locale" }]
+	},
+	"basePath": ""
+};
+var log = {
+	"mode": "default",
+	"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
+};
+var dictionaries = {
+	"faq": _16rhw3kbzm1,
+	"header": _1ny4ad9gw6e,
+	"settings": _2ckjnptcmiu,
+	"footer": _11hn6jza04y,
+	"mockBanner": _1h1e3dimqu8,
+	"shared": _habnq427mb,
+	"careers": _25c8j2hahqv,
+	"notFound": _iauyk88f4i,
+	"pricing": _1ws5g6nc4g1,
+	"products": _1dnalctr3,
+	"contact": _4bpwb9fw6u,
+	"themeToggle": _29yg3lvf27s,
+	"about": _12fgv4iyd8c,
+	"home": _fnv5y1kt6s,
+	"team": _1v3o9b1l47a,
+	"blog": _r6cntw5k3d
+};
+var getDictionaries = () => dictionaries;
+var resolveExpiresToTimestamp = (expires) => {
+	if (typeof expires === "number") return Date.now() + expires * 1e3;
+	if (typeof expires === "string") {
+		const time = Date.parse(expires);
+		return Number.isNaN(time) ? void 0 : time;
+	}
+};
+var buildCookieString = (name, value, attributes) => {
+	const parts = [`${name}=${encodeURIComponent(value)}`];
+	if (attributes.path) parts.push(`Path=${attributes.path}`);
+	if (attributes.domain) parts.push(`Domain=${attributes.domain}`);
+	const expiresTimestamp = resolveExpiresToTimestamp(attributes.expires);
+	if (expiresTimestamp !== void 0) parts.push(`Expires=${new Date(expiresTimestamp).toUTCString()}`);
+	if (attributes.secure) parts.push("Secure");
+	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
+	return parts.join("; ");
+};
+var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var localeStorageOptions = {
+	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
+	getLocaleStorage: (name) => localStorage.getItem(name),
+	getSessionStorage: (name) => sessionStorage.getItem(name),
+	isCookieEnabled: true,
+	setCookieStore: (name, value, attributes) => cookieStore.set({
+		name,
+		value,
+		path: attributes.path,
+		domain: attributes.domain,
+		expires: attributes.expires,
+		sameSite: attributes.sameSite
+	}),
+	setCookieString: (_name, cookie) => {
+		document.cookie = cookie;
+	},
+	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
+	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
+};
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
+	const { locales } = internationalization;
+	if (options?.isCookieEnabled === false) return void 0;
+	const isValidLocale = (value) => !!value && locales.includes(value);
+	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
+		const value = options?.getCookie?.(routing.storage.cookies[i].name);
+		if (isValidLocale(value)) return value;
+	} catch {}
+};
+var isStoredLocaleCached = false;
+var storedLocale;
+var getCachedLocaleFromStorageClient = () => {
+	if (typeof window === "undefined") return getLocaleFromStorageClient(localeStorageOptions);
+	if (!isStoredLocaleCached) {
+		storedLocale = getLocaleFromStorageClient(localeStorageOptions);
+		isStoredLocaleCached = true;
+	}
+	return storedLocale;
+};
+var setLocaleInStorageClient = (locale, options) => {
+	if (options?.isCookieEnabled === false) return;
+	isStoredLocaleCached = false;
+	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
+		const { name, attributes } = routing.storage.cookies[i];
+		try {
+			if (options?.setCookieStore) options.setCookieStore(name, locale, {
+				...attributes,
+				expires: resolveExpiresToTimestamp(attributes.expires)
+			});
+		} catch {
+			try {
+				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
+			} catch {}
+		}
+	}
+};
+var o$1 = getCachedLocaleFromStorageClient;
+var l = (e, t) => setLocaleInStorageClient(e, {
+	...localeStorageOptions,
+	isCookieEnabled: t
+});
+var setIntlayerIdentifier = () => {
+	if (typeof window !== "undefined") window.intlayer = { enabled: true };
+};
+var a = Symbol("intlayer");
+var o = null;
+var s = (a, s = !0, c) => {
+	if (o) return o;
+	setIntlayerIdentifier();
+	let { defaultLocale: l } = internationalization ?? {}, u = ref(a ?? o$1() ?? l), d = (e) => {
+		u.value = e;
+	}, f = ref(c);
+	return o = {
+		locale: readonly(u),
+		setLocale: d,
+		variant: readonly(f),
+		setVariant: (e) => {
+			f.value = e;
+		},
+		isCookieEnabled: s
+	}, o;
+};
+var c = (e, t) => {
+	let { locale: n, isCookieEnabled: r, variant: i } = t ?? {}, o = s(n, r, i);
+	return e.provide(a, o), process.env.INTLAYER_DEVTOOLS_ENABLED !== "false" && import("./devtools-BH3tPGPV.js").then(({ enableIntlayerDevtools: t }) => {
+		t(e);
+	}).catch(() => {}), e;
+};
+export { getDictionaries as a, l as i, c as n, internationalization as o, s as r, log as s, a as t };

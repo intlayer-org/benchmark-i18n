@@ -24,5 +24,6 @@
   "careers-benefits.openSourceTime": "Open source time",
   "careers-header.title": "Careers",
   "careers-header.joinOurMissionToImprove": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning.",
-  "careers-benefits.twentyPercentTime": "20% time for OSS"
+  "careers-benefits.twentyPercentTime": "20% time for OSS",
+  "careers-benefits.remoteFirst": "Remote-first"
 }

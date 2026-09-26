@@ -4,21 +4,41 @@ import { useTranslations } from "next-intl";
 
 export default function OpenPositions() {
   const t = useTranslations();
-
   const openings = [
     {
       title: t("open-positions.seniorFrontendEngineer"),
       location: t("open-positions.remote"),
       type: t("open-positions.fullTime"),
       dept: t("open-positions.engineering"),
-      description: t("open-positions.buildAndMaintainOurBenchmarking"),
+      desc: t("open-positions.buildAndMaintainOurBenchmarking"),
     },
     {
       title: t("open-positions.backendEngineer"),
       location: t("open-positions.remote"),
       type: t("open-positions.fullTime"),
       dept: t("open-positions.engineering"),
-      description: t("open-positions.designAndScaleOurCloud"),
+      desc: t("open-positions.designAndScaleOurCloud"),
+    },
+    {
+      title: t("open-positions.technicalWriter"),
+      location: t("open-positions.remote"),
+      type: t("open-positions.partTime"),
+      dept: t("open-positions.documentation"),
+      desc: t("open-positions.createComprehensiveGuidesApiReferences"),
+    },
+    {
+      title: t("open-positions.devrelEngineer"),
+      location: t("open-positions.sanFranciscoRemote"),
+      type: t("open-positions.fullTime"),
+      dept: t("open-positions.community"),
+      desc: t("open-positions.engageWithTheI18nCommunity"),
+    },
+    {
+      title: t("open-positions.qaEngineer"),
+      location: t("open-positions.remote"),
+      type: t("open-positions.fullTime"),
+      dept: t("open-positions.engineering"),
+      desc: t("open-positions.ensureTheAccuracyAndReliability"),
     },
   ];
 
@@ -34,8 +54,10 @@ export default function OpenPositions() {
             className="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"
           >
             <div>
-              <h3 className="text-base font-semibold text-foreground">{o.title}</h3>
-              <p className="text-sm text-muted-foreground">{o.description}</p>
+              <h3 className="text-base font-semibold text-foreground">
+                {o.title}
+              </h3>
+              <p className="text-sm text-muted-foreground">{o.desc}</p>
               <div className="mt-2 flex gap-2">
                 <span className="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground">
                   {o.dept}

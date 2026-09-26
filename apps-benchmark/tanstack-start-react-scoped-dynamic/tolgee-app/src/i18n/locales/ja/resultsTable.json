@@ -1,6 +1,7 @@
 {
   "bundleSize": "バンドルサイズ",
   "lazyLoading": "遅延読み込み",
+  "library": "ライブラリ",
   "lookupTime": "検索時間",
   "sampleResults": "サンプル結果"
 }

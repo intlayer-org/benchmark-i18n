@@ -1,5 +1,6 @@
 {
   "apiAccess": "APIアクセス",
   "apiKey": "APIキー",
+  "copy": "コピー",
   "useThisKeyToAccess": "このキーを使用して、ベンチマークAPIにプログラムでアクセスします。"
 }

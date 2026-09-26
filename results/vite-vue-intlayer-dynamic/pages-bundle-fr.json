@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-intlayer-dynamic",
   "locale": "fr",
-  "timestamp": "2026-09-26T03:34:24.865Z",
+  "timestamp": "2026-09-26T05:59:30.015Z",
   "fingerprintCounts": {
     "locale": {
       "en": 96,
@@ -479,15 +479,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/About-SprVwr-5.js",
-          "size": 1099,
-          "gzipSize": 486,
-          "type": "js"
-        },
-        {
           "url": "/assets/devtools-Bd20xUG-.js",
           "size": 4608,
           "gzipSize": 2022,
+          "type": "js"
+        },
+        {
+          "url": "/assets/About-SprVwr-5.js",
+          "size": 1099,
+          "gzipSize": 486,
           "type": "js"
         },
         {
@@ -1757,15 +1757,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/devtools-Bd20xUG-.js",
-          "size": 4608,
-          "gzipSize": 2022,
-          "type": "js"
-        },
-        {
           "url": "/assets/Contact-BW9Zw-Lk.js",
           "size": 937,
           "gzipSize": 488,
+          "type": "js"
+        },
+        {
+          "url": "/assets/devtools-Bd20xUG-.js",
+          "size": 4608,
+          "gzipSize": 2022,
           "type": "js"
         },
         {
@@ -2605,15 +2605,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/devtools-Bd20xUG-.js",
-          "size": 4608,
-          "gzipSize": 2022,
-          "type": "js"
-        },
-        {
           "url": "/assets/Pricing-l9EB79EO.js",
           "size": 896,
           "gzipSize": 471,
+          "type": "js"
+        },
+        {
+          "url": "/assets/devtools-Bd20xUG-.js",
+          "size": 4608,
+          "gzipSize": 2022,
           "type": "js"
         },
         {
@@ -3041,15 +3041,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-deSvRSZE.js",
-          "size": 320,
-          "gzipSize": 248,
-          "type": "js"
-        },
-        {
           "url": "/assets/ProductsHeader-XKSuN7bl.js",
           "size": 442,
           "gzipSize": 311,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-deSvRSZE.js",
+          "size": 320,
+          "gzipSize": 248,
           "type": "js"
         },
         {

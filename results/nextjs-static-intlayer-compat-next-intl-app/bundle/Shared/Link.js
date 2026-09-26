@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { createContext, useCallback, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import NextLink from "next/link";
 import { useParams, usePathname } from "next/navigation";
 import { jsx, jsxs } from "react/jsx-runtime";
@@ -73,36 +73,6 @@ var log = {
 	"mode": "default",
 	"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
 };
-var RESET = "\x1B[0m";
-var BLUE = "\x1B[34m";
-var RED = "\x1B[31m";
-var GREEN = "\x1B[32m";
-var CYAN = "\x1B[36m";
-var getPrefix = (configPrefix) => {
-	return configPrefix;
-};
-var logger = (content, details) => {
-	const config = details?.config ?? {};
-	const mode = config.mode ?? "default";
-	if (mode === "disabled" || details?.isVerbose && mode !== "verbose") return;
-	const prefix = getPrefix(config.prefix);
-	const flatContent = prefix ? [prefix, ...[content].flat()] : [content].flat();
-	const level = details?.level ?? "info";
-	(config[level] ?? console[level] ?? config.log ?? console.log)(...flatContent);
-};
-var getAppLogger = (configuration, globalDetails) => (content, details) => logger(content, {
-	...details ?? {},
-	config: {
-		...configuration?.log,
-		...globalDetails?.config,
-		...details?.config ?? {}
-	}
-});
-var colorize = (string, color, reset) => color && typeof window === "undefined" ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
-colorize("✗", RED);
-colorize("✓", GREEN);
-colorize("⏲", BLUE);
-var LOCALES = ["en"];
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var resolveExpiresToTimestamp = (expires) => {
 	if (typeof expires === "number") return Date.now() + expires * 1e3;
@@ -151,8 +121,19 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		if (isValidLocale(value)) return value;
 	} catch {}
 };
+var isStoredLocaleCached = false;
+var storedLocale;
+var getCachedLocaleFromStorageClient = () => {
+	if (typeof window === "undefined") return getLocaleFromStorageClient(localeStorageOptions);
+	if (!isStoredLocaleCached) {
+		storedLocale = getLocaleFromStorageClient(localeStorageOptions);
+		isStoredLocaleCached = true;
+	}
+	return storedLocale;
+};
 var setLocaleInStorageClient = (locale, options) => {
 	if (options?.isCookieEnabled === false) return;
+	isStoredLocaleCached = false;
 	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
 		const { name, attributes } = routing.storage.cookies[i];
 		try {
@@ -167,38 +148,41 @@ var setLocaleInStorageClient = (locale, options) => {
 		}
 	}
 };
-var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
+var RESET = "\x1B[0m";
+var BLUE = "\x1B[34m";
+var RED = "\x1B[31m";
+var GREEN = "\x1B[32m";
+var CYAN = "\x1B[36m";
+var getPrefix = (configPrefix) => {
+	return configPrefix;
+};
+var logger = (content, details) => {
+	const config = details?.config ?? {};
+	const mode = config.mode ?? "default";
+	if (mode === "disabled" || details?.isVerbose && mode !== "verbose") return;
+	const prefix = getPrefix(config.prefix);
+	const flatContent = prefix ? [prefix, ...[content].flat()] : [content].flat();
+	const level = details?.level ?? "info";
+	(config[level] ?? console[level] ?? config.log ?? console.log)(...flatContent);
+};
+var getAppLogger = (configuration, globalDetails) => (content, details) => logger(content, {
+	...details ?? {},
+	config: {
+		...configuration?.log,
+		...globalDetails?.config,
+		...details?.config ?? {}
+	}
+});
+var colorize = (string, color, reset) => color && typeof window === "undefined" ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
+colorize("✗", RED);
+colorize("✓", GREEN);
+colorize("⏲", BLUE);
+var LOCALES = ["en"];
+var getLocaleInStorage = getCachedLocaleFromStorageClient;
 var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(locale, {
 	...localeStorageOptions,
 	isCookieEnabled
 });
-var useEditor = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const managerRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !managerRef.current) return;
-		managerRef.current.currentLocale.set(locale);
-	}, [locale]);
-};
-var EditorProvider = ({ children }) => {
-	useEditor();
-	return children;
-};
-var useAnalytics = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const clientRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !clientRef.current) return;
-		clientRef.current.setLocale(locale);
-		clientRef.current.trackPageView({ reason: "locale_change" });
-	}, [locale]);
-};
-var AnalyticsProvider = ({ children }) => {
-	useAnalytics();
-	return children;
-};
 var setIntlayerIdentifier = () => {
 	if (typeof window !== "undefined") window.intlayer = { enabled: true };
 };
@@ -212,6 +196,7 @@ var resolveRoutingConfig = (options = {}) => ({
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
+	if (locales?.includes(selectedLocale)) return selectedLocale;
 	const requestedLocales = [selectedLocale].flat();
 	const normalize = (locale) => locale.trim().toLowerCase();
 	try {
@@ -243,20 +228,24 @@ var getLocaleFromPath = (inputUrl = "/", options) => {
 	if (mode === "prefix-no-default") return defaultLocale;
 };
 var IntlayerClientContext = createContext({
-	locale: localeInStorage ?? internationalization?.defaultLocale,
+	get locale() {
+		return getLocaleInStorage() ?? internationalization?.defaultLocale;
+	},
 	setLocale: () => null,
 	isCookieEnabled: true
 });
 var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocaleProp, variant, children, setLocale: setLocaleProp, disableEditor, isCookieEnabled }) => {
 	const { locales: availableLocales, defaultLocale: defaultLocaleConfig } = internationalization ?? {};
-	const [currentLocale, setCurrentLocale] = useState(localeProp ?? localeInStorage ?? defaultLocaleProp ?? defaultLocaleConfig);
-	useEffect(() => {
+	const [currentLocale, setCurrentLocale] = useState(() => localeProp ?? getLocaleInStorage() ?? defaultLocaleProp ?? defaultLocaleConfig);
+	const [adoptedLocaleProp, setAdoptedLocaleProp] = useState(localeProp);
+	if (localeProp !== adoptedLocaleProp) {
+		setAdoptedLocaleProp(localeProp);
 		if (localeProp && localeProp !== currentLocale) setCurrentLocale(localeProp);
-	}, [localeProp]);
+	}
 	useEffect(() => {
 		setIntlayerIdentifier();
 	}, []);
-	const setLocaleBase = (newLocale) => {
+	const setLocaleBase = useCallback((newLocale) => {
 		if (currentLocale.toString() === newLocale.toString()) return;
 		if (!availableLocales?.map(String).includes(newLocale)) {
 			console.error(`Locale ${newLocale} is not available`);
@@ -264,35 +253,43 @@ var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocal
 		}
 		setCurrentLocale(newLocale);
 		setLocaleInStorage(newLocale, isCookieEnabled);
-	};
+	}, [
+		currentLocale,
+		availableLocales,
+		isCookieEnabled
+	]);
 	const setLocale = setLocaleProp ?? setLocaleBase;
 	const resolvedLocale = localeResolver(currentLocale);
+	const contextValue = useMemo(() => ({
+		locale: resolvedLocale,
+		setLocale,
+		variant,
+		disableEditor
+	}), [
+		resolvedLocale,
+		setLocale,
+		variant,
+		disableEditor
+	]);
 	return jsx(IntlayerClientContext.Provider, {
-		value: {
-			locale: resolvedLocale,
-			setLocale,
-			variant,
-			disableEditor
-		},
+		value: contextValue,
 		children
 	});
 };
 var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent, {
 	...props,
 	children: [
-		jsx(EditorProvider, {}),
-		jsx(AnalyticsProvider, {}),
+		false,
+		false,
 		children
 	]
 });
-var IntlayerClientProviderBase = (props) => jsx(IntlayerProvider, { ...props });
-var IntlayerClientProvider = IntlayerClientProviderBase;
 var NextIntlClientProvider = ({ locale, children, messages: _messages, timeZone: _timeZone, now: _now, ...rest }) => {
 	if (typeof _messages !== "undefined") getAppLogger({ log })(`${colorize("NextIntlClientProvider", CYAN)} do not pass the messages prop with intlayer. Messages are loaded automatically under the hood for bundle optimization reason`);
 	const pathname = usePathname();
 	const mode = routing?.mode ?? "prefix-no-default";
 	const resolvedLocale = locale ?? (mode === "prefix-all" || mode === "prefix-no-default" ? getLocaleFromPath(pathname) : void 0);
-	return jsx(IntlayerClientProvider, {
+	return jsx(IntlayerProvider, {
 		locale: resolvedLocale,
 		...rest,
 		children

@@ -1,3 +1,5 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 
 export default function BlogList() {
@@ -6,39 +8,39 @@ export default function BlogList() {
   const posts = [
     {
       title: t("blog-list.comparingI18nLibrariesIn2026"),
-      date: t("blog-list.march82026"), // The en.ts has march82026 for the first one too? Let's check.
+      date: t("blog-list.march152026"),
       excerpt: t("blog-list.weTested12DifferentInternationalization"),
-      category: "Benchmark",
+      category: t("blog-list.benchmark"),
     },
     {
       title: t("blog-list.howToReduceYourI18n"),
       date: t("blog-list.march82026"),
       excerpt: t("blog-list.practicalStrategiesForOptimizingTranslation"),
-      category: "Tutorial",
+      category: t("blog-list.tutorial"),
     },
     {
       title: t("blog-list.theStateOfInternationalizationIn"),
       date: t("blog-list.february282026"),
       excerpt: t("blog-list.anOverviewOfTheCurrent"),
-      category: "Analysis",
+      category: t("blog-list.analysis"),
     },
     {
       title: t("blog-list.migratingFromReactI18nextTo"),
       date: t("blog-list.february152026"),
       excerpt: t("blog-list.aStepByStepGuide"),
-      category: "Tutorial",
+      category: t("blog-list.tutorial"),
     },
     {
       title: t("blog-list.serverComponentsAndI18nWhat"),
       date: t("blog-list.february12026"),
       excerpt: t("blog-list.reactServerComponentsIntroduceNew"),
-      category: "Analysis",
+      category: t("blog-list.analysis"),
     },
     {
       title: t("blog-list.benchmarkMethodologyHowWeTest"),
       date: t("blog-list.january202026"),
       excerpt: t("blog-list.aTransparentLookAtOur"),
-      category: "Meta",
+      category: t("blog-list.meta"),
     },
   ];
 

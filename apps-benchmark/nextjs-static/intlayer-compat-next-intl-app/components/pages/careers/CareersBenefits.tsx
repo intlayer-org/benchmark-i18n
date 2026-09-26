@@ -1,14 +1,13 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 
 export default function CareersBenefits() {
   const t = useTranslations();
   const benefits = [
-    { label: "Remote-first", value: t("careers-benefits.workFromAnywhereInThe") },
-    { label: t("careers.careers-benefits.competitivePay"), value: t("careers-benefits.topOfMarketCompensation") },
-    {
-      label: t("careers.careers-benefits.openSourceTime"),
-      value: "20% time for OSS contributions",
-    },
+    { label: t("careers-benefits.remoteFirst"), value: t("careers-benefits.workFromAnywhereInThe") },
+    { label: t("careers-benefits.competitivePay"), value: t("careers-benefits.topOfMarketCompensation") },
+    { label: t("careers-benefits.openSourceTime"), value: t("careers-benefits.x20TimeForOssContributions") },
   ];
 
   return (

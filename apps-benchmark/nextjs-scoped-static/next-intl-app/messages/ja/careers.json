@@ -24,5 +24,7 @@
   "careers-benefits.openSourceTime": "オープンソースへの貢献時間",
   "careers-header.title": "採用",
   "careers-header.joinOurMissionToImprove": "国際化エコシステムを改善するという私たちのミッションに参加してください。私たちは、影響力、透明性、そして継続的な学習を重視するリモートファーストのチームです。",
-  "careers-benefits.twentyPercentTime": "20% time for OSS"
+  "careers-benefits.twentyPercentTime": "20% time for OSS",
+  "careers-benefits.remoteFirst": "リモートファースト",
+  "careers-benefits.x20TimeForOssContributions": "OSS への貢献に 20% の時間を割く"
 }

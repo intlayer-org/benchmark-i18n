@@ -4,21 +4,48 @@ import { useTranslation } from "react-i18next";
 
 export default function OpenPositions() {
   const { t } = useTranslation();
-
   const openings = [
     {
       title: t("careers.careersPositions.seniorFrontendEngineer"),
-      location: t("careers.openPositions.remote"),
-      type: t("careers.openPositions.fullTime"),
-      dept: "Engineering",
-      desc: t("careers.careersPositions.seniorFrontendEngineerDesc"),
+      location: t("careers.careersPositions.remote"),
+      type: t("careers.careersPositions.fullTime"),
+      dept: t("careers.careersPositions.engineering"),
+      desc: t("careers.careersPositions.buildAndMaintainOurBenchmarking"),
+    },
+    {
+      title: t("careers.careersPositions.backendEngineer"),
+      location: t("careers.careersPositions.remote"),
+      type: t("careers.careersPositions.fullTime"),
+      dept: t("careers.careersPositions.engineering"),
+      desc: t("careers.careersPositions.designAndScaleOurCloud"),
+    },
+    {
+      title: t("careers.careersPositions.technicalWriter"),
+      location: t("careers.careersPositions.remote"),
+      type: t("careers.careersPositions.partTime"),
+      dept: t("careers.careersPositions.documentation"),
+      desc: t("careers.careersPositions.createComprehensiveGuidesApiReferences"),
+    },
+    {
+      title: t("careers.careersPositions.devrelEngineer"),
+      location: t("careers.careersPositions.sanFranciscoRemote"),
+      type: t("careers.careersPositions.fullTime"),
+      dept: t("careers.careersPositions.community"),
+      desc: t("careers.careersPositions.engageWithTheI18nCommunity"),
+    },
+    {
+      title: t("careers.careersPositions.qaEngineer"),
+      location: t("careers.careersPositions.remote"),
+      type: t("careers.careersPositions.fullTime"),
+      dept: t("careers.careersPositions.engineering"),
+      desc: t("careers.careersPositions.ensureTheAccuracyAndReliability"),
     },
   ];
 
   return (
     <>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        {t("careers.openPositions.openPositions")}
+        {t("careers.careersPositions.openPositions")}
       </h2>
       <div className="space-y-4">
         {openings.map((o) => (
@@ -47,7 +74,7 @@ export default function OpenPositions() {
               type="button"
               className="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              {t("careers.openPositions.applyNow")}
+              {t("careers.careersPositions.applyNow")}
             </button>
           </div>
         ))}

@@ -9,10 +9,10 @@ export default function ContactHeader() {
     <>
       <MockBanner />
       <h1 className="mb-2 text-3xl font-bold text-foreground">
-        {t("contactHeader.contactUs")}
+        {t("contactHeader.getInTouch")}
       </h1>
       <p className="mb-8 text-muted-foreground">
-        {t("contactHeader.haveQuestionsOrWantTo")}{" "}
+        {t("contactHeader.haveIdeasFoundABug")}{" "}
         <a
           href="mailto:contact@intlayer.org"
           className="text-primary hover:underline"

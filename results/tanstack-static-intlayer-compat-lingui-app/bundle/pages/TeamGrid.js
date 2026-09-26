@@ -1,5 +1,10 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useMemo, useState } from "react";
+import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+var team_default = {
+	key: "team",
+	content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"aishaPatel\":\"Aisha Patel\",\"communityManager\":\"Community Manager\",\"dataAnalyst\":\"Data Analyst\",\"developerAdvocate\":\"Developer Advocate\",\"elenaKowalski\":\"Elena Kowalski\",\"yukiBio\":\"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.\",\"sarahBio\":\"Former Google engineer with 10 years of experience building internationalization systems at scale.\",\"founderLeadEngineer\":\"Founder & Lead Engineer\",\"fullStackDeveloper\":\"Full-Stack Developer\",\"tomasBio\":\"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.\",\"elenaBio\":\"Manages community contributions, partnerships, and events. Background in open source governance.\",\"marcusWeber\":\"Marcus Weber\",\"aishaBio\":\"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.\",\"performanceEngineer\":\"Performance Engineer\",\"sarahChen\":\"Sarah Chen\",\"marcusBio\":\"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"yukiTanaka\":\"Yuki Tanaka\"},\"fr\":{\"aishaPatel\":\"Aisha Patel\",\"communityManager\":\"Responsable de communauté\",\"dataAnalyst\":\"Analyste de données\",\"developerAdvocate\":\"Developer Advocate\",\"elenaKowalski\":\"Elena Kowalski\",\"yukiBio\":\"Garantit la rigueur statistique de tous les résultats de benchmark. Doctorat en statistiques appliquées du MIT.\",\"sarahBio\":\"Ancienne ingénieure Google avec 10 ans d'expérience dans la construction de systèmes d'internationalisation à grande échelle.\",\"founderLeadEngineer\":\"Fondatrice & Ingénieure principale\",\"fullStackDeveloper\":\"Développeur Full Stack\",\"tomasBio\":\"Maintient notre infrastructure de benchmarking et nos pipelines CI/CD. Contributeur open source pour Lingui.\",\"elenaBio\":\"Gère les contributions de la communauté, les partenariats et les événements. Background en gouvernance open source.\",\"marcusWeber\":\"Marcus Weber\",\"aishaBio\":\"Passionnée par l'expérience développeur et l'éducation. Intervenante à React Conf, JSConf et i18nNext.\",\"performanceEngineer\":\"Ingénieur performance\",\"sarahChen\":\"Sarah Chen\",\"marcusBio\":\"Spécialisé dans l'optimisation des performances JavaScript et la méthodologie de benchmarking. Précédemment chez Vercel.\",\"tomasRodriguez\":\"Tomas Rodriguez\",\"yukiTanaka\":\"Yuki Tanaka\"},\"es\":{\"aishaPatel\":\"Aisha Patel\",\"communityManager\":\"Community Manager\",\"dataAnalyst\":\"Analista de datos\",\"developerAdvocate\":\"Developer Advocate\",\"elenaKowalski\":\"Elena Kowalski\",\"yukiBio\":\"Garantiza el rigor estadístico en todos los resultados del benchmark. PhD en Estadística Aplicada del MIT.\",\"sarahBio\":\"Ex ingeniera de Google con 10 años de experiencia construyendo sistemas de internacionalización a escala.\",\"founderLeadEngineer\":\"Fundadora e Ingeniera Principal\",\"fullStackDeveloper\":\"Desarrollador Full-Stack\",\"tomasBio\":\"Mantiene la infraestructura de benchmarking y el pipeline de CI/CD. Contribuidor de código abierto a Lingui.\",\"elenaBio\":\"Gestiona contribuciones de la comunidad, asociaciones y eventos. Experiencia en gobernanza de código abierto.\",\"marcusWeber\":\"Marcus Weber\",\"aishaBio\":\"Apasionada por la experiencia del desarrollador y la educación. Ponente en React Conf, JSConf e i18nNext.\",\"performanceEngineer\":\"Ingeniero de rendimiento\",\"sarahChen\":\"Sarah Chen\",\"marcusBio\":\"Especializado en la optimización del rendimiento de JavaScript y la metodología de benchmarking. Anteriormente en Vercel.\",\"tomasRodriguez\":\"Tomas Rodriguez\",\"yukiTanaka\":\"Yuki Tanaka\"},\"de\":{\"aishaPatel\":\"Aisha Patel\",\"communityManager\":\"Community-Manager\",\"dataAnalyst\":\"Datenanalyst\",\"developerAdvocate\":\"Developer Advocate\",\"elenaKowalski\":\"Elena Kowalski\",\"yukiBio\":\"Gewährleistet statistische Strenge in allen Benchmarking-Ergebnissen. PhD in Angewandter Statistik vom MIT.\",\"sarahBio\":\"Ehemalige Google-Ingenieurin mit 10 Jahren Erfahrung im Aufbau von Internationalisierungssystemen im großen Stil.\",\"founderLeadEngineer\":\"Gründer & Lead Engineer\",\"fullStackDeveloper\":\"Full-Stack-Entwickler\",\"tomasBio\":\"Verwaltet die Benchmarking-Infrastruktur und die CI/CD-Pipeline. Open-Source-Beitragender zu Lingui.\",\"elenaBio\":\"Verwaltet Community-Beiträge, Partnerschaften und Veranstaltungen. Hintergrund in Open-Source-Governance.\",\"marcusWeber\":\"Marcus Weber\",\"aishaBio\":\"Leidenschaftlich für Entwicklererfahrung und Bildung. Sprecherin bei React Conf, JSConf und i18nNext.\",\"performanceEngineer\":\"Performance Engineer\",\"sarahChen\":\"Sarah Chen\",\"marcusBio\":\"Spezialisiert auf JavaScript-Leistungsoptimierung und Benchmarking-Methodik. Zuvor bei Vercel.\",\"tomasRodriguez\":\"Tomas Rodriguez\",\"yukiTanaka\":\"Yuki Tanaka\"},\"it\":{\"aishaPatel\":\"Aisha Patel\",\"communityManager\":\"Community Manager\",\"dataAnalyst\":\"Analista di dati\",\"developerAdvocate\":\"Developer Advocate\",\"elenaKowalski\":\"Elena Kowalski\",\"yukiBio\":\"Garantisce il rigore statistico in tutti i risultati dei benchmark. Dottorato di ricerca in statistica applicata presso il MIT.\",\"sarahBio\":\"Ex ingegnere Google con 10 anni di esperienza nella creazione di sistemi di internazionalizzazione su scala.\",\"founderLeadEngineer\":\"Fondatore e ingegnere capo\",\"fullStackDeveloper\":\"Sviluppatore Full-Stack\",\"tomasBio\":\"Mantiene l'infrastruttura di benchmarking e la pipeline di CI/CD. Contributore open source di Lingui.\",\"elenaBio\":\"Gestisce i contributi della community, le partnership e gli eventi. Background in governance open source.\",\"marcusWeber\":\"Marcus Weber\",\"aishaBio\":\"Appassionata di esperienza degli sviluppatori e formazione. Relatrice a React Conf, JSConf e i18nNext.\",\"performanceEngineer\":\"Ingegnere delle prestazioni\",\"sarahChen\":\"Sarah Chen\",\"marcusBio\":\"Specializzato nell'ottimizzazione delle prestazioni di JavaScript e nella metodologia di benchmarking. In precedenza presso Vercel.\",\"tomasRodriguez\":\"Tomas Rodriguez\",\"yukiTanaka\":\"Yuki Tanaka\"},\"pt\":{\"aishaPatel\":\"Aisha Patel\",\"communityManager\":\"Gerente de Comunidade\",\"dataAnalyst\":\"Analista de Dados\",\"developerAdvocate\":\"Developer Advocate\",\"elenaKowalski\":\"Elena Kowalski\",\"yukiBio\":\"Garante o rigor estatístico em todos os resultados de benchmark. PhD em Estatística Aplicada pelo MIT.\",\"sarahBio\":\"Ex-engenheira do Google com 10 anos de experiência na construção de sistemas de internacionalização em larga escala.\",\"founderLeadEngineer\":\"Fundadora e Engenheira Líder\",\"fullStackDeveloper\":\"Desenvolvedor Full Stack\",\"tomasBio\":\"Mantém nossa infraestrutura de benchmarking e pipelines de CI/CD. Contribuidor de código aberto para o Lingui.\",\"elenaBio\":\"Gerencia contribuições da comunidade, parcerias e eventos. Experiência em governança de código aberto.\",\"marcusWeber\":\"Marcus Weber\",\"aishaBio\":\"Apaixonada por experiência do desenvolvedor e educação. Palestrante na React Conf, JSConf e i18nNext.\",\"performanceEngineer\":\"Engenheiro de Performance\",\"sarahChen\":\"Sarah Chen\",\"marcusBio\":\"Especializado em otimização de desempenho de JavaScript e metodologia de benchmarking. Ex-Vercel.\",\"tomasRodriguez\":\"Tomas Rodriguez\",\"yukiTanaka\":\"Yuki Tanaka\"},\"zh\":{\"aishaPatel\":\"艾莎·帕特尔 (Aisha Patel)\",\"communityManager\":\"社区经理\",\"dataAnalyst\":\"数据分析师\",\"developerAdvocate\":\"开发者倡导者 (Developer Advocate)\",\"elenaKowalski\":\"艾琳娜·科瓦尔斯基 (Elena Kowalski)\",\"yukiBio\":\"确保所有基准测试结果的统计严谨性。毕业于麻省理工学院 (MIT)，拥有应用统计学博士学位。\",\"sarahBio\":\"前 Google 工程师，在构建大规模国际化系统方面拥有 10 年经验。\",\"founderLeadEngineer\":\"创始人兼首席工程师\",\"fullStackDeveloper\":\"全栈开发人员\",\"tomasBio\":\"维护我们的基准测试基础设施和 CI/CD 管道。Lingui 的开源贡献者。\",\"elenaBio\":\"管理社区贡献、合作伙伴关系和活动。具有开源治理背景。\",\"marcusWeber\":\"马库斯·韦伯 (Marcus Weber)\",\"aishaBio\":\"热衷于开发者体验和教育。React Conf、JSConf 和 i18nNext 的讲师。\",\"performanceEngineer\":\"性能工程师\",\"sarahChen\":\"莎拉·陈 (Sarah Chen)\",\"marcusBio\":\"擅长 JavaScript 性能优化和基准测试方法论。曾在 Vercel 工作。\",\"tomasRodriguez\":\"托马斯·罗德里格斯 (Tomas Rodriguez)\",\"yukiTanaka\":\"田中雪 (Yuki Tanaka)\"},\"ja\":{\"aishaPatel\":\"アイシャ・パテル\",\"communityManager\":\"コミュニティマネージャー\",\"dataAnalyst\":\"データアナリスト\",\"developerAdvocate\":\"デベロッパーアドボケイト\",\"elenaKowalski\":\"エレナ・コワルスキー\",\"yukiBio\":\"すべてのベンチマーク結果における統計的厳密さを保証します。MITで応用統計学の博士号を取得。\",\"sarahBio\":\"元Googleエンジニアで、大規模な国際化システムの構築に10年の経験があります。\",\"founderLeadEngineer\":\"創設者 兼 リードエンジニア\",\"fullStackDeveloper\":\"フルスタックデベロッパー\",\"tomasBio\":\"ベンチマークインフラストラクチャとCI/CDパイプラインを維持しています。Linguiのオープンソースコントリビューター。\",\"elenaBio\":\"コミュニティへの貢献、パートナーシップ、イベントを管理しています。オープンソースガバナンスの経歴があります。\",\"marcusWeber\":\"マルクス・ウェーバー\",\"aishaBio\":\"開発者エクスペリエンスと教育に情熱を注いでいます。React Conf、JSConf、i18nNextのスピーカー。\",\"performanceEngineer\":\"パフォーマンスエンジニア\",\"sarahChen\":\"サラ・チェン\",\"marcusBio\":\"JavaScriptのパフォーマンス最適化とベンチマーク方法論を専門としています。以前はVercelに在籍。\",\"tomasRodriguez\":\"トマス・ロドリゲス\",\"yukiTanaka\":\"田中ゆき\"},\"ko\":{\"aishaPatel\":\"아이샤 파텔\",\"communityManager\":\"커뮤니티 매니저\",\"dataAnalyst\":\"데이터 분석가\",\"developerAdvocate\":\"데벨로퍼 애드보케이트\",\"elenaKowalski\":\"엘레나 코발스키\",\"yukiBio\":\"모든 벤치마크 결과의 통계적 엄격함을 보장합니다. MIT 응용 통계학 박사.\",\"sarahBio\":\"구글 엔지니어 출신으로 대규모 국제화 시스템 구축 분야에서 10년의 경력을 보유하고 있습니다.\",\"founderLeadEngineer\":\"설립자 및 리드 엔지니어\",\"fullStackDeveloper\":\"풀스택 개발자\",\"tomasBio\":\"벤치마킹 인프라와 CI/CD 파이프라인을 유지 관리합니다. Lingui의 오픈 소스 기여자입니다.\",\"elenaBio\":\"커뮤니티 기여, 파트너십 및 이벤트를 관리합니다. 오픈 소스 거버넌스 분야의 배경을 가지고 있습니다.\",\"marcusWeber\":\"마르쿠스 베버\",\"aishaBio\":\"개발자 경험과 교육에 열정적입니다. React Conf, JSConf 및 i18nNext의 발표자입니다.\",\"performanceEngineer\":\"성능 엔지니어\",\"sarahChen\":\"사라 첸\",\"marcusBio\":\"JavaScript 성능 최적화 및 벤치마킹 방법론을 전문으로 합니다. 이전 Vercel 근무.\",\"tomasRodriguez\":\"토마스 로드리게스\",\"yukiTanaka\":\"유키 타나카\"},\"ru\":{\"aishaPatel\":\"Айша Патель\",\"communityManager\":\"Комьюнити-менеджер\",\"dataAnalyst\":\"Аналитик данных\",\"developerAdvocate\":\"Developer Advocate\",\"elenaKowalski\":\"Елена Ковальски\",\"yukiBio\":\"Обеспечивает статистическую строгость всех результатов бенчмарков. Доктор прикладной статистики (MIT).\",\"sarahBio\":\"Бывший инженер Google с 10-летним опытом построения крупномасштабных систем интернационализации.\",\"founderLeadEngineer\":\"Основатель и ведущий инженер\",\"fullStackDeveloper\":\"Full Stack разработчик\",\"tomasBio\":\"Поддерживает нашу инфраструктуру бенчмаркинга и конвейеры CI/CD. Автор открытого кода для Lingui.\",\"elenaBio\":\"Управляет вкладом сообщества, партнерствами и мероприятиями. Имеет опыт управления открытым исходным кодом.\",\"marcusWeber\":\"Маркус Вебер\",\"aishaBio\":\"Увлечена опытом разработчиков и образованием. Спикер React Conf, JSConf и i18nNext.\",\"performanceEngineer\":\"Инженер по производительности\",\"sarahChen\":\"Сара Чен\",\"marcusBio\":\"Специализируется на оптимизации производительности JavaScript и методологии бенчмаркинга. Ранее работал в Vercel.\",\"tomasRodriguez\":\"Томас Родригес\",\"yukiTanaka\":\"Юки Танака\"}}}")
+};
+var LinguiContext = createContext(null);
 var EventEmitter = class {
 	_events = /* @__PURE__ */ new Map();
 	on(event, listener) {
@@ -71,6 +76,7 @@ var linguiMessageToIcu = (compiled) => {
 var TRANSLATION = "translation";
 var ENUMERATION = "enumeration";
 var PLURAL = "plural";
+var CONDITION = "condition";
 var INSERTION = "insertion";
 var OBJECT = "object";
 var ARRAY = "array";
@@ -83,39 +89,34 @@ var formatNodeType = (nodeType, content, additionalAttributes) => ({
 	nodeType,
 	[nodeType]: content
 });
+var getChildProps = (props, children, keyPathSegment) => ({
+	...props,
+	children,
+	keyPath: [...props.keyPath, keyPathSegment]
+});
 var deepTransformNode = (node, props) => {
-	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
+	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, deepTransformNode);
 	if (node === null || typeof node !== "object") return node;
-	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0 || typeof node === "function") return node;
-	if (Array.isArray(node)) return node.map((child, index) => {
-		return deepTransformNode(child, {
-			...props,
-			children: child,
-			keyPath: [...props.keyPath, {
-				type: ARRAY,
-				key: index
-			}]
-		});
-	});
+	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0) return node;
+	if (Array.isArray(node)) return node.map((child, index) => deepTransformNode(child, getChildProps(props, child, {
+		type: ARRAY,
+		key: index
+	})));
 	const result = {};
 	for (const key in node) {
-		const childProps = {
-			...props,
-			children: node[key],
-			keyPath: [...props.keyPath, {
-				type: OBJECT,
-				key
-			}]
+		const keyPathSegment = {
+			type: OBJECT,
+			key
 		};
 		if (props.eager) {
-			result[key] = deepTransformNode(node[key], childProps);
+			result[key] = deepTransformNode(node[key], getChildProps(props, node[key], keyPathSegment));
 			continue;
 		}
 		Object.defineProperty(result, key, {
 			enumerable: true,
 			configurable: true,
 			get: function() {
-				const transformed = deepTransformNode(node[key], childProps);
+				const transformed = deepTransformNode(node[key], getChildProps(props, node[key], keyPathSegment));
 				Object.defineProperty(this, key, {
 					value: transformed,
 					enumerable: true,
@@ -392,10 +393,10 @@ var icuNodesToIntlayer = (nodes) => {
 		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
 		return node;
 	}
-	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+	if (nodes.every((node) => typeof node === "string" || node?.type === "argument")) {
 		let str = "";
 		for (const node of nodes) if (typeof node === "string") str += node;
-		else if (typeof node !== "string" && node.type === "argument") {
+		else if (typeof node !== "string" && node?.type === "argument") {
 			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
 			else str += `{{${node.name}}}`;
 		}
@@ -408,11 +409,11 @@ var icuNodesToIntlayer = (nodes) => {
 			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
 			return node;
 		}
-		if (node.type === "argument") {
+		if (node?.type === "argument") {
 			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
 			return insertion(`{{${node.name}}}`);
 		}
-		if (node.type === "plural") {
+		if (node?.type === "plural") {
 			const options = {};
 			let hasExactMatch = false;
 			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
@@ -437,14 +438,17 @@ var icuNodesToIntlayer = (nodes) => {
 				options.__intlayer_icu_var = node.name;
 				return enumeration(options);
 			} else {
-				for (const [key, val] of Object.entries(node.options)) options[key] = icuNodesToIntlayer(val.map((v) => {
-					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
-					return v;
-				}));
+				for (const [key, val] of Object.entries(node.options)) {
+					const replacedVal = val?.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[key] = icuNodesToIntlayer(replacedVal);
+				}
 				return plural(options);
 			}
 		}
-		if (node.type === "select") {
+		if (node?.type === "select") {
 			const options = {};
 			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = icuNodesToIntlayer(val);
 			const optionKeys = Object.keys(options);
@@ -460,7 +464,7 @@ var icuNodesToIntlayer = (nodes) => {
 			});
 			return select(options, node.name);
 		}
-		if (node.type === "selectordinal") {
+		if (node?.type === "selectordinal") {
 			const options = {};
 			for (const [key, val] of Object.entries(node.options)) {
 				const newKey = key.startsWith("=") ? key.substring(1) : key === "other" ? "fallback" : key;
@@ -493,335 +497,6 @@ var icuToIntlayerFormatter = (message) => {
 		plugins: [{
 			id: "icu",
 			...icuToIntlayerPlugin
-		}]
-	});
-};
-var parseI18Next = (text) => {
-	let index = 0;
-	const parseNodes = () => {
-		const nodes = [];
-		let currentText = "";
-		while (index < text.length) {
-			const char = text[index];
-			if (char === "{" && text[index + 1] === "{") {
-				if (currentText) {
-					nodes.push(currentText);
-					currentText = "";
-				}
-				index += 2;
-				nodes.push(parseStandardArgument());
-			} else if (char === "{") {
-				if (currentText) {
-					nodes.push(currentText);
-					currentText = "";
-				}
-				index++;
-				nodes.push(parseICUArgument());
-			} else if (char === "}") break;
-			else {
-				currentText += char;
-				index++;
-			}
-		}
-		if (currentText) nodes.push(currentText);
-		return nodes;
-	};
-	const parseStandardArgument = () => {
-		let name = "";
-		while (index < text.length) {
-			if (text[index] === "}" && text[index + 1] === "}") {
-				index += 2;
-				return {
-					type: "argument",
-					name: name.trim()
-				};
-			}
-			name += text[index];
-			index++;
-		}
-		throw new Error("Unclosed i18next variable");
-	};
-	const parseICUArgument = () => {
-		let name = "";
-		while (index < text.length && /[^,}]/.test(text[index])) {
-			name += text[index];
-			index++;
-		}
-		name = name.trim();
-		if (index >= text.length) throw new Error("Unclosed argument");
-		if (text[index] === "}") {
-			index++;
-			return {
-				type: "argument",
-				name
-			};
-		}
-		if (text[index] === ",") {
-			index++;
-			let type = "";
-			while (index < text.length && /[^,}]/.test(text[index])) {
-				type += text[index];
-				index++;
-			}
-			type = type.trim();
-			if (index >= text.length) throw new Error("Unclosed argument");
-			if (text[index] === "}") {
-				index++;
-				return {
-					type: "argument",
-					name,
-					format: { type }
-				};
-			}
-			if (text[index] === ",") {
-				index++;
-				if (type === "plural" || type === "select") {
-					const options = {};
-					while (index < text.length && text[index] !== "}") {
-						while (index < text.length && /\s/.test(text[index])) index++;
-						let key = "";
-						while (index < text.length && /[^{\s]/.test(text[index])) {
-							key += text[index];
-							index++;
-						}
-						while (index < text.length && /\s/.test(text[index])) index++;
-						if (text[index] !== "{") throw new Error("Expected { after option key");
-						index++;
-						const value = parseNodes();
-						if (text[index] !== "}") throw new Error("Expected } after option value");
-						index++;
-						options[key] = value;
-						while (index < text.length && /\s/.test(text[index])) index++;
-					}
-					index++;
-					if (type === "plural") return {
-						type: "plural",
-						name,
-						options
-					};
-					else if (type === "select") return {
-						type: "select",
-						name,
-						options
-					};
-				} else {
-					let style = "";
-					while (index < text.length && text[index] !== "}") {
-						style += text[index];
-						index++;
-					}
-					if (index >= text.length) throw new Error("Unclosed argument");
-					style = style.trim();
-					index++;
-					return {
-						type: "argument",
-						name,
-						format: {
-							type,
-							style
-						}
-					};
-				}
-			}
-		}
-		throw new Error("Malformed argument");
-	};
-	return parseNodes();
-};
-var i18nextNodesToIntlayer = (nodes) => {
-	if (nodes.length === 0) return "";
-	if (nodes.length === 1 && typeof nodes[0] === "string") {
-		const node = nodes[0];
-		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
-		return node;
-	}
-	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
-		let str = "";
-		for (const node of nodes) if (typeof node === "string") str += node;
-		else if (typeof node !== "string" && node.type === "argument") {
-			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
-			else str += `{{${node.name}}}`;
-		}
-		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
-		return insertion(str);
-	}
-	if (nodes.length === 1) {
-		const node = nodes[0];
-		if (typeof node === "string") {
-			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
-			return node;
-		}
-		if (node.type === "argument") {
-			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
-			return insertion(`{{${node.name}}}`);
-		}
-		if (node.type === "plural") {
-			const options = {};
-			let hasExactMatch = false;
-			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
-				hasExactMatch = true;
-				break;
-			}
-			if (hasExactMatch) {
-				for (const [key, val] of Object.entries(node.options)) {
-					let newKey = key;
-					if (key.startsWith("=")) newKey = key.substring(1);
-					else if (key === "one") newKey = "1";
-					else if (key === "two") newKey = "2";
-					else if (key === "few") newKey = "<=3";
-					else if (key === "many") newKey = ">=4";
-					else if (key === "other") newKey = "fallback";
-					const replacedVal = val.map((v) => {
-						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
-						return v;
-					});
-					options[newKey] = i18nextNodesToIntlayer(replacedVal);
-				}
-				options.__intlayer_icu_var = node.name;
-				return enumeration(options);
-			} else {
-				for (const [key, val] of Object.entries(node.options)) options[key] = i18nextNodesToIntlayer(val.map((v) => {
-					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
-					return v;
-				}));
-				return plural(options);
-			}
-		}
-		if (node.type === "select") {
-			const options = {};
-			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = i18nextNodesToIntlayer(val);
-			const optionKeys = Object.keys(options);
-			if ((options.male || options.female) && optionKeys.every((k) => [
-				"male",
-				"female",
-				"other",
-				"fallback"
-			].includes(k))) return gender({
-				fallback: options.fallback,
-				male: options.male,
-				female: options.female
-			});
-			return select(options, node.name);
-		}
-	}
-	return nodes.map((node) => i18nextNodesToIntlayer([node]));
-};
-var i18nextToIntlayerPlugin = {
-	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
-	transform: (node) => {
-		try {
-			return i18nextNodesToIntlayer(parseI18Next(node));
-		} catch {
-			return node;
-		}
-	}
-};
-var i18nextToIntlayerFormatter = (message) => {
-	return deepTransformNode(message, {
-		dictionaryKey: "i18next",
-		keyPath: [],
-		plugins: [{
-			id: "i18next",
-			...i18nextToIntlayerPlugin
-		}]
-	});
-};
-var parseVueI18nPart = (text) => {
-	let index = 0;
-	const nodes = [];
-	let currentText = "";
-	while (index < text.length) {
-		const char = text[index];
-		if (char === "{") {
-			if (currentText) {
-				nodes.push(currentText);
-				currentText = "";
-			}
-			index++;
-			let name = "";
-			while (index < text.length && text[index] !== "}") {
-				name += text[index];
-				index++;
-			}
-			if (index < text.length) index++;
-			nodes.push({
-				type: "argument",
-				name: name.trim()
-			});
-		} else {
-			currentText += char;
-			index++;
-		}
-	}
-	if (currentText) nodes.push(currentText);
-	return nodes;
-};
-var parseVueI18n = (text) => {
-	const parts = [];
-	let currentPart = "";
-	let index = 0;
-	while (index < text.length) {
-		const char = text[index];
-		if (char === "\\" && index + 1 < text.length && text[index + 1] === "|") {
-			currentPart += "|";
-			index += 2;
-		} else if (char === "|") {
-			parts.push(currentPart.trim());
-			currentPart = "";
-			index++;
-		} else {
-			currentPart += char;
-			index++;
-		}
-	}
-	parts.push(currentPart.trim());
-	return parts.map(parseVueI18nPart);
-};
-var vueI18nPartToIntlayer = (nodes) => {
-	if (nodes.length === 0) return "";
-	if (nodes.length === 1 && typeof nodes[0] === "string") return nodes[0];
-	let str = "";
-	for (const node of nodes) if (typeof node === "string") str += node;
-	else str += `{{${node.name}}}`;
-	return insertion(str);
-};
-var vueI18nNodesToIntlayer = (parts) => {
-	if (parts.length === 1) return vueI18nPartToIntlayer(parts[0]);
-	const options = {};
-	const varName = "count";
-	if (parts.length === 2) return enumeration({
-		"1": vueI18nPartToIntlayer(parts[0]),
-		fallback: vueI18nPartToIntlayer(parts[1])
-	});
-	if (parts.length === 3) return enumeration({
-		"0": vueI18nPartToIntlayer(parts[0]),
-		"1": vueI18nPartToIntlayer(parts[1]),
-		fallback: vueI18nPartToIntlayer(parts[2])
-	});
-	parts.forEach((part, index) => {
-		if (index === parts.length - 1) options.fallback = vueI18nPartToIntlayer(part);
-		else options[index.toString()] = vueI18nPartToIntlayer(part);
-	});
-	options.__intlayer_vue_i18n_var = varName;
-	return enumeration(options);
-};
-var vueI18nToIntlayerPlugin = {
-	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("|")),
-	transform: (node) => {
-		try {
-			return vueI18nNodesToIntlayer(parseVueI18n(node));
-		} catch {
-			return node;
-		}
-	}
-};
-var vueI18nToIntlayerFormatter = (message) => {
-	return deepTransformNode(message, {
-		dictionaryKey: "vue-i18n",
-		keyPath: [],
-		plugins: [{
-			id: "vue-i18n",
-			...vueI18nToIntlayerPlugin
 		}]
 	});
 };
@@ -1058,18 +733,24 @@ var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
 var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
-var DIALECT_FORMATTERS = {
-	icu: icuToIntlayerFormatter,
-	i18next: i18nextToIntlayerFormatter,
-	"vue-i18n": vueI18nToIntlayerFormatter
+var resolveIcuMessage = createMessageResolver(icuToIntlayerFormatter);
+var splitMessageId = (id) => {
+	const dotPosition = id.indexOf(".");
+	if (dotPosition === -1) return {
+		dictionaryKey: id,
+		remainder: ""
+	};
+	return {
+		dictionaryKey: id.slice(0, dotPosition),
+		remainder: id.slice(dotPosition + 1)
+	};
 };
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var I18nClass = class extends EventEmitter {
 	_locale;
 	_locales;
 	_catalogs = {};
 	_loadFallbackWarned = false;
-	_dictionaryContent;
+	_boundDictionaries = {};
 	_registry;
 	constructor({ locale = "en", locales, messages, registry } = {}) {
 		super();
@@ -1086,7 +767,7 @@ var I18nClass = class extends EventEmitter {
 	}
 	get messages() {
 		const dictionary = { ...this._registry?.all(this._locale) };
-		if (this._dictionaryContent !== void 0) Object.assign(dictionary, unwrapLinguiCatalog(this._dictionaryContent));
+		for (const content of Object.values(this._boundDictionaries)) Object.assign(dictionary, unwrapLinguiCatalog(content));
 		return {
 			...this._catalogs[this._locale] ?? {},
 			...dictionary
@@ -1117,8 +798,8 @@ var I18nClass = class extends EventEmitter {
 		if (messages) this.mergeLocaleCatalog(locale, messages);
 		this.activate(locale, locales);
 	}
-	bindDictionaryContent(content) {
-		this._dictionaryContent = content;
+	bindDictionaries(dictionaries) {
+		this._boundDictionaries = dictionaries;
 		return this;
 	}
 	activate(locale, locales) {
@@ -1126,28 +807,52 @@ var I18nClass = class extends EventEmitter {
 		this._locales = locales;
 		this.emit("change");
 	}
-	resolveTemplate(id) {
-		if (this._dictionaryContent !== void 0) {
-			const boundValue = navigateLinguiCatalog(this._dictionaryContent, id);
-			if (boundValue !== void 0) return linguiMessageToIcu(boundValue);
+	lookupBoundDictionaries(id) {
+		const { dictionaryKey, remainder } = splitMessageId(id);
+		const prefixed = this._boundDictionaries[dictionaryKey];
+		if (prefixed !== void 0) {
+			const value = navigateLinguiCatalog(prefixed, remainder);
+			if (value !== void 0) return value;
 		}
-		const fromDictionary = this._registry?.lookup(id, this._locale);
-		if (fromDictionary !== void 0) return fromDictionary;
+		for (const content of Object.values(this._boundDictionaries)) {
+			const value = navigateLinguiCatalog(content, id);
+			if (value !== void 0) return value;
+		}
+	}
+	resolveTemplate(id) {
+		const boundNode = this.lookupBoundDictionaries(id);
+		if (boundNode !== void 0) return {
+			kind: "node",
+			node: boundNode
+		};
+		const registryNode = this._registry?.lookup(id, this._locale);
+		if (registryNode !== void 0) return {
+			kind: "node",
+			node: registryNode
+		};
 		const catalog = this._catalogs[this._locale];
 		if (catalog) {
 			const raw = navigateLinguiCatalog(catalog, id);
-			if (raw !== void 0) return linguiMessageToIcu(raw);
+			if (raw !== void 0) return {
+				kind: "icu",
+				message: linguiMessageToIcu(raw)
+			};
 		}
 	}
 	_(descriptorOrId, values, options) {
 		const isDescriptor = typeof descriptorOrId === "object" && descriptorOrId !== null;
 		const id = isDescriptor ? descriptorOrId.id : descriptorOrId;
 		const defaultMessage = isDescriptor ? descriptorOrId.message ?? options?.message : options?.message;
-		const resolvedValues = isDescriptor ? {
+		const messageValues = isDescriptor ? {
 			...descriptorOrId.values ?? {},
 			...values ?? {}
 		} : values ?? {};
-		return resolveMessage(this.resolveTemplate(id) ?? defaultMessage ?? id, resolvedValues, this._locale, "icu") ?? id;
+		const locale = this._locale;
+		const template = this.resolveTemplate(id) ?? {
+			kind: "icu",
+			message: defaultMessage ?? id
+		};
+		return (template.kind === "node" ? resolveMessageNodeToString(template.node, messageValues, locale) : resolveIcuMessage(template.message, messageValues, locale)) ?? id;
 	}
 	t = (descriptorOrId, values, options) => this._(descriptorOrId, values, options);
 	date(value, format) {
@@ -1159,7 +864,121 @@ var I18nClass = class extends EventEmitter {
 		return new Intl.NumberFormat(this._locale, format).format(value);
 	}
 };
-var LinguiContext = createContext(null);
+var resolveExpiresToTimestamp = (expires) => {
+	if (typeof expires === "number") return Date.now() + expires * 1e3;
+	if (typeof expires === "string") {
+		const time = Date.parse(expires);
+		return Number.isNaN(time) ? void 0 : time;
+	}
+};
+var buildCookieString = (name, value, attributes) => {
+	const parts = [`${name}=${encodeURIComponent(value)}`];
+	if (attributes.path) parts.push(`Path=${attributes.path}`);
+	if (attributes.domain) parts.push(`Domain=${attributes.domain}`);
+	const expiresTimestamp = resolveExpiresToTimestamp(attributes.expires);
+	if (expiresTimestamp !== void 0) parts.push(`Expires=${new Date(expiresTimestamp).toUTCString()}`);
+	if (attributes.secure) parts.push("Secure");
+	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
+	return parts.join("; ");
+};
+var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var localeStorageOptions = {
+	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
+	getLocaleStorage: (name) => localStorage.getItem(name),
+	getSessionStorage: (name) => sessionStorage.getItem(name),
+	isCookieEnabled: true,
+	setCookieStore: (name, value, attributes) => cookieStore.set({
+		name,
+		value,
+		path: attributes.path,
+		domain: attributes.domain,
+		expires: attributes.expires,
+		sameSite: attributes.sameSite
+	}),
+	setCookieString: (_name, cookie) => {
+		document.cookie = cookie;
+	},
+	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
+	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
+};
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
+	const { locales } = internationalization;
+	if (options?.isCookieEnabled === false) return void 0;
+	const isValidLocale = (value) => !!value && locales.includes(value);
+	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
+		const value = options?.getCookie?.(routing.storage.cookies[i].name);
+		if (isValidLocale(value)) return value;
+	} catch {}
+};
+var isStoredLocaleCached = false;
+var storedLocale;
+var getCachedLocaleFromStorageClient = () => {
+	if (typeof window === "undefined") return getLocaleFromStorageClient(localeStorageOptions);
+	if (!isStoredLocaleCached) {
+		storedLocale = getLocaleFromStorageClient(localeStorageOptions);
+		isStoredLocaleCached = true;
+	}
+	return storedLocale;
+};
+var setLocaleInStorageClient = (locale, options) => {
+	if (options?.isCookieEnabled === false) return;
+	isStoredLocaleCached = false;
+	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
+		const { name, attributes } = routing.storage.cookies[i];
+		try {
+			if (options?.setCookieStore) options.setCookieStore(name, locale, {
+				...attributes,
+				expires: resolveExpiresToTimestamp(attributes.expires)
+			});
+		} catch {
+			try {
+				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
+			} catch {}
+		}
+	}
+};
+var prototypeCache = /* @__PURE__ */ new Map();
+var createIntlayerNodePrototype = (basePrototype, valuePrototype) => Object.create(new Proxy(basePrototype, {
+	get: (target, property, receiver) => {
+		if (typeof property !== "string" || property === "constructor" || property in target) return Reflect.get(target, property, receiver);
+		const { value } = receiver;
+		if (value === null || value === void 0) return void 0;
+		const member = Object(value)[property];
+		return typeof member === "function" ? member.bind(value) : member;
+	},
+	has: (target, property) => property in target || typeof property === "string" && property !== "constructor" && valuePrototype !== null && property in valuePrototype
+}), {
+	toString: { value() {
+		return String(this.value ?? "");
+	} },
+	valueOf: { value() {
+		return this.value;
+	} },
+	[Symbol.toPrimitive]: { value() {
+		return this.value ?? "";
+	} }
+});
+var getIntlayerNodePrototype = (value, basePrototype = Object.prototype) => {
+	const valueType = typeof value;
+	const valueKey = value === null || value === void 0 ? null : valueType === "object" || valueType === "function" ? Object.getPrototypeOf(value) : valueType;
+	let prototypes = prototypeCache.get(basePrototype);
+	if (!prototypes) {
+		prototypes = /* @__PURE__ */ new Map();
+		prototypeCache.set(basePrototype, prototypes);
+	}
+	let prototype = prototypes.get(valueKey);
+	if (!prototype) {
+		prototype = createIntlayerNodePrototype(basePrototype, valueKey === null ? null : Object.getPrototypeOf(Object(value)));
+		prototypes.set(valueKey, prototype);
+	}
+	return prototype;
+};
+var renderIntlayerNode = ({ children, value, additionalProps }) => Object.setPrototypeOf({
+	...isValidElement(children) ? children : jsx(Fragment$1, { children }),
+	value,
+	...additionalProps
+}, getIntlayerNodePrototype(value));
 var pluginsIdentities = /* @__PURE__ */ new WeakMap();
 var nextPluginsIdentity = 0;
 var getPluginsCacheKey = (plugins) => {
@@ -1198,75 +1017,6 @@ var writeTransformCache = (dictionary, cacheKey, content) => {
 var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
 	return (values[key.trim()] ?? "").toString();
 });
-var DEFAULT_VARIANT_ID = "default";
-var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
-var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
-var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
-var encodeSegmentText = (raw, unsafeChars) => {
-	if (raw === "") return "%";
-	const encoded = raw.replace(unsafeChars, percentEncodeChar);
-	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
-	return encoded;
-};
-var serializeVariant = (variant) => {
-	if (variant === void 0) return DEFAULT_VARIANT_ID;
-	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
-	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
-};
-var serializeVariantChain = (variant) => {
-	if (!Array.isArray(variant)) return [serializeVariant(variant)];
-	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
-	return variant.map(serializeVariant);
-};
-var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
-	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
-	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
-};
-var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
-	const segments = compositeId.split("/");
-	return qualifierTypes.every((qualifierType, index) => {
-		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
-		return selector?.item === void 0 || segments[index] === String(selector.item);
-	});
-};
-var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
-var reconstructQualifiedEntry = (group, compositeId) => {
-	const segments = compositeId.split("/");
-	const entry = {
-		key: group.key,
-		content: group.content[compositeId]
-	};
-	group.qualifierTypes.forEach((qualifierType, index) => {
-		if (qualifierType === "variant") entry.variant = segments[index];
-		else if (qualifierType === "item") entry.item = Number(segments[index]);
-	});
-	return entry;
-};
-var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
-	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
-	const { qualifierTypes, content } = dictionaryOrGroup;
-	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
-	const compositeIds = Object.keys(content);
-	const variantIndex = qualifierTypes.indexOf("variant");
-	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
-	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
-	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
-	return matchedEntries[0] ?? null;
-};
-var parseDictionarySelector = (localeOrSelector) => {
-	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
-		locale: localeOrSelector.locale,
-		selector: localeOrSelector
-	};
-	return { locale: localeOrSelector };
-};
-var getDictionarySelectorCacheKey = (selector) => {
-	if (!selector) return "";
-	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
-		const value = selector[selectorKey];
-		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
-	}).join("|");
-};
 var RESET = "\x1B[0m";
 var BLUE = "\x1B[34m";
 var RED = "\x1B[31m";
@@ -1325,7 +1075,7 @@ var getIntlayer = (key, localeOrSelector, plugins) => {
 		}
 		return createSafeFallback(key);
 	}
-	return getDictionary(dictionary, localeOrSelector, plugins);
+	return getDictionary$1(dictionary, localeOrSelector, plugins);
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -1338,39 +1088,40 @@ var deepMerge = (target, source) => {
 	if (target === void 0) return source;
 	if (source === void 0) return target;
 	if (Array.isArray(target)) return target;
-	if (isPlainObject(target) && isPlainObject(source)) {
-		const result = { ...target };
-		for (const key of Object.keys(source)) {
-			if (key === "__proto__" || key === "constructor" || source[key] === void 0) continue;
-			result[key] = target[key] !== void 0 ? deepMerge(target[key], source[key]) : source[key];
-		}
-		return result;
+	if (!isPlainObject(target) || !isPlainObject(source)) return target;
+	let result = target;
+	for (const key of Object.keys(source)) {
+		const sourceValue = source[key];
+		if (key === "__proto__" || key === "constructor" || sourceValue === void 0) continue;
+		const targetValue = target[key];
+		const merged = targetValue === void 0 ? sourceValue : typeof targetValue === "object" ? deepMerge(targetValue, sourceValue) : targetValue;
+		if (merged === targetValue) continue;
+		if (result === target) result = { ...target };
+		result[key] = merged;
 	}
-	return target;
+	return result;
 };
 var getTranslation = (languageContent, locale, fallback) => {
-	const get = (loc) => languageContent[loc];
-	const seen = /* @__PURE__ */ new Set();
-	const locales = [];
-	const addLocale = (loc) => {
-		if (loc && !seen.has(loc)) {
-			seen.add(loc);
-			locales.push(loc);
-		}
-	};
-	addLocale(locale);
-	if (locale.includes("-")) addLocale(locale.split("-")[0]);
-	addLocale(fallback);
-	if (fallback?.includes("-")) addLocale(fallback.split("-")[0]);
+	const get = (localeEl) => languageContent[localeEl];
+	const exactMatch = get(locale);
+	if (typeof exactMatch === "string") return exactMatch;
+	const candidates = [
+		locale,
+		locale.split("-")[0],
+		fallback,
+		fallback?.split("-")[0]
+	];
 	const results = [];
-	for (const loc of locales) {
-		const val = get(loc);
-		if (val === void 0) continue;
-		if (typeof val === "string") {
-			if (results.length === 0) return val;
+	for (let index = 0; index < candidates.length; index++) {
+		const candidate = candidates[index];
+		if (!candidate || candidates.indexOf(candidate) < index) continue;
+		const value = get(candidate);
+		if (value === void 0) continue;
+		if (typeof value === "string") {
+			if (results.length === 0) return value;
 			continue;
 		}
-		results.push(val);
+		results.push(value);
 	}
 	if (results.length === 0) return void 0;
 	if (results.length === 1) return results[0];
@@ -1410,29 +1161,30 @@ var fallbackPlugin = {
 	canHandle: () => false,
 	transform: (node) => node
 };
+var isAwaitingValues = (branch) => {
+	if (typeof branch !== "function") return false;
+	const { value } = branch;
+	return value === void 0 || typeof value === "function";
+};
 var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
-		const original = node["translation"] ?? {};
-		const result = {};
-		for (const key in original) {
-			const childProps = {
-				...props,
-				children: original[key],
-				keyPath: [...props.keyPath, {
-					type: TRANSLATION,
-					key
-				}]
-			};
-			result[key] = deepTransformNode(original[key], childProps);
-		}
-		return getTranslation(result, locale, fallback);
+		const content = getTranslation(node["translation"] ?? {}, locale, fallback);
+		return deepTransformNode(content, {
+			...props,
+			children: content,
+			keyPath: [...props.keyPath, {
+				type: TRANSLATION,
+				key: locale
+			}]
+		});
 	}
 };
 var enumerationPlugin = fallbackPlugin;
+var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
-var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+var insertionPlugin$1 = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
 	id: "insertion-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
 	transform: (node, props, deepTransformNode) => {
@@ -1458,14 +1210,39 @@ var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fal
 				};
 			}
 		};
-		return deepTransformNode(children, {
+		return resolveInsertedSelector(children, deepTransformNode(children, {
 			...props,
 			children,
 			keyPath: newKeyPath,
 			plugins: [insertionStringPlugin, ...props.plugins ?? []]
-		});
+		}));
 	}
 };
+var selectorNodeTypes = [
+	ENUMERATION,
+	CONDITION,
+	PLURAL,
+	GENDER,
+	SELECT
+];
+var bindInsertedValues = (children, result, values, areBranchesInterpolated = false) => {
+	const nodeType = children?.nodeType;
+	if (typeof result !== "function" || !nodeType || !selectorNodeTypes.includes(nodeType)) return result;
+	const isCountSelector = nodeType === "plural" || nodeType === "enumeration";
+	return (selector) => {
+		if (typeof selector === "object" && selector !== null) return result({
+			...values,
+			...selector
+		});
+		if (isCountSelector) return result({
+			...values,
+			count: selector
+		});
+		const selected = result(selector);
+		return !areBranchesInterpolated && isAwaitingValues(selected) ? selected(values) : selected;
+	};
+};
+var resolveInsertedSelector = (children, result) => typeof result === "function" && selectorNodeTypes.includes(children?.nodeType ?? "") ? (values) => bindInsertedValues(children, result, values) : result;
 var genderPlugin = fallbackPlugin;
 var selectPlugin = fallbackPlugin;
 var nestedPlugin = (locale) => fallbackPlugin;
@@ -1473,167 +1250,156 @@ var filePlugin = fallbackPlugin;
 var getBasePlugins = (locale, fallback = true) => [
 	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 	enumerationPlugin,
+	pluralPlugin(locale ?? internationalization.defaultLocale),
 	conditionPlugin,
-	insertionPlugin,
+	insertionPlugin$1,
 	nestedPlugin(locale ?? internationalization.defaultLocale),
 	filePlugin,
 	genderPlugin,
 	selectPlugin
-];
+].filter((plugin) => plugin !== fallbackPlugin);
 var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
 	...nodeProps,
 	plugins
 });
-var getDictionary = (dictionary, localeOrSelector, plugins) => {
-	const { locale, selector } = parseDictionarySelector(localeOrSelector);
-	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+var transformsInProgress = /* @__PURE__ */ new WeakSet();
+var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
+	const { locale, selector } = {
+		locale: localeOrSelector,
+		selector: void 0
+	};
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, "", plugins);
 	const cached = readTransformCache(dictionary, cacheKey);
 	if (cached.hit) return cached.content;
 	const appliedPlugins = plugins ?? getBasePlugins(locale);
-	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const resolved = dictionary;
 	const transformDictionary = (resolvedDictionary) => {
 		const props = {
 			dictionaryKey: resolvedDictionary.key,
 			dictionaryPath: resolvedDictionary.filePath,
 			keyPath: [],
 			plugins: appliedPlugins,
-			nestedDictionaries: resolvedDictionary.nestedDictionaries
+			nestedDictionaries: resolvedDictionary.nestedDictionaries,
+			eager: !transformsInProgress.has(resolvedDictionary)
 		};
-		return getContent(resolvedDictionary.content, props, appliedPlugins);
+		transformsInProgress.add(resolvedDictionary);
+		try {
+			return getContent(resolvedDictionary.content, props, appliedPlugins);
+		} finally {
+			if (props.eager) transformsInProgress.delete(resolvedDictionary);
+		}
 	};
 	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
-var getDictionaryKeys = () => {
-	try {
-		return Object.keys(getDictionaries());
-	} catch {
-		return [];
+var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
+var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
+var splitInsertionTemplate = (template, values = {}) => {
+	if (!Object.values(values).some(isComplexValue)) return {
+		isSimple: true,
+		parts: template.replace(insertionRegex, (_, key) => (values[key.trim()] ?? "").toString())
+	};
+	const chunks = template.split(insertionRegex);
+	const parts = [];
+	for (let i = 0; i < chunks.length; i++) if (i % 2 === 0) {
+		if (chunks[i]) parts.push(chunks[i]);
+	} else {
+		const val = values[chunks[i].trim()];
+		if (val != null) parts.push(val);
+	}
+	return {
+		isSimple: false,
+		parts
+	};
+};
+var intlayerNodePlugins = {
+	id: "intlayer-node-plugin",
+	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
+	transform: (_node, props) => {
+		return renderIntlayerNode({
+			value: props.children,
+			children: props.children
+		});
 	}
 };
-var lookupDictionaryMessage = (id, locale) => {
-	for (const key of getDictionaryKeys()) {
-		let dictionary;
-		try {
-			dictionary = getIntlayer(key, locale);
-		} catch {
-			continue;
-		}
-		const value = navigateLinguiCatalog(dictionary, id);
-		if (value !== void 0) return linguiMessageToIcu(value);
+var reactNodePlugins = fallbackPlugin;
+var splitAndJoinInsertion = (template, values) => {
+	const result = splitInsertionTemplate(template, values);
+	if (result.isSimple) return result.parts;
+	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
+};
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+	id: "insertion-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
+	transform: (node, props, deepTransformNode) => {
+		const newKeyPath = [...props.keyPath, { type: INSERTION }];
+		const children = node[INSERTION];
+		const insertionStringPlugin = {
+			id: "insertion-string-plugin",
+			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
+			transform: (node, subProps, deepTransformNode) => {
+				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
+				const transformedResult = deepTransformNode(node, {
+					...subProps,
+					children: node,
+					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
+				});
+				return (values) => {
+					const result = splitAndJoinInsertion(transformedResult, values);
+					return deepTransformNode(result, {
+						...subProps,
+						plugins: props.plugins,
+						children: result
+					});
+				};
+			}
+		};
+		return resolveInsertedSelector(children, deepTransformNode(children, {
+			...props,
+			children,
+			keyPath: newKeyPath,
+			plugins: [insertionStringPlugin, ...props.plugins ?? []]
+		}));
 	}
 };
-var collectRegistryMessages = (locale) => {
-	const merged = {};
-	for (const key of getDictionaryKeys()) try {
-		Object.assign(merged, unwrapLinguiCatalog(getIntlayer(key, locale)));
-	} catch {}
-	return merged;
+var markdownPlugin = fallbackPlugin;
+var htmlPlugin = fallbackPlugin;
+var pluginsCache = /* @__PURE__ */ new Map();
+var getPlugins = (locale, fallback = true) => {
+	const cacheKey = `${locale ?? internationalization.defaultLocale}_${fallback}`;
+	if (pluginsCache.has(cacheKey)) return pluginsCache.get(cacheKey);
+	const enabledPlugins = [
+		intlayerNodePlugins,
+		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
+		enumerationPlugin,
+		pluralPlugin(locale ?? internationalization.defaultLocale),
+		conditionPlugin,
+		nestedPlugin(locale ?? internationalization.defaultLocale),
+		filePlugin,
+		genderPlugin,
+		selectPlugin,
+		reactNodePlugins,
+		insertionPlugin,
+		markdownPlugin,
+		htmlPlugin
+	].filter((plugin) => plugin !== fallbackPlugin);
+	pluginsCache.set(cacheKey, enabledPlugins);
+	return enabledPlugins;
 };
-var createRegistryResolver = () => ({
-	lookup: lookupDictionaryMessage,
-	all: collectRegistryMessages
-});
-var resolveExpiresToTimestamp = (expires) => {
-	if (typeof expires === "number") return Date.now() + expires * 1e3;
-	if (typeof expires === "string") {
-		const time = Date.parse(expires);
-		return Number.isNaN(time) ? void 0 : time;
-	}
+var getDictionary = (dictionary, localeOrSelector) => {
+	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
 };
-var buildCookieString = (name, value, attributes) => {
-	const parts = [`${name}=${encodeURIComponent(value)}`];
-	if (attributes.path) parts.push(`Path=${attributes.path}`);
-	if (attributes.domain) parts.push(`Domain=${attributes.domain}`);
-	const expiresTimestamp = resolveExpiresToTimestamp(attributes.expires);
-	if (expiresTimestamp !== void 0) parts.push(`Expires=${new Date(expiresTimestamp).toUTCString()}`);
-	if (attributes.secure) parts.push("Secure");
-	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
-	return parts.join("; ");
-};
-var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
-process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var localeStorageOptions = {
-	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
-	getLocaleStorage: (name) => localStorage.getItem(name),
-	getSessionStorage: (name) => sessionStorage.getItem(name),
-	isCookieEnabled: true,
-	setCookieStore: (name, value, attributes) => cookieStore.set({
-		name,
-		value,
-		path: attributes.path,
-		domain: attributes.domain,
-		expires: attributes.expires,
-		sameSite: attributes.sameSite
-	}),
-	setCookieString: (_name, cookie) => {
-		document.cookie = cookie;
-	},
-	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
-	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-};
-var getLocaleFromStorageClient = (options = localeStorageOptions) => {
-	const { locales } = internationalization;
-	if (options?.isCookieEnabled === false) return void 0;
-	const isValidLocale = (value) => !!value && locales.includes(value);
-	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
-		const value = options?.getCookie?.(routing.storage.cookies[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-};
-var setLocaleInStorageClient = (locale, options) => {
-	if (options?.isCookieEnabled === false) return;
-	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
-		const { name, attributes } = routing.storage.cookies[i];
-		try {
-			if (options?.setCookieStore) options.setCookieStore(name, locale, {
-				...attributes,
-				expires: resolveExpiresToTimestamp(attributes.expires)
-			});
-		} catch {
-			try {
-				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
-			} catch {}
-		}
-	}
-};
-var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
+var getLocaleInStorage = getCachedLocaleFromStorageClient;
 var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(locale, {
 	...localeStorageOptions,
 	isCookieEnabled
 });
-var useEditor = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const managerRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !managerRef.current) return;
-		managerRef.current.currentLocale.set(locale);
-	}, [locale]);
-};
-var EditorProvider = ({ children }) => {
-	useEditor();
-	return children;
-};
-var useAnalytics = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const clientRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !clientRef.current) return;
-		clientRef.current.setLocale(locale);
-		clientRef.current.trackPageView({ reason: "locale_change" });
-	}, [locale]);
-};
-var AnalyticsProvider = ({ children }) => {
-	useAnalytics();
-	return children;
-};
 var setIntlayerIdentifier = () => {
 	if (typeof window !== "undefined") window.intlayer = { enabled: true };
 };
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
+	if (locales?.includes(selectedLocale)) return selectedLocale;
 	const requestedLocales = [selectedLocale].flat();
 	const normalize = (locale) => locale.trim().toLowerCase();
 	try {
@@ -1649,20 +1415,24 @@ var localeResolver = (selectedLocale, locales = internationalization?.locales, d
 	return defaultLocale;
 };
 var IntlayerClientContext = createContext({
-	locale: localeInStorage ?? internationalization?.defaultLocale,
+	get locale() {
+		return getLocaleInStorage() ?? internationalization?.defaultLocale;
+	},
 	setLocale: () => null,
 	isCookieEnabled: true
 });
 var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocaleProp, variant, children, setLocale: setLocaleProp, disableEditor, isCookieEnabled }) => {
 	const { locales: availableLocales, defaultLocale: defaultLocaleConfig } = internationalization ?? {};
-	const [currentLocale, setCurrentLocale] = useState(localeProp ?? localeInStorage ?? defaultLocaleProp ?? defaultLocaleConfig);
-	useEffect(() => {
+	const [currentLocale, setCurrentLocale] = useState(() => localeProp ?? getLocaleInStorage() ?? defaultLocaleProp ?? defaultLocaleConfig);
+	const [adoptedLocaleProp, setAdoptedLocaleProp] = useState(localeProp);
+	if (localeProp !== adoptedLocaleProp) {
+		setAdoptedLocaleProp(localeProp);
 		if (localeProp && localeProp !== currentLocale) setCurrentLocale(localeProp);
-	}, [localeProp]);
+	}
 	useEffect(() => {
 		setIntlayerIdentifier();
 	}, []);
-	const setLocaleBase = (newLocale) => {
+	const setLocaleBase = useCallback((newLocale) => {
 		if (currentLocale.toString() === newLocale.toString()) return;
 		if (!availableLocales?.map(String).includes(newLocale)) {
 			console.error(`Locale ${newLocale} is not available`);
@@ -1670,24 +1440,34 @@ var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocal
 		}
 		setCurrentLocale(newLocale);
 		setLocaleInStorage(newLocale, isCookieEnabled);
-	};
+	}, [
+		currentLocale,
+		availableLocales,
+		isCookieEnabled
+	]);
 	const setLocale = setLocaleProp ?? setLocaleBase;
 	const resolvedLocale = localeResolver(currentLocale);
+	const contextValue = useMemo(() => ({
+		locale: resolvedLocale,
+		setLocale,
+		variant,
+		disableEditor
+	}), [
+		resolvedLocale,
+		setLocale,
+		variant,
+		disableEditor
+	]);
 	return jsx(IntlayerClientContext.Provider, {
-		value: {
-			locale: resolvedLocale,
-			setLocale,
-			variant,
-			disableEditor
-		},
+		value: contextValue,
 		children
 	});
 };
 var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent, {
 	...props,
 	children: [
-		jsx(EditorProvider, {}),
-		jsx(AnalyticsProvider, {}),
+		false,
+		false,
 		children
 	]
 });
@@ -1714,22 +1494,61 @@ var useLocale = ({ isCookieEnabled, onLocaleChange } = {}) => {
 		])
 	};
 };
-var useLingui = () => {
-	const context = useContext(LinguiContext);
-	const { locale } = useLocale();
-	const derivedI18n = useMemo(() => {
-		const instance = new I18nClass({
-			locale,
-			registry: createRegistryResolver()
-		});
-		return {
-			i18n: instance,
-			_: instance._.bind(instance)
-		};
-	}, [locale]);
-	if (context) return context;
-	return derivedI18n;
+var createBoundLinguiContext = (locale, dictionaries) => {
+	const instance = new I18nClass({ locale }).bindDictionaries(dictionaries);
+	return {
+		i18n: instance,
+		_: instance._.bind(instance)
+	};
 };
+var useDictionary = (...dictionaries) => {
+	const { locale } = useLocale();
+	const dictionaryKeysIdentity = dictionaries.map((dictionary) => dictionary.key).join("\0");
+	return useMemo(() => createBoundLinguiContext(locale, Object.fromEntries(dictionaries.map((dictionary) => [dictionary.key, getDictionary(dictionary, locale)]))), [locale, dictionaryKeysIdentity]);
+};
+var getDictionaryKeys = () => {
+	try {
+		return Object.keys(getDictionaries());
+	} catch {
+		return [];
+	}
+};
+var lookupDictionaryMessage = (id, locale) => {
+	const dictionaryKeys = getDictionaryKeys();
+	const dotPosition = id.indexOf(".");
+	const prefix = dotPosition === -1 ? id : id.slice(0, dotPosition);
+	const readDictionary = (key) => {
+		try {
+			return getIntlayer(key, locale);
+		} catch {
+			return;
+		}
+	};
+	if (dictionaryKeys.includes(prefix)) {
+		const value = navigateLinguiCatalog(readDictionary(prefix), dotPosition === -1 ? "" : id.slice(dotPosition + 1));
+		if (value !== void 0) return value;
+	}
+	for (const key of dictionaryKeys) {
+		const value = navigateLinguiCatalog(readDictionary(key), id);
+		if (value !== void 0) return value;
+	}
+};
+var collectRegistryMessages = (locale) => {
+	const merged = {};
+	for (const key of getDictionaryKeys()) try {
+		Object.assign(merged, unwrapLinguiCatalog(getIntlayer(key, locale)));
+	} catch {}
+	return merged;
+};
+var createRegistryResolver = () => ({
+	lookup: lookupDictionaryMessage,
+	all: collectRegistryMessages
+});
+var setupI18n = (params) => new I18nClass({
+	...params,
+	registry: createRegistryResolver()
+});
+setupI18n({ locale: "en" });
 var I18nProvider = ({ i18n, defaultComponent, children }) => {
 	const buildContext = (instance) => ({
 		i18n: instance,
@@ -1754,13 +1573,8 @@ var I18nProvider = ({ i18n, defaultComponent, children }) => {
 		})
 	});
 };
-var setupI18n = (params) => new I18nClass({
-	...params,
-	registry: createRegistryResolver()
-});
-setupI18n({ locale: "en" });
 function TeamGrid() {
-	const { i18n } = useLingui();
+	const { i18n } = useDictionary(team_default);
 	const members = [
 		{
 			name: i18n._({

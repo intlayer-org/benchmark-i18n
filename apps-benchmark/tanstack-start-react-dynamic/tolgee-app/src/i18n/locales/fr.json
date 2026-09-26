@@ -72,6 +72,7 @@
   "resultsTable": {
     "bundleSize": "Taille du bundle",
     "lazyLoading": "Chargement différé",
+    "library": "Bibliothèque",
     "lookupTime": "Temps de consultation",
     "sampleResults": "Résultats d'échantillon"
   },
@@ -104,9 +105,11 @@
     "insightsTutorialsAndAnalysis": "Aperçus, tutoriels et analyses de la communauté i18n."
   },
   "blogList": {
+    "analysis": "Analyse",
     "anOverviewOfTheCurrent": "Un aperçu de l'écosystème i18n actuel dans React, couvrant les tendances, les modèles émergents et les préférences de la communauté.",
     "aStepByStepGuide": "Un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers Lingui.",
     "aTransparentLookAtOur": "Un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
+    "benchmark": "Benchmark",
     "benchmarkMethodologyHowWeTest": "Méthodologie du Benchmark : comment nous testons",
     "comparingI18nLibrariesIn2026": "Comparer les bibliothèques i18n en 2026 : une analyse approfondie",
     "february12026": "1er février 2026",
@@ -114,13 +117,16 @@
     "february282026": "28 février 2026",
     "howToReduceYourI18n": "Comment réduire votre bundle i18n de 60 %",
     "january202026": "20 janvier 2026",
+    "march152026": "15 mars 2026",
     "march82026": "8 mars 2026",
+    "meta": "Méta",
     "migratingFromReactI18nextTo": "Migrer de react-i18next vers Lingui",
     "practicalStrategiesForOptimizingTranslation": "Stratégies pratiques pour optimiser les bundles de traduction, y compris le lazy loading, le fractionnement du code et les optimisations au moment de la compilation.",
     "reactServerComponentsIntroduceNew": "Les React Server Components introduisent de nouveaux modèles pour l'internationalisation. Nous explorons les implications et les meilleures pratiques.",
     "readMore": "Lire la suite →",
     "serverComponentsAndI18nWhat": "Server Components et i18n : qu'est-ce qui change ?",
     "theStateOfInternationalizationIn": "L'état de l'internationalisation dans React",
+    "tutorial": "Tutoriel",
     "weTested12DifferentInternationalization": "Nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et la DX. Voici les résultats surprenants."
   },
   "careersHeader": {
@@ -130,8 +136,10 @@
   "careersBenefits": {
     "competitivePay": "Rémunération compétitive",
     "openSourceTime": "Temps alloué à l'open source",
+    "remoteFirst": "Télétravail d'abord",
     "topOfMarketCompensation": "Rémunération au-dessus du marché",
-    "workFromAnywhereInThe": "Travailler de n'importe où dans le monde"
+    "workFromAnywhereInThe": "Travailler de n'importe où dans le monde",
+    "x20TimeForOssContributions": "20 % du temps pour les contributions OSS"
   },
   "openPositions": {
     "applyNow": "Postuler Maintenant",
@@ -204,7 +212,7 @@
   "pricingTiers": {
     "allLibraries": "Toutes les bibliothèques",
     "auditLogs": "Journaux d'audit",
-    "benchmarkRunPerDay": "{runs} lancements de benchmark/jour",
+    "benchmarkRunPerDay": "{{runs}} lancements de benchmark/jour",
     "ciIntegration": "Intégration CI",
     "communitySupport": "Support de la communauté",
     "contactSales": "Contacter les ventes",
@@ -216,7 +224,7 @@
     "forever": "pour toujours",
     "getStarted": "Commencer",
     "historicalData": "Données historiques",
-    "librariesNumber": "{libs} bibliothèques",
+    "librariesNumber": "{{libs}} bibliothèques",
     "month": "/mois",
     "onPremiseOption": "Option sur site",
     "price0": "0 $",
@@ -274,6 +282,7 @@
     "frenchFr": "Français (fr)",
     "germanDe": "Allemand (de)",
     "japaneseJa": "Japonais (ja)",
+    "preferences": "Préférences",
     "receiveWeeklyBenchmarkReports": "Recevoir des rapports hebdomadaires de benchmark",
     "spanishEs": "Espagnol (es)",
     "toggleDarkMode": "Basculer le mode sombre",
@@ -283,6 +292,7 @@
   "apiAccessSection": {
     "apiAccess": "Accès API",
     "apiKey": "Clé API",
+    "copy": "Copier",
     "useThisKeyToAccess": "Utilisez cette clé pour accéder à l'API de benchmarking par programmation."
   },
   "settingsFooter": {

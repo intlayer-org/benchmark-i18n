@@ -5,24 +5,34 @@ export default function ProductsGrid() {
 
   const products = [
     {
-      name: t("productsGrid.benchmarkDashboard"),
-      desc: t("productsGrid.interactiveChartsAndTables"),
-      price: "Free",
+      name: t("productsGrid.benchmarkCli"),
+      desc: t("productsGrid.runBenchmarksLocallyFromYour"),
+      price: t("productsGrid.free"),
     },
     {
-      name: t("productsGrid.bundleAnalyzer"),
-      desc: t("productsGrid.uploadYourBuildOutput"),
-      price: "$29/mo",
+      name: t("productsGrid.benchmarkCloud"),
+      desc: t("productsGrid.automatedCloudBasedBenchmarkingWith"),
+      price: t("productsGrid.price29mo"),
+    },
+    {
+      name: t("productsGrid.benchmarkEnterprise"),
+      desc: t("productsGrid.onPremiseDeploymentWithSso"),
+      price: t("productsGrid.contactUs"),
     },
     {
       name: t("productsGrid.migrationAssistant"),
-      desc: t("productsGrid.automatedCodemodsAndGuides"),
-      price: "$99 one-time",
+      desc: t("productsGrid.aiPoweredToolThatHelps"),
+      price: t("productsGrid.price99oneTime"),
     },
     {
-      name: t("productsGrid.performanceMonitor"),
-      desc: t("productsGrid.continuousPerformanceTrackingFor"),
-      price: "$49/mo",
+      name: t("productsGrid.translationQa"),
+      desc: t("productsGrid.automatedQualityChecksForMissing"),
+      price: t("productsGrid.price19mo"),
+    },
+    {
+      name: t("productsGrid.bundleOptimizer"),
+      desc: t("productsGrid.analyzesAndOptimizesYourI18n"),
+      price: t("productsGrid.price49mo"),
     },
   ];
 

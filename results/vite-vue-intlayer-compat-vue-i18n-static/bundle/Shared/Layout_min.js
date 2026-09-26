@@ -1,55 +1,52 @@
-import { Fragment as e, computed as t, createBlock as n, createCommentVNode as r, createElementBlock as i, createElementVNode as a, createTextVNode as o, createVNode as s, defineComponent as c, getCurrentInstance as l, h as u, inject as d, normalizeClass as f, onBeforeMount as p, onMounted as m, onUnmounted as ee, openBlock as h, readonly as te, ref as g, renderList as _, renderSlot as ne, resolveComponent as v, toDisplayString as y, unref as b, watch as re, withCtx as x } from "vue";
-import { useRoute as S, useRouter as ie } from "vue-router";
-import { ChevronDown as ae } from "lucide-vue-next";
-var C = (e, t, n) => typeof e == "string" ? n?.[t]?.[e] ?? n?.[t.split("-")[0] ?? ""]?.[e] : e, oe = (e, t, n, r) => {
-	let i = e instanceof Date ? e : new Date(e), a = C(t, n, r);
+import { a as e, i as t, n, o as r, r as i, s as a, t as o } from "./installIntlayer-CQxdR0AZ.js";
+import { Fragment as s, computed as c, createBlock as l, createCommentVNode as u, createElementBlock as d, createElementVNode as f, createTextVNode as p, createVNode as m, defineComponent as h, getCurrentInstance as ee, h as g, inject as _, normalizeClass as v, onBeforeMount as y, onMounted as b, onUnmounted as te, openBlock as x, ref as S, renderList as C, renderSlot as ne, resolveComponent as w, toDisplayString as T, unref as E, watch as D, withCtx as O } from "vue";
+import { useRoute as k, useRouter as re } from "vue-router";
+import { ChevronDown as ie } from "lucide-vue-next";
+var A = (e, t, n) => typeof e == "string" ? n?.[t]?.[e] ?? n?.[t.split("-")[0] ?? ""]?.[e] : e, ae = (e, t, n, r) => {
+	let i = e instanceof Date ? e : new Date(e), a = A(t, n, r);
 	try {
 		return new Intl.DateTimeFormat(n, a).format(i);
 	} catch {
 		return String(e);
 	}
-}, se = (e, t, n, r) => {
-	let i = C(t, n, r);
+}, oe = (e, t, n, r) => {
+	let i = A(t, n, r);
 	try {
 		return new Intl.NumberFormat(n, i).format(e);
 	} catch {
 		return String(e);
 	}
-}, ce = "translation", le = "enumeration", ue = "plural", w = "insertion", de = "object", fe = "array", pe = "markdown", T = "html", me = "gender", he = "select", E = (e, t) => {
-	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => E(e, t));
-	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
-	if (Array.isArray(e)) return e.map((e, n) => E(e, {
-		...t,
-		children: e,
-		keyPath: [...t.keyPath, {
-			type: fe,
-			key: n
-		}]
-	}));
+}, se = "translation", ce = "enumeration", le = "plural", ue = "condition", j = "insertion", de = "object", fe = "array", pe = "markdown", M = "html", me = "gender", he = "select", N = (e, t, n) => ({
+	...e,
+	children: t,
+	keyPath: [...e.keyPath, n]
+}), P = (e, t) => {
+	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, P);
+	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return e;
+	if (Array.isArray(e)) return e.map((e, n) => P(e, N(t, e, {
+		type: fe,
+		key: n
+	})));
 	let n = {};
 	for (let r in e) {
 		let i = {
-			...t,
-			children: e[r],
-			keyPath: [...t.keyPath, {
-				type: de,
-				key: r
-			}]
+			type: de,
+			key: r
 		};
 		if (t.eager) {
-			n[r] = E(e[r], i);
+			n[r] = P(e[r], N(t, e[r], i));
 			continue;
 		}
 		Object.defineProperty(n, r, {
 			enumerable: !0,
 			configurable: !0,
 			get: function() {
-				let t = E(e[r], i);
+				let n = P(e[r], N(t, e[r], i));
 				return Object.defineProperty(this, r, {
-					value: t,
+					value: n,
 					enumerable: !0,
 					configurable: !0
-				}), t;
+				}), n;
 			}
 		});
 	}
@@ -73,50 +70,9 @@ var C = (e, t, n) => typeof e == "string" ? n?.[t]?.[e] ?? n?.[t.split("-")[0] ?
 		let n = !e.startsWith(">") && !e.startsWith("<") && !e.startsWith("=") && parseFloat(e) === t || e.startsWith("=") && parseFloat(e.slice(1)) === t, r = e.startsWith(">") && t > parseFloat(e.slice(1)), i = e.startsWith(">=") && t >= parseFloat(e.slice(2)), a = e.startsWith("<") && t < parseFloat(e.slice(1)), o = e.startsWith("<=") && t <= parseFloat(e.slice(2));
 		if (n || r || i || a || o) return e;
 	}
-}, ve = (e, t) => e[_e(e, t) ?? "fallback"], D = {
-	locales: [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	requiredLocales: [
-		"en",
-		"fr",
-		"es",
-		"de",
-		"it",
-		"pt",
-		"zh",
-		"ja",
-		"ko",
-		"ru"
-	],
-	strictMode: "inclusive",
-	defaultLocale: "en"
-}, O = {
-	mode: "prefix-all",
-	enableProxy: !1,
-	storage: {
-		cookies: [{
-			name: "INTLAYER_LOCALE",
-			attributes: { path: "/" }
-		}],
-		headers: [{ name: "x-intlayer-locale" }]
-	},
-	basePath: ""
-}, k = {
-	mode: "default",
-	prefix: "\x1B[38;5;239m[intlayer] \x1B[0m"
-}, ye = 50, be = /* @__PURE__ */ new Map(), A = /* @__PURE__ */ new Set(), xe = (e) => {
-	A.has(e) || (A.add(e), console.warn(`[intlayer] \`Intl.${e}\` is not available in this JavaScript engine. A degraded fallback is used instead. On React Native, load a polyfill (e.g. \`@formatjs/intl-${e.toLowerCase()}/polyfill\`) before rendering your app.`));
-}, Se = {
+}, ve = (e, t) => e[_e(e, t) ?? "fallback"], ye = 50, be = /* @__PURE__ */ new Map(), xe = /* @__PURE__ */ new Set(), Se = (e) => {
+	xe.has(e) || (xe.add(e), console.warn(`[intlayer] \`Intl.${e}\` is not available in this JavaScript engine. A degraded fallback is used instead. On React Native, load a polyfill (e.g. \`@formatjs/intl-${e.toLowerCase()}/polyfill\`) before rendering your app.`));
+}, Ce = {
 	DisplayNames: class {
 		of(e) {
 			return e;
@@ -151,29 +107,29 @@ var C = (e, t, n) => typeof e == "string" ? n?.[t]?.[e] ?? n?.[t.split("-")[0] ?
 			});
 		}
 	}
-}, Ce = (e) => {
+}, we = (e) => {
 	let t = Intl[e];
-	return typeof t == "function" ? t : (xe(e), Se[e]);
+	return typeof t == "function" ? t : (Se(e), Ce[e]);
 };
-function j(e, t, n) {
-	let r = t ?? D?.defaultLocale, i = `${r}|${n ? JSON.stringify(n) : ""}`, a = e, o = be.get(a);
-	o || (o = /* @__PURE__ */ new Map(), be.set(a, o));
-	let s = o.get(i);
-	if (!s) {
-		let t = typeof e == "string" ? Ce(e) : e;
+function F(e, t, n) {
+	let i = t ?? r?.defaultLocale, a = `${i}|${n ? JSON.stringify(n) : ""}`, o = e, s = be.get(o);
+	s || (s = /* @__PURE__ */ new Map(), be.set(o, s));
+	let c = s.get(a);
+	if (!c) {
+		let t = typeof e == "string" ? we(e) : e;
 		if (typeof t != "function") throw Error(`[intlayer] \`Intl.${String(e)}\` is not available in this JavaScript engine and has no fallback. Load the matching polyfill before formatting.`);
-		o.size > ye && o.clear(), s = new t(r, n), o.set(i, s);
+		s.size > ye && s.clear(), c = new t(i, n), s.set(a, c);
 	}
-	return s;
+	return c;
 }
-var we = (e, t, n) => e[j("PluralRules", n).select(t)] ?? e.other, Te = (e, t) => {
+var Te = (e, t, n) => e[F("PluralRules", n).select(t)] ?? e.other, Ee = (e, t) => {
 	let n = Object.keys(e), r = n[n.length - 1];
 	return e[t] ?? e.fallback ?? e.other ?? e[r];
-}, Ee = [
+}, De = [
 	"__intlayer_icu_var",
 	"__intlayer_icu_ordinal",
 	"__intlayer_vue_i18n_var"
-], M = (e, t) => {
+], I = (e, t) => {
 	if (t in e) return e[t];
 	let n = e;
 	for (let e of t.split(".")) {
@@ -181,11 +137,11 @@ var we = (e, t, n) => e[j("PluralRules", n).select(t)] ?? e.other, Te = (e, t) =
 		n = n[e];
 	}
 	return n;
-}, De = (e, t, n, r) => {
+}, Oe = (e, t, n, r) => {
 	try {
 		if (t === "number") {
 			let t = Number(e);
-			return n === "percent" ? j("NumberFormat", r, { style: "percent" }).format(t) : n === "integer" ? j("NumberFormat", r, { maximumFractionDigits: 0 }).format(t) : j("NumberFormat", r).format(t);
+			return n === "percent" ? F("NumberFormat", r, { style: "percent" }).format(t) : n === "integer" ? F("NumberFormat", r, { maximumFractionDigits: 0 }).format(t) : F("NumberFormat", r).format(t);
 		}
 		if (t === "date" || t === "time") {
 			let i = e instanceof Date ? e : new Date(e), a = [
@@ -194,59 +150,59 @@ var we = (e, t, n) => e[j("PluralRules", n).select(t)] ?? e.other, Te = (e, t) =
 				"long",
 				"full"
 			].includes(n ?? "") ? n : t === "date" ? "medium" : "short";
-			return j("DateTimeFormat", r, t === "date" ? { dateStyle: a } : { timeStyle: a }).format(i);
+			return F("DateTimeFormat", r, t === "date" ? { dateStyle: a } : { timeStyle: a }).format(i);
 		}
 	} catch {}
 	return String(e);
-}, Oe = (e, t = {}, n = "en") => e.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (e, r, i, a) => {
-	let o = M(t, r);
-	return o === void 0 ? e : i ? De(o, i, a, n) : String(o);
+}, ke = (e, t = {}, n = "en") => e.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (e, r, i, a) => {
+	let o = I(t, r);
+	return o === void 0 ? e : i ? Oe(o, i, a, n) : String(o);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (e, r, i, a) => {
-	let o = M(t, r);
-	return o === void 0 ? e : De(o, i, a, n);
+	let o = I(t, r);
+	return o === void 0 ? e : Oe(o, i, a, n);
 }).replace(/\{\s*([\w.]+)\s*\}/g, (e, n) => {
-	let r = M(t, n);
+	let r = I(t, n);
 	return r === void 0 ? e : String(r);
-}), N = (e, t) => e[t] ?? e.count ?? e.n, P = (e, t = {}, n = "en") => {
+}), L = (e, t) => e[t] ?? e.count ?? e.n, R = (e, t = {}, n = "en") => {
 	if (e == null) return e;
-	if (typeof e == "string") return Oe(e, t, n);
+	if (typeof e == "string") return ke(e, t, n);
 	if (typeof e == "number" || typeof e == "boolean") return String(e);
 	if (typeof e == "function") try {
-		return P(e(t), t, n);
+		return R(e(t), t, n);
 	} catch {
 		return;
 	}
-	if (Array.isArray(e)) return e.map((e) => String(P(e, t, n) ?? "")).join("");
+	if (Array.isArray(e)) return e.map((e) => String(R(e, t, n) ?? "")).join("");
 	let r = e;
-	if (r.nodeType === "insertion") return P(r[w], t, n);
-	if (r.nodeType === "html") return P(r[T], t, n);
+	if (r.nodeType === "insertion") return R(r[j], t, n);
+	if (r.nodeType === "html") return R(r[M], t, n);
 	if (r.nodeType === "plural") {
-		let e = r[ue];
-		return P(we(e, Number(N(t, "count") ?? 1), n), t, n);
+		let e = r[le];
+		return R(Te(e, Number(L(t, "count") ?? 1), n), t, n);
 	}
 	if (r.nodeType === "enumeration") {
-		let e = r[le], i = Ee.map((t) => e[t]).find((e) => typeof e == "string") ?? "count", a = e.__intlayer_icu_ordinal === !0, o = {};
-		for (let [t, n] of Object.entries(e)) Ee.includes(t) || (o[t] = n);
-		let s = N(t, i), c;
+		let e = r[ce], i = De.map((t) => e[t]).find((e) => typeof e == "string") ?? "count", a = e.__intlayer_icu_ordinal === !0, o = {};
+		for (let [t, n] of Object.entries(e)) De.includes(t) || (o[t] = n);
+		let s = L(t, i), c;
 		if (a && !Number.isNaN(Number(s))) {
-			let e = Number(s), t = j("PluralRules", n, { type: "ordinal" }).select(e);
+			let e = Number(s), t = F("PluralRules", n, { type: "ordinal" }).select(e);
 			c = o[String(e)] ?? o[t] ?? o.fallback ?? o.other;
 		} else c = typeof s == "number" || !Number.isNaN(Number(s)) ? ve(o, Number(s)) : o[String(s)] ?? o.fallback ?? o.other;
-		return P(c, t, n);
+		return R(c, t, n);
 	}
 	if (r.nodeType === "select") {
-		let e = r[he], i = N(t, typeof r.variable == "string" ? r.variable : "value");
-		return P(Te(e, String(i ?? "")), t, n);
+		let e = r[he], i = L(t, typeof r.variable == "string" ? r.variable : "value");
+		return R(Ee(e, String(i ?? "")), t, n);
 	}
 	if (r.nodeType === "gender") {
 		let e = r[me];
-		return P(e[String(t.gender ?? "")] ?? e.fallback ?? e.other, t, n);
+		return R(e[String(t.gender ?? "")] ?? e.fallback ?? e.other, t, n);
 	}
 	return e;
-}, ke = (e) => e.split(/(?<!\\)\|/).map((e) => e.replace(/\\\|/g, "|").trim()), Ae = (e, t) => {
+}, Ae = (e) => e.split(/(?<!\\)\|/).map((e) => e.replace(/\\\|/g, "|").trim()), je = (e, t) => {
 	let n = Math.abs(e);
 	return t === 2 ? n ? +(n > 1) : 1 : n ? Math.min(n, 2) : 0;
-}, F = (e) => {
+}, z = (e) => {
 	let t = { values: {} };
 	for (let n of e) if (typeof n == "number") t.count = n;
 	else if (typeof n == "string") t.defaultMessage = n;
@@ -256,79 +212,929 @@ var we = (e, t, n) => e[j("PluralRules", n).select(t)] ?? e.other, Te = (e, t) =
 		t.values = e, typeof e.plural == "number" && (t.count = e.plural);
 	}
 	return t;
-}, I = (e, t, n, r) => {
+}, B = (e, t, n, r) => {
 	let i = { ...t };
 	if (n !== void 0 && (i.count ??= n, i.n ??= n), typeof e == "string") {
 		let t = e;
 		if (/(?<!\\)\|/.test(t)) {
-			let e = ke(t);
-			t = e[Ae(n ?? 1, e.length)] ?? t;
+			let e = Ae(t);
+			t = e[je(n ?? 1, e.length)] ?? t;
 		}
-		return Oe(t, i, r);
+		return ke(t, i, r);
 	}
-	let a = P(e, i, r);
+	let a = R(e, i, r);
 	return typeof a == "string" ? a : String(a ?? "");
-}, L = "\x1B[0m", je = "\x1B[90m", Me = "\x1B[34m", Ne = "\x1B[31m", Pe = "\x1B[32m", Fe = "\x1B[35m", Ie = "\x1B[38;5;3m", R = "\x1B[36m", Le = (e) => e, Re = (e, t) => {
+}, V = "\x1B[0m", Me = "\x1B[90m", Ne = "\x1B[34m", Pe = "\x1B[31m", Fe = "\x1B[32m", Ie = "\x1B[35m", Le = "\x1B[38;5;3m", H = "\x1B[36m", Re = (e) => e, ze = (e, t) => {
 	let n = t?.config ?? {}, r = n.mode ?? "default";
 	if (r === "disabled" || t?.isVerbose && r !== "verbose") return;
-	let i = Le(n.prefix), a = i ? [i, ...[e].flat()] : [e].flat(), o = t?.level ?? "info";
+	let i = Re(n.prefix), a = i ? [i, ...[e].flat()] : [e].flat(), o = t?.level ?? "info";
 	(n[o] ?? console[o] ?? n.log ?? console.log)(...a);
-}, z = (e, t) => (n, r) => Re(n, {
+}, U = (e, t) => (n, r) => ze(n, {
 	...r ?? {},
 	config: {
 		...e?.log,
 		...t?.config,
 		...r?.config ?? {}
 	}
-}), B = (e, t, n) => t && typeof window > "u" ? `${t}${e}${n ? typeof n == "boolean" ? L : n : L}` : e, ze = (e, t = Ie, n = L) => [e].flat().map((e) => B(e, t, n)).join(", ");
-B("✗", Ne), B("✓", Pe), B("⏲", Me);
-var Be = /* @__PURE__ */ new WeakMap(), Ve = 0, He = (e) => {
+}), W = (e, t, n) => t && typeof window > "u" ? `${t}${e}${n ? typeof n == "boolean" ? V : n : V}` : e, Be = (e, t = Le, n = V) => [e].flat().map((e) => W(e, t, n)).join(", ");
+W("✗", Pe), W("✓", Fe), W("⏲", Ne);
+var Ve = /* @__PURE__ */ new WeakMap(), He = 0, Ue = (e) => {
 	if (!e) return "base";
-	let t = Be.get(e);
+	let t = Ve.get(e);
 	if (t) return t;
-	Ve += 1;
-	let n = `p${Ve}`;
-	return Be.set(e, n), n;
-}, Ue = 256, V = /* @__PURE__ */ new WeakMap(), We = (e) => typeof e == "object" && !!e, Ge = (e, t, n) => `${e}_${t}_${He(n)}`, Ke = (e, t) => {
-	if (!We(e)) return { hit: !1 };
-	let n = V.get(e);
+	He += 1;
+	let n = `p${He}`;
+	return Ve.set(e, n), n;
+}, We = 256, G = /* @__PURE__ */ new WeakMap(), Ge = (e) => typeof e == "object" && !!e, Ke = (e, t, n) => `${e}_${t}_${Ue(n)}`, qe = (e, t) => {
+	if (!Ge(e)) return { hit: !1 };
+	let n = G.get(e);
 	return n?.has(t) ? {
 		hit: !0,
 		content: n.get(t)
 	} : { hit: !1 };
-}, H = (e, t, n) => {
-	if (!We(e)) return n;
-	let r = V.get(e);
-	return r || (r = /* @__PURE__ */ new Map(), V.set(e, r)), r.size >= Ue && r.clear(), r.set(t, n), n;
-}, qe = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), U = "default", Je = /[^A-Za-z0-9._&=-]/g, Ye = /[^A-Za-z0-9._-]/g, Xe = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, W = (e, t) => {
-	if (e === "") return "%";
-	let n = e.replace(t, Xe);
-	return n === "." || n === ".." ? n.replace(/\./g, "%002E") : n;
-}, G = (e) => e === void 0 ? U : typeof e == "string" ? W(e, Je) : Object.keys(e).sort().map((t) => `${W(t, Ye)}=${W(String(e[t]), Ye)}`).join("&"), Ze = (e) => Array.isArray(e) ? e.length === 0 ? [U] : e.map(G) : [G(e)], Qe = (e, t) => {
-	for (let n of e) if (t(n)) return n;
-	return t("default") ? U : e[0] ?? "default";
-}, $e = (e, t, n, r) => {
-	let i = e.split("/");
-	return t.every((e, t) => e === "variant" ? i[t] === r : n?.item === void 0 || i[t] === String(n.item));
-}, et = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, tt = (e, t) => {
-	let n = t.split("/"), r = {
-		key: e.key,
-		content: e.content[t]
+}, K = (e, t, n) => {
+	if (!Ge(e)) return n;
+	let r = G.get(e);
+	return r || (r = /* @__PURE__ */ new Map(), G.set(e, r)), r.size >= We && r.clear(), r.set(t, n), n;
+}, Je = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), Ye = /* @__PURE__ */ new Set([
+	"hasOwnProperty",
+	"isPrototypeOf",
+	"propertyIsEnumerable",
+	"toLocaleString"
+]), Xe = (e = "") => new Proxy((() => e), { get: (t, n) => n === "toJSON" || n === Symbol.toPrimitive || n === "toString" || n === "valueOf" ? () => e : n === "then" ? void 0 : Ye.has(n) ? Object.prototype[n].bind(t) : n === Symbol.iterator ? function* () {
+	yield e;
+} : Xe(e ? `${e}.${String(n)}` : String(n)) }), Ze = /* @__PURE__ */ new Set(), Qe = (t, n, r) => {
+	let i = e()[t];
+	return i ? bt(i, n, r) : (Ze.has(t) || (U({ log: a })(typeof window > "u" ? `Dictionary ${Be(t)} was not found. Using fallback proxy.` : `Dictionary ${t} was not found. Using fallback proxy.`, { level: "warn" }), Ze.add(t)), Xe(t));
+}, $e = (e) => {
+	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
+	let t = Object.getPrototypeOf(e);
+	return t === Object.prototype || t === null || Array.isArray(e);
+}, et = (e, t) => {
+	if (e === void 0) return t;
+	if (t === void 0 || Array.isArray(e) || !$e(e) || !$e(t)) return e;
+	let n = e;
+	for (let r of Object.keys(t)) {
+		let i = t[r];
+		if (r === "__proto__" || r === "constructor" || i === void 0) continue;
+		let a = e[r], o = a === void 0 ? i : typeof a == "object" ? et(a, i) : a;
+		o !== a && (n === e && (n = { ...e }), n[r] = o);
+	}
+	return n;
+}, tt = (e, t, n) => {
+	let r = (t) => e[t], i = r(t);
+	if (typeof i == "string") return i;
+	let a = [
+		t,
+		t.split("-")[0],
+		n,
+		n?.split("-")[0]
+	], o = [];
+	for (let e = 0; e < a.length; e++) {
+		let t = a[e];
+		if (!t || a.indexOf(t) < e) continue;
+		let n = r(t);
+		if (n !== void 0) {
+			if (typeof n == "string") {
+				if (o.length === 0) return n;
+				continue;
+			}
+			o.push(n);
+		}
+	}
+	if (o.length !== 0) return o.length === 1 || Array.isArray(o[0]) ? o[0] : o.reduce((e, t) => et(e, t));
+}, q = (e) => {
+	if (typeof e != "object" || !e || !("nodeType" in e)) return !1;
+	let { nodeType: t } = e;
+	return !1;
+}, nt = (e) => {
+	if (typeof e == "string") return e;
+	if (q(e)) return e.nodeType === "html" ? e[M] : e[pe];
+}, rt = (e, t) => {
+	if (typeof e == "string") return t;
+	if (q(e)) {
+		let n = e.nodeType === "html" ? M : pe;
+		return {
+			...e,
+			[n]: t
+		};
+	}
+	return e;
+}, it = (e, t, n, r, i) => {
+	let a = rt(e, Je(nt(e), t));
+	return i(a, {
+		...n,
+		plugins: r,
+		children: a
+	});
+}, J = {
+	id: "fallback-plugin",
+	canHandle: () => !1,
+	transform: (e) => e
+}, at = (e) => {
+	if (typeof e != "function") return !1;
+	let { value: t } = e;
+	return t === void 0 || typeof t == "function";
+}, ot = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? J : {
+	id: "translation-plugin",
+	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
+	transform: (n, r, i) => {
+		let a = tt(n.translation ?? {}, e, t);
+		return i(a, {
+			...r,
+			children: a,
+			keyPath: [...r.keyPath, {
+				type: se,
+				key: e
+			}]
+		});
+	}
+}, st = J, ct = (e) => J, lt = J, ut = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? J : {
+	id: "insertion-plugin",
+	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
+	transform: (e, t, n) => {
+		let r = [...t.keyPath, { type: j }], i = e[j], a = {
+			id: "insertion-string-plugin",
+			canHandle: (e) => typeof e == "string" || q(e),
+			transform: (e, n, r) => {
+				if (q(e)) return (i) => it(e, i, n, t.plugins, r);
+				let i = r(e, {
+					...n,
+					children: e,
+					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
+				});
+				return (e) => {
+					let a = Je(i, e);
+					return r(a, {
+						...n,
+						plugins: t.plugins,
+						children: a
+					});
+				};
+			}
+		};
+		return pt(i, n(i, {
+			...t,
+			children: i,
+			keyPath: r,
+			plugins: [a, ...t.plugins ?? []]
+		}));
+	}
+}, dt = [
+	ce,
+	ue,
+	le,
+	me,
+	he
+], ft = (e, t, n, r = !1) => {
+	let i = e?.nodeType;
+	if (typeof t != "function" || !i || !dt.includes(i)) return t;
+	let a = i === "plural" || i === "enumeration";
+	return (e) => {
+		if (typeof e == "object" && e) return t({
+			...n,
+			...e
+		});
+		if (a) return t({
+			...n,
+			count: e
+		});
+		let i = t(e);
+		return !r && at(i) ? i(n) : i;
 	};
-	return e.qualifierTypes.forEach((e, t) => {
-		e === "variant" ? r.variant = n[t] : e === "item" && (r.item = Number(n[t]));
-	}), r;
-}, nt = (e, t) => {
-	if (!et(e)) return e;
-	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? U : Qe(Ze(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => $e(e, n, t, s)).map((t) => tt(e, t));
-	return i ? c.sort((e, t) => (e.item ?? 0) - (t.item ?? 0)) : c[0] ?? null;
-}, rt = (e) => typeof e == "object" && e ? {
-	locale: e.locale,
-	selector: e
-} : { locale: e }, it = (e) => e ? Object.keys(e).filter((e) => e !== "locale").sort().map((t) => {
-	let n = e[t];
-	return `${t}:${t === "variant" ? Ze(n).join(",") : String(n)}`;
-}).join("|") : "", at = {
+}, pt = (e, t) => typeof t == "function" && dt.includes(e?.nodeType ?? "") ? (n) => ft(e, t, n) : t, mt = J, ht = J;
+process.env.INTLAYER_OPTIMIZED_NESTING;
+var gt = (e) => J, _t = J, vt = (e, t = !0) => [
+	ot(e ?? r.defaultLocale, t ? r.defaultLocale : void 0),
+	st,
+	ct(e ?? r.defaultLocale),
+	lt,
+	ut,
+	gt(e ?? r.defaultLocale),
+	_t,
+	mt,
+	ht
+].filter((e) => e !== J), yt = (e, t, n = []) => P(e, {
+	...t,
+	plugins: n
+}), Y = /* @__PURE__ */ new WeakSet(), bt = (e, t, n) => {
+	let { locale: i, selector: a } = {
+		locale: t,
+		selector: void 0
+	}, o = Ke(i ?? r.defaultLocale, "", n), s = qe(e, o);
+	if (s.hit) return s.content;
+	let c = n ?? vt(i), l = e, u = (e) => {
+		let t = {
+			dictionaryKey: e.key,
+			dictionaryPath: e.filePath,
+			keyPath: [],
+			plugins: c,
+			nestedDictionaries: e.nestedDictionaries,
+			eager: !Y.has(e)
+		};
+		Y.add(e);
+		try {
+			return yt(e.content, t, c);
+		} finally {
+			t.eager && Y.delete(e);
+		}
+	};
+	return l === null ? K(e, o, null) : Array.isArray(l) ? K(e, o, l.map(u)) : K(e, o, u(l));
+}, { defaultLocale: xt, locales: St } = r ?? {}, Ct = ({ isCookieEnabled: e, onLocaleChange: n } = {}) => {
+	let r = _(o);
+	return {
+		locale: c(() => r?.locale?.value ?? xt),
+		defaultLocale: xt,
+		availableLocales: St,
+		setLocale: (i) => {
+			if (!St?.map(String).includes(i)) {
+				console.error(`Locale ${i} is not available`);
+				return;
+			}
+			r && r.setLocale(i), t(i, e ?? r?.isCookieEnabled ?? !0), n?.(i);
+		}
+	};
+}, wt = Symbol("global-i18n"), Tt = "translation", X = (e, t, n) => {
+	try {
+		let r = ge(Qe(t, e), n);
+		if (r != null) return r;
+	} catch {}
+}, Z = (e, t, n) => {
+	let r = t, i = n;
+	if (n.includes(":")) {
+		let e = n.indexOf(":");
+		r = n.slice(0, e), i = n.slice(e + 1);
+	}
+	if (r) {
+		let t = X(e, r, i);
+		if (t !== void 0) return t;
+	}
+	if (i.includes(".")) {
+		let t = i.indexOf("."), n = X(e, i.slice(0, t), i.slice(t + 1));
+		if (n !== void 0) return n;
+	}
+	if (!r) {
+		let t = X(e, Tt, i);
+		if (t !== void 0) return t;
+	}
+}, Et = (e, t, n, r, i) => {
+	let { values: a, count: o, defaultMessage: s } = z(r), c = Z(e, t, n);
+	if (c === void 0) {
+		if (i?.[e]) {
+			let r = t ? `${t}.${n}` : n, s = ge(i[e], r);
+			if (s !== void 0) return B(s, a, o, e);
+		}
+		return s === void 0 ? n : B(s, a, o, e);
+	}
+	return B(c, a, o, e);
+}, Dt = () => r?.locales?.map(String) ?? [], Q = (e) => {
+	U({ log: a })(`${W(e, H)} has no effect with ${W("@intlayer/vue-i18n", Ie)} — translations are managed by the compiled intlayer dictionaries.`);
+}, Ot = ((e = {}) => {
+	let t = e.messages;
+	e.messages !== void 0 && U({ log: a })(`${W("createI18n", H)}: the ${W("`messages`", H)} option is used as a fallback. For optimal bundle size, remove the locale JSON imports and use ${W("useDictionary", H)} or compile your intlayer dictionaries instead:\n  ${W("Before:", Me)} createI18n({ messages: { en, fr, … } })\n  ${W("After: ", Me)} createI18n({})`);
+	let o = i(e.locale), s = e.datetimeFormats, l = e.numberFormats, u = () => String(o.locale.value), d = c({
+		get: () => u(),
+		set: (e) => {
+			o.setLocale(e);
+		}
+	}), f = (e, ...n) => Et(u(), void 0, e, n, t), p = (e, t) => ae(e, t, u(), s), m = (e, t) => oe(e, t, u(), l), h = {
+		locale: d,
+		availableLocales: Dt(),
+		fallbackLocale: e.fallbackLocale ?? r?.defaultLocale,
+		t: f,
+		tc: f,
+		te: (e) => Z(u(), void 0, e) !== void 0,
+		tm: (e) => Z(u(), void 0, e) ?? {},
+		rt: (e, ...t) => {
+			let { values: n, count: r } = z(t);
+			return B(e, n, r, u());
+		},
+		d: p,
+		n: m,
+		setLocaleMessage: (e, t) => {
+			Q("setLocaleMessage");
+		},
+		mergeLocaleMessage: (e, t) => {
+			Q("mergeLocaleMessage");
+		},
+		getLocaleMessage: (e) => (Q("getLocaleMessage"), {})
+	}, ee = {
+		get locale() {
+			return u();
+		},
+		set locale(e) {
+			o.setLocale(e);
+		},
+		get availableLocales() {
+			return Dt();
+		},
+		t: f,
+		tc: f,
+		te: h.te,
+		tm: h.tm,
+		rt: h.rt,
+		d: p,
+		n: m
+	}, g = (e, t) => {
+		let n = t.value;
+		if (typeof n == "string") e.textContent = f(n);
+		else if (n && typeof n == "object") {
+			let t = [];
+			n.args && t.push(n.args), typeof n.choice == "number" && t.push(n.choice), e.textContent = f(n.path, ...t);
+		}
+	}, _ = {
+		global: h,
+		mode: e.legacy === !0 ? "legacy" : "composition",
+		__optionsMessages: t,
+		install(t) {
+			n(t, { locale: e.locale }), t.provide(wt, _), t.config.globalProperties.$t = f, t.config.globalProperties.$tc = f, t.config.globalProperties.$te = h.te, t.config.globalProperties.$tm = h.tm, t.config.globalProperties.$rt = h.rt, t.config.globalProperties.$d = p, t.config.globalProperties.$n = m, t.config.globalProperties.$i18n = ee, t.directive("t", {
+				beforeMount: g,
+				updated: g
+			});
+		}
+	};
+	return _;
+}), $ = ((e) => {
+	let { locale: t, setLocale: n, availableLocales: r } = Ct(), i = _(wt)?.__optionsMessages, a = e?.namespace, o = e?.datetimeFormats, s = e?.numberFormats, l = c({
+		get: () => t.value,
+		set: (e) => {
+			n(e);
+		}
+	}), u = (e, ...n) => Et(t.value, a, e, n, i);
+	return {
+		locale: l,
+		availableLocales: r,
+		t: u,
+		tc: u,
+		te: (e) => Z(t.value, a, e) !== void 0,
+		tm: (e) => Z(t.value, a, e) ?? {},
+		rt: (e, ...n) => {
+			let { values: r, count: i } = z(n);
+			return B(e, r, i, t.value);
+		},
+		d: (e, n) => ae(e, n, t.value, o),
+		n: (e, n) => oe(e, n, t.value, s)
+	};
+});
+function kt() {
+	if (!(typeof window > "u")) {
+		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
+		try {
+			if (performance.getEntriesByName("hydration_start").length > 0) {
+				performance.measure("hydration_duration", "hydration_start", "hydration_end"), console.log("--- BROWSER: hydration_duration measured");
+				let e = performance.getEntriesByName("hydration_duration")[0]?.duration;
+				e && console.log(`Hydration Duration: ${e.toFixed(2)}ms`);
+			} else console.warn("--- BROWSER: hydration_start NOT FOUND");
+		} catch (e) {
+			console.warn("Could not measure hydration duration:", e);
+		}
+	}
+}
+function At(e, t) {
+	if (typeof window > "u") return;
+	let n = performance.now() - t;
+	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
+}
+var jt = { class: "mt-20 border-t border-border bg-card" }, Mt = { class: "container py-8" }, Nt = { class: "grid gap-8 md:grid-cols-3" }, Pt = { class: "mb-2 text-sm font-semibold text-foreground" }, Ft = { class: "text-sm text-muted-foreground" }, It = { class: "mb-2 text-sm font-semibold text-foreground" }, Lt = { class: "space-y-1" }, Rt = ["href"], zt = { class: "mb-2 text-sm font-semibold text-foreground" }, Bt = { class: "text-sm text-muted-foreground" }, Vt = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" }, Ht = h({
+	__name: "Footer",
+	setup(e) {
+		let { t } = $(), n = k(), r = c(() => n.params.locale || "en"), i = c(() => [
+			{
+				label: t("footer.github"),
+				href: "https://github.com/intlayer-org/benchmark-i18n",
+				isInternal: !1
+			},
+			{
+				label: t("footer.methodology"),
+				to: `/${r.value}/about`,
+				isInternal: !0
+			},
+			{
+				label: t("footer.contributing"),
+				to: `/${r.value}/contact`,
+				isInternal: !0
+			}
+		]);
+		return (e, n) => {
+			let r = w("router-link");
+			return x(), d("footer", jt, [f("div", Mt, [f("div", Nt, [
+				f("div", null, [f("h3", Pt, T(E(t)("footer.title")), 1), f("p", Ft, T(E(t)("footer.description")), 1)]),
+				f("div", null, [f("h3", It, T(E(t)("footer.resources")), 1), f("ul", Lt, [(x(!0), d(s, null, C(i.value, (e) => (x(), d("li", { key: e.label }, [e.isInternal ? (x(), l(r, {
+					key: 0,
+					to: e.to,
+					class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+				}, {
+					default: O(() => [p(T(e.label), 1)]),
+					_: 2
+				}, 1032, ["to"])) : (x(), d("a", {
+					key: 1,
+					href: e.href,
+					target: "_blank",
+					rel: "noreferrer",
+					class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
+				}, T(e.label), 9, Rt))]))), 128))])]),
+				f("div", null, [f("h3", zt, T(E(t)("footer.contact")), 1), f("p", Bt, T(E(t)("shared.contactEmail")), 1)])
+			]), f("div", Vt, T(E(t)("footer.builtWith")), 1)])]);
+		};
+	}
+});
+function Ut(e) {
+	y(() => {
+		typeof performance < "u" && performance.mark && performance.mark(`${e}-start`);
+	}), b(() => {
+		if (typeof performance < "u" && performance.mark && performance.measure) {
+			performance.mark(`${e}-end`);
+			try {
+				performance.measure(`${e}-render`, `${e}-start`, `${e}-end`);
+			} catch {}
+		}
+	});
+}
+var Wt = [
+	"en",
+	"fr",
+	"es",
+	"de",
+	"it",
+	"pt",
+	"zh",
+	"ja",
+	"ko",
+	"ru"
+], Gt = (e) => {
+	try {
+		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
+		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
+	} catch {
+		return e.toUpperCase();
+	}
+}, Kt = { class: "flex items-center gap-2" }, qt = ["value"], Jt = ["value"], Yt = h({
+	__name: "LocaleSwitcher",
+	setup(e) {
+		let t = k(), n = re(), r = c(() => t.params.locale || "en"), i = (e) => {
+			let r = t.path.replace(/^\/[^/]+/, `/${e}`);
+			n.push({
+				path: r,
+				query: t.query,
+				hash: t.hash
+			});
+		};
+		return (e, t) => (x(), d("div", Kt, [f("select", {
+			value: r.value,
+			onChange: t[0] ||= (e) => i(e.target.value),
+			class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
+		}, [(x(!0), d(s, null, C(E(Wt), (e) => (x(), d("option", {
+			key: e,
+			value: e
+		}, T(E(Gt)(e)), 9, Jt))), 128))], 40, qt)]));
+	}
+}), Xt = ["aria-label", "title"], Zt = h({
+	__name: "ThemeToggle",
+	setup(e) {
+		let { t } = $(), n = S("auto");
+		function r() {
+			if (typeof window > "u") return "auto";
+			let e = window.localStorage.getItem("theme");
+			return e === "light" || e === "dark" || e === "auto" ? e : "auto";
+		}
+		function i(e) {
+			let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
+			document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
+		}
+		b(() => {
+			let e = r();
+			n.value = e, i(e);
+		});
+		let a = null;
+		D(n, (e) => {
+			if (e === "auto") {
+				let e = window.matchMedia("(prefers-color-scheme: dark)");
+				a = () => i("auto"), e.addEventListener("change", a);
+			} else a &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", a), null);
+		}, { immediate: !0 }), te(() => {
+			a && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", a);
+		});
+		function o() {
+			let e = n.value === "light" ? "dark" : n.value === "dark" ? "auto" : "light";
+			n.value = e, i(e), window.localStorage.setItem("theme", e);
+		}
+		let s = () => n.value === "auto" ? t("themeToggle.labelAuto") : t("themeToggle.labelOther", { mode: n.value });
+		return (e, r) => (x(), d("button", {
+			type: "button",
+			onClick: o,
+			"aria-label": s(),
+			title: s(),
+			class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
+		}, T(n.value === "auto" ? E(t)("themeToggle.auto") : n.value === "dark" ? E(t)("themeToggle.dark") : E(t)("themeToggle.light")), 9, Xt));
+	}
+}), Qt = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" }, $t = { class: "container flex h-16 items-center justify-between" }, en = { class: "flex items-center gap-8" }, tn = { class: "hidden items-center gap-6 text-sm font-medium md:flex" }, nn = ["href", "onClick"], rn = ["href", "onClick"], an = { class: "relative" }, on = { class: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1" }, sn = { class: "flex items-center gap-4" }, cn = {
+	href: "https://github.com/intlayer-org/benchmark-i18n",
+	target: "_blank",
+	rel: "noreferrer",
+	class: "text-muted-foreground transition hover:text-foreground"
+}, ln = { class: "sr-only" }, un = h({
+	__name: "Header",
+	setup(e) {
+		Ut("Header");
+		let { t } = $(), n = S(!1), r = k(), i = c(() => r.params.locale || "en"), a = c(() => [
+			{
+				to: `/${i.value}/products`,
+				label: t("header.products")
+			},
+			{
+				to: `/${i.value}/pricing`,
+				label: t("header.pricing")
+			},
+			{
+				to: `/${i.value}/team`,
+				label: t("header.team")
+			},
+			{
+				to: `/${i.value}/blog`,
+				label: t("header.blog")
+			},
+			{
+				to: `/${i.value}/careers`,
+				label: t("header.careers")
+			},
+			{
+				to: `/${i.value}/faq`,
+				label: t("header.faq")
+			},
+			{
+				to: `/${i.value}/contact`,
+				label: t("header.contact")
+			},
+			{
+				to: `/${i.value}/settings`,
+				label: t("header.settings")
+			}
+		]);
+		return (e, r) => {
+			let o = w("router-link");
+			return x(), d("header", Qt, [f("nav", $t, [f("div", en, [m(o, {
+				to: `/${i.value}`,
+				class: "text-lg font-bold tracking-tight text-primary no-underline"
+			}, {
+				default: O(() => [p(T(E(t)("shared.appName")), 1)]),
+				_: 1
+			}, 8, ["to"]), f("div", tn, [
+				m(o, {
+					to: `/${i.value}`,
+					custom: ""
+				}, {
+					default: O(({ href: e, navigate: n, isExactActive: r }) => [f("a", {
+						href: e,
+						class: v(["nav-link", { "router-link-active": r }]),
+						onClick: n
+					}, T(E(t)("header.home")), 11, nn)]),
+					_: 1
+				}, 8, ["to"]),
+				m(o, {
+					to: `/${i.value}/about`,
+					custom: ""
+				}, {
+					default: O(({ href: e, navigate: n, isActive: r }) => [f("a", {
+						href: e,
+						class: v(["nav-link", { "router-link-active": r }]),
+						onClick: n
+					}, T(E(t)("header.methodology")), 11, rn)]),
+					_: 1
+				}, 8, ["to"]),
+				f("div", an, [f("button", {
+					type: "button",
+					class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
+					onMouseenter: r[0] ||= (e) => n.value = !0,
+					onMouseleave: r[1] ||= (e) => n.value = !1,
+					onClick: r[2] ||= (e) => n.value = !n.value
+				}, [p(T(E(t)("header.mockPages")) + " ", 1), m(E(ie), {
+					size: 14,
+					class: v(["transition-transform", n.value ? "rotate-180" : ""])
+				}, null, 8, ["class"])], 32), n.value ? (x(), d("div", {
+					key: 0,
+					class: "absolute left-0 top-full pt-2 w-48",
+					onMouseenter: r[4] ||= (e) => n.value = !0,
+					onMouseleave: r[5] ||= (e) => n.value = !1
+				}, [f("div", on, [(x(!0), d(s, null, C(a.value, (e) => (x(), l(o, {
+					key: e.to,
+					to: e.to,
+					class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
+					onClick: r[3] ||= (e) => n.value = !1
+				}, {
+					default: O(() => [p(T(e.label), 1)]),
+					_: 2
+				}, 1032, ["to"]))), 128))])], 32)) : u("v-if", !0)])
+			])]), f("div", sn, [
+				f("a", cn, [f("span", ln, T(E(t)("shared.goToGithub")), 1), r[6] ||= f("svg", {
+					viewBox: "0 0 16 16",
+					"aria-hidden": "true",
+					width: "20",
+					height: "20"
+				}, [f("path", {
+					fill: "currentColor",
+					d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
+				})], -1)]),
+				m(Yt),
+				m(Zt)
+			])])]);
+		};
+	}
+}), dn = h({
+	__name: "Layout",
+	setup(e) {
+		let t = k(), { locale: n } = $(), r = S(0);
+		return y(() => {
+			r.value = typeof performance < "u" ? performance.now() : 0;
+		}), b(() => {
+			kt(), At("AppRoot", r.value);
+		}), D(() => t.params.locale, (e) => {
+			e && (document.documentElement.lang = e, n.value = e);
+		}, { immediate: !0 }), (e, t) => {
+			let n = w("router-view");
+			return x(), d(s, null, [
+				m(un),
+				m(n),
+				m(Ht)
+			], 64);
+		};
+	}
+}), fn = Ot({
+	legacy: !1,
+	locale: "en",
+	fallbackLocale: "en"
+}), pn = h({
+	__name: "Wrapper",
+	setup(e) {
+		let t = ee()?.appContext.app;
+		return t && !t.config.globalProperties.$i18n && t.use(fn), (e, t) => ne(e.$slots, "default");
+	}
+}), mn = { render() {
+	return g(pn, {}, { default: () => g(dn) });
+} };
+export { mn as default };
+import { a as e, i as t, o as n, r } from "./installIntlayer-CQxdR0AZ.js";
+import { watch as i } from "vue";
+var a = (e) => typeof e == "object" && !!e && !Array.isArray(e), o = (e) => a(e) && e.nodeType === "translation" && a(e.translation), s = (e) => {
+	if (typeof e == "string") return e;
+	try {
+		return JSON.stringify(e) ?? String(e);
+	} catch {
+		return String(e);
+	}
+}, c = (e, t, n) => {
+	let r = t.length === 0 ? "(root)" : t.join(".");
+	if (o(e)) {
+		n[r] = e.translation;
+		return;
+	}
+	if (a(e) && typeof e.nodeType == "string") {
+		n[r] = s(e[e.nodeType]);
+		return;
+	}
+	if (Array.isArray(e)) {
+		e.forEach((e, r) => {
+			c(e, [...t, String(r)], n);
+		});
+		return;
+	}
+	if (a(e)) {
+		for (let [r, i] of Object.entries(e)) c(i, [...t, r], n);
+		return;
+	}
+	t.length > 0 && (n[t.join(".")] = s(e));
+}, l = (e) => {
+	let t = {};
+	return c(e.content, [], t), t;
+}, u = "intlayer-locales", d = "locale:", f = ":current", { locales: p } = n ?? {}, m = (e) => e.startsWith(d), h = (e) => e.slice(7).replace(f, ""), g = (e) => {
+	let t = p ?? [];
+	return {
+		id: u,
+		label: "Locales",
+		children: (e && t.includes(e) ? [e, ...t.filter((t) => t !== e)] : t).map((t) => ({
+			id: `${d}${t}${t === e ? f : ""}`,
+			label: t,
+			tags: t === e ? [{
+				label: "current",
+				textColor: 16777215,
+				backgroundColor: 4372611
+			}] : []
+		}))
+	};
+};
+function _() {
+	return v().__VUE_DEVTOOLS_GLOBAL_HOOK__;
+}
+function v() {
+	return typeof navigator < "u" && typeof window < "u" ? window : typeof globalThis < "u" ? globalThis : {};
+}
+var y = typeof Proxy == "function", b = "devtools-plugin:setup", x = "plugin:settings:set", S, C;
+function w() {
+	return S === void 0 && (typeof window < "u" && window.performance ? (S = !0, C = window.performance) : typeof globalThis < "u" && globalThis.perf_hooks?.performance ? (S = !0, C = globalThis.perf_hooks.performance) : S = !1), S;
+}
+function T() {
+	return w() ? C.now() : Date.now();
+}
+var E = class {
+	constructor(e, t) {
+		this.target = null, this.targetQueue = [], this.onQueue = [], this.plugin = e, this.hook = t;
+		let n = {};
+		if (e.settings) for (let t in e.settings) n[t] = e.settings[t].defaultValue;
+		let r = `__vue-devtools-plugin-settings__${e.id}`, i = Object.assign({}, n);
+		try {
+			let e = localStorage.getItem(r), t = JSON.parse(e);
+			Object.assign(i, t);
+		} catch {}
+		this.fallbacks = {
+			getSettings() {
+				return i;
+			},
+			setSettings(e) {
+				try {
+					localStorage.setItem(r, JSON.stringify(e));
+				} catch {}
+				i = e;
+			},
+			now() {
+				return T();
+			}
+		}, t && t.on(x, (e, t) => {
+			e === this.plugin.id && this.fallbacks.setSettings(t);
+		}), this.proxiedOn = new Proxy({}, { get: (e, t) => this.target ? this.target.on[t] : (...e) => {
+			this.onQueue.push({
+				method: t,
+				args: e
+			});
+		} }), this.proxiedTarget = new Proxy({}, { get: (e, t) => this.target ? this.target[t] : t === "on" ? this.proxiedOn : Object.keys(this.fallbacks).includes(t) ? (...e) => (this.targetQueue.push({
+			method: t,
+			args: e,
+			resolve: () => {}
+		}), this.fallbacks[t](...e)) : (...e) => new Promise((n) => {
+			this.targetQueue.push({
+				method: t,
+				args: e,
+				resolve: n
+			});
+		}) });
+	}
+	async setRealTarget(e) {
+		this.target = e;
+		for (let e of this.onQueue) this.target.on[e.method](...e.args);
+		for (let e of this.targetQueue) e.resolve(await this.target[e.method](...e.args));
+	}
+};
+function D(e, t) {
+	let n = e, r = v(), i = _(), a = y && n.enableEarlyProxy;
+	if (i && (r.__VUE_DEVTOOLS_PLUGIN_API_AVAILABLE__ || !a)) i.emit(b, e, t);
+	else {
+		let e = a ? new E(n, i) : null;
+		(r.__VUE_DEVTOOLS_PLUGINS__ = r.__VUE_DEVTOOLS_PLUGINS__ || []).push({
+			pluginDescriptor: n,
+			setupFn: t,
+			proxy: e
+		}), e && t(e.proxiedTarget);
+	}
+}
+var O = "intlayer", k = "intlayer-dictionaries-inspector", { defaultLocale: A, locales: j } = n ?? {}, M = D, N = (n) => {
+	M({
+		id: O,
+		label: "Intlayer",
+		packageName: "vue-intlayer",
+		homepage: "https://intlayer.org",
+		componentStateTypes: [O],
+		app: n
+	}, (n) => {
+		n.addInspector({
+			id: k,
+			label: "Intlayer",
+			icon: "language",
+			treeFilterPlaceholder: "Search dictionaries",
+			nodeActions: [{
+				icon: "check",
+				tooltip: "Set as current locale",
+				action: (e) => {
+					if (!m(e)) return;
+					let i = h(e);
+					if (!j?.map(String).includes(i)) {
+						console.error(`Locale ${i} is not available`);
+						return;
+					}
+					let a = r();
+					a.setLocale(i), t(i, a.isCookieEnabled ?? !0), n.sendInspectorTree(k), n.sendInspectorState(k);
+				}
+			}]
+		}), i(() => r().locale.value, () => {
+			n.sendInspectorTree(k), n.sendInspectorState(k);
+		}), n.on.getInspectorTree((t) => {
+			if (t.inspectorId !== "intlayer-dictionaries-inspector") return;
+			let n = e(), i = Object.keys(n), a = r().locale.value ?? A;
+			t.rootNodes = [...i.length === 0 ? [{
+				id: "intlayer-no-dictionaries",
+				label: "No dictionaries loaded. Add an Intlayer build plugin (e.g. vite-intlayer) to generate them."
+			}] : i.map((e) => ({
+				id: e,
+				label: e
+			})), g(a)];
+		}), n.on.getInspectorState((t) => {
+			if (t.inspectorId !== "intlayer-dictionaries-inspector") return;
+			let n = r().locale.value ?? A;
+			if (t.nodeId === "intlayer-locales") {
+				t.state = { Locales: (j ?? []).map((e) => ({
+					key: e,
+					value: e === n ? "current" : "",
+					editable: !1
+				})) };
+				return;
+			}
+			if (m(t.nodeId)) {
+				let e = h(t.nodeId);
+				t.state = { Locale: [{
+					key: "locale",
+					value: e,
+					editable: !1
+				}, {
+					key: "current",
+					value: e === n,
+					editable: !1
+				}] };
+				return;
+			}
+			let i = e()[t.nodeId];
+			if (!i) {
+				t.state = {};
+				return;
+			}
+			let a = l(i);
+			t.state = {
+				Translations: Object.entries(a).map(([e, t]) => ({
+					key: e,
+					value: t,
+					editable: !1
+				})),
+				Metadata: [
+					{
+						key: "key",
+						value: i.key,
+						editable: !1
+					},
+					{
+						key: "title",
+						value: i.title ?? "",
+						editable: !1
+					},
+					{
+						key: "description",
+						value: i.description ?? "",
+						editable: !1
+					}
+				]
+			};
+		});
+	});
+};
+export { N as enableIntlayerDevtools };
+import { readonly as e, ref as t } from "vue";
+var n = {
+	locales: [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	requiredLocales: [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	strictMode: "inclusive",
+	defaultLocale: "en"
+}, r = {
+	mode: "prefix-all",
+	enableProxy: !1,
+	storage: {
+		cookies: [{
+			name: "INTLAYER_LOCALE",
+			attributes: { path: "/" }
+		}],
+		headers: [{ name: "x-intlayer-locale" }]
+	},
+	basePath: ""
+}, i = {
+	mode: "default",
+	prefix: "\x1B[38;5;239m[intlayer] \x1B[0m"
+}, a = {
 	faq: {
 		key: "faq",
 		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"header\":{\"title\":\"Frequently Asked Questions\",\"description\":\"Everything you need to know about i18n Benchmark.\"},\"list\":{\"q1\":\"What is i18n Benchmark?\",\"a1\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"q2\":\"How are benchmarks conducted?\",\"a2\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"q3\":\"Which libraries are currently supported?\",\"a3\":{\"fields\":[\"'@'\"],\"nodeType\":\"insertion\",\"insertion\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {{'@'}}fluent/react, and Tolgee.\"},\"q4\":\"Can I submit my own benchmarks?\",\"a4\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"q5\":\"How often are benchmarks updated?\",\"a5\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"q6\":\"Is the data reliable?\",\"a6\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"q7\":\"Do you offer consulting services?\",\"a7\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"q8\":\"How can I contribute?\",\"a8\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"}},\"fr\":{\"header\":{\"title\":\"Questions fréquentes\",\"description\":\"Tout savoir sur i18n Benchmark.\"},\"list\":{\"q1\":\"Qu'est-ce qu'i18n Benchmark ?\",\"a1\":\"Une suite open source qui mesure et compare performance, taille de bundle et expérience développeur des bibliothèques i18n pour JavaScript et React.\",\"q2\":\"Comment sont menés les benchmarks ?\",\"a2\":\"Tests standardisés sur matériel cohomogène, répétés pour la significativité statistique. Les configs sont publiques sur GitHub.\",\"q3\":\"Quelles bibliothèques sont prises en charge ?\",\"a3\":{\"fields\":[\"'@'\"],\"nodeType\":\"insertion\",\"insertion\":\"react-i18next, react-intl, Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {{'@'}}fluent/react, Tolgee, etc.\"},\"q4\":\"Puis-je proposer des benchmarks ?\",\"a4\":\"Oui — forkez le dépôt, suivez le guide de contribution et ouvrez une pull request.\",\"q5\":\"À quelle fréquence sont-ils mis à jour ?\",\"a5\":\"Chaque semaine sur les dernières versions stables ; une release majeure relance immédiatement les mesures.\",\"q6\":\"Les données sont-elles fiables ?\",\"a6\":\"Méthodologie statistique stricte, échauffement, détection d'anomalies, intervalles de confiance — données brutes publiées.\",\"q7\":\"Proposez-vous du conseil ?\",\"a7\":\"Oui, le plan Enterprise inclut des heures pour aider les équipes à choisir une solution i18n.\",\"q8\":\"Comment contribuer ?\",\"a8\":\"Benchmarks, documentation, bugs, nouvelles métriques ou sponsorship — voir GitHub.\"}},\"es\":{\"header\":{\"title\":\"Preguntas frecuentes\",\"description\":\"Todo lo que necesitas saber sobre i18n Benchmark.\"},\"list\":{\"q1\":\"¿Qué es i18n Benchmark?\",\"a1\":\"i18n Benchmark es una suite de benchmarking de código abierto que mide y compara el rendimiento, el tamaño del bundle y la experiencia del desarrollador de las bibliotecas de internacionalización para aplicaciones JavaScript y React.\",\"q2\":\"¿Cómo se realizan los benchmarks?\",\"a2\":\"Realizamos pruebas estandarizadas en entornos aislados utilizando hardware consistente. Cada benchmark se repite varias veces para asegurar la significación estadística. Todas las configuraciones de las pruebas están disponibles públicamente en nuestro repositorio de GitHub.\",\"q3\":\"¿Qué bibliotecas se admiten actualmente?\",\"a3\":{\"fields\":[\"'@'\"],\"nodeType\":\"insertion\",\"insertion\":\"Admitimos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {{'@'}}fluent/react y Tolgee.\"},\"q4\":\"¿Puedo enviar mis propios benchmarks?\",\"a4\":\"¡Sí! Los envíos de benchmarks de la comunidad son bienvenidos. Haz un fork de nuestro repositorio, añade tu benchmark siguiendo nuestra guía de contribución y envía una pull request. Nuestro equipo revisará y fusionará los envíos que califiquen.\",\"q5\":\"¿Con qué frecuencia se actualizan los benchmarks?\",\"a5\":\"Volvemos a ejecutar todos los benchmarks semanalmente con las últimas versiones estables de cada biblioteca. Los lanzamientos de versiones principales activan un ciclo de re-benchmarking inmediato.\",\"q6\":\"¿Son fiables los datos?\",\"a6\":\"Seguimos una metodología estadística rigurosa que incluye ejecuciones de calentamiento, detección de valores atípicos e intervalos de confianza. Todos los datos brutos se publican junto con nuestro análisis para una total transparencia.\",\"q7\":\"¿Ofrecen servicios de consultoría?\",\"a7\":\"Sí, nuestro plan Enterprise incluye horas de consultoría para equipos que evalúan soluciones i18n. Podemos proporcionar recomendaciones personalizadas basadas en su caso de uso específico, escala y limitaciones.\",\"q8\":\"¿Cómo puedo contribuir?\",\"a8\":\"Hay muchas formas de contribuir: enviar benchmarks, mejorar la documentación, informar de errores, sugerir nuevas métricas o patrocinar el proyecto. Visite nuestro repositorio de GitHub para obtener más detalles.\"}},\"de\":{\"header\":{\"title\":\"Häufig gestellte Fragen\",\"description\":\"Alles, was Sie über i18n Benchmark wissen müssen.\"},\"list\":{\"q1\":\"Was ist i18n Benchmark?\",\"a1\":\"i18n Benchmark ist eine Open-Source-Benchmarking-Suite, die die Leistung, die Bundle-Größe und die Entwicklererfahrung von Internationalisierungsbibliotheken für JavaScript- und React-Anwendungen misst und vergleicht.\",\"q2\":\"Wie werden Benchmarks durchgeführt?\",\"a2\":\"Wir führen standardisierte Tests in isolierten Umgebungen mit konsistenter Hardware durch. Jeder Benchmark wird mehrmals wiederholt, um die statistische Signifikanz sicherzustellen. Alle Testkonfigurationen sind öffentlich in unserem GitHub-Repository verfügbar.\",\"q3\":\"Welche Bibliotheken werden derzeit unterstützt?\",\"a3\":{\"fields\":[\"'@'\"],\"nodeType\":\"insertion\",\"insertion\":\"Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {{'@'}}fluent/react und Tolgee.\"},\"q4\":\"Kann ich meine eigenen Benchmarks einreichen?\",\"a4\":\"Ja! Community-Beiträge für Benchmarks sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Leitfaden für Beiträge hinzu und senden Sie einen Pull-Request. Unser Team wird die qualifizierten Einsendungen prüfen und zusammenführen.\",\"q5\":\"Wie oft werden Benchmarks aktualisiert?\",\"a5\":\"Wir führen alle Benchmarks wöchentlich mit den neuesten stabilen Versionen jeder Bibliothek erneut aus. Major-Version-Releases lösen sofort einen Re-Benchmark-Zyklus aus.\",\"q6\":\"Sind die Daten zuverlässig?\",\"a6\":\"Wir folgen einer strengen statistischen Methodik, einschließlich Warm-up-Läufen, Ausreißererkennung und Konfidenzintervallen. Alle Rohdaten werden zusammen mit unserer Analyse für volle Transparenz veröffentlicht.\",\"q7\":\"Bieten Sie Beratungsdienstleistungen an?\",\"a7\":\"Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen evaluieren. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Ihrer Skalierung und Ihren Einschränkungen geben.\",\"q8\":\"Wie kann ich beitragen?\",\"a8\":\"Es gibt viele Möglichkeiten beizutragen: Benchmarks einreichen, Dokumentation verbessern, Fehler melden, neue Metriken vorschlagen oder das Projekt sponsern. Besuchen Sie unser GitHub-Repository für weitere Details.\"}},\"it\":{\"header\":{\"title\":\"Domande frequenti\",\"description\":\"Tutto quello che c'è da sapere su i18n Benchmark.\"},\"list\":{\"q1\":\"Cos'è i18n Benchmark?\",\"a1\":\"i18n Benchmark è una suite di benchmarking open source che misura e confronta le prestazioni, le dimensioni del bundle e l'esperienza degli sviluppatori delle librerie di internazionalizzazione per applicazioni JavaScript e React.\",\"q2\":\"Come vengono condotti i benchmark?\",\"a2\":\"Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni dei test sono disponibili pubblicamente nel nostro repository GitHub.\",\"q3\":\"Quali librerie sono attualmente supportate?\",\"a3\":{\"fields\":[\"'@'\"],\"nodeType\":\"insertion\",\"insertion\":\"Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {{'@'}}fluent/react e Tolgee.\"},\"q4\":\"Posso inviare i miei benchmark?\",\"a4\":\"Sì! Gli invii di benchmark da parte della comunità sono i benvenuti. Fai un fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà gli invii idonei.\",\"q5\":\"Con quale frequenza vengono aggiornati i benchmark?\",\"a5\":\"Rieseguiamo tutti i benchmark settimanalmente rispetto alle ultime versioni stabili di ogni libreria. I rilasci di versioni principali innescano un ciclo di re-benchmark immediato.\",\"q6\":\"I dati sono affidabili?\",\"a6\":\"Seguiamo una rigorosa metodologia statistica che include esecuzioni di riscaldamento, rilevamento di valori anomali e intervalli di confidenza. Tutti i dati grezzi sono pubblicati insieme alla nostra analisi per la massima trasparenza.\",\"q7\":\"Offrite servizi di consulenza?\",\"a7\":\"Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano soluzioni i18n. Possiamo fornire raccomandazioni personalizzate in base al caso d'uso specifico, alla scala e ai vincoli.\",\"q8\":\"Come posso contribuire?\",\"a8\":\"Ci sono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per maggiori dettagli.\"}},\"pt\":{\"header\":{\"title\":\"Perguntas frequentes\",\"description\":\"Tudo o que você precisa saber sobre o i18n Benchmark.\"},\"list\":{\"q1\":\"O que é o i18n Benchmark?\",\"a1\":\"O i18n Benchmark é uma suíte de benchmarking de código aberto que mede e compara o desempenho, o tamanho do bundle e a experiência do desenvolvedor das bibliotecas de internacionalização para aplicações JavaScript e React.\",\"q2\":\"Como os benchmarks são conduzidos?\",\"a2\":\"Realizamos testes padronizados em ambientes isolados usando hardware consistente. Cada benchmark é repetido várias vezes para garantir a significância estatística. Todas as configurações de teste estão disponíveis publicamente no nosso repositório GitHub.\",\"q3\":\"Quais bibliotecas são suportadas atualmente?\",\"a3\":{\"fields\":[\"'@'\"],\"nodeType\":\"insertion\",\"insertion\":\"Suportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {{'@'}}fluent/react e Tolgee.\"},\"q4\":\"Posso enviar meus próprios benchmarks?\",\"a4\":\"Sim! Contribuições de benchmarks da comunidade são bem-vindas. Faça um fork do nosso repositório, adicione seu benchmark seguindo nosso guia de contribuição e envie um pull request. Nossa equipe revisará e mesclará as submissões qualificadas.\",\"q5\":\"Com que frequência os benchmarks são atualizados?\",\"a5\":\"Rexecutamos todos os benchmarks semanalmente contra as versões estáveis mais recentes de cada biblioteca. Lançamentos de versões principais disparam um ciclo de re-benchmarking imediato.\",\"q6\":\"Os dados são confiáveis?\",\"a6\":\"Seguimos uma metodologia estatística rigorosa, incluindo execuções de aquecimento, detecção de valores atípicos e intervalos de confiança. Todos os dados brutos são publicados junto com nossa análise para total transparência.\",\"q7\":\"Vocês oferecem serviços de consultoria?\",\"a7\":\"Sim, nosso plano Enterprise inclui horas de consultoria para equipes que avaliam soluções i18n. Podemos fornecer recomendações personalizadas com base no seu caso de uso específico, escala e restrições.\",\"q8\":\"Como posso contribuir?\",\"a8\":\"Existem muitas maneiras de contribuir: enviar benchmarks, melhorar a documentação, relatar bugs, sugerir novas métricas ou patrocinar o projeto. Visite nosso repositório GitHub para mais detalhes.\"}},\"zh\":{\"header\":{\"title\":\"常见问题\",\"description\":\"关于 i18n 基准测试您需要了解的一切。\"},\"list\":{\"q1\":\"什么是 i18n 基准测试？\",\"a1\":\"i18n 基准测试是一个开源基准测试套件，旨在衡量和比较 JavaScript 和 React 应用程序国际化库的性能、包大小和开发人员体验。\",\"q2\":\"基准测试是如何进行的？\",\"a2\":\"我们在使用一致硬件的隔离环境中运行标准化测试。每个基准测试都重复多次以确保统计显著性。所有测试配置都在我们的 GitHub 存储库中公开可用。\",\"q3\":\"目前支持哪些库？\",\"a3\":{\"fields\":[\"'@'\"],\"nodeType\":\"insertion\",\"insertion\":\"我们支持 react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {{'@'}}fluent/react 和 Tolgee。\"},\"q4\":\"我可以提交我自己的基准测试吗？\",\"a4\":\"是的！欢迎社区提交基准测试。Fork 我们的存储库，按照我们的贡献指南添加您的基准测试，并提交拉取请求。我们的团队将审核并合并符合条件的提交。\",\"q5\":\"基准测试多久更新一次？\",\"a5\":\"我们每周针对每个库的最新稳定版本重新运行所有基准测试。主要版本发布会立即触发重新基准测试周期。\",\"q6\":\"数据可靠吗？\",\"a6\":\"我们遵循严格的统计方法，包括预热运行、异常值检测和置信区间。所有原始数据都与我们的分析一起发布，以实现完全透明。\",\"q7\":\"你们提供咨询服务吗？\",\"a7\":\"是的，我们的企业计划包括为评估 i18n 解决方案的团队提供咨询时间。我们可以根据您的具体用例、规模和限制提供量身定制的建议。\",\"q8\":\"我该如何贡献？\",\"a8\":\"有很多贡献方式：提交基准测试、改进文档、报告错误、建议新指标或赞助项目。访问我们的 GitHub 存储库了解更多详情。\"}},\"ja\":{\"header\":{\"title\":\"よくある質問\",\"description\":\"i18n Benchmarkについて知っておくべきすべてのこと。\"},\"list\":{\"q1\":\"i18n Benchmarkとは何ですか？\",\"a1\":\"i18n Benchmarkは、JavaScriptおよびReactアプリケーション用の国際化ライブラリのパフォーマンス、バンドルサイズ、および開発者体験を測定および比較するオープンソースのベンチマークスイートです。\",\"q2\":\"ベンチマークはどのように実施されますか？\",\"a2\":\"一貫したハードウェアを使用し、分離された環境で標準化されたテストを実行します。統計的な有意性を確保するために、各ベンチマークは複数回繰り返されます。すべてのテスト構成は、GitHubリポジトリで公開されています。\",\"q3\":\"現在サポートされているライブラリは何ですか？\",\"a3\":{\"fields\":[\"'@'\"],\"nodeType\":\"insertion\",\"insertion\":\"react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、{{'@'}}fluent/react、およびTolgeeをサポートしています。\"},\"q4\":\"自分のベンチマークを投稿できますか？\",\"a4\":\"はい！コミュニティからのベンチマーク投稿を歓迎します。リポジトリをフォークし、貢献ガイドに従ってベンチマークを追加し、プルリクエストを送信してください。チームが審査し、要件を満たす投稿をマージします。\",\"q5\":\"ベンチマークはどのくらいの頻度で更新されますか？\",\"a5\":\"各ライブラリの最新の安定版に対して、毎週すべてのベンチマークを再実行します。メジャーバージョンのリリース時は、即座に再ベンチマークサイクルが実行されます。\",\"q6\":\"データは信頼できますか？\",\"a6\":\"ウォームアップ実行、外れ値検出、信頼区間を含む厳格な統計手法に従っています。完全な透明性を確保するため、すべての生データは分析結果とともに公開されます。\",\"q7\":\"コンサルティングサービスは提供していますか？\",\"a7\":\"はい。Enterpriseプランには、i18nソリューションを評価しているチーム向けのコンサルティング時間が含まれています。特定のユースケース、規模、制約に基づいて、カスタマイズされた推奨事項を提供できます。\",\"q8\":\"どのように貢献できますか？\",\"a8\":\"貢献する方法はたくさんあります。ベンチマークの投稿、ドキュメントの改善、バグ報告、新しい指標の提案、プロジェクトへのスポンサーなどです。詳細はGitHubリポジトリをご覧ください。\"}},\"ko\":{\"header\":{\"title\":\"자주 묻는 질문\",\"description\":\"i18n Benchmark에 대해 알아야 할 모든 것.\"},\"list\":{\"q1\":\"i18n Benchmark란 무엇인가요?\",\"a1\":\"i18n Benchmark는 JavaScript 및 React 애플리케이션용 국제화 라이브러리의 성능, 번들 크기, 개발자 경험을 측정·비교하는 오픈소스 벤치마크 스위트입니다.\",\"q2\":\"벤치마크는 어떻게 진행되나요?\",\"a2\":\"일관된 하드웨어로 격리된 환경에서 표준화된 테스트를 실행합니다. 통계적 유의성을 위해 각 벤치마크는 여러 번 반복됩니다. 모든 테스트 구성은 GitHub 저장소에 공개되어 있습니다.\",\"q3\":\"현재 지원되는 라이브러리는 무엇인가요?\",\"a3\":{\"fields\":[\"'@'\"],\"nodeType\":\"insertion\",\"insertion\":\"react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {{'@'}}fluent/react, Tolgee를 지원합니다.\"},\"q4\":\"직접 벤치마크를 제출할 수 있나요?\",\"a4\":\"네, 커뮤니티 벤치마크 제출을 환영합니다. 저장소를 포크하고 기여 가이드에 따라 벤치마크를 추가한 뒤 풀 리퀘스트를 보내 주세요. 팀이 검토하여 조건을 충족하면 병합합니다.\",\"q5\":\"벤치마크는 얼마나 자주 갱신되나요?\",\"a5\":\"각 라이브러리의 최신 안정 버전을 대상으로 매주 모든 벤치마크를 다시 실행합니다. 메이저 버전 출시 시에는 즉시 재벤치마크 사이클을 돌립니다.\",\"q6\":\"데이터는 신뢰할 수 있나요?\",\"a6\":\"웜업 실행, 이상치 제거, 신뢰 구간을 포함한 엄격한 통계 방법을 따릅니다. 완전한 투명성을 위해 모든 원시 데이터를 분석과 함께 공개합니다.\",\"q7\":\"컨설팅 서비스를 제공하나요?\",\"a7\":\"네. Enterprise 플랜에는 i18n 솔루션을 검토하는 팀을 위한 컨설팅 시간이 포함됩니다. 사용 사례, 규모, 제약에 맞춘 권장 사항을 드릴 수 있습니다.\",\"q8\":\"어떻게 기여할 수 있나요?\",\"a8\":\"벤치마크 제출, 문서 개선, 버그 신고, 새 지표 제안, 프로젝트 후원 등 다양한 방법이 있습니다. 자세한 내용은 GitHub 저장소를 참고하세요.\"}},\"ru\":{\"header\":{\"title\":\"Часто задаваемые вопросы\",\"description\":\"Все, что вам нужно знать об i18n Benchmark.\"},\"list\":{\"q1\":\"Что такое i18n Benchmark?\",\"a1\":\"i18n Benchmark — это набор инструментов для бенчмаркинга с открытым исходным кодом, который измеряет и сравнивает производительность, размер бандла и опыт разработчиков библиотек интернационализации для приложений на JavaScript и React.\",\"q2\":\"Как проводятся бенчмарки?\",\"a2\":\"Мы запускаем стандартизированные тесты в изолированных средах на идентичном оборудовании. Каждый бенчмарк повторяется несколько раз для обеспечения статистической значимости. Все конфигурации тестов общедоступны в нашем репозитории на GitHub.\",\"q3\":\"Какие библиотеки поддерживаются в данный момент?\",\"a3\":{\"fields\":[\"'@'\"],\"nodeType\":\"insertion\",\"insertion\":\"Мы поддерживаем react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {{'@'}}fluent/react и Tolgee.\"},\"q4\":\"Могу ли я прислать свои собственные бенчмарки?\",\"a4\":\"Да! Мы приветствуем бенчмарки от сообщества. Сделайте форк нашего репозитория, добавьте свой бенчмарк, следуя руководству для участников, и создайте pull request. Наша команда рассмотрит и примет подходящие заявки.\",\"q5\":\"Как часто обновляются бенчмарки?\",\"a5\":\"Мы еженедельно перезапускаем все бенчмарки для последних стабильных версий каждой библиотеки. Выход мажорных версий инициирует немедленный цикл повторного тестирования.\",\"q6\":\"Можно ли доверять данным?\",\"a6\":\"Мы следуем строгой статистической методологии, включая прогревочные запуски, обнаружение выбросов и расчет доверительных интервалов. Все исходные данные публикуются вместе с нашим анализом для полной прозрачности.\",\"q7\":\"Предоставляете ли вы консалтинговые услуги?\",\"a7\":\"Да, наш план Enterprise включает консультации для команд, выбирающих i18n-решения. Мы можем дать индивидуальные рекомендации на основе вашего конкретного случая, масштаба и ограничений.\",\"q8\":\"Как я могу помочь проекту?\",\"a8\":\"Есть много способов: присылайте бенчмарки, улучшайте документацию, сообщайте о багах, предлагайте новые метрики или станьте спонсором проекта. Посетите наш репозиторий на GitHub для подробностей.\"}}}}"),
@@ -1363,185 +2169,20 @@ var Be = /* @__PURE__ */ new WeakMap(), Ve = 0, He = (e) => {
 			"blog::sync-json::./locales/{{locale}}.json::locales/ru.json"
 		]
 	}
-}, ot = () => at, st = /* @__PURE__ */ new Set([
-	"hasOwnProperty",
-	"isPrototypeOf",
-	"propertyIsEnumerable",
-	"toLocaleString"
-]), ct = (e = "") => new Proxy((() => e), { get: (t, n) => n === "toJSON" || n === Symbol.toPrimitive || n === "toString" || n === "valueOf" ? () => e : n === "then" ? void 0 : st.has(n) ? Object.prototype[n].bind(t) : n === Symbol.iterator ? function* () {
-	yield e;
-} : ct(e ? `${e}.${String(n)}` : String(n)) }), lt = /* @__PURE__ */ new Set(), ut = (e, t, n) => {
-	let r = ot()[e];
-	return r ? Dt(r, t, n) : (lt.has(e) || (z({ log: k })(typeof window > "u" ? `Dictionary ${ze(e)} was not found. Using fallback proxy.` : `Dictionary ${e} was not found. Using fallback proxy.`, { level: "warn" }), lt.add(e)), ct(e));
-}, dt = (e) => {
-	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
-	let t = Object.getPrototypeOf(e);
-	return t === Object.prototype || t === null || Array.isArray(e);
-}, ft = (e, t) => {
-	if (e === void 0) return t;
-	if (t === void 0 || Array.isArray(e)) return e;
-	if (dt(e) && dt(t)) {
-		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : ft(e[r], t[r]));
-		return n;
-	}
-	return e;
-}, pt = (e, t, n) => {
-	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
-		e && !i.has(e) && (i.add(e), a.push(e));
-	};
-	o(t), t.includes("-") && o(t.split("-")[0]), o(n), n?.includes("-") && o(n.split("-")[0]);
-	let s = [];
-	for (let e of a) {
-		let t = r(e);
-		if (t !== void 0) {
-			if (typeof t == "string") {
-				if (s.length === 0) return t;
-				continue;
-			}
-			s.push(t);
-		}
-	}
-	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => ft(e, t));
-}, K = (e) => {
-	if (typeof e != "object" || !e || !("nodeType" in e)) return !1;
-	let { nodeType: t } = e;
-	return !1;
-}, mt = (e) => {
-	if (typeof e == "string") return e;
-	if (K(e)) return e.nodeType === "html" ? e[T] : e[pe];
-}, ht = (e, t) => {
-	if (typeof e == "string") return t;
-	if (K(e)) {
-		let n = e.nodeType === "html" ? T : pe;
-		return {
-			...e,
-			[n]: t
-		};
-	}
-	return e;
-}, gt = (e, t, n, r, i) => {
-	let a = ht(e, qe(mt(e), t));
-	return i(a, {
-		...n,
-		plugins: r,
-		children: a
-	});
-}, q = {
-	id: "fallback-plugin",
-	canHandle: () => !1,
-	transform: (e) => e
-}, _t = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? q : {
-	id: "translation-plugin",
-	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
-	transform: (n, r, i) => {
-		let a = n.translation ?? {}, o = {};
-		for (let e in a) {
-			let t = {
-				...r,
-				children: a[e],
-				keyPath: [...r.keyPath, {
-					type: ce,
-					key: e
-				}]
-			};
-			o[e] = i(a[e], t);
-		}
-		return pt(o, e, t);
-	}
-}, vt = q, yt = q, bt = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? q : {
-	id: "insertion-plugin",
-	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
-	transform: (e, t, n) => {
-		let r = [...t.keyPath, { type: w }], i = e[w], a = {
-			id: "insertion-string-plugin",
-			canHandle: (e) => typeof e == "string" || K(e),
-			transform: (e, n, r) => {
-				if (K(e)) return (i) => gt(e, i, n, t.plugins, r);
-				let i = r(e, {
-					...n,
-					children: e,
-					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
-				});
-				return (e) => {
-					let a = qe(i, e);
-					return r(a, {
-						...n,
-						plugins: t.plugins,
-						children: a
-					});
-				};
-			}
-		};
-		return n(i, {
-			...t,
-			children: i,
-			keyPath: r,
-			plugins: [a, ...t.plugins ?? []]
-		});
-	}
-}, xt = q, St = q;
-process.env.INTLAYER_OPTIMIZED_NESTING;
-var Ct = (e) => q, wt = q, Tt = (e, t = !0) => [
-	_t(e ?? D.defaultLocale, t ? D.defaultLocale : void 0),
-	vt,
-	yt,
-	bt,
-	Ct(e ?? D.defaultLocale),
-	wt,
-	xt,
-	St
-], Et = (e, t, n = []) => E(e, {
-	...t,
-	plugins: n
-}), Dt = (e, t, n) => {
-	let { locale: r, selector: i } = rt(t), a = Ge(r ?? D.defaultLocale, it(i), n), o = Ke(e, a);
-	if (o.hit) return o.content;
-	let s = n ?? Tt(r), c = nt(e, i), l = (e) => {
-		let t = {
-			dictionaryKey: e.key,
-			dictionaryPath: e.filePath,
-			keyPath: [],
-			plugins: s,
-			nestedDictionaries: e.nestedDictionaries
-		};
-		return Et(e.content, t, s);
-	};
-	return c === null ? H(e, a, null) : Array.isArray(c) ? H(e, a, c.map(l)) : H(e, a, l(c));
-}, Ot = () => {
-	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, kt = Symbol("intlayer"), J = null, At = (e, t = !0, n) => {
-	if (J) return J;
-	Ot();
-	let { defaultLocale: r } = D ?? {}, i = g(e ?? r), a = (e) => {
-		i.value = e;
-	}, o = g(n);
-	return J = {
-		locale: te(i),
-		setLocale: a,
-		variant: te(o),
-		setVariant: (e) => {
-			o.value = e;
-		},
-		isCookieEnabled: t
-	}, J;
-}, jt = (e, t) => {
-	let { locale: n, isCookieEnabled: r, variant: i } = t ?? {}, a = At(n, r, i);
-	return e.provide(kt, a), e;
-}, Mt = (e) => {
+}, o = () => a, s = (e) => {
 	if (typeof e == "number") return Date.now() + e * 1e3;
 	if (typeof e == "string") {
 		let t = Date.parse(e);
 		return Number.isNaN(t) ? void 0 : t;
 	}
-}, Nt = (e, t, n) => {
+}, c = (e, t, n) => {
 	let r = [`${e}=${encodeURIComponent(t)}`];
 	n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`);
-	let i = Mt(n.expires);
+	let i = s(n.expires);
 	return i !== void 0 && r.push(`Expires=${new Date(i).toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, Pt = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+}, l = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var Y = {
+var u = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -1559,462 +2200,52 @@ var Y = {
 	},
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
-}, Ft = (e = Y) => {
-	let { locales: t } = D;
+}, d = (e = u) => {
+	let { locales: t } = n;
 	if (e?.isCookieEnabled === !1) return;
-	let n = (e) => !!e && t.includes(e);
-	if (!Pt) for (let t = 0; t < (O.storage.cookies ?? []).length; t++) try {
-		let r = e?.getCookie?.(O.storage.cookies[t].name);
-		if (n(r)) return r;
+	let i = (e) => !!e && t.includes(e);
+	if (!l) for (let t = 0; t < (r.storage.cookies ?? []).length; t++) try {
+		let n = e?.getCookie?.(r.storage.cookies[t].name);
+		if (i(n)) return n;
 	} catch {}
-}, It = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !Pt && O.storage.cookies) for (let n = 0; n < O.storage.cookies.length; n++) {
-		let { name: r, attributes: i } = O.storage.cookies[n];
+}, f = !1, p, m = () => typeof window > "u" ? d(u) : (f ||= (p = d(u), !0), p), h = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && (f = !1, !l && r.storage.cookies)) for (let n = 0; n < r.storage.cookies.length; n++) {
+		let { name: i, attributes: a } = r.storage.cookies[n];
 		try {
-			t?.setCookieStore && t.setCookieStore(r, e, {
-				...i,
-				expires: Mt(i.expires)
+			t?.setCookieStore && t.setCookieStore(i, e, {
+				...a,
+				expires: s(a.expires)
 			});
 		} catch {
 			try {
-				t?.setCookieString && t.setCookieString(r, Nt(r, e, i));
+				t?.setCookieString && t.setCookieString(i, c(i, e, a));
 			} catch {}
 		}
 	}
-};
-Ft(Y);
-var Lt = (e, t) => It(e, {
-	...Y,
+}, g = m, _ = (e, t) => h(e, {
+	...u,
 	isCookieEnabled: t
-}), { defaultLocale: Rt, locales: zt } = D ?? {}, Bt = ({ isCookieEnabled: e, onLocaleChange: n } = {}) => {
-	let r = d(kt);
-	return {
-		locale: t(() => r?.locale?.value ?? Rt),
-		defaultLocale: Rt,
-		availableLocales: zt,
-		setLocale: (t) => {
-			if (!zt?.map(String).includes(t)) {
-				console.error(`Locale ${t} is not available`);
-				return;
-			}
-			r && r.setLocale(t), Lt(t, e ?? r?.isCookieEnabled ?? !0), n?.(t);
-		}
-	};
-}, Vt = Symbol("global-i18n"), Ht = "translation", X = (e, t, n) => {
-	try {
-		let r = ge(ut(t, e), n);
-		if (r != null) return r;
-	} catch {}
-}, Z = (e, t, n) => {
-	let r = t, i = n;
-	if (n.includes(":")) {
-		let e = n.indexOf(":");
-		r = n.slice(0, e), i = n.slice(e + 1);
-	}
-	if (r) {
-		let t = X(e, r, i);
-		if (t !== void 0) return t;
-	}
-	if (i.includes(".")) {
-		let t = i.indexOf("."), n = X(e, i.slice(0, t), i.slice(t + 1));
-		if (n !== void 0) return n;
-	}
-	if (!r) {
-		let t = X(e, Ht, i);
-		if (t !== void 0) return t;
-	}
-}, Ut = (e, t, n, r, i) => {
-	let { values: a, count: o, defaultMessage: s } = F(r), c = Z(e, t, n);
-	if (c === void 0) {
-		if (i?.[e]) {
-			let r = t ? `${t}.${n}` : n, s = ge(i[e], r);
-			if (s !== void 0) return I(s, a, o, e);
-		}
-		return s === void 0 ? n : I(s, a, o, e);
-	}
-	return I(c, a, o, e);
-}, Wt = () => D?.locales?.map(String) ?? [], Q = (e) => {
-	z({ log: k })(`${B(e, R)} has no effect with ${B("@intlayer/vue-i18n", Fe)} — translations are managed by the compiled intlayer dictionaries.`);
-}, Gt = ((e = {}) => {
-	let n = e.messages;
-	e.messages !== void 0 && z({ log: k })(`${B("createI18n", R)}: the ${B("`messages`", R)} option is used as a fallback. For optimal bundle size, remove the locale JSON imports and use ${B("useDictionary", R)} or compile your intlayer dictionaries instead:\n  ${B("Before:", je)} createI18n({ messages: { en, fr, … } })\n  ${B("After: ", je)} createI18n({})`);
-	let r = At(e.locale), i = e.datetimeFormats, a = e.numberFormats, o = () => String(r.locale.value), s = t({
-		get: () => o(),
-		set: (e) => {
-			r.setLocale(e);
-		}
-	}), c = (e, ...t) => Ut(o(), void 0, e, t, n), l = (e, t) => oe(e, t, o(), i), u = (e, t) => se(e, t, o(), a), d = {
-		locale: s,
-		availableLocales: Wt(),
-		fallbackLocale: e.fallbackLocale ?? D?.defaultLocale,
-		t: c,
-		tc: c,
-		te: (e) => Z(o(), void 0, e) !== void 0,
-		tm: (e) => Z(o(), void 0, e) ?? {},
-		rt: (e, ...t) => {
-			let { values: n, count: r } = F(t);
-			return I(e, n, r, o());
+}), v = () => {
+	typeof window < "u" && (window.intlayer = { enabled: !0 });
+}, y = Symbol("intlayer"), b = null, x = (r, i = !0, a) => {
+	if (b) return b;
+	v();
+	let { defaultLocale: o } = n ?? {}, s = t(r ?? g() ?? o), c = (e) => {
+		s.value = e;
+	}, l = t(a);
+	return b = {
+		locale: e(s),
+		setLocale: c,
+		variant: e(l),
+		setVariant: (e) => {
+			l.value = e;
 		},
-		d: l,
-		n: u,
-		setLocaleMessage: (e, t) => {
-			Q("setLocaleMessage");
-		},
-		mergeLocaleMessage: (e, t) => {
-			Q("mergeLocaleMessage");
-		},
-		getLocaleMessage: (e) => (Q("getLocaleMessage"), {})
-	}, f = {
-		get locale() {
-			return o();
-		},
-		set locale(e) {
-			r.setLocale(e);
-		},
-		get availableLocales() {
-			return Wt();
-		},
-		t: c,
-		tc: c,
-		te: d.te,
-		tm: d.tm,
-		rt: d.rt,
-		d: l,
-		n: u
-	}, p = (e, t) => {
-		let n = t.value;
-		if (typeof n == "string") e.textContent = c(n);
-		else if (n && typeof n == "object") {
-			let t = [];
-			n.args && t.push(n.args), typeof n.choice == "number" && t.push(n.choice), e.textContent = c(n.path, ...t);
-		}
-	}, m = {
-		global: d,
-		mode: e.legacy === !0 ? "legacy" : "composition",
-		__optionsMessages: n,
-		install(t) {
-			jt(t, { locale: e.locale }), t.provide(Vt, m), t.config.globalProperties.$t = c, t.config.globalProperties.$tc = c, t.config.globalProperties.$te = d.te, t.config.globalProperties.$tm = d.tm, t.config.globalProperties.$rt = d.rt, t.config.globalProperties.$d = l, t.config.globalProperties.$n = u, t.config.globalProperties.$i18n = f, t.directive("t", {
-				beforeMount: p,
-				updated: p
-			});
-		}
-	};
-	return m;
-}), $ = ((e) => {
-	let { locale: n, setLocale: r, availableLocales: i } = Bt(), a = d(Vt)?.__optionsMessages, o = e?.namespace, s = e?.datetimeFormats, c = e?.numberFormats, l = t({
-		get: () => n.value,
-		set: (e) => {
-			r(e);
-		}
-	}), u = (e, ...t) => Ut(n.value, o, e, t, a);
-	return {
-		locale: l,
-		availableLocales: i,
-		t: u,
-		tc: u,
-		te: (e) => Z(n.value, o, e) !== void 0,
-		tm: (e) => Z(n.value, o, e) ?? {},
-		rt: (e, ...t) => {
-			let { values: r, count: i } = F(t);
-			return I(e, r, i, n.value);
-		},
-		d: (e, t) => oe(e, t, n.value, s),
-		n: (e, t) => se(e, t, n.value, c)
-	};
-});
-function Kt() {
-	if (!(typeof window > "u")) {
-		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
-		try {
-			if (performance.getEntriesByName("hydration_start").length > 0) {
-				performance.measure("hydration_duration", "hydration_start", "hydration_end"), console.log("--- BROWSER: hydration_duration measured");
-				let e = performance.getEntriesByName("hydration_duration")[0]?.duration;
-				e && console.log(`Hydration Duration: ${e.toFixed(2)}ms`);
-			} else console.warn("--- BROWSER: hydration_start NOT FOUND");
-		} catch (e) {
-			console.warn("Could not measure hydration duration:", e);
-		}
-	}
-}
-function qt(e, t) {
-	if (typeof window > "u") return;
-	let n = performance.now() - t;
-	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
-}
-var Jt = { class: "mt-20 border-t border-border bg-card" }, Yt = { class: "container py-8" }, Xt = { class: "grid gap-8 md:grid-cols-3" }, Zt = { class: "mb-2 text-sm font-semibold text-foreground" }, Qt = { class: "text-sm text-muted-foreground" }, $t = { class: "mb-2 text-sm font-semibold text-foreground" }, en = { class: "space-y-1" }, tn = ["href"], nn = { class: "mb-2 text-sm font-semibold text-foreground" }, rn = { class: "text-sm text-muted-foreground" }, an = { class: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground" }, on = c({
-	__name: "Footer",
-	setup(r) {
-		let { t: s } = $(), c = S(), l = t(() => c.params.locale || "en"), u = t(() => [
-			{
-				label: s("footer.github"),
-				href: "https://github.com/intlayer-org/benchmark-i18n",
-				isInternal: !1
-			},
-			{
-				label: s("footer.methodology"),
-				to: `/${l.value}/about`,
-				isInternal: !0
-			},
-			{
-				label: s("footer.contributing"),
-				to: `/${l.value}/contact`,
-				isInternal: !0
-			}
-		]);
-		return (t, r) => {
-			let c = v("router-link");
-			return h(), i("footer", Jt, [a("div", Yt, [a("div", Xt, [
-				a("div", null, [a("h3", Zt, y(b(s)("footer.title")), 1), a("p", Qt, y(b(s)("footer.description")), 1)]),
-				a("div", null, [a("h3", $t, y(b(s)("footer.resources")), 1), a("ul", en, [(h(!0), i(e, null, _(u.value, (e) => (h(), i("li", { key: e.label }, [e.isInternal ? (h(), n(c, {
-					key: 0,
-					to: e.to,
-					class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-				}, {
-					default: x(() => [o(y(e.label), 1)]),
-					_: 2
-				}, 1032, ["to"])) : (h(), i("a", {
-					key: 1,
-					href: e.href,
-					target: "_blank",
-					rel: "noreferrer",
-					class: "text-sm text-muted-foreground hover:text-foreground transition-colors"
-				}, y(e.label), 9, tn))]))), 128))])]),
-				a("div", null, [a("h3", nn, y(b(s)("footer.contact")), 1), a("p", rn, y(b(s)("shared.contactEmail")), 1)])
-			]), a("div", an, y(b(s)("footer.builtWith")), 1)])]);
-		};
-	}
-});
-function sn(e) {
-	p(() => {
-		typeof performance < "u" && performance.mark && performance.mark(`${e}-start`);
-	}), m(() => {
-		if (typeof performance < "u" && performance.mark && performance.measure) {
-			performance.mark(`${e}-end`);
-			try {
-				performance.measure(`${e}-render`, `${e}-start`, `${e}-end`);
-			} catch {}
-		}
-	});
-}
-var cn = [
-	"en",
-	"fr",
-	"es",
-	"de",
-	"it",
-	"pt",
-	"zh",
-	"ja",
-	"ko",
-	"ru"
-], ln = (e) => {
-	try {
-		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
-		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
-	} catch {
-		return e.toUpperCase();
-	}
-}, un = { class: "flex items-center gap-2" }, dn = ["value"], fn = ["value"], pn = c({
-	__name: "LocaleSwitcher",
-	setup(n) {
-		let r = S(), o = ie(), s = t(() => r.params.locale || "en"), c = (e) => {
-			let t = r.path.replace(/^\/[^/]+/, `/${e}`);
-			o.push({
-				path: t,
-				query: r.query,
-				hash: r.hash
-			});
-		};
-		return (t, n) => (h(), i("div", un, [a("select", {
-			value: s.value,
-			onChange: n[0] ||= (e) => c(e.target.value),
-			class: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors"
-		}, [(h(!0), i(e, null, _(b(cn), (e) => (h(), i("option", {
-			key: e,
-			value: e
-		}, y(b(ln)(e)), 9, fn))), 128))], 40, dn)]));
-	}
-}), mn = ["aria-label", "title"], hn = c({
-	__name: "ThemeToggle",
-	setup(e) {
-		let { t } = $(), n = g("auto");
-		function r() {
-			if (typeof window > "u") return "auto";
-			let e = window.localStorage.getItem("theme");
-			return e === "light" || e === "dark" || e === "auto" ? e : "auto";
-		}
-		function a(e) {
-			let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
-			document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
-		}
-		m(() => {
-			let e = r();
-			n.value = e, a(e);
-		});
-		let o = null;
-		re(n, (e) => {
-			if (e === "auto") {
-				let e = window.matchMedia("(prefers-color-scheme: dark)");
-				o = () => a("auto"), e.addEventListener("change", o);
-			} else o &&= (window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", o), null);
-		}, { immediate: !0 }), ee(() => {
-			o && window.matchMedia("(prefers-color-scheme: dark)").removeEventListener("change", o);
-		});
-		function s() {
-			let e = n.value === "light" ? "dark" : n.value === "dark" ? "auto" : "light";
-			n.value = e, a(e), window.localStorage.setItem("theme", e);
-		}
-		let c = () => n.value === "auto" ? t("themeToggle.labelAuto") : t("themeToggle.labelOther", { mode: n.value });
-		return (e, r) => (h(), i("button", {
-			type: "button",
-			onClick: s,
-			"aria-label": c(),
-			title: c(),
-			class: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80"
-		}, y(n.value === "auto" ? b(t)("themeToggle.auto") : n.value === "dark" ? b(t)("themeToggle.dark") : b(t)("themeToggle.light")), 9, mn));
-	}
-}), gn = { class: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg" }, _n = { class: "container flex h-16 items-center justify-between" }, vn = { class: "flex items-center gap-8" }, yn = { class: "hidden items-center gap-6 text-sm font-medium md:flex" }, bn = ["href", "onClick"], xn = ["href", "onClick"], Sn = { class: "relative" }, Cn = { class: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1" }, wn = { class: "flex items-center gap-4" }, Tn = {
-	href: "https://github.com/intlayer-org/benchmark-i18n",
-	target: "_blank",
-	rel: "noreferrer",
-	class: "text-muted-foreground transition hover:text-foreground"
-}, En = { class: "sr-only" }, Dn = c({
-	__name: "Header",
-	setup(c) {
-		sn("Header");
-		let { t: l } = $(), u = g(!1), d = S(), p = t(() => d.params.locale || "en"), m = t(() => [
-			{
-				to: `/${p.value}/products`,
-				label: l("header.products")
-			},
-			{
-				to: `/${p.value}/pricing`,
-				label: l("header.pricing")
-			},
-			{
-				to: `/${p.value}/team`,
-				label: l("header.team")
-			},
-			{
-				to: `/${p.value}/blog`,
-				label: l("header.blog")
-			},
-			{
-				to: `/${p.value}/careers`,
-				label: l("header.careers")
-			},
-			{
-				to: `/${p.value}/faq`,
-				label: l("header.faq")
-			},
-			{
-				to: `/${p.value}/contact`,
-				label: l("header.contact")
-			},
-			{
-				to: `/${p.value}/settings`,
-				label: l("header.settings")
-			}
-		]);
-		return (t, c) => {
-			let d = v("router-link");
-			return h(), i("header", gn, [a("nav", _n, [a("div", vn, [s(d, {
-				to: `/${p.value}`,
-				class: "text-lg font-bold tracking-tight text-primary no-underline"
-			}, {
-				default: x(() => [o(y(b(l)("shared.appName")), 1)]),
-				_: 1
-			}, 8, ["to"]), a("div", yn, [
-				s(d, {
-					to: `/${p.value}`,
-					custom: ""
-				}, {
-					default: x(({ href: e, navigate: t, isExactActive: n }) => [a("a", {
-						href: e,
-						class: f(["nav-link", { "router-link-active": n }]),
-						onClick: t
-					}, y(b(l)("header.home")), 11, bn)]),
-					_: 1
-				}, 8, ["to"]),
-				s(d, {
-					to: `/${p.value}/about`,
-					custom: ""
-				}, {
-					default: x(({ href: e, navigate: t, isActive: n }) => [a("a", {
-						href: e,
-						class: f(["nav-link", { "router-link-active": n }]),
-						onClick: t
-					}, y(b(l)("header.methodology")), 11, xn)]),
-					_: 1
-				}, 8, ["to"]),
-				a("div", Sn, [a("button", {
-					type: "button",
-					class: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
-					onMouseenter: c[0] ||= (e) => u.value = !0,
-					onMouseleave: c[1] ||= (e) => u.value = !1,
-					onClick: c[2] ||= (e) => u.value = !u.value
-				}, [o(y(b(l)("header.mockPages")) + " ", 1), s(b(ae), {
-					size: 14,
-					class: f(["transition-transform", u.value ? "rotate-180" : ""])
-				}, null, 8, ["class"])], 32), u.value ? (h(), i("div", {
-					key: 0,
-					class: "absolute left-0 top-full pt-2 w-48",
-					onMouseenter: c[4] ||= (e) => u.value = !0,
-					onMouseleave: c[5] ||= (e) => u.value = !1
-				}, [a("div", Cn, [(h(!0), i(e, null, _(m.value, (e) => (h(), n(d, {
-					key: e.to,
-					to: e.to,
-					class: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
-					onClick: c[3] ||= (e) => u.value = !1
-				}, {
-					default: x(() => [o(y(e.label), 1)]),
-					_: 2
-				}, 1032, ["to"]))), 128))])], 32)) : r("v-if", !0)])
-			])]), a("div", wn, [
-				a("a", Tn, [a("span", En, y(b(l)("shared.goToGithub")), 1), c[6] ||= a("svg", {
-					viewBox: "0 0 16 16",
-					"aria-hidden": "true",
-					width: "20",
-					height: "20"
-				}, [a("path", {
-					fill: "currentColor",
-					d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-				})], -1)]),
-				s(pn),
-				s(hn)
-			])])]);
-		};
-	}
-}), On = c({
-	__name: "Layout",
-	setup(t) {
-		let n = S(), { locale: r } = $(), a = g(0);
-		return p(() => {
-			a.value = typeof performance < "u" ? performance.now() : 0;
-		}), m(() => {
-			Kt(), qt("AppRoot", a.value);
-		}), re(() => n.params.locale, (e) => {
-			e && (document.documentElement.lang = e, r.value = e);
-		}, { immediate: !0 }), (t, n) => {
-			let r = v("router-view");
-			return h(), i(e, null, [
-				s(Dn),
-				s(r),
-				s(on)
-			], 64);
-		};
-	}
-}), kn = Gt({
-	legacy: !1,
-	locale: "en",
-	fallbackLocale: "en"
-}), An = c({
-	__name: "Wrapper",
-	setup(e) {
-		let t = l()?.appContext.app;
-		return t && !t.config.globalProperties.$i18n && t.use(kn), (e, t) => ne(e.$slots, "default");
-	}
-}), jn = { render() {
-	return u(An, {}, { default: () => u(On) });
-} };
-export { jn as default };
+		isCookieEnabled: i
+	}, b;
+}, S = (e, t) => {
+	let { locale: n, isCookieEnabled: r, variant: i } = t ?? {}, a = x(n, r, i);
+	return e.provide(y, a), process.env.INTLAYER_DEVTOOLS_ENABLED !== "false" && import("./devtools-BY4kvNeJ.js").then(({ enableIntlayerDevtools: t }) => {
+		t(e);
+	}).catch(() => {}), e;
+};
+export { o as a, _ as i, S as n, n as o, x as r, i as s, y as t };

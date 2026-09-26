@@ -3,21 +3,11 @@
 import { useScopedI18n } from "../../../locales/client";
 
 export default function CareersBenefits() {
-  const scopedT = useScopedI18n("careers-benefits");
-  const scopedPositionsT = useScopedI18n("open-positions");
+  const benefitsT = useScopedI18n("careers-benefits");
   const benefits = [
-    {
-      label: scopedT("workFromAnywhereInThe"),
-      value: scopedPositionsT("remote"),
-    },
-    {
-      label: scopedT("competitivePay"),
-      value: scopedT("topOfMarketCompensation"),
-    },
-    {
-      label: scopedT("openSourceTime"),
-      value: scopedT("twentyPercentTime"),
-    },
+    { label: benefitsT("remoteFirst"), value: benefitsT("workFromAnywhereInThe") },
+    { label: benefitsT("competitivePay"), value: benefitsT("topOfMarketCompensation") },
+    { label: benefitsT("openSourceTime"), value: benefitsT("twentyPercentTime") },
   ];
 
   return (

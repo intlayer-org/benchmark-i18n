@@ -1,5 +1,6 @@
 {
   "apiAccess": "Accesso API",
   "apiKey": "Chiave API",
+  "copy": "Copia",
   "useThisKeyToAccess": "Usa questa chiave per accedere programmaticamente all'API di benchmarking."
 }

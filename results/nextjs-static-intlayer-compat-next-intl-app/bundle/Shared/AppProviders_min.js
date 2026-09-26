@@ -1,4 +1,4 @@
-import { createContext as e, useContext as t, useEffect as n, useLayoutEffect as r, useRef as i, useState as a } from "react";
+import { createContext as e, useCallback as t, useEffect as n, useLayoutEffect as r, useMemo as i, useState as a } from "react";
 import { jsx as o, jsxs as s } from "react/jsx-runtime";
 import { usePathname as c } from "next/navigation";
 var l = {
@@ -42,34 +42,20 @@ var l = {
 }, d = {
 	mode: "default",
 	prefix: "\x1B[38;5;239m[intlayer] \x1B[0m"
-}, f = "\x1B[0m", p = "\x1B[34m", m = "\x1B[31m", h = "\x1B[32m", g = "\x1B[36m", _ = (e) => e, v = (e, t) => {
-	let n = t?.config ?? {}, r = n.mode ?? "default";
-	if (r === "disabled" || t?.isVerbose && r !== "verbose") return;
-	let i = _(n.prefix), a = i ? [i, ...[e].flat()] : [e].flat(), o = t?.level ?? "info";
-	(n[o] ?? console[o] ?? n.log ?? console.log)(...a);
-}, y = (e, t) => (n, r) => v(n, {
-	...r ?? {},
-	config: {
-		...e?.log,
-		...t?.config,
-		...r?.config ?? {}
-	}
-}), b = (e, t, n) => t && typeof window > "u" ? `${t}${e}${n ? typeof n == "boolean" ? f : n : f}` : e;
-b("✗", m), b("✓", h), b("⏲", p);
-var x = ["en"], S = (e) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(e), C = (e) => {
+}, f = (e) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(e), p = (e) => {
 	if (typeof e == "number") return Date.now() + e * 1e3;
 	if (typeof e == "string") {
 		let t = Date.parse(e);
 		return Number.isNaN(t) ? void 0 : t;
 	}
-}, w = (e, t, n) => {
+}, m = (e, t, n) => {
 	let r = [`${e}=${encodeURIComponent(t)}`];
 	n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`);
-	let i = C(n.expires);
+	let i = p(n.expires);
 	return i !== void 0 && r.push(`Expires=${new Date(i).toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, T = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+}, h = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var E = {
+var g = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -87,51 +73,56 @@ var E = {
 	},
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
-}, D = (e = E) => {
+}, _ = (e = g) => {
 	let { locales: t } = l;
 	if (e?.isCookieEnabled === !1) return;
 	let n = (e) => !!e && t.includes(e);
-	if (!T) for (let t = 0; t < (u.storage.cookies ?? []).length; t++) try {
+	if (!h) for (let t = 0; t < (u.storage.cookies ?? []).length; t++) try {
 		let r = e?.getCookie?.(u.storage.cookies[t].name);
 		if (n(r)) return r;
 	} catch {}
-}, O = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !T && u.storage.cookies) for (let n = 0; n < u.storage.cookies.length; n++) {
+}, v = !1, y, b = () => typeof window > "u" ? _(g) : (v ||= (y = _(g), !0), y), x = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && (v = !1, !h && u.storage.cookies)) for (let n = 0; n < u.storage.cookies.length; n++) {
 		let { name: r, attributes: i } = u.storage.cookies[n];
 		try {
 			t?.setCookieStore && t.setCookieStore(r, e, {
 				...i,
-				expires: C(i.expires)
+				expires: p(i.expires)
 			});
 		} catch {
 			try {
-				t?.setCookieString && t.setCookieString(r, w(r, e, i));
+				t?.setCookieString && t.setCookieString(r, m(r, e, i));
 			} catch {}
 		}
 	}
-}, k = D(E), A = (e, t) => O(e, {
-	...E,
+}, S = "\x1B[0m", C = "\x1B[34m", w = "\x1B[31m", T = "\x1B[32m", E = "\x1B[36m", D = (e) => e, O = (e, t) => {
+	let n = t?.config ?? {}, r = n.mode ?? "default";
+	if (r === "disabled" || t?.isVerbose && r !== "verbose") return;
+	let i = D(n.prefix), a = i ? [i, ...[e].flat()] : [e].flat(), o = t?.level ?? "info";
+	(n[o] ?? console[o] ?? n.log ?? console.log)(...a);
+}, k = (e, t) => (n, r) => O(n, {
+	...r ?? {},
+	config: {
+		...e?.log,
+		...t?.config,
+		...r?.config ?? {}
+	}
+}), A = (e, t, n) => t && typeof window > "u" ? `${t}${e}${n ? typeof n == "boolean" ? S : n : S}` : e;
+A("✗", w), A("✓", T), A("⏲", C);
+var j = ["en"], M = b, N = (e, t) => x(e, {
+	...g,
 	isCookieEnabled: t
-}), j = () => {
-	let { locale: e } = t(B) ?? {}, r = i(null);
-	n(() => {}, []), n(() => {
-		e && r.current && r.current.currentLocale.set(e);
-	}, [e]);
-}, M = ({ children: e }) => (j(), e), N = () => {
-	let { locale: e } = t(B) ?? {}, r = i(null);
-	n(() => {}, []), n(() => {
-		e && r.current && (r.current.setLocale(e), r.current.trackPageView({ reason: "locale_change" }));
-	}, [e]);
-}, P = ({ children: e }) => (N(), e), F = () => {
+}), P = () => {
 	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, I = (e = {}) => ({
+}, F = (e = {}) => ({
 	...e,
 	defaultLocale: e.defaultLocale ?? l?.defaultLocale ?? "en",
 	mode: e.mode ?? u?.mode ?? "prefix-no-default",
-	locales: e.locales ?? l?.locales ?? x,
+	locales: e.locales ?? l?.locales ?? j,
 	rewrite: e.rewrite ?? u?.rewrite,
 	domains: e.domains ?? u?.domains
-}), L = (e, t) => !!e && (t ?? l.locales).includes(e), R = (e, t = l?.locales, n = l?.defaultLocale) => {
+}), I = (e, t) => !!e && (t ?? l.locales).includes(e), L = (e, t = l?.locales, n = l?.defaultLocale) => {
+	if (t?.includes(e)) return e;
 	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
 	try {
 		for (let e of r) {
@@ -142,64 +133,73 @@ var E = {
 		}
 	} catch {}
 	return n;
-}, z = (e = "/", t) => {
-	let { defaultLocale: n, locales: r, mode: i } = I(t);
+}, R = (e = "/", t) => {
+	let { defaultLocale: n, locales: r, mode: i } = F(t);
 	if (!n || !r) return n;
-	let a = S(e), o = e?.endsWith("/") && e.length > 1 ? e.slice(0, -1) : e, s = a ? new URL(o) : new URL(o, "http://e.com");
+	let a = f(e), o = e?.endsWith("/") && e.length > 1 ? e.slice(0, -1) : e, s = a ? new URL(o) : new URL(o, "http://e.com");
 	if (i === "search-params") {
 		let e = s.searchParams.get("locale");
-		return L(e, r) ? e : n;
+		return I(e, r) ? e : n;
 	}
 	if (i === "no-prefix") return n;
 	let c = s.pathname.split("/")[1];
-	if (L(c, r)) return c;
+	if (I(c, r)) return c;
 	if (i === "prefix-no-default") return n;
-}, B = e({
-	locale: k ?? l?.defaultLocale,
+}, z = e({
+	get locale() {
+		return M() ?? l?.defaultLocale;
+	},
 	setLocale: () => null,
 	isCookieEnabled: !0
-}), V = ({ locale: e, defaultLocale: t, variant: r, children: i, setLocale: s, disableEditor: c, isCookieEnabled: u }) => {
-	let { locales: d, defaultLocale: f } = l ?? {}, [p, m] = a(e ?? k ?? t ?? f);
-	n(() => {
-		e && e !== p && m(e);
-	}, [e]), n(() => {
-		F();
+}), B = ({ locale: e, defaultLocale: r, variant: s, children: c, setLocale: u, disableEditor: d, isCookieEnabled: f }) => {
+	let { locales: p, defaultLocale: m } = l ?? {}, [h, g] = a(() => e ?? M() ?? r ?? m), [_, v] = a(e);
+	e !== _ && (v(e), e && e !== h && g(e)), n(() => {
+		P();
 	}, []);
-	let h = s ?? ((e) => {
-		if (p.toString() !== e.toString()) {
-			if (!d?.map(String).includes(e)) {
+	let y = t((e) => {
+		if (h.toString() !== e.toString()) {
+			if (!p?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			m(e), A(e, u);
+			g(e), N(e, f);
 		}
-	}), g = R(p);
-	return o(B.Provider, {
-		value: {
-			locale: g,
-			setLocale: h,
-			variant: r,
-			disableEditor: c
-		},
-		children: i
+	}, [
+		h,
+		p,
+		f
+	]), b = u ?? y, x = L(h), S = i(() => ({
+		locale: x,
+		setLocale: b,
+		variant: s,
+		disableEditor: d
+	}), [
+		x,
+		b,
+		s,
+		d
+	]);
+	return o(z.Provider, {
+		value: S,
+		children: c
 	});
-}, H = ({ children: e, ...t }) => s(V, {
+}, V = ({ children: e, ...t }) => s(B, {
 	...t,
 	children: [
-		o(M, {}),
-		o(P, {}),
+		!1,
+		!1,
 		e
 	]
-}), U = (e) => o(H, { ...e }), W = ({ locale: e, children: t, messages: n, timeZone: r, now: i, ...a }) => {
-	n !== void 0 && y({ log: d })(`${b("NextIntlClientProvider", g)} do not pass the messages prop with intlayer. Messages are loaded automatically under the hood for bundle optimization reason`);
-	let s = c(), l = u?.mode ?? "prefix-no-default", f = e ?? (l === "prefix-all" || l === "prefix-no-default" ? z(s) : void 0);
-	return o(U, {
+}), H = ({ locale: e, children: t, messages: n, timeZone: r, now: i, ...a }) => {
+	n !== void 0 && k({ log: d })(`${A("NextIntlClientProvider", E)} do not pass the messages prop with intlayer. Messages are loaded automatically under the hood for bundle optimization reason`);
+	let s = c(), l = u?.mode ?? "prefix-no-default", f = e ?? (l === "prefix-all" || l === "prefix-no-default" ? R(s) : void 0);
+	return o(V, {
 		locale: f,
 		...a,
 		children: t
 	}, String(f));
 };
-function G() {
+function U() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -213,33 +213,33 @@ function G() {
 		}
 	}
 }
-function K(e, t) {
+function W(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function q({ children: e, locale: t }) {
+function G({ children: e, locale: t }) {
 	let [i] = a(() => typeof performance < "u" ? performance.now() : 0);
 	return r(() => {
-		K("AppRoot", i);
+		W("AppRoot", i);
 	}, [i]), n(() => {
 		document.documentElement.lang = t;
 	}, [t]), n(() => {
-		G();
-	}, []), o(W, {
+		U();
+	}, []), o(H, {
 		locale: t,
 		timeZone: "UTC",
 		children: e
 	});
 }
-var J = "en";
-function Y({ children: e }) {
-	return o(q, {
-		locale: J,
+var K = "en";
+function q({ children: e }) {
+	return o(G, {
+		locale: K,
 		children: e
 	});
 }
-function X() {
-	return o(Y, { children: o(q, {}) });
+function J() {
+	return o(q, { children: o(G, {}) });
 }
-export { X as default };
+export { J as default };

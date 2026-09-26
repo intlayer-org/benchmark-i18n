@@ -5,6 +5,6 @@
   "contactForm.message": "Сообщение",
   "contactForm.sendMessage": "Отправить сообщение",
   "contactForm.wellGetBackTo": "Мы ответим вам в течение 48 часов.",
-  "contactHeader.contactUs": "Связаться с нами",
-  "contactHeader.haveQuestionsOrWantTo": "Есть вопросы или хотите внести вклад? Мы будем рады услышать вас."
+  "contactHeader.getInTouch": "Связаться с нами",
+  "contactHeader.haveIdeasFoundABug": "Есть идеи, нашли баг или хотите предложить бенчмарк? Свяжитесь с нами по адресу"
 }

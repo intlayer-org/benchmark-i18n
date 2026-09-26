@@ -10,7 +10,7 @@ export default function PreferencesSection() {
   return (
     <section className="rounded-lg border border-border bg-card p-6">
       <h2 className="mb-4 text-lg font-semibold text-foreground">
-        Preferences
+        {t("preferencesSection.preferences")}
       </h2>
       <div className="space-y-4">
         <div className="flex items-center justify-between">

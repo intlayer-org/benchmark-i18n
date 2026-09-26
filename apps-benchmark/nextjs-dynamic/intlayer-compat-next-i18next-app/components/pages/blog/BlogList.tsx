@@ -7,40 +7,40 @@ export default function BlogList() {
 
   const posts = [
     {
-      title: t("blog.blogList.i18nBenchmark2026Results"),
+      title: t("blog.blogList.comparingI18nLibrariesIn2026"),
       date: t("blog.blogList.march152026"),
       excerpt: t("blog.blogList.weTested12DifferentInternationalization"),
-      category: "Benchmark",
+      category: t("blog.blogList.benchmark"),
     },
     {
       title: t("blog.blogList.howToReduceYourI18n"),
       date: t("blog.blogList.march82026"),
       excerpt: t("blog.blogList.practicalStrategiesForOptimizingTranslation"),
-      category: "Tutorial",
+      category: t("blog.blogList.tutorial"),
     },
     {
       title: t("blog.blogList.theStateOfInternationalizationIn"),
       date: t("blog.blogList.february282026"),
       excerpt: t("blog.blogList.anOverviewOfTheCurrent"),
-      category: "Analysis",
+      category: t("blog.blogList.analysis"),
     },
     {
       title: t("blog.blogList.migratingFromReactI18nextTo"),
       date: t("blog.blogList.february152026"),
       excerpt: t("blog.blogList.aStepByStepGuide"),
-      category: "Tutorial",
+      category: t("blog.blogList.tutorial"),
     },
     {
       title: t("blog.blogList.serverComponentsAndI18nWhat"),
       date: t("blog.blogList.february12026"),
       excerpt: t("blog.blogList.reactServerComponentsIntroduceNew"),
-      category: "Analysis",
+      category: t("blog.blogList.analysis"),
     },
     {
       title: t("blog.blogList.benchmarkMethodologyHowWeTest"),
       date: t("blog.blogList.january202026"),
       excerpt: t("blog.blogList.aTransparentLookAtOur"),
-      category: "Meta",
+      category: t("blog.blogList.meta"),
     },
   ];
 

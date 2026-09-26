@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-26T03:30:44.964Z",
+  "timestamp": "2026-09-26T05:39:24.789Z",
   "packageName": "tanstack-static-intlayer-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 26039,
-    "totalMinifiedBytes": 14676,
-    "totalGzipBytes": 4939
+    "totalUnminifiedBytes": 24367,
+    "totalMinifiedBytes": 13754,
+    "totalGzipBytes": 4642
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 26039,
-      "unminifiedGzipBytes": 6690,
-      "minifiedBytes": 14676,
-      "minifiedGzipBytes": 4939
+      "unminifiedBytes": 24367,
+      "unminifiedGzipBytes": 6197,
+      "minifiedBytes": 13754,
+      "minifiedGzipBytes": 4642
     }
   ]
 }

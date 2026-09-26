@@ -88,7 +88,12 @@
     "benchmarkMethodologyHowWeTest": "Metodologia de benchmark: Cómo probamos",
     "january202026": "20 de enero de 2026",
     "aTransparentLookAtOur": "Una mirada transparente a nuestra metodología de benchmarking, incluyendo entornos de prueba, métodos estadísticos y reproducibilidad.",
-    "readMore": "Leer más →"
+    "readMore": "Leer más →",
+    "march152026": "15 de marzo de 2026",
+    "benchmark": "Benchmark",
+    "tutorial": "Tutorial",
+    "analysis": "Análisis",
+    "meta": "Meta"
   },
   "understanding-impact": {
     "understandingTheImpact": "Entendendo o impacto",
@@ -128,12 +133,14 @@
       "spanishEs": "Español (es)",
       "japaneseJa": "Japonés (ja)",
       "chineseSimplifiedZhCn": "Chino simplificado (zh-CN)",
-      "arabicAr": "Árabe (ar)"
+      "arabicAr": "Árabe (ar)",
+      "preferences": "Preferencias"
     },
     "api-access-section": {
       "apiAccess": "Acceso API",
       "apiKey": "Llave API",
-      "useThisKeyToAccess": "Usa esta llave para acceder a la API de benchmarking de forma programática."
+      "useThisKeyToAccess": "Usa esta llave para acceder a la API de benchmarking de forma programática.",
+      "copy": "Copiar"
     },
     "settings-footer": {
       "saveChanges": "Guardar cambios",
@@ -231,40 +238,8 @@
     "sampleResults": "Resultados de muestra",
     "bundleSize": "Tamaño del bundle",
     "lookupTime": "Tiempo de búsqueda",
-    "lazyLoading": "Carga diferida"
-  },
-  "careers": {
-    "careers-header": {
-      "title": "Carreras",
-      "joinOurMissionToImprove": "Únete a nuestra misión de mejorar el ecosistema de internacionalización. Somos un equipo que trabaja primero en remoto y que valora el impacto, la transparencia y el aprendizaje continuo."
-    },
-    "careers-benefits": {
-      "workFromAnywhereInThe": "Trabaja desde cualquier lugar del mundo",
-      "competitivePay": "Salario competitivo",
-      "topOfMarketCompensation": "Compensación superior a la del mercado",
-      "openSourceTime": "Tiempo para el código abierto"
-    },
-    "open-positions": {
-      "seniorFrontendEngineer": "Ingeniero Frontend Senior",
-      "buildAndMaintainOurBenchmarking": "Construir y mantener nuestro panel de benchmarking y herramientas para desarrolladores utilizando React, TypeScript y Vite.",
-      "backendEngineer": "Ingeniero Backend",
-      "designAndScaleOurCloud": "Diseñar y escalar nuestra infraestructura de benchmarking en la nube que maneja miles de ejecuciones automatizadas diariamente.",
-      "technicalWriter": "Redactor técnico",
-      "createComprehensiveGuidesApiReferences": "Crear guías completas, referencias de API e tutoriales para nuestra plataforma de benchmarking.",
-      "devrelEngineer": "Ingeniero de DevRel",
-      "sanFranciscoRemote": "San Francisco / Remoto",
-      "engageWithTheI18nCommunity": "Interactuar con la comunidad i18n a través de charlas, talleres, publicaciones en blogs y contribuciones de código abierto.",
-      "qaEngineer": "Ingeniero de QA",
-      "ensureTheAccuracyAndReliability": "Asegurar la precisión y fiabilidad de los resultados del benchmark mediante pruebas y validaciones rigurosas.",
-      "openPositions": "Puestos vacantes",
-      "applyNow": "Postular ahora",
-      "remote": "Remoto",
-      "fullTime": "Tiempo completo",
-      "partTime": "Tiempo parcial",
-      "engineering": "Ingeniería",
-      "documentation": "Documentación",
-      "community": "Comunidad"
-    }
+    "lazyLoading": "Carga diferida",
+    "library": "Biblioteca"
   },
   "header": {
     "home": "Inicio",
@@ -447,7 +422,9 @@
     "workFromAnywhereInThe": "Trabaja desde cualquier lugar del mundo",
     "competitivePay": "Salario competitivo",
     "topOfMarketCompensation": "Compensación superior a la del mercado",
-    "openSourceTime": "Tiempo para el código abierto"
+    "openSourceTime": "Tiempo para el código abierto",
+    "remoteFirst": "Primero remoto",
+    "x20TimeForOssContributions": "20% de tiempo para contribuciones de OSS"
   },
   "why-it-matters": {
     "whyTheseMetricsMatter": "Por qué son importantes estas métricas",

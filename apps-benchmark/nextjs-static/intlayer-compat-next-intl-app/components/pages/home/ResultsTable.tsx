@@ -1,3 +1,5 @@
+"use client";
+
 import { useTranslations } from "next-intl";
 
 export default function ResultsTable() {
@@ -34,7 +36,7 @@ export default function ResultsTable() {
           <thead className="bg-muted">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                Library
+                {t("results-table.library")}
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
                 {t("results-table.bundleSize")}

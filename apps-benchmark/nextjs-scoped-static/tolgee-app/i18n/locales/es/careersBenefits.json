@@ -1,6 +1,8 @@
 {
   "competitivePay": "Salario competitivo",
   "openSourceTime": "Tiempo dedicado al código abierto",
+  "remoteFirst": "Primero remoto",
   "topOfMarketCompensation": "Compensación superior al mercado",
-  "workFromAnywhereInThe": "Trabaja desde cualquier parte del mundo"
+  "workFromAnywhereInThe": "Trabaja desde cualquier parte del mundo",
+  "x20TimeForOssContributions": "20% de tiempo para contribuciones de OSS"
 }

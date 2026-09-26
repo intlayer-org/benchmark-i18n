@@ -5,14 +5,9 @@ import { useTranslation } from "react-i18next";
 export default function CareersBenefits() {
   const { t } = useTranslation("careers");
   const benefits = [
-    {
-      label: t("careersBenefits.competitivePay"),
-      value: t("careersBenefits.topOfMarket"),
-    },
-    {
-      label: t("careersBenefits.openSourceTime"),
-      value: t("careersBenefits.twentyPercentTime"),
-    },
+    { label: t("careersBenefits.remoteFirst"), value: t("careersBenefits.workFromAnywhereInThe") },
+    { label: t("careersBenefits.competitivePay"), value: t("careersBenefits.topOfMarketCompensation") },
+    { label: t("careersBenefits.openSourceTime"), value: t("careersBenefits.x20TimeForOssContributions") },
   ];
 
   return (

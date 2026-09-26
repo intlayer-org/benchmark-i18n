@@ -72,6 +72,7 @@
   "resultsTable": {
     "bundleSize": "バンドルサイズ",
     "lazyLoading": "遅延読み込み",
+    "library": "ライブラリ",
     "lookupTime": "検索時間",
     "sampleResults": "サンプル結果"
   },
@@ -104,9 +105,11 @@
     "insightsTutorialsAndAnalysis": "i18nコミュニティからの洞察、チュートリアル、分析。"
   },
   "blogList": {
+    "analysis": "分析",
     "anOverviewOfTheCurrent": "トレンド、新たなパターン、コミュニティの好みなど、React における現在の i18n エコシステムの概要。",
     "aStepByStepGuide": "50,000 の翻訳キーを持つプロダクションアプリを react-i18next から Lingui に移行するためのステップバイステップガイド。",
     "aTransparentLookAtOur": "テスト環境、統計手法、再現性など、当社のベンチマーク方法論を透過的に公開します。",
+    "benchmark": "ベンチマーク",
     "benchmarkMethodologyHowWeTest": "ベンチマークの方法論：テスト方法",
     "comparingI18nLibrariesIn2026": "2026 年の i18n ライブラリの比較：詳細な分析",
     "february12026": "2026年2月1日",
@@ -114,13 +117,16 @@
     "february282026": "2026年2月28日",
     "howToReduceYourI18n": "i18n バンドルを 60% 削減する方法",
     "january202026": "2026年1月20日",
+    "march152026": "2026年3月15日",
     "march82026": "2026年3月8日",
+    "meta": "メタ",
     "migratingFromReactI18nextTo": "react-i18next から Lingui への移行",
     "practicalStrategiesForOptimizingTranslation": "遅延読み込み、コード分割、コンパイル時の最適化などの翻訳バンドルを最適化するための実用的な戦略。",
     "reactServerComponentsIntroduceNew": "React サーバーコンポーネントは、国際化のための新しいパターンを導入します。その影響とベストプラクティスを検討します。",
     "readMore": "続きを読む →",
     "serverComponentsAndI18nWhat": "サーバーコンポーネントと i18n：何が変わるのか？",
     "theStateOfInternationalizationIn": "React における国際化の現状",
+    "tutorial": "チュートリアル",
     "weTested12DifferentInternationalization": "パフォーマンス、バンドルサイズ、DX にわたって 12 の異なる国際化ライブラリをテストしました。驚くべき結果が得られました。"
   },
   "careersHeader": {
@@ -130,8 +136,10 @@
   "careersBenefits": {
     "competitivePay": "競争力のある報酬",
     "openSourceTime": "オープンソースの時間",
+    "remoteFirst": "リモートファースト",
     "topOfMarketCompensation": "市場最高水准の報酬",
-    "workFromAnywhereInThe": "世界中どこからでも仕事ができます"
+    "workFromAnywhereInThe": "世界中どこからでも仕事ができます",
+    "x20TimeForOssContributions": "OSS への貢献に 20% の時間を割く"
   },
   "openPositions": {
     "applyNow": "今すぐ応募",
@@ -204,7 +212,7 @@
   "pricingTiers": {
     "allLibraries": "すべてのライブラリ",
     "auditLogs": "監査ログ",
-    "benchmarkRunPerDay": "毎日 {runs} 回のベンチマーク実行",
+    "benchmarkRunPerDay": "毎日 {{runs}} 回のベンチマーク実行",
     "ciIntegration": "CI 統合",
     "communitySupport": "コミュニティサポート",
     "contactSales": "営業に問い合わせる",
@@ -216,7 +224,7 @@
     "forever": "永久",
     "getStarted": "使ってみる",
     "historicalData": "履歴データ",
-    "librariesNumber": "{libs} 個のライブラリ",
+    "librariesNumber": "{{libs}} 個のライブラリ",
     "month": "/月",
     "onPremiseOption": "オンプレミスオプション",
     "price0": "0 $",
@@ -274,6 +282,7 @@
     "frenchFr": "フランス語 (fr)",
     "germanDe": "ドイツ語 (de)",
     "japaneseJa": "日本語 (ja)",
+    "preferences": "設定",
     "receiveWeeklyBenchmarkReports": "ベンチマーク週報を受け取る",
     "spanishEs": "スペイン語 (es)",
     "toggleDarkMode": "ダークモードの切り替え",
@@ -283,6 +292,7 @@
   "apiAccessSection": {
     "apiAccess": "APIアクセス",
     "apiKey": "APIキー",
+    "copy": "コピー",
     "useThisKeyToAccess": "このキーを使用して、ベンチマークAPIにプログラムでアクセスします。"
   },
   "settingsFooter": {

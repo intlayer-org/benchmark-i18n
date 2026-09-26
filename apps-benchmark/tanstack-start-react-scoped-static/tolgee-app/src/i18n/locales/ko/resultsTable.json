@@ -1,6 +1,7 @@
 {
   "bundleSize": "번들 크기",
   "lazyLoading": "지연 로딩",
+  "library": "라이브러리",
   "lookupTime": "조회 시간",
   "sampleResults": "샘플 결과"
 }

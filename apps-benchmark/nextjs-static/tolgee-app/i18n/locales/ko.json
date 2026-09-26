@@ -56,7 +56,7 @@
   "pricingTiers": {
     "allLibraries": "모든 라이브러리",
     "auditLogs": "감사 로그",
-    "benchmarkRunPerDay": "하루 {runs} 회의 벤치마크 실행",
+    "benchmarkRunPerDay": "하루 {{runs}} 회의 벤치마크 실행",
     "ciIntegration": "CI 통합",
     "communitySupport": "커뮤니티 지원",
     "contactSales": "영업 문의",
@@ -68,7 +68,7 @@
     "forever": "영구적",
     "getStarted": "시작하기",
     "historicalData": "기록 데이터",
-    "librariesNumber": "{libs} 개의 라이브러리",
+    "librariesNumber": "{{libs}} 개의 라이브러리",
     "month": "/월",
     "onPremiseOption": "온프레미스 옵션",
     "price0": "0 $",
@@ -161,6 +161,7 @@
     "frenchFr": "프랑스어 (fr)",
     "germanDe": "독일어 (de)",
     "japaneseJa": "일본어 (ja)",
+    "preferences": "기본 설정",
     "receiveWeeklyBenchmarkReports": "주간 벤치마크 보고서 받기",
     "spanishEs": "스페인어 (es)",
     "toggleDarkMode": "다크 모드 토글",
@@ -172,9 +173,11 @@
     "toolsAndServicesTo": "국제화 전략을 최적화하는 데 도움이 되는 도구와 서비스."
   },
   "blogList": {
+    "analysis": "분석",
     "anOverviewOfTheCurrent": "React의 현재 i18n 생태계에 대한 개요로, 트렌드, 떠오르는 패턴 및 커뮤니티 선호도를 다룹니다.",
     "aStepByStepGuide": "50,000 개의 번역 키가있는 프로덕션 앱을 react-i18next에서 Lingui로 마이그레이션하는 단계별 가이드.",
     "aTransparentLookAtOur": "테스트 환경, 통계 방법 및 재현성을 포함한 벤치 마크 방법론에 대한 투명한 살펴보기.",
+    "benchmark": "벤치마크",
     "benchmarkMethodologyHowWeTest": "벤치 마크 방법론 : 테스트 방법",
     "comparingI18nLibrariesIn2026": "2026년 i18n 라이브러리 비교: 심층 분석",
     "february12026": "2026년 2월 1일",
@@ -182,13 +185,16 @@
     "february282026": "2026년 2월 28일",
     "howToReduceYourI18n": "i18n 번들을 60% 줄이는 방법",
     "january202026": "2026년 1월 20일",
+    "march152026": "2026년 3월 15일",
     "march82026": "2026년 3월 8일",
+    "meta": "메타",
     "migratingFromReactI18nextTo": "react-i18next에서 Lingui로 마이그레이션",
     "practicalStrategiesForOptimizingTranslation": "지연 로딩, 코드 분할 및 컴파일 시간 최적화를 포함한 번역 번들 최적화를위한 실용적인 전략.",
     "reactServerComponentsIntroduceNew": "React Server Components는 국제화를위한 새로운 패턴을 도입합니다. 우리는 그 함의와 모범 사례를 탐구합니다.",
     "readMore": "더 읽어보기 →",
     "serverComponentsAndI18nWhat": "서버 구성 요소 및 i18n: 무엇이 변합니까?",
     "theStateOfInternationalizationIn": "React의 국제화 현황",
+    "tutorial": "튜토리얼",
     "weTested12DifferentInternationalization": "성능, 번들 크기 및 DX 전반에 걸쳐 12가지 서로 다른 국제화 라이브러리를 테스트했습니다. 여기 놀라운 결과가 있습니다."
   },
   "faqHeader": {
@@ -370,8 +376,10 @@
   "careersBenefits": {
     "competitivePay": "경쟁력있는 보수",
     "openSourceTime": "오픈 소스 시간",
+    "remoteFirst": "원격 우선",
     "topOfMarketCompensation": "시장 최고의 보상",
-    "workFromAnywhereInThe": "전 세계 어디서나 근무하십시오"
+    "workFromAnywhereInThe": "전 세계 어디서나 근무하십시오",
+    "x20TimeForOssContributions": "OSS 기여를 위한 20% 시간"
   },
   "route": {
     "oopsPageNotFound": "Oops! Page not found.",
@@ -446,6 +454,7 @@
   "apiAccessSection": {
     "apiAccess": "API 액세스",
     "apiKey": "API 키",
+    "copy": "복사",
     "useThisKeyToAccess": "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오."
   },
   "themeToggle": {
@@ -525,6 +534,7 @@
   "resultsTable": {
     "bundleSize": "번들 크기",
     "lazyLoading": "지연 로딩",
+    "library": "라이브러리",
     "lookupTime": "조회 시간",
     "sampleResults": "샘플 결과"
   },

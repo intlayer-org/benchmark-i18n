@@ -3,12 +3,9 @@ import { useTranslate } from "../../../i18n/config";
 export default function CareersBenefits() {
   const { t } = useTranslate();
   const benefits = [
-    { label: "Remote-first", value: t("careersBenefits.workFromAnywhereInThe") },
+    { label: t("careersBenefits.remoteFirst"), value: t("careersBenefits.workFromAnywhereInThe") },
     { label: t("careersBenefits.competitivePay"), value: t("careersBenefits.topOfMarketCompensation") },
-    {
-      label: t("careersBenefits.openSourceTime"),
-      value: "20% time for OSS contributions",
-    },
+    { label: t("careersBenefits.openSourceTime"), value: t("careersBenefits.x20TimeForOssContributions") },
   ];
 
   return (

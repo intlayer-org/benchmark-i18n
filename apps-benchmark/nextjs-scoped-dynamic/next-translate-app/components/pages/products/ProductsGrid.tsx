@@ -7,34 +7,34 @@ export default function ProductsGrid() {
 
   const products = [
     {
-      name: t("products.benchmarkCLI"),
-      desc: t("products.benchmarkCLIDesc"),
-      price: t("products.benchmarkCLIPrice"),
+      name: t("products.benchmarkCli"),
+      desc: t("products.runBenchmarksLocallyFromYour"),
+      price: t("products.free"),
     },
     {
       name: t("products.benchmarkCloud"),
-      desc: t("products.benchmarkCloudDesc"),
-      price: t("products.benchmarkCloudPrice"),
+      desc: t("products.automatedCloudBasedBenchmarkingWith"),
+      price: t("products.price29mo"),
     },
     {
       name: t("products.benchmarkEnterprise"),
-      desc: t("products.benchmarkEnterpriseDesc"),
-      price: t("products.benchmarkEnterprisePrice"),
+      desc: t("products.onPremiseDeploymentWithSso"),
+      price: t("products.contactUs"),
     },
     {
       name: t("products.migrationAssistant"),
-      desc: t("products.migrationAssistantDesc"),
-      price: t("products.migrationAssistantPrice"),
+      desc: t("products.aiPoweredToolThatHelps"),
+      price: t("products.price99oneTime"),
     },
     {
-      name: t("products.translationQA"),
-      desc: t("products.translationQADesc"),
-      price: t("products.translationQAPrice"),
+      name: t("products.translationQa"),
+      desc: t("products.automatedQualityChecksForMissing"),
+      price: t("products.price19mo"),
     },
     {
       name: t("products.bundleOptimizer"),
-      desc: t("products.bundleOptimizerDesc"),
-      price: t("products.bundleOptimizerPrice"),
+      desc: t("products.analyzesAndOptimizesYourI18n"),
+      price: t("products.price49mo"),
     },
   ];
 

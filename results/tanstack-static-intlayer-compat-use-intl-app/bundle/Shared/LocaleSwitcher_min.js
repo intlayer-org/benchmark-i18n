@@ -1,4 +1,4 @@
-import e, { createContext as t, useContext as n, useEffect as r, useRef as i, useState as a } from "react";
+import e, { createContext as t, useCallback as n, useEffect as r, useMemo as i, useState as a } from "react";
 import { useNavigate as o, useParams as s } from "@tanstack/react-router";
 import { jsx as c, jsxs as l } from "react/jsx-runtime";
 var u = [
@@ -138,8 +138,8 @@ var O = {
 		let r = e?.getCookie?.(m.storage.cookies[t].name);
 		if (n(r)) return r;
 	} catch {}
-}, A = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !D && m.storage.cookies) for (let n = 0; n < m.storage.cookies.length; n++) {
+}, A = !1, j, M = () => typeof window > "u" ? k(O) : (A ||= (j = k(O), !0), j), N = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && (A = !1, !D && m.storage.cookies)) for (let n = 0; n < m.storage.cookies.length; n++) {
 		let { name: r, attributes: i } = m.storage.cookies[n];
 		try {
 			t?.setCookieStore && t.setCookieStore(r, e, {
@@ -152,22 +152,13 @@ var O = {
 			} catch {}
 		}
 	}
-}, j = k(O), M = (e, t) => A(e, {
+}, P = M, F = (e, t) => N(e, {
 	...O,
 	isCookieEnabled: t
-}), N = () => {
-	let { locale: e } = n(z) ?? {}, t = i(null);
-	r(() => {}, []), r(() => {
-		e && t.current && t.current.currentLocale.set(e);
-	}, [e]);
-}, P = ({ children: e }) => (N(), e), F = () => {
-	let { locale: e } = n(z) ?? {}, t = i(null);
-	r(() => {}, []), r(() => {
-		e && t.current && (t.current.setLocale(e), t.current.trackPageView({ reason: "locale_change" }));
-	}, [e]);
-}, I = ({ children: e }) => (F(), e), L = () => {
+}), I = () => {
 	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, R = (e, t = p?.locales, n = p?.defaultLocale) => {
+}, L = (e, t = p?.locales, n = p?.defaultLocale) => {
+	if (t?.includes(e)) return e;
 	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
 	try {
 		for (let e of r) {
@@ -178,50 +169,59 @@ var O = {
 		}
 	} catch {}
 	return n;
-}, z = t({
-	locale: j ?? p?.defaultLocale,
+}, R = t({
+	get locale() {
+		return P() ?? p?.defaultLocale;
+	},
 	setLocale: () => null,
 	isCookieEnabled: !0
-}), B = ({ locale: e, defaultLocale: t, variant: n, children: i, setLocale: o, disableEditor: s, isCookieEnabled: l }) => {
-	let { locales: u, defaultLocale: d } = p ?? {}, [f, m] = a(e ?? j ?? t ?? d);
-	r(() => {
-		e && e !== f && m(e);
-	}, [e]), r(() => {
-		L();
+}), z = ({ locale: e, defaultLocale: t, variant: o, children: s, setLocale: l, disableEditor: u, isCookieEnabled: d }) => {
+	let { locales: f, defaultLocale: m } = p ?? {}, [h, g] = a(() => e ?? P() ?? t ?? m), [_, v] = a(e);
+	e !== _ && (v(e), e && e !== h && g(e)), r(() => {
+		I();
 	}, []);
-	let h = o ?? ((e) => {
-		if (f.toString() !== e.toString()) {
-			if (!u?.map(String).includes(e)) {
+	let y = n((e) => {
+		if (h.toString() !== e.toString()) {
+			if (!f?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			m(e), M(e, l);
+			g(e), F(e, d);
 		}
-	}), g = R(f);
-	return c(z.Provider, {
-		value: {
-			locale: g,
-			setLocale: h,
-			variant: n,
-			disableEditor: s
-		},
-		children: i
+	}, [
+		h,
+		f,
+		d
+	]), b = l ?? y, x = L(h), S = i(() => ({
+		locale: x,
+		setLocale: b,
+		variant: o,
+		disableEditor: u
+	}), [
+		x,
+		b,
+		o,
+		u
+	]);
+	return c(R.Provider, {
+		value: S,
+		children: s
 	});
-}, V = ({ children: e, ...t }) => l(B, {
+}, B = ({ children: e, ...t }) => l(z, {
 	...t,
 	children: [
-		c(P, {}),
-		c(I, {}),
+		!1,
+		!1,
 		e
 	]
-}), H = ({ locale: e, children: t, messages: n, formats: r, now: i, timeZone: a, onError: o, getMessageFallback: s }) => (n !== void 0 && C({ log: h })(`${w("IntlProvider", b)} do not pass the messages prop with intlayer. Messages are loaded automatically under the hood for bundle optimization reason`), c(V, {
+}), V = ({ locale: e, children: t, messages: n, formats: r, now: i, timeZone: a, onError: o, getMessageFallback: s }) => (n !== void 0 && C({ log: h })(`${w("IntlProvider", b)} do not pass the messages prop with intlayer. Messages are loaded automatically under the hood for bundle optimization reason`), c(B, {
 	locale: e,
 	children: t
 }, String(e)));
-function U({ children: t }) {
+function H({ children: t }) {
 	return c(e.Suspense, {
 		fallback: null,
-		children: c(H, {
+		children: c(V, {
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
@@ -229,7 +229,7 @@ function U({ children: t }) {
 		})
 	});
 }
-function W() {
-	return c(U, { children: c(f, {}) });
+function U() {
+	return c(H, { children: c(f, {}) });
 }
-export { W as default };
+export { U as default };

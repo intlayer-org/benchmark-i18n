@@ -5,6 +5,6 @@
   "contactForm.message": "메시지",
   "contactForm.sendMessage": "메시지 보내기",
   "contactForm.wellGetBackTo": "48시간 이내에 답변해 드리겠습니다.",
-  "contactHeader.contactUs": "문의처",
-  "contactHeader.haveQuestionsOrWantTo": "궁금한 점이 있거나 기여하고 싶으신가요? 여러분의 의견을 기다립니다."
+  "contactHeader.getInTouch": "문의하기",
+  "contactHeader.haveIdeasFoundABug": "아이디어가 있거나 버그를 발견했거나 벤치마크에 기여하고 싶으신가요? 다음 주소로 연락해 주세요"
 }

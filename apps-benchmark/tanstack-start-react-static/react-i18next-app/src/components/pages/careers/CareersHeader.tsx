@@ -6,11 +6,9 @@ export default function CareersHeader() {
   return (
     <>
       <MockBanner />
-      <h1 className="mb-2 text-3xl font-bold text-foreground">
-        {t("careersHeader.careers")}
-      </h1>
+      <h1 className="mb-2 text-3xl font-bold text-foreground">{t("careersHeader.title")}</h1>
       <p className="mb-4 text-muted-foreground">
-        {t("careersHeader.joinOurMissionToMake")}
+        {t("careersHeader.joinOurMissionToImprove")}
       </p>
     </>
   );

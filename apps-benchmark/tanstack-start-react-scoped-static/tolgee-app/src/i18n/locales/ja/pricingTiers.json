@@ -1,7 +1,7 @@
 {
   "allLibraries": "すべてのライブラリ",
   "auditLogs": "監査ログ",
-  "benchmarkRunPerDay": "毎日 {runs} 回のベンチマーク実行",
+  "benchmarkRunPerDay": "毎日 {{runs}} 回のベンチマーク実行",
   "ciIntegration": "CI 統合",
   "communitySupport": "コミュニティサポート",
   "contactSales": "営業に問い合わせる",
@@ -13,7 +13,7 @@
   "forever": "永久",
   "getStarted": "使ってみる",
   "historicalData": "履歴データ",
-  "librariesNumber": "{libs} 個のライブラリ",
+  "librariesNumber": "{{libs}} 個のライブラリ",
   "month": "/月",
   "onPremiseOption": "オンプレミスオプション",
   "price0": "0 $",

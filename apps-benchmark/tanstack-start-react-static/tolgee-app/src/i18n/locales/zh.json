@@ -72,6 +72,7 @@
   "resultsTable": {
     "bundleSize": "包大小",
     "lazyLoading": "延迟加载",
+    "library": "库",
     "lookupTime": "查询时间",
     "sampleResults": "样本结果"
   },
@@ -104,9 +105,11 @@
     "insightsTutorialsAndAnalysis": "来自 i18n 社区的见解、教程和分析。"
   },
   "blogList": {
+    "analysis": "分析",
     "anOverviewOfTheCurrent": "React 当前 i18n 生态系统概览，涵盖趋势、新兴模式和社区偏好。",
     "aStepByStepGuide": "从 react-i18next 迁移拥有 50,000 个翻译键的生产应用程序到 Lingui 的逐步指南。",
     "aTransparentLookAtOur": "透明地了解我们的基准测试方法，包括测试环境、统计方法和可重现性。",
+    "benchmark": "基准测试",
     "benchmarkMethodologyHowWeTest": "基准测试方法学：我们如何测试",
     "comparingI18nLibrariesIn2026": "2026 年 i18n 库对比：深度分析",
     "february12026": "2026年2月1日",
@@ -114,13 +117,16 @@
     "february282026": "2026年2月28日",
     "howToReduceYourI18n": "如何将 i18n 包大小减少 60%",
     "january202026": "2026年1月20日",
+    "march152026": "2026年3月15日",
     "march82026": "2026年3月8日",
+    "meta": "元数据",
     "migratingFromReactI18nextTo": "从 react-i18next 迁移到 Lingui",
     "practicalStrategiesForOptimizingTranslation": "优化翻译包的实用策略，包括延迟加载、代码拆分和编译时优化。",
     "reactServerComponentsIntroduceNew": "React Server Components 为国际化引入了新模式。我们探讨了其影响和最佳实践。",
     "readMore": "阅读更多 →",
     "serverComponentsAndI18nWhat": "服务器组件和 i18n：有什么变化？",
     "theStateOfInternationalizationIn": "React 国际化的现状",
+    "tutorial": "教程",
     "weTested12DifferentInternationalization": "我们针对性能、包大小和 DX 测试了 12 种不同的国际化库。以下是令人惊讶的结果。"
   },
   "careersHeader": {
@@ -130,8 +136,10 @@
   "careersBenefits": {
     "competitivePay": "有竞争力的薪酬",
     "openSourceTime": "开源贡献时间",
+    "remoteFirst": "远程优先",
     "topOfMarketCompensation": "市场顶级薪酬",
-    "workFromAnywhereInThe": "在全球任何地方工作"
+    "workFromAnywhereInThe": "在全球任何地方工作",
+    "x20TimeForOssContributions": "20% 的时间用于 OSS 贡献"
   },
   "openPositions": {
     "applyNow": "立即申请",
@@ -204,7 +212,7 @@
   "pricingTiers": {
     "allLibraries": "所有库",
     "auditLogs": "审核日志",
-    "benchmarkRunPerDay": "每天 {runs} 次基准测试运行",
+    "benchmarkRunPerDay": "每天 {{runs}} 次基准测试运行",
     "ciIntegration": "CI 集成",
     "communitySupport": "社区支持",
     "contactSales": "联系销售人员",
@@ -216,7 +224,7 @@
     "forever": "永久",
     "getStarted": "开始使用",
     "historicalData": "历史数据",
-    "librariesNumber": "{libs} 个库",
+    "librariesNumber": "{{libs}} 个库",
     "month": "/月",
     "onPremiseOption": "本地部署选项",
     "price0": "0 $",
@@ -274,6 +282,7 @@
     "frenchFr": "法语 (fr)",
     "germanDe": "德语 (de)",
     "japaneseJa": "日语 (ja)",
+    "preferences": "偏好设置",
     "receiveWeeklyBenchmarkReports": "接收每周基准测试报告",
     "spanishEs": "西班牙语 (es)",
     "toggleDarkMode": "切换深色模式",
@@ -283,6 +292,7 @@
   "apiAccessSection": {
     "apiAccess": "API 访问",
     "apiKey": "API 密钥",
+    "copy": "复制",
     "useThisKeyToAccess": "使用此密钥以编程方式访问基准测试 API。"
   },
   "settingsFooter": {

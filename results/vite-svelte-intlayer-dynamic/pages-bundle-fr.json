@@ -1,7 +1,7 @@
 {
   "app": "vite-svelte-intlayer-dynamic",
   "locale": "fr",
-  "timestamp": "2026-09-26T04:00:42.206Z",
+  "timestamp": "2026-09-26T05:34:35.937Z",
   "fingerprintCounts": {
     "locale": {
       "en": 99,
@@ -436,15 +436,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-BBMlgVaS.js",
-          "size": 2185,
-          "gzipSize": 748,
-          "type": "js"
-        },
-        {
           "url": "/assets/Blog-D-RAproe.js",
           "size": 5562,
           "gzipSize": 1720,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-BBMlgVaS.js",
+          "size": 2185,
+          "gzipSize": 748,
           "type": "js"
         },
         {
@@ -870,15 +870,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-BBMlgVaS.js",
-          "size": 2185,
-          "gzipSize": 748,
-          "type": "js"
-        },
-        {
           "url": "/assets/intlayer-index-1atsyh-en-BhWfrkgJ.js",
           "size": 5324,
           "gzipSize": 2374,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-BBMlgVaS.js",
+          "size": 2185,
+          "gzipSize": 748,
           "type": "js"
         },
         {
@@ -1686,9 +1686,9 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-BBMlgVaS.js",
-          "size": 2185,
-          "gzipSize": 748,
+          "url": "/assets/intlayer-index-1atsyh-en-BhWfrkgJ.js",
+          "size": 5324,
+          "gzipSize": 2374,
           "type": "js"
         },
         {
@@ -1698,21 +1698,21 @@
           "type": "js"
         },
         {
-          "url": "/assets/intlayer-index-1atsyh-en-BhWfrkgJ.js",
-          "size": 5324,
-          "gzipSize": 2374,
-          "type": "js"
-        },
-        {
-          "url": "/assets/intlayer-shared-fr-UJtLc078.js",
-          "size": 305,
-          "gzipSize": 260,
+          "url": "/assets/MockBanner-BBMlgVaS.js",
+          "size": 2185,
+          "gzipSize": 748,
           "type": "js"
         },
         {
           "url": "/assets/intlayer-Settings-1ylo3o-fr-BAhqykcN.js",
           "size": 1486,
           "gzipSize": 818,
+          "type": "js"
+        },
+        {
+          "url": "/assets/intlayer-shared-fr-UJtLc078.js",
+          "size": 305,
+          "gzipSize": 260,
           "type": "js"
         }
       ],

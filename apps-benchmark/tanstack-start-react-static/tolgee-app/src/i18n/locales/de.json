@@ -72,6 +72,7 @@
   "resultsTable": {
     "bundleSize": "Bundle-Größe",
     "lazyLoading": "Lazy Loading",
+    "library": "Bibliothek",
     "lookupTime": "Abfragezeit",
     "sampleResults": "Beispielergebnisse"
   },
@@ -104,9 +105,11 @@
     "insightsTutorialsAndAnalysis": "Einblicke, Tutorials und Analysen aus der i18n-Community."
   },
   "blogList": {
+    "analysis": "Analyse",
     "anOverviewOfTheCurrent": "Ein Überblick über das aktuelle i18n-Ökosystem in React, einschließlich Trends, aufkommender Muster und Vorlieben der Community.",
     "aStepByStepGuide": "Eine Schritt-für-Schritt-Anleitung zur Migration einer Produktions-App mit 50.000 Übersetzungsschlüsseln von react-i18next zu Lingui.",
     "aTransparentLookAtOur": "Ein transparenter Blick auf unsere Benchmark-Methodik, einschließlich Testumgebungen, statistischer Methoden und Reproduzierbarkeit.",
+    "benchmark": "Benchmark",
     "benchmarkMethodologyHowWeTest": "Benchmark-Methodik: Wie wir testen",
     "comparingI18nLibrariesIn2026": "i18n-Bibliotheken im Jahr 2026 im Vergleich: Eine tiefgehende Analyse",
     "february12026": "1. Februar 2026",
@@ -114,13 +117,16 @@
     "february282026": "28. Februar 2026",
     "howToReduceYourI18n": "So reduzieren Sie Ihr i18n-Bundle um 60 %",
     "january202026": "20. Januar 2026",
+    "march152026": "15. März 2026",
     "march82026": "8. März 2026",
+    "meta": "Meta",
     "migratingFromReactI18nextTo": "Migration von react-i18next zu Lingui",
     "practicalStrategiesForOptimizingTranslation": "Praktische Strategien zur Optimierung von Übersetzungs-Bundles, einschließlich Lazy Loading, Code Splitting und Optimierungen zur Kompilierzeit.",
     "reactServerComponentsIntroduceNew": "React Server Components führen neue Muster für die Internationalisierung ein. Wir untersuchen die Auswirkungen und Best Practices.",
     "readMore": "Weiterlesen →",
     "serverComponentsAndI18nWhat": "Server Components und i18n: Was ändert sich?",
     "theStateOfInternationalizationIn": "Der Stand der Internationalisierung in React",
+    "tutorial": "Tutorial",
     "weTested12DifferentInternationalization": "Wir haben 12 verschiedene Internationalisierungs-Bibliotheken in Bezug auf Leistung, Bundle-Größe und DX getestet. Hier sind die überraschenden Ergebnisse."
   },
   "careersHeader": {
@@ -130,8 +136,10 @@
   "careersBenefits": {
     "competitivePay": "Wettbewerbsfähige Bezahlung",
     "openSourceTime": "Open-Source-Zeit",
+    "remoteFirst": "Remote-First",
     "topOfMarketCompensation": "Spitzenvergütung",
-    "workFromAnywhereInThe": "Arbeiten von überall auf der Welt"
+    "workFromAnywhereInThe": "Arbeiten von überall auf der Welt",
+    "x20TimeForOssContributions": "20 % Zeit für OSS-Beiträge"
   },
   "openPositions": {
     "applyNow": "Jetzt bewerben",
@@ -204,7 +212,7 @@
   "pricingTiers": {
     "allLibraries": "Alle Bibliotheken",
     "auditLogs": "Audit-Logs",
-    "benchmarkRunPerDay": "{runs} Benchmark-Läufe/Tag",
+    "benchmarkRunPerDay": "{{runs}} Benchmark-Läufe/Tag",
     "ciIntegration": "CI-Integration",
     "communitySupport": "Community-Support",
     "contactSales": "Vertrieb kontaktieren",
@@ -216,7 +224,7 @@
     "forever": "für immer",
     "getStarted": "Erste Schritte",
     "historicalData": "Historische Daten",
-    "librariesNumber": "{libs} Bibliotheken",
+    "librariesNumber": "{{libs}} Bibliotheken",
     "month": "/Monat",
     "onPremiseOption": "On-Premise-Option",
     "price0": "0 $",
@@ -274,6 +282,7 @@
     "frenchFr": "Französisch (fr)",
     "germanDe": "Deutsch (de)",
     "japaneseJa": "Japanisch (ja)",
+    "preferences": "Einstellungen",
     "receiveWeeklyBenchmarkReports": "Wöchentliche Benchmark-Berichte erhalten",
     "spanishEs": "Spanisch (es)",
     "toggleDarkMode": "Dunkelmodus umschalten",
@@ -283,6 +292,7 @@
   "apiAccessSection": {
     "apiAccess": "API-Zugriff",
     "apiKey": "API-Schlüssel",
+    "copy": "Kopieren",
     "useThisKeyToAccess": "Verwenden Sie diesen Schlüssel für den programmgesteuerten Zugriff auf die Benchmarking-API."
   },
   "settingsFooter": {

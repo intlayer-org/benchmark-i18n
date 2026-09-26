@@ -1,26 +1,26 @@
-import { Fragment as e, createContext as t, useContext as n, useEffect as r, useLayoutEffect as i, useMemo as a, useRef as o, useState as s } from "react";
+import { Fragment as e, createContext as t, useCallback as n, useContext as r, useEffect as i, useLayoutEffect as a, useMemo as o, useState as s } from "react";
 import c from "next/link";
 import { useParams as l, usePathname as u, useRouter as d } from "next/navigation";
-import { Fragment as f, jsx as p, jsxs as m } from "react/jsx-runtime";
-import { ChevronDown as ee } from "lucide-react";
-var te = (e) => /^https?:\/\//.test(e ?? "");
-function h(e, t) {
+import { Fragment as ee, jsx as f, jsxs as p } from "react/jsx-runtime";
+import { ChevronDown as m } from "lucide-react";
+var h = (e) => /^https?:\/\//.test(e ?? "");
+function g(e, t) {
 	return !e.startsWith("/") || e === `/${t}` || e.startsWith(`/${t}/`) ? e : `/${t}${e === "/" ? "" : e}`;
 }
-var g = ({ href: e, children: t, ...n }) => {
+var _ = ({ href: e, children: t, ...n }) => {
 	let r = l().locale ?? "en";
-	return e == null || typeof e != "string" || te(e) ? p(c, {
+	return e == null || typeof e != "string" || h(e) ? f(c, {
 		href: e,
 		prefetch: !1,
 		...n,
 		children: t
-	}) : p(c, {
-		href: h(e, r),
+	}) : f(c, {
+		href: g(e, r),
 		prefetch: !1,
 		...n,
 		children: t
 	});
-}, _ = {
+}, v = {
 	locales: [
 		"en",
 		"fr",
@@ -47,7 +47,7 @@ var g = ({ href: e, children: t, ...n }) => {
 	],
 	strictMode: "inclusive",
 	defaultLocale: "en"
-}, v = {
+}, y = {
 	mode: "prefix-all",
 	enableProxy: !1,
 	storage: {
@@ -58,119 +58,188 @@ var g = ({ href: e, children: t, ...n }) => {
 		headers: [{ name: "x-intlayer-locale" }]
 	},
 	basePath: ""
-}, ne = {
+}, b = {
 	mode: "default",
 	prefix: "\x1B[38;5;239m[intlayer] \x1B[0m"
-}, y = /* @__PURE__ */ new WeakMap(), re = 0, ie = (e) => {
+}, x = 50, S = /* @__PURE__ */ new Map(), C = /* @__PURE__ */ new Set(), te = (e) => {
+	C.has(e) || (C.add(e), console.warn(`[intlayer] \`Intl.${e}\` is not available in this JavaScript engine. A degraded fallback is used instead. On React Native, load a polyfill (e.g. \`@formatjs/intl-${e.toLowerCase()}/polyfill\`) before rendering your app.`));
+}, ne = {
+	DisplayNames: class {
+		of(e) {
+			return e;
+		}
+	},
+	ListFormat: class {
+		format(e) {
+			return Array.from(e).join(", ");
+		}
+		formatToParts(e) {
+			return Array.from(e).flatMap((e, t) => t === 0 ? [{
+				type: "element",
+				value: e
+			}] : [{
+				type: "literal",
+				value: ", "
+			}, {
+				type: "element",
+				value: e
+			}]);
+		}
+	},
+	Segmenter: class {
+		segment(e) {
+			let t = 0;
+			return Array.from(e).map((e) => {
+				let n = t;
+				return t += e.length, {
+					segment: e,
+					index: n
+				};
+			});
+		}
+	}
+}, re = (e) => {
+	let t = Intl[e];
+	return typeof t == "function" ? t : (te(e), ne[e]);
+};
+function w(e, t, n) {
+	let r = t ?? v?.defaultLocale, i = `${r}|${n ? JSON.stringify(n) : ""}`, a = e, o = S.get(a);
+	o || (o = /* @__PURE__ */ new Map(), S.set(a, o));
+	let s = o.get(i);
+	if (!s) {
+		let t = typeof e == "string" ? re(e) : e;
+		if (typeof t != "function") throw Error(`[intlayer] \`Intl.${String(e)}\` is not available in this JavaScript engine and has no fallback. Load the matching polyfill before formatting.`);
+		o.size > x && o.clear(), s = new t(r, n), o.set(i, s);
+	}
+	return s;
+}
+var ie = (e) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(e), ae = (e) => {
+	if (typeof e == "number") return Date.now() + e * 1e3;
+	if (typeof e == "string") {
+		let t = Date.parse(e);
+		return Number.isNaN(t) ? void 0 : t;
+	}
+}, oe = (e, t, n) => {
+	let r = [`${e}=${encodeURIComponent(t)}`];
+	n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`);
+	let i = ae(n.expires);
+	return i !== void 0 && r.push(`Expires=${new Date(i).toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
+}, se = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var T = {
+	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
+	getLocaleStorage: (e) => localStorage.getItem(e),
+	getSessionStorage: (e) => sessionStorage.getItem(e),
+	isCookieEnabled: !0,
+	setCookieStore: (e, t, n) => cookieStore.set({
+		name: e,
+		value: t,
+		path: n.path,
+		domain: n.domain,
+		expires: n.expires,
+		sameSite: n.sameSite
+	}),
+	setCookieString: (e, t) => {
+		document.cookie = t;
+	},
+	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
+	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
+}, ce = (e = T) => {
+	let { locales: t } = v;
+	if (e?.isCookieEnabled === !1) return;
+	let n = (e) => !!e && t.includes(e);
+	if (!se) for (let t = 0; t < (y.storage.cookies ?? []).length; t++) try {
+		let r = e?.getCookie?.(y.storage.cookies[t].name);
+		if (n(r)) return r;
+	} catch {}
+}, le = !1, ue, de = () => typeof window > "u" ? ce(T) : (le ||= (ue = ce(T), !0), ue), fe = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && (le = !1, !se && y.storage.cookies)) for (let n = 0; n < y.storage.cookies.length; n++) {
+		let { name: r, attributes: i } = y.storage.cookies[n];
+		try {
+			t?.setCookieStore && t.setCookieStore(r, e, {
+				...i,
+				expires: ae(i.expires)
+			});
+		} catch {
+			try {
+				t?.setCookieString && t.setCookieString(r, oe(r, e, i));
+			} catch {}
+		}
+	}
+}, pe = /* @__PURE__ */ new WeakMap(), me = 0, he = (e) => {
 	if (!e) return "base";
-	let t = y.get(e);
+	let t = pe.get(e);
 	if (t) return t;
-	re += 1;
-	let n = `p${re}`;
-	return y.set(e, n), n;
-}, ae = 256, b = /* @__PURE__ */ new WeakMap(), oe = (e) => typeof e == "object" && !!e, se = (e, t, n) => `${e}_${t}_${ie(n)}`, ce = (e, t) => {
-	if (!oe(e)) return { hit: !1 };
-	let n = b.get(e);
+	me += 1;
+	let n = `p${me}`;
+	return pe.set(e, n), n;
+}, ge = 256, E = /* @__PURE__ */ new WeakMap(), D = (e) => typeof e == "object" && !!e, _e = (e, t, n) => `${e}_${t}_${he(n)}`, ve = (e, t) => {
+	if (!D(e)) return { hit: !1 };
+	let n = E.get(e);
 	return n?.has(t) ? {
 		hit: !0,
 		content: n.get(t)
 	} : { hit: !1 };
-}, x = (e, t, n) => {
-	if (!oe(e)) return n;
-	let r = b.get(e);
-	return r || (r = /* @__PURE__ */ new Map(), b.set(e, r)), r.size >= ae && r.clear(), r.set(t, n), n;
-}, le = "translation", ue = "enumeration", de = "plural", S = "insertion", fe = "object", pe = "array", me = "markdown", C = "html", he = "gender", ge = "select", w = (e, t, n) => ({
-	...n,
-	nodeType: e,
-	[e]: t
-}), T = (e, t) => {
-	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => T(e, t));
-	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
-	if (Array.isArray(e)) return e.map((e, n) => T(e, {
-		...t,
-		children: e,
-		keyPath: [...t.keyPath, {
-			type: pe,
-			key: n
-		}]
-	}));
+}, O = (e, t, n) => {
+	if (!D(e)) return n;
+	let r = E.get(e);
+	return r || (r = /* @__PURE__ */ new Map(), E.set(e, r)), r.size >= ge && r.clear(), r.set(t, n), n;
+}, ye = "translation", k = "enumeration", A = "plural", be = "condition", j = "insertion", xe = "object", Se = "array", M = "markdown", N = "html", P = "gender", F = "select", I = (e, t, n) => ({
+	...e,
+	children: t,
+	keyPath: [...e.keyPath, n]
+}), L = (e, t) => {
+	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, L);
+	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return e;
+	if (Array.isArray(e)) return e.map((e, n) => L(e, I(t, e, {
+		type: Se,
+		key: n
+	})));
 	let n = {};
 	for (let r in e) {
 		let i = {
-			...t,
-			children: e[r],
-			keyPath: [...t.keyPath, {
-				type: fe,
-				key: r
-			}]
+			type: xe,
+			key: r
 		};
 		if (t.eager) {
-			n[r] = T(e[r], i);
+			n[r] = L(e[r], I(t, e[r], i));
 			continue;
 		}
 		Object.defineProperty(n, r, {
 			enumerable: !0,
 			configurable: !0,
 			get: function() {
-				let t = T(e[r], i);
+				let n = L(e[r], I(t, e[r], i));
 				return Object.defineProperty(this, r, {
-					value: t,
+					value: n,
 					enumerable: !0,
 					configurable: !0
-				}), t;
+				}), n;
 			}
 		});
 	}
 	return n;
-}, _e = (e, t) => {
+}, Ce = (e, t) => {
 	let n = Object.keys(e);
 	for (let e of n) {
 		let n = !e.startsWith(">") && !e.startsWith("<") && !e.startsWith("=") && parseFloat(e) === t || e.startsWith("=") && parseFloat(e.slice(1)) === t, r = e.startsWith(">") && t > parseFloat(e.slice(1)), i = e.startsWith(">=") && t >= parseFloat(e.slice(2)), a = e.startsWith("<") && t < parseFloat(e.slice(1)), o = e.startsWith("<=") && t <= parseFloat(e.slice(2));
 		if (n || r || i || a || o) return e;
 	}
-}, ve = (e, t) => e[_e(e, t) ?? "fallback"], ye = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), E = "default", be = /[^A-Za-z0-9._&=-]/g, xe = /[^A-Za-z0-9._-]/g, Se = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, D = (e, t) => {
-	if (e === "") return "%";
-	let n = e.replace(t, Se);
-	return n === "." || n === ".." ? n.replace(/\./g, "%002E") : n;
-}, Ce = (e) => e === void 0 ? E : typeof e == "string" ? D(e, be) : Object.keys(e).sort().map((t) => `${D(t, xe)}=${D(String(e[t]), xe)}`).join("&"), we = (e) => Array.isArray(e) ? e.length === 0 ? [E] : e.map(Ce) : [Ce(e)], Te = (e, t) => {
-	for (let n of e) if (t(n)) return n;
-	return t("default") ? E : e[0] ?? "default";
-}, Ee = (e, t, n, r) => {
-	let i = e.split("/");
-	return t.every((e, t) => e === "variant" ? i[t] === r : n?.item === void 0 || i[t] === String(n.item));
-}, De = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, Oe = (e, t) => {
-	let n = t.split("/"), r = {
-		key: e.key,
-		content: e.content[t]
-	};
-	return e.qualifierTypes.forEach((e, t) => {
-		e === "variant" ? r.variant = n[t] : e === "item" && (r.item = Number(n[t]));
-	}), r;
-}, ke = (e, t) => {
-	if (!De(e)) return e;
-	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? E : Te(we(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => Ee(e, n, t, s)).map((t) => Oe(e, t));
-	return i ? c.sort((e, t) => (e.item ?? 0) - (t.item ?? 0)) : c[0] ?? null;
-}, Ae = (e) => typeof e == "object" && e ? {
-	locale: e.locale,
-	selector: e
-} : { locale: e }, je = (e) => e ? Object.keys(e).filter((e) => e !== "locale").sort().map((t) => {
-	let n = e[t];
-	return `${t}:${t === "variant" ? we(n).join(",") : String(n)}`;
-}).join("|") : "", O = "\x1B[0m", Me = "\x1B[34m", Ne = "\x1B[31m", Pe = "\x1B[32m", Fe = "\x1B[38;5;3m", Ie = "\x1B[36m", Le = (e) => e, Re = (e, t) => {
+}, we = (e, t) => e[Ce(e, t) ?? "fallback"], R = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), z = "\x1B[0m", Te = "\x1B[34m", Ee = "\x1B[31m", De = "\x1B[32m", Oe = "\x1B[38;5;3m", ke = "\x1B[36m", Ae = (e) => e, je = (e, t) => {
 	let n = t?.config ?? {}, r = n.mode ?? "default";
 	if (r === "disabled" || t?.isVerbose && r !== "verbose") return;
-	let i = Le(n.prefix), a = i ? [i, ...[e].flat()] : [e].flat(), o = t?.level ?? "info";
+	let i = Ae(n.prefix), a = i ? [i, ...[e].flat()] : [e].flat(), o = t?.level ?? "info";
 	(n[o] ?? console[o] ?? n.log ?? console.log)(...a);
-}, ze = (e, t) => (n, r) => Re(n, {
+}, B = (e, t) => (n, r) => je(n, {
 	...r ?? {},
 	config: {
 		...e?.log,
 		...t?.config,
 		...r?.config ?? {}
 	}
-}), k = (e, t, n) => t && typeof window > "u" ? `${t}${e}${n ? typeof n == "boolean" ? O : n : O}` : e, Be = (e, t = Fe, n = O) => [e].flat().map((e) => k(e, t, n)).join(", ");
-k("✗", Ne), k("✓", Pe), k("⏲", Me);
-var Ve = {
+}), V = (e, t, n) => t && typeof window > "u" ? `${t}${e}${n ? typeof n == "boolean" ? z : n : z}` : e, Me = (e, t = Oe, n = z) => [e].flat().map((e) => V(e, t, n)).join(", ");
+V("✗", Ee), V("✓", De), V("⏲", Te);
+var Ne = {
 	faq: {
 		key: "faq",
 		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"}},\"fr\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"Qu'est-ce qu'i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark est une suite de tests open source qui mesure et compare les performances, la taille du bundle et l'expérience développeur des bibliothèques d'internationalisation pour les applications JavaScript et React.\",\"howAreBenchmarksConducted\":\"Comment les benchmarks sont-ils menés ?\",\"weRunStandardizedTestsIn\":\"Nous effectuons des tests standardisés dans des environnements isolés en utilisant un matériel cohérent. Chaque benchmark est répété plusieurs fois pour garantir une signification statistique. Toutes les configurations de test sont disponibles publiquement dans notre dépôt GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Quelles bibliothèques sont actuellement supportées ?\",\"weSupportReactI18nextReact\":\"Nous supportons react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react et Tolgee.\",\"canISubmitMyOwn\":\"Puis-je soumettre mes propres benchmarks ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Oui ! Les soumissions de benchmarks par la communauté sont les bienvenues. Forkez notre dépôt, ajoutez votre benchmark en suivant notre guide de contribution et soumettez une pull request. Notre équipe examinera et fusionnera les soumissions qualifiées.\",\"howOftenAreBenchmarksUpdated\":\"À quelle fréquence les benchmarks sont-ils mis à jour ?\",\"weReRunAllBenchmarks\":\"Nous relançons tous les benchmarks chaque semaine avec les dernières versions stables de chaque bibliothèque. Les sorties de versions majeures déclenchent un cycle de re-benchmarking immédiat.\",\"isTheDataReliable\":\"Les données sont-elles fiables ?\",\"weFollowRigorousStatisticalMethodology\":\"Nous suivons une méthodologie statistique rigoureuse, incluant des phases de préchauffage, la détection des valeurs aberrantes et des intervalles de confiance. Toutes les données brutes sont publiées avec notre analyse pour une transparence totale.\",\"doYouOfferConsultingServices\":\"Offrez-vous des services de conseil ?\",\"yesOurEnterprisePlanIncludes\":\"Oui, notre offre Enterprise inclut des heures de conseil pour les équipes évaluant les solutions i18n. Nous pouvons fournir des recommandations personnalisées basées sur votre cas d'utilisation, votre échelle et vos contraintes spécifiques.\",\"howCanIContribute\":\"Comment puis-je contribuer ?\",\"thereAreManyWaysTo\":\"Il y a de nombreuses façons de contribuer : soumettre des benchmarks, améliorer la documentation, signaler des bugs, suggérer de nouvelles métriques ou parrainer le projet. Visitez notre dépôt GitHub pour plus de détails.\"}},\"es\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"¿Qué es i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark es una suite de pruebas de código abierto que mide y compara el rendimiento, el tamaño del bundle y la experiencia del développeur de las bibliotecas de internacionalización para aplicaciones JavaScript y React.\",\"howAreBenchmarksConducted\":\"¿Cómo se realizan los benchmarks ?\",\"weRunStandardizedTestsIn\":\"Realizamos pruebas estandarizadas en entornos aislados utilizando un hardware consistente. Cada benchmark se repite varias veces para garantizar la significancia estadística. Todas las configuraciones de prueba están disponibles públicamente en nuestro repositorio de GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"¿Qué bibliotecas son compatibles actualmente ?\",\"weSupportReactI18nextReact\":\"Soportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react y Tolgee.\",\"canISubmitMyOwn\":\"¿Puedo enviar mis propios benchmarks ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"¡Sí! Las presentaciones de benchmarks de la comunidad son bienvenidas. Haz un fork de nuestro repositorio, añade tu benchmark siguiendo nuestra guía de contribución y envía un pull request. Nuestro equipo revisará y combinará las presentaciones que califiquen.\",\"howOftenAreBenchmarksUpdated\":\"¿Con qué frecuencia se funcionan los benchmarks ?\",\"weReRunAllBenchmarks\":\"Volvemos a ejecutar todos los benchmarks semanalmente con las últimas versiones estables de cada biblioteca. Los lanzamientos de versiones principales activan un ciclo de re-benchmarking inmediato.\",\"isTheDataReliable\":\"¿Son fiables los datos ?\",\"weFollowRigorousStatisticalMethodology\":\"Seguimos una metodología estadística rigurosa que incluye ejecuciones de calentamiento, detección de valores atípicos e intervalos de confianza. Todos los datos brutos se publican junto con nuestro análisis para una total transparencia.\",\"doYouOfferConsultingServices\":\"¿Ofrecen servicios de consultoría ?\",\"yesOurEnterprisePlanIncludes\":\"Sí, nuestro plan Enterprise incluye horas de consultoría para equipos que evalúan soluciones i18n. Podemos proporcionar recomendaciones personalizadas basadas en su caso de uso, escala y limitaciones específicas.\",\"howCanIContribute\":\"¿Cómo puedo contribuir ?\",\"thereAreManyWaysTo\":\"Hay muchas formas de contribuir: enviar benchmarks, mejorar la documentación, informar de bugs, sugerir nuevas métricas o patrocinar el proyecto. Visita nuestro repositorio de GitHub para más detalles.\"}},\"de\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"Was ist i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark ist eine Open-Source-Benchmarking-Suite, welche die Leistung, die Bundle-Größe und die Entwicklererfahrung von Internationalisierungs-Bibliotheken für JavaScript- und React-Anwendungen misst und vergleicht.\",\"howAreBenchmarksConducted\":\"Wie werden die Benchmarks durchgeführt ?\",\"weRunStandardizedTestsIn\":\"Wir führen standardisierte Tests in isolierten Umgebungen mit konsistenter Hardware durch. Jeder Benchmark wird mehrfach wiederholt, um statistische Signifikanz zu gewährleisten. Alle Testkonfigurationen sind in unserem GitHub-Repository öffentlich zugänglich.\",\"whichLibrariesAreCurrentlySupported\":\"Welche Bibliotheken werden derzeit unterstützt ?\",\"weSupportReactI18nextReact\":\"Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react und Tolgee.\",\"canISubmitMyOwn\":\"Kann ich meine eigenen Benchmarks einreichen ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Ja! Einreichungen von Benchmarks durch die Community sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Leitfaden für Beiträge hinzu und senden Sie einen Pull-Request. Unser Team wird qualifizierte Einreichungen prüfen und zusammenführen.\",\"howOftenAreBenchmarksUpdated\":\"Wie oft werden die Benchmarks aktualisiert ?\",\"weReRunAllBenchmarks\":\"Wir führen alle Benchmarks wöchentlich gegen die neuesten stabilen Versionen jeder Bibliothek neu aus. Major-Releases lösen einen sofortigen Re-Benchmark-Zyklus aus.\",\"isTheDataReliable\":\"Sind die Daten zuverlässig ?\",\"weFollowRigorousStatisticalMethodology\":\"Wir folgen einer strengen statistischen Methodik, einschließlich Warm-up-Phasen, Ausreißererkennung und Konfidenzintervallen. Alle Rohdaten werden zusammen mit unserer Analyse für volle Transparenz veröffentlicht.\",\"doYouOfferConsultingServices\":\"Bieten Sie Beratungsdienstleistungen an ?\",\"yesOurEnterprisePlanIncludes\":\"Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen evaluieren. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Umfang und Ihren Einschränkungen geben.\",\"howCanIContribute\":\"Wie kann ich beitragen ?\",\"thereAreManyWaysTo\":\"Es gibt viele Möglichkeiten, beizutragen: Benchmarks einreichen, die Dokumentation verbessern, Fehler melden, neue Metriken vorschlagen oder das Projekt sponsern. Besuchen Sie unser GitHub-Repository für weitere Details.\"}},\"it\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"Cos'è i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark è una suite di test open source che misura e confronta le prestazioni, la dimensione del bundle e l'esperienza degli sviluppatori delle librerie di internazionalizzazione per applicazioni JavaScript e React.\",\"howAreBenchmarksConducted\":\"Come vengono condotti i benchmark ?\",\"weRunStandardizedTestsIn\":\"Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni di test sono disponibili pubblicamente nel nostro repository GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Quali librerie sono attualmente supportate ?\",\"weSupportReactI18nextReact\":\"Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\",\"canISubmitMyOwn\":\"Posso inviare i miei benchmark ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Sì! Gli invii di benchmark da parte della comunità sono i benvenuti. Fai un fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà gli invii idonei.\",\"howOftenAreBenchmarksUpdated\":\"Con quale frequenza vengono aggiornati i benchmark ?\",\"weReRunAllBenchmarks\":\"Eseguiamo nuovamente tutti i benchmark settimanalmente rispetto alle ultime versioni stabili di ogni libreria. Le versioni principali in uscita attivano un immediato ciclo di re-benchmark.\",\"isTheDataReliable\":\"I dati sono affidabili ?\",\"weFollowRigorousStatisticalMethodology\":\"Seguiamo una rigorosa metodologia statistica che include corse di riscaldamento, rilevamento di valori anomali e intervalli di confidenza. Tutti i dati grezzi sono pubblicati insieme alla nostra analisi per una completa trasparenza.\",\"doYouOfferConsultingServices\":\"Offrite servizi di consulenza ?\",\"yesOurEnterprisePlanIncludes\":\"Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano le soluzioni i18n. Abbiamo la possibilità di fornire raccomandazioni personalizzate basate sul caso d'uso specifico, sulla scala e sui vincoli.\",\"howCanIContribute\":\"Come posso contribuire ?\",\"thereAreManyWaysTo\":\"Ci sono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per maggiori dettagli.\"}},\"pt\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"O que é o i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"O i18n Benchmark é uma suíte de testes de código aberto que mede e compara o desempenho, o tamanho do bundle e a experiência do developpeur de bibliotecas de internacionalização para aplicativos JavaScript e React.\",\"howAreBenchmarksConducted\":\"Como os benchmarks são conduzidos ?\",\"weRunStandardizedTestsIn\":\"Executamos testes padronizados em ambientes isolados usando hardware consistente. Cada benchmark é repetido várias vezes para garantir a significância estatística. Todas as configurações de teste estão disponíveis publicamente em nosso repositório no GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Quais bibliotecas são suportadas atualmente ?\",\"weSupportReactI18nextReact\":\"Suportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\",\"canISubmitMyOwn\":\"Posso enviar meus próprios benchmarks ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Sim! Submissões de benchmarks da comunidade são bem-vindas. Faça um fork do nosso repositório, adicione seu benchmark seguindo nosso guia de contribuição e envie um pull request. Nossa equipe revisará e mesclará as submissões qualificadas.\",\"howOftenAreBenchmarksUpdated\":\"Com que frequência os benchmarks são atualizados ?\",\"weReRunAllBenchmarks\":\"Executamos novamente todos os benchmarks semanalmente com as versões estáveis mais recentes de cada biblioteca. Lançamentos de versões principais disparam um ciclo imediato de re-benchmark.\",\"isTheDataReliable\":\"Os dados são confiáveis ?\",\"weFollowRigorousStatisticalMethodology\":\"Seguimos uma metodologia estatística rigorosa, incluindo execuções de aquecimento, detecção de outliers e intervalos de confiança. Todos os dados brutos são publicados junto com nossa análise para total transparência.\",\"doYouOfferConsultingServices\":\"Vocês oferecem serviços de consultoria ?\",\"yesOurEnterprisePlanIncludes\":\"Sim, nosso plano Enterprise inclui horas de consultoria para equipes que avaliam soluções i18n. Temos a possibilidade de fornecer recomendações personalizadas com base em seu caso de uso, escala e restrições específicas.\",\"howCanIContribute\":\"Como posso contribuir ?\",\"thereAreManyWaysTo\":\"Existem muitas maneiras de contribuir: envie benchmarks, melhore a documentação, relate bugs, sugira novas métricas ou patrocine o projeto. Visite nosso repositório no GitHub para mais detalhes.\"}},\"zh\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"什么是 i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark 是一个开源基准测试套件，用于测量和比较 JavaScript 和 React 应用程序国际化库的性能、捆绑包大小和开发人员经验。\",\"howAreBenchmarksConducted\":\"如何进行基准测试 ?\",\"weRunStandardizedTestsIn\":\"我们在使用一致硬件的隔离环境中运行标准化测试。每个基准测试都会重复多次以确保统计显著性。所有测试配置都可以在我们的 GitHub 存储库中公开获得。\",\"whichLibrariesAreCurrentlySupported\":\"目前支持哪些库 ?\",\"weSupportReactI18nextReact\":\"我们支持 react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react 和 Tolgee。\",\"canISubmitMyOwn\":\"我可以提交自己的基准测试吗 ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"是的！欢迎社区提交基准测试。分叉我们的存储库，按照我们的贡献指南添加您的基准测试，并提交拉取请求。我们的团队将审查并合并合格的提交。\",\"howOftenAreBenchmarksUpdated\":\"基准测试更新频率如何 ?\",\"weReRunAllBenchmarks\":\"我们每周针对每个库的最新稳定版本重新运行所有基准测试。主要版本发布会立即触发重新基准测试周期。\",\"isTheDataReliable\":\"数据可靠吗 ?\",\"weFollowRigorousStatisticalMethodology\":\"我们遵循严谨的统计方法论，包括预热运行、异常值检测和置信区间。所有原始数据与其分析结果一起发布，以实现完全透明。\",\"doYouOfferConsultingServices\":\"你们提供咨询服务吗 ?\",\"yesOurEnterprisePlanIncludes\":\"是的，我们的企业计划为评估 i18n 解决方案的团队提供咨询时间。我们可以根据您的特定用例、规模和限制提供定制建议。\",\"howCanIContribute\":\"我该如何贡献 ?\",\"thereAreManyWaysTo\":\"有很多方式可以贡献：提交基准测试、改进文档、报告错误、建议新指标或赞助项目。访问我们的 GitHub 存储库了解更多详情。\"}},\"ja\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"i18n Benchmarkとは何ですか？\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmarkは、JavaScriptおよびReactアプリケーション用の国際化ライブラリのパフォーマンス、バンドルサイズ、開発者体験を測定および比較するオープンソースのベンチマークスイーツです。\",\"howAreBenchmarksConducted\":\"ベンチマークはどのように行われますか？\",\"weRunStandardizedTestsIn\":\"一貫したハードウェアを使用した隔離された環境で標準化されたテストを実行します。各ベンチマークは、統計的有意性を確保するために複数回繰り返されます。すべてのテスト構成は、GitHubリポジトリで公開されています。\",\"whichLibrariesAreCurrentlySupported\":\"現在サポートされているライブラリは何ですか？\",\"weSupportReactI18nextReact\":\"react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react、Tolgeeをサポートしています。\",\"canISubmitMyOwn\":\"自分のベンチマークを提出できますか？\",\"yesCommunityBenchmarkSubmissionsAre\":\"はい！コミュニティからのベンチマーク提出を歓迎します。リポジトリをフォークし、貢献ガイドに従ってベンチマークを追加し、プルリクエストを送信してください。チームが審査し、適合する提出物をマージします。\",\"howOftenAreBenchmarksUpdated\":\"ベンチマークはどのくらいの頻度で更新されますか？\",\"weReRunAllBenchmarks\":\"毎週、各ライブラリの最新の安定版に対してすべてのベンチマークを再実行します。メジャーバージョンのリリースにより、即座に再ベンチマークサイクルがトリガーされます。\",\"isTheDataReliable\":\"データは信頼できますか？\",\"weFollowRigorousStatisticalMethodology\":\"ウォームアップ実行、外れ値検出、信頼区間を含む厳格な統計的手法に従っています。すべての生のデータは、完全な透明性のために分析結果とともに公開されます。\",\"doYouOfferConsultingServices\":\"コンサルティングサービスは提供していますか？\",\"yesOurEnterprisePlanIncludes\":\"はい、エンタープライズプランには、i18nソリューションを評価するチームのためのコンサルティング時間が含まれています。特定のユースケース、規模、制約に基づいたカスタマイズされた推奨事項を提供できます。\",\"howCanIContribute\":\"どのように貢献できますか？\",\"thereAreManyWaysTo\":\"貢献する方法はたくさんあります：ベンチマークの提出、ドキュメントの改善、バグ報告、新しい指標の提案、プロジェクトのスポンサーなど。詳細はGitHubリポジトリをご覧ください。\"}},\"ko\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"i18n Benchmark란 무엇인가요?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark는 JavaScript 및 React 애플리케이션용 국제화 라이브러리의 성능, 번들 크기 및 개발자 경험을 측정하고 비교하는 오픈 소스 벤치마킹 제품군입니다.\",\"howAreBenchmarksConducted\":\"벤치마크는 어떻게 진행되나요?\",\"weRunStandardizedTestsIn\":\"일관된 하드웨어를 사용하는 격리된 환경에서 표준화된 테스트를 실행합니다. 각 벤치마크는 통계적 유의성을 확보하기 위해 여러 번 반복됩니다. 모든 테스트 구성은 GitHub 저장소에 공개되어 있습니다.\",\"whichLibrariesAreCurrentlySupported\":\"현재 어떤 라이브러리가 지원되나요?\",\"weSupportReactI18nextReact\":\"react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, Tolgee를 지원합니다.\",\"canISubmitMyOwn\":\"저만의 벤치마크를 제출할 수 있나요?\",\"yesCommunityBenchmarkSubmissionsAre\":\"네! 커뮤니티의 벤치마크 제출을 환영합니다. 저장소를 포크하고 기여 가이드에 따라 벤치마크를 추가한 후 풀 리퀘스트를 제출하세요. 저희 팀이 검토 후 마지(merge)할 것입니다.\",\"howOftenAreBenchmarksUpdated\":\"벤치마크는 얼마나 자주 업데이트되나요?\",\"weReRunAllBenchmarks\":\"매주 각 라이브러리의 최신 안정 버전에 대해 모든 벤치마크를 다시 실행합니다. 주요 버전이 릴리스되면 즉시 재벤치마크 주기가 시작됩니다.\",\"isTheDataReliable\":\"데이터는 신뢰할 수 있나요?\",\"weFollowRigorousStatisticalMethodology\":\"웜업 실행, 이상치 감지 및 신뢰 구간을 포함한 엄격한 통계 방법론을 따릅니다. 모든 원시 데이터는 완전한 투명성을 위해 분석 결과와 함께 게시됩니다.\",\"doYouOfferConsultingServices\":\"컨설팅 서비스를 제공하나요?\",\"yesOurEnterprisePlanIncludes\":\"네, 엔터프라이즈 플랜에는 i18n 솔루션을 평가하는 팀을 위한 컨설팅 시간이 포함되어 있습니다. 특정 사례, 규모 및 제약 조건에 따라 맞춤형 권장 사항을 제공할 수 있습니다.\",\"howCanIContribute\":\"어떻게 기여할 수 있나요?\",\"thereAreManyWaysTo\":\"기여하는 방법은 다양합니다: 벤치마크 제출, 문서 개선, 버그 보고, 새로운 지표 제안 또는 프로젝트 후원. 자세한 내용은 GitHub 저장소를 방문하세요.\"}},\"ru\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"Что такое i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark — это набор тестов с открытым исходным кодом, который измеряет и сравнивает производительность, размер бандла и опыт разработчика библиотек интернационализации для приложений JavaScript и React.\",\"howAreBenchmarksConducted\":\"Как проводятся бенчмарки ?\",\"weRunStandardizedTestsIn\":\"Мы проводим стандартизированные тесты в изолированных средах с использованием единообразного оборудования. Каждый бенчмарк повторяется несколько раз для обеспечения статистической значимости. Все конфигурации тестов открыты в нашем репозитории GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Какие библиотеки поддерживаются в настоящее время ?\",\"weSupportReactI18nextReact\":\"Мы поддерживаем react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react и Tolgee.\",\"canISubmitMyOwn\":\"Могу ли я отправить свои собственные бенчмарки ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Да! Мы приветствуем отправку бенчмарков от сообщества. Сделайте форк нашего репозитория, добавьте свой бенчмарк, следуя нашему руководству по внесению вклада, и отправьте пулл-реквест. Наша команда рассмотрит и примет квалифицированные заявки.\",\"howOftenAreBenchmarksUpdated\":\"Как часто обновляются бенчмарки ?\",\"weReRunAllBenchmarks\":\"Мы еженедельно перезапускаем все бенчмарки для последних стабильных версий каждой библиотеки. Выход мажорных версий вызывает немедленный цикл повторного тестирования.\",\"isTheDataReliable\":\"Надежны ли данные ?\",\"weFollowRigorousStatisticalMethodology\":\"Мы следуем строгой статистической методологии, включая прогревочные запуски, обнаружение выбросов и доверительные интервалы. Все необработанные данные публикуются вместе с нашим анализом для полной прозрачности.\",\"doYouOfferConsultingServices\":\"Предлагаете ли вы консультационные услуги ?\",\"yesOurEnterprisePlanIncludes\":\"Да, наш корпоративный план включает консультационные часы для команд, оценивающих решения i18n. Мы можем предоставить индивидуальные рекомендации, основанные на вашем конкретном случае использования, масштабе и ограничениях.\",\"howCanIContribute\":\"Как я могу помочь ?\",\"thereAreManyWaysTo\":\"Есть много способов внести свой вклад: отправить бенчмарки, улучшить документацию, сообщить о багах, предложить новые метрики или спонсировать проект. Посетите наш репозиторий GitHub для более подробной информации.\"}}}}"),
@@ -1711,163 +1780,118 @@ var Ve = {
 			"hero::sync-json::./messages/{{locale}}.json::messages/ru.json"
 		]
 	}
-}, A = () => Ve, He = /* @__PURE__ */ new Set([
+}, H = () => Ne, Pe = /* @__PURE__ */ new Set([
 	"hasOwnProperty",
 	"isPrototypeOf",
 	"propertyIsEnumerable",
 	"toLocaleString"
-]), j = (e = "") => new Proxy((() => e), { get: (t, n) => n === "toJSON" || n === Symbol.toPrimitive || n === "toString" || n === "valueOf" ? () => e : n === "then" ? void 0 : He.has(n) ? Object.prototype[n].bind(t) : n === Symbol.iterator ? function* () {
+]), U = (e = "") => new Proxy((() => e), { get: (t, n) => n === "toJSON" || n === Symbol.toPrimitive || n === "toString" || n === "valueOf" ? () => e : n === "then" ? void 0 : Pe.has(n) ? Object.prototype[n].bind(t) : n === Symbol.iterator ? function* () {
 	yield e;
-} : j(e ? `${e}.${String(n)}` : String(n)) }), M = /* @__PURE__ */ new Set(), N = (e, t, n) => {
-	let r = A()[e];
-	return r ? ft(r, t, n) : (M.has(e) || (ze({ log: ne })(typeof window > "u" ? `Dictionary ${Be(e)} was not found. Using fallback proxy.` : `Dictionary ${e} was not found. Using fallback proxy.`, { level: "warn" }), M.add(e)), j(e));
-}, Ue = 50, P = /* @__PURE__ */ new Map(), We = /* @__PURE__ */ new Set(), Ge = (e) => {
-	We.has(e) || (We.add(e), console.warn(`[intlayer] \`Intl.${e}\` is not available in this JavaScript engine. A degraded fallback is used instead. On React Native, load a polyfill (e.g. \`@formatjs/intl-${e.toLowerCase()}/polyfill\`) before rendering your app.`));
-}, Ke = {
-	DisplayNames: class {
-		of(e) {
-			return e;
-		}
-	},
-	ListFormat: class {
-		format(e) {
-			return Array.from(e).join(", ");
-		}
-		formatToParts(e) {
-			return Array.from(e).flatMap((e, t) => t === 0 ? [{
-				type: "element",
-				value: e
-			}] : [{
-				type: "literal",
-				value: ", "
-			}, {
-				type: "element",
-				value: e
-			}]);
-		}
-	},
-	Segmenter: class {
-		segment(e) {
-			let t = 0;
-			return Array.from(e).map((e) => {
-				let n = t;
-				return t += e.length, {
-					segment: e,
-					index: n
-				};
-			});
-		}
-	}
-}, qe = (e) => {
-	let t = Intl[e];
-	return typeof t == "function" ? t : (Ge(e), Ke[e]);
-};
-function F(e, t, n) {
-	let r = t ?? _?.defaultLocale, i = `${r}|${n ? JSON.stringify(n) : ""}`, a = e, o = P.get(a);
-	o || (o = /* @__PURE__ */ new Map(), P.set(a, o));
-	let s = o.get(i);
-	if (!s) {
-		let t = typeof e == "string" ? qe(e) : e;
-		if (typeof t != "function") throw Error(`[intlayer] \`Intl.${String(e)}\` is not available in this JavaScript engine and has no fallback. Load the matching polyfill before formatting.`);
-		o.size > Ue && o.clear(), s = new t(r, n), o.set(i, s);
-	}
-	return s;
-}
-var Je = (e, t, n) => e[F("PluralRules", n).select(t)] ?? e.other, Ye = (e, t) => {
+} : U(e ? `${e}.${String(n)}` : String(n)) }), W = /* @__PURE__ */ new Set(), G = (e, t, n) => {
+	let r = H()[e];
+	return r ? it(r, t, n) : (W.has(e) || (B({ log: b })(typeof window > "u" ? `Dictionary ${Me(e)} was not found. Using fallback proxy.` : `Dictionary ${e} was not found. Using fallback proxy.`, { level: "warn" }), W.add(e)), U(e));
+}, Fe = (e, t, n) => e[w("PluralRules", n).select(t)] ?? e.other, Ie = (e, t) => {
 	let n = Object.keys(e), r = n[n.length - 1];
 	return e[t] ?? e.fallback ?? e.other ?? e[r];
-}, Xe = (e) => {
+}, Le = (e) => {
 	if (typeof e != "object" || !e || typeof e.then == "function" || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0) return !1;
 	let t = Object.getPrototypeOf(e);
 	return t === Object.prototype || t === null || Array.isArray(e);
-}, Ze = (e, t) => {
+}, Re = (e, t) => {
 	if (e === void 0) return t;
-	if (t === void 0 || Array.isArray(e)) return e;
-	if (Xe(e) && Xe(t)) {
-		let n = { ...e };
-		for (let r of Object.keys(t)) r !== "__proto__" && r !== "constructor" && t[r] !== void 0 && (n[r] = e[r] === void 0 ? t[r] : Ze(e[r], t[r]));
-		return n;
+	if (t === void 0 || Array.isArray(e) || !Le(e) || !Le(t)) return e;
+	let n = e;
+	for (let r of Object.keys(t)) {
+		let i = t[r];
+		if (r === "__proto__" || r === "constructor" || i === void 0) continue;
+		let a = e[r], o = a === void 0 ? i : typeof a == "object" ? Re(a, i) : a;
+		o !== a && (n === e && (n = { ...e }), n[r] = o);
 	}
-	return e;
-}, Qe = (e, t, n) => {
-	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
-		e && !i.has(e) && (i.add(e), a.push(e));
-	};
-	o(t), t.includes("-") && o(t.split("-")[0]), o(n), n?.includes("-") && o(n.split("-")[0]);
-	let s = [];
-	for (let e of a) {
-		let t = r(e);
-		if (t !== void 0) {
-			if (typeof t == "string") {
-				if (s.length === 0) return t;
+	return n;
+}, ze = (e, t, n) => {
+	let r = (t) => e[t], i = r(t);
+	if (typeof i == "string") return i;
+	let a = [
+		t,
+		t.split("-")[0],
+		n,
+		n?.split("-")[0]
+	], o = [];
+	for (let e = 0; e < a.length; e++) {
+		let t = a[e];
+		if (!t || a.indexOf(t) < e) continue;
+		let n = r(t);
+		if (n !== void 0) {
+			if (typeof n == "string") {
+				if (o.length === 0) return n;
 				continue;
 			}
-			s.push(t);
+			o.push(n);
 		}
 	}
-	if (s.length !== 0) return s.length === 1 || Array.isArray(s[0]) ? s[0] : s.reduce((e, t) => Ze(e, t));
-}, I = (e) => {
+	if (o.length !== 0) return o.length === 1 || Array.isArray(o[0]) ? o[0] : o.reduce((e, t) => Re(e, t));
+}, K = (e) => {
 	if (typeof e != "object" || !e || !("nodeType" in e)) return !1;
 	let { nodeType: t } = e;
 	return !1;
-}, $e = (e) => {
+}, Be = (e) => {
 	if (typeof e == "string") return e;
-	if (I(e)) return e.nodeType === "html" ? e[C] : e[me];
-}, et = (e, t) => {
+	if (K(e)) return e.nodeType === "html" ? e[N] : e[M];
+}, Ve = (e, t) => {
 	if (typeof e == "string") return t;
-	if (I(e)) {
-		let n = e.nodeType === "html" ? C : me;
+	if (K(e)) {
+		let n = e.nodeType === "html" ? N : M;
 		return {
 			...e,
 			[n]: t
 		};
 	}
 	return e;
-}, tt = (e, t, n, r, i) => {
-	let a = et(e, ye($e(e), t));
+}, He = (e, t, n, r, i) => {
+	let a = Ve(e, R(Be(e), t));
 	return i(a, {
 		...n,
 		plugins: r,
 		children: a
 	});
-}, L = {
+}, q = {
 	id: "fallback-plugin",
 	canHandle: () => !1,
 	transform: (e) => e
-}, nt = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? L : {
+}, Ue = (e) => {
+	if (typeof e != "function") return !1;
+	let { value: t } = e;
+	return t === void 0 || typeof t == "function";
+}, We = (e, t) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? q : {
 	id: "translation-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "translation",
 	transform: (n, r, i) => {
-		let a = n.translation ?? {}, o = {};
-		for (let e in a) {
-			let t = {
-				...r,
-				children: a[e],
-				keyPath: [...r.keyPath, {
-					type: le,
-					key: e
-				}]
-			};
-			o[e] = i(a[e], t);
-		}
-		return Qe(o, e, t);
+		let a = ze(n.translation ?? {}, e, t);
+		return i(a, {
+			...r,
+			children: a,
+			keyPath: [...r.keyPath, {
+				type: ye,
+				key: e
+			}]
+		});
 	}
-}, rt = L, it = L, at = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? L : {
+}, Ge = q, Ke = (e) => q, qe = q, Je = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? q : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
-		let r = [...t.keyPath, { type: S }], i = e[S], a = {
+		let r = [...t.keyPath, { type: j }], i = e[j], a = {
 			id: "insertion-string-plugin",
-			canHandle: (e) => typeof e == "string" || I(e),
+			canHandle: (e) => typeof e == "string" || K(e),
 			transform: (e, n, r) => {
-				if (I(e)) return (i) => tt(e, i, n, t.plugins, r);
+				if (K(e)) return (i) => He(e, i, n, t.plugins, r);
 				let i = r(e, {
 					...n,
 					children: e,
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = ye(i, e);
+					let a = R(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -1876,181 +1900,87 @@ var Je = (e, t, n) => e[F("PluralRules", n).select(t)] ?? e.other, Ye = (e, t) =
 				};
 			}
 		};
-		return n(i, {
+		return Ze(i, n(i, {
 			...t,
 			children: i,
 			keyPath: r,
 			plugins: [a, ...t.plugins ?? []]
-		});
+		}));
 	}
-}, ot = L, st = L;
+}, Ye = [
+	k,
+	be,
+	A,
+	P,
+	F
+], Xe = (e, t, n, r = !1) => {
+	let i = e?.nodeType;
+	if (typeof t != "function" || !i || !Ye.includes(i)) return t;
+	let a = i === "plural" || i === "enumeration";
+	return (e) => {
+		if (typeof e == "object" && e) return t({
+			...n,
+			...e
+		});
+		if (a) return t({
+			...n,
+			count: e
+		});
+		let i = t(e);
+		return !r && Ue(i) ? i(n) : i;
+	};
+}, Ze = (e, t) => typeof t == "function" && Ye.includes(e?.nodeType ?? "") ? (n) => Xe(e, t, n) : t, Qe = q, $e = q;
 process.env.INTLAYER_OPTIMIZED_NESTING;
-var ct = (e) => L, lt = L, ut = (e, t = !0) => [
-	nt(e ?? _.defaultLocale, t ? _.defaultLocale : void 0),
-	rt,
-	it,
-	at,
-	ct(e ?? _.defaultLocale),
-	lt,
-	ot,
-	st
-], dt = (e, t, n = []) => T(e, {
+var et = (e) => q, tt = q, nt = (e, t = !0) => [
+	We(e ?? v.defaultLocale, t ? v.defaultLocale : void 0),
+	Ge,
+	Ke(e ?? v.defaultLocale),
+	qe,
+	Je,
+	et(e ?? v.defaultLocale),
+	tt,
+	Qe,
+	$e
+].filter((e) => e !== q), rt = (e, t, n = []) => L(e, {
 	...t,
 	plugins: n
-}), ft = (e, t, n) => {
-	let { locale: r, selector: i } = Ae(t), a = se(r ?? _.defaultLocale, je(i), n), o = ce(e, a);
+}), J = /* @__PURE__ */ new WeakSet(), it = (e, t, n) => {
+	let { locale: r, selector: i } = {
+		locale: t,
+		selector: void 0
+	}, a = _e(r ?? v.defaultLocale, "", n), o = ve(e, a);
 	if (o.hit) return o.content;
-	let s = n ?? ut(r), c = ke(e, i), l = (e) => {
+	let s = n ?? nt(r), c = e, l = (e) => {
 		let t = {
 			dictionaryKey: e.key,
 			dictionaryPath: e.filePath,
 			keyPath: [],
 			plugins: s,
-			nestedDictionaries: e.nestedDictionaries
+			nestedDictionaries: e.nestedDictionaries,
+			eager: !J.has(e)
 		};
-		return dt(e.content, t, s);
-	};
-	return c === null ? x(e, a, null) : Array.isArray(c) ? x(e, a, c.map(l)) : x(e, a, l(c));
-}, pt = ["en"], mt = /* @__PURE__ */ new Set([
-	"area",
-	"base",
-	"br",
-	"col",
-	"embed",
-	"hr",
-	"img",
-	"input",
-	"link",
-	"meta",
-	"source",
-	"track",
-	"wbr"
-]), ht = /<(\/)?([a-zA-Z][a-zA-Z0-9.-]*)\s*((?:[^\n]|\n(?!\n))*?)(\/?)>/g, gt = (e) => {
-	let t = [], n = [];
-	for (let r of e.matchAll(ht)) {
-		let e = !!r[1], i = r[2], a = r[3], o = !!r[4];
-		if (!(a.trimStart().startsWith("://") || a.trimStart().startsWith(":"))) {
-			if (e) {
-				if (n.length === 0) t.push({
-					type: "error",
-					message: `Closing tag </${i}> has no matching opening tag`
-				});
-				else {
-					let e = n[n.length - 1];
-					e.tag.toLowerCase() !== i.toLowerCase() && t.push({
-						type: "error",
-						message: `Mismatched closing tag: expected </${e.tag}> but found </${i}>`
-					}), n.pop();
-				}
-			} else {
-				let e = mt.has(i.toLowerCase());
-				!o && !e && n.push({ tag: i });
-			}
-		}
-	}
-	for (let e of n) t.push({
-		type: "error",
-		message: `Unclosed HTML tag: <${e.tag}>`
-	});
-	return {
-		valid: t.filter((e) => e.type === "error").length === 0,
-		issues: t
-	};
-}, _t = (e) => {
-	let t = {};
-	return e?.trim() && [...e.matchAll(/([a-zA-Z0-9-:_@]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^>\s]+))?/g)].forEach((e) => {
-		let n = e[1];
-		t[n] = "string";
-	}), t;
-}, R = (e) => {
-	if (typeof e != "string") throw Error("content must be a string");
-	let t = [...e.matchAll(/<(\/)?([a-zA-Z0-9.-]+)\s*([\s\S]*?)(\/?)>/g)], n = {};
-	return t.forEach((e) => {
-		let t = !!e[1], r = e[2], i = e[3], a = !!e[4];
-		if (/^[a-z][a-z0-9]*$/.test(r)) {
-			n[r] = !0;
-			return;
-		}
-		if (n[r] || (n[r] = {}), n[r] === !0 || t) return;
-		let o = _t(i), s = n[r];
-		Object.assign(s, o), a || (s.children = "string");
-	}), n;
-}, vt = (e) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(e), yt = (e) => {
-	if (typeof e == "number") return Date.now() + e * 1e3;
-	if (typeof e == "string") {
-		let t = Date.parse(e);
-		return Number.isNaN(t) ? void 0 : t;
-	}
-}, bt = (e, t, n) => {
-	let r = [`${e}=${encodeURIComponent(t)}`];
-	n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`);
-	let i = yt(n.expires);
-	return i !== void 0 && r.push(`Expires=${new Date(i).toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, xt = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
-process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var z = {
-	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
-	getLocaleStorage: (e) => localStorage.getItem(e),
-	getSessionStorage: (e) => sessionStorage.getItem(e),
-	isCookieEnabled: !0,
-	setCookieStore: (e, t, n) => cookieStore.set({
-		name: e,
-		value: t,
-		path: n.path,
-		domain: n.domain,
-		expires: n.expires,
-		sameSite: n.sameSite
-	}),
-	setCookieString: (e, t) => {
-		document.cookie = t;
-	},
-	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
-	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
-}, St = (e = z) => {
-	let { locales: t } = _;
-	if (e?.isCookieEnabled === !1) return;
-	let n = (e) => !!e && t.includes(e);
-	if (!xt) for (let t = 0; t < (v.storage.cookies ?? []).length; t++) try {
-		let r = e?.getCookie?.(v.storage.cookies[t].name);
-		if (n(r)) return r;
-	} catch {}
-}, Ct = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !xt && v.storage.cookies) for (let n = 0; n < v.storage.cookies.length; n++) {
-		let { name: r, attributes: i } = v.storage.cookies[n];
+		J.add(e);
 		try {
-			t?.setCookieStore && t.setCookieStore(r, e, {
-				...i,
-				expires: yt(i.expires)
-			});
-		} catch {
-			try {
-				t?.setCookieString && t.setCookieString(r, bt(r, e, i));
-			} catch {}
+			return rt(e.content, t, s);
+		} finally {
+			t.eager && J.delete(e);
 		}
-	}
-}, wt = St(z), Tt = (e, t) => Ct(e, {
-	...z,
+	};
+	return c === null ? O(e, a, null) : Array.isArray(c) ? O(e, a, c.map(l)) : O(e, a, l(c));
+}, at = ["en"], ot = de, st = (e, t) => fe(e, {
+	...T,
 	isCookieEnabled: t
-}), Et = () => {
-	let { locale: e } = n(B) ?? {}, t = o(null);
-	r(() => {}, []), r(() => {
-		e && t.current && t.current.currentLocale.set(e);
-	}, [e]);
-}, Dt = ({ children: e }) => (Et(), e), Ot = () => {
-	let { locale: e } = n(B) ?? {}, t = o(null);
-	r(() => {}, []), r(() => {
-		e && t.current && (t.current.setLocale(e), t.current.trackPageView({ reason: "locale_change" }));
-	}, [e]);
-}, kt = ({ children: e }) => (Ot(), e), At = () => {
+}), ct = () => {
 	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, jt = (e = {}) => ({
+}, lt = (e = {}) => ({
 	...e,
-	defaultLocale: e.defaultLocale ?? _?.defaultLocale ?? "en",
-	mode: e.mode ?? v?.mode ?? "prefix-no-default",
-	locales: e.locales ?? _?.locales ?? pt,
-	rewrite: e.rewrite ?? v?.rewrite,
-	domains: e.domains ?? v?.domains
-}), Mt = (e, t) => !!e && (t ?? _.locales).includes(e), Nt = (e, t = _?.locales, n = _?.defaultLocale) => {
+	defaultLocale: e.defaultLocale ?? v?.defaultLocale ?? "en",
+	mode: e.mode ?? y?.mode ?? "prefix-no-default",
+	locales: e.locales ?? v?.locales ?? at,
+	rewrite: e.rewrite ?? y?.rewrite,
+	domains: e.domains ?? y?.domains
+}), ut = (e, t) => !!e && (t ?? v.locales).includes(e), dt = (e, t = v?.locales, n = v?.defaultLocale) => {
+	if (t?.includes(e)) return e;
 	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
 	try {
 		for (let e of r) {
@@ -2061,391 +1991,72 @@ var z = {
 		}
 	} catch {}
 	return n;
-}, Pt = (e = "/", t) => {
-	let { defaultLocale: n, locales: r, mode: i } = jt(t);
+}, ft = (e = "/", t) => {
+	let { defaultLocale: n, locales: r, mode: i } = lt(t);
 	if (!n || !r) return n;
-	let a = vt(e), o = e?.endsWith("/") && e.length > 1 ? e.slice(0, -1) : e, s = a ? new URL(o) : new URL(o, "http://e.com");
+	let a = ie(e), o = e?.endsWith("/") && e.length > 1 ? e.slice(0, -1) : e, s = a ? new URL(o) : new URL(o, "http://e.com");
 	if (i === "search-params") {
 		let e = s.searchParams.get("locale");
-		return Mt(e, r) ? e : n;
+		return ut(e, r) ? e : n;
 	}
 	if (i === "no-prefix") return n;
 	let c = s.pathname.split("/")[1];
-	if (Mt(c, r)) return c;
+	if (ut(c, r)) return c;
 	if (i === "prefix-no-default") return n;
-}, B = t({
-	locale: wt ?? _?.defaultLocale,
+}, pt = t({
+	get locale() {
+		return ot() ?? v?.defaultLocale;
+	},
 	setLocale: () => null,
 	isCookieEnabled: !0
-}), Ft = ({ locale: e, defaultLocale: t, variant: n, children: i, setLocale: a, disableEditor: o, isCookieEnabled: c }) => {
-	let { locales: l, defaultLocale: u } = _ ?? {}, [d, f] = s(e ?? wt ?? t ?? u);
-	r(() => {
-		e && e !== d && f(e);
-	}, [e]), r(() => {
-		At();
+}), mt = ({ locale: e, defaultLocale: t, variant: r, children: a, setLocale: c, disableEditor: l, isCookieEnabled: u }) => {
+	let { locales: d, defaultLocale: ee } = v ?? {}, [p, m] = s(() => e ?? ot() ?? t ?? ee), [h, g] = s(e);
+	e !== h && (g(e), e && e !== p && m(e)), i(() => {
+		ct();
 	}, []);
-	let m = a ?? ((e) => {
-		if (d.toString() !== e.toString()) {
-			if (!l?.map(String).includes(e)) {
+	let _ = n((e) => {
+		if (p.toString() !== e.toString()) {
+			if (!d?.map(String).includes(e)) {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			f(e), Tt(e, c);
+			m(e), st(e, u);
 		}
-	}), ee = Nt(d);
-	return p(B.Provider, {
-		value: {
-			locale: ee,
-			setLocale: m,
-			variant: n,
-			disableEditor: o
-		},
-		children: i
+	}, [
+		p,
+		d,
+		u
+	]), y = c ?? _, b = dt(p), x = o(() => ({
+		locale: b,
+		setLocale: y,
+		variant: r,
+		disableEditor: l
+	}), [
+		b,
+		y,
+		r,
+		l
+	]);
+	return f(pt.Provider, {
+		value: x,
+		children: a
 	});
-}, It = ({ children: e, ...t }) => m(Ft, {
+}, ht = ({ children: e, ...t }) => p(mt, {
 	...t,
 	children: [
-		p(Dt, {}),
-		p(kt, {}),
+		!1,
+		!1,
 		e
 	]
-}), Lt = (e) => p(It, { ...e }), Rt = ({ locale: e, children: t, messages: n, timeZone: r, now: i, ...a }) => {
-	n !== void 0 && ze({ log: ne })(`${k("NextIntlClientProvider", Ie)} do not pass the messages prop with intlayer. Messages are loaded automatically under the hood for bundle optimization reason`);
-	let o = u(), s = v?.mode ?? "prefix-no-default", c = e ?? (s === "prefix-all" || s === "prefix-no-default" ? Pt(o) : void 0);
-	return p(Lt, {
+}), gt = ({ locale: e, children: t, messages: n, timeZone: r, now: i, ...a }) => {
+	n !== void 0 && B({ log: b })(`${V("NextIntlClientProvider", ke)} do not pass the messages prop with intlayer. Messages are loaded automatically under the hood for bundle optimization reason`);
+	let o = u(), s = y?.mode ?? "prefix-no-default", c = e ?? (s === "prefix-all" || s === "prefix-no-default" ? ft(o) : void 0);
+	return f(ht, {
 		locale: c,
 		...a,
 		children: t
 	}, String(c));
-}, V = (e) => w(ue, e), zt = (e) => w(he, e), H = (e, t) => w(C, e, { tags: (() => {
-	if (t) return t;
-	if (typeof e == "string") {
-		let { issues: t } = gt(e);
-		for (let e of t) e.type === "error" ? console.error(`[intlayer/html] ${e.message}`) : console.warn(`[intlayer/html] ${e.message}`);
-		return R(e);
-	}
-	let n;
-	if (typeof e == "function" ? n = e() : typeof e.then == "function" && (n = async () => R(await e)), typeof n == "string") return R(n);
-	try {
-		return R(JSON.stringify(e));
-	} catch {
-		return [];
-	}
-})() }), U = (e) => {
-	let t = [...e.matchAll(/{{\s*(.*?)\s*}}/g)];
-	return t.length === 0 ? [] : [...new Set(t.map((e) => e[1].trim()))].filter(Boolean);
-}, W = (e) => w(S, e, { fields: (() => {
-	if (typeof e == "string") return U(e);
-	let t;
-	if (typeof e == "function" ? t = e() : typeof e.then == "function" && (t = async () => U(await e)), typeof t == "string") return U(t);
-	try {
-		return U(JSON.stringify(e));
-	} catch {
-		return [];
-	}
-})() }), Bt = (e) => w(de, e), Vt = (e, t) => w(ge, e, { variable: t }), Ht = (e) => {
-	let t = 0, n = () => {
-		let n = [], i = "";
-		for (; t < e.length;) {
-			let a = e[t];
-			if (a === "{") i &&= (n.push(i), ""), t++, n.push(r());
-			else if (a === "}") break;
-			else if (a === "'") {
-				if (t + 1 < e.length && e[t + 1] === "'") i += "'", t += 2;
-				else {
-					let n = e.indexOf("'", t + 1);
-					n === -1 ? (i += "'", t++) : (i += e.substring(t + 1, n), t = n + 1);
-				}
-			} else i += a, t++;
-		}
-		return i && n.push(i), n;
-	}, r = () => {
-		let r = "";
-		for (; t < e.length && /[^,}]/.test(e[t]);) r += e[t], t++;
-		if (r = r.trim(), t >= e.length) throw Error("Unclosed argument");
-		if (e[t] === "}") return t++, {
-			type: "argument",
-			name: r
-		};
-		if (e[t] === ",") {
-			t++;
-			let i = "";
-			for (; t < e.length && /[^,}]/.test(e[t]);) i += e[t], t++;
-			if (i = i.trim(), t >= e.length) throw Error("Unclosed argument");
-			if (e[t] === "}") return t++, {
-				type: "argument",
-				name: r,
-				format: { type: i }
-			};
-			if (e[t] === ",") {
-				if (t++, i === "plural" || i === "select" || i === "selectordinal") {
-					let a = {};
-					for (; t < e.length && e[t] !== "}";) {
-						for (; t < e.length && /\s/.test(e[t]);) t++;
-						let r = "";
-						for (; t < e.length && /[^{\s]/.test(e[t]);) r += e[t], t++;
-						for (; t < e.length && /\s/.test(e[t]);) t++;
-						if (e[t] !== "{") throw Error("Expected { after option key");
-						t++;
-						let i = n();
-						if (e[t] !== "}") throw Error("Expected } after option value");
-						for (t++, a[r] = i; t < e.length && /\s/.test(e[t]);) t++;
-					}
-					if (t++, i === "plural") return {
-						type: "plural",
-						name: r,
-						options: a
-					};
-					if (i === "select") return {
-						type: "select",
-						name: r,
-						options: a
-					};
-					if (i === "selectordinal") return {
-						type: "selectordinal",
-						name: r,
-						options: a
-					};
-				} else {
-					let n = "";
-					for (; t < e.length && e[t] !== "}";) n += e[t], t++;
-					if (t >= e.length) throw Error("Unclosed argument");
-					return n = n.trim(), t++, {
-						type: "argument",
-						name: r,
-						format: {
-							type: i,
-							style: n
-						}
-					};
-				}
-			}
-		}
-		throw Error("Malformed argument");
-	};
-	return n();
-}, G = (e) => {
-	if (e.length === 0) return "";
-	if (e.length === 1 && typeof e[0] == "string") {
-		let t = e[0];
-		return /<[a-zA-Z0-9-]+[^>]*>/.test(t) ? H(t) : t;
-	}
-	if (e.every((e) => typeof e == "string" || e.type === "argument")) {
-		let t = "";
-		for (let n of e) typeof n == "string" ? t += n : typeof n != "string" && n.type === "argument" && (n.format ? t += `{${n.name}, ${n.format.type}${n.format.style ? `, ${n.format.style}` : ""}}` : t += `{{${n.name}}}`);
-		return /<[a-zA-Z0-9-]+[^>]*>/.test(t) ? H(t) : W(t);
-	}
-	if (e.length === 1) {
-		let t = e[0];
-		if (typeof t == "string") return /<[a-zA-Z0-9-]+[^>]*>/.test(t) ? H(t) : t;
-		if (t.type === "argument") return t.format ? W(`{${t.name}, ${t.format.type}${t.format.style ? `, ${t.format.style}` : ""}}`) : W(`{{${t.name}}}`);
-		if (t.type === "plural") {
-			let e = {}, n = !1;
-			for (let e of Object.keys(t.options)) if (e.startsWith("=")) {
-				n = !0;
-				break;
-			}
-			if (n) {
-				for (let [n, r] of Object.entries(t.options)) {
-					let i = n;
-					n.startsWith("=") ? i = n.substring(1) : n === "one" ? i = "1" : n === "two" ? i = "2" : n === "few" ? i = "<=3" : n === "many" ? i = ">=4" : n === "other" && (i = "fallback");
-					let a = r.map((e) => typeof e == "string" ? e.replace(/#/g, `{{${t.name}}}`) : e);
-					e[i] = G(a);
-				}
-				return e.__intlayer_icu_var = t.name, V(e);
-			}
-			for (let [n, r] of Object.entries(t.options)) e[n] = G(r.map((e) => typeof e == "string" ? e.replace(/#/g, `{{${t.name}}}`) : e));
-			return Bt(e);
-		}
-		if (t.type === "select") {
-			let e = {};
-			for (let [n, r] of Object.entries(t.options)) e[n === "other" ? "fallback" : n] = G(r);
-			let n = Object.keys(e);
-			return (e.male || e.female) && n.every((e) => [
-				"male",
-				"female",
-				"other",
-				"fallback"
-			].includes(e)) ? zt({
-				fallback: e.fallback,
-				male: e.male,
-				female: e.female
-			}) : Vt(e, t.name);
-		}
-		if (t.type === "selectordinal") {
-			let e = {};
-			for (let [n, r] of Object.entries(t.options)) {
-				let i = n.startsWith("=") ? n.substring(1) : n === "other" ? "fallback" : n;
-				e[i] = G(r.map((e) => typeof e == "string" ? e.replace(/#/g, `{{${t.name}}}`) : e));
-			}
-			return e.__intlayer_icu_var = t.name, e.__intlayer_icu_ordinal = !0, V(e);
-		}
-	}
-	return e.map((e) => G([e]));
-}, Ut = {
-	canHandle: (e) => typeof e == "string" && (e.includes("{") || e.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(e)),
-	transform: (e) => {
-		try {
-			return G(Ht(e));
-		} catch {
-			return e;
-		}
-	}
-}, Wt = (e) => T(e, {
-	dictionaryKey: "icu",
-	keyPath: [],
-	plugins: [{
-		id: "icu",
-		...Ut
-	}]
-}), Gt = (e) => {
-	let t = 0, n = () => {
-		let n = [], a = "";
-		for (; t < e.length;) {
-			let o = e[t];
-			if (o === "{" && e[t + 1] === "{") a &&= (n.push(a), ""), t += 2, n.push(r());
-			else if (o === "{") a &&= (n.push(a), ""), t++, n.push(i());
-			else if (o === "}") break;
-			else a += o, t++;
-		}
-		return a && n.push(a), n;
-	}, r = () => {
-		let n = "";
-		for (; t < e.length;) {
-			if (e[t] === "}" && e[t + 1] === "}") return t += 2, {
-				type: "argument",
-				name: n.trim()
-			};
-			n += e[t], t++;
-		}
-		throw Error("Unclosed i18next variable");
-	}, i = () => {
-		let r = "";
-		for (; t < e.length && /[^,}]/.test(e[t]);) r += e[t], t++;
-		if (r = r.trim(), t >= e.length) throw Error("Unclosed argument");
-		if (e[t] === "}") return t++, {
-			type: "argument",
-			name: r
-		};
-		if (e[t] === ",") {
-			t++;
-			let i = "";
-			for (; t < e.length && /[^,}]/.test(e[t]);) i += e[t], t++;
-			if (i = i.trim(), t >= e.length) throw Error("Unclosed argument");
-			if (e[t] === "}") return t++, {
-				type: "argument",
-				name: r,
-				format: { type: i }
-			};
-			if (e[t] === ",") {
-				if (t++, i === "plural" || i === "select") {
-					let a = {};
-					for (; t < e.length && e[t] !== "}";) {
-						for (; t < e.length && /\s/.test(e[t]);) t++;
-						let r = "";
-						for (; t < e.length && /[^{\s]/.test(e[t]);) r += e[t], t++;
-						for (; t < e.length && /\s/.test(e[t]);) t++;
-						if (e[t] !== "{") throw Error("Expected { after option key");
-						t++;
-						let i = n();
-						if (e[t] !== "}") throw Error("Expected } after option value");
-						for (t++, a[r] = i; t < e.length && /\s/.test(e[t]);) t++;
-					}
-					if (t++, i === "plural") return {
-						type: "plural",
-						name: r,
-						options: a
-					};
-					if (i === "select") return {
-						type: "select",
-						name: r,
-						options: a
-					};
-				} else {
-					let n = "";
-					for (; t < e.length && e[t] !== "}";) n += e[t], t++;
-					if (t >= e.length) throw Error("Unclosed argument");
-					return n = n.trim(), t++, {
-						type: "argument",
-						name: r,
-						format: {
-							type: i,
-							style: n
-						}
-					};
-				}
-			}
-		}
-		throw Error("Malformed argument");
-	};
-	return n();
-}, K = (e) => {
-	if (e.length === 0) return "";
-	if (e.length === 1 && typeof e[0] == "string") {
-		let t = e[0];
-		return /<[a-zA-Z0-9-]+[^>]*>/.test(t) ? H(t) : t;
-	}
-	if (e.every((e) => typeof e == "string" || e.type === "argument")) {
-		let t = "";
-		for (let n of e) typeof n == "string" ? t += n : typeof n != "string" && n.type === "argument" && (n.format ? t += `{${n.name}, ${n.format.type}${n.format.style ? `, ${n.format.style}` : ""}}` : t += `{{${n.name}}}`);
-		return /<[a-zA-Z0-9-]+[^>]*>/.test(t) ? H(t) : W(t);
-	}
-	if (e.length === 1) {
-		let t = e[0];
-		if (typeof t == "string") return /<[a-zA-Z0-9-]+[^>]*>/.test(t) ? H(t) : t;
-		if (t.type === "argument") return t.format ? W(`{${t.name}, ${t.format.type}${t.format.style ? `, ${t.format.style}` : ""}}`) : W(`{{${t.name}}}`);
-		if (t.type === "plural") {
-			let e = {}, n = !1;
-			for (let e of Object.keys(t.options)) if (e.startsWith("=")) {
-				n = !0;
-				break;
-			}
-			if (n) {
-				for (let [n, r] of Object.entries(t.options)) {
-					let i = n;
-					n.startsWith("=") ? i = n.substring(1) : n === "one" ? i = "1" : n === "two" ? i = "2" : n === "few" ? i = "<=3" : n === "many" ? i = ">=4" : n === "other" && (i = "fallback");
-					let a = r.map((e) => typeof e == "string" ? e.replace(/#/g, `{{${t.name}}}`) : e);
-					e[i] = K(a);
-				}
-				return e.__intlayer_icu_var = t.name, V(e);
-			}
-			for (let [n, r] of Object.entries(t.options)) e[n] = K(r.map((e) => typeof e == "string" ? e.replace(/#/g, `{{${t.name}}}`) : e));
-			return Bt(e);
-		}
-		if (t.type === "select") {
-			let e = {};
-			for (let [n, r] of Object.entries(t.options)) e[n === "other" ? "fallback" : n] = K(r);
-			let n = Object.keys(e);
-			return (e.male || e.female) && n.every((e) => [
-				"male",
-				"female",
-				"other",
-				"fallback"
-			].includes(e)) ? zt({
-				fallback: e.fallback,
-				male: e.male,
-				female: e.female
-			}) : Vt(e, t.name);
-		}
-	}
-	return e.map((e) => K([e]));
-}, Kt = {
-	canHandle: (e) => typeof e == "string" && (e.includes("{") || e.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(e)),
-	transform: (e) => {
-		try {
-			return K(Gt(e));
-		} catch {
-			return e;
-		}
-	}
-}, qt = (e) => T(e, {
-	dictionaryKey: "i18next",
-	keyPath: [],
-	plugins: [{
-		id: "i18next",
-		...Kt
-	}]
-}), q = (e, t, n = ".") => {
+}, _t = (e, t, n = ".") => {
 	if (!t) return e;
 	if (typeof e == "object" && e) {
 		let n = e[t];
@@ -2458,64 +2069,7 @@ var z = {
 		r = r[e];
 	}
 	return r;
-}, Jt = (e) => {
-	let t = 0, n = [], r = "";
-	for (; t < e.length;) {
-		let i = e[t];
-		if (i === "{") {
-			r &&= (n.push(r), ""), t++;
-			let i = "";
-			for (; t < e.length && e[t] !== "}";) i += e[t], t++;
-			t < e.length && t++, n.push({
-				type: "argument",
-				name: i.trim()
-			});
-		} else r += i, t++;
-	}
-	return r && n.push(r), n;
-}, Yt = (e) => {
-	let t = [], n = "", r = 0;
-	for (; r < e.length;) {
-		let i = e[r];
-		i === "\\" && r + 1 < e.length && e[r + 1] === "|" ? (n += "|", r += 2) : i === "|" ? (t.push(n.trim()), n = "", r++) : (n += i, r++);
-	}
-	return t.push(n.trim()), t.map(Jt);
-}, J = (e) => {
-	if (e.length === 0) return "";
-	if (e.length === 1 && typeof e[0] == "string") return e[0];
-	let t = "";
-	for (let n of e) t += typeof n == "string" ? n : `{{${n.name}}}`;
-	return W(t);
-}, Xt = (e) => {
-	if (e.length === 1) return J(e[0]);
-	let t = {};
-	return e.length === 2 ? V({
-		1: J(e[0]),
-		fallback: J(e[1])
-	}) : e.length === 3 ? V({
-		0: J(e[0]),
-		1: J(e[1]),
-		fallback: J(e[2])
-	}) : (e.forEach((n, r) => {
-		r === e.length - 1 ? t.fallback = J(n) : t[r.toString()] = J(n);
-	}), t.__intlayer_vue_i18n_var = "count", V(t));
-}, Zt = {
-	canHandle: (e) => typeof e == "string" && (e.includes("{") || e.includes("|")),
-	transform: (e) => {
-		try {
-			return Xt(Yt(e));
-		} catch {
-			return e;
-		}
-	}
-}, Qt = (e) => T(e, {
-	dictionaryKey: "vue-i18n",
-	keyPath: [],
-	plugins: [{
-		id: "vue-i18n",
-		...Zt
-	}]
-}), $t = [
+}, vt = [
 	"__intlayer_icu_var",
 	"__intlayer_icu_ordinal",
 	"__intlayer_vue_i18n_var"
@@ -2527,11 +2081,11 @@ var z = {
 		n = n[e];
 	}
 	return n;
-}, en = (e, t, n, r) => {
+}, yt = (e, t, n, r) => {
 	try {
 		if (t === "number") {
 			let t = Number(e);
-			return n === "percent" ? F("NumberFormat", r, { style: "percent" }).format(t) : n === "integer" ? F("NumberFormat", r, { maximumFractionDigits: 0 }).format(t) : F("NumberFormat", r).format(t);
+			return n === "percent" ? w("NumberFormat", r, { style: "percent" }).format(t) : n === "integer" ? w("NumberFormat", r, { maximumFractionDigits: 0 }).format(t) : w("NumberFormat", r).format(t);
 		}
 		if (t === "date" || t === "time") {
 			let i = e instanceof Date ? e : new Date(e), a = [
@@ -2540,22 +2094,22 @@ var z = {
 				"long",
 				"full"
 			].includes(n ?? "") ? n : t === "date" ? "medium" : "short";
-			return F("DateTimeFormat", r, t === "date" ? { dateStyle: a } : { timeStyle: a }).format(i);
+			return w("DateTimeFormat", r, t === "date" ? { dateStyle: a } : { timeStyle: a }).format(i);
 		}
 	} catch {}
 	return String(e);
-}, tn = (e, t = {}, n = "en") => e.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (e, r, i, a) => {
+}, bt = (e, t = {}, n = "en") => e.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (e, r, i, a) => {
 	let o = Y(t, r);
-	return o === void 0 ? e : i ? en(o, i, a, n) : String(o);
+	return o === void 0 ? e : i ? yt(o, i, a, n) : String(o);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (e, r, i, a) => {
 	let o = Y(t, r);
-	return o === void 0 ? e : en(o, i, a, n);
+	return o === void 0 ? e : yt(o, i, a, n);
 }).replace(/\{\s*([\w.]+)\s*\}/g, (e, n) => {
 	let r = Y(t, n);
 	return r === void 0 ? e : String(r);
 }), X = (e, t) => e[t] ?? e.count ?? e.n, Z = (e, t = {}, n = "en") => {
 	if (e == null) return e;
-	if (typeof e == "string") return tn(e, t, n);
+	if (typeof e == "string") return bt(e, t, n);
 	if (typeof e == "number" || typeof e == "boolean") return String(e);
 	if (typeof e == "function") try {
 		return Z(e(t), t, n);
@@ -2564,39 +2118,35 @@ var z = {
 	}
 	if (Array.isArray(e)) return e.map((e) => String(Z(e, t, n) ?? "")).join("");
 	let r = e;
-	if (r.nodeType === "insertion") return Z(r[S], t, n);
-	if (r.nodeType === "html") return Z(r[C], t, n);
+	if (r.nodeType === "insertion") return Z(r[j], t, n);
+	if (r.nodeType === "html") return Z(r[N], t, n);
 	if (r.nodeType === "plural") {
-		let e = r[de];
-		return Z(Je(e, Number(X(t, "count") ?? 1), n), t, n);
+		let e = r[A];
+		return Z(Fe(e, Number(X(t, "count") ?? 1), n), t, n);
 	}
 	if (r.nodeType === "enumeration") {
-		let e = r[ue], i = $t.map((t) => e[t]).find((e) => typeof e == "string") ?? "count", a = e.__intlayer_icu_ordinal === !0, o = {};
-		for (let [t, n] of Object.entries(e)) $t.includes(t) || (o[t] = n);
+		let e = r[k], i = vt.map((t) => e[t]).find((e) => typeof e == "string") ?? "count", a = e.__intlayer_icu_ordinal === !0, o = {};
+		for (let [t, n] of Object.entries(e)) vt.includes(t) || (o[t] = n);
 		let s = X(t, i), c;
 		if (a && !Number.isNaN(Number(s))) {
-			let e = Number(s), t = F("PluralRules", n, { type: "ordinal" }).select(e);
+			let e = Number(s), t = w("PluralRules", n, { type: "ordinal" }).select(e);
 			c = o[String(e)] ?? o[t] ?? o.fallback ?? o.other;
-		} else c = typeof s == "number" || !Number.isNaN(Number(s)) ? ve(o, Number(s)) : o[String(s)] ?? o.fallback ?? o.other;
+		} else c = typeof s == "number" || !Number.isNaN(Number(s)) ? we(o, Number(s)) : o[String(s)] ?? o.fallback ?? o.other;
 		return Z(c, t, n);
 	}
 	if (r.nodeType === "select") {
-		let e = r[ge], i = X(t, typeof r.variable == "string" ? r.variable : "value");
-		return Z(Ye(e, String(i ?? "")), t, n);
+		let e = r[F], i = X(t, typeof r.variable == "string" ? r.variable : "value");
+		return Z(Ie(e, String(i ?? "")), t, n);
 	}
 	if (r.nodeType === "gender") {
-		let e = r[he];
+		let e = r[P];
 		return Z(e[String(t.gender ?? "")] ?? e.fallback ?? e.other, t, n);
 	}
 	return e;
-}, nn = (e, t = {}, n = "en") => {
+}, xt = (e, t = {}, n = "en") => {
 	let r = Z(e, t, n);
 	return typeof r == "string" ? r : String(r ?? "");
-}, rn = (e) => (t, n = {}, r = "en") => nn(typeof t == "string" ? e(t) : t, n, r), an = {
-	icu: Wt,
-	i18next: qt,
-	"vue-i18n": Qt
-}, on = (e, t = {}, n = "en", r = "icu") => rn(an[r])(e, t, n), Q = (e) => {
+}, Q = (e) => {
 	let t = [], n = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g, r = 0, i = n.exec(e);
 	for (; i !== null;) {
 		i.index > r && t.push(e.slice(r, i.index));
@@ -2604,66 +2154,66 @@ var z = {
 		a ? t.push({
 			tag: a,
 			children: []
-		}) : t.push({
+		}) : o && t.push({
 			tag: o,
-			children: Q(s)
+			children: Q(s ?? "")
 		}), r = i.index + i[0].length, i = n.exec(e);
 	}
 	return r < e.length && t.push(e.slice(r)), t;
-}, sn = (e = {}) => {
+}, St = (e = {}) => {
 	let t = {}, n = {};
 	for (let [r, i] of Object.entries(e)) typeof i == "function" ? n[r] = i : t[r] = i;
 	return {
 		scalarValues: t,
 		renderers: n
 	};
-}, cn = (t, n) => t.map((t, r) => {
+}, Ct = (t, n) => t.map((t, r) => {
 	if (typeof t == "string") return t;
-	let i = cn(t.children, n), a = n[t.tag];
-	return typeof a == "function" ? p(e, { children: a(i) }, r) : p(e, { children: i }, r);
-}), ln = (e, t) => e.map((e) => {
+	let i = Ct(t.children, n), a = n[t.tag];
+	return typeof a == "function" ? f(e, { children: a(i) }, r) : f(e, { children: i }, r);
+}), wt = (e, t) => e.map((e) => {
 	if (typeof e == "string") return e;
-	let n = ln(e.children, t), r = t[e.tag];
+	let n = wt(e.children, t), r = t[e.tag];
 	return typeof r == "function" ? r(n) : n;
-}).join(""), un = (e, t) => {
+}).join(""), Tt = (e, t) => {
 	let [n, ...r] = (t ?? "").split("."), i = r.join(".");
-	return fn(e, (t) => dn(e, n ?? "", i, t), (e) => t ? `${t}.${e}` : e);
-}, dn = (e, t, n, r) => {
-	let i = t, a = n ? `${n}.${r}` : r, o = A();
+	return Dt(e, (t) => Et(e, n ?? "", i, t), (e) => t ? `${t}.${e}` : e);
+}, Et = (e, t, n, r) => {
+	let i = t, a = n ? `${n}.${r}` : r, o = H();
 	if (!i) {
 		let [t, ...n] = r.split(".");
 		if (i = t ?? r, a = n.join("."), !o[i]) for (let t of Object.keys(o)) try {
-			let n = q(N(t, e), r);
+			let n = _t(G(t, e), r);
 			if (n !== void 0) return n;
 		} catch {}
 	}
 	try {
-		return q(N(i, e), a);
+		return _t(G(i, e), a);
 	} catch {
 		return;
 	}
-}, fn = (e, t, n) => {
+}, Dt = (e, t, n) => {
 	let r = (n, r = {}) => {
 		let i = t(n);
-		if (i != null) return on(i, r, e, "icu");
+		if (i != null) return xt(i, r, e);
 	};
 	return Object.assign((e, t) => r(e, t) ?? n(e), {
 		has: (e) => t(e) !== void 0,
 		raw: (e) => t(e),
 		rich: (e, t) => {
-			let { scalarValues: i, renderers: a } = sn(t), o = r(e, i);
-			return o === void 0 ? n(e) : p(f, { children: cn(Q(o), a) });
+			let { scalarValues: i, renderers: a } = St(t), o = r(e, i);
+			return o === void 0 ? n(e) : f(ee, { children: Ct(Q(o), a) });
 		},
 		markup: (e, t) => {
-			let { scalarValues: i, renderers: a } = sn(t), o = r(e, i);
-			return o === void 0 ? n(e) : ln(Q(o), a);
+			let { scalarValues: i, renderers: a } = St(t), o = r(e, i);
+			return o === void 0 ? n(e) : wt(Q(o), a);
 		}
 	});
-}, pn = ((e) => {
-	let { locale: t } = n(B) ?? {};
-	return a(() => un(t, e), [t, e]);
+}, Ot = ((e) => {
+	let { locale: t } = r(pt) ?? {};
+	return o(() => Tt(t, e), [t, e]);
 });
-function mn() {
+function kt() {
 	if (typeof window > "u") return "auto";
 	let e = window.localStorage.getItem("theme");
 	return e === "light" || e === "dark" || e === "auto" ? e : "auto";
@@ -2672,33 +2222,33 @@ function $(e) {
 	let t = window.matchMedia("(prefers-color-scheme: dark)").matches, n = e === "auto" ? t ? "dark" : "light" : e;
 	document.documentElement.classList.remove("light", "dark"), document.documentElement.classList.add(n), e === "auto" ? document.documentElement.removeAttribute("data-theme") : document.documentElement.setAttribute("data-theme", e), document.documentElement.style.colorScheme = n;
 }
-function hn() {
-	let e = pn(), [t, n] = s("auto");
-	r(() => {
-		let e = mn();
+function At() {
+	let e = Ot(), [t, n] = s("auto");
+	i(() => {
+		let e = kt();
 		n(e), $(e);
-	}, []), r(() => {
+	}, []), i(() => {
 		if (t !== "auto") return;
 		let e = window.matchMedia("(prefers-color-scheme: dark)"), n = () => $("auto");
 		return e.addEventListener("change", n), () => {
 			e.removeEventListener("change", n);
 		};
 	}, [t]);
-	function i() {
+	function r() {
 		let e = t === "light" ? "dark" : t === "dark" ? "auto" : "light";
 		n(e), $(e), window.localStorage.setItem("theme", e);
 	}
 	let a = e(t === "auto" ? "theme-toggle.themeModeAutoSystemClick" : t === "light" ? "theme-toggle.themeModeLightClick" : "theme-toggle.themeModeDarkClick");
-	return p("button", {
+	return f("button", {
 		type: "button",
-		onClick: i,
+		onClick: r,
 		"aria-label": a,
 		title: a,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: e(t === "auto" ? "theme-toggle.themeAuto" : t === "dark" ? "theme-toggle.themeDark" : "theme-toggle.themeLight")
 	});
 }
-var gn = [
+var jt = [
 	"en",
 	"fr",
 	"es",
@@ -2710,7 +2260,7 @@ var gn = [
 	"ko",
 	"ru"
 ];
-function _n(e) {
+function Mt(e) {
 	try {
 		let t = new Intl.DisplayNames([e], { type: "language" }).of(e);
 		return t ? t.charAt(0).toUpperCase() + t.slice(1) : e;
@@ -2718,26 +2268,26 @@ function _n(e) {
 		return e.toUpperCase();
 	}
 }
-function vn() {
+function Nt() {
 	let e = l().locale ?? "en", t = u(), n = d(), r = (r) => {
 		let i = t.replace(`/${e}`, `/${r}`);
 		n.push(i);
 	};
-	return p("div", {
+	return f("div", {
 		className: "flex items-center gap-2",
-		children: p("select", {
+		children: f("select", {
 			value: e,
 			onChange: (e) => r(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: gn.map((e) => p("option", {
+			children: jt.map((e) => f("option", {
 				value: e,
-				children: _n(e)
+				children: Mt(e)
 			}, e))
 		})
 	});
 }
-function yn(e) {
-	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), i(() => {
+function Pt(e) {
+	typeof performance < "u" && performance.mark && performance.mark(`${e}-start`), a(() => {
 		if (typeof performance < "u" && performance.mark && performance.measure) {
 			performance.mark(`${e}-end`);
 			try {
@@ -2746,9 +2296,9 @@ function yn(e) {
 		}
 	}, [e]);
 }
-function bn() {
-	let e = pn();
-	yn("Header");
+function Ft() {
+	let e = Ot();
+	Pt("Header");
 	let [t, n] = s(!1), r = l(), i = u(), a = r.locale ?? "en", o = [
 		{
 			href: "/products",
@@ -2783,51 +2333,51 @@ function bn() {
 			label: e("header.settings")
 		}
 	];
-	return p("header", {
+	return f("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: m("nav", {
+		children: p("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [m("div", {
+			children: [p("div", {
 				className: "flex items-center gap-8",
-				children: [p(g, {
+				children: [f(_, {
 					href: "/",
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Bench"
-				}), m("div", {
+				}), p("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						p(g, {
+						f(_, {
 							href: "/",
-							className: `nav-link${((e) => i === h(e, a))("/") ? " is-active" : ""}`,
+							className: `nav-link${((e) => i === g(e, a))("/") ? " is-active" : ""}`,
 							children: e("header.home")
 						}),
-						p(g, {
+						f(_, {
 							href: "/about",
 							className: `nav-link${((e) => {
-								let t = h(e, a);
+								let t = g(e, a);
 								return i.startsWith(t) && (e !== "/" || i === t);
 							})("/about") ? " is-active" : ""}`,
 							children: e("footer.methodology")
 						}),
-						m("div", {
+						p("div", {
 							className: "relative",
-							children: [m("button", {
+							children: [p("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => n(!0),
 								onMouseLeave: () => n(!1),
 								onClick: () => n(!t),
-								children: [e("header.mockPages"), p(ee, {
+								children: [e("header.mockPages"), f(m, {
 									size: 14,
 									className: `transition-transform ${t ? "rotate-180" : ""}`
 								})]
-							}), t && p("div", {
+							}), t && f("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => n(!0),
 								onMouseLeave: () => n(!1),
-								children: p("div", {
+								children: f("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: o.map((e) => p(g, {
+									children: o.map((e) => f(_, {
 										href: e.href,
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => n(!1),
@@ -2838,36 +2388,36 @@ function bn() {
 						})
 					]
 				})]
-			}), m("div", {
+			}), p("div", {
 				className: "flex items-center gap-4",
 				children: [
-					m("a", {
+					p("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [p("span", {
+						children: [f("span", {
 							className: "sr-only",
 							children: e("header.goToGithub")
-						}), p("svg", {
+						}), f("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: p("path", {
+							children: f("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
 							})
 						})]
 					}),
-					p(vn, {}),
-					p(hn, {})
+					f(Nt, {}),
+					f(At, {})
 				]
 			})]
 		})
 	});
 }
-function xn() {
+function It() {
 	if (!(typeof window > "u")) {
 		console.log("--- BROWSER: RootDocument mounted"), performance.mark("hydration_end");
 		try {
@@ -2881,33 +2431,33 @@ function xn() {
 		}
 	}
 }
-function Sn(e, t) {
+function Lt(e, t) {
 	if (typeof window > "u") return;
 	let n = performance.now() - t;
 	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {}, window.__RENDER_METRICS__[e] = window.__RENDER_METRICS__[e] || [], window.__RENDER_METRICS__[e].push(n);
 }
-function Cn({ children: e, locale: t }) {
+function Rt({ children: e, locale: t }) {
 	let [n] = s(() => typeof performance < "u" ? performance.now() : 0);
-	return i(() => {
-		Sn("AppRoot", n);
-	}, [n]), r(() => {
+	return a(() => {
+		Lt("AppRoot", n);
+	}, [n]), i(() => {
 		document.documentElement.lang = t;
-	}, [t]), r(() => {
-		xn();
-	}, []), p(Rt, {
+	}, [t]), i(() => {
+		It();
+	}, []), f(gt, {
 		locale: t,
 		timeZone: "UTC",
 		children: e
 	});
 }
-var wn = "en";
-function Tn({ children: e }) {
-	return p(Cn, {
-		locale: wn,
+var zt = "en";
+function Bt({ children: e }) {
+	return f(Rt, {
+		locale: zt,
 		children: e
 	});
 }
-function En() {
-	return p(Tn, { children: p(bn, {}) });
+function Vt() {
+	return f(Bt, { children: f(Ft, {}) });
 }
-export { En as default };
+export { Vt as default };

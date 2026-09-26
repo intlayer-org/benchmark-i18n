@@ -1,6 +1,7 @@
 {
   "bundleSize": "Размер бандла",
   "lazyLoading": "Ленивая загрузка",
+  "library": "Библиотека",
   "lookupTime": "Время поиска",
   "sampleResults": "Примеры результатов"
 }

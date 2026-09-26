@@ -72,6 +72,7 @@
   "resultsTable": {
     "bundleSize": "Размер бандла",
     "lazyLoading": "Ленивая загрузка",
+    "library": "Библиотека",
     "lookupTime": "Время поиска",
     "sampleResults": "Примеры результатов"
   },
@@ -104,9 +105,11 @@
     "insightsTutorialsAndAnalysis": "Идеи, руководства и анализ от сообщества i18n."
   },
   "blogList": {
+    "analysis": "Анализ",
     "anOverviewOfTheCurrent": "Обзор текущей экосистемы i18n в React, охватывающий тенденции, возникающие паттерны и предпочтения сообщества.",
     "aStepByStepGuide": "Пошаговое руководство по миграции продакшн-приложения с 50 000 ключами перевода с react-i18next на Lingui.",
     "aTransparentLookAtOur": "Прозрачный взгляд на нашу методологию бенчмаркинга, включая тестовые среды, статистические методы и воспроизводимость.",
+    "benchmark": "Бенчмарк",
     "benchmarkMethodologyHowWeTest": "Методология бенчмарка: как мы тестируем",
     "comparingI18nLibrariesIn2026": "Сравнение библиотек i18n в 2026 году: глубокое погружение",
     "february12026": "1 февраля 2026 года",
@@ -114,13 +117,16 @@
     "february282026": "28 февраля 2026 года",
     "howToReduceYourI18n": "Как уменьшить бандл i18n на 60%",
     "january202026": "20 января 2026 года",
+    "march152026": "15 марта 2026 года",
     "march82026": "8 марта 2026 года",
+    "meta": "Мета",
     "migratingFromReactI18nextTo": "Миграция с react-i18next на Lingui",
     "practicalStrategiesForOptimizingTranslation": "Практические стратегии для оптимизации бандлов перевода, включая ленивую загрузку, разделение кода и оптимизации во время компиляции.",
     "reactServerComponentsIntroduceNew": "React Server Components представляют новые паттерны для интернационализации. Мы исследуем последствия и лучшие практики.",
     "readMore": "Читать далее →",
     "serverComponentsAndI18nWhat": "Server Components и i18n: что меняется?",
     "theStateOfInternationalizationIn": "Состояние интернационализации в React",
+    "tutorial": "Руководство",
     "weTested12DifferentInternationalization": "Мы протестировали 12 различных библиотек интернационализации по производительности, размеру бандла и DX. Вот удивительные результаты."
   },
   "careersHeader": {
@@ -130,8 +136,10 @@
   "careersBenefits": {
     "competitivePay": "Конкурентоспособная оплата",
     "openSourceTime": "Время на open source",
+    "remoteFirst": "Удаленная работа прежде всего",
     "topOfMarketCompensation": "Компенсация выше рыночной",
-    "workFromAnywhereInThe": "Работайте из любой точки мира"
+    "workFromAnywhereInThe": "Работайте из любой точки мира",
+    "x20TimeForOssContributions": "20% времени на вклад в OSS"
   },
   "openPositions": {
     "applyNow": "Подать заявку",
@@ -204,7 +212,7 @@
   "pricingTiers": {
     "allLibraries": "Все библиотеки",
     "auditLogs": "Журналы аудита",
-    "benchmarkRunPerDay": "{runs} запусков бенчмарка в день",
+    "benchmarkRunPerDay": "{{runs}} запусков бенчмарка в день",
     "ciIntegration": "Интеграция с CI",
     "communitySupport": "Сообщество поддержки",
     "contactSales": "Связаться с отделом продаж",
@@ -216,7 +224,7 @@
     "forever": "навсегда",
     "getStarted": "Начать",
     "historicalData": "Исторические данные",
-    "librariesNumber": "{libs} библиотек",
+    "librariesNumber": "{{libs}} библиотек",
     "month": "/месяц",
     "onPremiseOption": "Локальное развертывание",
     "price0": "0 $",
@@ -274,6 +282,7 @@
     "frenchFr": "Французский (fr)",
     "germanDe": "Немецкий (de)",
     "japaneseJa": "Японский (ja)",
+    "preferences": "Настройки",
     "receiveWeeklyBenchmarkReports": "Получать еженедельные отчеты о бенчмарках",
     "spanishEs": "Испанский (es)",
     "toggleDarkMode": "Переключить темный режим",
@@ -283,6 +292,7 @@
   "apiAccessSection": {
     "apiAccess": "Доступ к API",
     "apiKey": "Ключ API",
+    "copy": "Копировать",
     "useThisKeyToAccess": "Используйте этот ключ для программного доступа к API бенчмаркинга."
   },
   "settingsFooter": {
