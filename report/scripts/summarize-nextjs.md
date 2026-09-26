@@ -530,9 +530,9 @@ _Generated: 2026-09-26_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 227.6 KB | 50.0% | 89.8% | 85.8 KB | 69.3 ms | 5.6 ms | 15.0 ms | 11.8 ms |
+| Static | ✅ | 227.6 KB | 50.0% | 89.8% | 85.8 KB | 15.1 ms | 3.8 ms | 15.0 ms | 11.8 ms |
 | Dynamic | 🔶 | 236.1 KB | 50.0% | 89.9% | 8.0 KB | 13.2 ms | 3.7 ms | 14.3 ms | 11.4 ms |
-| Scoped Static | ↳ Static | 227.6 KB | 50.0% | 89.8% | 85.8 KB | 69.3 ms | 5.6 ms | 15.0 ms | 11.8 ms |
+| Scoped Static | ↳ Static | 227.6 KB | 50.0% | 89.8% | 85.8 KB | 15.1 ms | 3.8 ms | 15.0 ms | 11.8 ms |
 | Scoped Dynamic | ↳ Dynamic | 236.1 KB | 50.0% | 89.9% | 8.0 KB | 13.2 ms | 3.7 ms | 14.3 ms | 11.4 ms |
 
 <details>
@@ -577,8 +577,8 @@ _Generated: 2026-09-26_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 103.5 ms | 33.7 ms | 234.1 ms | 7.1 ms |
-| `fr` | 35.0 ms | 30.6 ms | 39.0 ms | 4.0 ms |
+| `en` | 16.1 ms | 12.4 ms | 28.8 ms | 3.9 ms |
+| `fr` | 14.2 ms | 12.3 ms | 17.9 ms | 3.7 ms |
 
 </details>
 
@@ -691,8 +691,8 @@ _Generated: 2026-09-26_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 103.5 ms | 33.7 ms | 234.1 ms | 7.1 ms |
-| `fr` | 35.0 ms | 30.6 ms | 39.0 ms | 4.0 ms |
+| `en` | 16.1 ms | 12.4 ms | 28.8 ms | 3.9 ms |
+| `fr` | 14.2 ms | 12.3 ms | 17.9 ms | 3.7 ms |
 
 </details>
 
@@ -2474,9 +2474,9 @@ _Generated: 2026-09-26_
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 141.5 KB | 0.0% | 0.0% | 7.2 KB | 55.1 ms | 6.2 ms | 24.2 ms | 13.8 ms |
+| Static | ✅ | 141.5 KB | 0.0% | 0.0% | 7.2 KB | 11.1 ms | 4.2 ms | 24.2 ms | 13.8 ms |
 | Dynamic | 🔶 | 141.5 KB | 0.0% | 0.0% | 5.5 KB | 13.9 ms | 4.6 ms | 16.7 ms | 11.0 ms |
-| Scoped Static | ↳ Static | 141.5 KB | 0.0% | 0.0% | 7.2 KB | 55.1 ms | 6.2 ms | 24.2 ms | 13.8 ms |
+| Scoped Static | ↳ Static | 141.5 KB | 0.0% | 0.0% | 7.2 KB | 11.1 ms | 4.2 ms | 24.2 ms | 13.8 ms |
 | Scoped Dynamic | ↳ Dynamic | 141.5 KB | 0.0% | 0.0% | 5.5 KB | 13.9 ms | 4.6 ms | 16.7 ms | 11.0 ms |
 
 <details>
@@ -2521,8 +2521,8 @@ _Generated: 2026-09-26_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 57.0 ms | 38.2 ms | 107.5 ms | 7.3 ms |
-| `fr` | 53.1 ms | 28.0 ms | 117.4 ms | 5.0 ms |
+| `en` | 11.5 ms | 9.3 ms | 16.4 ms | 4.2 ms |
+| `fr` | 10.7 ms | 8.6 ms | 17.4 ms | 4.2 ms |
 
 </details>
 
@@ -2635,8 +2635,8 @@ _Generated: 2026-09-26_
 
 | Locale | E2E avg | E2E min | E2E max | Profiler avg |
 | :---: | ---: | ---: | ---: | ---: |
-| `en` | 57.0 ms | 38.2 ms | 107.5 ms | 7.3 ms |
-| `fr` | 53.1 ms | 28.0 ms | 117.4 ms | 5.0 ms |
+| `en` | 11.5 ms | 9.3 ms | 16.4 ms | 4.2 ms |
+| `fr` | 10.7 ms | 8.6 ms | 17.4 ms | 4.2 ms |
 
 </details>
 
