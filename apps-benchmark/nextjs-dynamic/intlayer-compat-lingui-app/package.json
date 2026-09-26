@@ -19,24 +19,24 @@
     "test:content": "playwright test content-consistency.test.ts"
   },
   "dependencies": {
-    "@intlayer/lingui": "9.5.1",
-    "@intlayer/sync-json-plugin": "9.5.1",
+    "@intlayer/lingui": "^9.5.10",
+    "@intlayer/sync-json-plugin": "^9.5.10",
     "@lingui/cli": "^6.6.0",
     "@lingui/core": "^6.6.0",
     "@lingui/format-json": "^6.6.0",
     "@lingui/react": "^6.6.0",
     "@tailwindcss/typography": "^0.5.20",
-    "intlayer": "9.5.1",
+    "intlayer": "^9.5.10",
     "lucide-react": "^1.43.0",
     "next": "16.3.4",
-    "next-intlayer": "9.5.1",
+    "next-intlayer": "^9.5.10",
     "react": "19.3.0",
     "react-dom": "19.3.0",
-    "react-intlayer": "9.5.1"
+    "react-intlayer": "^9.5.10"
   },
   "devDependencies": {
-    "@intlayer/config": "9.5.1",
-    "@intlayer/swc": "9.5.1",
+    "@intlayer/config": "^9.5.10",
+    "@intlayer/swc": "^9.5.10",
     "@playwright/test": "^1.63.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^26",
@@ -50,6 +50,6 @@
     "test-utils": "workspace:*",
     "typescript": "^7",
     "vite": "^8.2.2",
-    "vite-intlayer": "9.5.1"
+    "vite-intlayer": "^9.5.10"
   }
 }

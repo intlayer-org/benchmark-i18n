@@ -2,7 +2,7 @@
   "meta": {
     "framework": "nextjs",
     "frameworkLabel": "Next.js",
-    "generatedAt": "2026-09-26T04:30:01.545Z",
+    "generatedAt": "2026-09-26T05:12:57.316Z",
     "counts": {
       "totalLibs": 14,
       "totalApps": 38
@@ -11,7 +11,7 @@
   "libs": {
     "@intlayer/lingui": {
       "global": {
-        "version": "9.5.1",
+        "version": "9.5.10",
         "libSize": {
           "status": "ok",
           "gzip": 11722,
@@ -875,7 +875,7 @@
     },
     "@intlayer/next-i18next": {
       "global": {
-        "version": "9.5.1",
+        "version": "9.5.10",
         "libSize": {
           "status": "ok",
           "gzip": 12295,
@@ -1739,7 +1739,7 @@
     },
     "@intlayer/next-intl": {
       "global": {
-        "version": "9.5.1",
+        "version": "9.5.10",
         "libSize": {
           "status": "ok",
           "gzip": 11322,
@@ -8533,7 +8533,7 @@
     },
     "next-intlayer": {
       "global": {
-        "version": "9.5.1",
+        "version": "9.5.10",
         "libSize": {
           "status": "ok",
           "gzip": 5326,

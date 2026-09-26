@@ -17,16 +17,16 @@
     "test:content": "npx playwright test content-consistency.test.ts"
   },
   "dependencies": {
-    "@intlayer/vue-i18n": "9.5.1",
-    "intlayer": "9.5.1",
+    "@intlayer/vue-i18n": "^9.5.10",
+    "intlayer": "^9.5.10",
     "lucide-vue-next": "^1.0.0",
     "vue": "^3.5.42",
     "vue-i18n": "^11.4.0",
-    "vue-intlayer": "9.5.1",
+    "vue-intlayer": "^9.5.10",
     "vue-router": "^5.3.1"
   },
   "devDependencies": {
-    "@intlayer/sync-json-plugin": "9.5.1",
+    "@intlayer/sync-json-plugin": "^9.5.10",
     "@playwright/test": "^1.63.0",
     "@tailwindcss/typography": "^0.5.20",
     "@tailwindcss/vite": "^4.3.3",
@@ -38,6 +38,6 @@
     "test-utils": "workspace:*",
     "typescript": "~7.0.2",
     "vite": "^8.2.2",
-    "vite-intlayer": "9.5.1"
+    "vite-intlayer": "^9.5.10"
   }
 }

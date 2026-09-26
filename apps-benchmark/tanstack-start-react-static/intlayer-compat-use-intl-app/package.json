@@ -19,21 +19,21 @@
     "test:content": "playwright test content-consistency.test.ts"
   },
   "dependencies": {
-    "@intlayer/use-intl": "9.5.1",
+    "@intlayer/use-intl": "^9.5.10",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/react-router": "1.170.33",
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "1.168.50",
     "@tanstack/router-plugin": "^1.168.36",
-    "intlayer": "9.5.1",
+    "intlayer": "^9.5.10",
     "lucide-react": "^1.43.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "react-intlayer": "9.5.1",
+    "react-intlayer": "^9.5.10",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
-    "@intlayer/sync-json-plugin": "9.5.1",
+    "@intlayer/sync-json-plugin": "^9.5.10",
     "@playwright/test": "^1.63.0",
     "@tailwindcss/typography": "^0.5.20",
     "@testing-library/dom": "^10.4.1",
@@ -49,7 +49,7 @@
     "typescript": "^7.0.2",
     "use-intl": "^4.14.2",
     "vite": "^8.2.2",
-    "vite-intlayer": "9.5.1"
+    "vite-intlayer": "^9.5.10"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

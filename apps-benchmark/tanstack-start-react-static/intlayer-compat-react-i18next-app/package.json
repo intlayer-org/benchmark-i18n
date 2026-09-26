@@ -19,21 +19,21 @@
     "test:content": "playwright test content-consistency.test.ts"
   },
   "dependencies": {
-    "@intlayer/i18next": "9.5.1",
-    "@intlayer/react-i18next": "9.5.1",
-    "@intlayer/sync-json-plugin": "9.5.1",
+    "@intlayer/i18next": "^9.5.10",
+    "@intlayer/react-i18next": "^9.5.10",
+    "@intlayer/sync-json-plugin": "^9.5.10",
     "@tailwindcss/vite": "^4.3.3",
     "@tanstack/react-router": "1.170.33",
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "1.168.50",
     "@tanstack/router-plugin": "^1.168.36",
     "i18next": "^26.4.2",
-    "intlayer": "9.5.1",
+    "intlayer": "^9.5.10",
     "lucide-react": "^1.43.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
     "react-i18next": "^17.0.13",
-    "react-intlayer": "9.5.1",
+    "react-intlayer": "^9.5.10",
     "tailwindcss": "^4.3.3"
   },
   "devDependencies": {
@@ -51,7 +51,7 @@
     "test-utils": "workspace:*",
     "typescript": "^7.0.2",
     "vite": "^8.2.2",
-    "vite-intlayer": "9.5.1"
+    "vite-intlayer": "^9.5.10"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

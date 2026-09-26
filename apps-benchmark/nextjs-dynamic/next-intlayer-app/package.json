@@ -19,10 +19,10 @@
   "dependencies": {
     "@intlayer/swc": "^9.5.10",
     "@tailwindcss/typography": "^0.5.20",
-    "intlayer": "9.5.1",
+    "intlayer": "^9.5.10",
     "lucide-react": "^1.43.0",
     "next": "16.3.4",
-    "next-intlayer": "9.5.1",
+    "next-intlayer": "^9.5.10",
     "react": "19.3.0",
     "react-dom": "19.3.0"
   },
@@ -40,6 +40,6 @@
     "test-utils": "workspace:*",
     "typescript": "^7",
     "vite": "^8.2.2",
-    "vite-intlayer": "9.5.1"
+    "vite-intlayer": "^9.5.10"
   }
 }

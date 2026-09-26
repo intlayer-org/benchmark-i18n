@@ -23,13 +23,13 @@
     "@tanstack/react-router-ssr-query": "latest",
     "@tanstack/react-start": "1.168.50",
     "@tanstack/router-plugin": "^1.168.36",
-    "intlayer": "9.5.1",
+    "intlayer": "^9.5.10",
     "lucide-react": "^1.43.0",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "react-intlayer": "9.5.1",
+    "react-intlayer": "^9.5.10",
     "tailwindcss": "^4.3.3",
-    "vite-intlayer": "9.5.1"
+    "vite-intlayer": "^9.5.10"
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
