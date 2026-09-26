@@ -12,7 +12,7 @@ export default function SettingsHeader() {
       </h1>
       <p className="mb-8 text-muted-foreground">
         <T
-          keyName="settingsHeader.manageYourAccount"
+          keyName="settingsHeader.manageYourAccountPreferencesAnd"
         />
       </p>
     </>

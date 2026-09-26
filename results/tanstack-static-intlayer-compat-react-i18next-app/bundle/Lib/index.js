@@ -43,6 +43,7 @@ var PLURAL = "plural";
 var INSERTION = "insertion";
 var OBJECT = "object";
 var ARRAY = "array";
+var MARKDOWN = "markdown";
 var HTML = "html";
 var GENDER = "gender";
 var SELECT = "select";
@@ -109,6 +110,9 @@ var findMatchingCondition = (enumerationContent, quantity) => {
 var getEnumeration = (enumerationContent, quantity) => {
 	return enumerationContent[findMatchingCondition(enumerationContent, quantity) ?? "fallback"];
 };
+var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
+	return (values[key.trim()] ?? "").toString();
+});
 var DEFAULT_VARIANT_ID = "default";
 var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
 var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
@@ -413,6 +417,34 @@ var getTranslation = (languageContent, locale, fallback) => {
 	if (Array.isArray(results[0])) return results[0];
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
+var isInterpolableWrapperNode = (node) => {
+	if (typeof node !== "object" || node === null || !("nodeType" in node)) return false;
+	const { nodeType } = node;
+	return false;
+};
+var getInterpolableContent = (node) => {
+	if (typeof node === "string") return node;
+	if (isInterpolableWrapperNode(node)) return node.nodeType === "html" ? node[HTML] : node[MARKDOWN];
+};
+var rebuildInterpolableContent = (node, interpolated) => {
+	if (typeof node === "string") return interpolated;
+	if (isInterpolableWrapperNode(node)) {
+		const key = node.nodeType === "html" ? HTML : MARKDOWN;
+		return {
+			...node,
+			[key]: interpolated
+		};
+	}
+	return node;
+};
+var transformInterpolableNode = (node, values, subProps, parentPlugins, deepTransformNode) => {
+	const children = rebuildInterpolableContent(node, getInsertion(getInterpolableContent(node), values));
+	return deepTransformNode(children, {
+		...subProps,
+		plugins: parentPlugins,
+		children
+	});
+};
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
@@ -440,7 +472,40 @@ var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRA
 };
 var enumerationPlugin = fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
-var insertionPlugin = fallbackPlugin;
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+	id: "insertion-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
+	transform: (node, props, deepTransformNode) => {
+		const newKeyPath = [...props.keyPath, { type: INSERTION }];
+		const children = node[INSERTION];
+		const insertionStringPlugin = {
+			id: "insertion-string-plugin",
+			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
+			transform: (node, subProps, deepTransformNode) => {
+				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
+				const transformedResult = deepTransformNode(node, {
+					...subProps,
+					children: node,
+					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
+				});
+				return (values) => {
+					const children = getInsertion(transformedResult, values);
+					return deepTransformNode(children, {
+						...subProps,
+						plugins: props.plugins,
+						children
+					});
+				};
+			}
+		};
+		return deepTransformNode(children, {
+			...props,
+			children,
+			keyPath: newKeyPath,
+			plugins: [insertionStringPlugin, ...props.plugins ?? []]
+		});
+	}
+};
 var genderPlugin = fallbackPlugin;
 var selectPlugin = fallbackPlugin;
 process.env.INTLAYER_OPTIMIZED_NESTING;

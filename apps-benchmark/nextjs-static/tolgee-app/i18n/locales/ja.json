@@ -319,9 +319,8 @@
     "thisIsAnOpenSource": "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、さまざまな i18n ライブラリを同一条件下で統合および測定できる、現実的なマルチページ React アプリを提供することです。"
   },
   "settingsHeader": {
-    "manageYourAccount": "Manage your account settings and preferences.",
-    "manageYourAccountPreferences": "アカウントの設定と構成を管理します。",
-    "settings": "設定"
+    "settings": "設定",
+    "manageYourAccountPreferencesAnd": "アカウント設定と構成を管理します。"
   },
   "whyItMatters": {
     "bundleSize": "バンドルサイズ",

@@ -257,8 +257,7 @@
   },
   "settingsHeader": {
     "settings": "Impostazioni",
-    "manageYourAccountPreferences": "Gestisci le tue preferenze dell'account e la configurazione.",
-    "manageYourAccount": "Gestisci le tue preferenze dell'account e la configurazione."
+    "manageYourAccountPreferencesAnd": "Gestisci le preferenze del tuo account e la configurazione."
   },
   "profileSection": {
     "displayName": "Nome visualizzato",

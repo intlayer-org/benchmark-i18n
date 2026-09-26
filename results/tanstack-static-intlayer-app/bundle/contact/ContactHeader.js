@@ -1,6 +1,5 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { Fragment as Fragment$2, jsxDEV } from "react/jsx-dev-runtime";
 var contact_header_default = {
 	key: "contact-header",
 	content: {
@@ -727,83 +726,43 @@ var mock_banner_default = {
 		}
 	}
 };
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/MockBanner.tsx";
 var MockBanner = () => {
 	const content = useDictionary(mock_banner_default);
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: content.a
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 5,
-		columnNumber: 3
-	}, void 0);
+	});
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/contact/ContactHeader.tsx";
 function ContactHeader() {
 	const content = useDictionary(contact_header_default);
-	return jsxDEV(Fragment$2, { children: [
-		jsxDEV(MockBanner, {}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this),
-		jsxDEV("h1", {
+	return jsxs(Fragment$1, { children: [
+		jsx(MockBanner, {}),
+		jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: content.a
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 10,
-			columnNumber: 7
-		}, this),
-		jsxDEV("p", {
+		}),
+		jsxs("p", {
 			className: "mb-8 text-muted-foreground",
 			children: [
 				content.b,
 				" ",
-				jsxDEV("a", {
+				jsx("a", {
 					href: "mailto:contact@intlayer.org",
 					className: "text-primary hover:underline",
 					children: "contact@intlayer.org"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 12,
-					columnNumber: 9
-				}, this),
+				}),
 				"."
 			]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 11,
-			columnNumber: 7
-		}, this)
-	] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+		})
+	] });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/contact/ContactHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ContactHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ContactHeader, {}) });
 }
 export { Wrapped as default };

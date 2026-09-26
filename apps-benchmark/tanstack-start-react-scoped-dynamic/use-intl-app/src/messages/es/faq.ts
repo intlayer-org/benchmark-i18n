@@ -1,4 +1,8 @@
 export default {
+  "faq-header1": {
+    frequentlyAskedQuestions: "Preguntas Frecuentes",
+    everythingYouNeedToKnow: "Todo lo que necesitas saber sobre i18n Benchmark.",
+  },
   "faq-list": {
     whatIsI18nBenchmark: "¿Qué es i18n Benchmark ?",
     whatIsI18nBenchmarkAnswer: "i18n Benchmark es una suite de pruebas de código abierto que mide y compara el rendimiento, el tamaño del bundle y la experiencia del développeur de las bibliotecas de internacionalización para aplicaciones JavaScript y React.",

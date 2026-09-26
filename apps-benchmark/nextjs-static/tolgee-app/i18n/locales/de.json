@@ -319,9 +319,8 @@
     "thisIsAnOpenSource": "Dies ist eine Open-Source-Testanwendung – kein Produkt oder Unternehmen. Ihr einziger Zweck ist es, eine realistische, mehrseitige React-App bereitzustellen, in der verschiedene i18n-Bibliotheken unter identischen Bedingungen integriert und gemessen werden können."
   },
   "settingsHeader": {
-    "manageYourAccount": "Manage your account settings and preferences.",
-    "manageYourAccountPreferences": "Verwalten Sie Ihre Kontoeinstellungen und -konfigurationen.",
-    "settings": "Einstellungen"
+    "settings": "Einstellungen",
+    "manageYourAccountPreferencesAnd": "Verwalten Sie Ihre Kontoeinstellungen und Konfiguration."
   },
   "whyItMatters": {
     "bundleSize": "Bundle-Größe",

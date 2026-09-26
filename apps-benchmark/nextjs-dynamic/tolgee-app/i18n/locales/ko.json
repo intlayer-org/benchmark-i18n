@@ -319,9 +319,8 @@
     "thisIsAnOpenSource": "이것은 오픈 소스 테스트 애플리케이션이며 제품이나 회사가 아닙니다. 유일한 목적은 동일한 조건에서 서로 다른 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 React 앱을 제공하는 것입니다."
   },
   "settingsHeader": {
-    "manageYourAccount": "Manage your account settings and preferences.",
-    "manageYourAccountPreferences": "계정 기본 설정 및 구성을 관리합니다.",
-    "settings": "설정"
+    "settings": "설정",
+    "manageYourAccountPreferencesAnd": "계정 기본 설정 및 구성을 관리하십시오."
   },
   "whyItMatters": {
     "bundleSize": "번들 크기",

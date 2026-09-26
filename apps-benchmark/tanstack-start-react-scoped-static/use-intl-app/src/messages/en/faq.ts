@@ -1,4 +1,9 @@
 export default {
+  "faq-header1": {
+    frequentlyAskedQuestions: "Frequently Asked Questions",
+    everythingYouNeedToKnow:
+      "Everything you need to know about i18n Benchmark.",
+  },
   "faq-list": {
     whatIsI18nBenchmark: "What is i18n Benchmark?",
     whatIsI18nBenchmarkAnswer:

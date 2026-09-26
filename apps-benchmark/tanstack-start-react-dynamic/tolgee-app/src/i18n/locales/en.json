@@ -257,8 +257,7 @@
   },
   "settingsHeader": {
     "settings": "Settings",
-    "manageYourAccountPreferences": "Manage your account preferences and configuration.",
-    "manageYourAccount": "Manage your account preferences and configuration."
+    "manageYourAccountPreferencesAnd": "Manage your account preferences and configuration."
   },
   "profileSection": {
     "displayName": "Display Name",
@@ -267,7 +266,7 @@
   },
   "preferencesSection": {
     "arabicAr": "Arabic (ar)",
-    "chineseSimplifiedZhCn": "Chinese Simplified (zh)",
+    "chineseSimplifiedZhCn": "Chinese Simplified (zh-CN)",
     "darkMode": "Dark Mode",
     "defaultLanguage": "Default Language",
     "emailNotifications": "Email Notifications",

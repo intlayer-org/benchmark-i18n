@@ -319,9 +319,8 @@
     "thisIsAnOpenSource": "这是一个开源测试应用程序——不是产品或公司。其唯一目的是提供一个现实的多页面 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。"
   },
   "settingsHeader": {
-    "manageYourAccount": "Manage your account settings and preferences.",
-    "manageYourAccountPreferences": "管理您的账户偏好和配置。",
-    "settings": "设置"
+    "settings": "设置",
+    "manageYourAccountPreferencesAnd": "管理您的账户偏好和配置。"
   },
   "whyItMatters": {
     "bundleSize": "包大小",

@@ -1,8 +1,7 @@
-import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Fragment, createContext, createElement, isValidElement, useCallback, useContext, useEffect, useLayoutEffect, useMemo, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 import { usePathname, useRouter } from "next/navigation.js";
 import NextLink from "next/link";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -130,21 +129,6 @@ var getLocalizedUrl = (url, currentLocale = internationalization?.defaultLocale,
 	const isAbsoluteUrl = checkIsURLAbsolute(url);
 	const parsedUrl = isAbsoluteUrl ? new URL(url) : new URL(url, "http://e.com");
 	return `${isAbsoluteUrl ? `${parsedUrl.protocol}//${parsedUrl.host}` : ""}${getLocalizedPath(`${parsedUrl.pathname}${parsedUrl.search}${parsedUrl.hash}`, currentLocale, options)}`;
-};
-var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
-	const requestedLocales = [selectedLocale].flat();
-	const normalize = (locale) => locale.trim().toLowerCase();
-	try {
-		for (const requested of requestedLocales) {
-			const normalizedRequested = normalize(requested);
-			const exactMatch = locales.find((locale) => normalize(locale) === normalizedRequested);
-			if (exactMatch) return exactMatch;
-			const [requestedLang] = normalizedRequested.split("-");
-			const partialMatch = locales.find((locale) => normalize(locale).split("-")[0] === requestedLang);
-			if (partialMatch) return partialMatch;
-		}
-	} catch {}
-	return defaultLocale;
 };
 var resolveExpiresToTimestamp = (expires) => {
 	if (typeof expires === "number") return Date.now() + expires * 1e3;
@@ -761,78 +745,10 @@ var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(l
 	...localeStorageOptions,
 	isCookieEnabled
 });
-var useEditor = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const managerRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !managerRef.current) return;
-		managerRef.current.currentLocale.set(locale);
-	}, [locale]);
-};
-var EditorProvider = ({ children }) => {
-	useEditor();
-	return children;
-};
-var useAnalytics = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const clientRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !clientRef.current) return;
-		clientRef.current.setLocale(locale);
-		clientRef.current.trackPageView({ reason: "locale_change" });
-	}, [locale]);
-};
-var AnalyticsProvider = ({ children }) => {
-	useAnalytics();
-	return children;
-};
-var setIntlayerIdentifier = () => {
-	if (typeof window !== "undefined") window.intlayer = { enabled: true };
-};
 var IntlayerClientContext = createContext({
 	locale: localeInStorage ?? internationalization?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: true
-});
-var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocaleProp, variant, children, setLocale: setLocaleProp, disableEditor, isCookieEnabled }) => {
-	const { locales: availableLocales, defaultLocale: defaultLocaleConfig } = internationalization ?? {};
-	const [currentLocale, setCurrentLocale] = useState(localeProp ?? localeInStorage ?? defaultLocaleProp ?? defaultLocaleConfig);
-	useEffect(() => {
-		if (localeProp && localeProp !== currentLocale) setCurrentLocale(localeProp);
-	}, [localeProp]);
-	useEffect(() => {
-		setIntlayerIdentifier();
-	}, []);
-	const setLocaleBase = (newLocale) => {
-		if (currentLocale.toString() === newLocale.toString()) return;
-		if (!availableLocales?.map(String).includes(newLocale)) {
-			console.error(`Locale ${newLocale} is not available`);
-			return;
-		}
-		setCurrentLocale(newLocale);
-		setLocaleInStorage(newLocale, isCookieEnabled);
-	};
-	const setLocale = setLocaleProp ?? setLocaleBase;
-	const resolvedLocale = localeResolver(currentLocale);
-	return jsx(IntlayerClientContext.Provider, {
-		value: {
-			locale: resolvedLocale,
-			setLocale,
-			variant,
-			disableEditor
-		},
-		children
-	});
-};
-var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent, {
-	...props,
-	children: [
-		jsx(EditorProvider, {}),
-		jsx(AnalyticsProvider, {}),
-		children
-	]
 });
 var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const { locale: currentLocale, variant: contextVariant } = useContext(IntlayerClientContext) ?? {};
@@ -869,8 +785,6 @@ var useLocale$1 = ({ isCookieEnabled, onLocaleChange } = {}) => {
 		])
 	};
 };
-var IntlayerClientProviderBase = (props) => jsx(IntlayerProvider, { ...props });
-var IntlayerClientProvider = IntlayerClientProviderBase;
 var usePathname$1 = () => {
 	const nextPathname = usePathname();
 	const [searchParams, setSearchParams] = useState("");
@@ -911,24 +825,18 @@ var useLocale = ({ onChange = "replace", onLocaleChange, isCookieEnabled } = {})
 		pathWithoutLocale
 	};
 };
-var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/Link.tsx";
 var checkIsExternalLink = (href) => /^https?:\/\//.test(href ?? "");
 var Link = ({ href, children, ...props }) => {
 	const { locale } = useLocale();
 	const isExternalLink = checkIsExternalLink(href.toString());
 	const hrefI18n = href && !isExternalLink ? getLocalizedUrl(href.toString(), locale) : href;
-	return jsxDEV(NextLink, {
+	return jsx(NextLink, {
 		href: hrefI18n,
 		prefetch: false,
 		...props,
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 26,
-		columnNumber: 5
-	}, void 0);
+	});
 };
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/Footer.tsx";
 function Footer() {
 	const content$1 = useDictionaryDynamic(content, "footer");
 	const footerLinks = [
@@ -948,115 +856,51 @@ function Footer() {
 			isInternal: true
 		}
 	];
-	return jsxDEV("footer", {
+	return jsx("footer", {
 		className: "mt-20 border-t border-border bg-card",
-		children: jsxDEV("div", {
+		children: jsxs("div", {
 			className: "container py-8",
-			children: [jsxDEV("div", {
+			children: [jsxs("div", {
 				className: "grid gap-8 md:grid-cols-3",
 				children: [
-					jsxDEV("div", { children: [jsxDEV("h3", {
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: content$1.g
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 30,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: content$1.a
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 33,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 29,
-						columnNumber: 11
-					}, this),
-					jsxDEV("div", { children: [jsxDEV("h3", {
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: content$1.i
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 38,
-						columnNumber: 13
-					}, this), jsxDEV("ul", {
+					}), jsx("ul", {
 						className: "space-y-1",
-						children: footerLinks.map((linkEl) => jsxDEV("li", { children: linkEl.isInternal ? jsxDEV(Link, {
+						children: footerLinks.map((linkEl) => jsx("li", { children: linkEl.isInternal ? jsx(Link, {
 							href: linkEl.href,
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 45,
-							columnNumber: 21
-						}, this) : jsxDEV("a", {
+						}) : jsx("a", {
 							href: linkEl.href,
 							target: "_blank",
 							rel: "noreferrer",
 							className: "text-sm text-muted-foreground hover:text-foreground transition-colors",
 							children: linkEl.label
-						}, void 0, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 52,
-							columnNumber: 21
-						}, this) }, linkEl.label.value, false, {
-							fileName: _jsxFileName$3,
-							lineNumber: 43,
-							columnNumber: 17
-						}, this))
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 41,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 37,
-						columnNumber: 11
-					}, this),
-					jsxDEV("div", { children: [jsxDEV("h3", {
+						}) }, linkEl.label.value))
+					})] }),
+					jsxs("div", { children: [jsx("h3", {
 						className: "mb-2 text-sm font-semibold text-foreground",
 						children: content$1.c
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 66,
-						columnNumber: 13
-					}, this), jsxDEV("p", {
+					}), jsx("p", {
 						className: "text-sm text-muted-foreground",
 						children: content$1.d
-					}, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 69,
-						columnNumber: 13
-					}, this)] }, void 0, true, {
-						fileName: _jsxFileName$3,
-						lineNumber: 65,
-						columnNumber: 11
-					}, this)
+					})] })
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 28,
-				columnNumber: 9
-			}, this), jsxDEV("div", {
+			}), jsx("div", {
 				className: "mt-8 border-t border-border pt-4 text-center text-xs text-muted-foreground",
 				children: content$1.b
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 74,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$3,
-			lineNumber: 27,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 26,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -1080,7 +924,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -1092,37 +935,16 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(IntlayerClientProvider, {
-		locale,
-		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 34,
-		columnNumber: 7
-	}, this);
+	return children;
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/Footer.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Footer, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Footer, {}) });
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

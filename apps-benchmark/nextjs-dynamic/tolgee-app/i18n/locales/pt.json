@@ -319,9 +319,8 @@
     "thisIsAnOpenSource": "Esta é uma aplicação de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer um aplicativo React multipágina realista, onde diferentes bibliotecas de i18n podem ser integradas e medidas em condições idênticas."
   },
   "settingsHeader": {
-    "manageYourAccount": "Manage your account settings and preferences.",
-    "manageYourAccountPreferences": "Gerencie as suas preferências e configuração da conta.",
-    "settings": "Configurações"
+    "settings": "Configurações",
+    "manageYourAccountPreferencesAnd": "Gerencie as preferências e configurações de sua conta."
   },
   "whyItMatters": {
     "bundleSize": "Tamanho do Bundle",

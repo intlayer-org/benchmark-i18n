@@ -1,24 +1,9 @@
 import "svelte/internal/disclose-version";
-import "svelte/internal/flags/legacy";
 import * as $ from "svelte/internal/client";
 import { getContext } from "svelte";
-import { derived, get, writable } from "svelte/store";
-var content = {
-	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/de.json").then((m) => m.default),
-	"en": () => import("./en-CWEUUp38.js").then((m) => m.default),
-	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/es.json").then((m) => m.default),
-	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/fr.json").then((m) => m.default),
-	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/it.json").then((m) => m.default),
-	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/ja.json").then((m) => m.default),
-	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/ko.json").then((m) => m.default),
-	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/pt.json").then((m) => m.default),
-	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/ru.json").then((m) => m.default),
-	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/zh.json").then((m) => m.default)
-};
-var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
-var getIntlayerContext = () => {
-	return getContext(INTLAYER_CONTEXT_KEY);
-};
+import { derived, writable } from "svelte/store";
+import "svelte/internal/flags/legacy";
+var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
 		"en",
@@ -47,6 +32,130 @@ var internationalization = {
 	"strictMode": "inclusive",
 	"defaultLocale": "en"
 };
+var routing = {
+	"mode": "prefix-all",
+	"enableProxy": false,
+	"storage": {
+		"cookies": [{
+			"name": "INTLAYER_LOCALE",
+			"attributes": { "path": "/" }
+		}],
+		"headers": [{ "name": "x-intlayer-locale" }]
+	},
+	"basePath": ""
+};
+var getDomainHostname = (domain) => {
+	try {
+		return /^https?:\/\//.test(domain) ? new URL(domain).hostname : domain;
+	} catch {
+		return domain;
+	}
+};
+var getLocaleFromDomain = (hostname, domains) => {
+	if (!domains) return void 0;
+	const matchingLocales = Object.entries(domains).filter(([, domain]) => typeof domain === "string" && getDomainHostname(domain) === hostname);
+	return matchingLocales.length === 1 ? matchingLocales[0]?.[0] : void 0;
+};
+var LOCALES = ["en"];
+var PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
+var resolveRoutingConfig = (options = {}) => ({
+	...options,
+	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
+	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
+	locales: options.locales ?? internationalization?.locales ?? LOCALES,
+	rewrite: options.rewrite ?? routing?.rewrite,
+	domains: options.domains ?? routing?.domains
+});
+var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
+var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var localeStorageOptions = {
+	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
+	getLocaleStorage: (name) => localStorage.getItem(name),
+	getSessionStorage: (name) => sessionStorage.getItem(name),
+	isCookieEnabled: true,
+	setCookieStore: (name, value, attributes) => cookieStore.set({
+		name,
+		value,
+		path: attributes.path,
+		domain: attributes.domain,
+		expires: attributes.expires,
+		sameSite: attributes.sameSite
+	}),
+	setCookieString: (_name, cookie) => {
+		document.cookie = cookie;
+	},
+	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
+	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
+};
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
+	const { locales } = internationalization;
+	if (options?.isCookieEnabled === false) return void 0;
+	const isValidLocale = (value) => !!value && locales.includes(value);
+	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
+		const value = options?.getCookie?.(routing.storage.cookies[i].name);
+		if (isValidLocale(value)) return value;
+	} catch {}
+};
+var getLocaleFromPath = (inputUrl = "/", options) => {
+	const { defaultLocale, locales, mode } = resolveRoutingConfig(options);
+	if (!defaultLocale || !locales) return defaultLocale;
+	const isAbsoluteUrl = checkIsURLAbsolute(inputUrl);
+	const fixedInputUrl = inputUrl?.endsWith("/") && inputUrl.length > 1 ? inputUrl.slice(0, -1) : inputUrl;
+	const url = isAbsoluteUrl ? new URL(fixedInputUrl) : new URL(fixedInputUrl, "http://e.com");
+	if (mode === "search-params") {
+		const localeParam = url.searchParams.get("locale");
+		if (isDeclaredLocale(localeParam, locales)) return localeParam;
+		return defaultLocale;
+	}
+	if (mode === "no-prefix") return defaultLocale;
+	const firstSegment = url.pathname.split("/")[1];
+	if (isDeclaredLocale(firstSegment, locales)) return firstSegment;
+	if (mode === "prefix-no-default") return defaultLocale;
+};
+var resolveBrowserLocale = (options) => {
+	const { defaultLocale, mode, domains } = resolveRoutingConfig(options);
+	if (typeof window === "undefined") return defaultLocale;
+	if (domains) {
+		const localeFromDomain = getLocaleFromDomain(window.location.hostname, domains);
+		if (localeFromDomain) return localeFromDomain;
+	}
+	if (mode === "prefix-all" || mode === "prefix-no-default" || mode === "search-params" && new URLSearchParams(window.location.search).has("locale")) {
+		const localeFromPath = getLocaleFromPath(window.location.pathname + window.location.search, options);
+		if (localeFromPath) return localeFromPath;
+	}
+	return getLocaleFromStorageClient() ?? defaultLocale;
+};
+var memoizedUrl;
+var memoizedLocale;
+var getPreloadLocale = () => {
+	const currentUrl = typeof window === "undefined" ? "" : window.location.pathname + window.location.search;
+	if (memoizedLocale === void 0 || memoizedUrl !== currentUrl) {
+		memoizedUrl = currentUrl;
+		memoizedLocale = resolveBrowserLocale();
+	}
+	return memoizedLocale;
+};
+var content = {
+	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/de.json").then((m) => m.default),
+	"en": () => import("./intlayer-OpenPositions-1m50qo-en-BP36tg9y.js").then((n) => n.t).then((m) => m.default),
+	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/es.json").then((m) => m.default),
+	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/fr.json").then((m) => m.default),
+	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/it.json").then((m) => m.default),
+	"ja": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/ja.json").then((m) => m.default),
+	"ko": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/ko.json").then((m) => m.default),
+	"pt": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/pt.json").then((m) => m.default),
+	"ru": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/ru.json").then((m) => m.default),
+	"zh": () => import("../../../../.intlayer/dynamic_dictionary/json/open-positions/zh.json").then((m) => m.default)
+};
+var __intlayerLocale = getPreloadLocale();
+var __intlayerLoader = content[__intlayerLocale];
+if (typeof window !== "undefined" && typeof __intlayerLoader === "function") __intlayerLoader().then((__intlayerDictionary) => {
+	content["__intlayerPreloaded"] = {
+		locale: __intlayerLocale,
+		dictionary: __intlayerDictionary
+	};
+}, () => void 0);
 var defaultLocale = internationalization?.defaultLocale;
 var createIntlayerStore = () => {
 	const { subscribe, set, update } = writable({ locale: defaultLocale });
@@ -61,46 +170,180 @@ var createIntlayerStore = () => {
 	};
 };
 var intlayerStore = createIntlayerStore();
+var INTLAYER_CONTEXT_KEY = Symbol("intlayer");
+var getIntlayerContext = () => {
+	return getContext(INTLAYER_CONTEXT_KEY);
+};
+var prototypeCache = /* @__PURE__ */ new Map();
+var createIntlayerNodePrototype = (basePrototype, valuePrototype) => Object.create(new Proxy(basePrototype, {
+	get: (target, property, receiver) => {
+		if (typeof property !== "string" || property === "constructor" || property in target) return Reflect.get(target, property, receiver);
+		const { value } = receiver;
+		if (value === null || value === void 0) return void 0;
+		const member = Object(value)[property];
+		return typeof member === "function" ? member.bind(value) : member;
+	},
+	has: (target, property) => property in target || typeof property === "string" && property !== "constructor" && valuePrototype !== null && property in valuePrototype
+}), {
+	toString: { value() {
+		return String(this.value ?? "");
+	} },
+	valueOf: { value() {
+		return this.value;
+	} },
+	[Symbol.toPrimitive]: { value() {
+		return this.value ?? "";
+	} }
+});
+var getIntlayerNodePrototype = (value, basePrototype = Object.prototype) => {
+	const valueType = typeof value;
+	const valueKey = value === null || value === void 0 ? null : valueType === "object" || valueType === "function" ? Object.getPrototypeOf(value) : valueType;
+	let prototypes = prototypeCache.get(basePrototype);
+	if (!prototypes) {
+		prototypes = /* @__PURE__ */ new Map();
+		prototypeCache.set(basePrototype, prototypes);
+	}
+	let prototype = prototypes.get(valueKey);
+	if (!prototype) {
+		prototype = createIntlayerNodePrototype(basePrototype, valueKey === null ? null : Object.getPrototypeOf(Object(value)));
+		prototypes.set(valueKey, prototype);
+	}
+	return prototype;
+};
+var resolveProviderVariant = (providerVariant, dictionaryKey) => {
+	if (providerVariant === void 0) return void 0;
+	if (typeof providerVariant === "string" || Array.isArray(providerVariant)) return providerVariant;
+	const variantMap = providerVariant;
+	return variantMap[dictionaryKey] ?? variantMap["default"];
+};
+var getPreloadedDictionary = (loaderMap, locale) => {
+	if (typeof loaderMap !== "object" || loaderMap === null) return void 0;
+	const preloaded = loaderMap[PRELOADED_DYNAMIC_KEY];
+	if (!preloaded || preloaded.locale !== locale) return void 0;
+	return preloaded.dictionary;
+};
 var TRANSLATION = "translation";
 var OBJECT = "object";
 var ARRAY = "array";
+var getChildProps = (props, children, keyPathSegment) => ({
+	...props,
+	children,
+	keyPath: [...props.keyPath, keyPathSegment]
+});
 var deepTransformNode = (node, props) => {
-	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
+	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, deepTransformNode);
 	if (node === null || typeof node !== "object") return node;
-	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0 || typeof node === "function") return node;
-	if (Array.isArray(node)) return node.map((child, index) => {
-		return deepTransformNode(child, {
-			...props,
-			children: child,
-			keyPath: [...props.keyPath, {
-				type: ARRAY,
-				key: index
-			}]
-		});
-	});
+	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0) return node;
+	if (Array.isArray(node)) return node.map((child, index) => deepTransformNode(child, getChildProps(props, child, {
+		type: ARRAY,
+		key: index
+	})));
 	const result = {};
-	for (const key in node) Object.defineProperty(result, key, {
-		enumerable: true,
-		configurable: true,
-		get: function() {
-			const childProps = {
-				...props,
-				children: node[key],
-				keyPath: [...props.keyPath, {
-					type: OBJECT,
-					key
-				}]
-			};
-			const transformed = deepTransformNode(node[key], childProps);
-			Object.defineProperty(this, key, {
-				value: transformed,
-				enumerable: true,
-				configurable: true
-			});
-			return transformed;
+	for (const key in node) {
+		const keyPathSegment = {
+			type: OBJECT,
+			key
+		};
+		if (props.eager) {
+			result[key] = deepTransformNode(node[key], getChildProps(props, node[key], keyPathSegment));
+			continue;
 		}
-	});
+		Object.defineProperty(result, key, {
+			enumerable: true,
+			configurable: true,
+			get: function() {
+				const transformed = deepTransformNode(node[key], getChildProps(props, node[key], keyPathSegment));
+				Object.defineProperty(this, key, {
+					value: transformed,
+					enumerable: true,
+					configurable: true
+				});
+				return transformed;
+			}
+		});
+	}
 	return result;
+};
+var pluginsIdentities = /* @__PURE__ */ new WeakMap();
+var nextPluginsIdentity = 0;
+var getPluginsCacheKey = (plugins) => {
+	if (!plugins) return "base";
+	const existingIdentity = pluginsIdentities.get(plugins);
+	if (existingIdentity) return existingIdentity;
+	nextPluginsIdentity += 1;
+	const identity = `p${nextPluginsIdentity}`;
+	pluginsIdentities.set(plugins, identity);
+	return identity;
+};
+var MAX_ENTRIES_PER_DICTIONARY = 256;
+var transformCache = /* @__PURE__ */ new WeakMap();
+var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
+var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
+var readTransformCache = (dictionary, cacheKey) => {
+	if (!isMemoizableDictionary(dictionary)) return { hit: false };
+	const entries = transformCache.get(dictionary);
+	if (!entries?.has(cacheKey)) return { hit: false };
+	return {
+		hit: true,
+		content: entries.get(cacheKey)
+	};
+};
+var writeTransformCache = (dictionary, cacheKey, content) => {
+	if (!isMemoizableDictionary(dictionary)) return content;
+	let entries = transformCache.get(dictionary);
+	if (!entries) {
+		entries = /* @__PURE__ */ new Map();
+		transformCache.set(dictionary, entries);
+	}
+	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
+	entries.set(cacheKey, content);
+	return content;
+};
+var getBasePlugins = (locale, fallback = true) => [
+	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
+	enumerationPlugin,
+	pluralPlugin(locale ?? internationalization.defaultLocale),
+	conditionPlugin,
+	insertionPlugin$1,
+	nestedPlugin(locale ?? internationalization.defaultLocale),
+	filePlugin,
+	genderPlugin,
+	selectPlugin
+].filter((plugin) => plugin !== fallbackPlugin);
+var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
+	...nodeProps,
+	plugins
+});
+var transformsInProgress = /* @__PURE__ */ new WeakSet();
+var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
+	const { locale, selector } = {
+		locale: localeOrSelector,
+		selector: void 0
+	};
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, "", plugins);
+	const cached = readTransformCache(dictionary, cacheKey);
+	if (cached.hit) return cached.content;
+	const appliedPlugins = plugins ?? getBasePlugins(locale);
+	const resolved = dictionary;
+	const transformDictionary = (resolvedDictionary) => {
+		const props = {
+			dictionaryKey: resolvedDictionary.key,
+			dictionaryPath: resolvedDictionary.filePath,
+			keyPath: [],
+			plugins: appliedPlugins,
+			nestedDictionaries: resolvedDictionary.nestedDictionaries,
+			eager: !transformsInProgress.has(resolvedDictionary)
+		};
+		transformsInProgress.add(resolvedDictionary);
+		try {
+			return getContent(resolvedDictionary.content, props, appliedPlugins);
+		} finally {
+			if (props.eager) transformsInProgress.delete(resolvedDictionary);
+		}
+	};
+	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
+	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
+	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
 var isPlainObject = (value) => {
 	if (value === null || typeof value !== "object") return false;
@@ -113,39 +356,40 @@ var deepMerge = (target, source) => {
 	if (target === void 0) return source;
 	if (source === void 0) return target;
 	if (Array.isArray(target)) return target;
-	if (isPlainObject(target) && isPlainObject(source)) {
-		const result = { ...target };
-		for (const key of Object.keys(source)) {
-			if (key === "__proto__" || key === "constructor" || source[key] === void 0) continue;
-			result[key] = target[key] !== void 0 ? deepMerge(target[key], source[key]) : source[key];
-		}
-		return result;
+	if (!isPlainObject(target) || !isPlainObject(source)) return target;
+	let result = target;
+	for (const key of Object.keys(source)) {
+		const sourceValue = source[key];
+		if (key === "__proto__" || key === "constructor" || sourceValue === void 0) continue;
+		const targetValue = target[key];
+		const merged = targetValue === void 0 ? sourceValue : typeof targetValue === "object" ? deepMerge(targetValue, sourceValue) : targetValue;
+		if (merged === targetValue) continue;
+		if (result === target) result = { ...target };
+		result[key] = merged;
 	}
-	return target;
+	return result;
 };
 var getTranslation = (languageContent, locale, fallback) => {
-	const get = (loc) => languageContent[loc];
-	const seen = /* @__PURE__ */ new Set();
-	const locales = [];
-	const addLocale = (loc) => {
-		if (loc && !seen.has(loc)) {
-			seen.add(loc);
-			locales.push(loc);
-		}
-	};
-	addLocale(locale);
-	if (locale.includes("-")) addLocale(locale.split("-")[0]);
-	addLocale(fallback);
-	if (fallback?.includes("-")) addLocale(fallback.split("-")[0]);
+	const get = (localeEl) => languageContent[localeEl];
+	const exactMatch = get(locale);
+	if (typeof exactMatch === "string") return exactMatch;
+	const candidates = [
+		locale,
+		locale.split("-")[0],
+		fallback,
+		fallback?.split("-")[0]
+	];
 	const results = [];
-	for (const loc of locales) {
-		const val = get(loc);
-		if (val === void 0) continue;
-		if (typeof val === "string") {
-			if (results.length === 0) return val;
+	for (let index = 0; index < candidates.length; index++) {
+		const candidate = candidates[index];
+		if (!candidate || candidates.indexOf(candidate) < index) continue;
+		const value = get(candidate);
+		if (value === void 0) continue;
+		if (typeof value === "string") {
+			if (results.length === 0) return value;
 			continue;
 		}
-		results.push(val);
+		results.push(value);
 	}
 	if (results.length === 0) return void 0;
 	if (results.length === 1) return results[0];
@@ -157,64 +401,57 @@ var fallbackPlugin = {
 	canHandle: () => false,
 	transform: (node) => node
 };
-var translationPlugin = (locale, fallback) => process.env["INTLAYER_NODE_TYPE_TRANSLATION"] === "false" ? fallbackPlugin : {
+var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
 	id: "translation-plugin",
 	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
 	transform: (node, props, deepTransformNode) => {
-		const original = node["translation"] ?? {};
-		const result = {};
-		for (const key in original) {
-			const childProps = {
-				...props,
-				children: original[key],
-				keyPath: [...props.keyPath, {
-					type: TRANSLATION,
-					key
-				}]
-			};
-			result[key] = deepTransformNode(original[key], childProps);
-		}
-		return getTranslation(result, locale, fallback);
+		const content = getTranslation(node["translation"] ?? {}, locale, fallback);
+		return deepTransformNode(content, {
+			...props,
+			children: content,
+			keyPath: [...props.keyPath, {
+				type: TRANSLATION,
+				key: locale
+			}]
+		});
 	}
 };
 var enumerationPlugin = fallbackPlugin;
+var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
 var insertionPlugin$1 = fallbackPlugin;
 var genderPlugin = fallbackPlugin;
+var selectPlugin = fallbackPlugin;
 var nestedPlugin = (locale) => fallbackPlugin;
 var filePlugin = fallbackPlugin;
-var getBasePlugins = (locale, fallback = true) => [
-	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-	enumerationPlugin,
-	conditionPlugin,
-	insertionPlugin$1,
-	nestedPlugin(locale ?? internationalization.defaultLocale),
-	filePlugin,
-	genderPlugin
-];
-var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
-	...nodeProps,
-	plugins
-});
-var getDictionary$1 = (dictionary, locale, plugins = getBasePlugins(locale)) => {
-	const props = {
-		dictionaryKey: dictionary.key,
-		dictionaryPath: dictionary.filePath,
-		keyPath: [],
-		plugins
-	};
-	return getContent(dictionary.content, props, plugins);
-};
 function IntlayerNodeWrapper($$anchor, $$props) {
+	$.push($$props, false);
 	let Renderer = $.prop($$props, "Renderer", 8, void 0);
 	let rendererProps = $.prop($$props, "rendererProps", 24, () => ({}));
 	let value = $.prop($$props, "value", 8, void 0);
+	let ResolvedRenderer = $.mutable_source();
+	let isAwaitingRenderer = $.mutable_source(false);
+	$.legacy_pre_effect(() => $.deep_read_state(Renderer()), () => {
+		if (typeof Renderer()?.then === "function") {
+			$.set(isAwaitingRenderer, true);
+			Renderer().then((component) => {
+				$.set(ResolvedRenderer, component);
+				$.set(isAwaitingRenderer, false);
+			});
+		} else {
+			$.set(ResolvedRenderer, Renderer());
+			$.set(isAwaitingRenderer, false);
+		}
+	});
+	$.legacy_pre_effect_reset();
+	$.init();
 	var fragment = $.comment();
 	var node = $.first_child(fragment);
-	var consequent = ($$anchor) => {
+	var consequent = ($$anchor) => {};
+	var consequent_1 = ($$anchor) => {
 		var fragment_1 = $.comment();
 		var node_1 = $.first_child(fragment_1);
-		$.element(node_1, Renderer, false, ($$element, $$anchor) => {
+		$.element(node_1, () => $.get(ResolvedRenderer), false, ($$element, $$anchor) => {
 			$.attribute_effect($$element, () => ({ ...rendererProps() }));
 			var text = $.text();
 			$.template_effect(() => $.set_text(text, value()));
@@ -222,8 +459,8 @@ function IntlayerNodeWrapper($$anchor, $$props) {
 		});
 		$.append($$anchor, fragment_1);
 	};
-	var consequent_1 = ($$anchor) => {
-		Renderer()($$anchor, $.spread_props(rendererProps, {
+	var consequent_2 = ($$anchor) => {
+		$.get(ResolvedRenderer)($$anchor, $.spread_props(rendererProps, {
 			children: ($$anchor, $$slotProps) => {
 				$.next();
 				var text_1 = $.text();
@@ -239,27 +476,27 @@ function IntlayerNodeWrapper($$anchor, $$props) {
 		$.append($$anchor, text_2);
 	};
 	$.if(node, ($$render) => {
-		if (typeof Renderer() === "string") $$render(consequent);
-		else if (typeof Renderer() === "function") $$render(consequent_1, 1);
+		if ($.get(isAwaitingRenderer)) $$render(consequent);
+		else if (typeof $.get(ResolvedRenderer) === "string") $$render(consequent_1, 1);
+		else if (typeof $.get(ResolvedRenderer) === "function") $$render(consequent_2, 2);
 		else $$render(alternate, -1);
 	});
 	$.append($$anchor, fragment);
+	$.pop();
 }
 var renderIntlayerNode = (args) => {
 	const isClassComponent = Boolean(IntlayerNodeWrapper.prototype?.$destroy);
 	let Node;
-	if (isClassComponent) Node = class extends IntlayerNodeWrapper {
-		constructor(options) {
-			super({
-				...options,
-				props: {
-					...options.props,
-					Renderer: args.component,
-					rendererProps: args.props,
-					value: args.value
-				}
-			});
-		}
+	if (isClassComponent) Node = function IntlayerNode(options) {
+		return new IntlayerNodeWrapper({
+			...options,
+			props: {
+				...options.props,
+				Renderer: args.component,
+				rendererProps: args.props,
+				value: args.value
+			}
+		});
 	};
 	else Node = (props) => {
 		return IntlayerNodeWrapper(props, {
@@ -273,22 +510,20 @@ var renderIntlayerNode = (args) => {
 		writable: true,
 		configurable: true
 	});
-	Object.defineProperty(Node, "toString", {
-		value: () => args.value?.toString() ?? "",
-		writable: true,
-		configurable: true
-	});
 	if (args.additionalProps) Object.assign(Node, args.additionalProps);
+	Object.setPrototypeOf(Node, getIntlayerNodePrototype(args.value, Function.prototype));
 	return Node;
 };
 var intlayerNodePlugins = {
 	id: "intlayer-node-plugin",
 	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
-	transform: (node, { children, ...rest }) => renderIntlayerNode({
-		value: children ?? node,
-		component: void 0,
-		props: rest
-	})
+	transform: (node, props) => {
+		return renderIntlayerNode({
+			value: props.children ?? node,
+			component: void 0,
+			props: {}
+		});
+	}
 };
 var svelteNodePlugins = intlayerNodePlugins;
 var insertionPlugin = fallbackPlugin;
@@ -298,23 +533,27 @@ var pluginsCache = /* @__PURE__ */ new Map();
 var getPlugins = (locale, fallback = true) => {
 	const cacheKey = `${locale ?? internationalization.defaultLocale}_${fallback}`;
 	if (pluginsCache.has(cacheKey)) return pluginsCache.get(cacheKey);
-	const plugins = [
+	const enabledPlugins = [
+		intlayerNodePlugins,
 		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
 		enumerationPlugin,
+		pluralPlugin(locale ?? internationalization.defaultLocale),
 		conditionPlugin,
 		nestedPlugin(locale ?? internationalization.defaultLocale),
 		filePlugin,
 		genderPlugin,
-		intlayerNodePlugins,
+		selectPlugin,
 		svelteNodePlugins,
 		insertionPlugin,
 		markdownPlugin,
 		htmlPlugin
-	];
-	pluginsCache.set(cacheKey, plugins);
-	return plugins;
+	].filter((plugin) => plugin !== fallbackPlugin);
+	pluginsCache.set(cacheKey, enabledPlugins);
+	return enabledPlugins;
 };
-var getDictionary = (dictionary, locale) => getDictionary$1(dictionary, locale, getPlugins(locale));
+var getDictionary = (dictionary, localeOrSelector) => {
+	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
+};
 var recursiveProxy = new Proxy(() => {}, {
 	get: (_target, prop) => {
 		if (prop === Symbol.toPrimitive) return () => void 0;
@@ -324,29 +563,52 @@ var recursiveProxy = new Proxy(() => {}, {
 	},
 	apply: () => recursiveProxy
 });
-function useDictionaryDynamic(dictionaryPromise, _key, locale) {
+var loadingProxy = () => new Proxy({
+	isLoading: true,
+	error: null
+}, { get: (_target, prop) => {
+	if (prop === "isLoading") return true;
+	if (prop === "error") return null;
+	return recursiveProxy;
+} });
+var withState = (value) => {
+	if (Array.isArray(value)) return Object.assign(value.slice(), {
+		isLoading: false,
+		error: null
+	});
+	if (value && typeof value === "object") return {
+		...value,
+		isLoading: false,
+		error: null
+	};
+	return {
+		isLoading: false,
+		error: null
+	};
+};
+function useDictionaryDynamic(dictionaryPromise, key, localeOrSelector) {
 	const context = getIntlayerContext();
-	return derived(derived(intlayerStore, ($store) => locale ?? context?.locale ?? $store.locale), ($locale, set) => {
-		set(new Proxy({
-			isLoading: true,
-			error: null
-		}, { get: (_target, prop) => {
-			if (prop === "isLoading") return true;
-			if (prop === "error") return null;
-			return recursiveProxy;
-		} }));
+	resolveProviderVariant(context?.variant, key);
+	const explicitLocale = localeOrSelector;
+	const localeStore = derived(intlayerStore, ($store) => explicitLocale ?? context?.locale ?? $store.locale);
+	return derived(localeStore, ($locale, set) => {
+		const preloadedDictionary = getPreloadedDictionary(dictionaryPromise, $locale);
+		if (preloadedDictionary) {
+			set(withState(getDictionary(preloadedDictionary, $locale)));
+			return;
+		}
+		set(loadingProxy());
 		let isCancelled = false;
 		const load = async () => {
 			try {
-				const loader = dictionaryPromise[$locale];
-				if (!loader) return;
-				const dict = await loader();
+				let resolved;
+				{
+					const loader = dictionaryPromise[$locale];
+					if (!loader) return;
+					resolved = getDictionary(await loader(), $locale);
+				}
 				if (isCancelled) return;
-				set({
-					...getDictionary(dict, $locale),
-					isLoading: false,
-					error: null
-				});
+				set(withState(resolved));
 			} catch (error) {
 				if (isCancelled) return;
 				console.error(error);
@@ -360,89 +622,74 @@ function useDictionaryDynamic(dictionaryPromise, _key, locale) {
 		return () => {
 			isCancelled = true;
 		};
-	}, new Proxy({
-		isLoading: true,
-		error: null
-	}, { get: (_target, prop) => {
-		if (prop === "isLoading") return true;
-		if (prop === "error") return null;
-		return recursiveProxy;
-	} }));
+	}, loadingProxy());
 }
-var root_1 = $.from_html(`<div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"><div><h3 class="text-base font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p> <div class="mt-2 flex gap-2"><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span></div></div> <button type="button" class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"> </button></div>`);
-var root = $.from_html(`<h2 class="mb-6 text-2xl font-bold text-foreground"> </h2> <div class="space-y-4"></div>`, 1);
+var root = $.from_html(`<div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"><div><h3 class="text-base font-semibold text-foreground"> </h3> <p class="text-sm text-muted-foreground"> </p> <div class="mt-2 flex gap-2"><span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span> <span class="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground"> </span></div></div> <button type="button" class="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90"> </button></div>`);
+var root_1 = $.from_html(`<h2 class="mb-6 text-2xl font-bold text-foreground"> </h2> <div class="space-y-4"></div>`, 1);
 function OpenPositions($$anchor, $$props) {
-	$.push($$props, false);
+	$.push($$props, true);
 	const $content = () => $.store_get(content$1, "$content", $$stores);
 	const [$$stores, $$cleanup] = $.setup_stores();
 	const content$1 = useDictionaryDynamic(content, "open-positions");
-	const openings = [
+	const openings = $.derived(() => [
 		{
-			title: get(content$1).seniorFrontendEngineer,
-			location: get(content$1).remote,
+			title: $content().seniorFrontendEngineer,
+			location: $content().remote,
 			type: "Full-time",
-			dept: get(content$1).engineering,
-			desc: get(content$1).buildAndMaintainOurBenchmarking
+			dept: $content().engineering,
+			desc: $content().buildAndMaintainOurBenchmarking
 		},
 		{
-			title: get(content$1).backendEngineer,
-			location: get(content$1).remote1,
+			title: $content().backendEngineer,
+			location: $content().remote1,
 			type: "Full-time",
-			dept: get(content$1).engineering1,
-			desc: get(content$1).designAndScaleOurCloud
+			dept: $content().engineering1,
+			desc: $content().designAndScaleOurCloud
 		},
 		{
-			title: get(content$1).technicalWriter,
-			location: get(content$1).remote2,
+			title: $content().technicalWriter,
+			location: $content().remote2,
 			type: "Part-time",
-			dept: get(content$1).documentation,
-			desc: get(content$1).createComprehensiveGuidesApiReferences
+			dept: $content().documentation,
+			desc: $content().createComprehensiveGuidesApiReferences
 		},
 		{
-			title: get(content$1).devrelEngineer,
-			location: get(content$1).sanFranciscoRemote,
+			title: $content().devrelEngineer,
+			location: $content().sanFranciscoRemote,
 			type: "Full-time",
-			dept: get(content$1).community,
-			desc: get(content$1).engageWithTheI18nCommunity
+			dept: $content().community,
+			desc: $content().engageWithTheI18nCommunity
 		},
 		{
-			title: get(content$1).qaEngineer,
-			location: get(content$1).remote3,
+			title: $content().qaEngineer,
+			location: $content().remote3,
 			type: "Full-time",
-			dept: get(content$1).engineering2,
-			desc: get(content$1).ensureTheAccuracyAndReliability
+			dept: $content().engineering2,
+			desc: $content().ensureTheAccuracyAndReliability
 		}
-	];
-	$.init();
-	var fragment = root();
+	]);
+	var fragment = root_1();
 	var h2 = $.first_child(fragment);
-	var text = $.child(h2, true);
-	$.reset(h2);
+	var text = $.only_child(h2, true);
 	var div = $.sibling(h2, 2);
-	$.each(div, 5, () => openings, (o) => o.title, ($$anchor, o) => {
-		var div_1 = root_1();
+	$.each(div, 21, () => $.get(openings), $.index, ($$anchor, o) => {
+		var div_1 = root();
 		var div_2 = $.child(div_1);
 		var h3 = $.child(div_2);
-		var text_1 = $.child(h3, true);
-		$.reset(h3);
+		var text_1 = $.only_child(h3, true);
 		var p = $.sibling(h3, 2);
-		var text_2 = $.child(p, true);
-		$.reset(p);
+		var text_2 = $.only_child(p, true);
 		var div_3 = $.sibling(p, 2);
 		var span = $.child(div_3);
-		var text_3 = $.child(span, true);
-		$.reset(span);
+		var text_3 = $.only_child(span, true);
 		var span_1 = $.sibling(span, 2);
-		var text_4 = $.child(span_1, true);
-		$.reset(span_1);
+		var text_4 = $.only_child(span_1, true);
 		var span_2 = $.sibling(span_1, 2);
-		var text_5 = $.child(span_2, true);
-		$.reset(span_2);
+		var text_5 = $.only_child(span_2, true);
 		$.reset(div_3);
 		$.reset(div_2);
 		var button = $.sibling(div_2, 2);
-		var text_6 = $.child(button, true);
-		$.reset(button);
+		var text_6 = $.only_child(button, true);
 		$.reset(div_1);
 		$.template_effect(() => {
 			$.set_text(text_1, $.get(o).title);
@@ -461,31 +708,48 @@ function OpenPositions($$anchor, $$props) {
 	$$cleanup();
 }
 export { OpenPositions as default };
-var en_default = {
-	key: "open-positions",
-	content: {
-		"applyNow": "Apply Now",
-		"openPositions": "Open Positions",
-		"ensureTheAccuracyAndReliability": "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
-		"engineering2": "Engineering",
-		"remote3": "Remote",
-		"qaEngineer": "QA Engineer",
-		"engageWithTheI18nCommunity": "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
-		"community": "Community",
-		"sanFranciscoRemote": "San Francisco / Remote",
-		"devrelEngineer": "DevRel Engineer",
-		"createComprehensiveGuidesApiReferences": "Create comprehensive guides, API references, and tutorials for our benchmarking platform.",
-		"documentation": "Documentation",
-		"remote2": "Remote",
-		"technicalWriter": "Technical Writer",
-		"designAndScaleOurCloud": "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-		"engineering1": "Engineering",
-		"remote1": "Remote",
-		"backendEngineer": "Backend Engineer",
-		"buildAndMaintainOurBenchmarking": "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
-		"engineering": "Engineering",
-		"remote": "Remote",
-		"seniorFrontendEngineer": "Senior Frontend Engineer"
-	}
+var __defProp = Object.defineProperty;
+var __exportAll = (all, no_symbols) => {
+	let target = {};
+	for (var name in all) __defProp(target, name, {
+		get: all[name],
+		enumerable: true
+	});
+	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
+	return target;
 };
-export { en_default as default };
+var en_exports = __exportAll({
+	content: () => content,
+	default: () => en_default,
+	key: () => key
+});
+var key = "open-positions";
+var content = {
+	"applyNow": "Apply Now",
+	"openPositions": "Open Positions",
+	"ensureTheAccuracyAndReliability": "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
+	"engineering2": "Engineering",
+	"remote3": "Remote",
+	"qaEngineer": "QA Engineer",
+	"engageWithTheI18nCommunity": "Engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+	"community": "Community",
+	"sanFranciscoRemote": "San Francisco / Remote",
+	"devrelEngineer": "DevRel Engineer",
+	"createComprehensiveGuidesApiReferences": "Create comprehensive guides, API references, and tutorials for our benchmarking platform.",
+	"documentation": "Documentation",
+	"remote2": "Remote",
+	"technicalWriter": "Technical Writer",
+	"designAndScaleOurCloud": "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+	"engineering1": "Engineering",
+	"remote1": "Remote",
+	"backendEngineer": "Backend Engineer",
+	"buildAndMaintainOurBenchmarking": "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.",
+	"engineering": "Engineering",
+	"remote": "Remote",
+	"seniorFrontendEngineer": "Senior Frontend Engineer"
+};
+var en_default = {
+	key,
+	content
+};
+export { en_exports as t };

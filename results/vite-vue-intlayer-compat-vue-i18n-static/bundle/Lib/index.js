@@ -1,4 +1,20 @@
 import { computed, defineComponent, getCurrentInstance, h, inject, readonly, ref, renderSlot } from "vue";
+import _16rhw3kbzm1 from "../.intlayer/dictionary/faq.json";
+import _1ny4ad9gw6e from "../.intlayer/dictionary/header.json";
+import _2ckjnptcmiu from "../.intlayer/dictionary/settings.json";
+import _11hn6jza04y from "../.intlayer/dictionary/footer.json";
+import _1h1e3dimqu8 from "../.intlayer/dictionary/mockBanner.json";
+import _habnq427mb from "../.intlayer/dictionary/shared.json";
+import _25c8j2hahqv from "../.intlayer/dictionary/careers.json";
+import _iauyk88f4i from "../.intlayer/dictionary/notFound.json";
+import _1ws5g6nc4g1 from "../.intlayer/dictionary/pricing.json";
+import _1dnalctr3 from "../.intlayer/dictionary/products.json";
+import _4bpwb9fw6u from "../.intlayer/dictionary/contact.json";
+import _29yg3lvf27s from "../.intlayer/dictionary/themeToggle.json";
+import _12fgv4iyd8c from "../.intlayer/dictionary/about.json";
+import _fnv5y1kt6s from "../.intlayer/dictionary/home.json";
+import _1v3o9b1l47a from "../.intlayer/dictionary/team.json";
+import _r6cntw5k3d from "../.intlayer/dictionary/blog.json";
 var resolveNamedOptions = (formatOrOptions, locale, namedFormats) => {
 	if (typeof formatOrOptions === "string") return namedFormats?.[locale]?.[formatOrOptions] ?? namedFormats?.[locale.split("-")[0] ?? ""]?.[formatOrOptions];
 	return formatOrOptions;
@@ -491,7 +507,25 @@ var getDictionarySelectorCacheKey = (selector) => {
 		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
 	}).join("|");
 };
-var getDictionaries = () => ({});
+var dictionaries = {
+	"faq": _16rhw3kbzm1,
+	"header": _1ny4ad9gw6e,
+	"settings": _2ckjnptcmiu,
+	"footer": _11hn6jza04y,
+	"mockBanner": _1h1e3dimqu8,
+	"shared": _habnq427mb,
+	"careers": _25c8j2hahqv,
+	"notFound": _iauyk88f4i,
+	"pricing": _1ws5g6nc4g1,
+	"products": _1dnalctr3,
+	"contact": _4bpwb9fw6u,
+	"themeToggle": _29yg3lvf27s,
+	"about": _12fgv4iyd8c,
+	"home": _fnv5y1kt6s,
+	"team": _1v3o9b1l47a,
+	"blog": _r6cntw5k3d
+};
+var getDictionaries = () => dictionaries;
 var PROTOTYPE_METHOD_NAMES = /* @__PURE__ */ new Set([
 	"hasOwnProperty",
 	"isPrototypeOf",
@@ -662,6 +696,7 @@ var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fal
 };
 var genderPlugin = fallbackPlugin;
 var selectPlugin = fallbackPlugin;
+process.env.INTLAYER_OPTIMIZED_NESTING;
 var nestedPlugin = (locale) => fallbackPlugin;
 var filePlugin = fallbackPlugin;
 var getBasePlugins = (locale, fallback = true) => [

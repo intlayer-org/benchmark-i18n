@@ -1,11 +1,11 @@
 {
   "app": "nextjs-dynamic-next-intlayer-app",
   "locale": "fr",
-  "timestamp": "2026-09-09T18:54:25.622Z",
+  "timestamp": "2026-09-26T03:41:05.301Z",
   "fingerprintCounts": {
     "locale": {
       "en": 100,
-      "fr": 117
+      "fr": 116
     },
     "page": {
       "home": 24,
@@ -14,7 +14,7 @@
       "careers": 13,
       "contact": 3,
       "faq": 9,
-      "pricing": 10,
+      "pricing": 9,
       "products": 10,
       "settings": 7,
       "team": 11
@@ -25,21 +25,21 @@
       "path": "/fr/",
       "page": "home",
       "locale": "fr",
-      "totalSize": 545626,
-      "totalGzipSize": 157297,
-      "jsSize": 484909,
-      "jsGzipSize": 144655,
+      "totalSize": 545885,
+      "totalGzipSize": 157343,
+      "jsSize": 484973,
+      "jsGzipSize": 144678,
       "cssSize": 23597,
       "cssGzipSize": 4987,
-      "htmlSize": 37120,
-      "htmlGzipSize": 7655,
+      "htmlSize": 37315,
+      "htmlGzipSize": 7678,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr",
-          "size": 37120,
-          "gzipSize": 7655,
+          "size": 37315,
+          "gzipSize": 7678,
           "type": "html"
         },
         {
@@ -67,9 +67,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2un8g98f_jz43.js",
-          "size": 31728,
-          "gzipSize": 11026,
+          "url": "/_next/static/chunks/11gfsgxmfbrhz.js",
+          "size": 31792,
+          "gzipSize": 11049,
           "type": "js"
         },
         {
@@ -179,21 +179,21 @@
       "path": "/fr/about",
       "page": "about",
       "locale": "fr",
-      "totalSize": 537749,
-      "totalGzipSize": 156174,
-      "jsSize": 484909,
-      "jsGzipSize": 144655,
+      "totalSize": 538008,
+      "totalGzipSize": 156229,
+      "jsSize": 484973,
+      "jsGzipSize": 144678,
       "cssSize": 23597,
       "cssGzipSize": 4987,
-      "htmlSize": 29243,
-      "htmlGzipSize": 6532,
+      "htmlSize": 29438,
+      "htmlGzipSize": 6564,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/about",
-          "size": 29243,
-          "gzipSize": 6532,
+          "size": 29438,
+          "gzipSize": 6564,
           "type": "html"
         },
         {
@@ -221,9 +221,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2un8g98f_jz43.js",
-          "size": 31728,
-          "gzipSize": 11026,
+          "url": "/_next/static/chunks/11gfsgxmfbrhz.js",
+          "size": 31792,
+          "gzipSize": 11049,
           "type": "js"
         },
         {
@@ -329,21 +329,21 @@
       "path": "/fr/blog",
       "page": "blog",
       "locale": "fr",
-      "totalSize": 540270,
-      "totalGzipSize": 155895,
-      "jsSize": 484909,
-      "jsGzipSize": 144655,
+      "totalSize": 540524,
+      "totalGzipSize": 155942,
+      "jsSize": 484973,
+      "jsGzipSize": 144678,
       "cssSize": 23597,
       "cssGzipSize": 4987,
-      "htmlSize": 31764,
-      "htmlGzipSize": 6253,
+      "htmlSize": 31954,
+      "htmlGzipSize": 6277,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/blog",
-          "size": 31764,
-          "gzipSize": 6253,
+          "size": 31954,
+          "gzipSize": 6277,
           "type": "html"
         },
         {
@@ -359,21 +359,21 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3c7qu-1ame5rx.js",
-          "size": 14377,
-          "gzipSize": 3661,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/turbopack-03led6l_4turo.js",
           "size": 9688,
           "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2un8g98f_jz43.js",
-          "size": 31728,
-          "gzipSize": 11026,
+          "url": "/_next/static/chunks/3c7qu-1ame5rx.js",
+          "size": 14377,
+          "gzipSize": 3661,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/11gfsgxmfbrhz.js",
+          "size": 31792,
+          "gzipSize": 11049,
           "type": "js"
         },
         {
@@ -478,21 +478,21 @@
       "path": "/fr/careers",
       "page": "careers",
       "locale": "fr",
-      "totalSize": 543074,
-      "totalGzipSize": 156099,
-      "jsSize": 484909,
-      "jsGzipSize": 144655,
+      "totalSize": 543329,
+      "totalGzipSize": 156136,
+      "jsSize": 484973,
+      "jsGzipSize": 144678,
       "cssSize": 23597,
       "cssGzipSize": 4987,
-      "htmlSize": 34568,
-      "htmlGzipSize": 6457,
+      "htmlSize": 34759,
+      "htmlGzipSize": 6471,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/careers",
-          "size": 34568,
-          "gzipSize": 6457,
+          "size": 34759,
+          "gzipSize": 6471,
           "type": "html"
         },
         {
@@ -508,21 +508,21 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3c7qu-1ame5rx.js",
-          "size": 14377,
-          "gzipSize": 3661,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/turbopack-03led6l_4turo.js",
           "size": 9688,
           "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2un8g98f_jz43.js",
-          "size": 31728,
-          "gzipSize": 11026,
+          "url": "/_next/static/chunks/3c7qu-1ame5rx.js",
+          "size": 14377,
+          "gzipSize": 3661,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/11gfsgxmfbrhz.js",
+          "size": 31792,
+          "gzipSize": 11049,
           "type": "js"
         },
         {
@@ -627,21 +627,21 @@
       "path": "/fr/contact",
       "page": "contact",
       "locale": "fr",
-      "totalSize": 534100,
-      "totalGzipSize": 155429,
-      "jsSize": 484909,
-      "jsGzipSize": 144655,
+      "totalSize": 534359,
+      "totalGzipSize": 155486,
+      "jsSize": 484973,
+      "jsGzipSize": 144678,
       "cssSize": 23597,
       "cssGzipSize": 4987,
-      "htmlSize": 25594,
-      "htmlGzipSize": 5787,
+      "htmlSize": 25789,
+      "htmlGzipSize": 5821,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/contact",
-          "size": 25594,
-          "gzipSize": 5787,
+          "size": 25789,
+          "gzipSize": 5821,
           "type": "html"
         },
         {
@@ -669,9 +669,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2un8g98f_jz43.js",
-          "size": 31728,
-          "gzipSize": 11026,
+          "url": "/_next/static/chunks/11gfsgxmfbrhz.js",
+          "size": 31792,
+          "gzipSize": 11049,
           "type": "js"
         },
         {
@@ -754,21 +754,21 @@
       "path": "/fr/faq",
       "page": "faq",
       "locale": "fr",
-      "totalSize": 539337,
-      "totalGzipSize": 156156,
-      "jsSize": 484909,
-      "jsGzipSize": 144655,
+      "totalSize": 539596,
+      "totalGzipSize": 156212,
+      "jsSize": 484973,
+      "jsGzipSize": 144678,
       "cssSize": 23597,
       "cssGzipSize": 4987,
-      "htmlSize": 30831,
-      "htmlGzipSize": 6514,
+      "htmlSize": 31026,
+      "htmlGzipSize": 6547,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/faq",
-          "size": 30831,
-          "gzipSize": 6514,
+          "size": 31026,
+          "gzipSize": 6547,
           "type": "html"
         },
         {
@@ -796,9 +796,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2un8g98f_jz43.js",
-          "size": 31728,
-          "gzipSize": 11026,
+          "url": "/_next/static/chunks/11gfsgxmfbrhz.js",
+          "size": 31792,
+          "gzipSize": 11049,
           "type": "js"
         },
         {
@@ -895,21 +895,21 @@
       "path": "/fr/pricing",
       "page": "pricing",
       "locale": "fr",
-      "totalSize": 539885,
-      "totalGzipSize": 155722,
-      "jsSize": 484909,
-      "jsGzipSize": 144655,
+      "totalSize": 540123,
+      "totalGzipSize": 155756,
+      "jsSize": 484973,
+      "jsGzipSize": 144678,
       "cssSize": 23597,
       "cssGzipSize": 4987,
-      "htmlSize": 31379,
-      "htmlGzipSize": 6080,
+      "htmlSize": 31553,
+      "htmlGzipSize": 6091,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/pricing",
-          "size": 31379,
-          "gzipSize": 6080,
+          "size": 31553,
+          "gzipSize": 6091,
           "type": "html"
         },
         {
@@ -925,21 +925,21 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-03led6l_4turo.js",
-          "size": 9688,
-          "gzipSize": 3835,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/3c7qu-1ame5rx.js",
           "size": 14377,
           "gzipSize": 3661,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2un8g98f_jz43.js",
-          "size": 31728,
-          "gzipSize": 11026,
+          "url": "/_next/static/chunks/turbopack-03led6l_4turo.js",
+          "size": 9688,
+          "gzipSize": 3835,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/11gfsgxmfbrhz.js",
+          "size": 31792,
+          "gzipSize": 11049,
           "type": "js"
         },
         {
@@ -961,14 +961,13 @@
           "found": []
         },
         "fr": {
-          "count": 12,
+          "count": 11,
           "found": [
             "une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
             "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
             "tarification simple et transparente",
             "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "{runs} lancements de benchmark/jour",
-            "{libs} bibliothèques",
+            "5 lancements de benchmark/jour",
             "support de la communauté",
             "lancements illimités",
             "toutes les bibliothèques",
@@ -1005,12 +1004,11 @@
           "found": []
         },
         "pricing": {
-          "count": 10,
+          "count": 9,
           "found": [
             "tarification simple et transparente",
             "choisissez le plan qui convient à votre équipe. pas de frais cachés.",
-            "{runs} lancements de benchmark/jour",
-            "{libs} bibliothèques",
+            "5 lancements de benchmark/jour",
             "support de la communauté",
             "lancements illimités",
             "toutes les bibliothèques",
@@ -1038,21 +1036,21 @@
       "path": "/fr/products",
       "page": "products",
       "locale": "fr",
-      "totalSize": 539203,
-      "totalGzipSize": 155646,
-      "jsSize": 484909,
-      "jsGzipSize": 144655,
+      "totalSize": 539457,
+      "totalGzipSize": 155691,
+      "jsSize": 484973,
+      "jsGzipSize": 144678,
       "cssSize": 23597,
       "cssGzipSize": 4987,
-      "htmlSize": 30697,
-      "htmlGzipSize": 6004,
+      "htmlSize": 30887,
+      "htmlGzipSize": 6026,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/products",
-          "size": 30697,
-          "gzipSize": 6004,
+          "size": 30887,
+          "gzipSize": 6026,
           "type": "html"
         },
         {
@@ -1080,15 +1078,15 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2un8g98f_jz43.js",
-          "size": 31728,
-          "gzipSize": 11026,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/3pvn3j_7jj0zx.js",
           "size": 176350,
           "gzipSize": 47104,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/11gfsgxmfbrhz.js",
+          "size": 31792,
+          "gzipSize": 11049,
           "type": "js"
         },
         {
@@ -1181,21 +1179,21 @@
       "path": "/fr/settings",
       "page": "settings",
       "locale": "fr",
-      "totalSize": 538066,
-      "totalGzipSize": 155922,
-      "jsSize": 484909,
-      "jsGzipSize": 144655,
+      "totalSize": 538325,
+      "totalGzipSize": 155976,
+      "jsSize": 484973,
+      "jsGzipSize": 144678,
       "cssSize": 23597,
       "cssGzipSize": 4987,
-      "htmlSize": 29560,
-      "htmlGzipSize": 6280,
+      "htmlSize": 29755,
+      "htmlGzipSize": 6311,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/settings",
-          "size": 29560,
-          "gzipSize": 6280,
+          "size": 29755,
+          "gzipSize": 6311,
           "type": "html"
         },
         {
@@ -1223,9 +1221,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2un8g98f_jz43.js",
-          "size": 31728,
-          "gzipSize": 11026,
+          "url": "/_next/static/chunks/11gfsgxmfbrhz.js",
+          "size": 31792,
+          "gzipSize": 11049,
           "type": "js"
         },
         {
@@ -1318,21 +1316,21 @@
       "path": "/fr/team",
       "page": "team",
       "locale": "fr",
-      "totalSize": 537467,
-      "totalGzipSize": 155757,
-      "jsSize": 484909,
-      "jsGzipSize": 144655,
+      "totalSize": 537726,
+      "totalGzipSize": 155799,
+      "jsSize": 484973,
+      "jsGzipSize": 144678,
       "cssSize": 23597,
       "cssGzipSize": 4987,
-      "htmlSize": 28961,
-      "htmlGzipSize": 6115,
+      "htmlSize": 29156,
+      "htmlGzipSize": 6134,
       "fileCount": 8,
       "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/team",
-          "size": 28961,
-          "gzipSize": 6115,
+          "size": 29156,
+          "gzipSize": 6134,
           "type": "html"
         },
         {
@@ -1348,21 +1346,21 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-03led6l_4turo.js",
-          "size": 9688,
-          "gzipSize": 3835,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/3c7qu-1ame5rx.js",
           "size": 14377,
           "gzipSize": 3661,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2un8g98f_jz43.js",
-          "size": 31728,
-          "gzipSize": 11026,
+          "url": "/_next/static/chunks/turbopack-03led6l_4turo.js",
+          "size": 9688,
+          "gzipSize": 3835,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/11gfsgxmfbrhz.js",
+          "size": 31792,
+          "gzipSize": 11049,
           "type": "js"
         },
         {

@@ -1,6 +1,5 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var careers_benefits_default = {
 	key: "careers-benefits",
 	content: {
@@ -749,7 +748,6 @@ var useDictionary = (dictionary, localeOrSelector) => {
 	const argumentIdentity = typeof argument === "object" && argument !== null ? `${argument.locale ?? ""}|${getDictionarySelectorCacheKey(argument)}` : argument;
 	return useMemo(() => getDictionary(dictionary, argument), [dictionary.key, argumentIdentity]);
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/careers/CareersBenefits.tsx";
 function CareersBenefits() {
 	const content = useDictionary(careers_benefits_default);
 	const benefits = [
@@ -766,57 +764,27 @@ function CareersBenefits() {
 			value: content.f.value
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "mb-12 grid gap-4 md:grid-cols-3",
-		children: benefits.map((b) => jsxDEV("div", {
+		children: benefits.map((b) => jsxs("div", {
 			className: "rounded-lg border border-border bg-card p-4 text-center",
-			children: [jsxDEV("p", {
+			children: [jsx("p", {
 				className: "text-sm font-semibold text-foreground",
 				children: b.label
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 21,
-				columnNumber: 11
-			}, this), jsxDEV("p", {
+			}), jsx("p", {
 				className: "text-xs text-muted-foreground",
 				children: b.value
-			}, void 0, false, {
-				fileName: _jsxFileName$2,
-				lineNumber: 22,
-				columnNumber: 11
-			}, this)]
-		}, b.label, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 17,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 15,
-		columnNumber: 5
-	}, this);
+			})]
+		}, b.label))
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/src/components/pages/careers/CareersBenefits.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(CareersBenefits, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(CareersBenefits, {}) });
 }
 export { Wrapped as default };

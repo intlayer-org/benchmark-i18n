@@ -257,8 +257,7 @@
   },
   "settingsHeader": {
     "settings": "Einstellungen",
-    "manageYourAccountPreferences": "Verwalten Sie Ihre Kontoeinstellungen und Konfiguration.",
-    "manageYourAccount": "Verwalten Sie Ihre Kontoeinstellungen und Konfiguration."
+    "manageYourAccountPreferencesAnd": "Verwalten Sie Ihre Kontoeinstellungen und Konfiguration."
   },
   "profileSection": {
     "displayName": "Anzeigename",

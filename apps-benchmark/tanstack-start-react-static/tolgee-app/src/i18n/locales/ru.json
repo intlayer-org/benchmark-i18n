@@ -257,8 +257,7 @@
   },
   "settingsHeader": {
     "settings": "Настройки",
-    "manageYourAccountPreferences": "Управляйте настройками вашего аккаунта и конфигурацией.",
-    "manageYourAccount": "Управляйте настройками вашего аккаунта и конфигурацией."
+    "manageYourAccountPreferencesAnd": "Управляйте настройками и конфигурацией своего аккаунта."
   },
   "profileSection": {
     "displayName": "Отображаемое имя",

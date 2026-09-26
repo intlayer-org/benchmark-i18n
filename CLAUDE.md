@@ -22,6 +22,7 @@ bun run build                    # Build all apps
 bun run build:nextjs             # Only Next.js apps
 bun run build:tanstack           # Only TanStack Start apps
 bun run build:vite+react         # Only Vite+React apps
+bun run build:intlayer           # Only Intlayer apps (all frameworks)
 
 # Build a single app
 cd apps-benchmark/nextjs-base-app && bun run build
@@ -39,6 +40,8 @@ bun run test:rendering           # Rendering performance (all apps)
 bun run test:content             # Rendered text matches the framework reference (all apps)
 bun run test:next                # All test categories, Next.js apps only
 bun run test:tanstack            # All test categories, TanStack apps only
+bun run test:intlayer            # All test categories, Intlayer apps only
+bun run rebuild-and-test:intlayer # Rebuild and rerun tests for all Intlayer apps
 
 # Run a single test file inside one app (must build first)
 cd apps-benchmark/nextjs-base-app

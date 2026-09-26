@@ -1,4 +1,8 @@
 export default {
+  "faq-header1": {
+    frequentlyAskedQuestions: "常见问题",
+    everythingYouNeedToKnow: "您需要了解的有关 i18n Benchmark 的一切。",
+  },
   "faq-list": {
     whatIsI18nBenchmark: "什么是 i18n Benchmark ?",
     whatIsI18nBenchmarkAnswer: "i18n Benchmark 是一个开源基准测试套件，用于测量和比较 JavaScript 和 React 应用程序国际化库的性能、捆绑包大小和开发人员经验。",

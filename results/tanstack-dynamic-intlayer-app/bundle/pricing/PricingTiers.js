@@ -1,6 +1,5 @@
 import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useRef, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -57,12 +56,12 @@ var getLocaleFromDomain = (hostname, domains) => {
 var PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
 var LOCALES = ["en"];
 var resolveRoutingConfig = (options = {}) => ({
-	defaultLocale: internationalization?.defaultLocale ?? "en",
-	mode: routing?.mode ?? "prefix-no-default",
-	locales: internationalization?.locales ?? LOCALES,
-	rewrite: routing?.rewrite,
-	domains: routing?.domains,
-	...options
+	...options,
+	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
+	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
+	locales: options.locales ?? internationalization?.locales ?? LOCALES,
+	rewrite: options.rewrite ?? routing?.rewrite,
+	domains: options.domains ?? routing?.domains
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -184,7 +183,7 @@ var getPreloadLocale = () => {
 };
 var content = {
 	"de": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/de.json").then((m) => m.default),
-	"en": () => import("./intlayer-PricingTiers-wrapper-1c1zti-en-3QNXntks.js").then((n) => n.t).then((m) => m.default),
+	"en": () => import("./intlayer-PricingTiers-wrapper-1c1zti-en-CHpqSQHF.js").then((n) => n.t).then((m) => m.default),
 	"es": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/es.json").then((m) => m.default),
 	"fr": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/fr.json").then((m) => m.default),
 	"it": () => import("../../../../.intlayer/dynamic_dictionary/json/pricing-tiers/it.json").then((m) => m.default),
@@ -780,7 +779,6 @@ var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const plainLoaders = dictionaryPromise;
 	return getDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, plainLoaders[localeTarget]?.()), localeTarget);
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/pricing/PricingTiers.tsx";
 function PricingTiers() {
 	const content$1 = useDictionaryDynamic(content, "pricing-tiers");
 	const tiers = [
@@ -824,110 +822,56 @@ function PricingTiers() {
 			]
 		}
 	];
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((t) => jsxDEV("div", {
+		children: tiers.map((t) => jsxs("div", {
 			className: `flex flex-col rounded-lg border p-6 ${t.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
-				jsxDEV("h3", {
+				jsx("h3", {
 					className: "text-lg font-semibold text-foreground",
 					children: t.name
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 60,
-					columnNumber: 11
-				}, this),
-				jsxDEV("div", {
+				}),
+				jsxs("div", {
 					className: "my-4",
-					children: [jsxDEV("span", {
+					children: [jsx("span", {
 						className: "text-3xl font-bold text-foreground",
 						children: t.price
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 62,
-						columnNumber: 13
-					}, this), jsxDEV("span", {
+					}), jsx("span", {
 						className: "text-sm text-muted-foreground",
 						children: t.period
-					}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 65,
-						columnNumber: 13
-					}, this)]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 61,
-					columnNumber: 11
-				}, this),
-				jsxDEV("ul", {
+					})]
+				}),
+				jsx("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: t.features.map((f, i) => jsxDEV("li", {
+					children: t.features.map((f, i) => jsxs("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
-							jsxDEV("span", {
+							jsx("span", {
 								className: "text-primary",
 								children: "✓"
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 73,
-								columnNumber: 17
-							}, this),
+							}),
 							" ",
 							f
 						]
-					}, i, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 69,
-						columnNumber: 15
-					}, this))
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 67,
-					columnNumber: 11
-				}, this),
-				jsxDEV("button", {
+					}, i))
+				}),
+				jsx("button", {
 					type: "button",
 					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${t.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
 					children: t.name === content$1.j ? content$1.f : content$1.m
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 77,
-					columnNumber: 11
-				}, this)
+				})
 			]
-		}, t.name.value, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 52,
-			columnNumber: 9
-		}, this))
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 50,
-		columnNumber: 5
-	}, this);
+		}, t.name.value))
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(IntlayerProvider, {
+	return jsx(IntlayerProvider, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-app/src/components/pages/pricing/PricingTiers.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(PricingTiers, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(PricingTiers, {}) });
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;
@@ -951,14 +895,14 @@ var content = {
 	"r": "$0",
 	"l": "forever",
 	"c": {
-		"fields": [],
+		"fields": ["runs"],
 		"nodeType": "insertion",
-		"insertion": "{runs} benchmark runs/day"
+		"insertion": "{{runs}} benchmark runs/day"
 	},
 	"o": {
-		"fields": [],
+		"fields": ["libs"],
 		"nodeType": "insertion",
-		"insertion": "{libs} libraries"
+		"insertion": "{{libs}} libraries"
 	},
 	"e": "Community support",
 	"w": "Public results",

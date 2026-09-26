@@ -1,8 +1,7 @@
 import { Fragment as e, createContext as t, createElement as n, isValidElement as r, useContext as i, useEffect as a, useMemo as o, useRef as s, useState as c } from "react";
 import l from "../.intlayer/dictionary/route.json";
 import { Fragment as u, jsx as d, jsxs as f } from "react/jsx-runtime";
-import { jsxDEV as p } from "react/jsx-dev-runtime";
-var m = {
+var p = {
 	locales: [
 		"en",
 		"fr",
@@ -29,7 +28,7 @@ var m = {
 	],
 	strictMode: "inclusive",
 	defaultLocale: "en"
-}, h = {
+}, m = {
 	mode: "prefix-all",
 	enableProxy: !1,
 	storage: {
@@ -40,7 +39,7 @@ var m = {
 		headers: [{ name: "x-intlayer-locale" }]
 	},
 	basePath: ""
-}, g = ({ children: e, value: t, additionalProps: n }) => {
+}, h = ({ children: e, value: t, additionalProps: n }) => {
 	let i = r(e) ? e : d(u, { children: e });
 	return new Proxy(i, { get(e, r, i) {
 		if (r === "value") return t;
@@ -57,32 +56,32 @@ var m = {
 		}
 		return Reflect.get(e, r, i);
 	} });
-}, _ = /* @__PURE__ */ new WeakMap(), v = 0, ee = (e) => {
+}, g = /* @__PURE__ */ new WeakMap(), _ = 0, ee = (e) => {
 	if (!e) return "base";
-	let t = _.get(e);
+	let t = g.get(e);
 	if (t) return t;
-	v += 1;
-	let n = `p${v}`;
-	return _.set(e, n), n;
-}, te = 256, y = /* @__PURE__ */ new WeakMap(), b = (e) => typeof e == "object" && !!e, ne = (e, t, n) => `${e}_${t}_${ee(n)}`, re = (e, t) => {
-	if (!b(e)) return { hit: !1 };
-	let n = y.get(e);
+	_ += 1;
+	let n = `p${_}`;
+	return g.set(e, n), n;
+}, te = 256, v = /* @__PURE__ */ new WeakMap(), y = (e) => typeof e == "object" && !!e, ne = (e, t, n) => `${e}_${t}_${ee(n)}`, b = (e, t) => {
+	if (!y(e)) return { hit: !1 };
+	let n = v.get(e);
 	return n?.has(t) ? {
 		hit: !0,
 		content: n.get(t)
 	} : { hit: !1 };
 }, x = (e, t, n) => {
-	if (!b(e)) return n;
-	let r = y.get(e);
-	return r || (r = /* @__PURE__ */ new Map(), y.set(e, r)), r.size >= te && r.clear(), r.set(t, n), n;
-}, ie = "translation", S = "insertion", ae = "object", oe = "array", C = "markdown", w = "html", T = (e, t) => {
+	if (!y(e)) return n;
+	let r = v.get(e);
+	return r || (r = /* @__PURE__ */ new Map(), v.set(e, r)), r.size >= te && r.clear(), r.set(t, n), n;
+}, re = "translation", S = "insertion", ie = "object", ae = "array", C = "markdown", w = "html", T = (e, t) => {
 	for (let n of t.plugins ?? []) if (n.canHandle(e)) return n.transform(e, t, (e, t) => T(e, t));
 	if (typeof e != "object" || !e || e.$$typeof !== void 0 || e.__v_isVNode !== void 0 || e._isVNode !== void 0 || e.isJSX !== void 0 || typeof e == "function") return e;
 	if (Array.isArray(e)) return e.map((e, n) => T(e, {
 		...t,
 		children: e,
 		keyPath: [...t.keyPath, {
-			type: oe,
+			type: ae,
 			key: n
 		}]
 	}));
@@ -92,7 +91,7 @@ var m = {
 			...t,
 			children: e[r],
 			keyPath: [...t.keyPath, {
-				type: ae,
+				type: ie,
 				key: r
 			}]
 		};
@@ -114,17 +113,17 @@ var m = {
 		});
 	}
 	return n;
-}, E = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), D = "default", se = /[^A-Za-z0-9._&=-]/g, O = /[^A-Za-z0-9._-]/g, ce = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, k = (e, t) => {
+}, E = (e, t) => e.replace(/\{\{\s*(.*?)\s*\}\}/g, (e, n) => (t[n.trim()] ?? "").toString()), D = "default", oe = /[^A-Za-z0-9._&=-]/g, O = /[^A-Za-z0-9._-]/g, se = (e) => `%${e.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`, k = (e, t) => {
 	if (e === "") return "%";
-	let n = e.replace(t, ce);
+	let n = e.replace(t, se);
 	return n === "." || n === ".." ? n.replace(/\./g, "%002E") : n;
-}, A = (e) => e === void 0 ? D : typeof e == "string" ? k(e, se) : Object.keys(e).sort().map((t) => `${k(t, O)}=${k(String(e[t]), O)}`).join("&"), j = (e) => Array.isArray(e) ? e.length === 0 ? [D] : e.map(A) : [A(e)], le = (e, t) => {
+}, A = (e) => e === void 0 ? D : typeof e == "string" ? k(e, oe) : Object.keys(e).sort().map((t) => `${k(t, O)}=${k(String(e[t]), O)}`).join("&"), j = (e) => Array.isArray(e) ? e.length === 0 ? [D] : e.map(A) : [A(e)], ce = (e, t) => {
 	for (let n of e) if (t(n)) return n;
 	return t("default") ? D : e[0] ?? "default";
-}, ue = (e, t, n, r) => {
+}, le = (e, t, n, r) => {
 	let i = e.split("/");
 	return t.every((e, t) => e === "variant" ? i[t] === r : n?.item === void 0 || i[t] === String(n.item));
-}, de = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, fe = (e, t) => {
+}, ue = (e) => typeof e == "object" && !!e && "qualifierTypes" in e && Array.isArray(e.qualifierTypes) && "content" in e, de = (e, t) => {
 	let n = t.split("/"), r = {
 		key: e.key,
 		content: e.content[t]
@@ -132,11 +131,11 @@ var m = {
 	return e.qualifierTypes.forEach((e, t) => {
 		e === "variant" ? r.variant = n[t] : e === "item" && (r.item = Number(n[t]));
 	}), r;
-}, pe = (e, t) => {
-	if (!de(e)) return e;
-	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? D : le(j(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => ue(e, n, t, s)).map((t) => fe(e, t));
+}, fe = (e, t) => {
+	if (!ue(e)) return e;
+	let { qualifierTypes: n, content: r } = e, i = n.includes("item") && t?.item === void 0, a = Object.keys(r), o = n.indexOf("variant"), s = o === -1 ? D : ce(j(t?.variant), (e) => a.some((t) => t.split("/")[o] === e)), c = a.filter((e) => le(e, n, t, s)).map((t) => de(e, t));
 	return i ? c.sort((e, t) => (e.item ?? 0) - (t.item ?? 0)) : c[0] ?? null;
-}, me = (e) => typeof e == "object" && e ? {
+}, pe = (e) => typeof e == "object" && e ? {
 	locale: e.locale,
 	selector: e
 } : { locale: e }, M = (e) => e ? Object.keys(e).filter((e) => e !== "locale").sort().map((t) => {
@@ -155,7 +154,7 @@ var m = {
 		return n;
 	}
 	return e;
-}, he = (e, t, n) => {
+}, me = (e, t, n) => {
 	let r = (t) => e[t], i = /* @__PURE__ */ new Set(), a = [], o = (e) => {
 		e && !i.has(e) && (i.add(e), a.push(e));
 	};
@@ -176,10 +175,10 @@ var m = {
 	if (typeof e != "object" || !e || !("nodeType" in e)) return !1;
 	let { nodeType: t } = e;
 	return !1;
-}, ge = (e) => {
+}, he = (e) => {
 	if (typeof e == "string") return e;
 	if (F(e)) return e.nodeType === "html" ? e[w] : e[C];
-}, _e = (e, t) => {
+}, ge = (e, t) => {
 	if (typeof e == "string") return t;
 	if (F(e)) {
 		let n = e.nodeType === "html" ? w : C;
@@ -190,7 +189,7 @@ var m = {
 	}
 	return e;
 }, I = (e, t, n, r, i) => {
-	let a = _e(e, E(ge(e), t));
+	let a = ge(e, E(he(e), t));
 	return i(a, {
 		...n,
 		plugins: r,
@@ -210,15 +209,15 @@ var m = {
 				...r,
 				children: a[e],
 				keyPath: [...r.keyPath, {
-					type: ie,
+					type: re,
 					key: e
 				}]
 			};
 			o[e] = i(a[e], t);
 		}
-		return he(o, e, t);
+		return me(o, e, t);
 	}
-}, z = L, ve = (e) => L, B = L, ye = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? L : {
+}, z = L, _e = (e) => L, B = L, ve = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? L : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -249,22 +248,22 @@ var m = {
 			plugins: [a, ...t.plugins ?? []]
 		});
 	}
-}, V = L, H = L, U = (e) => L, W = L, be = (e, t = !0) => [
-	R(e ?? m.defaultLocale, t ? m.defaultLocale : void 0),
+}, V = L, H = L, U = (e) => L, W = L, ye = (e, t = !0) => [
+	R(e ?? p.defaultLocale, t ? p.defaultLocale : void 0),
 	z,
 	B,
-	ye,
-	U(e ?? m.defaultLocale),
+	ve,
+	U(e ?? p.defaultLocale),
 	W,
 	V,
 	H
-], xe = (e, t, n = []) => T(e, {
+], be = (e, t, n = []) => T(e, {
 	...t,
 	plugins: n
-}), Se = (e, t, n) => {
-	let { locale: r, selector: i } = me(t), a = ne(r ?? m.defaultLocale, M(i), n), o = re(e, a);
+}), xe = (e, t, n) => {
+	let { locale: r, selector: i } = pe(t), a = ne(r ?? p.defaultLocale, M(i), n), o = b(e, a);
 	if (o.hit) return o.content;
-	let s = n ?? be(r), c = pe(e, i), l = (e) => {
+	let s = n ?? ye(r), c = fe(e, i), l = (e) => {
 		let t = {
 			dictionaryKey: e.key,
 			dictionaryPath: e.filePath,
@@ -272,11 +271,11 @@ var m = {
 			plugins: s,
 			nestedDictionaries: e.nestedDictionaries
 		};
-		return xe(e.content, t, s);
+		return be(e.content, t, s);
 	};
 	return c === null ? x(e, a, null) : Array.isArray(c) ? x(e, a, c.map(l)) : x(e, a, l(c));
-}, Ce = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", G = /\{\{\s*(.*?)\s*\}\}/g, we = (e, t = {}) => {
-	if (!Object.values(t).some(Ce)) return {
+}, Se = (e) => e != null && typeof e != "string" && typeof e != "number" && typeof e != "boolean", G = /\{\{\s*(.*?)\s*\}\}/g, Ce = (e, t = {}) => {
+	if (!Object.values(t).some(Se)) return {
 		isSimple: !0,
 		parts: e.replace(G, (e, n) => (t[n.trim()] ?? "").toString())
 	};
@@ -290,18 +289,18 @@ var m = {
 		isSimple: !1,
 		parts: r
 	};
-}, Te = {
+}, K = {
 	id: "intlayer-node-plugin",
 	canHandle: (e) => typeof e == "bigint" || typeof e == "string" || typeof e == "number",
-	transform: (e, { plugins: t, ...n }) => g({
+	transform: (e, { plugins: t, ...n }) => h({
 		...n,
 		value: n.children,
 		children: n.children
 	})
-}, Ee = L, De = (t, r) => {
-	let i = we(t, r);
+}, we = L, Te = (t, r) => {
+	let i = Ce(t, r);
 	return i.isSimple ? i.parts : n(e, null, ...i.parts.map((t, r) => n(e, { key: r }, t)));
-}, Oe = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? L : {
+}, Ee = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? L : {
 	id: "insertion-plugin",
 	canHandle: (e) => typeof e == "object" && e?.nodeType === "insertion",
 	transform: (e, t, n) => {
@@ -316,7 +315,7 @@ var m = {
 					plugins: [...(t.plugins ?? []).filter((e) => e.id !== "intlayer-node-plugin")]
 				});
 				return (e) => {
-					let a = De(i, e);
+					let a = Te(i, e);
 					return r(a, {
 						...n,
 						plugins: t.plugins,
@@ -335,39 +334,39 @@ var m = {
 			return typeof n == "function" ? n(e) : n;
 		} : o;
 	}
-}, ke = L, Ae = L, K = /* @__PURE__ */ new Map(), je = (e, t = !0) => {
-	let n = `${e ?? m.defaultLocale}_${t}`;
-	if (K.has(n)) return K.get(n);
+}, De = L, Oe = L, q = /* @__PURE__ */ new Map(), ke = (e, t = !0) => {
+	let n = `${e ?? p.defaultLocale}_${t}`;
+	if (q.has(n)) return q.get(n);
 	let r = [
-		R(e ?? m.defaultLocale, t ? m.defaultLocale : void 0),
+		R(e ?? p.defaultLocale, t ? p.defaultLocale : void 0),
 		z,
-		ve(e ?? m.defaultLocale),
+		_e(e ?? p.defaultLocale),
 		B,
-		U(e ?? m.defaultLocale),
+		U(e ?? p.defaultLocale),
 		W,
 		V,
 		H,
-		Te,
+		K,
+		we,
 		Ee,
-		Oe,
-		ke,
-		Ae
+		De,
+		Oe
 	];
-	return K.set(n, r), r;
-}, Me = (e, t) => Se(e, t, je(typeof t == "object" && t ? t.locale : t)), q = (e) => {
+	return q.set(n, r), r;
+}, Ae = (e, t) => xe(e, t, ke(typeof t == "object" && t ? t.locale : t)), J = (e) => {
 	if (typeof e == "number") return Date.now() + e * 1e3;
 	if (typeof e == "string") {
 		let t = Date.parse(e);
 		return Number.isNaN(t) ? void 0 : t;
 	}
-}, Ne = (e, t, n) => {
+}, je = (e, t, n) => {
 	let r = [`${e}=${encodeURIComponent(t)}`];
 	n.path && r.push(`Path=${n.path}`), n.domain && r.push(`Domain=${n.domain}`);
-	let i = q(n.expires);
+	let i = J(n.expires);
 	return i !== void 0 && r.push(`Expires=${new Date(i).toUTCString()}`), n.secure && r.push("Secure"), n.sameSite && r.push(`SameSite=${n.sameSite}`), r.join("; ");
-}, J = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+}, Y = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var Y = {
+var X = {
 	getCookie: (e) => document.cookie.split(";").find((t) => t.trim().startsWith(`${e}=`))?.split("=")[1],
 	getLocaleStorage: (e) => localStorage.getItem(e),
 	getSessionStorage: (e) => sessionStorage.getItem(e),
@@ -385,44 +384,44 @@ var Y = {
 	},
 	setSessionStorage: (e, t) => sessionStorage.setItem(e, t),
 	setLocaleStorage: (e, t) => localStorage.setItem(e, t)
-}, Pe = (e = Y) => {
-	let { locales: t } = m;
+}, Me = (e = X) => {
+	let { locales: t } = p;
 	if (e?.isCookieEnabled === !1) return;
 	let n = (e) => !!e && t.includes(e);
-	if (!J) for (let t = 0; t < (h.storage.cookies ?? []).length; t++) try {
-		let r = e?.getCookie?.(h.storage.cookies[t].name);
+	if (!Y) for (let t = 0; t < (m.storage.cookies ?? []).length; t++) try {
+		let r = e?.getCookie?.(m.storage.cookies[t].name);
 		if (n(r)) return r;
 	} catch {}
-}, Fe = (e, t) => {
-	if (t?.isCookieEnabled !== !1 && !J && h.storage.cookies) for (let n = 0; n < h.storage.cookies.length; n++) {
-		let { name: r, attributes: i } = h.storage.cookies[n];
+}, Ne = (e, t) => {
+	if (t?.isCookieEnabled !== !1 && !Y && m.storage.cookies) for (let n = 0; n < m.storage.cookies.length; n++) {
+		let { name: r, attributes: i } = m.storage.cookies[n];
 		try {
 			t?.setCookieStore && t.setCookieStore(r, e, {
 				...i,
-				expires: q(i.expires)
+				expires: J(i.expires)
 			});
 		} catch {
 			try {
-				t?.setCookieString && t.setCookieString(r, Ne(r, e, i));
+				t?.setCookieString && t.setCookieString(r, je(r, e, i));
 			} catch {}
 		}
 	}
-}, X = Pe(Y), Ie = (e, t) => Fe(e, {
-	...Y,
+}, Z = Me(X), Pe = (e, t) => Ne(e, {
+	...X,
 	isCookieEnabled: t
-}), Le = () => {
-	let { locale: e } = i(Z) ?? {}, t = s(null);
+}), Fe = () => {
+	let { locale: e } = i(Q) ?? {}, t = s(null);
 	a(() => {}, []), a(() => {
 		e && t.current && t.current.currentLocale.set(e);
 	}, [e]);
-}, Re = ({ children: e }) => (Le(), e), ze = () => {
-	let { locale: e } = i(Z) ?? {}, t = s(null);
+}, Ie = ({ children: e }) => (Fe(), e), Le = () => {
+	let { locale: e } = i(Q) ?? {}, t = s(null);
 	a(() => {}, []), a(() => {
 		e && t.current && (t.current.setLocale(e), t.current.trackPageView({ reason: "locale_change" }));
 	}, [e]);
-}, Be = ({ children: e }) => (ze(), e), Ve = () => {
+}, Re = ({ children: e }) => (Le(), e), ze = () => {
 	typeof window < "u" && (window.intlayer = { enabled: !0 });
-}, He = (e, t = m?.locales, n = m?.defaultLocale) => {
+}, Be = (e, t = p?.locales, n = p?.defaultLocale) => {
 	let r = [e].flat(), i = (e) => e.trim().toLowerCase();
 	try {
 		for (let e of r) {
@@ -433,16 +432,16 @@ var Y = {
 		}
 	} catch {}
 	return n;
-}, Z = t({
-	locale: X ?? m?.defaultLocale,
+}, Q = t({
+	locale: Z ?? p?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: !0
-}), Ue = ({ locale: e, defaultLocale: t, variant: n, children: r, setLocale: i, disableEditor: o, isCookieEnabled: s }) => {
-	let { locales: l, defaultLocale: u } = m ?? {}, [f, p] = c(e ?? X ?? t ?? u);
+}), Ve = ({ locale: e, defaultLocale: t, variant: n, children: r, setLocale: i, disableEditor: o, isCookieEnabled: s }) => {
+	let { locales: l, defaultLocale: u } = p ?? {}, [f, m] = c(e ?? Z ?? t ?? u);
 	a(() => {
-		e && e !== f && p(e);
+		e && e !== f && m(e);
 	}, [e]), a(() => {
-		Ve();
+		ze();
 	}, []);
 	let h = i ?? ((e) => {
 		if (f.toString() !== e.toString()) {
@@ -450,10 +449,10 @@ var Y = {
 				console.error(`Locale ${e} is not available`);
 				return;
 			}
-			p(e), Ie(e, s);
+			m(e), Pe(e, s);
 		}
-	}), g = He(f);
-	return d(Z.Provider, {
+	}), g = Be(f);
+	return d(Q.Provider, {
 		value: {
 			locale: g,
 			setLocale: h,
@@ -462,52 +461,30 @@ var Y = {
 		},
 		children: r
 	});
-}, Q = ({ children: e, ...t }) => f(Ue, {
+}, $ = ({ children: e, ...t }) => f(Ve, {
 	...t,
 	children: [
+		d(Ie, {}),
 		d(Re, {}),
-		d(Be, {}),
 		e
 	]
-}), We = (e, t) => {
-	let { locale: n, variant: r } = i(Z) ?? {}, a = t ?? n, s = typeof a == "object" && a ? `${a.locale ?? ""}|${M(a)}` : a;
-	return o(() => Me(e, a), [e.key, s]);
-}, Ge = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/EmptyComponent.tsx", Ke = () => (We(l), null);
-function qe() {
-	return p(Q, {
+}), He = (e, t) => {
+	let { locale: n, variant: r } = i(Q) ?? {}, a = t ?? n, s = typeof a == "object" && a ? `${a.locale ?? ""}|${M(a)}` : a;
+	return o(() => Ae(e, a), [e.key, s]);
+}, Ue = () => (He(l), null);
+function We() {
+	return d($, {
 		locale: "en",
-		children: p(Ke, {}, void 0, !1, {
-			fileName: Ge,
-			lineNumber: 13,
-			columnNumber: 7
-		}, this)
-	}, void 0, !1, {
-		fileName: Ge,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+		children: d(Ue, {})
+	});
 }
-var Je = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/Wrapper.tsx";
-function Ye({ children: e }) {
-	return p(Q, {
+function Ge({ children: e }) {
+	return d($, {
 		locale: "en",
 		children: e
-	}, void 0, !1, {
-		fileName: Je,
-		lineNumber: 6,
-		columnNumber: 5
-	}, this);
+	});
 }
-var $ = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-app/scripts/EmptyComponent.wrapper.tsx";
-function Xe() {
-	return p(Ye, { children: p(qe, {}, void 0, !1, {
-		fileName: $,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, !1, {
-		fileName: $,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+function Ke() {
+	return d(Ge, { children: d(We, {}) });
 }
-export { Xe as default };
+export { Ke as default };

@@ -257,8 +257,7 @@
   },
   "settingsHeader": {
     "settings": "Ajustes",
-    "manageYourAccountPreferences": "Administre sus preferencias de cuenta y configuración.",
-    "manageYourAccount": "Administre sus preferencias de cuenta y configuración."
+    "manageYourAccountPreferencesAnd": "Gestione sus preferencias de cuenta y configuración."
   },
   "profileSection": {
     "displayName": "Nombre de pantalla",

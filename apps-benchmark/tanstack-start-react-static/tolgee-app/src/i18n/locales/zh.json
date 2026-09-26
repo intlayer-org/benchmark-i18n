@@ -257,8 +257,7 @@
   },
   "settingsHeader": {
     "settings": "设置",
-    "manageYourAccountPreferences": "管理您的账户偏好和配置。",
-    "manageYourAccount": "管理您的账户偏好和配置。"
+    "manageYourAccountPreferencesAnd": "管理您的账户偏好和配置。"
   },
   "profileSection": {
     "displayName": "显示名称",

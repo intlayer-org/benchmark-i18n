@@ -1,38 +1,5 @@
 import React, { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
-import "../../../../.intlayer/dictionary/products-grid.json";
-import "../../../../.intlayer/dictionary/preferences-section.json";
-import "../../../../.intlayer/dictionary/header.json";
-import "../../../../.intlayer/dictionary/open-positions.json";
-import "../../../../.intlayer/dictionary/careers-benefits.json";
-import "../../../../.intlayer/dictionary/footer.json";
-import "../../../../.intlayer/dictionary/results-table.json";
-import "../../../../.intlayer/dictionary/settings-header.json";
-import "../../../../.intlayer/dictionary/contact-form.json";
-import "../../../../.intlayer/dictionary/contact-header.json";
-import "../../../../.intlayer/dictionary/about-grid.json";
-import "../../../../.intlayer/dictionary/pricing-tiers.json";
-import "../../../../.intlayer/dictionary/mockBanner.json";
-import "../../../../.intlayer/dictionary/settings-footer.json";
-import "../../../../.intlayer/dictionary/theme-toggle.json";
-import "../../../../.intlayer/dictionary/about-header.json";
-import "../../../../.intlayer/dictionary/profile-section.json";
-import "../../../../.intlayer/dictionary/faq-header1.json";
-import "../../../../.intlayer/dictionary/pricing-header.json";
-import "../../../../.intlayer/dictionary/blog-header.json";
-import "../../../../.intlayer/dictionary/team-header.json";
-import "../../../../.intlayer/dictionary/route.json";
-import "../../../../.intlayer/dictionary/faq-list.json";
-import "../../../../.intlayer/dictionary/careers-header.json";
-import "../../../../.intlayer/dictionary/products-header.json";
-import "../../../../.intlayer/dictionary/what-we-measure.json";
-import "../../../../.intlayer/dictionary/blog-list.json";
-import "../../../../.intlayer/dictionary/understanding-impact.json";
-import "../../../../.intlayer/dictionary/team-grid.json";
-import "../../../../.intlayer/dictionary/api-access-section.json";
-import "../../../../.intlayer/dictionary/why-it-matters.json";
-import "../../../../.intlayer/dictionary/hero.json";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { Fragment as Fragment$2, jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -98,12 +65,12 @@ var RED = "\x1B[31m";
 var GREEN = "\x1B[32m";
 var CYAN = "\x1B[36m";
 var resolveRoutingConfig = (options = {}) => ({
-	defaultLocale: internationalization?.defaultLocale ?? "en",
-	mode: routing?.mode ?? "prefix-no-default",
-	locales: internationalization?.locales ?? LOCALES,
-	rewrite: routing?.rewrite,
-	domains: routing?.domains,
-	...options
+	...options,
+	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
+	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
+	locales: options.locales ?? internationalization?.locales ?? LOCALES,
+	rewrite: options.rewrite ?? routing?.rewrite,
+	domains: options.domains ?? routing?.domains
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -1477,9 +1444,10 @@ var formatArgument = (value, type, style, locale) => {
 	} catch {}
 	return String(value);
 };
-var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{}]+?)\s*\}\}/g, (match, path) => {
+var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
-	return value === void 0 ? match : String(value);
+	if (value === void 0) return match;
+	return type ? formatArgument(value, type, style, locale) : String(value);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
 	if (value === void 0) return match;
@@ -1533,15 +1501,17 @@ var resolveMessageNode = (node, values = {}, locale = "en") => {
 	}
 	return node;
 };
-var DIALECT_FORMATTERS = {
-	icu: (message) => icuToIntlayerFormatter(message),
-	i18next: (message) => i18nextToIntlayerFormatter(message),
-	"vue-i18n": (message) => vueI18nToIntlayerFormatter(message)
-};
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => {
-	const resolved = resolveMessageNode(typeof message === "string" ? DIALECT_FORMATTERS[dialect](message) : message, values, locale);
+var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
+	const resolved = resolveMessageNode(node, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
+var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: icuToIntlayerFormatter,
+	i18next: i18nextToIntlayerFormatter,
+	"vue-i18n": vueI18nToIntlayerFormatter
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var parseTaggedMessage = (message) => {
 	const tokens = [];
 	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
@@ -1854,61 +1824,30 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-use-intl-app/src/components/pages/about/AboutHeader.tsx";
 function AboutHeader() {
 	const t = useDictionaryDynamic(content, "about-header");
 	usePerformanceMeasure("AboutHeader");
-	return jsxDEV(Fragment$2, { children: [jsxDEV("h1", {
+	return jsxs(Fragment$1, { children: [jsx("h1", {
 		className: "mb-4 text-3xl font-bold text-foreground",
 		children: t("aboutThisBenchmark")
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 9,
-		columnNumber: 7
-	}, this), jsxDEV("p", {
+	}), jsx("p", {
 		className: "mb-8 max-w-3xl text-muted-foreground",
 		children: t("thisIsAnOpenSource")
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 12,
-		columnNumber: 7
-	}, this)] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+	})] });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-use-intl-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(React.Suspense, {
+	return jsx(React.Suspense, {
 		fallback: null,
-		children: jsxDEV(IntlProvider, {
+		children: jsx(IntlProvider, {
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-use-intl-app/src/components/pages/about/AboutHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(AboutHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(AboutHeader, {}) });
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

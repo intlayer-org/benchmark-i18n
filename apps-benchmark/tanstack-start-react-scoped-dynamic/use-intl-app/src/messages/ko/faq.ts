@@ -1,4 +1,8 @@
 export default {
+  "faq-header1": {
+    frequentlyAskedQuestions: "자주 묻는 질문",
+    everythingYouNeedToKnow: "i18n Benchmark에 대해 알아야 할 모든 것.",
+  },
   "faq-list": {
     whatIsI18nBenchmark: "i18n Benchmark란 무엇인가요?",
     whatIsI18nBenchmarkAnswer: "i18n Benchmark는 JavaScript 및 React 애플리케이션용 국제화 라이브러리의 성능, 번들 크기 및 개발자 경험을 측정하고 비교하는 오픈 소스 벤치마킹 제품군입니다.",

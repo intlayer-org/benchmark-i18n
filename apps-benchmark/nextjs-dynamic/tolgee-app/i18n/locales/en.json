@@ -153,7 +153,7 @@
   },
   "preferencesSection": {
     "arabicAr": "Arabic (ar)",
-    "chineseSimplifiedZhCn": "Chinese Simplified (zh)",
+    "chineseSimplifiedZhCn": "Chinese Simplified (zh-CN)",
     "darkMode": "Dark Mode",
     "defaultLanguage": "Default Language",
     "emailNotifications": "Email Notifications",
@@ -319,9 +319,8 @@
     "thisIsAnOpenSource": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
   },
   "settingsHeader": {
-    "manageYourAccount": "Manage your account settings and preferences.",
-    "manageYourAccountPreferences": "Manage your account preferences and configuration.",
-    "settings": "Settings"
+    "settings": "Settings",
+    "manageYourAccountPreferencesAnd": "Manage your account preferences and configuration."
   },
   "whyItMatters": {
     "bundleSize": "Bundle Size",

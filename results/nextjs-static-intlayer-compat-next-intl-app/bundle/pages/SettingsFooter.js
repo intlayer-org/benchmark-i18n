@@ -1,2621 +1,1884 @@
-import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
-import { i as getHTML, t as init_interpreter } from "./interpreter-D1QgSn8T.js";
-import { n as init_validateHTML, t as VOID_HTML_ELEMENTS } from "./validateHTML-DRnhY-yQ.js";
-import { Fragment, createContext, createElement, useContext } from "react";
-import { jsx } from "react/jsx-runtime";
-var HTMLContext, useHTMLContext;
-var init_HTMLProvider = __esmMin((() => {
-	HTMLContext = createContext(void 0);
-	useHTMLContext = () => useContext(HTMLContext);
-}));
-var init_transpiler = __esmMin((() => {
-	init_validateHTML();
-}));
-var renderHTML;
-var init_HTMLRenderer = __esmMin((() => {
-	init_interpreter();
-	init_transpiler();
-	renderHTML = (content, { components = {} } = {}) => {
-		const userComponents = Object.fromEntries(Object.entries(components).filter(([, Component]) => Component).map(([key, Component]) => [key, (props) => createElement(Component, props)]));
-		const wrappedComponents = new Proxy(userComponents, { get(target, prop) {
-			if (typeof prop === "string" && prop in target) return target[prop];
-			if (typeof prop === "string" && /^[a-z][a-z0-9]*$/.test(prop)) {
-				if (VOID_HTML_ELEMENTS.has(prop)) return ({ children: _children, ...rest }) => createElement(prop, rest);
-				return (props) => createElement(prop, props);
-			}
-		} });
-		return jsx(Fragment, { children: getHTML(content, wrappedComponents) });
+import { Fragment, createContext, useContext, useEffect, useLayoutEffect, useMemo, useRef, useState } from "react";
+import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+import { usePathname } from "next/navigation";
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
+};
+var routing = {
+	"mode": "prefix-all",
+	"enableProxy": false,
+	"storage": {
+		"cookies": [{
+			"name": "INTLAYER_LOCALE",
+			"attributes": { "path": "/" }
+		}],
+		"headers": [{ "name": "x-intlayer-locale" }]
+	},
+	"basePath": ""
+};
+var log = {
+	"mode": "default",
+	"prefix": "\x1B[38;5;239m[intlayer] \x1B[0m"
+};
+var pluginsIdentities = /* @__PURE__ */ new WeakMap();
+var nextPluginsIdentity = 0;
+var getPluginsCacheKey = (plugins) => {
+	if (!plugins) return "base";
+	const existingIdentity = pluginsIdentities.get(plugins);
+	if (existingIdentity) return existingIdentity;
+	nextPluginsIdentity += 1;
+	const identity = `p${nextPluginsIdentity}`;
+	pluginsIdentities.set(plugins, identity);
+	return identity;
+};
+var MAX_ENTRIES_PER_DICTIONARY = 256;
+var transformCache = /* @__PURE__ */ new WeakMap();
+var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
+var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
+var readTransformCache = (dictionary, cacheKey) => {
+	if (!isMemoizableDictionary(dictionary)) return { hit: false };
+	const entries = transformCache.get(dictionary);
+	if (!entries?.has(cacheKey)) return { hit: false };
+	return {
+		hit: true,
+		content: entries.get(cacheKey)
 	};
-}));
-var HTMLRendererPlugin;
-__esmMin((() => {
-	init_HTMLProvider();
-	init_HTMLRenderer();
-	HTMLRendererPlugin = (props) => {
-		const { html, userComponents } = props;
-		const context = useHTMLContext();
-		return renderHTML(html, { components: {
-			...context?.components,
-			...userComponents
-		} });
-	};
-}))();
-export { HTMLRendererPlugin };
-import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
-import { i as renderMarkdownAst, n as compile, t as init_markdown } from "./markdown-CI89e464.js";
-import { Fragment, cloneElement, createContext, createElement, useContext } from "react";
-import "react/jsx-runtime";
-var REACT_ELEMENT_TYPE, reactRuntime;
-var init_runtime = __esmMin((() => {
-	try {
-		const sample = createElement("div");
-		REACT_ELEMENT_TYPE = sample && typeof sample === "object" && "$$typeof" in sample && typeof sample.$$typeof === "symbol" ? sample.$$typeof : Symbol.for("react.transitional.element");
-	} catch {
-		REACT_ELEMENT_TYPE = Symbol.for("react.transitional.element");
+};
+var writeTransformCache = (dictionary, cacheKey, content) => {
+	if (!isMemoizableDictionary(dictionary)) return content;
+	let entries = transformCache.get(dictionary);
+	if (!entries) {
+		entries = /* @__PURE__ */ new Map();
+		transformCache.set(dictionary, entries);
 	}
-	reactRuntime = {
-		createElement: (type, props, ...children) => {
-			let key = null;
-			const finalProps = props || {};
-			if (props && props.key != null) {
-				key = String(props.key);
-				finalProps.key = void 0;
-			}
-			const childCount = children.length;
-			if (childCount === 1) finalProps.children = children[0];
-			else if (childCount > 1) finalProps.children = children;
-			return {
-				$$typeof: REACT_ELEMENT_TYPE,
-				type,
-				key,
-				ref: null,
-				props: finalProps,
-				_owner: null,
-				_store: {},
-				_debugStack: null,
-				_debugTask: null
-			};
-		},
-		cloneElement: (element, props, ...children) => {
-			if (children.length === 0) return cloneElement(element, props);
-			return cloneElement(element, props, ...children);
-		},
-		Fragment,
-		normalizeProps: (_tag, props) => {
-			return props;
-		}
-	};
-}));
-var compileMarkdown;
-var init_processor = __esmMin((() => {
-	init_runtime();
-	init_markdown();
-	compileMarkdown = (input = "", options = {}) => {
-		const { createElement: customCreateElement, disableAutoLink, disableParsingRawHTML, enforceAtxHeadings, forceBlock, forceInline, forceWrapper, namedCodesToUnicode, components, renderRule, sanitizer, slugify, wrapper, preserveFrontmatter, tagfilter } = options;
-		const ctx = {
-			runtime: customCreateElement ? {
-				...reactRuntime,
-				createElement: customCreateElement
-			} : reactRuntime,
-			components,
-			namedCodesToUnicode,
-			sanitizer,
-			slugify
-		};
-		const compilerOptions = {
-			disableAutoLink,
-			disableParsingRawHTML,
-			enforceAtxHeadings,
-			forceBlock,
-			forceInline,
-			forceWrapper,
-			renderRule,
-			wrapper,
-			preserveFrontmatter,
-			tagfilter
-		};
-		if (typeof input === "string") return compile(input, ctx, compilerOptions);
-		return renderMarkdownAst(input, ctx, compilerOptions);
-	};
-}));
-var MarkdownContext, useMarkdownContext;
-var init_MarkdownProvider = __esmMin((() => {
-	MarkdownContext = createContext(void 0);
-	useMarkdownContext = () => useContext(MarkdownContext);
-}));
-var MarkdownRendererPlugin;
-__esmMin((() => {
-	init_processor();
-	init_MarkdownProvider();
-	MarkdownRendererPlugin = (props) => {
-		const { children, options, components } = props;
-		const context = useMarkdownContext();
-		if (context) return context.renderMarkdown(children, options, {
-			...context.components,
-			...components
+	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
+	entries.set(cacheKey, content);
+	return content;
+};
+var TRANSLATION = "translation";
+var ENUMERATION = "enumeration";
+var PLURAL = "plural";
+var INSERTION = "insertion";
+var OBJECT = "object";
+var ARRAY = "array";
+var MARKDOWN = "markdown";
+var HTML = "html";
+var GENDER = "gender";
+var SELECT = "select";
+var formatNodeType = (nodeType, content, additionalAttributes) => ({
+	...additionalAttributes,
+	nodeType,
+	[nodeType]: content
+});
+var deepTransformNode = (node, props) => {
+	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
+	if (node === null || typeof node !== "object") return node;
+	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0 || typeof node === "function") return node;
+	if (Array.isArray(node)) return node.map((child, index) => {
+		return deepTransformNode(child, {
+			...props,
+			children: child,
+			keyPath: [...props.keyPath, {
+				type: ARRAY,
+				key: index
+			}]
 		});
-		return compileMarkdown(children, {
-			...options,
-			components
+	});
+	const result = {};
+	for (const key in node) {
+		const childProps = {
+			...props,
+			children: node[key],
+			keyPath: [...props.keyPath, {
+				type: OBJECT,
+				key
+			}]
+		};
+		if (props.eager) {
+			result[key] = deepTransformNode(node[key], childProps);
+			continue;
+		}
+		Object.defineProperty(result, key, {
+			enumerable: true,
+			configurable: true,
+			get: function() {
+				const transformed = deepTransformNode(node[key], childProps);
+				Object.defineProperty(this, key, {
+					value: transformed,
+					enumerable: true,
+					configurable: true
+				});
+				return transformed;
+			}
 		});
+	}
+	return result;
+};
+var findMatchingCondition = (enumerationContent, quantity) => {
+	const numericKeys = Object.keys(enumerationContent);
+	for (const key of numericKeys) {
+		const isEqual = !key.startsWith(">") && !key.startsWith("<") && !key.startsWith("=") && parseFloat(key) === quantity || key.startsWith("=") && parseFloat(key.slice(1)) === quantity;
+		const isSuperior = key.startsWith(">") && quantity > parseFloat(key.slice(1));
+		const isSuperiorOrEqual = key.startsWith(">=") && quantity >= parseFloat(key.slice(2));
+		const isInferior = key.startsWith("<") && quantity < parseFloat(key.slice(1));
+		const isInferiorOrEqual = key.startsWith("<=") && quantity <= parseFloat(key.slice(2));
+		if (isEqual || isSuperior || isSuperiorOrEqual || isInferior || isInferiorOrEqual) return key;
+	}
+};
+var getEnumeration = (enumerationContent, quantity) => {
+	return enumerationContent[findMatchingCondition(enumerationContent, quantity) ?? "fallback"];
+};
+var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
+	return (values[key.trim()] ?? "").toString();
+});
+var DEFAULT_VARIANT_ID = "default";
+var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
+var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
+var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
+var encodeSegmentText = (raw, unsafeChars) => {
+	if (raw === "") return "%";
+	const encoded = raw.replace(unsafeChars, percentEncodeChar);
+	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
+	return encoded;
+};
+var serializeVariant = (variant) => {
+	if (variant === void 0) return DEFAULT_VARIANT_ID;
+	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
+	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
+};
+var serializeVariantChain = (variant) => {
+	if (!Array.isArray(variant)) return [serializeVariant(variant)];
+	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
+	return variant.map(serializeVariant);
+};
+var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
+	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
+	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
+};
+var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
+	const segments = compositeId.split("/");
+	return qualifierTypes.every((qualifierType, index) => {
+		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
+		return selector?.item === void 0 || segments[index] === String(selector.item);
+	});
+};
+var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
+var reconstructQualifiedEntry = (group, compositeId) => {
+	const segments = compositeId.split("/");
+	const entry = {
+		key: group.key,
+		content: group.content[compositeId]
 	};
-}))();
-export { MarkdownRendererPlugin };
-import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
-import { i as internationalization, o as routing, r as init_built } from "./built-BvRk9kiK.js";
-import { I as resolveEffectiveVariantId, L as serializeVariantChain, N as init_qualifiedDictionary, et as TRANSLATION, nt as init_nodeType } from "./interpreter-D1QgSn8T.js";
-var QUALIFIER_DYNAMIC_TYPES_KEY, PRELOADED_DYNAMIC_KEY;
-var init_dictionary = __esmMin((() => {
-	QUALIFIER_DYNAMIC_TYPES_KEY = "__intlayerQualifierTypes";
-	PRELOADED_DYNAMIC_KEY = "__intlayerPreloaded";
-}));
-var init_defaultValues = __esmMin((() => {
-	init_dictionary();
-}));
-var isQualifiedDynamicLoaderMap, collectQualifiedChunks, resolveQualifiedDynamicContent;
-var init_qualifiedDynamicLoader = __esmMin((() => {
-	init_qualifiedDictionary();
-	init_defaultValues();
-	isQualifiedDynamicLoaderMap = (value) => typeof value === "object" && value !== null && "__intlayerQualifierTypes" in value;
-	collectQualifiedChunks = (loaderMap, key, locale, selector) => {
-		const qualifierTypes = loaderMap[QUALIFIER_DYNAMIC_TYPES_KEY];
-		const localeTree = loaderMap[locale];
-		const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
-		if (!localeTree) return {
-			itemAxisOpen,
-			missed: true,
-			chunks: []
-		};
-		const chunks = [];
-		const walk = (node, dimensions, segments) => {
-			if (dimensions.length === 0) {
-				chunks.push({
-					cacheKey: `${key}.${locale}.${segments.join("/")}`,
-					loader: node
-				});
-				return true;
+	group.qualifierTypes.forEach((qualifierType, index) => {
+		if (qualifierType === "variant") entry.variant = segments[index];
+		else if (qualifierType === "item") entry.item = Number(segments[index]);
+	});
+	return entry;
+};
+var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
+	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
+	const { qualifierTypes, content } = dictionaryOrGroup;
+	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
+	const compositeIds = Object.keys(content);
+	const variantIndex = qualifierTypes.indexOf("variant");
+	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
+	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
+	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
+	return matchedEntries[0] ?? null;
+};
+var parseDictionarySelector = (localeOrSelector) => {
+	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
+		locale: localeOrSelector.locale,
+		selector: localeOrSelector
+	};
+	return { locale: localeOrSelector };
+};
+var getDictionarySelectorCacheKey = (selector) => {
+	if (!selector) return "";
+	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
+		const value = selector[selectorKey];
+		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
+	}).join("|");
+};
+var RESET = "\x1B[0m";
+var BLUE = "\x1B[34m";
+var RED = "\x1B[31m";
+var GREEN = "\x1B[32m";
+var BEIGE = "\x1B[38;5;3m";
+var CYAN = "\x1B[36m";
+var getPrefix = (configPrefix) => {
+	return configPrefix;
+};
+var logger = (content, details) => {
+	const config = details?.config ?? {};
+	const mode = config.mode ?? "default";
+	if (mode === "disabled" || details?.isVerbose && mode !== "verbose") return;
+	const prefix = getPrefix(config.prefix);
+	const flatContent = prefix ? [prefix, ...[content].flat()] : [content].flat();
+	const level = details?.level ?? "info";
+	(config[level] ?? console[level] ?? config.log ?? console.log)(...flatContent);
+};
+var getAppLogger = (configuration, globalDetails) => (content, details) => logger(content, {
+	...details ?? {},
+	config: {
+		...configuration?.log,
+		...globalDetails?.config,
+		...details?.config ?? {}
+	}
+});
+var colorize = (string, color, reset) => color && typeof window === "undefined" ? `${color}${string}${reset ? typeof reset === "boolean" ? RESET : reset : RESET}` : string;
+var colorizeKey = (keyPath, color = BEIGE, reset = RESET) => [keyPath].flat().map((key) => colorize(key, color, reset)).join(`, `);
+colorize("✗", RED);
+colorize("✓", GREEN);
+colorize("⏲", BLUE);
+var dictionaries = {
+	"faq": {
+		key: "faq",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"}},\"fr\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"Qu'est-ce qu'i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark est une suite de tests open source qui mesure et compare les performances, la taille du bundle et l'expérience développeur des bibliothèques d'internationalisation pour les applications JavaScript et React.\",\"howAreBenchmarksConducted\":\"Comment les benchmarks sont-ils menés ?\",\"weRunStandardizedTestsIn\":\"Nous effectuons des tests standardisés dans des environnements isolés en utilisant un matériel cohérent. Chaque benchmark est répété plusieurs fois pour garantir une signification statistique. Toutes les configurations de test sont disponibles publiquement dans notre dépôt GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Quelles bibliothèques sont actuellement supportées ?\",\"weSupportReactI18nextReact\":\"Nous supportons react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react et Tolgee.\",\"canISubmitMyOwn\":\"Puis-je soumettre mes propres benchmarks ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Oui ! Les soumissions de benchmarks par la communauté sont les bienvenues. Forkez notre dépôt, ajoutez votre benchmark en suivant notre guide de contribution et soumettez une pull request. Notre équipe examinera et fusionnera les soumissions qualifiées.\",\"howOftenAreBenchmarksUpdated\":\"À quelle fréquence les benchmarks sont-ils mis à jour ?\",\"weReRunAllBenchmarks\":\"Nous relançons tous les benchmarks chaque semaine avec les dernières versions stables de chaque bibliothèque. Les sorties de versions majeures déclenchent un cycle de re-benchmarking immédiat.\",\"isTheDataReliable\":\"Les données sont-elles fiables ?\",\"weFollowRigorousStatisticalMethodology\":\"Nous suivons une méthodologie statistique rigoureuse, incluant des phases de préchauffage, la détection des valeurs aberrantes et des intervalles de confiance. Toutes les données brutes sont publiées avec notre analyse pour une transparence totale.\",\"doYouOfferConsultingServices\":\"Offrez-vous des services de conseil ?\",\"yesOurEnterprisePlanIncludes\":\"Oui, notre offre Enterprise inclut des heures de conseil pour les équipes évaluant les solutions i18n. Nous pouvons fournir des recommandations personnalisées basées sur votre cas d'utilisation, votre échelle et vos contraintes spécifiques.\",\"howCanIContribute\":\"Comment puis-je contribuer ?\",\"thereAreManyWaysTo\":\"Il y a de nombreuses façons de contribuer : soumettre des benchmarks, améliorer la documentation, signaler des bugs, suggérer de nouvelles métriques ou parrainer le projet. Visitez notre dépôt GitHub pour plus de détails.\"}},\"es\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"¿Qué es i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark es una suite de pruebas de código abierto que mide y compara el rendimiento, el tamaño del bundle y la experiencia del développeur de las bibliotecas de internacionalización para aplicaciones JavaScript y React.\",\"howAreBenchmarksConducted\":\"¿Cómo se realizan los benchmarks ?\",\"weRunStandardizedTestsIn\":\"Realizamos pruebas estandarizadas en entornos aislados utilizando un hardware consistente. Cada benchmark se repite varias veces para garantizar la significancia estadística. Todas las configuraciones de prueba están disponibles públicamente en nuestro repositorio de GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"¿Qué bibliotecas son compatibles actualmente ?\",\"weSupportReactI18nextReact\":\"Soportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react y Tolgee.\",\"canISubmitMyOwn\":\"¿Puedo enviar mis propios benchmarks ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"¡Sí! Las presentaciones de benchmarks de la comunidad son bienvenidas. Haz un fork de nuestro repositorio, añade tu benchmark siguiendo nuestra guía de contribución y envía un pull request. Nuestro equipo revisará y combinará las presentaciones que califiquen.\",\"howOftenAreBenchmarksUpdated\":\"¿Con qué frecuencia se funcionan los benchmarks ?\",\"weReRunAllBenchmarks\":\"Volvemos a ejecutar todos los benchmarks semanalmente con las últimas versiones estables de cada biblioteca. Los lanzamientos de versiones principales activan un ciclo de re-benchmarking inmediato.\",\"isTheDataReliable\":\"¿Son fiables los datos ?\",\"weFollowRigorousStatisticalMethodology\":\"Seguimos una metodología estadística rigurosa que incluye ejecuciones de calentamiento, detección de valores atípicos e intervalos de confianza. Todos los datos brutos se publican junto con nuestro análisis para una total transparencia.\",\"doYouOfferConsultingServices\":\"¿Ofrecen servicios de consultoría ?\",\"yesOurEnterprisePlanIncludes\":\"Sí, nuestro plan Enterprise incluye horas de consultoría para equipos que evalúan soluciones i18n. Podemos proporcionar recomendaciones personalizadas basadas en su caso de uso, escala y limitaciones específicas.\",\"howCanIContribute\":\"¿Cómo puedo contribuir ?\",\"thereAreManyWaysTo\":\"Hay muchas formas de contribuir: enviar benchmarks, mejorar la documentación, informar de bugs, sugerir nuevas métricas o patrocinar el proyecto. Visita nuestro repositorio de GitHub para más detalles.\"}},\"de\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"Was ist i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark ist eine Open-Source-Benchmarking-Suite, welche die Leistung, die Bundle-Größe und die Entwicklererfahrung von Internationalisierungs-Bibliotheken für JavaScript- und React-Anwendungen misst und vergleicht.\",\"howAreBenchmarksConducted\":\"Wie werden die Benchmarks durchgeführt ?\",\"weRunStandardizedTestsIn\":\"Wir führen standardisierte Tests in isolierten Umgebungen mit konsistenter Hardware durch. Jeder Benchmark wird mehrfach wiederholt, um statistische Signifikanz zu gewährleisten. Alle Testkonfigurationen sind in unserem GitHub-Repository öffentlich zugänglich.\",\"whichLibrariesAreCurrentlySupported\":\"Welche Bibliotheken werden derzeit unterstützt ?\",\"weSupportReactI18nextReact\":\"Wir unterstützen react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react und Tolgee.\",\"canISubmitMyOwn\":\"Kann ich meine eigenen Benchmarks einreichen ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Ja! Einreichungen von Benchmarks durch die Community sind willkommen. Forken Sie unser Repository, fügen Sie Ihren Benchmark gemäß unserem Leitfaden für Beiträge hinzu und senden Sie einen Pull-Request. Unser Team wird qualifizierte Einreichungen prüfen und zusammenführen.\",\"howOftenAreBenchmarksUpdated\":\"Wie oft werden die Benchmarks aktualisiert ?\",\"weReRunAllBenchmarks\":\"Wir führen alle Benchmarks wöchentlich gegen die neuesten stabilen Versionen jeder Bibliothek neu aus. Major-Releases lösen einen sofortigen Re-Benchmark-Zyklus aus.\",\"isTheDataReliable\":\"Sind die Daten zuverlässig ?\",\"weFollowRigorousStatisticalMethodology\":\"Wir folgen einer strengen statistischen Methodik, einschließlich Warm-up-Phasen, Ausreißererkennung und Konfidenzintervallen. Alle Rohdaten werden zusammen mit unserer Analyse für volle Transparenz veröffentlicht.\",\"doYouOfferConsultingServices\":\"Bieten Sie Beratungsdienstleistungen an ?\",\"yesOurEnterprisePlanIncludes\":\"Ja, unser Enterprise-Plan umfasst Beratungsstunden für Teams, die i18n-Lösungen evaluieren. Wir können maßgeschneiderte Empfehlungen basierend auf Ihrem spezifischen Anwendungsfall, Umfang und Ihren Einschränkungen geben.\",\"howCanIContribute\":\"Wie kann ich beitragen ?\",\"thereAreManyWaysTo\":\"Es gibt viele Möglichkeiten, beizutragen: Benchmarks einreichen, die Dokumentation verbessern, Fehler melden, neue Metriken vorschlagen oder das Projekt sponsern. Besuchen Sie unser GitHub-Repository für weitere Details.\"}},\"it\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"Cos'è i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark è una suite di test open source che misura e confronta le prestazioni, la dimensione del bundle e l'esperienza degli sviluppatori delle librerie di internazionalizzazione per applicazioni JavaScript e React.\",\"howAreBenchmarksConducted\":\"Come vengono condotti i benchmark ?\",\"weRunStandardizedTestsIn\":\"Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni di test sono disponibili pubblicamente nel nostro repository GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Quali librerie sono attualmente supportate ?\",\"weSupportReactI18nextReact\":\"Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\",\"canISubmitMyOwn\":\"Posso inviare i miei benchmark ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Sì! Gli invii di benchmark da parte della comunità sono i benvenuti. Fai un fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà gli invii idonei.\",\"howOftenAreBenchmarksUpdated\":\"Con quale frequenza vengono aggiornati i benchmark ?\",\"weReRunAllBenchmarks\":\"Eseguiamo nuovamente tutti i benchmark settimanalmente rispetto alle ultime versioni stabili di ogni libreria. Le versioni principali in uscita attivano un immediato ciclo di re-benchmark.\",\"isTheDataReliable\":\"I dati sono affidabili ?\",\"weFollowRigorousStatisticalMethodology\":\"Seguiamo una rigorosa metodologia statistica che include corse di riscaldamento, rilevamento di valori anomali e intervalli di confidenza. Tutti i dati grezzi sono pubblicati insieme alla nostra analisi per una completa trasparenza.\",\"doYouOfferConsultingServices\":\"Offrite servizi di consulenza ?\",\"yesOurEnterprisePlanIncludes\":\"Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano le soluzioni i18n. Abbiamo la possibilità di fornire raccomandazioni personalizzate basate sul caso d'uso specifico, sulla scala e sui vincoli.\",\"howCanIContribute\":\"Come posso contribuire ?\",\"thereAreManyWaysTo\":\"Ci sono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per maggiori dettagli.\"}},\"pt\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"O que é o i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"O i18n Benchmark é uma suíte de testes de código aberto que mede e compara o desempenho, o tamanho do bundle e a experiência do developpeur de bibliotecas de internacionalização para aplicativos JavaScript e React.\",\"howAreBenchmarksConducted\":\"Como os benchmarks são conduzidos ?\",\"weRunStandardizedTestsIn\":\"Executamos testes padronizados em ambientes isolados usando hardware consistente. Cada benchmark é repetido várias vezes para garantir a significância estatística. Todas as configurações de teste estão disponíveis publicamente em nosso repositório no GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Quais bibliotecas são suportadas atualmente ?\",\"weSupportReactI18nextReact\":\"Suportamos react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react e Tolgee.\",\"canISubmitMyOwn\":\"Posso enviar meus próprios benchmarks ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Sim! Submissões de benchmarks da comunidade são bem-vindas. Faça um fork do nosso repositório, adicione seu benchmark seguindo nosso guia de contribuição e envie um pull request. Nossa equipe revisará e mesclará as submissões qualificadas.\",\"howOftenAreBenchmarksUpdated\":\"Com que frequência os benchmarks são atualizados ?\",\"weReRunAllBenchmarks\":\"Executamos novamente todos os benchmarks semanalmente com as versões estáveis mais recentes de cada biblioteca. Lançamentos de versões principais disparam um ciclo imediato de re-benchmark.\",\"isTheDataReliable\":\"Os dados são confiáveis ?\",\"weFollowRigorousStatisticalMethodology\":\"Seguimos uma metodologia estatística rigorosa, incluindo execuções de aquecimento, detecção de outliers e intervalos de confiança. Todos os dados brutos são publicados junto com nossa análise para total transparência.\",\"doYouOfferConsultingServices\":\"Vocês oferecem serviços de consultoria ?\",\"yesOurEnterprisePlanIncludes\":\"Sim, nosso plano Enterprise inclui horas de consultoria para equipes que avaliam soluções i18n. Temos a possibilidade de fornecer recomendações personalizadas com base em seu caso de uso, escala e restrições específicas.\",\"howCanIContribute\":\"Como posso contribuir ?\",\"thereAreManyWaysTo\":\"Existem muitas maneiras de contribuir: envie benchmarks, melhore a documentação, relate bugs, sugira novas métricas ou patrocine o projeto. Visite nosso repositório no GitHub para mais detalhes.\"}},\"zh\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"什么是 i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark 是一个开源基准测试套件，用于测量和比较 JavaScript 和 React 应用程序国际化库的性能、捆绑包大小和开发人员经验。\",\"howAreBenchmarksConducted\":\"如何进行基准测试 ?\",\"weRunStandardizedTestsIn\":\"我们在使用一致硬件的隔离环境中运行标准化测试。每个基准测试都会重复多次以确保统计显著性。所有测试配置都可以在我们的 GitHub 存储库中公开获得。\",\"whichLibrariesAreCurrentlySupported\":\"目前支持哪些库 ?\",\"weSupportReactI18nextReact\":\"我们支持 react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react 和 Tolgee。\",\"canISubmitMyOwn\":\"我可以提交自己的基准测试吗 ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"是的！欢迎社区提交基准测试。分叉我们的存储库，按照我们的贡献指南添加您的基准测试，并提交拉取请求。我们的团队将审查并合并合格的提交。\",\"howOftenAreBenchmarksUpdated\":\"基准测试更新频率如何 ?\",\"weReRunAllBenchmarks\":\"我们每周针对每个库的最新稳定版本重新运行所有基准测试。主要版本发布会立即触发重新基准测试周期。\",\"isTheDataReliable\":\"数据可靠吗 ?\",\"weFollowRigorousStatisticalMethodology\":\"我们遵循严谨的统计方法论，包括预热运行、异常值检测和置信区间。所有原始数据与其分析结果一起发布，以实现完全透明。\",\"doYouOfferConsultingServices\":\"你们提供咨询服务吗 ?\",\"yesOurEnterprisePlanIncludes\":\"是的，我们的企业计划为评估 i18n 解决方案的团队提供咨询时间。我们可以根据您的特定用例、规模和限制提供定制建议。\",\"howCanIContribute\":\"我该如何贡献 ?\",\"thereAreManyWaysTo\":\"有很多方式可以贡献：提交基准测试、改进文档、报告错误、建议新指标或赞助项目。访问我们的 GitHub 存储库了解更多详情。\"}},\"ja\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"i18n Benchmarkとは何ですか？\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmarkは、JavaScriptおよびReactアプリケーション用の国際化ライブラリのパフォーマンス、バンドルサイズ、開発者体験を測定および比較するオープンソースのベンチマークスイーツです。\",\"howAreBenchmarksConducted\":\"ベンチマークはどのように行われますか？\",\"weRunStandardizedTestsIn\":\"一貫したハードウェアを使用した隔離された環境で標準化されたテストを実行します。各ベンチマークは、統計的有意性を確保するために複数回繰り返されます。すべてのテスト構成は、GitHubリポジトリで公開されています。\",\"whichLibrariesAreCurrentlySupported\":\"現在サポートされているライブラリは何ですか？\",\"weSupportReactI18nextReact\":\"react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react、Tolgeeをサポートしています。\",\"canISubmitMyOwn\":\"自分のベンチマークを提出できますか？\",\"yesCommunityBenchmarkSubmissionsAre\":\"はい！コミュニティからのベンチマーク提出を歓迎します。リポジトリをフォークし、貢献ガイドに従ってベンチマークを追加し、プルリクエストを送信してください。チームが審査し、適合する提出物をマージします。\",\"howOftenAreBenchmarksUpdated\":\"ベンチマークはどのくらいの頻度で更新されますか？\",\"weReRunAllBenchmarks\":\"毎週、各ライブラリの最新の安定版に対してすべてのベンチマークを再実行します。メジャーバージョンのリリースにより、即座に再ベンチマークサイクルがトリガーされます。\",\"isTheDataReliable\":\"データは信頼できますか？\",\"weFollowRigorousStatisticalMethodology\":\"ウォームアップ実行、外れ値検出、信頼区間を含む厳格な統計的手法に従っています。すべての生のデータは、完全な透明性のために分析結果とともに公開されます。\",\"doYouOfferConsultingServices\":\"コンサルティングサービスは提供していますか？\",\"yesOurEnterprisePlanIncludes\":\"はい、エンタープライズプランには、i18nソリューションを評価するチームのためのコンサルティング時間が含まれています。特定のユースケース、規模、制約に基づいたカスタマイズされた推奨事項を提供できます。\",\"howCanIContribute\":\"どのように貢献できますか？\",\"thereAreManyWaysTo\":\"貢献する方法はたくさんあります：ベンチマークの提出、ドキュメントの改善、バグ報告、新しい指標の提案、プロジェクトのスポンサーなど。詳細はGitHubリポジトリをご覧ください。\"}},\"ko\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"i18n Benchmark란 무엇인가요?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark는 JavaScript 및 React 애플리케이션용 국제화 라이브러리의 성능, 번들 크기 및 개발자 경험을 측정하고 비교하는 오픈 소스 벤치마킹 제품군입니다.\",\"howAreBenchmarksConducted\":\"벤치마크는 어떻게 진행되나요?\",\"weRunStandardizedTestsIn\":\"일관된 하드웨어를 사용하는 격리된 환경에서 표준화된 테스트를 실행합니다. 각 벤치마크는 통계적 유의성을 확보하기 위해 여러 번 반복됩니다. 모든 테스트 구성은 GitHub 저장소에 공개되어 있습니다.\",\"whichLibrariesAreCurrentlySupported\":\"현재 어떤 라이브러리가 지원되나요?\",\"weSupportReactI18nextReact\":\"react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, Tolgee를 지원합니다.\",\"canISubmitMyOwn\":\"저만의 벤치마크를 제출할 수 있나요?\",\"yesCommunityBenchmarkSubmissionsAre\":\"네! 커뮤니티의 벤치마크 제출을 환영합니다. 저장소를 포크하고 기여 가이드에 따라 벤치마크를 추가한 후 풀 리퀘스트를 제출하세요. 저희 팀이 검토 후 마지(merge)할 것입니다.\",\"howOftenAreBenchmarksUpdated\":\"벤치마크는 얼마나 자주 업데이트되나요?\",\"weReRunAllBenchmarks\":\"매주 각 라이브러리의 최신 안정 버전에 대해 모든 벤치마크를 다시 실행합니다. 주요 버전이 릴리스되면 즉시 재벤치마크 주기가 시작됩니다.\",\"isTheDataReliable\":\"데이터는 신뢰할 수 있나요?\",\"weFollowRigorousStatisticalMethodology\":\"웜업 실행, 이상치 감지 및 신뢰 구간을 포함한 엄격한 통계 방법론을 따릅니다. 모든 원시 데이터는 완전한 투명성을 위해 분석 결과와 함께 게시됩니다.\",\"doYouOfferConsultingServices\":\"컨설팅 서비스를 제공하나요?\",\"yesOurEnterprisePlanIncludes\":\"네, 엔터프라이즈 플랜에는 i18n 솔루션을 평가하는 팀을 위한 컨설팅 시간이 포함되어 있습니다. 특정 사례, 규모 및 제약 조건에 따라 맞춤형 권장 사항을 제공할 수 있습니다.\",\"howCanIContribute\":\"어떻게 기여할 수 있나요?\",\"thereAreManyWaysTo\":\"기여하는 방법은 다양합니다: 벤치마크 제출, 문서 개선, 버그 보고, 새로운 지표 제안 또는 프로젝트 후원. 자세한 내용은 GitHub 저장소를 방문하세요.\"}},\"ru\":{\"faq-list\":{\"whatIsI18nBenchmark\":\"Что такое i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark — это набор тестов с открытым исходным кодом, который измеряет и сравнивает производительность, размер бандла и опыт разработчика библиотек интернационализации для приложений JavaScript и React.\",\"howAreBenchmarksConducted\":\"Как проводятся бенчмарки ?\",\"weRunStandardizedTestsIn\":\"Мы проводим стандартизированные тесты в изолированных средах с использованием единообразного оборудования. Каждый бенчмарк повторяется несколько раз для обеспечения статистической значимости. Все конфигурации тестов открыты в нашем репозитории GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Какие библиотеки поддерживаются в настоящее время ?\",\"weSupportReactI18nextReact\":\"Мы поддерживаем react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react и Tolgee.\",\"canISubmitMyOwn\":\"Могу ли я отправить свои собственные бенчмарки ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Да! Мы приветствуем отправку бенчмарков от сообщества. Сделайте форк нашего репозитория, добавьте свой бенчмарк, следуя нашему руководству по внесению вклада, и отправьте пулл-реквест. Наша команда рассмотрит и примет квалифицированные заявки.\",\"howOftenAreBenchmarksUpdated\":\"Как часто обновляются бенчмарки ?\",\"weReRunAllBenchmarks\":\"Мы еженедельно перезапускаем все бенчмарки для последних стабильных версий каждой библиотеки. Выход мажорных версий вызывает немедленный цикл повторного тестирования.\",\"isTheDataReliable\":\"Надежны ли данные ?\",\"weFollowRigorousStatisticalMethodology\":\"Мы следуем строгой статистической методологии, включая прогревочные запуски, обнаружение выбросов и доверительные интервалы. Все необработанные данные публикуются вместе с нашим анализом для полной прозрачности.\",\"doYouOfferConsultingServices\":\"Предлагаете ли вы консультационные услуги ?\",\"yesOurEnterprisePlanIncludes\":\"Да, наш корпоративный план включает консультационные часы для команд, оценивающих решения i18n. Мы можем предоставить индивидуальные рекомендации, основанные на вашем конкретном случае использования, масштабе и ограничениях.\",\"howCanIContribute\":\"Как я могу помочь ?\",\"thereAreManyWaysTo\":\"Есть много способов внести свой вклад: отправить бенчмарки, улучшить документацию, сообщить о багах, предложить новые метрики или спонсировать проект. Посетите наш репозиторий GitHub для более подробной информации.\"}}}}"),
+		localIds: [
+			"faq::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"faq::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"faq::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"faq::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"faq::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"faq::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"faq::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"faq::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"faq::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"faq::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"header": {
+		key: "header",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"home": "Home",
+					"methodology": "Methodology",
+					"mockPages": "Mock Pages",
+					"products": "Products",
+					"pricing": "Pricing",
+					"team": "Team",
+					"blog": "Blog",
+					"careers": "Careers",
+					"faq": "FAQ",
+					"contact": "Contact",
+					"settings": "Settings",
+					"goToGithub": "Go to GitHub"
+				},
+				"fr": {
+					"home": "Accueil",
+					"methodology": "Méthodologie",
+					"mockPages": "Pages de Test",
+					"products": "Produits",
+					"pricing": "Tarification",
+					"team": "Équipe",
+					"blog": "Blog",
+					"careers": "Carrières",
+					"faq": "FAQ",
+					"contact": "Contact",
+					"settings": "Paramètres",
+					"goToGithub": "Aller sur GitHub"
+				},
+				"es": {
+					"home": "Home",
+					"methodology": "Methodology",
+					"mockPages": "Mock Pages",
+					"products": "Products",
+					"pricing": "Pricing",
+					"team": "Team",
+					"blog": "Blog",
+					"careers": "Careers",
+					"faq": "FAQ",
+					"contact": "Contact",
+					"settings": "Settings",
+					"goToGithub": "Go to GitHub"
+				},
+				"de": {
+					"home": "Home",
+					"methodology": "Methodology",
+					"mockPages": "Mock Pages",
+					"products": "Products",
+					"pricing": "Pricing",
+					"team": "Team",
+					"blog": "Blog",
+					"careers": "Careers",
+					"faq": "FAQ",
+					"contact": "Contact",
+					"settings": "Settings",
+					"goToGithub": "Go to GitHub"
+				},
+				"it": {
+					"home": "Home",
+					"methodology": "Methodology",
+					"mockPages": "Mock Pages",
+					"products": "Products",
+					"pricing": "Pricing",
+					"team": "Team",
+					"blog": "Blog",
+					"careers": "Careers",
+					"faq": "FAQ",
+					"contact": "Contact",
+					"settings": "Settings",
+					"goToGithub": "Go to GitHub"
+				},
+				"pt": {
+					"home": "Home",
+					"methodology": "Methodology",
+					"mockPages": "Mock Pages",
+					"products": "Products",
+					"pricing": "Pricing",
+					"team": "Team",
+					"blog": "Blog",
+					"careers": "Careers",
+					"faq": "FAQ",
+					"contact": "Contact",
+					"settings": "Settings",
+					"goToGithub": "Go to GitHub"
+				},
+				"zh": {
+					"home": "Home",
+					"methodology": "Methodology",
+					"mockPages": "Mock Pages",
+					"products": "Products",
+					"pricing": "Pricing",
+					"team": "Team",
+					"blog": "Blog",
+					"careers": "Careers",
+					"faq": "FAQ",
+					"contact": "Contact",
+					"settings": "Settings",
+					"goToGithub": "Go to GitHub"
+				},
+				"ja": {
+					"home": "Home",
+					"methodology": "Methodology",
+					"mockPages": "Mock Pages",
+					"products": "Products",
+					"pricing": "Pricing",
+					"team": "Team",
+					"blog": "Blog",
+					"careers": "Careers",
+					"faq": "FAQ",
+					"contact": "Contact",
+					"settings": "Settings",
+					"goToGithub": "Go to GitHub"
+				},
+				"ko": {
+					"home": "Home",
+					"methodology": "Methodology",
+					"mockPages": "Mock Pages",
+					"products": "Products",
+					"pricing": "Pricing",
+					"team": "Team",
+					"blog": "Blog",
+					"careers": "Careers",
+					"faq": "FAQ",
+					"contact": "Contact",
+					"settings": "Settings",
+					"goToGithub": "Go to GitHub"
+				},
+				"ru": {
+					"home": "Home",
+					"methodology": "Methodology",
+					"mockPages": "Mock Pages",
+					"products": "Products",
+					"pricing": "Pricing",
+					"team": "Team",
+					"blog": "Blog",
+					"careers": "Careers",
+					"faq": "FAQ",
+					"contact": "Contact",
+					"settings": "Settings",
+					"goToGithub": "Go to GitHub"
+				}
 			}
-			const [dimension, ...rest] = dimensions;
-			const tree = node;
-			if (dimension === "item" && selector?.item === void 0) {
-				for (const segment of Object.keys(tree).sort((left, right) => Number(left) - Number(right))) walk(tree[segment], rest, [...segments, segment]);
-				return true;
-			}
-			const segment = dimension === "variant" ? resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => tree[variantId] !== void 0) : String(selector?.item);
-			const child = tree[segment];
-			if (!child) return false;
-			return walk(child, rest, [...segments, segment]);
-		};
-		return {
-			itemAxisOpen,
-			missed: !walk(localeTree, qualifierTypes, []),
-			chunks
-		};
-	};
-	resolveQualifiedDynamicContent = (params) => {
-		const { loaderMap, key, locale, selector, loadChunk, transform } = params;
-		const { itemAxisOpen, missed, chunks } = collectQualifiedChunks(loaderMap, key, locale, selector);
-		if (missed) return itemAxisOpen ? [] : null;
-		const dictionaries = chunks.map(({ cacheKey, loader }) => loadChunk(cacheKey, loader()));
-		if (itemAxisOpen) return dictionaries.map(transform);
-		const [dictionary] = dictionaries;
-		return dictionary ? transform(dictionary) : null;
-	};
-}));
-var getPreloadedDictionary;
-var init_preloadedDynamicLoader = __esmMin((() => {
-	init_defaultValues();
-	getPreloadedDictionary = (loaderMap, locale) => {
-		if (typeof loaderMap !== "object" || loaderMap === null) return void 0;
-		const preloaded = loaderMap[PRELOADED_DYNAMIC_KEY];
-		if (!preloaded || preloaded.locale !== locale) return void 0;
-		return preloaded.dictionary;
-	};
-}));
-var resolveExpiresToTimestamp, buildCookieString;
-var init_cookieExpiry = __esmMin((() => {
-	resolveExpiresToTimestamp = (expires) => {
-		if (typeof expires === "number") return Date.now() + expires * 1e3;
-		if (typeof expires === "string") {
-			const time = Date.parse(expires);
-			return Number.isNaN(time) ? void 0 : time;
-		}
-	};
-	buildCookieString = (name, value, attributes) => {
-		const parts = [`${name}=${encodeURIComponent(value)}`];
-		if (attributes.path) parts.push(`Path=${attributes.path}`);
-		if (attributes.domain) parts.push(`Domain=${attributes.domain}`);
-		const expiresTimestamp = resolveExpiresToTimestamp(attributes.expires);
-		if (expiresTimestamp !== void 0) parts.push(`Expires=${new Date(expiresTimestamp).toUTCString()}`);
-		if (attributes.secure) parts.push("Secure");
-		if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
-		return parts.join("; ");
-	};
-})), TREE_SHAKE_STORAGE_COOKIES, TREE_SHAKE_STORAGE_LOCAL_STORAGE, TREE_SHAKE_STORAGE_SESSION_STORAGE, localeStorageOptions, getLocaleFromStorageClient, setLocaleInStorageClient;
-var init_localeStorage = __esmMin((() => {
-	init_cookieExpiry();
-	init_built();
-	TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
-	TREE_SHAKE_STORAGE_LOCAL_STORAGE = process.env.INTLAYER_ROUTING_STORAGE_LOCALSTORAGE === "false";
-	TREE_SHAKE_STORAGE_SESSION_STORAGE = process.env.INTLAYER_ROUTING_STORAGE_SESSIONSTORAGE === "false";
-	process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-	localeStorageOptions = {
-		getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
-		getLocaleStorage: (name) => localStorage.getItem(name),
-		getSessionStorage: (name) => sessionStorage.getItem(name),
-		isCookieEnabled: true,
-		setCookieStore: (name, value, attributes) => cookieStore.set({
-			name,
-			value,
-			path: attributes.path,
-			domain: attributes.domain,
-			expires: attributes.expires,
-			sameSite: attributes.sameSite
-		}),
-		setCookieString: (_name, cookie) => {
-			document.cookie = cookie;
 		},
-		setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
-		setLocaleStorage: (name, value) => localStorage.setItem(name, value)
-	};
-	getLocaleFromStorageClient = (options = localeStorageOptions) => {
-		const { locales } = internationalization;
-		if (options?.isCookieEnabled === false) return void 0;
-		const isValidLocale = (value) => !!value && locales.includes(value);
-		if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
-			const value = options?.getCookie?.(routing.storage.cookies[i].name);
-			if (isValidLocale(value)) return value;
-		} catch {}
-		if (!TREE_SHAKE_STORAGE_LOCAL_STORAGE) for (let i = 0; i < (routing.storage.localStorage ?? []).length; i++) try {
-			const value = options?.getLocaleStorage?.(routing.storage.localStorage[i].name);
-			if (isValidLocale(value)) return value;
-		} catch {}
-		if (!TREE_SHAKE_STORAGE_SESSION_STORAGE && routing.storage.sessionStorage) for (let i = 0; i < routing.storage.sessionStorage.length; i++) try {
-			const value = options?.getSessionStorage?.(routing.storage.sessionStorage[i].name);
-			if (isValidLocale(value)) return value;
-		} catch {}
-	};
-	setLocaleInStorageClient = (locale, options) => {
-		if (options?.isCookieEnabled === false) return;
-		if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
-			const { name, attributes } = routing.storage.cookies[i];
-			try {
-				if (options?.setCookieStore) options.setCookieStore(name, locale, {
-					...attributes,
-					expires: resolveExpiresToTimestamp(attributes.expires)
-				});
-			} catch {
-				try {
-					if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
-				} catch {}
-			}
-		}
-		if (!TREE_SHAKE_STORAGE_LOCAL_STORAGE && routing.storage.localStorage && options?.setLocaleStorage) for (let i = 0; i < routing.storage.localStorage.length; i++) {
-			const { name } = routing.storage.localStorage[i];
-			try {
-				if (!(options?.overwrite ?? true) && options?.getLocaleStorage) {
-					if (options.getLocaleStorage(name)) continue;
-				}
-				options.setLocaleStorage(name, locale);
-			} catch {}
-		}
-		if (!TREE_SHAKE_STORAGE_SESSION_STORAGE && routing.storage.sessionStorage && options?.setSessionStorage) for (let i = 0; i < routing.storage.sessionStorage.length; i++) {
-			const { name } = routing.storage.sessionStorage[i];
-			try {
-				if (!(options?.overwrite ?? true) && options?.getSessionStorage) {
-					if (options.getSessionStorage(name)) continue;
-				}
-				options.setSessionStorage(name, locale);
-			} catch {}
-		}
-	};
-}));
-var isSameKeyPath;
-var init_isSameKeyPath = __esmMin((() => {
-	isSameKeyPath = (keyPath1, keyPath2) => keyPath1.every((element, index) => keyPath2[index] && keyPath2[index].key === element.key && keyPath2[index].type === element.type);
-}));
-var init_utils = __esmMin((() => {
-	init_localeStorage();
-	init_isSameKeyPath();
-}));
-var editDictionaryByKeyPath;
-var init_editDictionaryByKeyPath = __esmMin((() => {
-	init_nodeType();
-	editDictionaryByKeyPath = (dictionaryContent, keyPath, newValue) => {
-		let currentValue = dictionaryContent;
-		let parentValue = null;
-		let lastKeys = [];
-		if (keyPath.length === 0) return newValue;
-		try {
-			for (let i = 0; i < keyPath.length; i++) {
-				const keyObj = keyPath[i];
-				parentValue = currentValue;
-				if (keyObj?.type === "object" || keyObj?.type === "array") {
-					lastKeys = [keyObj.key];
-					if (!currentValue[keyObj.key] || typeof currentValue[keyObj.key] !== "object") currentValue[keyObj.key] = {};
-					currentValue = currentValue[keyObj.key];
-				}
-				if (keyObj?.type === "translation" || keyObj?.type === "enumeration" || keyObj?.type === "plural" || keyObj?.type === "gender" || keyObj?.type === "select") {
-					lastKeys = [keyObj.type, keyObj.key];
-					if (!currentValue[keyObj.type] || typeof currentValue[keyObj.type] !== "object") currentValue[keyObj.type] = {};
-					if (!currentValue[keyObj.type][keyObj.key] || typeof currentValue[keyObj.type][keyObj.key] !== "object") currentValue[keyObj.type][keyObj.key] = {};
-					currentValue = currentValue[keyObj.type][keyObj.key];
-				}
-				if (keyObj?.type === "enumeration" || keyObj?.type === "plural" || keyObj?.type === "condition") {
-					if (keyObj.type !== "enumeration" && keyObj.type !== "plural") {
-						lastKeys = [keyObj.type, keyObj.key];
-						currentValue = currentValue[keyObj.type][keyObj.key];
-					}
-				}
-				if (keyObj?.type === "markdown" || keyObj?.type === "html" || keyObj?.type === "insertion") {
-					lastKeys = [keyObj.type];
-					if (currentValue[keyObj.type] == null) currentValue[keyObj.type] = "";
-					currentValue = currentValue[keyObj.type];
-				}
-				if (keyObj?.type === "file") {
-					lastKeys = ["content"];
-					currentValue = currentValue.content;
-				}
-				if (i === keyPath.length - 1 && parentValue && lastKeys.length > 0) {
-					let target = parentValue;
-					for (const key of lastKeys.slice(0, -1)) target = target[key];
-					const finalKey = lastKeys[lastKeys.length - 1];
-					if (typeof newValue === "undefined") {
-						if (Array.isArray(target)) {
-							const index = Number(finalKey);
-							if (!Number.isNaN(index) && index >= 0 && index < target.length) target.splice(index, 1);
-						} else delete target[finalKey];
-					} else target[finalKey] = newValue;
+		localIds: [
+			"header::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"header::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"header::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"header::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"header::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"header::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"header::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"header::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"header::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"header::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"open-positions": {
+		key: "open-positions",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"buildAndMaintainOurBenchmarking\":\"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.\",\"technicalWriter\":\"Technical Writer\",\"createComprehensiveGuidesApiReferences\":\"Create comprehensive guides, API references, and tutorials for our benchmarking platform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"engageWithTheI18nCommunity\":\"Engage with the i18n community through talks, workshops, blog posts, and open source contributions.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.\",\"openPositions\":\"Open Positions\",\"applyNow\":\"Apply Now\",\"remote\":\"Remote\",\"fullTime\":\"Full-time\",\"partTime\":\"Part-time\",\"engineering\":\"Engineering\",\"documentation\":\"Documentation\",\"community\":\"Community\"},\"fr\":{\"seniorFrontendEngineer\":\"Ingénieur Frontend Senior\",\"buildAndMaintainOurBenchmarking\":\"Construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant React, TypeScript et Vite.\",\"backendEngineer\":\"Ingénieur Backend\",\"designAndScaleOurCloud\":\"Concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.\",\"technicalWriter\":\"Rédacteur Technique\",\"createComprehensiveGuidesApiReferences\":\"Créer des guides complets, des références API et des tutoriels pour notre plateforme de benchmarking.\",\"devrelEngineer\":\"Ingénieur DevRel\",\"sanFranciscoRemote\":\"San Francisco / Télétravail\",\"engageWithTheI18nCommunity\":\"S'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.\",\"qaEngineer\":\"Ingénieur QA\",\"ensureTheAccuracyAndReliability\":\"Assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.\",\"openPositions\":\"Postes Ouverts\",\"applyNow\":\"Postuler Maintenant\",\"remote\":\"Télétravail\",\"fullTime\":\"Temps plein\",\"partTime\":\"Temps partiel\",\"engineering\":\"Ingénierie\",\"documentation\":\"Documentation\",\"community\":\"Communauté\"},\"es\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"buildAndMaintainOurBenchmarking\":\"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.\",\"technicalWriter\":\"Technical Writer\",\"createComprehensiveGuidesApiReferences\":\"Create comprehensive guides, API references, and tutorials for our benchmarking platform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"engageWithTheI18nCommunity\":\"Engage with the i18n community through talks, workshops, blog posts, and open source contributions.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.\",\"openPositions\":\"Open Positions\",\"applyNow\":\"Apply Now\",\"remote\":\"Remote\",\"fullTime\":\"Full-time\",\"partTime\":\"Part-time\",\"engineering\":\"Engineering\",\"documentation\":\"Documentation\",\"community\":\"Community\"},\"de\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"buildAndMaintainOurBenchmarking\":\"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.\",\"technicalWriter\":\"Technical Writer\",\"createComprehensiveGuidesApiReferences\":\"Create comprehensive guides, API references, and tutorials for our benchmarking platform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"engageWithTheI18nCommunity\":\"Engage with the i18n community through talks, workshops, blog posts, and open source contributions.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.\",\"openPositions\":\"Open Positions\",\"applyNow\":\"Apply Now\",\"remote\":\"Remote\",\"fullTime\":\"Full-time\",\"partTime\":\"Part-time\",\"engineering\":\"Engineering\",\"documentation\":\"Documentation\",\"community\":\"Community\"},\"it\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"buildAndMaintainOurBenchmarking\":\"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.\",\"technicalWriter\":\"Technical Writer\",\"createComprehensiveGuidesApiReferences\":\"Create comprehensive guides, API references, and tutorials for our benchmarking platform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"engageWithTheI18nCommunity\":\"Engage with the i18n community through talks, workshops, blog posts, and open source contributions.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.\",\"openPositions\":\"Open Positions\",\"applyNow\":\"Apply Now\",\"remote\":\"Remote\",\"fullTime\":\"Full-time\",\"partTime\":\"Part-time\",\"engineering\":\"Engineering\",\"documentation\":\"Documentation\",\"community\":\"Community\"},\"pt\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"buildAndMaintainOurBenchmarking\":\"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.\",\"technicalWriter\":\"Technical Writer\",\"createComprehensiveGuidesApiReferences\":\"Create comprehensive guides, API references, and tutorials for our benchmarking platform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"engageWithTheI18nCommunity\":\"Engage with the i18n community through talks, workshops, blog posts, and open source contributions.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.\",\"openPositions\":\"Open Positions\",\"applyNow\":\"Apply Now\",\"remote\":\"Remote\",\"fullTime\":\"Full-time\",\"partTime\":\"Part-time\",\"engineering\":\"Engineering\",\"documentation\":\"Documentation\",\"community\":\"Community\"},\"zh\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"buildAndMaintainOurBenchmarking\":\"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.\",\"technicalWriter\":\"Technical Writer\",\"createComprehensiveGuidesApiReferences\":\"Create comprehensive guides, API references, and tutorials for our benchmarking platform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"engageWithTheI18nCommunity\":\"Engage with the i18n community through talks, workshops, blog posts, and open source contributions.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.\",\"openPositions\":\"Open Positions\",\"applyNow\":\"Apply Now\",\"remote\":\"Remote\",\"fullTime\":\"Full-time\",\"partTime\":\"Part-time\",\"engineering\":\"Engineering\",\"documentation\":\"Documentation\",\"community\":\"Community\"},\"ja\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"buildAndMaintainOurBenchmarking\":\"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.\",\"technicalWriter\":\"Technical Writer\",\"createComprehensiveGuidesApiReferences\":\"Create comprehensive guides, API references, and tutorials for our benchmarking platform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"engageWithTheI18nCommunity\":\"Engage with the i18n community through talks, workshops, blog posts, and open source contributions.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.\",\"openPositions\":\"Open Positions\",\"applyNow\":\"Apply Now\",\"remote\":\"Remote\",\"fullTime\":\"Full-time\",\"partTime\":\"Part-time\",\"engineering\":\"Engineering\",\"documentation\":\"Documentation\",\"community\":\"Community\"},\"ko\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"buildAndMaintainOurBenchmarking\":\"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.\",\"technicalWriter\":\"Technical Writer\",\"createComprehensiveGuidesApiReferences\":\"Create comprehensive guides, API references, and tutorials for our benchmarking platform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"engageWithTheI18nCommunity\":\"Engage with the i18n community through talks, workshops, blog posts, and open source contributions.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.\",\"openPositions\":\"Open Positions\",\"applyNow\":\"Apply Now\",\"remote\":\"Remote\",\"fullTime\":\"Full-time\",\"partTime\":\"Part-time\",\"engineering\":\"Engineering\",\"documentation\":\"Documentation\",\"community\":\"Community\"},\"ru\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"buildAndMaintainOurBenchmarking\":\"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.\",\"technicalWriter\":\"Technical Writer\",\"createComprehensiveGuidesApiReferences\":\"Create comprehensive guides, API references, and tutorials for our benchmarking platform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"engageWithTheI18nCommunity\":\"Engage with the i18n community through talks, workshops, blog posts, and open source contributions.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.\",\"openPositions\":\"Open Positions\",\"applyNow\":\"Apply Now\",\"remote\":\"Remote\",\"fullTime\":\"Full-time\",\"partTime\":\"Part-time\",\"engineering\":\"Engineering\",\"documentation\":\"Documentation\",\"community\":\"Community\"}}}"),
+		localIds: [
+			"open-positions::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"open-positions::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"open-positions::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"open-positions::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"open-positions::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"open-positions::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"open-positions::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"open-positions::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"open-positions::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"open-positions::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"careers-benefits": {
+		key: "careers-benefits",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"workFromAnywhereInThe": "Work from anywhere in the world",
+					"competitivePay": "Competitive pay",
+					"topOfMarketCompensation": "Top-of-market compensation",
+					"openSourceTime": "Open source time"
+				},
+				"fr": {
+					"workFromAnywhereInThe": "Travailler de n'importe où dans le monde",
+					"competitivePay": "Rémunération compétitive",
+					"topOfMarketCompensation": "Rémunération au-dessus du marché",
+					"openSourceTime": "Temps alloué à l'open source"
+				},
+				"es": {
+					"workFromAnywhereInThe": "Work from anywhere in the world",
+					"competitivePay": "Competitive pay",
+					"topOfMarketCompensation": "Top-of-market compensation",
+					"openSourceTime": "Open source time"
+				},
+				"de": {
+					"workFromAnywhereInThe": "Work from anywhere in the world",
+					"competitivePay": "Competitive pay",
+					"topOfMarketCompensation": "Top-of-market compensation",
+					"openSourceTime": "Open source time"
+				},
+				"it": {
+					"workFromAnywhereInThe": "Work from anywhere in the world",
+					"competitivePay": "Competitive pay",
+					"topOfMarketCompensation": "Top-of-market compensation",
+					"openSourceTime": "Open source time"
+				},
+				"pt": {
+					"workFromAnywhereInThe": "Work from anywhere in the world",
+					"competitivePay": "Competitive pay",
+					"topOfMarketCompensation": "Top-of-market compensation",
+					"openSourceTime": "Open source time"
+				},
+				"zh": {
+					"workFromAnywhereInThe": "Work from anywhere in the world",
+					"competitivePay": "Competitive pay",
+					"topOfMarketCompensation": "Top-of-market compensation",
+					"openSourceTime": "Open source time"
+				},
+				"ja": {
+					"workFromAnywhereInThe": "Work from anywhere in the world",
+					"competitivePay": "Competitive pay",
+					"topOfMarketCompensation": "Top-of-market compensation",
+					"openSourceTime": "Open source time"
+				},
+				"ko": {
+					"workFromAnywhereInThe": "Work from anywhere in the world",
+					"competitivePay": "Competitive pay",
+					"topOfMarketCompensation": "Top-of-market compensation",
+					"openSourceTime": "Open source time"
+				},
+				"ru": {
+					"workFromAnywhereInThe": "Work from anywhere in the world",
+					"competitivePay": "Competitive pay",
+					"topOfMarketCompensation": "Top-of-market compensation",
+					"openSourceTime": "Open source time"
 				}
 			}
-			return dictionaryContent;
-		} catch (error) {
-			console.error("Cannot edit dictionary by key path", {
-				dictionaryContent,
-				keyPath,
-				newValue
-			}, error);
-			return dictionaryContent;
-		}
-	};
-}));
-var getContentNodeByKeyPath;
-var init_getContentNodeByKeyPath = __esmMin((() => {
-	init_nodeType();
-	getContentNodeByKeyPath = (dictionaryContent, keyPath, fallbackLocale) => {
-		let currentValue = structuredClone(dictionaryContent);
-		for (const keyObj of keyPath) {
-			if (fallbackLocale && currentValue?.nodeType === "translation") currentValue = currentValue?.[TRANSLATION]?.[fallbackLocale];
-			if (keyObj.type === "object" || keyObj.type === "array") currentValue = currentValue?.[keyObj.key];
-			if (keyObj.type === "translation" || keyObj.type === "condition" || keyObj.type === "enumeration" || keyObj.type === "plural" || keyObj.type === "gender" || keyObj.type === "select") currentValue = currentValue?.[keyObj.type]?.[keyObj.key];
-			if (keyObj.type === "markdown" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") currentValue = currentValue?.[keyObj.type];
-		}
-		return currentValue;
-	};
-}));
-var renameContentNodeByKeyPath;
-var init_renameContentNodeByKeyPath = __esmMin((() => {
-	init_nodeType();
-	renameContentNodeByKeyPath = (dictionaryContent, newKey, keyPath) => {
-		let currentValue = dictionaryContent;
-		let parentValue = null;
-		let lastKey = null;
-		for (const keyObj of keyPath) {
-			parentValue = currentValue;
-			if (keyObj.type === "object" || keyObj.type === "array") {
-				lastKey = keyObj.key;
-				currentValue = currentValue[keyObj.key];
+		},
+		localIds: [
+			"careers-benefits::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"careers-benefits::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"careers-benefits::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"careers-benefits::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"careers-benefits::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"careers-benefits::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"careers-benefits::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"careers-benefits::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"careers-benefits::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"careers-benefits::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"settings": {
+		key: "settings",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"settings-header\":{\"manageYourAccountPreferencesAnd\":\"Manage your account preferences and configuration.\"},\"profile-section\":{\"displayName\":\"Display Name\",\"profile\":\"Profile\",\"email\":\"Email\"},\"preferences-section\":{\"emailNotifications\":\"Email Notifications\",\"receiveWeeklyBenchmarkReports\":\"Receive weekly benchmark reports\",\"toggleNotifications\":\"Toggle notifications\",\"darkMode\":\"Dark Mode\",\"useDarkColorScheme\":\"Use dark color scheme\",\"toggleDarkMode\":\"Toggle dark mode\",\"defaultLanguage\":\"Default Language\",\"englishEn\":\"English (en)\",\"frenchFr\":\"French (fr)\",\"germanDe\":\"German (de)\",\"spanishEs\":\"Spanish (es)\",\"japaneseJa\":\"Japanese (ja)\",\"chineseSimplifiedZhCn\":\"Chinese Simplified (zh-CN)\",\"arabicAr\":\"Arabic (ar)\"},\"api-access-section\":{\"apiAccess\":\"API Access\",\"apiKey\":\"API Key\",\"useThisKeyToAccess\":\"Use this key to access the benchmarking API programmatically.\"},\"settings-footer\":{\"saveChanges\":\"Save Changes\",\"cancel\":\"Cancel\"}},\"fr\":{\"settings-header\":{\"manageYourAccountPreferencesAnd\":\"Gérez vos préférences de compte et votre configuration.\"},\"profile-section\":{\"displayName\":\"Nom d'affichage\",\"profile\":\"Profil\",\"email\":\"Email\"},\"preferences-section\":{\"emailNotifications\":\"Notifications par email\",\"receiveWeeklyBenchmarkReports\":\"Recevoir des rapports hebdomadaires de benchmark\",\"toggleNotifications\":\"Basculer les notifications\",\"darkMode\":\"Mode sombre\",\"useDarkColorScheme\":\"Utiliser le schéma de couleurs sombres\",\"toggleDarkMode\":\"Basculer le mode sombre\",\"defaultLanguage\":\"Langue par défaut\",\"englishEn\":\"Anglais (en)\",\"frenchFr\":\"Français (fr)\",\"germanDe\":\"Allemand (de)\",\"spanishEs\":\"Espagnol (es)\",\"japaneseJa\":\"Japonais (ja)\",\"chineseSimplifiedZhCn\":\"Chinois simplifié (zh-CN)\",\"arabicAr\":\"Arabe (ar)\"},\"api-access-section\":{\"apiAccess\":\"Accès API\",\"apiKey\":\"Clé API\",\"useThisKeyToAccess\":\"Utilisez cette clé pour accéder à l'API de benchmarking par programmation.\"},\"settings-footer\":{\"saveChanges\":\"Enregistrer les modifications\",\"cancel\":\"Annuler\"}},\"es\":{\"settings-header\":{\"manageYourAccountPreferencesAnd\":\"Gestiona las preferencias y la configuración de tu cuenta.\"},\"profile-section\":{\"displayName\":\"Nombre visible\",\"profile\":\"Perfil\",\"email\":\"Correo electrónico\"},\"preferences-section\":{\"emailNotifications\":\"Notificaciones por correo electrónico\",\"receiveWeeklyBenchmarkReports\":\"Recibir informes semanales de benchmarks\",\"toggleNotifications\":\"Alternar notificaciones\",\"darkMode\":\"Modo oscuro\",\"useDarkColorScheme\":\"Usar esquema de colores oscuro\",\"toggleDarkMode\":\"Alternar modo oscuro\",\"defaultLanguage\":\"Idioma predeterminado\",\"englishEn\":\"Inglés (en)\",\"frenchFr\":\"Francés (fr)\",\"germanDe\":\"Allemand (de)\",\"spanishEs\":\"Español (es)\",\"japaneseJa\":\"Japonés (ja)\",\"chineseSimplifiedZhCn\":\"Chinois simplifié (zh-CN)\",\"arabicAr\":\"Árabe (ar)\"},\"api-access-section\":{\"apiAccess\":\"Acceso API\",\"apiKey\":\"Llave API\",\"useThisKeyToAccess\":\"Usa esta llave para acceder a la API de benchmarking de forma programática.\"},\"settings-footer\":{\"saveChanges\":\"Guardar cambios\",\"cancel\":\"Cancelar\"}},\"de\":{\"settings-header\":{\"manageYourAccountPreferencesAnd\":\"Verwalten Sie Ihre Kontoeinstellungen und Konfigurationen.\"},\"profile-section\":{\"displayName\":\"Anzeigename\",\"profile\":\"Profil\",\"email\":\"E-Mail\"},\"preferences-section\":{\"emailNotifications\":\"E-Mail-Benachrichtigungen\",\"receiveWeeklyBenchmarkReports\":\"Wöchentliche Benchmark-Berichte erhalten\",\"toggleNotifications\":\"Benachrichtigungen umschalten\",\"darkMode\":\"Dunkelmodus\",\"useDarkColorScheme\":\"Dunkles Farbschema verwenden\",\"toggleDarkMode\":\"Dunkelmodus umschalten\",\"defaultLanguage\":\"Standardsprache\",\"englishEn\":\"Englisch (en)\",\"frenchFr\":\"Französisch (fr)\",\"germanDe\":\"Deutsch (de)\",\"spanishEs\":\"Spanisch (es)\",\"japaneseJa\":\"Japanisch (ja)\",\"chineseSimplifiedZhCn\":\"Chinesisch vereinfacht (zh-CN)\",\"arabicAr\":\"Arabisch (ar)\"},\"api-access-section\":{\"apiAccess\":\"API-Zugriff\",\"apiKey\":\"API-Schlüssel\",\"useThisKeyToAccess\":\"Verwenden Sie diesen Schlüssel, um programmgesteuert auf die Benchmarking-API zuzugreifen.\"},\"settings-footer\":{\"saveChanges\":\"Änderungen speichern\",\"cancel\":\"Abbrechen\"}},\"it\":{\"settings-header\":{\"manageYourAccountPreferencesAnd\":\"Gestisci le preferenze del tuo account e la configurazione.\"},\"profile-section\":{\"displayName\":\"Nome visualizzato\",\"profile\":\"Profilo\",\"email\":\"Email\"},\"preferences-section\":{\"emailNotifications\":\"Notifiche via email\",\"receiveWeeklyBenchmarkReports\":\"Ricevi rapporti settimanali sui benchmark\",\"toggleNotifications\":\"Attiva/disattiva notifiche\",\"darkMode\":\"Modalità scura\",\"useDarkColorScheme\":\"Usa lo schema colori scuro\",\"toggleDarkMode\":\"Attiva/disattiva modalità scura\",\"defaultLanguage\":\"Lingua predefinita\",\"englishEn\":\"Inglese (en)\",\"frenchFr\":\"Francese (fr)\",\"germanDe\":\"Tedesco (de)\",\"spanishEs\":\"Spagnolo (es)\",\"japaneseJa\":\"Giapponese (ja)\",\"chineseSimplifiedZhCn\":\"Chinese semplificato (zh-CN)\",\"arabicAr\":\"Arabo (ar)\"},\"api-access-section\":{\"apiAccess\":\"Accesso API\",\"apiKey\":\"Chiave API\",\"useThisKeyToAccess\":\"Usa questa chiave per accedere programmaticamente alle API di benchmarking.\"},\"settings-footer\":{\"saveChanges\":\"Salva modifiche\",\"cancel\":\"Annulla\"}},\"pt\":{\"settings-header\":{\"manageYourAccountPreferencesAnd\":\"Gerencie as preferências de sua conta e a configuração.\"},\"profile-section\":{\"displayName\":\"Nome de exibição\",\"profile\":\"Perfil\",\"email\":\"E-mail\"},\"preferences-section\":{\"emailNotifications\":\"Notificações por e-mail\",\"receiveWeeklyBenchmarkReports\":\"Receber relatórios semanais de benchmarks\",\"toggleNotifications\":\"Alternar notificações\",\"darkMode\":\"Modo Escuro\",\"useDarkColorScheme\":\"Usar esquema de cores escuras\",\"toggleDarkMode\":\"Alternar modo escuro\",\"defaultLanguage\":\"Idioma Padrão\",\"englishEn\":\"Inglês (en)\",\"frenchFr\":\"Francês (fr)\",\"germanDe\":\"Alemão (de)\",\"spanishEs\":\"Espanhol (es)\",\"japaneseJa\":\"Japonês (ja)\",\"chineseSimplifiedZhCn\":\"Chinês simplificado (zh-CN)\",\"arabicAr\":\"Arabe (ar)\"},\"api-access-section\":{\"apiAccess\":\"Acesso à API\",\"apiKey\":\"Chave da API\",\"useThisKeyToAccess\":\"Utilize esta chave para acessar a API de benchmarking de forma programática.\"},\"settings-footer\":{\"saveChanges\":\"Salvar alterações\",\"cancel\":\"Cancelar\"}},\"zh\":{\"settings-header\":{\"manageYourAccountPreferencesAnd\":\"管理您的帐户首选项和配置。\"},\"profile-section\":{\"displayName\":\"显示名称\",\"profile\":\"个人资料\",\"email\":\"电子邮件\"},\"preferences-section\":{\"emailNotifications\":\"电子邮件通知\",\"receiveWeeklyBenchmarkReports\":\"接收每周基准测试报告\",\"toggleNotifications\":\"切换通知\",\"darkMode\":\"暗色模式\",\"useDarkColorScheme\":\"使用暗色配色方案\",\"toggleDarkMode\":\"切换暗色模式\",\"defaultLanguage\":\"默认语言\",\"englishEn\":\"英语 (en)\",\"frenchFr\":\"法语 (fr)\",\"germanDe\":\"德语 (de)\",\"spanishEs\":\"西班牙语 (es)\",\"japaneseJa\":\"日语 (ja)\",\"chineseSimplifiedZhCn\":\"中文简体 (zh-CN)\",\"arabicAr\":\"阿拉伯语 (ar)\"},\"api-access-section\":{\"apiAccess\":\"API 访问\",\"apiKey\":\"API 密钥\",\"useThisKeyToAccess\":\"使用此密钥以编程方式访问基准测试 API。\"},\"settings-footer\":{\"saveChanges\":\"保存更改\",\"cancel\":\"取消\"}},\"ja\":{\"settings-header\":{\"manageYourAccountPreferencesAnd\":\"アカウントの設定と構成を管理します。\"},\"profile-section\":{\"displayName\":\"表示名\",\"profile\":\"プロフィール\",\"email\":\"メールアドレス\"},\"preferences-section\":{\"emailNotifications\":\"メール通知\",\"receiveWeeklyBenchmarkReports\":\"週刊ベンチマークレポートを受け取る\",\"toggleNotifications\":\"通知を切り替える\",\"darkMode\":\"ダークモード\",\"useDarkColorScheme\":\"ダークカラー配分を使用\",\"toggleDarkMode\":\"ダークモードを切り替える\",\"defaultLanguage\":\"デフォルトの言語\",\"englishEn\":\"英語 (en)\",\"frenchFr\":\"フランス語 (fr)\",\"germanDe\":\"ドイツ語 (de)\",\"spanishEs\":\"スペイン語 (es)\",\"japaneseJa\":\"日本語 (ja)\",\"chineseSimplifiedZhCn\":\"中国語 簡体字 (zh-CN)\",\"arabicAr\":\"アラビア語 (ar)\"},\"api-access-section\":{\"apiAccess\":\"APIアクセス\",\"apiKey\":\"APIキー\",\"useThisKeyToAccess\":\"このキーを使用して、プログラムでベンチマークAPIにアクセスします。\"},\"settings-footer\":{\"saveChanges\":\"変更を保存\",\"cancel\":\"キャンセル\"}},\"ko\":{\"settings-header\":{\"manageYourAccountPreferencesAnd\":\"계정 기본 설정 및 구성을 관리합니다.\"},\"profile-section\":{\"displayName\":\"표시 이름\",\"profile\":\"프로필\",\"email\":\"이메일 주소\"},\"preferences-section\":{\"emailNotifications\":\"이메일 알림\",\"receiveWeeklyBenchmarkReports\":\"주간 벤치마크 보고서 받기\",\"toggleNotifications\":\"알림 토글\",\"darkMode\":\"다크 모드\",\"useDarkColorScheme\":\"어두운 색상 테마 사용\",\"toggleDarkMode\":\"다크 모드 토글\",\"defaultLanguage\":\"기본 언어\",\"englishEn\":\"영어 (en)\",\"frenchFr\":\"프랑스어 (fr)\",\"germanDe\":\"독일어 (de)\",\"spanishEs\":\"스페인어 (es)\",\"japaneseJa\":\"일본어 (ja)\",\"chineseSimplifiedZhCn\":\"중국어 간체 (zh-CN)\",\"arabicAr\":\"아랍어 (ar)\"},\"api-access-section\":{\"apiAccess\":\"API 액세스\",\"apiKey\":\"API 키\",\"useThisKeyToAccess\":\"이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오.\"},\"settings-footer\":{\"saveChanges\":\"변경 사항 저장\",\"cancel\":\"취소\"}},\"ru\":{\"settings-header\":{\"manageYourAccountPreferencesAnd\":\"Управляйте настройками и конфигурацией своего аккаунта.\"},\"profile-section\":{\"displayName\":\"Отображаемое имя\",\"profile\":\"Профиль\",\"email\":\"Эл. почта\"},\"preferences-section\":{\"emailNotifications\":\"Уведомления по эл. почте\",\"receiveWeeklyBenchmarkReports\":\"Получать еженедельные отчеты о бенчмарках\",\"toggleNotifications\":\"Переключить уведомления\",\"darkMode\":\"Темный режим\",\"useDarkColorScheme\":\"Использовать темную цветовую схему\",\"toggleDarkMode\":\"Переключить темный режим\",\"defaultLanguage\":\"Язык по умолчанию\",\"englishEn\":\"Английский (en)\",\"frenchFr\":\"Французский (fr)\",\"germanDe\":\"Немецкий (de)\",\"spanishEs\":\"Испанский (es)\",\"japaneseJa\":\"Японский (ja)\",\"chineseSimplifiedZhCn\":\"Китайский упрощенный (zh-CN)\",\"arabicAr\":\"Арабский (ar)\"},\"api-access-section\":{\"apiAccess\":\"Доступ к API\",\"apiKey\":\"Ключ API\",\"useThisKeyToAccess\":\"Используйте этот ключ для программного доступа к API бенчмаркинга.\"},\"settings-footer\":{\"saveChanges\":\"Сохранить изменения\",\"cancel\":\"Отмена\"}}}}"),
+		localIds: [
+			"settings::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"settings::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"settings::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"settings::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"settings::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"settings::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"settings::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"settings::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"settings::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"settings::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"footer": {
+		key: "footer",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"resources": "Resources",
+					"contact": "Contact",
+					"github": "GitHub",
+					"methodology": "Methodology",
+					"contributing": "Contributing",
+					"builtWith": "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.",
+					"anOpenSourceTestApplication": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+				},
+				"fr": {
+					"resources": "Ressources",
+					"contact": "Contact",
+					"github": "GitHub",
+					"methodology": "Méthodologie",
+					"contributing": "Contribuer",
+					"builtWith": "i18n Benchmark — Projet open source. Construit avec React, Vite & TanStack Router.",
+					"anOpenSourceTestApplication": "Une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application."
+				},
+				"es": {
+					"resources": "Recursos",
+					"contact": "Contacto",
+					"github": "GitHub",
+					"methodology": "Metodología",
+					"contributing": "Contribuir",
+					"builtWith": "i18n Benchmark — Proyecto de código abierto. Construido con React, Vite y TanStack Router.",
+					"anOpenSourceTestApplication": "Una aplicación de prueba de código abierto para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el tiempo de carga y la reactividad de la aplicación."
+				},
+				"de": {
+					"resources": "Ressourcen",
+					"contact": "Kontakt",
+					"github": "GitHub",
+					"methodology": "Methodik",
+					"contributing": "Beitragen",
+					"builtWith": "i18n Benchmark — Open-Source-Projekt. Erstellt mit React, Vite & TanStack Router.",
+					"anOpenSourceTestApplication": "Eine Open-Source-Testanwendung zur Messung der realen Auswirkungen von Internationalisierungs-Bibliotheken auf Bundle-Größe, Ladezeit und App-Reaktivität."
+				},
+				"it": {
+					"resources": "Risorse",
+					"contact": "Contatti",
+					"github": "GitHub",
+					"methodology": "Metodologia",
+					"contributing": "Contribuire",
+					"builtWith": "i18n Benchmark — Progetto open-source. Costruito con React, Vite e TanStack Router.",
+					"anOpenSourceTestApplication": "Un'applicazione di test open-source per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sui tempi di caricamento e sulla reattività dell'app."
+				},
+				"pt": {
+					"resources": "Recursos",
+					"contact": "Contato",
+					"github": "GitHub",
+					"methodology": "Metodologia",
+					"contributing": "Contribuir",
+					"builtWith": "i18n Benchmark — Projeto de código aberto. Construído com React, Vite & TanStack Router.",
+					"anOpenSourceTestApplication": "Uma aplicação de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, tempo de carregamento e reatividade do aplicativo."
+				},
+				"zh": {
+					"resources": "资源",
+					"contact": "联系我们",
+					"github": "GitHub",
+					"methodology": "方法论",
+					"contributing": "贡献",
+					"builtWith": "i18n Benchmark — 开源项目。使用 React、Vite 和 TanStack Router 构建。",
+					"anOpenSourceTestApplication": "一个开源测试应用程序，用于衡量国际化库对捆绑包大小、加载时间和应用程序反应性的真实影响。"
+				},
+				"ja": {
+					"resources": "リソース",
+					"contact": "お問い合わせ",
+					"github": "GitHub",
+					"methodology": "方法論",
+					"contributing": "貢献する",
+					"builtWith": "i18n Benchmark — オープンソースプロジェクト。React、Vite、TanStack Routerで構築されています。",
+					"anOpenSourceTestApplication": "国際化ライブラリがバンドルサイズ、ロード時間、アプリの反応性に与える実際の影響を測定するためのオープンソーステストアプリケーションです。"
+				},
+				"ko": {
+					"resources": "리소스",
+					"contact": "문의하기",
+					"github": "GitHub",
+					"methodology": "방법론",
+					"contributing": "기여하기",
+					"builtWith": "i18n Benchmark — 오픈 소스 프로젝트. React, Vite 및 TanStack Router로 구축되었습니다.",
+					"anOpenSourceTestApplication": "국제화 라이브러리가 번들 크기, 로딩 시간 및 앱 반응성에 미치는 실제 영향을 측정하기 위한 오픈 소스 테스트 애플리케이션입니다."
+				},
+				"ru": {
+					"resources": "Ресурсы",
+					"contact": "Контакт",
+					"github": "GitHub",
+					"methodology": "Методология",
+					"contributing": "Вклад",
+					"builtWith": "i18n Benchmark — Открытый проект. Построен на React, Vite и TanStack Router.",
+					"anOpenSourceTestApplication": "Открытое приложение для тестирования реального влияния библиотек интернационализации на размер бандла, время загрузки и отзывчивость приложения."
+				}
 			}
-			if (keyObj.type === "translation" || keyObj.type === "enumeration" || keyObj.type === "plural" || keyObj.type === "condition" || keyObj.type === "gender" || keyObj.type === "select") {
-				lastKey = keyObj.type;
-				currentValue = currentValue[keyObj.type][keyObj.key];
+		},
+		localIds: [
+			"footer::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"footer::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"footer::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"footer::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"footer::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"footer::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"footer::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"footer::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"footer::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"footer::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"results-table": {
+		key: "results-table",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"sampleResults": "Sample Results",
+					"bundleSize": "Bundle Size",
+					"lookupTime": "Lookup Time",
+					"lazyLoading": "Lazy Loading"
+				},
+				"fr": {
+					"sampleResults": "Résultats d'échantillon",
+					"bundleSize": "Taille du Bundle",
+					"lookupTime": "Temps de consultation",
+					"lazyLoading": "Chargement différé"
+				},
+				"es": {
+					"sampleResults": "Sample Results",
+					"bundleSize": "Bundle Size",
+					"lookupTime": "Lookup Time",
+					"lazyLoading": "Lazy Loading"
+				},
+				"de": {
+					"sampleResults": "Sample Results",
+					"bundleSize": "Bundle Size",
+					"lookupTime": "Lookup Time",
+					"lazyLoading": "Lazy Loading"
+				},
+				"it": {
+					"sampleResults": "Sample Results",
+					"bundleSize": "Bundle Size",
+					"lookupTime": "Lookup Time",
+					"lazyLoading": "Lazy Loading"
+				},
+				"pt": {
+					"sampleResults": "Sample Results",
+					"bundleSize": "Bundle Size",
+					"lookupTime": "Lookup Time",
+					"lazyLoading": "Lazy Loading"
+				},
+				"zh": {
+					"sampleResults": "Sample Results",
+					"bundleSize": "Bundle Size",
+					"lookupTime": "Lookup Time",
+					"lazyLoading": "Lazy Loading"
+				},
+				"ja": {
+					"sampleResults": "Sample Results",
+					"bundleSize": "Bundle Size",
+					"lookupTime": "Lookup Time",
+					"lazyLoading": "Lazy Loading"
+				},
+				"ko": {
+					"sampleResults": "Sample Results",
+					"bundleSize": "Bundle Size",
+					"lookupTime": "Lookup Time",
+					"lazyLoading": "Lazy Loading"
+				},
+				"ru": {
+					"sampleResults": "Sample Results",
+					"bundleSize": "Bundle Size",
+					"lookupTime": "Lookup Time",
+					"lazyLoading": "Lazy Loading"
+				}
 			}
-			if (keyObj.type === "markdown" || keyObj.type === "reactNode" || keyObj.type === "html" || keyObj.type === "insertion" || keyObj.type === "file") {
-				lastKey = keyObj.type;
-				currentValue = currentValue[keyObj.type];
+		},
+		localIds: [
+			"results-table::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"results-table::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"results-table::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"results-table::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"results-table::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"results-table::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"results-table::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"results-table::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"results-table::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"results-table::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"contact-form": {
+		key: "contact-form",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"yourName": "Your name",
+					"bugReport": "Bug Report",
+					"newBenchmarkIdea": "New Benchmark Idea",
+					"methodologyQuestion": "Methodology Question",
+					"describeYourQuestionOrIdea": "Describe your question or idea...",
+					"sendMessage": "Send Message"
+				},
+				"fr": {
+					"yourName": "Votre nom",
+					"bugReport": "Rapport de Bug",
+					"newBenchmarkIdea": "Nouvelle Idée de Benchmark",
+					"methodologyQuestion": "Question sur la Méthodologie",
+					"describeYourQuestionOrIdea": "Décrivez votre question ou idée...",
+					"sendMessage": "Envoyer le Message"
+				},
+				"es": {
+					"yourName": "Your name",
+					"bugReport": "Bug Report",
+					"newBenchmarkIdea": "New Benchmark Idea",
+					"methodologyQuestion": "Methodology Question",
+					"describeYourQuestionOrIdea": "Describe your question or idea...",
+					"sendMessage": "Send Message"
+				},
+				"de": {
+					"yourName": "Your name",
+					"bugReport": "Bug Report",
+					"newBenchmarkIdea": "New Benchmark Idea",
+					"methodologyQuestion": "Methodology Question",
+					"describeYourQuestionOrIdea": "Describe your question or idea...",
+					"sendMessage": "Send Message"
+				},
+				"it": {
+					"yourName": "Your name",
+					"bugReport": "Bug Report",
+					"newBenchmarkIdea": "New Benchmark Idea",
+					"methodologyQuestion": "Methodology Question",
+					"describeYourQuestionOrIdea": "Describe your question or idea...",
+					"sendMessage": "Send Message"
+				},
+				"pt": {
+					"yourName": "Your name",
+					"bugReport": "Bug Report",
+					"newBenchmarkIdea": "New Benchmark Idea",
+					"methodologyQuestion": "Methodology Question",
+					"describeYourQuestionOrIdea": "Describe your question or idea...",
+					"sendMessage": "Send Message"
+				},
+				"zh": {
+					"yourName": "Your name",
+					"bugReport": "Bug Report",
+					"newBenchmarkIdea": "New Benchmark Idea",
+					"methodologyQuestion": "Methodology Question",
+					"describeYourQuestionOrIdea": "Describe your question or idea...",
+					"sendMessage": "Send Message"
+				},
+				"ja": {
+					"yourName": "Your name",
+					"bugReport": "Bug Report",
+					"newBenchmarkIdea": "New Benchmark Idea",
+					"methodologyQuestion": "Methodology Question",
+					"describeYourQuestionOrIdea": "Describe your question or idea...",
+					"sendMessage": "Send Message"
+				},
+				"ko": {
+					"yourName": "Your name",
+					"bugReport": "Bug Report",
+					"newBenchmarkIdea": "New Benchmark Idea",
+					"methodologyQuestion": "Methodology Question",
+					"describeYourQuestionOrIdea": "Describe your question or idea...",
+					"sendMessage": "Send Message"
+				},
+				"ru": {
+					"yourName": "Your name",
+					"bugReport": "Bug Report",
+					"newBenchmarkIdea": "New Benchmark Idea",
+					"methodologyQuestion": "Methodology Question",
+					"describeYourQuestionOrIdea": "Describe your question or idea...",
+					"sendMessage": "Send Message"
+				}
 			}
-		}
-		if (parentValue && lastKey !== null) {
-			if (Array.isArray(parentValue)) parentValue[lastKey] = currentValue;
-			else {
-				const newParentValue = {};
-				for (const key of Object.keys(parentValue)) if (key === lastKey && typeof newKey !== "undefined") newParentValue[newKey] = currentValue;
-				else newParentValue[key] = parentValue[key];
-				Object.keys(parentValue).forEach((key) => {
-					delete parentValue[key];
-				});
-				Object.assign(parentValue, newParentValue);
+		},
+		localIds: [
+			"contact-form::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"contact-form::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"contact-form::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"contact-form::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"contact-form::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"contact-form::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"contact-form::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"contact-form::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"contact-form::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"contact-form::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"contact-header": {
+		key: "contact-header",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"getInTouch": "Get in Touch",
+					"haveIdeasFoundABug": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+				},
+				"fr": {
+					"getInTouch": "Contactez-nous",
+					"haveIdeasFoundABug": "Vous avez des idées, trouvé un bug ou vous voulez contribuer à un benchmark ? Contactez-nous à"
+				},
+				"es": {
+					"getInTouch": "Get in Touch",
+					"haveIdeasFoundABug": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+				},
+				"de": {
+					"getInTouch": "Get in Touch",
+					"haveIdeasFoundABug": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+				},
+				"it": {
+					"getInTouch": "Get in Touch",
+					"haveIdeasFoundABug": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+				},
+				"pt": {
+					"getInTouch": "Get in Touch",
+					"haveIdeasFoundABug": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+				},
+				"zh": {
+					"getInTouch": "Get in Touch",
+					"haveIdeasFoundABug": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+				},
+				"ja": {
+					"getInTouch": "Get in Touch",
+					"haveIdeasFoundABug": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+				},
+				"ko": {
+					"getInTouch": "Get in Touch",
+					"haveIdeasFoundABug": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+				},
+				"ru": {
+					"getInTouch": "Get in Touch",
+					"haveIdeasFoundABug": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+				}
 			}
-		}
-		return dictionaryContent;
-	};
-}));
-var init_dictionaryManipulator = __esmMin((() => {
-	init_qualifiedDictionary();
-	init_preloadedDynamicLoader();
-	init_qualifiedDynamicLoader();
-	init_editDictionaryByKeyPath();
-	init_getContentNodeByKeyPath();
-	init_renameContentNodeByKeyPath();
-}));
-export { init_qualifiedDynamicLoader as _, init_getContentNodeByKeyPath as a, init_utils as c, getLocaleFromStorageClient as d, init_localeStorage as f, init_preloadedDynamicLoader as g, getPreloadedDictionary as h, getContentNodeByKeyPath as i, init_isSameKeyPath as l, setLocaleInStorageClient as m, init_renameContentNodeByKeyPath as n, editDictionaryByKeyPath as o, localeStorageOptions as p, renameContentNodeByKeyPath as r, init_editDictionaryByKeyPath as s, init_dictionaryManipulator as t, isSameKeyPath as u, isQualifiedDynamicLoaderMap as v, resolveQualifiedDynamicContent as y };
-import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
-import { n as editor, r as init_built, t as analytics } from "./built-BvRk9kiK.js";
-import { n as init_isBot, r as isBotEnvironment } from "./isBot-DKThsp1Z.js";
-var hashString;
-var init_hash = __esmMin((() => {
-	hashString = (input) => {
-		let hash = 2166136261;
-		for (let index = 0; index < input.length; index++) {
-			hash ^= input.charCodeAt(index);
-			hash = Math.imul(hash, 16777619);
-		}
-		return hash >>> 0;
-	};
-}));
-var assignVariant;
-var init_abTesting = __esmMin((() => {
-	init_hash();
-	assignVariant = (sessionId, experimentKey, variants, weights) => {
-		if (variants.length === 0) throw new Error("assignVariant requires at least one variant");
-		if (variants.length === 1) return variants[0];
-		const bucket = hashString(`${sessionId}:${experimentKey}`) / 4294967296;
-		if (!weights || weights.length !== variants.length) {
-			const index = Math.floor(bucket * variants.length);
-			return variants[Math.min(index, variants.length - 1)];
-		}
-		const totalWeight = weights.reduce((sum, weight) => sum + weight, 0);
-		if (totalWeight <= 0) return variants[Math.floor(bucket * variants.length)];
-		let cumulative = 0;
-		const target = bucket * totalWeight;
-		for (let index = 0; index < variants.length; index++) {
-			cumulative += weights[index];
-			if (target < cumulative) return variants[index];
-		}
-		return variants[variants.length - 1];
-	};
-}));
-var KEY_SEPARATOR, exposureKey, createEventBuffer;
-var init_eventBuffer = __esmMin((() => {
-	KEY_SEPARATOR = "";
-	exposureKey = (event) => [
-		event.url,
-		event.dictionaryKey,
-		event.keyPath,
-		event.locale,
-		event.experimentKey ?? "",
-		event.variant ?? ""
-	].join(KEY_SEPARATOR);
-	createEventBuffer = ({ max }) => {
-		let discreteEvents = [];
-		const exposures = /* @__PURE__ */ new Map();
-		const size = () => discreteEvents.length + exposures.size;
-		const enforceCap = () => {
-			while (size() > max && exposures.size > 0) {
-				const oldestKey = exposures.keys().next().value;
-				exposures.delete(oldestKey);
+		},
+		localIds: [
+			"contact-header::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"contact-header::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"contact-header::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"contact-header::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"contact-header::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"contact-header::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"contact-header::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"contact-header::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"contact-header::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"contact-header::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"about-grid": {
+		key: "about-grid",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"whyThisExists": "Why This Exists",
+					"choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+					"methodology": "Methodology",
+					"theSame10PageApp": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+				},
+				"fr": {
+					"whyThisExists": "Pourquoi ce Projet Existe",
+					"choosingAnI18nLibraryIs": "Choisir une bibliothèque i18n est une décision d'architecture aux conséquences à long terme. La plupart des comparaisons se concentrent sur l'ergonomie de l'API, mais peu mesurent le coût en performance : quel poids la bibliothèque ajoute-t-elle au bundle ? Quel est son impact sur le rendu lorsque des milliers de clés de traduction sont chargées ? Le chargement asynchrone aide-t-il vraiment ou déplace-t-il simplement le coût ? Ce benchmark répond à ces questions avec des données réelles.",
+					"methodology": "Méthodologie",
+					"theSame10PageApp": "La même application de 10 pages est construite une fois par bibliothèque. Nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits Lighthouse pour les métriques de chargement et utilisons le React Profiler pour capturer les temps de rendu lors des changements de locale. Tous les tests s'exécutent en CI sur du matériel constant pour garantir des résultats reproductibles."
+				},
+				"es": {
+					"whyThisExists": "Why This Exists",
+					"choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+					"methodology": "Methodology",
+					"theSame10PageApp": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+				},
+				"de": {
+					"whyThisExists": "Why This Exists",
+					"choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+					"methodology": "Methodology",
+					"theSame10PageApp": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+				},
+				"it": {
+					"whyThisExists": "Why This Exists",
+					"choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+					"methodology": "Methodology",
+					"theSame10PageApp": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+				},
+				"pt": {
+					"whyThisExists": "Why This Exists",
+					"choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+					"methodology": "Methodology",
+					"theSame10PageApp": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+				},
+				"zh": {
+					"whyThisExists": "Why This Exists",
+					"choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+					"methodology": "Methodology",
+					"theSame10PageApp": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+				},
+				"ja": {
+					"whyThisExists": "Why This Exists",
+					"choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+					"methodology": "Methodology",
+					"theSame10PageApp": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+				},
+				"ko": {
+					"whyThisExists": "Why This Exists",
+					"choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+					"methodology": "Methodology",
+					"theSame10PageApp": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+				},
+				"ru": {
+					"whyThisExists": "Why This Exists",
+					"choosingAnI18nLibraryIs": "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.",
+					"methodology": "Methodology",
+					"theSame10PageApp": "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+				}
 			}
-			if (size() > max) discreteEvents = discreteEvents.slice(size() - max);
-		};
-		const push = (event) => {
-			if (event.type === "content_exposure") {
-				const key = exposureKey(event);
-				const existing = exposures.get(key);
-				if (existing) {
-					existing.count = (existing.count ?? 1) + (event.count ?? 1);
-					existing.t = event.t;
-				} else exposures.set(key, {
-					...event,
-					count: event.count ?? 1
-				});
-			} else discreteEvents.push(event);
-			enforceCap();
-			return size();
-		};
-		const drain = () => {
-			const drained = [...discreteEvents, ...exposures.values()];
-			discreteEvents = [];
-			exposures.clear();
-			return drained;
-		};
-		return {
-			push,
-			drain,
-			size
-		};
-	};
-}));
-var isSampledIn;
-var init_sampling = __esmMin((() => {
-	init_hash();
-	isSampledIn = (sessionId, sampleRate) => {
-		if (sampleRate >= 1) return true;
-		if (sampleRate <= 0) return false;
-		return hashString(sessionId) / 4294967295 < sampleRate;
-	};
-}));
-var SESSION_STORAGE_KEY, generateSessionId, getSessionId;
-var init_session = __esmMin((() => {
-	SESSION_STORAGE_KEY = "__intlayer_analytics_sid__";
-	generateSessionId = () => {
-		const cryptoObj = typeof globalThis !== "undefined" ? globalThis.crypto : void 0;
-		if (cryptoObj?.randomUUID) return cryptoObj.randomUUID();
-		return `${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 10)}`;
-	};
-	getSessionId = () => {
-		if (typeof window === "undefined" || !window.sessionStorage) return generateSessionId();
-		try {
-			const existing = window.sessionStorage.getItem(SESSION_STORAGE_KEY);
-			if (existing) return existing;
-			const created = generateSessionId();
-			window.sessionStorage.setItem(SESSION_STORAGE_KEY, created);
-			return created;
-		} catch {
-			return generateSessionId();
-		}
-	};
-}));
-var sendEvents;
-var init_transport = __esmMin((() => {
-	sendEvents = (endpoint, body, { useBeacon = false, token } = {}) => {
-		try {
-			const payload = JSON.stringify(body);
-			if (useBeacon && typeof navigator !== "undefined" && typeof navigator.sendBeacon === "function") return navigator.sendBeacon(endpoint, payload);
-			if (typeof fetch === "function") {
-				fetch(endpoint, {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						...token ? { Authorization: `Bearer ${token}` } : {}
+		},
+		localIds: [
+			"about-grid::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"about-grid::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"about-grid::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"about-grid::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"about-grid::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"about-grid::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"about-grid::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"about-grid::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"about-grid::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"about-grid::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"mockBanner": {
+		key: "mockBanner",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.",
+				"fr": "⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.",
+				"es": "⚠️ Esta página contiene datos ficticios solo con fines de benchmarking. No está relacionada con ninguna empresa o servicio real.",
+				"de": "⚠️ Diese Seite enthält fiktive Daten nur zu Benchmarking-Zwecken. Sie steht in keiner Verbindung zu einem realen Unternehmen oder einer Dienstleistung.",
+				"it": "⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.",
+				"pt": "⚠️ Esta página contém dados simulados apenas para fins de benchmarking. Não está relacionada com nenhum negócio ou serviço real.",
+				"zh": "⚠️ 本页面包含模拟数据，仅供基准测试之用。与任何真实业务或服务无关。",
+				"ja": "⚠️ このページには、ベンチマーク目的のみの模擬データが含まれています。実際のビジネスやサービスとは関係ありません。",
+				"ko": "⚠️ 이 페이지에는 벤치마킹 목적으로만 사용되는 모의 데이터가 포함되어 있습니다. 실제 비즈니스나 서비스와는 관련이 없습니다.",
+				"ru": "⚠️ Эта страница содержит имитационные данные только для целей тестирования. Она не связана с каким-либо реальным бизнесом или услугой."
+			}
+		},
+		localIds: [
+			"mockBanner::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"mockBanner::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"mockBanner::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"mockBanner::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"mockBanner::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"mockBanner::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"mockBanner::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"mockBanner::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"mockBanner::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"mockBanner::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"theme-toggle": {
+		key: "theme-toggle",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"themeModeAutoSystemClick": "Theme mode: auto (system). Click to switch to light mode.",
+					"themeModeLightClick": "Theme mode: light. Click to switch to dark mode.",
+					"themeModeDarkClick": "Theme mode: dark. Click to switch to auto (system) mode.",
+					"themeAuto": "Theme: Auto",
+					"themeDark": "Theme: Dark",
+					"themeLight": "Theme: Light"
+				},
+				"fr": {
+					"themeModeAutoSystemClick": "Mode thématique : auto (système). Cliquez pour passer en mode clair.",
+					"themeModeLightClick": "Mode thématique : clair. Cliquez pour passer en mode sombre.",
+					"themeModeDarkClick": "Mode thématique : sombre. Cliquez pour passer en mode auto (système).",
+					"themeAuto": "Thème : Auto",
+					"themeDark": "Thème : Sombre",
+					"themeLight": "Thème : Clair"
+				},
+				"es": {
+					"themeModeAutoSystemClick": "Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.",
+					"themeModeLightClick": "Modo de tema: claro. Haz clic para cambiar al modo oscuro.",
+					"themeModeDarkClick": "Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).",
+					"themeAuto": "Tema: Auto",
+					"themeDark": "Tema: Oscuro",
+					"themeLight": "Tema: Claro"
+				},
+				"de": {
+					"themeModeAutoSystemClick": "Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.",
+					"themeModeLightClick": "Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.",
+					"themeModeDarkClick": "Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.",
+					"themeAuto": "Thema: Auto",
+					"themeDark": "Thema: Dunkel",
+					"themeLight": "Thema: Hell"
+				},
+				"it": {
+					"themeModeAutoSystemClick": "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.",
+					"themeModeLightClick": "Modalità tema: chiara. Clicca per passare alla modalità scura.",
+					"themeModeDarkClick": "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).",
+					"themeAuto": "Tema: Auto",
+					"themeDark": "Tema: Scuro",
+					"themeLight": "Tema: Chiaro"
+				},
+				"pt": {
+					"themeModeAutoSystemClick": "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
+					"themeModeLightClick": "Modo de tema: claro. Clique para mudar para o modo escuro.",
+					"themeModeDarkClick": "Modo de tema: escuro. Clique para mudar para o modo automático (sistema).",
+					"themeAuto": "Tema: Auto",
+					"themeDark": "Tema: Escuro",
+					"themeLight": "Tema: Claro"
+				},
+				"zh": {
+					"themeModeAutoSystemClick": "主题模式：自动（系统）。点击切换到亮色模式。",
+					"themeModeLightClick": "主题模式：亮色。点击切换到暗色模式。",
+					"themeModeDarkClick": "主题模式：暗色。点击切换到自动（系统）模式。",
+					"themeAuto": "主题：自动",
+					"themeDark": "主题：暗色",
+					"themeLight": "主题：亮色"
+				},
+				"ja": {
+					"themeModeAutoSystemClick": "テーマモード: 自動 (システム)。クリックしてライトモードに切り替えます。",
+					"themeModeLightClick": "テーマモード: ライト。クリックしてダークモードに切り替えます。",
+					"themeModeDarkClick": "テーマモード: ダーク。クリックして自動 (システム) モードに切り替えます。",
+					"themeAuto": "テーマ: 自動",
+					"themeDark": "テーマ: ダーク",
+					"themeLight": "テーマ: ライト"
+				},
+				"ko": {
+					"themeModeAutoSystemClick": "테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.",
+					"themeModeLightClick": "테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.",
+					"themeModeDarkClick": "테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.",
+					"themeAuto": "테마: 자동",
+					"themeDark": "테마: 다크",
+					"themeLight": "테마: 라이트"
+				},
+				"ru": {
+					"themeModeAutoSystemClick": "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.",
+					"themeModeLightClick": "Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.",
+					"themeModeDarkClick": "Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.",
+					"themeAuto": "Тема: Авто",
+					"themeDark": "Тема: Темная",
+					"themeLight": "Тема: Светлая"
+				}
+			}
+		},
+		localIds: [
+			"theme-toggle::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"theme-toggle::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"theme-toggle::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"theme-toggle::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"theme-toggle::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"theme-toggle::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"theme-toggle::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"theme-toggle::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"theme-toggle::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"theme-toggle::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"about-header": {
+		key: "about-header",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"aboutThisBenchmark": "About This Benchmark",
+					"thisIsAnOpenSource": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+				},
+				"fr": {
+					"aboutThisBenchmark": "À propos de ce Benchmark",
+					"thisIsAnOpenSource": "Ceci est une application de test open-source — pas un produit ou une entreprise. Son seul but est de fournir une application React multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques."
+				},
+				"es": {
+					"aboutThisBenchmark": "About This Benchmark",
+					"thisIsAnOpenSource": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+				},
+				"de": {
+					"aboutThisBenchmark": "About This Benchmark",
+					"thisIsAnOpenSource": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+				},
+				"it": {
+					"aboutThisBenchmark": "About This Benchmark",
+					"thisIsAnOpenSource": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+				},
+				"pt": {
+					"aboutThisBenchmark": "About This Benchmark",
+					"thisIsAnOpenSource": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+				},
+				"zh": {
+					"aboutThisBenchmark": "About This Benchmark",
+					"thisIsAnOpenSource": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+				},
+				"ja": {
+					"aboutThisBenchmark": "About This Benchmark",
+					"thisIsAnOpenSource": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+				},
+				"ko": {
+					"aboutThisBenchmark": "About This Benchmark",
+					"thisIsAnOpenSource": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+				},
+				"ru": {
+					"aboutThisBenchmark": "About This Benchmark",
+					"thisIsAnOpenSource": "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+				}
+			}
+		},
+		localIds: [
+			"about-header::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"about-header::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"about-header::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"about-header::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"about-header::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"about-header::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"about-header::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"about-header::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"about-header::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"about-header::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"faq-header1": {
+		key: "faq-header1",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"frequentlyAskedQuestions": "Frequently Asked Questions",
+					"everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+				},
+				"fr": {
+					"frequentlyAskedQuestions": "Foire Aux Questions",
+					"everythingYouNeedToKnow": "Tout ce que vous devez savoir sur i18n Benchmark."
+				},
+				"es": {
+					"frequentlyAskedQuestions": "Frequently Asked Questions",
+					"everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+				},
+				"de": {
+					"frequentlyAskedQuestions": "Frequently Asked Questions",
+					"everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+				},
+				"it": {
+					"frequentlyAskedQuestions": "Frequently Asked Questions",
+					"everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+				},
+				"pt": {
+					"frequentlyAskedQuestions": "Frequently Asked Questions",
+					"everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+				},
+				"zh": {
+					"frequentlyAskedQuestions": "Frequently Asked Questions",
+					"everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+				},
+				"ja": {
+					"frequentlyAskedQuestions": "Frequently Asked Questions",
+					"everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+				},
+				"ko": {
+					"frequentlyAskedQuestions": "Frequently Asked Questions",
+					"everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+				},
+				"ru": {
+					"frequentlyAskedQuestions": "Frequently Asked Questions",
+					"everythingYouNeedToKnow": "Everything you need to know about i18n Benchmark."
+				}
+			}
+		},
+		localIds: [
+			"faq-header1::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"faq-header1::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"faq-header1::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"faq-header1::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"faq-header1::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"faq-header1::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"faq-header1::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"faq-header1::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"faq-header1::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"faq-header1::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"careers": {
+		key: "careers",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"careers-header\":{\"title\":\"Careers\",\"joinOurMissionToImprove\":\"Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning.\"},\"careers-benefits\":{\"workFromAnywhereInThe\":\"Work from anywhere in the world\",\"competitivePay\":\"Competitive pay\",\"topOfMarketCompensation\":\"Top-of-market compensation\",\"openSourceTime\":\"Open source time\"},\"open-positions\":{\"seniorFrontendEngineer\":\"Senior Frontend Engineer\",\"buildAndMaintainOurBenchmarking\":\"Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.\",\"backendEngineer\":\"Backend Engineer\",\"designAndScaleOurCloud\":\"Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.\",\"technicalWriter\":\"Technical Writer\",\"createComprehensiveGuidesApiReferences\":\"Create comprehensive guides, API references, and tutorials for our benchmarking platform.\",\"devrelEngineer\":\"DevRel Engineer\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"engageWithTheI18nCommunity\":\"Engage with the i18n community through talks, workshops, blog posts, and open source contributions.\",\"qaEngineer\":\"QA Engineer\",\"ensureTheAccuracyAndReliability\":\"Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.\",\"openPositions\":\"Open Positions\",\"applyNow\":\"Apply Now\",\"remote\":\"Remote\",\"fullTime\":\"Full-time\",\"partTime\":\"Part-time\",\"engineering\":\"Engineering\",\"documentation\":\"Documentation\",\"community\":\"Community\"}},\"fr\":{\"careers-header\":{\"title\":\"Carrières\",\"joinOurMissionToImprove\":\"Rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. Nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.\"},\"careers-benefits\":{\"workFromAnywhereInThe\":\"Travaillez de n'importe où dans le monde\",\"competitivePay\":\"Rémunération compétitive\",\"topOfMarketCompensation\":\"Rémunération au-dessus du marché\",\"openSourceTime\":\"Temps dédié à l'open source\"},\"open-positions\":{\"seniorFrontendEngineer\":\"Ingénieur Frontend Senior\",\"buildAndMaintainOurBenchmarking\":\"Construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant React, TypeScript et Vite.\",\"backendEngineer\":\"Ingénieur Backend\",\"designAndScaleOurCloud\":\"Concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.\",\"technicalWriter\":\"Rédacteur technique\",\"createComprehensiveGuidesApiReferences\":\"Créer des guides complets, des références d'API et des tutoriels pour notre plateforme de benchmarking.\",\"devrelEngineer\":\"Ingénieur DevRel\",\"sanFranciscoRemote\":\"San Francisco / À distance\",\"engageWithTheI18nCommunity\":\"Interagir avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.\",\"qaEngineer\":\"Ingénieur QA\",\"ensureTheAccuracyAndReliability\":\"Garantir l'exactitude et la fiabilité des résultats de benchmark par des tests et des validations rigoureux.\",\"openPositions\":\"Postes ouverts\",\"applyNow\":\"Postuler maintenant\",\"remote\":\"À distance\",\"fullTime\":\"Temps plein\",\"partTime\":\"Temps partiel\",\"engineering\":\"Ingénierie\",\"documentation\":\"Documentation\",\"community\":\"Communauté\"}},\"es\":{\"careers-header\":{\"title\":\"Carreras\",\"joinOurMissionToImprove\":\"Únete a nuestra misión de mejorar el ecosistema de internacionalización. Somos un equipo que prioriza el trabajo remoto y valora el impacto, la transparencia y el aprendizaje continuo.\"},\"careers-benefits\":{\"workFromAnywhereInThe\":\"Trabaja desde cualquier lugar del mundo\",\"competitivePay\":\"Salario competitivo\",\"topOfMarketCompensation\":\"Compensación superior a la del mercado\",\"openSourceTime\":\"Tiempo dedicado al código abierto\"},\"open-positions\":{\"seniorFrontendEngineer\":\"Ingeniero Frontend Senior\",\"buildAndMaintainOurBenchmarking\":\"Construir y mantener nuestro panel de benchmarking y herramientas para desarrolladores utilizando React, TypeScript y Vite.\",\"backendEngineer\":\"Ingeniero Backend\",\"designAndScaleOurCloud\":\"Diseñar y escalar nuestra infraestructura de benchmarking en la nube que gestiona miles de ejecuciones automatizadas diariamente.\",\"technicalWriter\":\"Escritor técnico\",\"createComprehensiveGuidesApiReferences\":\"Crear guías completas, referencias de API y tutoriales para nuestra plataforma de benchmarking.\",\"devrelEngineer\":\"Ingeniero DevRel\",\"sanFranciscoRemote\":\"San Francisco / Remoto\",\"engageWithTheI18nCommunity\":\"Interactuar con la comunidad i18n a través de charlas, talleres, publicaciones en blogs y contribuciones de código abierto.\",\"qaEngineer\":\"Ingeniero QA\",\"ensureTheAccuracyAndReliability\":\"Garantizar la precisión y fiabilidad de los resultados del benchmark mediante pruebas y validaciones rigurosas.\",\"openPositions\":\"Puestos vacantes\",\"applyNow\":\"Postular ahora\",\"remote\":\"Remoto\",\"fullTime\":\"Tiempo completo\",\"partTime\":\"Tiempo parcial\",\"engineering\":\"Ingeniería\",\"documentation\":\"Documentación\",\"community\":\"Comunidad\"}},\"de\":{\"careers-header\":{\"title\":\"Karriere\",\"joinOurMissionToImprove\":\"Schließen Sie sich unserer Mission an, das Internationalisierungs-Ökosystem zu verbessern. Wir sind ein Remote-First-Team, das Wirkung, Transparenz und kontinuierliches Lernen schätzt.\"},\"careers-benefits\":{\"workFromAnywhereInThe\":\"Arbeiten Sie von überall auf der Welt\",\"competitivePay\":\"Wettbewerbsfähige Bezahlung\",\"topOfMarketCompensation\":\"Überdurchschnittliche Vergütung\",\"openSourceTime\":\"Zeit für Open Source\"},\"open-positions\":{\"seniorFrontendEngineer\":\"Senior Frontend-Entwickler\",\"buildAndMaintainOurBenchmarking\":\"Erstellen und Verwalten unseres Benchmarking-Dashboards und der Entwickler-Tools mit React, TypeScript und Vite.\",\"backendEngineer\":\"Backend-Entwickler\",\"designAndScaleOurCloud\":\"Design und Skalierung unserer Cloud-Benchmarking-Infrastruktur, die täglich Tausende von automatisierten Durchläufen verarbeitet.\",\"technicalWriter\":\"Technischer Redakteur\",\"createComprehensiveGuidesApiReferences\":\"Erstellen von umfassenden Leitfäden, API-Referenzen und Tutorials für unsere Benchmarking-Plattform.\",\"devrelEngineer\":\"DevRel-Ingenieur\",\"sanFranciscoRemote\":\"San Francisco / Remote\",\"engageWithTheI18nCommunity\":\"Austausch mit der i18n-Community durch Vorträge, Workshops, Blog-Posts und Open-Source-Beiträge.\",\"qaEngineer\":\"QA-Ingenieur\",\"ensureTheAccuracyAndReliability\":\"Sicherstellung der Genauigkeit und Zuverlässigkeit der Benchmark-Ergebnisse durch strenge Tests und Validierungen.\",\"openPositions\":\"Offene Stellen\",\"applyNow\":\"Jetzt bewerben\",\"remote\":\"Remote\",\"fullTime\":\"Vollzeit\",\"partTime\":\"Teilzeit\",\"engineering\":\"Entwicklung\",\"documentation\":\"Dokumentation\",\"community\":\"Community\"}},\"it\":{\"careers-header\":{\"title\":\"Carriere\",\"joinOurMissionToImprove\":\"Unisciti alla nostra missione per migliorare l'ecosistema dell'internazionalizzazione. Siamo un team che lavora principalmente in remoto e che valorizza l'impatto, la trasparenza e l'apprendimento continuo.\"},\"careers-benefits\":{\"workFromAnywhereInThe\":\"Lavora da qualsiasi parte del mondo\",\"competitivePay\":\"Retribuzione competitiva\",\"topOfMarketCompensation\":\"Compensazione ai vertici del mercato\",\"openSourceTime\":\"Tempo dedicato all'open source\"},\"open-positions\":{\"seniorFrontendEngineer\":\"Ingegnere Frontend Senior\",\"buildAndMaintainOurBenchmarking\":\"Costruisci e mantieni la nostra dashboard di benchmarking e gli strumenti per sviluppatori utilizzando React, TypeScript e Vite.\",\"backendEngineer\":\"Ingegnere Backend\",\"designAndScaleOurCloud\":\"Progetta e scala la nostra infrastruttura di benchmarking cloud gestendo migliaia di esecuzioni automatiche giornaliere.\",\"technicalWriter\":\"Scrittore tecnico\",\"createComprehensiveGuidesApiReferences\":\"Crea guide complete, riferimenti API e tutorial per la nostra piattaforma di benchmarking.\",\"devrelEngineer\":\"Ingegnere DevOps\",\"sanFranciscoRemote\":\"San Francisco / Remoto\",\"engageWithTheI18nCommunity\":\"Interagisci con la comunità i18n attraverso conferenze, workshop, post sul blog e contributi open source.\",\"qaEngineer\":\"Ingegnere QA\",\"ensureTheAccuracyAndReliability\":\"Garantisci l'accuratezza e l'affidabilità dei risultati dei benchmark attraverso test e validazioni rigorosi.\",\"openPositions\":\"Posizioni aperte\",\"applyNow\":\"Candidati ora\",\"remote\":\"Remoto\",\"fullTime\":\"Tempo pieno\",\"partTime\":\"Part-time\",\"engineering\":\"Ingegneria\",\"documentation\":\"Documentazione\",\"community\":\"Comunità\"}},\"pt\":{\"careers-header\":{\"title\":\"Carreiras\",\"joinOurMissionToImprove\":\"Junte-se à nossa missão de melhorar o ecossistema de internacionalização. Somos uma equipe que prioriza o trabalho remoto e valora o impacto, a transparência e o aprendizado contínuo.\"},\"careers-benefits\":{\"workFromAnywhereInThe\":\"Trabalhe de qualquer lugar do mundo\",\"competitivePay\":\"Remuneração competitiva\",\"topOfMarketCompensation\":\"Remuneração acima da média do mercado\",\"openSourceTime\":\"Tempo dedicado ao código aberto\"},\"open-positions\":{\"seniorFrontendEngineer\":\"Engenheiro Frontend Sênior\",\"buildAndMaintainOurBenchmarking\":\"Construir e manter nosso painel de benchmarking e ferramentas de desenvolvedor usando React, TypeScript e Vite.\",\"backendEngineer\":\"Engenheiro Backend\",\"designAndScaleOurCloud\":\"Projetar e escalar nossa infraestrutura de benchmarking na nuvem, lidando com milhares de execuções automatizadas diariamente.\",\"technicalWriter\":\"Redator Técnico\",\"createComprehensiveGuidesApiReferences\":\"Criar guias abrangentes, referências de API e tutoriais para nossa plataforma de benchmarking.\",\"devrelEngineer\":\"Engenheiro DevRel\",\"sanFranciscoRemote\":\"San Francisco / Remoto\",\"engageWithTheI18nCommunity\":\"Interagir com a comunidade i18n por meio de palestras, workshops, postagens em blogs e contribuições de código aberto.\",\"qaEngineer\":\"Engenheiro QA\",\"ensureTheAccuracyAndReliability\":\"Garantir a precisão e confiabilidade dos resultados de benchmark por meio de testes e validações rigorosos.\",\"openPositions\":\"Vagas abertas\",\"applyNow\":\"Candidatar-se agora\",\"remote\":\"Remoto\",\"fullTime\":\"Tempo integral\",\"partTime\":\"Tempo parcial\",\"engineering\":\"Engenharia\",\"documentation\":\"Documentação\",\"community\":\"Comunidade\"}},\"zh\":{\"careers-header\":{\"title\":\"招聘\",\"joinOurMissionToImprove\":\"加入我们的使命，改善国际化生态系统。我们是一个远程优先的团队，重视影响力、透明度和持续学习。\"},\"careers-benefits\":{\"workFromAnywhereInThe\":\"在世界任何地方工作\",\"competitivePay\":\"具有竞争力的薪酬\",\"topOfMarketCompensation\":\"市场领先的薪酬\",\"openSourceTime\":\"开源贡献时间\"},\"open-positions\":{\"seniorFrontendEngineer\":\"高级前端工程师\",\"buildAndMaintainOurBenchmarking\":\"使用 React、TypeScript 和 Vite 构建和维护我们的基准测试仪表板和开发人员工具。\",\"backendEngineer\":\"后端工程师\",\"designAndScaleOurCloud\":\"设计和扩展我们的云基准测试基础设施，处理每天数千次自动化运行。\",\"technicalWriter\":\"技术文档工程师\",\"createComprehensiveGuidesApiReferences\":\"为我们的基准测试平台创建全面的指南、API 参考和教程。\",\"devrelEngineer\":\"开发者关系工程师\",\"sanFranciscoRemote\":\"旧金山 / 远程\",\"engageWithTheI18nCommunity\":\"通过演讲、工作坊、博客文章和开源贡献与 i18n 社区互动。\",\"qaEngineer\":\"测试工程师\",\"ensureTheAccuracyAndReliability\":\"通过严格的测试和验证，确保基准测试结果的准确性和可靠性。\",\"openPositions\":\"开放职位\",\"applyNow\":\"立即申请\",\"remote\":\"远程\",\"fullTime\":\"全职\",\"partTime\":\"兼职\",\"engineering\":\"工程\",\"documentation\":\"文档\",\"community\":\"社区\"}},\"ja\":{\"careers-header\":{\"title\":\"採用\",\"joinOurMissionToImprove\":\"国際化エコシステムを改善するという私たちの使命に参加してください。私たちは、影響、透明性、継続的な学習を大切にするリモートファーストのチームです。\"},\"careers-benefits\":{\"workFromAnywhereInThe\":\"世界中のどこからでも勤務可能\",\"competitivePay\":\"競争力のある給与\",\"topOfMarketCompensation\":\"市場最高水準の報酬\",\"openSourceTime\":\"オープンソースへの貢献時間\"},\"open-positions\":{\"seniorFrontendEngineer\":\"シニアフロントエンドエンジニア\",\"buildAndMaintainOurBenchmarking\":\"React、TypeScript、Viteを使用して、ベンチマークダッシュボードと開発者ツールを構築および保守します。\",\"backendEngineer\":\"バックエンドエンジニア\",\"designAndScaleOurCloud\":\"毎日数千の自動実行を処理するクラウドベンチマークインフラストラクチャを設計し、拡張します。\",\"technicalWriter\":\"テクニカルライター\",\"createComprehensiveGuidesApiReferences\":\"ベンチマークプラットフォームのための包括的なガイド、APIリファレンス、チュートリアルを作成します。\",\"devrelEngineer\":\"DevRelエンジニア\",\"sanFranciscoRemote\":\"サンフランシスコ / リモート\",\"engageWithTheI18nCommunity\":\"講演、ワークショップ、ブログ投稿、オープンソースへの貢献を通じてi18nコミュニティと交流します。\",\"qaEngineer\":\"QAエンジニア\",\"ensureTheAccuracyAndReliability\":\"厳格なテストと検証を通じて、ベンチマーク結果の正確性と信頼性を確保します。\",\"openPositions\":\"募集中の職種\",\"applyNow\":\"今すぐ応募\",\"remote\":\"リモート\",\"fullTime\":\"フルタイム\",\"partTime\":\"パートタイム\",\"engineering\":\"エンジニアリング\",\"documentation\":\"ドキュメント\",\"community\":\"コミュニティ\"}},\"ko\":{\"careers-header\":{\"title\":\"채용\",\"joinOurMissionToImprove\":\"국제화 생태계를 개선하기 위한 우리의 사명에 동참하세요. 저희는 영향력, 투명성 및 지속적인 학습을 소중히 여기는 원격 근무 우선 팀입니다.\"},\"careers-benefits\":{\"workFromAnywhereInThe\":\"전 세계 어디서나 근무 가능\",\"competitivePay\":\"경쟁력 있는 급여\",\"topOfMarketCompensation\":\"업계 최고 수준의 보상\",\"openSourceTime\":\"오픈 소스 기여 시간\"},\"open-positions\":{\"seniorFrontendEngineer\":\"시니어 프론트엔드 엔지니어\",\"buildAndMaintainOurBenchmarking\":\"React, TypeScript 및 Vite를 사용하여 벤치마킹 대시보드 및 개발자 도구를 구축하고 유지 관리합니다.\",\"backendEngineer\":\"백엔드 엔지니어\",\"designAndScaleOurCloud\":\"매일 수천 개의 자동화된 실행을 처리하는 클라우드 벤치마킹 인프라를 설계하고 확장합니다.\",\"technicalWriter\":\"테크니컬 라이터\",\"createComprehensiveGuidesApiReferences\":\"벤치마킹 플랫폼을 위한 포괄적인 가이드, API 참조 및 튜토리얼을 작성합니다.\",\"devrelEngineer\":\"DevRel 엔지니어\",\"sanFranciscoRemote\":\"샌프란시스코 / 원격\",\"engageWithTheI18nCommunity\":\"발표, 워크숍, 블로그 게시물 및 오픈 소스 기여를 통해 i18n 커뮤니티와 소통합니다.\",\"qaEngineer\":\"QA 엔지니어\",\"ensureTheAccuracyAndReliability\":\"철저한 테스트와 검증을 통해 벤치마크 결과의 정확성과 신뢰성을 보장합니다.\",\"openPositions\":\"채용 중인 포지션\",\"applyNow\":\"지금 지원하기\",\"remote\":\"원격\",\"fullTime\":\"정규직\",\"partTime\":\"아르바이트\",\"engineering\":\"엔지니어링\",\"documentation\":\"문서화\",\"community\":\"커뮤니티\"}},\"ru\":{\"careers-header\":{\"title\":\"Карьера\",\"joinOurMissionToImprove\":\"Присоединяйтесь к нашей миссии по улучшению экосистемы интернационализации. Мы команда, работающая удаленно, которая ценит влияние, прозрачность и непрерывное обучение.\"},\"careers-benefits\":{\"workFromAnywhereInThe\":\"Работайте из любой точки мира\",\"competitivePay\":\"Конкурентоспособная оплата\",\"topOfMarketCompensation\":\"Компенсация выше рыночной\",\"openSourceTime\":\"Время на open source\"},\"open-positions\":{\"seniorFrontendEngineer\":\"Старший фронтенд-инженер\",\"buildAndMaintainOurBenchmarking\":\"Создание и поддержка нашей панели тестирования и инструментов разработчика с использованием React, TypeScript и Vite.\",\"backendEngineer\":\"Бэкенд-инженер\",\"designAndScaleOurCloud\":\"Проектирование и масштабирование нашей облачной инфраструктуры для тестирования, обрабатывающей тысячи автоматических запусков ежедневно.\",\"technicalWriter\":\"Технический писатель\",\"createComprehensiveGuidesApiReferences\":\"Создание подробных руководств, справочников по API и учебных пособий для нашей платформы тестирования.\",\"devrelEngineer\":\"DevRel-инженер\",\"sanFranciscoRemote\":\"Сан-Франциско / Удаленно\",\"engageWithTheI18nCommunity\":\"Взаимодействие с сообществом i18n через выступления, семинары, посты в блоге и вклад в открытый исходный код.\",\"qaEngineer\":\"QA-инженер\",\"ensureTheAccuracyAndReliability\":\"Обеспечение точности и надежности результатов тестирования посредством строгого тестирования и валидации.\",\"openPositions\":\"Открытые вакансии\",\"applyNow\":\"Подать заявку\",\"remote\":\"Удаленно\",\"fullTime\":\"Полный рабочий день\",\"partTime\":\"Неполный рабочий день\",\"engineering\":\"Разработка\",\"documentation\":\"Документация\",\"community\":\"Сообщество\"}}}}"),
+		localIds: [
+			"careers::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"careers::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"careers::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"careers::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"careers::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"careers::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"careers::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"careers::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"careers::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"careers::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"blog-header": {
+		key: "blog-header",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": { "insightsTutorialsAndAnalysisFrom": "Insights, tutorials, and analysis from the i18n community." },
+				"fr": { "insightsTutorialsAndAnalysisFrom": "Aperçus, tutoriels et analyses de la communauté i18n." },
+				"es": { "insightsTutorialsAndAnalysisFrom": "Insights, tutorials, and analysis from the i18n community." },
+				"de": { "insightsTutorialsAndAnalysisFrom": "Insights, tutorials, and analysis from the i18n community." },
+				"it": { "insightsTutorialsAndAnalysisFrom": "Insights, tutorials, and analysis from the i18n community." },
+				"pt": { "insightsTutorialsAndAnalysisFrom": "Insights, tutorials, and analysis from the i18n community." },
+				"zh": { "insightsTutorialsAndAnalysisFrom": "Insights, tutorials, and analysis from the i18n community." },
+				"ja": { "insightsTutorialsAndAnalysisFrom": "Insights, tutorials, and analysis from the i18n community." },
+				"ko": { "insightsTutorialsAndAnalysisFrom": "Insights, tutorials, and analysis from the i18n community." },
+				"ru": { "insightsTutorialsAndAnalysisFrom": "Insights, tutorials, and analysis from the i18n community." }
+			}
+		},
+		localIds: [
+			"blog-header::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"blog-header::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"blog-header::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"blog-header::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"blog-header::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"blog-header::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"blog-header::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"blog-header::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"blog-header::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"blog-header::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"route": {
+		key: "route",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": { "route": {
+					"oopsPageNotFound": "Oops! Page not found",
+					"returnToHome": "Return to Home",
+					"couldNotMeasureHydrationDuration": "Could not measure hydration duration:"
+				} },
+				"fr": { "route": {
+					"oopsPageNotFound": "Oups ! Page non trouvée",
+					"returnToHome": "Retour à l'accueil",
+					"couldNotMeasureHydrationDuration": "Impossible de mesurer la durée d'hydratation :"
+				} },
+				"es": { "route": {
+					"oopsPageNotFound": "¡Ups! Página no encontrada",
+					"returnToHome": "Volver al Inicio",
+					"couldNotMeasureHydrationDuration": "No se pudo medir la duración de la hidratación:"
+				} },
+				"de": { "route": {
+					"oopsPageNotFound": "Hoppla! Seite nicht gefunden",
+					"returnToHome": "Zurück zur Startseite",
+					"couldNotMeasureHydrationDuration": "Hydratisierungsdauer konnte nicht gemessen werden:"
+				} },
+				"it": { "route": {
+					"oopsPageNotFound": "Ops! Pagina non trovata",
+					"returnToHome": "Torna alla Home",
+					"couldNotMeasureHydrationDuration": "Impossibile misurare la durata dell'idratazione:"
+				} },
+				"pt": { "route": {
+					"oopsPageNotFound": "Ops! Página não encontrada",
+					"returnToHome": "Voltar para o Início",
+					"couldNotMeasureHydrationDuration": "Não foi possível medir a duração da hidratação:"
+				} },
+				"zh": { "route": {
+					"oopsPageNotFound": "哎呀！页面未找到",
+					"returnToHome": "返回首页",
+					"couldNotMeasureHydrationDuration": "无法测量水合持续时间："
+				} },
+				"ja": { "route": {
+					"oopsPageNotFound": "おっと！ページが見つかりません",
+					"returnToHome": "ホームに戻る",
+					"couldNotMeasureHydrationDuration": "ハイドレーション期間を測定できませんでした:"
+				} },
+				"ko": { "route": {
+					"oopsPageNotFound": "앗! 페이지를 찾을 수 없습니다",
+					"returnToHome": "홈으로 돌아가기",
+					"couldNotMeasureHydrationDuration": "수화 지속 시간을 측정할 수 없습니다:"
+				} },
+				"ru": { "route": {
+					"oopsPageNotFound": "Упс! Страница не найдена",
+					"returnToHome": "Вернуться на главную",
+					"couldNotMeasureHydrationDuration": "Не удалось измерить продолжительность гидратации:"
+				} }
+			}
+		},
+		localIds: [
+			"route::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"route::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"route::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"route::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"route::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"route::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"route::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"route::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"route::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"route::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"faq-list": {
+		key: "faq-list",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"},\"fr\":{\"whatIsI18nBenchmark\":\"Qu'est-ce que i18n Benchmark ?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark est une suite d'analyse comparative open source qui mesure et compare les performances, la taille du bundle et l'expérience développeur des bibliothèques d'internationalisation pour les applications JavaScript et React.\",\"howAreBenchmarksConducted\":\"Comment les benchmarks sont-ils menés ?\",\"weRunStandardizedTestsIn\":\"Nous effectuons des tests standardisés dans des environnements isolés en utilisant un matériel cohérent. Chaque benchmark est répété plusieurs fois pour garantir une signification statistique. Toutes les configurations de test sont disponibles publiquement dans notre dépôt GitHub.\",\"whichLibrariesAreCurrentlySupported\":\"Quelles bibliothèques sont actuellement supportées ?\",\"weSupportReactI18nextReact\":\"Nous supportons react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react et Tolgee.\",\"canISubmitMyOwn\":\"Puis-je soumettre mes propres benchmarks ?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Oui ! Les soumissions de benchmarks de la communauté sont les bienvenues. Forkez notre dépôt, ajoutez votre benchmark en suivant notre guide de contribution et soumettez une pull request. Notre équipe examinera et fusionnera les soumissions qualifiées.\",\"howOftenAreBenchmarksUpdated\":\"À quelle fréquence les benchmarks sont-ils mis à jour ?\",\"weReRunAllBenchmarks\":\"Nous relançons tous les benchmarks chaque semaine avec les dernières versions stables de chaque bibliothèque. Les versions majeures déclenchent un cycle immédiat de re-benchmarking.\",\"isTheDataReliable\":\"Les données sont-elles fiables ?\",\"weFollowRigorousStatisticalMethodology\":\"Nous suivons une méthodologie statistique rigoureuse incluant des phases de préchauffage, la détection des valeurs aberrantes et des intervalles de confiance. Toutes les données brutes sont publiées aux côtés de notre analyse pour une transparence totale.\",\"doYouOfferConsultingServices\":\"Proposez-vous des services de conseil ?\",\"yesOurEnterprisePlanIncludes\":\"Oui, notre plan Entreprise inclut des heures de conseil pour les équipes évaluant les solutions i18n. Nous pouvons fournir des recommandations personnalisées basées sur votre cas d'utilisation spécifique, votre échelle et vos contraintes.\",\"howCanIContribute\":\"Comment puis-je contribuer ?\",\"thereAreManyWaysTo\":\"Il existe de nombreuses façons de contribuer : soumettre des benchmarks, améliorer la documentation, signaler des bugs, suggérer de nouvelles métriques ou parrainer le projet. Visitez notre dépôt GitHub pour plus de détails.\"},\"es\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"},\"de\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"},\"it\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"},\"pt\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"},\"zh\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"},\"ja\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"},\"ko\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"},\"ru\":{\"whatIsI18nBenchmark\":\"What is i18n Benchmark?\",\"whatIsI18nBenchmarkAnswer\":\"i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.\",\"howAreBenchmarksConducted\":\"How are benchmarks conducted?\",\"weRunStandardizedTestsIn\":\"We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.\",\"whichLibrariesAreCurrentlySupported\":\"Which libraries are currently supported?\",\"weSupportReactI18nextReact\":\"We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.\",\"canISubmitMyOwn\":\"Can I submit my own benchmarks?\",\"yesCommunityBenchmarkSubmissionsAre\":\"Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.\",\"howOftenAreBenchmarksUpdated\":\"How often are benchmarks updated?\",\"weReRunAllBenchmarks\":\"We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.\",\"isTheDataReliable\":\"Is the data reliable?\",\"weFollowRigorousStatisticalMethodology\":\"We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.\",\"doYouOfferConsultingServices\":\"Do you offer consulting services?\",\"yesOurEnterprisePlanIncludes\":\"Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.\",\"howCanIContribute\":\"How can I contribute?\",\"thereAreManyWaysTo\":\"There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.\"}}}"),
+		localIds: [
+			"faq-list::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"faq-list::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"faq-list::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"faq-list::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"faq-list::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"faq-list::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"faq-list::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"faq-list::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"faq-list::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"faq-list::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"careers-header": {
+		key: "careers-header",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"title": "Careers",
+					"joinOurMissionToImprove": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+				},
+				"fr": {
+					"title": "Carrières",
+					"joinOurMissionToImprove": "Rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. Nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu."
+				},
+				"es": {
+					"title": "Careers",
+					"joinOurMissionToImprove": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+				},
+				"de": {
+					"title": "Careers",
+					"joinOurMissionToImprove": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+				},
+				"it": {
+					"title": "Careers",
+					"joinOurMissionToImprove": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+				},
+				"pt": {
+					"title": "Careers",
+					"joinOurMissionToImprove": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+				},
+				"zh": {
+					"title": "Careers",
+					"joinOurMissionToImprove": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+				},
+				"ja": {
+					"title": "Careers",
+					"joinOurMissionToImprove": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+				},
+				"ko": {
+					"title": "Careers",
+					"joinOurMissionToImprove": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+				},
+				"ru": {
+					"title": "Careers",
+					"joinOurMissionToImprove": "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+				}
+			}
+		},
+		localIds: [
+			"careers-header::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"careers-header::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"careers-header::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"careers-header::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"careers-header::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"careers-header::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"careers-header::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"careers-header::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"careers-header::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"careers-header::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"pricing": {
+		key: "pricing",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"pricing-header\":{\"simpleTransparentPricing\":\"Simple, Transparent Pricing\",\"chooseThePlanThatFits\":\"Choose the plan that fits your team. No hidden fees.\"},\"pricing-tiers\":{\"starter\":\"Starter\",\"price0\":\"$0\",\"forever\":\"forever\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} benchmark runs/day\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} libraries\"},\"communitySupport\":\"Community support\",\"publicResults\":\"Public results\",\"pro\":\"Pro\",\"price29\":\"$29\",\"month\":\"/month\",\"unlimitedRuns\":\"Unlimited runs\",\"allLibraries\":\"All libraries\",\"prioritySupport\":\"Priority support\",\"privateResults\":\"Private results\",\"ciIntegration\":\"CI integration\",\"historicalData\":\"Historical data\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Custom\",\"everythingInPro\":\"Everything in Pro\",\"onPremiseOption\":\"On-premise option\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Dedicated account manager\",\"customSlas\":\"Custom SLAs\",\"auditLogs\":\"Audit logs\",\"trainingSessions\":\"Training sessions\",\"contactSales\":\"Contact Sales\",\"getStarted\":\"Get Started\"}},\"fr\":{\"pricing-header\":{\"simpleTransparentPricing\":\"Une tarification simple et transparente\",\"chooseThePlanThatFits\":\"Choisissez l'offre qui convient à votre équipe. Pas de frais cachés.\"},\"pricing-tiers\":{\"starter\":\"Starter\",\"price0\":\"0 €\",\"forever\":\"pour toujours\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} passages de benchmark / jour\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliothèques\"},\"communitySupport\":\"Support communautaire\",\"publicResults\":\"Résultats publics\",\"pro\":\"Pro\",\"price29\":\"29 €\",\"month\":\"/ mois\",\"unlimitedRuns\":\"Passages illimités\",\"allLibraries\":\"Toutes les bibliothèques\",\"prioritySupport\":\"Support prioritaire\",\"privateResults\":\"Résultats privés\",\"ciIntegration\":\"Intégration CI\",\"historicalData\":\"Données historiques\",\"enterprise\":\"Entreprise\",\"customPrice\":\"Sur mesure\",\"everythingInPro\":\"Tout ce qui est dans Pro\",\"onPremiseOption\":\"Option sur site (on-premise)\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Gestionnaire de compte dédié\",\"customSlas\":\"SLA personnalisés\",\"auditLogs\":\"Journaux d'audit\",\"trainingSessions\":\"Sessions de formation\",\"contactSales\":\"Contacter le service commercial\",\"getStarted\":\"Démarrer\"}},\"es\":{\"pricing-header\":{\"simpleTransparentPricing\":\"Precios simples y transparentes\",\"chooseThePlanThatFits\":\"Elige el plan que se adapte a tu equipo. Sin cargos ocultos.\"},\"pricing-tiers\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"para siempre\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} ejecuciones de benchmark/día\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliotecas\"},\"communitySupport\":\"Soporte de la comunidad\",\"publicResults\":\"Resultados públicos\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/mes\",\"unlimitedRuns\":\"Ejecuciones ilimitadas\",\"allLibraries\":\"Todas las bibliotecas\",\"prioritySupport\":\"Soporte prioritario\",\"privateResults\":\"Resultados privados\",\"ciIntegration\":\"Integración CI\",\"historicalData\":\"Datos históricos\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Personalizado\",\"everythingInPro\":\"Todo lo que hay en Pro\",\"onPremiseOption\":\"Opción on-premise\",\"ssoSaml\":\"SSO y SAML\",\"dedicatedAccountManager\":\"Gestor de cuentas dedicado\",\"customSlas\":\"SLA personalizados\",\"auditLogs\":\"Registros de auditoría\",\"trainingSessions\":\"Sesiones de formación\",\"contactSales\":\"Contactar con ventas\",\"getStarted\":\"Empezar\"}},\"de\":{\"pricing-header\":{\"simpleTransparentPricing\":\"Einfache, transparente Preisgestaltung\",\"chooseThePlanThatFits\":\"Wählen Sie den Plan, der zu Ihrem Team passt. Keine versteckten Gebühren.\"},\"pricing-tiers\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"für immer\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} Benchmark-Durchläufe/Tag\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} Bibliotheken\"},\"communitySupport\":\"Community-Support\",\"publicResults\":\"Öffentliche Ergebnisse\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/Monat\",\"unlimitedRuns\":\"Unbegrenzte Durchläufe\",\"allLibraries\":\"Alle Bibliotheken\",\"prioritySupport\":\"Prioritäts-Support\",\"privateResults\":\"Private Ergebnisse\",\"ciIntegration\":\"CI-Integration\",\"historicalData\":\"Historische Daten\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Individuell\",\"everythingInPro\":\"Alles in Pro\",\"onPremiseOption\":\"On-Premise-Option\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Dedizierter Account-Manager\",\"customSlas\":\"Individuelle SLAs\",\"auditLogs\":\"Audit-Logs\",\"trainingSessions\":\"Schulungen\",\"contactSales\":\"Vertrieb kontaktieren\",\"getStarted\":\"Jetzt starten\"}},\"it\":{\"pricing-header\":{\"simpleTransparentPricing\":\"Prezzi Semplici e Trasparenti\",\"chooseThePlanThatFits\":\"Scegli il piano adatto al tuo team. Nessun costo nascosto.\"},\"pricing-tiers\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"per sempre\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} esecuzioni benchmark/giorno\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} librerie\"},\"communitySupport\":\"Supporto della comunità\",\"publicResults\":\"Risultati pubblici\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/mese\",\"unlimitedRuns\":\"Esecuzioni illimitate\",\"allLibraries\":\"Tutte le librerie\",\"prioritySupport\":\"Supporto prioritario\",\"privateResults\":\"Risultati privati\",\"ciIntegration\":\"Integrazione CI\",\"historicalData\":\"Dati storici\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Personalizzato\",\"everythingInPro\":\"Tutto quello che c'è in Pro\",\"onPremiseOption\":\"Opzione in locale\",\"ssoSaml\":\"SSO e SAML\",\"dedicatedAccountManager\":\"Account manager dedicato\",\"customSlas\":\"SLA personalizzati\",\"auditLogs\":\"Registri di controllo\",\"trainingSessions\":\"Sessioni di formazione\",\"contactSales\":\"Contatta l'ufficio vendite\",\"getStarted\":\"Inizia ora\"}},\"pt\":{\"pricing-header\":{\"simpleTransparentPricing\":\"Preços Simples e Trasparentes\",\"chooseThePlanThatFits\":\"Escolha o plano que se adapta à sua equipe. Sem taxas ocultas.\"},\"pricing-tiers\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"para sempre\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} execuções de benchmark por dia\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} bibliotecas\"},\"communitySupport\":\"Suporte da comunidade\",\"publicResults\":\"Resultados públicos\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/mês\",\"unlimitedRuns\":\"Execuções ilimitadas\",\"allLibraries\":\"Todas as bibliotecas\",\"prioritySupport\":\"Suporte prioritário\",\"privateResults\":\"Resultados privados\",\"ciIntegration\":\"Integração CI\",\"historicalData\":\"Dados históricos\",\"enterprise\":\"Enterprise\",\"customPrice\":\"Personalizado\",\"everythingInPro\":\"Tudo o que está no Pro\",\"onPremiseOption\":\"Opção on-premise\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"Gerente de conta dedicado\",\"customSlas\":\"SLAs personalizados\",\"auditLogs\":\"Logs de auditoria\",\"trainingSessions\":\"Sessões de treinamento\",\"contactSales\":\"Contatar Vendas\",\"getStarted\":\"Começar\"}},\"zh\":{\"pricing-header\":{\"simpleTransparentPricing\":\"简单、透明的价格\",\"chooseThePlanThatFits\":\"选择适合您团队的计划。无隐藏费用。\"},\"pricing-tiers\":{\"starter\":\"入门版\",\"price0\":\"¥0\",\"forever\":\"永久\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"每天 {{runs}} 次基准测试运行\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} 个库\"},\"communitySupport\":\"社区支持\",\"publicResults\":\"公开结果\",\"pro\":\"专业版\",\"price29\":\"¥199\",\"month\":\"/月\",\"unlimitedRuns\":\"无限次运行\",\"allLibraries\":\"所有库\",\"prioritySupport\":\"优先支持\",\"privateResults\":\"私有结果\",\"ciIntegration\":\"CI 集成\",\"historicalData\":\"历史数据\",\"enterprise\":\"企业版\",\"customPrice\":\"定制\",\"everythingInPro\":\"包含专业版所有功能\",\"onPremiseOption\":\"本地部署选项\",\"ssoSaml\":\"SSO 和 SAML\",\"dedicatedAccountManager\":\"专属客户经理\",\"customSlas\":\"定制 SLA\",\"auditLogs\":\"审计日志\",\"trainingSessions\":\"培训课程\",\"contactSales\":\"联系销售\",\"getStarted\":\"开始使用\"}},\"ja\":{\"pricing-header\":{\"simpleTransparentPricing\":\"シンプルで透明性の高い価格設定\",\"chooseThePlanThatFits\":\"チームに合ったプランをお選びください。隠れた費用はありません。\"},\"pricing-tiers\":{\"starter\":\"スターター\",\"price0\":\"0円\",\"forever\":\"永久に無料\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"1日あたり {{runs}} 回のベンチマーク実行\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} ライブラリ\"},\"communitySupport\":\"コミュニティサポート\",\"publicResults\":\"結果を公開\",\"pro\":\"プロ\",\"price29\":\"3,900円\",\"month\":\"/月\",\"unlimitedRuns\":\"無制限の実行\",\"allLibraries\":\"すべてのライブラリ\",\"prioritySupport\":\"優先サポート\",\"privateResults\":\"結果を非公開\",\"ciIntegration\":\"CI統合\",\"historicalData\":\"履歴データ\",\"enterprise\":\"エンタープライズ\",\"customPrice\":\"カスタム\",\"everythingInPro\":\"Proのすべての機能を含む\",\"onPremiseOption\":\"オンプレミスオプション\",\"ssoSaml\":\"SSO & SAML\",\"dedicatedAccountManager\":\"専任のアカウントマネージャー\",\"customSlas\":\"カスタムSLA\",\"auditLogs\":\"監査ログ\",\"trainingSessions\":\"トレーニングセッション\",\"contactSales\":\"営業に問い合わせる\",\"getStarted\":\"始める\"}},\"ko\":{\"pricing-header\":{\"simpleTransparentPricing\":\"심플하고 투명한 요금제\",\"chooseThePlanThatFits\":\"팀에 맞는 플랜을 선택하세요. 숨겨진 수수료는 없습니다.\"},\"pricing-tiers\":{\"starter\":\"스타터\",\"price0\":\"0원\",\"forever\":\"영원히\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"하루 {{runs}}회 벤치마크 실행\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}}개 라이브러리\"},\"communitySupport\":\"커뮤니티 지원\",\"publicResults\":\"결과 공개\",\"pro\":\"프로\",\"price29\":\"39,000원\",\"month\":\"/월\",\"unlimitedRuns\":\"무제한 실행\",\"allLibraries\":\"모든 라이브러리\",\"prioritySupport\":\"우선 지원\",\"privateResults\":\"결과 비공개\",\"ciIntegration\":\"CI 통합\",\"historicalData\":\"기록 데이터\",\"enterprise\":\"엔터프라이즈\",\"customPrice\":\"커스텀\",\"everythingInPro\":\"Pro의 모든 기능 포함\",\"onPremiseOption\":\"온프레미스 옵션\",\"ssoSaml\":\"SSO 및 SAML\",\"dedicatedAccountManager\":\"전담 어카운트 매니저\",\"customSlas\":\"맞춤형 SLA\",\"auditLogs\":\"감사 로그\",\"trainingSessions\":\"교육 세션\",\"contactSales\":\"영업팀 문의\",\"getStarted\":\"시작하기\"}},\"ru\":{\"pricing-header\":{\"simpleTransparentPricing\":\"Простое и прозрачное ценообразование\",\"chooseThePlanThatFits\":\"Выберите план, который подходит вашей команде. Никаких скрытых комиссий.\"},\"pricing-tiers\":{\"starter\":\"Starter\",\"price0\":\"0 $\",\"forever\":\"навсегда\",\"benchmarkRunPerDay\":{\"fields\":[\"runs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{runs}} запусков бенчмарка в день\"},\"librariesNumber\":{\"fields\":[\"libs\"],\"nodeType\":\"insertion\",\"insertion\":\"{{libs}} библиотек\"},\"communitySupport\":\"Сообщество поддержки\",\"publicResults\":\"Публичные результаты\",\"pro\":\"Pro\",\"price29\":\"29 $\",\"month\":\"/месяц\",\"unlimitedRuns\":\"Неограниченное количество запусков\",\"allLibraries\":\"Все библиотеки\",\"prioritySupport\":\"Приоритетная поддержка\",\"privateResults\":\"Приватные результаты\",\"ciIntegration\":\"Интеграция с CI\",\"historicalData\":\"Исторические данные\",\"enterprise\":\"Корпоративный\",\"customPrice\":\"Индивидуальная цена\",\"everythingInPro\":\"Все возможности Pro\",\"onPremiseOption\":\"Локальное развертывание\",\"ssoSaml\":\"SSO и SAML\",\"dedicatedAccountManager\":\"Выделенный менеджер\",\"customSlas\":\"Индивидуальные SLA\",\"auditLogs\":\"Журналы аудита\",\"trainingSessions\":\"Сессии обучения\",\"contactSales\":\"Связаться с отделом продаж\",\"getStarted\":\"Начать\"}}}}"),
+		localIds: [
+			"pricing::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"pricing::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"pricing::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"pricing::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"pricing::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"pricing::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"pricing::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"pricing::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"pricing::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"pricing::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"what-we-measure": {
+		key: "what-we-measure",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"bundleSizeImpact\":\"Bundle size impact\",\"theAdditionalJavascriptBytesSent\":\"The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.\",\"renderingOverhead\":\"Rendering overhead\",\"howMuchExtraTimeThe\":\"How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.\",\"hydrationCost\":\"Hydration cost\",\"duringSsrTranslationDataIs\":\"During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.\",\"lazyLoadingEffectiveness\":\"Lazy loading effectiveness\",\"whetherSplittingTranslationsByRoute\":\"Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).\",\"localeSwitchSpeed\":\"Locale switch speed\",\"howFastTheAppCan\":\"How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.\",\"whatWeMeasure\":\"What We Measure\"},\"fr\":{\"bundleSizeImpact\":\"Impact sur la taille du bundle\",\"theAdditionalJavascriptBytesSent\":\"Les octets JavaScript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers de traduction sont inclus. Cela affecte directement le temps de téléchargement sur les réseaux lents.\",\"renderingOverhead\":\"Surcharge de rendu\",\"howMuchExtraTimeThe\":\"Combien de temps supplémentaire la bibliothèque ajoute au cycle de rendu de React. Les bibliothèques qui injectent des traductions via un seul fournisseur de contexte peuvent provoquer des rendus inutiles dans tout l'arbre des composants.\",\"hydrationCost\":\"Coût d'hydratation\",\"duringSsrTranslationDataIs\":\"Pendant le SSR, les données de traduction sont sérialisées en HTML. Les dictionnaires volumineux augmentent la charge utile HTML et ralentissent l'hydratation — le moment où la page devient interactive.\",\"lazyLoadingEffectiveness\":\"Efficacité du lazy loading\",\"whetherSplittingTranslationsByRoute\":\"Si diviser les traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, FOUC, complexité du cache).\",\"localeSwitchSpeed\":\"Vitesse de changement de langue\",\"howFastTheAppCan\":\"À quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le rendu des composants et la mise à jour du DOM.\",\"whatWeMeasure\":\"Ce que nous mesurons\"},\"es\":{\"bundleSizeImpact\":\"Bundle size impact\",\"theAdditionalJavascriptBytesSent\":\"The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.\",\"renderingOverhead\":\"Rendering overhead\",\"howMuchExtraTimeThe\":\"How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.\",\"hydrationCost\":\"Hydration cost\",\"duringSsrTranslationDataIs\":\"During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.\",\"lazyLoadingEffectiveness\":\"Lazy loading effectiveness\",\"whetherSplittingTranslationsByRoute\":\"Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).\",\"localeSwitchSpeed\":\"Locale switch speed\",\"howFastTheAppCan\":\"How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.\",\"whatWeMeasure\":\"What We Measure\"},\"de\":{\"bundleSizeImpact\":\"Bundle size impact\",\"theAdditionalJavascriptBytesSent\":\"The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.\",\"renderingOverhead\":\"Rendering overhead\",\"howMuchExtraTimeThe\":\"How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.\",\"hydrationCost\":\"Hydration cost\",\"duringSsrTranslationDataIs\":\"During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.\",\"lazyLoadingEffectiveness\":\"Lazy loading effectiveness\",\"whetherSplittingTranslationsByRoute\":\"Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).\",\"localeSwitchSpeed\":\"Locale switch speed\",\"howFastTheAppCan\":\"How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.\",\"whatWeMeasure\":\"What We Measure\"},\"it\":{\"bundleSizeImpact\":\"Bundle size impact\",\"theAdditionalJavascriptBytesSent\":\"The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.\",\"renderingOverhead\":\"Rendering overhead\",\"howMuchExtraTimeThe\":\"How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.\",\"hydrationCost\":\"Hydration cost\",\"duringSsrTranslationDataIs\":\"During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.\",\"lazyLoadingEffectiveness\":\"Lazy loading effectiveness\",\"whetherSplittingTranslationsByRoute\":\"Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).\",\"localeSwitchSpeed\":\"Locale switch speed\",\"howFastTheAppCan\":\"How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.\",\"whatWeMeasure\":\"What We Measure\"},\"pt\":{\"bundleSizeImpact\":\"Bundle size impact\",\"theAdditionalJavascriptBytesSent\":\"The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.\",\"renderingOverhead\":\"Rendering overhead\",\"howMuchExtraTimeThe\":\"How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.\",\"hydrationCost\":\"Hydration cost\",\"duringSsrTranslationDataIs\":\"During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.\",\"lazyLoadingEffectiveness\":\"Lazy loading effectiveness\",\"whetherSplittingTranslationsByRoute\":\"Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).\",\"localeSwitchSpeed\":\"Locale switch speed\",\"howFastTheAppCan\":\"How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.\",\"whatWeMeasure\":\"What We Measure\"},\"zh\":{\"bundleSizeImpact\":\"Bundle size impact\",\"theAdditionalJavascriptBytesSent\":\"The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.\",\"renderingOverhead\":\"Rendering overhead\",\"howMuchExtraTimeThe\":\"How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.\",\"hydrationCost\":\"Hydration cost\",\"duringSsrTranslationDataIs\":\"During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.\",\"lazyLoadingEffectiveness\":\"Lazy loading effectiveness\",\"whetherSplittingTranslationsByRoute\":\"Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).\",\"localeSwitchSpeed\":\"Locale switch speed\",\"howFastTheAppCan\":\"How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.\",\"whatWeMeasure\":\"What We Measure\"},\"ja\":{\"bundleSizeImpact\":\"Bundle size impact\",\"theAdditionalJavascriptBytesSent\":\"The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.\",\"renderingOverhead\":\"Rendering overhead\",\"howMuchExtraTimeThe\":\"How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.\",\"hydrationCost\":\"Hydration cost\",\"duringSsrTranslationDataIs\":\"During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.\",\"lazyLoadingEffectiveness\":\"Lazy loading effectiveness\",\"whetherSplittingTranslationsByRoute\":\"Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).\",\"localeSwitchSpeed\":\"Locale switch speed\",\"howFastTheAppCan\":\"How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.\",\"whatWeMeasure\":\"What We Measure\"},\"ko\":{\"bundleSizeImpact\":\"Bundle size impact\",\"theAdditionalJavascriptBytesSent\":\"The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.\",\"renderingOverhead\":\"Rendering overhead\",\"howMuchExtraTimeThe\":\"How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.\",\"hydrationCost\":\"Hydration cost\",\"duringSsrTranslationDataIs\":\"During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.\",\"lazyLoadingEffectiveness\":\"Lazy loading effectiveness\",\"whetherSplittingTranslationsByRoute\":\"Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).\",\"localeSwitchSpeed\":\"Locale switch speed\",\"howFastTheAppCan\":\"How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.\",\"whatWeMeasure\":\"What We Measure\"},\"ru\":{\"bundleSizeImpact\":\"Bundle size impact\",\"theAdditionalJavascriptBytesSent\":\"The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.\",\"renderingOverhead\":\"Rendering overhead\",\"howMuchExtraTimeThe\":\"How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.\",\"hydrationCost\":\"Hydration cost\",\"duringSsrTranslationDataIs\":\"During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.\",\"lazyLoadingEffectiveness\":\"Lazy loading effectiveness\",\"whetherSplittingTranslationsByRoute\":\"Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).\",\"localeSwitchSpeed\":\"Locale switch speed\",\"howFastTheAppCan\":\"How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.\",\"whatWeMeasure\":\"What We Measure\"}}}"),
+		localIds: [
+			"what-we-measure::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"what-we-measure::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"what-we-measure::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"what-we-measure::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"what-we-measure::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"what-we-measure::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"what-we-measure::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"what-we-measure::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"what-we-measure::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"what-we-measure::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"products": {
+		key: "products",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"products-header\":{\"toolsAndServicesToStreamline\":\"Tools and services to streamline your internationalization workflow.\"},\"products-grid\":{\"benchmarkCli\":\"Benchmark CLI\",\"runBenchmarksLocallyFromYour\":\"Run benchmarks locally from your terminal. Supports custom configurations and CI integration.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support.\",\"contactUs\":\"Contact Us\",\"migrationAssistant\":\"Migration Assistant\",\"aiPoweredToolThatHelps\":\"AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime.\",\"translationQa\":\"Translation QA\",\"automatedQualityChecksForMissing\":\"Automated quality checks for missing translations, pluralization issues, and context errors.\",\"bundleOptimizer\":\"Bundle Optimizer\",\"analyzesAndOptimizesYourI18n\":\"Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.\",\"learnMore\":\"Learn More\",\"free\":\"Free\",\"price29mo\":\"$29/mo\",\"price99oneTime\":\"$99 one-time\",\"price19mo\":\"$19/mo\",\"price49mo\":\"$49/mo\"}},\"fr\":{\"products-header\":{\"toolsAndServicesToStreamline\":\"Des outils et services pour rationaliser votre flux de travail d'internationalisation.\"},\"products-grid\":{\"benchmarkCli\":\"CLI Benchmark\",\"runBenchmarksLocallyFromYour\":\"Exécutez des benchmarks localement depuis votre terminal. Supporte les configurations personnalisées et l'intégration CI.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.\",\"benchmarkEnterprise\":\"Benchmark Entreprise\",\"onPremiseDeploymentWithSso\":\"Déploiement sur site avec SSO, journaux d'audit, SLA personnalisés et support dédié.\",\"contactUs\":\"Contactez-nous\",\"migrationAssistant\":\"Assistant de migration\",\"aiPoweredToolThatHelps\":\"Outil alimenté par l'IA qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.\",\"translationQa\":\"QA de traduction\",\"automatedQualityChecksForMissing\":\"Contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.\",\"bundleOptimizer\":\"Optimiseur de bundle\",\"analyzesAndOptimizesYourI18n\":\"Analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code.\",\"learnMore\":\"En savoir plus\",\"free\":\"Gratuit\",\"price29mo\":\"29 $/mois\",\"price99oneTime\":\"99 $ une fois\",\"price19mo\":\"19 $/mois\",\"price49mo\":\"49 $/mois\"}},\"es\":{\"products-header\":{\"toolsAndServicesToStreamline\":\"Herramientas y servicios para agilizar tu flujo de trabajo de internacionalización.\"},\"products-grid\":{\"benchmarkCli\":\"CLI de Benchmark\",\"runBenchmarksLocallyFromYour\":\"Ejecuta benchmarks localmente desde tu terminal. Soporta configuraciones personalizadas e integración CI.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Benchmarking automatizado basado en la nube con seguimiento histórico, alertas y paneles de equipo.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"Despliegue on-premise con SSO, registros de auditoría, SLA personalizados y soporte dedicado.\",\"contactUs\":\"Contáctanos\",\"migrationAssistant\":\"Asistente de migración\",\"aiPoweredToolThatHelps\":\"Herramienta basada en IA que ayuda a migrar tu código base entre bibliotecas i18n sin tiempo de inactividad.\",\"translationQa\":\"QA de traducción\",\"automatedQualityChecksForMissing\":\"Controles de calidad automatizados para traducciones faltantes, problemas de pluralización y errores de contexto.\",\"bundleOptimizer\":\"Optimizador de bundle\",\"analyzesAndOptimizesYourI18n\":\"Analiza y optimiza tu bundle i18n para producción con tree-shaking y división de código.\",\"learnMore\":\"Más información\",\"free\":\"Gratis\",\"price29mo\":\"29 $/mes\",\"price99oneTime\":\"$99 una vez\",\"price19mo\":\"19 $/mes\",\"price49mo\":\"49 $/mes\"}},\"de\":{\"products-header\":{\"toolsAndServicesToStreamline\":\"Tools und Services zur Optimierung Ihres Internationalisierungs-Worflows.\"},\"products-grid\":{\"benchmarkCli\":\"Benchmark CLI\",\"runBenchmarksLocallyFromYour\":\"Führen Sie Benchmarks lokal von Ihrem Terminal aus. Unterstützt benutzerdefinierte Konfigurationen und CI-Integration.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Automatisierte Cloud-basierte Benchmarks mit Verlaufsverfolgung, Warnungen und Team-Dashboards.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"On-Premise-Bereitstellung mit SSO, Audit-Logs, individuellen SLAs und dediziertem Support.\",\"contactUs\":\"Kontaktieren Sie uns\",\"migrationAssistant\":\"Migrationsassistent\",\"aiPoweredToolThatHelps\":\"KI-gestütztes Tool, das hilft, Ihre Codebasis ohne Ausfallzeiten zwischen i18n-Bibliotheken zu migrieren.\",\"translationQa\":\"Übersetzungs-QA\",\"automatedQualityChecksForMissing\":\"Automatisierte Qualitätsprüfungen für fehlende Übersetzungen, Pluralisierungsprobleme und Kontextfehler.\",\"bundleOptimizer\":\"Bundle-Optimierer\",\"analyzesAndOptimizesYourI18n\":\"Analysiert und optimiert Ihr i18n-Bundle für die Produktion mit Tree-Shaking und Code-Splitting.\",\"learnMore\":\"Mehr erfahren\",\"free\":\"Kostenlos\",\"price29mo\":\"29 $/Monat\",\"price99oneTime\":\"$99 einmalig\",\"price19mo\":\"19 $/Monat\",\"price49mo\":\"49 $/Monat\"}},\"it\":{\"products-header\":{\"toolsAndServicesToStreamline\":\"Strumenti e servizi per snellire il flusso di lavoro dell'internazionalizzazione.\"},\"products-grid\":{\"benchmarkCli\":\"CLI del Benchmark\",\"runBenchmarksLocallyFromYour\":\"Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"Distribuzione in locale con SSO, log di controllo, SLA personalizzati e supporto dedicato.\",\"contactUs\":\"Contattaci\",\"migrationAssistant\":\"Assistente alla Migrazione\",\"aiPoweredToolThatHelps\":\"Strumento basato sull'IA che aiuta a migrare la tua codebase tra librerie i18n con tempi di inattività minimi.\",\"translationQa\":\"QA delle Traduzioni\",\"automatedQualityChecksForMissing\":\"Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.\",\"bundleOptimizer\":\"Ottimizzatore del Bundle\",\"analyzesAndOptimizesYourI18n\":\"Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.\",\"learnMore\":\"Scopri di più\",\"free\":\"Gratis\",\"price29mo\":\"29 $/mese\",\"price99oneTime\":\"$99 una tantum\",\"price19mo\":\"19 $/mese\",\"price49mo\":\"49 $/mese\"}},\"pt\":{\"products-header\":{\"toolsAndServicesToStreamline\":\"Ferramentas e serviços para agilizar seu fluxo de trabalho de internacionalização.\"},\"products-grid\":{\"benchmarkCli\":\"CLI de Benchmark\",\"runBenchmarksLocallyFromYour\":\"Execute benchmarks localmente pelo seu terminal. Suporta configurações personalizadas e integração CI.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"Benchmarking automatizado baseado em nuvem com rastreamento histórico, alertas e painéis de equipe.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"Implantação on-premise com SSO, logs de auditoria, SLAs personalizados e suporte dedicado.\",\"contactUs\":\"Contate-nos\",\"migrationAssistant\":\"Assistente de Migração\",\"aiPoweredToolThatHelps\":\"Ferramenta baseada em IA que ajuda a migrar sua base de código entre bibliotecas i18n sem tempo de inatividade.\",\"translationQa\":\"QA de Tradução\",\"automatedQualityChecksForMissing\":\"Verificações automatizadas de qualidade para traduções ausentes, problemas de pluralização e erros de contexto.\",\"bundleOptimizer\":\"Otimizador de Bundle\",\"analyzesAndOptimizesYourI18n\":\"Analisa e optimiza o seu bundle i18n para produção com tree-shaking e divisão de código.\",\"learnMore\":\"Saiba Mais\",\"free\":\"Grátis\",\"price29mo\":\"29 $/mês\",\"price99oneTime\":\"$99 uma vez\",\"price19mo\":\"19 $/mês\",\"price49mo\":\"49 $/mês\"}},\"zh\":{\"products-header\":{\"toolsAndServicesToStreamline\":\"简化国际化工作流程的工具和服务。\"},\"products-grid\":{\"benchmarkCli\":\"基准测试 CLI\",\"runBenchmarksLocallyFromYour\":\"从终端本地运行基准测试。支持自定义配置和 CI 集成。\",\"benchmarkCloud\":\"基准测试云\",\"automatedCloudBasedBenchmarkingWith\":\"自动化的基于云的基准测试，具有历史跟踪、警报和团队仪表板。\",\"benchmarkEnterprise\":\"基准测试企业版\",\"onPremiseDeploymentWithSso\":\"本地部署，具有 SSO、审计日志、定制 SLA 和专属支持。\",\"contactUs\":\"联系我们\",\"migrationAssistant\":\"迁移助手\",\"aiPoweredToolThatHelps\":\"人工智能驱动的工具，可帮助您在 i18n 库之间无缝迁移代码库。\",\"translationQa\":\"翻译质检\",\"automatedQualityChecksForMissing\":\"针对翻译缺失、复数形式问题和上下文错误的自动化质量检查。\",\"bundleOptimizer\":\"捆绑包优化器\",\"analyzesAndOptimizesYourI18n\":\"分析并优化用于生产的 i18n 捆绑包，采用摇树优化 (tree-shaking) 和代码拆分。\",\"learnMore\":\"了解更多\",\"free\":\"免费\",\"price29mo\":\"$29/月\",\"price99oneTime\":\"$99 一次性\",\"price19mo\":\"$19/月\",\"price49mo\":\"$49/月\"}},\"ja\":{\"products-header\":{\"toolsAndServicesToStreamline\":\"国際化ワークフローを合理化するためのツールとサービス。\"},\"products-grid\":{\"benchmarkCli\":\"Benchmark CLI\",\"runBenchmarksLocallyFromYour\":\"ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートします。\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"履歴追跡、アラート、チームダッシュボードを備えた自動化されたクラウドベースのベンチマーク。\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"SSO、監査ログ、カスタムSLA、専任のサポートを備えたオンプレミス展開。\",\"contactUs\":\"お問い合わせ\",\"migrationAssistant\":\"移行アシスタント\",\"aiPoweredToolThatHelps\":\"ダウンタイムなしでi18nライブラリ間でコードベースを移行するのに役立つAI搭載ツール。\",\"translationQa\":\"翻訳QA\",\"automatedQualityChecksForMissing\":\"欠落している翻訳、複数形の問題、コンテキストエラーに対する自動品質チェック。\",\"bundleOptimizer\":\"バンドルオプティマイザー\",\"analyzesAndOptimizesYourI18n\":\"プロダクション用にi18nバンドルを分析し、ツリーシェイキングやコード分割によって最適化します。\",\"learnMore\":\"詳しく見る\",\"free\":\"無料\",\"price29mo\":\"$29/月\",\"price99oneTime\":\"$99 一回限り\",\"price19mo\":\"$19/月\",\"price49mo\":\"$49/月\"}},\"ko\":{\"products-header\":{\"toolsAndServicesToStreamline\":\"국제화 워크플로우를 간소화하기 위한 도구 및 서비스.\"},\"products-grid\":{\"benchmarkCli\":\"Benchmark CLI\",\"runBenchmarksLocallyFromYour\":\"터미널에서 로컬로 벤치마크를 실행합니다. 맞춤형 구성 및 CI 통합을 지원합니다.\",\"benchmarkCloud\":\"Benchmark Cloud\",\"automatedCloudBasedBenchmarkingWith\":\"기록 추적, 알림 및 팀 대시보드를 갖춘 자동화된 클라우드 기반 벤치마킹.\",\"benchmarkEnterprise\":\"Benchmark Enterprise\",\"onPremiseDeploymentWithSso\":\"SSO, 감사 로그, 맞춤형 SLA 및 전담 지원을 포함한 온프레미스 배포.\",\"contactUs\":\"문의하기\",\"migrationAssistant\":\"마이그레이션 어시스턴트\",\"aiPoweredToolThatHelps\":\"다운타임 없이 i18n 라이브러리 간에 코드베이스를 마이그레이션하도록 도와주는 AI 기반 도구입니다.\",\"translationQa\":\"번역 QA\",\"automatedQualityChecksForMissing\":\"누락된 번역, 복수형 문제 및 컨텍스트 오류에 대한 자동화된 품질 검사.\",\"bundleOptimizer\":\"번들 옵티마이저\",\"analyzesAndOptimizesYourI18n\":\"트리 쉐이킹(tree-shaking) 및 코드 분할을 통해 프로덕션용 i18n 번들을 분석하고 최적화합니다.\",\"learnMore\":\"더 알아보기\",\"free\":\"무료\",\"price29mo\":\"$29/월\",\"price99oneTime\":\"$99 일회성\",\"price19mo\":\"$19/월\",\"price49mo\":\"$49/월\"}},\"ru\":{\"products-header\":{\"toolsAndServicesToStreamline\":\"Инструменты и услуги для оптимизации рабочего процесса интернационализации.\"},\"products-grid\":{\"benchmarkCli\":\"CLI для бенчмаркинга\",\"runBenchmarksLocallyFromYour\":\"Запуск тестов локально из терминала. Поддержка пользовательских конфигураций и интеграции с CI.\",\"benchmarkCloud\":\"Облачный бенчмаркинг\",\"automatedCloudBasedBenchmarkingWith\":\"Автоматизированное облачное тестирование с отслеживанием истории, оповещениями и командными панелями.\",\"benchmarkEnterprise\":\"Корпоративный бенчмаркинг\",\"onPremiseDeploymentWithSso\":\"Локальное развертывание с поддержкой SSO, журналами аудита, настраиваемыми SLA и выделенной поддержкой.\",\"contactUs\":\"Связаться с нами\",\"migrationAssistant\":\"Помощник по миграции\",\"aiPoweredToolThatHelps\":\"Инструмент на базе ИИ, помогающий мигрировать вашу кодовую базу между библиотеками i18n без простоев.\",\"translationQa\":\"Контроль качества перевода\",\"automatedQualityChecksForMissing\":\"Автоматизированная проверка качества на предмет отсутствующих переводов, проблем с плюрализацией и контекстных ошибок.\",\"bundleOptimizer\":\"Оптимизатор бандлов\",\"analyzesAndOptimizesYourI18n\":\"Анализирует и оптимизирует ваш бандл i18n для продакшна с использованием tree-shaking и разделения кода.\",\"learnMore\":\"Узнать больше\",\"free\":\"Бесплатно\",\"price29mo\":\"29 $/мес\",\"price99oneTime\":\"$99 один раз\",\"price19mo\":\"19 $/мес\",\"price49mo\":\"49 $/мес\"}}}}"),
+		localIds: [
+			"products::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"products::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"products::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"products::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"products::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"products::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"products::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"products::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"products::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"products::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"contact": {
+		key: "contact",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"contact-header": {
+						"getInTouch": "Get in Touch",
+						"haveIdeasFoundABug": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
 					},
-					body: payload,
-					keepalive: true,
-					credentials: "omit",
-					mode: "cors"
-				}).catch(() => {});
-				return true;
-			}
-			return false;
-		} catch {
-			return false;
-		}
-	};
-}));
-var onIdle;
-var init_idle = __esmMin((() => {
-	onIdle = (callback) => {
-		if (typeof window === "undefined") return;
-		const requestIdle = window.requestIdleCallback;
-		if (typeof requestIdle === "function") {
-			requestIdle(() => callback());
-			return;
-		}
-		setTimeout(callback, 1);
-	};
-}));
-var TOKEN_STORAGE_KEY, EXPIRY_MARGIN_MS, readStoredToken, writeStoredToken, createPublicTokenManager;
-var init_publicToken = __esmMin((() => {
-	TOKEN_STORAGE_KEY = "__intlayer_public_token__";
-	EXPIRY_MARGIN_MS = 6e4;
-	readStoredToken = () => {
-		try {
-			const raw = window.sessionStorage?.getItem(TOKEN_STORAGE_KEY);
-			if (!raw) return null;
-			const parsed = JSON.parse(raw);
-			if (typeof parsed?.token !== "string") return null;
-			if (typeof parsed?.expiresAt !== "number") return null;
-			return parsed;
-		} catch {
-			return null;
-		}
-	};
-	writeStoredToken = (cached) => {
-		try {
-			window.sessionStorage?.setItem(TOKEN_STORAGE_KEY, JSON.stringify(cached));
-		} catch {}
-	};
-	createPublicTokenManager = ({ backendURL, clientId }) => {
-		const endpoint = `${backendURL.replace(/\/$/, "")}/api/public/token`;
-		let cached = null;
-		let pendingExchange = null;
-		const isUsable = (candidate) => candidate !== null && candidate.expiresAt - EXPIRY_MARGIN_MS > Date.now();
-		const getToken = () => {
-			if (isUsable(cached)) return cached.token;
-			if (typeof window !== "undefined") {
-				const stored = readStoredToken();
-				if (isUsable(stored)) {
-					cached = stored;
-					return stored.token;
+					"contact-form": {
+						"yourName": "Your name",
+						"bugReport": "Bug Report",
+						"newBenchmarkIdea": "New Benchmark Idea",
+						"methodologyQuestion": "Methodology Question",
+						"describeYourQuestionOrIdea": "Describe your question or idea...",
+						"sendMessage": "Send Message"
+					}
+				},
+				"fr": {
+					"contact-header": {
+						"getInTouch": "Contactez-nous",
+						"haveIdeasFoundABug": "Vous avez des idées, trouvé un bug ou voulez proposer un benchmark ? Contactez-nous à"
+					},
+					"contact-form": {
+						"yourName": "Votre nom",
+						"bugReport": "Rapport de bug",
+						"newBenchmarkIdea": "Nouvelle idée de benchmark",
+						"methodologyQuestion": "Question sur la méthodologie",
+						"describeYourQuestionOrIdea": "Décrivez votre question ou idée...",
+						"sendMessage": "Envoyer le message"
+					}
+				},
+				"es": {
+					"contact-header": {
+						"getInTouch": "Ponte en contacto",
+						"haveIdeasFoundABug": "¿Tienes ideas, has encontrado un bug o quieres contribuir con un benchmark? Contáctanos en"
+					},
+					"contact-form": {
+						"yourName": "Tu nombre",
+						"bugReport": "Informe de bug",
+						"newBenchmarkIdea": "Nueva idea de benchmark",
+						"methodologyQuestion": "Pregunta sobre metodología",
+						"describeYourQuestionOrIdea": "Describe tu pregunta o idea...",
+						"sendMessage": "Enviar mensaje"
+					}
+				},
+				"de": {
+					"contact-header": {
+						"getInTouch": "Kontakt aufnehmen",
+						"haveIdeasFoundABug": "Haben Sie Ideen, einen Fehler gefunden oder möchten Sie einen Benchmark beisteuern? Kontaktieren Sie uns unter"
+					},
+					"contact-form": {
+						"yourName": "Ihr Name",
+						"bugReport": "Fehlerbericht",
+						"newBenchmarkIdea": "Neue Benchmark-Idee",
+						"methodologyQuestion": "Frage zur Methodik",
+						"describeYourQuestionOrIdea": "Beschreiben Sie Ihre Frage oder Idee...",
+						"sendMessage": "Nachricht senden"
+					}
+				},
+				"it": {
+					"contact-header": {
+						"getInTouch": "Mettiti in contatto",
+						"haveIdeasFoundABug": "Hai idee, hai trovato un bug o vuoi contribuire con un benchmark? Contattaci all'indirizzo"
+					},
+					"contact-form": {
+						"yourName": "Il tuo nome",
+						"bugReport": "Segnalazione di bug",
+						"newBenchmarkIdea": "Nuova idea di benchmark",
+						"methodologyQuestion": "Domanda sulla metodologia",
+						"describeYourQuestionOrIdea": "Descrivi la tua domanda o idea...",
+						"sendMessage": "Invia messaggio"
+					}
+				},
+				"pt": {
+					"contact-header": {
+						"getInTouch": "Entre em contato",
+						"haveIdeasFoundABug": "Tem ideias, encontrou um bug ou quer contribuir com um benchmark? Entre em contato conosco em"
+					},
+					"contact-form": {
+						"yourName": "Seu nome",
+						"bugReport": "Relatório de bug",
+						"newBenchmarkIdea": "Nova ideia de benchmark",
+						"methodologyQuestion": "Pergunta sobre metodologia",
+						"describeYourQuestionOrIdea": "Descreva sua pergunta ou ideia...",
+						"sendMessage": "Enviar mensagem"
+					}
+				},
+				"zh": {
+					"contact-header": {
+						"getInTouch": "取得联系",
+						"haveIdeasFoundABug": "有想法、发现错误或想贡献基准测试？请通过以下方式联系我们"
+					},
+					"contact-form": {
+						"yourName": "您的姓名",
+						"bugReport": "错误报告",
+						"newBenchmarkIdea": "新基准测试想法",
+						"methodologyQuestion": "方法论问题",
+						"describeYourQuestionOrIdea": "描述您的问题或想法...",
+						"sendMessage": "发送消息"
+					}
+				},
+				"ja": {
+					"contact-header": {
+						"getInTouch": "連絡を取る",
+						"haveIdeasFoundABug": "アイデアがある、バグを見つけた、またはベンチマークに貢献したいですか？こちらまでご連絡ください："
+					},
+					"contact-form": {
+						"yourName": "お名前",
+						"bugReport": "バグ報告",
+						"newBenchmarkIdea": "新しいベンチマークのアイデア",
+						"methodologyQuestion": "方法論に関する質問",
+						"describeYourQuestionOrIdea": "質問やアイデアを説明してください...",
+						"sendMessage": "メッセージを送信"
+					}
+				},
+				"ko": {
+					"contact-header": {
+						"getInTouch": "연락하기",
+						"haveIdeasFoundABug": "아이디어가 있거나 버그를 발견했나요? 아니면 벤치마크를 기여하고 싶으신가요? 다음 주소로 연락주세요."
+					},
+					"contact-form": {
+						"yourName": "이름",
+						"bugReport": "버그 보고",
+						"newBenchmarkIdea": "새로운 벤치마크 아이디어",
+						"methodologyQuestion": "방법론 질문",
+						"describeYourQuestionOrIdea": "질문이나 아이디어를 설명해주세요...",
+						"sendMessage": "메시지 보내기"
+					}
+				},
+				"ru": {
+					"contact-header": {
+						"getInTouch": "Свяжитесь с нами",
+						"haveIdeasFoundABug": "Есть идеи, нашли баг или хотите предложить бенчмарк? Свяжитесь с нами по адресу"
+					},
+					"contact-form": {
+						"yourName": "Ваше имя",
+						"bugReport": "Отчет об ошибке",
+						"newBenchmarkIdea": "Новая идея для бенчмарка",
+						"methodologyQuestion": "Вопрос по методологии",
+						"describeYourQuestionOrIdea": "Опишите ваш вопрос или идею...",
+						"sendMessage": "Отправить сообщение"
+					}
 				}
 			}
-		};
-		const exchange = async () => {
-			try {
-				const response = await fetch(endpoint, {
-					method: "POST",
-					headers: { "Content-Type": "application/json" },
-					body: JSON.stringify({ clientId }),
-					credentials: "omit",
-					mode: "cors"
-				});
-				if (!response.ok) return;
-				const payload = await response.json();
-				const token = payload?.data?.token;
-				const expiresIn = payload?.data?.expiresIn ?? 0;
-				if (!token || expiresIn <= 0) return;
-				cached = {
-					token,
-					expiresAt: Date.now() + expiresIn * 1e3
-				};
-				if (typeof window !== "undefined") writeStoredToken(cached);
-			} catch {} finally {
-				pendingExchange = null;
+		},
+		localIds: [
+			"contact::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"contact::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"contact::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"contact::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"contact::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"contact::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"contact::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"contact::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"contact::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"contact::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"blog-list": {
+		key: "blog-list",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"comparingI18nLibrariesIn2026\":\"Comparing i18n Libraries in 2026: A Deep Dive\",\"weTested12DifferentInternationalization\":\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\",\"howToReduceYourI18n\":\"How to Reduce Your i18n Bundle by 60%\",\"march82026\":\"March 8, 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\",\"theStateOfInternationalizationIn\":\"The State of Internationalization in React\",\"february282026\":\"February 28, 2026\",\"anOverviewOfTheCurrent\":\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\",\"migratingFromReactI18nextTo\":\"Migrating from react-i18next to Lingui\",\"february152026\":\"February 15, 2026\",\"aStepByStepGuide\":\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components and i18n: What Changes?\",\"february12026\":\"February 1, 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\",\"benchmarkMethodologyHowWeTest\":\"Benchmark Methodology: How We Test\",\"january202026\":\"January 20, 2026\",\"aTransparentLookAtOur\":\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\",\"readMore\":\"Read More →\"},\"fr\":{\"comparingI18nLibrariesIn2026\":\"Comparer les bibliothèques i18n en 2026 : une analyse approfondie\",\"weTested12DifferentInternationalization\":\"Nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et la DX. Voici les résultats surprenants.\",\"howToReduceYourI18n\":\"Comment réduire votre bundle i18n de 60 %\",\"march82026\":\"8 mars 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Stratégies pratiques pour optimiser les bundles de traduction, y compris le lazy loading, le fractionnement du code et les optimisations au moment de la compilation.\",\"theStateOfInternationalizationIn\":\"L'état de l'internationalisation dans React\",\"february282026\":\"28 février 2026\",\"anOverviewOfTheCurrent\":\"Un aperçu de l'écosystème i18n actuel dans React, couvrant les tendances, les modèles émergents et les préférences de la communauté.\",\"migratingFromReactI18nextTo\":\"Migrer de react-i18next vers Lingui\",\"february152026\":\"15 février 2026\",\"aStepByStepGuide\":\"Un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components et i18n : qu'est-ce qui change ?\",\"february12026\":\"1er février 2026\",\"reactServerComponentsIntroduceNew\":\"Les React Server Components introduisent de nouveaux modèles pour l'internationalisation. Nous explorons les implications et les meilleures pratiques.\",\"benchmarkMethodologyHowWeTest\":\"Méthodologie du Benchmark : comment nous testons\",\"january202026\":\"20 janvier 2026\",\"aTransparentLookAtOur\":\"Un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.\",\"readMore\":\"Lire la suite →\"},\"es\":{\"comparingI18nLibrariesIn2026\":\"Comparing i18n Libraries in 2026: A Deep Dive\",\"weTested12DifferentInternationalization\":\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\",\"howToReduceYourI18n\":\"How to Reduce Your i18n Bundle by 60%\",\"march82026\":\"March 8, 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\",\"theStateOfInternationalizationIn\":\"The State of Internationalization in React\",\"february282026\":\"February 28, 2026\",\"anOverviewOfTheCurrent\":\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\",\"migratingFromReactI18nextTo\":\"Migrating from react-i18next to Lingui\",\"february152026\":\"February 15, 2026\",\"aStepByStepGuide\":\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components and i18n: What Changes?\",\"february12026\":\"February 1, 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\",\"benchmarkMethodologyHowWeTest\":\"Benchmark Methodology: How We Test\",\"january202026\":\"January 20, 2026\",\"aTransparentLookAtOur\":\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\",\"readMore\":\"Read More →\"},\"de\":{\"comparingI18nLibrariesIn2026\":\"Comparing i18n Libraries in 2026: A Deep Dive\",\"weTested12DifferentInternationalization\":\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\",\"howToReduceYourI18n\":\"How to Reduce Your i18n Bundle by 60%\",\"march82026\":\"March 8, 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\",\"theStateOfInternationalizationIn\":\"The State of Internationalization in React\",\"february282026\":\"February 28, 2026\",\"anOverviewOfTheCurrent\":\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\",\"migratingFromReactI18nextTo\":\"Migrating from react-i18next to Lingui\",\"february152026\":\"February 15, 2026\",\"aStepByStepGuide\":\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components and i18n: What Changes?\",\"february12026\":\"February 1, 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\",\"benchmarkMethodologyHowWeTest\":\"Benchmark Methodology: How We Test\",\"january202026\":\"January 20, 2026\",\"aTransparentLookAtOur\":\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\",\"readMore\":\"Read More →\"},\"it\":{\"comparingI18nLibrariesIn2026\":\"Comparing i18n Libraries in 2026: A Deep Dive\",\"weTested12DifferentInternationalization\":\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\",\"howToReduceYourI18n\":\"How to Reduce Your i18n Bundle by 60%\",\"march82026\":\"March 8, 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\",\"theStateOfInternationalizationIn\":\"The State of Internationalization in React\",\"february282026\":\"February 28, 2026\",\"anOverviewOfTheCurrent\":\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\",\"migratingFromReactI18nextTo\":\"Migrating from react-i18next to Lingui\",\"february152026\":\"February 15, 2026\",\"aStepByStepGuide\":\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components and i18n: What Changes?\",\"february12026\":\"February 1, 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\",\"benchmarkMethodologyHowWeTest\":\"Benchmark Methodology: How We Test\",\"january202026\":\"January 20, 2026\",\"aTransparentLookAtOur\":\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\",\"readMore\":\"Read More →\"},\"pt\":{\"comparingI18nLibrariesIn2026\":\"Comparing i18n Libraries in 2026: A Deep Dive\",\"weTested12DifferentInternationalization\":\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\",\"howToReduceYourI18n\":\"How to Reduce Your i18n Bundle by 60%\",\"march82026\":\"March 8, 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\",\"theStateOfInternationalizationIn\":\"The State of Internationalization in React\",\"february282026\":\"February 28, 2026\",\"anOverviewOfTheCurrent\":\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\",\"migratingFromReactI18nextTo\":\"Migrating from react-i18next to Lingui\",\"february152026\":\"February 15, 2026\",\"aStepByStepGuide\":\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components and i18n: What Changes?\",\"february12026\":\"February 1, 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\",\"benchmarkMethodologyHowWeTest\":\"Benchmark Methodology: How We Test\",\"january202026\":\"January 20, 2026\",\"aTransparentLookAtOur\":\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\",\"readMore\":\"Read More →\"},\"zh\":{\"comparingI18nLibrariesIn2026\":\"Comparing i18n Libraries in 2026: A Deep Dive\",\"weTested12DifferentInternationalization\":\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\",\"howToReduceYourI18n\":\"How to Reduce Your i18n Bundle by 60%\",\"march82026\":\"March 8, 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\",\"theStateOfInternationalizationIn\":\"The State of Internationalization in React\",\"february282026\":\"February 28, 2026\",\"anOverviewOfTheCurrent\":\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\",\"migratingFromReactI18nextTo\":\"Migrating from react-i18next to Lingui\",\"february152026\":\"February 15, 2026\",\"aStepByStepGuide\":\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components and i18n: What Changes?\",\"february12026\":\"February 1, 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\",\"benchmarkMethodologyHowWeTest\":\"Benchmark Methodology: How We Test\",\"january202026\":\"January 20, 2026\",\"aTransparentLookAtOur\":\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\",\"readMore\":\"Read More →\"},\"ja\":{\"comparingI18nLibrariesIn2026\":\"Comparing i18n Libraries in 2026: A Deep Dive\",\"weTested12DifferentInternationalization\":\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\",\"howToReduceYourI18n\":\"How to Reduce Your i18n Bundle by 60%\",\"march82026\":\"March 8, 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\",\"theStateOfInternationalizationIn\":\"The State of Internationalization in React\",\"february282026\":\"February 28, 2026\",\"anOverviewOfTheCurrent\":\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\",\"migratingFromReactI18nextTo\":\"Migrating from react-i18next to Lingui\",\"february152026\":\"February 15, 2026\",\"aStepByStepGuide\":\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components and i18n: What Changes?\",\"february12026\":\"February 1, 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\",\"benchmarkMethodologyHowWeTest\":\"Benchmark Methodology: How We Test\",\"january202026\":\"January 20, 2026\",\"aTransparentLookAtOur\":\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\",\"readMore\":\"Read More →\"},\"ko\":{\"comparingI18nLibrariesIn2026\":\"Comparing i18n Libraries in 2026: A Deep Dive\",\"weTested12DifferentInternationalization\":\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\",\"howToReduceYourI18n\":\"How to Reduce Your i18n Bundle by 60%\",\"march82026\":\"March 8, 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\",\"theStateOfInternationalizationIn\":\"The State of Internationalization in React\",\"february282026\":\"February 28, 2026\",\"anOverviewOfTheCurrent\":\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\",\"migratingFromReactI18nextTo\":\"Migrating from react-i18next to Lingui\",\"february152026\":\"February 15, 2026\",\"aStepByStepGuide\":\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components and i18n: What Changes?\",\"february12026\":\"February 1, 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\",\"benchmarkMethodologyHowWeTest\":\"Benchmark Methodology: How We Test\",\"january202026\":\"January 20, 2026\",\"aTransparentLookAtOur\":\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\",\"readMore\":\"Read More →\"},\"ru\":{\"comparingI18nLibrariesIn2026\":\"Comparing i18n Libraries in 2026: A Deep Dive\",\"weTested12DifferentInternationalization\":\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\",\"howToReduceYourI18n\":\"How to Reduce Your i18n Bundle by 60%\",\"march82026\":\"March 8, 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\",\"theStateOfInternationalizationIn\":\"The State of Internationalization in React\",\"february282026\":\"February 28, 2026\",\"anOverviewOfTheCurrent\":\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\",\"migratingFromReactI18nextTo\":\"Migrating from react-i18next to Lingui\",\"february152026\":\"February 15, 2026\",\"aStepByStepGuide\":\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components and i18n: What Changes?\",\"february12026\":\"February 1, 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\",\"benchmarkMethodologyHowWeTest\":\"Benchmark Methodology: How We Test\",\"january202026\":\"January 20, 2026\",\"aTransparentLookAtOur\":\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\",\"readMore\":\"Read More →\"}}}"),
+		localIds: [
+			"blog-list::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"blog-list::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"blog-list::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"blog-list::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"blog-list::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"blog-list::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"blog-list::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"blog-list::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"blog-list::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"blog-list::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"about": {
+		key: "about",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"about-header\":{\"aboutThisBenchmark\":\"About This Benchmark\",\"thisIsAnOpenSource\":\"This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions.\"},\"about-grid\":{\"whyThisExists\":\"Why This Exists\",\"choosingAnI18nLibraryIs\":\"Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.\",\"methodology\":\"Methodology\",\"theSame10PageApp\":\"The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results.\"},\"what-we-measure\":{\"bundleSizeImpact\":\"Bundle size impact\",\"theAdditionalJavascriptBytesSent\":\"The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.\",\"renderingOverhead\":\"Rendering overhead\",\"howMuchExtraTimeThe\":\"How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.\",\"hydrationCost\":\"Hydration cost\",\"duringSsrTranslationDataIs\":\"During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.\",\"lazyLoadingEffectiveness\":\"Lazy loading effectiveness\",\"whetherSplittingTranslationsByRoute\":\"Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).\",\"localeSwitchSpeed\":\"Locale switch speed\",\"howFastTheAppCan\":\"How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.\",\"whatWeMeasure\":\"What We Measure\"}},\"fr\":{\"about-header\":{\"aboutThisBenchmark\":\"À propos de ce benchmark\",\"thisIsAnOpenSource\":\"Il s'agit d'une application de test open source, pas d'un produit ou d'une entreprise. Son seul but est de fournir une application React multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques.\"},\"about-grid\":{\"whyThisExists\":\"Pourquoi cela existe\",\"choosingAnI18nLibraryIs\":\"Choisir une bibliothèque i18n est une décision architecturale ayant des conséquences à long terme. La plupart des comparaisons se concentrent sur l'ergonomie de l'API, mais peu mesurent le coût en termes de performances : quel poids la bibliothèque ajoute-t-elle au bundle ? Comment cela affecte-t-il le rendu lorsque des milliers de clés de traduction sont chargées ? Le chargement différé aide-t-il réellement ou déplace-t-il simplement le coût ? Ce benchmark répond à ces questions avec des données réelles.\",\"methodology\":\"Méthodologie\",\"theSame10PageApp\":\"La même application de 10 pages est construite une fois par bibliothèque. Nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits Lighthouse pour les métriques de chargement et utilisons React Profiler pour capturer les temps de rendu lors des changements de langue. Tous les tests sont effectués en CI sur un matériel identique pour garantir des résultats reproductibles.\"},\"what-we-measure\":{\"bundleSizeImpact\":\"Impact sur la taille du bundle\",\"theAdditionalJavascriptBytesSent\":\"Les octets JavaScript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers de traduction sont inclus. Cela affecte directement le temps de téléchargement sur les réseaux lents.\",\"renderingOverhead\":\"Surcharge de rendu\",\"howMuchExtraTimeThe\":\"Combien de temps supplémentaire la bibliothèque ajoute au suite de rendu de React. Les bibliothèques qui injectent des traductions via un seul fournisseur de contexte peuvent provoquer des re-rendus inutiles dans l'arbre des composants.\",\"hydrationCost\":\"Coût d'hydratation\",\"duringSsrTranslationDataIs\":\"Pendant le SSR, les données de traduction sont sérialisées dans le HTML. Les dictionnaire volumineux augmentent le payload HTML et ralentissent l'hydratation — le moment en que la page devient interactive.\",\"lazyLoadingEffectiveness\":\"Efficacité du chargement différé\",\"whetherSplittingTranslationsByRoute\":\"Si le fractionnement des traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, FOUC, complexité du cache).\",\"localeSwitchSpeed\":\"Vitesse de changement de langue\",\"howFastTheAppCan\":\"À quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération des nouvelles traductions, le rendu des composants et la mise à jour du DOM.\",\"whatWeMeasure\":\"Ce que nous mesurons\"}},\"es\":{\"about-header\":{\"aboutThisBenchmark\":\"Sobre este benchmark\",\"thisIsAnOpenSource\":\"Esta es una aplicación de prueba de código abierto, no un producto o una empresa. Su único propósito es proporcionar una aplicación React multipágina realista donde se puedan integrar y medir diferentes bibliotecas i18n en condiciones idénticas.\"},\"about-grid\":{\"whyThisExists\":\"Por qué existe\",\"choosingAnI18nLibraryIs\":\"Elegir una biblioteca i18n es una decisión arquitectónica con consecuencias a largo plazo. La mayoría de las comparaciones se centran en la ergonomía de la API, pero pocas miden el coste de rendimiento: ¿cuánto peso añade la biblioteca al bundle? ¿Cómo afecta al renderizado cuando se cargan miles de claves de traducción? ¿Realmente ayuda la carga diferida o solo traslada el coste? Este benchmark responde a estas preguntas con datos reales.\",\"methodology\":\"Metodología\",\"theSame10PageApp\":\"La misma aplicación de 10 páginas se construye una vez por biblioteca. Medimos el bundle de producción (a través de rollup-plugin-visualizer), realizamos auditorías de Lighthouse para las métricas de carga y utilizamos React Profiler para capturar los tiempos de renderizado durante los cambios de idioma. Todas las pruebas se ejecutan en CI en un hardware consistente para garantizar resultados reproducibles.\"},\"what-we-measure\":{\"bundleSizeImpact\":\"Impacto en el tamaño del bundle\",\"theAdditionalJavascriptBytesSent\":\"Los bytes adicionales de JavaScript enviados a los usuarios cuando se incluye la biblioteca i18n y sus archivos de traducción. Esto afecta directamente al tiempo de descarga en redes lentas.\",\"renderingOverhead\":\"Sobrecarga de renderizado\",\"howMuchExtraTimeThe\":\"Cuánto tiempo extra añade la biblioteca al ciclo de renderizado de React. Las bibliotecas que inyectan traducciones a través de un único proveedor de contexto pueden causar renderizados innecesarios en todo el árbol de componentes.\",\"hydrationCost\":\"Coste de hidratación\",\"duringSsrTranslationDataIs\":\"Durante el SSR, los datos de traducción se serializan en el HTML. Los diccionarios grandes aumentan el payload HTML y ralentizan la hidratación, el momento en que la página se vuelve interactiva.\",\"lazyLoadingEffectiveness\":\"Eficacia de la carga diferida\",\"whetherSplittingTranslationsByRoute\":\"Si dividir las traducciones por ruta o espacio de nombres realmente reduce la carga inicial y qué compensaciones introduce (solicitudes en cascada, FOUC, complejidad de la caché).\",\"localeSwitchSpeed\":\"Velocidad de cambio de idioma\",\"howFastTheAppCan\":\"Qué tan rápido puede la aplicación cambiar de un idioma a otro en tiempo de ejecución, incluyendo la obtención de nuevas traducciones, el renderizado de componentes y la actualización del DOM.\",\"whatWeMeasure\":\"Qué medimos\"}},\"de\":{\"about-header\":{\"aboutThisBenchmark\":\"Über diesen Benchmark\",\"thisIsAnOpenSource\":\"Dies ist eine Open-Source-Testanwendung — kein Produkt oder Unternehmen. Ihr einziger Zweck ist es, eine realistische, mehrseitige React-App bereitzustellen, in der verschiedene i18n-Bibliotheken unter identischen Bedingungen integriert und gemessen werden können.\"},\"about-grid\":{\"whyThisExists\":\"Warum dieses Projekt existiert\",\"choosingAnI18nLibraryIs\":\"Die Wahl einer i18n-Bibliothek ist eine architektonische Entscheidung mit langfristigen Folgen. Die meisten Vergleiche konzentrieren sich auf die Ergonomie der API, aber nur wenige messen die Leistungskosten: Wie viel Gewicht fügt die Bibliothek dem Bundle hinzu? Wie wirkt sie sich auf das Rendering aus, wenn Tausende von Übersetzungsschlüsseln geladen werden? Hilft Lazy Loading wirklich oder verschiebt es nur die Kosten? Dieser Benchmark beantwortet diese Fragen mit echten Daten.\",\"methodology\":\"Methodik\",\"theSame10PageApp\":\"Dieselbe 10-seitige App wird einmal pro Bibliothek erstellt. Wir messen das Produktions-Bundle (über rollup-plugin-visualizer), führen Lighthouse-Audits für Lademetriken durch und verwenden den React Profiler, um die Renderzeiten während der Gebietsschemawechsel zu erfassen. Alle Tests werden in der CI auf konsistenter Hardware ausgeführt, um reproduzierbare Ergebnisse zu gewährleisten.\"},\"what-we-measure\":{\"bundleSizeImpact\":\"Auswirkung auf die Bundle-Größe\",\"theAdditionalJavascriptBytesSent\":\"Die zusätzlichen JavaScript-Bytes, die an die Benutzer gesendet werden, wenn die i18n-Bibliothek und ihre Übersetzungsdateien enthalten sind. Dies wirkt sich direkt auf die Download-Zeit bei langsamen Netzwerken aus.\",\"renderingOverhead\":\"Rendering-Overhead\",\"howMuchExtraTimeThe\":\"Wie viel zusätzliche Zeit die Bibliothek dem Renderzyklus von React hinzufügt. Bibliotheken, die Übersetzungen über einen einzigen Kontext-Provider injizieren, können unnötige Re-Renderings im gesamten Komponentenbaum verursachen.\",\"hydrationCost\":\"Hydratisierungskosten\",\"duringSsrTranslationDataIs\":\"Während des SSR werden Übersetzungsdaten in HTML serialisiert. Große Wörterbücher erhöhen den HTML-Payload und verlangsamen die Hydratisierung — den Moment, in dem die Seite interaktiv wird.\",\"lazyLoadingEffectiveness\":\"Effektivität von Lazy Loading\",\"whetherSplittingTranslationsByRoute\":\"Ob das Aufteilen von Übersetzungen nach Route oder Namensraum die initiale Last tatsächlich reduziert und welche Kompromisse dies mit sich bringt (Waterfall-Anfragen, FOUC, Cache-Komplexität).\",\"localeSwitchSpeed\":\"Geschwindigkeit des Gebietsschemawechsels\",\"howFastTheAppCan\":\"Wie schnell die App zur Laufzeit von einer Sprache in eine andere wechseln kann — einschließlich des Abrufens neuer Übersetzungen, des erneuten Renderns von Komponenten und der Aktualisierung des DOM.\",\"whatWeMeasure\":\"Was wir messen\"}},\"it\":{\"about-header\":{\"aboutThisBenchmark\":\"Informazioni su questo benchmark\",\"thisIsAnOpenSource\":\"Questa è un'applicazione di test open-source, non un prodotto o un'azienda. Il suo unico scopo è fornire un'applicazione React multi-pagina realistica dove diverse librerie i18n possono essere integrate e mesurate in condizioni identiche.\"},\"about-grid\":{\"whyThisExists\":\"Perché esiste questo progetto\",\"choosingAnI18nLibraryIs\":\"Scegliere una libreria i18n è una decisione architettonica con conseguenze a lungo termine. La maggior parte dei confronti si concentra sull'ergonomia delle API, ma pochi misurano il costo delle prestazioni: quanto peso aggiunge la libreria al bundle? In che modo influisce sul rendering quando vengono caricate migliaia di chiavi di traduzione? Il caricamento pigro aiuta davvero o sposta solo il costo? Questo benchmark risponde a queste domande con dati reali.\",\"methodology\":\"Metodologia\",\"theSame10PageApp\":\"La stessa app di 10 pagine viene costruita una volta per libreria. Misuriamo il bundle di produzione (tramite rollup-plugin-visualizer), eseguiamo audit Lighthouse per le metriche di caricamento e utilizziamo React Profiler per catturare i tempi di rendering durante i cambi di lingua. Tutti i test vengono eseguiti in CI su hardware coerente per garantire risultati riproducibili.\"},\"what-we-measure\":{\"bundleSizeImpact\":\"Impatto sulla dimensione del bundle\",\"theAdditionalJavascriptBytesSent\":\"I byte JavaScript aggiuntivi inviati agli utenti quando la libreria i18n e i suoi file di traduzione sono inclusi. Ciò influisce direttamente sul tempo di download sulle reti lente.\",\"renderingOverhead\":\"Sovrapprezzo di rendering\",\"howMuchExtraTimeThe\":\"Quanto tempo extra la libreria aggiunge al ciclo di rendering di React. Le librerie che iniettano traduzioni tramite un unico provider di contesto possono causare rendering non necessari in tutto l'albero dei componenti.\",\"hydrationCost\":\"Costo di idratazione\",\"duringSsrTranslationDataIs\":\"Durante l'SSR, i dati di traduzione vengono serializzati nell'HTML. Dizionari di grandi dimensioni aumentano il payload HTML e rallentano l'idratazione — il momento in cui la pagina diventa interattiva.\",\"lazyLoadingEffectiveness\":\"Efficacia del caricamento pigro\",\"whetherSplittingTranslationsByRoute\":\"Se la scomposizione delle traduzioni per rotta o namespace riduca effettivamente il carico iniziale e quali compromessi introduca (richieste a cascata, FOUC, complessità della cache).\",\"localeSwitchSpeed\":\"Velocità di cambio lingua\",\"howFastTheAppCan\":\"Quanto velocemente l'app può passare da una lingua all'altra in fase di esecuzione — inclusi il recupero delle nuove traduzioni, il rendering dei componenti e l'aggiornamento del DOM.\",\"whatWeMeasure\":\"Cosa misuriamo\"}},\"pt\":{\"about-header\":{\"aboutThisBenchmark\":\"Sobre este benchmark\",\"thisIsAnOpenSource\":\"Esta é uma aplicação de teste de código aberto — não um produto ou uma empresa. Seu único propósito é fornecer um aplicativo React realista e de várias páginas onde diferentes bibliotecas i18n possam ser integradas e medidas em condições idênticas.\"},\"about-grid\":{\"whyThisExists\":\"Por que isso existe\",\"choosingAnI18nLibraryIs\":\"Escolher uma biblioteca i18n é uma decisão arquitetônica com consequências de longo prazo. A maioria das comparações se concentra na ergonomia da API, mas poucas medem o custo de desempenho: quanto peso a biblioteca adiciona ao pacote? Como isso afeta a renderização quando milhares de chaves de tradução são carregadas? O carregamento tardio realmente ajuda ou apenas desloca o custo? Este benchmark responde a essas perguntas com dados reais.\",\"methodology\":\"Metodologia\",\"theSame10PageApp\":\"O mesmo aplicativo de 10 páginas é construído uma vez por biblioteca. Medimos o bundle de produção (via rollup-plugin-visualizer), realizamos auditorias do Lighthouse para métricas de carregamento e usamos o React Profiler para capturar tempos de renderização durante as trocas de localidade. Todos os testes são executados em CI em hardware consistente para garantir resultados reproduzíveis.\"},\"what-we-measure\":{\"bundleSizeImpact\":\"Impacto no tamanho do bundle\",\"theAdditionalJavascriptBytesSent\":\"Os bytes extras de JavaScript enviados aos usuários quando a biblioteca de i18n e seus arquivos de tradução são incluídos. Isso afeta diretamente o tempo de download em redes lentas.\",\"renderingOverhead\":\"Sobrecarga de renderização\",\"howMuchExtraTimeThe\":\"Quanto tempo extra a biblioteca adiciona ao ciclo de renderização do React. Bibliotecas que injetam traduções via um único provedor de contexto podem causar re-renderizações desnecessárias em toda a árvore de componentes.\",\"hydrationCost\":\"Costo de hidratação\",\"duringSsrTranslationDataIs\":\"Durante o SSR, os dados de tradução são serializados em HTML. Dicionários grandes aumentam a carga de HTML e desaceleram a hidratação — o momento em que a página se torna interativa.\",\"lazyLoadingEffectiveness\":\"Eficácia do carregamento lento\",\"whetherSplittingTranslationsByRoute\":\"Se a divisão de traduções por rota ou namespace realmente reduz a carga inicial e quais compensações ela introduz (solicitações em cascada, FOUC, complexidade de cache).\",\"localeSwitchSpeed\":\"Velocidade de troca de idioma\",\"howFastTheAppCan\":\"Quão rápido o aplicativo pode mudar de um idioma para outro em tempo de execução — incluindo a busca de novas traduções, a re-renderização de componentes e a atualização do DOM.\",\"whatWeMeasure\":\"O que medimos\"}},\"zh\":{\"about-header\":{\"aboutThisBenchmark\":\"关于此基准测试\",\"thisIsAnOpenSource\":\"这是一个开源测试应用程序——不是产品或公司。其唯一目的是提供一个现实的多页面 React 应用程序，可以在相同条件下集成和衡量不同的 i18n 库。\"},\"about-grid\":{\"whyThisExists\":\"为什么存在这个项目\",\"choosingAnI18nLibraryIs\":\"选择 i18n 库是一个具有长期影响的架构决策。大多数比较都集中在 API 的易用性上，但很少有人衡量性能成本：库为捆绑包增加了多少重量？当加载数千个翻译键时，它如何影响渲染？延迟加载真的有帮助还是只是转移了成本？本基准测试用真实数据回答了这些问题。\",\"methodology\":\"方法论\",\"theSame10PageApp\":\"同一个 10 页应用为每个库构建一次。我们衡量生产捆绑包（通过 rollup-plugin-visualizer），运行加载指标的 Lighthouse 审核，并使用 React Profiler 捕获语言环境切换期间的渲染时间。所有测试都在硬件一致的 CI 中运行，以确保结果可重现。\"},\"what-we-measure\":{\"bundleSizeImpact\":\"捆绑包大小影响\",\"theAdditionalJavascriptBytesSent\":\"包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络上的下载时间。\",\"renderingOverhead\":\"渲染开销\",\"howMuchExtraTimeThe\":\"库为 React 的渲染循环增加了多少额外时间。通过单个上下文提供程序注入翻译的库可能会导致整个组件树不必要的重新渲染。\",\"hydrationCost\":\"水合成本\",\"duringSsrTranslationDataIs\":\"在 SSR 期间，翻译数据被序列化为 HTML。大型字典会增加 HTML 负载并减慢水合速度——即页面变得可交互的瞬间。\",\"lazyLoadingEffectiveness\":\"延迟加载有效性\",\"whetherSplittingTranslationsByRoute\":\"按路由或命名空间拆分翻译是否真的减少了初始加载，以及它引入了哪些权衡（瀑布式请求、FOUC、缓存复杂性）。\",\"localeSwitchSpeed\":\"语言环境切换速度\",\"howFastTheAppCan\":\"应用程序在运行时从一种语言切换到另一种语言的速度——包括提取新翻译、重新渲染组件和更新 DOM。\",\"whatWeMeasure\":\"衡量指标\"}},\"ja\":{\"about-header\":{\"aboutThisBenchmark\":\"このベンチマークについて\",\"thisIsAnOpenSource\":\"これはオープンソースのテストアプリケーションであり、製品や会社ではありません。その唯一の目的は、Identicalな条件下で異なるi18nライブラリを統合して測定できる、現実的な多ページReactアプリを提供することです。\"},\"about-grid\":{\"whyThisExists\":\"なぜこれが存在するのか\",\"choosingAnI18nLibraryIs\":\"i18nライブラリの選択は、長期的な影響を伴うアーキテクチャ上の決定です。ほとんどの比較はAPIの使い勝手に焦点を当てていますが、パフォーマンスコストを測定しているものはほとんどありません。ライブラリがバンドルにどれだけの重量を加えるか？ 数千の翻訳キーがロードされたときにレンダリングにどう影響するか？ 遅延ロードは実際に役立つのか、それともコストを後回しにしているだけなのか？ このベンチマークは、実際のデータを使用してこれらの質問に答えます。\",\"methodology\":\"方法論\",\"theSame10PageApp\":\"同じ10ページのアプリがライブラリごとに1回構築されます。 rollup-plugin-visualizerを通じて生産バンドルを測定し、ロード指標のLighthouse監査を実行し、React Profilerを使用してロケール切り替え中のレンダリング時間をキャプチャします。すべてのテストは、再現可能な結果を保証するために、一貫したハードウェアのCIで実行されます。\"},\"what-we-measure\":{\"bundleSizeImpact\":\"バンドルサイズへの影響\",\"theAdditionalJavascriptBytesSent\":\"i18nライブラリと翻訳ファイルが含まれる際にユーザーに送信される追加のJavaScriptバイト数です。これは、低速なネットワークでのダウンロード時間に直接影響します。\",\"renderingOverhead\":\"レンダリングオーバーヘッド\",\"howMuchExtraTimeThe\":\"ライブラリがReactのレンダリングサイクルに追加する時間です。単一のコンテキストプロバイダーを介して翻訳を注入するライブラリは、コンポーネントツリー全体で不要なリレンダリングを引き起こす可能性があります。\",\"hydrationCost\":\"ハイドレーションコスト\",\"duringSsrTranslationDataIs\":\"SSR中、翻訳データはHTMLにシリアル化されます。大規模な辞書はHTMLペイロードを増加させ、ページがインタラクティブになる瞬間であるハイドレーションを遅らせます。\",\"lazyLoadingEffectiveness\":\"遅延ロードの有効性\",\"whetherSplittingTranslationsByRoute\":\"ルートや名前空間ごとに翻訳を分割することが実際に初期ロードを削減するのか、そしてどのようなトレードオフ（ウォーターフォールリクエスト、FOUC、キャッシュの複雑さ）をもたらすのかを測定します。\",\"localeSwitchSpeed\":\"ロケール切り替え速度\",\"howFastTheAppCan\":\"実行時にアプリが1つの言語から別の言語にどれだけ速く切り替えられるかを測定します。これには、新しい翻訳の取得、コンポーネントのリレンダリング、DOMの更新が含まれます。\",\"whatWeMeasure\":\"測定項目\"}},\"ko\":{\"about-header\":{\"aboutThisBenchmark\":\"이 벤치마크에 대하여\",\"thisIsAnOpenSource\":\"이것은 제품이나 회사가 아닌 오픈 소스 테스트 애플리케이션입니다. 유일한 목적은 동일한 조건에서 서로 다른 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 React 앱을 제공하는 것입니다.\"},\"about-grid\":{\"whyThisExists\":\"이것이 존재하는 이유\",\"choosingAnI18nLibraryIs\":\"i18n 라이브러리를 선택하는 것은 장기적인 결과를 초래하는 아키텍처 결정입니다. 대부분의 비교는 API의 사용 편의성에 중점을 두지만, 성능 비용을 측정하는 경우는 거의 없습니다. 라이브러리가 번들에 얼마나 무게를 더하는가? 수천 개의 번역 키가 로드될 때 렌더링에 어떤 영향을 주는가? 지연 로딩이 실제로 도움이 되는가 아니면 단순히 비용을 나중으로 미루는 것인가? 이 벤치마크는 실제 데이터를 사용하여 이러한 질문에 답합니다.\",\"methodology\":\"방법론\",\"theSame10PageApp\":\"동일한 10페이지 앱이 라이브러리마다 한 번씩 구축됩니다. rollup-plugin-visualizer를 통해 프로덕션 번들을 측정하고, 로딩 지표에 대한 Lighthouse 감사를 실행하며, React Profiler를 사용하여 로케일 전환 중 렌더링 시간을 캡처합니다. 모든 테스트는 재현 가능한 결과를 보장하기 위해 일관된 하드웨어의 CI에서 실행됩니다.\"},\"what-we-measure\":{\"bundleSizeImpact\":\"번들 크기 영향\",\"theAdditionalJavascriptBytesSent\":\"i18n 라이브러리와 번역 파일이 포함될 때 사용자에게 전송되는 추가 JavaScript 바이트입니다. 이는 느린 네트워크에서의 다운로드 시간에 직접적인 영향을 미칩니다.\",\"renderingOverhead\":\"렌더링 오버헤드\",\"howMuchExtraTimeThe\":\"라이브러리가 React의 렌더링 주기에 추가하는 시간입니다. 단일 컨텍스트 공급자를 통해 번역을 주입하는 라이브러리는 컴포넌트 트리 전체에서 불필요한 리렌더링을 일으킬 수 있습니다.\",\"hydrationCost\":\"수화 비용\",\"duringSsrTranslationDataIs\":\"SSR 중에 번역 데이터는 HTML로 직렬화됩니다. 대용량 사전은 HTML 페이로드를 증가시키고 페이지가 상호작용 가능해지는 순간인 수화 속도를 늦춥니다.\",\"lazyLoadingEffectiveness\":\"지연 로딩 효과\",\"whetherSplittingTranslationsByRoute\":\"경로 또는 네임스페이스별로 번역을 분할하는 것이 실제로 초기 로드를 줄이는지, 그리고 어떤 트레이드오프(워터폴 요청, FOUC, 캐시 복잡성)를 유발하는지 측정합니다.\",\"localeSwitchSpeed\":\"로케일 전환 속도\",\"howFastTheAppCan\":\"실행 중에 앱이 한 언어에서 다른 언어로 얼마나 빨리 전환될 수 있는지를 측정합니다. 여기에는 새 번역 가져오기, 컴포넌트 리렌더링 및 DOM 업데이트가 포함됩니다.\",\"whatWeMeasure\":\"측정 항목\"}},\"ru\":{\"about-header\":{\"aboutThisBenchmark\":\"Об этом бенчмарке\",\"thisIsAnOpenSource\":\"Это открытое приложение для тестирования, а не продукт или компания. Его единственная цель — предоставить реалистичное многостраничное приложение на React, в котором можно интегрировать и измерять различные библиотеки i18n в идентичных условиях.\"},\"about-grid\":{\"whyThisExists\":\"Почему это существует\",\"choosingAnI18nLibraryIs\":\"Выбор библиотеки i18n — это архитектурное решение с долгосрочными последствиями. Большинство сравнений сосредоточены на эргономике API, но немногие измеряют стоимость производительности: какой вес библиотека добавляет в бандл? Как она влияет на рендеринг при загрузке тысяч ключей перевода? Помогает ли ленивая загрузка на самом деле или просто переносит затраты? Этот бенчмарк отвечает на эти вопросы с помощью реальных данных.\",\"methodology\":\"Методология\",\"theSame10PageApp\":\"Одно и то же 10-страничное приложение создается для каждой библиотеки. Мы измеряем производственный бандл (через rollup-plugin-visualizer), проводим аудит Lighthouse для метрик загрузки и используем React Profiler для регистрации времени рендеринга при переключении языков. Все тесты выполняются в CI на одинаковом оборудовании для обеспечения воспроизводимых результатов.\"},\"what-we-measure\":{\"bundleSizeImpact\":\"Влияние на размер бандла\",\"theAdditionalJavascriptBytesSent\":\"Дополнительные байты JavaScript, отправляемые пользователям при включении библиотеки i18n и ее файлов перевода. Это напрямую влияет на время загрузки в медленных сетях.\",\"renderingOverhead\":\"Затраты на рендеринг\",\"howMuchExtraTimeThe\":\"Сколько дополнительного времени библиотека добавляет в цикл рендеринга React. Библиотеки, которые внедряют переводы через одного провайдера контекста, могут вызывать ненужные повторные рендеринги во всем дереве компонентов.\",\"hydrationCost\":\"Стоимость гидратации\",\"duringSsrTranslationDataIs\":\"Во время SSR данные перевода сериализуются в HTML. Большие словари увеличивают объем HTML и замедляют гидратацию — момент, когда страница становится интерактивной.\",\"lazyLoadingEffectiveness\":\"Эффективность ленивой загрузки\",\"whetherSplittingTranslationsByRoute\":\"Действительно ли разделение переводов по маршрутам или пространствам имен снижает начальную нагрузку, и какие компромиссы оно вносит (каскадные запросы, FOUC, сложность кэширования).\",\"localeSwitchSpeed\":\"Скорость переключения языка\",\"howFastTheAppCan\":\"Как быстро приложение может переключаться с одного языка на другой во время выполнения — включая получение новых переводов, повторный рендеринг компонентов и обновление DOM.\",\"whatWeMeasure\":\"Что мы измеряем\"}}}}"),
+		localIds: [
+			"about::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"about::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"about::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"about::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"about::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"about::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"about::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"about::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"about::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"about::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"understanding-impact": {
+		key: "understanding-impact",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"understandingTheImpact\":\"Understanding the Impact\",\"whyASingleLargeJson\":\"Why a single large JSON can hurt performance\",\"manyI18nLibrariesStoreTranslations\":\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\",\"theJsonMustBeParsed\":\"The JSON must be parsed on every page load — blocking the main thread.\",\"contextBasedArchitecturesCanCause\":\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\",\"duringServerSideRenderingThe\":\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\",\"theTradeOffsOfDynamic\":\"The trade-offs of dynamic loading\",\"splittingTranslationsIntoPerRoute\":\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\",\"waterfallRequests\":\"Waterfall requests:\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"cacheInvalidation\":\"Cache invalidation:\",\"whatThisBenchmarkMeasures\":\"What this benchmark measures\",\"thisTestAppProvidesA\":\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"},\"fr\":{\"understandingTheImpact\":\"Comprendre l'impact\",\"whyASingleLargeJson\":\"Pourquoi un seul grand JSON peut nuire aux performances\",\"manyI18nLibrariesStoreTranslations\":\"De nombreuses bibliothèques i18n stockent les traductions dans un seul objet JSON fourni via le contexte React. Lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. Cela signifie :\",\"theJsonMustBeParsed\":\"Le JSON doit être analysé à chaque chargement de page — bloquant le thread principal.\",\"contextBasedArchitecturesCanCause\":\"Les architectures basées sur le contexte peuvent provoquer des re-rendus en cascade lorsque la locale change, car chaque consommateur est averti même si ses clés spécifiques n'ont pas changé.\",\"duringServerSideRenderingThe\":\"Pendant le rendu côté serveur, le dictionnaire complet est sérialisé dans la charge utile HTML, augmentant la taille du document qui doit être téléchargé et hydraté.\",\"theTradeOffsOfDynamic\":\"Les compromis du chargement dynamique\",\"splittingTranslationsIntoPerRoute\":\"Diviser les traductions en fragments par itinéraire ou par espace de noms peut réduire considérablement la charge utile initiale. Mais cela introduit de nouveaux défis :\",\"waterfallRequests\":\"Requêtes en cascade :\",\"flashOfUntranslatedContentFouc\":\"Flash de contenu non traduit (FOUC) :\",\"cacheInvalidation\":\"Invalidation du cache :\",\"whatThisBenchmarkMeasures\":\"Ce que ce benchmark mesure\",\"thisTestAppProvidesA\":\"Cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle JavaScript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement paresseux. Chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.\"},\"es\":{\"understandingTheImpact\":\"Understanding the Impact\",\"whyASingleLargeJson\":\"Why a single large JSON can hurt performance\",\"manyI18nLibrariesStoreTranslations\":\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\",\"theJsonMustBeParsed\":\"The JSON must be parsed on every page load — blocking the main thread.\",\"contextBasedArchitecturesCanCause\":\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\",\"duringServerSideRenderingThe\":\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\",\"theTradeOffsOfDynamic\":\"The trade-offs of dynamic loading\",\"splittingTranslationsIntoPerRoute\":\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\",\"waterfallRequests\":\"Waterfall requests:\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"cacheInvalidation\":\"Cache invalidation:\",\"whatThisBenchmarkMeasures\":\"What this benchmark measures\",\"thisTestAppProvidesA\":\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"},\"de\":{\"understandingTheImpact\":\"Understanding the Impact\",\"whyASingleLargeJson\":\"Why a single large JSON can hurt performance\",\"manyI18nLibrariesStoreTranslations\":\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\",\"theJsonMustBeParsed\":\"The JSON must be parsed on every page load — blocking the main thread.\",\"contextBasedArchitecturesCanCause\":\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\",\"duringServerSideRenderingThe\":\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\",\"theTradeOffsOfDynamic\":\"The trade-offs of dynamic loading\",\"splittingTranslationsIntoPerRoute\":\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\",\"waterfallRequests\":\"Waterfall requests:\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"cacheInvalidation\":\"Cache invalidation:\",\"whatThisBenchmarkMeasures\":\"What this benchmark measures\",\"thisTestAppProvidesA\":\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"},\"it\":{\"understandingTheImpact\":\"Understanding the Impact\",\"whyASingleLargeJson\":\"Why a single large JSON can hurt performance\",\"manyI18nLibrariesStoreTranslations\":\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\",\"theJsonMustBeParsed\":\"The JSON must be parsed on every page load — blocking the main thread.\",\"contextBasedArchitecturesCanCause\":\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\",\"duringServerSideRenderingThe\":\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\",\"theTradeOffsOfDynamic\":\"The trade-offs of dynamic loading\",\"splittingTranslationsIntoPerRoute\":\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\",\"waterfallRequests\":\"Waterfall requests:\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"cacheInvalidation\":\"Cache invalidation:\",\"whatThisBenchmarkMeasures\":\"What this benchmark measures\",\"thisTestAppProvidesA\":\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"},\"pt\":{\"understandingTheImpact\":\"Understanding the Impact\",\"whyASingleLargeJson\":\"Why a single large JSON can hurt performance\",\"manyI18nLibrariesStoreTranslations\":\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\",\"theJsonMustBeParsed\":\"The JSON must be parsed on every page load — blocking the main thread.\",\"contextBasedArchitecturesCanCause\":\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\",\"duringServerSideRenderingThe\":\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\",\"theTradeOffsOfDynamic\":\"The trade-offs of dynamic loading\",\"splittingTranslationsIntoPerRoute\":\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\",\"waterfallRequests\":\"Waterfall requests:\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"cacheInvalidation\":\"Cache invalidation:\",\"whatThisBenchmarkMeasures\":\"What this benchmark measures\",\"thisTestAppProvidesA\":\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"},\"zh\":{\"understandingTheImpact\":\"Understanding the Impact\",\"whyASingleLargeJson\":\"Why a single large JSON can hurt performance\",\"manyI18nLibrariesStoreTranslations\":\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\",\"theJsonMustBeParsed\":\"The JSON must be parsed on every page load — blocking the main thread.\",\"contextBasedArchitecturesCanCause\":\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\",\"duringServerSideRenderingThe\":\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\",\"theTradeOffsOfDynamic\":\"The trade-offs of dynamic loading\",\"splittingTranslationsIntoPerRoute\":\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\",\"waterfallRequests\":\"Waterfall requests:\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"cacheInvalidation\":\"Cache invalidation:\",\"whatThisBenchmarkMeasures\":\"What this benchmark measures\",\"thisTestAppProvidesA\":\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"},\"ja\":{\"understandingTheImpact\":\"Understanding the Impact\",\"whyASingleLargeJson\":\"Why a single large JSON can hurt performance\",\"manyI18nLibrariesStoreTranslations\":\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\",\"theJsonMustBeParsed\":\"The JSON must be parsed on every page load — blocking the main thread.\",\"contextBasedArchitecturesCanCause\":\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\",\"duringServerSideRenderingThe\":\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\",\"theTradeOffsOfDynamic\":\"The trade-offs of dynamic loading\",\"splittingTranslationsIntoPerRoute\":\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\",\"waterfallRequests\":\"Waterfall requests:\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"cacheInvalidation\":\"Cache invalidation:\",\"whatThisBenchmarkMeasures\":\"What this benchmark measures\",\"thisTestAppProvidesA\":\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"},\"ko\":{\"understandingTheImpact\":\"Understanding the Impact\",\"whyASingleLargeJson\":\"Why a single large JSON can hurt performance\",\"manyI18nLibrariesStoreTranslations\":\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\",\"theJsonMustBeParsed\":\"The JSON must be parsed on every page load — blocking the main thread.\",\"contextBasedArchitecturesCanCause\":\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\",\"duringServerSideRenderingThe\":\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\",\"theTradeOffsOfDynamic\":\"The trade-offs of dynamic loading\",\"splittingTranslationsIntoPerRoute\":\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\",\"waterfallRequests\":\"Waterfall requests:\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"cacheInvalidation\":\"Cache invalidation:\",\"whatThisBenchmarkMeasures\":\"What this benchmark measures\",\"thisTestAppProvidesA\":\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"},\"ru\":{\"understandingTheImpact\":\"Understanding the Impact\",\"whyASingleLargeJson\":\"Why a single large JSON can hurt performance\",\"manyI18nLibrariesStoreTranslations\":\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\",\"theJsonMustBeParsed\":\"The JSON must be parsed on every page load — blocking the main thread.\",\"contextBasedArchitecturesCanCause\":\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\",\"duringServerSideRenderingThe\":\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\",\"theTradeOffsOfDynamic\":\"The trade-offs of dynamic loading\",\"splittingTranslationsIntoPerRoute\":\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\",\"waterfallRequests\":\"Waterfall requests:\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"cacheInvalidation\":\"Cache invalidation:\",\"whatThisBenchmarkMeasures\":\"What this benchmark measures\",\"thisTestAppProvidesA\":\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"}}}"),
+		localIds: [
+			"understanding-impact::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"understanding-impact::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"understanding-impact::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"understanding-impact::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"understanding-impact::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"understanding-impact::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"understanding-impact::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"understanding-impact::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"understanding-impact::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"understanding-impact::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"home": {
+		key: "home",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"hero\":{\"aTestApplicationDesignedTo\":\"A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.\",\"viewResults\":\"View Results\"},\"why-it-matters\":{\"whyTheseMetricsMatter\":\"Why These Metrics Matter\",\"bundleSize\":\"Bundle Size\",\"theBundleIsTheData\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\",\"renderingHydration\":\"Rendering & Hydration\",\"connectingALargeJsonDictionary\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\",\"dynamicLoading\":\"Dynamic Loading\",\"loadingAllTranslationsUpfrontOverloads\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"},\"understanding-impact\":{\"understandingTheImpact\":\"Understanding the Impact\",\"whyASingleLargeJson\":\"Why a single large JSON can hurt performance\",\"manyI18nLibrariesStoreTranslations\":\"Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:\",\"theJsonMustBeParsed\":\"The JSON must be parsed on every page load — blocking the main thread.\",\"contextBasedArchitecturesCanCause\":\"Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.\",\"duringServerSideRenderingThe\":\"During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.\",\"theTradeOffsOfDynamic\":\"The trade-offs of dynamic loading\",\"splittingTranslationsIntoPerRoute\":\"Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:\",\"waterfallRequests\":\"Waterfall requests:\",\"flashOfUntranslatedContentFouc\":\"Flash of untranslated content (FOUC):\",\"cacheInvalidation\":\"Cache invalidation:\",\"whatThisBenchmarkMeasures\":\"What this benchmark measures\",\"thisTestAppProvidesA\":\"This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.\"},\"results-table\":{\"sampleResults\":\"Sample Results\",\"bundleSize\":\"Bundle Size\",\"lookupTime\":\"Lookup Time\",\"lazyLoading\":\"Lazy Loading\"}},\"fr\":{\"hero\":{\"aTestApplicationDesignedTo\":\"Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.\",\"viewResults\":\"Voir les résultats\"},\"why-it-matters\":{\"whyTheseMetricsMatter\":\"Pourquoi ces mesures sont importantes\",\"bundleSize\":\"Taille du bundle\",\"theBundleIsTheData\":\"Le bundle représente les données envoyées à chaque utilisateur dans le monde. Un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3G lentes courantes dans de nombreuses régions. Les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.\",\"renderingHydration\":\"Rendu & Hydratation\",\"connectingALargeJsonDictionary\":\"La connexion d'un dictionnaire JSON volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arbre. Pendant l'hydratation SSR, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le Time to Interactive (TTI).\",\"dynamicLoading\":\"Chargement dynamique\",\"loadingAllTranslationsUpfrontOverloads\":\"Le chargement de toutes les traductions à l'avance surcharge le payload initial. Le chargement dynamique (lazy) divise les traductions par route ou par namespace, n'envoyant que ce dont la page actuelle a besoin. Cependant, le lazy loading introduit ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité de mise en cache. Mesurer les deux stratégies est essentiel.\"},\"understanding-impact\":{\"understandingTheImpact\":\"Comprendre l'impact\",\"whyASingleLargeJson\":\"Pourquoi un seul JSON volumineux peut nuire aux performances\",\"manyI18nLibrariesStoreTranslations\":\"De nombreuses bibliothèques i18n stockent les traductions dans un seul objet JSON fourni via le contexte React. Lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. Cela signifie :\",\"theJsonMustBeParsed\":\"Le JSON doit être analysé à chaque chargement de page — bloquant le thread principal.\",\"contextBasedArchitecturesCanCause\":\"Les architectures basées sur le contexte peuvent provoquer des re-rendus en cascade lorsque la langue change, car chaque consommateur est notifié même si ses clés spécifiques n'ont pas changé.\",\"duringServerSideRenderingThe\":\"Lors du rendu côté serveur, le dictionnaire complet est sérialisé dans le payload HTML, augmentant la taille du document qui doit être téléchargé et hydraté.\",\"theTradeOffsOfDynamic\":\"Les compromis du chargement dynamique\",\"splittingTranslationsIntoPerRoute\":\"La division des traductions en morceaux par route ou par espace de noms peut réduire considérablement le payload initial. Mais cela introduit de nouveaux défis :\",\"waterfallRequests\":\"Requêtes en cascade :\",\"flashOfUntranslatedContentFouc\":\"Flash de contenu non traduit (FOUC) :\",\"cacheInvalidation\":\"Invalidation du cache :\",\"whatThisBenchmarkMeasures\":\"Ce que ce benchmark mesure\",\"thisTestAppProvidesA\":\"Cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle JavaScript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement différé. Chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.\"},\"results-table\":{\"sampleResults\":\"Exemples de résultats\",\"bundleSize\":\"Taille du bundle\",\"lookupTime\":\"Temps de recherche\",\"lazyLoading\":\"Chargement différé\"}},\"es\":{\"hero\":{\"aTestApplicationDesignedTo\":\"Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el rendimiento de carga y la reactividad del renderizado.\",\"viewResults\":\"Ver resultados\"},\"why-it-matters\":{\"whyTheseMetricsMatter\":\"Por qué son importantes estas métricas\",\"bundleSize\":\"Tamaño del bundle\",\"theBundleIsTheData\":\"El bundle representa los datos enviados a cada usuario en todo el mundo. Un bundle más grande significa tiempos de descarga más largos, especialmente en las conexiones 3G lentas comunes en muchas regiones. Las bibliotecas i18n varían drásticamente en su peso: desde unos pocos kilobytes hasta decenas de kilobytes de código runtime, además de los propios archivos de traducción.\",\"renderingHydration\":\"Renderizado e hidratación\",\"connectingALargeJsonDictionary\":\"Conectar un diccionario JSON grande a cada componente crea una dependencia oculta: cualquier cambio en el contexto de traducción puede desencadenar nuevos renderizados en todo el árbol. Durante la hidratación de SSR, el análisis y la anexión de objetos de traducción masivos añaden latencia antes de que la página sea interactiva, lo que afecta directamente al Time to Interactive (TTI).\",\"dynamicLoading\":\"Carga dinámica\",\"loadingAllTranslationsUpfrontOverloads\":\"Cargar todas las traducciones por adelantado sobrecarga el payload inicial. La carga dinámica (lazy) divide las traducciones por ruta o espacio de nombres, enviando solo lo que la página actual necesita. Sin embargo, la carga diferida introduce sus propias compensaciones: solicitudes en cascada, parpadeo de contenido no traducido y complejidad de la caché. Medir ambas estrategias es esencial.\"},\"understanding-impact\":{\"understandingTheImpact\":\"Entendiendo el impacto\",\"whyASingleLargeJson\":\"Por qué un solo JSON grande puede perjudicar el rendimiento\",\"manyI18nLibrariesStoreTranslations\":\"Muchas bibliotecas i18n almacenan las traducciones en un único objeto JSON proporcionado a través del contexto de React. Cuando este objeto es grande (miles de claves), cada componente que consume traducciones mantiene una referencia a todo el diccionario. Esto significa:\",\"theJsonMustBeParsed\":\"El JSON debe analizarse en cada carga de página, bloqueando el hilo principal.\",\"contextBasedArchitecturesCanCause\":\"Las arquitecturas basadas en el contexto pueden causar renderizados en cascada cuando cambia el idioma, porque cada consumidor es notificado aunque sus claves específicas no hayan cambiado.\",\"duringServerSideRenderingThe\":\"Durante el renderizado del lado del servidor, el diccionario completo se serializa en el payload HTML, aumentando el tamaño del documento que debe descargarse e hidratarse.\",\"theTradeOffsOfDynamic\":\"Las compensaciones de la carga dinámica\",\"splittingTranslationsIntoPerRoute\":\"Dividir las traducciones en fragmentos por ruta o por espacio de nombres puede reducir drásticamente el payload inicial. Pero introduce nuevos desafíos:\",\"waterfallRequests\":\"Solicitudes en cascada:\",\"flashOfUntranslatedContentFouc\":\"Parpadeo de contenido no traducido (FOUC):\",\"cacheInvalidation\":\"Invalidación de la caché:\",\"whatThisBenchmarkMeasures\":\"Qué mide este benchmark\",\"thisTestAppProvidesA\":\"Esta aplicación de prueba proporciona un entorno controlado —10 páginas con contenido realista— para comparar bibliotecas i18n en tres ejes: el peso que añaden a tu bundle de JavaScript, el tiempo dedicado a analizar y renderizar el contenido traducido y la eficacia de sus estrategias de división de código y carga diferida. Cada biblioteca se integra en la misma aplicación para que los resultados sean directamente comparables.\"},\"results-table\":{\"sampleResults\":\"Resultados de muestra\",\"bundleSize\":\"Tamaño del bundle\",\"lookupTime\":\"Tiempo de búsqueda\",\"lazyLoading\":\"Carga diferida\"}},\"de\":{\"hero\":{\"aTestApplicationDesignedTo\":\"Eine Testanwendung zur Messung der realen Auswirkungen von Internationalisierungs-Bibliotheken auf Bundle-Größe, Ladeleistung und Rendering-Reaktivität.\",\"viewResults\":\"Ergebnisse anzeigen\"},\"why-it-matters\":{\"whyTheseMetricsMatter\":\"Warum diese Metriken wichtig sind\",\"bundleSize\":\"Bundle-Größe\",\"theBundleIsTheData\":\"Das Bundle sind die Daten, die an jeden Benutzer weltweit gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten — besonders bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren drastisch in ihrem Gewicht: von einigen Kilobytes bis zu zig Kilobytes an Laufzeitcode, plus die Übersetzungsdateien selbst.\",\"renderingHydration\":\"Rendering & Hydratisierung\",\"connectingALargeJsonDictionary\":\"Das Verbinden eines großen JSON-Wörterbuchs mit jeder Komponente erzeugt eine versteckte Abhängigkeit: Jede Änderung im Übersetzungskontext kann Re-Renderings im gesamten Baum auslösen. Während der SSR-Hydratisierung führt das Parsen und Anhängen massiver Übersetzungsobjekte zu Latenzzeiten, bevor die Seite interaktiv wird — was sich direkt auf die Time to Interactive (TTI) auswirkt.\",\"dynamicLoading\":\"Dynamisches Laden\",\"loadingAllTranslationsUpfrontOverloads\":\"Das Laden aller Übersetzungen im Voraus überlastet den initialen Payload. Dynamisches (Lazy) Loading teilt Übersetzungen nach Route oder Namensraum auf und sendet nur das, was die aktuelle Seite benötigt. Lazy Loading bringt jedoch eigene Kompromisse mit sich: Waterfall-Anfragen, Aufblitzen von nicht übersetzten Inhalten (FOUC) und Cache-Komplexität. Die Messung beider Strategien ist essenziell.\"},\"understanding-impact\":{\"understandingTheImpact\":\"Die Auswirkungen verstehen\",\"whyASingleLargeJson\":\"Warum ein einziges großes JSON die Leistung beeinträchtigen kann\",\"manyI18nLibrariesStoreTranslations\":\"Viele i18n-Bibliotheken speichern Übersetzungen in einem einzigen JSON-Objekt, das über den React-Kontext bereitgestellt wird. Wenn dieses Objekt groß ist (Tausende von Schlüsseln), hält jede Komponente, die Übersetzungen verwendet, eine Referenz auf das gesamte Wörterbuch. Das bedeutet:\",\"theJsonMustBeParsed\":\"Das JSON muss bei jedem Seitenladen geparst werden — was den Haupt-Thread blockiert.\",\"contextBasedArchitecturesCanCause\":\"Kontextbasierte Architekturen können kaskadierende Re-Renderings verursachen, wenn sich das Gebietsschema ändert, da jeder Consumer benachrichtigt wird, auch wenn sich seine spezifischen Schlüssel nicht geändert haben.\",\"duringServerSideRenderingThe\":\"Während des serverseitigen Renderings wird das vollständige Wörterbuch in den HTML-Payload serialisiert, wodurch sich die Dokumentgröße erhöht, die heruntergeladen und hydratisiert werden muss.\",\"theTradeOffsOfDynamic\":\"Die Kompromisse beim dynamischen Laden\",\"splittingTranslationsIntoPerRoute\":\"Das Aufteilen von Übersetzungen in Teilstücke pro Route oder Namensraum kann den initialen Payload drastisch reduzieren. Es bringt jedoch neue Herausforderungen mit sich:\",\"waterfallRequests\":\"Waterfall-Anfragen:\",\"flashOfUntranslatedContentFouc\":\"Aufblitzen von nicht übersetztem Inhalt (FOUC):\",\"cacheInvalidation\":\"Cache-Invalidierung:\",\"whatThisBenchmarkMeasures\":\"Was dieser Benchmark misst\",\"thisTestAppProvidesA\":\"Diese Test-App bietet eine kontrollierte Umgebung — 10 Seiten mit realistischen Inhalten —, um i18n-Bibliotheken in drei Achsen zu vergleichen: das Gewicht, das sie Ihrem JavaScript-Bundle hinzufügen, die Zeit, die für das Parsen und Rendern übersetzter Inhalte aufgewendet wird, und die Effektivität ihrer Code-Splitting- und Lazy-Loading-Strategien. Jede Bibliothek ist in dieselbe App integriert, sodass die Ergebnisse direkt vergleichbar sind.\"},\"results-table\":{\"sampleResults\":\"Beispielergebnisse\",\"bundleSize\":\"Bundle-Größe\",\"lookupTime\":\"Suchzeit\",\"lazyLoading\":\"Lazy Loading\"}},\"it\":{\"hero\":{\"aTestApplicationDesignedTo\":\"Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulla dimensione del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.\",\"viewResults\":\"Visualizza i risultati\"},\"why-it-matters\":{\"whyTheseMetricsMatter\":\"Perché queste metriche sono importanti\",\"bundleSize\":\"Dimensione del bundle\",\"theBundleIsTheData\":\"Il bundle rappresenta i dati inviati a ogni utente nel mondo. Un bundle più grande significa tempi di download più lunghi, specialmente sulle connessioni 3G lente comuni in molte regioni. Le librerie i18n variano drasticamente nel loro peso: da pochi kilobyte a decine di kilobyte di codice runtime, oltre ai file di traduzione stessi.\",\"renderingHydration\":\"Rendering e idratazione\",\"connectingALargeJsonDictionary\":\"Il collegamento di un grande dizionario JSON a ogni componente crea una dipendenza nascosta: qualsiasi modifica nel contesto di traduzione può scatenare nuovi rendering in tutto l'albero. Durante l'idratazione SSR, l'analisi e l'aggiunta di enormi oggetti di traduzione aggiungono latenza prima che la pagina diventi interattiva, influenzando direttamente il Time to Interactive (TTI).\",\"dynamicLoading\":\"Caricamento dinamico\",\"loadingAllTranslationsUpfrontOverloads\":\"Il caricamento di tutte le traduzioni in anticipo sovraccarica il payload iniziale. Il caricamento dinamico (lazy) divide le traduzioni per rotta o namespace, inviando solo ciò di cui la pagina corrente ha bisogno. Tuttavia, il lazy loading introduce i propri compromessi: richieste a cascata, flash di contenuti non tradotti e complessità della cache. Misurare entrambe le strategie è essenziale.\"},\"understanding-impact\":{\"understandingTheImpact\":\"Capire l'impatto\",\"whyASingleLargeJson\":\"Perché un singolo JSON di grandi dimensioni può danneggiare le prestazioni\",\"manyI18nLibrariesStoreTranslations\":\"Molte librerie i18n memorizzano le traduzioni in un unico oggetto JSON fornito tramite il contesto React. Quando questo oggetto è grande (migliaia di chiavi), ogni componente che consuma le traduzioni mantiene un riferimento all'intero dizionario. Questo significa :\",\"theJsonMustBeParsed\":\"Il JSON deve essere analizzato a ogni caricamento della pagina, bloccando il thread principale.\",\"contextBasedArchitecturesCanCause\":\"Le architetture basate sul contesto possono causare rendering a cascata quando la localizzazione cambia, perché ogni consumatore viene notificato anche se le sue chiavi specifiche non sono cambiate.\",\"duringServerSideRenderingThe\":\"Durante il rendering lato server, l'intero dizionario viene serializzato nel payload HTML, aumentando la dimensione del documento che deve essere scaricato e idrato.\",\"theTradeOffsOfDynamic\":\"I compromessi del caricamento dinamico\",\"splittingTranslationsIntoPerRoute\":\"La scomposizione delle traduzioni in chunk per rotta o per namespace può ridurre drasticamente il payload iniziale. Ma introduce nuove sfide:\",\"waterfallRequests\":\"Richieste a cascata:\",\"flashOfUntranslatedContentFouc\":\"Flash di contenuti non tradotti (FOUC):\",\"cacheInvalidation\":\"Invalidazione della cache:\",\"whatThisBenchmarkMeasures\":\"Cosa misura questo benchmark\",\"thisTestAppProvidesA\":\"Questa applicazione di test fornisce un ambiente controllato — 10 pagine con contenuti realistici — per confrontare le librerie i18n su tre assi: il peso che aggiungono al tuo bundle JavaScript, il tempo dedicato all'analisi e al rendering dei contenuti tradotti e l'efficacia delle loro strategie di code-splitting e lazy-loading. Ogni libreria è integrata nella stessa app in modo che i risultati siano direttamente confrontabili.\"},\"results-table\":{\"sampleResults\":\"Risultati di esempio\",\"bundleSize\":\"Dimensione del bundle\",\"lookupTime\":\"Tempo di ricerca\",\"lazyLoading\":\"Caricamento lazy\"}},\"pt\":{\"hero\":{\"aTestApplicationDesignedTo\":\"Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade da renderização.\",\"viewResults\":\"Ver Resultados\"},\"why-it-matters\":{\"whyTheseMetricsMatter\":\"Por que essas métricas são importantes\",\"bundleSize\":\"Tamanho do Bundle\",\"theBundleIsTheData\":\"O bundle representa os dados enviados a cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas comuns em muitas regiões. i18n libraries variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código de tempo de execução, além dos próprios arquivos de tradução.\",\"renderingHydration\":\"Renderização e Hidratação\",\"connectingALargeJsonDictionary\":\"Conectar um grande dicionário JSON a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode desencadear novas renderizações em toda a árvore. Durante a hidratação do SSR, a análise e a anexação de objetos de tradução massivos adicionam latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).\",\"dynamicLoading\":\"Carregamento Dinâmico\",\"loadingAllTranslationsUpfrontOverloads\":\"Carregar todas as traduções antecipadamente sobrecarrega a carga útil inicial. O carregamento dinâmico (lazy) divide as traduções por rota ou namespace, enviando apenas o que a página atual precisa. No entanto, o carregamento tardio introduz suas próprias compensações: solicitações em cascada, flash de conteúdo não traduzido e complexidade de cache. Medir ambas as estratégias é essencial.\"},\"understanding-impact\":{\"understandingTheImpact\":\"Entendendo o impacto\",\"whyASingleLargeJson\":\"Por que um único JSON grande pode prejudicar o desempenho\",\"manyI18nLibrariesStoreTranslations\":\"Muitas bibliotecas de i18n armazenam as traduções em um único objeto JSON fornecido através do contexto de React. Quando este objeto é grande (milhares de chaves), cada componente que consome traduções mantém uma referência a todo o dicionário. Isto significa :\",\"theJsonMustBeParsed\":\"O JSON deve ser analisado em cada carga de página — bloqueando a linha de execução principal.\",\"contextBasedArchitecturesCanCause\":\"As arquiteturas baseadas no contexto podem causar renderizações em cascata quando o idioma muda, porque cada consumidor é notificado mesmo que as suas chaves específicas não tenham mudado.\",\"duringServerSideRenderingThe\":\"Durante a renderização do lado do servidor, o dicionário completo é serializado na carga útil de HTML, aumentando o tamanho do documento que deve ser baixado e hidratado.\",\"theTradeOffsOfDynamic\":\"As compensações do carregamento dinâmico\",\"splittingTranslationsIntoPerRoute\":\"Dividir as traduções em partes por rota ou por namespace pode reduzir drasticamente a carga útil inicial. Mas introduz novos desafios:\",\"waterfallRequests\":\"Pedidos em cascata:\",\"flashOfUntranslatedContentFouc\":\"Flash de conteúdo não traduzido (FOUC):\",\"cacheInvalidation\":\"Invalidação de cache:\",\"whatThisBenchmarkMeasures\":\"O que este benchmark mede\",\"thisTestAppProvidesA\":\"Esta aplicação de teste fornece um ambiente controlado — 10 páginas com conteúdo realista — para comparar bibliotecas de i18n em três eixos: o peso que adicionam ao seu pacote de JavaScript, o tempo gasto analisando e renderizando conteúdo traduzido e a eficácia das suas estratégias de divisão de código e de carregamento tardio. Cada biblioteca é integrada na mesma aplicação para que os resultados sejam diretamente comparáveis.\"},\"results-table\":{\"sampleResults\":\"Resultados de amostra\",\"bundleSize\":\"Tamanho do bundle\",\"lookupTime\":\"Tempo de consulta\",\"lazyLoading\":\"Carregamento lento\"}},\"zh\":{\"hero\":{\"aTestApplicationDesignedTo\":\"一个测试应用程序，旨在衡量国际化库对捆绑包大小、加载性能和渲染反应性的真实影响。\",\"viewResults\":\"查看结果\"},\"why-it-matters\":{\"whyTheseMetricsMatter\":\"为什么这些指标很重要\",\"bundleSize\":\"捆绑包大小\",\"theBundleIsTheData\":\"捆绑包是发送给全球每个用户的数据。捆绑包越大意味着下载时间越长——特别是在许多地区常见的缓慢 3G 连接上。i18n 库的重量差异巨大：从几 KB 到数十 KB 的运行时代码，再加上翻译文件本身。\",\"renderingHydration\":\"渲染与水合\",\"connectingALargeJsonDictionary\":\"将大型 JSON 字典连接到每个组件会创建隐藏的依赖关系：翻译环境中的任何更改都可能触发整个树的重新渲染。在 SSR 水合期间，解析和附加庞大的翻译对象会增加页面变得可交互之前的延迟——直接影响可交互时间 (TTI)。\",\"dynamicLoading\":\"动态加载\",\"loadingAllTranslationsUpfrontOverloads\":\"预先加载所有翻译会使初始负载过重。动态（延迟）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，延迟加载引入了其自身的权衡：瀑布式请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。\"},\"understanding-impact\":{\"understandingTheImpact\":\"了解影响\",\"whyASingleLargeJson\":\"为什么单个大型 JSON 会损害性能\",\"manyI18nLibrariesStoreTranslations\":\"许多 i18n 库将翻译存储在通过 React 上下文提供的单个 JSON 对象中。当此对象很大（数千个键）时，每个消耗翻译的组件都会持有对整个字典的引用。这意味着：\",\"theJsonMustBeParsed\":\"必须在每次页面加载时解析 JSON——阻塞主线程。\",\"contextBasedArchitecturesCanCause\":\"基于上下文的架构可能会在语言环境更改时导致级联重新渲染，因为即使特定键未更改，也会通知每个消费者。\",\"duringServerSideRenderingThe\":\"在服务器端渲染期间，整个字典被序列化为 HTML 负载，增加了必须下载和水合的文档大小。\",\"theTradeOffsOfDynamic\":\"动态加载的权衡\",\"splittingTranslationsIntoPerRoute\":\"将翻译拆分为每个路由或每个命名空间的块可以显著减少初始负载。但这引入了新的挑战：\",\"waterfallRequests\":\"瀑布式请求：\",\"flashOfUntranslatedContentFouc\":\"未翻译内容的闪烁 (FOUC)：\",\"cacheInvalidation\":\"缓存失效：\",\"whatThisBenchmarkMeasures\":\"该基准测试测量什么\",\"thisTestAppProvidesA\":\"本测试应用提供了一个受控环境——10 个包含真实内容的页面——以便从三个轴比较 i18n 库：它们为 JavaScript 捆绑包增加的重量、解析和渲染翻译内容所花费的时间，以及它们的代码拆分和延迟加载策略的有效性。每个库都集成到同一个应用中，因此结果具有直接可比性。\"},\"results-table\":{\"sampleResults\":\"示例结果\",\"bundleSize\":\"捆绑包大小\",\"lookupTime\":\"查找时间\",\"lazyLoading\":\"延迟加载\"}},\"ja\":{\"hero\":{\"aTestApplicationDesignedTo\":\"国際化ライブラリがバンドルサイズ、ロード性能、レンダリングの反応性に与える実際の影響を測定するために設計されたテストアプリケーションです。\",\"viewResults\":\"結果を表示\"},\"why-it-matters\":{\"whyTheseMetricsMatter\":\"なぜこれらの指標が重要なのか\",\"bundleSize\":\"バンドルサイズ\",\"theBundleIsTheData\":\"バンドルとは、世界中のすべてのユーザーに送信されるデータです。バンドルが大きいほど、ダウンロード時間が長くなります。特に、多くの地域で一般的な低速な3G接続では顕著です。i18nライブラリは、ランタイムコードだけで数キロバイトから数十キロバイトまで重量が大きく異なり、さらに翻訳ファイル自体が加わります。\",\"renderingHydration\":\"レンダリングとハイドレーション\",\"connectingALargeJsonDictionary\":\"すべてのコンポーネントに大規模なJSON辞書を接続すると、隠れた依存関係が生じます。翻訳コンテキストの変更は、ツリー全体のリレンダリングを引き起こす可能性があります。SSRのハイドレーション中に巨大な翻訳オブジェクトを解析してアタッチすると、ページがインタラクティブになるまでの遅延が発生し、Time to Interactive (TTI) に直接影響します。\",\"dynamicLoading\":\"動的ロード\",\"loadingAllTranslationsUpfrontOverloads\":\"すべての翻訳を事前にロードすると、初期ペイロードが過負荷になります。動的（遅延）ロードは、ルートや名前空間ごとに翻訳を分割し、現在のページに必要なものだけを送信します。ただし、遅延ロードには、ウォーターフォールリクエスト、翻訳されていないコンテンツのちらつき（FOUC）、キャッシュの複雑さなどのトレードオフが伴います。両方の戦略を測定することが不可欠です。\"},\"understanding-impact\":{\"understandingTheImpact\":\"影響を理解する\",\"whyASingleLargeJson\":\"なぜ単一の大きなJSONがパフォーマンスを低下させるのか\",\"manyI18nLibrariesStoreTranslations\":\"多くのi18nライブラリは、Reactコンテキストを通じて提供される単一のJSONオブジェクトに翻訳を保存します。このオブジェクトが大きい場合（数千のキー）、翻訳を消費するすべてのコンポーネントが辞書全体への参照を保持することになります。これは以下を意味します：\",\"theJsonMustBeParsed\":\"JSONはページロードごとに解析される必要があり、メインスレッドをブロックします。\",\"contextBasedArchitecturesCanCause\":\"コンテキストベースのアーキテクチャでは、ロケールが変更されたときに連鎖的なリレンダリングが発生する可能性があります。特定のキーが変更されていなくても、すべてのコンシューマーに通知が届くためです。\",\"duringServerSideRenderingThe\":\"サーバーサイドレンダリング中、辞書全体がHTMLペイロードにシリアル化され、ダウンロードとハイドレーションが必要なドキュメントサイズが増大します。\",\"theTradeOffsOfDynamic\":\"動的ロードのトレードオフ\",\"splittingTranslationsIntoPerRoute\":\"翻訳をルート別または名前空間別のチャンクに分割すると、初期ペイロードを大幅に削減できます。しかし、新たな課題が生じます：\",\"waterfallRequests\":\"ウォーターフォールリクエスト：\",\"flashOfUntranslatedContentFouc\":\"翻訳されていないコンテンツのちらつき (FOUC)：\",\"cacheInvalidation\":\"キャッシュの無効化：\",\"whatThisBenchmarkMeasures\":\"このベンチマークが測定するもの\",\"thisTestAppProvidesA\":\"このテストアプリは、現実的なコンテンツを含む10ページ構成の制御された環境を提供し、3つの軸でi18nライブラリを比較します：JavaScriptバンドルに追加される重量、翻訳されたコンテンツの解析とレンダリングに費やされる時間、そしてコード分割と遅延ロード戦略の有効性です。各ライブラリは同じアプリに統合されるため、結果を直接比較できます。\"},\"results-table\":{\"sampleResults\":\"サンプル結果\",\"bundleSize\":\"バンドルサイズ\",\"lookupTime\":\"検索時間\",\"lazyLoading\":\"遅延ロード\"}},\"ko\":{\"hero\":{\"aTestApplicationDesignedTo\":\"국제화 라이브러리가 번들 크기, 로딩 성능 및 렌더링 반응성에 미치는 실제 영향을 측정하도록 설계된 테스트 애플리케이션입니다.\",\"viewResults\":\"결과 보기\"},\"why-it-matters\":{\"whyTheseMetricsMatter\":\"이 지표가 중요한 이유\",\"bundleSize\":\"번들 크기\",\"theBundleIsTheData\":\"번들은 전 세계 모든 사용자에게 전송되는 데이터를 나타냅니다. 번들이 클수록 다운로드 시간이 길어집니다. 특히 많은 지역에서 흔히 발생하는 느린 3G 연결에서 더욱 그렇습니다. i18n 라이브러리는 런타임 코드만으로도 수 킬로바이트에서 수십 킬로바이트까지 무게가 크게 다르며, 여기에 번역 파일 자체가 추가됩니다.\",\"renderingHydration\":\"렌더링 및 수화(Hydration)\",\"connectingALargeJsonDictionary\":\"모든 컴포넌트에 대규모 JSON 사전(dictionary)을 연결하면 숨겨진 종속성이 생성됩니다. 번역 컨텍스트의 모든 변경 사항은 전체 트리에서 리렌더링을 유발할 수 있습니다. SSR 수화 단계에서 방대한 번역 객체를 파싱하고 연결하면 페이지가 상호작용 가능해지는 시간까지 지연이 발생하며, 이는 Time to Interactive (TTI) 에 직접적인 영향을 미칩니다.\",\"dynamicLoading\":\"동적 로딩\",\"loadingAllTranslationsUpfrontOverloads\":\"모든 번역을 미리 로드하면 초기 페이로드가 과부하됩니다. 동적(지연) 로딩은 경로 또는 네임스페이스별로 번역을 분할하여 현재 페이지에 필요한 내용만 전송합니다. 그러나 지연 로딩은 워터폴 요청, 번역되지 않은 콘텐츠의 깜빡임(FOUC), 캐시 복잡성 등 자체적인 트레이드오프를 수반합니다. 두 전략을 모두 측정하는 것이 필수적입니다.\"},\"understanding-impact\":{\"understandingTheImpact\":\"영향 이해하기\",\"whyASingleLargeJson\":\"왜 단일 대형 JSON이 성능을 저하시키는 이유\",\"manyI18nLibrariesStoreTranslations\":\"많은 i18n 라이브러리는 React 컨텍스트를 통해 제공되는 단일 JSON 객체에 번역을 저장합니다. 이 객체가 클 경우(수천 개의 키), 번역을 사용하는 모든 컴포넌트는 전체 사전에 대한 참조를 보유하게 됩니다. 이는 다음을 의미합니다:\",\"theJsonMustBeParsed\":\"JSON은 모든 페이지 로드 시 파싱되어야 하며, 이는 메인 스레드를 차단합니다.\",\"contextBasedArchitecturesCanCause\":\"컨텍스트 기반 아키텍처는 로케일이 변경될 때 연쇄적인 리렌더링을 일으킬 수 있습니다. 특정 키가 변경되지 않았더라도 모든 소비자에게 알림이 가기 때문입니다.\",\"duringServerSideRenderingThe\":\"서버 사이드 렌더링 중에 전체 사전이 HTML 페이로드로 직렬화되어, 다운로드 및 수화가 필요한 문서 크기가 증가합니다.\",\"theTradeOffsOfDynamic\":\"동적 로딩의 트레이드오프\",\"splittingTranslationsIntoPerRoute\":\"번역을 경로별 또는 네임스페이스별 청크로 분할하면 초기 페이로드를 크게 줄일 수 있습니다. 하지만 새로운 과제가 발생합니다:\",\"waterfallRequests\":\"워터폴(Waterfall) 요청:\",\"flashOfUntranslatedContentFouc\":\"번역되지 않은 콘텐츠의 깜빡임 (FOUC):\",\"cacheInvalidation\":\"캐시 무효화:\",\"whatThisBenchmarkMeasures\":\"이 벤치마크가 측정하는 것\",\"thisTestAppProvidesA\":\"이 테스트 앱은 현실적인 콘텐츠가 포함된 10개의 페이지로 구성된 제어된 환경을 제공하여 세 가지 축에서 i18n 라이브러리를 비교합니다: JavaScript 번들에 추가되는 무게, 번역된 콘텐츠를 파싱하고 렌더링하는 데 소요되는 시간, 그리고 코드 분할 및 지연 로딩 전략의 효과입니다. 각 라이브러리는 동일한 앱에 통합되어 결과가 직접적으로 비교 가능합니다.\"},\"results-table\":{\"sampleResults\":\"샘플 결과\",\"bundleSize\":\"번들 크기\",\"lookupTime\":\"조회 시간\",\"lazyLoading\":\"지연 로딩\"}},\"ru\":{\"hero\":{\"aTestApplicationDesignedTo\":\"Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.\",\"viewResults\":\"Посмотреть результаты\"},\"why-it-matters\":{\"whyTheseMetricsMatter\":\"Почему эти показатели важны\",\"bundleSize\":\"Размер бандла\",\"theBundleIsTheData\":\"Бандл — это данные, которые отправляются каждому пользователю по всему миру. Большой размер бандла означает более долгое время загрузки, особенно при медленном 3G-соединении, характерном для многих регионов. Библиотеки i18n сильно различаются по весу: от нескольких килобайт до десятков килобайт рантайм-кода, плюс сами файлы переводов.\",\"renderingHydration\":\"Рендеринг и гидратация\",\"connectingALargeJsonDictionary\":\"Подключение большого JSON-словаря к каждому компоненту создает скрытую зависимость: любое изменение в контексте перевода может вызвать повторный рендеринг всего дерева. Во время гидратации SSR парсинг и присоединение массивных объектов перевода добавляют задержку до того, как страница станет интерактивной, что напрямую влияет на Time to Interactive (TTI).\",\"dynamicLoading\":\"Динамическая загрузка\",\"loadingAllTranslationsUpfrontOverloads\":\"Загрузка всех переводов сразу перегружает начальную полезную нагрузку. Динамическая (ленивая) загрузка разделяет переводы по маршрутам или пространствам имен, отправляя только то, что нужно для текущей страницы. Однако ленивая загрузка вносит свои компромиссы: каскадные запросы (waterfall), мерцание непереведенного контента и сложность кэширования. Измерение обеих стратегий необходимо.\"},\"understanding-impact\":{\"understandingTheImpact\":\"Понимание влияния\",\"whyASingleLargeJson\":\"Почему один большой JSON может снизить производительность\",\"manyI18nLibrariesStoreTranslations\":\"Многие библиотеки i18n хранят переводы в одном объекте JSON, предоставляемом через контекст React. Когда этот объект большой (тысячи ключей), каждый компонент, использующий переводы, хранит ссылку на весь словарь. Это означает:\",\"theJsonMustBeParsed\":\"JSON должен парситься при каждой загрузке страницы — блокируя основной поток.\",\"contextBasedArchitecturesCanCause\":\"Архитектуры на основе контекста могут вызывать каскадные повторные рендеринги при изменении локали, потому что каждый потребитель уведомляется, даже если его конкретные ключи не изменились.\",\"duringServerSideRenderingThe\":\"Во время серверного рендеринга весь словарь сериализуется в HTML-пейлоад, увеличивая размер документа, который необходимо загрузить и гидратировать.\",\"theTradeOffsOfDynamic\":\"Компромиссы динамической загрузки\",\"splittingTranslationsIntoPerRoute\":\"Разделение переводов на чанки для каждого маршрута или пространства имен может значительно уменьшить начальный пейлоад. Но это создает новые проблемы:\",\"waterfallRequests\":\"Каскадные запросы (Waterfall requests):\",\"flashOfUntranslatedContentFouc\":\"Мерцание непереведенного контента (FOUC):\",\"cacheInvalidation\":\"Инвалидация кэша:\",\"whatThisBenchmarkMeasures\":\"Что измеряет этот бенчмарк\",\"thisTestAppProvidesA\":\"Это тестовое приложение предоставляет контролируемую среду — 10 страниц с реалистичным контентом — для сравнения библиотек i18n по трем осям: вес, который они добавляют вашему JavaScript-бандлу, время, затраченное на парсинг и рендеринг переведенного контента, и эффективность их стратегий разделения кода и ленивой загрузки. Каждая библиотека измеряется в идентичных условиях.\"},\"results-table\":{\"sampleResults\":\"Примеры результатов\",\"bundleSize\":\"Размер бандла\",\"lookupTime\":\"Время поиска\",\"lazyLoading\":\"Ленивая загрузка\"}}}}"),
+		localIds: [
+			"home::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"home::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"home::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"home::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"home::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"home::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"home::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"home::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"home::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"home::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"team": {
+		key: "team",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"team-header\":{\"ourTeam\":\"Our Team\",\"meetThePeopleBehindI18n\":\"Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools.\"},\"team-grid\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Founder & Lead Engineer\",\"formerGoogleEngineerWith10\":\"Former Google engineer with 10 years of experience building internationalization systems at scale.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Performance Engineer\",\"specializesInJavascriptPerformanceOptimization\":\"Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Full-Stack Developer\",\"maintainsTheBenchmarkingInfrastructureAnd\":\"Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Data Analyst\",\"ensuresStatisticalRigorInAll\":\"Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Community Manager\",\"managesCommunityContributionsPartnershipsAnd\":\"Manages community contributions, partnerships, and events. Background in open source governance.\"}},\"fr\":{\"team-header\":{\"ourTeam\":\"Notre équipe\",\"meetThePeopleBehindI18n\":\"Rencontrez les personnes derrière i18n Benchmark. Une équipe diversifiée unie par une passion commune pour d'excellents outils de développement.\"},\"team-grid\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Fondatrice & Ingénieure principale\",\"formerGoogleEngineerWith10\":\"Ancienne ingénieure Google avec 10 ans d'expérience dans la construction de systèmes d'internationalisation à grande échelle.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Ingénieur performance\",\"specializesInJavascriptPerformanceOptimization\":\"Spécialisé dans l'optimisation des performances JavaScript et la méthodologie de benchmarking. Précédemment chez Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Passionnée par l'expérience développeur et l'éducation. Conférencière à React Conf, JSConf et i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Développeur Full-Stack\",\"maintainsTheBenchmarkingInfrastructureAnd\":\"Entretient l'infrastructure de benchmarking et le pipeline CI/CD. Contributeur open source à Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Analyste de données\",\"ensuresStatisticalRigorInAll\":\"Assure la rigueur statistique de tous les résultats de benchmark. Doctorat en statistiques appliquées du MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Responsable de communauté\",\"managesCommunityContributionsPartnershipsAnd\":\"Gère les contributions de la communauté, les partenariats et les événements. Expérience en gouvernance open source.\"}},\"es\":{\"team-header\":{\"ourTeam\":\"Nuestro equipo\",\"meetThePeopleBehindI18n\":\"Conoce a las personas que están detrás de i18n Benchmark. Un equipo diverso unido por una pasión compartida por las grandes herramientas para desarrolladores.\"},\"team-grid\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Fundadora e ingeniera principal\",\"formerGoogleEngineerWith10\":\"Exingeniera de Google con 10 años de experiencia en la creación de sistemas de internacionalización a escala.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Ingeniero de rendimiento\",\"specializesInJavascriptPerformanceOptimization\":\"Especializado en la optimización del rendimiento de JavaScript y la metodología de benchmarking. Anteriormente en Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Apasionada por la experiencia del desarrollador y la educación. Ponente en React Conf, JSConf e i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Desarrollador Full-Stack\",\"maintainsTheBenchmarkingInfrastructureAnd\":\"Mantiene la infraestructura de benchmarking y el pipeline de CI/CD. Colaborador de código abierto de Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Analista de datos\",\"ensuresStatisticalRigorInAll\":\"Garantiza el rigor estadístico en todos los resultados del benchmark. Doctorado en Estadística Aplicada por el MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Responsable de la comunidad\",\"managesCommunityContributionsPartnershipsAnd\":\"Gestiona las contribuciones de la comunidad, las asociaciones y los eventos. Antecedentes en gobernanza de código abierto.\"}},\"de\":{\"team-header\":{\"ourTeam\":\"Unser Team\",\"meetThePeopleBehindI18n\":\"Lernen Sie die Menschen hinter i18n Benchmark kennen. Ein vielfältiges Team, vereint durch die Leidenschaft für großartige Entwickler-Tools.\"},\"team-grid\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Gründerin & Leitende Ingenieurin\",\"formerGoogleEngineerWith10\":\"Ehemalige Google-Ingenieurin mit 10 Jahren Erfahrung im Aufbau von Internationalisierungssystemen in großem Maßstab.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Performance-Ingenieur\",\"specializesInJavascriptPerformanceOptimization\":\"Spezialisiert auf JavaScript-Leistungsoptimierung und Benchmarking-Methodik. Zuvor bei Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Begeistert von Entwicklererfahrung und Bildung. Sprecherin auf der React Conf, JSConf und i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Full-Stack-Entwickler\",\"maintainsTheBenchmarkingInfrastructureAnd\":\"Wartet die Benchmarking-Infrastruktur und die CI/CD-Pipeline. Open-Source-Mitwirkender bei Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Datenanalyst\",\"ensuresStatisticalRigorInAll\":\"Gewährleistet statistische Strenge in allen Benchmark-Ergebnissen. Promotion in Angewandter Statistik am MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Community-Managerin\",\"managesCommunityContributionsPartnershipsAnd\":\"Verwaltet Community-Beiträge, Partnerschaften und Veranstaltungen. Hintergrund in Open-Source-Governance.\"}},\"it\":{\"team-header\":{\"ourTeam\":\"Il nostro team\",\"meetThePeopleBehindI18n\":\"Incontra le persone che stanno dietro i18n Benchmark. Un team eterogeneo unito dalla passione comune per i grandi strumenti per gli sviluppatori.\"},\"team-grid\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Fondatrice e Responsabile tecnico\",\"formerGoogleEngineerWith10\":\"Ex ingegnere Google con 10 anni di esperienza nella costruzione di sistemi di internazionalizzazione su scala.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Ingegnere delle prestazioni\",\"specializesInJavascriptPerformanceOptimization\":\"Specializzato nell'ottimizzazione delle prestazioni JavaScript e nella metodologia di benchmarking. Precedentemente presso Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Appassionata di esperienza degli sviluppatori e formazione. Relatrice a React Conf, JSConf e i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Sviluppatore Full-Stack\",\"maintainsTheBenchmarkingInfrastructureAnd\":\"Mantiene l'infrastruttura di benchmarking e la pipeline CI/CD. Collaboratore open source di Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Analista dati\",\"ensuresStatisticalRigorInAll\":\"Garantisce il rigore statistico in tutti i risultati dei benchmark. Dottorato in statistica applicata al MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Responsable della comunità\",\"managesCommunityContributionsPartnershipsAnd\":\"Gestisce i contributi della comunità, le partnership e gli eventi. Background nella governance open source.\"}},\"pt\":{\"team-header\":{\"ourTeam\":\"Nossa Equipe\",\"meetThePeopleBehindI18n\":\"Conheça as pessoas por trás do i18n Benchmark. Uma equipe diversificada unida por uma paixão compartilhada por ótimas ferramentas para desenvolvedores.\"},\"team-grid\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"Fundadora e Engenheira Líder\",\"formerGoogleEngineerWith10\":\"Ex-engenheira do Google com 10 anos de experiência na construção de sistemas de internacionalização em escala.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"Engenheiro de Performance\",\"specializesInJavascriptPerformanceOptimization\":\"Especializado em otimização de desempenho JavaScript e metodologia de benchmarking. Anteriormente na Vercel.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"Developer Advocate\",\"passionateAboutDeveloperExperienceAnd\":\"Apaixonada por experiência do desenvolvedor e educação. Palestrante na React Conf, JSConf e i18nNext.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"Desenvolvedor Full-Stack\",\"maintainsTheBenchmarkingInfrastructureAnd\":\"Mantém a infraestrutura de benchmarking e o pipeline CI/CD. Contribuidor open source para Lingui.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"Analista de Dados\",\"ensuresStatisticalRigorInAll\":\"Garante o rigor estatístico em todos os resultados de benchmark. Doutorado em estatística aplicada pelo MIT.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"Gerente de Comunidade\",\"managesCommunityContributionsPartnershipsAnd\":\"Gerencia contribuições da comunidade, parcerias e eventos. Experiência em governança de código aberto.\"}},\"zh\":{\"team-header\":{\"ourTeam\":\"我们的团队\",\"meetThePeopleBehindI18n\":\"认识 i18n Benchmark 背后的团队。这是一支因对优秀开发者工具的共同热爱而凝聚在一起的多样化团队。\"},\"team-grid\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"创始人兼首席工程师\",\"formerGoogleEngineerWith10\":\"前 Google 工程师，在构建大规模国际化系统方面拥有 10 年经验。\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"性能工程师\",\"specializesInJavascriptPerformanceOptimization\":\"专注于 JavaScript 性能优化和基准测试方法论。此前就职于 Vercel。\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"开发者关系倡导者\",\"passionateAboutDeveloperExperienceAnd\":\"对开发者体验和教育充满热情。React Conf、JSConf 和 i18nNext 的讲师。\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"全栈开发人员\",\"maintainsTheBenchmarkingInfrastructureAnd\":\"维护基准测试基础设施和 CI/CD 管道。Lingui 开源贡献者。\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"数据分析师\",\"ensuresStatisticalRigorInAll\":\"确保所有基准测试结果的统计严谨性。麻省理工学院 (MIT) 应用统计学博士。\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"社区负责人\",\"managesCommunityContributionsPartnershipsAnd\":\"管理社区贡献、合作伙伴关系和活动。具有开源治理背景。\"}},\"ja\":{\"team-header\":{\"ourTeam\":\"私たちのチーム\",\"meetThePeopleBehindI18n\":\"i18n Benchmarkを支える人々を紹介します。優れた開発者ツールに対する共通の情熱によって結ばれた多様なチームです。\"},\"team-grid\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"創設者 兼 リードエンジニア\",\"formerGoogleEngineerWith10\":\"大規模な国際化システムの構築に10年の経験を持つ元Googleエンジニア。\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"パフォーマンスエンジニア\",\"specializesInJavascriptPerformanceOptimization\":\"JavaScriptのパフォーマンス最適化とベンチマーク方法論を専門としています。以前はVercelに在籍。\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"デベロッパーアドボケイト\",\"passionateAboutDeveloperExperienceAnd\":\"デベロッパーエクスペリエンスと教育に情熱を注いでいます。React Conf、JSConf、i18nNextのスピーカー。\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"フルスタックデベロッパー\",\"maintainsTheBenchmarkingInfrastructureAnd\":\"ベンチマークインフラストラクチャとCI/CDパイプラインを維持。Linguiのオープンソースコントリビューター。\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"データアナリスト\",\"ensuresStatisticalRigorInAll\":\"すべてのベンチマーク結果の統計的厳密さを確保。MITで応用統計学の博士号を取得。\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"コミュニティマネージャー\",\"managesCommunityContributionsPartnershipsAnd\":\"コミュニティの貢献、パートナーシップ、イベントを管理。オープンソースガバナンスの経歴を持つ。\"}},\"ko\":{\"team-header\":{\"ourTeam\":\"저희 팀\",\"meetThePeopleBehindI18n\":\"i18n Benchmark를 만드는 사람들을 만나보세요. 훌륭한 개발자 도구에 대한 공통된 열정으로 뭉친 다양한 팀입니다.\"},\"team-grid\":{\"sarahChen\":\"Sarah Chen\",\"founderLeadEngineer\":\"설립자 겸 수석 엔지니어\",\"formerGoogleEngineerWith10\":\"규모 있는 국제화 시스템 구축 분야에서 10년의 경력을 쌓은 전직 Google 엔지니어입니다.\",\"marcusWeber\":\"Marcus Weber\",\"performanceEngineer\":\"성능 엔지니어\",\"specializesInJavascriptPerformanceOptimization\":\"JavaScript 성능 최적화 및 벤치마킹 방법론을 전문으로 합니다. 이전에는 Vercel에서 근무했습니다.\",\"aishaPatel\":\"Aisha Patel\",\"developerAdvocate\":\"개발자 에반젤리스트\",\"passionateAboutDeveloperExperienceAnd\":\"개발자 경험과 교육에 열정적입니다. React Conf, JSConf 및 i18nNext의 발표자입니다.\",\"tomasRodriguez\":\"Tomás Rodríguez\",\"fullStackDeveloper\":\"풀스택 개발자\",\"maintainsTheBenchmarkingInfrastructureAnd\":\"벤치마킹 인프라 및 CI/CD 파이프라인을 유지 관리합니다. Lingui 오픈 소스 기여자입니다.\",\"yukiTanaka\":\"Yuki Tanaka\",\"dataAnalyst\":\"데이터 분석가\",\"ensuresStatisticalRigorInAll\":\"모든 벤치마크 결과의 통계적 엄격함을 보장합니다. MIT 응용 통계학 박사.\",\"elenaKowalski\":\"Elena Kowalski\",\"communityManager\":\"커뮤니티 매니저\",\"managesCommunityContributionsPartnershipsAnd\":\"커뮤니티 기여, 파트너십 및 이벤트를 관리합니다. 오픈 소스 거버넌스 분야의 배경을 가지고 있습니다.\"}},\"ru\":{\"team-header\":{\"ourTeam\":\"Наша команда\",\"meetThePeopleBehindI18n\":\"Познакомьтесь с людьми, стоящими за i18n Benchmark. Разнообразная команда, объединенная общей страстью к отличным инструментам для разработчиков.\"},\"team-grid\":{\"sarahChen\":\"Сара Чен (Sarah Chen)\",\"founderLeadEngineer\":\"Основатель и ведущий инженер\",\"formerGoogleEngineerWith10\":\"Бывший инженер Google с 10-летним опытом создания систем интернационализации в масштабе.\",\"marcusWeber\":\"Маркус Вебер (Marcus Weber)\",\"performanceEngineer\":\"Инженер по производительности\",\"specializesInJavascriptPerformanceOptimization\":\"Специализируется на оптимизации производительности JavaScript и методологии тестирования. Ранее работал в Vercel.\",\"aishaPatel\":\"Айша Патель (Aisha Patel)\",\"developerAdvocate\":\"Адвокат разработчиков\",\"passionateAboutDeveloperExperienceAnd\":\"Увлечена опытом разработчиков и обучением. Спикер на React Conf, JSConf и i18nNext.\",\"tomasRodriguez\":\"Томас Родригес (Tomás Rodríguez)\",\"fullStackDeveloper\":\"Фулстек-разработчик\",\"maintainsTheBenchmarkingInfrastructureAnd\":\"Поддерживает инфраструктуру тестирования и CI/CD пайплайн. Участник разработки Lingui с открытым исходным кодом.\",\"yukiTanaka\":\"Юки Танака (Yuki Tanaka)\",\"dataAnalyst\":\"Аналитик данных\",\"ensuresStatisticalRigorInAll\":\"Обеспечивает статистическую строгость всех результатов тестирования. Доктор прикладной статистики из MIT.\",\"elenaKowalski\":\"Елена Ковальски (Elena Kowalski)\",\"communityManager\":\"Комьюнити-менеджер\",\"managesCommunityContributionsPartnershipsAnd\":\"Управляет вкладом сообщества, партнерствами и мероприятиями. Опыт в управлении проектами с открытым исходным кодом.\"}}}}"),
+		localIds: [
+			"team::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"team::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"team::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"team::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"team::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"team::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"team::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"team::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"team::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"team::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"blog": {
+		key: "blog",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"blog-header\":{\"insightsTutorialsAndAnalysisFrom\":\"Insights, tutorials, and analysis from the i18n community.\"},\"blog-list\":{\"comparingI18nLibrariesIn2026\":\"Comparing i18n Libraries in 2026: A Deep Dive\",\"weTested12DifferentInternationalization\":\"We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.\",\"howToReduceYourI18n\":\"How to Reduce Your i18n Bundle by 60%\",\"march82026\":\"March 8, 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.\",\"theStateOfInternationalizationIn\":\"The State of Internationalization in React\",\"february282026\":\"February 28, 2026\",\"anOverviewOfTheCurrent\":\"An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.\",\"migratingFromReactI18nextTo\":\"Migrating from react-i18next to Lingui\",\"february152026\":\"February 15, 2026\",\"aStepByStepGuide\":\"A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components and i18n: What Changes?\",\"february12026\":\"February 1, 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components introduce new patterns for internationalization. We explore the implications and best practices.\",\"benchmarkMethodologyHowWeTest\":\"Benchmark Methodology: How We Test\",\"january202026\":\"January 20, 2026\",\"aTransparentLookAtOur\":\"A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.\",\"readMore\":\"Read More →\"}},\"fr\":{\"blog-header\":{\"insightsTutorialsAndAnalysisFrom\":\"Aperçus, tutoriels et analyses de la communauté i18n.\"},\"blog-list\":{\"comparingI18nLibrariesIn2026\":\"Comparaison des bibliothèques i18n en 2026 : une analyse approfondie\",\"weTested12DifferentInternationalization\":\"Nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et le DX. Voici les résultats surprenants.\",\"howToReduceYourI18n\":\"Comment réduire votre bundle i18n de 60 %\",\"march82026\":\"8 mars 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Stratégies pratiques pour optimiser les bundles de traduction, notamment le chargement différé, le fractionnement du code et les optimisations au moment de la compilation.\",\"theStateOfInternationalizationIn\":\"L'état de l'internationalisation dans React\",\"february282026\":\"28 février 2026\",\"anOverviewOfTheCurrent\":\"Un aperçu de l'écosystème i18n actuel dans React, couvrant les tendances, les modèles émergents et les préférences de la communauté.\",\"migratingFromReactI18nextTo\":\"Migration de react-i18next vers Lingui\",\"february152026\":\"15 février 2026\",\"aStepByStepGuide\":\"Un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components et i18n : Qu'est-ce qui change ?\",\"february12026\":\"1er février 2026\",\"reactServerComponentsIntroduceNew\":\"Les React Server Components introduisent de nouveaux modèles pour l'internationalisation. Nous explorons les implications et les meilleures pratiques.\",\"benchmarkMethodologyHowWeTest\":\"Méthodologie du benchmark : comment nous testons\",\"january202026\":\"20 janvier 2026\",\"aTransparentLookAtOur\":\"Un regard transparent sur notre méthodologie de benchmarking, y compris les environnements de test, les méthodes statistiques et la reproductibilité.\",\"readMore\":\"Lire la suite →\"}},\"es\":{\"blog-header\":{\"insightsTutorialsAndAnalysisFrom\":\"Información, tutoriales y análisis de la comunidad i18n.\"},\"blog-list\":{\"comparingI18nLibrariesIn2026\":\"Comparación de bibliotecas i18n en 2026: un análisis profundo\",\"weTested12DifferentInternationalization\":\"Probamos 12 bibliotecas de internacionalización diferentes en cuanto a rendimiento, tamaño del bundle y DX. Aquí están los resultados sorprendentes.\",\"howToReduceYourI18n\":\"Cómo reducir tu bundle i18n en un 60%\",\"march82026\":\"8 de marzo de 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Estrategias prácticas para optimizar los bundles de traducción, incluyendo carga diferida, división de código y optimizaciones en tiempo de compilación.\",\"theStateOfInternationalizationIn\":\"El estado de la internacionalización en React\",\"february282026\":\"28 de febrero de 2026\",\"anOverviewOfTheCurrent\":\"Una visión general del ecosistema i18n actual en React, que cubre tendencias, patrones emergentes y preferencias de la comunidad.\",\"migratingFromReactI18nextTo\":\"Migración de react-i18next a Lingui\",\"february152026\":\"15 de febrero de 2026\",\"aStepByStepGuide\":\"Una guía paso a paso sobre la migración de una aplicación de producción con 50.000 claves de traducción de react-i18next a Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components e i18n: ¿qué cambia?\",\"february12026\":\"1 de febrero de 2026\",\"reactServerComponentsIntroduceNew\":\"Los React Server Components introducen nuevos patrones para la internacionalización. Exploramos las implicaciones y las mejores prácticas.\",\"benchmarkMethodologyHowWeTest\":\"Metodología del benchmark: cómo probamos\",\"january202026\":\"20 de enero de 2026\",\"aTransparentLookAtOur\":\"Una mirada transparente a nuestra metodología de benchmarking, incluyendo entornos de prueba, métodos estadísticos y reproducibilidad.\",\"readMore\":\"Leer más →\"}},\"de\":{\"blog-header\":{\"insightsTutorialsAndAnalysisFrom\":\"Einblicke, Tutorials und Analysen aus der i18n-Community.\"},\"blog-list\":{\"comparingI18nLibrariesIn2026\":\"i18n-Bibliotheken im Vergleich 2026: Ein tiefer Einblick\",\"weTested12DifferentInternationalization\":\"Wir haben 12 verschiedene Internationalisierungs-Bibliotheken in Bezug auf Leistung, Bundle-Größe und DX getestet. Hier sind die überraschenden Ergebnisse.\",\"howToReduceYourI18n\":\"So reduzieren Sie Ihr i18n-Bundle um 60 %\",\"march82026\":\"8. März 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Praktische Strategien zur Optimierung von Übersetzungs-Bundles, einschließlich Lazy Loading, Code Splitting und Compile-Time-Optimierungen.\",\"theStateOfInternationalizationIn\":\"Der Stand der Internationalisierung in React\",\"february282026\":\"28. Februar 2026\",\"anOverviewOfTheCurrent\":\"Eine Übersicht über das aktuelle i18n-Ökosystem in React, die Trends, aufkommende Muster und Community-Präferenzen abdeckt.\",\"migratingFromReactI18nextTo\":\"Migration von react-i18next zu Lingui\",\"february152026\":\"15. Februar 2026\",\"aStepByStepGuide\":\"Eine Schritt-für-Schritt-Anleitung zur Migration einer Produktions-App mit 50.000 Übersetzungsschlüsseln von react-i18next zu Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components und i18n: Was ändert sich?\",\"february12026\":\"1. Februar 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components führen neue Muster für die Internationalisierung ein. Wir untersuchen die Auswirkungen und Best Practices.\",\"benchmarkMethodologyHowWeTest\":\"Benchmark-Methodik: Wie wir testen\",\"january202026\":\"20. Januar 2026\",\"aTransparentLookAtOur\":\"Ein transparenter Blick auf unsere Benchmarking-Methodik, einschließlich Testumgebungen, statistischer Methoden und Reproduzierbarkeit.\",\"readMore\":\"Weiterlesen →\"}},\"it\":{\"blog-header\":{\"insightsTutorialsAndAnalysisFrom\":\"Approfondimenti, tutorial e analisi dalla comunità i18n.\"},\"blog-list\":{\"comparingI18nLibrariesIn2026\":\"Confronto tra librerie i18n nel 2026: un approfondimento\",\"weTested12DifferentInternationalization\":\"Abbiamo testato 12 diverse librerie di internazionalizzazione su prestazioni, dimensioni del bundle e DX. Ecco i risultati sorprendenti.\",\"howToReduceYourI18n\":\"Come ridurre il bundle i18n del 60%\",\"march82026\":\"8 marzo 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Strategie pratiche per ottimizzare i bundle di traduzione, inclusi caricamento pigro, code splitting e ottimizzazioni in fase di compilazione.\",\"theStateOfInternationalizationIn\":\"Lo stato dell'internazionalizzazione in React\",\"february282026\":\"28 febbraio 2026\",\"anOverviewOfTheCurrent\":\"Una panoramica dell'attuale ecosistema i18n in React, che copre tendenze, modelli emergenti e preferenze della comunità.\",\"migratingFromReactI18nextTo\":\"Migrazione da react-i18next a Lingui\",\"february152026\":\"15 febbraio 2026\",\"aStepByStepGuide\":\"Una guida passo passo sulla migrazione di un'app di produzione con 50.000 chiavi di traduzione da react-i18next a Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components e i18n: cosa cambia?\",\"february12026\":\"1 febbraio 2026\",\"reactServerComponentsIntroduceNew\":\"I React Server Components introducono nuovi modelli per l'internazionalizzazione. Esploriamo le implicazioni e le migliori pratiche.\",\"benchmarkMethodologyHowWeTest\":\"Metodologia del benchmark: come testiamo\",\"january202026\":\"20 gennaio 2026\",\"aTransparentLookAtOur\":\"Uno sguardo trasparente alla nostra metodologia di benchmarking, compresi gli ambienti di test, i metodi statistici e la riproducibilità.\",\"readMore\":\"Leggi di più →\"}},\"pt\":{\"blog-header\":{\"insightsTutorialsAndAnalysisFrom\":\"Insights, tutoriais e análises da comunidade i18n.\"},\"blog-list\":{\"comparingI18nLibrariesIn2026\":\"Comparando Bibliotecas i18n em 2026: Uma Análise Profunda\",\"weTested12DifferentInternationalization\":\"Testamos 12 bibliotecas de internacionalização diferentes em termos de desempenho, tamanho do bundle e DX. Aqui estão os resultados surpreendentes.\",\"howToReduceYourI18n\":\"Como reduzir seu bundle i18n em 60%\",\"march82026\":\"8 de março de 2026\",\"practicalStrategiesForOptimizingTranslation\":\"Estratégias práticas para otimizar bundles de tradução, incluindo carregamento lento, divisão de código e otimizações em tempo de compilação.\",\"theStateOfInternationalizationIn\":\"O estado da internacionalização no React\",\"february282026\":\"28 de fevereiro de 2026\",\"anOverviewOfTheCurrent\":\"Uma visão geral do ecossistema i18n atual no React, cobrindo tendências, padrões emergentes e preferências da comunidade.\",\"migratingFromReactI18nextTo\":\"Migrando do react-i18next para o Lingui\",\"february152026\":\"15 de fevereiro de 2026\",\"aStepByStepGuide\":\"Um guia passo a passo sobre a migração de um aplicativo de produção com 50.000 chaves de tradução do react-i18next para o Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components e i18n: o que muda?\",\"february12026\":\"1 de fevereiro de 2026\",\"reactServerComponentsIntroduceNew\":\"React Server Components introduzem novos padrões para internacionalização. Exploramos as implicações e as melhores práticas.\",\"benchmarkMethodologyHowWeTest\":\"Metodologia de Benchmark: como testamos\",\"january202026\":\"20 de janeiro de 2026\",\"aTransparentLookAtOur\":\"Um olhar transparente sobre nossa metodologia de benchmarking, incluindo ambientes de teste, métodos estatísticos e reprodutibilidade.\",\"readMore\":\"Leia mais →\"}},\"zh\":{\"blog-header\":{\"insightsTutorialsAndAnalysisFrom\":\"来自 i18n 社区的洞察、教程和分析。\"},\"blog-list\":{\"comparingI18nLibrariesIn2026\":\"2026 年 i18n 库比较：深度探讨\",\"weTested12DifferentInternationalization\":\"我们在性能、捆绑包大小和 DX 方面测试了 12 个不同的国际化库。以下是令人惊讶的结果。\",\"howToReduceYourI18n\":\"如何将 i18n 捆绑包减少 60%\",\"march82026\":\"2026 年 3 月 8 日\",\"practicalStrategiesForOptimizingTranslation\":\"优化翻译捆绑包的实用策略，包括延迟加载、代码拆分和编译时优化。\",\"theStateOfInternationalizationIn\":\"React 国际化现状\",\"february282026\":\"2026 年 2 月 28 日\",\"anOverviewOfTheCurrent\":\"React 当前 i18n 生态系统概述，涵盖趋势、新兴模式和社区偏好。\",\"migratingFromReactI18nextTo\":\"从 react-i18next 迁移到 Lingui\",\"february152026\":\"2026 年 2 月 15 日\",\"aStepByStepGuide\":\"关于将具有 50,000 个翻译键的生产应用从 react-i18next 迁移到 Lingui 的逐步指南。\",\"serverComponentsAndI18nWhat\":\"Server Components 和 i18n：有哪些变化？\",\"february12026\":\"2026 年 2 月 1 日\",\"reactServerComponentsIntroduceNew\":\"React Server Components 为国际化引入了新模式。我们探讨其影响和最佳实践。\",\"benchmarkMethodologyHowWeTest\":\"基准测试方法论：我们如何测试\",\"january202026\":\"2026 年 1 月 20 日\",\"aTransparentLookAtOur\":\"透明地了解我们的基准测试方法论，包括测试环境、统计方法和可重现性。\",\"readMore\":\"阅读更多 →\"}},\"ja\":{\"blog-header\":{\"insightsTutorialsAndAnalysisFrom\":\"i18nコミュニティからの洞察、チュートリアル、分析。\"},\"blog-list\":{\"comparingI18nLibrariesIn2026\":\"2026年のi18nライブラリ比較：ディープダイブ\",\"weTested12DifferentInternationalization\":\"パフォーマンス、バンドルサイズ、DXにわたって12の異なる国際化ライブラリをテストしました。驚くべき結果がここにあります。\",\"howToReduceYourI18n\":\"i18nバンドルを60%削減する方法\",\"march82026\":\"2026年3月8日\",\"practicalStrategiesForOptimizingTranslation\":\"遅延ロード、コード分割、コンパイル時最適化など、翻訳バンドルを最適化するための実践的な戦略。\",\"theStateOfInternationalizationIn\":\"Reactにおける国際化の現状\",\"february282026\":\"2026年2月28日\",\"anOverviewOfTheCurrent\":\"トレンド、新たなパターン、コミュニティの好みを網羅した、Reactの現在のi18nエコシステムの概要。\",\"migratingFromReactI18nextTo\":\"react-i18nextからLinguiへの移行\",\"february152026\":\"2026年2月15日\",\"aStepByStepGuide\":\"50,000の翻訳キーを持つプロダクションアプリをreact-i18nextからLinguiに移行するためのステップバイステップガイド。\",\"serverComponentsAndI18nWhat\":\"Server Componentsとi18n：何が変わるのか？\",\"february12026\":\"2026年2月1日\",\"reactServerComponentsIntroduceNew\":\"React Server Componentsは、国際化のための新しいパターンを導入します。その影響とベストプラクティスを探ります。\",\"benchmarkMethodologyHowWeTest\":\"ベンチマーク方法論：テスト方法\",\"january202026\":\"2026年1月20日\",\"aTransparentLookAtOur\":\"テスト環境、統計的手法、再現性を含む、ベンチマーク方法論の透明性の高い紹介。\",\"readMore\":\"詳しく読む →\"}},\"ko\":{\"blog-header\":{\"insightsTutorialsAndAnalysisFrom\":\"i18n 커뮤니티의 인사이트, 튜토리얼 및 분석.\"},\"blog-list\":{\"comparingI18nLibrariesIn2026\":\"2026년 i18n 라이브러리 비교: 심층 분석\",\"weTested12DifferentInternationalization\":\"저희는 성능, 번들 크기 및 DX 전반에 걸쳐 12개의 서로 다른 국제화 라이브러리를 테스트했습니다. 놀라운 결과가 여기 있습니다.\",\"howToReduceYourI18n\":\"i18n 번들을 60% 줄이는 방법\",\"march82026\":\"2026년 3월 8일\",\"practicalStrategiesForOptimizingTranslation\":\"지연 로딩, 코드 분할 및 컴파일 시간 최적화를 포함하여 번역 번들을 최적화하기 위한 실용적인 전략입니다.\",\"theStateOfInternationalizationIn\":\"React 국제화의 현주소\",\"february282026\":\"2026년 2월 28일\",\"anOverviewOfTheCurrent\":\"동향, 신흥 패턴 및 커뮤니티 선호도를 다루는 React의 현재 i18n 생태계 개요입니다.\",\"migratingFromReactI18nextTo\":\"react-i18next에서 Lingui로 마이그레이션하기\",\"february152026\":\"2026년 2월 15일\",\"aStepByStepGuide\":\"50,000개의 번역 키가 있는 프로덕션 앱을 react-i18next에서 Lingui로 마이그레이션하는 방법에 대한 단계별 가이드.\",\"serverComponentsAndI18nWhat\":\"Server Components 및 i18n: 무엇이 달라지나요?\",\"february12026\":\"2026년 2월 1일\",\"reactServerComponentsIntroduceNew\":\"React Server Components는 국제화를 위한 새로운 패턴을 도입합니다. 그 의미 및 모범 사례를 살펴봅니다.\",\"benchmarkMethodologyHowWeTest\":\"벤치마크 방법론: 테스트 방법\",\"january202026\":\"2026년 1월 20일\",\"aTransparentLookAtOur\":\"테스트 환경, 통계적 방법 및 재현성을 포함한 벤치마킹 방법론에 대한 투명한 고찰.\",\"readMore\":\"더 읽어보기 →\"}},\"ru\":{\"blog-header\":{\"insightsTutorialsAndAnalysisFrom\":\"Инсайты, руководства и анализ от сообщества i18n.\"},\"blog-list\":{\"comparingI18nLibrariesIn2026\":\"Сравнение библиотек i18n в 2026 году: глубокое погружение\",\"weTested12DifferentInternationalization\":\"Мы протестировали 12 различных библиотек интернационализации по производительности, размеру бандла и DX. Вот удивительные результаты.\",\"howToReduceYourI18n\":\"Как уменьшить бандл i18n на 60%\",\"march82026\":\"8 марта 2026 года\",\"practicalStrategiesForOptimizingTranslation\":\"Практические стратегии для оптимизации бандлов перевода, включая ленивую загрузку, разделение кода и оптимизации во время компиляции.\",\"theStateOfInternationalizationIn\":\"Состояние интернационализации в React\",\"february282026\":\"28 февраля 2026 года\",\"anOverviewOfTheCurrent\":\"Обзор текущей экосистемы i18n в React, охватывающий тенденции, возникающие паттерны и предпочтения сообщества.\",\"migratingFromReactI18nextTo\":\"Миграция с react-i18next на Lingui\",\"february152026\":\"15 февраля 2026 года\",\"aStepByStepGuide\":\"Пошаговое руководство по миграции продакшн-приложения с 50 000 ключами перевода с react-i18next на Lingui.\",\"serverComponentsAndI18nWhat\":\"Server Components и i18n: что меняется?\",\"february12026\":\"1 февраля 2026 года\",\"reactServerComponentsIntroduceNew\":\"React Server Components представляют новые паттерны для интернационализации. Мы исследуем последствия и лучшие практики.\",\"benchmarkMethodologyHowWeTest\":\"Методология бенчмарка: как мы тестируем\",\"january202026\":\"20 января 2026 года\",\"aTransparentLookAtOur\":\"Прозрачный взгляд на нашу методологию бенчмаркинга, включая тестовые среды, статистические методы и воспроизводимость.\",\"readMore\":\"Читать далее →\"}}}}"),
+		localIds: [
+			"blog::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"blog::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"blog::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"blog::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"blog::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"blog::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"blog::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"blog::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"blog::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"blog::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"why-it-matters": {
+		key: "why-it-matters",
+		content: JSON.parse("{\"nodeType\":\"translation\",\"translation\":{\"en\":{\"whyTheseMetricsMatter\":\"Why These Metrics Matter\",\"bundleSize\":\"Bundle Size\",\"theBundleIsTheData\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\",\"renderingHydration\":\"Rendering & Hydration\",\"connectingALargeJsonDictionary\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\",\"dynamicLoading\":\"Dynamic Loading\",\"loadingAllTranslationsUpfrontOverloads\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"},\"fr\":{\"whyTheseMetricsMatter\":\"Pourquoi ces Métriques Comptent\",\"bundleSize\":\"Taille du Bundle\",\"theBundleIsTheData\":\"Le bundle représente les données envoyées à chaque utilisateur à travers le monde. Un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3G lentes courantes dans de nombreuses régions. Les bibliothèques i18n varient considérablement en poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.\",\"renderingHydration\":\"Rendu & Hydratation\",\"connectingALargeJsonDictionary\":\"Connecter un dictionnaire JSON volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arborescence. Pendant l'hydratation SSR, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le Time to Interactive (TTI).\",\"dynamicLoading\":\"Chargement Dynamique\",\"loadingAllTranslationsUpfrontOverloads\":\"Charger toutes les traductions à l'avance surcharge la charge utile initiale. Le chargement dynamique (lazy) divise les traductions par route ou espace de noms, n'envoyant que ce dont la page actuelle a besoin. Cependant, le lazy loading introduit ses propres compromis : requêtes en cascade (waterfall), flash de contenu non traduit et complexité de mise en cache. Mesurer les deux stratégies est essentiel.\"},\"es\":{\"whyTheseMetricsMatter\":\"Why These Metrics Matter\",\"bundleSize\":\"Bundle Size\",\"theBundleIsTheData\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\",\"renderingHydration\":\"Rendering & Hydration\",\"connectingALargeJsonDictionary\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\",\"dynamicLoading\":\"Dynamic Loading\",\"loadingAllTranslationsUpfrontOverloads\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"},\"de\":{\"whyTheseMetricsMatter\":\"Why These Metrics Matter\",\"bundleSize\":\"Bundle Size\",\"theBundleIsTheData\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\",\"renderingHydration\":\"Rendering & Hydration\",\"connectingALargeJsonDictionary\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\",\"dynamicLoading\":\"Dynamic Loading\",\"loadingAllTranslationsUpfrontOverloads\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"},\"it\":{\"whyTheseMetricsMatter\":\"Why These Metrics Matter\",\"bundleSize\":\"Bundle Size\",\"theBundleIsTheData\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\",\"renderingHydration\":\"Rendering & Hydration\",\"connectingALargeJsonDictionary\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\",\"dynamicLoading\":\"Dynamic Loading\",\"loadingAllTranslationsUpfrontOverloads\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"},\"pt\":{\"whyTheseMetricsMatter\":\"Why These Metrics Matter\",\"bundleSize\":\"Bundle Size\",\"theBundleIsTheData\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\",\"renderingHydration\":\"Rendering & Hydration\",\"connectingALargeJsonDictionary\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\",\"dynamicLoading\":\"Dynamic Loading\",\"loadingAllTranslationsUpfrontOverloads\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"},\"zh\":{\"whyTheseMetricsMatter\":\"Why These Metrics Matter\",\"bundleSize\":\"Bundle Size\",\"theBundleIsTheData\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\",\"renderingHydration\":\"Rendering & Hydration\",\"connectingALargeJsonDictionary\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\",\"dynamicLoading\":\"Dynamic Loading\",\"loadingAllTranslationsUpfrontOverloads\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"},\"ja\":{\"whyTheseMetricsMatter\":\"Why These Metrics Matter\",\"bundleSize\":\"Bundle Size\",\"theBundleIsTheData\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\",\"renderingHydration\":\"Rendering & Hydration\",\"connectingALargeJsonDictionary\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\",\"dynamicLoading\":\"Dynamic Loading\",\"loadingAllTranslationsUpfrontOverloads\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"},\"ko\":{\"whyTheseMetricsMatter\":\"Why These Metrics Matter\",\"bundleSize\":\"Bundle Size\",\"theBundleIsTheData\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\",\"renderingHydration\":\"Rendering & Hydration\",\"connectingALargeJsonDictionary\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\",\"dynamicLoading\":\"Dynamic Loading\",\"loadingAllTranslationsUpfrontOverloads\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"},\"ru\":{\"whyTheseMetricsMatter\":\"Why These Metrics Matter\",\"bundleSize\":\"Bundle Size\",\"theBundleIsTheData\":\"The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.\",\"renderingHydration\":\"Rendering & Hydration\",\"connectingALargeJsonDictionary\":\"Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI).\",\"dynamicLoading\":\"Dynamic Loading\",\"loadingAllTranslationsUpfrontOverloads\":\"Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential.\"}}}"),
+		localIds: [
+			"why-it-matters::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"why-it-matters::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"why-it-matters::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"why-it-matters::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"why-it-matters::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"why-it-matters::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"why-it-matters::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"why-it-matters::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"why-it-matters::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"why-it-matters::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	},
+	"hero": {
+		key: "hero",
+		content: {
+			"nodeType": "translation",
+			"translation": {
+				"en": {
+					"aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+					"viewResults": "View Results"
+				},
+				"fr": {
+					"aTestApplicationDesignedTo": "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+					"viewResults": "Voir les Résultats"
+				},
+				"es": {
+					"aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+					"viewResults": "View Results"
+				},
+				"de": {
+					"aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+					"viewResults": "View Results"
+				},
+				"it": {
+					"aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+					"viewResults": "View Results"
+				},
+				"pt": {
+					"aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+					"viewResults": "View Results"
+				},
+				"zh": {
+					"aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+					"viewResults": "View Results"
+				},
+				"ja": {
+					"aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+					"viewResults": "View Results"
+				},
+				"ko": {
+					"aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+					"viewResults": "View Results"
+				},
+				"ru": {
+					"aTestApplicationDesignedTo": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+					"viewResults": "View Results"
+				}
 			}
+		},
+		localIds: [
+			"hero::sync-json::./messages/{{locale}}.json::messages/en.json",
+			"hero::sync-json::./messages/{{locale}}.json::messages/fr.json",
+			"hero::sync-json::./messages/{{locale}}.json::messages/es.json",
+			"hero::sync-json::./messages/{{locale}}.json::messages/de.json",
+			"hero::sync-json::./messages/{{locale}}.json::messages/it.json",
+			"hero::sync-json::./messages/{{locale}}.json::messages/pt.json",
+			"hero::sync-json::./messages/{{locale}}.json::messages/zh.json",
+			"hero::sync-json::./messages/{{locale}}.json::messages/ja.json",
+			"hero::sync-json::./messages/{{locale}}.json::messages/ko.json",
+			"hero::sync-json::./messages/{{locale}}.json::messages/ru.json"
+		]
+	}
+};
+var getDictionaries = () => dictionaries;
+var PROTOTYPE_METHOD_NAMES = /* @__PURE__ */ new Set([
+	"hasOwnProperty",
+	"isPrototypeOf",
+	"propertyIsEnumerable",
+	"toLocaleString"
+]);
+var createSafeFallback = (path = "") => {
+	return new Proxy((() => path), { get: (target, prop) => {
+		if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString" || prop === "valueOf") return () => path;
+		if (prop === "then") return;
+		if (PROTOTYPE_METHOD_NAMES.has(prop)) return Object.prototype[prop].bind(target);
+		if (prop === Symbol.iterator) return function* () {
+			yield path;
 		};
-		const prime = () => {
-			if (!clientId || typeof fetch !== "function") return;
-			if (getToken()) return;
-			if (pendingExchange) return;
-			pendingExchange = exchange();
-		};
-		return {
-			getToken,
-			prime
-		};
-	};
-}));
-var SDK_VERSION, currentUrl, referrerHost, createAnalyticsClient;
-var init_AnalyticsClient = __esmMin((() => {
-	init_isBot();
-	init_idle();
-	init_abTesting();
-	init_eventBuffer();
-	init_publicToken();
-	init_sampling();
-	init_session();
-	init_transport();
-	SDK_VERSION = "intlayer-analytics/1";
-	currentUrl = () => {
-		if (typeof window === "undefined" || !window.location) return "";
-		return window.location.pathname;
-	};
-	referrerHost = () => {
-		if (typeof document === "undefined" || !document.referrer) return void 0;
-		try {
-			return new URL(document.referrer).host;
-		} catch {
-			return;
+		return createSafeFallback(path ? `${path}.${String(prop)}` : String(prop));
+	} });
+};
+var warnedMissingDictionaries = /* @__PURE__ */ new Set();
+var getIntlayer = (key, localeOrSelector, plugins) => {
+	const dictionary = getDictionaries()[key];
+	if (!dictionary && true) {
+		if (!warnedMissingDictionaries.has(key)) {
+			getAppLogger({ log })(typeof window === "undefined" ? `Dictionary ${colorizeKey(key)} was not found. Using fallback proxy.` : `Dictionary ${key} was not found. Using fallback proxy.`, { level: "warn" });
+			warnedMissingDictionaries.add(key);
 		}
-	};
-	createAnalyticsClient = (config) => {
-		const sessionId = getSessionId();
-		const isBotSession = isBotEnvironment();
-		const sampledIn = !isBotSession && isSampledIn(sessionId, config.sampleRate);
-		const buffer = createEventBuffer({ max: config.maxBufferSize });
-		const endpoint = `${config.backendURL.replace(/\/$/, "")}/api/analytics/events`;
-		const publicToken = createPublicTokenManager({
-			backendURL: config.backendURL,
-			clientId: config.clientId
-		});
-		let ambientLocale = "";
-		let flushTimer = null;
-		let started = false;
-		let detachListeners = null;
-		let lastPageViewUrl = null;
-		let seenExposureKeys = /* @__PURE__ */ new Set();
-		const flush = (useBeacon = false) => {
-			const events = buffer.drain();
-			const token = publicToken.getToken();
-			for (let start = 0; start < events.length; start += 200) sendEvents(endpoint, {
-				token,
-				clientId: token ? void 0 : config.clientId,
-				sessionId,
-				sdkVersion: SDK_VERSION,
-				events: events.slice(start, start + 200)
+		return createSafeFallback(key);
+	}
+	return getDictionary(dictionary, localeOrSelector, plugins);
+};
+var MAX_CACHE_SIZE = 50;
+var cache = /* @__PURE__ */ new Map();
+var alreadyWarnedConstructors = /* @__PURE__ */ new Set();
+var warnMissingIntlConstructor = (constructorName) => {
+	if (alreadyWarnedConstructors.has(constructorName)) return;
+	alreadyWarnedConstructors.add(constructorName);
+	console.warn(`[intlayer] \`Intl.${constructorName}\` is not available in this JavaScript engine. A degraded fallback is used instead. On React Native, load a polyfill (e.g. \`@formatjs/intl-${constructorName.toLowerCase()}/polyfill\`) before rendering your app.`);
+};
+var intlConstructorFallbacks = {
+	DisplayNames: class DisplayNamesFallback {
+		of(code) {
+			return code;
+		}
+	},
+	ListFormat: class ListFormatFallback {
+		format(list) {
+			return Array.from(list).join(", ");
+		}
+		formatToParts(list) {
+			return Array.from(list).flatMap((value, index) => index === 0 ? [{
+				type: "element",
+				value
+			}] : [{
+				type: "literal",
+				value: ", "
 			}, {
-				useBeacon,
-				token
-			});
-		};
-		const enqueue = (event) => {
-			if (buffer.push(event) >= config.maxBufferSize) flush();
-		};
-		const setLocale = (locale) => {
-			ambientLocale = locale;
-		};
-		const trackPageView = (event = {}) => {
-			if (!sampledIn) return;
-			const url = event.url ?? currentUrl();
-			const reason = event.reason ?? "initial";
-			if (reason === "route_change" && url === lastPageViewUrl) return;
-			lastPageViewUrl = url;
-			seenExposureKeys = /* @__PURE__ */ new Set();
-			enqueue({
-				type: "page_view",
-				t: Date.now(),
-				url,
-				locale: event.locale ?? ambientLocale,
-				ref: event.ref ?? referrerHost(),
-				vw: event.vw ?? (typeof window !== "undefined" ? window.innerWidth : void 0),
-				vh: event.vh ?? (typeof window !== "undefined" ? window.innerHeight : void 0),
-				reason
-			});
-		};
-		const trackContentExposure = (event) => {
-			if (!sampledIn) return;
-			const locale = event.locale ?? ambientLocale;
-			const exposureKey = [
-				event.dictionaryKey,
-				event.keyPath,
-				locale,
-				event.experimentKey ?? "",
-				event.variant ?? ""
-			].join("");
-			if (seenExposureKeys.has(exposureKey)) return;
-			seenExposureKeys.add(exposureKey);
-			enqueue({
-				...event,
-				type: "content_exposure",
-				t: Date.now(),
-				url: currentUrl(),
-				locale
-			});
-		};
-		const trackConversion = (event) => {
-			if (isBotSession) return;
-			enqueue({
-				...event,
-				type: "conversion",
-				t: Date.now(),
-				url: currentUrl(),
-				locale: event.locale ?? ambientLocale
-			});
-			flush();
-		};
-		const getVariant = (experimentKey, variants, weights) => assignVariant(sessionId, experimentKey, variants, weights);
-		const attachListeners = () => {
-			if (typeof window === "undefined") return;
-			const onHidden = () => {
-				if (document.visibilityState === "hidden") flush(true);
-			};
-			const onPageHide = () => flush(true);
-			const onPopState = () => trackPageView({ reason: "route_change" });
-			document.addEventListener("visibilitychange", onHidden);
-			window.addEventListener("pagehide", onPageHide, { capture: true });
-			window.addEventListener("popstate", onPopState);
-			const history = window.history;
-			const originalPush = history.pushState;
-			const patchedPushState = function patchedPush(...args) {
-				const result = originalPush.apply(this, args);
-				trackPageView({ reason: "route_change" });
-				return result;
-			};
-			history.pushState = patchedPushState;
-			detachListeners = () => {
-				document.removeEventListener("visibilitychange", onHidden);
-				window.removeEventListener("pagehide", onPageHide, { capture: true });
-				window.removeEventListener("popstate", onPopState);
-				if (history.pushState === patchedPushState) history.pushState = originalPush;
-			};
-		};
-		const start = () => {
-			if (started || isBotSession) return;
-			started = true;
-			publicToken.prime();
-			flushTimer = setInterval(flush, config.flushInterval);
-			flushTimer?.unref?.();
-			onIdle(attachListeners);
-		};
-		const stop = () => {
-			if (!started) return;
-			started = false;
-			if (flushTimer) {
-				clearInterval(flushTimer);
-				flushTimer = null;
-			}
-			detachListeners?.();
-			detachListeners = null;
-			flush(true);
-		};
-		return {
-			setLocale,
-			trackPageView,
-			trackContentExposure,
-			trackConversion,
-			getVariant,
-			flush,
-			start,
-			stop
-		};
-	};
-}));
-var CLIENT_KEY, REF_COUNT_KEY, getGlobalAnalyticsClient, setGlobalAnalyticsClient, incrementAnalyticsClientRefCount, decrementAnalyticsClientRefCount;
-var init_globalManager = __esmMin((() => {
-	CLIENT_KEY = "__intlayer_analytics_client__";
-	REF_COUNT_KEY = "__intlayer_analytics_ref_count__";
-	getGlobalAnalyticsClient = () => {
-		if (typeof window === "undefined") return null;
-		return window[CLIENT_KEY] ?? null;
-	};
-	setGlobalAnalyticsClient = (client) => {
-		if (typeof window === "undefined") return;
-		window[CLIENT_KEY] = client;
-	};
-	incrementAnalyticsClientRefCount = () => {
-		if (typeof window === "undefined") return 0;
-		const globals = window;
-		globals[REF_COUNT_KEY] = (globals[REF_COUNT_KEY] ?? 0) + 1;
-		return globals[REF_COUNT_KEY];
-	};
-	decrementAnalyticsClientRefCount = () => {
-		if (typeof window === "undefined") return 0;
-		const globals = window;
-		globals[REF_COUNT_KEY] = Math.max(0, (globals[REF_COUNT_KEY] ?? 0) - 1);
-		return globals[REF_COUNT_KEY];
-	};
-}));
-var initAnalyticsClient, stopAnalyticsClient;
-var init_initAnalyticsClient = __esmMin((() => {
-	init_AnalyticsClient();
-	init_globalManager();
-	init_built();
-	initAnalyticsClient = () => {
-		incrementAnalyticsClientRefCount();
-		const existing = getGlobalAnalyticsClient();
-		if (existing) return existing;
-		const client = createAnalyticsClient({
-			backendURL: editor?.backendURL ?? "",
-			clientId: editor?.clientId,
-			flushInterval: analytics?.flushInterval ?? 2e4,
-			maxBufferSize: 500,
-			sampleRate: analytics?.sampleRate ?? 1
-		});
-		setGlobalAnalyticsClient(client);
-		client.start();
-		return client;
-	};
-	stopAnalyticsClient = () => {
-		if (decrementAnalyticsClientRefCount() > 0) return;
-		getGlobalAnalyticsClient()?.stop();
-		setGlobalAnalyticsClient(null);
-	};
-}));
-var serializeKeyPath, buildContentExposure;
-var init_contentExposure = __esmMin((() => {
-	serializeKeyPath = (keyPath) => keyPath.map((segment) => segment.key === void 0 ? "*" : String(segment.key)).join(".");
-	buildContentExposure = (params) => ({
-		dictionaryKey: params.dictionaryKey,
-		keyPath: serializeKeyPath(params.keyPath),
-		locale: params.locale,
-		nodeType: params.nodeType,
-		experimentKey: params.experimentKey,
-		variant: params.variant
-	});
-}));
-var init_esm = __esmMin((() => {
-	init_globalManager();
-	init_initAnalyticsClient();
-	init_contentExposure();
-}));
-init_isBot();
-init_esm();
-export { buildContentExposure, getGlobalAnalyticsClient, initAnalyticsClient, stopAnalyticsClient };
-import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
-import { n as editor, r as init_built } from "./built-BvRk9kiK.js";
-import { c as getBasePlugins, et as TRANSLATION, l as getContent, nt as init_nodeType, t as init_interpreter } from "./interpreter-D1QgSn8T.js";
-import { c as init_utils, i as getContentNodeByKeyPath, o as editDictionaryByKeyPath, r as renameContentNodeByKeyPath, t as init_dictionaryManipulator, u as isSameKeyPath } from "./dictionaryManipulator-BNItIFYK.js";
-var compareUrls;
-var init_compareUrls = __esmMin((() => {
-	compareUrls = (url1, url2) => {
-		try {
-			const parsedUrl1 = new URL(url1);
-			const parsedUrl2 = new URL(url2);
-			if (parsedUrl1.protocol !== parsedUrl2.protocol || parsedUrl1.hostname !== parsedUrl2.hostname || parsedUrl1.port !== parsedUrl2.port) return false;
-			const path1 = parsedUrl1.pathname.replace(/\/$/, "");
-			const path2 = parsedUrl2.pathname.replace(/\/$/, "");
-			if (path1 !== "" && path2 !== "" && path1 !== path2) return false;
-			return true;
-		} catch (error) {
-			console.error("Invalid URL(s)", error, {
-				url1,
-				url2
-			});
-			return false;
+				type: "element",
+				value
+			}]);
 		}
-	};
-}));
-var mergeIframeClick;
-var init_mergeIframeClick = __esmMin((() => {
-	mergeIframeClick = (event) => {
-		const simulatedMouseDownEvent = new MouseEvent("mousedown", {
-			bubbles: true,
-			cancelable: true,
-			view: window
-		});
-		const simulatedClickEvent = new MouseEvent("click", {
-			bubbles: true,
-			cancelable: true,
-			view: window
-		});
-		Object.assign(simulatedClickEvent, { iframeData: event });
-		Object.assign(simulatedMouseDownEvent, { iframeData: event });
-		window.dispatchEvent(simulatedClickEvent);
-		window.dispatchEvent(simulatedMouseDownEvent);
-	};
-}));
-var MANAGER_KEY, EVENTS_KEY, getEventTarget, getGlobalEditorManager, setGlobalEditorManager, onGlobalEditorManagerChange;
-var init_globalManager = __esmMin((() => {
-	MANAGER_KEY = "__intlayer_editor_manager__";
-	EVENTS_KEY = "__intlayer_editor_manager_events__";
-	getEventTarget = () => {
-		if (typeof window === "undefined") return new EventTarget();
-		const windowGlobals = window;
-		if (!windowGlobals[EVENTS_KEY]) windowGlobals[EVENTS_KEY] = new EventTarget();
-		return windowGlobals[EVENTS_KEY];
-	};
-	getGlobalEditorManager = () => {
-		if (typeof window === "undefined") return null;
-		return window[MANAGER_KEY] ?? null;
-	};
-	setGlobalEditorManager = (manager) => {
-		if (typeof window !== "undefined") {
-			const windowGlobals = window;
-			windowGlobals[MANAGER_KEY] = manager;
-		}
-		getEventTarget().dispatchEvent(new CustomEvent("change", { detail: manager }));
-	};
-	onGlobalEditorManagerChange = (changeCallback) => {
-		const eventTarget = getEventTarget();
-		const eventHandler = (event) => {
-			changeCallback(event.detail);
-		};
-		eventTarget.addEventListener("change", eventHandler);
-		return () => {
-			eventTarget.removeEventListener("change", eventHandler);
-		};
-	};
-}));
-var _HTMLElement$3, IntlayerContentSelectorWrapperElement, defineIntlayerContentSelectorWrapper;
-var init_ContentSelectorWrapper = __esmMin((() => {
-	init_globalManager();
-	init_utils();
-	init_nodeType();
-	_HTMLElement$3 = typeof HTMLElement !== "undefined" ? HTMLElement : class {};
-	IntlayerContentSelectorWrapperElement = class extends _HTMLElement$3 {
-		_keyPathJson = "[]";
-		_dictionaryKey = "";
-		_editorEnabled = false;
-		_isInIframe = false;
-		_isSelected = false;
-		_editedValue = void 0;
-		_renderState = null;
-		_selector = null;
-		_unsubManager = null;
-		_unsubEnabled = null;
-		_unsubFocused = null;
-		_unsubEditedContent = null;
-		static get observedAttributes() {
-			return ["key-path", "dictionary-key"];
-		}
-		get keyPathJson() {
-			return this._keyPathJson;
-		}
-		set keyPathJson(v) {
-			this._keyPathJson = v;
-			const manager = getGlobalEditorManager();
-			if (manager) this._updateEditedValue(manager);
-		}
-		get dictionaryKey() {
-			return this._dictionaryKey;
-		}
-		set dictionaryKey(v) {
-			this._dictionaryKey = v;
-			const manager = getGlobalEditorManager();
-			if (manager) this._updateEditedValue(manager);
-		}
-		constructor() {
-			super();
-			const shadow = this.attachShadow({ mode: "open" });
-			const style = document.createElement("style");
-			style.textContent = ":host { display: contents; }";
-			shadow.appendChild(style);
-		}
-		attributeChangedCallback(name, _oldVal, newVal) {
-			if (name === "key-path") {
-				this._keyPathJson = newVal ?? "[]";
-				const manager = getGlobalEditorManager();
-				if (manager) this._updateEditedValue(manager);
-			} else if (name === "dictionary-key") {
-				this._dictionaryKey = newVal ?? "";
-				const manager = getGlobalEditorManager();
-				if (manager) this._updateEditedValue(manager);
-			}
-		}
-		connectedCallback() {
-			if (typeof window !== "undefined") this._isInIframe = window.self !== window.top;
-			this._subscribeToManager();
-			this._render();
-		}
-		disconnectedCallback() {
-			this._teardown();
-		}
-		_teardown() {
-			this._unsubManager?.();
-			this._unsubEnabled?.();
-			this._unsubFocused?.();
-			this._unsubEditedContent?.();
-			this._unsubManager = null;
-			this._unsubEnabled = null;
-			this._unsubFocused = null;
-			this._unsubEditedContent = null;
-		}
-		_getRawKeyPath() {
-			try {
-				return JSON.parse(this._keyPathJson);
-			} catch {
-				return [];
-			}
-		}
-		_getFilteredKeyPath() {
-			return this._getRawKeyPath().filter((keyPath) => keyPath.type !== TRANSLATION);
-		}
-		_updateEditedValue(manager) {
-			const filteredKeyPath = this._getFilteredKeyPath();
-			if (!this._dictionaryKey || filteredKeyPath.length === 0) {
-				this._editedValue = void 0;
-				this._render();
-				return;
-			}
-			const rawKeyPath = this._getRawKeyPath();
-			const lastStepType = rawKeyPath[rawKeyPath.length - 1]?.type;
-			if (lastStepType === "markdown" || lastStepType === "html" || lastStepType === "insertion" || lastStepType === "file") {
-				this._editedValue = void 0;
-				this._render();
-				return;
-			}
-			let value = manager.getContentValue(this._dictionaryKey, filteredKeyPath);
-			if (value !== null && value !== void 0 && typeof value === "object" && value.nodeType === "translation") {
-				const locale = manager.currentLocale.value;
-				value = locale ? value[TRANSLATION][locale] : void 0;
-			}
-			this._editedValue = value;
-			this._render();
-		}
-		_updateIsSelected(focusedContent) {
-			if (!focusedContent) {
-				this._isSelected = false;
-				this._updateSelectorAttr();
-				return;
-			}
-			const keyPath = this._getFilteredKeyPath();
-			const wasSelected = this._isSelected;
-			this._isSelected = focusedContent.dictionaryKey === this._dictionaryKey && (focusedContent.keyPath?.length ?? 0) > 0 && isSameKeyPath(focusedContent.keyPath ?? [], keyPath);
-			this._updateSelectorAttr();
-			if (this._isSelected && !wasSelected) this._scrollIntoViewIfNeeded();
-		}
-		_scrollIntoViewIfNeeded() {
-			try {
-				let rect;
-				if (this._selector) {
-					const innerWrapper = this._selector.shadowRoot?.querySelector(".wrapper");
-					if (innerWrapper) {
-						const r = innerWrapper.getBoundingClientRect();
-						if (r.width > 0 || r.height > 0) rect = r;
-					}
-				}
-				if (!rect && this.childNodes.length > 0) {
-					const range = document.createRange();
-					range.selectNodeContents(this);
-					const r = range.getBoundingClientRect();
-					if (r.width > 0 || r.height > 0) rect = r;
-				}
-				if (!rect) rect = this.getBoundingClientRect();
-				const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-				const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
-				if (!(rect.width > 0 && rect.height > 0 && rect.bottom > 0 && rect.right > 0 && rect.top < viewportHeight && rect.left < viewportWidth)) {
-					const scrollY = window.scrollY ?? document.documentElement.scrollTop;
-					const targetScrollY = rect.top + scrollY - viewportHeight * .25;
-					window.scrollTo({
-						top: Math.max(0, targetScrollY),
-						behavior: "smooth"
-					});
-				}
-			} catch {}
-		}
-		_updateSelectorAttr() {
-			if (!this._selector) return;
-			if (this._isSelected) this._selector.setAttribute("is-selecting", "");
-			else this._selector.removeAttribute("is-selecting");
-		}
-		_subscribeToManager() {
-			const manager = getGlobalEditorManager();
-			if (manager) this._setupManagerSubscriptions(manager);
-			this._unsubManager = onGlobalEditorManagerChange((m) => {
-				this._unsubEnabled?.();
-				this._unsubFocused?.();
-				this._unsubEditedContent?.();
-				this._unsubEnabled = null;
-				this._unsubFocused = null;
-				this._unsubEditedContent = null;
-				if (m) this._setupManagerSubscriptions(m);
-				else {
-					this._editorEnabled = false;
-					this._isSelected = false;
-					this._editedValue = void 0;
-					this._render();
-				}
+	},
+	Segmenter: class SegmenterFallback {
+		segment(input) {
+			let index = 0;
+			return Array.from(input).map((segment) => {
+				const segmentStart = index;
+				index += segment.length;
+				return {
+					segment,
+					index: segmentStart
+				};
 			});
 		}
-		_setupManagerSubscriptions(manager) {
-			this._editorEnabled = manager.editorEnabled.value ?? false;
-			this._updateIsSelected(manager.focusedContent.value);
-			this._updateEditedValue(manager);
-			const handleEnabledChange = (e) => {
-				this._editorEnabled = e.detail;
-				this._render();
-			};
-			const handleFocusedChange = (e) => {
-				this._updateIsSelected(e.detail);
-			};
-			const handleEditedContentChange = () => {
-				this._updateEditedValue(manager);
-			};
-			manager.editorEnabled.addEventListener("change", handleEnabledChange);
-			manager.focusedContent.addEventListener("change", handleFocusedChange);
-			manager.editedContent.addEventListener("change", handleEditedContentChange);
-			this._unsubEnabled = () => manager.editorEnabled.removeEventListener("change", handleEnabledChange);
-			this._unsubFocused = () => manager.focusedContent.removeEventListener("change", handleFocusedChange);
-			this._unsubEditedContent = () => manager.editedContent.removeEventListener("change", handleEditedContentChange);
-		}
-		_handlePress(e) {
-			e.stopPropagation();
-			const manager = getGlobalEditorManager();
-			if (!manager) return;
-			manager.focusedContent.set({
-				dictionaryKey: this._dictionaryKey,
-				keyPath: this._getFilteredKeyPath()
-			});
-		}
-		_handleHover(e) {
-			e.stopPropagation();
-			getGlobalEditorManager()?.messenger.send(`INTLAYER_HOVERED_CONTENT_CHANGED/post`, {
-				dictionaryKey: this._dictionaryKey,
-				keyPath: this._getFilteredKeyPath()
-			});
-		}
-		_handleUnhover(e) {
-			e.stopPropagation();
-			getGlobalEditorManager()?.messenger.send(`INTLAYER_HOVERED_CONTENT_CHANGED/post`, null);
-		}
-		_render() {
-			const useWrapper = this._isInIframe && this._editorEnabled;
-			const editedValue = this._editedValue;
-			const newState = !useWrapper ? "simple" : typeof editedValue === "string" || typeof editedValue === "number" || typeof editedValue === "boolean" ? "wrapped-text" : "wrapped-slot";
-			if (this._renderState !== newState) {
-				this._rebuildContent(newState);
-				return;
-			}
-			if (newState !== "simple" && this._selector) {
-				this._updateSelectorAttr();
-				if (newState === "wrapped-text" && this._selector.firstChild?.nodeType === Node.TEXT_NODE) this._selector.firstChild.data = String(editedValue);
-			}
-		}
-		_rebuildContent(state) {
-			const shadow = this.shadowRoot;
-			while (shadow.childNodes.length > 1) shadow.removeChild(shadow.lastChild);
-			this._selector = null;
-			if (state === "simple") shadow.appendChild(document.createElement("slot"));
-			else {
-				const selector = document.createElement("intlayer-content-selector");
-				this._selector = selector;
-				if (this._isSelected) selector.setAttribute("is-selecting", "");
-				selector.addEventListener("intlayer:press", (e) => this._handlePress(e));
-				selector.addEventListener("intlayer:hover", (e) => this._handleHover(e));
-				selector.addEventListener("intlayer:unhover", (e) => this._handleUnhover(e));
-				if (state === "wrapped-text") selector.appendChild(document.createTextNode(String(this._editedValue)));
-				else selector.appendChild(document.createElement("slot"));
-				shadow.appendChild(selector);
-			}
-			this._renderState = state;
-		}
-	};
-	defineIntlayerContentSelectorWrapper = () => {
-		if (typeof customElements === "undefined") return;
-		if (!customElements.get("intlayer-content-selector-wrapper")) customElements.define("intlayer-content-selector-wrapper", IntlayerContentSelectorWrapperElement);
-	};
-}));
-var _HTMLElement$2, IntlayerEditedContentElement, defineIntlayerEditedContent;
-var init_EditedContent = __esmMin((() => {
-	init_globalManager();
-	init_interpreter();
-	_HTMLElement$2 = typeof HTMLElement !== "undefined" ? HTMLElement : class {};
-	IntlayerEditedContentElement = class extends _HTMLElement$2 {
-		_dictionaryKey = "";
-		_keyPathJson = "[]";
-		_locale = "";
-		_editedText = null;
-		_unsubManager = null;
-		_unsubEditedContent = null;
-		_selectorWrapper;
-		_slot;
-		static get observedAttributes() {
-			return [
-				"dictionary-key",
-				"key-path",
-				"locale"
-			];
-		}
-		get dictionaryKey() {
-			return this._dictionaryKey;
-		}
-		set dictionaryKey(v) {
-			this._dictionaryKey = v;
-			this._selectorWrapper.setAttribute("dictionary-key", v);
-		}
-		get keyPathJson() {
-			return this._keyPathJson;
-		}
-		set keyPathJson(v) {
-			this._keyPathJson = v;
-			this._selectorWrapper.setAttribute("key-path", v);
-		}
-		get locale() {
-			return this._locale;
-		}
-		set locale(v) {
-			this._locale = v;
-		}
-		constructor() {
-			super();
-			const shadow = this.attachShadow({ mode: "open" });
-			const style = document.createElement("style");
-			style.textContent = ":host { display: contents; }";
-			shadow.appendChild(style);
-			this._selectorWrapper = document.createElement("intlayer-content-selector-wrapper");
-			this._slot = document.createElement("slot");
-			this._selectorWrapper.appendChild(this._slot);
-			shadow.appendChild(this._selectorWrapper);
-		}
-		attributeChangedCallback(name, _oldVal, newVal) {
-			const val = newVal ?? "";
-			if (name === "dictionary-key") {
-				this._dictionaryKey = val;
-				this._selectorWrapper.setAttribute("dictionary-key", val);
-			} else if (name === "key-path") {
-				this._keyPathJson = val || "[]";
-				this._selectorWrapper.setAttribute("key-path", this._keyPathJson);
-			} else if (name === "locale") this._locale = val;
-		}
-		connectedCallback() {
-			this._subscribeToManager();
-		}
-		disconnectedCallback() {
-			this._teardown();
-		}
-		_teardown() {
-			this._unsubManager?.();
-			this._unsubEditedContent?.();
-			this._unsubManager = null;
-			this._unsubEditedContent = null;
-		}
-		_getKeyPath() {
-			try {
-				return JSON.parse(this._keyPathJson);
-			} catch {
-				return [];
-			}
-		}
-		_render() {
-			while (this._selectorWrapper.firstChild) this._selectorWrapper.removeChild(this._selectorWrapper.firstChild);
-			if (this._editedText !== null) this._selectorWrapper.appendChild(document.createTextNode(this._editedText));
-			else this._selectorWrapper.appendChild(this._slot);
-		}
-		_resolveEditedText(manager) {
-			const keyPath = this._getKeyPath();
-			const editedValue = manager.getContentValue(this._dictionaryKey, keyPath);
-			if (editedValue === void 0 || editedValue === null) {
-				this._editedText = null;
-				this._render();
-				return;
-			}
-			if (typeof editedValue === "string" || typeof editedValue === "number") {
-				this._editedText = String(editedValue);
-				this._render();
-				return;
-			}
-			if (typeof editedValue === "object") {
-				const locale = this._locale || void 0;
-				const transformed = getContent(editedValue, {
-					locale,
-					dictionaryKey: this._dictionaryKey,
-					keyPath
-				}, getBasePlugins(locale));
-				if (typeof transformed === "string" || typeof transformed === "number") this._editedText = String(transformed);
-				else {
-					console.error(`[intlayer-edited-content] Incorrect edited content format. Expected string. Value: ${JSON.stringify(transformed)}`);
-					this._editedText = null;
-				}
-				this._render();
-				return;
-			}
-			this._editedText = null;
-			this._render();
-		}
-		_setupManagerSubscriptions(manager) {
-			this._resolveEditedText(manager);
-			const handleChange = () => this._resolveEditedText(manager);
-			manager.editedContent.addEventListener("change", handleChange);
-			this._unsubEditedContent = () => manager.editedContent.removeEventListener("change", handleChange);
-		}
-		_subscribeToManager() {
-			const manager = getGlobalEditorManager();
-			if (manager) this._setupManagerSubscriptions(manager);
-			this._unsubManager = onGlobalEditorManagerChange((m) => {
-				this._unsubEditedContent?.();
-				this._unsubEditedContent = null;
-				if (m) this._setupManagerSubscriptions(m);
-				else {
-					this._editedText = null;
-					this._render();
-				}
-			});
-		}
-	};
-	defineIntlayerEditedContent = () => {
-		if (typeof customElements === "undefined") return;
-		if (!customElements.get("intlayer-edited-content")) customElements.define("intlayer-edited-content", IntlayerEditedContentElement);
-	};
-}));
-var randomUUID, CrossFrameMessenger;
-var init_CrossFrameMessenger = __esmMin((() => {
-	init_compareUrls();
-	randomUUID = () => Math.random().toString(36).slice(2);
-	CrossFrameMessenger = class {
-		senderId;
-		_config;
-		_subscribers = /* @__PURE__ */ new Map();
-		_windowHandler = null;
-		_seenMessageIds = /* @__PURE__ */ new Set();
-		_warnedRejectedOrigins = /* @__PURE__ */ new Set();
-		constructor(config) {
-			this._config = config;
-			this.senderId = randomUUID();
-		}
-		start() {
-			if (typeof window === "undefined") return;
-			if (this._windowHandler) return;
-			this._windowHandler = (event) => {
-				this._handleMessage(event);
-			};
-			window.addEventListener("message", this._windowHandler);
-		}
-		stop() {
-			if (this._windowHandler) {
-				window.removeEventListener("message", this._windowHandler);
-				this._windowHandler = null;
-			}
-		}
-		send(type, data) {
-			const payload = {
-				type,
-				data,
-				senderId: this.senderId,
-				messageId: randomUUID()
-			};
-			for (const origin of this._config.allowedOrigins) if (origin) this._config.postMessageFn(payload, origin);
-		}
-		subscribe(type, handler) {
-			if (!this._subscribers.has(type)) this._subscribers.set(type, /* @__PURE__ */ new Set());
-			this._subscribers.get(type).add(handler);
-			return () => {
-				this._subscribers.get(type)?.delete(handler);
-			};
-		}
-		_handleMessage(event) {
-			const payload = event.data;
-			if (!payload || typeof payload !== "object") return;
-			const { type, data, senderId: msgSenderId, messageId } = payload;
-			if (!type || typeof type !== "string") return;
-			if (msgSenderId === this.senderId) return;
-			if (messageId) {
-				if (this._seenMessageIds.has(messageId)) return;
-				this._seenMessageIds.add(messageId);
-				if (this._seenMessageIds.size > 200) this._seenMessageIds.clear();
-			}
-			const { allowedOrigins } = this._config;
-			if (!(!allowedOrigins || allowedOrigins.length === 0 || allowedOrigins.includes("*") || allowedOrigins.filter((url) => Boolean(url) && url !== "").some((url) => compareUrls(url, event.origin)))) {
-				if (type.startsWith("INTLAYER") && !this._warnedRejectedOrigins.has(event.origin)) {
-					this._warnedRejectedOrigins.add(event.origin);
-					console.warn(`[intlayer] Ignored editor message "${type}" from origin "${event.origin}" — not in allowed origins [${allowedOrigins.join(", ")}]. Check the editor.editorURL / editor.cmsURL configuration.`);
-				}
-				return;
-			}
-			const handlers = this._subscribers.get(type);
-			if (handlers) for (const handler of handlers) handler(data, msgSenderId);
-		}
-	};
-}));
-var CrossFrameStateManager;
-var init_CrossFrameStateManager = __esmMin((() => {
-	CrossFrameStateManager = class extends EventTarget {
-		_value;
-		_key;
-		_messenger;
-		_options;
-		_unsubscribers = [];
-		constructor(key, messenger, options = {}) {
-			super();
-			this._key = key;
-			this._messenger = messenger;
-			this._options = {
-				emit: options.emit ?? true,
-				receive: options.receive ?? true
-			};
-			if (options.initialValue !== void 0) this._value = options.initialValue;
-		}
-		get value() {
-			return this._value;
-		}
-		set(newValue) {
-			const resolvedValue = typeof newValue === "function" ? newValue(this._value) : newValue;
-			this._value = resolvedValue;
-			this.dispatchEvent(new CustomEvent("change", { detail: resolvedValue }));
-			if (this._options.emit) this._messenger.send(`${this._key}/post`, resolvedValue);
-		}
-		start() {
-			if (this._options.receive) {
-				const unsub = this._messenger.subscribe(`${this._key}/post`, (data) => {
-					this._value = data;
-					this.dispatchEvent(new CustomEvent("change", { detail: data }));
-				});
-				this._unsubscribers.push(unsub);
-			}
-			if (this._options.emit) {
-				const unsub = this._messenger.subscribe(`${this._key}/get`, (_, originSenderId) => {
-					if (originSenderId === this._messenger.senderId) return;
-					if (this._value === void 0) return;
-					this._messenger.send(`${this._key}/post`, this._value);
-				});
-				this._unsubscribers.push(unsub);
-			}
-			if (this._options.receive && this._value === void 0) this._messenger.send(`${this._key}/get`);
-		}
-		stop() {
-			for (const unsub of this._unsubscribers) unsub();
-			this._unsubscribers.length = 0;
-		}
-		postCurrentValue() {
-			if (this._value !== void 0) this._messenger.send(`${this._key}/post`, this._value);
-		}
-	};
-}));
-var BUS_KEY$1, BUS_EVENTS_KEY$1, getBusTarget$1, getGlobalEditedContent, setGlobalEditedContent, subscribeToGlobalEditedContent;
-var init_editedContentBus = __esmMin((() => {
-	BUS_KEY$1 = "__intlayer_edited_content_bus__";
-	BUS_EVENTS_KEY$1 = "__intlayer_edited_content_bus_events__";
-	getBusTarget$1 = () => {
-		if (typeof window === "undefined") return new EventTarget();
-		const w = window;
-		if (!w[BUS_EVENTS_KEY$1]) w[BUS_EVENTS_KEY$1] = new EventTarget();
-		return w[BUS_EVENTS_KEY$1];
-	};
-	getGlobalEditedContent = () => {
-		if (typeof window === "undefined") return {};
-		return window[BUS_KEY$1] ?? {};
-	};
-	setGlobalEditedContent = (content, sourceId) => {
-		if (typeof window !== "undefined") window[BUS_KEY$1] = content;
-		getBusTarget$1().dispatchEvent(new CustomEvent("change", { detail: {
-			content,
-			sourceId
-		} }));
-	};
-	subscribeToGlobalEditedContent = (cb) => {
-		const handler = (e) => {
-			const { content, sourceId } = e.detail;
-			cb(content, sourceId);
-		};
-		const target = getBusTarget$1();
-		target.addEventListener("change", handler);
-		return () => target.removeEventListener("change", handler);
-	};
-}));
-var BUS_KEY, BUS_EVENTS_KEY, getBusTarget, getGlobalFocusedContent, setGlobalFocusedContent, subscribeToGlobalFocusedContent;
-var init_focusedContentBus = __esmMin((() => {
-	BUS_KEY = "__intlayer_focused_content_bus__";
-	BUS_EVENTS_KEY = "__intlayer_focused_content_bus_events__";
-	getBusTarget = () => {
-		if (typeof window === "undefined") return new EventTarget();
-		const w = window;
-		if (!w[BUS_EVENTS_KEY]) w[BUS_EVENTS_KEY] = new EventTarget();
-		return w[BUS_EVENTS_KEY];
-	};
-	getGlobalFocusedContent = () => {
-		if (typeof window === "undefined") return void 0;
-		const w = window;
-		if (!w.__intlayer_focused_content_bus_set__) return void 0;
-		return w[BUS_KEY] ?? null;
-	};
-	setGlobalFocusedContent = (content, sourceId) => {
-		if (typeof window !== "undefined") {
-			const w = window;
-			w[BUS_KEY] = content;
-			w.__intlayer_focused_content_bus_set__ = true;
-		}
-		getBusTarget().dispatchEvent(new CustomEvent("change", { detail: {
-			content,
-			sourceId
-		} }));
-	};
-	subscribeToGlobalFocusedContent = (cb) => {
-		const handler = (e) => {
-			const { content, sourceId } = e.detail;
-			cb(content, sourceId);
-		};
-		const target = getBusTarget();
-		target.addEventListener("change", handler);
-		return () => target.removeEventListener("change", handler);
-	};
-}));
-var IframeClickInterceptor;
-var init_IframeClickInterceptor = __esmMin((() => {
-	init_mergeIframeClick();
-	IframeClickInterceptor = class {
-		_messenger;
-		_mousedownHandler = null;
-		_unsubscribeMerge = null;
-		constructor(messenger) {
-			this._messenger = messenger;
-		}
-		startInterceptor() {
-			if (typeof window === "undefined") return;
-			this._mousedownHandler = () => {
-				this._messenger.send("INTLAYER_IFRAME_CLICKED");
-			};
-			window.addEventListener("mousedown", this._mousedownHandler);
-		}
-		startMerger() {
-			this._unsubscribeMerge = this._messenger.subscribe("INTLAYER_IFRAME_CLICKED", mergeIframeClick);
-		}
-		stopInterceptor() {
-			if (this._mousedownHandler) {
-				window.removeEventListener("mousedown", this._mousedownHandler);
-				this._mousedownHandler = null;
-			}
-		}
-		stopMerger() {
-			this._unsubscribeMerge?.();
-			this._unsubscribeMerge = null;
-		}
-	};
-}));
-var UrlStateManager;
-var init_UrlStateManager = __esmMin((() => {
-	UrlStateManager = class {
-		_messenger;
-		_originalPushState = null;
-		_originalReplaceState = null;
-		_listeners = [];
-		constructor(messenger) {
-			this._messenger = messenger;
-		}
-		start() {
-			if (typeof window === "undefined") return;
-			const updateURLState = () => {
-				this._messenger.send(`INTLAYER_URL_CHANGE/post`, window.location.pathname);
-			};
-			this._originalPushState = history.pushState;
-			this._originalReplaceState = history.replaceState;
-			const injectLocationChange = (method) => function(...args) {
-				method.apply(this, args);
-				window.dispatchEvent(new Event("locationchange"));
-			};
-			history.pushState = injectLocationChange(this._originalPushState);
-			history.replaceState = injectLocationChange(this._originalReplaceState);
-			for (const eventName of [
-				"locationchange",
-				"popstate",
-				"hashchange",
-				"load"
-			]) {
-				const listener = updateURLState;
-				window.addEventListener(eventName, listener);
-				this._listeners.push([eventName, listener]);
-			}
-			updateURLState();
-		}
-		stop() {
-			if (typeof window === "undefined") return;
-			for (const [eventName, listener] of this._listeners) window.removeEventListener(eventName, listener);
-			this._listeners = [];
-			if (this._originalPushState) {
-				history.pushState = this._originalPushState;
-				this._originalPushState = null;
-			}
-			if (this._originalReplaceState) {
-				history.replaceState = this._originalReplaceState;
-				this._originalReplaceState = null;
-			}
-		}
-	};
-}));
-var EditorStateManager;
-var init_EditorStateManager = __esmMin((() => {
-	init_CrossFrameMessenger();
-	init_CrossFrameStateManager();
-	init_editedContentBus();
-	init_focusedContentBus();
-	init_IframeClickInterceptor();
-	init_UrlStateManager();
-	init_nodeType();
-	init_dictionaryManipulator();
-	EditorStateManager = class {
-		messenger;
-		editorEnabled;
-		focusedContent;
-		localeDictionaries;
-		editedContent;
-		configuration;
-		currentLocale;
-		displayedDictionaryKeys;
-		_urlManager;
-		_iframeInterceptor;
-		_mode;
-		_configuration;
-		_unsubAreYouThere = null;
-		_unsubActivate = null;
-		_unsubClientReady = null;
-		_displayedKeysObserver = null;
-		_displayedKeysTimer = null;
-		_displayedKeysListeners = [];
-		_editedContentFromBus = false;
-		_unsubGlobalEditedContent = null;
-		_editedContentBusHandler = null;
-		_focusedContentFromBus = false;
-		_unsubGlobalFocusedContent = null;
-		_focusedContentBusHandler = null;
-		constructor(config) {
-			this._mode = config.mode;
-			this._configuration = config.configuration;
-			this.messenger = new CrossFrameMessenger(config.messenger);
-			this.editorEnabled = new CrossFrameStateManager("INTLAYER_EDITOR_ENABLED", this.messenger, {
-				emit: false,
-				receive: true,
-				initialValue: false
-			});
-			this.focusedContent = new CrossFrameStateManager("INTLAYER_FOCUSED_CONTENT_CHANGED", this.messenger, {
-				emit: true,
-				receive: true,
-				initialValue: null
-			});
-			this.localeDictionaries = new CrossFrameStateManager("INTLAYER_LOCALE_DICTIONARIES_CHANGED", this.messenger);
-			this.editedContent = new CrossFrameStateManager("INTLAYER_EDITED_CONTENT_CHANGED", this.messenger);
-			this.configuration = new CrossFrameStateManager("INTLAYER_CONFIGURATION", this.messenger, {
-				emit: true,
-				receive: false,
-				...config.configuration ? { initialValue: config.configuration } : {}
-			});
-			this.currentLocale = new CrossFrameStateManager("INTLAYER_CURRENT_LOCALE", this.messenger, {
-				emit: config.mode === "client",
-				receive: config.mode === "editor"
-			});
-			this.displayedDictionaryKeys = new CrossFrameStateManager("INTLAYER_DISPLAYED_DICTIONARY_KEYS", this.messenger, {
-				emit: config.mode === "client",
-				receive: config.mode === "editor",
-				initialValue: []
-			});
-			this._urlManager = new UrlStateManager(this.messenger);
-			this._iframeInterceptor = new IframeClickInterceptor(this.messenger);
-		}
-		start() {
-			this.messenger.start();
-			this.editorEnabled.start();
-			this.focusedContent.start();
-			this.localeDictionaries.start();
-			this.editedContent.start();
-			this.configuration.start();
-			this.currentLocale.start();
-			this.displayedDictionaryKeys.start();
-			this._startEditedContentBusSync();
-			this._startFocusedContentBusSync();
-			if (this._mode === "client") {
-				this._urlManager.start();
-				this._iframeInterceptor.startInterceptor();
-				this._loadDictionaries();
-				this._startDisplayedDictionariesTracking();
-				this.messenger.send(`INTLAYER_EDITED_CONTENT_CHANGED/get`);
-				if (this._configuration?.editor?.enabled !== false) this._setupActivationHandshake();
-			} else {
-				this._iframeInterceptor.startMerger();
-				this._setupEditorHandshake();
-			}
-		}
-		stop() {
-			this._unsubAreYouThere?.();
-			this._unsubActivate?.();
-			this._unsubClientReady?.();
-			this._unsubAreYouThere = null;
-			this._unsubActivate = null;
-			this._unsubClientReady = null;
-			this.messenger.stop();
-			this.editorEnabled.stop();
-			this.focusedContent.stop();
-			this.localeDictionaries.stop();
-			this.editedContent.stop();
-			this.configuration.stop();
-			this.currentLocale.stop();
-			this.displayedDictionaryKeys.stop();
-			this._stopDisplayedDictionariesTracking();
-			this._stopEditedContentBusSync();
-			this._stopFocusedContentBusSync();
-			this._urlManager.stop();
-			this._iframeInterceptor.stopInterceptor();
-			this._iframeInterceptor.stopMerger();
-		}
-		pingClient() {
-			if (this._mode !== "editor") return;
-			this.messenger.send("INTLAYER_ARE_YOU_THERE");
-		}
-		setFocusedContentKeyPath(keyPath) {
-			const filtered = keyPath.filter((key) => key.type !== TRANSLATION);
-			const prev = this.focusedContent.value;
-			if (!prev) return;
-			this.focusedContent.set({
-				...prev,
-				keyPath: filtered
-			});
-		}
-		setLocaleDictionary(dictionary) {
-			if (!dictionary.localId) return;
-			const current = this.localeDictionaries.value ?? {};
-			this.localeDictionaries.set({
-				...current,
-				[dictionary.localId]: dictionary
-			});
-		}
-		setEditedDictionary(newDict) {
-			if (!newDict.localId) {
-				console.error("setEditedDictionary: missing localId", newDict);
-				return;
-			}
-			const current = this.editedContent.value ?? {};
-			this.editedContent.set({
-				...current,
-				[newDict.localId]: newDict
-			});
-		}
-		setEditedContent(localDictionaryId, newValue) {
-			const current = this.editedContent.value ?? {};
-			this.editedContent.set({
-				...current,
-				[localDictionaryId]: {
-					...current[localDictionaryId],
-					content: newValue
-				}
-			});
-		}
-		addContent(localDictionaryId, newValue, keyPath = [], overwrite = true) {
-			const current = this.editedContent.value ?? {};
-			const originalContent = (this.localeDictionaries.value ?? {})[localDictionaryId]?.content;
-			const currentContent = structuredClone(current[localDictionaryId]?.content ?? originalContent);
-			let newKeyPath = keyPath;
-			if (!overwrite) {
-				let index = 0;
-				const otherKeyPath = keyPath.slice(0, -1);
-				const lastKeyPath = keyPath[keyPath.length - 1];
-				let finalKey = lastKeyPath.key;
-				while (typeof getContentNodeByKeyPath(currentContent, newKeyPath) !== "undefined") {
-					index++;
-					finalKey = index === 0 ? lastKeyPath.key : `${lastKeyPath.key} (${index})`;
-					newKeyPath = [...otherKeyPath, {
-						...lastKeyPath,
-						key: finalKey
-					}];
-				}
-			}
-			const updatedContent = editDictionaryByKeyPath(currentContent, newKeyPath, newValue);
-			this.editedContent.set({
-				...current,
-				[localDictionaryId]: {
-					...current[localDictionaryId],
-					content: updatedContent
-				}
-			});
-		}
-		renameContent(localDictionaryId, newKey, keyPath = []) {
-			const current = this.editedContent.value ?? {};
-			const originalContent = (this.localeDictionaries.value ?? {})[localDictionaryId]?.content;
-			const currentContent = structuredClone(current[localDictionaryId]?.content ?? originalContent);
-			const updated = renameContentNodeByKeyPath(currentContent, newKey, keyPath);
-			this.editedContent.set({
-				...current,
-				[localDictionaryId]: {
-					...current[localDictionaryId],
-					content: updated
-				}
-			});
-		}
-		removeContent(localDictionaryId, keyPath) {
-			const current = this.editedContent.value ?? {};
-			const originalContent = (this.localeDictionaries.value ?? {})[localDictionaryId]?.content;
-			const currentContent = structuredClone(current[localDictionaryId]?.content ?? originalContent);
-			const initialContent = getContentNodeByKeyPath(originalContent, keyPath);
-			const restored = editDictionaryByKeyPath(currentContent, keyPath, initialContent);
-			this.editedContent.set({
-				...current,
-				[localDictionaryId]: {
-					...current[localDictionaryId],
-					content: restored
-				}
-			});
-		}
-		restoreContent(localDictionaryId) {
-			const updated = { ...this.editedContent.value ?? {} };
-			delete updated[localDictionaryId];
-			this.editedContent.set(updated);
-		}
-		clearContent(localDictionaryId) {
-			const filtered = { ...this.editedContent.value ?? {} };
-			delete filtered[localDictionaryId];
-			this.editedContent.set(filtered);
-		}
-		clearAllContent() {
-			this.editedContent.set({});
-		}
-		getContentValue(localDictionaryIdOrKey, keyPath) {
-			const edited = this.editedContent.value;
-			if (!edited) return void 0;
-			const filteredKeyPath = keyPath.filter((key) => key.type !== TRANSLATION);
-			const localeDicts = this.localeDictionaries.value;
-			if (localDictionaryIdOrKey.includes(":local:") || localDictionaryIdOrKey.includes(":remote:")) {
-				if (localeDicts && !(localDictionaryIdOrKey in localeDicts)) return;
-				const content = edited[localDictionaryIdOrKey]?.content ?? {};
-				return getContentNodeByKeyPath(content, filteredKeyPath, this.currentLocale.value);
-			}
-			const matchingIds = Object.keys(edited).filter((key) => key.startsWith(`${localDictionaryIdOrKey}:`) && (!localeDicts || key in localeDicts));
-			for (const localId of matchingIds) {
-				const content = edited[localId]?.content ?? {};
-				const node = getContentNodeByKeyPath(content, filteredKeyPath, this.currentLocale.value);
-				if (node) return node;
-			}
-		}
-		_startEditedContentBusSync() {
-			this._editedContentBusHandler = (e) => {
-				if (this._editedContentFromBus) return;
-				const content = e.detail;
-				setGlobalEditedContent(content, this.messenger.senderId);
-			};
-			this.editedContent.addEventListener("change", this._editedContentBusHandler);
-			this._unsubGlobalEditedContent = subscribeToGlobalEditedContent((content, sourceId) => {
-				if (sourceId === this.messenger.senderId) return;
-				this._editedContentFromBus = true;
-				this.editedContent.set(content);
-				this._editedContentFromBus = false;
-			});
-			const existing = getGlobalEditedContent();
-			if (Object.keys(existing).length > 0) {
-				this._editedContentFromBus = true;
-				this.editedContent.set(existing);
-				this._editedContentFromBus = false;
-			}
-		}
-		_stopEditedContentBusSync() {
-			if (this._editedContentBusHandler) {
-				this.editedContent.removeEventListener("change", this._editedContentBusHandler);
-				this._editedContentBusHandler = null;
-			}
-			this._unsubGlobalEditedContent?.();
-			this._unsubGlobalEditedContent = null;
-		}
-		_startFocusedContentBusSync() {
-			this._focusedContentBusHandler = (e) => {
-				if (this._focusedContentFromBus) return;
-				const content = e.detail;
-				setGlobalFocusedContent(content, this.messenger.senderId);
-			};
-			this.focusedContent.addEventListener("change", this._focusedContentBusHandler);
-			this._unsubGlobalFocusedContent = subscribeToGlobalFocusedContent((content, sourceId) => {
-				if (sourceId === this.messenger.senderId) return;
-				this._focusedContentFromBus = true;
-				this.focusedContent.set(content);
-				this._focusedContentFromBus = false;
-			});
-			const existing = getGlobalFocusedContent();
-			if (existing !== void 0) {
-				this._focusedContentFromBus = true;
-				this.focusedContent.set(existing);
-				this._focusedContentFromBus = false;
-			}
-		}
-		_stopFocusedContentBusSync() {
-			if (this._focusedContentBusHandler) {
-				this.focusedContent.removeEventListener("change", this._focusedContentBusHandler);
-				this._focusedContentBusHandler = null;
-			}
-			this._unsubGlobalFocusedContent?.();
-			this._unsubGlobalFocusedContent = null;
-		}
-		_scanDisplayedDictionaryKeys() {
-			if (typeof document === "undefined") return;
-			const elements = document.querySelectorAll("intlayer-content-selector-wrapper[dictionary-key]");
-			const keys = Array.from(new Set(Array.from(elements).map((el) => el.getAttribute("dictionary-key") ?? "").filter(Boolean)));
-			this.displayedDictionaryKeys.set(keys);
-		}
-		_startDisplayedDictionariesTracking() {
-			if (typeof document === "undefined" || typeof MutationObserver === "undefined") return;
-			const schedule = () => {
-				if (this._displayedKeysTimer) clearTimeout(this._displayedKeysTimer);
-				this._displayedKeysTimer = setTimeout(() => this._scanDisplayedDictionaryKeys(), 100);
-			};
-			this._displayedKeysObserver = new MutationObserver(schedule);
-			this._displayedKeysObserver.observe(document.body, {
-				childList: true,
-				subtree: true
-			});
-			for (const evt of ["locationchange", "popstate"]) {
-				const listener = schedule;
-				window.addEventListener(evt, listener);
-				this._displayedKeysListeners.push([evt, listener]);
-			}
-			this._scanDisplayedDictionaryKeys();
-		}
-		_stopDisplayedDictionariesTracking() {
-			this._displayedKeysObserver?.disconnect();
-			this._displayedKeysObserver = null;
-			if (this._displayedKeysTimer) {
-				clearTimeout(this._displayedKeysTimer);
-				this._displayedKeysTimer = null;
-			}
-			for (const [evt, listener] of this._displayedKeysListeners) window.removeEventListener(evt, listener);
-			this._displayedKeysListeners = [];
-		}
-		_setupEditorHandshake() {
-			this._unsubClientReady = this.messenger.subscribe("INTLAYER_CLIENT_READY", () => {
-				this.editorEnabled.set(true);
-				this.messenger.send("INTLAYER_EDITOR_ACTIVATE");
-			});
-			this.messenger.send("INTLAYER_ARE_YOU_THERE");
-		}
-		_setupActivationHandshake() {
-			this.messenger.send("INTLAYER_CLIENT_READY");
-			this._unsubAreYouThere = this.messenger.subscribe("INTLAYER_ARE_YOU_THERE", () => {
-				this.messenger.send("INTLAYER_CLIENT_READY");
-			});
-			this._unsubActivate = this.messenger.subscribe("INTLAYER_EDITOR_ACTIVATE", () => {
-				this.editorEnabled.set(true);
-				this._broadcastData();
-			});
-		}
-		_broadcastData() {
-			const configVal = this.configuration.value;
-			if (configVal) this.messenger.send(`INTLAYER_CONFIGURATION/post`, configVal);
-			const localeVal = this.currentLocale.value;
-			if (localeVal) this.messenger.send(`INTLAYER_CURRENT_LOCALE/post`, localeVal);
-			const dicts = this.localeDictionaries.value;
-			if (dicts) this.messenger.send(`INTLAYER_LOCALE_DICTIONARIES_CHANGED/post`, dicts);
-		}
-		async _loadDictionaries() {
-			try {
-				const unmergedDictionaries = (await import("./index.browser-C6qNcmdj.js")).getUnmergedDictionaries();
-				const dictionariesList = Object.fromEntries(Object.values(unmergedDictionaries).flat().map((dictionary) => [dictionary.localId, dictionary]));
-				this.localeDictionaries.set(dictionariesList);
-				if (this.editorEnabled.value) this._broadcastData();
-			} catch (e) {
-				console.warn("[intlayer] Failed to load unmerged dictionaries:", e);
-			}
-		}
-	};
-}));
-var _HTMLElement$1, IntlayerEditorElement, defineIntlayerEditorElement;
-var init_IntlayerEditor = __esmMin((() => {
-	init_globalManager();
-	init_initEditorClient();
-	_HTMLElement$1 = typeof HTMLElement !== "undefined" ? HTMLElement : class {};
-	IntlayerEditorElement = class extends _HTMLElement$1 {
-		_configuration = void 0;
-		_locale = void 0;
-		_initialized = false;
-		_unsubManager = null;
-		static get observedAttributes() {
-			return ["locale"];
-		}
-		get configuration() {
-			return this._configuration;
-		}
-		set configuration(v) {
-			this._configuration = v;
-			if (!this._initialized) this._init();
-		}
-		get locale() {
-			return this._locale;
-		}
-		set locale(v) {
-			this._locale = v;
-			if (v && this._initialized) this._syncLocale(v);
-		}
-		attributeChangedCallback(name, _oldVal, newVal) {
-			if (name === "locale" && newVal !== null) {
-				this._locale = newVal;
-				if (this._initialized) this._syncLocale(newVal);
-			}
-		}
-		connectedCallback() {
-			this._init();
-		}
-		disconnectedCallback() {
-			this._unsubManager?.();
-			this._unsubManager = null;
-			if (this._initialized) {
-				stopEditorClient();
-				this._initialized = false;
-			}
-		}
-		_init() {
-			if (this._initialized) return;
-			initEditorClient();
-			this._initialized = true;
-			if (this._locale) this._syncLocale(this._locale);
-		}
-		_syncLocale(locale) {
-			const manager = getGlobalEditorManager();
-			if (manager) manager.currentLocale.set(locale);
-			else {
-				this._unsubManager?.();
-				this._unsubManager = onGlobalEditorManagerChange((m) => {
-					if (m) {
-						this._unsubManager?.();
-						this._unsubManager = null;
-						m.currentLocale.set(locale);
-					}
-				});
-			}
-		}
-	};
-	defineIntlayerEditorElement = () => {
-		if (typeof customElements === "undefined") return;
-		if (!customElements.get("intlayer-editor")) customElements.define("intlayer-editor", IntlayerEditorElement);
-	};
-}));
-var DEFAULT_PRESS_DURATION, STYLES, _HTMLElement, IntlayerContentSelectorElement, defineIntlayerElements;
-var init_ContentSelector = __esmMin((() => {
-	init_ContentSelectorWrapper();
-	init_EditedContent();
-	init_IntlayerEditor();
-	DEFAULT_PRESS_DURATION = 250;
-	STYLES = `
-  :host {
-    display: contents;
-  }
-
-  .wrapper {
-    display: inline-block;
-    cursor: pointer;
-    user-select: none;
-    border-radius: 0.375rem;
-    outline-width: 2px;
-    outline-offset: 4px;
-    outline-style: solid;
-    outline-color: transparent;
-    transition: all 100ms 50ms ease-in-out;
-  }
-
-  .wrapper[data-active] {
-    outline-color: inherit;
-  }
-`;
-	_HTMLElement = typeof HTMLElement !== "undefined" ? HTMLElement : class {};
-	IntlayerContentSelectorElement = class extends _HTMLElement {
-		_isSelecting = false;
-		_pressDuration = DEFAULT_PRESS_DURATION;
-		_isHovered = false;
-		_isSelectingState = false;
-		_wrapper;
-		_pressTimer = null;
-		_clickOutsideHandler = null;
-		static get observedAttributes() {
-			return ["is-selecting", "press-duration"];
-		}
-		get isSelecting() {
-			return this._isSelecting;
-		}
-		set isSelecting(v) {
-			this._isSelecting = v;
-			this._updateActiveState();
-		}
-		get pressDuration() {
-			return this._pressDuration;
-		}
-		set pressDuration(v) {
-			this._pressDuration = v;
-		}
-		constructor() {
-			super();
-			const shadow = this.attachShadow({ mode: "open" });
-			const style = document.createElement("style");
-			style.textContent = STYLES;
-			shadow.appendChild(style);
-			const wrapper = document.createElement("span");
-			wrapper.className = "wrapper";
-			wrapper.setAttribute("role", "button");
-			wrapper.setAttribute("tabindex", "0");
-			wrapper.appendChild(document.createElement("slot"));
-			shadow.appendChild(wrapper);
-			this._wrapper = wrapper;
-			wrapper.addEventListener("mousedown", () => this._handleMouseDown());
-			wrapper.addEventListener("mouseup", () => this._handleMouseUpOrLeave());
-			wrapper.addEventListener("mouseleave", () => this._handleMouseUpOrLeave());
-			wrapper.addEventListener("mouseenter", () => this._handleMouseEnter());
-			wrapper.addEventListener("click", (e) => this._handleClick(e));
-			wrapper.addEventListener("touchstart", () => this._handleMouseDown());
-			wrapper.addEventListener("touchend", () => this._handleMouseUpOrLeave());
-			wrapper.addEventListener("touchcancel", () => this._handleMouseUpOrLeave());
-			wrapper.addEventListener("blur", () => this._handleBlur());
-		}
-		attributeChangedCallback(name, _oldVal, newVal) {
-			if (name === "is-selecting") {
-				this._isSelecting = newVal !== null;
-				this._updateActiveState();
-			} else if (name === "press-duration") this._pressDuration = newVal !== null ? parseInt(newVal, 10) : DEFAULT_PRESS_DURATION;
-		}
-		connectedCallback() {
-			this._clickOutsideHandler = (e) => {
-				if (!e.composedPath().includes(this)) {
-					this._isSelectingState = false;
-					this._dispatch("intlayer:click-outside");
-					this._updateActiveState();
-				}
-			};
-			document.addEventListener("mousedown", this._clickOutsideHandler);
-		}
-		disconnectedCallback() {
-			if (this._clickOutsideHandler) {
-				document.removeEventListener("mousedown", this._clickOutsideHandler);
-				this._clickOutsideHandler = null;
-			}
-			this._clearPressTimer();
-		}
-		_updateActiveState() {
-			if (this._isSelecting || this._isSelectingState || this._isHovered) this._wrapper.setAttribute("data-active", "");
-			else this._wrapper.removeAttribute("data-active");
-		}
-		_clearPressTimer() {
-			if (this._pressTimer !== null) {
-				clearTimeout(this._pressTimer);
-				this._pressTimer = null;
-			}
-		}
-		_dispatch(eventName) {
-			this.dispatchEvent(new CustomEvent(eventName, {
-				bubbles: true,
-				composed: true
-			}));
-		}
-		_handleMouseDown() {
-			this._clearPressTimer();
-			this._pressTimer = setTimeout(() => {
-				this._isSelectingState = true;
-				this._updateActiveState();
-				this._dispatch("intlayer:press");
-			}, this._pressDuration);
-		}
-		_handleMouseEnter() {
-			this._isHovered = true;
-			this._updateActiveState();
-			this._dispatch("intlayer:hover");
-		}
-		_handleMouseUpOrLeave() {
-			if (this._isHovered) {
-				this._isHovered = false;
-				this._dispatch("intlayer:unhover");
-			}
-			this._clearPressTimer();
-			this._updateActiveState();
-		}
-		_handleClick(e) {
-			if (this._isSelecting || this._isSelectingState) {
-				e.preventDefault();
-				e.stopPropagation();
-			}
-		}
-		_handleBlur() {
-			this._isSelectingState = false;
-			this._updateActiveState();
-		}
-	};
-	defineIntlayerElements = () => {
-		if (typeof customElements === "undefined") return;
-		if (!customElements.get("intlayer-content-selector")) customElements.define("intlayer-content-selector", IntlayerContentSelectorElement);
-		defineIntlayerContentSelectorWrapper();
-		defineIntlayerEditedContent();
-		defineIntlayerEditorElement();
-	};
-}));
-var buildClientMessengerConfig, _clientRefCount, initEditorClient, stopEditorClient;
-var init_initEditorClient = __esmMin((() => {
-	init_globalManager();
-	init_EditorStateManager();
-	init_ContentSelector();
-	init_built();
-	buildClientMessengerConfig = () => {
-		const sameOrigin = typeof window !== "undefined" ? window.location.origin : void 0;
-		return {
-			allowedOrigins: [...new Set([
-				editor?.editorURL,
-				editor?.cmsURL,
-				sameOrigin
-			].filter(Boolean))],
-			postMessageFn: (payload, origin) => {
-				if (typeof window === "undefined") return;
-				if (!(window.self !== window.top)) return;
-				window.parent?.postMessage(payload, origin);
-			}
-		};
-	};
-	_clientRefCount = 0;
-	initEditorClient = () => {
-		_clientRefCount++;
-		const existing = getGlobalEditorManager();
-		if (existing) return existing;
-		const manager = new EditorStateManager({
-			mode: "client",
-			messenger: buildClientMessengerConfig(),
-			configuration: { editor }
-		});
-		setGlobalEditorManager(manager);
-		defineIntlayerElements();
-		manager.start();
-		return manager;
-	};
-	stopEditorClient = () => {
-		_clientRefCount = Math.max(0, _clientRefCount - 1);
-		if (_clientRefCount > 0) return;
-		getGlobalEditorManager()?.stop();
-		setGlobalEditorManager(null);
-	};
-}));
-__esmMin((() => {
-	init_initEditorClient();
-}))();
-export { initEditorClient, stopEditorClient };
-import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
-var getUnmergedDictionaries;
-__esmMin((() => {
-	getUnmergedDictionaries = () => ({});
-}))();
-export { getUnmergedDictionaries };
-import { n as __esmMin, r as __exportAll } from "./rolldown-runtime-BW-jZnKV.js";
-import { a as log, c as colorizeKey, i as internationalization, l as getAppLogger, r as init_built, u as init_logger } from "./built-BvRk9kiK.js";
-var index_browser_exports = __exportAll({ getDictionaries: () => getDictionaries });
-var getDictionaries;
-var init_index_browser = __esmMin((() => {
-	getDictionaries = () => ({});
-}));
-var pluginsIdentities, nextPluginsIdentity, getPluginsCacheKey, MAX_ENTRIES_PER_DICTIONARY, transformCache, isMemoizableDictionary, getDictionaryTransformCacheKey, readTransformCache, writeTransformCache;
-var init_dictionaryTransformCache = __esmMin((() => {
-	pluginsIdentities = /* @__PURE__ */ new WeakMap();
-	nextPluginsIdentity = 0;
-	getPluginsCacheKey = (plugins) => {
-		if (!plugins) return "base";
-		const existingIdentity = pluginsIdentities.get(plugins);
-		if (existingIdentity) return existingIdentity;
-		nextPluginsIdentity += 1;
-		const identity = `p${nextPluginsIdentity}`;
-		pluginsIdentities.set(plugins, identity);
-		return identity;
-	};
-	MAX_ENTRIES_PER_DICTIONARY = 256;
-	transformCache = /* @__PURE__ */ new WeakMap();
-	isMemoizableDictionary = (value) => value !== null && typeof value === "object";
-	getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
-	readTransformCache = (dictionary, cacheKey) => {
-		if (!isMemoizableDictionary(dictionary)) return { hit: false };
-		const entries = transformCache.get(dictionary);
-		if (!entries?.has(cacheKey)) return { hit: false };
-		return {
-			hit: true,
-			content: entries.get(cacheKey)
-		};
-	};
-	writeTransformCache = (dictionary, cacheKey, content) => {
-		if (!isMemoizableDictionary(dictionary)) return content;
-		let entries = transformCache.get(dictionary);
-		if (!entries) {
-			entries = /* @__PURE__ */ new Map();
-			transformCache.set(dictionary, entries);
-		}
-		if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
-		entries.set(cacheKey, content);
-		return content;
-	};
-}));
-var getCondition;
-var init_getCondition = __esmMin((() => {
-	getCondition = (conditionContent, state) => {
-		const stateList = Object.keys(conditionContent);
-		const fallbackState = stateList[stateList.length - 1];
-		return conditionContent[`${state}`] ?? conditionContent.fallback ?? conditionContent[fallbackState];
-	};
-}));
-var TRANSLATION, ENUMERATION, PLURAL, CONDITION, INSERTION, FILE, OBJECT, ARRAY, NESTED, REACT_NODE, MARKDOWN, HTML, GENDER, SELECT, formatNodeType;
-var init_nodeType = __esmMin((() => {
-	TRANSLATION = "translation";
-	ENUMERATION = "enumeration";
-	PLURAL = "plural";
-	CONDITION = "condition";
-	INSERTION = "insertion";
-	FILE = "file";
-	OBJECT = "object";
-	ARRAY = "array";
-	NESTED = "nested";
-	REACT_NODE = "reactNode";
-	MARKDOWN = "markdown";
-	HTML = "html";
-	GENDER = "gender";
-	SELECT = "select";
-	formatNodeType = (nodeType, content, additionalAttributes) => ({
-		...additionalAttributes,
-		nodeType,
-		[nodeType]: content
-	});
-}));
-var deepTransformNode;
-var init_deepTransform = __esmMin((() => {
-	init_nodeType();
-	deepTransformNode = (node, props) => {
-		for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
-		if (node === null || typeof node !== "object") return node;
-		if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0 || typeof node === "function") return node;
-		if (Array.isArray(node)) return node.map((child, index) => {
-			const childProps = {
-				...props,
-				children: child,
-				keyPath: [...props.keyPath, {
-					type: ARRAY,
-					key: index
-				}]
-			};
-			return deepTransformNode(child, childProps);
-		});
-		const result = {};
-		for (const key in node) {
-			const childProps = {
-				...props,
-				children: node[key],
-				keyPath: [...props.keyPath, {
-					type: OBJECT,
-					key
-				}]
-			};
-			if (props.eager) {
-				result[key] = deepTransformNode(node[key], childProps);
-				continue;
-			}
-			Object.defineProperty(result, key, {
-				enumerable: true,
-				configurable: true,
-				get: function() {
-					const transformed = deepTransformNode(node[key], childProps);
-					Object.defineProperty(this, key, {
-						value: transformed,
-						enumerable: true,
-						configurable: true
-					});
-					return transformed;
-				}
-			});
-		}
-		return result;
-	};
-}));
-var findMatchingCondition, getEnumeration;
-var init_getEnumeration = __esmMin((() => {
-	findMatchingCondition = (enumerationContent, quantity) => {
-		const numericKeys = Object.keys(enumerationContent);
-		for (const key of numericKeys) {
-			const isEqual = !key.startsWith(">") && !key.startsWith("<") && !key.startsWith("=") && parseFloat(key) === quantity || key.startsWith("=") && parseFloat(key.slice(1)) === quantity;
-			const isSuperior = key.startsWith(">") && quantity > parseFloat(key.slice(1));
-			const isSuperiorOrEqual = key.startsWith(">=") && quantity >= parseFloat(key.slice(2));
-			const isInferior = key.startsWith("<") && quantity < parseFloat(key.slice(1));
-			const isInferiorOrEqual = key.startsWith("<=") && quantity <= parseFloat(key.slice(2));
-			if (isEqual || isSuperior || isSuperiorOrEqual || isInferior || isInferiorOrEqual) return key;
-		}
-	};
-	getEnumeration = (enumerationContent, quantity) => {
-		return enumerationContent[findMatchingCondition(enumerationContent, quantity) ?? "fallback"];
-	};
-}));
-var getGenderEntry, getGender;
-var init_getGender = __esmMin((() => {
-	getGenderEntry = (gender) => {
-		if (gender === "m" || gender === "male") return "male";
-		if (gender === "f" || gender === "female") return "female";
-		return "fallback";
-	};
-	getGender = (genderContent, gender) => {
-		const stateList = Object.keys(genderContent);
-		const fallbackState = stateList[stateList.length - 1];
-		return genderContent[getGenderEntry(gender)] ?? genderContent.fallback ?? genderContent[fallbackState];
-	};
-}));
-var getInsertion;
-var init_getInsertion = __esmMin((() => {
-	getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
-		return (values[key.trim()] ?? "").toString();
-	});
-}));
-var DEFAULT_VARIANT_ID, SEGMENT_UNSAFE_CHARS, COMPONENT_UNSAFE_CHARS, percentEncodeChar, encodeSegmentText, serializeVariant, serializeVariantChain, resolveEffectiveVariantId, compositeIdMatchesSelector, isQualifiedDictionaryGroup, reconstructQualifiedEntry, resolveQualifiedDictionary, parseDictionarySelector, resolveProviderVariant, resolveDictionaryArgument, getDictionarySelectorCacheKey;
-var init_qualifiedDictionary = __esmMin((() => {
-	DEFAULT_VARIANT_ID = "default";
-	SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
-	COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
-	percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
-	encodeSegmentText = (raw, unsafeChars) => {
-		if (raw === "") return "%";
-		const encoded = raw.replace(unsafeChars, percentEncodeChar);
-		if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
-		return encoded;
-	};
-	serializeVariant = (variant) => {
-		if (variant === void 0) return DEFAULT_VARIANT_ID;
-		if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
-		return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
-	};
-	serializeVariantChain = (variant) => {
-		if (!Array.isArray(variant)) return [serializeVariant(variant)];
-		if (variant.length === 0) return [DEFAULT_VARIANT_ID];
-		return variant.map(serializeVariant);
-	};
-	resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
-		for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
-		return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
-	};
-	compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
-		const segments = compositeId.split("/");
-		return qualifierTypes.every((qualifierType, index) => {
-			if (qualifierType === "variant") return segments[index] === effectiveVariantId;
-			return selector?.item === void 0 || segments[index] === String(selector.item);
-		});
-	};
-	isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
-	reconstructQualifiedEntry = (group, compositeId) => {
-		const segments = compositeId.split("/");
-		const entry = {
-			key: group.key,
-			content: group.content[compositeId]
-		};
-		group.qualifierTypes.forEach((qualifierType, index) => {
-			if (qualifierType === "variant") entry.variant = segments[index];
-			else if (qualifierType === "item") entry.item = Number(segments[index]);
-		});
-		return entry;
-	};
-	resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
-		if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
-		const { qualifierTypes, content } = dictionaryOrGroup;
-		const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
-		const compositeIds = Object.keys(content);
-		const variantIndex = qualifierTypes.indexOf("variant");
-		const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
-		const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
-		if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
-		return matchedEntries[0] ?? null;
-	};
-	parseDictionarySelector = (localeOrSelector) => {
-		if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
-			locale: localeOrSelector.locale,
-			selector: localeOrSelector
-		};
-		return { locale: localeOrSelector };
-	};
-	resolveProviderVariant = (providerVariant, dictionaryKey) => {
-		if (providerVariant === void 0) return void 0;
-		if (typeof providerVariant === "string" || Array.isArray(providerVariant)) return providerVariant;
-		const variantMap = providerVariant;
-		return variantMap[dictionaryKey] ?? variantMap["default"];
-	};
-	resolveDictionaryArgument = (params) => {
-		const { localeOrSelector, contextLocale, contextVariant, dictionaryKey } = params;
-		const callSelector = typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector : void 0;
-		const locale = (callSelector ? callSelector.locale : localeOrSelector) ?? contextLocale;
-		const variant = callSelector?.variant ?? resolveProviderVariant(contextVariant, dictionaryKey);
-		if (variant === void 0) return callSelector ? {
-			...callSelector,
-			locale
-		} : locale;
-		return {
-			...callSelector,
-			locale,
-			variant
-		};
-	};
-	getDictionarySelectorCacheKey = (selector) => {
-		if (!selector) return "";
-		return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
-			const value = selector[selectorKey];
-			return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
-		}).join("|");
-	};
-}));
-var PROTOTYPE_METHOD_NAMES, createSafeFallback, warnedMissingDictionaries, getIntlayer;
-var init_getIntlayer = __esmMin((() => {
-	init_getDictionary();
-	init_built();
-	init_logger();
-	init_index_browser();
-	PROTOTYPE_METHOD_NAMES = /* @__PURE__ */ new Set([
-		"hasOwnProperty",
-		"isPrototypeOf",
-		"propertyIsEnumerable",
-		"toLocaleString"
-	]);
-	createSafeFallback = (path = "") => {
-		return new Proxy((() => path), { get: (target, prop) => {
-			if (prop === "toJSON" || prop === Symbol.toPrimitive || prop === "toString" || prop === "valueOf") return () => path;
-			if (prop === "then") return;
-			if (PROTOTYPE_METHOD_NAMES.has(prop)) return Object.prototype[prop].bind(target);
-			if (prop === Symbol.iterator) return function* () {
-				yield path;
-			};
-			const nextPath = path ? `${path}.${String(prop)}` : String(prop);
-			return createSafeFallback(nextPath);
-		} });
-	};
-	warnedMissingDictionaries = /* @__PURE__ */ new Set();
-	getIntlayer = (key, localeOrSelector, plugins) => {
-		const dictionary = getDictionaries()[key];
-		if (!dictionary && true) {
-			if (!warnedMissingDictionaries.has(key)) {
-				getAppLogger({ log })(typeof window === "undefined" ? `Dictionary ${colorizeKey(key)} was not found. Using fallback proxy.` : `Dictionary ${key} was not found. Using fallback proxy.`, { level: "warn" });
-				warnedMissingDictionaries.add(key);
-			}
-			return createSafeFallback(key);
-		}
-		return getDictionary(dictionary, localeOrSelector, plugins);
-	};
-}));
-var getNesting$1;
-var init_getNesting = __esmMin((() => {
-	init_getIntlayer();
-	getNesting$1 = (dictionaryKey, path, props) => {
-		const dictionary = getIntlayer(dictionaryKey, props?.locale, props?.plugins);
-		if (typeof path === "string") {
-			const pathArray = path.split(".");
-			let current = dictionary;
-			for (const key of pathArray) {
-				current = current?.[key];
-				if (current === void 0) return dictionary;
-			}
-			return current;
-		}
-		return dictionary;
-	};
-}));
-var walkPath, getNesting;
-var init_getNesting_optimized = __esmMin((() => {
-	init_getDictionary();
-	walkPath = (content, path) => {
-		let current = content;
-		for (const segment of path.split(".")) {
-			current = current?.[segment];
-			if (current === void 0) return content;
-		}
-		return current;
-	};
-	getNesting = (dictionaryKey, path, props) => {
-		const nestedDictionaries = props?.nestedDictionaries;
-		const nestedDictionary = nestedDictionaries?.[dictionaryKey];
-		if (!nestedDictionary) return void 0;
-		const content = getDictionary({
-			...nestedDictionary,
-			nestedDictionaries: {
-				...nestedDictionaries,
-				...nestedDictionary.nestedDictionaries
-			}
-		}, props?.locale, props?.plugins);
-		if (typeof path !== "string") return content;
-		return walkPath(content, path);
-	};
-}));
+	}
+};
+var resolveIntlConstructor = (constructorName) => {
+	const nativeConstructor = Intl[constructorName];
+	if (typeof nativeConstructor === "function") return nativeConstructor;
+	warnMissingIntlConstructor(constructorName);
+	return intlConstructorFallbacks[constructorName];
+};
 function getCachedIntl(intlConstructor, locale, options) {
 	const resLoc = locale ?? internationalization?.defaultLocale;
 	const key = `${resLoc}|${options ? JSON.stringify(options) : ""}`;
@@ -2635,2855 +1898,1365 @@ function getCachedIntl(intlConstructor, locale, options) {
 	}
 	return instance;
 }
-var MAX_CACHE_SIZE, cache, alreadyWarnedConstructors, warnMissingIntlConstructor, intlConstructorFallbacks, resolveIntlConstructor;
-var init_intl = __esmMin((() => {
-	init_built();
-	MAX_CACHE_SIZE = 50;
-	cache = /* @__PURE__ */ new Map();
-	alreadyWarnedConstructors = /* @__PURE__ */ new Set();
-	warnMissingIntlConstructor = (constructorName) => {
-		if (alreadyWarnedConstructors.has(constructorName)) return;
-		alreadyWarnedConstructors.add(constructorName);
-		console.warn(`[intlayer] \`Intl.${constructorName}\` is not available in this JavaScript engine. A degraded fallback is used instead. On React Native, load a polyfill (e.g. \`@formatjs/intl-${constructorName.toLowerCase()}/polyfill\`) before rendering your app.`);
-	};
-	intlConstructorFallbacks = {
-		DisplayNames: class DisplayNamesFallback {
-			of(code) {
-				return code;
-			}
-		},
-		ListFormat: class ListFormatFallback {
-			format(list) {
-				return Array.from(list).join(", ");
-			}
-			formatToParts(list) {
-				return Array.from(list).flatMap((value, index) => index === 0 ? [{
-					type: "element",
-					value
-				}] : [{
-					type: "literal",
-					value: ", "
-				}, {
-					type: "element",
-					value
-				}]);
-			}
-		},
-		Segmenter: class SegmenterFallback {
-			segment(input) {
-				let index = 0;
-				return Array.from(input).map((segment) => {
-					const segmentStart = index;
-					index += segment.length;
-					return {
-						segment,
-						index: segmentStart
-					};
-				});
-			}
-		}
-	};
-	resolveIntlConstructor = (constructorName) => {
-		const nativeConstructor = Intl[constructorName];
-		if (typeof nativeConstructor === "function") return nativeConstructor;
-		warnMissingIntlConstructor(constructorName);
-		return intlConstructorFallbacks[constructorName];
-	};
-}));
-var getPlural;
-var init_getPlural = __esmMin((() => {
-	init_intl();
-	getPlural = (pluralContent, count, locale) => {
-		return pluralContent[getCachedIntl("PluralRules", locale).select(count)] ?? pluralContent.other;
-	};
-}));
-var getSelect;
-var init_getSelect = __esmMin((() => {
-	getSelect = (selectContent, value) => {
-		const caseList = Object.keys(selectContent);
-		const lastCase = caseList[caseList.length - 1];
-		return selectContent[value] ?? selectContent.fallback ?? selectContent.other ?? selectContent[lastCase];
-	};
-}));
-var isPlainObject, deepMerge, getTranslation;
-var init_getTranslation = __esmMin((() => {
-	isPlainObject = (value) => {
-		if (value === null || typeof value !== "object") return false;
-		if (typeof value.then === "function") return false;
-		if (value.$$typeof !== void 0 || value.__v_isVNode !== void 0 || value._isVNode !== void 0 || value.isJSX !== void 0) return false;
-		const proto = Object.getPrototypeOf(value);
-		return proto === Object.prototype || proto === null || Array.isArray(value);
-	};
-	deepMerge = (target, source) => {
-		if (target === void 0) return source;
-		if (source === void 0) return target;
-		if (Array.isArray(target)) return target;
-		if (isPlainObject(target) && isPlainObject(source)) {
-			const result = { ...target };
-			for (const key of Object.keys(source)) {
-				if (key === "__proto__" || key === "constructor" || source[key] === void 0) continue;
-				result[key] = target[key] !== void 0 ? deepMerge(target[key], source[key]) : source[key];
-			}
-			return result;
-		}
-		return target;
-	};
-	getTranslation = (languageContent, locale, fallback) => {
-		const get = (loc) => languageContent[loc];
-		const seen = /* @__PURE__ */ new Set();
-		const locales = [];
-		const addLocale = (loc) => {
-			if (loc && !seen.has(loc)) {
-				seen.add(loc);
-				locales.push(loc);
-			}
-		};
-		addLocale(locale);
-		if (locale.includes("-")) addLocale(locale.split("-")[0]);
-		addLocale(fallback);
-		if (fallback?.includes("-")) addLocale(fallback.split("-")[0]);
-		const results = [];
-		for (const loc of locales) {
-			const val = get(loc);
-			if (val === void 0) continue;
-			if (typeof val === "string") {
-				if (results.length === 0) return val;
-				continue;
-			}
-			results.push(val);
-		}
-		if (results.length === 0) return void 0;
-		if (results.length === 1) return results[0];
-		if (Array.isArray(results[0])) return results[0];
-		return results.reduce((acc, curr) => deepMerge(acc, curr));
-	};
-}));
-var isInterpolableWrapperNode, getInterpolableContent, rebuildInterpolableContent, transformInterpolableNode;
-var init_interpolableNode = __esmMin((() => {
-	init_getInsertion();
-	init_nodeType();
-	isInterpolableWrapperNode = (node) => {
-		if (typeof node !== "object" || node === null || !("nodeType" in node)) return false;
-		const { nodeType } = node;
-		return process.env.INTLAYER_NODE_TYPE_HTML !== "false" && nodeType === "html" || process.env.INTLAYER_NODE_TYPE_MARKDOWN !== "false" && nodeType === "markdown";
-	};
-	getInterpolableContent = (node) => {
-		if (typeof node === "string") return node;
-		if (isInterpolableWrapperNode(node)) return node.nodeType === "html" ? node[HTML] : node[MARKDOWN];
-	};
-	rebuildInterpolableContent = (node, interpolated) => {
-		if (typeof node === "string") return interpolated;
-		if (isInterpolableWrapperNode(node)) {
-			const key = node.nodeType === "html" ? HTML : MARKDOWN;
-			return {
-				...node,
-				[key]: interpolated
-			};
-		}
-		return node;
-	};
-	transformInterpolableNode = (node, values, subProps, parentPlugins, deepTransformNode) => {
-		const interpolated = getInsertion(getInterpolableContent(node), values);
-		const children = rebuildInterpolableContent(node, interpolated);
-		return deepTransformNode(children, {
-			...subProps,
-			plugins: parentPlugins,
-			children
-		});
-	};
-}));
-var fallbackPlugin, translationPlugin, enumerationPlugin, pluralPlugin, conditionPlugin, insertionPlugin, genderPlugin, selectPlugin, resolveNesting, nestedPlugin, filePlugin;
-var init_plugins = __esmMin((() => {
-	init_getCondition();
-	init_getEnumeration();
-	init_getGender();
-	init_getInsertion();
-	init_getNesting();
-	init_getNesting_optimized();
-	init_getPlural();
-	init_getSelect();
-	init_getTranslation();
-	init_interpolableNode();
-	init_nodeType();
-	fallbackPlugin = {
-		id: "fallback-plugin",
-		canHandle: () => false,
-		transform: (node) => node
-	};
-	translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
-		id: "translation-plugin",
-		canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
-		transform: (node, props, deepTransformNode) => {
-			const original = node["translation"] ?? {};
-			const result = {};
-			for (const key in original) {
-				const childProps = {
-					...props,
-					children: original[key],
-					keyPath: [...props.keyPath, {
-						type: TRANSLATION,
-						key
-					}]
-				};
-				result[key] = deepTransformNode(original[key], childProps);
-			}
-			return getTranslation(result, locale, fallback);
-		}
-	};
-	enumerationPlugin = process.env.INTLAYER_NODE_TYPE_ENUMERATION === "false" ? fallbackPlugin : {
-		id: "enumeration-plugin",
-		canHandle: (node) => typeof node === "object" && node?.nodeType === "enumeration",
-		transform: (node, props, deepTransformNode) => {
-			const original = node[ENUMERATION];
-			const result = {};
-			for (const key in original) {
-				const child = original[key];
-				result[key] = deepTransformNode(child, {
-					...props,
-					children: child,
-					keyPath: [...props.keyPath, {
-						type: ENUMERATION,
-						key
-					}]
-				});
-			}
-			return (arg) => {
-				const quantity = typeof arg === "number" ? arg : arg.count;
-				const subResult = getEnumeration(result, quantity);
-				if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
-				return subResult;
-			};
-		}
-	};
-	pluralPlugin = (locale) => process.env.INTLAYER_NODE_TYPE_PLURAL === "false" ? fallbackPlugin : {
-		id: "plural-plugin",
-		canHandle: (node) => typeof node === "object" && node?.nodeType === "plural",
-		transform: (node, props, deepTransformNode) => {
-			const original = node[PLURAL];
-			const result = {};
-			const pluralStringPlugin = {
-				id: "plural-string-plugin",
-				canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
-				transform: (node, subProps, deepTransformNode) => {
-					if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
-					const transformedResult = deepTransformNode(node, {
-						...subProps,
-						children: node,
-						plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-					});
-					return (values) => {
-						const children = getInsertion(transformedResult, values);
-						return deepTransformNode(children, {
-							...subProps,
-							plugins: props.plugins,
-							children
-						});
-					};
-				}
-			};
-			for (const key in original) {
-				const child = original[key];
-				result[key] = deepTransformNode(child, {
-					...props,
-					children: child,
-					keyPath: [...props.keyPath, {
-						type: PLURAL,
-						key
-					}],
-					plugins: [pluralStringPlugin, ...props.plugins ?? []]
-				});
-			}
-			const effectiveLocale = String(locale ?? props.locale ?? "en");
-			return (arg) => {
-				const count = typeof arg === "number" ? arg : arg.count;
-				const values = typeof arg === "number" ? { count: arg } : arg;
-				const subResult = getPlural(result, count, effectiveLocale);
-				if (typeof subResult === "function") return subResult(values);
-				return subResult;
-			};
-		}
-	};
-	conditionPlugin = process.env.INTLAYER_NODE_TYPE_CONDITION === "false" ? fallbackPlugin : {
-		id: "condition-plugin",
-		canHandle: (node) => typeof node === "object" && node?.nodeType === "condition",
-		transform: (node, props, deepTransformNode) => {
-			const original = node[CONDITION];
-			const result = {};
-			for (const key in original) {
-				const child = original[key];
-				result[key] = deepTransformNode(child, {
-					...props,
-					children: child,
-					keyPath: [...props.keyPath, {
-						type: CONDITION,
-						key
-					}]
-				});
-			}
-			return (arg) => {
-				const value = typeof arg === "boolean" ? arg : arg.value;
-				const subResult = getCondition(result, value);
-				if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
-				return subResult;
-			};
-		}
-	};
-	insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
-		id: "insertion-plugin",
-		canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
-		transform: (node, props, deepTransformNode) => {
-			const newKeyPath = [...props.keyPath, { type: INSERTION }];
-			const children = node[INSERTION];
-			const insertionStringPlugin = {
-				id: "insertion-string-plugin",
-				canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
-				transform: (node, subProps, deepTransformNode) => {
-					if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
-					const transformedResult = deepTransformNode(node, {
-						...subProps,
-						children: node,
-						plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
-					});
-					return (values) => {
-						const children = getInsertion(transformedResult, values);
-						return deepTransformNode(children, {
-							...subProps,
-							plugins: props.plugins,
-							children
-						});
-					};
-				}
-			};
-			return deepTransformNode(children, {
-				...props,
-				children,
-				keyPath: newKeyPath,
-				plugins: [insertionStringPlugin, ...props.plugins ?? []]
-			});
-		}
-	};
-	genderPlugin = process.env.INTLAYER_NODE_TYPE_GENDER === "false" ? fallbackPlugin : {
-		id: "gender-plugin",
-		canHandle: (node) => typeof node === "object" && node?.nodeType === "gender",
-		transform: (node, props, deepTransformNode) => {
-			const original = node[GENDER];
-			const result = {};
-			for (const key in original) {
-				const child = original[key];
-				result[key] = deepTransformNode(child, {
-					...props,
-					children: child,
-					keyPath: [...props.keyPath, {
-						type: GENDER,
-						key
-					}]
-				});
-			}
-			return (value) => getGender(result, value);
-		}
-	};
-	selectPlugin = process.env.INTLAYER_NODE_TYPE_SELECT === "false" ? fallbackPlugin : {
-		id: "select-plugin",
-		canHandle: (node) => typeof node === "object" && node?.nodeType === "select",
-		transform: (node, props, deepTransformNode) => {
-			const original = node[SELECT];
-			const result = {};
-			for (const key in original) {
-				const child = original[key];
-				result[key] = deepTransformNode(child, {
-					...props,
-					children: child,
-					keyPath: [...props.keyPath, {
-						type: SELECT,
-						key
-					}]
-				});
-			}
-			return (arg) => {
-				const value = typeof arg === "string" ? arg : arg?.value;
-				const subResult = getSelect(result, value);
-				if (typeof subResult === "function" && typeof arg === "object") return subResult(arg);
-				return subResult;
-			};
-		}
-	};
-	resolveNesting = process.env.INTLAYER_OPTIMIZED_NESTING === "true" ? getNesting : getNesting$1;
-	nestedPlugin = (locale) => process.env.INTLAYER_NODE_TYPE_NESTED === "false" ? fallbackPlugin : {
-		id: "nested-plugin",
-		canHandle: (node) => typeof node === "object" && (node?.nodeType === "nested" || node?.nodeType === "n"),
-		transform: (node, props) => resolveNesting(node[NESTED].dictionaryKey, node[NESTED].path, {
-			...props,
-			locale: locale ?? props.locale
-		})
-	};
-	filePlugin = process.env.INTLAYER_NODE_TYPE_FILE === "false" ? fallbackPlugin : {
-		id: "file-plugin",
-		canHandle: (node) => typeof node === "object" && node?.nodeType === "file",
-		transform: (node, props, deepTransform) => deepTransform(node.content, {
-			...props,
-			children: node.content
-		})
-	};
-}));
-var getBasePlugins, getContent;
-var init_getContent = __esmMin((() => {
-	init_deepTransform();
-	init_plugins();
-	init_built();
-	getBasePlugins = (locale, fallback = true) => [
-		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
-		enumerationPlugin,
-		conditionPlugin,
-		insertionPlugin,
-		nestedPlugin(locale ?? internationalization.defaultLocale),
-		filePlugin,
-		genderPlugin,
-		selectPlugin
-	];
-	getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
-		...nodeProps,
-		plugins
-	});
-}));
-var getDictionary;
-var init_getDictionary = __esmMin((() => {
-	init_dictionaryTransformCache();
-	init_qualifiedDictionary();
-	init_getContent();
-	init_built();
-	getDictionary = (dictionary, localeOrSelector, plugins) => {
-		const { locale, selector } = parseDictionarySelector(localeOrSelector);
-		const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
-		const cached = readTransformCache(dictionary, cacheKey);
-		if (cached.hit) return cached.content;
-		const appliedPlugins = plugins ?? getBasePlugins(locale);
-		const resolved = resolveQualifiedDictionary(dictionary, selector);
-		const transformDictionary = (resolvedDictionary) => {
-			const props = {
-				dictionaryKey: resolvedDictionary.key,
-				dictionaryPath: resolvedDictionary.filePath,
-				keyPath: [],
-				plugins: appliedPlugins,
-				nestedDictionaries: resolvedDictionary.nestedDictionaries
-			};
-			return getContent(resolvedDictionary.content, props, appliedPlugins);
-		};
-		if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
-		if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
-		return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
-	};
-}));
-var parseAttributes, astCache, parseHTML, getHTML;
-var init_getHTML = __esmMin((() => {
-	parseAttributes = (attributes) => {
-		const props = {};
-		const attrRegex = /([a-zA-Z0-9-]+)="([^"]*)"/g;
-		let match = attrRegex.exec(attributes);
-		while (match !== null) {
-			props[match[1]] = match[2];
-			match = attrRegex.exec(attributes);
-		}
-		return props;
-	};
-	astCache = /* @__PURE__ */ new Map();
-	parseHTML = (content) => {
-		if (astCache.has(content)) return astCache.get(content);
-		if (typeof content !== "string") return [];
-		const tagRegex = /<(\/)?([a-zA-Z0-9.-]+)([\s\S]*?)(\/?)>/g;
-		const elements = [];
-		const stack = [];
-		let lastIndex = 0;
-		let match = tagRegex.exec(content);
-		const appendChild = (child) => {
-			(stack.length > 0 ? stack[stack.length - 1].children : elements).push(child);
-		};
-		while (match !== null) {
-			const [fullMatch, isClosingRaw, tagName, attributesRaw, isSelfClosingRaw] = match;
-			const matchIndex = match.index;
-			if (matchIndex > lastIndex) appendChild(content.slice(lastIndex, matchIndex));
-			const isClosing = isClosingRaw === "/";
-			const isSelfClosing = isSelfClosingRaw === "/" || attributesRaw.trim().endsWith("/") || fullMatch.endsWith("/>");
-			const cleanedAttributes = attributesRaw.trim().replace(/\/$/, "").trim();
-			if (isClosing) {
-				const last = stack[stack.length - 1];
-				if (last && last.tagName === tagName) {
-					const popped = stack.pop();
-					if (popped) appendChild({
-						tagName: popped.tagName,
-						props: popped.props,
-						children: popped.children
-					});
-				}
-			} else if (isSelfClosing) appendChild({
-				tagName,
-				props: parseAttributes(cleanedAttributes),
-				children: []
-			});
-			else {
-				const tagProps = parseAttributes(cleanedAttributes);
-				stack.push({
-					tagName,
-					children: [],
-					props: tagProps
-				});
-			}
-			lastIndex = matchIndex + fullMatch.length;
-			match = tagRegex.exec(content);
-		}
-		if (lastIndex < content.length) appendChild(content.slice(lastIndex));
-		while (stack.length > 0) {
-			const last = stack.pop();
-			if (last) appendChild({
-				tagName: last.tagName,
-				props: last.props,
-				children: last.children
-			});
-		}
-		astCache.set(content, elements);
-		return elements;
-	};
-	getHTML = (content, values) => {
-		const ast = parseHTML(content);
-		let keyCounter = 0;
-		const renderASTNode = (node) => {
-			if (typeof node === "string") return node;
-			const { tagName, props, children } = node;
-			const renderedChildren = children.flatMap(renderASTNode);
-			const index = keyCounter++;
-			let override = values[tagName];
-			if (!override) {
-				const lowerTagName = tagName.toLowerCase();
-				const foundKey = Object.keys(values).find((key) => key.toLowerCase() === lowerTagName);
-				if (foundKey) override = values[foundKey];
-			}
-			const key = `html-tag-${tagName}-${index}`;
-			if (typeof override === "function") return override({
-				...props,
-				children: renderedChildren,
-				key
-			});
-			if (typeof override === "string") {
-				const component = values[override];
-				if (typeof component === "function") return component({
-					...props,
-					children: renderedChildren,
-					key
-				});
-				return renderedChildren;
-			}
-			if (typeof override === "object" && override !== null && "tag" in override) {
-				const { tag: targetTag, props: extraProps } = override;
-				const component = values[targetTag];
-				if (typeof component === "function") return component({
-					...props,
-					...extraProps,
-					children: renderedChildren,
-					key
-				});
-				return renderedChildren;
-			}
-			return renderedChildren;
-		};
-		const result = ast.flatMap(renderASTNode);
-		return result.length === 1 ? result[0] : result;
-	};
-}));
-var isComplexValue, insertionRegex, splitInsertionTemplate;
-var init_splitAndJoinInsertion = __esmMin((() => {
-	isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
-	insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
-	splitInsertionTemplate = (template, values = {}) => {
-		if (!Object.values(values).some(isComplexValue)) return {
-			isSimple: true,
-			parts: template.replace(insertionRegex, (_, key) => (values[key.trim()] ?? "").toString())
-		};
-		const chunks = template.split(insertionRegex);
-		const parts = [];
-		for (let i = 0; i < chunks.length; i++) if (i % 2 === 0) {
-			if (chunks[i]) parts.push(chunks[i]);
-		} else {
-			const val = values[chunks[i].trim()];
-			if (val != null) parts.push(val);
-		}
-		return {
-			isSimple: false,
-			parts
-		};
-	};
-}));
-var init_interpreter = __esmMin((() => {
-	init_getDictionary();
-	init_getIntlayer();
-	init_interpolableNode();
-	init_plugins();
-	init_getContent();
-	init_getHTML();
-	init_splitAndJoinInsertion();
-}));
-export { SELECT as $, getIntlayer as A, deepTransformNode as B, transformInterpolableNode as C, init_getPlural as D, getPlural as E, resolveDictionaryArgument as F, FILE as G, ARRAY as H, resolveEffectiveVariantId as I, INSERTION as J, GENDER as K, serializeVariantChain as L, getDictionarySelectorCacheKey as M, init_qualifiedDictionary as N, getCachedIntl as O, parseDictionarySelector as P, REACT_NODE as Q, getEnumeration as R, isInterpolableWrapperNode as S, init_getSelect as T, CONDITION as U, init_deepTransform as V, ENUMERATION as W, OBJECT as X, MARKDOWN as Y, PLURAL as Z, nestedPlugin as _, init_getHTML as a, init_index_browser as at, translationPlugin as b, getBasePlugins as c, conditionPlugin as d, TRANSLATION as et, enumerationPlugin as f, init_plugins as g, genderPlugin as h, getHTML as i, index_browser_exports as it, init_getIntlayer as j, init_intl as k, getContent as l, filePlugin as m, init_splitAndJoinInsertion as n, init_nodeType as nt, getDictionary as o, fallbackPlugin as p, HTML as q, splitInsertionTemplate as r, getDictionaries as rt, init_getDictionary as s, init_interpreter as t, formatNodeType as tt, init_getContent as u, pluralPlugin as v, getSelect as w, init_interpolableNode as x, selectPlugin as y, init_getEnumeration as z };
-import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
-var HUMAN_USER_AGENT_EXCEPTION_PATTERN, BOT_USER_AGENT_PATTERN, isBotUserAgent, AUTOMATION_GLOBAL_KEYS, isBotEnvironment;
-var init_isBot = __esmMin((() => {
-	HUMAN_USER_AGENT_EXCEPTION_PATTERN = /cubot/i;
-	BOT_USER_AGENT_PATTERN = /bot\b|bot[/\-\s]|crawler|crawling|spider|scraper|slurp|archiver|feedfetcher|validator|curl\/|wget\/|python-requests|python-urllib|okhttp|axios\/|node-fetch|got \(|go-http-client|java\/|libwww|httpunit|http_request|apache-httpclient|headless|phantomjs|puppeteer|playwright|selenium|webdriver|cypress|lighthouse|pagespeed|gtmetrix|prerender|pingdom|uptime|statuscake|site24x7|bingpreview|yandex|baiduspider|sogou|exabot|semrush|ahrefs|mj12|dotbot|petalbot|applebot|amazonbot|bytespider|facebookexternalhit|meta-externalagent|embedly|outbrain|quora link preview|skypeuripreview|vkshare|w3c_validator|apis-google|mediapartners|adsbot|storebot-google|google-inspectiontool|google-read-aloud|google-extended|duplexweb-google|gptbot|oai-searchbot|chatgpt-user|perplexity|claudebot|claude-web|anthropic-ai|cohere-ai|ccbot|diffbot|imagesift|omgili|timpi|youbot/i;
-	isBotUserAgent = (userAgent) => {
-		if (!userAgent) return true;
-		if (HUMAN_USER_AGENT_EXCEPTION_PATTERN.test(userAgent)) return false;
-		return BOT_USER_AGENT_PATTERN.test(userAgent);
-	};
-	AUTOMATION_GLOBAL_KEYS = [
-		"_phantom",
-		"__nightmare",
-		"callPhantom",
-		"__selenium_unwrapped",
-		"__webdriver_evaluate",
-		"__driver_evaluate",
-		"domAutomation",
-		"Cypress"
-	];
-	isBotEnvironment = () => {
-		if (typeof navigator === "undefined") return false;
-		if (navigator.webdriver === true) return true;
-		const automationGlobals = globalThis;
-		if (AUTOMATION_GLOBAL_KEYS.some((key) => key in automationGlobals)) return true;
-		if (!navigator.userAgent) return false;
-		return isBotUserAgent(navigator.userAgent);
-	};
-}));
-export { isBotUserAgent as i, init_isBot as n, isBotEnvironment as r, BOT_USER_AGENT_PATTERN as t };
-import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
-var PRESERVED_LITERALS, parseYaml;
-var init_parseYaml = __esmMin((() => {
-	PRESERVED_LITERALS = /* @__PURE__ */ new Set([
-		"true",
-		"false",
-		"null",
-		"undefined",
-		"yes",
-		"no",
-		"on",
-		"off",
-		"NaN",
-		"Infinity",
-		"-Infinity"
-	]);
-	parseYaml = (input) => {
-		const text = input.trim();
-		if (!text) return null;
-		let index = 0;
-		const peek = () => text[index];
-		const next = () => text[index++];
-		const eof = () => index >= text.length;
-		const skipWhitespace = () => {
-			while (!eof() && " \n	\r".includes(peek())) index++;
-		};
-		const parseQuotedString = (quote) => {
-			next();
-			let result = "";
-			while (!eof()) {
-				const ch = next();
-				if (ch === quote) return result;
-				if (ch === "\\" && !eof()) result += next();
-				else result += ch;
-			}
-			throw new SyntaxError("Unterminated string");
-		};
-		const parseUnquotedToken = (stops) => {
-			const start = index;
-			while (!eof() && !stops.includes(peek())) index++;
-			return text.slice(start, index).trim();
-		};
-		const toTypedValue = (raw) => {
-			if (PRESERVED_LITERALS.has(raw) || /^0x[0-9a-fA-F]+$/.test(raw) || /^#/.test(raw)) return raw;
-			if (/^-?\d+(?:\.\d+)?(?:e[+-]?\d+)?$/i.test(raw)) {
-				if (raw === "3.14159265359") return Math.PI;
-				return Number(raw);
-			}
-			return raw;
-		};
-		const parseValue = (stops) => {
-			skipWhitespace();
-			if (eof()) throw new SyntaxError("Unexpected end of input");
-			const ch = peek();
-			if (ch === "[") return parseArray();
-			if (ch === "{") return parseObject();
-			if (ch === "\"" || ch === "'") return parseQuotedString(ch);
-			const token = parseUnquotedToken(stops);
-			if (!token) throw new SyntaxError("Empty token");
-			return toTypedValue(token);
-		};
-		const parseArray = () => {
-			next();
-			const arr = [];
-			skipWhitespace();
-			if (peek() === "]") {
-				next();
-				return arr;
-			}
-			while (true) {
-				skipWhitespace();
-				arr.push(parseValue(",]"));
-				skipWhitespace();
-				const ch = next();
-				if (ch === "]") break;
-				if (ch !== ",") throw new SyntaxError("Expected ',' or ']' after array element");
-				skipWhitespace();
-				if (peek() === "]") throw new SyntaxError("Trailing comma in array");
-			}
-			return arr;
-		};
-		const parseYamlListItem = () => {
-			const listIndent = getCurrentIndent();
-			next();
-			skipWhitespace();
-			const ch = peek();
-			if (ch === "{") return parseObject();
-			if (ch === "\"" || ch === "'") return parseQuotedString(ch);
-			const lineEnd = text.indexOf("\n", index);
-			const line = text.slice(index, lineEnd === -1 ? text.length : lineEnd);
-			if (/:/.test(line)) return parseIndentedObject(listIndent);
-			return toTypedValue(parseUnquotedToken("\n"));
-		};
-		const getCurrentIndent = () => {
-			const lineStart = text.lastIndexOf("\n", index - 1) + 1;
-			let indent = 0;
-			for (let i = lineStart; i < index && text[i] === " "; i++) indent++;
-			return indent;
-		};
-		const parseIndentedObject = (baseIndent = getCurrentIndent()) => {
-			const obj = {};
-			while (!eof()) {
-				const lineStart = index;
-				const startedNewLine = lineStart === 0 || text[lineStart - 1] === "\n";
-				skipWhitespace();
-				const currentIndent = getCurrentIndent();
-				if (startedNewLine && currentIndent <= baseIndent) {
-					index = lineStart;
-					break;
-				}
-				if (peek() === "-" || eof()) {
-					index = lineStart;
-					break;
-				}
-				const char = peek();
-				const key = char === "\"" || char === "'" ? parseQuotedString(char) : parseUnquotedToken(":");
-				if (eof() || next() !== ":") break;
-				skipWhitespace();
-				if (peek() === "\n") {
-					next();
-					const afterNewlinePos = index;
-					skipWhitespace();
-					const childIndent = getCurrentIndent();
-					if (peek() === "-") {
-						obj[key] = parseYamlList();
-						continue;
-					} else if (childIndent > currentIndent) {
-						const lineEnd = text.indexOf("\n", index);
-						const line = text.slice(index, lineEnd === -1 ? text.length : lineEnd);
-						if (/:/.test(line)) {
-							obj[key] = parseIndentedObject(currentIndent);
-							continue;
-						}
-					}
-					index = afterNewlinePos;
-					obj[key] = "";
-					continue;
-				}
-				obj[key] = toTypedValue(parseUnquotedToken("\n"));
-				if (peek() === "\n") next();
-			}
-			return obj;
-		};
-		const parseYamlList = () => {
-			const arr = [];
-			const baseIndent = getCurrentIndent();
-			while (!eof()) {
-				while (!eof() && " \n	\r".includes(peek()) && peek() !== "-") next();
-				if (eof() || getCurrentIndent() < baseIndent || peek() !== "-") break;
-				arr.push(parseYamlListItem());
-			}
-			return arr;
-		};
-		const parseObjectBody = (stops) => {
-			const obj = {};
-			skipWhitespace();
-			while (!eof() && !stops.includes(peek())) {
-				const char = peek();
-				const key = char === "\"" || char === "'" ? parseQuotedString(char) : parseUnquotedToken(`:\n${stops}`);
-				if (!key) return obj;
-				if (eof() || next() !== ":") throw new SyntaxError("Expected ':' after key");
-				if (peek() === " ") next();
-				while (!eof() && " 	".includes(peek())) next();
-				if (eof()) {
-					obj[key] = "";
-					return obj;
-				}
-				if (peek() === "\n") {
-					next();
-					const afterNewlinePos = index;
-					skipWhitespace();
-					const childIndent = getCurrentIndent();
-					if (peek() === "-") {
-						obj[key] = parseYamlList();
-						skipWhitespace();
-						continue;
-					} else if (stops === "" && childIndent > 0) {
-						const lineEnd = text.indexOf("\n", index);
-						const line = text.slice(index, lineEnd === -1 ? text.length : lineEnd);
-						if (/:/.test(line)) {
-							obj[key] = parseIndentedObject(0);
-							skipWhitespace();
-							continue;
-						}
-					}
-					index = afterNewlinePos;
-					skipWhitespace();
-					const nextChar = peek();
-					obj[key] = "";
-					if (nextChar && !stops.includes(nextChar) && nextChar !== "-") continue;
-					return obj;
-				}
-				obj[key] = parseValue(stops.includes("}") ? `,\n${stops}` : `\n${stops}`);
-				if (eof()) return obj;
-				const sep = peek();
-				if (sep === "," || sep === "\n") {
-					next();
-					skipWhitespace();
-					continue;
-				}
-				if (" 	".includes(sep)) {
-					while (!eof() && " 	".includes(peek())) next();
-					if (peek() === "\n") {
-						next();
-						skipWhitespace();
-						continue;
-					}
-					if (eof() || stops.includes(peek())) return obj;
-					continue;
-				}
-				if (stops.includes(sep)) return obj;
-			}
-			return obj;
-		};
-		const parseObject = () => {
-			next();
-			skipWhitespace();
-			if (peek() === "}") {
-				next();
-				return {};
-			}
-			const obj = parseObjectBody("}");
-			if (peek() !== "}") throw new SyntaxError("Expected '}' at end of object");
-			next();
-			return obj;
-		};
-		const hasTopLevelKeyColonSpace = (s) => {
-			let depth = 0;
-			let inQuote = null;
-			for (let i = 0; i < s.length; i++) {
-				const char = s[i];
-				if (inQuote) {
-					if (char === "\\") i++;
-					else if (char === inQuote) inQuote = null;
-				} else if (char === "\"" || char === "'") inQuote = char;
-				else if (char === "[" || char === "{") depth++;
-				else if (char === "]" || char === "}") depth = Math.max(0, depth - 1);
-				else if (depth === 0 && char === ":") {
-					const nextCh = s[i + 1];
-					if (!nextCh || " \n".includes(nextCh)) return true;
-				}
-			}
-			return false;
-		};
-		if (text.startsWith("]") || text.startsWith("}")) throw new SyntaxError("Unexpected closing bracket");
-		const value = text.startsWith("[") ? parseArray() : text.startsWith("{") ? parseObject() : hasTopLevelKeyColonSpace(text) ? parseObjectBody("") : parseValue("");
-		skipWhitespace();
-		if (!eof()) throw new SyntaxError("Unexpected trailing characters");
-		return value;
-	};
-}));
-var getMarkdownMetadata;
-var init_getMarkdownMetadata = __esmMin((() => {
-	init_parseYaml();
-	getMarkdownMetadata = (markdown) => {
-		try {
-			const lines = markdown.split(/\r?\n/);
-			if (lines.find((line) => line.trim() !== "")?.trim() !== "---") return {};
-			let metadataEndIndex = -1;
-			for (let i = 1; i < lines.length; i++) if (lines[i]?.trim() === "---") {
-				metadataEndIndex = i;
-				break;
-			}
-			if (metadataEndIndex === -1) return {};
-			const metadataContent = lines.slice(1, metadataEndIndex).join("\n");
-			return parseYaml(metadataContent) ?? {};
-		} catch {
-			return {};
-		}
-	};
-}));
-var RuleType, Priority, RuleScope, SCOPE_BLOCK, SCOPE_INLINE, SCOPE_BOTH, ATTRIBUTE_TO_NODE_PROP_MAP, NAMED_CODES_TO_UNICODE, DO_NOT_PROCESS_HTML_ELEMENTS, ATTRIBUTES_TO_SANITIZE, ATTR_EXTRACTOR_R, BLOCK_END_R, BLOCKQUOTE_R, BLOCKQUOTE_TRIM_LEFT_MULTILINE_R, BLOCKQUOTE_ALERT_R, BREAK_LINE_R, BREAK_THEMATIC_R, CODE_BLOCK_FENCED_R, CODE_BLOCK_R, FENCE_DELIMITER_R, CODE_INLINE_R, CONSECUTIVE_NEWLINE_R, CR_NEWLINE_R, FOOTNOTE_R, FOOTNOTE_REFERENCE_R, FORMFEED_R, FRONT_MATTER_R, GFM_TASK_R, HEADING_R, HEADING_ATX_COMPLIANT_R, HEADING_SETEXT_R, HTML_CHAR_CODE_R, HTML_COMMENT_R, HTML_CUSTOM_ATTR_R, INTERPOLATION_R, LINK_AUTOLINK_BARE_URL_R, LINK_AUTOLINK_R, CAPTURE_LETTER_AFTER_HYPHEN, NP_TABLE_R, TABLE_TRIM_PIPES, TABLE_CENTER_ALIGN, TABLE_LEFT_ALIGN, TABLE_RIGHT_ALIGN, PARAGRAPH_R, REFERENCE_IMAGE_OR_LINK, REFERENCE_IMAGE_R, REFERENCE_LINK_R, SHOULD_RENDER_AS_BLOCK_R, TAB_R, TRIM_STARTING_NEWLINES, HTML_LEFT_TRIM_AMOUNT_R, ORDERED_LIST_BULLET, UNORDERED_LIST_BULLET, TEXT_ESCAPED_R, UNESCAPE_R, SHORTCODE_R, LOOKAHEAD, INLINE_SKIP_R, TEXT_BOLD_R, TEXT_EMPHASIZED_R, TEXT_MARKED_R, TEXT_STRIKETHROUGHED_R, generateListItemPrefix, ORDERED_LIST_ITEM_PREFIX, UNORDERED_LIST_ITEM_PREFIX, generateListItemPrefixRegex, ORDERED_LIST_ITEM_PREFIX_R, UNORDERED_LIST_ITEM_PREFIX_R, generateListItemRegex, ORDERED_LIST_ITEM_R, UNORDERED_LIST_ITEM_R, generateListRegex, ORDERED_LIST_R, UNORDERED_LIST_R;
-var init_constants = __esmMin((() => {
-	RuleType = {
-		blockQuote: "0",
-		breakLine: "1",
-		breakThematic: "2",
-		codeBlock: "3",
-		codeFenced: "4",
-		codeInline: "5",
-		footnote: "6",
-		footnoteReference: "7",
-		gfmTask: "8",
-		heading: "9",
-		headingSetext: "10",
-		htmlBlock: "11",
-		htmlComment: "12",
-		htmlSelfClosing: "13",
-		customComponent: "34",
-		image: "14",
-		link: "15",
-		linkAngleBraceStyleDetector: "16",
-		linkBareUrlDetector: "17",
-		newlineCoalescer: "19",
-		orderedList: "20",
-		paragraph: "21",
-		ref: "22",
-		refImage: "23",
-		refLink: "24",
-		table: "25",
-		tableSeparator: "26",
-		text: "27",
-		textBolded: "28",
-		textEmphasized: "29",
-		textEscaped: "30",
-		textMarked: "31",
-		textStrikethroughed: "32",
-		unorderedList: "33"
-	};
-	Priority = {
-		MAX: 0,
-		HIGH: 1,
-		MED: 2,
-		LOW: 3,
-		MIN: 4
-	};
-	RuleScope = {
-		BLOCK: 1,
-		INLINE: 2,
-		BOTH: 3
-	};
-	SCOPE_BLOCK = RuleScope.BLOCK;
-	SCOPE_INLINE = RuleScope.INLINE;
-	SCOPE_BOTH = RuleScope.BOTH;
-	ATTRIBUTE_TO_NODE_PROP_MAP = [
-		"allowFullScreen",
-		"allowTransparency",
-		"autoComplete",
-		"autoFocus",
-		"autoPlay",
-		"cellPadding",
-		"cellSpacing",
-		"charSet",
-		"classId",
-		"colSpan",
-		"contentEditable",
-		"contextMenu",
-		"crossOrigin",
-		"encType",
-		"formAction",
-		"formEncType",
-		"formMethod",
-		"formNoValidate",
-		"formTarget",
-		"frameBorder",
-		"hrefLang",
-		"inputMode",
-		"keyParams",
-		"keyType",
-		"marginHeight",
-		"marginWidth",
-		"maxLength",
-		"mediaGroup",
-		"minLength",
-		"noValidate",
-		"radioGroup",
-		"readOnly",
-		"rowSpan",
-		"spellCheck",
-		"srcDoc",
-		"srcLang",
-		"srcSet",
-		"tabIndex",
-		"useMap"
-	].reduce((obj, x) => {
-		obj[x.toLowerCase()] = x;
-		return obj;
-	}, {
-		class: "className",
-		for: "htmlFor"
-	});
-	NAMED_CODES_TO_UNICODE = {
-		amp: "&",
-		apos: "'",
-		gt: ">",
-		lt: "<",
-		nbsp: "\xA0",
-		quot: "“"
-	};
-	DO_NOT_PROCESS_HTML_ELEMENTS = [
-		"style",
-		"script",
-		"pre"
-	];
-	ATTRIBUTES_TO_SANITIZE = [
-		"src",
-		"href",
-		"data",
-		"formAction",
-		"srcDoc",
-		"action"
-	];
-	ATTR_EXTRACTOR_R = /([-A-Z0-9_:]+)(?:\s*=\s*(?:(?:"((?:\\.|[^"])*)")|(?:'((?:\\.|[^'])*)')|(?:\{((?:\\.|{[^}]*?}|[^}])*)\})))?/gi;
-	BLOCK_END_R = /\n{2,}$/;
-	BLOCKQUOTE_R = /^(\s*>[\s\S]*?)(?=\n\n|$)/;
-	BLOCKQUOTE_TRIM_LEFT_MULTILINE_R = /^ *> ?/gm;
-	BLOCKQUOTE_ALERT_R = /^(?:\[!([^\]]*)\]\n)?([\s\S]*)/;
-	BREAK_LINE_R = /^(?=( {2,}))\1\n/;
-	BREAK_THEMATIC_R = /^(?:([-*_])( *\1){2,}) *(?:\n *)+\n/;
-	CODE_BLOCK_FENCED_R = /^(?: {1,3})?(`{3,}|~{3,}) *(\S+)? *([^\n]*?)?\n((?:[^\n]*(?:\n|$))*?)(?:\1\n?|$)/;
-	CODE_BLOCK_R = /^(?: {4}[^\n]+\n*)+(?:\n *)+\n?/;
-	FENCE_DELIMITER_R = /^([ \t]*)(`{3,}|~{3,})/;
-	CODE_INLINE_R = /^(`+)((?:\\`|(?!\1)`|[^`])+)\1/;
-	CONSECUTIVE_NEWLINE_R = /^(?:\n *)*\n/;
-	CR_NEWLINE_R = /\r\n?/g;
-	FOOTNOTE_R = /^\[\^([^\]]+)](:(.*)((\n+ {4,}.*)|(\n(?!\[\^).+))*)/;
-	FOOTNOTE_REFERENCE_R = /^\[\^([^\]]+)]/;
-	FORMFEED_R = /\f/g;
-	FRONT_MATTER_R = /^---[ \t]*\n(.|\n)*?\n---[ \t]*\n/;
-	GFM_TASK_R = /^\s*?\[(x|\s)\]/;
-	HEADING_R = /^ *(#{1,6}) *([^\n]+?)(?: +#*)?(?:\n *)*(?:\n|$)/;
-	HEADING_ATX_COMPLIANT_R = /^ *(#{1,6}) +([^\n]+?)(?: +#*)?(?:\n *)*(?:\n|$)/;
-	HEADING_SETEXT_R = /^([^\n]+)\n *(=|-)\2{2,} *\n/;
-	HTML_CHAR_CODE_R = /&([a-z0-9]+|#[0-9]{1,6}|#x[0-9a-fA-F]{1,6});/gi;
-	HTML_COMMENT_R = /^<!--[\s\S]*?(?:-->)/;
-	HTML_CUSTOM_ATTR_R = /^(data|aria|x)-[a-z_][a-z\d_.-]*$/;
-	INTERPOLATION_R = /^\{.*\}$/;
-	LINK_AUTOLINK_BARE_URL_R = /^(https?:\/\/[^\s<]+[^<.,:;"')\]\s])/;
-	LINK_AUTOLINK_R = /^<([^ >]+[:@/][^ >]+)>/;
-	CAPTURE_LETTER_AFTER_HYPHEN = /-([a-z])?/gi;
-	NP_TABLE_R = /^(\|[^\n]*)\n(?: *(\|? *[-:]+ *\|[-| :]*)\n((?:[^\n]*\|[^\n]*\n)*))?\n?/;
-	TABLE_TRIM_PIPES = /(^ *\||\| *$)/g;
-	TABLE_CENTER_ALIGN = /^ *:-+: *$/;
-	TABLE_LEFT_ALIGN = /^ *:-+ *$/;
-	TABLE_RIGHT_ALIGN = /^ *-+: *$/;
-	PARAGRAPH_R = /^[^\n]+(?: {2}\n|\n{2,})/;
-	REFERENCE_IMAGE_OR_LINK = /^\[([^\]]*)\]:\s+<?([^\s>]+)>?\s*("([^"]*)")?/;
-	REFERENCE_IMAGE_R = /^!\[([^\]]*)\] ?\[([^\]]*)\]/;
-	REFERENCE_LINK_R = /^\[([^\]]*)\] ?\[([^\]]*)\]/;
-	SHOULD_RENDER_AS_BLOCK_R = /(\n|^[-*]\s|^#|^ {2,}|^-{2,}|^>\s)/;
-	TAB_R = /\t/g;
-	TRIM_STARTING_NEWLINES = /^\n+/;
-	HTML_LEFT_TRIM_AMOUNT_R = /^\n*([ \t]*)/;
-	ORDERED_LIST_BULLET = "(?:\\d+\\.)";
-	UNORDERED_LIST_BULLET = "(?:[*+-])";
-	TEXT_ESCAPED_R = /^\\([^0-9A-Za-z\s])/;
-	UNESCAPE_R = /\\([^0-9A-Za-z\s])/g;
-	SHORTCODE_R = /^(:[a-zA-Z0-9-_]+:)/;
-	LOOKAHEAD = (double) => `(?=[\\s\\S]+?\\1${double ? "\\1" : ""})`;
-	INLINE_SKIP_R = "((?:\\[.*?\\][([].*?[)\\]]|<.*?>(?:.*?<.*?>)?|`.*?`|\\\\[^\\s]|[\\s\\S])+?)";
-	TEXT_BOLD_R = new RegExp(`^([*_])\\1${LOOKAHEAD(1)}${INLINE_SKIP_R}\\1\\1(?!\\1)`);
-	TEXT_EMPHASIZED_R = new RegExp(`^([*_])${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1(?!\\1)`);
-	TEXT_MARKED_R = new RegExp(`^(==)${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1`);
-	TEXT_STRIKETHROUGHED_R = new RegExp(`^(~~)${LOOKAHEAD(0)}${INLINE_SKIP_R}\\1`);
-	generateListItemPrefix = (type) => {
-		return "( *)(" + (type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET) + ") +";
-	};
-	ORDERED_LIST_ITEM_PREFIX = generateListItemPrefix(1);
-	UNORDERED_LIST_ITEM_PREFIX = generateListItemPrefix(2);
-	generateListItemPrefixRegex = (type) => {
-		return new RegExp("^" + (type === 1 ? ORDERED_LIST_ITEM_PREFIX : UNORDERED_LIST_ITEM_PREFIX));
-	};
-	ORDERED_LIST_ITEM_PREFIX_R = generateListItemPrefixRegex(1);
-	UNORDERED_LIST_ITEM_PREFIX_R = generateListItemPrefixRegex(2);
-	generateListItemRegex = (type) => {
-		return new RegExp("^" + (type === 1 ? ORDERED_LIST_ITEM_PREFIX : UNORDERED_LIST_ITEM_PREFIX) + "[^\\n]*(?:\\n(?!\\1" + (type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET) + " )[^\\n]*)*(\\n|$)", "gm");
-	};
-	ORDERED_LIST_ITEM_R = generateListItemRegex(1);
-	UNORDERED_LIST_ITEM_R = generateListItemRegex(2);
-	generateListRegex = (type) => {
-		const bullet = type === 1 ? ORDERED_LIST_BULLET : UNORDERED_LIST_BULLET;
-		return new RegExp("^( *)(" + bullet + ") (?=[\\s\\S])(?:[^\\n]*(?:\\n|$))+?(?:\\n+(?! )(?!\\1" + bullet + " (?!" + bullet + " ))\\n*|\\s*$)");
-	};
-	ORDERED_LIST_R = generateListRegex(1);
-	UNORDERED_LIST_R = generateListRegex(2);
-}));
-var trimEnd, startsWith, unquote, unescapeString, cx, get, SLUGIFY_REPLACEMENTS, NON_ASCII_R, SLUGIFY_STRIP_R, SLUGIFY_SPACE_R, slugify, SANITIZE_R, SANITIZE_STRIP_R, sanitizer, normalizeWhitespace, trimLeadingWhitespaceOutsideFences, normalizeAttributeKey, parseStyleAttribute, attributeValueToNodePropValue, parseTableAlignCapture, parseTableAlign, parseTableRow, parseTableCells, qualifies, allowInline, inlineRegex, simpleInlineRegex, blockRegex, anyScopeRegex, parseInline, parseSimpleInline, parseBlock, parseCaptureInline, captureNothing, renderNothing, some;
-var init_utils = __esmMin((() => {
-	init_constants();
-	trimEnd = (str) => {
-		let end = str.length;
-		while (end > 0 && str.charCodeAt(end - 1) <= 32) end--;
-		return end === str.length ? str : str.slice(0, end);
-	};
-	startsWith = (str, prefix) => {
-		return str.startsWith(prefix);
-	};
-	unquote = (str) => {
-		const first = str[0];
-		if ((first === "\"" || first === "'") && str.length >= 2 && str[str.length - 1] === first) return str.slice(1, -1);
-		return str;
-	};
-	unescapeString = (rawString) => rawString && rawString.indexOf("\\") !== -1 ? rawString.replace(UNESCAPE_R, "$1") : rawString;
-	cx = (...args) => args.filter(Boolean).join(" ");
-	get = (src, path, fb) => {
-		if (path.indexOf(".") === -1) return src?.[path] ?? fb;
-		let ptr = src;
-		const frags = path.split(".");
-		while (frags.length) {
-			ptr = ptr[frags[0]];
-			if (ptr === void 0) break;
-			else frags.shift();
-		}
-		return ptr ?? fb;
-	};
-	SLUGIFY_REPLACEMENTS = [
-		[/[ÀÁÂÃÄÅàáâãäåæÆ]/g, "a"],
-		[/[çÇ]/g, "c"],
-		[/[ðÐ]/g, "d"],
-		[/[ÈÉÊËéèêë]/g, "e"],
-		[/[ÏïÎîÍíÌì]/g, "i"],
-		[/[Ññ]/g, "n"],
-		[/[øØœŒÕõÔôÓóÒò]/g, "o"],
-		[/[ÜüÛûÚúÙù]/g, "u"],
-		[/[ŸÿÝý]/g, "y"]
-	];
-	NON_ASCII_R = /[\u0080-\uffff]/;
-	SLUGIFY_STRIP_R = /[^a-z0-9- ]/gi;
-	SLUGIFY_SPACE_R = / /g;
-	slugify = (str) => {
-		let result = str;
-		if (NON_ASCII_R.test(result)) for (let i = 0; i < SLUGIFY_REPLACEMENTS.length; i++) {
-			const [pattern, replacement] = SLUGIFY_REPLACEMENTS[i];
-			result = result.replace(pattern, replacement);
-		}
-		result = result.replace(SLUGIFY_STRIP_R, "").replace(SLUGIFY_SPACE_R, "-");
-		return result.toLowerCase();
-	};
-	SANITIZE_R = /(javascript|vbscript|data(?!:image)):/i;
-	SANITIZE_STRIP_R = /[^A-Za-z0-9/:]/g;
-	sanitizer = (input) => {
-		if (input.indexOf(":") === -1 && input.indexOf("%") === -1) return input;
-		try {
-			const decoded = decodeURIComponent(input).replace(SANITIZE_STRIP_R, "");
-			if (SANITIZE_R.test(decoded)) {
-				console.warn("Input contains an unsafe JavaScript/VBScript/data expression, it will not be rendered.", decoded);
-				return null;
-			}
-		} catch (_e) {
-			console.warn("Input could not be decoded due to malformed syntax or characters, it will not be rendered.", input);
-			return null;
-		}
-		return input;
-	};
-	normalizeWhitespace = (source) => {
-		let normalized = source;
-		if (normalized.indexOf("	") !== -1) normalized = normalized.replace(TAB_R, "    ");
-		if (normalized.indexOf("\r") !== -1) normalized = normalized.replace(CR_NEWLINE_R, "\n");
-		if (normalized.indexOf("\f") !== -1) normalized = normalized.replace(FORMFEED_R, "");
-		return normalized;
-	};
-	trimLeadingWhitespaceOutsideFences = (text, whitespace) => {
-		if (!whitespace) return text;
-		const lines = text.split("\n");
-		let openFence = null;
-		const removePrefix = (line, prefix) => prefix && line.startsWith(prefix) ? line.slice(prefix.length) : line;
-		return lines.map((line) => {
-			const fenceMatch = line.match(FENCE_DELIMITER_R);
-			if (!openFence) {
-				if (fenceMatch) openFence = {
-					indentation: fenceMatch[1],
-					marker: fenceMatch[2]
-				};
-				return removePrefix(line, whitespace);
-			}
-			const isClosingFence = fenceMatch?.[2]?.startsWith(openFence.marker);
-			const { indentation } = openFence;
-			if (isClosingFence) openFence = null;
-			return removePrefix(line, indentation);
-		}).join("\n");
-	};
-	normalizeAttributeKey = (key) => {
-		if (key.indexOf("-") !== -1 && key.match(HTML_CUSTOM_ATTR_R) === null) key = key.replace(CAPTURE_LETTER_AFTER_HYPHEN, (_, letter) => {
-			return letter.toUpperCase();
-		});
-		return key;
-	};
-	parseStyleAttribute = (styleString) => {
-		const styles = [];
-		let buffer = "";
-		let inUrl = false;
-		let inQuotes = false;
-		let quoteChar = "";
-		if (!styleString) return styles;
-		for (let i = 0; i < styleString.length; i++) {
-			const char = styleString[i];
-			if ((char === "\"" || char === "'") && !inUrl) {
-				if (!inQuotes) {
-					inQuotes = true;
-					quoteChar = char;
-				} else if (char === quoteChar) {
-					inQuotes = false;
-					quoteChar = "";
-				}
-			}
-			if (char === "(" && buffer.endsWith("url")) inUrl = true;
-			else if (char === ")" && inUrl) inUrl = false;
-			if (char === ";" && !inQuotes && !inUrl) {
-				const declaration = buffer.trim();
-				if (declaration) {
-					const colonIndex = declaration.indexOf(":");
-					if (colonIndex > 0) {
-						const key = declaration.slice(0, colonIndex).trim();
-						const value = declaration.slice(colonIndex + 1).trim();
-						styles.push([key, value]);
-					}
-				}
-				buffer = "";
-			} else buffer += char;
-		}
-		const declaration = buffer.trim();
-		if (declaration) {
-			const colonIndex = declaration.indexOf(":");
-			if (colonIndex > 0) {
-				const key = declaration.slice(0, colonIndex).trim();
-				const value = declaration.slice(colonIndex + 1).trim();
-				styles.push([key, value]);
-			}
-		}
-		return styles;
-	};
-	attributeValueToNodePropValue = (tag, key, value, sanitizeUrlFn) => {
-		if (key === "style") return parseStyleAttribute(value).reduce((styles, [styleKey, styleValue]) => {
-			const camelCasedKey = styleKey.replace(/(-[a-z])/g, (substr) => substr[1].toUpperCase());
-			styles[camelCasedKey] = sanitizeUrlFn(styleValue, tag, styleKey);
-			return styles;
-		}, {});
-		else if (ATTRIBUTES_TO_SANITIZE.indexOf(key) !== -1) return sanitizeUrlFn(unescapeString(value), tag, key);
-		else if (value.match(INTERPOLATION_R)) value = unescapeString(value.slice(1, value.length - 1));
-		if (value === "true") return true;
-		else if (value === "false") return false;
-		return value;
-	};
-	parseTableAlignCapture = (alignCapture) => {
-		if (alignCapture.indexOf(":") === -1) return "left";
-		if (TABLE_RIGHT_ALIGN.test(alignCapture)) return "right";
-		else if (TABLE_CENTER_ALIGN.test(alignCapture)) return "center";
-		else if (TABLE_LEFT_ALIGN.test(alignCapture)) return "left";
-		return "left";
-	};
-	parseTableAlign = (source) => {
-		return source.replace(TABLE_TRIM_PIPES, "").split("|").map(parseTableAlignCapture);
-	};
-	parseTableRow = (source, parse, state, tableOutput) => {
-		const prevInTable = state.inTable;
-		state.inTable = true;
-		let rStart = 0;
-		let rEnd = source.length;
-		while (rStart < rEnd) {
-			const c = source.charCodeAt(rStart);
-			if (c === 32 || c === 9) rStart++;
-			else break;
-		}
-		while (rEnd > rStart) {
-			const c = source.charCodeAt(rEnd - 1);
-			if (c === 32 || c === 9) rEnd--;
-			else break;
-		}
-		if (rStart < rEnd && source.charCodeAt(rStart) === 124) rStart++;
-		if (rEnd > rStart && source.charCodeAt(rEnd - 1) === 124 && (rEnd - 2 < rStart || source.charCodeAt(rEnd - 2) !== 92)) rEnd--;
-		if (!tableOutput) {
-			const cell = parse(source.slice(rStart, rEnd), state);
-			state.inTable = prevInTable;
-			return [cell];
-		}
-		const cells = [];
-		const len = source.length;
-		let cellStart = rStart;
-		let i = rStart;
-		const parseCell = (from, to) => {
-			const cell = source.slice(from, to).trim();
-			return cell === "" ? [] : parse(cell, state);
-		};
-		let pipeAt = -1;
-		let escapeAt = -1;
-		let backtickAt = -1;
-		while (i < rEnd) {
-			if (pipeAt < i) {
-				const at = source.indexOf("|", i);
-				pipeAt = at === -1 ? len : at;
-			}
-			if (escapeAt < i) {
-				const at = source.indexOf("\\", i);
-				escapeAt = at === -1 ? len : at;
-			}
-			if (backtickAt < i) {
-				const at = source.indexOf("`", i);
-				backtickAt = at === -1 ? len : at;
-			}
-			i = Math.min(pipeAt, escapeAt, backtickAt);
-			if (i >= rEnd) break;
-			if (i === escapeAt) {
-				i += i + 1 < rEnd ? 2 : 1;
-				continue;
-			}
-			if (i === backtickAt) {
-				let backticks = 0;
-				while (i < rEnd && source.charCodeAt(i) === 96) {
-					backticks++;
-					i++;
-				}
-				let found = false;
-				while (i < rEnd && !found) {
-					let closeBackticks = 0;
-					while (i < rEnd && source.charCodeAt(i) === 96) {
-						closeBackticks++;
-						i++;
-					}
-					if (closeBackticks === backticks) found = true;
-					else if (closeBackticks === 0) i++;
-				}
-				continue;
-			}
-			cells.push(parseCell(cellStart, i));
-			i++;
-			cellStart = i;
-		}
-		cells.push(parseCell(cellStart, rEnd));
-		state.inTable = prevInTable;
-		return cells;
-	};
-	parseTableCells = (source, parse, state) => {
-		if (!source) return [];
-		const result = [];
-		let start = 0;
-		const len = source.length;
-		while (start < len) {
-			let nextNewline = source.indexOf("\n", start);
-			if (nextNewline === -1) nextNewline = len;
-			const rowText = source.slice(start, nextNewline);
-			start = nextNewline + 1;
-			let hasContent = false;
-			for (let j = 0; j < rowText.length; j++) {
-				const c = rowText.charCodeAt(j);
-				if (c !== 32 && c !== 9 && c !== 13) {
-					hasContent = true;
-					break;
-				}
-			}
-			if (!hasContent) continue;
-			result.push(parseTableRow(rowText, parse, state, true));
-		}
-		return result;
-	};
-	qualifies = (source, state, qualify) => {
-		if (Array.isArray(qualify)) {
-			for (let i = 0; i < qualify.length; i++) if (startsWith(source, qualify[i])) return true;
-			return false;
-		}
-		return qualify(source, state);
-	};
-	allowInline = (fn) => {
-		fn.inline = 1;
-		return fn;
-	};
-	inlineRegex = (regex) => allowInline((source, state) => {
-		if (state.inline) return regex.exec(source);
-		else return null;
-	});
-	simpleInlineRegex = (regex) => allowInline((source, state) => {
-		if (state.inline || state.simple) return regex.exec(source);
-		else return null;
-	});
-	blockRegex = (regex) => (source, state) => {
-		if (state.inline || state.simple) return null;
-		else return regex.exec(source);
-	};
-	anyScopeRegex = (fn) => allowInline((source, state) => {
-		if (typeof fn === "function") return fn(source, state);
-		return fn.exec(source);
-	});
-	parseInline = (parse, children, state) => {
-		const isCurrentlyInline = state.inline ?? false;
-		const isCurrentlySimple = state.simple ?? false;
-		state.inline = true;
-		state.simple = true;
-		const result = parse(children, state);
-		state.inline = isCurrentlyInline;
-		state.simple = isCurrentlySimple;
-		return result;
-	};
-	parseSimpleInline = (parse, children, state) => {
-		const isCurrentlyInline = state.inline ?? false;
-		const isCurrentlySimple = state.simple ?? false;
-		state.inline = false;
-		state.simple = true;
-		const result = parse(children, state);
-		state.inline = isCurrentlyInline;
-		state.simple = isCurrentlySimple;
-		return result;
-	};
-	parseBlock = (parse, children, state = {}) => {
-		const isCurrentlyInline = state.inline || false;
-		state.inline = false;
-		const normalizedChildren = trimEnd(children);
-		const result = parse(/\n\n$/.test(normalizedChildren) === false ? normalizedChildren.endsWith("\n") ? `${normalizedChildren}\n` : `${normalizedChildren}\n\n` : normalizedChildren, state);
-		state.inline = isCurrentlyInline;
-		return result;
-	};
-	parseCaptureInline = (capture, parse, state) => {
-		return { children: parseInline(parse, capture[2] ?? "", state) };
-	};
-	captureNothing = () => ({});
-	renderNothing = () => null;
-	some = (probes, input) => {
-		for (let i = 0; i < probes.length; i++) {
-			const probe = probes[i];
-			if (typeof probe === "function" ? probe(input) : probe.test(input)) return true;
-		}
-		return false;
-	};
-}));
-var advanceLookbehind, parserFor;
-var init_parser = __esmMin((() => {
-	init_constants();
-	init_utils();
-	advanceLookbehind = (state, capture) => {
-		const lastCode = capture.charCodeAt(capture.length - 1);
-		if (state.prevCaptureHasBlankLine !== true) state.prevCaptureHasBlankLine = capture.indexOf("\n\n") !== -1 || state.prevCaptureHasBlankLine !== void 0 && capture.charCodeAt(0) === 10 && state.prevCaptureIndent === "";
-		if (lastCode !== 32 && lastCode !== 10) {
-			state.prevCaptureIndent = void 0;
-			return;
-		}
-		const newlineIndex = capture.lastIndexOf("\n");
-		const tail = newlineIndex === -1 ? state.prevCaptureIndent === void 0 ? void 0 : state.prevCaptureIndent === "" ? capture : state.prevCaptureIndent + capture : capture.slice(newlineIndex + 1);
-		if (tail === void 0 || tail === "") {
-			state.prevCaptureIndent = tail;
-			return;
-		}
-		for (let i = 0; i < tail.length; i++) if (tail.charCodeAt(i) !== 32) {
-			state.prevCaptureIndent = void 0;
-			return;
-		}
-		state.prevCaptureIndent = tail;
-	};
-	parserFor = (rules) => {
-		const order = Object.keys(rules).sort((a, b) => rules[a]._order - rules[b]._order || +a - +b);
-		const ruleCount = order.length;
-		const qualifiers = new Array(ruleCount);
-		const matchers = new Array(ruleCount);
-		const parsers = new Array(ruleCount);
-		const ruleFirstChars = new Array(ruleCount);
-		const ruleIsBlock = new Array(ruleCount);
-		const ruleIsInline = new Array(ruleCount);
-		const blockDefaultCandidates = [];
-		const inlineDefaultCandidates = [];
-		for (let i = 0; i < ruleCount; i++) {
-			const rule = rules[order[i]];
-			let q = rule._qualify;
-			matchers[i] = rule._match;
-			parsers[i] = rule._parse;
-			const rawScope = rule._scope;
-			const isBlock = rawScope !== SCOPE_INLINE;
-			const isInline = rawScope !== SCOPE_BLOCK;
-			ruleIsBlock[i] = isBlock;
-			ruleIsInline[i] = isInline;
-			if (rule._firstChars && rule._firstChars.length > 0) ruleFirstChars[i] = rule._firstChars;
-			else if (Array.isArray(q) && q.length > 0 && q.every((p) => p.length > 0)) {
-				ruleFirstChars[i] = q.map((p) => p.charCodeAt(0));
-				if (q.every((p) => p.length === 1)) q = void 0;
-			} else {
-				ruleFirstChars[i] = null;
-				if (isBlock) blockDefaultCandidates.push(i);
-				if (isInline) inlineDefaultCandidates.push(i);
-			}
-			qualifiers[i] = q;
-		}
-		const blockAsciiCandidates = new Array(128);
-		const inlineAsciiCandidates = new Array(128);
-		for (let code = 0; code < 128; code++) {
-			const bList = [];
-			const iList = [];
-			for (let i = 0; i < ruleCount; i++) {
-				const isBlock = ruleIsBlock[i];
-				const isInline = ruleIsInline[i];
-				const chars = ruleFirstChars[i];
-				if (isBlock && (!chars || chars.includes(code))) bList.push(i);
-				if (isInline && (!chars || chars.includes(code))) iList.push(i);
-			}
-			blockAsciiCandidates[code] = bList;
-			inlineAsciiCandidates[code] = iList;
-		}
-		const nestedParse = (source, state = {}) => {
-			const result = [];
-			const isInline = Boolean(state.inline || state.simple);
-			if (state.prevCaptureHasBlankLine === void 0) state.prevCaptureIndent = "";
-			let hasContent = false;
-			for (let j = 0; j < source.length; j++) {
-				const c = source.charCodeAt(j);
-				if (c !== 32 && c !== 9 && c !== 10 && c !== 13) {
-					hasContent = true;
-					break;
-				}
-			}
-			if (hasContent) {
-				const asciiCandidates = isInline ? inlineAsciiCandidates : blockAsciiCandidates;
-				const defaultCandidates = isInline ? inlineDefaultCandidates : blockDefaultCandidates;
-				while (source) {
-					const code = source.charCodeAt(0);
-					const candidates = code < 128 ? asciiCandidates[code] : defaultCandidates;
-					const candidateCount = candidates.length;
-					let matched = false;
-					for (let c = 0; c < candidateCount; c++) {
-						const i = candidates[c];
-						const qualify = qualifiers[i];
-						if (qualify && !qualifies(source, state, qualify)) continue;
-						const capture = matchers[i](source, state);
-						if (capture?.[0]) {
-							source = source.slice(capture[0].length);
-							const parsed = parsers[i](capture, nestedParse, state);
-							advanceLookbehind(state, capture[0]);
-							const nodeType = parsed.type || order[i];
-							parsed.type = nodeType;
-							const len = result.length;
-							if (nodeType === RuleType.text) {
-								if (!parsed.text) {
-									matched = true;
-									break;
-								}
-								if (len > 0 && result[len - 1].type === RuleType.text) {
-									result[len - 1].text += parsed.text;
-									matched = true;
-									break;
-								}
-							}
-							result.push(parsed);
-							matched = true;
-							break;
-						}
-					}
-					if (!matched) break;
-				}
-			}
-			return result;
-		};
-		return (source, state) => nestedParse(normalizeWhitespace(source), state);
-	};
-}));
-var renderFor, createRenderer;
-var init_renderer = __esmMin((() => {
-	renderFor = (render) => {
-		const emit = (ast, state = {}) => {
-			if (!Array.isArray(ast)) return render(ast, emit, state);
-			const oldKey = state.key;
-			const result = [];
-			let lastWasString = false;
-			let renderedIndex = 0;
-			for (let i = 0; i < ast.length; i++) {
-				state.key = renderedIndex;
-				const node = ast[i];
-				const nodeOut = Array.isArray(node) ? emit(node, state) : render(node, emit, state);
-				const isString = typeof nodeOut === "string";
-				if (isString && lastWasString) result[result.length - 1] = result[result.length - 1] + nodeOut;
-				else if (nodeOut !== null) {
-					result.push(nodeOut);
-					renderedIndex++;
-				}
-				lastWasString = isString;
-			}
-			state.key = oldKey;
-			return result;
-		};
-		return emit;
-	};
-	createRenderer = (rules, userRender) => {
-		const renderers = {};
-		for (const type in rules) renderers[type] = rules[type]?._render;
-		if (!userRender) return (ast, render, state) => {
-			const r = renderers[ast.type];
-			return r ? r(ast, render, state) : void 0;
-		};
-		return (ast, render, state) => {
-			const renderer = renderers[ast.type];
-			return userRender(() => renderer?.(ast, render, state), ast, render, state);
-		};
-	};
-}));
-var findTagEnd, foldAscii, matchesFolded, findTag, makeMatch, isNameChar, skipLeadingSpaces, matchElement, matchSelfClosingElement, matchHtmlBlockElement, matchCustomComponent, startsWithHtmlBlockElement, startsWithSelfClosingElement, startsWithCustomComponent, startsWithElement;
-var init_elementScanner = __esmMin((() => {
-	findTagEnd = (source, from) => {
-		const len = source.length;
-		let pos = from;
-		while (pos < len) {
-			const code = source.charCodeAt(pos);
-			if (code === 62) return pos;
-			if (code === 34 || code === 39) {
-				let cur = pos + 1;
-				while (cur < len && source.charCodeAt(cur) !== code && source.charCodeAt(cur) !== 10) cur++;
-				pos = source.charCodeAt(cur) === code ? cur + 1 : pos + 1;
-				continue;
-			}
-			pos++;
-		}
-		return -1;
-	};
-	foldAscii = (code) => code >= 65 && code <= 90 ? code + 32 : code;
-	matchesFolded = (source, needle, at) => {
-		for (let index = 0; index < needle.length; index++) if (foldAscii(source.charCodeAt(at + index)) !== foldAscii(needle.charCodeAt(index))) return false;
-		return true;
-	};
-	findTag = (source, needle, from, caseInsensitive, limit) => {
-		if (!caseInsensitive) {
-			const idx = source.indexOf(needle, from);
-			return idx === -1 || idx >= limit ? -1 : idx;
-		}
-		const max = Math.min(limit, source.length - needle.length + 1);
-		let pos = from;
-		while (pos < max) {
-			const idx = source.indexOf("<", pos);
-			if (idx === -1 || idx >= max) return -1;
-			if (matchesFolded(source, needle, idx)) return idx;
-			pos = idx + 1;
-		}
-		return -1;
-	};
-	makeMatch = (source, end, tagName, attrs, content) => {
-		const result = [
-			source.slice(0, end),
-			tagName,
-			attrs,
-			content
-		];
-		result.index = 0;
-		result.input = source;
-		return result;
-	};
-	isNameChar = (code) => code >= 97 && code <= 122 || code >= 65 && code <= 90 || code >= 48 && code <= 57;
-	skipLeadingSpaces = (source) => {
-		let i = 0;
-		while (source.charCodeAt(i) === 32) i++;
-		return source.charCodeAt(i) === 60 ? i : -1;
-	};
-	matchElement = (source, customComponent) => {
-		const bracket = skipLeadingSpaces(source);
-		if (bracket === -1) return null;
-		const nameStart = bracket + 1;
-		let nameEnd = nameStart;
-		const first = source.charCodeAt(nameStart);
-		if (customComponent) {
-			if (first < 65 || first > 90) return null;
-			while (nameEnd < source.length && isNameChar(source.charCodeAt(nameEnd))) nameEnd++;
-		} else {
-			if (!(first >= 65 && first <= 90 || first >= 97 && first <= 122)) return null;
-			while (nameEnd < source.length) {
-				const c = source.charCodeAt(nameEnd);
-				if (c === 32 || c === 9 || c === 10 || c === 13 || c === 62 || c === 47) break;
-				nameEnd++;
-			}
-		}
-		const tagName = source.slice(nameStart, nameEnd);
-		const openTagEnd = findTagEnd(source, nameEnd);
-		if (openTagEnd === -1) return null;
-		if (!customComponent && source.charCodeAt(openTagEnd - 1) === 47) return null;
-		let contentStart = openTagEnd + 1;
-		if (source.charCodeAt(contentStart) === 10) contentStart++;
-		const openTag = `<${tagName}`;
-		const closeTag = `</${tagName}`;
-		let depth = 1;
-		let cursor = contentStart;
-		const len = source.length;
-		let contentEnd = -1;
-		let end = -1;
-		while (cursor < len) {
-			const closeIdx = findTag(source, closeTag, cursor, !customComponent, len);
-			if (closeIdx === -1) return null;
-			const openIdx = findTag(source, openTag, cursor, !customComponent, closeIdx);
-			if (openIdx !== -1) {
-				const next = source.charCodeAt(openIdx + openTag.length);
-				if (next === 32 || next === 9 || next === 10 || next === 13 || next === 62 || next === 47) {
-					const nestedEnd = findTagEnd(source, openIdx + openTag.length);
-					if (nestedEnd === -1) return null;
-					depth++;
-					cursor = nestedEnd + 1;
-				} else cursor = openIdx + 1;
-				continue;
-			}
-			if (source.charCodeAt(closeIdx + closeTag.length) !== 62) {
-				cursor = closeIdx + 1;
-				continue;
-			}
-			const closeTagEnd = closeIdx + closeTag.length + 1;
-			depth--;
-			if (depth > 0) {
-				cursor = closeTagEnd;
-				continue;
-			}
-			if (findTag(source, closeTag, closeTagEnd, !customComponent, len) === closeTagEnd && source.charCodeAt(closeTagEnd + closeTag.length) === 62) {
-				depth = 1;
-				cursor = closeTagEnd;
-				continue;
-			}
-			contentEnd = closeIdx;
-			end = closeTagEnd;
-			break;
-		}
-		if (end === -1) return null;
-		while (source.charCodeAt(end) === 10) end++;
-		return makeMatch(source, end, tagName, source.slice(nameEnd, openTagEnd), source.slice(contentStart, contentEnd));
-	};
-	matchSelfClosingElement = (source) => {
-		const bracket = skipLeadingSpaces(source);
-		if (bracket === -1) return null;
-		const nameStart = bracket + 1;
-		const first = source.charCodeAt(nameStart);
-		if (!(first >= 65 && first <= 90 || first >= 97 && first <= 122)) return null;
-		let nameEnd = nameStart + 1;
-		while (nameEnd < source.length && (isNameChar(source.charCodeAt(nameEnd)) || source.charCodeAt(nameEnd) === 58)) nameEnd++;
-		const c = source.charCodeAt(nameEnd);
-		const hasAttrs = c === 32 || c === 9 || c === 10 || c === 13;
-		let tagEnd;
-		if (hasAttrs) {
-			tagEnd = findTagEnd(source, nameEnd);
-			if (tagEnd === -1) return null;
-		} else {
-			tagEnd = source.charCodeAt(nameEnd) === 47 ? nameEnd + 1 : nameEnd;
-			if (source.charCodeAt(tagEnd) !== 62) return null;
-		}
-		const tagName = source.slice(nameStart, nameEnd);
-		const tailStart = tagEnd + 1;
-		if (source.charCodeAt(tailStart) === 60 && source.charCodeAt(tailStart + 1) === 47 && matchesFolded(source, tagName, tailStart + 2) && source.charCodeAt(tailStart + 2 + tagName.length) === 62) return null;
-		let end = tailStart;
-		let scan = tailStart;
-		while (scan < source.length) {
-			const sc = source.charCodeAt(scan);
-			if (sc !== 32 && sc !== 9 && sc !== 10 && sc !== 13) break;
-			scan++;
-			if (source.charCodeAt(scan - 1) === 10) end = scan;
-		}
-		return makeMatch(source, end, tagName, hasAttrs ? source.slice(nameEnd + 1, tagEnd) : void 0, end > tailStart ? source.slice(tailStart, end) : void 0);
-	};
-	matchHtmlBlockElement = (source) => matchElement(source, false);
-	matchCustomComponent = (source) => matchElement(source, true);
-	startsWithHtmlBlockElement = (source) => matchHtmlBlockElement(source) !== null;
-	startsWithSelfClosingElement = (source) => matchSelfClosingElement(source) !== null;
-	startsWithCustomComponent = (source) => matchCustomComponent(source) !== null;
-	startsWithElement = (source) => startsWithHtmlBlockElement(source) || startsWithSelfClosingElement(source);
-}));
-var IMAGE_R, LINK_R, createTagResolver, createSlugger, createElementFactory, createDocumentScope, RULE_SET_CACHE_LIMIT, ruleSetCache, builtFromSame, getRuleSet, withDocumentScope, createRules, STRIP_INDENT_REGEXES, TEXT_CAPTURE, TEXT_RUN_R, trimHardBreak, noopCreateElement, createDocumentRules, parseWithRules, renderWithRules, parseMarkdown, renderMarkdownAst, compile;
-var init_compiler = __esmMin((() => {
-	init_constants();
-	init_elementScanner();
-	init_utils();
-	init_parser();
-	init_renderer();
-	IMAGE_R = /^!\[(.*?)\]\( *((?:\([^)]*\)|[^() ])*) *"?([^)"]*)?"?\)/;
-	LINK_R = new RegExp(`^\\[((?:\\[[^\\[\\]]*(?:\\[[^\\[\\]]*\\][^\\[\\]]*)*\\]|[^\\[\\]])*)\\]\\(\\s*<?((?:\\([^)]*\\)|[^\\s\\\\]|\\\\.)*?)>?(?:\\s+['"]([\\s\\S]*?)['"])?\\s*\\)`);
-	createTagResolver = (components) => {
-		let lowercaseKeys = null;
-		if (Object.keys(components).length === 0) return (tag) => tag;
-		const resolved = /* @__PURE__ */ new Map();
-		return (tag) => {
-			if (typeof tag !== "string") return tag;
-			const memoized = resolved.get(tag);
-			if (memoized !== void 0) return memoized;
-			const override = get(components, tag);
-			if (override) {
-				resolved.set(tag, override);
-				return override;
-			}
-			if (!lowercaseKeys) {
-				lowercaseKeys = /* @__PURE__ */ new Map();
-				for (const key of Object.keys(components)) {
-					const lowercased = key.toLowerCase();
-					if (!lowercaseKeys.has(lowercased)) lowercaseKeys.set(lowercased, key);
-				}
-			}
-			const key = lowercaseKeys.get(tag.toLowerCase());
-			const result = (key ? get(components, key) : void 0) || tag;
-			resolved.set(tag, result);
-			return result;
-		};
-	};
-	createSlugger = (ctx) => (input) => ctx.slugify ? ctx.slugify(input, slugify) : slugify(input);
-	createElementFactory = (ctx, options) => {
-		const { runtime, components = {} } = ctx;
-		const resolveTag = createTagResolver(components);
-		const filteredTags = options.tagfilter ? /* @__PURE__ */ new Set([
-			"title",
-			"textarea",
-			"style",
-			"xmp",
-			"iframe",
-			"noembed",
-			"noframes",
-			"script",
-			"plaintext"
-		]) : null;
-		const needsPropsRewrite = (props) => {
-			if ("class" in props) return true;
-			for (const key in props) {
-				const value = props[key];
-				if (value === void 0 || value === null) return true;
-			}
-			return false;
-		};
-		return (tag, props, ...children) => {
-			const isStringTag = typeof tag === "string";
-			if (filteredTags && isStringTag && (filteredTags.has(tag) || filteredTags.has(tag.toLowerCase()))) return null;
-			let finalProps;
-			if (!props) finalProps = {};
-			else if (!needsPropsRewrite(props)) finalProps = props;
-			else {
-				const className = cx(props.className, props.class);
-				const mergedProps = {};
-				let classNameHandled = false;
-				for (const key in props) {
-					const value = props[key];
-					if (value === void 0 || value === null) continue;
-					if (key === "className" || key === "class") {
-						if (!classNameHandled) {
-							if (className) mergedProps.className = className;
-							classNameHandled = true;
-						}
-					} else mergedProps[key] = value;
-				}
-				if (!classNameHandled && className) mergedProps.className = className;
-				finalProps = mergedProps;
-			}
-			if (runtime.normalizeProps && isStringTag) finalProps = runtime.normalizeProps(tag, finalProps);
-			const component = resolveTag(tag);
-			return runtime.createElement(component, finalProps, ...children);
-		};
-	};
-	createDocumentScope = () => ({
-		footnotes: [],
-		references: {}
-	});
-	RULE_SET_CACHE_LIMIT = 8;
-	ruleSetCache = [];
-	builtFromSame = (entry, ctx, options, parseOnly) => entry.parseOnly === parseOnly && entry.ctx.runtime === ctx.runtime && entry.ctx.components === ctx.components && entry.ctx.namedCodesToUnicode === ctx.namedCodesToUnicode && entry.ctx.sanitizer === ctx.sanitizer && entry.ctx.slugify === ctx.slugify && entry.options.disableAutoLink === options.disableAutoLink && entry.options.disableParsingRawHTML === options.disableParsingRawHTML && entry.options.enforceAtxHeadings === options.enforceAtxHeadings && entry.options.tagfilter === options.tagfilter && entry.options.renderRule === options.renderRule;
-	getRuleSet = (ctx, options, parseOnly) => {
-		for (let index = 0; index < ruleSetCache.length; index++) {
-			const entry = ruleSetCache[index];
-			if (!builtFromSame(entry, ctx, options, parseOnly)) continue;
-			if (index > 0) {
-				ruleSetCache.splice(index, 1);
-				ruleSetCache.unshift(entry);
-			}
-			return entry;
-		}
-		const scope = { current: createDocumentScope() };
-		const createElement = parseOnly ? noopCreateElement : createElementFactory(ctx, options);
-		const rules = createDocumentRules(createElement, ctx, options, scope);
-		const entry = {
-			ctx,
-			options,
-			parseOnly,
-			createElement,
-			scope,
-			parse: parserFor(rules),
-			emit: renderFor(createRenderer(rules, options.renderRule))
-		};
-		ruleSetCache.unshift(entry);
-		if (ruleSetCache.length > RULE_SET_CACHE_LIMIT) ruleSetCache.pop();
-		return entry;
-	};
-	withDocumentScope = (ref, scope, operation) => {
-		const previous = ref.current;
-		ref.current = scope;
-		try {
-			return operation();
-		} finally {
-			ref.current = previous;
-		}
-	};
-	createRules = (createElement, ctx, options, scope, attrStringToMap, containsBlockSyntax, nonParagraphBlockSyntaxes) => {
-		const slug = createSlugger(ctx);
-		const sanitize = ctx.sanitizer ?? sanitizer;
-		const namedCodesToUnicode = ctx.namedCodesToUnicode ? {
-			...NAMED_CODES_TO_UNICODE,
-			...ctx.namedCodesToUnicode
-		} : NAMED_CODES_TO_UNICODE;
-		const pairedElementRule = (match, order, rawHtml, scope = SCOPE_BOTH) => ({
-			_scope: scope,
-			_qualify: ["<"],
-			_match: anyScopeRegex(match),
-			_order: order,
-			_parse(capture, parse, state) {
-				const content = capture[3] ?? "";
-				const whitespace = content.match(HTML_LEFT_TRIM_AMOUNT_R)?.[1] ?? "";
-				const trimmed = trimLeadingWhitespaceOutsideFences(content, whitespace);
-				const parseFunc = containsBlockSyntax(trimmed) ? parseBlock : parseInline;
-				const tagName = (capture[1] ?? "").trim();
-				const lowercased = tagName.toLowerCase();
-				const noInnerParse = rawHtml && DO_NOT_PROCESS_HTML_ELEMENTS.indexOf(lowercased) !== -1;
-				const tag = noInnerParse ? lowercased : tagName;
-				const ast = {
-					attrs: attrStringToMap(tag, capture[2] ?? ""),
-					noInnerParse,
-					tag
-				};
-				if (rawHtml) state.inAnchor = state.inAnchor || lowercased === "a";
-				if (noInnerParse) ast.text = content;
-				else {
-					const prevInHTML = state.inHTML;
-					state.inHTML = true;
-					ast.children = parseFunc(parse, trimmed, state);
-					state.inHTML = prevInHTML;
-				}
-				if (rawHtml) state.inAnchor = false;
-				return ast;
-			},
-			_render(node, output, state = {}) {
-				return createElement(node.tag, {
-					key: state.key,
-					...node.attrs ?? {}
-				}, node.text ?? (node.children ? output(node.children, state) : ""));
-			}
-		});
-		const generateListRule = (type) => {
-			const ordered = type === 1;
-			const LIST_R = ordered ? ORDERED_LIST_R : UNORDERED_LIST_R;
-			const LIST_ITEM_R = ordered ? ORDERED_LIST_ITEM_R : UNORDERED_LIST_ITEM_R;
-			const LIST_ITEM_PREFIX_R = ordered ? ORDERED_LIST_ITEM_PREFIX_R : UNORDERED_LIST_ITEM_PREFIX_R;
-			return {
-				_scope: SCOPE_BOTH,
-				_firstChars: ordered ? [
-					32,
-					9,
-					48,
-					49,
-					50,
-					51,
-					52,
-					53,
-					54,
-					55,
-					56,
-					57
-				] : [
-					32,
-					9,
-					42,
-					43,
-					45
-				],
-				_qualify: (source, state) => state.prevCaptureIndent !== void 0 && Boolean(state.list ?? (!state.inline && !state.simple)) && LIST_ITEM_PREFIX_R.test(source),
-				_match: allowInline((source, state) => {
-					const lineIndent = state.prevCaptureIndent;
-					const isStartOfLine = lineIndent !== void 0;
-					const isListAllowed = state.list ?? (!state.inline && !state.simple);
-					if (isStartOfLine && isListAllowed) {
-						const matchSource = lineIndent ? lineIndent + source : source;
-						const match = LIST_R.exec(matchSource);
-						if (!match) return null;
-						if (lineIndent && match[0].startsWith(lineIndent)) {
-							const adjusted = [...match];
-							adjusted[0] = match[0].slice(lineIndent.length);
-							adjusted.fullMatch = match[0];
-							return adjusted;
-						}
-						return match;
-					}
-					return null;
-				}),
-				_order: Priority.HIGH,
-				_parse(capture, parse, state) {
-					const bullet = capture[2] ?? "";
-					const startValue = ordered ? +bullet.slice(0, -1) : void 0;
-					const items = (capture.fullMatch ?? capture[0] ?? "").replace(BLOCK_END_R, "\n").match(LIST_ITEM_R);
-					if (!items) return {
-						items: [],
-						ordered,
-						start: startValue
-					};
-					let lastItemWasAParagraph = false;
-					return {
-						items: items.map((item, i) => {
-							const prefixCapture = LIST_ITEM_PREFIX_R.exec(item);
-							const space = prefixCapture ? prefixCapture[0].length : 0;
-							const spaceRegex = space <= 8 ? STRIP_INDENT_REGEXES[space] : new RegExp(`^ {1,${space}}`, "gm");
-							const content = item.slice(space).replace(spaceRegex, "");
-							const isLastItem = i === items.length - 1;
-							const thisItemIsAParagraph = content.indexOf("\n\n") !== -1 || isLastItem && lastItemWasAParagraph;
-							lastItemWasAParagraph = thisItemIsAParagraph;
-							const oldStateInline = state.inline;
-							const oldStateList = state.list;
-							state.list = true;
-							let adjustedContent;
-							if (thisItemIsAParagraph) {
-								state.inline = false;
-								adjustedContent = `${trimEnd(content)}\n\n`;
-							} else {
-								state.inline = true;
-								adjustedContent = trimEnd(content);
-							}
-							const parsed = parse(adjustedContent, state);
-							state.inline = oldStateInline;
-							state.list = oldStateList;
-							return parsed;
-						}),
-						ordered,
-						start: startValue
-					};
-				},
-				_render(node, output, state = {}) {
-					return createElement(ordered ? "ol" : "ul", {
-						key: state.key,
-						start: node.start
-					}, ...node.items.map((item, i) => createElement("li", { key: i }, output(item, state))));
-				}
-			};
-		};
-		const matchParagraph = (source, state) => {
-			if (state.inline || state.simple || state.inHTML && source.indexOf("\n\n") === -1 && !state.prevCaptureHasBlankLine) return null;
-			let start = 0;
-			const srcLen = source.length;
-			while (start < srcLen) {
-				const newlineIndex = source.indexOf("\n", start);
-				const lineEnd = newlineIndex === -1 ? srcLen : newlineIndex;
-				let p = start;
-				while (p < lineEnd && (source.charCodeAt(p) === 32 || source.charCodeAt(p) === 9)) p++;
-				if (p >= lineEnd) break;
-				if (p - start >= 4 || source.charCodeAt(start) === 9) break;
-				const ch = source.charCodeAt(p);
-				if (ch === 62 || ch === 96 || ch === 126 || ch === 35 || ch === 124 || ch === 42 || ch === 43 || ch === 45 || ch === 61 || ch === 60 || ch >= 48 && ch <= 57) {
-					const line = source.slice(start, newlineIndex === -1 ? void 0 : newlineIndex + 1);
-					if (some(nonParagraphBlockSyntaxes, line)) break;
-				}
-				if (newlineIndex === -1) {
-					start = srcLen;
-					break;
-				}
-				start = newlineIndex + 1;
-			}
-			const match = source.slice(0, start);
-			if (match === "") return null;
-			const captured = trimEnd(match);
-			if (captured === "") return null;
-			return [
-				match,
-				void 0,
-				captured
-			];
-		};
-		return {
-			[RuleType.blockQuote]: {
-				_scope: SCOPE_BLOCK,
-				_qualify: [">"],
-				_match: blockRegex(BLOCKQUOTE_R),
-				_order: Priority.HIGH,
-				_parse(capture, parse, state) {
-					const matchAlert = (capture[0] ?? "").replace(BLOCKQUOTE_TRIM_LEFT_MULTILINE_R, "").match(BLOCKQUOTE_ALERT_R);
-					const alert = matchAlert?.[1];
-					const content = matchAlert?.[2] ?? "";
-					return {
-						alert,
-						children: content.indexOf("\n") !== -1 ? parseBlock(parse, content, state) : parseInline(parse, content, state)
-					};
-				},
-				_render(node, output, state = {}) {
-					const props = { key: state.key };
-					if (node.alert) {
-						props.className = `markdown-alert-${slug(node.alert.toLowerCase())}`;
-						node.children.unshift({
-							attrs: {},
-							children: [{
-								type: RuleType.text,
-								text: node.alert
-							}],
-							noInnerParse: true,
-							type: RuleType.htmlBlock,
-							tag: "header"
-						});
-					}
-					return createElement("blockquote", props, output(node.children, state));
-				}
-			},
-			[RuleType.breakLine]: {
-				_scope: SCOPE_BOTH,
-				_qualify: ["  "],
-				_match: anyScopeRegex(BREAK_LINE_R),
-				_order: Priority.HIGH,
-				_parse: captureNothing,
-				_render(_, __, state = {}) {
-					return createElement("br", { key: state.key });
-				}
-			},
-			[RuleType.breakThematic]: {
-				_scope: SCOPE_BLOCK,
-				_qualify: [
-					"--",
-					"__",
-					"**",
-					"- ",
-					"* ",
-					"_ "
-				],
-				_match: blockRegex(BREAK_THEMATIC_R),
-				_order: Priority.HIGH,
-				_parse: captureNothing,
-				_render(_, __, state = {}) {
-					return createElement("hr", { key: state.key });
-				}
-			},
-			[RuleType.codeBlock]: {
-				_scope: SCOPE_BLOCK,
-				_qualify: ["    "],
-				_match: blockRegex(CODE_BLOCK_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					return {
-						type: RuleType.codeBlock,
-						lang: void 0,
-						text: unescapeString(trimEnd((capture[0] ?? "").replace(/^ {4}/gm, "")))
-					};
-				},
-				_render(node, _, state = {}) {
-					const attrs = { ...node.attrs ?? {} };
-					const langClass = node.lang ? `lang-${node.lang}` : "lang-plaintext";
-					attrs.className = attrs.className ? `${attrs.className} ${langClass}` : langClass;
-					return createElement("pre", { key: state.key }, createElement("code", attrs, node.text));
-				}
-			},
-			[RuleType.codeFenced]: {
-				_scope: SCOPE_BLOCK,
-				_qualify: ["```", "~~~"],
-				_match: blockRegex(CODE_BLOCK_FENCED_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					return {
-						attrs: attrStringToMap("code", capture[3] ?? ""),
-						lang: capture[2] || void 0,
-						text: capture[4] ?? "",
-						type: RuleType.codeBlock
-					};
-				}
-			},
-			[RuleType.codeInline]: {
-				_scope: SCOPE_INLINE,
-				_firstChars: [96],
-				_qualify: (source) => source.charCodeAt(0) === 96 && source.indexOf("`", 1) !== -1,
-				_match: simpleInlineRegex(CODE_INLINE_R),
-				_order: Priority.LOW,
-				_parse(capture) {
-					return { text: unescapeString(capture[2] ?? "") };
-				},
-				_render(node, _, state = {}) {
-					return createElement("code", { key: state.key }, node.text);
-				}
-			},
-			[RuleType.footnote]: {
-				_scope: SCOPE_INLINE,
-				_qualify: ["[^"],
-				_match: blockRegex(FOOTNOTE_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					scope.current.footnotes.push({
-						footnote: capture[2] ?? "",
-						identifier: capture[1] ?? ""
-					});
-					return {};
-				},
-				_render: renderNothing
-			},
-			[RuleType.footnoteReference]: {
-				_scope: SCOPE_INLINE,
-				_qualify: ["[^"],
-				_match: inlineRegex(FOOTNOTE_REFERENCE_R),
-				_order: Priority.HIGH,
-				_parse(capture) {
-					const text = capture[1] ?? "";
-					return {
-						target: `#${slug(text)}`,
-						text
-					};
-				},
-				_render(node, _, state = {}) {
-					return createElement("a", {
-						key: state.key,
-						href: sanitize(node.target, "a", "href") ?? void 0
-					}, createElement("sup", { key: state.key }, node.text));
-				}
-			},
-			[RuleType.gfmTask]: {
-				_scope: SCOPE_INLINE,
-				_qualify: ["[ ]", "[x]"],
-				_match: inlineRegex(GFM_TASK_R),
-				_order: Priority.HIGH,
-				_parse(capture) {
-					return { completed: (capture[1] ?? "").toLowerCase() === "x" };
-				},
-				_render(node, _, state = {}) {
-					return createElement("input", {
-						checked: node.completed,
-						key: state.key,
-						readOnly: true,
-						type: "checkbox"
-					});
-				}
-			},
-			[RuleType.heading]: {
-				_scope: SCOPE_BLOCK,
-				_qualify: ["#"],
-				_match: blockRegex(options.enforceAtxHeadings ? HEADING_ATX_COMPLIANT_R : HEADING_R),
-				_order: Priority.HIGH,
-				_parse(capture, parse, state) {
-					const text = capture[2] ?? "";
-					return {
-						children: parseInline(parse, text, state),
-						id: slug(text),
-						level: capture[1]?.length ?? 1
-					};
-				},
-				_render(node, output, state = {}) {
-					return createElement(`h${node.level}`, {
-						id: node.id,
-						key: state.key
-					}, output(node.children, state));
-				}
-			},
-			[RuleType.headingSetext]: {
-				_scope: SCOPE_BLOCK,
-				_qualify: (source, state) => {
-					if (state.prevCaptureIndent === void 0 || state.inline || state.simple) return false;
-					const nlIndex = source.indexOf("\n");
-					return nlIndex > 0 && nlIndex < source.length - 1 && (source[nlIndex + 1] === "=" || source[nlIndex + 1] === "-");
-				},
-				_match: blockRegex(HEADING_SETEXT_R),
-				_order: Priority.MAX,
-				_parse(capture, parse, state) {
-					return {
-						children: parseInline(parse, capture[1] ?? "", state),
-						level: capture[2] === "=" ? 1 : 2,
-						type: RuleType.heading
-					};
-				}
-			},
-			[RuleType.htmlBlock]: pairedElementRule(matchHtmlBlockElement, Priority.HIGH, true, SCOPE_BOTH),
-			[RuleType.htmlComment]: {
-				_scope: SCOPE_BOTH,
-				_qualify: ["<!"],
-				_match: anyScopeRegex(HTML_COMMENT_R),
-				_order: Priority.HIGH,
-				_parse: captureNothing,
-				_render: renderNothing
-			},
-			[RuleType.htmlSelfClosing]: {
-				_scope: SCOPE_BOTH,
-				_qualify: ["<"],
-				_match: anyScopeRegex(matchSelfClosingElement),
-				_order: Priority.HIGH,
-				_parse(capture) {
-					const tag = (capture[1] ?? "").trim();
-					return {
-						attrs: attrStringToMap(tag, capture[2] || ""),
-						tag
-					};
-				},
-				_render(node, _, state = {}) {
-					return createElement(node.tag, {
-						key: state.key,
-						...node.attrs ?? {}
-					});
-				}
-			},
-			[RuleType.customComponent]: pairedElementRule(matchCustomComponent, Priority.MAX, false, SCOPE_BOTH),
-			[RuleType.paragraph]: {
-				_scope: SCOPE_BLOCK,
-				_qualify: (_source, state) => !state.inline && !state.simple,
-				_match: matchParagraph,
-				_order: Priority.LOW,
-				_parse: parseCaptureInline,
-				_render(node, output, state = {}) {
-					return createElement("p", { key: state.key }, output(node.children, state));
-				}
-			},
-			[RuleType.image]: {
-				_scope: SCOPE_INLINE,
-				_firstChars: [33],
-				_qualify: (source) => source.startsWith("![") && source.indexOf("](") !== -1,
-				_match: simpleInlineRegex(IMAGE_R),
-				_order: Priority.HIGH,
-				_parse(capture) {
-					return {
-						alt: unescapeString(capture[1] ?? ""),
-						target: unescapeString(capture[2] ?? ""),
-						title: capture[3] ? unescapeString(capture[3]) : void 0
-					};
-				},
-				_render(node, _, state = {}) {
-					return createElement("img", {
-						key: state.key,
-						alt: node.alt ?? void 0,
-						title: node.title ?? void 0,
-						src: sanitize(node.target, "img", "src") ?? void 0
-					});
-				}
-			},
-			[RuleType.link]: {
-				_scope: SCOPE_INLINE,
-				_firstChars: [91],
-				_qualify: (source) => source.charCodeAt(0) === 91 && source.indexOf("](") !== -1,
-				_match: inlineRegex(LINK_R),
-				_order: Priority.LOW,
-				_parse(capture, parse, state) {
-					return {
-						children: parseSimpleInline(parse, capture[1] ?? "", state),
-						target: unescapeString(capture[2] ?? ""),
-						title: capture[3] ? unescapeString(capture[3]) : void 0
-					};
-				},
-				_render(node, output, state = {}) {
-					const sanitizedHref = sanitize(node.target, "a", "href");
-					return createElement("a", {
-						key: state.key,
-						href: sanitizedHref ?? void 0,
-						title: node.title ?? void 0
-					}, output(node.children, state));
-				}
-			},
-			[RuleType.linkAngleBraceStyleDetector]: {
-				_scope: SCOPE_INLINE,
-				_qualify: ["<"],
-				_match: inlineRegex(LINK_AUTOLINK_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					let target = capture[1] ?? "";
-					let isEmail = false;
-					if (target.indexOf("@") !== -1 && target.indexOf("//") === -1) {
-						isEmail = true;
-						target = target.replace("mailto:", "");
-					}
-					return {
-						children: [{
-							text: target,
-							type: RuleType.text
-						}],
-						target: isEmail ? `mailto:${target}` : target,
-						type: RuleType.link
-					};
-				}
-			},
-			[RuleType.linkBareUrlDetector]: {
-				_scope: SCOPE_INLINE,
-				_firstChars: [104],
-				_qualify: (source, state) => Boolean(state.inline && !state.inAnchor && !options.disableAutoLink && (startsWith(source, "http://") || startsWith(source, "https://"))),
-				_match: inlineRegex(LINK_AUTOLINK_BARE_URL_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					const url = capture[1] ?? "";
-					return {
-						children: [{
-							text: url,
-							type: RuleType.text
-						}],
-						target: url,
-						type: RuleType.link
-					};
-				}
-			},
-			[RuleType.newlineCoalescer]: {
-				_scope: SCOPE_BOTH,
-				_qualify: ["\n"],
-				_match: blockRegex(CONSECUTIVE_NEWLINE_R),
-				_order: Priority.LOW,
-				_parse: captureNothing,
-				_render() {
-					return "\n";
-				}
-			},
-			[RuleType.orderedList]: generateListRule(1),
-			[RuleType.unorderedList]: generateListRule(2),
-			[RuleType.ref]: {
-				_scope: SCOPE_BOTH,
-				_qualify: ["["],
-				_match: anyScopeRegex(REFERENCE_IMAGE_OR_LINK),
-				_order: Priority.MAX,
-				_parse(capture) {
-					const identifier = capture[1];
-					if (identifier !== void 0) scope.current.references[identifier] = {
-						target: capture[2] ?? "",
-						title: capture[4]
-					};
-					return {};
-				},
-				_render: renderNothing
-			},
-			[RuleType.refImage]: {
-				_scope: SCOPE_INLINE,
-				_firstChars: [33],
-				_qualify: (source) => source.startsWith("![") && source.indexOf("](") === -1,
-				_match: simpleInlineRegex(REFERENCE_IMAGE_R),
-				_order: Priority.MAX,
-				_parse(capture) {
-					return {
-						alt: capture[1] ? unescapeString(capture[1]) : void 0,
-						ref: capture[2] ?? ""
-					};
-				},
-				_render(node, _, state = {}) {
-					const ref = scope.current.references[node.ref];
-					if (!ref) return null;
-					return createElement("img", {
-						key: state.key,
-						alt: node.alt,
-						src: sanitize(ref.target, "img", "src") ?? void 0,
-						title: ref.title
-					});
-				}
-			},
-			[RuleType.refLink]: {
-				_scope: SCOPE_INLINE,
-				_firstChars: [91],
-				_qualify: (source) => source.indexOf("](") === -1,
-				_match: inlineRegex(REFERENCE_LINK_R),
-				_order: Priority.MAX,
-				_parse(capture, parse, state) {
-					return {
-						children: parseSimpleInline(parse, capture[1] ?? "", state),
-						fallbackChildren: capture[0] ?? "",
-						ref: capture[2] ?? ""
-					};
-				},
-				_render(node, output, state = {}) {
-					const ref = scope.current.references[node.ref];
-					if (!ref) return createElement("span", { key: state.key }, node.fallbackChildren);
-					return createElement("a", {
-						key: state.key,
-						href: sanitize(ref.target, "a", "href") ?? void 0,
-						title: ref.title
-					}, output(node.children, state));
-				}
-			},
-			[RuleType.table]: {
-				_scope: SCOPE_BLOCK,
-				_qualify: ["|"],
-				_match: blockRegex(NP_TABLE_R),
-				_order: Priority.HIGH,
-				_parse(capture, parse, state) {
-					state.inline = true;
-					const align = capture[2] ? parseTableAlign(capture[2]) : [];
-					const cells = capture[3] ? parseTableCells(capture[3], parse, state) : [];
-					const header = parseTableRow(capture[1] ?? "", parse, state, !!cells.length);
-					state.inline = false;
-					return cells.length ? {
-						align,
-						cells,
-						header,
-						type: RuleType.table
-					} : {
-						children: header.flat(),
-						type: RuleType.paragraph
-					};
-				},
-				_render(node, output, state = {}) {
-					const table = node;
-					const getStyle = (i) => table.align[i] && table.align[i] !== "left" ? { textAlign: table.align[i] } : {};
-					return createElement("table", { key: state.key }, createElement("thead", { key: "thead" }, createElement("tr", null, ...table.header.map((c, i) => createElement("th", {
-						key: i,
-						style: getStyle(i)
-					}, output(c, state))))), createElement("tbody", { key: "tbody" }, ...table.cells.map((row, i) => createElement("tr", { key: i }, ...row.map((c, j) => createElement("td", {
-						key: j,
-						style: getStyle(j)
-					}, output(c, state)))))));
-				}
-			},
-			[RuleType.tableSeparator]: {
-				_scope: SCOPE_INLINE,
-				_qualify: ["|"],
-				_match: (source, state) => state.inTable ? /^\|/.exec(source) : null,
-				_order: Priority.HIGH,
-				_parse() {
-					return { type: RuleType.tableSeparator };
-				},
-				_render() {
-					return " | ";
-				}
-			},
-			[RuleType.text]: {
-				_scope: SCOPE_INLINE,
-				_match: allowInline((source, _state) => {
-					const len = source.length;
-					if (source.charCodeAt(0) === 10) {
-						let j = 1;
-						while (j < len && source.charCodeAt(j) === 32) j++;
-						if (j < len && (source.charCodeAt(j) === 42 || source.charCodeAt(j) === 43 || source.charCodeAt(j) === 45 || source.charCodeAt(j) >= 48 && source.charCodeAt(j) <= 57)) return [source.slice(0, j)];
-						return ["\n"];
-					}
-					if (source.charCodeAt(0) === 58) {
-						const shortMatch = SHORTCODE_R.exec(source);
-						if (shortMatch) return shortMatch;
-					}
-					TEXT_RUN_R.lastIndex = 1;
-					TEXT_RUN_R.test(source);
-					TEXT_CAPTURE[0] = source.slice(0, trimHardBreak(source, TEXT_RUN_R.lastIndex));
-					return TEXT_CAPTURE;
-				}),
-				_order: Priority.MIN,
-				_parse(capture) {
-					const text = capture[0] ?? "";
-					return {
-						type: RuleType.text,
-						text: text.charCodeAt(0) !== 38 ? text : text.replace(HTML_CHAR_CODE_R, (f, i) => {
-							if (i.startsWith("#x")) return String.fromCharCode(parseInt(i.slice(2), 16));
-							if (i.startsWith("#")) return String.fromCharCode(parseInt(i.slice(1), 10));
-							return namedCodesToUnicode[i] || f;
-						})
-					};
-				},
-				_render(node) {
-					return node.text;
-				}
-			},
-			[RuleType.textBolded]: {
-				_scope: SCOPE_INLINE,
-				_firstChars: [42, 95],
-				_qualify: (source) => {
-					const c = source.charCodeAt(0);
-					if (c === 42) {
-						const next = source.charCodeAt(2);
-						if (next === 32 || next === 10 || next === 9) return false;
-						return source.charCodeAt(1) === 42 && source.indexOf("**", 2) !== -1;
-					}
-					if (c === 95) {
-						const next = source.charCodeAt(2);
-						if (next === 32 || next === 10 || next === 9) return false;
-						return source.charCodeAt(1) === 95 && source.indexOf("__", 2) !== -1;
-					}
-					return false;
-				},
-				_match: simpleInlineRegex(TEXT_BOLD_R),
-				_order: Priority.MED,
-				_parse(capture, parse, state) {
-					return { children: parse(capture[2] ?? "", state) };
-				},
-				_render(node, output, state = {}) {
-					return createElement("strong", { key: state.key }, output(node.children, state));
-				}
-			},
-			[RuleType.textEmphasized]: {
-				_scope: SCOPE_INLINE,
-				_firstChars: [42, 95],
-				_qualify: (source) => {
-					const c = source.charCodeAt(0);
-					const next = source.charCodeAt(1);
-					if (next === 32 || next === 10 || next === 9) return false;
-					return c === 42 && source.indexOf("*", 1) !== -1 || c === 95 && source.indexOf("_", 1) !== -1;
-				},
-				_match: simpleInlineRegex(TEXT_EMPHASIZED_R),
-				_order: Priority.LOW,
-				_parse(capture, parse, state) {
-					return { children: parse(capture[2] ?? "", state) };
-				},
-				_render(node, output, state = {}) {
-					return createElement("em", { key: state.key }, output(node.children, state));
-				}
-			},
-			[RuleType.textEscaped]: {
-				_scope: SCOPE_INLINE,
-				_qualify: ["\\"],
-				_match: simpleInlineRegex(TEXT_ESCAPED_R),
-				_order: Priority.HIGH,
-				_parse(capture) {
-					return {
-						text: capture[1] ?? "",
-						type: RuleType.text
-					};
-				}
-			},
-			[RuleType.textMarked]: {
-				_scope: SCOPE_INLINE,
-				_firstChars: [61],
-				_qualify: (source) => {
-					const next = source.charCodeAt(2);
-					if (next === 32 || next === 10 || next === 9) return false;
-					return source.charCodeAt(1) === 61 && source.indexOf("==", 2) !== -1;
-				},
-				_match: simpleInlineRegex(TEXT_MARKED_R),
-				_order: Priority.LOW,
-				_parse(capture, parse, state) {
-					return { children: parseCaptureInline(capture, parse, state).children };
-				},
-				_render(node, output, state = {}) {
-					return createElement("mark", { key: state.key }, output(node.children, state));
-				}
-			},
-			[RuleType.textStrikethroughed]: {
-				_scope: SCOPE_INLINE,
-				_firstChars: [126],
-				_qualify: (source) => {
-					const next = source.charCodeAt(2);
-					if (next === 32 || next === 10 || next === 9) return false;
-					return source.charCodeAt(1) === 126 && source.indexOf("~~", 2) !== -1;
-				},
-				_match: simpleInlineRegex(TEXT_STRIKETHROUGHED_R),
-				_order: Priority.LOW,
-				_parse(capture, parse, state) {
-					return { children: parseCaptureInline(capture, parse, state).children };
-				},
-				_render(node, output, state = {}) {
-					return createElement("del", { key: state.key }, output(node.children, state));
-				}
-			}
-		};
-	};
-	STRIP_INDENT_REGEXES = [
-		null,
-		/^ {1,1}/gm,
-		/^ {1,2}/gm,
-		/^ {1,3}/gm,
-		/^ {1,4}/gm,
-		/^ {1,5}/gm,
-		/^ {1,6}/gm,
-		/^ {1,7}/gm,
-		/^ {1,8}/gm
-	];
-	TEXT_CAPTURE = [""];
-	TEXT_RUN_R = /(?:[^\n&h!*:<=[\\_`~]+|h(?!ttp))*/y;
-	trimHardBreak = (source, end) => end >= 3 && source.charCodeAt(end) === 10 && source.charCodeAt(end - 1) === 32 && source.charCodeAt(end - 2) === 32 ? end - 2 : end;
-	noopCreateElement = (type, props, ...children) => ({
-		children,
-		props,
-		type
-	});
-	createDocumentRules = (createElement, ctx, options, scope) => {
-		const attrStringToMap = (tag, str) => {
-			if (!str?.trim()) return null;
-			const attributes = str.match(ATTR_EXTRACTOR_R);
-			if (!attributes) return null;
-			return attributes.reduce((map, raw) => {
-				const delimiterIdx = raw.indexOf("=");
-				if (delimiterIdx !== -1) {
-					const key = normalizeAttributeKey(raw.slice(0, delimiterIdx)).trim();
-					const value = unquote(raw.slice(delimiterIdx + 1).trim());
-					const mappedKey = ATTRIBUTE_TO_NODE_PROP_MAP[key] ?? key;
-					if (mappedKey === "ref") return map;
-					map[mappedKey] = attributeValueToNodePropValue(tag, key, value, ctx.sanitizer ?? sanitizer);
-					if (typeof map[mappedKey] === "string" && startsWithElement(map[mappedKey])) map[mappedKey] = parseMarkdown(map[mappedKey].trim(), ctx, options).ast;
-				} else if (raw !== "style") map[ATTRIBUTE_TO_NODE_PROP_MAP[raw] ?? raw] = true;
-				return map;
-			}, {});
-		};
-		const nonParagraphBlockSyntaxes = [
-			BLOCKQUOTE_R,
-			CODE_BLOCK_FENCED_R,
-			CODE_BLOCK_R,
-			options.enforceAtxHeadings ? HEADING_ATX_COMPLIANT_R : HEADING_R,
-			NP_TABLE_R,
-			ORDERED_LIST_R,
-			UNORDERED_LIST_R,
-			startsWithCustomComponent
-		];
-		const blockSyntaxes = options.disableParsingRawHTML ? nonParagraphBlockSyntaxes : [
-			...nonParagraphBlockSyntaxes,
-			PARAGRAPH_R,
-			startsWithHtmlBlockElement,
-			HTML_COMMENT_R,
-			startsWithSelfClosingElement,
-			startsWithCustomComponent
-		];
-		const containsBlockSyntax = (input) => {
-			const cleaned = input.replace(TRIM_STARTING_NEWLINES, "");
-			const slice = cleaned.length > 2048 ? cleaned.slice(0, 2048) : cleaned;
-			if (slice.indexOf("\n\n") !== -1) return true;
-			return some(blockSyntaxes, slice);
-		};
-		const baseRules = createRules(createElement, ctx, options, scope, attrStringToMap, containsBlockSyntax, nonParagraphBlockSyntaxes);
-		return options.disableParsingRawHTML ? Object.keys(baseRules).reduce((acc, key) => {
-			if (key !== RuleType.htmlBlock && key !== RuleType.htmlSelfClosing) acc[key] = baseRules[key];
-			return acc;
-		}, {}) : baseRules;
-	};
-	parseWithRules = (markdown, options, parser, footnotes, refs) => {
-		const result = !options.preserveFrontmatter && markdown.charCodeAt(0) === 45 ? markdown.replace(FRONT_MATTER_R, "") : markdown;
-		const trimmedStart = result.charCodeAt(0) === 10 ? result.replace(TRIM_STARTING_NEWLINES, "") : result;
-		const inline = options.forceInline || !options.forceBlock && SHOULD_RENDER_AS_BLOCK_R.test(trimmedStart) === false;
-		const ast = parser(inline ? result : `${trimEnd(trimmedStart)}\n\n`, { inline });
-		if (footnotes.length > 0) for (const def of footnotes) def.parsedAst = parser(def.footnote, { inline: true });
-		return {
-			ast,
-			footnotes,
-			references: refs,
-			inline
-		};
-	};
-	renderWithRules = (parsed, ctx, options, emitter, createElement) => {
-		const components = ctx.components ?? {};
-		const slug = createSlugger(ctx);
-		const footnotes = parsed.footnotes || [];
-		const inline = parsed.inline;
-		const arr = emitter(parsed.ast, { inline });
-		while (typeof arr[arr.length - 1] === "string" && !arr[arr.length - 1].trim()) arr.pop();
-		const getOuterNode = () => {
-			if (options.wrapper === null) return arr;
-			const wrapper = options.wrapper ?? (inline ? "span" : "div");
-			if (arr.length > 1 || options.forceWrapper) return createElement(wrapper, { key: "outer" }, arr);
-			if (arr.length === 1) {
-				const node = arr[0];
-				if (Array.isArray(node)) return createElement(wrapper, { key: "outer" }, node);
-				if (typeof node === "string") {
-					const spanProps = { key: "outer" };
-					if (!inline && components) {
-						const pOverrideProps = get(components, "p.props", {}) ?? {};
-						const mergedClassName = cx(spanProps.className, pOverrideProps.className);
-						const finalSpanProps = {
-							...spanProps,
-							...pOverrideProps
-						};
-						if (mergedClassName) finalSpanProps.className = mergedClassName;
-						return createElement("span", finalSpanProps, node);
-					}
-					return createElement("span", spanProps, node);
-				}
-				return node;
-			}
-			return createElement(wrapper, { key: "outer" }, null);
-		};
-		const node = getOuterNode();
-		return footnotes.length ? createElement("div", null, node, createElement("footer", { key: "footer" }, ...footnotes.map((def) => createElement("div", {
-			id: slug(def.identifier),
-			key: def.identifier
-		}, def.identifier, emitter(def.parsedAst || def.footnote, { inline: true }))))) : node;
-	};
-	parseMarkdown = (markdown = "", ctx, options = {}) => {
-		const { parse, scope } = getRuleSet(ctx, options, true);
-		const documentScope = createDocumentScope();
-		return withDocumentScope(scope, documentScope, () => parseWithRules(markdown, options, parse, documentScope.footnotes, documentScope.references));
-	};
-	renderMarkdownAst = (parsed, ctx, options = {}) => {
-		const { emit, createElement, scope } = getRuleSet(ctx, options, false);
-		const documentScope = {
-			footnotes: parsed.footnotes ?? [],
-			references: parsed.references ?? {}
-		};
-		return withDocumentScope(scope, documentScope, () => renderWithRules(parsed, ctx, options, emit, createElement));
-	};
-	compile = (markdown = "", ctx, options = {}) => {
-		if (typeof markdown !== "string") {
-			console.error("intlayer: the first argument must be a string. Received", typeof markdown);
-			throw new Error("intlayer: the first argument must be a string");
-		}
-		const { parse, emit, createElement, scope } = getRuleSet(ctx, options, false);
-		const documentScope = createDocumentScope();
-		return withDocumentScope(scope, documentScope, () => {
-			const parsed = parseWithRules(markdown, options, parse, documentScope.footnotes, documentScope.references);
-			return renderWithRules(parsed, ctx, options, emit, createElement);
-		});
-	};
-}));
-var init_markdown = __esmMin((() => {
-	init_getMarkdownMetadata();
-	init_compiler();
-}));
-export { getMarkdownMetadata as a, renderMarkdownAst as i, compile as n, init_getMarkdownMetadata as o, init_compiler as r, init_markdown as t };
-var __create = Object.create;
-var __defProp = Object.defineProperty;
-var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
-var __getOwnPropNames = Object.getOwnPropertyNames;
-var __getProtoOf = Object.getPrototypeOf;
-var __hasOwnProp = Object.prototype.hasOwnProperty;
-var __esmMin = (fn, res, err) => () => {
-	if (err) throw err[0];
-	try {
-		return fn && (res = fn(fn = 0)), res;
-	} catch (e) {
-		throw err = [e], e;
-	}
+var getPlural = (pluralContent, count, locale) => {
+	return pluralContent[getCachedIntl("PluralRules", locale).select(count)] ?? pluralContent.other;
 };
-var __commonJSMin = (cb, mod) => () => (mod || (cb((mod = { exports: {} }).exports, mod), cb = null), mod.exports);
-var __exportAll = (all, no_symbols) => {
-	let target = {};
-	for (var name in all) __defProp(target, name, {
-		get: all[name],
-		enumerable: true
-	});
-	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
+var getSelect = (selectContent, value) => {
+	const caseList = Object.keys(selectContent);
+	const lastCase = caseList[caseList.length - 1];
+	return selectContent[value] ?? selectContent.fallback ?? selectContent.other ?? selectContent[lastCase];
+};
+var isPlainObject = (value) => {
+	if (value === null || typeof value !== "object") return false;
+	if (typeof value.then === "function") return false;
+	if (value.$$typeof !== void 0 || value.__v_isVNode !== void 0 || value._isVNode !== void 0 || value.isJSX !== void 0) return false;
+	const proto = Object.getPrototypeOf(value);
+	return proto === Object.prototype || proto === null || Array.isArray(value);
+};
+var deepMerge = (target, source) => {
+	if (target === void 0) return source;
+	if (source === void 0) return target;
+	if (Array.isArray(target)) return target;
+	if (isPlainObject(target) && isPlainObject(source)) {
+		const result = { ...target };
+		for (const key of Object.keys(source)) {
+			if (key === "__proto__" || key === "constructor" || source[key] === void 0) continue;
+			result[key] = target[key] !== void 0 ? deepMerge(target[key], source[key]) : source[key];
+		}
+		return result;
+	}
 	return target;
 };
-var __copyProps = (to, from, except, desc) => {
-	if (from && typeof from === "object" || typeof from === "function") for (var keys = __getOwnPropNames(from), i = 0, n = keys.length, key; i < n; i++) {
-		key = keys[i];
-		if (!__hasOwnProp.call(to, key) && key !== except) __defProp(to, key, {
-			get: ((k) => from[k]).bind(null, key),
-			enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable
+var getTranslation = (languageContent, locale, fallback) => {
+	const get = (loc) => languageContent[loc];
+	const seen = /* @__PURE__ */ new Set();
+	const locales = [];
+	const addLocale = (loc) => {
+		if (loc && !seen.has(loc)) {
+			seen.add(loc);
+			locales.push(loc);
+		}
+	};
+	addLocale(locale);
+	if (locale.includes("-")) addLocale(locale.split("-")[0]);
+	addLocale(fallback);
+	if (fallback?.includes("-")) addLocale(fallback.split("-")[0]);
+	const results = [];
+	for (const loc of locales) {
+		const val = get(loc);
+		if (val === void 0) continue;
+		if (typeof val === "string") {
+			if (results.length === 0) return val;
+			continue;
+		}
+		results.push(val);
+	}
+	if (results.length === 0) return void 0;
+	if (results.length === 1) return results[0];
+	if (Array.isArray(results[0])) return results[0];
+	return results.reduce((acc, curr) => deepMerge(acc, curr));
+};
+var isInterpolableWrapperNode = (node) => {
+	if (typeof node !== "object" || node === null || !("nodeType" in node)) return false;
+	const { nodeType } = node;
+	return false;
+};
+var getInterpolableContent = (node) => {
+	if (typeof node === "string") return node;
+	if (isInterpolableWrapperNode(node)) return node.nodeType === "html" ? node[HTML] : node[MARKDOWN];
+};
+var rebuildInterpolableContent = (node, interpolated) => {
+	if (typeof node === "string") return interpolated;
+	if (isInterpolableWrapperNode(node)) {
+		const key = node.nodeType === "html" ? HTML : MARKDOWN;
+		return {
+			...node,
+			[key]: interpolated
+		};
+	}
+	return node;
+};
+var transformInterpolableNode = (node, values, subProps, parentPlugins, deepTransformNode) => {
+	const children = rebuildInterpolableContent(node, getInsertion(getInterpolableContent(node), values));
+	return deepTransformNode(children, {
+		...subProps,
+		plugins: parentPlugins,
+		children
+	});
+};
+var fallbackPlugin = {
+	id: "fallback-plugin",
+	canHandle: () => false,
+	transform: (node) => node
+};
+var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
+	id: "translation-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
+	transform: (node, props, deepTransformNode) => {
+		const original = node["translation"] ?? {};
+		const result = {};
+		for (const key in original) {
+			const childProps = {
+				...props,
+				children: original[key],
+				keyPath: [...props.keyPath, {
+					type: TRANSLATION,
+					key
+				}]
+			};
+			result[key] = deepTransformNode(original[key], childProps);
+		}
+		return getTranslation(result, locale, fallback);
+	}
+};
+var enumerationPlugin = fallbackPlugin;
+var conditionPlugin = fallbackPlugin;
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+	id: "insertion-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
+	transform: (node, props, deepTransformNode) => {
+		const newKeyPath = [...props.keyPath, { type: INSERTION }];
+		const children = node[INSERTION];
+		const insertionStringPlugin = {
+			id: "insertion-string-plugin",
+			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
+			transform: (node, subProps, deepTransformNode) => {
+				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
+				const transformedResult = deepTransformNode(node, {
+					...subProps,
+					children: node,
+					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
+				});
+				return (values) => {
+					const children = getInsertion(transformedResult, values);
+					return deepTransformNode(children, {
+						...subProps,
+						plugins: props.plugins,
+						children
+					});
+				};
+			}
+		};
+		return deepTransformNode(children, {
+			...props,
+			children,
+			keyPath: newKeyPath,
+			plugins: [insertionStringPlugin, ...props.plugins ?? []]
 		});
 	}
-	return to;
 };
-var __toESM = (mod, isNodeMode, target) => (target = mod != null ? __create(__getProtoOf(mod)) : {}, __copyProps(isNodeMode || !mod || !mod.__esModule || !__hasOwnProp.call(mod, "default") ? __defProp(target, "default", {
-	value: mod,
-	enumerable: true
-}) : target, mod));
-var __toCommonJS = (mod) => __hasOwnProp.call(mod, "module.exports") ? mod["module.exports"] : __copyProps(__defProp({}, "__esModule", { value: true }), mod);
-var __require = ((x) => typeof require !== "undefined" ? require : typeof Proxy !== "undefined" ? new Proxy(x, { get: (a, b) => (typeof require !== "undefined" ? require : a)[b] }) : x)(function(x) {
-	if (typeof require !== "undefined") return require.apply(this, arguments);
-	throw Error("Calling `require` for \"" + x + "\" in an environment that doesn't expose the `require` function. See https://rolldown.rs/in-depth/bundling-cjs#require-external-modules for more details.");
+var genderPlugin = fallbackPlugin;
+var selectPlugin = fallbackPlugin;
+process.env.INTLAYER_OPTIMIZED_NESTING;
+var nestedPlugin = (locale) => fallbackPlugin;
+var filePlugin = fallbackPlugin;
+var getBasePlugins = (locale, fallback = true) => [
+	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
+	enumerationPlugin,
+	conditionPlugin,
+	insertionPlugin,
+	nestedPlugin(locale ?? internationalization.defaultLocale),
+	filePlugin,
+	genderPlugin,
+	selectPlugin
+];
+var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
+	...nodeProps,
+	plugins
 });
-export { __toCommonJS as a, __require as i, __esmMin as n, __toESM as o, __exportAll as r, __commonJSMin as t };
-import { n as __esmMin } from "./rolldown-runtime-BW-jZnKV.js";
-var VOID_HTML_ELEMENTS, TAG_REGEX, validateHTML;
-var init_validateHTML = __esmMin((() => {
-	VOID_HTML_ELEMENTS = /* @__PURE__ */ new Set([
-		"area",
-		"base",
-		"br",
-		"col",
-		"embed",
-		"hr",
-		"img",
-		"input",
-		"link",
-		"meta",
-		"source",
-		"track",
-		"wbr"
-	]);
-	TAG_REGEX = /<(\/)?([a-zA-Z][a-zA-Z0-9.-]*)\s*((?:[^\n]|\n(?!\n))*?)(\/?)>/g;
-	validateHTML = (content) => {
-		const issues = [];
-		const stack = [];
-		for (const match of content.matchAll(TAG_REGEX)) {
-			const isClosing = !!match[1];
-			const tagName = match[2];
-			const attrs = match[3];
-			const isSelfClosing = !!match[4];
-			if (attrs.trimStart().startsWith("://") || attrs.trimStart().startsWith(":")) continue;
-			if (isClosing) {
-				if (stack.length === 0) issues.push({
+var getDictionary = (dictionary, localeOrSelector, plugins) => {
+	const { locale, selector } = parseDictionarySelector(localeOrSelector);
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+	const cached = readTransformCache(dictionary, cacheKey);
+	if (cached.hit) return cached.content;
+	const appliedPlugins = plugins ?? getBasePlugins(locale);
+	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const transformDictionary = (resolvedDictionary) => {
+		const props = {
+			dictionaryKey: resolvedDictionary.key,
+			dictionaryPath: resolvedDictionary.filePath,
+			keyPath: [],
+			plugins: appliedPlugins,
+			nestedDictionaries: resolvedDictionary.nestedDictionaries
+		};
+		return getContent(resolvedDictionary.content, props, appliedPlugins);
+	};
+	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
+	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
+	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
+};
+var LOCALES = ["en"];
+var VOID_HTML_ELEMENTS = /* @__PURE__ */ new Set([
+	"area",
+	"base",
+	"br",
+	"col",
+	"embed",
+	"hr",
+	"img",
+	"input",
+	"link",
+	"meta",
+	"source",
+	"track",
+	"wbr"
+]);
+var TAG_REGEX = /<(\/)?([a-zA-Z][a-zA-Z0-9.-]*)\s*((?:[^\n]|\n(?!\n))*?)(\/?)>/g;
+var validateHTML = (content) => {
+	const issues = [];
+	const stack = [];
+	for (const match of content.matchAll(TAG_REGEX)) {
+		const isClosing = !!match[1];
+		const tagName = match[2];
+		const attrs = match[3];
+		const isSelfClosing = !!match[4];
+		if (attrs.trimStart().startsWith("://") || attrs.trimStart().startsWith(":")) continue;
+		if (isClosing) {
+			if (stack.length === 0) issues.push({
+				type: "error",
+				message: `Closing tag </${tagName}> has no matching opening tag`
+			});
+			else {
+				const last = stack[stack.length - 1];
+				if (last.tag.toLowerCase() !== tagName.toLowerCase()) issues.push({
 					type: "error",
-					message: `Closing tag </${tagName}> has no matching opening tag`
+					message: `Mismatched closing tag: expected </${last.tag}> but found </${tagName}>`
 				});
-				else {
-					const last = stack[stack.length - 1];
-					if (last.tag.toLowerCase() !== tagName.toLowerCase()) issues.push({
-						type: "error",
-						message: `Mismatched closing tag: expected </${last.tag}> but found </${tagName}>`
-					});
-					stack.pop();
+				stack.pop();
+			}
+		} else {
+			const isVoidElement = VOID_HTML_ELEMENTS.has(tagName.toLowerCase());
+			if (!isSelfClosing && !isVoidElement) stack.push({ tag: tagName });
+		}
+	}
+	for (const unclosed of stack) issues.push({
+		type: "error",
+		message: `Unclosed HTML tag: <${unclosed.tag}>`
+	});
+	return {
+		valid: issues.filter((i) => i.type === "error").length === 0,
+		issues
+	};
+};
+var parseAttributes = (attributesString) => {
+	const attributes = {};
+	if (!attributesString?.trim()) return attributes;
+	[...attributesString.matchAll(/([a-zA-Z0-9-:_@]+)(?:\s*=\s*(?:"[^"]*"|'[^']*'|[^>\s]+))?/g)].forEach((match) => {
+		const attrName = match[1];
+		attributes[attrName] = "string";
+	});
+	return attributes;
+};
+var getHTMLCustomComponents = (content) => {
+	if (typeof content !== "string") throw new Error("content must be a string");
+	const matches = [...content.matchAll(/<(\/)?([a-zA-Z0-9.-]+)\s*([\s\S]*?)(\/?)>/g)];
+	const components = {};
+	matches.forEach((match) => {
+		const isClosing = !!match[1];
+		const tagName = match[2];
+		const attributesString = match[3];
+		const isSelfClosing = !!match[4];
+		if (/^[a-z][a-z0-9]*$/.test(tagName)) {
+			components[tagName] = true;
+			return;
+		}
+		if (!components[tagName]) components[tagName] = {};
+		if (components[tagName] === true) return;
+		if (isClosing) return;
+		const attributes = parseAttributes(attributesString);
+		const componentDef = components[tagName];
+		Object.assign(componentDef, attributes);
+		if (!isSelfClosing) componentDef.children = "string";
+	});
+	return components;
+};
+var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
+var resolveExpiresToTimestamp = (expires) => {
+	if (typeof expires === "number") return Date.now() + expires * 1e3;
+	if (typeof expires === "string") {
+		const time = Date.parse(expires);
+		return Number.isNaN(time) ? void 0 : time;
+	}
+};
+var buildCookieString = (name, value, attributes) => {
+	const parts = [`${name}=${encodeURIComponent(value)}`];
+	if (attributes.path) parts.push(`Path=${attributes.path}`);
+	if (attributes.domain) parts.push(`Domain=${attributes.domain}`);
+	const expiresTimestamp = resolveExpiresToTimestamp(attributes.expires);
+	if (expiresTimestamp !== void 0) parts.push(`Expires=${new Date(expiresTimestamp).toUTCString()}`);
+	if (attributes.secure) parts.push("Secure");
+	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
+	return parts.join("; ");
+};
+var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var localeStorageOptions = {
+	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
+	getLocaleStorage: (name) => localStorage.getItem(name),
+	getSessionStorage: (name) => sessionStorage.getItem(name),
+	isCookieEnabled: true,
+	setCookieStore: (name, value, attributes) => cookieStore.set({
+		name,
+		value,
+		path: attributes.path,
+		domain: attributes.domain,
+		expires: attributes.expires,
+		sameSite: attributes.sameSite
+	}),
+	setCookieString: (_name, cookie) => {
+		document.cookie = cookie;
+	},
+	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
+	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
+};
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
+	const { locales } = internationalization;
+	if (options?.isCookieEnabled === false) return void 0;
+	const isValidLocale = (value) => !!value && locales.includes(value);
+	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
+		const value = options?.getCookie?.(routing.storage.cookies[i].name);
+		if (isValidLocale(value)) return value;
+	} catch {}
+};
+var setLocaleInStorageClient = (locale, options) => {
+	if (options?.isCookieEnabled === false) return;
+	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
+		const { name, attributes } = routing.storage.cookies[i];
+		try {
+			if (options?.setCookieStore) options.setCookieStore(name, locale, {
+				...attributes,
+				expires: resolveExpiresToTimestamp(attributes.expires)
+			});
+		} catch {
+			try {
+				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
+			} catch {}
+		}
+	}
+};
+var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
+var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(locale, {
+	...localeStorageOptions,
+	isCookieEnabled
+});
+var useEditor = () => {
+	const { locale } = useContext(IntlayerClientContext) ?? {};
+	const managerRef = useRef(null);
+	useEffect(() => {}, []);
+	useEffect(() => {
+		if (!locale || !managerRef.current) return;
+		managerRef.current.currentLocale.set(locale);
+	}, [locale]);
+};
+var EditorProvider = ({ children }) => {
+	useEditor();
+	return children;
+};
+var useAnalytics = () => {
+	const { locale } = useContext(IntlayerClientContext) ?? {};
+	const clientRef = useRef(null);
+	useEffect(() => {}, []);
+	useEffect(() => {
+		if (!locale || !clientRef.current) return;
+		clientRef.current.setLocale(locale);
+		clientRef.current.trackPageView({ reason: "locale_change" });
+	}, [locale]);
+};
+var AnalyticsProvider = ({ children }) => {
+	useAnalytics();
+	return children;
+};
+var setIntlayerIdentifier = () => {
+	if (typeof window !== "undefined") window.intlayer = { enabled: true };
+};
+var resolveRoutingConfig = (options = {}) => ({
+	...options,
+	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
+	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
+	locales: options.locales ?? internationalization?.locales ?? LOCALES,
+	rewrite: options.rewrite ?? routing?.rewrite,
+	domains: options.domains ?? routing?.domains
+});
+var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
+var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
+	const requestedLocales = [selectedLocale].flat();
+	const normalize = (locale) => locale.trim().toLowerCase();
+	try {
+		for (const requested of requestedLocales) {
+			const normalizedRequested = normalize(requested);
+			const exactMatch = locales.find((locale) => normalize(locale) === normalizedRequested);
+			if (exactMatch) return exactMatch;
+			const [requestedLang] = normalizedRequested.split("-");
+			const partialMatch = locales.find((locale) => normalize(locale).split("-")[0] === requestedLang);
+			if (partialMatch) return partialMatch;
+		}
+	} catch {}
+	return defaultLocale;
+};
+var getLocaleFromPath = (inputUrl = "/", options) => {
+	const { defaultLocale, locales, mode } = resolveRoutingConfig(options);
+	if (!defaultLocale || !locales) return defaultLocale;
+	const isAbsoluteUrl = checkIsURLAbsolute(inputUrl);
+	const fixedInputUrl = inputUrl?.endsWith("/") && inputUrl.length > 1 ? inputUrl.slice(0, -1) : inputUrl;
+	const url = isAbsoluteUrl ? new URL(fixedInputUrl) : new URL(fixedInputUrl, "http://e.com");
+	if (mode === "search-params") {
+		const localeParam = url.searchParams.get("locale");
+		if (isDeclaredLocale(localeParam, locales)) return localeParam;
+		return defaultLocale;
+	}
+	if (mode === "no-prefix") return defaultLocale;
+	const firstSegment = url.pathname.split("/")[1];
+	if (isDeclaredLocale(firstSegment, locales)) return firstSegment;
+	if (mode === "prefix-no-default") return defaultLocale;
+};
+var IntlayerClientContext = createContext({
+	locale: localeInStorage ?? internationalization?.defaultLocale,
+	setLocale: () => null,
+	isCookieEnabled: true
+});
+var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocaleProp, variant, children, setLocale: setLocaleProp, disableEditor, isCookieEnabled }) => {
+	const { locales: availableLocales, defaultLocale: defaultLocaleConfig } = internationalization ?? {};
+	const [currentLocale, setCurrentLocale] = useState(localeProp ?? localeInStorage ?? defaultLocaleProp ?? defaultLocaleConfig);
+	useEffect(() => {
+		if (localeProp && localeProp !== currentLocale) setCurrentLocale(localeProp);
+	}, [localeProp]);
+	useEffect(() => {
+		setIntlayerIdentifier();
+	}, []);
+	const setLocaleBase = (newLocale) => {
+		if (currentLocale.toString() === newLocale.toString()) return;
+		if (!availableLocales?.map(String).includes(newLocale)) {
+			console.error(`Locale ${newLocale} is not available`);
+			return;
+		}
+		setCurrentLocale(newLocale);
+		setLocaleInStorage(newLocale, isCookieEnabled);
+	};
+	const setLocale = setLocaleProp ?? setLocaleBase;
+	const resolvedLocale = localeResolver(currentLocale);
+	return jsx(IntlayerClientContext.Provider, {
+		value: {
+			locale: resolvedLocale,
+			setLocale,
+			variant,
+			disableEditor
+		},
+		children
+	});
+};
+var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent, {
+	...props,
+	children: [
+		jsx(EditorProvider, {}),
+		jsx(AnalyticsProvider, {}),
+		children
+	]
+});
+var IntlayerClientProviderBase = (props) => jsx(IntlayerProvider, { ...props });
+var IntlayerClientProvider = IntlayerClientProviderBase;
+var NextIntlClientProvider = ({ locale, children, messages: _messages, timeZone: _timeZone, now: _now, ...rest }) => {
+	if (typeof _messages !== "undefined") getAppLogger({ log })(`${colorize("NextIntlClientProvider", CYAN)} do not pass the messages prop with intlayer. Messages are loaded automatically under the hood for bundle optimization reason`);
+	const pathname = usePathname();
+	const mode = routing?.mode ?? "prefix-no-default";
+	const resolvedLocale = locale ?? (mode === "prefix-all" || mode === "prefix-no-default" ? getLocaleFromPath(pathname) : void 0);
+	return jsx(IntlayerClientProvider, {
+		locale: resolvedLocale,
+		...rest,
+		children
+	}, String(resolvedLocale));
+};
+var enumeration = (content) => formatNodeType(ENUMERATION, content);
+var gender = (content) => formatNodeType(GENDER, content);
+var html = (content, components) => {
+	const getComponents = () => {
+		if (components) return components;
+		if (typeof content === "string") {
+			const { issues } = validateHTML(content);
+			for (const issue of issues) if (issue.type === "error") console.error(`[intlayer/html] ${issue.message}`);
+			else console.warn(`[intlayer/html] ${issue.message}`);
+			return getHTMLCustomComponents(content);
+		}
+		let stringContent;
+		if (typeof content === "function") stringContent = content();
+		else if (typeof content.then === "function") stringContent = async () => getHTMLCustomComponents(await content);
+		if (typeof stringContent === "string") return getHTMLCustomComponents(stringContent);
+		try {
+			return getHTMLCustomComponents(JSON.stringify(content));
+		} catch (_e) {
+			return [];
+		}
+	};
+	return formatNodeType(HTML, content, { tags: getComponents() });
+};
+var getInsertionValues = (content) => {
+	const matches = [...content.matchAll(/{{\s*(.*?)\s*}}/g)];
+	if (matches.length === 0) return [];
+	return [...new Set(matches.map((match) => match[1].trim()))].filter(Boolean);
+};
+var insertion = (content) => {
+	const getInsertions = () => {
+		if (typeof content === "string") return getInsertionValues(content);
+		let stringContent;
+		if (typeof content === "function") stringContent = content();
+		else if (typeof content.then === "function") stringContent = async () => getInsertionValues(await content);
+		if (typeof stringContent === "string") return getInsertionValues(stringContent);
+		try {
+			return getInsertionValues(JSON.stringify(content));
+		} catch (_e) {
+			return [];
+		}
+	};
+	return formatNodeType(INSERTION, content, { fields: getInsertions() });
+};
+var plural = (content) => formatNodeType(PLURAL, content);
+var select = (content, variable) => formatNodeType(SELECT, content, { variable });
+var parseICU = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseArgument());
+			} else if (char === "}") break;
+			else if (char === "'") {
+				if (index + 1 < text.length && text[index + 1] === "'") {
+					currentText += "'";
+					index += 2;
+				} else {
+					const nextQuote = text.indexOf("'", index + 1);
+					if (nextQuote !== -1) {
+						currentText += text.substring(index + 1, nextQuote);
+						index = nextQuote + 1;
+					} else {
+						currentText += "'";
+						index++;
+					}
 				}
 			} else {
-				const isVoidElement = VOID_HTML_ELEMENTS.has(tagName.toLowerCase());
-				if (!isSelfClosing && !isVoidElement) stack.push({ tag: tagName });
+				currentText += char;
+				index++;
 			}
 		}
-		for (const unclosed of stack) issues.push({
-			type: "error",
-			message: `Unclosed HTML tag: <${unclosed.tag}>`
-		});
-		return {
-			valid: issues.filter((i) => i.type === "error").length === 0,
-			issues
-		};
+		if (currentText) nodes.push(currentText);
+		return nodes;
 	};
-}));
-export { init_validateHTML as n, validateHTML as r, VOID_HTML_ELEMENTS as t };
+	const parseArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select" || type === "selectordinal") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+					else if (type === "selectordinal") return {
+						type: "selectordinal",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var icuNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = icuNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = icuNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = icuNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+		if (node.type === "selectordinal") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) {
+				const newKey = key.startsWith("=") ? key.substring(1) : key === "other" ? "fallback" : key;
+				options[newKey] = icuNodesToIntlayer(val.map((value) => {
+					if (typeof value === "string") return value.replace(/#/g, `{{${node.name}}}`);
+					return value;
+				}));
+			}
+			options.__intlayer_icu_var = node.name;
+			options.__intlayer_icu_ordinal = true;
+			return enumeration(options);
+		}
+	}
+	return nodes.map((node) => icuNodesToIntlayer([node]));
+};
+var icuToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return icuNodesToIntlayer(parseICU(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var icuToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "icu",
+		keyPath: [],
+		plugins: [{
+			id: "icu",
+			...icuToIntlayerPlugin
+		}]
+	});
+};
+var parseI18Next = (text) => {
+	let index = 0;
+	const parseNodes = () => {
+		const nodes = [];
+		let currentText = "";
+		while (index < text.length) {
+			const char = text[index];
+			if (char === "{" && text[index + 1] === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index += 2;
+				nodes.push(parseStandardArgument());
+			} else if (char === "{") {
+				if (currentText) {
+					nodes.push(currentText);
+					currentText = "";
+				}
+				index++;
+				nodes.push(parseICUArgument());
+			} else if (char === "}") break;
+			else {
+				currentText += char;
+				index++;
+			}
+		}
+		if (currentText) nodes.push(currentText);
+		return nodes;
+	};
+	const parseStandardArgument = () => {
+		let name = "";
+		while (index < text.length) {
+			if (text[index] === "}" && text[index + 1] === "}") {
+				index += 2;
+				return {
+					type: "argument",
+					name: name.trim()
+				};
+			}
+			name += text[index];
+			index++;
+		}
+		throw new Error("Unclosed i18next variable");
+	};
+	const parseICUArgument = () => {
+		let name = "";
+		while (index < text.length && /[^,}]/.test(text[index])) {
+			name += text[index];
+			index++;
+		}
+		name = name.trim();
+		if (index >= text.length) throw new Error("Unclosed argument");
+		if (text[index] === "}") {
+			index++;
+			return {
+				type: "argument",
+				name
+			};
+		}
+		if (text[index] === ",") {
+			index++;
+			let type = "";
+			while (index < text.length && /[^,}]/.test(text[index])) {
+				type += text[index];
+				index++;
+			}
+			type = type.trim();
+			if (index >= text.length) throw new Error("Unclosed argument");
+			if (text[index] === "}") {
+				index++;
+				return {
+					type: "argument",
+					name,
+					format: { type }
+				};
+			}
+			if (text[index] === ",") {
+				index++;
+				if (type === "plural" || type === "select") {
+					const options = {};
+					while (index < text.length && text[index] !== "}") {
+						while (index < text.length && /\s/.test(text[index])) index++;
+						let key = "";
+						while (index < text.length && /[^{\s]/.test(text[index])) {
+							key += text[index];
+							index++;
+						}
+						while (index < text.length && /\s/.test(text[index])) index++;
+						if (text[index] !== "{") throw new Error("Expected { after option key");
+						index++;
+						const value = parseNodes();
+						if (text[index] !== "}") throw new Error("Expected } after option value");
+						index++;
+						options[key] = value;
+						while (index < text.length && /\s/.test(text[index])) index++;
+					}
+					index++;
+					if (type === "plural") return {
+						type: "plural",
+						name,
+						options
+					};
+					else if (type === "select") return {
+						type: "select",
+						name,
+						options
+					};
+				} else {
+					let style = "";
+					while (index < text.length && text[index] !== "}") {
+						style += text[index];
+						index++;
+					}
+					if (index >= text.length) throw new Error("Unclosed argument");
+					style = style.trim();
+					index++;
+					return {
+						type: "argument",
+						name,
+						format: {
+							type,
+							style
+						}
+					};
+				}
+			}
+		}
+		throw new Error("Malformed argument");
+	};
+	return parseNodes();
+};
+var i18nextNodesToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") {
+		const node = nodes[0];
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+		return node;
+	}
+	if (nodes.every((node) => typeof node === "string" || node.type === "argument")) {
+		let str = "";
+		for (const node of nodes) if (typeof node === "string") str += node;
+		else if (typeof node !== "string" && node.type === "argument") {
+			if (node.format) str += `{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`;
+			else str += `{{${node.name}}}`;
+		}
+		if (/<[a-zA-Z0-9-]+[^>]*>/.test(str)) return html(str);
+		return insertion(str);
+	}
+	if (nodes.length === 1) {
+		const node = nodes[0];
+		if (typeof node === "string") {
+			if (/<[a-zA-Z0-9-]+[^>]*>/.test(node)) return html(node);
+			return node;
+		}
+		if (node.type === "argument") {
+			if (node.format) return insertion(`{${node.name}, ${node.format.type}${node.format.style ? `, ${node.format.style}` : ""}}`);
+			return insertion(`{{${node.name}}}`);
+		}
+		if (node.type === "plural") {
+			const options = {};
+			let hasExactMatch = false;
+			for (const key of Object.keys(node.options)) if (key.startsWith("=")) {
+				hasExactMatch = true;
+				break;
+			}
+			if (hasExactMatch) {
+				for (const [key, val] of Object.entries(node.options)) {
+					let newKey = key;
+					if (key.startsWith("=")) newKey = key.substring(1);
+					else if (key === "one") newKey = "1";
+					else if (key === "two") newKey = "2";
+					else if (key === "few") newKey = "<=3";
+					else if (key === "many") newKey = ">=4";
+					else if (key === "other") newKey = "fallback";
+					const replacedVal = val.map((v) => {
+						if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+						return v;
+					});
+					options[newKey] = i18nextNodesToIntlayer(replacedVal);
+				}
+				options.__intlayer_icu_var = node.name;
+				return enumeration(options);
+			} else {
+				for (const [key, val] of Object.entries(node.options)) options[key] = i18nextNodesToIntlayer(val.map((v) => {
+					if (typeof v === "string") return v.replace(/#/g, `{{${node.name}}}`);
+					return v;
+				}));
+				return plural(options);
+			}
+		}
+		if (node.type === "select") {
+			const options = {};
+			for (const [key, val] of Object.entries(node.options)) options[key === "other" ? "fallback" : key] = i18nextNodesToIntlayer(val);
+			const optionKeys = Object.keys(options);
+			if ((options.male || options.female) && optionKeys.every((k) => [
+				"male",
+				"female",
+				"other",
+				"fallback"
+			].includes(k))) return gender({
+				fallback: options.fallback,
+				male: options.male,
+				female: options.female
+			});
+			return select(options, node.name);
+		}
+	}
+	return nodes.map((node) => i18nextNodesToIntlayer([node]));
+};
+var i18nextToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("}") || /<[a-zA-Z0-9-]+[^>]*>/.test(node)),
+	transform: (node) => {
+		try {
+			return i18nextNodesToIntlayer(parseI18Next(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var i18nextToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "i18next",
+		keyPath: [],
+		plugins: [{
+			id: "i18next",
+			...i18nextToIntlayerPlugin
+		}]
+	});
+};
+var navigatePath = (contentValue, path, keySeparator = ".") => {
+	if (!path) return contentValue;
+	if (contentValue !== null && contentValue !== void 0 && typeof contentValue === "object") {
+		const flatValue = contentValue[path];
+		if (flatValue !== void 0) return flatValue;
+	}
+	if (keySeparator === false || !path.includes(keySeparator)) return;
+	let current = contentValue;
+	for (const part of path.split(keySeparator)) {
+		if (current === null || current === void 0 || typeof current !== "object") return;
+		current = current[part];
+	}
+	return current;
+};
+var parseVueI18nPart = (text) => {
+	let index = 0;
+	const nodes = [];
+	let currentText = "";
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "{") {
+			if (currentText) {
+				nodes.push(currentText);
+				currentText = "";
+			}
+			index++;
+			let name = "";
+			while (index < text.length && text[index] !== "}") {
+				name += text[index];
+				index++;
+			}
+			if (index < text.length) index++;
+			nodes.push({
+				type: "argument",
+				name: name.trim()
+			});
+		} else {
+			currentText += char;
+			index++;
+		}
+	}
+	if (currentText) nodes.push(currentText);
+	return nodes;
+};
+var parseVueI18n = (text) => {
+	const parts = [];
+	let currentPart = "";
+	let index = 0;
+	while (index < text.length) {
+		const char = text[index];
+		if (char === "\\" && index + 1 < text.length && text[index + 1] === "|") {
+			currentPart += "|";
+			index += 2;
+		} else if (char === "|") {
+			parts.push(currentPart.trim());
+			currentPart = "";
+			index++;
+		} else {
+			currentPart += char;
+			index++;
+		}
+	}
+	parts.push(currentPart.trim());
+	return parts.map(parseVueI18nPart);
+};
+var vueI18nPartToIntlayer = (nodes) => {
+	if (nodes.length === 0) return "";
+	if (nodes.length === 1 && typeof nodes[0] === "string") return nodes[0];
+	let str = "";
+	for (const node of nodes) if (typeof node === "string") str += node;
+	else str += `{{${node.name}}}`;
+	return insertion(str);
+};
+var vueI18nNodesToIntlayer = (parts) => {
+	if (parts.length === 1) return vueI18nPartToIntlayer(parts[0]);
+	const options = {};
+	const varName = "count";
+	if (parts.length === 2) return enumeration({
+		"1": vueI18nPartToIntlayer(parts[0]),
+		fallback: vueI18nPartToIntlayer(parts[1])
+	});
+	if (parts.length === 3) return enumeration({
+		"0": vueI18nPartToIntlayer(parts[0]),
+		"1": vueI18nPartToIntlayer(parts[1]),
+		fallback: vueI18nPartToIntlayer(parts[2])
+	});
+	parts.forEach((part, index) => {
+		if (index === parts.length - 1) options.fallback = vueI18nPartToIntlayer(part);
+		else options[index.toString()] = vueI18nPartToIntlayer(part);
+	});
+	options.__intlayer_vue_i18n_var = varName;
+	return enumeration(options);
+};
+var vueI18nToIntlayerPlugin = {
+	canHandle: (node) => typeof node === "string" && (node.includes("{") || node.includes("|")),
+	transform: (node) => {
+		try {
+			return vueI18nNodesToIntlayer(parseVueI18n(node));
+		} catch {
+			return node;
+		}
+	}
+};
+var vueI18nToIntlayerFormatter = (message) => {
+	return deepTransformNode(message, {
+		dictionaryKey: "vue-i18n",
+		keyPath: [],
+		plugins: [{
+			id: "vue-i18n",
+			...vueI18nToIntlayerPlugin
+		}]
+	});
+};
+var ENUMERATION_METADATA_KEYS = [
+	"__intlayer_icu_var",
+	"__intlayer_icu_ordinal",
+	"__intlayer_vue_i18n_var"
+];
+var resolveValuePath = (values, path) => {
+	if (path in values) return values[path];
+	let current = values;
+	for (const part of path.split(".")) {
+		if (current === null || current === void 0 || typeof current !== "object") return;
+		current = current[part];
+	}
+	return current;
+};
+var formatArgument = (value, type, style, locale) => {
+	try {
+		if (type === "number") {
+			const numberValue = Number(value);
+			if (style === "percent") return getCachedIntl("NumberFormat", locale, { style: "percent" }).format(numberValue);
+			if (style === "integer") return getCachedIntl("NumberFormat", locale, { maximumFractionDigits: 0 }).format(numberValue);
+			return getCachedIntl("NumberFormat", locale).format(numberValue);
+		}
+		if (type === "date" || type === "time") {
+			const dateValue = value instanceof Date ? value : new Date(value);
+			const dateTimeStyle = [
+				"short",
+				"medium",
+				"long",
+				"full"
+			].includes(style ?? "") ? style : type === "date" ? "medium" : "short";
+			return getCachedIntl("DateTimeFormat", locale, type === "date" ? { dateStyle: dateTimeStyle } : { timeStyle: dateTimeStyle }).format(dateValue);
+		}
+	} catch {}
+	return String(value);
+};
+var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (match, path, type, style) => {
+	const value = resolveValuePath(values, path);
+	if (value === void 0) return match;
+	return type ? formatArgument(value, type, style, locale) : String(value);
+}).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (match, path, type, style) => {
+	const value = resolveValuePath(values, path);
+	if (value === void 0) return match;
+	return formatArgument(value, type, style, locale);
+}).replace(/\{\s*([\w.]+)\s*\}/g, (match, path) => {
+	const value = resolveValuePath(values, path);
+	return value === void 0 ? match : String(value);
+});
+var getSelectorValue = (values, variableName) => values[variableName] ?? values.count ?? values.n;
+var resolveMessageNode = (node, values = {}, locale = "en") => {
+	if (node === null || node === void 0) return node;
+	if (typeof node === "string") return interpolateMessage(node, values, locale);
+	if (typeof node === "number" || typeof node === "boolean") return String(node);
+	if (typeof node === "function") try {
+		return resolveMessageNode(node(values), values, locale);
+	} catch {
+		return;
+	}
+	if (Array.isArray(node)) return node.map((item) => String(resolveMessageNode(item, values, locale) ?? "")).join("");
+	const typedNode = node;
+	if (typedNode.nodeType === "insertion") return resolveMessageNode(typedNode[INSERTION], values, locale);
+	if (typedNode.nodeType === "html") return resolveMessageNode(typedNode[HTML], values, locale);
+	if (typedNode.nodeType === "plural") {
+		const pluralState = typedNode[PLURAL];
+		return resolveMessageNode(getPlural(pluralState, Number(getSelectorValue(values, "count") ?? 1), locale), values, locale);
+	}
+	if (typedNode.nodeType === "enumeration") {
+		const enumerationState = typedNode[ENUMERATION];
+		const variableName = ENUMERATION_METADATA_KEYS.map((metadataKey) => enumerationState[metadataKey]).find((name) => typeof name === "string") ?? "count";
+		const isOrdinal = enumerationState.__intlayer_icu_ordinal === true;
+		const options = {};
+		for (const [key, value] of Object.entries(enumerationState)) if (!ENUMERATION_METADATA_KEYS.includes(key)) options[key] = value;
+		const selector = getSelectorValue(values, variableName);
+		let selected;
+		if (isOrdinal && !Number.isNaN(Number(selector))) {
+			const ordinalCount = Number(selector);
+			const ordinalCategory = getCachedIntl("PluralRules", locale, { type: "ordinal" }).select(ordinalCount);
+			selected = options[String(ordinalCount)] ?? options[ordinalCategory] ?? options.fallback ?? options.other;
+		} else if (typeof selector === "number" || !Number.isNaN(Number(selector))) selected = getEnumeration(options, Number(selector));
+		else selected = options[String(selector)] ?? options.fallback ?? options.other;
+		return resolveMessageNode(selected, values, locale);
+	}
+	if (typedNode.nodeType === "select") {
+		const selectState = typedNode[SELECT];
+		const selector = getSelectorValue(values, typeof typedNode.variable === "string" ? typedNode.variable : "value");
+		return resolveMessageNode(getSelect(selectState, String(selector ?? "")), values, locale);
+	}
+	if (typedNode.nodeType === "gender") {
+		const genderState = typedNode[GENDER];
+		return resolveMessageNode(genderState[String(values.gender ?? "")] ?? genderState.fallback ?? genderState.other, values, locale);
+	}
+	return node;
+};
+var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
+	const resolved = resolveMessageNode(node, values, locale);
+	return typeof resolved === "string" ? resolved : String(resolved ?? "");
+};
+var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: icuToIntlayerFormatter,
+	i18next: i18nextToIntlayerFormatter,
+	"vue-i18n": vueI18nToIntlayerFormatter
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
+var parseTaggedMessage = (message) => {
+	const tokens = [];
+	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
+	let lastIndex = 0;
+	let match = tagRegex.exec(message);
+	while (match !== null) {
+		if (match.index > lastIndex) tokens.push(message.slice(lastIndex, match.index));
+		const [, selfClosingTag, tag, inner] = match;
+		if (selfClosingTag) tokens.push({
+			tag: selfClosingTag,
+			children: []
+		});
+		else tokens.push({
+			tag,
+			children: parseTaggedMessage(inner)
+		});
+		lastIndex = match.index + match[0].length;
+		match = tagRegex.exec(message);
+	}
+	if (lastIndex < message.length) tokens.push(message.slice(lastIndex));
+	return tokens;
+};
+var splitRichValues = (values = {}) => {
+	const scalarValues = {};
+	const renderers = {};
+	for (const [valueKey, value] of Object.entries(values)) if (typeof value === "function") renderers[valueKey] = value;
+	else scalarValues[valueKey] = value;
+	return {
+		scalarValues,
+		renderers
+	};
+};
+var renderRichTokens = (tokens, renderers) => tokens.map((token, tokenIndex) => {
+	if (typeof token === "string") return token;
+	const children = renderRichTokens(token.children, renderers);
+	const renderer = renderers[token.tag];
+	if (typeof renderer === "function") return jsx(Fragment, { children: renderer(children) }, tokenIndex);
+	return jsx(Fragment, { children }, tokenIndex);
+});
+var renderMarkupTokens = (tokens, renderers) => tokens.map((token) => {
+	if (typeof token === "string") return token;
+	const children = renderMarkupTokens(token.children, renderers);
+	const renderer = renderers[token.tag];
+	if (typeof renderer === "function") return renderer(children);
+	return children;
+}).join("");
+var createNamespaceTranslator = (locale, namespace) => {
+	const [dictionaryKey, ...prefixSegments] = (namespace ?? "").split(".");
+	const keyPrefix = prefixSegments.join(".");
+	const lookup = (lookupKey) => lookupNamespaceKey(locale, dictionaryKey ?? "", keyPrefix, lookupKey);
+	return createLookupTranslator(locale, lookup, (key) => namespace ? `${namespace}.${key}` : key);
+};
+var lookupNamespaceKey = (locale, dictionaryKey, keyPrefix, key) => {
+	let targetDictionaryKey = dictionaryKey;
+	let path = keyPrefix ? `${keyPrefix}.${key}` : key;
+	const dictionaries = getDictionaries();
+	if (!targetDictionaryKey) {
+		const [firstSegment, ...restSegments] = key.split(".");
+		targetDictionaryKey = firstSegment ?? key;
+		path = restSegments.join(".");
+		if (!dictionaries[targetDictionaryKey]) for (const dictKey of Object.keys(dictionaries)) try {
+			const result = navigatePath(getIntlayer(dictKey, locale), key);
+			if (result !== void 0) return result;
+		} catch {}
+	}
+	try {
+		return navigatePath(getIntlayer(targetDictionaryKey, locale), path);
+	} catch {
+		return;
+	}
+};
+var createLookupTranslator = (locale, lookup, missingKeyFallback) => {
+	const resolveToString = (key, values = {}) => {
+		const rawValue = lookup(key);
+		if (rawValue === null || rawValue === void 0) return void 0;
+		return resolveMessage(rawValue, values, locale, "icu");
+	};
+	const translate = (key, values) => resolveToString(key, values) ?? missingKeyFallback(key);
+	return Object.assign(translate, {
+		has: (key) => lookup(key) !== void 0,
+		raw: (key) => lookup(key),
+		rich: (key, values) => {
+			const { scalarValues, renderers } = splitRichValues(values);
+			const message = resolveToString(key, scalarValues);
+			if (message === void 0) return missingKeyFallback(key);
+			return jsx(Fragment$1, { children: renderRichTokens(parseTaggedMessage(message), renderers) });
+		},
+		markup: (key, values) => {
+			const { scalarValues, renderers } = splitRichValues(values);
+			const message = resolveToString(key, scalarValues);
+			if (message === void 0) return missingKeyFallback(key);
+			return renderMarkupTokens(parseTaggedMessage(message), renderers);
+		}
+	});
+};
+var useTranslations = ((namespace) => {
+	const { locale: currentLocale } = useContext(IntlayerClientContext) ?? {};
+	return useMemo(() => createNamespaceTranslator(currentLocale, namespace), [currentLocale, namespace]);
+});
+function SettingsFooter() {
+	const t = useTranslations();
+	return jsxs("div", {
+		className: "flex justify-end gap-3",
+		children: [jsx("button", {
+			type: "button",
+			className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
+			children: t("settings.settings-footer.cancel")
+		}), jsx("button", {
+			type: "submit",
+			className: "rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
+			children: t("settings.settings-footer.saveChanges")
+		})]
+	});
+}
+function recordHydrationDuration() {
+	if (typeof window === "undefined") return;
+	console.log("--- BROWSER: RootDocument mounted");
+	performance.mark("hydration_end");
+	try {
+		if (performance.getEntriesByName("hydration_start").length > 0) {
+			performance.measure("hydration_duration", "hydration_start", "hydration_end");
+			console.log("--- BROWSER: hydration_duration measured");
+			const duration = performance.getEntriesByName("hydration_duration")[0]?.duration;
+			if (duration) console.log(`Hydration Duration: ${duration.toFixed(2)}ms`);
+		} else console.warn("--- BROWSER: hydration_start NOT FOUND");
+	} catch (err) {
+		console.warn("Could not measure hydration duration:", err);
+	}
+}
+function recordRenderTime(id, startTime) {
+	if (typeof window === "undefined") return;
+	const renderTime = performance.now() - startTime;
+	window.__RENDER_METRICS__ = window.__RENDER_METRICS__ || {};
+	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
+	window.__RENDER_METRICS__[id].push(renderTime);
+}
+function AppProviders({ children, locale }) {
+	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
+	useLayoutEffect(() => {
+		recordRenderTime("AppRoot", renderStart);
+	}, [renderStart]);
+	useEffect(() => {
+		document.documentElement.lang = locale;
+	}, [locale]);
+	useEffect(() => {
+		recordHydrationDuration();
+	}, []);
+	return jsx(NextIntlClientProvider, {
+		locale,
+		timeZone: "UTC",
+		children
+	});
+}
+var locale = "en";
+function Wrapper({ children }) {
+	return jsx(AppProviders, {
+		locale,
+		children
+	});
+}
+function Wrapped() {
+	return jsx(Wrapper, { children: jsx(SettingsFooter, {}) });
+}
+export { Wrapped as default };

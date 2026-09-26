@@ -2,7 +2,6 @@ import React, { Fragment, createContext, createElement, isValidElement, useConte
 import { Link, useNavigate, useParams } from "@tanstack/react-router";
 import { ChevronDown } from "lucide-react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var header_default = {
 	key: "header",
 	content: {
@@ -404,94 +403,6 @@ var colorize = (string, color, reset) => color && typeof window === "undefined" 
 colorize("✗", RED);
 colorize("✓", GREEN);
 colorize("⏲", BLUE);
-var theme_toggle_default = {
-	key: "theme-toggle",
-	content: {
-		"nodeType": "translation",
-		"translation": {
-			"en": {
-				"themeModeAutoSystemClick": "Theme mode: auto (system). Click to switch to light mode.",
-				"themeModeLightClick": "Theme mode: light. Click to switch to dark mode.",
-				"themeModeDarkClick": "Theme mode: dark. Click to switch to auto (system) mode.",
-				"themeAuto": "Theme: Auto",
-				"themeDark": "Theme: Dark",
-				"themeLight": "Theme: Light"
-			},
-			"fr": {
-				"themeModeAutoSystemClick": "Mode thématique : auto (système). Cliquez pour passer en mode clair.",
-				"themeModeLightClick": "Mode thématique : clair. Cliquez pour passer en mode sombre.",
-				"themeModeDarkClick": "Mode thématique : sombre. Cliquez pour passer en mode auto (système).",
-				"themeAuto": "Thème : Auto",
-				"themeDark": "Thème : Sombre",
-				"themeLight": "Thème : Clair"
-			},
-			"es": {
-				"themeModeAutoSystemClick": "Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.",
-				"themeModeLightClick": "Modo de tema: claro. Haz clic para cambiar al modo oscuro.",
-				"themeModeDarkClick": "Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).",
-				"themeAuto": "Tema: Auto",
-				"themeDark": "Tema: Oscuro",
-				"themeLight": "Tema: Claro"
-			},
-			"de": {
-				"themeModeAutoSystemClick": "Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.",
-				"themeModeLightClick": "Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.",
-				"themeModeDarkClick": "Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.",
-				"themeAuto": "Thema: Auto",
-				"themeDark": "Thema: Dunkel",
-				"themeLight": "Thema: Hell"
-			},
-			"it": {
-				"themeModeAutoSystemClick": "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.",
-				"themeModeLightClick": "Modalità tema: chiara. Clicca per passare alla modalità scura.",
-				"themeModeDarkClick": "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).",
-				"themeAuto": "Tema: Auto",
-				"themeDark": "Tema: Scuro",
-				"themeLight": "Tema: Chiaro"
-			},
-			"pt": {
-				"themeModeAutoSystemClick": "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
-				"themeModeLightClick": "Modo de tema: claro. Clique para mudar para o modo escuro.",
-				"themeModeDarkClick": "Modo de tema: escuro. Clique para mudar para o modo automático (sistema).",
-				"themeAuto": "Tema: Auto",
-				"themeDark": "Tema: Escuro",
-				"themeLight": "Tema: Claro"
-			},
-			"zh": {
-				"themeModeAutoSystemClick": "主题模式：自动（系统）。点击切换到亮色模式。",
-				"themeModeLightClick": "主题模式：亮色。点击切换到暗色模式。",
-				"themeModeDarkClick": "主题模式：暗色。点击切换到自动（系统）模式。",
-				"themeAuto": "主题：自动",
-				"themeDark": "主题：暗色",
-				"themeLight": "主题：亮色"
-			},
-			"ja": {
-				"themeModeAutoSystemClick": "テーマモード: 自動 (システム)。クリックしてライトモードに切り替えます。",
-				"themeModeLightClick": "テーマモード: ライト。クリックしてダークモードに切り替えます。",
-				"themeModeDarkClick": "テーマモード: ダーク。クリックして自動 (システム) モードに切り替えます。",
-				"themeAuto": "テーマ: 自動",
-				"themeDark": "テーマ: ダーク",
-				"themeLight": "テーマ: ライト"
-			},
-			"ko": {
-				"themeModeAutoSystemClick": "테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.",
-				"themeModeLightClick": "테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.",
-				"themeModeDarkClick": "테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.",
-				"themeAuto": "테마: 자동",
-				"themeDark": "테마: 다크",
-				"themeLight": "테마: 라이트"
-			},
-			"ru": {
-				"themeModeAutoSystemClick": "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.",
-				"themeModeLightClick": "Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.",
-				"themeModeDarkClick": "Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.",
-				"themeAuto": "Тема: Авто",
-				"themeDark": "Тема: Темная",
-				"themeLight": "Тема: Светлая"
-			}
-		}
-	}
-};
 var MAX_CACHE_SIZE = 50;
 var cache = /* @__PURE__ */ new Map();
 var alreadyWarnedConstructors = /* @__PURE__ */ new Set();
@@ -1516,9 +1427,10 @@ var formatArgument = (value, type, style, locale) => {
 	} catch {}
 	return String(value);
 };
-var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{}]+?)\s*\}\}/g, (match, path) => {
+var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
-	return value === void 0 ? match : String(value);
+	if (value === void 0) return match;
+	return type ? formatArgument(value, type, style, locale) : String(value);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
 	if (value === void 0) return match;
@@ -1572,15 +1484,17 @@ var resolveMessageNode = (node, values = {}, locale = "en") => {
 	}
 	return node;
 };
-var DIALECT_FORMATTERS = {
-	icu: (message) => icuToIntlayerFormatter(message),
-	i18next: (message) => i18nextToIntlayerFormatter(message),
-	"vue-i18n": (message) => vueI18nToIntlayerFormatter(message)
-};
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => {
-	const resolved = resolveMessageNode(typeof message === "string" ? DIALECT_FORMATTERS[dialect](message) : message, values, locale);
+var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
+	const resolved = resolveMessageNode(node, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
+var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: icuToIntlayerFormatter,
+	i18next: i18nextToIntlayerFormatter,
+	"vue-i18n": vueI18nToIntlayerFormatter
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var parseTaggedMessage = (message) => {
 	const tokens = [];
 	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
@@ -1930,7 +1844,94 @@ var IntlProvider = ({ locale, children, messages: _messages, formats: _formats, 
 		children
 	}, String(locale));
 };
-var _jsxFileName$4 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/ThemeToggle.tsx";
+var theme_toggle_default = {
+	key: "theme-toggle",
+	content: {
+		"nodeType": "translation",
+		"translation": {
+			"en": {
+				"themeModeAutoSystemClick": "Theme mode: auto (system). Click to switch to light mode.",
+				"themeModeLightClick": "Theme mode: light. Click to switch to dark mode.",
+				"themeModeDarkClick": "Theme mode: dark. Click to switch to auto (system) mode.",
+				"themeAuto": "Theme: Auto",
+				"themeDark": "Theme: Dark",
+				"themeLight": "Theme: Light"
+			},
+			"fr": {
+				"themeModeAutoSystemClick": "Mode thématique : auto (système). Cliquez pour passer en mode clair.",
+				"themeModeLightClick": "Mode thématique : clair. Cliquez pour passer en mode sombre.",
+				"themeModeDarkClick": "Mode thématique : sombre. Cliquez pour passer en mode auto (système).",
+				"themeAuto": "Thème : Auto",
+				"themeDark": "Thème : Sombre",
+				"themeLight": "Thème : Clair"
+			},
+			"es": {
+				"themeModeAutoSystemClick": "Modo de tema: automático (sistema). Haz clic para cambiar al modo claro.",
+				"themeModeLightClick": "Modo de tema: claro. Haz clic para cambiar al modo oscuro.",
+				"themeModeDarkClick": "Modo de tema: oscuro. Haz clic para cambiar al modo automático (sistema).",
+				"themeAuto": "Tema: Auto",
+				"themeDark": "Tema: Oscuro",
+				"themeLight": "Tema: Claro"
+			},
+			"de": {
+				"themeModeAutoSystemClick": "Themenmodus: Auto (System). Klicken, um in den hellen Modus zu wechseln.",
+				"themeModeLightClick": "Themenmodus: Hell. Klicken, um in den dunklen Modus zu wechseln.",
+				"themeModeDarkClick": "Themenmodus: Dunkel. Klicken, um in den Auto-Modus (System) zu wechseln.",
+				"themeAuto": "Thema: Auto",
+				"themeDark": "Thema: Dunkel",
+				"themeLight": "Thema: Hell"
+			},
+			"it": {
+				"themeModeAutoSystemClick": "Modalità tema: auto (sistema). Clicca per passare alla modalità chiara.",
+				"themeModeLightClick": "Modalità tema: chiara. Clicca per passare alla modalità scura.",
+				"themeModeDarkClick": "Modalità tema: scura. Clicca per passare alla modalità auto (sistema).",
+				"themeAuto": "Tema: Auto",
+				"themeDark": "Tema: Scuro",
+				"themeLight": "Tema: Chiaro"
+			},
+			"pt": {
+				"themeModeAutoSystemClick": "Modo de tema: automático (sistema). Clique para mudar para o modo claro.",
+				"themeModeLightClick": "Modo de tema: claro. Clique para mudar para o modo escuro.",
+				"themeModeDarkClick": "Modo de tema: escuro. Clique para mudar para o modo automático (sistema).",
+				"themeAuto": "Tema: Auto",
+				"themeDark": "Tema: Escuro",
+				"themeLight": "Tema: Claro"
+			},
+			"zh": {
+				"themeModeAutoSystemClick": "主题模式：自动（系统）。点击切换到亮色模式。",
+				"themeModeLightClick": "主题模式：亮色。点击切换到暗色模式。",
+				"themeModeDarkClick": "主题模式：暗色。点击切换到自动（系统）模式。",
+				"themeAuto": "主题：自动",
+				"themeDark": "主题：暗色",
+				"themeLight": "主题：亮色"
+			},
+			"ja": {
+				"themeModeAutoSystemClick": "テーマモード: 自動 (システム)。クリックしてライトモードに切り替えます。",
+				"themeModeLightClick": "テーマモード: ライト。クリックしてダークモードに切り替えます。",
+				"themeModeDarkClick": "テーマモード: ダーク。クリックして自動 (システム) モードに切り替えます。",
+				"themeAuto": "テーマ: 自動",
+				"themeDark": "テーマ: ダーク",
+				"themeLight": "テーマ: ライト"
+			},
+			"ko": {
+				"themeModeAutoSystemClick": "테마 모드: 자동(시스템). 클릭하여 라이트 모드로 전환합니다.",
+				"themeModeLightClick": "테마 모드: 라이트. 클릭하여 다크 모드로 전환합니다.",
+				"themeModeDarkClick": "테마 모드: 다크. 클릭하여 자동(시스템) 모드로 전환합니다.",
+				"themeAuto": "테마: 자동",
+				"themeDark": "테마: 다크",
+				"themeLight": "테마: 라이트"
+			},
+			"ru": {
+				"themeModeAutoSystemClick": "Режим темы: авто (системный). Нажмите, чтобы переключиться на светлую тему.",
+				"themeModeLightClick": "Режим темы: светлый. Нажмите, чтобы переключиться на темную тему.",
+				"themeModeDarkClick": "Режим темы: темный. Нажмите, чтобы переключиться на авто (системный) режим.",
+				"themeAuto": "Тема: Авто",
+				"themeDark": "Тема: Темная",
+				"themeLight": "Тема: Светлая"
+			}
+		}
+	}
+};
 function getInitialMode() {
 	if (typeof window === "undefined") return "auto";
 	const stored = window.localStorage.getItem("theme");
@@ -1970,18 +1971,14 @@ function ThemeToggle() {
 		window.localStorage.setItem("theme", nextMode);
 	}
 	const label = mode === "auto" ? t("themeModeAutoSystemClick") : mode === "light" ? t("themeModeLightClick") : t("themeModeDarkClick");
-	return jsxDEV("button", {
+	return jsx("button", {
 		type: "button",
 		onClick: toggleMode,
 		"aria-label": label,
 		title: label,
 		className: "rounded-md border border-border bg-accent px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-accent/80",
 		children: mode === "auto" ? t("themeAuto") : mode === "dark" ? t("themeDark") : t("themeLight")
-	}, void 0, false, {
-		fileName: _jsxFileName$4,
-		lineNumber: 75,
-		columnNumber: 5
-	}, this);
+	});
 }
 var locales = [
 	"en",
@@ -2003,7 +2000,6 @@ function getLocaleName(locale) {
 		return locale.toUpperCase();
 	}
 }
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/LocaleSwitcher.tsx";
 function LocaleSwitcher() {
 	const locale = useParams({ strict: false }).locale ?? "en";
 	const navigate = useNavigate();
@@ -2016,30 +2012,18 @@ function LocaleSwitcher() {
 			})
 		});
 	};
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "flex items-center gap-2",
-		children: jsxDEV("select", {
+		children: jsx("select", {
 			value: locale,
 			onChange: (e) => handleLocaleChange(e.target.value),
 			className: "h-8 rounded-md border border-border bg-card px-2 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-primary transition-colors",
-			children: locales.map((l) => jsxDEV("option", {
+			children: locales.map((l) => jsx("option", {
 				value: l,
 				children: getLocaleName(l)
-			}, l, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 24,
-				columnNumber: 11
-			}, this))
-		}, void 0, false, {
-			fileName: _jsxFileName$3,
-			lineNumber: 18,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 17,
-		columnNumber: 5
-	}, this);
+			}, l))
+		})
+	});
 }
 function usePerformanceMeasure(name) {
 	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
@@ -2052,7 +2036,6 @@ function usePerformanceMeasure(name) {
 		}
 	}, [name]);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/Header.tsx";
 function Header() {
 	const t = useDictionary(header_default);
 	usePerformanceMeasure("Header");
@@ -2092,26 +2075,22 @@ function Header() {
 			label: t("settings")
 		}
 	];
-	return jsxDEV("header", {
+	return jsx("header", {
 		className: "sticky top-0 z-50 border-b border-border bg-card/80 backdrop-blur-lg",
-		children: jsxDEV("nav", {
+		children: jsxs("nav", {
 			className: "container flex h-16 items-center justify-between",
-			children: [jsxDEV("div", {
+			children: [jsxs("div", {
 				className: "flex items-center gap-8",
-				children: [jsxDEV(Link, {
+				children: [jsx(Link, {
 					preload: false,
 					to: "/$locale",
 					params: { locale: currentLocale },
 					className: "text-lg font-bold tracking-tight text-primary no-underline",
 					children: "i18n Bench"
-				}, void 0, false, {
-					fileName: _jsxFileName$2,
-					lineNumber: 32,
-					columnNumber: 11
-				}, this), jsxDEV("div", {
+				}), jsxs("div", {
 					className: "hidden items-center gap-6 text-sm font-medium md:flex",
 					children: [
-						jsxDEV(Link, {
+						jsx(Link, {
 							preload: false,
 							to: "/$locale",
 							params: { locale: currentLocale },
@@ -2119,181 +2098,87 @@ function Header() {
 							activeProps: { className: "is-active" },
 							className: "nav-link",
 							children: t("home")
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 42,
-							columnNumber: 13
-						}, this),
-						jsxDEV(Link, {
+						}),
+						jsx(Link, {
 							preload: false,
 							to: "/$locale/about",
 							params: { locale: currentLocale },
 							activeProps: { className: "is-active" },
 							className: "nav-link",
 							children: t("methodology")
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 52,
-							columnNumber: 13
-						}, this),
-						jsxDEV("div", {
+						}),
+						jsxs("div", {
 							className: "relative",
-							children: [jsxDEV("button", {
+							children: [jsxs("button", {
 								type: "button",
 								className: "flex items-center gap-1 nav-link bg-transparent border-none cursor-pointer",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
 								onClick: () => setIsMockPagesOpen(!isMockPagesOpen),
-								children: [t("mockPages"), jsxDEV(ChevronDown, {
+								children: [t("mockPages"), jsx(ChevronDown, {
 									size: 14,
 									className: `transition-transform ${isMockPagesOpen ? "rotate-180" : ""}`
-								}, void 0, false, {
-									fileName: _jsxFileName$2,
-									lineNumber: 72,
-									columnNumber: 17
-								}, this)]
-							}, void 0, true, {
-								fileName: _jsxFileName$2,
-								lineNumber: 64,
-								columnNumber: 15
-							}, this), isMockPagesOpen && jsxDEV("div", {
+								})]
+							}), isMockPagesOpen && jsx("div", {
 								className: "absolute left-0 top-full pt-2 w-48",
 								onMouseEnter: () => setIsMockPagesOpen(true),
 								onMouseLeave: () => setIsMockPagesOpen(false),
-								children: jsxDEV("div", {
+								children: jsx("div", {
 									className: "bg-card border border-border rounded-md shadow-lg overflow-hidden py-1",
-									children: mockPages.map((page) => jsxDEV(Link, {
+									children: mockPages.map((page) => jsx(Link, {
 										preload: false,
 										to: page.to,
 										params: { locale: currentLocale },
 										className: "block px-4 py-2 text-sm text-foreground hover:bg-accent transition-colors",
 										onClick: () => setIsMockPagesOpen(false),
 										children: page.label
-									}, page.to, false, {
-										fileName: _jsxFileName$2,
-										lineNumber: 86,
-										columnNumber: 23
-									}, this))
-								}, void 0, false, {
-									fileName: _jsxFileName$2,
-									lineNumber: 84,
-									columnNumber: 19
-								}, this)
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 79,
-								columnNumber: 17
-							}, this)]
-						}, void 0, true, {
-							fileName: _jsxFileName$2,
-							lineNumber: 63,
-							columnNumber: 13
-						}, this)
+									}, page.to))
+								})
+							})]
+						})
 					]
-				}, void 0, true, {
-					fileName: _jsxFileName$2,
-					lineNumber: 41,
-					columnNumber: 11
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 31,
-				columnNumber: 9
-			}, this), jsxDEV("div", {
+				})]
+			}), jsxs("div", {
 				className: "flex items-center gap-4",
 				children: [
-					jsxDEV("a", {
+					jsxs("a", {
 						href: "https://github.com/intlayer-org/benchmark-i18n",
 						target: "_blank",
 						rel: "noreferrer",
 						className: "text-muted-foreground transition hover:text-foreground",
-						children: [jsxDEV("span", {
+						children: [jsx("span", {
 							className: "sr-only",
 							children: t("goToGithub")
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 111,
-							columnNumber: 13
-						}, this), jsxDEV("svg", {
+						}), jsx("svg", {
 							viewBox: "0 0 16 16",
 							"aria-hidden": "true",
 							width: "20",
 							height: "20",
-							children: jsxDEV("path", {
+							children: jsx("path", {
 								fill: "currentColor",
 								d: "M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-							}, void 0, false, {
-								fileName: _jsxFileName$2,
-								lineNumber: 113,
-								columnNumber: 15
-							}, this)
-						}, void 0, false, {
-							fileName: _jsxFileName$2,
-							lineNumber: 112,
-							columnNumber: 13
-						}, this)]
-					}, void 0, true, {
-						fileName: _jsxFileName$2,
-						lineNumber: 105,
-						columnNumber: 11
-					}, this),
-					jsxDEV(LocaleSwitcher, {}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 119,
-						columnNumber: 11
-					}, this),
-					jsxDEV(ThemeToggle, {}, void 0, false, {
-						fileName: _jsxFileName$2,
-						lineNumber: 120,
-						columnNumber: 11
-					}, this)
+							})
+						})]
+					}),
+					jsx(LocaleSwitcher, {}),
+					jsx(ThemeToggle, {})
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$2,
-				lineNumber: 104,
-				columnNumber: 9
-			}, this)]
-		}, void 0, true, {
-			fileName: _jsxFileName$2,
-			lineNumber: 30,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 29,
-		columnNumber: 5
-	}, this);
+			})]
+		})
+	});
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(React.Suspense, {
+	return jsx(React.Suspense, {
 		fallback: null,
-		children: jsxDEV(IntlProvider, {
+		children: jsx(IntlProvider, {
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-static/intlayer-compat-use-intl-app/src/components/Header.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(Header, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(Header, {}) });
 }
 export { Wrapped as default };

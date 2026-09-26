@@ -1,17 +1,626 @@
-import { useId } from "react";
-import { jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, createContext, createElement, isValidElement, useContext, useId, useMemo } from "react";
+import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
+var api_access_section_default = {
+	key: "api-access-section",
+	content: {
+		"nodeType": "translation",
+		"translation": {
+			"en": {
+				"a": "API Access",
+				"b": "API Key",
+				"d": "Use this key to access the benchmarking API programmatically.",
+				"c": "Copy"
+			},
+			"fr": {
+				"a": "Accès API",
+				"b": "Clé API",
+				"d": "Utilisez cette clé pour accéder à l'API de benchmarking par programmation.",
+				"c": "Copier"
+			},
+			"es": {
+				"a": "Acceso API",
+				"b": "Clave API",
+				"d": "Utilice esta clave para acceder a la API de benchmarking de forma programática.",
+				"c": "Copiar"
+			},
+			"de": {
+				"a": "API-Zugriff",
+				"b": "API-Schlüssel",
+				"d": "Verwenden Sie diesen Schlüssel für den programmgesteuerten Zugriff auf die Benchmarking-API.",
+				"c": "Kopieren"
+			},
+			"it": {
+				"a": "Accesso API",
+				"b": "Chiave API",
+				"d": "Usa questa chiave per accedere programmaticamente all'API di benchmarking.",
+				"c": "Copia"
+			},
+			"pt": {
+				"a": "Acesso à API",
+				"b": "Chave da API",
+				"d": "Utilize esta chave para aceder à API de benchmarking de forma programática.",
+				"c": "Copiar"
+			},
+			"zh": {
+				"a": "API 访问",
+				"b": "API 密钥",
+				"d": "使用此密钥以编程方式访问基准测试 API。",
+				"c": "复制"
+			},
+			"ja": {
+				"a": "APIアクセス",
+				"b": "APIキー",
+				"d": "このキーを使用して、ベンチマークAPIにプログラムでアクセスします。",
+				"c": "コピー"
+			},
+			"ko": {
+				"a": "API 액세스",
+				"b": "API 키",
+				"d": "이 키를 사용하여 프로그래밍 방식으로 벤치마킹 API에 액세스하십시오.",
+				"c": "복사"
+			},
+			"ru": {
+				"a": "Доступ к API",
+				"b": "Ключ API",
+				"d": "Используйте этот ключ для программного доступа к API бенчмаркинга.",
+				"c": "Копировать"
+			}
+		}
+	}
+};
+var internationalization = {
+	"locales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"requiredLocales": [
+		"en",
+		"fr",
+		"es",
+		"de",
+		"it",
+		"pt",
+		"zh",
+		"ja",
+		"ko",
+		"ru"
+	],
+	"strictMode": "inclusive",
+	"defaultLocale": "en"
+};
+var routing = {
+	"mode": "prefix-all",
+	"enableProxy": false,
+	"storage": {
+		"cookies": [{
+			"name": "INTLAYER_LOCALE",
+			"attributes": { "path": "/" }
+		}],
+		"headers": [{ "name": "x-intlayer-locale" }]
+	},
+	"basePath": ""
+};
+var renderIntlayerNode = ({ children, value, additionalProps }) => {
+	const element = isValidElement(children) ? children : jsx(Fragment$1, { children });
+	return new Proxy(element, { get(target, prop, receiver) {
+		if (prop === "value") return value;
+		if (prop === Symbol.toPrimitive) return () => value ?? "";
+		if (prop === "toString") return () => String(value ?? "");
+		if (prop === "valueOf") return () => value;
+		if (additionalProps && Object.hasOwn(additionalProps, prop)) return additionalProps[prop];
+		if (value !== null && value !== void 0 && typeof prop === "string" && prop !== "constructor" && !(prop in target)) {
+			const valObj = Object(value);
+			if (prop in valObj) {
+				const valProp = valObj[prop];
+				return typeof valProp === "function" ? valProp.bind(value) : valProp;
+			}
+		}
+		return Reflect.get(target, prop, receiver);
+	} });
+};
+var pluginsIdentities = /* @__PURE__ */ new WeakMap();
+var nextPluginsIdentity = 0;
+var getPluginsCacheKey = (plugins) => {
+	if (!plugins) return "base";
+	const existingIdentity = pluginsIdentities.get(plugins);
+	if (existingIdentity) return existingIdentity;
+	nextPluginsIdentity += 1;
+	const identity = `p${nextPluginsIdentity}`;
+	pluginsIdentities.set(plugins, identity);
+	return identity;
+};
+var MAX_ENTRIES_PER_DICTIONARY = 256;
+var transformCache = /* @__PURE__ */ new WeakMap();
+var isMemoizableDictionary = (value) => value !== null && typeof value === "object";
+var getDictionaryTransformCacheKey = (locale, selectorCacheKey, plugins) => `${locale}_${selectorCacheKey}_${getPluginsCacheKey(plugins)}`;
+var readTransformCache = (dictionary, cacheKey) => {
+	if (!isMemoizableDictionary(dictionary)) return { hit: false };
+	const entries = transformCache.get(dictionary);
+	if (!entries?.has(cacheKey)) return { hit: false };
+	return {
+		hit: true,
+		content: entries.get(cacheKey)
+	};
+};
+var writeTransformCache = (dictionary, cacheKey, content) => {
+	if (!isMemoizableDictionary(dictionary)) return content;
+	let entries = transformCache.get(dictionary);
+	if (!entries) {
+		entries = /* @__PURE__ */ new Map();
+		transformCache.set(dictionary, entries);
+	}
+	if (entries.size >= MAX_ENTRIES_PER_DICTIONARY) entries.clear();
+	entries.set(cacheKey, content);
+	return content;
+};
+var TRANSLATION = "translation";
+var INSERTION = "insertion";
+var OBJECT = "object";
+var ARRAY = "array";
+var MARKDOWN = "markdown";
+var HTML = "html";
+var deepTransformNode = (node, props) => {
+	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
+	if (node === null || typeof node !== "object") return node;
+	if (node.$$typeof !== void 0 || node.__v_isVNode !== void 0 || node._isVNode !== void 0 || node.isJSX !== void 0 || typeof node === "function") return node;
+	if (Array.isArray(node)) return node.map((child, index) => {
+		return deepTransformNode(child, {
+			...props,
+			children: child,
+			keyPath: [...props.keyPath, {
+				type: ARRAY,
+				key: index
+			}]
+		});
+	});
+	const result = {};
+	for (const key in node) {
+		const childProps = {
+			...props,
+			children: node[key],
+			keyPath: [...props.keyPath, {
+				type: OBJECT,
+				key
+			}]
+		};
+		if (props.eager) {
+			result[key] = deepTransformNode(node[key], childProps);
+			continue;
+		}
+		Object.defineProperty(result, key, {
+			enumerable: true,
+			configurable: true,
+			get: function() {
+				const transformed = deepTransformNode(node[key], childProps);
+				Object.defineProperty(this, key, {
+					value: transformed,
+					enumerable: true,
+					configurable: true
+				});
+				return transformed;
+			}
+		});
+	}
+	return result;
+};
+var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
+	return (values[key.trim()] ?? "").toString();
+});
+var DEFAULT_VARIANT_ID = "default";
+var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
+var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
+var percentEncodeChar = (char) => `%${char.charCodeAt(0).toString(16).toUpperCase().padStart(4, "0")}`;
+var encodeSegmentText = (raw, unsafeChars) => {
+	if (raw === "") return "%";
+	const encoded = raw.replace(unsafeChars, percentEncodeChar);
+	if (encoded === "." || encoded === "..") return encoded.replace(/\./g, "%002E");
+	return encoded;
+};
+var serializeVariant = (variant) => {
+	if (variant === void 0) return DEFAULT_VARIANT_ID;
+	if (typeof variant === "string") return encodeSegmentText(variant, SEGMENT_UNSAFE_CHARS);
+	return Object.keys(variant).sort().map((field) => `${encodeSegmentText(field, COMPONENT_UNSAFE_CHARS)}=${encodeSegmentText(String(variant[field]), COMPONENT_UNSAFE_CHARS)}`).join("&");
+};
+var serializeVariantChain = (variant) => {
+	if (!Array.isArray(variant)) return [serializeVariant(variant)];
+	if (variant.length === 0) return [DEFAULT_VARIANT_ID];
+	return variant.map(serializeVariant);
+};
+var resolveEffectiveVariantId = (requestedVariantIds, isVariantIdDeclared) => {
+	for (const requestedVariantId of requestedVariantIds) if (isVariantIdDeclared(requestedVariantId)) return requestedVariantId;
+	return isVariantIdDeclared("default") ? DEFAULT_VARIANT_ID : requestedVariantIds[0] ?? "default";
+};
+var compositeIdMatchesSelector = (compositeId, qualifierTypes, selector, effectiveVariantId) => {
+	const segments = compositeId.split("/");
+	return qualifierTypes.every((qualifierType, index) => {
+		if (qualifierType === "variant") return segments[index] === effectiveVariantId;
+		return selector?.item === void 0 || segments[index] === String(selector.item);
+	});
+};
+var isQualifiedDictionaryGroup = (value) => typeof value === "object" && value !== null && "qualifierTypes" in value && Array.isArray(value.qualifierTypes) && "content" in value;
+var reconstructQualifiedEntry = (group, compositeId) => {
+	const segments = compositeId.split("/");
+	const entry = {
+		key: group.key,
+		content: group.content[compositeId]
+	};
+	group.qualifierTypes.forEach((qualifierType, index) => {
+		if (qualifierType === "variant") entry.variant = segments[index];
+		else if (qualifierType === "item") entry.item = Number(segments[index]);
+	});
+	return entry;
+};
+var resolveQualifiedDictionary = (dictionaryOrGroup, selector) => {
+	if (!isQualifiedDictionaryGroup(dictionaryOrGroup)) return dictionaryOrGroup;
+	const { qualifierTypes, content } = dictionaryOrGroup;
+	const itemAxisOpen = qualifierTypes.includes("item") && selector?.item === void 0;
+	const compositeIds = Object.keys(content);
+	const variantIndex = qualifierTypes.indexOf("variant");
+	const effectiveVariantId = variantIndex === -1 ? DEFAULT_VARIANT_ID : resolveEffectiveVariantId(serializeVariantChain(selector?.variant), (variantId) => compositeIds.some((compositeId) => compositeId.split("/")[variantIndex] === variantId));
+	const matchedEntries = compositeIds.filter((compositeId) => compositeIdMatchesSelector(compositeId, qualifierTypes, selector, effectiveVariantId)).map((compositeId) => reconstructQualifiedEntry(dictionaryOrGroup, compositeId));
+	if (itemAxisOpen) return matchedEntries.sort((left, right) => (left.item ?? 0) - (right.item ?? 0));
+	return matchedEntries[0] ?? null;
+};
+var parseDictionarySelector = (localeOrSelector) => {
+	if (typeof localeOrSelector === "object" && localeOrSelector !== null) return {
+		locale: localeOrSelector.locale,
+		selector: localeOrSelector
+	};
+	return { locale: localeOrSelector };
+};
+var getDictionarySelectorCacheKey = (selector) => {
+	if (!selector) return "";
+	return Object.keys(selector).filter((selectorKey) => selectorKey !== "locale").sort().map((selectorKey) => {
+		const value = selector[selectorKey];
+		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
+	}).join("|");
+};
+var isPlainObject = (value) => {
+	if (value === null || typeof value !== "object") return false;
+	if (typeof value.then === "function") return false;
+	if (value.$$typeof !== void 0 || value.__v_isVNode !== void 0 || value._isVNode !== void 0 || value.isJSX !== void 0) return false;
+	const proto = Object.getPrototypeOf(value);
+	return proto === Object.prototype || proto === null || Array.isArray(value);
+};
+var deepMerge = (target, source) => {
+	if (target === void 0) return source;
+	if (source === void 0) return target;
+	if (Array.isArray(target)) return target;
+	if (isPlainObject(target) && isPlainObject(source)) {
+		const result = { ...target };
+		for (const key of Object.keys(source)) {
+			if (key === "__proto__" || key === "constructor" || source[key] === void 0) continue;
+			result[key] = target[key] !== void 0 ? deepMerge(target[key], source[key]) : source[key];
+		}
+		return result;
+	}
+	return target;
+};
+var getTranslation = (languageContent, locale, fallback) => {
+	const get = (loc) => languageContent[loc];
+	const seen = /* @__PURE__ */ new Set();
+	const locales = [];
+	const addLocale = (loc) => {
+		if (loc && !seen.has(loc)) {
+			seen.add(loc);
+			locales.push(loc);
+		}
+	};
+	addLocale(locale);
+	if (locale.includes("-")) addLocale(locale.split("-")[0]);
+	addLocale(fallback);
+	if (fallback?.includes("-")) addLocale(fallback.split("-")[0]);
+	const results = [];
+	for (const loc of locales) {
+		const val = get(loc);
+		if (val === void 0) continue;
+		if (typeof val === "string") {
+			if (results.length === 0) return val;
+			continue;
+		}
+		results.push(val);
+	}
+	if (results.length === 0) return void 0;
+	if (results.length === 1) return results[0];
+	if (Array.isArray(results[0])) return results[0];
+	return results.reduce((acc, curr) => deepMerge(acc, curr));
+};
+var isInterpolableWrapperNode = (node) => {
+	if (typeof node !== "object" || node === null || !("nodeType" in node)) return false;
+	const { nodeType } = node;
+	return false;
+};
+var getInterpolableContent = (node) => {
+	if (typeof node === "string") return node;
+	if (isInterpolableWrapperNode(node)) return node.nodeType === "html" ? node[HTML] : node[MARKDOWN];
+};
+var rebuildInterpolableContent = (node, interpolated) => {
+	if (typeof node === "string") return interpolated;
+	if (isInterpolableWrapperNode(node)) {
+		const key = node.nodeType === "html" ? HTML : MARKDOWN;
+		return {
+			...node,
+			[key]: interpolated
+		};
+	}
+	return node;
+};
+var transformInterpolableNode = (node, values, subProps, parentPlugins, deepTransformNode) => {
+	const children = rebuildInterpolableContent(node, getInsertion(getInterpolableContent(node), values));
+	return deepTransformNode(children, {
+		...subProps,
+		plugins: parentPlugins,
+		children
+	});
+};
+var fallbackPlugin = {
+	id: "fallback-plugin",
+	canHandle: () => false,
+	transform: (node) => node
+};
+var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRANSLATION === "false" ? fallbackPlugin : {
+	id: "translation-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "translation",
+	transform: (node, props, deepTransformNode) => {
+		const original = node["translation"] ?? {};
+		const result = {};
+		for (const key in original) {
+			const childProps = {
+				...props,
+				children: original[key],
+				keyPath: [...props.keyPath, {
+					type: TRANSLATION,
+					key
+				}]
+			};
+			result[key] = deepTransformNode(original[key], childProps);
+		}
+		return getTranslation(result, locale, fallback);
+	}
+};
+var enumerationPlugin = fallbackPlugin;
+var pluralPlugin = (locale) => fallbackPlugin;
+var conditionPlugin = fallbackPlugin;
+var insertionPlugin$1 = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+	id: "insertion-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
+	transform: (node, props, deepTransformNode) => {
+		const newKeyPath = [...props.keyPath, { type: INSERTION }];
+		const children = node[INSERTION];
+		const insertionStringPlugin = {
+			id: "insertion-string-plugin",
+			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
+			transform: (node, subProps, deepTransformNode) => {
+				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
+				const transformedResult = deepTransformNode(node, {
+					...subProps,
+					children: node,
+					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
+				});
+				return (values) => {
+					const children = getInsertion(transformedResult, values);
+					return deepTransformNode(children, {
+						...subProps,
+						plugins: props.plugins,
+						children
+					});
+				};
+			}
+		};
+		return deepTransformNode(children, {
+			...props,
+			children,
+			keyPath: newKeyPath,
+			plugins: [insertionStringPlugin, ...props.plugins ?? []]
+		});
+	}
+};
+var genderPlugin = fallbackPlugin;
+var selectPlugin = fallbackPlugin;
+var nestedPlugin = (locale) => fallbackPlugin;
+var filePlugin = fallbackPlugin;
+var getBasePlugins = (locale, fallback = true) => [
+	translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
+	enumerationPlugin,
+	conditionPlugin,
+	insertionPlugin$1,
+	nestedPlugin(locale ?? internationalization.defaultLocale),
+	filePlugin,
+	genderPlugin,
+	selectPlugin
+];
+var getContent = (node, nodeProps, plugins = []) => deepTransformNode(node, {
+	...nodeProps,
+	plugins
+});
+var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
+	const { locale, selector } = parseDictionarySelector(localeOrSelector);
+	const cacheKey = getDictionaryTransformCacheKey(locale ?? internationalization.defaultLocale, getDictionarySelectorCacheKey(selector), plugins);
+	const cached = readTransformCache(dictionary, cacheKey);
+	if (cached.hit) return cached.content;
+	const appliedPlugins = plugins ?? getBasePlugins(locale);
+	const resolved = resolveQualifiedDictionary(dictionary, selector);
+	const transformDictionary = (resolvedDictionary) => {
+		const props = {
+			dictionaryKey: resolvedDictionary.key,
+			dictionaryPath: resolvedDictionary.filePath,
+			keyPath: [],
+			plugins: appliedPlugins,
+			nestedDictionaries: resolvedDictionary.nestedDictionaries
+		};
+		return getContent(resolvedDictionary.content, props, appliedPlugins);
+	};
+	if (resolved === null) return writeTransformCache(dictionary, cacheKey, null);
+	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
+	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
+};
+var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
+var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
+var splitInsertionTemplate = (template, values = {}) => {
+	if (!Object.values(values).some(isComplexValue)) return {
+		isSimple: true,
+		parts: template.replace(insertionRegex, (_, key) => (values[key.trim()] ?? "").toString())
+	};
+	const chunks = template.split(insertionRegex);
+	const parts = [];
+	for (let i = 0; i < chunks.length; i++) if (i % 2 === 0) {
+		if (chunks[i]) parts.push(chunks[i]);
+	} else {
+		const val = values[chunks[i].trim()];
+		if (val != null) parts.push(val);
+	}
+	return {
+		isSimple: false,
+		parts
+	};
+};
+var intlayerNodePlugins = {
+	id: "intlayer-node-plugin",
+	canHandle: (node) => typeof node === "bigint" || typeof node === "string" || typeof node === "number",
+	transform: (_node, { plugins, ...rest }) => {
+		return renderIntlayerNode({
+			...rest,
+			value: rest.children,
+			children: rest.children
+		});
+	}
+};
+var reactNodePlugins = fallbackPlugin;
+var splitAndJoinInsertion = (template, values) => {
+	const result = splitInsertionTemplate(template, values);
+	if (result.isSimple) return result.parts;
+	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
+};
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+	id: "insertion-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
+	transform: (node, props, deepTransformNode) => {
+		const newKeyPath = [...props.keyPath, { type: INSERTION }];
+		const children = node[INSERTION];
+		const insertionStringPlugin = {
+			id: "insertion-string-plugin",
+			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
+			transform: (node, subProps, deepTransformNode) => {
+				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
+				const transformedResult = deepTransformNode(node, {
+					...subProps,
+					children: node,
+					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
+				});
+				return (values) => {
+					const result = splitAndJoinInsertion(transformedResult, values);
+					return deepTransformNode(result, {
+						...subProps,
+						plugins: props.plugins,
+						children: result
+					});
+				};
+			}
+		};
+		const result = deepTransformNode(children, {
+			...props,
+			children,
+			keyPath: newKeyPath,
+			plugins: [insertionStringPlugin, ...props.plugins ?? []]
+		});
+		if (typeof children === "object" && children !== null && "nodeType" in children && ["enumeration", "condition"].includes(children.nodeType)) return (values) => (arg) => {
+			const inner = result(arg);
+			if (typeof inner === "function") return inner(values);
+			return inner;
+		};
+		return result;
+	}
+};
+var markdownPlugin = fallbackPlugin;
+var htmlPlugin = fallbackPlugin;
+var pluginsCache = /* @__PURE__ */ new Map();
+var getPlugins = (locale, fallback = true) => {
+	const cacheKey = `${locale ?? internationalization.defaultLocale}_${fallback}`;
+	if (pluginsCache.has(cacheKey)) return pluginsCache.get(cacheKey);
+	const plugins = [
+		translationPlugin(locale ?? internationalization.defaultLocale, fallback ? internationalization.defaultLocale : void 0),
+		enumerationPlugin,
+		pluralPlugin(locale ?? internationalization.defaultLocale),
+		conditionPlugin,
+		nestedPlugin(locale ?? internationalization.defaultLocale),
+		filePlugin,
+		genderPlugin,
+		selectPlugin,
+		intlayerNodePlugins,
+		reactNodePlugins,
+		insertionPlugin,
+		markdownPlugin,
+		htmlPlugin
+	];
+	pluginsCache.set(cacheKey, plugins);
+	return plugins;
+};
+var getDictionary = (dictionary, localeOrSelector) => {
+	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
+};
+var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var localeStorageOptions = {
+	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
+	getLocaleStorage: (name) => localStorage.getItem(name),
+	getSessionStorage: (name) => sessionStorage.getItem(name),
+	isCookieEnabled: true,
+	setCookieStore: (name, value, attributes) => cookieStore.set({
+		name,
+		value,
+		path: attributes.path,
+		domain: attributes.domain,
+		expires: attributes.expires,
+		sameSite: attributes.sameSite
+	}),
+	setCookieString: (_name, cookie) => {
+		document.cookie = cookie;
+	},
+	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
+	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
+};
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
+	const { locales } = internationalization;
+	if (options?.isCookieEnabled === false) return void 0;
+	const isValidLocale = (value) => !!value && locales.includes(value);
+	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
+		const value = options?.getCookie?.(routing.storage.cookies[i].name);
+		if (isValidLocale(value)) return value;
+	} catch {}
+};
+var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
+var IntlayerClientContext = createContext({
+	locale: localeInStorage ?? internationalization?.defaultLocale,
+	setLocale: () => null,
+	isCookieEnabled: true
+});
+var useDictionary = (dictionary, localeOrSelector) => {
+	const { locale: currentLocale, variant: contextVariant } = useContext(IntlayerClientContext) ?? {};
+	const argument = localeOrSelector ?? currentLocale;
+	const argumentIdentity = typeof argument === "object" && argument !== null ? `${argument.locale ?? ""}|${getDictionarySelectorCacheKey(argument)}` : argument;
+	return useMemo(() => getDictionary(dictionary, argument), [dictionary.key, argumentIdentity]);
+};
 function ApiAccessSection() {
+	const content = useDictionary(api_access_section_default);
 	const apiKeyId = useId();
 	return jsxs("section", {
 		className: "rounded-lg border border-border bg-card p-6",
 		children: [jsx("h2", {
 			className: "mb-4 text-lg font-semibold text-foreground",
-			children: "API Access"
+			children: content.a
 		}), jsxs("div", { children: [
 			jsx("label", {
 				htmlFor: apiKeyId,
 				className: "mb-1 block text-sm font-medium text-foreground",
-				children: "API Key"
+				children: content.b
 			}),
 			jsxs("div", {
 				className: "flex gap-2",
@@ -23,12 +632,12 @@ function ApiAccessSection() {
 				}), jsx("button", {
 					type: "button",
 					className: "rounded-md border border-border px-4 py-2 text-sm font-medium text-foreground hover:bg-accent transition-colors",
-					children: "Copy"
+					children: content.c
 				})]
 			}),
 			jsx("p", {
 				className: "mt-1 text-xs text-muted-foreground",
-				children: "Use this key to access the benchmarking API programmatically."
+				children: content.d
 			})
 		] })]
 	});

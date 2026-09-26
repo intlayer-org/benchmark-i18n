@@ -1,6 +1,5 @@
-import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useLayoutEffect, useState } from "react";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -64,38 +63,6 @@ var resolveRoutingConfig = (options = {}) => ({
 	domains: options.domains ?? routing?.domains
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
-var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
-	const requestedLocales = [selectedLocale].flat();
-	const normalize = (locale) => locale.trim().toLowerCase();
-	try {
-		for (const requested of requestedLocales) {
-			const normalizedRequested = normalize(requested);
-			const exactMatch = locales.find((locale) => normalize(locale) === normalizedRequested);
-			if (exactMatch) return exactMatch;
-			const [requestedLang] = normalizedRequested.split("-");
-			const partialMatch = locales.find((locale) => normalize(locale).split("-")[0] === requestedLang);
-			if (partialMatch) return partialMatch;
-		}
-	} catch {}
-	return defaultLocale;
-};
-var resolveExpiresToTimestamp = (expires) => {
-	if (typeof expires === "number") return Date.now() + expires * 1e3;
-	if (typeof expires === "string") {
-		const time = Date.parse(expires);
-		return Number.isNaN(time) ? void 0 : time;
-	}
-};
-var buildCookieString = (name, value, attributes) => {
-	const parts = [`${name}=${encodeURIComponent(value)}`];
-	if (attributes.path) parts.push(`Path=${attributes.path}`);
-	if (attributes.domain) parts.push(`Domain=${attributes.domain}`);
-	const expiresTimestamp = resolveExpiresToTimestamp(attributes.expires);
-	if (expiresTimestamp !== void 0) parts.push(`Expires=${new Date(expiresTimestamp).toUTCString()}`);
-	if (attributes.secure) parts.push("Secure");
-	if (attributes.sameSite) parts.push(`SameSite=${attributes.sameSite}`);
-	return parts.join("; ");
-};
 var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
 process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
 var localeStorageOptions = {
@@ -125,22 +92,6 @@ var getLocaleFromStorageClient = (options = localeStorageOptions) => {
 		const value = options?.getCookie?.(routing.storage.cookies[i].name);
 		if (isValidLocale(value)) return value;
 	} catch {}
-};
-var setLocaleInStorageClient = (locale, options) => {
-	if (options?.isCookieEnabled === false) return;
-	if (!TREE_SHAKE_STORAGE_COOKIES && routing.storage.cookies) for (let i = 0; i < routing.storage.cookies.length; i++) {
-		const { name, attributes } = routing.storage.cookies[i];
-		try {
-			if (options?.setCookieStore) options.setCookieStore(name, locale, {
-				...attributes,
-				expires: resolveExpiresToTimestamp(attributes.expires)
-			});
-		} catch {
-			try {
-				if (options?.setCookieString) options.setCookieString(name, buildCookieString(name, locale, attributes));
-			} catch {}
-		}
-	}
 };
 var getLocaleFromPath = (inputUrl = "/", options) => {
 	const { defaultLocale, locales, mode } = resolveRoutingConfig(options);
@@ -690,82 +641,10 @@ var getDictionary = (dictionary, localeOrSelector) => {
 	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
 };
 var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
-var setLocaleInStorage = (locale, isCookieEnabled) => setLocaleInStorageClient(locale, {
-	...localeStorageOptions,
-	isCookieEnabled
-});
-var useEditor = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const managerRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !managerRef.current) return;
-		managerRef.current.currentLocale.set(locale);
-	}, [locale]);
-};
-var EditorProvider = ({ children }) => {
-	useEditor();
-	return children;
-};
-var useAnalytics = () => {
-	const { locale } = useContext(IntlayerClientContext) ?? {};
-	const clientRef = useRef(null);
-	useEffect(() => {}, []);
-	useEffect(() => {
-		if (!locale || !clientRef.current) return;
-		clientRef.current.setLocale(locale);
-		clientRef.current.trackPageView({ reason: "locale_change" });
-	}, [locale]);
-};
-var AnalyticsProvider = ({ children }) => {
-	useAnalytics();
-	return children;
-};
-var setIntlayerIdentifier = () => {
-	if (typeof window !== "undefined") window.intlayer = { enabled: true };
-};
 var IntlayerClientContext = createContext({
 	locale: localeInStorage ?? internationalization?.defaultLocale,
 	setLocale: () => null,
 	isCookieEnabled: true
-});
-var IntlayerProviderContent = ({ locale: localeProp, defaultLocale: defaultLocaleProp, variant, children, setLocale: setLocaleProp, disableEditor, isCookieEnabled }) => {
-	const { locales: availableLocales, defaultLocale: defaultLocaleConfig } = internationalization ?? {};
-	const [currentLocale, setCurrentLocale] = useState(localeProp ?? localeInStorage ?? defaultLocaleProp ?? defaultLocaleConfig);
-	useEffect(() => {
-		if (localeProp && localeProp !== currentLocale) setCurrentLocale(localeProp);
-	}, [localeProp]);
-	useEffect(() => {
-		setIntlayerIdentifier();
-	}, []);
-	const setLocaleBase = (newLocale) => {
-		if (currentLocale.toString() === newLocale.toString()) return;
-		if (!availableLocales?.map(String).includes(newLocale)) {
-			console.error(`Locale ${newLocale} is not available`);
-			return;
-		}
-		setCurrentLocale(newLocale);
-		setLocaleInStorage(newLocale, isCookieEnabled);
-	};
-	const setLocale = setLocaleProp ?? setLocaleBase;
-	const resolvedLocale = localeResolver(currentLocale);
-	return jsx(IntlayerClientContext.Provider, {
-		value: {
-			locale: resolvedLocale,
-			setLocale,
-			variant,
-			disableEditor
-		},
-		children
-	});
-};
-var IntlayerProvider = ({ children, ...props }) => jsxs(IntlayerProviderContent, {
-	...props,
-	children: [
-		jsx(EditorProvider, {}),
-		jsx(AnalyticsProvider, {}),
-		children
-	]
 });
 var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const { locale: currentLocale, variant: contextVariant } = useContext(IntlayerClientContext) ?? {};
@@ -779,151 +658,68 @@ var useDictionaryDynamic = (dictionaryPromise, key, localeOrSelector) => {
 	const plainLoaders = dictionaryPromise;
 	return getDictionary(useLoadDynamic(`${String(key)}.${localeTarget}`, plainLoaders[localeTarget]?.()), localeTarget);
 };
-var IntlayerClientProviderBase = (props) => jsx(IntlayerProvider, { ...props });
-var IntlayerClientProvider = IntlayerClientProviderBase;
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/pages/contact/ContactForm.tsx";
 function ContactForm() {
 	const content$1 = useDictionaryDynamic(content, "contact-form");
 	const nameId = "name";
 	const emailId = "email";
 	const topicId = "topic";
 	const messageId = "message";
-	return jsxDEV("form", {
+	return jsxs("form", {
 		className: "space-y-6",
 		children: [
-			jsxDEV("div", {
+			jsxs("div", {
 				className: "grid gap-4 md:grid-cols-2",
-				children: [jsxDEV("div", { children: [jsxDEV("label", {
+				children: [jsxs("div", { children: [jsx("label", {
 					htmlFor: nameId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: content$1.g
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 15,
-					columnNumber: 11
-				}, this), jsxDEV("input", {
+				}), jsx("input", {
 					id: nameId,
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: content$1.l.value
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 21,
-					columnNumber: 11
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 14,
-					columnNumber: 9
-				}, this), jsxDEV("div", { children: [jsxDEV("label", {
+				})] }), jsxs("div", { children: [jsx("label", {
 					htmlFor: emailId,
 					className: "mb-1 block text-sm font-medium text-foreground",
 					children: content$1.d
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 28,
-					columnNumber: 11
-				}, this), jsxDEV("input", {
+				}), jsx("input", {
 					id: emailId,
 					type: "email",
 					className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 					placeholder: "you@example.com"
-				}, void 0, false, {
-					fileName: _jsxFileName$3,
-					lineNumber: 34,
-					columnNumber: 11
-				}, this)] }, void 0, true, {
-					fileName: _jsxFileName$3,
-					lineNumber: 27,
-					columnNumber: 9
-				}, this)]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 13,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", { children: [jsxDEV("label", {
+				})] })]
+			}),
+			jsxs("div", { children: [jsx("label", {
 				htmlFor: topicId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: content$1.k
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 43,
-				columnNumber: 9
-			}, this), jsxDEV("select", {
+			}), jsxs("select", {
 				id: topicId,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				children: [
-					jsxDEV("option", { children: content$1.a }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 53,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: content$1.h }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 54,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: content$1.f }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 55,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: content$1.b }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 56,
-						columnNumber: 11
-					}, this),
-					jsxDEV("option", { children: content$1.i }, void 0, false, {
-						fileName: _jsxFileName$3,
-						lineNumber: 57,
-						columnNumber: 11
-					}, this)
+					jsx("option", { children: content$1.a }),
+					jsx("option", { children: content$1.h }),
+					jsx("option", { children: content$1.f }),
+					jsx("option", { children: content$1.b }),
+					jsx("option", { children: content$1.i })
 				]
-			}, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 49,
-				columnNumber: 9
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 42,
-				columnNumber: 7
-			}, this),
-			jsxDEV("div", { children: [jsxDEV("label", {
+			})] }),
+			jsxs("div", { children: [jsx("label", {
 				htmlFor: messageId,
 				className: "mb-1 block text-sm font-medium text-foreground",
 				children: content$1.e
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 61,
-				columnNumber: 9
-			}, this), jsxDEV("textarea", {
+			}), jsx("textarea", {
 				id: messageId,
 				rows: 5,
 				className: "w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring",
 				placeholder: content$1.c.value
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 67,
-				columnNumber: 9
-			}, this)] }, void 0, true, {
-				fileName: _jsxFileName$3,
-				lineNumber: 60,
-				columnNumber: 7
-			}, this),
-			jsxDEV("button", {
+			})] }),
+			jsx("button", {
 				type: "submit",
 				className: "rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
 				children: content$1.j
-			}, void 0, false, {
-				fileName: _jsxFileName$3,
-				lineNumber: 74,
-				columnNumber: 7
-			}, this)
+			})
 		]
-	}, void 0, true, {
-		fileName: _jsxFileName$3,
-		lineNumber: 12,
-		columnNumber: 5
-	}, this);
+	});
 }
 function recordHydrationDuration() {
 	if (typeof window === "undefined") return;
@@ -947,7 +743,6 @@ function recordRenderTime(id, startTime) {
 	window.__RENDER_METRICS__[id] = window.__RENDER_METRICS__[id] || [];
 	window.__RENDER_METRICS__[id].push(renderTime);
 }
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/AppProviders.tsx";
 function AppProviders({ children, locale }) {
 	const [renderStart] = useState(() => typeof performance !== "undefined" ? performance.now() : 0);
 	useLayoutEffect(() => {
@@ -959,37 +754,16 @@ function AppProviders({ children, locale }) {
 	useEffect(() => {
 		recordHydrationDuration();
 	}, []);
-	return jsxDEV(IntlayerClientProvider, {
-		locale,
-		children
-	}, void 0, false, {
-		fileName: _jsxFileName$2,
-		lineNumber: 34,
-		columnNumber: 7
-	}, this);
+	return children;
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(AppProviders, {
+	return jsx(AppProviders, {
 		locale: "en",
 		children
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 9,
-		columnNumber: 10
-	}, this);
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/nextjs-dynamic/next-intlayer-app/src/components/pages/contact/ContactForm.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(ContactForm, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(ContactForm, {}) });
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;

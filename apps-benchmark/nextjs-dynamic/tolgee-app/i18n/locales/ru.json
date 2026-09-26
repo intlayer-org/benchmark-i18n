@@ -319,9 +319,8 @@
     "thisIsAnOpenSource": "Это открытое приложение для тестирования, а не продукт или компания. Его единственная цель — предоставить реалистичное многостраничное приложение на React, в котором можно интегрировать и измерять различные библиотеки i18n в идентичных условиях."
   },
   "settingsHeader": {
-    "manageYourAccount": "Manage your account settings and preferences.",
-    "manageYourAccountPreferences": "Управляйте настройками своего аккаунта и конфигурацией.",
-    "settings": "Настройки"
+    "settings": "Настройки",
+    "manageYourAccountPreferencesAnd": "Управляйте настройками и конфигурацией своего аккаунта."
   },
   "whyItMatters": {
     "bundleSize": "Размер бандла",

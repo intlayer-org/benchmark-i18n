@@ -59,8 +59,9 @@ const normalize = (line: string) =>
  * Footer credit ("i18n Benchmark — Open-source project. Built with …"): most i18n
  * apps still name TanStack Router even on Next.js. Known, identical across the
  * i18n apps of a framework, one line — ignored so it cannot fail small pages.
+ * Bare email addresses are identical in every locale and ignored too.
  */
-const IGNORED_LINE = /^(i18n Benchmark|Benchmark i18n) — /;
+const IGNORED_LINE = /^(i18n Benchmark|Benchmark i18n) — |^\S+@\S+\.\w+$/;
 /** Match key: compilers (lingo.dev, gt) may drop or add spaces around inline elements. */
 const matchKey = (line: string) => line.replace(/\s+/g, "");
 

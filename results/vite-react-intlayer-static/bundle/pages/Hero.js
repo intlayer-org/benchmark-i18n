@@ -1,69 +1,79 @@
-import { createContext, isValidElement, useContext, useMemo } from "react";
-import { Fragment, jsx, jsxs } from "react/jsx-runtime";
+import { Fragment, createContext, createElement, isValidElement, useContext, useLayoutEffect, useMemo } from "react";
+import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
 var hero_default = {
 	key: "hero",
 	content: {
 		"nodeType": "translation",
 		"translation": {
 			"en": {
-				"c": "i18n Benchmark",
 				"a": "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
-				"d": "View Results",
-				"b": "Methodology"
+				"e": "View Results",
+				"b": "Hero",
+				"d": "Methodology",
+				"c": "i18n Benchmark"
 			},
 			"fr": {
-				"c": "Benchmark i18n",
 				"a": "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-				"d": "Voir les résultats",
-				"b": "Méthodologie"
+				"e": "Voir les Résultats",
+				"b": "Héros",
+				"d": "Méthodologie",
+				"c": "Benchmark i18n"
 			},
 			"es": {
-				"c": "i18n Benchmark",
-				"a": "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del paquete, el rendimiento de carga и la reactividad de la representación.",
-				"d": "Ver Resultados",
-				"b": "Metodología"
+				"a": "Una aplicación de prueba diseñada para medir el impacto real de las bibliotecas de internacionalización en el tamaño del bundle, el rendimiento de carga y la reactividad del renderizado.",
+				"e": "Ver Resultados",
+				"b": "Héroe",
+				"d": "Metodología",
+				"c": "Benchmark i18n"
 			},
 			"de": {
-				"c": "i18n Benchmark",
-				"a": "Eine Testanwendung, die entwickelt wurde, um die realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladeleistung und die Rendering-Reaktivität zu messen.",
-				"d": "Ergebnisse anzeigen",
-				"b": "Methodik"
+				"a": "Eine Testanwendung, die entwickelt wurde, um die realen Auswirkungen von Internationalisierungs-Bibliotheken auf die Bundle-Größe, Ladeleistung und Rendering-Reaktivität zu messen.",
+				"e": "Ergebnisse anzeigen",
+				"b": "Held",
+				"d": "Methodik",
+				"c": "i18n Benchmark"
 			},
 			"it": {
-				"c": "i18n Benchmark",
 				"a": "Un'applicazione di test progettata per misurare l'impatto reale delle librerie di internazionalizzazione sulle dimensioni del bundle, sulle prestazioni di caricamento e sulla reattività del rendering.",
-				"d": "Visualizza risultati",
-				"b": "Metodologia"
+				"e": "Visualizza i risultati",
+				"b": "Eroe",
+				"d": "Metodologia",
+				"c": "Benchmark i18n"
 			},
 			"pt": {
-				"c": "i18n Benchmark",
-				"a": "Uma aplicação de teste progettada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade de renderização.",
-				"d": "Ver Resultados",
-				"b": "Metodologia"
+				"a": "Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade da renderização.",
+				"e": "Ver Resultados",
+				"b": "Herói",
+				"d": "Metodologia",
+				"c": "Benchmark i18n"
 			},
 			"zh": {
-				"c": "i18n Benchmark",
-				"a": "一个测试应用程序，旨在衡量国际化库对捆绑包大小、加载性能和渲染反应性的真实影响。",
-				"d": "查看结果",
-				"b": "方法论"
+				"a": "一个测试应用程序，旨在衡量国际化库对包大小、加载性能和渲染反应性的实际影响。",
+				"e": "查看结果",
+				"b": "英雄",
+				"d": "方法论",
+				"c": "i18n 基准测试"
 			},
 			"ja": {
-				"c": "i18n Benchmark",
-				"a": "国際化ライブラリがバンドルサイズ、ロード性能、レンダリングの反応性に与える実際の影響を測定するために設計されたテストアプリケーションです。",
-				"d": "結果を表示",
-				"b": "方法論"
+				"a": "国際化ライブラリがバンドルサイズ、読み込みパフォーマンス、およびレンダリングの反応性に与える実際の影を測定するために設計されたテストアプリケーション。",
+				"e": "結果を表示",
+				"b": "ヒーロー",
+				"d": "方法論",
+				"c": "i18n ベンチマーク"
 			},
 			"ko": {
-				"c": "i18n Benchmark",
-				"a": "번들 크기, 로딩 성능 및 렌더링 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하기 위해 설계된 테스트 애플리케이션입니다.",
-				"d": "결과 표시",
-				"b": "방법론"
+				"a": "번들 크기, 로딩 성능 및 렌더링 반응성에 대한 국제화 라이브러리의 실제 영향을 측정하도록 설계된 테스트 애플리케이션입니다.",
+				"e": "결과 보기",
+				"b": "영웅",
+				"d": "방법론",
+				"c": "i18n 벤치마크"
 			},
 			"ru": {
-				"c": "i18n Benchmark",
 				"a": "Тестовое приложение, предназначенное для измерения реального влияния библиотек интернационализации на размер бандла, производительность загрузки и реактивность рендеринга.",
-				"d": "Посмотреть результаты",
-				"b": "Методология"
+				"e": "Посмотреть результаты",
+				"b": "Герой",
+				"d": "Методология",
+				"c": "i18n Бенчмарк"
 			}
 		}
 	}
@@ -108,42 +118,24 @@ var routing = {
 	},
 	"basePath": ""
 };
-var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
-process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
-var localeStorageOptions = {
-	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
-	getLocaleStorage: (name) => localStorage.getItem(name),
-	getSessionStorage: (name) => sessionStorage.getItem(name),
-	isCookieEnabled: true,
-	setCookieStore: (name, value, attributes) => cookieStore.set({
-		name,
-		value,
-		path: attributes.path,
-		domain: attributes.domain,
-		expires: attributes.expires,
-		sameSite: attributes.sameSite
-	}),
-	setCookieString: (_name, cookie) => {
-		document.cookie = cookie;
-	},
-	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
-	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
+var renderIntlayerNode = ({ children, value, additionalProps }) => {
+	const element = isValidElement(children) ? children : jsx(Fragment$1, { children });
+	return new Proxy(element, { get(target, prop, receiver) {
+		if (prop === "value") return value;
+		if (prop === Symbol.toPrimitive) return () => value ?? "";
+		if (prop === "toString") return () => String(value ?? "");
+		if (prop === "valueOf") return () => value;
+		if (additionalProps && Object.hasOwn(additionalProps, prop)) return additionalProps[prop];
+		if (value !== null && value !== void 0 && typeof prop === "string" && prop !== "constructor" && !(prop in target)) {
+			const valObj = Object(value);
+			if (prop in valObj) {
+				const valProp = valObj[prop];
+				return typeof valProp === "function" ? valProp.bind(value) : valProp;
+			}
+		}
+		return Reflect.get(target, prop, receiver);
+	} });
 };
-var getLocaleFromStorageClient = (options = localeStorageOptions) => {
-	const { locales } = internationalization;
-	if (options?.isCookieEnabled === false) return void 0;
-	const isValidLocale = (value) => !!value && locales.includes(value);
-	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
-		const value = options?.getCookie?.(routing.storage.cookies[i].name);
-		if (isValidLocale(value)) return value;
-	} catch {}
-};
-var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
-var IntlayerClientContext = createContext({
-	locale: localeInStorage ?? internationalization?.defaultLocale,
-	setLocale: () => null,
-	isCookieEnabled: true
-});
 var pluginsIdentities = /* @__PURE__ */ new WeakMap();
 var nextPluginsIdentity = 0;
 var getPluginsCacheKey = (plugins) => {
@@ -180,8 +172,11 @@ var writeTransformCache = (dictionary, cacheKey, content) => {
 	return content;
 };
 var TRANSLATION = "translation";
+var INSERTION = "insertion";
 var OBJECT = "object";
 var ARRAY = "array";
+var MARKDOWN = "markdown";
+var HTML = "html";
 var deepTransformNode = (node, props) => {
 	for (const plugin of props.plugins ?? []) if (plugin.canHandle(node)) return plugin.transform(node, props, (node, props) => deepTransformNode(node, props));
 	if (node === null || typeof node !== "object") return node;
@@ -226,6 +221,9 @@ var deepTransformNode = (node, props) => {
 	}
 	return result;
 };
+var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
+	return (values[key.trim()] ?? "").toString();
+});
 var DEFAULT_VARIANT_ID = "default";
 var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
 var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
@@ -345,6 +343,34 @@ var getTranslation = (languageContent, locale, fallback) => {
 	if (Array.isArray(results[0])) return results[0];
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
+var isInterpolableWrapperNode = (node) => {
+	if (typeof node !== "object" || node === null || !("nodeType" in node)) return false;
+	const { nodeType } = node;
+	return false;
+};
+var getInterpolableContent = (node) => {
+	if (typeof node === "string") return node;
+	if (isInterpolableWrapperNode(node)) return node.nodeType === "html" ? node[HTML] : node[MARKDOWN];
+};
+var rebuildInterpolableContent = (node, interpolated) => {
+	if (typeof node === "string") return interpolated;
+	if (isInterpolableWrapperNode(node)) {
+		const key = node.nodeType === "html" ? HTML : MARKDOWN;
+		return {
+			...node,
+			[key]: interpolated
+		};
+	}
+	return node;
+};
+var transformInterpolableNode = (node, values, subProps, parentPlugins, deepTransformNode) => {
+	const children = rebuildInterpolableContent(node, getInsertion(getInterpolableContent(node), values));
+	return deepTransformNode(children, {
+		...subProps,
+		plugins: parentPlugins,
+		children
+	});
+};
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
@@ -373,7 +399,40 @@ var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRA
 var enumerationPlugin = fallbackPlugin;
 var pluralPlugin = (locale) => fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
-var insertionPlugin$1 = fallbackPlugin;
+var insertionPlugin$1 = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+	id: "insertion-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
+	transform: (node, props, deepTransformNode) => {
+		const newKeyPath = [...props.keyPath, { type: INSERTION }];
+		const children = node[INSERTION];
+		const insertionStringPlugin = {
+			id: "insertion-string-plugin",
+			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
+			transform: (node, subProps, deepTransformNode) => {
+				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
+				const transformedResult = deepTransformNode(node, {
+					...subProps,
+					children: node,
+					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
+				});
+				return (values) => {
+					const children = getInsertion(transformedResult, values);
+					return deepTransformNode(children, {
+						...subProps,
+						plugins: props.plugins,
+						children
+					});
+				};
+			}
+		};
+		return deepTransformNode(children, {
+			...props,
+			children,
+			keyPath: newKeyPath,
+			plugins: [insertionStringPlugin, ...props.plugins ?? []]
+		});
+	}
+};
 var genderPlugin = fallbackPlugin;
 var selectPlugin = fallbackPlugin;
 var nestedPlugin = (locale) => fallbackPlugin;
@@ -413,23 +472,25 @@ var getDictionary$1 = (dictionary, localeOrSelector, plugins) => {
 	if (Array.isArray(resolved)) return writeTransformCache(dictionary, cacheKey, resolved.map(transformDictionary));
 	return writeTransformCache(dictionary, cacheKey, transformDictionary(resolved));
 };
-var renderIntlayerNode = ({ children, value, additionalProps }) => {
-	const element = isValidElement(children) ? children : jsx(Fragment, { children });
-	return new Proxy(element, { get(target, prop, receiver) {
-		if (prop === "value") return value;
-		if (prop === Symbol.toPrimitive) return () => value ?? "";
-		if (prop === "toString") return () => String(value ?? "");
-		if (prop === "valueOf") return () => value;
-		if (additionalProps && Object.hasOwn(additionalProps, prop)) return additionalProps[prop];
-		if (value !== null && value !== void 0 && typeof prop === "string" && prop !== "constructor" && !(prop in target)) {
-			const valObj = Object(value);
-			if (prop in valObj) {
-				const valProp = valObj[prop];
-				return typeof valProp === "function" ? valProp.bind(value) : valProp;
-			}
-		}
-		return Reflect.get(target, prop, receiver);
-	} });
+var isComplexValue = (value) => value != null && typeof value !== "string" && typeof value !== "number" && typeof value !== "boolean";
+var insertionRegex = /\{\{\s*(.*?)\s*\}\}/g;
+var splitInsertionTemplate = (template, values = {}) => {
+	if (!Object.values(values).some(isComplexValue)) return {
+		isSimple: true,
+		parts: template.replace(insertionRegex, (_, key) => (values[key.trim()] ?? "").toString())
+	};
+	const chunks = template.split(insertionRegex);
+	const parts = [];
+	for (let i = 0; i < chunks.length; i++) if (i % 2 === 0) {
+		if (chunks[i]) parts.push(chunks[i]);
+	} else {
+		const val = values[chunks[i].trim()];
+		if (val != null) parts.push(val);
+	}
+	return {
+		isSimple: false,
+		parts
+	};
 };
 var intlayerNodePlugins = {
 	id: "intlayer-node-plugin",
@@ -443,7 +504,51 @@ var intlayerNodePlugins = {
 	}
 };
 var reactNodePlugins = fallbackPlugin;
-var insertionPlugin = fallbackPlugin;
+var splitAndJoinInsertion = (template, values) => {
+	const result = splitInsertionTemplate(template, values);
+	if (result.isSimple) return result.parts;
+	return createElement(Fragment, null, ...result.parts.map((part, index) => createElement(Fragment, { key: index }, part)));
+};
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+	id: "insertion-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
+	transform: (node, props, deepTransformNode) => {
+		const newKeyPath = [...props.keyPath, { type: INSERTION }];
+		const children = node[INSERTION];
+		const insertionStringPlugin = {
+			id: "insertion-string-plugin",
+			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
+			transform: (node, subProps, deepTransformNode) => {
+				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
+				const transformedResult = deepTransformNode(node, {
+					...subProps,
+					children: node,
+					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
+				});
+				return (values) => {
+					const result = splitAndJoinInsertion(transformedResult, values);
+					return deepTransformNode(result, {
+						...subProps,
+						plugins: props.plugins,
+						children: result
+					});
+				};
+			}
+		};
+		const result = deepTransformNode(children, {
+			...props,
+			children,
+			keyPath: newKeyPath,
+			plugins: [insertionStringPlugin, ...props.plugins ?? []]
+		});
+		if (typeof children === "object" && children !== null && "nodeType" in children && ["enumeration", "condition"].includes(children.nodeType)) return (values) => (arg) => {
+			const inner = result(arg);
+			if (typeof inner === "function") return inner(values);
+			return inner;
+		};
+		return result;
+	}
+};
 var markdownPlugin = fallbackPlugin;
 var htmlPlugin = fallbackPlugin;
 var pluginsCache = /* @__PURE__ */ new Map();
@@ -471,35 +576,83 @@ var getPlugins = (locale, fallback = true) => {
 var getDictionary = (dictionary, localeOrSelector) => {
 	return getDictionary$1(dictionary, localeOrSelector, getPlugins(typeof localeOrSelector === "object" && localeOrSelector !== null ? localeOrSelector.locale : localeOrSelector));
 };
+var TREE_SHAKE_STORAGE_COOKIES = process.env.INTLAYER_ROUTING_STORAGE_COOKIES === "false";
+process.env.INTLAYER_ROUTING_STORAGE_HEADERS;
+var localeStorageOptions = {
+	getCookie: (name) => document.cookie.split(";").find((c) => c.trim().startsWith(`${name}=`))?.split("=")[1],
+	getLocaleStorage: (name) => localStorage.getItem(name),
+	getSessionStorage: (name) => sessionStorage.getItem(name),
+	isCookieEnabled: true,
+	setCookieStore: (name, value, attributes) => cookieStore.set({
+		name,
+		value,
+		path: attributes.path,
+		domain: attributes.domain,
+		expires: attributes.expires,
+		sameSite: attributes.sameSite
+	}),
+	setCookieString: (_name, cookie) => {
+		document.cookie = cookie;
+	},
+	setSessionStorage: (name, value) => sessionStorage.setItem(name, value),
+	setLocaleStorage: (name, value) => localStorage.setItem(name, value)
+};
+var getLocaleFromStorageClient = (options = localeStorageOptions) => {
+	const { locales } = internationalization;
+	if (options?.isCookieEnabled === false) return void 0;
+	const isValidLocale = (value) => !!value && locales.includes(value);
+	if (!TREE_SHAKE_STORAGE_COOKIES) for (let i = 0; i < (routing.storage.cookies ?? []).length; i++) try {
+		const value = options?.getCookie?.(routing.storage.cookies[i].name);
+		if (isValidLocale(value)) return value;
+	} catch {}
+};
+var localeInStorage = getLocaleFromStorageClient(localeStorageOptions);
+var IntlayerClientContext = createContext({
+	locale: localeInStorage ?? internationalization?.defaultLocale,
+	setLocale: () => null,
+	isCookieEnabled: true
+});
 var useDictionary = (dictionary, localeOrSelector) => {
 	const { locale: currentLocale, variant: contextVariant } = useContext(IntlayerClientContext) ?? {};
 	const argument = localeOrSelector ?? currentLocale;
 	const argumentIdentity = typeof argument === "object" && argument !== null ? `${argument.locale ?? ""}|${getDictionarySelectorCacheKey(argument)}` : argument;
 	return useMemo(() => getDictionary(dictionary, argument), [dictionary.key, argumentIdentity]);
 };
+function usePerformanceMeasure(name) {
+	if (typeof performance !== "undefined" && performance.mark) performance.mark(`${name}-start`);
+	useLayoutEffect(() => {
+		if (typeof performance !== "undefined" && performance.mark && performance.measure) {
+			performance.mark(`${name}-end`);
+			try {
+				performance.measure(`${name}-render`, `${name}-start`, `${name}-end`);
+			} catch (e) {}
+		}
+	}, [name]);
+}
 function Hero() {
-	const { c: title, a: description, d: viewResults, b: methodology } = useDictionary(hero_default);
+	const content = useDictionary(hero_default);
+	usePerformanceMeasure(content.b.value);
 	return jsxs("section", {
 		className: "mb-16 text-center",
 		children: [
 			jsx("h1", {
 				className: "mb-4 text-4xl font-bold tracking-tight text-foreground",
-				children: title
+				children: content.c
 			}),
 			jsx("p", {
 				className: "mx-auto max-w-2xl text-lg text-muted-foreground",
-				children: description
+				children: content.a
 			}),
 			jsxs("div", {
 				className: "mt-8 flex justify-center gap-4",
 				children: [jsx("button", {
 					type: "button",
-					className: "rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition-opacity hover:opacity-90",
-					children: viewResults
+					className: "rounded-lg bg-primary px-6 py-3 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity",
+					children: content.e
 				}), jsx("button", {
 					type: "button",
-					className: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground transition-colors hover:bg-accent",
-					children: methodology
+					className: "rounded-lg border border-border px-6 py-3 text-sm font-medium text-foreground hover:bg-accent transition-colors",
+					children: content.d
 				})]
 			})
 		]

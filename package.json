@@ -60,7 +60,10 @@
     "build:vite+react:static": "turbo run build --concurrency=1 --filter=\"vite-react-*-static\"",
     "build:vue": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/vite-vue-base-app\" --filter=\"./apps-benchmark/vite-vue-static/*\" --filter=\"./apps-benchmark/vite-vue-dynamic/*\"",
     "build:svelte": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/vite-svelte-base-app\" --filter=\"./apps-benchmark/vite-svelte-static/*\" --filter=\"./apps-benchmark/vite-svelte-dynamic/*\"",
-    "build:solid": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/vite-solid-base-app\" --filter=\"./apps-benchmark/vite-solid-static/*\" --filter=\"./apps-benchmark/vite-solid-dynamic/*\""
+    "build:solid": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/vite-solid-base-app\" --filter=\"./apps-benchmark/vite-solid-static/*\" --filter=\"./apps-benchmark/vite-solid-dynamic/*\"",
+    "build:intlayer": "turbo run build --concurrency=1 --filter=\"*intlayer*\"",
+    "test:intlayer": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size --concurrency=1 --continue --filter=\"*intlayer*\"",
+    "rebuild-and-test:intlayer": "bun scripts/rebuild-and-test-intlayer.ts"
   },
   "dependencies": {
     "@biomejs/biome": "2.5.12"

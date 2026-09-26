@@ -257,8 +257,7 @@
   },
   "settingsHeader": {
     "settings": "設定",
-    "manageYourAccountPreferences": "アカウント設定と構成を管理します。",
-    "manageYourAccount": "アカウント設定と構成を管理します。"
+    "manageYourAccountPreferencesAnd": "アカウント設定と構成を管理します。"
   },
   "profileSection": {
     "displayName": "表示名",

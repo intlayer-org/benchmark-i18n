@@ -254,6 +254,7 @@ var PLURAL = "plural";
 var INSERTION = "insertion";
 var OBJECT = "object";
 var ARRAY = "array";
+var MARKDOWN = "markdown";
 var HTML = "html";
 var GENDER = "gender";
 var SELECT = "select";
@@ -1178,6 +1179,9 @@ var writeTransformCache = (dictionary, cacheKey, content) => {
 	entries.set(cacheKey, content);
 	return content;
 };
+var getInsertion = (content, values) => content.replace(/\{\{\s*(.*?)\s*\}\}/g, (_, key) => {
+	return (values[key.trim()] ?? "").toString();
+});
 var DEFAULT_VARIANT_ID = "default";
 var SEGMENT_UNSAFE_CHARS = /[^A-Za-z0-9._&=-]/g;
 var COMPONENT_UNSAFE_CHARS = /[^A-Za-z0-9._-]/g;
@@ -1328,6 +1332,34 @@ var getTranslation = (languageContent, locale, fallback) => {
 	if (Array.isArray(results[0])) return results[0];
 	return results.reduce((acc, curr) => deepMerge(acc, curr));
 };
+var isInterpolableWrapperNode = (node) => {
+	if (typeof node !== "object" || node === null || !("nodeType" in node)) return false;
+	const { nodeType } = node;
+	return false;
+};
+var getInterpolableContent = (node) => {
+	if (typeof node === "string") return node;
+	if (isInterpolableWrapperNode(node)) return node.nodeType === "html" ? node[HTML] : node[MARKDOWN];
+};
+var rebuildInterpolableContent = (node, interpolated) => {
+	if (typeof node === "string") return interpolated;
+	if (isInterpolableWrapperNode(node)) {
+		const key = node.nodeType === "html" ? HTML : MARKDOWN;
+		return {
+			...node,
+			[key]: interpolated
+		};
+	}
+	return node;
+};
+var transformInterpolableNode = (node, values, subProps, parentPlugins, deepTransformNode) => {
+	const children = rebuildInterpolableContent(node, getInsertion(getInterpolableContent(node), values));
+	return deepTransformNode(children, {
+		...subProps,
+		plugins: parentPlugins,
+		children
+	});
+};
 var fallbackPlugin = {
 	id: "fallback-plugin",
 	canHandle: () => false,
@@ -1355,7 +1387,40 @@ var translationPlugin = (locale, fallback) => process.env.INTLAYER_NODE_TYPE_TRA
 };
 var enumerationPlugin = fallbackPlugin;
 var conditionPlugin = fallbackPlugin;
-var insertionPlugin = fallbackPlugin;
+var insertionPlugin = process.env.INTLAYER_NODE_TYPE_INSERTION === "false" ? fallbackPlugin : {
+	id: "insertion-plugin",
+	canHandle: (node) => typeof node === "object" && node?.nodeType === "insertion",
+	transform: (node, props, deepTransformNode) => {
+		const newKeyPath = [...props.keyPath, { type: INSERTION }];
+		const children = node[INSERTION];
+		const insertionStringPlugin = {
+			id: "insertion-string-plugin",
+			canHandle: (node) => typeof node === "string" || isInterpolableWrapperNode(node),
+			transform: (node, subProps, deepTransformNode) => {
+				if (isInterpolableWrapperNode(node)) return (values) => transformInterpolableNode(node, values, subProps, props.plugins, deepTransformNode);
+				const transformedResult = deepTransformNode(node, {
+					...subProps,
+					children: node,
+					plugins: [...(props.plugins ?? []).filter((plugin) => plugin.id !== "intlayer-node-plugin")]
+				});
+				return (values) => {
+					const children = getInsertion(transformedResult, values);
+					return deepTransformNode(children, {
+						...subProps,
+						plugins: props.plugins,
+						children
+					});
+				};
+			}
+		};
+		return deepTransformNode(children, {
+			...props,
+			children,
+			keyPath: newKeyPath,
+			plugins: [insertionStringPlugin, ...props.plugins ?? []]
+		});
+	}
+};
 var genderPlugin = fallbackPlugin;
 var selectPlugin = fallbackPlugin;
 process.env.INTLAYER_OPTIMIZED_NESTING;
@@ -1907,67 +1972,67 @@ function PricingTiers() {
 	const { t } = useTranslation();
 	const tiers = [
 		{
-			name: t("pricingTiers.freeTier"),
-			price: t("pricingTiers.free"),
-			period: "",
+			name: t("pricingTiers.starter"),
+			price: t("pricingTiers.price0"),
+			period: t("pricingTiers.forever"),
 			features: [
-				t("pricingTiers.publicBenchmarkDashboard"),
-				t("pricingTiers.basicLibraryComparisons"),
-				t("pricingTiers.communityForumAccess"),
-				t("pricingTiers.monthlyResultDigest")
-			],
-			buttonText: t("pricingTiers.getStarted")
+				t("pricingTiers.benchmarkRunPerDay", { runs: 5 }),
+				t("pricingTiers.librariesNumber", { libs: 3 }),
+				t("pricingTiers.communitySupport"),
+				t("pricingTiers.publicResults")
+			]
 		},
 		{
-			name: t("pricingTiers.proTier"),
-			price: "$29",
-			period: t("pricingTiers.perMonth"),
+			name: t("pricingTiers.pro"),
+			price: t("pricingTiers.price29"),
+			period: t("pricingTiers.month"),
 			features: [
-				t("pricingTiers.allFreeFeatures"),
-				t("pricingTiers.customBenchmarkConfigurations"),
-				t("pricingTiers.privateResultsDashboard"),
-				t("pricingTiers.apiAccess1000Requests"),
-				t("pricingTiers.slackIntegration")
+				t("pricingTiers.unlimitedRuns"),
+				t("pricingTiers.allLibraries"),
+				t("pricingTiers.prioritySupport"),
+				t("pricingTiers.privateResults"),
+				t("pricingTiers.ciIntegration"),
+				t("pricingTiers.historicalData")
 			],
-			buttonText: t("pricingTiers.subscribeToPro"),
 			highlighted: true
 		},
 		{
-			name: t("pricingTiers.enterpriseTier"),
-			price: t("pricingTiers.custom"),
+			name: t("pricingTiers.enterprise"),
+			price: t("pricingTiers.customPrice"),
 			period: "",
 			features: [
-				t("pricingTiers.allProFeatures"),
-				t("pricingTiers.dedicatedBenchmarkInfrastructure"),
-				t("pricingTiers.customLibraryIntegrations"),
-				t("pricingTiers.slaGuarantees"),
-				t("pricingTiers.prioritySupport")
-			],
-			buttonText: t("pricingTiers.contactSales")
+				t("pricingTiers.everythingInPro"),
+				t("pricingTiers.onPremiseOption"),
+				t("pricingTiers.ssoSaml"),
+				t("pricingTiers.dedicatedAccountManager"),
+				t("pricingTiers.customSlas"),
+				t("pricingTiers.auditLogs"),
+				t("pricingTiers.trainingSessions")
+			]
 		}
 	];
 	return jsx("div", {
 		className: "grid gap-6 md:grid-cols-3",
-		children: tiers.map((tItem) => jsxs("div", {
-			className: `flex flex-col rounded-lg border p-6 ${tItem.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
+		children: tiers.map((tier) => jsxs("div", {
+			className: `flex flex-col rounded-lg border p-6 ${tier.highlighted ? "border-primary bg-primary/5 ring-1 ring-primary" : "border-border bg-card"}`,
 			children: [
 				jsx("h3", {
 					className: "text-lg font-semibold text-foreground",
-					children: tItem.name
+					children: tier.name
 				}),
 				jsxs("div", {
 					className: "my-4",
 					children: [jsx("span", {
 						className: "text-3xl font-bold text-foreground",
-						children: tItem.price
+						children: tier.price
 					}), jsx("span", {
 						className: "text-sm text-muted-foreground",
-						children: tItem.period
+						children: tier.period
 					})]
 				}),
 				jsx("ul", {
 					className: "mb-6 flex-1 space-y-2",
-					children: tItem.features.map((f) => jsxs("li", {
+					children: tier.features.map((f) => jsxs("li", {
 						className: "flex items-center gap-2 text-sm text-muted-foreground",
 						children: [
 							jsx("span", {
@@ -1981,11 +2046,11 @@ function PricingTiers() {
 				}),
 				jsx("button", {
 					type: "button",
-					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${tItem.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
-					children: tItem.buttonText
+					className: `w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${tier.highlighted ? "bg-primary text-primary-foreground" : "border border-border text-foreground hover:bg-accent"}`,
+					children: tier.name === t("pricingTiers.enterprise") ? t("pricingTiers.contactSales") : t("pricingTiers.getStarted")
 				})
 			]
-		}, tItem.name))
+		}, tier.name))
 	});
 }
 i18next.use(initReactI18next).init({

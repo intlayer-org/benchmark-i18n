@@ -160,7 +160,7 @@ const preferencesSectionContent = {
     }),
 
     chineseSimplifiedZhCn: t({
-      en: "Chinese Simplified (zh)",
+      en: "Chinese Simplified (zh-CN)",
       fr: "Chinois Simplifié (zh)",
       es: "Chino simplificado (zh)",
       de: "Chinesisch vereinfacht (zh)",

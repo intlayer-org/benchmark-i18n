@@ -1,38 +1,5 @@
 import React, { Fragment, createContext, createElement, isValidElement, useContext, useEffect, useMemo, useRef, useState } from "react";
-import _1f3v6cz4mbw from "../../../../.intlayer/dictionary/products-grid.json";
-import _1j1x16btt9z from "../../../../.intlayer/dictionary/preferences-section.json";
-import _rudm87z0r8 from "../../../../.intlayer/dictionary/header.json";
-import _hy2rru61dr from "../../../../.intlayer/dictionary/open-positions.json";
-import _yhj19latv0 from "../../../../.intlayer/dictionary/careers-benefits.json";
-import _18fhumorw2n from "../../../../.intlayer/dictionary/footer.json";
-import _1j9p2a32n3w from "../../../../.intlayer/dictionary/results-table.json";
-import _1bu15g4vjog from "../../../../.intlayer/dictionary/settings-header.json";
-import _1qdy9ncatnv from "../../../../.intlayer/dictionary/contact-form.json";
-import _fwd1q3pj3z from "../../../../.intlayer/dictionary/contact-header.json";
-import _10o84r940v0 from "../../../../.intlayer/dictionary/about-grid.json";
-import _sqchsgxqo9 from "../../../../.intlayer/dictionary/pricing-tiers.json";
-import _1ptnybv41zw from "../../../../.intlayer/dictionary/mockBanner.json";
-import _7xgqiya4ot from "../../../../.intlayer/dictionary/settings-footer.json";
-import _o1z708w1f5 from "../../../../.intlayer/dictionary/theme-toggle.json";
-import _pr2tqvd1vg from "../../../../.intlayer/dictionary/about-header.json";
-import _11r36kk1hz1 from "../../../../.intlayer/dictionary/profile-section.json";
-import _5vdf8rnd1d from "../../../../.intlayer/dictionary/faq-header1.json";
-import _1vvx2pqa3n1 from "../../../../.intlayer/dictionary/pricing-header.json";
-import _1pnyt01ggqt from "../../../../.intlayer/dictionary/blog-header.json";
-import _1rvjup6qux1 from "../../../../.intlayer/dictionary/team-header.json";
-import _km4c6n5qxd from "../../../../.intlayer/dictionary/route.json";
-import _136k9tqldjk from "../../../../.intlayer/dictionary/faq-list.json";
-import _1r794niclpr from "../../../../.intlayer/dictionary/careers-header.json";
-import _2gl3mi6qjwl from "../../../../.intlayer/dictionary/products-header.json";
-import _k6eofvjfnl from "../../../../.intlayer/dictionary/what-we-measure.json";
-import _1tc1k1sjmhf from "../../../../.intlayer/dictionary/blog-list.json";
-import _18z5pzpprg2 from "../../../../.intlayer/dictionary/understanding-impact.json";
-import _arkjjjbugz from "../../../../.intlayer/dictionary/team-grid.json";
-import _axrl0unw0w from "../../../../.intlayer/dictionary/api-access-section.json";
-import _1h4ndgtzccg from "../../../../.intlayer/dictionary/why-it-matters.json";
-import _r9vnnynjx8 from "../../../../.intlayer/dictionary/hero.json";
 import { Fragment as Fragment$1, jsx, jsxs } from "react/jsx-runtime";
-import { Fragment as Fragment$2, jsxDEV } from "react/jsx-dev-runtime";
 var checkIsURLAbsolute = (url) => /^[a-zA-Z][a-zA-Z\d+\-.]*:/.test(url);
 var internationalization = {
 	"locales": [
@@ -99,12 +66,12 @@ var GREEN = "\x1B[32m";
 var BEIGE = "\x1B[38;5;3m";
 var CYAN = "\x1B[36m";
 var resolveRoutingConfig = (options = {}) => ({
-	defaultLocale: internationalization?.defaultLocale ?? "en",
-	mode: routing?.mode ?? "prefix-no-default",
-	locales: internationalization?.locales ?? LOCALES,
-	rewrite: routing?.rewrite,
-	domains: routing?.domains,
-	...options
+	...options,
+	defaultLocale: options.defaultLocale ?? internationalization?.defaultLocale ?? "en",
+	mode: options.mode ?? routing?.mode ?? "prefix-no-default",
+	locales: options.locales ?? internationalization?.locales ?? LOCALES,
+	rewrite: options.rewrite ?? routing?.rewrite,
+	domains: options.domains ?? routing?.domains
 });
 var isDeclaredLocale = (value, locales) => !!value && (locales ?? internationalization.locales).includes(value);
 var localeResolver = (selectedLocale, locales = internationalization?.locales, defaultLocale = internationalization?.defaultLocale) => {
@@ -519,41 +486,7 @@ var getDictionarySelectorCacheKey = (selector) => {
 		return `${selectorKey}:${selectorKey === "variant" ? serializeVariantChain(value).join(",") : String(value)}`;
 	}).join("|");
 };
-var dictionaries = {
-	"products-grid": _1f3v6cz4mbw,
-	"preferences-section": _1j1x16btt9z,
-	"header": _rudm87z0r8,
-	"open-positions": _hy2rru61dr,
-	"careers-benefits": _yhj19latv0,
-	"footer": _18fhumorw2n,
-	"results-table": _1j9p2a32n3w,
-	"settings-header": _1bu15g4vjog,
-	"contact-form": _1qdy9ncatnv,
-	"contact-header": _fwd1q3pj3z,
-	"about-grid": _10o84r940v0,
-	"pricing-tiers": _sqchsgxqo9,
-	"mockBanner": _1ptnybv41zw,
-	"settings-footer": _7xgqiya4ot,
-	"theme-toggle": _o1z708w1f5,
-	"about-header": _pr2tqvd1vg,
-	"profile-section": _11r36kk1hz1,
-	"faq-header1": _5vdf8rnd1d,
-	"pricing-header": _1vvx2pqa3n1,
-	"blog-header": _1pnyt01ggqt,
-	"team-header": _1rvjup6qux1,
-	"route": _km4c6n5qxd,
-	"faq-list": _136k9tqldjk,
-	"careers-header": _1r794niclpr,
-	"products-header": _2gl3mi6qjwl,
-	"what-we-measure": _k6eofvjfnl,
-	"blog-list": _1tc1k1sjmhf,
-	"understanding-impact": _18z5pzpprg2,
-	"team-grid": _arkjjjbugz,
-	"api-access-section": _axrl0unw0w,
-	"why-it-matters": _1h4ndgtzccg,
-	"hero": _r9vnnynjx8
-};
-var getDictionaries = () => dictionaries;
+var getDictionaries = () => ({});
 var PROTOTYPE_METHOD_NAMES = /* @__PURE__ */ new Set([
 	"hasOwnProperty",
 	"isPrototypeOf",
@@ -1543,9 +1476,10 @@ var formatArgument = (value, type, style, locale) => {
 	} catch {}
 	return String(value);
 };
-var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{}]+?)\s*\}\}/g, (match, path) => {
+var interpolateMessage = (template, values = {}, locale = "en") => template.replace(/\{\{\s*([^{},]+?)\s*(?:,\s*(\w+)\s*(?:,\s*([^{}]+?)\s*)?)?\}\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
-	return value === void 0 ? match : String(value);
+	if (value === void 0) return match;
+	return type ? formatArgument(value, type, style, locale) : String(value);
 }).replace(/\{\s*([\w.]+)\s*,\s*(\w+)\s*(?:,\s*([^}]+?)\s*)?\}/g, (match, path, type, style) => {
 	const value = resolveValuePath(values, path);
 	if (value === void 0) return match;
@@ -1599,15 +1533,17 @@ var resolveMessageNode = (node, values = {}, locale = "en") => {
 	}
 	return node;
 };
-var DIALECT_FORMATTERS = {
-	icu: (message) => icuToIntlayerFormatter(message),
-	i18next: (message) => i18nextToIntlayerFormatter(message),
-	"vue-i18n": (message) => vueI18nToIntlayerFormatter(message)
-};
-var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => {
-	const resolved = resolveMessageNode(typeof message === "string" ? DIALECT_FORMATTERS[dialect](message) : message, values, locale);
+var resolveMessageNodeToString = (node, values = {}, locale = "en") => {
+	const resolved = resolveMessageNode(node, values, locale);
 	return typeof resolved === "string" ? resolved : String(resolved ?? "");
 };
+var createMessageResolver = (formatter) => (message, values = {}, locale = "en") => resolveMessageNodeToString(typeof message === "string" ? formatter(message) : message, values, locale);
+var DIALECT_FORMATTERS = {
+	icu: icuToIntlayerFormatter,
+	i18next: i18nextToIntlayerFormatter,
+	"vue-i18n": vueI18nToIntlayerFormatter
+};
+var resolveMessage = (message, values = {}, locale = "en", dialect = "icu") => createMessageResolver(DIALECT_FORMATTERS[dialect])(message, values, locale);
 var parseTaggedMessage = (message) => {
 	const tokens = [];
 	const tagRegex = /<([\w-]+)\s*\/>|<([\w-]+)[^>]*>([\s\S]*?)<\/\2>/g;
@@ -1938,80 +1874,40 @@ var useTranslations = ((namespace) => {
 	const { locale: currentLocale } = useContext(IntlayerClientContext) ?? {};
 	return useMemo(() => createNamespaceTranslator(currentLocale, namespace), [currentLocale, namespace]);
 });
-var _jsxFileName$3 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-use-intl-app/src/components/MockBanner.tsx";
 var MockBanner = () => {
 	const t = useTranslations();
-	return jsxDEV("div", {
+	return jsx("div", {
 		className: "mb-6 rounded-md border border-border bg-muted px-4 py-3 text-center text-sm text-muted-foreground",
 		children: t("mockBanner")
-	}, void 0, false, {
-		fileName: _jsxFileName$3,
-		lineNumber: 6,
-		columnNumber: 5
-	}, void 0);
+	});
 };
-var _jsxFileName$2 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-use-intl-app/src/components/pages/team/TeamHeader.tsx";
 function TeamHeader() {
 	const t = useDictionaryDynamic(content, "team-header");
-	return jsxDEV(Fragment$2, { children: [
-		jsxDEV(MockBanner, {}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 8,
-			columnNumber: 7
-		}, this),
-		jsxDEV("h1", {
+	return jsxs(Fragment$1, { children: [
+		jsx(MockBanner, {}),
+		jsx("h1", {
 			className: "mb-2 text-3xl font-bold text-foreground",
 			children: t("ourTeam")
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this),
-		jsxDEV("p", {
+		}),
+		jsx("p", {
 			className: "mb-10 text-muted-foreground",
 			children: t("meetThePeopleBehindI18n")
-		}, void 0, false, {
-			fileName: _jsxFileName$2,
-			lineNumber: 12,
-			columnNumber: 7
-		}, this)
-	] }, void 0, true, {
-		fileName: _jsxFileName$2,
-		lineNumber: 7,
-		columnNumber: 5
-	}, this);
+		})
+	] });
 }
-var _jsxFileName$1 = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-use-intl-app/scripts/Wrapper.tsx";
 function Wrapper({ children }) {
-	return jsxDEV(React.Suspense, {
+	return jsx(React.Suspense, {
 		fallback: null,
-		children: jsxDEV(IntlProvider, {
+		children: jsx(IntlProvider, {
 			locale: "en",
 			timeZone: "UTC",
 			now: /* @__PURE__ */ new Date("2024-01-01"),
 			children
-		}, void 0, false, {
-			fileName: _jsxFileName$1,
-			lineNumber: 9,
-			columnNumber: 7
-		}, this)
-	}, void 0, false, {
-		fileName: _jsxFileName$1,
-		lineNumber: 8,
-		columnNumber: 5
-	}, this);
+		})
+	});
 }
-var _jsxFileName = "/Users/aymericpineau/Documents/benchmark-bloom/apps-benchmark/tanstack-start-react-dynamic/intlayer-compat-use-intl-app/src/components/pages/team/TeamHeader.wrapper.tsx";
 function Wrapped() {
-	return jsxDEV(Wrapper, { children: jsxDEV(TeamHeader, {}, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 9,
-		columnNumber: 11
-	}, this) }, void 0, false, {
-		fileName: _jsxFileName,
-		lineNumber: 8,
-		columnNumber: 9
-	}, this);
+	return jsx(Wrapper, { children: jsx(TeamHeader, {}) });
 }
 export { Wrapped as default };
 var __defProp = Object.defineProperty;
