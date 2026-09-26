@@ -126,6 +126,11 @@ bun x playwright install chromium
 
 ### Running the benchmarks
 
+All published results are produced by [GitHub Actions](./.github/workflows/benchmark.yml), with each app benchmarked in its own job, to keep measurement conditions consistent across runs.
+
+> [!NOTE]
+> Running locally works, but results can vary with your machine: a busy device, background processes, thermal throttling or battery saving mode can all skew the timing metrics (reactivity, rendering). Size metrics are not affected.
+
 Tests run against production builds, so build first:
 
 ```bash
