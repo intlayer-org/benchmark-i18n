@@ -17,6 +17,10 @@
     "test:consistency": {
       "outputs": []
     },
+    "test:content": {
+      "dependsOn": ["build"],
+      "outputs": []
+    },
     "test:rendering": {
       "dependsOn": ["build"],
       "outputs": ["../../results/**", "../../../results/**"]

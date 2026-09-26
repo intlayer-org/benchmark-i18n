@@ -41,15 +41,17 @@ export default function FAQList() {
   ];
 
   return (
-    <div className="space-y-4">
-      {faqs.map((faq) => (
-        <div
-          key={faq.q}
-          className="rounded-lg border border-border bg-card p-6"
+    <div className="mx-auto max-w-3xl space-y-4">
+      {faqs.map((f) => (
+        <details
+          key={f.q}
+          className="group rounded-lg border border-border bg-card"
         >
-          <h2 className="mb-2 text-lg font-semibold text-foreground">{faq.q}</h2>
-          <p className="text-sm text-muted-foreground">{faq.a}</p>
-        </div>
+          <summary className="cursor-pointer px-6 py-4 text-sm font-medium text-foreground hover:bg-accent/50 transition-colors">
+            {f.q}
+          </summary>
+          <p className="px-6 pb-4 text-sm text-muted-foreground">{f.a}</p>
+        </details>
       ))}
     </div>
   );

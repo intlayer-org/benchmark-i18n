@@ -1,6 +1,4 @@
 {
-  "aboutThisBenchmark": "About This Benchmark",
-  "methodology": "방법론",
-  "thisIsAnOpenSource": "This is an open-source test application for measuring the real-world impact of internationalization libraries.",
-  "weDesignedThisBenchmarkTo": "우리는 i18n 라이브러리를 공정하고, 재현 가능하며, 의미 있게 비교할 수 있도록 이 벤치마크를 설계했습니다."
+  "aboutThisBenchmark": "이 벤치마크에 대하여",
+  "thisIsAnOpenSource": "이것은 오픈 소스 테스트 애플리케이션이며 제품이나 회사가 아닙니다. 유일한 목적은 동일한 조건에서 서로 다른 i18n 라이브러리를 통합하고 측정할 수 있는 현실적인 다중 페이지 React 앱을 제공하는 것입니다."
 }

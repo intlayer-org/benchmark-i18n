@@ -1,0 +1,188 @@
+name: Benchmark
+
+# Every app is benchmarked independently: `plan` lists the apps whose inputs
+# changed (see scripts/ci-plan.ts), each one runs in its own job with only its
+# own dependencies installed, and `report` merges the fresh results over the
+# committed ones in results/ so unchanged apps keep their last numbers.
+#
+# Size metrics (pages bundle/leakage, component size, lib size) are byte counts
+# and stay stable on shared runners. Timing metrics (reactivity, rendering) are
+# only meaningful on a quiet, dedicated machine: they are opt-in via
+# workflow_dispatch, ideally with a self-hosted runner label.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      apps:
+        description: '"all", comma-separated app names, or empty for apps changed since the previous commit'
+        type: string
+        default: all
+      timing:
+        description: Also run timing-sensitive tests (reactivity, rendering)
+        type: boolean
+        default: false
+      runner:
+        description: Runner label (use a self-hosted runner for timing tests)
+        type: string
+        default: ubuntu-latest
+
+concurrency:
+  group: benchmark-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    outputs:
+      apps: ${{ steps.plan.outputs.apps }}
+      count: ${{ steps.plan.outputs.count }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Full history for the diff, without downloading every blob of results/.
+          fetch-depth: 0
+          filter: blob:none
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+
+      - id: plan
+        env:
+          HAS_LINGO_KEY: ${{ secrets.LINGODOTDEV_API_KEY != '' }}
+          APPS: ${{ inputs.apps }}
+          BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before || 'HEAD~1' }}
+        run: |
+          if [ -n "$APPS" ]; then
+            bun scripts/ci-plan.ts --apps "$APPS"
+          else
+            bun scripts/ci-plan.ts --base "$BASE"
+          fi
+
+  bench:
+    needs: plan
+    if: needs.plan.outputs.count != '0'
+    name: ${{ matrix.app.name }}
+    runs-on: ${{ inputs.runner || 'ubuntu-latest' }}
+    timeout-minutes: 90
+    strategy:
+      fail-fast: false
+      matrix:
+        app: ${{ fromJSON(needs.plan.outputs.apps) }}
+    env:
+      LINGODOTDEV_API_KEY: ${{ secrets.LINGODOTDEV_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+
+      - name: Cache bun packages
+        uses: actions/cache@v4
+        with:
+          path: ~/.bun/install/cache
+          key: bun-${{ runner.os }}-${{ matrix.app.name }}-${{ hashFiles('bun.lock') }}
+          restore-keys: bun-${{ runner.os }}-${{ matrix.app.name }}-
+
+      - name: Install app dependencies
+        run: bun install --frozen-lockfile --filter '${{ matrix.app.name }}'
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-${{ runner.os }}-${{ hashFiles('bun.lock') }}
+
+      - name: Install Chromium
+        working-directory: ${{ matrix.app.path }}
+        run: bunx playwright install --with-deps chromium
+
+      - name: Cache build cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ matrix.app.path }}/.next/cache
+          key: next-${{ matrix.app.name }}-${{ hashFiles('bun.lock') }}-${{ github.sha }}
+          restore-keys: next-${{ matrix.app.name }}-${{ hashFiles('bun.lock') }}-
+
+      - name: Build
+        working-directory: ${{ matrix.app.path }}
+        run: bun run build
+
+      - name: Benchmark
+        working-directory: ${{ matrix.app.path }}
+        run: |
+          # Keep only this app's results in the artifact.
+          rm -rf "$GITHUB_WORKSPACE/results"
+
+          TASKS="test:pages test:components test:lib-size"
+          if [ "${{ inputs.timing }}" = "true" ]; then
+            TASKS="$TASKS test:reactivity test:rendering"
+          fi
+
+          status=0
+          for task in $TASKS; do
+            if [ "$(jq -r --arg t "$task" '.scripts[$t] // empty' package.json)" = "" ]; then
+              echo "::notice::${{ matrix.app.name }} has no $task script"
+              continue
+            fi
+            echo "::group::$task"
+            bun run "$task" || { echo "::error::$task failed"; status=1; }
+            echo "::endgroup::"
+          done
+          exit $status
+
+      - name: Pack results
+        if: always()
+        run: |
+          mkdir -p results
+          # Raw bundle dumps are large and not read by the report.
+          tar czf results.tgz --exclude='bundle' results
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: results-${{ matrix.app.name }}
+          path: results.tgz
+          retention-days: 30
+
+  report:
+    needs: [plan, bench]
+    if: always() && needs.plan.outputs.count != '0'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.4.2
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: results-*
+          path: artifacts
+
+      - name: Merge fresh results over committed ones
+        run: |
+          for archive in artifacts/*/results.tgz; do
+            tar xzf "$archive"
+          done
+          git status --short results | sed -n '1,200p'
+
+      - name: Build report
+        run: |
+          bun run report
+          echo "Re-measured: $(echo '${{ needs.plan.outputs.apps }}' | jq -r 'map(.name) | join(", ")')" >> "$GITHUB_STEP_SUMMARY"
+          cat report/scripts/summarize-*.md >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-report
+          path: |
+            report/scripts/summarize-*.json
+            report/scripts/summarize-*.md
+            results/**
+            !results/**/bundle/**

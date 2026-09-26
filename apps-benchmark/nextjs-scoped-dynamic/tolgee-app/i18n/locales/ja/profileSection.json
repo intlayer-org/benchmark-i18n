@@ -1,5 +1,5 @@
 {
-  "profile": "プロフィール",
   "displayName": "表示名",
-  "email": "メールアドレス"
+  "email": "メールアドレス",
+  "profile": "プロフィール"
 }

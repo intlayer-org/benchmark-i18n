@@ -20,7 +20,7 @@ export default {
     privateResults: "Résultats privés",
     ciIntegration: "Intégration CI",
     historicalData: "Données historiques",
-    enterprise: "Enterprise",
+    enterprise: "Entreprise",
     customPrice: "Sur mesure",
     everythingInPro: "Tout ce qui est dans Pro",
     onPremiseOption: "Option sur site (on-premise)",

@@ -16,13 +16,13 @@ export default defineConfig({
         path.resolve(__dirname, `./src/locales/${locale}.ftl`),
     }),
     visualizer({
-      filename: `../../results/vite-vue-fluent-vue-static/bundle/stats.json`,
+      filename: `../../../results/vite-vue-fluent-vue-static/bundle/stats.json`,
       template: "raw-data",
       gzipSize: true,
       brotliSize: true,
     }),
     visualizer({
-      filename: `../../results/vite-vue-fluent-vue-static/bundle/rollup-visualizer.html`,
+      filename: `../../../results/vite-vue-fluent-vue-static/bundle/rollup-visualizer.html`,
       open: false,
       gzipSize: true,
       brotliSize: true,

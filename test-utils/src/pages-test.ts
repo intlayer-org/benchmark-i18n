@@ -118,8 +118,16 @@ const extractPageText = async (
   const page = await browserContext.newPage();
   try {
     await page.goto(url, { waitUntil: "domcontentloaded", timeout: 30_000 });
-    // Wait briefly for hydration to replace any loaders with actual text
+    // Wait for hydration and, for dynamic-loading / SPA apps, for the catalog
+    // fetch: reading text at `load` captured half-rendered pages, so the same
+    // app produced different fingerprint sets from one run to the next.
     await page.waitForLoadState("load");
+    await page.waitForLoadState("networkidle").catch(() => {});
+    await page
+      .getByRole("heading", { level: 1 })
+      .first()
+      .waitFor({ state: "visible", timeout: 15_000 })
+      .catch(() => {});
 
     const rawTextLines = await page.evaluate((minimumLength: number) => {
       const lines = (document.body.innerText ?? "")

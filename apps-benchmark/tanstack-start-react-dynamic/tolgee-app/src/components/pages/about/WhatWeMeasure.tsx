@@ -1,4 +1,4 @@
-import { T, useTranslate } from "../../../i18n/tolgee";
+import { useTranslate } from "../../../i18n/tolgee";
 
 export default function WhatWeMeasure() {
   const { t } = useTranslate();
@@ -6,36 +6,30 @@ export default function WhatWeMeasure() {
   const metrics = [
     {
       metric: t("whatWeMeasure.bundleSizeImpact"),
-      desc: t(
-        "whatWeMeasure.theAdditionalJavascriptBytes"),
+      desc: t("whatWeMeasure.theAdditionalJavascriptBytesSent"),
     },
     {
       metric: t("whatWeMeasure.renderingOverhead"),
-      desc: t(
-        "whatWeMeasure.howMuchExtraTimeTheLibraryAdds"),
+      desc: t("whatWeMeasure.howMuchExtraTimeThe"),
     },
     {
       metric: t("whatWeMeasure.hydrationCost"),
-      desc: t(
-        "whatWeMeasure.duringSsrTranslationDataIsSerialized"),
+      desc: t("whatWeMeasure.duringSsrTranslationDataIs"),
     },
     {
-      metric: t(
-        "whatWeMeasure.lazyLoadingEffectiveness"),
-      desc: t(
-        "whatWeMeasure.whetherSplittingTranslationsByRoute"),
+      metric: t("whatWeMeasure.lazyLoadingEffectiveness"),
+      desc: t("whatWeMeasure.whetherSplittingTranslationsByRoute"),
     },
     {
       metric: t("whatWeMeasure.localeSwitchSpeed"),
-      desc: t(
-        "whatWeMeasure.howFastTheAppCanSwitchFromOne"),
+      desc: t("whatWeMeasure.howFastTheAppCan"),
     },
   ];
 
   return (
     <section className="mt-12 mx-auto max-w-3xl">
       <h2 className="mb-4 text-2xl font-bold text-foreground">
-        <T keyName="whatWeMeasure.whatWeMeasure" />
+        {t("whatWeMeasure.whatWeMeasure")}
       </h2>
       <ul className="space-y-4">
         {metrics.map((m) => (

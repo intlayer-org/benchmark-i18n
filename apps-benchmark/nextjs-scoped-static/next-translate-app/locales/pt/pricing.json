@@ -26,6 +26,6 @@
   "pricingTiers.auditLogs": "Logs de auditoria",
   "pricingTiers.trainingSessions": "Sessões de treinamento",
   "pricingTiers.contactSales": "Contatar vendas",
-  "pricingHeader.pricing": "Preços",
-  "pricingHeader.transparentPricingForEvery": "Preços transparentes para todos"
+  "pricingHeader.simpleTransparentPricing": "Preços Simples e Transparentes",
+  "pricingHeader.chooseThePlanThatFits": "Escolha o plano que melhor se adapta à sua equipe. Sem taxas ocultas."
 }

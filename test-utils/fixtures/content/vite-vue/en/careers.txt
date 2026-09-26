@@ -1,0 +1,18 @@
+⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.
+Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning.
+Work from anywhere in the world
+Top-of-market compensation
+Open source time
+20% time for OSS contributions
+Senior Frontend Engineer
+Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite.
+Backend Engineer
+Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.
+Technical Writer
+Create comprehensive guides, API references, and tutorials for our benchmarking platform.
+Engage with the i18n community through talks, workshops, blog posts, and open source contributions.
+San Francisco / Remote
+Ensure the accuracy and reliability of benchmark results through rigorous testing and validation.
+An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.
+contact@intlayer.org
+i18n Benchmark — Open-source project. Built with Vue, Vite & Vue Router.

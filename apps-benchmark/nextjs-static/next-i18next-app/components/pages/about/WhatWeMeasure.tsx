@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 
 export default function WhatWeMeasure() {
   const { t } = useTranslation();
+
   const metrics = [
     {
       metric: t("about.whatWeMeasure.bundleSizeImpact"),

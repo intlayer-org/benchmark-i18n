@@ -28,7 +28,7 @@
     "thisIsAnOpenSource": "Il s'agit d'une application de test open source — pas d'un produit ni d'une entreprise. Son seul but est de fournir une application React multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques."
   },
   "hero": {
-    "title": "i18n Benchmark",
+    "title": "Benchmark i18n",
     "aTestApplicationDesignedTo": "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
     "viewResults": "Voir les résultats"
   },
@@ -193,7 +193,7 @@
       "privateResults": "Résultats privés",
       "ciIntegration": "Intégration CI",
       "historicalData": "Données historiques",
-      "enterprise": "Enterprise",
+      "enterprise": "Entreprise",
       "customPrice": "Sur mesure",
       "everythingInPro": "Tout ce qui est dans Pro",
       "onPremiseOption": "Option sur site (on-premise)",
@@ -253,7 +253,7 @@
       "joinOurMissionToImprove": "Rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. Nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu."
     },
     "careers-benefits": {
-      "remoteFirstLabel": "Remote-first",
+      "remoteFirstLabel": "Télétravail d'abord",
       "workFromAnywhereInThe": "Travaillez de n'importe où dans le monde",
       "competitivePay": "Rémunération compétitive",
       "topOfMarketCompensation": "Rémunération au-dessus du marché",
@@ -365,7 +365,7 @@
       "runBenchmarksLocallyFromYour": "Exécutez des benchmarks localement depuis votre terminal. Supporte les configurations personnalisées et l'intégration CI.",
       "benchmarkCloud": "Benchmark Cloud",
       "automatedCloudBasedBenchmarkingWith": "Benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
-      "benchmarkEnterprise": "Benchmark Enterprise",
+      "benchmarkEnterprise": "Benchmark Entreprise",
       "onPremiseDeploymentWithSso": "Déploiement sur site avec SSO, journaux d'audit, SLA personnalisés et support dédié.",
       "contactUs": "Contactez-nous",
       "migrationAssistant": "Assistant de migration",
@@ -427,7 +427,7 @@
     "hero": {
       "aTestApplicationDesignedTo": "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
       "viewResults": "Voir les résultats",
-      "title": "i18n Benchmark"
+      "title": "Benchmark i18n"
     },
     "why-it-matters": {
       "whyTheseMetricsMatter": "Pourquoi ces mesures sont importantes",

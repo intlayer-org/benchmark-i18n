@@ -13,4 +13,4 @@ msgstr "Foire aux questions"
 
 #: src/components/pages/faq/FAQHeader.tsx
 msgid "Everything you need to know about i18n Benchmark."
-msgstr "Everything you need to know about i18n Benchmark."
+msgstr "Tout ce que vous devez savoir sur i18n Benchmark."

@@ -1,11 +1,11 @@
 const themeToggle = {
   themeModeAutoSystemClick:
-    "Theme mode: auto (system). Click to switch to light mode.",
-  themeModeLightClick: "Theme mode: light. Click to switch to dark mode.",
+    "Mode de thème : auto (système). Cliquez pour passer au mode clair.",
+  themeModeLightClick: "Mode de thème : clair. Cliquez pour passer au mode sombre.",
   themeModeDarkClick:
-    "Theme mode: dark. Click to switch to auto (system) mode.",
-  themeAuto: "Theme: Auto",
-  themeDark: "Theme: Dark",
-  themeLight: "Theme: Light",
+    "Mode de thème : sombre. Cliquez pour passer au mode auto (système).",
+  themeAuto: "Thème : Auto",
+  themeDark: "Thème : Sombre",
+  themeLight: "Thème : Clair",
 };
 export default themeToggle;

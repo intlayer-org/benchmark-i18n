@@ -26,7 +26,7 @@ msgstr "Contribuer"
 #: src/components/Footer.tsx
 #: src/components/pages/home/Hero.tsx
 msgid "i18n Benchmark"
-msgstr "i18n Benchmark"
+msgstr "Benchmark i18n"
 
 #: src/components/Footer.tsx
 msgid "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
@@ -55,7 +55,7 @@ msgstr "⚠️ Cette page contient des données factices à des fins de benchmar
 
 #: src/components/Header.tsx
 msgid "Header"
-msgstr "Header"
+msgstr "En-tête"
 
 #: src/components/Header.tsx
 #: src/components/pages/products/ProductsHeader.tsx
@@ -87,7 +87,7 @@ msgstr "Paramètres"
 
 #: src/components/Header.tsx
 msgid "i18n Bench"
-msgstr "i18n Bench"
+msgstr "Bench i18n"
 
 #: src/components/Header.tsx
 msgid "Home"
@@ -95,7 +95,7 @@ msgstr "Accueil"
 
 #: src/components/Header.tsx
 msgid "Mock Pages <0/>"
-msgstr "Mock Pages <0/>"
+msgstr "Pages de Test <0/>"
 
 #: src/components/Header.tsx
 msgid "Go to GitHub"
@@ -136,15 +136,15 @@ msgstr "AppRoot"
 
 #: src/components/pages/about/AboutGrid.tsx
 msgid "Why This Exists"
-msgstr "Why This Exists"
+msgstr "Pourquoi ce Projet Existe"
 
 #: src/components/pages/about/AboutGrid.tsx
 msgid "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
-msgstr "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+msgstr "Choisir une bibliothèque i18n est une décision d'architecture aux conséquences à long terme. La plupart des comparaisons se concentrent sur l'ergonomie de l'API, mais peu mesurent le coût en performance : quel poids la bibliothèque ajoute-t-elle au bundle ? Quel est son impact sur le rendu lorsque des milliers de clés de traduction sont chargées ? Le chargement asynchrone aide-t-il vraiment ou déplace-t-il simplement le coût ? Ce benchmark répond à ces questions avec des données réelles."
 
 #: src/components/pages/about/AboutGrid.tsx
 msgid "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
-msgstr "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+msgstr "La même application de 10 pages est construite une fois par bibliothèque. Nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits Lighthouse pour les métriques de chargement et utilisons le React Profiler pour capturer les temps de rendu lors des changements de locale. Tous les tests s'exécutent en CI sur du matériel constant pour garantir des résultats reproductibles."
 
 #: src/components/pages/about/AboutHeader.tsx
 msgid "AboutHeader"
@@ -152,11 +152,11 @@ msgstr "AboutHeader"
 
 #: src/components/pages/about/AboutHeader.tsx
 msgid "About This Benchmark"
-msgstr "About This Benchmark"
+msgstr "À propos de ce Benchmark"
 
 #: src/components/pages/about/AboutHeader.tsx
 msgid "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
-msgstr "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+msgstr "Ceci est une application de test open-source — pas un produit ou une entreprise. Son seul but est de fournir une application React multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Bundle size impact"
@@ -164,7 +164,7 @@ msgstr "Impact sur la taille du bundle"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
-msgstr "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+msgstr "Les octets JavaScript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers de traduction sont inclus. Cela affecte directement le temps de téléchargement sur les réseaux lents."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Rendering overhead"
@@ -172,7 +172,7 @@ msgstr "Surcharge de rendu"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
-msgstr "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+msgstr "Combien de temps supplémentaire la bibliothèque ajoute au cycle de rendu de React. Les bibliothèques qui injectent des traductions via un seul fournisseur de contexte peuvent provoquer des rendus inutiles dans tout l'arbre des composants."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Hydration cost"
@@ -180,7 +180,7 @@ msgstr "Coût d'hydratation"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
-msgstr "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+msgstr "Pendant le SSR, les données de traduction sont sérialisées en HTML. Les dictionnaires volumineux augmentent la charge utile HTML et ralentissent l'hydratation — le moment où la page devient interactive."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Lazy loading effectiveness"
@@ -204,7 +204,7 @@ msgstr "Ce que nous mesurons"
 
 #: src/components/pages/blog/BlogHeader.tsx
 msgid "Insights, tutorials, and analysis from the i18n community."
-msgstr "Insights, tutorials, and analysis from the i18n community."
+msgstr "Aperçus, tutoriels et analyses de la communauté i18n."
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Read More →"
@@ -212,23 +212,23 @@ msgstr "Lire la suite →"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Remote-first"
-msgstr "Remote-first"
+msgstr "Télétravail d'abord"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Work from anywhere in the world"
-msgstr "Work from anywhere in the world"
+msgstr "Travailler de n'importe où dans le monde"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Competitive pay"
-msgstr "Competitive pay"
+msgstr "Rémunération compétitive"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Top-of-market compensation"
-msgstr "Top-of-market compensation"
+msgstr "Rémunération au-dessus du marché"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Open source time"
-msgstr "Open source time"
+msgstr "Temps alloué à l'open source"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Open Positions"
@@ -240,7 +240,7 @@ msgstr "Postuler maintenant"
 
 #: src/components/pages/contact/ContactHeader.tsx
 msgid "Get in Touch"
-msgstr "Get in Touch"
+msgstr "Contactez-nous"
 
 #. 0: " "
 #: src/components/pages/contact/ContactHeader.tsx
@@ -249,7 +249,7 @@ msgstr "Have ideas, found a bug, or want to contribute a benchmark? Reach out to
 
 #: src/components/pages/careers/CareersHeader.tsx
 msgid "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
-msgstr "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+msgstr "Rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. Nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu."
 
 #: src/components/pages/faq/FAQHeader.tsx
 msgid "Frequently Asked Questions"
@@ -257,11 +257,11 @@ msgstr "Foire aux questions"
 
 #: src/components/pages/faq/FAQHeader.tsx
 msgid "Everything you need to know about i18n Benchmark."
-msgstr "Everything you need to know about i18n Benchmark."
+msgstr "Tout ce que vous devez savoir sur i18n Benchmark."
 
 #: src/components/pages/home/Hero.tsx
 msgid "Hero"
-msgstr "Hero"
+msgstr "Héros"
 
 #: src/components/pages/home/Hero.tsx
 msgid "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
@@ -274,15 +274,15 @@ msgstr "Voir les résultats"
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Yes"
-msgstr "Yes"
+msgstr "Oui"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Manual"
-msgstr "Manual"
+msgstr "Manuel"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Built-in"
-msgstr "Built-in"
+msgstr "Intégré"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Sample Results"
@@ -290,7 +290,7 @@ msgstr "Exemples de résultats"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Library"
-msgstr "Library"
+msgstr "Bibliothèque"
 
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/WhyItMatters.tsx
@@ -311,7 +311,7 @@ msgstr "Nom"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Your name"
-msgstr "Your name"
+msgstr "Votre nom"
 
 #: src/components/pages/contact/ContactForm.tsx
 #: src/components/pages/settings/ProfileSection.tsx
@@ -320,19 +320,19 @@ msgstr "Email"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Topic"
-msgstr "Topic"
+msgstr "Sujet"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Bug Report"
-msgstr "Bug Report"
+msgstr "Rapport de Bug"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "New Benchmark Idea"
-msgstr "New Benchmark Idea"
+msgstr "Nouvelle Idée de Benchmark"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Methodology Question"
-msgstr "Methodology Question"
+msgstr "Question sur la Méthodologie"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Contribution"
@@ -340,7 +340,7 @@ msgstr "Contribution"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Other"
-msgstr "Other"
+msgstr "Autre"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Message"
@@ -348,7 +348,7 @@ msgstr "Message"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Describe your question or idea..."
-msgstr "Describe your question or idea..."
+msgstr "Décrivez votre question ou idée..."
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Send Message"
@@ -434,16 +434,16 @@ msgstr "Cette application de test fournit un environnement contrôlé — 10 pag
 
 #: src/components/pages/pricing/PricingHeader.tsx
 msgid "Simple, Transparent Pricing"
-msgstr "Simple, Transparent Pricing"
+msgstr "Tarification Simple et Transparente"
 
 #: src/components/pages/pricing/PricingHeader.tsx
 msgid "Choose the plan that fits your team. No hidden fees."
-msgstr "Choose the plan that fits your team. No hidden fees."
+msgstr "Choisissez le plan qui convient à votre équipe. Pas de frais cachés."
 
 #: src/components/pages/pricing/PricingTiers.tsx
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Enterprise"
-msgstr "Enterprise"
+msgstr "Entreprise"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Contact Sales"
@@ -483,7 +483,7 @@ msgstr "Recevoir des rapports hebdomadaires de benchmark"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle notifications"
-msgstr "Toggle notifications"
+msgstr "Basculer les notifications"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Dark Mode"
@@ -495,7 +495,7 @@ msgstr "Utiliser le schéma de couleurs sombres"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle dark mode"
-msgstr "Toggle dark mode"
+msgstr "Basculer le mode sombre"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Default Language"
@@ -503,23 +503,23 @@ msgstr "Langue par défaut"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "English (en)"
-msgstr "English (en)"
+msgstr "Anglais (en)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "French (fr)"
-msgstr "French (fr)"
+msgstr "Français (fr)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "German (de)"
-msgstr "German (de)"
+msgstr "Allemand (de)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Spanish (es)"
-msgstr "Spanish (es)"
+msgstr "Espagnol (es)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Japanese (ja)"
-msgstr "Japanese (ja)"
+msgstr "Japonais (ja)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Chinese Simplified (zh-CN)"
@@ -527,7 +527,7 @@ msgstr "Chinese Simplified (zh-CN)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Arabic (ar)"
-msgstr "Arabic (ar)"
+msgstr "Arabe (ar)"
 
 #: src/components/pages/settings/SettingsFooter.tsx
 msgid "Cancel"
@@ -559,7 +559,7 @@ msgstr "En savoir plus"
 
 #: src/components/pages/products/ProductsHeader.tsx
 msgid "Tools and services to streamline your internationalization workflow."
-msgstr "Tools and services to streamline your internationalization workflow."
+msgstr "Outils et services pour rationaliser votre flux de travail d'internationalisation."
 
 #: src/components/pages/team/TeamHeader.tsx
 msgid "Our Team"
@@ -578,11 +578,11 @@ msgstr ""
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Community support"
-msgstr ""
+msgstr "Support de la communauté"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Public results"
-msgstr ""
+msgstr "Résultats publics"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Pro"
@@ -590,27 +590,27 @@ msgstr ""
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Unlimited runs"
-msgstr ""
+msgstr "Lancements illimités"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "All libraries"
-msgstr ""
+msgstr "Toutes les bibliothèques"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Priority support"
-msgstr ""
+msgstr "Support prioritaire"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Private results"
-msgstr ""
+msgstr "Résultats privés"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "CI integration"
-msgstr ""
+msgstr "Intégration CI"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Historical data"
-msgstr ""
+msgstr "Données historiques"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Custom"
@@ -618,87 +618,87 @@ msgstr ""
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Everything in Pro"
-msgstr ""
+msgstr "Tout dans Pro"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "On-premise option"
-msgstr ""
+msgstr "Option sur site"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Dedicated account manager"
-msgstr ""
+msgstr "Gestionnaire de compte dédié"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Custom SLAs"
-msgstr ""
+msgstr "SLA personnalisés"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Audit logs"
-msgstr ""
+msgstr "Journaux d'audit"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Training sessions"
-msgstr ""
+msgstr "Sessions de formation"
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "What is i18n Benchmark?"
-msgstr ""
+msgstr "Qu'est-ce que i18n Benchmark ?"
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "How are benchmarks conducted?"
-msgstr ""
+msgstr "Comment les benchmarks sont-ils menés ?"
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
-msgstr ""
+msgstr "Nous effectuons des tests standardisés dans des environnements isolés en utilisant un matériel cohérent. Chaque benchmark est répété plusieurs fois pour garantir une signification statistique. Toutes les configurations de test sont disponibles publiquement dans notre dépôt GitHub."
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "Which libraries are currently supported?"
-msgstr ""
+msgstr "Quelles bibliothèques sont actuellement supportées ?"
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee."
-msgstr ""
+msgstr "Nous supportons react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react et Tolgee."
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "Can I submit my own benchmarks?"
-msgstr ""
+msgstr "Puis-je soumettre mes propres benchmarks ?"
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
-msgstr ""
+msgstr "Oui ! Les soumissions de benchmarks de la communauté sont les bienvenues. Forkez notre dépôt, ajoutez votre benchmark en suivant notre guide de contribution et soumettez une pull request. Notre équipe examinera et fusionnera les soumissions qualifiées."
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "How often are benchmarks updated?"
-msgstr ""
+msgstr "À quelle fréquence les benchmarks sont-ils mis à jour ?"
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
-msgstr ""
+msgstr "Nous relançons tous les benchmarks chaque semaine avec les dernières versions stables de chaque bibliothèque. Les versions majeures déclenchent un cycle immédiat de re-benchmarking."
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "Is the data reliable?"
-msgstr ""
+msgstr "Les données sont-elles fiables ?"
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
-msgstr ""
+msgstr "Nous suivons une méthodologie statistique rigoureuse incluant des phases de préchauffage, la détection des valeurs aberrantes et des intervalles de confiance. Toutes les données brutes sont publiées aux côtés de notre analyse pour une transparence totale."
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "Do you offer consulting services?"
-msgstr ""
+msgstr "Proposez-vous des services de conseil ?"
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
-msgstr ""
+msgstr "Oui, notre plan Entreprise inclut des heures de conseil pour les équipes évaluant les solutions i18n. Nous pouvons fournir des recommandations personnalisées basées sur votre cas d'utilisation spécifique, votre échelle et vos contraintes."
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "How can I contribute?"
-msgstr ""
+msgstr "Comment puis-je contribuer ?"
 
 #: src/components/pages/faq/FAQList.tsx
 msgid "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
-msgstr ""
+msgstr "Il existe de nombreuses façons de contribuer : soumettre des benchmarks, améliorer la documentation, signaler des bugs, suggérer de nouvelles métriques ou parrainer le projet. Visitez notre dépôt GitHub pour plus de détails."
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Sarah Chen"
@@ -706,11 +706,11 @@ msgstr ""
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Founder & Lead Engineer"
-msgstr ""
+msgstr "Fondatrice & Ingénieure Principale"
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Former Google engineer with 10 years of experience building internationalization systems at scale."
-msgstr ""
+msgstr "Ancienne ingénieure Google avec 10 ans d'expérience dans la construction de systèmes d'internationalisation à grande échelle."
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Marcus Weber"
@@ -718,11 +718,11 @@ msgstr ""
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Performance Engineer"
-msgstr ""
+msgstr "Ingénieur Performance"
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
-msgstr ""
+msgstr "Spécialisé dans l'optimisation des performances JavaScript et la méthodologie de benchmarking. Auparavant chez Vercel."
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Aisha Patel"
@@ -734,7 +734,7 @@ msgstr ""
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
-msgstr ""
+msgstr "Passionnée par l'expérience développeur et l'éducation. Conférencière à React Conf, JSConf et i18nNext."
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Tomás Rodríguez"
@@ -742,11 +742,11 @@ msgstr ""
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Full-Stack Developer"
-msgstr ""
+msgstr "Développeur Full-Stack"
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
-msgstr ""
+msgstr "Maintient l'infrastructure de benchmarking et le pipeline CI/CD. Contributeur open source à Lingui."
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Yuki Tanaka"
@@ -754,11 +754,11 @@ msgstr ""
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Data Analyst"
-msgstr ""
+msgstr "Analyste de Données"
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
-msgstr ""
+msgstr "Assure la rigueur statistique dans tous les résultats de benchmark. Doctorat en statistiques appliquées du MIT."
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Elena Kowalski"
@@ -766,23 +766,23 @@ msgstr ""
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Community Manager"
-msgstr ""
+msgstr "Gestionnaire de Communauté"
 
 #: src/components/pages/team/TeamGrid.tsx
 msgid "Manages community contributions, partnerships, and events. Background in open source governance."
-msgstr ""
+msgstr "Gère les contributions de la communauté, les partenariats et les événements. Expérience en gouvernance open source."
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Comparing i18n Libraries in 2026: A Deep Dive"
-msgstr ""
+msgstr "Comparer les bibliothèques i18n en 2026 : une analyse approfondie"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "March 15, 2026"
-msgstr ""
+msgstr "15 mars 2026"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
-msgstr ""
+msgstr "Nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et la DX. Voici les résultats surprenants."
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Benchmark"
@@ -790,89 +790,89 @@ msgstr ""
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "How to Reduce Your i18n Bundle by 60%"
-msgstr ""
+msgstr "Comment réduire votre bundle i18n de 60 %"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "March 8, 2026"
-msgstr ""
+msgstr "8 mars 2026"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
-msgstr ""
+msgstr "Stratégies pratiques pour optimiser les bundles de traduction, y compris le lazy loading, le fractionnement du code et les optimisations au moment de la compilation."
 
 #: src/components/pages/blog/BlogList.tsx
 #: src/components/pages/blog/BlogList.tsx
 msgid "Tutorial"
-msgstr ""
+msgstr "Tutoriel"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "The State of Internationalization in React"
-msgstr ""
+msgstr "L'état de l'internationalisation dans React"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "February 28, 2026"
-msgstr ""
+msgstr "28 février 2026"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
-msgstr ""
+msgstr "Un aperçu de l'écosystème i18n actuel dans React, couvrant les tendances, les modèles émergents et les préférences de la communauté."
 
 #: src/components/pages/blog/BlogList.tsx
 #: src/components/pages/blog/BlogList.tsx
 msgid "Analysis"
-msgstr ""
+msgstr "Analyse"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Migrating from react-i18next to Lingui"
-msgstr ""
+msgstr "Migrer de react-i18next vers Lingui"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "February 15, 2026"
-msgstr ""
+msgstr "15 février 2026"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
-msgstr ""
+msgstr "Un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers Lingui."
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Server Components and i18n: What Changes?"
-msgstr ""
+msgstr "Server Components et i18n : qu'est-ce qui change ?"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "February 1, 2026"
-msgstr ""
+msgstr "1er février 2026"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
-msgstr ""
+msgstr "Les React Server Components introduisent de nouveaux modèles pour l'internationalisation. Nous explorons les implications et les meilleures pratiques."
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Benchmark Methodology: How We Test"
-msgstr ""
+msgstr "Méthodologie du Benchmark : comment nous testons"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "January 20, 2026"
-msgstr ""
+msgstr "20 janvier 2026"
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
-msgstr ""
+msgstr "Un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité."
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Meta"
-msgstr ""
+msgstr "Méta"
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Benchmark CLI"
-msgstr ""
+msgstr "CLI de Benchmark"
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Run benchmarks locally from your terminal. Supports custom configurations and CI integration."
-msgstr ""
+msgstr "Lancez des benchmarks localement depuis votre terminal. Supporte les configurations personnalisées et l'intégration CI."
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Free"
-msgstr ""
+msgstr "Gratuit"
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Benchmark Cloud"
@@ -880,87 +880,87 @@ msgstr ""
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards."
-msgstr ""
+msgstr "Benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe."
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Benchmark Enterprise"
-msgstr ""
+msgstr "Benchmark Entreprise"
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support."
-msgstr ""
+msgstr "Déploiement sur site avec SSO, journaux d'audit, SLA personnalisés et support dédié."
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Contact Us"
-msgstr ""
+msgstr "Contactez-nous"
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Migration Assistant"
-msgstr ""
+msgstr "Assistant de Migration"
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime."
-msgstr ""
+msgstr "Outil propulsé par l'IA qui aide à migrer votre codebase entre les bibliothèques i18n sans temps d'arrêt."
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Translation QA"
-msgstr ""
+msgstr "QA de Traduction"
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Automated quality checks for missing translations, pluralization issues, and context errors."
-msgstr ""
+msgstr "Contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte."
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Bundle Optimizer"
-msgstr ""
+msgstr "Optimiseur de Bundle"
 
 #: src/components/pages/products/ProductsGrid.tsx
 msgid "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
-msgstr ""
+msgstr "Analyse et optimise votre bundle i18n pour la production avec le tree-shaking et le fractionnement du code."
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Senior Frontend Engineer"
-msgstr ""
+msgstr "Ingénieur Frontend Senior"
 
 #: src/components/pages/careers/OpenPositions.tsx
 #: src/components/pages/careers/OpenPositions.tsx
 #: src/components/pages/careers/OpenPositions.tsx
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Remote"
-msgstr ""
+msgstr "Télétravail"
 
 #: src/components/pages/careers/OpenPositions.tsx
 #: src/components/pages/careers/OpenPositions.tsx
 #: src/components/pages/careers/OpenPositions.tsx
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Full-time"
-msgstr ""
+msgstr "Temps plein"
 
 #: src/components/pages/careers/OpenPositions.tsx
 #: src/components/pages/careers/OpenPositions.tsx
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Engineering"
-msgstr ""
+msgstr "Ingénierie"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
-msgstr ""
+msgstr "Construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant React, TypeScript et Vite."
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Backend Engineer"
-msgstr ""
+msgstr "Ingénieur Backend"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
-msgstr ""
+msgstr "Concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour."
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Technical Writer"
-msgstr ""
+msgstr "Rédacteur Technique"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Part-time"
-msgstr ""
+msgstr "Temps partiel"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Documentation"
@@ -968,28 +968,28 @@ msgstr ""
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
-msgstr ""
+msgstr "Créer des guides complets, des références API et des tutoriels pour notre plateforme de benchmarking."
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "DevRel Engineer"
-msgstr ""
+msgstr "Ingénieur DevRel"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "San Francisco / Remote"
-msgstr ""
+msgstr "San Francisco / Télétravail"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Community"
-msgstr ""
+msgstr "Communauté"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
-msgstr ""
+msgstr "S'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source."
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "QA Engineer"
-msgstr ""
+msgstr "Ingénieur QA"
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
-msgstr ""
+msgstr "Assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation."

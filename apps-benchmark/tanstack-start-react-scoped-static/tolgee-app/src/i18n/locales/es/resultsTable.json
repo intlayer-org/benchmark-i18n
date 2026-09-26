@@ -1,7 +1,6 @@
 {
-  "bundleSize": "Tamaño del paquete",
+  "bundleSize": "Tamaño del bundle",
   "lazyLoading": "Carga diferida",
-  "library": "Library",
-  "lookupTime": "Tiempo de búsqueda",
+  "lookupTime": "Tiempo de consulta",
   "sampleResults": "Resultados de muestra"
 }

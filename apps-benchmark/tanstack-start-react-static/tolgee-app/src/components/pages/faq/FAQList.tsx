@@ -6,48 +6,35 @@ export default function FAQList() {
   const faqs = [
     {
       q: t("faqList.whatIsI18nBenchmark"),
-      a: t(
-        "faqList.i18nBenchmarkIsAnOpenSource"),
+      a: t("faqList.whatIsI18nBenchmarkAnswer"),
     },
     {
-      q: t(
-        "faqList.howAreBenchmarksConducted"),
-      a: t(
-        "faqList.weRunStandardizedTestsInIsolated"),
+      q: t("faqList.howAreBenchmarksConducted"),
+      a: t("faqList.weRunStandardizedTestsIn"),
     },
     {
-      q: t(
-        "faqList.whichLibrariesAreCurrentlySupported"),
-      a: t(
-        "faqList.weSupportReactI18nextReactIntl"),
+      q: t("faqList.whichLibrariesAreCurrentlySupported"),
+      a: t("faqList.weSupportReactI18nextReact"),
     },
     {
-      q: t(
-        "faqList.canISubmitMyOwnBenchmarks"),
-      a: t(
-        "faqList.yesCommunityBenchmarkSubmissionsAre"),
+      q: t("faqList.canISubmitMyOwn"),
+      a: t("faqList.yesCommunityBenchmarkSubmissionsAre"),
     },
     {
-      q: t(
-        "faqList.howOftenAreBenchmarksUpdated"),
-      a: t(
-        "faqList.weReRunAllBenchmarksWeekly"),
+      q: t("faqList.howOftenAreBenchmarksUpdated"),
+      a: t("faqList.weReRunAllBenchmarks"),
     },
     {
       q: t("faqList.isTheDataReliable"),
-      a: t(
-        "faqList.weFollowRigorousStatisticalMethodologyIncluding"),
+      a: t("faqList.weFollowRigorousStatisticalMethodology"),
     },
     {
-      q: t(
-        "faqList.doYouOfferConsultingServices"),
-      a: t(
-        "faqList.yesOurEnterprisePlanIncludesConsulting"),
+      q: t("faqList.doYouOfferConsultingServices"),
+      a: t("faqList.yesOurEnterprisePlanIncludes"),
     },
     {
       q: t("faqList.howCanIContribute"),
-      a: t(
-        "faqList.thereAreManyWaysToContribute"),
+      a: t("faqList.thereAreManyWaysTo"),
     },
   ];
 

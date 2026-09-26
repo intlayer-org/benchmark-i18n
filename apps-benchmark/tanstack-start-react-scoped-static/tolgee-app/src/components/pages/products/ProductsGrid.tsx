@@ -1,32 +1,38 @@
-import { T, useTranslate } from "../../../i18n/tolgee";
+import { useTranslate } from "../../../i18n/tolgee";
 
 export default function ProductsGrid() {
   const { t } = useTranslate();
 
   const products = [
     {
-      name: t("productsGrid.benchmarkDashboard"),
-      desc: t(
-        "productsGrid.interactiveChartsAndTables"),
-      price: t("pricingTiers.free"),
+      name: t("productsGrid.benchmarkCli"),
+      desc: t("productsGrid.runBenchmarksLocallyFromYour"),
+      price: t("productsGrid.free"),
     },
     {
-      name: t("productsGrid.bundleAnalyzer"),
-      desc: t(
-        "productsGrid.uploadYourBuildOutput"),
-      price: "$29/mo",
+      name: t("productsGrid.benchmarkCloud"),
+      desc: t("productsGrid.automatedCloudBasedBenchmarkingWith"),
+      price: t("productsGrid.price29mo"),
+    },
+    {
+      name: t("productsGrid.benchmarkEnterprise"),
+      desc: t("productsGrid.onPremiseDeploymentWithSso"),
+      price: t("productsGrid.contactUs"),
     },
     {
       name: t("productsGrid.migrationAssistant"),
-      desc: t(
-        "productsGrid.automatedCodemodsAndGuides"),
-      price: t("pricingTiers.custom"),
+      desc: t("productsGrid.aiPoweredToolThatHelps"),
+      price: t("productsGrid.price99oneTime"),
     },
     {
-      name: t("productsGrid.performanceMonitor"),
-      desc: t(
-        "productsGrid.continuousPerformanceTrackingFor"),
-      price: "$49/mo",
+      name: t("productsGrid.translationQa"),
+      desc: t("productsGrid.automatedQualityChecksForMissing"),
+      price: t("productsGrid.price19mo"),
+    },
+    {
+      name: t("productsGrid.bundleOptimizer"),
+      desc: t("productsGrid.analyzesAndOptimizesYourI18n"),
+      price: t("productsGrid.price49mo"),
     },
   ];
 
@@ -49,7 +55,7 @@ export default function ProductsGrid() {
               type="button"
               className="rounded-md bg-primary px-4 py-2 text-xs font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              <T keyName="productsGrid.learnMore" />
+              {t("productsGrid.learnMore")}
             </button>
           </div>
         </div>

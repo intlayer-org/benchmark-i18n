@@ -1,34 +1,38 @@
+import { useIntlayer } from "react-intlayer";
+
 export default function TeamGrid() {
+  const content = useIntlayer("team-grid");
+
   const members = [
     {
-      name: "Sarah Chen",
-      role: "Founder & Lead Engineer",
-      bio: "Former Google engineer with 10 years of experience building internationalization systems at scale.",
+      name: content.sarahChen.value,
+      role: content.founderLeadEngineer.value,
+      bio: content.formerGoogleEngineerWith10.value,
     },
     {
-      name: "Marcus Weber",
-      role: "Performance Engineer",
-      bio: "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.",
+      name: content.marcusWeber.value,
+      role: content.performanceEngineer.value,
+      bio: content.specializesInJavascriptPerformanceOptimization.value,
     },
     {
-      name: "Aisha Patel",
-      role: "Developer Advocate",
-      bio: "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.",
+      name: content.aishaPatel.value,
+      role: content.developerAdvocate.value,
+      bio: content.passionateAboutDeveloperExperienceAnd.value,
     },
     {
-      name: "Tomás Rodríguez",
-      role: "Full-Stack Developer",
-      bio: "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.",
+      name: content.tomasRodriguez.value,
+      role: content.fullStackDeveloper.value,
+      bio: content.maintainsTheBenchmarkingInfrastructureAnd.value,
     },
     {
-      name: "Yuki Tanaka",
-      role: "Data Analyst",
-      bio: "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.",
+      name: content.yukiTanaka.value,
+      role: content.dataAnalyst.value,
+      bio: content.ensuresStatisticalRigorInAll.value,
     },
     {
-      name: "Elena Kowalski",
-      role: "Community Manager",
-      bio: "Manages community contributions, partnerships, and events. Background in open source governance.",
+      name: content.elenaKowalski.value,
+      role: content.communityManager.value,
+      bio: content.managesCommunityContributionsPartnershipsAnd.value,
     },
   ];
 

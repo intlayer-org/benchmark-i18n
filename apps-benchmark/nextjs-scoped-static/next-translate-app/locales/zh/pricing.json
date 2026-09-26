@@ -26,6 +26,6 @@
   "pricingTiers.auditLogs": "审计日志",
   "pricingTiers.trainingSessions": "培训课程",
   "pricingTiers.contactSales": "联系销售",
-  "pricingHeader.pricing": "定价",
-  "pricingHeader.transparentPricingForEvery": "面向所有人的透明定价"
+  "pricingHeader.simpleTransparentPricing": "简单透明的定价",
+  "pricingHeader.chooseThePlanThatFits": "选择适合您团队的计划。无隐藏费用。"
 }

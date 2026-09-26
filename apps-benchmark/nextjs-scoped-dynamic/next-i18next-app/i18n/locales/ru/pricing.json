@@ -22,8 +22,6 @@
   "pricingTiers.slaGuarantees": "Гарантии SLA",
   "pricingTiers.prioritySupport": "Приоритетная поддержка",
   "pricingTiers.contactSales": "Связаться с отделом продаж",
-  "pricingHeader.pricing": "Цены",
-  "pricingHeader.transparentPricingForEvery": "Прозрачные цены для каждого этапа вашего пути в i18n.",
   "pricingTiers.starterTier": "Бесплатный уровень",
   "pricingTiers.starterPrice": "$0",
   "pricingTiers.forever": "forever",
@@ -43,5 +41,7 @@
   "pricingTiers.dedicatedAccountManager": "Гарантии SLA",
   "pricingTiers.customSLAs": "Custom SLAs",
   "pricingTiers.auditLogs": "Audit logs",
-  "pricingTiers.trainingSessions": "Training sessions"
+  "pricingTiers.trainingSessions": "Training sessions",
+  "pricingHeader.simpleTransparentPricing": "Простое и прозрачное ценообразование",
+  "pricingHeader.chooseThePlanThatFits": "Выберите план, который подходит вашей команде. Никаких скрытых комиссий."
 }

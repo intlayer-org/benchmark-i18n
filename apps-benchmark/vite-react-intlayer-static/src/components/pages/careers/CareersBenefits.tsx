@@ -1,10 +1,13 @@
+import { useIntlayer } from 'react-intlayer';
 export default function CareersBenefits() {
+  const content = useIntlayer('careers-benefits');
+
   const benefits = [
-    { label: "Remote-first", value: "Work from anywhere in the world" },
-    { label: "Competitive pay", value: "Top-of-market compensation" },
+    { label: content.remoteFirst.value, value: content.workFromAnywhereInThe.value },
+    { label: content.competitivePay.value, value: content.topOfMarketCompensation.value },
     {
-      label: "Open source time",
-      value: "20% time for OSS contributions",
+      label: content.openSourceTime.value,
+      value: content.x20TimeForOssContributions.value,
     },
   ];
 

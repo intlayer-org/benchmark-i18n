@@ -1,15 +1,15 @@
-import enShared from "./src/_gt/en/shared.json";
-import frShared from "./src/_gt/fr/shared.json";
-import deShared from "./src/_gt/de/shared.json";
-import esShared from "./src/_gt/es/shared.json";
-import itShared from "./src/_gt/it/shared.json";
-import jaShared from "./src/_gt/ja/shared.json";
-import koShared from "./src/_gt/ko/shared.json";
-import ptShared from "./src/_gt/pt/shared.json";
-import ruShared from "./src/_gt/ru/shared.json";
-import zhShared from "./src/_gt/zh/shared.json";
+import enShared from "./public/_gt/en.json";
+import frShared from "./public/_gt/fr.json";
+import deShared from "./public/_gt/de.json";
+import esShared from "./public/_gt/es.json";
+import itShared from "./public/_gt/it.json";
+import jaShared from "./public/_gt/ja.json";
+import koShared from "./public/_gt/ko.json";
+import ptShared from "./public/_gt/pt.json";
+import ruShared from "./public/_gt/ru.json";
+import zhShared from "./public/_gt/zh.json";
 
-const translationsMap: Record<string, Record<string, string>> = {
+const translationsMap: Record<string, any> = {
   en: { ...enShared },
   fr: { ...frShared },
   de: { ...deShared },

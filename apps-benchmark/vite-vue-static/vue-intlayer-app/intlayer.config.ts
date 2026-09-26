@@ -72,7 +72,11 @@ const config: IntlayerConfig = {
     applicationContext: [""].join("\n"),
   },
   build: {
-    optimize: true,
+    // vue-intlayer 9.5.6: with the optimize pass on, nested leaves used only in
+    // templates (`bundleSize.title`) render nothing and some top-level leaves
+    // render as `{ "name": "IntlayerLeaf" }` (home page loses ~70% of its
+    // text). Off, every page renders; re-enable once fixed upstream.
+    optimize: false,
     minify: true,
     purge: true,
     checkTypes: false,

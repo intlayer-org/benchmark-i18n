@@ -26,6 +26,6 @@
   "pricingTiers.auditLogs": "監査ログ",
   "pricingTiers.trainingSessions": "トレーニングセッション",
   "pricingTiers.contactSales": "営業に問い合わせる",
-  "pricingHeader.pricing": "料金",
-  "pricingHeader.transparentPricingForEvery": "すべての人のための透明な料金"
+  "pricingHeader.simpleTransparentPricing": "シンプルで透明性の高い料金プラン",
+  "pricingHeader.chooseThePlanThatFits": "チームに合ったプランをお選びください。隠れた費用はありません。"
 }

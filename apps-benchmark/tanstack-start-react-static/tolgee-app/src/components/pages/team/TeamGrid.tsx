@@ -5,40 +5,34 @@ export default function TeamGrid() {
 
   const members = [
     {
-      name: "Sarah Chen",
+      name: t("teamGrid.sarahChen"),
       role: t("teamGrid.founderLeadEngineer"),
-      bio: t(
-        "teamGrid.formerGoogleEngineerWith"),
+      bio: t("teamGrid.formerGoogleEngineerWith10"),
     },
     {
-      name: "Marcus Weber",
+      name: t("teamGrid.marcusWeber"),
       role: t("teamGrid.performanceEngineer"),
-      bio: t(
-        "teamGrid.specializesInJavascriptPerformance"),
+      bio: t("teamGrid.specializesInJavascriptPerformanceOptimization"),
     },
     {
-      name: "Aisha Patel",
+      name: t("teamGrid.aishaPatel"),
       role: t("teamGrid.developerAdvocate"),
-      bio: t(
-        "teamGrid.passionateAboutDeveloperExperience"),
+      bio: t("teamGrid.passionateAboutDeveloperExperienceAnd"),
     },
     {
-      name: "Tomás Rodríguez",
+      name: t("teamGrid.tomasRodriguez"),
       role: t("teamGrid.fullStackDeveloper"),
-      bio: t(
-        "teamGrid.maintainsTheBenchmarkingInfrastructure"),
+      bio: t("teamGrid.maintainsTheBenchmarkingInfrastructureAnd"),
     },
     {
-      name: "Yuki Tanaka",
+      name: t("teamGrid.yukiTanaka"),
       role: t("teamGrid.dataAnalyst"),
-      bio: t(
-        "teamGrid.ensuresStatisticalRigorIn"),
+      bio: t("teamGrid.ensuresStatisticalRigorInAll"),
     },
     {
-      name: "Elena Kowalski",
+      name: t("teamGrid.elenaKowalski"),
       role: t("teamGrid.communityManager"),
-      bio: t(
-        "teamGrid.managesCommunityContributions"),
+      bio: t("teamGrid.managesCommunityContributionsPartnershipsAnd"),
     },
   ];
 
@@ -51,7 +45,7 @@ export default function TeamGrid() {
         >
           <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground">
             {m.name
-              .split(" ")
+              .split("team-grid. ")
               .map((n) => n[0])
               .join("")}
           </div>

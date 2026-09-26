@@ -12,7 +12,8 @@
     "test:consistency": "npx playwright test structure-consistency.test.ts",
     "test:pages": "npx playwright test pages.test.ts",
     "test:reactivity": "npx playwright test reactivity.test.ts",
-    "test:rendering": "npx playwright test rendering.test.ts"
+    "test:rendering": "npx playwright test rendering.test.ts",
+    "test:content": "npx playwright test content-consistency.test.ts"
   },
   "dependencies": {
     "vue": "^3.5.42",

@@ -7,7 +7,7 @@ export default {
     runBenchmarksLocallyFromYour: "Exécutez des benchmarks localement depuis votre terminal. Supporte les configurations personnalisées et l'intégration CI.",
     benchmarkCloud: "Benchmark Cloud",
     automatedCloudBasedBenchmarkingWith: "Benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
-    benchmarkEnterprise: "Benchmark Enterprise",
+    benchmarkEnterprise: "Benchmark Entreprise",
     onPremiseDeploymentWithSso: "Déploiement sur site avec SSO, journaux d'audit, SLA personnalisés et support dédié.",
     contactUs: "Contactez-nous",
     migrationAssistant: "Assistant de migration",

@@ -1,9 +1,9 @@
 const contactForm = {
-  yourName: "Your name",
-  bugReport: "Bug Report",
-  newBenchmarkIdea: "New Benchmark Idea",
-  methodologyQuestion: "Methodology Question",
-  describeYourQuestionOrIdea: "Describe your question or idea...",
-  sendMessage: "Send Message",
+  yourName: "Votre nom",
+  bugReport: "Rapport de Bug",
+  newBenchmarkIdea: "Nouvelle Idée de Benchmark",
+  methodologyQuestion: "Question sur la Méthodologie",
+  describeYourQuestionOrIdea: "Décrivez votre question ou idée...",
+  sendMessage: "Envoyer le Message",
 };
 export default contactForm;

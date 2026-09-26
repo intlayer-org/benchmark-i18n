@@ -2,10 +2,13 @@ import { NextRequest, NextResponse } from "next/server";
 import { paraglideMiddleware } from "./paraglide/server";
 
 export function proxy(request: NextRequest) {
+  // The `url` strategy hands the callback a de-localized request (`/en/about` →
+  // `/about`); routes live under `app/[locale]`, so rewrite to the original URL.
+  const originalUrl = request.url;
   return paraglideMiddleware(request, ({ request, locale }) => {
     request.headers.set("x-paraglide-locale", locale);
     request.headers.set("x-paraglide-request-url", request.url);
-    return NextResponse.rewrite(new URL(request.url), request);
+    return NextResponse.rewrite(new URL(originalUrl), request);
   });
 }
 

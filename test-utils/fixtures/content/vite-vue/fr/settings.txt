@@ -1,0 +1,11 @@
+Aller sur GitHub
+⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.
+Gérez vos préférences de compte et votre configuration.
+Notifications e-mail
+Recevoir les rapports hebdomadaires
+Utiliser le thème sombre
+Langue par défaut
+Utilisez cette clé pour appeler l'API de benchmark par programmation.
+Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.
+contact@intlayer.org
+Benchmark i18n — Projet open-source. Construit avec Vue, Vite et Vue Router.

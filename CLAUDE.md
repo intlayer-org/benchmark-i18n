@@ -36,6 +36,7 @@ bun run test:reactivity          # Locale switch latency (all apps)
 bun run test:components          # Per-component size (all apps)
 bun run test:lib-size            # i18n library JS overhead (all apps)
 bun run test:rendering           # Rendering performance (all apps)
+bun run test:content             # Rendered text matches the framework reference (all apps)
 bun run test:next                # All test categories, Next.js apps only
 bun run test:tanstack            # All test categories, TanStack apps only
 
@@ -57,6 +58,14 @@ bun run report -- --framework nextjs --lib intlayer --json   # Filter output
 ```
 
 Results JSON files are written to `results/<app-name>/` at repo root.
+
+### CI
+
+`.github/workflows/benchmark.yml` benchmarks each app in its own job. `scripts/ci-plan.ts` picks the apps to run: those with changed files, those whose resolved dependency tree changed in `bun.lock`, or all apps when a shared input changes (`test-utils/`, root `package.json`, `turbo.json`). `turbo --affected` is not used because any `bun.lock` change marks every package as affected. Only the size tests run by default; the timing tests (reactivity, rendering) are opt-in through a manual run. The report job merges fresh results over the committed `results/`.
+
+```bash
+bun scripts/ci-plan.ts --base origin/main   # preview which apps CI would run
+```
 
 ## Repository structure
 
@@ -129,6 +138,8 @@ registerBundleTest(test, expect, {
 
 Playwright is configured with `workers: 1`, Chrome memory capped at 1 GB, GPU disabled — all to ensure consistent, reproducible measurements.
 
+**Content consistency** (`content-consistency-test.ts`, `bun run test:content`): the size tests pass on apps that render raw keys, English on `/fr`, or an old copy of the mock content — and those bugs shrink bundles and skew fingerprints. This test compares each page against `test-utils/fixtures/content/<framework>/<locale>/<page>.txt`: English must match the base app line for line (≥ 90 %); other locales must render no raw keys, ≤ 25 % untranslated English lines, and ±30 % of the reference text volume (each library ships its own translation, so French is not compared verbatim). Regenerate a reference with `UPDATE_CONTENT_REFERENCE=1 npx playwright test content-consistency.test.ts --project en` on the base app (`--project fr` on the framework's intlayer app). Run it before trusting any new or changed app's numbers.
+
 ## Adding a new library benchmark app
 
 1. Copy the relevant base app (`nextjs-base-app`, `tanstack-start-react-base-app`, etc.)
@@ -136,3 +147,4 @@ Playwright is configured with `workers: 1`, Chrome memory capped at 1 GB, GPU di
 3. Integrate the i18n library following the same component structure as existing apps in the category
 4. The test files (`pages.test.ts`, `reactivity.test.ts`, etc.) need no changes — they delegate to `test-utils`
 5. Run `bun run test:consistency` to validate the app matches the expected structure
+6. Run `bun run test:content` in the app to validate it renders the same, translated content

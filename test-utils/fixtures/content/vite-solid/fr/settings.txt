@@ -1,0 +1,13 @@
+Aller sur GitHub
+⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.
+Gérez vos préférences de compte et votre configuration.
+Notifications par email
+Recevoir des rapports hebdomadaires de benchmark
+Utiliser le schéma de couleurs sombres
+Langue par défaut
+Chinois simplifié (zh-CN)
+Utilisez cette clé pour accéder à l'API de benchmarking par programmation.
+Enregistrer les modifications
+Une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.
+contact@intlayer.org
+i18n Benchmark — Projet open source. Construit avec Solid, Vite & Solid Router.

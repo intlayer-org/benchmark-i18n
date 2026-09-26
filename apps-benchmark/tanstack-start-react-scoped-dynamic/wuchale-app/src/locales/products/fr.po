@@ -13,4 +13,4 @@ msgstr "En savoir plus"
 
 #: src/components/pages/products/ProductsHeader.tsx
 msgid "Tools and services to streamline your internationalization workflow."
-msgstr "Tools and services to streamline your internationalization workflow."
+msgstr "Outils et services pour rationaliser votre flux de travail d'internationalisation."

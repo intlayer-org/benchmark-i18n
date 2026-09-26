@@ -4,7 +4,7 @@ import { For } from 'solid-js';
 export default function FAQList() {
   const content = useIntlayer('faq-list');
 
-  const faqs = [
+  const faqs = () => [
     {
       q: content().whatIsI18nBenchmark.value,
       a: content().i18nBenchmarkIsAnOpen.value,
@@ -41,7 +41,7 @@ export default function FAQList() {
 
   return (
     <div class="mx-auto max-w-3xl space-y-4">
-      <For each={faqs}>
+      <For each={faqs()}>
         {(f) => (
           <details class="group rounded-lg border border-border bg-card">
             <summary class="cursor-pointer px-6 py-4 text-sm font-medium text-foreground transition-colors hover:bg-accent/50">

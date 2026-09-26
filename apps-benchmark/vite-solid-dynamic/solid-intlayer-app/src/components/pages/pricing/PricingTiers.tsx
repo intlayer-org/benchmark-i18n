@@ -4,7 +4,7 @@ import { For } from 'solid-js';
 export default function PricingTiers() {
   const content = useIntlayer('pricing-tiers');
 
-  const tiers = [
+  const tiers = () => [
     {
       name: content().starter.value,
       price: '$0',
@@ -48,7 +48,7 @@ export default function PricingTiers() {
 
   return (
     <div class="grid gap-6 md:grid-cols-3">
-      <For each={tiers}>
+      <For each={tiers()}>
         {(t) => (
           <div
             class={`flex flex-col rounded-lg border p-6 ${

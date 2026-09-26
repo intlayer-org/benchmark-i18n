@@ -1,0 +1,18 @@
+Aller sur GitHub
+⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.
+Rencontrez les personnes derrière i18n Benchmark. Une équipe diversifiée unie par une passion commune pour les excellents outils de développement.
+Fondatrice & lead ingénieur
+Ex-ingénieure Google, 10 ans sur l'internationalisation à grande échelle.
+Ingénieur performance
+Optimisation JavaScript et méthodologie de benchmark — précédemment chez Vercel.
+Developer advocate
+Expérience développeur et pédagogie — conférencière React Conf, JSConf, i18nNext.
+Développeur full-stack
+Infrastructure de benchmark et CI/CD — contributeur open source à Lingui.
+Analyste de données
+Rigueur statistique des résultats — doctorat en statistiques appliquées (MIT).
+Community manager
+Contributions communautaires, partenariats et événements — gouvernance open source.
+Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.
+contact@intlayer.org
+Benchmark i18n — Projet open-source. Construit avec Vue, Vite et Vue Router.

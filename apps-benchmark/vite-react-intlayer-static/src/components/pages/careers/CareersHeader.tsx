@@ -1,15 +1,14 @@
+import { useIntlayer } from 'react-intlayer';
 import MockBanner from "../../MockBanner";
 
 export default function CareersHeader() {
+  const content = useIntlayer('careers-header');
+
   return (
     <>
       <MockBanner />
-      <h1 className="mb-2 text-3xl font-bold text-foreground">Careers</h1>
-      <p className="mb-4 text-muted-foreground">
-        Join our mission to improve the internationalization ecosystem. We're a
-        remote-first team that values impact, transparency, and continuous
-        learning.
-      </p>
+      <h1 className="mb-2 text-3xl font-bold text-foreground">{content.title}</h1>
+      <p className="mb-4 text-muted-foreground">{content.joinOurMissionToImprove}</p>
     </>
   );
 }

@@ -9,12 +9,12 @@ msgstr ""
 
 #: src/components/pages/home/Hero.tsx
 msgid "Hero"
-msgstr "Hero"
+msgstr "Héros"
 
 #: src/components/Footer.tsx
 #: src/components/pages/home/Hero.tsx
 msgid "i18n Benchmark"
-msgstr "i18n Benchmark"
+msgstr "Benchmark i18n"
 
 #: src/components/pages/home/Hero.tsx
 msgid "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
@@ -34,15 +34,15 @@ msgstr "Méthodologie"
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Yes"
-msgstr "Yes"
+msgstr "Oui"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Manual"
-msgstr "Manual"
+msgstr "Manuel"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Built-in"
-msgstr "Built-in"
+msgstr "Intégré"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Sample Results"
@@ -50,7 +50,7 @@ msgstr "Exemples de résultats"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Library"
-msgstr "Library"
+msgstr "Bibliothèque"
 
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/WhyItMatters.tsx
@@ -145,15 +145,15 @@ msgstr "Le chargement de toutes les traductions à l'avance surcharge le payload
 
 #: src/components/pages/about/AboutGrid.tsx
 msgid "Why This Exists"
-msgstr "Why This Exists"
+msgstr "Pourquoi ce Projet Existe"
 
 #: src/components/pages/about/AboutGrid.tsx
 msgid "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
-msgstr "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+msgstr "Choisir une bibliothèque i18n est une décision d'architecture aux conséquences à long terme. La plupart des comparaisons se concentrent sur l'ergonomie de l'API, mais peu mesurent le coût en performance : quel poids la bibliothèque ajoute-t-elle au bundle ? Quel est son impact sur le rendu lorsque des milliers de clés de traduction sont chargées ? Le chargement asynchrone aide-t-il vraiment ou déplace-t-il simplement le coût ? Ce benchmark répond à ces questions avec des données réelles."
 
 #: src/components/pages/about/AboutGrid.tsx
 msgid "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
-msgstr "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+msgstr "La même application de 10 pages est construite une fois par bibliothèque. Nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits Lighthouse pour les métriques de chargement et utilisons le React Profiler pour capturer les temps de rendu lors des changements de locale. Tous les tests s'exécutent en CI sur du matériel constant pour garantir des résultats reproductibles."
 
 #: src/components/pages/about/AboutHeader.tsx
 msgid "AboutHeader"
@@ -161,11 +161,11 @@ msgstr "AboutHeader"
 
 #: src/components/pages/about/AboutHeader.tsx
 msgid "About This Benchmark"
-msgstr "About This Benchmark"
+msgstr "À propos de ce Benchmark"
 
 #: src/components/pages/about/AboutHeader.tsx
 msgid "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
-msgstr "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+msgstr "Ceci est une application de test open-source — pas un produit ou une entreprise. Son seul but est de fournir une application React multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Bundle size impact"
@@ -173,7 +173,7 @@ msgstr "Impact sur la taille du bundle"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
-msgstr "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+msgstr "Les octets JavaScript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers de traduction sont inclus. Cela affecte directement le temps de téléchargement sur les réseaux lents."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Rendering overhead"
@@ -181,7 +181,7 @@ msgstr "Surcharge de rendu"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
-msgstr "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+msgstr "Combien de temps supplémentaire la bibliothèque ajoute au cycle de rendu de React. Les bibliothèques qui injectent des traductions via un seul fournisseur de contexte peuvent provoquer des rendus inutiles dans tout l'arbre des composants."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Hydration cost"
@@ -189,7 +189,7 @@ msgstr "Coût d'hydratation"
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
-msgstr "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+msgstr "Pendant le SSR, les données de traduction sont sérialisées en HTML. Les dictionnaires volumineux augmentent la charge utile HTML et ralentissent l'hydratation — le moment où la page devient interactive."
 
 #: src/components/pages/about/WhatWeMeasure.tsx
 msgid "Lazy loading effectiveness"
@@ -218,7 +218,7 @@ msgstr "Blog"
 
 #: src/components/pages/blog/BlogHeader.tsx
 msgid "Insights, tutorials, and analysis from the i18n community."
-msgstr "Insights, tutorials, and analysis from the i18n community."
+msgstr "Aperçus, tutoriels et analyses de la communauté i18n."
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Read More →"
@@ -226,23 +226,23 @@ msgstr "Lire la suite →"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Remote-first"
-msgstr "Remote-first"
+msgstr "Télétravail d'abord"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Work from anywhere in the world"
-msgstr "Work from anywhere in the world"
+msgstr "Travailler de n'importe où dans le monde"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Competitive pay"
-msgstr "Competitive pay"
+msgstr "Rémunération compétitive"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Top-of-market compensation"
-msgstr "Top-of-market compensation"
+msgstr "Rémunération au-dessus du marché"
 
 #: src/components/pages/careers/CareersBenefits.tsx
 msgid "Open source time"
-msgstr "Open source time"
+msgstr "Temps alloué à l'open source"
 
 #: src/components/Header.tsx
 #: src/components/pages/careers/CareersHeader.tsx
@@ -251,7 +251,7 @@ msgstr "Carrières"
 
 #: src/components/pages/careers/CareersHeader.tsx
 msgid "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
-msgstr "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+msgstr "Rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. Nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu."
 
 #: src/components/pages/careers/OpenPositions.tsx
 msgid "Open Positions"
@@ -267,7 +267,7 @@ msgstr "Nom"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Your name"
-msgstr "Your name"
+msgstr "Votre nom"
 
 #: src/components/pages/contact/ContactForm.tsx
 #: src/components/pages/settings/ProfileSection.tsx
@@ -276,19 +276,19 @@ msgstr "Email"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Topic"
-msgstr "Topic"
+msgstr "Sujet"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Bug Report"
-msgstr "Bug Report"
+msgstr "Rapport de Bug"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "New Benchmark Idea"
-msgstr "New Benchmark Idea"
+msgstr "Nouvelle Idée de Benchmark"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Methodology Question"
-msgstr "Methodology Question"
+msgstr "Question sur la Méthodologie"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Contribution"
@@ -296,7 +296,7 @@ msgstr "Contribution"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Other"
-msgstr "Other"
+msgstr "Autre"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Message"
@@ -304,7 +304,7 @@ msgstr "Message"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Describe your question or idea..."
-msgstr "Describe your question or idea..."
+msgstr "Décrivez votre question ou idée..."
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Send Message"
@@ -312,7 +312,7 @@ msgstr "Envoyer le message"
 
 #: src/components/pages/contact/ContactHeader.tsx
 msgid "Get in Touch"
-msgstr "Get in Touch"
+msgstr "Contactez-nous"
 
 #. 0: " "
 #: src/components/pages/contact/ContactHeader.tsx
@@ -325,19 +325,19 @@ msgstr "Foire aux questions"
 
 #: src/components/pages/faq/FAQHeader.tsx
 msgid "Everything you need to know about i18n Benchmark."
-msgstr "Everything you need to know about i18n Benchmark."
+msgstr "Tout ce que vous devez savoir sur i18n Benchmark."
 
 #: src/components/pages/pricing/PricingHeader.tsx
 msgid "Simple, Transparent Pricing"
-msgstr "Simple, Transparent Pricing"
+msgstr "Tarification Simple et Transparente"
 
 #: src/components/pages/pricing/PricingHeader.tsx
 msgid "Choose the plan that fits your team. No hidden fees."
-msgstr "Choose the plan that fits your team. No hidden fees."
+msgstr "Choisissez le plan qui convient à votre équipe. Pas de frais cachés."
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Enterprise"
-msgstr "Enterprise"
+msgstr "Entreprise"
 
 #: src/components/pages/pricing/PricingTiers.tsx
 msgid "Contact Sales"
@@ -358,7 +358,7 @@ msgstr "Produits"
 
 #: src/components/pages/products/ProductsHeader.tsx
 msgid "Tools and services to streamline your internationalization workflow."
-msgstr "Tools and services to streamline your internationalization workflow."
+msgstr "Outils et services pour rationaliser votre flux de travail d'internationalisation."
 
 #: src/components/pages/settings/ApiAccessSection.tsx
 msgid "API Access"
@@ -402,7 +402,7 @@ msgstr "Recevoir des rapports hebdomadaires de benchmark"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle notifications"
-msgstr "Toggle notifications"
+msgstr "Basculer les notifications"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Dark Mode"
@@ -414,7 +414,7 @@ msgstr "Utiliser le schéma de couleurs sombres"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle dark mode"
-msgstr "Toggle dark mode"
+msgstr "Basculer le mode sombre"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Default Language"
@@ -422,23 +422,23 @@ msgstr "Langue par défaut"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "English (en)"
-msgstr "English (en)"
+msgstr "Anglais (en)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "French (fr)"
-msgstr "French (fr)"
+msgstr "Français (fr)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "German (de)"
-msgstr "German (de)"
+msgstr "Allemand (de)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Spanish (es)"
-msgstr "Spanish (es)"
+msgstr "Espagnol (es)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Japanese (ja)"
-msgstr "Japanese (ja)"
+msgstr "Japonais (ja)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Chinese Simplified (zh-CN)"
@@ -446,7 +446,7 @@ msgstr "Chinese Simplified (zh-CN)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Arabic (ar)"
-msgstr "Arabic (ar)"
+msgstr "Arabe (ar)"
 
 #: src/components/pages/settings/SettingsFooter.tsx
 msgid "Cancel"
@@ -516,7 +516,7 @@ msgstr "i18n Benchmark — Projet open source. Construit avec React, Vite & TanS
 
 #: src/components/Header.tsx
 msgid "Header"
-msgstr "Header"
+msgstr "En-tête"
 
 #: src/components/Header.tsx
 msgid "Pricing"
@@ -528,7 +528,7 @@ msgstr "Équipe"
 
 #: src/components/Header.tsx
 msgid "i18n Bench"
-msgstr "i18n Bench"
+msgstr "Bench i18n"
 
 #: src/components/Header.tsx
 msgid "Home"
@@ -536,7 +536,7 @@ msgstr "Accueil"
 
 #: src/components/Header.tsx
 msgid "Mock Pages <0/>"
-msgstr "Mock Pages <0/>"
+msgstr "Pages de Test <0/>"
 
 #: src/components/Header.tsx
 msgid "Go to GitHub"

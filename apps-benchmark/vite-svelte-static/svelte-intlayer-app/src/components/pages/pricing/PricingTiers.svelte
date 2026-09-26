@@ -1,53 +1,52 @@
 <script lang="ts">
   import { useIntlayer } from 'svelte-intlayer';
-  import { get } from 'svelte/store';
   const content = useIntlayer('pricing-tiers');
 
-  const tiers = [
+  const tiers = $derived([
     {
-      name: get(content).starter,
+      name: $content.starter,
       price: "$0",
       period: "forever",
       features: [
-        get(content).x5BenchmarkRunsday,
+        $content.x5BenchmarkRunsday,
         "3 libraries",
-        get(content).communitySupport,
-        get(content).publicResults,
+        $content.communitySupport,
+        $content.publicResults,
       ],
     },
     {
-      name: get(content).pro,
+      name: $content.pro,
       price: "$29",
       period: "/month",
       features: [
-        get(content).unlimitedRuns,
-        get(content).allLibraries,
-        get(content).prioritySupport,
-        get(content).privateResults,
-        get(content).ciIntegration,
-        get(content).historicalData,
+        $content.unlimitedRuns,
+        $content.allLibraries,
+        $content.prioritySupport,
+        $content.privateResults,
+        $content.ciIntegration,
+        $content.historicalData,
       ],
       highlighted: true,
     },
     {
-      name: get(content).enterprise,
-      price: get(content).custom,
+      name: $content.enterprise,
+      price: $content.custom,
       period: "",
       features: [
-        get(content).everythingInPro,
-        get(content).onPremiseOption,
-        get(content).ssoSaml,
-        get(content).dedicatedAccountManager,
-        get(content).customSlas,
-        get(content).auditLogs,
-        get(content).trainingSessions,
+        $content.everythingInPro,
+        $content.onPremiseOption,
+        $content.ssoSaml,
+        $content.dedicatedAccountManager,
+        $content.customSlas,
+        $content.auditLogs,
+        $content.trainingSessions,
       ],
     },
-  ];
+  ]);
 </script>
 
 <div class="grid gap-6 md:grid-cols-3">
-  {#each tiers as t (t.name)}
+  {#each tiers as t, __k1 (__k1)}
     <div
       class="flex flex-col rounded-lg border p-6 {t.highlighted
         ? 'border-primary bg-primary/5 ring-1 ring-primary'
@@ -59,7 +58,7 @@
         <span class="text-sm text-muted-foreground">{t.period}</span>
       </div>
       <ul class="mb-6 flex-1 space-y-2">
-        {#each t.features as f (f)}
+        {#each t.features as f, __k2 (__k2)}
           <li class="flex items-center gap-2 text-sm text-muted-foreground">
             <span class="text-primary">✓</span>
             {f}

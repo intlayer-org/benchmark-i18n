@@ -87,8 +87,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
           <IntlayerProvider locale={locale}>
             <Header />
             {children}
+            <Footer />
           </IntlayerProvider>
-          <Footer />
       <Scripts />
       </body>
     </html>

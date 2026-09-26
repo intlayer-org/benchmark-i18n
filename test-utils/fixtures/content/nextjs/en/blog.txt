@@ -1,0 +1,21 @@
+⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.
+Insights, tutorials, and analysis from the i18n community.
+Comparing i18n Libraries in 2026: A Deep Dive
+We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.
+How to Reduce Your i18n Bundle by 60%
+Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.
+February 28, 2026
+The State of Internationalization in React
+An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.
+February 15, 2026
+Migrating from react-i18next to Lingui
+A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.
+February 1, 2026
+Server Components and i18n: What Changes?
+React Server Components introduce new patterns for internationalization. We explore the implications and best practices.
+January 20, 2026
+Benchmark Methodology: How We Test
+A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.
+An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.
+contact@intlayer.org
+i18n Benchmark — Open-source project. Built with React & Next.js.

@@ -1,46 +1,44 @@
+import { useIntlayer } from "react-intlayer";
+
 export default function BlogList() {
+  const content = useIntlayer("blog-list");
+
   const posts = [
     {
-      title: "Comparing i18n Libraries in 2026: A Deep Dive",
-      date: "March 15, 2026",
-      excerpt:
-        "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
-      category: "Benchmark",
+      title: content.comparingI18nLibrariesIn2026.value,
+      date: content.march152026.value,
+      excerpt: content.weTested12DifferentInternationalization.value,
+      category: content.benchmark.value,
     },
     {
-      title: "How to Reduce Your i18n Bundle by 60%",
-      date: "March 8, 2026",
-      excerpt:
-        "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
-      category: "Tutorial",
+      title: content.howToReduceYourI18n.value,
+      date: content.march82026.value,
+      excerpt: content.practicalStrategiesForOptimizingTranslation.value,
+      category: content.tutorial.value,
     },
     {
-      title: "The State of Internationalization in React",
-      date: "February 28, 2026",
-      excerpt:
-        "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
-      category: "Analysis",
+      title: content.theStateOfInternationalizationIn.value,
+      date: content.february282026.value,
+      excerpt: content.anOverviewOfTheCurrent.value,
+      category: content.analysis.value,
     },
     {
-      title: "Migrating from react-i18next to Lingui",
-      date: "February 15, 2026",
-      excerpt:
-        "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
-      category: "Tutorial",
+      title: content.migratingFromReactI18nextTo.value,
+      date: content.february152026.value,
+      excerpt: content.aStepByStepGuide.value,
+      category: content.tutorial.value,
     },
     {
-      title: "Server Components and i18n: What Changes?",
-      date: "February 1, 2026",
-      excerpt:
-        "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
-      category: "Analysis",
+      title: content.serverComponentsAndI18nWhat.value,
+      date: content.february12026.value,
+      excerpt: content.reactServerComponentsIntroduceNew.value,
+      category: content.analysis.value,
     },
     {
-      title: "Benchmark Methodology: How We Test",
-      date: "January 20, 2026",
-      excerpt:
-        "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-      category: "Meta",
+      title: content.benchmarkMethodologyHowWeTest.value,
+      date: content.january202026.value,
+      excerpt: content.aTransparentLookAtOur.value,
+      category: content.meta.value,
     },
   ];
 
@@ -65,7 +63,7 @@ export default function BlogList() {
             type="button"
             className="text-sm font-medium text-primary hover:underline"
           >
-            Read More →
+            {content.readMore}
           </button>
         </article>
       ))}

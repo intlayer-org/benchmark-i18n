@@ -90,8 +90,8 @@ function RootDocument({ children }: { children: React.ReactNode }) {
               <Header />
               {children}
             </Suspense>
+            <Footer />
           </IntlayerProvider>
-          <Footer />
       <Scripts />
       </body>
     </html>

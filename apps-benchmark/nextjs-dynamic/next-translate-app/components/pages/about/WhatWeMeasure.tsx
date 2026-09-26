@@ -4,6 +4,7 @@ import useTranslation from "next-translate/useTranslation";
 
 export default function WhatWeMeasure() {
   const { t } = useTranslation("common");
+
   const metrics = [
     {
       metric: t("about.whatWeMeasure.bundleSizeImpact"),

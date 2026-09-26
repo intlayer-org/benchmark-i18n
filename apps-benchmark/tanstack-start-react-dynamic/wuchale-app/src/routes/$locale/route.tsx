@@ -1,12 +1,23 @@
 import { createFileRoute, Outlet } from "@tanstack/react-router";
 import { loadLocale } from "wuchale/load-utils";
+import { createServerFn } from "@tanstack/react-start";
+
+const initServerLoadersFn = createServerFn({ method: "GET" }).handler(
+  async () => {
+    const { initServerLoaders } = await import("../../i18n/loaders.server");
+    await initServerLoaders();
+  },
+);
 
 export const Route = createFileRoute("/$locale")({
   loader: async ({ params }) => {
     const locale = params.locale || "en";
 
-    // Fetches the compiled catalog array and updates the runtime
-    await loadLocale(locale);
+    // On the server, we need to populate the runtimes object (fire-and-forget)
+    initServerLoadersFn().catch(() => {});
+
+    // Kick off locale loading without blocking navigation commit
+    loadLocale(locale).catch(() => {});
 
     return { locale };
   },

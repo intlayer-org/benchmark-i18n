@@ -9,7 +9,7 @@ msgstr ""
 
 #: src/components/pages/blog/BlogHeader.tsx
 msgid "Insights, tutorials, and analysis from the i18n community."
-msgstr "Insights, tutorials, and analysis from the i18n community."
+msgstr "Aperçus, tutoriels et analyses de la communauté i18n."
 
 #: src/components/pages/blog/BlogList.tsx
 msgid "Read More →"

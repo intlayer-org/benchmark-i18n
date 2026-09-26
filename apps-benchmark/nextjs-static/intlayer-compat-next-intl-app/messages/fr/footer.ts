@@ -1,12 +1,12 @@
 const footer = {
-  resources: "Resources",
+  resources: "Ressources",
   contact: "Contact",
   github: "GitHub",
-  methodology: "Methodology",
-  contributing: "Contributing",
+  methodology: "Méthodologie",
+  contributing: "Contribuer",
   builtWith:
-    "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.",
+    "i18n Benchmark — Projet open-source. Construit avec React, Vite & TanStack Router.",
   anOpenSourceTestApplication:
-    "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+    "Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
 };
 export default footer;

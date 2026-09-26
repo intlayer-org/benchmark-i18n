@@ -145,7 +145,7 @@
       "description": "Rejoignez notre mission pour améliorer l'écosystème i18n. Équipe remote-first, impact, transparence et apprentissage continu."
     },
     "benefits": {
-      "remoteLabel": "Remote-first",
+      "remoteLabel": "Télétravail d'abord",
       "remoteValue": "Travaillez depuis n'importe où",
       "payLabel": "Rémunération compétitive",
       "payValue": "Fourchettes haut de marché",
@@ -241,7 +241,7 @@
       "proFeature4": "Résultats privés",
       "proFeature5": "Intégration CI",
       "proFeature6": "Historique",
-      "enterpriseName": "Enterprise",
+      "enterpriseName": "Entreprise",
       "enterprisePrice": "Sur mesure",
       "enterpriseFeature1": "Tout le Pro",
       "enterpriseFeature2": "Option on-premise",
@@ -261,13 +261,13 @@
     },
     "grid": {
       "learnMore": "En savoir plus",
-      "cliName": "Benchmark CLI",
+      "cliName": "CLI de Benchmark",
       "cliDesc": "Lancez des benchmarks en local. Configurations personnalisées et CI.",
       "cliPrice": "Gratuit",
       "cloudName": "Benchmark Cloud",
       "cloudDesc": "Benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
       "cloudPrice": "29 €/mois",
-      "enterpriseName": "Benchmark Enterprise",
+      "enterpriseName": "Benchmark Entreprise",
       "enterpriseDesc": "On-premise avec SSO, journaux d'audit, SLA et support dédié.",
       "enterprisePrice": "Nous contacter",
       "migrationName": "Assistant de migration",

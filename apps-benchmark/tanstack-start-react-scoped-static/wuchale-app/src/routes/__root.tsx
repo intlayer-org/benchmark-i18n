@@ -12,7 +12,7 @@ import Header from "../components/Header";
 import appCss from "../styles.css?url";
 
 import { recordHydrationDuration, recordRenderTime } from 'test-utils/browser-metrics';
-import { loadLocale } from "wuchale/load-utils";
+import { setAllLocales } from "../i18n/loaders";
 
 
 const defaultLocale = "en";
@@ -83,23 +83,9 @@ function RootDocument({ children }: { children: React.ReactNode }) {
   });
   const locale = pendingLocale ?? committedLocale;
 
-  const [renderTick, setRenderTick] = useState(0);
-
-  // Sync wuchale's external state with React's lifecycle
-  useEffect(() => {
-    let isMounted = true;
-
-    loadLocale(locale).then(() => {
-      if (isMounted) {
-        // This forces React to update the DOM with the loaded strings
-        setRenderTick((prev) => prev + 1);
-      }
-    });
-
-    return () => {
-      isMounted = false;
-    };
-  }, [locale]);
+  // Catalogs are bundled (`loading.direct`): switch synchronously before the
+  // tree renders, on the server and on the client alike.
+  setAllLocales(locale);
 
   return (
     <html lang={locale} suppressHydrationWarning>
@@ -107,7 +93,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
       <HeadContent />
       </head>
-      <body className="antialiased [overflow-wrap:anywhere]" key={renderTick}>
+      <body className="antialiased [overflow-wrap:anywhere]">
           <Header />
           {children}
           <Footer />

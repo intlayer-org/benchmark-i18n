@@ -9,10 +9,10 @@ export default function AboutHeader() {
   return (
     <>
       <h1 className="mb-4 text-3xl font-bold text-foreground">
-        {t("about.aboutHeader.methodology")}
+        {t("about.aboutHeader.aboutThisBenchmark")}
       </h1>
       <p className="mb-8 max-w-3xl text-muted-foreground">
-        {t("about.aboutHeader.weDesignedThisBenchmarkTo")}
+        {t("about.aboutHeader.thisIsAnOpenSource")}
       </p>
     </>
   );

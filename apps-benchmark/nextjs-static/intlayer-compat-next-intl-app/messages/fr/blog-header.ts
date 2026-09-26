@@ -1,5 +1,5 @@
 const blogHeader = {
   insightsTutorialsAndAnalysisFrom:
-    "Insights, tutorials, and analysis from the i18n community.",
+    "Aperçus, tutoriels et analyses de la communauté i18n.",
 };
 export default blogHeader;

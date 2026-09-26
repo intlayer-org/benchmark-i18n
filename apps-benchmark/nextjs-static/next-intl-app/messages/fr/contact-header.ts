@@ -1,6 +1,6 @@
 const contactHeader = {
-  getInTouch: "Get in Touch",
+  getInTouch: "Contactez-nous",
   haveIdeasFoundABug:
-    "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at",
+    "Vous avez des idées, trouvé un bug ou vous voulez contribuer à un benchmark ? Contactez-nous à",
 };
 export default contactHeader;

@@ -1,0 +1,22 @@
+Aller sur GitHub
+⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.
+Rejoignez notre mission d'amélioration de l'écosystème de l'internationalisation. Nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.
+Travaillez de n'importe où dans le monde
+Salaire compétitif
+Rémunération au sommet du marché
+Temps open source
+20 % du temps pour les contributions OSS
+Ingénieur frontend senior
+Construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant React, TypeScript et Vite.
+Postulez maintenant
+Ingénieur backend
+Concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.
+Rédacteur technique
+Créer des guides complets, des références API et des tutoriels pour notre plateforme de benchmarking.
+Ingénieur DevRel
+S'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.
+San Francisco / À distance
+Assurer l'exactitude et la fiabilité des résultats de benchmark grâce à des tests et validations rigoureux.
+Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.
+contact@intlayer.org
+Benchmark i18n — Projet open-source. Construit avec Svelte, Vite et un routeur côté client.

@@ -2,8 +2,8 @@ import { useIntlayer } from 'solid-intlayer';
 import { usePerformanceMeasure } from '../../../hooks/usePerformanceMeasure';
 
 export default function Hero() {
-  usePerformanceMeasure(hero.value);
-  const { title, description, viewResults, methodology, hero } =
+  usePerformanceMeasure('Hero');
+  const { title, description, viewResults, methodology } =
     useIntlayer('hero');
 
   return (

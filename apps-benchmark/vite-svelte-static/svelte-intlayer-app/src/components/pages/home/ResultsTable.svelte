@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { get } from 'svelte/store';
 
   import { useIntlayer } from "svelte-intlayer";
   import { usePerformanceMeasure } from "$lib/performanceMeasure";
@@ -8,27 +7,27 @@
 
   const content = useIntlayer("results-table");
 
-  const results = [
+  const results = $derived([
     {
       lib: "react-i18next",
       size: "42.3 kB",
       time: "0.12ms",
-      lazy: get(content).yes,
+      lazy: $content.yes,
     },
     {
       lib: "react-intl",
       size: "38.1 kB",
       time: "0.15ms",
-      lazy: get(content).manual,
+      lazy: $content.manual,
     },
-    { lib: "lingui", size: "12.8 kB", time: "0.08ms", lazy: get(content).yes1 },
+    { lib: "lingui", size: "12.8 kB", time: "0.08ms", lazy: $content.yes1 },
     {
       lib: "typesafe-i18n",
       size: "5.2 kB",
       time: "0.05ms",
       lazy: "Built-in",
     },
-  ];
+  ]);
 </script>
 
 <section>
@@ -54,7 +53,7 @@
         </tr>
       </thead>
       <tbody>
-        {#each results as r (r.lib)}
+        {#each results as r, __k1 (__k1)}
           <tr class="border-t border-border">
             <td class="px-4 py-3 font-medium text-foreground">{r.lib}</td>
             <td class="px-4 py-3 text-muted-foreground">{r.size}</td>

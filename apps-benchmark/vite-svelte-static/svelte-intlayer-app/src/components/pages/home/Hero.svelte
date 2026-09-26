@@ -1,12 +1,10 @@
 <script lang="ts">
-  import { get } from 'svelte/store';
-
   import { useIntlayer } from "svelte-intlayer";
   import { usePerformanceMeasure } from "$lib/performanceMeasure";
 
   const content = useIntlayer("hero");
 
-  usePerformanceMeasure(get(content).hero);
+  usePerformanceMeasure("Hero");
 </script>
 
 <section class="mb-16 text-center">

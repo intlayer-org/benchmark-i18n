@@ -1,17 +1,14 @@
-import { T } from "../../../i18n/tolgee";
+import { useTranslate } from "../../../i18n/tolgee";
 import MockBanner from "../../MockBanner";
 
 export default function CareersHeader() {
+  const { t } = useTranslate();
   return (
     <>
       <MockBanner />
-      <h1 className="mb-2 text-3xl font-bold text-foreground">
-        <T keyName="careersHeader.careers" />
-      </h1>
+      <h1 className="mb-2 text-3xl font-bold text-foreground">{t("careersHeader.title")}</h1>
       <p className="mb-4 text-muted-foreground">
-        <T
-          keyName="careersHeader.joinOurMission"
-        />
+        {t("careersHeader.joinOurMissionToImprove")}
       </p>
     </>
   );

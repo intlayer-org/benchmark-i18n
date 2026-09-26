@@ -26,6 +26,6 @@
   "pricingTiers.auditLogs": "Audit logs",
   "pricingTiers.trainingSessions": "Training sessions",
   "pricingTiers.contactSales": "Contact Sales",
-  "pricingHeader.pricing": "Pricing",
-  "pricingHeader.transparentPricingForEvery": "Transparent pricing for every stage of your i18n journey."
+  "pricingHeader.simpleTransparentPricing": "Simple, Transparent Pricing",
+  "pricingHeader.chooseThePlanThatFits": "Choose the plan that fits your team. No hidden fees."
 }

@@ -1,7 +1,7 @@
 const careersBenefits = {
-  workFromAnywhereInThe: "Work from anywhere in the world",
-  competitivePay: "Competitive pay",
-  topOfMarketCompensation: "Top-of-market compensation",
-  openSourceTime: "Open source time",
+  workFromAnywhereInThe: "Travailler de n'importe où dans le monde",
+  competitivePay: "Rémunération compétitive",
+  topOfMarketCompensation: "Rémunération au-dessus du marché",
+  openSourceTime: "Temps alloué à l'open source",
 };
 export default careersBenefits;

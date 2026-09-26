@@ -26,6 +26,6 @@
   "pricingTiers.auditLogs": "감사 로그",
   "pricingTiers.trainingSessions": "교육 세션",
   "pricingTiers.contactSales": "영업팀 문의",
-  "pricingHeader.pricing": "요금",
-  "pricingHeader.transparentPricingForEvery": "모두를 위한 투명한 요금제"
+  "pricingHeader.simpleTransparentPricing": "간단하고 투명한 가격 책정",
+  "pricingHeader.chooseThePlanThatFits": "팀에 적합한 요금제를 선택하십시오. 숨겨진 수수료가 없습니다."
 }

@@ -1,6 +1,6 @@
 {
   "arabicAr": "Arabic (ar)",
-  "chineseSimplifiedZhCn": "Chinese (Simplified, zh-CN)",
+  "chineseSimplifiedZhCn": "Chinese Simplified (zh)",
   "darkMode": "Dark Mode",
   "defaultLanguage": "Default Language",
   "emailNotifications": "Email Notifications",
@@ -8,11 +8,9 @@
   "frenchFr": "French (fr)",
   "germanDe": "German (de)",
   "japaneseJa": "Japanese (ja)",
-  "preferences": "Preferences",
-  "receiveWeeklyBenchmark": "Receive weekly benchmark reports",
   "receiveWeeklyBenchmarkReports": "Receive weekly benchmark reports",
   "spanishEs": "Spanish (es)",
   "toggleDarkMode": "Toggle dark mode",
-  "toggleNotifications": "Toggle Notifications",
+  "toggleNotifications": "Toggle notifications",
   "useDarkColorScheme": "Use dark color scheme"
 }

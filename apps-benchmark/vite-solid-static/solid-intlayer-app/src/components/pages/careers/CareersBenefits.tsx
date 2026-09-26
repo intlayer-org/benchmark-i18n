@@ -4,7 +4,7 @@ import { For } from 'solid-js';
 export default function CareersBenefits() {
   const content = useIntlayer('careers-benefits');
 
-  const benefits = [
+  const benefits = () => [
     { label: 'Remote-first', value: content().workFromAnywhereInThe.value },
     {
       label: content().competitivePay.value,
@@ -18,7 +18,7 @@ export default function CareersBenefits() {
 
   return (
     <div class="mb-12 grid gap-4 md:grid-cols-3">
-      <For each={benefits}>
+      <For each={benefits()}>
         {(b) => (
           <div class="rounded-lg border border-border bg-card p-4 text-center">
             <p class="text-sm font-semibold text-foreground">{b.label}</p>

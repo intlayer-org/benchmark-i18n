@@ -1,56 +1,55 @@
 <script lang="ts">
   import { useIntlayer } from 'svelte-intlayer';
-  import { get } from 'svelte/store';
   const content = useIntlayer('blog-list');
 
-  const posts = [
+  const posts = $derived([
     {
-      title: get(content).comparingI18nLibrariesIn2026,
-      date: get(content).march152026,
+      title: $content.comparingI18nLibrariesIn2026,
+      date: $content.march152026,
       excerpt:
-        get(content).weTested12DifferentInternationalization,
-      category: get(content).benchmark,
+        $content.weTested12DifferentInternationalization,
+      category: $content.benchmark,
     },
     {
-      title: get(content).howToReduceYourI18n,
-      date: get(content).march82026,
+      title: $content.howToReduceYourI18n,
+      date: $content.march82026,
       excerpt:
-        get(content).practicalStrategiesForOptimizingTranslat,
-      category: get(content).tutorial,
+        $content.practicalStrategiesForOptimizingTranslat,
+      category: $content.tutorial,
     },
     {
-      title: get(content).theStateOfInternationalizationIn,
-      date: get(content).february282026,
+      title: $content.theStateOfInternationalizationIn,
+      date: $content.february282026,
       excerpt:
-        get(content).anOverviewOfTheCurrent,
-      category: get(content).analysis,
+        $content.anOverviewOfTheCurrent,
+      category: $content.analysis,
     },
     {
-      title: get(content).migratingFromReactI18nextTo,
-      date: get(content).february152026,
+      title: $content.migratingFromReactI18nextTo,
+      date: $content.february152026,
       excerpt:
-        get(content).aStepByStepGuide,
-      category: get(content).tutorial1,
+        $content.aStepByStepGuide,
+      category: $content.tutorial1,
     },
     {
-      title: get(content).serverComponentsAndI18nWhat,
-      date: get(content).february12026,
+      title: $content.serverComponentsAndI18nWhat,
+      date: $content.february12026,
       excerpt:
-        get(content).reactServerComponentsIntroduceNew,
-      category: get(content).analysis1,
+        $content.reactServerComponentsIntroduceNew,
+      category: $content.analysis1,
     },
     {
-      title: get(content).benchmarkMethodologyHowWeTest,
-      date: get(content).january202026,
+      title: $content.benchmarkMethodologyHowWeTest,
+      date: $content.january202026,
       excerpt:
-        get(content).aTransparentLookAtOur,
-      category: get(content).meta,
+        $content.aTransparentLookAtOur,
+      category: $content.meta,
     },
-  ];
+  ]);
 </script>
 
 <div class="grid gap-6 md:grid-cols-2">
-  {#each posts as p (p.title)}
+  {#each posts as p, __k1 (__k1)}
     <article class="rounded-lg border border-border bg-card p-6">
       <div class="mb-3 flex items-center gap-3">
         <span

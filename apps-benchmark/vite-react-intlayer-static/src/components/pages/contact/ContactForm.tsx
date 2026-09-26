@@ -1,6 +1,9 @@
+import { useIntlayer } from 'react-intlayer';
 import { useId } from "react";
 
 export default function ContactForm() {
+  const content = useIntlayer('contact-form');
+
   const nameId = useId();
   const emailId = useId();
   const topicId = useId();
@@ -13,22 +16,18 @@ export default function ContactForm() {
           <label
             htmlFor={nameId}
             className="mb-1 block text-sm font-medium text-foreground"
-          >
-            Name
-          </label>
+          >{content.name}</label>
           <input
             id={nameId}
             className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-            placeholder="Your name"
+            placeholder={content.yourName.value}
           />
         </div>
         <div>
           <label
             htmlFor={emailId}
             className="mb-1 block text-sm font-medium text-foreground"
-          >
-            Email
-          </label>
+          >{content.email}</label>
           <input
             id={emailId}
             type="email"
@@ -41,40 +40,34 @@ export default function ContactForm() {
         <label
           htmlFor={topicId}
           className="mb-1 block text-sm font-medium text-foreground"
-        >
-          Topic
-        </label>
+        >{content.topic}</label>
         <select
           id={topicId}
           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground focus:outline-none focus:ring-1 focus:ring-ring"
         >
-          <option>Bug Report</option>
-          <option>New Benchmark Idea</option>
-          <option>Methodology Question</option>
-          <option>Contribution</option>
-          <option>Other</option>
+          <option>{content.bugReport}</option>
+          <option>{content.newBenchmarkIdea}</option>
+          <option>{content.methodologyQuestion}</option>
+          <option>{content.contribution}</option>
+          <option>{content.other}</option>
         </select>
       </div>
       <div>
         <label
           htmlFor={messageId}
           className="mb-1 block text-sm font-medium text-foreground"
-        >
-          Message
-        </label>
+        >{content.message}</label>
         <textarea
           id={messageId}
           rows={5}
           className="w-full rounded-md border border-input bg-background px-3 py-2 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring"
-          placeholder="Describe your question or idea..."
+          placeholder={content.describeYourQuestionOrIdea.value}
         />
       </div>
       <button
         type="submit"
         className="rounded-md bg-primary px-6 py-2.5 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
-      >
-        Send Message
-      </button>
+      >{content.sendMessage}</button>
     </form>
   );
 }

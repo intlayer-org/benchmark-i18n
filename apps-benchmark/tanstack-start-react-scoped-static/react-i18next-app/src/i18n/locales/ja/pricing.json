@@ -22,6 +22,6 @@
   "pricingTiers.slaGuarantees": "SLA保証",
   "pricingTiers.prioritySupport": "優先サポート",
   "pricingTiers.contactSales": "営業に問い合わせる",
-  "pricingHeader.pricing": "料金",
-  "pricingHeader.transparentPricingForEvery": "i18nジャーニーのあらゆる段階に対応する、透明性の高い料金体系。"
+  "pricingHeader.simpleTransparentPricing": "シンプルで透明性の高い料金プラン",
+  "pricingHeader.chooseThePlanThatFits": "チームに合ったプランをお選びください。隠れた費用はありません。"
 }

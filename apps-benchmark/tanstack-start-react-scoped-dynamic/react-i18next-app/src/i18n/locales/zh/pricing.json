@@ -22,6 +22,6 @@
   "pricingTiers.slaGuarantees": "SLA 保证",
   "pricingTiers.prioritySupport": "优先支持",
   "pricingTiers.contactSales": "联系销售人员",
-  "pricingHeader.pricing": "价格",
-  "pricingHeader.transparentPricingForEvery": "为您 i18n 旅程的每个阶段提供透明的价格。"
+  "pricingHeader.simpleTransparentPricing": "简单透明的定价",
+  "pricingHeader.chooseThePlanThatFits": "选择适合您团队的计划。无隐藏费用。"
 }

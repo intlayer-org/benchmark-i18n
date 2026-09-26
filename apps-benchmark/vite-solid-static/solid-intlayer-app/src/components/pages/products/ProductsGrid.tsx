@@ -4,7 +4,7 @@ import { For } from 'solid-js';
 export default function ProductsGrid() {
   const content = useIntlayer('products-grid');
 
-  const products = [
+  const products = () => [
     {
       name: content().benchmarkCli.value,
       desc: content().runBenchmarksLocallyFromYour.value,
@@ -39,7 +39,7 @@ export default function ProductsGrid() {
 
   return (
     <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-      <For each={products}>
+      <For each={products()}>
         {(p) => (
           <div class="flex flex-col justify-between rounded-lg border border-border bg-card p-6">
             <div>

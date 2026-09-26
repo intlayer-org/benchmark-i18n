@@ -1,29 +1,29 @@
 const blogList = {
   comparingI18nLibrariesIn2026:
-    "Comparing i18n Libraries in 2026: A Deep Dive",
+    "Comparer les bibliothèques i18n en 2026 : une analyse approfondie",
   weTested12DifferentInternationalization:
-    "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results.",
-  howToReduceYourI18n: "How to Reduce Your i18n Bundle by 60%",
-  march82026: "March 8, 2026",
+    "Nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et la DX. Voici les résultats surprenants.",
+  howToReduceYourI18n: "Comment réduire votre bundle i18n de 60 %",
+  march82026: "8 mars 2026",
   practicalStrategiesForOptimizingTranslation:
-    "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+    "Stratégies pratiques pour optimiser les bundles de traduction, y compris le lazy loading, le fractionnement du code et les optimisations au moment de la compilation.",
   theStateOfInternationalizationIn:
-    "The State of Internationalization in React",
-  february282026: "February 28, 2026",
+    "L'état de l'internationalisation dans React",
+  february282026: "28 février 2026",
   anOverviewOfTheCurrent:
-    "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences.",
-  migratingFromReactI18nextTo: "Migrating from react-i18next to Lingui",
-  february152026: "February 15, 2026",
+    "Un aperçu de l'écosystème i18n actuel dans React, couvrant les tendances, les modèles émergents et les préférences de la communauté.",
+  migratingFromReactI18nextTo: "Migrer de react-i18next vers Lingui",
+  february152026: "15 février 2026",
   aStepByStepGuide:
-    "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui.",
-  serverComponentsAndI18nWhat: "Server Components and i18n: What Changes?",
-  february12026: "February 1, 2026",
+    "Un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers Lingui.",
+  serverComponentsAndI18nWhat: "Server Components et i18n : qu'est-ce qui change ?",
+  february12026: "1er février 2026",
   reactServerComponentsIntroduceNew:
-    "React Server Components introduce new patterns for internationalization. We explore the implications and best practices.",
-  benchmarkMethodologyHowWeTest: "Benchmark Methodology: How We Test",
-  january202026: "January 20, 2026",
+    "Les React Server Components introduisent de nouveaux modèles pour l'internationalisation. Nous explorons les implications et les meilleures pratiques.",
+  benchmarkMethodologyHowWeTest: "Méthodologie du Benchmark : comment nous testons",
+  january202026: "20 janvier 2026",
   aTransparentLookAtOur:
-    "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-  readMore: "Read More →",
+    "Un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
+  readMore: "Lire la suite →",
 };
 export default blogList;

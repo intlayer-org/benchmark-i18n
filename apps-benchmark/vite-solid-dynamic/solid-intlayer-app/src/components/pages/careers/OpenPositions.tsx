@@ -4,7 +4,7 @@ import { For } from 'solid-js';
 export default function OpenPositions() {
   const content = useIntlayer('open-positions');
 
-  const openings = [
+  const openings = () => [
     {
       title: content().seniorFrontendEngineer.value,
       location: content().remote.value,
@@ -48,7 +48,7 @@ export default function OpenPositions() {
         {content().openPositions}
       </h2>
       <div class="space-y-4">
-        <For each={openings}>
+        <For each={openings()}>
           {(o) => (
             <div class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between">
               <div>

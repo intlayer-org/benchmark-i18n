@@ -4,7 +4,7 @@ import { For } from 'solid-js';
 export default function BlogList() {
   const content = useIntlayer('blog-list');
 
-  const posts = [
+  const posts = () => [
     {
       title: content().comparingI18nLibrariesIn2026.value,
       date: content().march152026.value,
@@ -45,7 +45,7 @@ export default function BlogList() {
 
   return (
     <div class="grid gap-6 md:grid-cols-2">
-      <For each={posts}>
+      <For each={posts()}>
         {(p) => (
           <article class="rounded-lg border border-border bg-card p-6">
             <div class="mb-3 flex items-center gap-3">

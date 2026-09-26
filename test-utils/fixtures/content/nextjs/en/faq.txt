@@ -1,0 +1,14 @@
+⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.
+Frequently Asked Questions
+Everything you need to know about i18n Benchmark.
+What is i18n Benchmark?
+How are benchmarks conducted?
+Which libraries are currently supported?
+Can I submit my own benchmarks?
+How often are benchmarks updated?
+Is the data reliable?
+Do you offer consulting services?
+How can I contribute?
+An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.
+contact@intlayer.org
+i18n Benchmark — Open-source project. Built with React & Next.js.

@@ -8,13 +8,13 @@ export default defineConfig({
     vue(),
     tailwindcss(),
     visualizer({
-      filename: `../../results/vite-vue-tolgee-dynamic/bundle/stats.json`,
+      filename: `../../../results/vite-vue-tolgee-dynamic/bundle/stats.json`,
       template: "raw-data",
       gzipSize: true,
       brotliSize: true,
     }),
     visualizer({
-      filename: `../../results/vite-vue-tolgee-dynamic/bundle/rollup-visualizer.html`,
+      filename: `../../../results/vite-vue-tolgee-dynamic/bundle/rollup-visualizer.html`,
       open: false,
       gzipSize: true,
       brotliSize: true,

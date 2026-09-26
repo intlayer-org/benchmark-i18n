@@ -4,7 +4,7 @@ import { For } from 'solid-js';
 export default function WhatWeMeasure() {
   const content = useIntlayer('what-we-measure');
 
-  const metrics = [
+  const metrics = () => [
     {
       metric: content().bundleSizeImpact.value,
       desc: content().theAdditionalJavascriptBytesSent.value,
@@ -33,7 +33,7 @@ export default function WhatWeMeasure() {
         {content().whatWeMeasure}
       </h2>
       <ul class="space-y-4">
-        <For each={metrics}>
+        <For each={metrics()}>
           {(m) => (
             <li class="rounded-md border border-border p-4">
               <span class="block text-sm font-bold text-primary">

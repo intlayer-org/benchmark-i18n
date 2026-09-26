@@ -1,31 +1,34 @@
+import { useIntlayer } from "react-intlayer";
 export default function WhatWeMeasure() {
+  const content = useIntlayer("what-we-measure");
+
   const metrics = [
     {
-      metric: "Bundle size impact",
-      desc: "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.",
+      metric: content.bundleSizeImpact.value,
+      desc: content.theAdditionalJavascriptBytesSent.value,
     },
     {
-      metric: "Rendering overhead",
-      desc: "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+      metric: content.renderingOverhead.value,
+      desc: content.howMuchExtraTimeThe.value,
     },
     {
-      metric: "Hydration cost",
-      desc: "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.",
+      metric: content.hydrationCost.value,
+      desc: content.duringSsrTranslationDataIs.value,
     },
     {
-      metric: "Lazy loading effectiveness",
-      desc: "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).",
+      metric: content.lazyLoadingEffectiveness.value,
+      desc: content.whetherSplittingTranslationsByRoute.value,
     },
     {
-      metric: "Locale switch speed",
-      desc: "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.",
+      metric: content.localeSwitchSpeed.value,
+      desc: content.howFastTheAppCan.value,
     },
   ];
 
   return (
     <section className="mt-12 mx-auto max-w-3xl">
       <h2 className="mb-4 text-2xl font-bold text-foreground">
-        What We Measure
+        {content.whatWeMeasure}
       </h2>
       <ul className="space-y-4">
         {metrics.map((m) => (

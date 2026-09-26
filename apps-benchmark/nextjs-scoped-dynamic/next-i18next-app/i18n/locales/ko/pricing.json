@@ -22,8 +22,6 @@
   "pricingTiers.slaGuarantees": "SLA 보장",
   "pricingTiers.prioritySupport": "우선 지원",
   "pricingTiers.contactSales": "영업팀 문의",
-  "pricingHeader.pricing": "가격",
-  "pricingHeader.transparentPricingForEvery": "i18n 여정의 모든 단계에 적합한 투명한 요금제.",
   "pricingTiers.starterTier": "무료 티어",
   "pricingTiers.starterPrice": "$0",
   "pricingTiers.forever": "forever",
@@ -43,5 +41,7 @@
   "pricingTiers.dedicatedAccountManager": "SLA 보장",
   "pricingTiers.customSLAs": "Custom SLAs",
   "pricingTiers.auditLogs": "Audit logs",
-  "pricingTiers.trainingSessions": "Training sessions"
+  "pricingTiers.trainingSessions": "Training sessions",
+  "pricingHeader.simpleTransparentPricing": "간단하고 투명한 가격 책정",
+  "pricingHeader.chooseThePlanThatFits": "팀에 적합한 요금제를 선택하십시오. 숨겨진 수수료가 없습니다."
 }

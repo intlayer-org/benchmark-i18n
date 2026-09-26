@@ -1,49 +1,48 @@
 <script lang="ts">
   import { useIntlayer } from 'svelte-intlayer';
-  import { get } from 'svelte/store';
   const content = useIntlayer('team-grid');
 
-  const members = [
+  const members = $derived([
     {
-      name: get(content).sarahChen,
-      role: get(content).founderLeadEngineer,
-      bio: get(content).formerGoogleEngineerWith10,
+      name: $content.sarahChen,
+      role: $content.founderLeadEngineer,
+      bio: $content.formerGoogleEngineerWith10,
     },
     {
-      name: get(content).marcusWeber,
-      role: get(content).performanceEngineer,
-      bio: get(content).specializesInJavascriptPerformanceOptimi,
+      name: $content.marcusWeber,
+      role: $content.performanceEngineer,
+      bio: $content.specializesInJavascriptPerformanceOptimi,
     },
     {
-      name: get(content).aishaPatel,
-      role: get(content).developerAdvocate,
-      bio: get(content).passionateAboutDeveloperExperienceAnd,
+      name: $content.aishaPatel,
+      role: $content.developerAdvocate,
+      bio: $content.passionateAboutDeveloperExperienceAnd,
     },
     {
-      name: get(content).tomasRodriguez,
-      role: get(content).fullStackDeveloper,
-      bio: get(content).maintainsTheBenchmarkingInfrastructureAn,
+      name: $content.tomasRodriguez,
+      role: $content.fullStackDeveloper,
+      bio: $content.maintainsTheBenchmarkingInfrastructureAn,
     },
     {
-      name: get(content).yukiTanaka,
-      role: get(content).dataAnalyst,
-      bio: get(content).ensuresStatisticalRigorInAll,
+      name: $content.yukiTanaka,
+      role: $content.dataAnalyst,
+      bio: $content.ensuresStatisticalRigorInAll,
     },
     {
-      name: get(content).elenaKowalski,
-      role: get(content).communityManager,
-      bio: get(content).managesCommunityContributionsPartnership,
+      name: $content.elenaKowalski,
+      role: $content.communityManager,
+      bio: $content.managesCommunityContributionsPartnership,
     },
-  ];
+  ]);
 </script>
 
 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-  {#each members as m (m.name)}
+  {#each members as m, __k1 (__k1)}
     <div class="rounded-lg border border-border bg-card p-6 text-center">
       <div
         class="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-accent text-lg font-bold text-accent-foreground"
       >
-        {m.name
+        {String(m.name ?? "")
           .split(" ")
           .map((n) => n[0])
           .join("")}

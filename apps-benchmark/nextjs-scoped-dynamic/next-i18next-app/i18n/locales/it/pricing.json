@@ -22,8 +22,6 @@
   "pricingTiers.slaGuarantees": "Garanzie SLA",
   "pricingTiers.prioritySupport": "Supporto prioritario",
   "pricingTiers.contactSales": "Contatta l'ufficio vendite",
-  "pricingHeader.pricing": "Prezzi",
-  "pricingHeader.transparentPricingForEvery": "Prezzi trasparenti per ogni fase del tuo percorso i18n.",
   "pricingTiers.starterTier": "Piano Gratuito",
   "pricingTiers.starterPrice": "$0",
   "pricingTiers.forever": "forever",
@@ -43,5 +41,7 @@
   "pricingTiers.dedicatedAccountManager": "Garanzie SLA",
   "pricingTiers.customSLAs": "Custom SLAs",
   "pricingTiers.auditLogs": "Audit logs",
-  "pricingTiers.trainingSessions": "Training sessions"
+  "pricingTiers.trainingSessions": "Training sessions",
+  "pricingHeader.simpleTransparentPricing": "Prezzi semplici e trasparenti",
+  "pricingHeader.chooseThePlanThatFits": "Scegli il piano più adatto al tuo team. Nessun costo nascosto."
 }

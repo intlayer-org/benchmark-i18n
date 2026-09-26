@@ -22,6 +22,6 @@
   "pricingTiers.slaGuarantees": "Гарантии SLA",
   "pricingTiers.prioritySupport": "Приоритетная поддержка",
   "pricingTiers.contactSales": "Связаться с отделом продаж",
-  "pricingHeader.pricing": "Цены",
-  "pricingHeader.transparentPricingForEvery": "Прозрачные цены для каждого этапа вашего пути в i18n."
+  "pricingHeader.simpleTransparentPricing": "Простое и прозрачное ценообразование",
+  "pricingHeader.chooseThePlanThatFits": "Выберите план, который подходит вашей команде. Никаких скрытых комиссий."
 }

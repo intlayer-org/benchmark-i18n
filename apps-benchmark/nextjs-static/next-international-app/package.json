@@ -14,7 +14,8 @@
     "test:lib-size": "bun scripts/measure-lib-size.ts",
     "test:pages": "playwright test pages.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
-    "test:rendering": "playwright test rendering.test.ts"
+    "test:rendering": "playwright test rendering.test.ts",
+    "test:content": "playwright test content-consistency.test.ts"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.20",

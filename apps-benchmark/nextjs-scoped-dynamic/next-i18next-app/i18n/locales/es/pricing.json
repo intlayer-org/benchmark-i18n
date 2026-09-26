@@ -26,6 +26,6 @@
   "pricingTiers.auditLogs": "Registros de auditoría",
   "pricingTiers.trainingSessions": "Sesiones de formación",
   "pricingTiers.contactSales": "Contactar con ventas",
-  "pricingHeader.pricing": "Precios",
-  "pricingHeader.transparentPricingForEvery": "Precios transparentes para cada etapa de tu recorrido i18n."
+  "pricingHeader.simpleTransparentPricing": "Precios Simples y Transparentes",
+  "pricingHeader.chooseThePlanThatFits": "Elija el plan que se adapte a su equipo. Sin cargos ocultos."
 }

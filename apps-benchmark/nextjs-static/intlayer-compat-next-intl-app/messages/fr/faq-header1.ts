@@ -1,6 +1,6 @@
 const faqHeader1 = {
-  frequentlyAskedQuestions: "Frequently Asked Questions",
+  frequentlyAskedQuestions: "Foire Aux Questions",
   everythingYouNeedToKnow:
-    "Everything you need to know about i18n Benchmark.",
+    "Tout ce que vous devez savoir sur i18n Benchmark.",
 };
 export default faqHeader1;

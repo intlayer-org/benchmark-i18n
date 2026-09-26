@@ -33,7 +33,7 @@ const allLoaders = [
 export async function initServerLoaders() {
   await Promise.all(
     allLoaders.map((l) =>
-      loadLocales(l.key, l.loadIDs, l.loadCatalog, locales as unknown as string[]),
+      loadLocales(l.key, l.loadCount, l.loadCatalog, locales as unknown as string[]),
     ),
   );
 }

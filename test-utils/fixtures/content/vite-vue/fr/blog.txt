@@ -1,0 +1,19 @@
+Aller sur GitHub
+⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.
+Des analyses, tutoriels et points de vue de la communauté i18n.
+Comparer les bibliothèques i18n en 2026 : plongée détaillée
+Nous avons testé 12 bibliothèques sur la perf, la taille du bundle et l'expérience développeur. Voici les résultats surprenants.
+Réduire votre bundle i18n de 60 %
+Stratégies concrètes : chargement paresseux, découpage et optimisations à la compilation.
+État de l'internationalisation dans l'écosystème React
+Panorama des tendances, patterns émergents et préférences de la communauté.
+Migrer de react-i18next vers Lingui
+Guide pas à pas pour migrer une app en production avec 50 000 clés de traduction.
+1er février 2026
+Server Components et i18n : qu'est-ce qui change ?
+Les React Server Components introduisent de nouveaux motifs pour l'i18n.
+Méthodologie de benchmark : comment nous testons
+Transparence sur l'environnement de test, les méthodes statistiques et la reproductibilité.
+Une application de test open-source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.
+contact@intlayer.org
+Benchmark i18n — Projet open-source. Construit avec Vue, Vite et Vue Router.

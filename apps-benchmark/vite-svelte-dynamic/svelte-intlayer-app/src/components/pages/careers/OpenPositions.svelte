@@ -1,50 +1,49 @@
 <script lang="ts">
   import { useIntlayer } from 'svelte-intlayer';
-  import { get } from 'svelte/store';
   const content = useIntlayer('open-positions');
 
-  const openings = [
+  const openings = $derived([
     {
-      title: get(content).seniorFrontendEngineer,
-      location: get(content).remote,
+      title: $content.seniorFrontendEngineer,
+      location: $content.remote,
       type: "Full-time",
-      dept: get(content).engineering,
-      desc: get(content).buildAndMaintainOurBenchmarking,
+      dept: $content.engineering,
+      desc: $content.buildAndMaintainOurBenchmarking,
     },
     {
-      title: get(content).backendEngineer,
-      location: get(content).remote1,
+      title: $content.backendEngineer,
+      location: $content.remote1,
       type: "Full-time",
-      dept: get(content).engineering1,
-      desc: get(content).designAndScaleOurCloud,
+      dept: $content.engineering1,
+      desc: $content.designAndScaleOurCloud,
     },
     {
-      title: get(content).technicalWriter,
-      location: get(content).remote2,
+      title: $content.technicalWriter,
+      location: $content.remote2,
       type: "Part-time",
-      dept: get(content).documentation,
-      desc: get(content).createComprehensiveGuidesApiReferences,
+      dept: $content.documentation,
+      desc: $content.createComprehensiveGuidesApiReferences,
     },
     {
-      title: get(content).devrelEngineer,
-      location: get(content).sanFranciscoRemote,
+      title: $content.devrelEngineer,
+      location: $content.sanFranciscoRemote,
       type: "Full-time",
-      dept: get(content).community,
-      desc: get(content).engageWithTheI18nCommunity,
+      dept: $content.community,
+      desc: $content.engageWithTheI18nCommunity,
     },
     {
-      title: get(content).qaEngineer,
-      location: get(content).remote3,
+      title: $content.qaEngineer,
+      location: $content.remote3,
       type: "Full-time",
-      dept: get(content).engineering2,
-      desc: get(content).ensureTheAccuracyAndReliability,
+      dept: $content.engineering2,
+      desc: $content.ensureTheAccuracyAndReliability,
     },
-  ];
+  ]);
 </script>
 
 <h2 class="mb-6 text-2xl font-bold text-foreground">{$content.openPositions}</h2>
 <div class="space-y-4">
-  {#each openings as o (o.title)}
+  {#each openings as o, __k1 (__k1)}
     <div
       class="flex flex-col gap-3 rounded-lg border border-border bg-card p-6 md:flex-row md:items-center md:justify-between"
     >

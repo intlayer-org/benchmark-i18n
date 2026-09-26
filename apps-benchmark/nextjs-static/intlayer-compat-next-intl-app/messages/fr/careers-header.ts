@@ -1,6 +1,6 @@
 const careersHeader = {
-  title: "Careers",
+  title: "Carrières",
   joinOurMissionToImprove:
-    "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning.",
+    "Rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. Nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
 };
 export default careersHeader;

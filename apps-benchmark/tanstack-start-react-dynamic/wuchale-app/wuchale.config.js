@@ -8,7 +8,6 @@ export default defineConfig({
   },
   adapters: {
     main: jsx({
-      loader: "react",
       files: "./src/**/*.{ts,tsx}",
     }),
   },

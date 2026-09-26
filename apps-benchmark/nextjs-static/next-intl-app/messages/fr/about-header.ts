@@ -1,6 +1,6 @@
 const aboutHeader = {
-  aboutThisBenchmark: "About This Benchmark",
+  aboutThisBenchmark: "À propos de ce Benchmark",
   thisIsAnOpenSource:
-    "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions.",
+    "Ceci est une application de test open-source — pas un produit ou une entreprise. Son seul but est de fournir une application React multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques.",
 };
 export default aboutHeader;

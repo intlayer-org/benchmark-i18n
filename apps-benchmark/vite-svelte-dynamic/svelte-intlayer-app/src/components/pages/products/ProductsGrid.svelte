@@ -1,44 +1,43 @@
 <script lang="ts">
   import { useIntlayer } from 'svelte-intlayer';
-  import { get } from 'svelte/store';
   const content = useIntlayer('products-grid');
 
-  const products = [
+  const products = $derived([
     {
-      name: get(content).benchmarkCli,
-      desc: get(content).runBenchmarksLocallyFromYour,
-      price: get(content).free,
+      name: $content.benchmarkCli,
+      desc: $content.runBenchmarksLocallyFromYour,
+      price: $content.free,
     },
     {
-      name: get(content).benchmarkCloud,
-      desc: get(content).automatedCloudBasedBenchmarkingWith,
+      name: $content.benchmarkCloud,
+      desc: $content.automatedCloudBasedBenchmarkingWith,
       price: "$29/mo",
     },
     {
-      name: get(content).benchmarkEnterprise,
-      desc: get(content).onPremiseDeploymentWithSso,
-      price: get(content).contactUs,
+      name: $content.benchmarkEnterprise,
+      desc: $content.onPremiseDeploymentWithSso,
+      price: $content.contactUs,
     },
     {
-      name: get(content).migrationAssistant,
-      desc: get(content).aiPoweredToolThatHelps,
+      name: $content.migrationAssistant,
+      desc: $content.aiPoweredToolThatHelps,
       price: "$99 one-time",
     },
     {
-      name: get(content).translationQa,
-      desc: get(content).automatedQualityChecksForMissing,
+      name: $content.translationQa,
+      desc: $content.automatedQualityChecksForMissing,
       price: "$19/mo",
     },
     {
-      name: get(content).bundleOptimizer,
-      desc: get(content).analyzesAndOptimizesYourI18n,
+      name: $content.bundleOptimizer,
+      desc: $content.analyzesAndOptimizesYourI18n,
       price: "$49/mo",
     },
-  ];
+  ]);
 </script>
 
 <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-  {#each products as p (p.name)}
+  {#each products as p, __k1 (__k1)}
     <div
       class="flex flex-col justify-between rounded-lg border border-border bg-card p-6"
     >

@@ -15,7 +15,8 @@
     "test:pages": "playwright test pages.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
     "test:rendering": "playwright test rendering.test.ts",
-    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json"
+    "check": "svelte-check --tsconfig ./tsconfig.app.json && tsc -p tsconfig.node.json",
+    "test:content": "playwright test content-consistency.test.ts"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.3.3",

@@ -7,10 +7,10 @@ export default function AboutHeader() {
   return (
     <>
       <h1 className="mb-4 text-3xl font-bold text-foreground">
-        {t("aboutHeader.methodology")}
+        {t("aboutHeader.aboutThisBenchmark")}
       </h1>
       <p className="mb-8 max-w-3xl text-muted-foreground">
-        {t("aboutHeader.weDesignedThisBenchmarkTo")}
+        {t("aboutHeader.thisIsAnOpenSource")}
       </p>
     </>
   );

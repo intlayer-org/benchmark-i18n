@@ -1,0 +1,16 @@
+⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.
+Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools.
+Founder & Lead Engineer
+Former Google engineer with 10 years of experience building internationalization systems at scale.
+Performance Engineer
+Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel.
+Developer Advocate
+Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext.
+Full-Stack Developer
+Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui.
+Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT.
+Community Manager
+Manages community contributions, partnerships, and events. Background in open source governance.
+An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.
+contact@intlayer.org
+i18n Benchmark — Open-source project. Built with React, Vite & React Router.

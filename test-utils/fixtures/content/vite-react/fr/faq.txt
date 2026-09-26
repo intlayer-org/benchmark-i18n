@@ -1,0 +1,15 @@
+Aller sur GitHub
+⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.
+Foire Aux Questions
+Tout ce que vous devez savoir sur i18n Benchmark.
+Qu'est-ce que i18n Benchmark ?
+Comment les benchmarks sont-ils menés ?
+Quelles bibliothèques sont actuellement supportées ?
+Puis-je soumettre mes propres benchmarks ?
+À quelle fréquence les benchmarks sont-ils mis à jour ?
+Les données sont-elles fiables ?
+Proposez-vous des services de conseil ?
+Comment puis-je contribuer ?
+An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.
+contact@intlayer.org
+i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.

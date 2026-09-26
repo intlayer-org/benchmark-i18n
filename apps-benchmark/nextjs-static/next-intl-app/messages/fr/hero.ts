@@ -1,6 +1,6 @@
 const hero = {
   aTestApplicationDesignedTo:
-    "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
-  viewResults: "View Results",
+    "Une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+  viewResults: "Voir les Résultats",
 };
 export default hero;

@@ -1,0 +1,40 @@
+{
+  "name": "vite-solid-i18next-dynamic",
+  "private": true,
+  "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
+  "scripts": {
+    "build": "bun x --bun vite build",
+    "dev": "bun x --bun vite dev --port 3000",
+    "preview": "bun x --bun vite preview",
+    "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity && bun test:lib-size",
+    "test:components": "bun scripts/measure-components.ts",
+    "test:lib-size": "bun scripts/measure-lib-size.ts",
+    "test:pages": "playwright test pages.test.ts",
+    "test:reactivity": "playwright test reactivity.test.ts",
+    "test:rendering": "playwright test rendering.test.ts",
+    "test:content": "playwright test content-consistency.test.ts"
+  },
+  "dependencies": {
+    "@mbarzda/solid-i18next": "^1.4.1",
+    "@solidjs/router": "^1.0.0",
+    "@tailwindcss/vite": "^4.3.3",
+    "i18next": "^26.0.8",
+    "i18next-browser-languagedetector": "^8.2.1",
+    "i18next-resources-to-backend": "^1.2.3",
+    "solid-js": "^1.9.15",
+    "tailwindcss": "^4.3.3"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.63.0",
+    "@tailwindcss/typography": "^0.5.20",
+    "@types/node": "^26",
+    "bun": "^1.4.2",
+    "typescript": "~7.0.2",
+    "vite": "^8.2.2",
+    "vite-plugin-solid": "^2.11.14",
+    "test-utils": "workspace:*"
+  }
+}

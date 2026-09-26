@@ -10,7 +10,7 @@ msgstr ""
 #: src/components/Footer.tsx
 #: src/components/pages/home/Hero.tsx
 msgid "i18n Benchmark"
-msgstr "i18n Benchmark"
+msgstr "Benchmark i18n"
 
 #: src/components/Footer.tsx
 #: src/components/Header.tsx
@@ -70,7 +70,7 @@ msgstr "i18n Benchmark — Projet open source. Construit avec React, Vite & TanS
 
 #: src/components/Header.tsx
 msgid "Header"
-msgstr "Header"
+msgstr "En-tête"
 
 #: src/components/Header.tsx
 msgid "Pricing"
@@ -82,7 +82,7 @@ msgstr "Équipe"
 
 #: src/components/Header.tsx
 msgid "i18n Bench"
-msgstr "i18n Bench"
+msgstr "Bench i18n"
 
 #: src/components/Header.tsx
 msgid "Home"
@@ -90,7 +90,7 @@ msgstr "Accueil"
 
 #: src/components/Header.tsx
 msgid "Mock Pages <0/>"
-msgstr "Mock Pages <0/>"
+msgstr "Pages de Test <0/>"
 
 #: src/components/Header.tsx
 msgid "Go to GitHub"

@@ -6,7 +6,7 @@
   "scripts": {
     "build": "bun run extract && next build",
     "dev": "next dev",
-    "extract": "bun x @inlang/paraglide-js compile --project ./project.inlang --outdir ./paraglide",
+    "extract": "bun x @inlang/paraglide-js compile --project ./project.inlang --outdir ./paraglide --strategy url cookie baseLocale",
     "lint": "eslint",
     "start": "next start",
     "test": "bun test:pages && bun test:components && bun test:rendering && bun test:reactivity && bun test:lib-size",
@@ -15,7 +15,8 @@
     "test:lib-size": "bun scripts/measure-lib-size.ts",
     "test:pages": "playwright test pages.test.ts",
     "test:reactivity": "playwright test reactivity.test.ts",
-    "test:rendering": "playwright test rendering.test.ts"
+    "test:rendering": "playwright test rendering.test.ts",
+    "test:content": "playwright test content-consistency.test.ts"
   },
   "dependencies": {
     "@inlang/paraglide-js": "^2.15.1",

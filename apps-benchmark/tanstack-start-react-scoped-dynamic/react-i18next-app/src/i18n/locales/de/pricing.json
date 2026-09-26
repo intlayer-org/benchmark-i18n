@@ -22,6 +22,6 @@
   "pricingTiers.slaGuarantees": "SLA-Garantien",
   "pricingTiers.prioritySupport": "Priorisierter Support",
   "pricingTiers.contactSales": "Vertrieb kontaktieren",
-  "pricingHeader.pricing": "Preise",
-  "pricingHeader.transparentPricingForEvery": "Transparente Preise für jede Phase Ihrer i18n-Reise."
+  "pricingHeader.simpleTransparentPricing": "Einfache, transparente Preisgestaltung",
+  "pricingHeader.chooseThePlanThatFits": "Wählen Sie den Plan, der zu Ihrem Team passt. Keine versteckten Gebühren."
 }

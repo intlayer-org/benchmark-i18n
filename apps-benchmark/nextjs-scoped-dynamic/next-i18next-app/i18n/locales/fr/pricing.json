@@ -26,6 +26,6 @@
   "pricingTiers.auditLogs": "Journaux d'audit",
   "pricingTiers.trainingSessions": "Sessions de formation",
   "pricingTiers.contactSales": "Contacter les ventes",
-  "pricingHeader.pricing": "Tarifs",
-  "pricingHeader.transparentPricingForEvery": "Une tarification transparente pour chaque étape de votre voyage i18n."
+  "pricingHeader.simpleTransparentPricing": "Tarification Simple et Transparente",
+  "pricingHeader.chooseThePlanThatFits": "Choisissez le plan qui convient à votre équipe. Pas de frais cachés."
 }

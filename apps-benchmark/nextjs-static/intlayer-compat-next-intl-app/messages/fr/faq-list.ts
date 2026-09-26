@@ -1,28 +1,28 @@
 const faqList = {
-  whatIsI18nBenchmark: "What is i18n Benchmark?",
+  whatIsI18nBenchmark: "Qu'est-ce que i18n Benchmark ?",
   whatIsI18nBenchmarkAnswer:
-    "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.",
-  howAreBenchmarksConducted: "How are benchmarks conducted?",
+    "i18n Benchmark est une suite d'analyse comparative open source qui mesure et compare les performances, la taille du bundle et l'expérience développeur des bibliothèques d'internationalisation pour les applications JavaScript et React.",
+  howAreBenchmarksConducted: "Comment les benchmarks sont-ils menés ?",
   weRunStandardizedTestsIn:
-    "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository.",
+    "Nous effectuons des tests standardisés dans des environnements isolés en utilisant un matériel cohérent. Chaque benchmark est répété plusieurs fois pour garantir une signification statistique. Toutes les configurations de test sont disponibles publiquement dans notre dépôt GitHub.",
   whichLibrariesAreCurrentlySupported:
-    "Which libraries are currently supported?",
+    "Quelles bibliothèques sont actuellement supportées ?",
   weSupportReactI18nextReact:
-    "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee.",
-  canISubmitMyOwn: "Can I submit my own benchmarks?",
+    "Nous supportons react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react et Tolgee.",
+  canISubmitMyOwn: "Puis-je soumettre mes propres benchmarks ?",
   yesCommunityBenchmarkSubmissionsAre:
-    "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions.",
-  howOftenAreBenchmarksUpdated: "How often are benchmarks updated?",
+    "Oui ! Les soumissions de benchmarks de la communauté sont les bienvenues. Forkez notre dépôt, ajoutez votre benchmark en suivant notre guide de contribution et soumettez une pull request. Notre équipe examinera et fusionnera les soumissions qualifiées.",
+  howOftenAreBenchmarksUpdated: "À quelle fréquence les benchmarks sont-ils mis à jour ?",
   weReRunAllBenchmarks:
-    "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle.",
-  isTheDataReliable: "Is the data reliable?",
+    "Nous relançons tous les benchmarks chaque semaine avec les dernières versions stables de chaque bibliothèque. Les versions majeures déclenchent un cycle immédiat de re-benchmarking.",
+  isTheDataReliable: "Les données sont-elles fiables ?",
   weFollowRigorousStatisticalMethodology:
-    "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency.",
-  doYouOfferConsultingServices: "Do you offer consulting services?",
+    "Nous suivons une méthodologie statistique rigoureuse incluant des phases de préchauffage, la détection des valeurs aberrantes et des intervalles de confiance. Toutes les données brutes sont publiées aux côtés de notre analyse pour une transparence totale.",
+  doYouOfferConsultingServices: "Proposez-vous des services de conseil ?",
   yesOurEnterprisePlanIncludes:
-    "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints.",
-  howCanIContribute: "How can I contribute?",
+    "Oui, notre plan Entreprise inclut des heures de conseil pour les équipes évaluant les solutions i18n. Nous pouvons fournir des recommandations personnalisées basées sur votre cas d'utilisation spécifique, votre échelle et vos contraintes.",
+  howCanIContribute: "Comment puis-je contribuer ?",
   thereAreManyWaysTo:
-    "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details.",
+    "Il existe de nombreuses façons de contribuer : soumettre des benchmarks, améliorer la documentation, signaler des bugs, suggérer de nouvelles métriques ou parrainer le projet. Visitez notre dépôt GitHub pour plus de détails.",
 };
 export default faqList;

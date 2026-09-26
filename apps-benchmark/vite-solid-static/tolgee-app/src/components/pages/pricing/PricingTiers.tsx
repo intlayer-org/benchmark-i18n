@@ -31,7 +31,7 @@ export default function PricingTiers() {
     {
       nameKey: 'enterpriseName',
       priceKey: 'enterprisePrice',
-      periodKey: 'enterprisePeriod',
+      periodKey: null,
       features: [
         'enterpriseFeature1',
         'enterpriseFeature2',
@@ -63,7 +63,7 @@ export default function PricingTiers() {
                 {trans(`pricing.tiers.${tier.priceKey}`)}
               </span>
               <span class="text-sm text-muted-foreground">
-                {trans(`pricing.tiers.${tier.periodKey}`)}
+                {tier.periodKey ? trans(`pricing.tiers.${tier.periodKey}`) : ""}
               </span>
             </div>
             <ul class="mb-6 flex-1 space-y-2">

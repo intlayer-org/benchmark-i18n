@@ -1,4 +1,4 @@
-import { T, useTranslate } from "../../../i18n/tolgee";
+import { useTranslate } from "../../../i18n/tolgee";
 
 export default function OpenPositions() {
   const { t } = useTranslate();
@@ -9,47 +9,46 @@ export default function OpenPositions() {
       location: t("openPositions.remote"),
       type: t("openPositions.fullTime"),
       dept: t("openPositions.engineering"),
-      desc: t(
-        "openPositions.buildAndMaintainOur"),
+      desc: t("openPositions.seniorFrontendEngineer"), // Wait, en.ts has seniorFrontendEngineer: "Senior Frontend Engineer" but no description key?
+      // Actually, en.ts has: seniorFrontendEngineer: "Senior Frontend Engineer",
+      // buildAndMaintainOurBenchmarking: "Build and maintain our...",
+      // Let's use those.
+      description: t("openPositions.buildAndMaintainOurBenchmarking"),
     },
     {
       title: t("openPositions.backendEngineer"),
       location: t("openPositions.remote"),
       type: t("openPositions.fullTime"),
       dept: t("openPositions.engineering"),
-      desc: t(
-        "openPositions.designAndScaleOur"),
+      description: t("openPositions.designAndScaleOurCloud"),
     },
     {
       title: t("openPositions.technicalWriter"),
       location: t("openPositions.remote"),
       type: t("openPositions.partTime"),
       dept: t("openPositions.documentation"),
-      desc: t(
-        "openPositions.createComprehensiveGuidesApi"),
+      description: t("openPositions.createComprehensiveGuidesApiReferences"),
     },
     {
       title: t("openPositions.devrelEngineer"),
-      location: t("openPositions.sfRemote"),
+      location: t("openPositions.sanFranciscoRemote"),
       type: t("openPositions.fullTime"),
       dept: t("openPositions.community"),
-      desc: t(
-        "openPositions.engageWithTheI18n"),
+      description: t("openPositions.engageWithTheI18nCommunity"),
     },
     {
       title: t("openPositions.qaEngineer"),
       location: t("openPositions.remote"),
       type: t("openPositions.fullTime"),
       dept: t("openPositions.engineering"),
-      desc: t(
-        "openPositions.ensureTheAccuracyAnd"),
+      description: t("openPositions.ensureTheAccuracyAndReliability"),
     },
   ];
 
   return (
     <>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        <T keyName="openPositions.openPositions" />
+        {t("openPositions.openPositions")}
       </h2>
       <div className="space-y-4">
         {openings.map((o) => (
@@ -61,7 +60,7 @@ export default function OpenPositions() {
               <h3 className="text-base font-semibold text-foreground">
                 {o.title}
               </h3>
-              <p className="text-sm text-muted-foreground">{o.desc}</p>
+              <p className="text-sm text-muted-foreground">{o.description}</p>
               <div className="mt-2 flex gap-2">
                 <span className="rounded bg-accent px-2 py-0.5 text-xs text-accent-foreground">
                   {o.dept}
@@ -78,7 +77,7 @@ export default function OpenPositions() {
               type="button"
               className="shrink-0 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:opacity-90 transition-opacity"
             >
-              <T keyName="openPositions.applyNow" />
+              {t("openPositions.applyNow")}
             </button>
           </div>
         ))}

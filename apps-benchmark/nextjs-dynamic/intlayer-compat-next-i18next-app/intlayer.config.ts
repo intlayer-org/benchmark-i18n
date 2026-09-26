@@ -33,7 +33,10 @@ const config: IntlayerConfig = {
     format: "i18next",
   },
   build: {
-    optimize: true,
+    // The SWC optimize pass binds no call site for this adapter at intlayer 9.5.x
+    // and empties the runtime registry, so every key renders raw (e.g.
+    // `home.hero.viewResults`). Off, the adapter resolves keys at runtime.
+    optimize: false,
     minify: true,
     purge: true,
     checkTypes: false,

@@ -1,13 +1,14 @@
+import { useIntlayer } from 'react-intlayer';
 import MockBanner from "../../MockBanner";
 
 export default function ContactHeader() {
+  const content = useIntlayer('contact-header');
+
   return (
     <>
       <MockBanner />
-      <h1 className="mb-2 text-3xl font-bold text-foreground">Get in Touch</h1>
-      <p className="mb-8 text-muted-foreground">
-        Have ideas, found a bug, or want to contribute a benchmark? Reach out to
-        us at{" "}
+      <h1 className="mb-2 text-3xl font-bold text-foreground">{content.getInTouch}</h1>
+      <p className="mb-8 text-muted-foreground">{content.haveIdeasFoundABug}{" "}
         <a
           href="mailto:contact@intlayer.org"
           className="text-primary hover:underline"

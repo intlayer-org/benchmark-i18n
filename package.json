@@ -22,14 +22,17 @@
     "apps-benchmark/vite-solid-static/*",
     "apps-benchmark/vite-vue-static/*",
     "apps-benchmark/vite-vue-dynamic/*",
-    "apps-benchmark/vite-svelte-static/*"
+    "apps-benchmark/vite-svelte-static/*",
+    "apps-benchmark/vite-solid-dynamic/*",
+    "apps-benchmark/vite-svelte-dynamic/*"
   ],
   "scripts": {
     "report": "bun report/scripts/summarize.ts --out report/scripts/summarize --md report/scripts/summarize",
     "build": "turbo run build --concurrency=1 --continue",
-    "test": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size test:next test:tanstack test:vue test:svelte test:solid --concurrency=1 --continue",
+    "test": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size --concurrency=1 --continue",
     "test:pages": "turbo run test:pages --concurrency=1 --continue",
     "test:consistency": "turbo run test:consistency --concurrency=1 --continue",
+    "test:content": "turbo run test:content --concurrency=1 --continue",
     "test:rendering": "turbo run test:rendering --concurrency=1 --continue",
     "test:reactivity": "turbo run test:reactivity --concurrency=1 --continue",
     "test:components": "turbo run test:components --concurrency=1 --continue",
@@ -41,9 +44,9 @@
     "test:lib-size:solid": "turbo run test:lib-size --filter=\"./apps-benchmark/vite-solid-static/*\" --concurrency=1 --continue",
     "test:next": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size --filter=\"nextjs-*\" --concurrency=1 --continue",
     "test:tanstack": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size --filter=\"./apps-benchmark/tanstack-start-react-base-app\" --filter=\"./apps-benchmark/tanstack-start-react-static/*\" --filter=\"./apps-benchmark/tanstack-start-react-dynamic/*\" --filter=\"./apps-benchmark/tanstack-start-react-scoped-static/*\" --filter=\"./apps-benchmark/tanstack-start-react-scoped-dynamic/*\" --concurrency=1 --continue",
-    "test:vue": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size --filter=\"./apps-benchmark/vite-vue-base-app\" --filter=\"./apps-benchmark/vite-vue-static/*\" --concurrency=1 --continue",
-    "test:svelte": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size --filter=\"./apps-benchmark/vite-svelte-base-app\" --filter=\"./apps-benchmark/vite-svelte-static/*\" --concurrency=1 --continue",
-    "test:solid": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size --filter=\"./apps-benchmark/vite-solid-base-app\" --filter=\"./apps-benchmark/vite-solid-static/*\" --concurrency=1 --continue",
+    "test:vue": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size --filter=\"./apps-benchmark/vite-vue-base-app\" --filter=\"./apps-benchmark/vite-vue-static/*\" --filter=\"./apps-benchmark/vite-vue-dynamic/*\" --concurrency=1 --continue",
+    "test:svelte": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size --filter=\"./apps-benchmark/vite-svelte-base-app\" --filter=\"./apps-benchmark/vite-svelte-static/*\" --filter=\"./apps-benchmark/vite-svelte-dynamic/*\" --concurrency=1 --continue",
+    "test:solid": "turbo run test:pages test:rendering test:reactivity test:components test:lib-size --filter=\"./apps-benchmark/vite-solid-base-app\" --filter=\"./apps-benchmark/vite-solid-static/*\" --filter=\"./apps-benchmark/vite-solid-dynamic/*\" --concurrency=1 --continue",
     "build:tanstack": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/tanstack-start-react-base-app\" --filter=\"./apps-benchmark/tanstack-start-react-static/*\" --filter=\"./apps-benchmark/tanstack-start-react-dynamic/*\" --filter=\"./apps-benchmark/tanstack-start-react-scoped-static/*\" --filter=\"./apps-benchmark/tanstack-start-react-scoped-dynamic/*\"",
     "build:tanstack:static": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/tanstack-start-react-static/*\" --filter=\"./apps-benchmark/tanstack-start-react-base-app\"",
     "build:tanstack:dynamic": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/tanstack-start-react-dynamic/*\"",
@@ -51,13 +54,13 @@
     "build:tanstack:scoped:static": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/tanstack-start-react-scoped-static/*\"",
     "build:tanstack:scoped:dynamic": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/tanstack-start-react-scoped-dynamic/*\"",
     "build:nextjs": "turbo run build --concurrency=1 --filter=\"nextjs-*\"",
-    "build:nextjs:static": "turbo run build --concurrency=1 --filter=\"nextjs-static\"",
-    "build:nextjs:dynamic": "turbo run build --concurrency=1 --filter=\"nextjs-dynamic\"",
-    "build:vite+react": "turbo run build --concurrency=1 --filter=\"vite+react-*\"",
-    "build:vite+react:static": "turbo run build --concurrency=1 --filter=\"vite+react-static\"",
-    "build:vue": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/vite-vue-base-app\" --filter=\"./apps-benchmark/vite-vue-static/*\"",
-    "build:svelte": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/vite-svelte-base-app\" --filter=\"./apps-benchmark/vite-svelte-static/*\"",
-    "build:solid": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/vite-solid-base-app\" --filter=\"./apps-benchmark/vite-solid-static/*\""
+    "build:nextjs:static": "turbo run build --concurrency=1 --filter=\"nextjs-static-*\"",
+    "build:nextjs:dynamic": "turbo run build --concurrency=1 --filter=\"nextjs-dynamic-*\"",
+    "build:vite+react": "turbo run build --concurrency=1 --filter=\"vite-react-*\"",
+    "build:vite+react:static": "turbo run build --concurrency=1 --filter=\"vite-react-*-static\"",
+    "build:vue": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/vite-vue-base-app\" --filter=\"./apps-benchmark/vite-vue-static/*\" --filter=\"./apps-benchmark/vite-vue-dynamic/*\"",
+    "build:svelte": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/vite-svelte-base-app\" --filter=\"./apps-benchmark/vite-svelte-static/*\" --filter=\"./apps-benchmark/vite-svelte-dynamic/*\"",
+    "build:solid": "turbo run build --concurrency=1 --filter=\"./apps-benchmark/vite-solid-base-app\" --filter=\"./apps-benchmark/vite-solid-static/*\" --filter=\"./apps-benchmark/vite-solid-dynamic/*\""
   },
   "dependencies": {
     "@biomejs/biome": "2.5.12"

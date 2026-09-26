@@ -33,7 +33,10 @@ const config: IntlayerConfig = {
     format: "vue-i18n",
   },
   build: {
-    optimize: true,
+    // @intlayer/vue-i18n 9.5.x: the babel optimize pass never binds root-scope
+    // `useI18n()` (no `t` self caller, `_unref(t)` callee) and empties the
+    // registry, so every key renders raw. Off, all locales render.
+    optimize: false,
     minify: true,
     purge: true,
     checkTypes: false,

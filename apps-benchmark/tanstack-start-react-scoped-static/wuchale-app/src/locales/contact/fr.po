@@ -13,7 +13,7 @@ msgstr "Nom"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Your name"
-msgstr "Your name"
+msgstr "Votre nom"
 
 #: src/components/pages/contact/ContactForm.tsx
 #: src/components/pages/settings/ProfileSection.tsx
@@ -22,19 +22,19 @@ msgstr "Email"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Topic"
-msgstr "Topic"
+msgstr "Sujet"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Bug Report"
-msgstr "Bug Report"
+msgstr "Rapport de Bug"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "New Benchmark Idea"
-msgstr "New Benchmark Idea"
+msgstr "Nouvelle Idée de Benchmark"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Methodology Question"
-msgstr "Methodology Question"
+msgstr "Question sur la Méthodologie"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Contribution"
@@ -42,7 +42,7 @@ msgstr "Contribution"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Other"
-msgstr "Other"
+msgstr "Autre"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Message"
@@ -50,7 +50,7 @@ msgstr "Message"
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Describe your question or idea..."
-msgstr "Describe your question or idea..."
+msgstr "Décrivez votre question ou idée..."
 
 #: src/components/pages/contact/ContactForm.tsx
 msgid "Send Message"
@@ -58,7 +58,7 @@ msgstr "Envoyer le message"
 
 #: src/components/pages/contact/ContactHeader.tsx
 msgid "Get in Touch"
-msgstr "Get in Touch"
+msgstr "Contactez-nous"
 
 #. 0: " "
 #: src/components/pages/contact/ContactHeader.tsx

@@ -4,7 +4,7 @@ import { For } from 'solid-js';
 export default function ResultsTable() {
   const content = useIntlayer('results-table');
 
-  const results = [
+  const results = () => [
     {
       lib: 'react-i18next',
       size: '42.3 kB',
@@ -55,7 +55,7 @@ export default function ResultsTable() {
             </tr>
           </thead>
           <tbody>
-            <For each={results}>
+            <For each={results()}>
               {(r) => (
                 <tr class="border-t border-border">
                   <td class="px-4 py-3 font-medium text-foreground">{r.lib}</td>

@@ -1,8 +1,9 @@
 "use client";
 
-import { T } from "@/i18n/tolgee";
+import { useTranslate } from "@/i18n/tolgee";
 
 export default function ResultsTable() {
+  const { t } = useTranslate();
   const results = [
     {
       lib: "react-i18next",
@@ -28,23 +29,23 @@ export default function ResultsTable() {
   return (
     <section>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        <T keyName="resultsTable.sampleResults" />
+        {t("resultsTable.sampleResults")}
       </h2>
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
           <thead className="bg-muted">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.library" />
+                Library
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.bundleSize" />
+                {t("resultsTable.bundleSize")}
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.lookupTime" />
+                {t("resultsTable.lookupTime")}
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.lazyLoading" />
+                {t("resultsTable.lazyLoading")}
               </th>
             </tr>
           </thead>

@@ -18,13 +18,13 @@ export default defineConfig({
       include: [path.resolve(__dirname, "./locales/**")],
     }),
     visualizer({
-      filename: `../../results/vite-vue-i18n-static/bundle/stats.json`,
+      filename: `../../../results/vite-vue-i18n-static/bundle/stats.json`,
       template: "raw-data",
       gzipSize: true,
       brotliSize: true,
     }),
     visualizer({
-      filename: `../../results/vite-vue-i18n-static/bundle/rollup-visualizer.html`,
+      filename: `../../../results/vite-vue-i18n-static/bundle/rollup-visualizer.html`,
       open: false,
       gzipSize: true,
       brotliSize: true,

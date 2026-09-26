@@ -5,70 +5,66 @@ export default function PricingTiers() {
 
   const tiers = [
     {
-      name: t("pricingTiers.freeTier"),
-      price: t("pricingTiers.free"),
-      period: "",
+      name: t("pricingTiers.starter"),
+      price: t("pricingTiers.price0"),
+      period: t("pricingTiers.forever"),
       features: [
-        t("pricingTiers.publicBenchmarkDashboard"),
-        t("pricingTiers.basicLibraryComparisons"),
-        t("pricingTiers.communityForumAccess"),
-        t("pricingTiers.monthlyResultDigest"),
+        t("pricingTiers.benchmarkRunPerDay", { runs: 5 }),
+        t("pricingTiers.librariesNumber", { libs: 3 }),
+        t("pricingTiers.communitySupport"),
+        t("pricingTiers.publicResults"),
       ],
-      buttonText: t("pricingTiers.getStarted"),
     },
     {
-      name: t("pricingTiers.proTier"),
-      price: "$29",
-      period: t("pricingTiers.perMonth"),
+      name: t("pricingTiers.pro"),
+      price: t("pricingTiers.price29"),
+      period: t("pricingTiers.month"),
       features: [
-        t("pricingTiers.allFreeFeatures"),
-        t("pricingTiers.customBenchmarkConfigurations"),
-        t("pricingTiers.privateResultsDashboard"),
-        t("pricingTiers.apiAccess1000Requests"),
-        t("pricingTiers.slackIntegration"),
+        t("pricingTiers.unlimitedRuns"),
+        t("pricingTiers.allLibraries"),
+        t("pricingTiers.prioritySupport"),
+        t("pricingTiers.privateResults"),
+        t("pricingTiers.ciIntegration"),
+        t("pricingTiers.historicalData"),
       ],
-      buttonText: t("pricingTiers.subscribeToPro"),
       highlighted: true,
     },
     {
-      name: t("pricingTiers.enterpriseTier"),
-      price: t("pricingTiers.custom"),
+      name: t("pricingTiers.enterprise"),
+      price: t("pricingTiers.customPrice"),
       period: "",
       features: [
-        t("pricingTiers.allProFeatures"),
-        t("pricingTiers.dedicatedBenchmarkInfrastructure"),
-        t("pricingTiers.customLibraryIntegrations"),
-        t("pricingTiers.slaGuarantees"),
-        t("pricingTiers.prioritySupport"),
+        t("pricingTiers.everythingInPro"),
+        t("pricingTiers.onPremiseOption"),
+        t("pricingTiers.ssoSaml"),
+        t("pricingTiers.dedicatedAccountManager"),
+        t("pricingTiers.customSlas"),
+        t("pricingTiers.auditLogs"),
+        t("pricingTiers.trainingSessions"),
       ],
-      buttonText: t("pricingTiers.contactSales"),
     },
   ];
 
   return (
     <div className="grid gap-6 md:grid-cols-3">
-      {tiers.map((tItem) => (
+      {tiers.map((tier) => (
         <div
-          key={tItem.name}
+          key={tier.name}
           className={`flex flex-col rounded-lg border p-6 ${
-            tItem.highlighted
+            tier.highlighted
               ? "border-primary bg-primary/5 ring-1 ring-primary"
               : "border-border bg-card"
           }`}
         >
-          <h3 className="text-lg font-semibold text-foreground">
-            {tItem.name}
-          </h3>
+          <h3 className="text-lg font-semibold text-foreground">{tier.name}</h3>
           <div className="my-4">
             <span className="text-3xl font-bold text-foreground">
-              {tItem.price}
+              {tier.price}
             </span>
-            <span className="text-sm text-muted-foreground">
-              {tItem.period}
-            </span>
+            <span className="text-sm text-muted-foreground">{tier.period}</span>
           </div>
           <ul className="mb-6 flex-1 space-y-2">
-            {tItem.features.map((f) => (
+            {tier.features.map((f) => (
               <li
                 key={f}
                 className="flex items-center gap-2 text-sm text-muted-foreground"
@@ -80,12 +76,14 @@ export default function PricingTiers() {
           <button
             type="button"
             className={`w-full rounded-md px-4 py-2 text-sm font-medium transition-opacity hover:opacity-90 ${
-              tItem.highlighted
+              tier.highlighted
                 ? "bg-primary text-primary-foreground"
                 : "border border-border text-foreground hover:bg-accent"
             }`}
           >
-            {tItem.buttonText}
+            {tier.name === t("pricingTiers.enterprise")
+              ? t("pricingTiers.contactSales")
+              : t("pricingTiers.getStarted")}
           </button>
         </div>
       ))}

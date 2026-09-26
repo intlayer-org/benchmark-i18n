@@ -1,22 +1,22 @@
 const understandingImpact = {
-  understandingTheImpact: "Understanding the Impact",
-  whyASingleLargeJson: "Why a single large JSON can hurt performance",
+  understandingTheImpact: "Comprendre l'impact",
+  whyASingleLargeJson: "Pourquoi un seul grand JSON peut nuire aux performances",
   manyI18nLibrariesStoreTranslations:
-    "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:",
+    "De nombreuses bibliothèques i18n stockent les traductions dans un seul objet JSON fourni via le contexte React. Lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. Cela signifie :",
   theJsonMustBeParsed:
-    "The JSON must be parsed on every page load — blocking the main thread.",
+    "Le JSON doit être analysé à chaque chargement de page — bloquant le thread principal.",
   contextBasedArchitecturesCanCause:
-    "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+    "Les architectures basées sur le contexte peuvent provoquer des re-rendus en cascade lorsque la locale change, car chaque consommateur est averti même si ses clés spécifiques n'ont pas changé.",
   duringServerSideRenderingThe:
-    "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated.",
-  theTradeOffsOfDynamic: "The trade-offs of dynamic loading",
+    "Pendant le rendu côté serveur, le dictionnaire complet est sérialisé dans la charge utile HTML, augmentant la taille du document qui doit être téléchargé et hydraté.",
+  theTradeOffsOfDynamic: "Les compromis du chargement dynamique",
   splittingTranslationsIntoPerRoute:
-    "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:",
-  waterfallRequests: "Waterfall requests:",
-  flashOfUntranslatedContentFouc: "Flash of untranslated content (FOUC):",
-  cacheInvalidation: "Cache invalidation:",
-  whatThisBenchmarkMeasures: "What this benchmark measures",
+    "Diviser les traductions en fragments par itinéraire ou par espace de noms peut réduire considérablement la charge utile initiale. Mais cela introduit de nouveaux défis :",
+  waterfallRequests: "Requêtes en cascade :",
+  flashOfUntranslatedContentFouc: "Flash de contenu non traduit (FOUC) :",
+  cacheInvalidation: "Invalidation du cache :",
+  whatThisBenchmarkMeasures: "Ce que ce benchmark mesure",
   thisTestAppProvidesA:
-    "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable.",
+    "Cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle JavaScript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement paresseux. Chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
 };
 export default understandingImpact;

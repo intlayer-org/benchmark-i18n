@@ -1,5 +1,5 @@
 {
-  "profile": "Profil",
   "displayName": "Nom d'affichage",
-  "email": "Email"
+  "email": "Email",
+  "profile": "Profil"
 }

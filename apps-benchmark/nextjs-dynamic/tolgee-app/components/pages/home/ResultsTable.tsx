@@ -1,57 +1,51 @@
 "use client";
 
-import { T, useTranslate } from "@/i18n/tolgee";
+import { useTranslate } from "@/i18n/tolgee";
 
 export default function ResultsTable() {
   const { t } = useTranslate();
-
   const results = [
     {
       lib: "react-i18next",
       size: "42.3 kB",
       time: "0.12ms",
-      lazy: t("resultsTable.lazyYes"),
+      lazy: "Yes",
     },
     {
       lib: "react-intl",
       size: "38.1 kB",
       time: "0.15ms",
-      lazy: t("resultsTable.lazyManual"),
+      lazy: "Manual",
     },
-    {
-      lib: "lingui",
-      size: "12.8 kB",
-      time: "0.08ms",
-      lazy: t("resultsTable.lazyYes"),
-    },
+    { lib: "lingui", size: "12.8 kB", time: "0.08ms", lazy: "Yes" },
     {
       lib: "typesafe-i18n",
       size: "5.2 kB",
       time: "0.05ms",
-      lazy: t("resultsTable.lazyBuiltIn"),
+      lazy: "Built-in",
     },
   ];
 
   return (
     <section>
       <h2 className="mb-6 text-2xl font-bold text-foreground">
-        <T keyName="resultsTable.sampleResults" />
+        {t("resultsTable.sampleResults")}
       </h2>
       <div className="overflow-x-auto rounded-lg border border-border">
         <table className="w-full text-sm">
           <thead className="bg-muted">
             <tr>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.library" />
+                Library
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.bundleSize" />
+                {t("resultsTable.bundleSize")}
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.lookupTime" />
+                {t("resultsTable.lookupTime")}
               </th>
               <th className="px-4 py-3 text-left font-medium text-muted-foreground">
-                <T keyName="resultsTable.lazyLoading" />
+                {t("resultsTable.lazyLoading")}
               </th>
             </tr>
           </thead>

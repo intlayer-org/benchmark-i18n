@@ -8,35 +8,17 @@ export default function AboutGrid() {
     <div className="grid gap-8 md:grid-cols-2">
       <div className="rounded-lg border border-border bg-card p-6">
         <h2 className="mb-3 text-xl font-semibold text-foreground">
-          {t("aboutGrid.testEnvironment")}
+          {t("aboutGrid.whyThisExists")}
         </h2>
         <p className="text-sm text-muted-foreground">
-          {t("aboutGrid.allBenchmarksRunOn")}
+          {t("aboutGrid.choosingAnI18nLibraryIs")}
         </p>
       </div>
       <div className="rounded-lg border border-border bg-card p-6">
         <h2 className="mb-3 text-xl font-semibold text-foreground">
-          {t("aboutGrid.applicationDesign")}
+          {t("aboutGrid.methodology")}
         </h2>
-        <p className="text-sm text-muted-foreground">
-          {t("aboutGrid.theBenchmarkAppHas10")}
-        </p>
-      </div>
-      <div className="rounded-lg border border-border bg-card p-6">
-        <h2 className="mb-3 text-xl font-semibold text-foreground">
-          {t("aboutGrid.measurementMethodology")}
-        </h2>
-        <p className="text-sm text-muted-foreground">
-          {t("aboutGrid.weUseBrowserNativeApis")}
-        </p>
-      </div>
-      <div className="rounded-lg border border-border bg-card p-6">
-        <h2 className="mb-3 text-xl font-semibold text-foreground">
-          {t("aboutGrid.fairComparison")}
-        </h2>
-        <p className="text-sm text-muted-foreground">
-          {t("aboutGrid.eachI18nLibraryIsIntegrated")}
-        </p>
+        <p className="text-sm text-muted-foreground">{t("aboutGrid.theSame10PageApp")}</p>
       </div>
     </div>
   );

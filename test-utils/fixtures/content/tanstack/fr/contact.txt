@@ -1,0 +1,9 @@
+Aller sur GitHub
+⚠️ Cette page contient des données factices à des fins de benchmarking uniquement. Elle n'est liée à aucune entreprise ou service réel.
+Vous avez des idées, trouvé un bug ou vous voulez contribuer à un benchmark ? Contactez-nous à contact@intlayer.org.
+Nouvelle Idée de Benchmark
+Question sur la Méthodologie
+Envoyer le Message
+An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.
+contact@intlayer.org
+i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router.

@@ -13,6 +13,10 @@
     children: import("svelte").Snippet;
   }>();
 
+  // Paraglide messages aren't reactive: set the route locale before the first
+  // render, otherwise it paints with the locale from the previous visit's cookie.
+  setParaglideLocale(locale, { reload: false });
+
   const renderStart =
     typeof performance !== "undefined" ? performance.now() : 0;
 

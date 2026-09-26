@@ -1,0 +1,13 @@
+⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service.
+Simple, Transparent Pricing
+Choose the plan that fits your team. No hidden fees.
+5 benchmark runs/day
+Community support
+Priority support
+Everything in Pro
+On-premise option
+Dedicated account manager
+Training sessions
+An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.
+contact@intlayer.org
+i18n Benchmark — Open-source project. Built with Vue, Vite & Vue Router.

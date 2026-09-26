@@ -1,7 +1,7 @@
 const resultsTable = {
-  sampleResults: "Sample Results",
-  bundleSize: "Bundle Size",
-  lookupTime: "Lookup Time",
-  lazyLoading: "Lazy Loading",
+  sampleResults: "Résultats d'échantillon",
+  bundleSize: "Taille du Bundle",
+  lookupTime: "Temps de consultation",
+  lazyLoading: "Chargement différé",
 };
 export default resultsTable;

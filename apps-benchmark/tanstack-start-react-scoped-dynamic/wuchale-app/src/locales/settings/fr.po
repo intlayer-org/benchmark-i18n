@@ -49,7 +49,7 @@ msgstr "Recevoir des rapports hebdomadaires de benchmark"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle notifications"
-msgstr "Toggle notifications"
+msgstr "Basculer les notifications"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Dark Mode"
@@ -61,7 +61,7 @@ msgstr "Utiliser le schéma de couleurs sombres"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Toggle dark mode"
-msgstr "Toggle dark mode"
+msgstr "Basculer le mode sombre"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Default Language"
@@ -69,23 +69,23 @@ msgstr "Langue par défaut"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "English (en)"
-msgstr "English (en)"
+msgstr "Anglais (en)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "French (fr)"
-msgstr "French (fr)"
+msgstr "Français (fr)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "German (de)"
-msgstr "German (de)"
+msgstr "Allemand (de)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Spanish (es)"
-msgstr "Spanish (es)"
+msgstr "Espagnol (es)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Japanese (ja)"
-msgstr "Japanese (ja)"
+msgstr "Japonais (ja)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Chinese Simplified (zh-CN)"
@@ -93,7 +93,7 @@ msgstr "Chinese Simplified (zh-CN)"
 
 #: src/components/pages/settings/PreferencesSection.tsx
 msgid "Arabic (ar)"
-msgstr "Arabic (ar)"
+msgstr "Arabe (ar)"
 
 #: src/components/pages/settings/SettingsFooter.tsx
 msgid "Cancel"

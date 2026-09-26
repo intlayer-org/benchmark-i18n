@@ -1,42 +1,46 @@
+import { useIntlayer } from "react-intlayer";
+
 export default function PricingTiers() {
+  const content = useIntlayer("pricing-tiers");
+
   const tiers = [
     {
-      name: "Starter",
-      price: "$0",
-      period: "forever",
+      name: content.starter,
+      price: content.price0,
+      period: content.forever,
       features: [
-        "5 benchmark runs/day",
-        "3 libraries",
-        "Community support",
-        "Public results",
+        content.benchmarkRunPerDay({ runs: "5" }),
+        content.librariesNumber({ libs: "3" }),
+        content.communitySupport,
+        content.publicResults,
       ],
     },
     {
-      name: "Pro",
-      price: "$29",
-      period: "/month",
+      name: content.pro,
+      price: content.price29,
+      period: content.month,
       features: [
-        "Unlimited runs",
-        "All libraries",
-        "Priority support",
-        "Private results",
-        "CI integration",
-        "Historical data",
+        content.unlimitedRuns,
+        content.allLibraries,
+        content.prioritySupport,
+        content.privateResults,
+        content.ciIntegration,
+        content.historicalData,
       ],
       highlighted: true,
     },
     {
-      name: "Enterprise",
-      price: "Custom",
+      name: content.enterprise,
+      price: content.customPrice,
       period: "",
       features: [
-        "Everything in Pro",
-        "On-premise option",
-        "SSO & SAML",
-        "Dedicated account manager",
-        "Custom SLAs",
-        "Audit logs",
-        "Training sessions",
+        content.everythingInPro,
+        content.onPremiseOption,
+        content.ssoSaml,
+        content.dedicatedAccountManager,
+        content.customSlas,
+        content.auditLogs,
+        content.trainingSessions,
       ],
     },
   ];
@@ -45,7 +49,7 @@ export default function PricingTiers() {
     <div className="grid gap-6 md:grid-cols-3">
       {tiers.map((t) => (
         <div
-          key={t.name}
+          key={t.name.value}
           className={`flex flex-col rounded-lg border p-6 ${
             t.highlighted
               ? "border-primary bg-primary/5 ring-1 ring-primary"
@@ -54,13 +58,15 @@ export default function PricingTiers() {
         >
           <h3 className="text-lg font-semibold text-foreground">{t.name}</h3>
           <div className="my-4">
-            <span className="text-3xl font-bold text-foreground">{t.price}</span>
+            <span className="text-3xl font-bold text-foreground">
+              {t.price}
+            </span>
             <span className="text-sm text-muted-foreground">{t.period}</span>
           </div>
           <ul className="mb-6 flex-1 space-y-2">
-            {t.features.map((f) => (
+            {t.features.map((f, i) => (
               <li
-                key={f}
+                key={i}
                 className="flex items-center gap-2 text-sm text-muted-foreground"
               >
                 <span className="text-primary">✓</span> {f}
@@ -75,7 +81,9 @@ export default function PricingTiers() {
                 : "border border-border text-foreground hover:bg-accent"
             }`}
           >
-            {t.name === "Enterprise" ? "Contact Sales" : "Get Started"}
+            {t.name === content.enterprise
+              ? content.contactSales
+              : content.getStarted}
           </button>
         </div>
       ))}

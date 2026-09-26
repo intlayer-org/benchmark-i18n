@@ -1,13 +1,13 @@
 {
-  "Name": "Name",
+  "Name": "Nom",
   "Email": "Email",
-  "Topic": "Topic",
-  "Bug Report": "Bug Report",
-  "New Benchmark Idea": "New Benchmark Idea",
-  "Methodology Question": "Methodology Question",
+  "Topic": "Sujet",
+  "Bug Report": "Rapport de Bug",
+  "New Benchmark Idea": "Nouvelle Idée de Benchmark",
+  "Methodology Question": "Question sur la Méthodologie",
   "Contribution": "Contribution",
-  "Other": "Other",
+  "Other": "Autre",
   "Message": "Message",
-  "Send Message": "Send Message",
-  "Get in Touch": "Get in Touch"
+  "Send Message": "Envoyer le Message",
+  "Get in Touch": "Contactez-nous"
 }

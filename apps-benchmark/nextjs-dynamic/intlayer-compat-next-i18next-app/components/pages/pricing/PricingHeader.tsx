@@ -10,11 +10,9 @@ export default function PricingHeader() {
       <MockBanner />
       <div className="mb-12 text-center">
         <h1 className="mb-3 text-3xl font-bold text-foreground">
-          {t("pricing.pricingHeader.pricing")}
+          {t("pricing.pricingHeader.simpleTransparentPricing")}
         </h1>
-        <p className="text-muted-foreground">
-          {t("pricing.pricingHeader.transparentPricingForEvery")}
-        </p>
+        <p className="text-muted-foreground">{t("pricing.pricingHeader.chooseThePlanThatFits")}</p>
       </div>
     </>
   );

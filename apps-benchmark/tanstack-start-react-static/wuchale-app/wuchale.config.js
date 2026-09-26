@@ -8,8 +8,9 @@ export default defineConfig({
   },
   adapters: {
     main: jsx({
-      loader: "react",
       files: "./src/**/*.{ts,tsx}",
+      // Static variant: bundle every locale's catalog instead of lazy-loading per locale.
+      loading: { direct: true },
     }),
   },
 });

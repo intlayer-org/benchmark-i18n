@@ -9,7 +9,7 @@ msgstr ""
 
 #: src/components/pages/home/Hero.tsx
 msgid "Hero"
-msgstr "Hero"
+msgstr "Héros"
 
 #: src/components/pages/home/Hero.tsx
 msgid "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
@@ -22,15 +22,15 @@ msgstr "Voir les résultats"
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Yes"
-msgstr "Yes"
+msgstr "Oui"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Manual"
-msgstr "Manual"
+msgstr "Manuel"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Built-in"
-msgstr "Built-in"
+msgstr "Intégré"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Sample Results"
@@ -38,7 +38,7 @@ msgstr "Exemples de résultats"
 
 #: src/components/pages/home/ResultsTable.tsx
 msgid "Library"
-msgstr "Library"
+msgstr "Bibliothèque"
 
 #: src/components/pages/home/ResultsTable.tsx
 #: src/components/pages/home/WhyItMatters.tsx
