@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-26T05:25:33.715Z",
+  "timestamp": "2026-09-26T19:24:58.598Z",
   "packageName": "vite-vue-intlayer-static",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 20772,
+    "totalUnminifiedBytes": 20778,
     "totalMinifiedBytes": 14323,
-    "totalGzipBytes": 4684
+    "totalGzipBytes": 4679
   },
   "components": [
     {
       "name": "EmptyComponent.vue",
       "category": "Synthetic",
-      "unminifiedBytes": 20772,
-      "unminifiedGzipBytes": 6135,
+      "unminifiedBytes": 20778,
+      "unminifiedGzipBytes": 6129,
       "minifiedBytes": 14323,
-      "minifiedGzipBytes": 4684
+      "minifiedGzipBytes": 4679
     }
   ]
 }

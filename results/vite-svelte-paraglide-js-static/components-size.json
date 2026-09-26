@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-09-09T19:21:04.526Z",
+  "timestamp": "2026-09-26T19:24:05.803Z",
   "packageName": "vite-svelte-paraglide-js-static",
   "framework": "svelte",
   "summary": {
     "totalComponents": 33,
-    "totalUnminifiedBytes": 1381330,
-    "totalMinifiedBytes": 726958,
-    "totalGzipBytes": 258025
+    "totalUnminifiedBytes": 1381401,
+    "totalMinifiedBytes": 727011,
+    "totalGzipBytes": 258066
   },
   "components": [
     {
       "name": "FAQList.svelte",
       "category": "pages",
-      "unminifiedBytes": 532389,
-      "unminifiedGzipBytes": 95995,
-      "minifiedBytes": 272634,
-      "minifiedGzipBytes": 83199
+      "unminifiedBytes": 532401,
+      "unminifiedGzipBytes": 96019,
+      "minifiedBytes": 272646,
+      "minifiedGzipBytes": 83216
     },
     {
       "name": "UnderstandingImpact.svelte",
@@ -28,10 +28,10 @@
     {
       "name": "Layout.svelte",
       "category": "Shared",
-      "unminifiedBytes": 60348,
-      "unminifiedGzipBytes": 12654,
-      "minifiedBytes": 33392,
-      "minifiedGzipBytes": 10551
+      "unminifiedBytes": 60395,
+      "unminifiedGzipBytes": 12660,
+      "minifiedBytes": 33421,
+      "minifiedGzipBytes": 10555
     },
     {
       "name": "BlogList.svelte",
@@ -61,9 +61,9 @@
       "name": "PricingTiers.svelte",
       "category": "pages",
       "unminifiedBytes": 54087,
-      "unminifiedGzipBytes": 8698,
+      "unminifiedGzipBytes": 8701,
       "minifiedBytes": 22178,
-      "minifiedGzipBytes": 7089
+      "minifiedGzipBytes": 7091
     },
     {
       "name": "TeamGrid.svelte",
@@ -76,10 +76,10 @@
     {
       "name": "ProductsGrid.svelte",
       "category": "pages",
-      "unminifiedBytes": 44379,
-      "unminifiedGzipBytes": 9399,
-      "minifiedBytes": 22063,
-      "minifiedGzipBytes": 7977
+      "unminifiedBytes": 44382,
+      "unminifiedGzipBytes": 9402,
+      "minifiedBytes": 22066,
+      "minifiedGzipBytes": 7980
     },
     {
       "name": "WhatWeMeasure.svelte",
@@ -140,10 +140,10 @@
     {
       "name": "CareersBenefits.svelte",
       "category": "pages",
-      "unminifiedBytes": 19289,
-      "unminifiedGzipBytes": 4827,
-      "minifiedBytes": 9510,
-      "minifiedGzipBytes": 3879
+      "unminifiedBytes": 19298,
+      "unminifiedGzipBytes": 4842,
+      "minifiedBytes": 9519,
+      "minifiedGzipBytes": 3894
     },
     {
       "name": "ThemeToggle.svelte",

@@ -2,7 +2,7 @@
   "meta": {
     "framework": "vite-react",
     "frameworkLabel": "Vite + React",
-    "generatedAt": "2026-09-26T18:43:51.223Z",
+    "generatedAt": "2026-09-26T19:26:54.112Z",
     "counts": {
       "totalLibs": 2,
       "totalApps": 2
@@ -32,6 +32,7 @@
             "en": {
               "jsGzip": {
                 "avg": 86926.5,
+                "median": 86754.5,
                 "min": 86374,
                 "max": 88241,
                 "raw": [
@@ -49,6 +50,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -66,6 +68,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -83,6 +86,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -234,6 +238,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 86926.5,
+                "median": 86754.5,
                 "min": 86374,
                 "max": 88241,
                 "raw": [
@@ -251,6 +256,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -268,6 +274,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -285,6 +292,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -718,14 +726,16 @@
           "status": "missing",
           "byLocale": {},
           "e2eAvgMs": null,
-          "profilerAvgMs": null
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "missing",
           "byLocale": {},
           "e2ePageLoadAvgMs": null,
           "hydrationAvgMs": null,
-          "reactMountAvgMs": null
+          "reactMountAvgMs": null,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -754,6 +764,7 @@
             "en": {
               "jsGzip": {
                 "avg": 108838.1,
+                "median": 106962.5,
                 "min": 102985,
                 "max": 121248,
                 "raw": [
@@ -771,6 +782,7 @@
               },
               "localeLeakPct": {
                 "avg": 53.983551198257075,
+                "median": 53.75,
                 "min": 48,
                 "max": 64.70588235294117,
                 "raw": [
@@ -788,6 +800,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -805,6 +818,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -956,6 +970,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 108838.1,
+                "median": 106962.5,
                 "min": 102985,
                 "max": 121248,
                 "raw": [
@@ -973,6 +988,7 @@
               },
               "localeLeakPct": {
                 "avg": 46.016448801742925,
+                "median": 46.25,
                 "min": 35.294117647058826,
                 "max": 52,
                 "raw": [
@@ -990,6 +1006,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -1007,6 +1024,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -1442,6 +1460,7 @@
             "en": {
               "e2e": {
                 "avg": 3.8400000095367433,
+                "median": 3.8400000095367433,
                 "min": 1.899999976158142,
                 "max": 11.199999928474426,
                 "raw": [
@@ -1454,6 +1473,7 @@
               },
               "profiler": {
                 "avg": 0.8600000381469727,
+                "median": 0.8600000381469727,
                 "min": 0.7000000476837158,
                 "max": 1.2000000476837158,
                 "raw": [
@@ -1468,6 +1488,7 @@
             "fr": {
               "e2e": {
                 "avg": 3.499999976158142,
+                "median": 3.499999976158142,
                 "min": 2.1999999284744263,
                 "max": 4.799999952316284,
                 "raw": [
@@ -1480,6 +1501,7 @@
               },
               "profiler": {
                 "avg": 1.1000000476837157,
+                "median": 1.1000000476837157,
                 "min": 0.7999999523162842,
                 "max": 2,
                 "raw": [
@@ -1493,7 +1515,8 @@
             }
           },
           "e2eAvgMs": 3.6699999928474427,
-          "profilerAvgMs": 0.9800000429153441
+          "profilerAvgMs": 0.9800000429153441,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -1501,6 +1524,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 6.779999995231629,
+                "median": 6.779999995231629,
                 "min": 6.300000071525574,
                 "max": 7.699999928474426,
                 "raw": [
@@ -1513,6 +1537,7 @@
               },
               "hydration": {
                 "avg": 3.780000019073486,
+                "median": 3.780000019073486,
                 "min": 2.600000023841858,
                 "max": 7.100000023841858,
                 "raw": [
@@ -1525,6 +1550,7 @@
               },
               "reactMount": {
                 "avg": 1.2200000524520873,
+                "median": 1.2200000524520873,
                 "min": 1.0000001192092896,
                 "max": 1.6999999284744263,
                 "raw": [
@@ -1541,6 +1567,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 6.440000009536743,
+                "median": 6.440000009536743,
                 "min": 5.200000047683716,
                 "max": 7,
                 "raw": [
@@ -1553,6 +1580,7 @@
               },
               "hydration": {
                 "avg": 4.239999985694885,
+                "median": 4.239999985694885,
                 "min": 2.6999999284744263,
                 "max": 7.100000023841858,
                 "raw": [
@@ -1565,6 +1593,7 @@
               },
               "reactMount": {
                 "avg": 1.2200000286102295,
+                "median": 1.2200000286102295,
                 "min": 1,
                 "max": 1.6999999284744263,
                 "raw": [
@@ -1581,7 +1610,8 @@
           },
           "e2ePageLoadAvgMs": 6.6100000023841865,
           "hydrationAvgMs": 4.010000002384185,
-          "reactMountAvgMs": 1.2200000405311584
+          "reactMountAvgMs": 1.2200000405311584,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,

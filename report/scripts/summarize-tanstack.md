@@ -11,9 +11,9 @@ _Generated: 2026-09-26_
 | **Locale leak %** | % of JS bundle containing strings from locales the user is NOT using |
 | **Page leak %** | % of JS bundle containing strings from pages the user is NOT on |
 | **Comp avg (gz)** | Average gzip size of individual components compiled in isolation |
-| **E2E reactivity** | Wall-clock time from locale `<select>` change to `html[lang]` DOM update (ms) |
+| **E2E reactivity** | Median wall-clock time from locale `<select>` change to `html[lang]` DOM update (ms); `×n` = relative to the base app in the same CI job |
 | **React Profiler** | Sum of React `actualDuration` during locale-switch re-renders (ms) |
-| **Page load** | `PerformanceNavigationTiming.duration` — full page load time (ms) |
+| **Page load** | Median `PerformanceNavigationTiming.duration` — full page load time (ms); `×n` = relative to the base app in the same CI job |
 | **Hydration avg** | Custom perf-mark delta for React hydration phase (ms); — = not instrumented |
 
 > **Status icons:** ✅ all data · 🔶 partial · ⬜ missing · ❌ error  
@@ -1012,14 +1012,14 @@ _Generated: 2026-09-26_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 11.1.24 | 97.4 KB | 368.3 KB |
+| latest | 97.4 KB | 368.3 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 283.8 KB | — | 90.0% | — | 3.9 ms | 0.3 ms | 20.5 ms | 16.4 ms |
 | Dynamic | 🔶 | 405.3 KB | — | 82.2% | — | — | — | 22.5 ms | 16.4 ms |
 | Scoped Static | 🔶 | 433.8 KB | — | 82.2% | — | — | — | 21.8 ms | 16.5 ms |
-| Scoped Dynamic | 🔶 | — | — | — | — | — | — | — | — |
+| Scoped Dynamic | 🔶 | 158.2 KB | — | 0.0% | — | — | — | — | — |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -1168,6 +1168,43 @@ _Generated: 2026-09-26_
 | :---: | ---: | ---: | ---: |
 | `en` | 22.7 ms | 16.7 ms | 1.4 ms |
 | `fr` | 21.0 ms | 16.4 ms | 1.3 ms |
+
+</details>
+
+<details>
+<summary><strong>Scoped Dynamic</strong> — per-locale page bundle</summary>
+
+**Locale: `en`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/en/` | 159.6 KB | — | 0.0% |
+| `/en/about` | 158.3 KB | — | 0.0% |
+| `/en/blog` | 157.9 KB | — | 0.0% |
+| `/en/careers` | 158.4 KB | — | 0.0% |
+| `/en/contact` | 157.7 KB | — | 0.0% |
+| `/en/faq` | 158.1 KB | — | 0.0% |
+| `/en/pricing` | 157.8 KB | — | 0.0% |
+| `/en/products` | 157.8 KB | — | 0.0% |
+| `/en/settings` | 159.1 KB | — | 0.0% |
+| `/en/team` | 157.8 KB | — | 0.0% |
+
+**Locale: `fr`**
+
+| Page | JS (gz) | Locale leak % | Page leak % |
+| :--- | ---: | ---: | ---: |
+| `/fr/` | 159.6 KB | — | 0.0% |
+| `/fr/about` | 158.3 KB | — | 0.0% |
+| `/fr/blog` | 157.9 KB | — | 0.0% |
+| `/fr/careers` | 158.4 KB | — | 0.0% |
+| `/fr/contact` | 157.7 KB | — | 0.0% |
+| `/fr/faq` | 158.1 KB | — | 0.0% |
+| `/fr/pricing` | 157.8 KB | — | 0.0% |
+| `/fr/products` | 157.8 KB | — | 0.0% |
+| `/fr/settings` | 159.1 KB | — | 0.0% |
+| `/fr/team` | 157.8 KB | — | 0.0% |
+
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-dynamic-gt-react-app/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -3367,7 +3404,7 @@ _Generated: 2026-09-26_
 | Total libraries | 14 |
 | Total app entries | 40 |
 | With lib size data | 13 |
-| With page bundle data | 55 |
+| With page bundle data | 56 |
 | With component data | 56 |
 | With reactivity data | 53 |
 | With rendering data | 55 |

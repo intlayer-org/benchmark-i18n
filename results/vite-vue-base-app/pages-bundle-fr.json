@@ -1,23 +1,23 @@
 {
   "app": "vite-vue-base-app",
   "locale": "fr",
-  "timestamp": "2026-09-09T03:51:37.760Z",
+  "timestamp": "2026-09-26T19:22:09.143Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 23,
-      "fr": 9
+      "en": 0,
+      "fr": 0
     },
     "page": {
       "home": 24,
-      "about": 0,
-      "blog": 0,
-      "careers": 0,
-      "contact": 0,
-      "faq": 0,
+      "about": 10,
+      "blog": 13,
+      "careers": 11,
+      "contact": 2,
+      "faq": 10,
       "pricing": 4,
-      "products": 0,
+      "products": 8,
       "settings": 5,
-      "team": 0
+      "team": 10
     }
   },
   "results": [
@@ -61,15 +61,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/WhyItMatters-CAvJptBa.js",
-          "size": 1887,
-          "gzipSize": 917,
-          "type": "js"
-        },
-        {
           "url": "/assets/UnderstandingImpact-B2lZAB9v.js",
           "size": 2826,
           "gzipSize": 1275,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhyItMatters-CAvJptBa.js",
+          "size": 1887,
+          "gzipSize": 917,
           "type": "js"
         },
         {
@@ -209,6 +209,21 @@
       ],
       "localeLeakage": {
         "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
           "count": 10,
           "found": [
             "about this benchmark",
@@ -222,21 +237,6 @@
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
             "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
           ]
-        },
-        "fr": {
-          "count": 0,
-          "found": []
-        }
-      },
-      "localeLeakagePercent": 100,
-      "pageLeakage": {
-        "home": {
-          "count": 0,
-          "found": []
-        },
-        "about": {
-          "count": 0,
-          "found": []
         },
         "blog": {
           "count": 0,
@@ -333,6 +333,25 @@
       ],
       "localeLeakage": {
         "en": {
+          "count": 0,
+          "found": []
+        },
+        "fr": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "localeLeakagePercent": 0,
+      "pageLeakage": {
+        "home": {
+          "count": 0,
+          "found": []
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
           "count": 13,
           "found": [
             "insights, tutorials, and analysis from the i18n community.",
@@ -349,25 +368,6 @@
             "benchmark methodology: how we test",
             "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
           ]
-        },
-        "fr": {
-          "count": 0,
-          "found": []
-        }
-      },
-      "localeLeakagePercent": 100,
-      "pageLeakage": {
-        "home": {
-          "count": 0,
-          "found": []
-        },
-        "about": {
-          "count": 0,
-          "found": []
-        },
-        "blog": {
-          "count": 0,
-          "found": []
         },
         "careers": {
           "count": 0,
@@ -489,8 +489,20 @@
           "found": []
         },
         "careers": {
-          "count": 0,
-          "found": []
+          "count": 11,
+          "found": [
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
+            "top-of-market compensation",
+            "20% time for oss contributions",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+          ]
         },
         "contact": {
           "count": 0,
@@ -559,12 +571,6 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-D_S5Oae6.js",
-          "size": 375,
-          "gzipSize": 297,
-          "type": "js"
-        },
-        {
           "url": "/assets/ContactHeader-DVkTL-Ul.js",
           "size": 571,
           "gzipSize": 393,
@@ -574,6 +580,12 @@
           "url": "/assets/ContactForm-DTiiNc2W.js",
           "size": 1894,
           "gzipSize": 665,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-D_S5Oae6.js",
+          "size": 375,
+          "gzipSize": 297,
           "type": "js"
         }
       ],
@@ -606,8 +618,10 @@
           "found": []
         },
         "contact": {
-          "count": 0,
-          "found": []
+          "count": 1,
+          "found": [
+            "methodology question"
+          ]
         },
         "faq": {
           "count": 0,
@@ -723,8 +737,19 @@
           "found": []
         },
         "faq": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "frequently asked questions",
+            "everything you need to know about i18n benchmark.",
+            "what is i18n benchmark?",
+            "how are benchmarks conducted?",
+            "which libraries are currently supported?",
+            "can i submit my own benchmarks?",
+            "how often are benchmarks updated?",
+            "is the data reliable?",
+            "do you offer consulting services?",
+            "how can i contribute?"
+          ]
         },
         "pricing": {
           "count": 0,
@@ -809,13 +834,8 @@
           "found": []
         },
         "fr": {
-          "count": 4,
-          "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "5 benchmark runs/day",
-            "dedicated account manager"
-          ]
+          "count": 0,
+          "found": []
         }
       },
       "localeLeakagePercent": 0,
@@ -967,8 +987,17 @@
           "found": []
         },
         "products": {
-          "count": 0,
-          "found": []
+          "count": 8,
+          "found": [
+            "tools and services to streamline your internationalization workflow.",
+            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
+            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
+            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
+            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+            "automated quality checks for missing translations, pluralization issues, and context errors.",
+            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+          ]
         },
         "settings": {
           "count": 0,
@@ -1063,14 +1092,8 @@
           "found": []
         },
         "fr": {
-          "count": 5,
-          "found": [
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
-          ]
+          "count": 0,
+          "found": []
         }
       },
       "localeLeakagePercent": 0,
@@ -1164,15 +1187,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-D_S5Oae6.js",
-          "size": 375,
-          "gzipSize": 297,
-          "type": "js"
-        },
-        {
           "url": "/assets/TeamHeader-D6T8MhO8.js",
           "size": 467,
           "gzipSize": 339,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-D_S5Oae6.js",
+          "size": 375,
+          "gzipSize": 297,
           "type": "js"
         },
         {
@@ -1231,8 +1254,19 @@
           "found": []
         },
         "team": {
-          "count": 0,
-          "found": []
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
         }
       },
       "pageLeakagePercent": 0

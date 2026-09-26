@@ -11,9 +11,9 @@ _Generated: 2026-09-26_
 | **Locale leak %** | % of JS bundle containing strings from locales the user is NOT using |
 | **Page leak %** | % of JS bundle containing strings from pages the user is NOT on |
 | **Comp avg (gz)** | Average gzip size of individual components compiled in isolation |
-| **E2E reactivity** | Wall-clock time from locale `<select>` change to `html[lang]` DOM update (ms) |
+| **E2E reactivity** | Median wall-clock time from locale `<select>` change to `html[lang]` DOM update (ms); `×n` = relative to the base app in the same CI job |
 | **React Profiler** | Sum of React `actualDuration` during locale-switch re-renders (ms) |
-| **Page load** | `PerformanceNavigationTiming.duration` — full page load time (ms) |
+| **Page load** | Median `PerformanceNavigationTiming.duration` — full page load time (ms); `×n` = relative to the base app in the same CI job |
 | **Hydration avg** | Custom perf-mark delta for React hydration phase (ms); — = not instrumented |
 
 > **Status icons:** ✅ all data · 🔶 partial · ⬜ missing · ❌ error  

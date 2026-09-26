@@ -1,0 +1,21 @@
+{
+  "timestamp": "2026-09-26T19:24:53.206Z",
+  "packageName": "vite-svelte-i18n-dynamic",
+  "framework": "svelte",
+  "summary": {
+    "totalComponents": 1,
+    "totalUnminifiedBytes": 90538,
+    "totalMinifiedBytes": 65867,
+    "totalGzipBytes": 17000
+  },
+  "components": [
+    {
+      "name": "EmptyComponent.svelte",
+      "category": "Synthetic",
+      "unminifiedBytes": 90538,
+      "unminifiedGzipBytes": 20459,
+      "minifiedBytes": 65867,
+      "minifiedGzipBytes": 17000
+    }
+  ]
+}

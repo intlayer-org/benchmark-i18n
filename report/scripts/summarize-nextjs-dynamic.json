@@ -2,10 +2,10 @@
   "meta": {
     "framework": "nextjs",
     "frameworkLabel": "Next.js",
-    "generatedAt": "2026-09-26T18:43:51.223Z",
+    "generatedAt": "2026-09-26T19:26:54.112Z",
     "counts": {
       "totalLibs": 14,
-      "totalApps": 38
+      "totalApps": 39
     }
   },
   "libs": {
@@ -32,6 +32,7 @@
             "en": {
               "jsGzip": {
                 "avg": 226901.8,
+                "median": 226773.5,
                 "min": 226378,
                 "max": 228278,
                 "raw": [
@@ -49,6 +50,7 @@
               },
               "localeLeakPct": {
                 "avg": 54.395604395604394,
+                "median": 54.395604395604394,
                 "min": 54.395604395604394,
                 "max": 54.395604395604394,
                 "raw": [
@@ -66,6 +68,7 @@
               },
               "pageLeakPct": {
                 "avg": 90,
+                "median": 88.75,
                 "min": 80,
                 "max": 98.75,
                 "raw": [
@@ -83,6 +86,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 90,
+                "median": 88.75,
                 "min": 80,
                 "max": 98.75,
                 "raw": [
@@ -234,6 +238,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 226901.8,
+                "median": 226773.5,
                 "min": 226378,
                 "max": 228278,
                 "raw": [
@@ -251,6 +256,7 @@
               },
               "localeLeakPct": {
                 "avg": 45.60439560439561,
+                "median": 45.604395604395606,
                 "min": 45.604395604395606,
                 "max": 45.604395604395606,
                 "raw": [
@@ -268,6 +274,7 @@
               },
               "pageLeakPct": {
                 "avg": 90,
+                "median": 90.10416666666667,
                 "min": 83.33333333333334,
                 "max": 97.91666666666666,
                 "raw": [
@@ -285,6 +292,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 90,
+                "median": 90.10416666666667,
                 "min": 83.33333333333334,
                 "max": 97.91666666666666,
                 "raw": [
@@ -728,6 +736,7 @@
             "en": {
               "e2e": {
                 "avg": 17.1599999666214,
+                "median": 17.1599999666214,
                 "min": 11.199999928474426,
                 "max": 30.700000047683716,
                 "raw": [
@@ -740,6 +749,7 @@
               },
               "profiler": {
                 "avg": 4.120000004768372,
+                "median": 4.120000004768372,
                 "min": 3.299999952316284,
                 "max": 6.700000047683716,
                 "raw": [
@@ -754,6 +764,7 @@
             "fr": {
               "e2e": {
                 "avg": 13.9,
+                "median": 13.9,
                 "min": 11.800000071525574,
                 "max": 17.399999976158142,
                 "raw": [
@@ -766,6 +777,7 @@
               },
               "profiler": {
                 "avg": 3.880000042915344,
+                "median": 3.880000042915344,
                 "min": 3.600000023841858,
                 "max": 4.700000047683716,
                 "raw": [
@@ -779,7 +791,8 @@
             }
           },
           "e2eAvgMs": 15.529999983310699,
-          "profilerAvgMs": 4.000000023841858
+          "profilerAvgMs": 4.000000023841858,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -787,6 +800,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 16.86000003814697,
+                "median": 16.86000003814697,
                 "min": 13.899999976158142,
                 "max": 19.90000009536743,
                 "raw": [
@@ -799,6 +813,7 @@
               },
               "hydration": {
                 "avg": 12.32000000476837,
+                "median": 12.32000000476837,
                 "min": 7.600000023841858,
                 "max": 29,
                 "raw": [
@@ -811,6 +826,7 @@
               },
               "reactMount": {
                 "avg": 5.7000000238418576,
+                "median": 5.7000000238418576,
                 "min": 1.7999999523162842,
                 "max": 20.600000023841858,
                 "raw": [
@@ -827,6 +843,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 17.02000000476837,
+                "median": 17.02000000476837,
                 "min": 14.299999952316284,
                 "max": 21.100000023841858,
                 "raw": [
@@ -839,6 +856,7 @@
               },
               "hydration": {
                 "avg": 11.32000000476837,
+                "median": 11.32000000476837,
                 "min": 7.700000047683716,
                 "max": 23.200000047683716,
                 "raw": [
@@ -851,6 +869,7 @@
               },
               "reactMount": {
                 "avg": 4.660000014305115,
+                "median": 4.660000014305115,
                 "min": 1.899999976158142,
                 "max": 15.300000071525574,
                 "raw": [
@@ -867,7 +886,8 @@
           },
           "e2ePageLoadAvgMs": 16.94000002145767,
           "hydrationAvgMs": 11.82000000476837,
-          "reactMountAvgMs": 5.180000019073486
+          "reactMountAvgMs": 5.180000019073486,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -896,6 +916,7 @@
             "en": {
               "jsGzip": {
                 "avg": 216605.4,
+                "median": 216523.5,
                 "min": 216312,
                 "max": 217187,
                 "raw": [
@@ -913,6 +934,7 @@
               },
               "localeLeakPct": {
                 "avg": 53.8888888888889,
+                "median": 53.888888888888886,
                 "min": 53.888888888888886,
                 "max": 53.888888888888886,
                 "raw": [
@@ -930,6 +952,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.7608024691358,
+                "median": 88.75,
                 "min": 80,
                 "max": 97.53086419753086,
                 "raw": [
@@ -947,6 +970,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.7608024691358,
+                "median": 88.75,
                 "min": 80,
                 "max": 97.53086419753086,
                 "raw": [
@@ -1098,6 +1122,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 216605.4,
+                "median": 216523.5,
                 "min": 216312,
                 "max": 217187,
                 "raw": [
@@ -1115,6 +1140,7 @@
               },
               "localeLeakPct": {
                 "avg": 46.11111111111111,
+                "median": 46.111111111111114,
                 "min": 46.111111111111114,
                 "max": 46.111111111111114,
                 "raw": [
@@ -1132,6 +1158,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.7973124300112,
+                "median": 89.8936170212766,
                 "min": 82.97872340425532,
                 "max": 97.89473684210527,
                 "raw": [
@@ -1149,6 +1176,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.7973124300112,
+                "median": 89.8936170212766,
                 "min": 82.97872340425532,
                 "max": 97.89473684210527,
                 "raw": [
@@ -1592,6 +1620,7 @@
             "en": {
               "e2e": {
                 "avg": 20.219999980926513,
+                "median": 20.219999980926513,
                 "min": 11.899999976158142,
                 "max": 43.200000047683716,
                 "raw": [
@@ -1604,6 +1633,7 @@
               },
               "profiler": {
                 "avg": 4.299999952316284,
+                "median": 4.299999952316284,
                 "min": 3.399999976158142,
                 "max": 7.399999976158142,
                 "raw": [
@@ -1618,6 +1648,7 @@
             "fr": {
               "e2e": {
                 "avg": 13.339999985694885,
+                "median": 13.339999985694885,
                 "min": 11.799999952316284,
                 "max": 16.5,
                 "raw": [
@@ -1630,6 +1661,7 @@
               },
               "profiler": {
                 "avg": 3.6800000190734865,
+                "median": 3.6800000190734865,
                 "min": 3.299999952316284,
                 "max": 4.200000047683716,
                 "raw": [
@@ -1643,7 +1675,8 @@
             }
           },
           "e2eAvgMs": 16.7799999833107,
-          "profilerAvgMs": 3.9899999856948853
+          "profilerAvgMs": 3.9899999856948853,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -1651,6 +1684,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 16.0400000333786,
+                "median": 16.0400000333786,
                 "min": 14.100000023841858,
                 "max": 19.800000071525574,
                 "raw": [
@@ -1663,6 +1697,7 @@
               },
               "hydration": {
                 "avg": 22.440000009536742,
+                "median": 22.440000009536742,
                 "min": 17,
                 "max": 28.800000071525574,
                 "raw": [
@@ -1675,6 +1710,7 @@
               },
               "reactMount": {
                 "avg": 6.139999985694885,
+                "median": 6.139999985694885,
                 "min": 1.899999976158142,
                 "max": 20.100000023841858,
                 "raw": [
@@ -1691,6 +1727,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 15.160000014305115,
+                "median": 15.160000014305115,
                 "min": 13,
                 "max": 19.40000009536743,
                 "raw": [
@@ -1703,6 +1740,7 @@
               },
               "hydration": {
                 "avg": 20.17999999523163,
+                "median": 20.17999999523163,
                 "min": 15.600000023841858,
                 "max": 27.399999976158142,
                 "raw": [
@@ -1715,6 +1753,7 @@
               },
               "reactMount": {
                 "avg": 5.920000004768371,
+                "median": 5.920000004768371,
                 "min": 1.7000000476837158,
                 "max": 19.600000023841858,
                 "raw": [
@@ -1731,7 +1770,8 @@
           },
           "e2ePageLoadAvgMs": 15.600000023841858,
           "hydrationAvgMs": 21.310000002384186,
-          "reactMountAvgMs": 6.029999995231629
+          "reactMountAvgMs": 6.029999995231629,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -1760,6 +1800,7 @@
             "en": {
               "jsGzip": {
                 "avg": 241770.2,
+                "median": 241670,
                 "min": 241570,
                 "max": 242336,
                 "raw": [
@@ -1777,6 +1818,7 @@
               },
               "localeLeakPct": {
                 "avg": 54.468671679197996,
+                "median": 54.4973544973545,
                 "min": 54.21052631578947,
                 "max": 54.4973544973545,
                 "raw": [
@@ -1794,6 +1836,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.88525530694206,
+                "median": 89.1566265060241,
                 "min": 80.72289156626506,
                 "max": 98.79518072289156,
                 "raw": [
@@ -1811,6 +1854,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.88525530694206,
+                "median": 89.1566265060241,
                 "min": 80.72289156626506,
                 "max": 98.79518072289156,
                 "raw": [
@@ -1962,6 +2006,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 241770.2,
+                "median": 241670,
                 "min": 241570,
                 "max": 242336,
                 "raw": [
@@ -1979,6 +2024,7 @@
               },
               "localeLeakPct": {
                 "avg": 45.47869674185464,
+                "median": 45.5026455026455,
                 "min": 45.26315789473684,
                 "max": 45.5026455026455,
                 "raw": [
@@ -1996,6 +2042,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.909900990099,
+                "median": 90.04950495049505,
                 "min": 84,
                 "max": 98,
                 "raw": [
@@ -2013,6 +2060,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.909900990099,
+                "median": 90.04950495049505,
                 "min": 84,
                 "max": 98,
                 "raw": [
@@ -2456,6 +2504,7 @@
             "en": {
               "e2e": {
                 "avg": 15.160000014305115,
+                "median": 15.160000014305115,
                 "min": 10.400000095367432,
                 "max": 26.699999928474426,
                 "raw": [
@@ -2468,6 +2517,7 @@
               },
               "profiler": {
                 "avg": 3.8400000095367433,
+                "median": 3.8400000095367433,
                 "min": 3.1999999284744263,
                 "max": 5.400000095367432,
                 "raw": [
@@ -2482,6 +2532,7 @@
             "fr": {
               "e2e": {
                 "avg": 11.260000014305115,
+                "median": 11.260000014305115,
                 "min": 9.800000071525574,
                 "max": 14.399999976158142,
                 "raw": [
@@ -2494,6 +2545,7 @@
               },
               "profiler": {
                 "avg": 3.5799999952316286,
+                "median": 3.5799999952316286,
                 "min": 3.1999999284744263,
                 "max": 4.400000095367432,
                 "raw": [
@@ -2507,7 +2559,8 @@
             }
           },
           "e2eAvgMs": 13.210000014305116,
-          "profilerAvgMs": 3.710000002384186
+          "profilerAvgMs": 3.710000002384186,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -2515,6 +2568,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 14.719999980926513,
+                "median": 14.719999980926513,
                 "min": 13,
                 "max": 19.600000023841858,
                 "raw": [
@@ -2527,6 +2581,7 @@
               },
               "hydration": {
                 "avg": 11.2,
+                "median": 11.2,
                 "min": 7,
                 "max": 24.100000023841858,
                 "raw": [
@@ -2539,6 +2594,7 @@
               },
               "reactMount": {
                 "avg": 5.760000014305115,
+                "median": 5.760000014305115,
                 "min": 2.200000047683716,
                 "max": 16.899999976158142,
                 "raw": [
@@ -2555,6 +2611,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 13.840000009536743,
+                "median": 13.840000009536743,
                 "min": 12.5,
                 "max": 17.700000047683716,
                 "raw": [
@@ -2567,6 +2624,7 @@
               },
               "hydration": {
                 "avg": 11.600000023841858,
+                "median": 11.600000023841858,
                 "min": 7.100000023841858,
                 "max": 26.800000071525574,
                 "raw": [
@@ -2579,6 +2637,7 @@
               },
               "reactMount": {
                 "avg": 6.239999985694885,
+                "median": 6.239999985694885,
                 "min": 2.1999999284744263,
                 "max": 20.100000023841858,
                 "raw": [
@@ -2595,7 +2654,8 @@
           },
           "e2ePageLoadAvgMs": 14.279999995231627,
           "hydrationAvgMs": 11.400000011920929,
-          "reactMountAvgMs": 6
+          "reactMountAvgMs": 6,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -2624,6 +2684,7 @@
             "en": {
               "jsGzip": {
                 "avg": 144401.7,
+                "median": 144104,
                 "min": 144104,
                 "max": 145706,
                 "raw": [
@@ -2641,6 +2702,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2658,6 +2720,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2675,6 +2738,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2826,6 +2890,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 144401.7,
+                "median": 144104,
                 "min": 144104,
                 "max": 145706,
                 "raw": [
@@ -2843,6 +2908,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2860,6 +2926,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2877,6 +2944,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -3320,6 +3388,7 @@
             "en": {
               "e2e": {
                 "avg": 14.479999999701977,
+                "median": 14.479999999701977,
                 "min": 12.899999998509884,
                 "max": 18.80000000447035,
                 "raw": [
@@ -3332,6 +3401,7 @@
               },
               "profiler": {
                 "avg": 3.7,
+                "median": 3.7,
                 "min": 3.399999998509884,
                 "max": 4.5,
                 "raw": [
@@ -3346,6 +3416,7 @@
             "fr": {
               "e2e": {
                 "avg": 12.299999998509884,
+                "median": 12.299999998509884,
                 "min": 11.600000001490116,
                 "max": 13.199999995529652,
                 "raw": [
@@ -3358,6 +3429,7 @@
               },
               "profiler": {
                 "avg": 3.8400000005960466,
+                "median": 3.8400000005960466,
                 "min": 3.5,
                 "max": 5.100000001490116,
                 "raw": [
@@ -3371,7 +3443,8 @@
             }
           },
           "e2eAvgMs": 13.389999999105932,
-          "profilerAvgMs": 3.7700000002980234
+          "profilerAvgMs": 3.7700000002980234,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -3379,6 +3452,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 15.72000000178814,
+                "median": 15.72000000178814,
                 "min": 13.5,
                 "max": 20.100000001490116,
                 "raw": [
@@ -3391,6 +3465,7 @@
               },
               "hydration": {
                 "avg": 11.82000000178814,
+                "median": 11.82000000178814,
                 "min": 6.800000004470348,
                 "max": 29.600000001490116,
                 "raw": [
@@ -3403,6 +3478,7 @@
               },
               "reactMount": {
                 "avg": 5.559999999403954,
+                "median": 5.559999999403954,
                 "min": 1.5,
                 "max": 20.5,
                 "raw": [
@@ -3419,6 +3495,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 14.699999998509885,
+                "median": 14.699999998509885,
                 "min": 13.399999998509884,
                 "max": 18.69999999552965,
                 "raw": [
@@ -3431,6 +3508,7 @@
               },
               "hydration": {
                 "avg": 11.820000000298023,
+                "median": 11.820000000298023,
                 "min": 6.899999998509884,
                 "max": 29.80000000447035,
                 "raw": [
@@ -3443,6 +3521,7 @@
               },
               "reactMount": {
                 "avg": 5.879999999701977,
+                "median": 5.879999999701977,
                 "min": 1.5999999940395355,
                 "max": 21.80000000447035,
                 "raw": [
@@ -3459,7 +3538,8 @@
           },
           "e2ePageLoadAvgMs": 15.210000000149012,
           "hydrationAvgMs": 11.82000000104308,
-          "reactMountAvgMs": 5.719999999552965
+          "reactMountAvgMs": 5.719999999552965,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -3477,36 +3557,38 @@
       },
       "static": null,
       "dynamic": {
-        "appName": "nextjs-static-gt-next-app",
-        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-gt-next-app/bundle/rollup-visualizer.html",
-        "measuredCategory": "static",
-        "isFallback": true,
-        "overallStatus": "ok",
+        "appName": "nextjs-dynamic-gt-next-app",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-gt-next-app/bundle/rollup-visualizer.html",
+        "measuredCategory": "dynamic",
+        "isFallback": false,
+        "overallStatus": "partial",
         "pageBundle": {
           "status": "ok",
           "byLocale": {
             "en": {
               "jsGzip": {
-                "avg": 198524.1,
-                "min": 198444,
-                "max": 198910,
+                "avg": 198528.1,
+                "median": 198448,
+                "min": 198448,
+                "max": 198914,
                 "raw": [
-                  198910,
-                  198779,
-                  198444,
-                  198444,
-                  198444,
-                  198444,
-                  198444,
-                  198444,
-                  198444,
-                  198444
+                  198914,
+                  198783,
+                  198448,
+                  198448,
+                  198448,
+                  198448,
+                  198448,
+                  198448,
+                  198448,
+                  198448
                 ]
               },
               "localeLeakPct": null,
               "pageLeakPct": null,
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -3526,10 +3608,10 @@
                 {
                   "path": "/en/",
                   "page": "home",
-                  "jsGzipSize": 198910,
+                  "jsGzipSize": 198914,
                   "totalGzipSize": 210579,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 6871,
+                  "htmlGzipSize": 6867,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
@@ -3539,10 +3621,10 @@
                 {
                   "path": "/en/about",
                   "page": "about",
-                  "jsGzipSize": 198779,
-                  "totalGzipSize": 209330,
+                  "jsGzipSize": 198783,
+                  "totalGzipSize": 209331,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5753,
+                  "htmlGzipSize": 5750,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
@@ -3552,10 +3634,10 @@
                 {
                   "path": "/en/blog",
                   "page": "blog",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208840,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 208847,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5598,
+                  "htmlGzipSize": 5601,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
@@ -3565,10 +3647,10 @@
                 {
                   "path": "/en/careers",
                   "page": "careers",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 209038,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 209045,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5796,
+                  "htmlGzipSize": 5799,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
@@ -3578,10 +3660,10 @@
                 {
                   "path": "/en/contact",
                   "page": "contact",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208431,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 208433,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5189,
+                  "htmlGzipSize": 5187,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
@@ -3591,10 +3673,10 @@
                 {
                   "path": "/en/faq",
                   "page": "faq",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208989,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 208991,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5747,
+                  "htmlGzipSize": 5745,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
@@ -3604,10 +3686,10 @@
                 {
                   "path": "/en/pricing",
                   "page": "pricing",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208709,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 208714,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5467,
+                  "htmlGzipSize": 5468,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
@@ -3617,10 +3699,10 @@
                 {
                   "path": "/en/products",
                   "page": "products",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208590,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 208595,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5348,
+                  "htmlGzipSize": 5349,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
@@ -3630,10 +3712,10 @@
                 {
                   "path": "/en/settings",
                   "page": "settings",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 209014,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 209017,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5772,
+                  "htmlGzipSize": 5771,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
@@ -3643,10 +3725,10 @@
                 {
                   "path": "/en/team",
                   "page": "team",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208703,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 208708,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5461,
+                  "htmlGzipSize": 5462,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
@@ -3657,181 +3739,183 @@
             },
             "fr": {
               "jsGzip": {
-                "avg": 198524.1,
-                "min": 198444,
-                "max": 198910,
+                "avg": 198528.1,
+                "median": 198448,
+                "min": 198448,
+                "max": 198914,
                 "raw": [
-                  198910,
-                  198779,
-                  198444,
-                  198444,
-                  198444,
-                  198444,
-                  198444,
-                  198444,
-                  198444,
-                  198444
+                  198914,
+                  198783,
+                  198448,
+                  198448,
+                  198448,
+                  198448,
+                  198448,
+                  198448,
+                  198448,
+                  198448
                 ]
               },
               "localeLeakPct": null,
               "pageLeakPct": null,
               "otherPageContentLeakPct": {
-                "avg": 0,
-                "min": 0,
-                "max": 0,
+                "avg": 90,
+                "median": 90.19607843137256,
+                "min": 84.31372549019608,
+                "max": 98.0392156862745,
                 "raw": [
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0,
-                  0
+                  84.31372549019608,
+                  86.27450980392157,
+                  87.25490196078431,
+                  88.23529411764706,
+                  98.0392156862745,
+                  91.17647058823529,
+                  91.17647058823529,
+                  90.19607843137256,
+                  93.13725490196079,
+                  90.19607843137256
                 ]
               },
               "pages": [
                 {
                   "path": "/fr/",
                   "page": "home",
-                  "jsGzipSize": 198910,
-                  "totalGzipSize": 210587,
+                  "jsGzipSize": 198914,
+                  "totalGzipSize": 218951,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 6879,
+                  "htmlGzipSize": 15239,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": 0
+                  "otherPageContentLeakagePercent": 84.31372549019608
                 },
                 {
                   "path": "/fr/about",
                   "page": "about",
-                  "jsGzipSize": 198779,
-                  "totalGzipSize": 209333,
+                  "jsGzipSize": 198783,
+                  "totalGzipSize": 217848,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5756,
+                  "htmlGzipSize": 14267,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": 0
+                  "otherPageContentLeakagePercent": 86.27450980392157
                 },
                 {
                   "path": "/fr/blog",
                   "page": "blog",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208844,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 217746,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5602,
+                  "htmlGzipSize": 14500,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": 0
+                  "otherPageContentLeakagePercent": 87.25490196078431
                 },
                 {
                   "path": "/fr/careers",
                   "page": "careers",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 209043,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 218070,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5801,
+                  "htmlGzipSize": 14824,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": 0
+                  "otherPageContentLeakagePercent": 88.23529411764706
                 },
                 {
                   "path": "/fr/contact",
                   "page": "contact",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208435,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 217689,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5193,
+                  "htmlGzipSize": 14443,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": 0
+                  "otherPageContentLeakagePercent": 98.0392156862745
                 },
                 {
                   "path": "/fr/faq",
                   "page": "faq",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208992,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 217522,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5750,
+                  "htmlGzipSize": 14276,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": 0
+                  "otherPageContentLeakagePercent": 91.17647058823529
                 },
                 {
                   "path": "/fr/pricing",
                   "page": "pricing",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208713,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 217910,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5471,
+                  "htmlGzipSize": 14664,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": 0
+                  "otherPageContentLeakagePercent": 91.17647058823529
                 },
                 {
                   "path": "/fr/products",
                   "page": "products",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208595,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 217622,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5353,
+                  "htmlGzipSize": 14376,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": 0
+                  "otherPageContentLeakagePercent": 90.19607843137256
                 },
                 {
                   "path": "/fr/settings",
                   "page": "settings",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 209017,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 218197,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5775,
+                  "htmlGzipSize": 14951,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": 0
+                  "otherPageContentLeakagePercent": 93.13725490196079
                 },
                 {
                   "path": "/fr/team",
                   "page": "team",
-                  "jsGzipSize": 198444,
-                  "totalGzipSize": 208706,
+                  "jsGzipSize": 198448,
+                  "totalGzipSize": 217663,
                   "cssGzipSize": 4798,
-                  "htmlGzipSize": 5464,
+                  "htmlGzipSize": 14417,
                   "fileCount": 12,
                   "jsFileCount": 10,
                   "localeLeakagePercent": null,
                   "pageLeakagePercent": null,
-                  "otherPageContentLeakagePercent": 0
+                  "otherPageContentLeakagePercent": 90.19607843137256
                 }
               ]
             }
           },
-          "jsGzipMin": 198444,
-          "jsGzipAvg": 198524.1,
-          "jsGzipMax": 198910,
+          "jsGzipMin": 198448,
+          "jsGzipAvg": 198528.1,
+          "jsGzipMax": 198914,
           "localeLeakAvgPct": null,
           "pageLeakAvgPct": null,
-          "otherPageContentLeakAvgPct": 0,
+          "otherPageContentLeakAvgPct": 45,
           "leakMetricsExcluded": true
         },
         "components": {
@@ -3844,423 +3928,291 @@
             {
               "name": "Header.tsx",
               "category": "Shared",
-              "minifiedGzip": 43978,
-              "minified": 155734,
-              "unminified": 214675,
-              "unminifiedGzip": 52354
+              "minifiedGzip": 43213,
+              "minified": 150720,
+              "unminified": 208781,
+              "unminifiedGzip": 51573
             },
             {
               "name": "UnderstandingImpact.tsx",
               "category": "pages",
-              "minifiedGzip": 42493,
-              "minified": 152151,
-              "unminified": 209558,
-              "unminifiedGzip": 50552
+              "minifiedGzip": 41972,
+              "minified": 147550,
+              "unminified": 204122,
+              "unminifiedGzip": 50002
             },
             {
               "name": "OpenPositions.tsx",
               "category": "pages",
-              "minifiedGzip": 42147,
-              "minified": 150839,
-              "unminified": 208307,
-              "unminifiedGzip": 50219
-            },
-            {
-              "name": "PreferencesSection.tsx",
-              "category": "pages",
-              "minifiedGzip": 41937,
-              "minified": 150649,
-              "unminified": 208075,
-              "unminifiedGzip": 49978
-            },
-            {
-              "name": "PricingTiers.tsx",
-              "category": "pages",
-              "minifiedGzip": 42071,
-              "minified": 150416,
-              "unminified": 207855,
-              "unminifiedGzip": 50150
+              "minifiedGzip": 41656,
+              "minified": 146620,
+              "unminified": 203208,
+              "unminifiedGzip": 49685
             },
             {
               "name": "BlogList.tsx",
               "category": "pages",
-              "minifiedGzip": 42198,
-              "minified": 150265,
-              "unminified": 207580,
-              "unminifiedGzip": 50269
-            },
-            {
-              "name": "Footer.tsx",
-              "category": "Shared",
-              "minifiedGzip": 42109,
-              "minified": 149748,
-              "unminified": 207172,
-              "unminifiedGzip": 50249
-            },
-            {
-              "name": "ContactForm.tsx",
-              "category": "pages",
-              "minifiedGzip": 41808,
-              "minified": 149715,
-              "unminified": 207035,
-              "unminifiedGzip": 49857
+              "minifiedGzip": 41749,
+              "minified": 146557,
+              "unminified": 203108,
+              "unminifiedGzip": 49789
             },
             {
               "name": "FAQList.tsx",
               "category": "pages",
-              "minifiedGzip": 42310,
-              "minified": 148962,
-              "unminified": 205983,
-              "unminifiedGzip": 50370
+              "minifiedGzip": 41957,
+              "minified": 146387,
+              "unminified": 202891,
+              "unminifiedGzip": 49988
             },
             {
-              "name": "ProductsGrid.tsx",
+              "name": "PricingTiers.tsx",
               "category": "pages",
-              "minifiedGzip": 41944,
-              "minified": 148756,
-              "unminified": 205877,
-              "unminifiedGzip": 50003
+              "minifiedGzip": 41595,
+              "minified": 146333,
+              "unminified": 202915,
+              "unminifiedGzip": 49636
             },
             {
-              "name": "TeamGrid.tsx",
-              "category": "pages",
-              "minifiedGzip": 41975,
-              "minified": 148753,
-              "unminified": 205870,
-              "unminifiedGzip": 50039
+              "name": "Footer.tsx",
+              "category": "Shared",
+              "minifiedGzip": 41581,
+              "minified": 146330,
+              "unminified": 203144,
+              "unminifiedGzip": 49680
             },
             {
-              "name": "ResultsTable.tsx",
+              "name": "PreferencesSection.tsx",
               "category": "pages",
-              "minifiedGzip": 41667,
-              "minified": 148732,
-              "unminified": 205857,
-              "unminifiedGzip": 49731
+              "minifiedGzip": 41426,
+              "minified": 146168,
+              "unminified": 202759,
+              "unminifiedGzip": 49468
+            },
+            {
+              "name": "ContactForm.tsx",
+              "category": "pages",
+              "minifiedGzip": 41362,
+              "minified": 146117,
+              "unminified": 202752,
+              "unminifiedGzip": 49398
             },
             {
               "name": "WhyItMatters.tsx",
               "category": "pages",
-              "minifiedGzip": 41942,
-              "minified": 148604,
-              "unminified": 205584,
-              "unminifiedGzip": 49995
+              "minifiedGzip": 41566,
+              "minified": 145943,
+              "unminified": 202441,
+              "unminifiedGzip": 49596
+            },
+            {
+              "name": "TeamGrid.tsx",
+              "category": "pages",
+              "minifiedGzip": 41602,
+              "minified": 145819,
+              "unminified": 202337,
+              "unminifiedGzip": 49640
+            },
+            {
+              "name": "ProductsGrid.tsx",
+              "category": "pages",
+              "minifiedGzip": 41554,
+              "minified": 145805,
+              "unminified": 202329,
+              "unminifiedGzip": 49578
+            },
+            {
+              "name": "ResultsTable.tsx",
+              "category": "pages",
+              "minifiedGzip": 41237,
+              "minified": 145640,
+              "unminified": 202153,
+              "unminifiedGzip": 49260
             },
             {
               "name": "WhatWeMeasure.tsx",
               "category": "pages",
-              "minifiedGzip": 41892,
-              "minified": 147918,
-              "unminified": 204883,
-              "unminifiedGzip": 49952
-            },
-            {
-              "name": "AboutGrid.tsx",
-              "category": "pages",
-              "minifiedGzip": 41685,
-              "minified": 146930,
-              "unminified": 203732,
-              "unminifiedGzip": 49739
-            },
-            {
-              "name": "Hero.tsx",
-              "category": "pages",
-              "minifiedGzip": 41561,
-              "minified": 146806,
-              "unminified": 203679,
-              "unminifiedGzip": 49632
-            },
-            {
-              "name": "ApiAccessSection.tsx",
-              "category": "pages",
-              "minifiedGzip": 41536,
-              "minified": 146710,
-              "unminified": 203569,
-              "unminifiedGzip": 49573
-            },
-            {
-              "name": "ProfileSection.tsx",
-              "category": "pages",
-              "minifiedGzip": 41460,
-              "minified": 146701,
-              "unminified": 203595,
-              "unminifiedGzip": 49497
+              "minifiedGzip": 41548,
+              "minified": 145583,
+              "unminified": 202084,
+              "unminifiedGzip": 49579
             },
             {
               "name": "ThemeToggle.tsx",
               "category": "Shared",
-              "minifiedGzip": 41542,
-              "minified": 146427,
-              "unminified": 203498,
-              "unminifiedGzip": 49676
+              "minifiedGzip": 41291,
+              "minified": 145166,
+              "unminified": 202037,
+              "unminifiedGzip": 49404
             },
             {
-              "name": "ContactHeader.tsx",
+              "name": "AboutGrid.tsx",
               "category": "pages",
-              "minifiedGzip": 41505,
-              "minified": 146253,
-              "unminified": 203063,
-              "unminifiedGzip": 49545
+              "minifiedGzip": 41371,
+              "minified": 145061,
+              "unminified": 201529,
+              "unminifiedGzip": 49402
             },
             {
-              "name": "CareersBenefits.tsx",
+              "name": "Hero.tsx",
               "category": "pages",
-              "minifiedGzip": 41383,
-              "minified": 146204,
-              "unminified": 203019,
-              "unminifiedGzip": 49441
+              "minifiedGzip": 41258,
+              "minified": 145007,
+              "unminified": 201563,
+              "unminifiedGzip": 49299
             },
             {
-              "name": "PricingHeader.tsx",
+              "name": "ProfileSection.tsx",
               "category": "pages",
-              "minifiedGzip": 41426,
-              "minified": 146098,
-              "unminified": 202908,
-              "unminifiedGzip": 49464
+              "minifiedGzip": 41110,
+              "minified": 144734,
+              "unminified": 201279,
+              "unminifiedGzip": 49143
             },
             {
-              "name": "CareersHeader.tsx",
+              "name": "ApiAccessSection.tsx",
               "category": "pages",
-              "minifiedGzip": 41446,
-              "minified": 146052,
-              "unminified": 202842,
-              "unminifiedGzip": 49488
-            },
-            {
-              "name": "TeamHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 41421,
-              "minified": 146001,
-              "unminified": 202785,
-              "unminifiedGzip": 49465
-            },
-            {
-              "name": "ProductsHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 41390,
-              "minified": 145978,
-              "unminified": 202770,
-              "unminifiedGzip": 49431
-            },
-            {
-              "name": "SettingsHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 41382,
-              "minified": 145959,
-              "unminified": 202751,
-              "unminifiedGzip": 49419
-            },
-            {
-              "name": "BlogHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 41391,
-              "minified": 145948,
-              "unminified": 202732,
-              "unminifiedGzip": 49436
-            },
-            {
-              "name": "FAQHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 41381,
-              "minified": 145820,
-              "unminified": 202579,
-              "unminifiedGzip": 49428
+              "minifiedGzip": 41179,
+              "minified": 144727,
+              "unminified": 201233,
+              "unminifiedGzip": 49223
             },
             {
               "name": "AboutHeader.tsx",
               "category": "pages",
-              "minifiedGzip": 41345,
-              "minified": 145805,
-              "unminified": 202594,
-              "unminifiedGzip": 49408
+              "minifiedGzip": 41088,
+              "minified": 144463,
+              "unminified": 201028,
+              "unminifiedGzip": 49140
+            },
+            {
+              "name": "ContactHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 41177,
+              "minified": 144455,
+              "unminified": 200949,
+              "unminifiedGzip": 49210
+            },
+            {
+              "name": "CareersBenefits.tsx",
+              "category": "pages",
+              "minifiedGzip": 41072,
+              "minified": 144419,
+              "unminified": 200899,
+              "unminifiedGzip": 49112
+            },
+            {
+              "name": "CareersHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 41136,
+              "minified": 144342,
+              "unminified": 200833,
+              "unminifiedGzip": 49168
+            },
+            {
+              "name": "PricingHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 41099,
+              "minified": 144315,
+              "unminified": 200809,
+              "unminifiedGzip": 49132
+            },
+            {
+              "name": "TeamHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 41110,
+              "minified": 144303,
+              "unminified": 200788,
+              "unminifiedGzip": 49142
+            },
+            {
+              "name": "ProductsHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 41079,
+              "minified": 144264,
+              "unminified": 200757,
+              "unminifiedGzip": 49112
+            },
+            {
+              "name": "BlogHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 41079,
+              "minified": 144250,
+              "unminified": 200735,
+              "unminifiedGzip": 49111
+            },
+            {
+              "name": "SettingsHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 41069,
+              "minified": 144245,
+              "unminified": 200738,
+              "unminifiedGzip": 49097
+            },
+            {
+              "name": "FAQHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 41076,
+              "minified": 144229,
+              "unminified": 200710,
+              "unminifiedGzip": 49120
             },
             {
               "name": "SettingsFooter.tsx",
               "category": "pages",
-              "minifiedGzip": 41262,
-              "minified": 145508,
-              "unminified": 202193,
-              "unminifiedGzip": 49307
+              "minifiedGzip": 40968,
+              "minified": 144139,
+              "unminified": 200600,
+              "unminifiedGzip": 49010
             },
             {
               "name": "MockBanner.tsx",
               "category": "Shared",
-              "minifiedGzip": 41198,
-              "minified": 144989,
-              "unminified": 201609,
-              "unminifiedGzip": 49247
+              "minifiedGzip": 40968,
+              "minified": 143898,
+              "unminified": 200352,
+              "unminifiedGzip": 48987
             },
             {
               "name": "LocaleSwitcher.tsx",
               "category": "Shared",
-              "minifiedGzip": 35853,
-              "minified": 123054,
-              "unminified": 178464,
-              "unminifiedGzip": 43499
+              "minifiedGzip": 35481,
+              "minified": 121848,
+              "unminified": 177055,
+              "unminifiedGzip": 43108
             },
             {
               "name": "Link.tsx",
               "category": "Shared",
-              "minifiedGzip": 35613,
-              "minified": 122707,
-              "unminified": 178048,
-              "unminifiedGzip": 43240
+              "minifiedGzip": 35284,
+              "minified": 121487,
+              "unminified": 176701,
+              "unminifiedGzip": 42874
             },
             {
               "name": "AppProviders.tsx",
               "category": "Shared",
-              "minifiedGzip": 35410,
-              "minified": 121792,
-              "unminified": 176855,
-              "unminifiedGzip": 42965
+              "minifiedGzip": 35108,
+              "minified": 120974,
+              "unminified": 175920,
+              "unminifiedGzip": 42624
             }
           ]
         },
         "reactivity": {
-          "status": "ok",
-          "byLocale": {
-            "en": {
-              "e2e": {
-                "avg": 24.679999999701977,
-                "min": 20.399999998509884,
-                "max": 36.100000001490116,
-                "raw": [
-                  36.100000001490116,
-                  20.399999998509884,
-                  21.700000002980232,
-                  23,
-                  22.19999999552965
-                ]
-              },
-              "profiler": {
-                "avg": 6.46000000089407,
-                "min": 5.9000000059604645,
-                "max": 8.199999995529652,
-                "raw": [
-                  8.199999995529652,
-                  5.9000000059604645,
-                  6.100000001490116,
-                  6,
-                  6.100000001490116
-                ]
-              }
-            },
-            "fr": {
-              "e2e": {
-                "avg": 20.820000000298023,
-                "min": 18.600000001490116,
-                "max": 24.899999998509884,
-                "raw": [
-                  24.899999998509884,
-                  19,
-                  20,
-                  21.600000001490116,
-                  18.600000001490116
-                ]
-              },
-              "profiler": {
-                "avg": 7.080000001192093,
-                "min": 6.200000002980232,
-                "max": 9.5,
-                "raw": [
-                  6.700000002980232,
-                  6.200000002980232,
-                  6.399999998509884,
-                  9.5,
-                  6.600000001490116
-                ]
-              }
-            }
-          },
-          "e2eAvgMs": 22.75,
-          "profilerAvgMs": 6.770000001043082
+          "status": "missing",
+          "byLocale": {},
+          "e2eAvgMs": null,
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
         },
         "rendering": {
-          "status": "ok",
-          "byLocale": {
-            "en": {
-              "e2ePageLoad": {
-                "avg": 25.08000000268221,
-                "min": 17.899999998509884,
-                "max": 39.30000000447035,
-                "raw": [
-                  39.30000000447035,
-                  26.200000002980232,
-                  23.700000002980232,
-                  18.30000000447035,
-                  17.899999998509884
-                ]
-              },
-              "hydration": {
-                "avg": 27.9,
-                "min": 20.099999994039536,
-                "max": 54.29999999701977,
-                "raw": [
-                  54.29999999701977,
-                  23.100000001490116,
-                  20.400000005960464,
-                  21.600000001490116,
-                  20.099999994039536
-                ]
-              },
-              "reactMount": {
-                "avg": 11.23999999910593,
-                "min": 9.899999998509884,
-                "max": 15,
-                "raw": [
-                  15,
-                  10.5,
-                  9.899999998509884,
-                  10.899999998509884,
-                  9.899999998509884
-                ]
-              },
-              "hydrationInstrumented": true,
-              "reactMountInstrumented": true
-            },
-            "fr": {
-              "e2ePageLoad": {
-                "avg": 19.18000000268221,
-                "min": 16.100000001490116,
-                "max": 27.30000000447035,
-                "raw": [
-                  27.30000000447035,
-                  18.700000002980232,
-                  17.30000000447035,
-                  16.5,
-                  16.100000001490116
-                ]
-              },
-              "hydration": {
-                "avg": 25.61999999731779,
-                "min": 19.899999998509884,
-                "max": 45.399999998509884,
-                "raw": [
-                  45.399999998509884,
-                  20.899999998509884,
-                  20.599999994039536,
-                  21.299999997019768,
-                  19.899999998509884
-                ]
-              },
-              "reactMount": {
-                "avg": 10.46000000089407,
-                "min": 9.700000002980232,
-                "max": 11.5,
-                "raw": [
-                  11.5,
-                  9.800000004470348,
-                  9.700000002980232,
-                  11.299999997019768,
-                  10
-                ]
-              },
-              "hydrationInstrumented": true,
-              "reactMountInstrumented": true
-            }
-          },
-          "e2ePageLoadAvgMs": 22.13000000268221,
-          "hydrationAvgMs": 26.759999998658895,
-          "reactMountAvgMs": 10.85
+          "status": "missing",
+          "byLocale": {},
+          "e2ePageLoadAvgMs": null,
+          "hydrationAvgMs": null,
+          "reactMountAvgMs": null,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -4289,6 +4241,7 @@
             "en": {
               "jsGzip": {
                 "avg": 156434.5,
+                "median": 156269,
                 "min": 156269,
                 "max": 157020,
                 "raw": [
@@ -4308,6 +4261,7 @@
               "pageLeakPct": null,
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -4459,6 +4413,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 156434.5,
+                "median": 156269,
                 "min": 156269,
                 "max": 157020,
                 "raw": [
@@ -4478,6 +4433,7 @@
               "pageLeakPct": null,
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -4922,6 +4878,7 @@
             "en": {
               "e2e": {
                 "avg": 18.479999999701977,
+                "median": 18.479999999701977,
                 "min": 15.700000002980232,
                 "max": 26.19999999552965,
                 "raw": [
@@ -4934,6 +4891,7 @@
               },
               "profiler": {
                 "avg": 4.600000001490116,
+                "median": 4.600000001490116,
                 "min": 4.5,
                 "max": 4.700000002980232,
                 "raw": [
@@ -4948,6 +4906,7 @@
             "fr": {
               "e2e": {
                 "avg": 16.96000000089407,
+                "median": 16.96000000089407,
                 "min": 15.5,
                 "max": 20.900000005960464,
                 "raw": [
@@ -4960,6 +4919,7 @@
               },
               "profiler": {
                 "avg": 4.82000000178814,
+                "median": 4.82000000178814,
                 "min": 4.5,
                 "max": 5.5,
                 "raw": [
@@ -4973,7 +4933,8 @@
             }
           },
           "e2eAvgMs": 17.720000000298022,
-          "profilerAvgMs": 4.710000001639128
+          "profilerAvgMs": 4.710000001639128,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -4981,6 +4942,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 21.279999999701978,
+                "median": 21.279999999701978,
                 "min": 16.899999998509884,
                 "max": 30.100000001490116,
                 "raw": [
@@ -4993,6 +4955,7 @@
               },
               "hydration": {
                 "avg": 15.759999997913837,
+                "median": 15.759999997913837,
                 "min": 9.5,
                 "max": 33.599999994039536,
                 "raw": [
@@ -5005,6 +4968,7 @@
               },
               "reactMount": {
                 "avg": 6.020000000298023,
+                "median": 6.020000000298023,
                 "min": 1.7999999970197678,
                 "max": 22.600000001490116,
                 "raw": [
@@ -5021,6 +4985,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 16.640000000596046,
+                "median": 16.640000000596046,
                 "min": 14.300000004470348,
                 "max": 19.799999997019768,
                 "raw": [
@@ -5033,6 +4998,7 @@
               },
               "hydration": {
                 "avg": 15.400000001490117,
+                "median": 15.400000001490117,
                 "min": 9.300000004470348,
                 "max": 33.5,
                 "raw": [
@@ -5045,6 +5011,7 @@
               },
               "reactMount": {
                 "avg": 5.879999999701977,
+                "median": 5.879999999701977,
                 "min": 1.6000000014901161,
                 "max": 22.299999997019768,
                 "raw": [
@@ -5061,7 +5028,8 @@
           },
           "e2ePageLoadAvgMs": 18.960000000149012,
           "hydrationAvgMs": 15.579999999701977,
-          "reactMountAvgMs": 5.95
+          "reactMountAvgMs": 5.95,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -5090,6 +5058,7 @@
             "en": {
               "jsGzip": {
                 "avg": 148896.7,
+                "median": 148772,
                 "min": 148383,
                 "max": 150277,
                 "raw": [
@@ -5107,6 +5076,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -5124,6 +5094,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.78578383641675,
+                "median": 88.54268094774424,
                 "min": 79.74683544303798,
                 "max": 98.71794871794873,
                 "raw": [
@@ -5141,6 +5112,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.78578383641675,
+                "median": 88.54268094774424,
                 "min": 79.74683544303798,
                 "max": 98.71794871794873,
                 "raw": [
@@ -5292,6 +5264,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 148896.7,
+                "median": 148772,
                 "min": 148383,
                 "max": 150277,
                 "raw": [
@@ -5309,6 +5282,7 @@
               },
               "localeLeakPct": {
                 "avg": 5.6980683153922085,
+                "median": 4,
                 "min": 0,
                 "max": 14.285714285714285,
                 "raw": [
@@ -5326,6 +5300,7 @@
               },
               "pageLeakPct": {
                 "avg": 90.00000000000001,
+                "median": 90,
                 "min": 83.15789473684211,
                 "max": 97.89473684210527,
                 "raw": [
@@ -5343,6 +5318,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 90.00000000000001,
+                "median": 90,
                 "min": 83.15789473684211,
                 "max": 97.89473684210527,
                 "raw": [
@@ -5786,6 +5762,7 @@
             "en": {
               "e2e": {
                 "avg": 16.799999998509882,
+                "median": 16.799999998509882,
                 "min": 12.699999995529652,
                 "max": 26.899999998509884,
                 "raw": [
@@ -5798,6 +5775,7 @@
               },
               "profiler": {
                 "avg": 4.180000001192093,
+                "median": 4.180000001192093,
                 "min": 3.6999999955296516,
                 "max": 6,
                 "raw": [
@@ -5812,6 +5790,7 @@
             "fr": {
               "e2e": {
                 "avg": 14.579999999701977,
+                "median": 14.579999999701977,
                 "min": 13,
                 "max": 18.600000001490116,
                 "raw": [
@@ -5824,6 +5803,7 @@
               },
               "profiler": {
                 "avg": 3.9199999988079073,
+                "median": 3.9199999988079073,
                 "min": 3.600000001490116,
                 "max": 4.699999995529652,
                 "raw": [
@@ -5837,7 +5817,8 @@
             }
           },
           "e2eAvgMs": 15.689999999105929,
-          "profilerAvgMs": 4.050000000000001
+          "profilerAvgMs": 4.050000000000001,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -5845,6 +5826,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 16.31999999880791,
+                "median": 16.31999999880791,
                 "min": 14.5,
                 "max": 20.899999998509884,
                 "raw": [
@@ -5857,6 +5839,7 @@
               },
               "hydration": {
                 "avg": 12.880000001192093,
+                "median": 12.880000001192093,
                 "min": 7.399999998509884,
                 "max": 31.600000001490116,
                 "raw": [
@@ -5869,6 +5852,7 @@
               },
               "reactMount": {
                 "avg": 6.1400000005960464,
+                "median": 6.1400000005960464,
                 "min": 1.7999999970197678,
                 "max": 22.30000000447035,
                 "raw": [
@@ -5885,6 +5869,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 15.260000002384185,
+                "median": 15.260000002384185,
                 "min": 13.899999998509884,
                 "max": 19.900000005960464,
                 "raw": [
@@ -5897,6 +5882,7 @@
               },
               "hydration": {
                 "avg": 12.420000000298023,
+                "median": 12.420000000298023,
                 "min": 7.399999998509884,
                 "max": 30.5,
                 "raw": [
@@ -5909,6 +5895,7 @@
               },
               "reactMount": {
                 "avg": 5.699999997019768,
+                "median": 5.699999997019768,
                 "min": 1.6000000014901161,
                 "max": 21.69999999552965,
                 "raw": [
@@ -5925,7 +5912,8 @@
           },
           "e2ePageLoadAvgMs": 15.790000000596047,
           "hydrationAvgMs": 12.650000000745058,
-          "reactMountAvgMs": 5.919999998807907
+          "reactMountAvgMs": 5.919999998807907,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -5954,6 +5942,7 @@
             "en": {
               "jsGzip": {
                 "avg": 169757.5,
+                "median": 169683,
                 "min": 169470,
                 "max": 170347,
                 "raw": [
@@ -5971,6 +5960,7 @@
               },
               "localeLeakPct": {
                 "avg": 70.66666666666666,
+                "median": 70.66666666666667,
                 "min": 70.66666666666667,
                 "max": 70.66666666666667,
                 "raw": [
@@ -5988,6 +5978,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.78632478632478,
+                "median": 90,
                 "min": 78.88888888888889,
                 "max": 97.8021978021978,
                 "raw": [
@@ -6005,6 +5996,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.78632478632478,
+                "median": 90,
                 "min": 78.88888888888889,
                 "max": 97.8021978021978,
                 "raw": [
@@ -6156,6 +6148,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 177433.5,
+                "median": 177359,
                 "min": 177146,
                 "max": 178023,
                 "raw": [
@@ -6173,6 +6166,7 @@
               },
               "localeLeakPct": {
                 "avg": 29.333333333333332,
+                "median": 29.333333333333332,
                 "min": 29.333333333333332,
                 "max": 29.333333333333332,
                 "raw": [
@@ -6190,6 +6184,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.82391482391482,
+                "median": 91.81818181818181,
                 "min": 76.36363636363637,
                 "max": 98.1981981981982,
                 "raw": [
@@ -6207,6 +6202,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.82391482391482,
+                "median": 91.81818181818181,
                 "min": 76.36363636363637,
                 "max": 98.1981981981982,
                 "raw": [
@@ -6650,6 +6646,7 @@
             "en": {
               "e2e": {
                 "avg": 16.840000000596046,
+                "median": 16.840000000596046,
                 "min": 12.5,
                 "max": 26.399999998509884,
                 "raw": [
@@ -6662,6 +6659,7 @@
               },
               "profiler": {
                 "avg": 4.120000000298023,
+                "median": 4.120000000298023,
                 "min": 3.899999998509884,
                 "max": 4.700000002980232,
                 "raw": [
@@ -6676,6 +6674,7 @@
             "fr": {
               "e2e": {
                 "avg": 13.899999998509884,
+                "median": 13.899999998509884,
                 "min": 12.600000001490116,
                 "max": 16.5,
                 "raw": [
@@ -6688,6 +6687,7 @@
               },
               "profiler": {
                 "avg": 4.059999999403954,
+                "median": 4.059999999403954,
                 "min": 3.899999998509884,
                 "max": 4.399999998509884,
                 "raw": [
@@ -6701,7 +6701,8 @@
             }
           },
           "e2eAvgMs": 15.369999999552965,
-          "profilerAvgMs": 4.089999999850988
+          "profilerAvgMs": 4.089999999850988,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -6709,6 +6710,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 17.059999999403953,
+                "median": 17.059999999403953,
                 "min": 14.400000005960464,
                 "max": 26,
                 "raw": [
@@ -6721,6 +6723,7 @@
               },
               "hydration": {
                 "avg": 30.31999999880791,
+                "median": 30.31999999880791,
                 "min": 18,
                 "max": 73.60000000149012,
                 "raw": [
@@ -6733,6 +6736,7 @@
               },
               "reactMount": {
                 "avg": 7.6199999988079075,
+                "median": 7.6199999988079075,
                 "min": 2.1999999955296516,
                 "max": 28.200000002980232,
                 "raw": [
@@ -6749,6 +6753,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 15.42000000178814,
+                "median": 15.42000000178814,
                 "min": 13.799999997019768,
                 "max": 20.100000001490116,
                 "raw": [
@@ -6761,6 +6766,7 @@
               },
               "hydration": {
                 "avg": 25.079999999701975,
+                "median": 25.079999999701975,
                 "min": 17.899999998509884,
                 "max": 48.600000001490116,
                 "raw": [
@@ -6773,6 +6779,7 @@
               },
               "reactMount": {
                 "avg": 5.079999999701977,
+                "median": 5.079999999701977,
                 "min": 2.2000000029802322,
                 "max": 15.199999995529652,
                 "raw": [
@@ -6789,7 +6796,8 @@
           },
           "e2ePageLoadAvgMs": 16.240000000596048,
           "hydrationAvgMs": 27.699999999254942,
-          "reactMountAvgMs": 6.349999999254942
+          "reactMountAvgMs": 6.349999999254942,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -6800,9 +6808,9 @@
         "version": "1.3.1",
         "libSize": {
           "status": "ok",
-          "gzip": 4245,
-          "minified": 16498,
-          "unminified": 24224
+          "gzip": 4861,
+          "minified": 17017,
+          "unminified": 24044
         }
       },
       "static": null,
@@ -6818,6 +6826,7 @@
             "en": {
               "jsGzip": {
                 "avg": 155294.5,
+                "median": 155206,
                 "min": 155105,
                 "max": 155693,
                 "raw": [
@@ -6835,6 +6844,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -6852,6 +6862,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.89028213166144,
+                "median": 88.50574712643679,
                 "min": 81.60919540229885,
                 "max": 98.85057471264368,
                 "raw": [
@@ -6869,6 +6880,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.89028213166144,
+                "median": 88.50574712643679,
                 "min": 81.60919540229885,
                 "max": 98.85057471264368,
                 "raw": [
@@ -7020,6 +7032,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 156519.5,
+                "median": 156431,
                 "min": 156330,
                 "max": 156918,
                 "raw": [
@@ -7037,6 +7050,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -7054,6 +7068,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.91300366300365,
+                "median": 89.90384615384616,
                 "min": 84.61538461538461,
                 "max": 98.07692307692307,
                 "raw": [
@@ -7071,6 +7086,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.91300366300365,
+                "median": 89.90384615384616,
                 "min": 84.61538461538461,
                 "max": 98.07692307692307,
                 "raw": [
@@ -7514,6 +7530,7 @@
             "en": {
               "e2e": {
                 "avg": 24.13999999910593,
+                "median": 24.13999999910593,
                 "min": 20.600000001490116,
                 "max": 26.19999999552965,
                 "raw": [
@@ -7526,6 +7543,7 @@
               },
               "profiler": {
                 "avg": 11.640000000596046,
+                "median": 11.640000000596046,
                 "min": 1.8999999985098839,
                 "max": 15,
                 "raw": [
@@ -7540,6 +7558,7 @@
             "fr": {
               "e2e": {
                 "avg": 21.37999999821186,
+                "median": 21.37999999821186,
                 "min": 11.300000004470348,
                 "max": 24.599999994039536,
                 "raw": [
@@ -7552,6 +7571,7 @@
               },
               "profiler": {
                 "avg": 11.359999999403954,
+                "median": 11.359999999403954,
                 "min": 1.2000000029802322,
                 "max": 14.299999997019768,
                 "raw": [
@@ -7565,7 +7585,8 @@
             }
           },
           "e2eAvgMs": 22.7599999986589,
-          "profilerAvgMs": 11.5
+          "profilerAvgMs": 11.5,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -7573,6 +7594,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 17.66000000089407,
+                "median": 17.66000000089407,
                 "min": 15.700000002980232,
                 "max": 23.399999998509884,
                 "raw": [
@@ -7585,6 +7607,7 @@
               },
               "hydration": {
                 "avg": 7.659999999403953,
+                "median": 7.659999999403953,
                 "min": 6.600000001490116,
                 "max": 10.5,
                 "raw": [
@@ -7597,6 +7620,7 @@
               },
               "reactMount": {
                 "avg": 1.0200000002980232,
+                "median": 1.0200000002980232,
                 "min": 0.6000000014901161,
                 "max": 2.6999999955296516,
                 "raw": [
@@ -7613,6 +7637,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 16.58000000268221,
+                "median": 16.58000000268221,
                 "min": 14.600000001490116,
                 "max": 22.80000000447035,
                 "raw": [
@@ -7625,6 +7650,7 @@
               },
               "hydration": {
                 "avg": 7.559999997913837,
+                "median": 7.559999997913837,
                 "min": 6.700000002980232,
                 "max": 10.299999997019768,
                 "raw": [
@@ -7637,6 +7663,7 @@
               },
               "reactMount": {
                 "avg": 1.0399999991059303,
+                "median": 1.0399999991059303,
                 "min": 0.5999999940395355,
                 "max": 2.7999999970197678,
                 "raw": [
@@ -7653,7 +7680,8 @@
           },
           "e2ePageLoadAvgMs": 17.12000000178814,
           "hydrationAvgMs": 7.609999998658895,
-          "reactMountAvgMs": 1.0299999997019769
+          "reactMountAvgMs": 1.0299999997019769,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -7682,6 +7710,7 @@
             "en": {
               "jsGzip": {
                 "avg": 157284.5,
+                "median": 157185,
                 "min": 157083,
                 "max": 157849,
                 "raw": [
@@ -7699,6 +7728,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -7716,6 +7746,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.88256549232159,
+                "median": 89.50617283950618,
                 "min": 81.48148148148148,
                 "max": 98.76543209876543,
                 "raw": [
@@ -7733,6 +7764,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.88256549232159,
+                "median": 89.50617283950618,
                 "min": 81.48148148148148,
                 "max": 98.76543209876543,
                 "raw": [
@@ -7884,6 +7916,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 157284.5,
+                "median": 157185,
                 "min": 157083,
                 "max": 157849,
                 "raw": [
@@ -7901,6 +7934,7 @@
               },
               "localeLeakPct": {
                 "avg": 19.374451273046528,
+                "median": 19.402985074626866,
                 "min": 19.11764705882353,
                 "max": 19.402985074626866,
                 "raw": [
@@ -7918,6 +7952,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.90657216494847,
+                "median": 89.58333333333334,
                 "min": 83.33333333333334,
                 "max": 97.91666666666666,
                 "raw": [
@@ -7935,6 +7970,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.90657216494847,
+                "median": 89.58333333333334,
                 "min": 83.33333333333334,
                 "max": 97.91666666666666,
                 "raw": [
@@ -8378,6 +8414,7 @@
             "en": {
               "e2e": {
                 "avg": 17.219999998807907,
+                "median": 17.219999998807907,
                 "min": 13.199999995529652,
                 "max": 29,
                 "raw": [
@@ -8390,6 +8427,7 @@
               },
               "profiler": {
                 "avg": 4.1400000005960464,
+                "median": 4.1400000005960464,
                 "min": 3.5,
                 "max": 5.899999998509884,
                 "raw": [
@@ -8404,6 +8442,7 @@
             "fr": {
               "e2e": {
                 "avg": 13.999999998509884,
+                "median": 13.999999998509884,
                 "min": 12.399999998509884,
                 "max": 17.399999998509884,
                 "raw": [
@@ -8416,6 +8455,7 @@
               },
               "profiler": {
                 "avg": 3.899999997019768,
+                "median": 3.899999997019768,
                 "min": 3.600000001490116,
                 "max": 4.699999995529652,
                 "raw": [
@@ -8429,7 +8469,8 @@
             }
           },
           "e2eAvgMs": 15.609999998658896,
-          "profilerAvgMs": 4.019999998807907
+          "profilerAvgMs": 4.019999998807907,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -8437,6 +8478,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 16.96000000089407,
+                "median": 16.96000000089407,
                 "min": 14.800000004470348,
                 "max": 22.400000005960464,
                 "raw": [
@@ -8449,6 +8491,7 @@
               },
               "hydration": {
                 "avg": 16.459999997913837,
+                "median": 16.459999997913837,
                 "min": 7.699999995529652,
                 "max": 48.399999998509884,
                 "raw": [
@@ -8461,6 +8504,7 @@
               },
               "reactMount": {
                 "avg": 8.4,
+                "median": 8.4,
                 "min": 1.6999999955296516,
                 "max": 34.69999999552965,
                 "raw": [
@@ -8477,6 +8521,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 16.01999999731779,
+                "median": 16.01999999731779,
                 "min": 14.399999998509884,
                 "max": 19.899999998509884,
                 "raw": [
@@ -8489,6 +8534,7 @@
               },
               "hydration": {
                 "avg": 13.140000002086163,
+                "median": 13.140000002086163,
                 "min": 7.700000002980232,
                 "max": 32.5,
                 "raw": [
@@ -8501,6 +8547,7 @@
               },
               "reactMount": {
                 "avg": 5.799999997019768,
+                "median": 5.799999997019768,
                 "min": 1.6999999955296516,
                 "max": 21.899999998509884,
                 "raw": [
@@ -8517,7 +8564,8 @@
           },
           "e2ePageLoadAvgMs": 16.48999999910593,
           "hydrationAvgMs": 14.8,
-          "reactMountAvgMs": 7.099999998509884
+          "reactMountAvgMs": 7.099999998509884,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -8546,6 +8594,7 @@
             "en": {
               "jsGzip": {
                 "avg": 144876,
+                "median": 144876,
                 "min": 144876,
                 "max": 144876,
                 "raw": [
@@ -8563,6 +8612,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8580,6 +8630,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8597,6 +8648,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8748,6 +8800,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 144876,
+                "median": 144876,
                 "min": 144876,
                 "max": 144876,
                 "raw": [
@@ -8765,6 +8818,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8782,6 +8836,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8799,6 +8854,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -9242,6 +9298,7 @@
             "en": {
               "e2e": {
                 "avg": 15.879999995231628,
+                "median": 15.879999995231628,
                 "min": 9.799999952316284,
                 "max": 27,
                 "raw": [
@@ -9254,6 +9311,7 @@
               },
               "profiler": {
                 "avg": 4.7,
+                "median": 4.7,
                 "min": 4,
                 "max": 6.599999904632568,
                 "raw": [
@@ -9268,6 +9326,7 @@
             "fr": {
               "e2e": {
                 "avg": 11.840000009536743,
+                "median": 11.840000009536743,
                 "min": 9.100000023841858,
                 "max": 21.700000047683716,
                 "raw": [
@@ -9280,6 +9339,7 @@
               },
               "profiler": {
                 "avg": 4.480000019073486,
+                "median": 4.480000019073486,
                 "min": 4.100000023841858,
                 "max": 5.5,
                 "raw": [
@@ -9293,7 +9353,8 @@
             }
           },
           "e2eAvgMs": 13.860000002384187,
-          "profilerAvgMs": 4.590000009536743
+          "profilerAvgMs": 4.590000009536743,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -9301,6 +9362,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 17.419999957084656,
+                "median": 17.419999957084656,
                 "min": 15.799999952316284,
                 "max": 22.399999976158142,
                 "raw": [
@@ -9313,6 +9375,7 @@
               },
               "hydration": {
                 "avg": 11.1,
+                "median": 11.1,
                 "min": 6.399999976158142,
                 "max": 26.800000071525574,
                 "raw": [
@@ -9325,6 +9388,7 @@
               },
               "reactMount": {
                 "avg": 5.460000014305114,
+                "median": 5.460000014305114,
                 "min": 1.7000000476837158,
                 "max": 18.600000023841858,
                 "raw": [
@@ -9341,6 +9405,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 15.920000004768372,
+                "median": 15.920000004768372,
                 "min": 13.899999976158142,
                 "max": 22.300000071525574,
                 "raw": [
@@ -9353,6 +9418,7 @@
               },
               "hydration": {
                 "avg": 10.959999990463256,
+                "median": 10.959999990463256,
                 "min": 6.5,
                 "max": 25.600000023841858,
                 "raw": [
@@ -9365,6 +9431,7 @@
               },
               "reactMount": {
                 "avg": 5.120000004768372,
+                "median": 5.120000004768372,
                 "min": 1.5,
                 "max": 18.100000023841858,
                 "raw": [
@@ -9381,7 +9448,8 @@
           },
           "e2ePageLoadAvgMs": 16.669999980926512,
           "hydrationAvgMs": 11.029999995231627,
-          "reactMountAvgMs": 5.290000009536743
+          "reactMountAvgMs": 5.290000009536743,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -9410,6 +9478,7 @@
             "en": {
               "jsGzip": {
                 "avg": 146556.8,
+                "median": 146471,
                 "min": 146303,
                 "max": 147140,
                 "raw": [
@@ -9427,6 +9496,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -9444,6 +9514,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.74880382775119,
+                "median": 90.13157894736842,
                 "min": 80.26315789473685,
                 "max": 97.40259740259741,
                 "raw": [
@@ -9461,6 +9532,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.74880382775119,
+                "median": 90.13157894736842,
                 "min": 80.26315789473685,
                 "max": 97.40259740259741,
                 "raw": [
@@ -9612,6 +9684,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 146556.8,
+                "median": 146471,
                 "min": 146303,
                 "max": 147140,
                 "raw": [
@@ -9629,6 +9702,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -9646,6 +9720,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.79524136353237,
+                "median": 90.32258064516128,
                 "min": 80.64516129032258,
                 "max": 97.87234042553192,
                 "raw": [
@@ -9663,6 +9738,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.79524136353237,
+                "median": 90.32258064516128,
                 "min": 80.64516129032258,
                 "max": 97.87234042553192,
                 "raw": [
@@ -10106,6 +10182,7 @@
             "en": {
               "e2e": {
                 "avg": 18.040000000596045,
+                "median": 18.040000000596045,
                 "min": 14.200000002980232,
                 "max": 24.399999998509884,
                 "raw": [
@@ -10118,6 +10195,7 @@
               },
               "profiler": {
                 "avg": 4.16000000089407,
+                "median": 4.16000000089407,
                 "min": 3.8000000044703484,
                 "max": 4.899999998509884,
                 "raw": [
@@ -10132,6 +10210,7 @@
             "fr": {
               "e2e": {
                 "avg": 14.399999997019767,
+                "median": 14.399999997019767,
                 "min": 10.5,
                 "max": 17.69999999552965,
                 "raw": [
@@ -10144,6 +10223,7 @@
               },
               "profiler": {
                 "avg": 4.16000000089407,
+                "median": 4.16000000089407,
                 "min": 3.6999999955296516,
                 "max": 4.9000000059604645,
                 "raw": [
@@ -10157,7 +10237,8 @@
             }
           },
           "e2eAvgMs": 16.219999998807907,
-          "profilerAvgMs": 4.16000000089407
+          "profilerAvgMs": 4.16000000089407,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -10165,6 +10246,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 20.959999999403955,
+                "median": 20.959999999403955,
                 "min": 18.80000000447035,
                 "max": 23.899999998509884,
                 "raw": [
@@ -10177,6 +10259,7 @@
               },
               "hydration": {
                 "avg": 15.46000000089407,
+                "median": 15.46000000089407,
                 "min": 9.199999995529652,
                 "max": 33.70000000298023,
                 "raw": [
@@ -10189,6 +10272,7 @@
               },
               "reactMount": {
                 "avg": 6.159999999403953,
+                "median": 6.159999999403953,
                 "min": 1.6000000014901161,
                 "max": 22.600000001490116,
                 "raw": [
@@ -10205,6 +10289,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 16.999999998509885,
+                "median": 16.999999998509885,
                 "min": 14.199999995529652,
                 "max": 21.399999998509884,
                 "raw": [
@@ -10217,6 +10302,7 @@
               },
               "hydration": {
                 "avg": 15.559999999403953,
+                "median": 15.559999999403953,
                 "min": 9.399999998509884,
                 "max": 33.79999999701977,
                 "raw": [
@@ -10229,6 +10315,7 @@
               },
               "reactMount": {
                 "avg": 6.299999998509884,
+                "median": 6.299999998509884,
                 "min": 1.7000000029802322,
                 "max": 23.099999994039536,
                 "raw": [
@@ -10245,7 +10332,8 @@
           },
           "e2ePageLoadAvgMs": 18.97999999895692,
           "hydrationAvgMs": 15.510000000149011,
-          "reactMountAvgMs": 6.229999998956918
+          "reactMountAvgMs": 6.229999998956918,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -10274,6 +10362,7 @@
             "en": {
               "jsGzip": {
                 "avg": 159073.1,
+                "median": 157697,
                 "min": 153976,
                 "max": 169399,
                 "raw": [
@@ -10291,6 +10380,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -10308,6 +10398,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -10325,6 +10416,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -10476,6 +10568,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 159073.1,
+                "median": 157697,
                 "min": 153976,
                 "max": 169399,
                 "raw": [
@@ -10493,6 +10586,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -10510,6 +10604,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -10527,6 +10622,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -10970,6 +11066,7 @@
             "en": {
               "e2e": {
                 "avg": 15.53999999910593,
+                "median": 15.53999999910593,
                 "min": 10.800000004470348,
                 "max": 27.69999999552965,
                 "raw": [
@@ -10982,6 +11079,7 @@
               },
               "profiler": {
                 "avg": 4.8599999964237215,
+                "median": 4.8599999964237215,
                 "min": 4.299999997019768,
                 "max": 6.5999999940395355,
                 "raw": [
@@ -10996,6 +11094,7 @@
             "fr": {
               "e2e": {
                 "avg": 11.820000000298023,
+                "median": 11.820000000298023,
                 "min": 9.899999998509884,
                 "max": 15,
                 "raw": [
@@ -11008,6 +11107,7 @@
               },
               "profiler": {
                 "avg": 4.7399999991059305,
+                "median": 4.7399999991059305,
                 "min": 4.299999997019768,
                 "max": 5.700000002980232,
                 "raw": [
@@ -11021,7 +11121,8 @@
             }
           },
           "e2eAvgMs": 13.679999999701977,
-          "profilerAvgMs": 4.799999997764826
+          "profilerAvgMs": 4.799999997764826,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -11029,6 +11130,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 18.220000000298022,
+                "median": 18.220000000298022,
                 "min": 15.900000005960464,
                 "max": 23.100000001490116,
                 "raw": [
@@ -11041,6 +11143,7 @@
               },
               "hydration": {
                 "avg": 21.920000000298025,
+                "median": 21.920000000298025,
                 "min": 16.399999998509884,
                 "max": 32.5,
                 "raw": [
@@ -11053,6 +11156,7 @@
               },
               "reactMount": {
                 "avg": 6.53999999910593,
+                "median": 6.53999999910593,
                 "min": 1.7999999970197678,
                 "max": 23.899999998509884,
                 "raw": [
@@ -11069,6 +11173,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 17.76000000089407,
+                "median": 17.76000000089407,
                 "min": 15.200000002980232,
                 "max": 24.399999998509884,
                 "raw": [
@@ -11081,6 +11186,7 @@
               },
               "hydration": {
                 "avg": 21.36000000089407,
+                "median": 21.36000000089407,
                 "min": 16.600000001490116,
                 "max": 32.20000000298023,
                 "raw": [
@@ -11093,6 +11199,7 @@
               },
               "reactMount": {
                 "avg": 6.479999998211861,
+                "median": 6.479999998211861,
                 "min": 1.8999999985098839,
                 "max": 23.5,
                 "raw": [
@@ -11109,7 +11216,8 @@
           },
           "e2ePageLoadAvgMs": 17.990000000596048,
           "hydrationAvgMs": 21.640000000596046,
-          "reactMountAvgMs": 6.509999998658896
+          "reactMountAvgMs": 6.509999998658896,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,
@@ -11138,6 +11246,7 @@
             "en": {
               "jsGzip": {
                 "avg": 164974.3,
+                "median": 164904,
                 "min": 164795,
                 "max": 165405,
                 "raw": [
@@ -11155,6 +11264,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -11172,6 +11282,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.99999999999999,
+                "median": 88.76404494382022,
                 "min": 84.26966292134831,
                 "max": 97.75280898876404,
                 "raw": [
@@ -11189,6 +11300,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.99999999999999,
+                "median": 88.76404494382022,
                 "min": 84.26966292134831,
                 "max": 97.75280898876404,
                 "raw": [
@@ -11340,6 +11452,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 164974.3,
+                "median": 164904,
                 "min": 164795,
                 "max": 165405,
                 "raw": [
@@ -11357,6 +11470,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -11374,6 +11488,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.99999999999999,
+                "median": 88.46153846153845,
                 "min": 85.57692307692307,
                 "max": 98.07692307692307,
                 "raw": [
@@ -11391,6 +11506,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.99999999999999,
+                "median": 88.46153846153845,
                 "min": 85.57692307692307,
                 "max": 98.07692307692307,
                 "raw": [
@@ -11834,6 +11950,7 @@
             "en": {
               "e2e": {
                 "avg": 18.959999990463256,
+                "median": 18.959999990463256,
                 "min": 13.5,
                 "max": 32.59999990463257,
                 "raw": [
@@ -11846,6 +11963,7 @@
               },
               "profiler": {
                 "avg": 4.2,
+                "median": 4.2,
                 "min": 3.600000023841858,
                 "max": 5.600000023841858,
                 "raw": [
@@ -11860,6 +11978,7 @@
             "fr": {
               "e2e": {
                 "avg": 15.319999980926514,
+                "median": 15.319999980926514,
                 "min": 12.799999952316284,
                 "max": 22.299999952316284,
                 "raw": [
@@ -11872,6 +11991,7 @@
               },
               "profiler": {
                 "avg": 4.360000014305115,
+                "median": 4.360000014305115,
                 "min": 3.5,
                 "max": 6.100000023841858,
                 "raw": [
@@ -11885,7 +12005,8 @@
             }
           },
           "e2eAvgMs": 17.139999985694885,
-          "profilerAvgMs": 4.280000007152557
+          "profilerAvgMs": 4.280000007152557,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -11893,6 +12014,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 14.900000047683715,
+                "median": 14.900000047683715,
                 "min": 12.799999952316284,
                 "max": 21.300000071525574,
                 "raw": [
@@ -11905,6 +12027,7 @@
               },
               "hydration": {
                 "avg": 17.660000014305115,
+                "median": 17.660000014305115,
                 "min": 8.399999976158142,
                 "max": 48.39999997615814,
                 "raw": [
@@ -11917,6 +12040,7 @@
               },
               "reactMount": {
                 "avg": 9.4,
+                "median": 9.4,
                 "min": 3.100000023841858,
                 "max": 33.199999928474426,
                 "raw": [
@@ -11933,6 +12057,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 13.540000009536744,
+                "median": 13.540000009536744,
                 "min": 12.300000071525574,
                 "max": 17,
                 "raw": [
@@ -11945,6 +12070,7 @@
               },
               "hydration": {
                 "avg": 13.47999997138977,
+                "median": 13.47999997138977,
                 "min": 8.399999976158142,
                 "max": 27.300000071525574,
                 "raw": [
@@ -11957,6 +12083,7 @@
               },
               "reactMount": {
                 "avg": 6.6400000095367435,
+                "median": 6.6400000095367435,
                 "min": 3.100000023841858,
                 "max": 19.5,
                 "raw": [
@@ -11973,7 +12100,8 @@
           },
           "e2ePageLoadAvgMs": 14.22000002861023,
           "hydrationAvgMs": 15.569999992847443,
-          "reactMountAvgMs": 8.020000004768372
+          "reactMountAvgMs": 8.020000004768372,
+          "e2ePageLoadVsBaseline": null
         }
       },
       "scoped-static": null,

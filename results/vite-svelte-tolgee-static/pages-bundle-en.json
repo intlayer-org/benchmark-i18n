@@ -1,11 +1,11 @@
 {
   "app": "vite-svelte-tolgee-static",
   "locale": "en",
-  "timestamp": "2026-09-23T23:29:13.081Z",
+  "timestamp": "2026-09-26T19:23:22.570Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 99,
-      "fr": 114
+      "en": 100,
+      "fr": 115
     },
     "page": {
       "home": 24,
@@ -25,10 +25,10 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 324144,
-      "totalGzipSize": 107707,
-      "jsSize": 297847,
-      "jsGzipSize": 101891,
+      "totalSize": 324156,
+      "totalGzipSize": 107720,
+      "jsSize": 297859,
+      "jsGzipSize": 101904,
       "cssSize": 24724,
       "cssGzipSize": 5110,
       "htmlSize": 1573,
@@ -43,15 +43,15 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-3KZBQ1RK.js",
+          "url": "/assets/index-ChDckoZj.js",
           "size": 23124,
-          "gzipSize": 8105,
+          "gzipSize": 8104,
           "type": "js"
         },
         {
-          "url": "/assets/performanceMeasure-pcXQZczR.js",
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
           "size": 314,
-          "gzipSize": 178,
+          "gzipSize": 177,
           "type": "js"
         },
         {
@@ -61,15 +61,15 @@
           "type": "css"
         },
         {
-          "url": "/assets/tolgee-BVE18cja.js",
-          "size": 274409,
-          "gzipSize": 93608,
+          "url": "/assets/tolgee-CPft1bLf.js",
+          "size": 274421,
+          "gzipSize": 93623,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 90,
+          "count": 91,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -142,6 +142,7 @@
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
             "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
             "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
             "automated quality checks for missing translations, pluralization issues, and context errors.",
@@ -164,7 +165,7 @@
           ]
         },
         "fr": {
-          "count": 105,
+          "count": 106,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -249,6 +250,7 @@
             "outils et services pour fluidifier votre flux i18n.",
             "lancez des benchmarks en local. configurations personnalisées et ci.",
             "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark entreprise",
             "on-premise avec sso, journaux d'audit, sla et support dédié.",
             "assistant de migration",
             "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
@@ -274,7 +276,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.84615384615385,
+      "localeLeakagePercent": 53.80710659898477,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -421,10 +423,10 @@
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 326588,
-      "totalGzipSize": 108768,
-      "jsSize": 300291,
-      "jsGzipSize": 102952,
+      "totalSize": 326600,
+      "totalGzipSize": 108780,
+      "jsSize": 300303,
+      "jsGzipSize": 102964,
       "cssSize": 24724,
       "cssGzipSize": 5110,
       "htmlSize": 1573,
@@ -439,15 +441,9 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-3KZBQ1RK.js",
+          "url": "/assets/index-ChDckoZj.js",
           "size": 23124,
-          "gzipSize": 8105,
-          "type": "js"
-        },
-        {
-          "url": "/assets/performanceMeasure-pcXQZczR.js",
-          "size": 314,
-          "gzipSize": 178,
+          "gzipSize": 8104,
           "type": "js"
         },
         {
@@ -457,21 +453,27 @@
           "type": "css"
         },
         {
-          "url": "/assets/tolgee-BVE18cja.js",
-          "size": 274409,
-          "gzipSize": 93608,
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
+          "size": 314,
+          "gzipSize": 177,
           "type": "js"
         },
         {
-          "url": "/assets/About-DEk-TM1R.js",
+          "url": "/assets/tolgee-CPft1bLf.js",
+          "size": 274421,
+          "gzipSize": 93623,
+          "type": "js"
+        },
+        {
+          "url": "/assets/About-B9liW-Ky.js",
           "size": 2444,
-          "gzipSize": 1061,
+          "gzipSize": 1060,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 90,
+          "count": 91,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -544,6 +546,7 @@
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
             "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
             "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
             "automated quality checks for missing translations, pluralization issues, and context errors.",
@@ -566,7 +569,7 @@
           ]
         },
         "fr": {
-          "count": 105,
+          "count": 106,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -651,6 +654,7 @@
             "outils et services pour fluidifier votre flux i18n.",
             "lancez des benchmarks en local. configurations personnalisées et ci.",
             "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark entreprise",
             "on-premise avec sso, journaux d'audit, sla et support dédié.",
             "assistant de migration",
             "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
@@ -676,7 +680,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.84615384615385,
+      "localeLeakagePercent": 53.80710659898477,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -823,10 +827,10 @@
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 326270,
-      "totalGzipSize": 108878,
-      "jsSize": 299973,
-      "jsGzipSize": 103062,
+      "totalSize": 326282,
+      "totalGzipSize": 108886,
+      "jsSize": 299985,
+      "jsGzipSize": 103070,
       "cssSize": 24724,
       "cssGzipSize": 5110,
       "htmlSize": 1573,
@@ -841,15 +845,15 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-3KZBQ1RK.js",
+          "url": "/assets/index-ChDckoZj.js",
           "size": 23124,
-          "gzipSize": 8105,
+          "gzipSize": 8104,
           "type": "js"
         },
         {
-          "url": "/assets/performanceMeasure-pcXQZczR.js",
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
           "size": 314,
-          "gzipSize": 178,
+          "gzipSize": 177,
           "type": "js"
         },
         {
@@ -859,27 +863,27 @@
           "type": "css"
         },
         {
-          "url": "/assets/tolgee-BVE18cja.js",
-          "size": 274409,
-          "gzipSize": 93608,
+          "url": "/assets/tolgee-CPft1bLf.js",
+          "size": 274421,
+          "gzipSize": 93623,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-UA4dPCiJ.js",
+          "url": "/assets/MockBanner-C9g-ttxt.js",
           "size": 385,
-          "gzipSize": 293,
+          "gzipSize": 292,
           "type": "js"
         },
         {
-          "url": "/assets/Blog-CtQubQs_.js",
+          "url": "/assets/Blog-CcTeNUMr.js",
           "size": 1741,
-          "gzipSize": 878,
+          "gzipSize": 874,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 90,
+          "count": 91,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -952,6 +956,7 @@
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
             "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
             "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
             "automated quality checks for missing translations, pluralization issues, and context errors.",
@@ -974,7 +979,7 @@
           ]
         },
         "fr": {
-          "count": 105,
+          "count": 106,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -1059,6 +1064,7 @@
             "outils et services pour fluidifier votre flux i18n.",
             "lancez des benchmarks en local. configurations personnalisées et ci.",
             "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark entreprise",
             "on-premise avec sso, journaux d'audit, sla et support dédié.",
             "assistant de migration",
             "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
@@ -1084,7 +1090,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.84615384615385,
+      "localeLeakagePercent": 53.80710659898477,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1231,10 +1237,10 @@
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 328023,
-      "totalGzipSize": 109330,
-      "jsSize": 301726,
-      "jsGzipSize": 103514,
+      "totalSize": 328035,
+      "totalGzipSize": 109338,
+      "jsSize": 301738,
+      "jsGzipSize": 103522,
       "cssSize": 24724,
       "cssGzipSize": 5110,
       "htmlSize": 1573,
@@ -1249,9 +1255,15 @@
           "type": "html"
         },
         {
-          "url": "/assets/performanceMeasure-pcXQZczR.js",
+          "url": "/assets/index-ChDckoZj.js",
+          "size": 23124,
+          "gzipSize": 8104,
+          "type": "js"
+        },
+        {
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
           "size": 314,
-          "gzipSize": 178,
+          "gzipSize": 177,
           "type": "js"
         },
         {
@@ -1261,33 +1273,27 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-3KZBQ1RK.js",
-          "size": 23124,
-          "gzipSize": 8105,
+          "url": "/assets/tolgee-CPft1bLf.js",
+          "size": 274421,
+          "gzipSize": 93623,
           "type": "js"
         },
         {
-          "url": "/assets/tolgee-BVE18cja.js",
-          "size": 274409,
-          "gzipSize": 93608,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-UA4dPCiJ.js",
+          "url": "/assets/MockBanner-C9g-ttxt.js",
           "size": 385,
-          "gzipSize": 293,
+          "gzipSize": 292,
           "type": "js"
         },
         {
-          "url": "/assets/Careers-CC3hs3VY.js",
+          "url": "/assets/Careers-DJfPLWFO.js",
           "size": 3494,
-          "gzipSize": 1330,
+          "gzipSize": 1326,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 90,
+          "count": 91,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1360,6 +1366,7 @@
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
             "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
             "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
             "automated quality checks for missing translations, pluralization issues, and context errors.",
@@ -1382,7 +1389,7 @@
           ]
         },
         "fr": {
-          "count": 105,
+          "count": 106,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -1467,6 +1474,7 @@
             "outils et services pour fluidifier votre flux i18n.",
             "lancez des benchmarks en local. configurations personnalisées et ci.",
             "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark entreprise",
             "on-premise avec sso, journaux d'audit, sla et support dédié.",
             "assistant de migration",
             "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
@@ -1492,7 +1500,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.84615384615385,
+      "localeLeakagePercent": 53.80710659898477,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1639,10 +1647,10 @@
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 327919,
-      "totalGzipSize": 109344,
-      "jsSize": 301622,
-      "jsGzipSize": 103528,
+      "totalSize": 327931,
+      "totalGzipSize": 109355,
+      "jsSize": 301634,
+      "jsGzipSize": 103539,
       "cssSize": 24724,
       "cssGzipSize": 5110,
       "htmlSize": 1573,
@@ -1657,15 +1665,15 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-3KZBQ1RK.js",
-          "size": 23124,
-          "gzipSize": 8105,
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
+          "size": 314,
+          "gzipSize": 177,
           "type": "js"
         },
         {
-          "url": "/assets/performanceMeasure-pcXQZczR.js",
-          "size": 314,
-          "gzipSize": 178,
+          "url": "/assets/index-ChDckoZj.js",
+          "size": 23124,
+          "gzipSize": 8104,
           "type": "js"
         },
         {
@@ -1675,27 +1683,27 @@
           "type": "css"
         },
         {
-          "url": "/assets/tolgee-BVE18cja.js",
-          "size": 274409,
-          "gzipSize": 93608,
+          "url": "/assets/tolgee-CPft1bLf.js",
+          "size": 274421,
+          "gzipSize": 93623,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-UA4dPCiJ.js",
+          "url": "/assets/MockBanner-C9g-ttxt.js",
           "size": 385,
-          "gzipSize": 293,
+          "gzipSize": 292,
           "type": "js"
         },
         {
-          "url": "/assets/Contact-Cs6364iP.js",
+          "url": "/assets/Contact--44AaPzh.js",
           "size": 3390,
-          "gzipSize": 1344,
+          "gzipSize": 1343,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 90,
+          "count": 91,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1768,6 +1776,7 @@
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
             "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
             "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
             "automated quality checks for missing translations, pluralization issues, and context errors.",
@@ -1790,7 +1799,7 @@
           ]
         },
         "fr": {
-          "count": 105,
+          "count": 106,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -1875,6 +1884,7 @@
             "outils et services pour fluidifier votre flux i18n.",
             "lancez des benchmarks en local. configurations personnalisées et ci.",
             "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark entreprise",
             "on-premise avec sso, journaux d'audit, sla et support dédié.",
             "assistant de migration",
             "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
@@ -1900,7 +1910,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.84615384615385,
+      "localeLeakagePercent": 53.80710659898477,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2047,10 +2057,10 @@
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 325826,
-      "totalGzipSize": 108735,
-      "jsSize": 299529,
-      "jsGzipSize": 102919,
+      "totalSize": 325838,
+      "totalGzipSize": 108741,
+      "jsSize": 299541,
+      "jsGzipSize": 102925,
       "cssSize": 24724,
       "cssGzipSize": 5110,
       "htmlSize": 1573,
@@ -2065,9 +2075,15 @@
           "type": "html"
         },
         {
-          "url": "/assets/performanceMeasure-pcXQZczR.js",
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
           "size": 314,
-          "gzipSize": 178,
+          "gzipSize": 177,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-ChDckoZj.js",
+          "size": 23124,
+          "gzipSize": 8104,
           "type": "js"
         },
         {
@@ -2077,33 +2093,27 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-3KZBQ1RK.js",
-          "size": 23124,
-          "gzipSize": 8105,
+          "url": "/assets/tolgee-CPft1bLf.js",
+          "size": 274421,
+          "gzipSize": 93623,
           "type": "js"
         },
         {
-          "url": "/assets/tolgee-BVE18cja.js",
-          "size": 274409,
-          "gzipSize": 93608,
-          "type": "js"
-        },
-        {
-          "url": "/assets/FAQ-QYsRl9xO.js",
-          "size": 1297,
-          "gzipSize": 735,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-UA4dPCiJ.js",
+          "url": "/assets/MockBanner-C9g-ttxt.js",
           "size": 385,
-          "gzipSize": 293,
+          "gzipSize": 292,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQ-D74bVQ-H.js",
+          "size": 1297,
+          "gzipSize": 729,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 90,
+          "count": 91,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2176,6 +2186,7 @@
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
             "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
             "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
             "automated quality checks for missing translations, pluralization issues, and context errors.",
@@ -2198,7 +2209,7 @@
           ]
         },
         "fr": {
-          "count": 105,
+          "count": 106,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -2283,6 +2294,7 @@
             "outils et services pour fluidifier votre flux i18n.",
             "lancez des benchmarks en local. configurations personnalisées et ci.",
             "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark entreprise",
             "on-premise avec sso, journaux d'audit, sla et support dédié.",
             "assistant de migration",
             "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
@@ -2308,7 +2320,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.84615384615385,
+      "localeLeakagePercent": 53.80710659898477,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2455,10 +2467,10 @@
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 327441,
-      "totalGzipSize": 109244,
-      "jsSize": 301144,
-      "jsGzipSize": 103428,
+      "totalSize": 327453,
+      "totalGzipSize": 109253,
+      "jsSize": 301156,
+      "jsGzipSize": 103437,
       "cssSize": 24724,
       "cssGzipSize": 5110,
       "htmlSize": 1573,
@@ -2473,15 +2485,9 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-3KZBQ1RK.js",
+          "url": "/assets/index-ChDckoZj.js",
           "size": 23124,
-          "gzipSize": 8105,
-          "type": "js"
-        },
-        {
-          "url": "/assets/performanceMeasure-pcXQZczR.js",
-          "size": 314,
-          "gzipSize": 178,
+          "gzipSize": 8104,
           "type": "js"
         },
         {
@@ -2491,27 +2497,33 @@
           "type": "css"
         },
         {
-          "url": "/assets/tolgee-BVE18cja.js",
-          "size": 274409,
-          "gzipSize": 93608,
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
+          "size": 314,
+          "gzipSize": 177,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-UA4dPCiJ.js",
+          "url": "/assets/tolgee-CPft1bLf.js",
+          "size": 274421,
+          "gzipSize": 93623,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-C9g-ttxt.js",
           "size": 385,
-          "gzipSize": 293,
+          "gzipSize": 292,
           "type": "js"
         },
         {
-          "url": "/assets/Pricing-D4y0j5RK.js",
+          "url": "/assets/Pricing-DH14EIRf.js",
           "size": 2912,
-          "gzipSize": 1244,
+          "gzipSize": 1241,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 90,
+          "count": 91,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2584,6 +2596,7 @@
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
             "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
             "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
             "automated quality checks for missing translations, pluralization issues, and context errors.",
@@ -2606,7 +2619,7 @@
           ]
         },
         "fr": {
-          "count": 105,
+          "count": 106,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -2691,6 +2704,7 @@
             "outils et services pour fluidifier votre flux i18n.",
             "lancez des benchmarks en local. configurations personnalisées et ci.",
             "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark entreprise",
             "on-premise avec sso, journaux d'audit, sla et support dédié.",
             "assistant de migration",
             "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
@@ -2716,7 +2730,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.84615384615385,
+      "localeLeakagePercent": 53.80710659898477,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2863,10 +2877,10 @@
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 326724,
-      "totalGzipSize": 108988,
-      "jsSize": 300427,
-      "jsGzipSize": 103172,
+      "totalSize": 326736,
+      "totalGzipSize": 108996,
+      "jsSize": 300439,
+      "jsGzipSize": 103180,
       "cssSize": 24724,
       "cssGzipSize": 5110,
       "htmlSize": 1573,
@@ -2881,15 +2895,9 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-3KZBQ1RK.js",
+          "url": "/assets/index-ChDckoZj.js",
           "size": 23124,
-          "gzipSize": 8105,
-          "type": "js"
-        },
-        {
-          "url": "/assets/performanceMeasure-pcXQZczR.js",
-          "size": 314,
-          "gzipSize": 178,
+          "gzipSize": 8104,
           "type": "js"
         },
         {
@@ -2899,27 +2907,33 @@
           "type": "css"
         },
         {
-          "url": "/assets/tolgee-BVE18cja.js",
-          "size": 274409,
-          "gzipSize": 93608,
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
+          "size": 314,
+          "gzipSize": 177,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-UA4dPCiJ.js",
+          "url": "/assets/tolgee-CPft1bLf.js",
+          "size": 274421,
+          "gzipSize": 93623,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-C9g-ttxt.js",
           "size": 385,
-          "gzipSize": 293,
+          "gzipSize": 292,
           "type": "js"
         },
         {
-          "url": "/assets/Products-DfCwnTNK.js",
+          "url": "/assets/Products-DE7--FmG.js",
           "size": 2195,
-          "gzipSize": 988,
+          "gzipSize": 984,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 90,
+          "count": 91,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2992,6 +3006,7 @@
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
             "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
             "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
             "automated quality checks for missing translations, pluralization issues, and context errors.",
@@ -3014,7 +3029,7 @@
           ]
         },
         "fr": {
-          "count": 105,
+          "count": 106,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -3099,6 +3114,7 @@
             "outils et services pour fluidifier votre flux i18n.",
             "lancez des benchmarks en local. configurations personnalisées et ci.",
             "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark entreprise",
             "on-premise avec sso, journaux d'audit, sla et support dédié.",
             "assistant de migration",
             "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
@@ -3124,7 +3140,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.84615384615385,
+      "localeLeakagePercent": 53.80710659898477,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3271,10 +3287,10 @@
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 331275,
-      "totalGzipSize": 109970,
-      "jsSize": 304978,
-      "jsGzipSize": 104154,
+      "totalSize": 331287,
+      "totalGzipSize": 109981,
+      "jsSize": 304990,
+      "jsGzipSize": 104165,
       "cssSize": 24724,
       "cssGzipSize": 5110,
       "htmlSize": 1573,
@@ -3289,45 +3305,45 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-3KZBQ1RK.js",
-          "size": 23124,
-          "gzipSize": 8105,
-          "type": "js"
-        },
-        {
-          "url": "/assets/performanceMeasure-pcXQZczR.js",
-          "size": 314,
-          "gzipSize": 178,
-          "type": "js"
-        },
-        {
           "url": "/assets/index-C3wJIVTR.css",
           "size": 24724,
           "gzipSize": 5110,
           "type": "css"
         },
         {
-          "url": "/assets/tolgee-BVE18cja.js",
-          "size": 274409,
-          "gzipSize": 93608,
+          "url": "/assets/index-ChDckoZj.js",
+          "size": 23124,
+          "gzipSize": 8104,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-UA4dPCiJ.js",
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
+          "size": 314,
+          "gzipSize": 177,
+          "type": "js"
+        },
+        {
+          "url": "/assets/tolgee-CPft1bLf.js",
+          "size": 274421,
+          "gzipSize": 93623,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-C9g-ttxt.js",
           "size": 385,
-          "gzipSize": 293,
+          "gzipSize": 292,
           "type": "js"
         },
         {
-          "url": "/assets/Settings-DcWkHuDG.js",
+          "url": "/assets/Settings-Bo68igSn.js",
           "size": 6746,
-          "gzipSize": 1970,
+          "gzipSize": 1969,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 90,
+          "count": 91,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3400,6 +3416,7 @@
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
             "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
             "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
             "automated quality checks for missing translations, pluralization issues, and context errors.",
@@ -3422,7 +3439,7 @@
           ]
         },
         "fr": {
-          "count": 105,
+          "count": 106,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -3507,6 +3524,7 @@
             "outils et services pour fluidifier votre flux i18n.",
             "lancez des benchmarks en local. configurations personnalisées et ci.",
             "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark entreprise",
             "on-premise avec sso, journaux d'audit, sla et support dédié.",
             "assistant de migration",
             "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
@@ -3532,7 +3550,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.84615384615385,
+      "localeLeakagePercent": 53.80710659898477,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3679,10 +3697,10 @@
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 326160,
-      "totalGzipSize": 108850,
-      "jsSize": 299863,
-      "jsGzipSize": 103034,
+      "totalSize": 326172,
+      "totalGzipSize": 108859,
+      "jsSize": 299875,
+      "jsGzipSize": 103043,
       "cssSize": 24724,
       "cssGzipSize": 5110,
       "htmlSize": 1573,
@@ -3697,15 +3715,15 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-3KZBQ1RK.js",
+          "url": "/assets/index-ChDckoZj.js",
           "size": 23124,
-          "gzipSize": 8105,
+          "gzipSize": 8104,
           "type": "js"
         },
         {
-          "url": "/assets/performanceMeasure-pcXQZczR.js",
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
           "size": 314,
-          "gzipSize": 178,
+          "gzipSize": 177,
           "type": "js"
         },
         {
@@ -3715,27 +3733,27 @@
           "type": "css"
         },
         {
-          "url": "/assets/tolgee-BVE18cja.js",
-          "size": 274409,
-          "gzipSize": 93608,
+          "url": "/assets/tolgee-CPft1bLf.js",
+          "size": 274421,
+          "gzipSize": 93623,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-UA4dPCiJ.js",
+          "url": "/assets/MockBanner-C9g-ttxt.js",
           "size": 385,
-          "gzipSize": 293,
+          "gzipSize": 292,
           "type": "js"
         },
         {
-          "url": "/assets/Team-D8jKcgWW.js",
+          "url": "/assets/Team-B4enH2bJ.js",
           "size": 1631,
-          "gzipSize": 850,
+          "gzipSize": 847,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 90,
+          "count": 91,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3808,6 +3826,7 @@
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
             "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
             "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
             "automated quality checks for missing translations, pluralization issues, and context errors.",
@@ -3830,7 +3849,7 @@
           ]
         },
         "fr": {
-          "count": 105,
+          "count": 106,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces métriques comptent",
@@ -3915,6 +3934,7 @@
             "outils et services pour fluidifier votre flux i18n.",
             "lancez des benchmarks en local. configurations personnalisées et ci.",
             "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark entreprise",
             "on-premise avec sso, journaux d'audit, sla et support dédié.",
             "assistant de migration",
             "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
@@ -3940,7 +3960,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 53.84615384615385,
+      "localeLeakagePercent": 53.80710659898477,
       "pageLeakage": {
         "home": {
           "count": 16,

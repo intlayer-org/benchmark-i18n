@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-09-26T18:43:51.223Z",
+    "generatedAt": "2026-09-26T19:26:54.112Z",
     "counts": {
       "totalLibs": 14,
       "totalApps": 40
@@ -34,6 +34,7 @@
             "en": {
               "jsGzip": {
                 "avg": 139863.7,
+                "median": 139525.5,
                 "min": 138161,
                 "max": 142291,
                 "raw": [
@@ -51,6 +52,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -68,6 +70,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -85,6 +88,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -236,6 +240,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 140130.8,
+                "median": 139840,
                 "min": 138267,
                 "max": 142506,
                 "raw": [
@@ -253,6 +258,7 @@
               },
               "localeLeakPct": {
                 "avg": 19.863433667781493,
+                "median": 16.346153846153847,
                 "min": 0,
                 "max": 47.61904761904761,
                 "raw": [
@@ -270,6 +276,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -287,6 +294,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -714,6 +722,7 @@
             "en": {
               "e2e": {
                 "avg": 3.2399999856948853,
+                "median": 3.2399999856948853,
                 "min": 2.1999999284744263,
                 "max": 6.700000047683716,
                 "raw": [
@@ -726,6 +735,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -740,6 +750,7 @@
             "fr": {
               "e2e": {
                 "avg": 2.8200000047683718,
+                "median": 2.8200000047683718,
                 "min": 2.0999999046325684,
                 "max": 5.300000071525574,
                 "raw": [
@@ -752,6 +763,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -765,7 +777,8 @@
             }
           },
           "e2eAvgMs": 3.0299999952316288,
-          "profilerAvgMs": null
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -773,6 +786,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 17.339999985694885,
+                "median": 17.339999985694885,
                 "min": 15.5,
                 "max": 20.799999952316284,
                 "raw": [
@@ -785,6 +799,7 @@
               },
               "hydration": {
                 "avg": 20.060000014305114,
+                "median": 20.060000014305114,
                 "min": 11.700000047683716,
                 "max": 52.10000002384186,
                 "raw": [
@@ -797,6 +812,7 @@
               },
               "reactMount": {
                 "avg": 7.740000009536743,
+                "median": 7.740000009536743,
                 "min": 1.2999999523162842,
                 "max": 32.10000002384186,
                 "raw": [
@@ -813,6 +829,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 16.500000023841856,
+                "median": 16.500000023841856,
                 "min": 15.600000023841858,
                 "max": 18.800000071525574,
                 "raw": [
@@ -825,6 +842,7 @@
               },
               "hydration": {
                 "avg": 16.35999999046326,
+                "median": 16.35999999046326,
                 "min": 11.699999928474426,
                 "max": 34,
                 "raw": [
@@ -837,6 +855,7 @@
               },
               "reactMount": {
                 "avg": 4.780000019073486,
+                "median": 4.780000019073486,
                 "min": 1.5,
                 "max": 17.200000047683716,
                 "raw": [
@@ -853,7 +872,8 @@
           },
           "e2ePageLoadAvgMs": 16.92000000476837,
           "hydrationAvgMs": 18.210000002384184,
-          "reactMountAvgMs": 6.260000014305115
+          "reactMountAvgMs": 6.260000014305115,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -882,6 +902,7 @@
             "en": {
               "jsGzip": {
                 "avg": 187157.7,
+                "median": 186899,
                 "min": 186782,
                 "max": 188311,
                 "raw": [
@@ -899,6 +920,7 @@
               },
               "localeLeakPct": {
                 "avg": 54.068959372772625,
+                "median": 54.09836065573771,
                 "min": 53.80434782608695,
                 "max": 54.09836065573771,
                 "raw": [
@@ -916,6 +938,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.6461909063535,
+                "median": 88.2716049382716,
                 "min": 80.24691358024691,
                 "max": 97.5609756097561,
                 "raw": [
@@ -933,6 +956,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.6461909063535,
+                "median": 88.2716049382716,
                 "min": 80.24691358024691,
                 "max": 97.5609756097561,
                 "raw": [
@@ -1084,6 +1108,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 187157.7,
+                "median": 186899,
                 "min": 186782,
                 "max": 188311,
                 "raw": [
@@ -1101,6 +1126,7 @@
               },
               "localeLeakPct": {
                 "avg": 45.876692801140415,
+                "median": 45.90163934426229,
                 "min": 45.65217391304348,
                 "max": 45.90163934426229,
                 "raw": [
@@ -1118,6 +1144,7 @@
               },
               "pageLeakPct": {
                 "avg": 89.70682989690722,
+                "median": 90.10416666666667,
                 "min": 83.33333333333334,
                 "max": 97.9381443298969,
                 "raw": [
@@ -1135,6 +1162,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 89.70682989690722,
+                "median": 90.10416666666667,
                 "min": 83.33333333333334,
                 "max": 97.9381443298969,
                 "raw": [
@@ -1562,6 +1590,7 @@
             "en": {
               "e2e": {
                 "avg": 3.6199999809265138,
+                "median": 3.6199999809265138,
                 "min": 2.5,
                 "max": 7.199999928474426,
                 "raw": [
@@ -1574,6 +1603,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -1588,6 +1618,7 @@
             "fr": {
               "e2e": {
                 "avg": 3.280000019073486,
+                "median": 3.280000019073486,
                 "min": 2.600000023841858,
                 "max": 5.699999928474426,
                 "raw": [
@@ -1600,6 +1631,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -1613,7 +1645,8 @@
             }
           },
           "e2eAvgMs": 3.45,
-          "profilerAvgMs": null
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -1621,6 +1654,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 14.359999966621398,
+                "median": 14.359999966621398,
                 "min": 13.099999904632568,
                 "max": 17.899999976158142,
                 "raw": [
@@ -1633,6 +1667,7 @@
               },
               "hydration": {
                 "avg": 10.8,
+                "median": 10.8,
                 "min": 8.799999952316284,
                 "max": 15.600000023841858,
                 "raw": [
@@ -1645,6 +1680,7 @@
               },
               "reactMount": {
                 "avg": 2.500000023841858,
+                "median": 2.500000023841858,
                 "min": 1.7000000476837158,
                 "max": 3.399999976158142,
                 "raw": [
@@ -1661,6 +1697,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 14,
+                "median": 14,
                 "min": 12.600000023841858,
                 "max": 17.5,
                 "raw": [
@@ -1673,6 +1710,7 @@
               },
               "hydration": {
                 "avg": 10.619999980926513,
+                "median": 10.619999980926513,
                 "min": 9.299999952316284,
                 "max": 14.100000023841858,
                 "raw": [
@@ -1685,6 +1723,7 @@
               },
               "reactMount": {
                 "avg": 2.2200000286102295,
+                "median": 2.2200000286102295,
                 "min": 1.600000023841858,
                 "max": 3,
                 "raw": [
@@ -1701,7 +1740,8 @@
           },
           "e2ePageLoadAvgMs": 14.179999983310699,
           "hydrationAvgMs": 10.709999990463256,
-          "reactMountAvgMs": 2.360000026226044
+          "reactMountAvgMs": 2.360000026226044,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -1730,6 +1770,7 @@
             "en": {
               "jsGzip": {
                 "avg": 132379.3,
+                "median": 131818.5,
                 "min": 131092,
                 "max": 134733,
                 "raw": [
@@ -1747,6 +1788,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -1764,6 +1806,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -1781,6 +1824,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -1932,6 +1976,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 132658,
+                "median": 132102,
                 "min": 131228,
                 "max": 135211,
                 "raw": [
@@ -1949,6 +1994,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -1966,6 +2012,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -1983,6 +2030,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2410,6 +2458,7 @@
             "en": {
               "e2e": {
                 "avg": 12.119999980926513,
+                "median": 12.119999980926513,
                 "min": 9.299999952316284,
                 "max": 18.600000023841858,
                 "raw": [
@@ -2422,6 +2471,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2436,6 +2486,7 @@
             "fr": {
               "e2e": {
                 "avg": 11.219999980926513,
+                "median": 11.219999980926513,
                 "min": 8.699999928474426,
                 "max": 17.199999928474426,
                 "raw": [
@@ -2448,6 +2499,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2461,7 +2513,8 @@
             }
           },
           "e2eAvgMs": 11.669999980926512,
-          "profilerAvgMs": null
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -2469,6 +2522,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 17.980000019073486,
+                "median": 17.980000019073486,
                 "min": 14.899999976158142,
                 "max": 20.299999952316284,
                 "raw": [
@@ -2481,6 +2535,7 @@
               },
               "hydration": {
                 "avg": 18.35999994277954,
+                "median": 18.35999994277954,
                 "min": 9.599999904632568,
                 "max": 46.59999990463257,
                 "raw": [
@@ -2493,6 +2548,7 @@
               },
               "reactMount": {
                 "avg": 7.339999985694885,
+                "median": 7.339999985694885,
                 "min": 1.399999976158142,
                 "max": 29.899999976158142,
                 "raw": [
@@ -2509,6 +2565,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 15.359999966621398,
+                "median": 15.359999966621398,
                 "min": 14,
                 "max": 17.799999952316284,
                 "raw": [
@@ -2521,6 +2578,7 @@
               },
               "hydration": {
                 "avg": 15.67999997138977,
+                "median": 15.67999997138977,
                 "min": 9.399999976158142,
                 "max": 33.199999928474426,
                 "raw": [
@@ -2533,6 +2591,7 @@
               },
               "reactMount": {
                 "avg": 5.119999957084656,
+                "median": 5.119999957084656,
                 "min": 1.399999976158142,
                 "max": 19.399999976158142,
                 "raw": [
@@ -2549,7 +2608,8 @@
           },
           "e2ePageLoadAvgMs": 16.669999992847444,
           "hydrationAvgMs": 17.019999957084657,
-          "reactMountAvgMs": 6.229999971389771
+          "reactMountAvgMs": 6.229999971389771,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -2578,6 +2638,7 @@
             "en": {
               "jsGzip": {
                 "avg": 113622.1,
+                "median": 113415.5,
                 "min": 113055,
                 "max": 114990,
                 "raw": [
@@ -2595,6 +2656,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2612,6 +2674,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2629,6 +2692,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2780,6 +2844,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 113622.1,
+                "median": 113415.5,
                 "min": 113055,
                 "max": 114990,
                 "raw": [
@@ -2797,6 +2862,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2814,6 +2880,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -2831,6 +2898,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -3258,6 +3326,7 @@
             "en": {
               "e2e": {
                 "avg": 8.499999994039536,
+                "median": 8.499999994039536,
                 "min": 4,
                 "max": 19.099999994039536,
                 "raw": [
@@ -3270,6 +3339,7 @@
               },
               "profiler": {
                 "avg": 1.0599999964237212,
+                "median": 1.0599999964237212,
                 "min": 0,
                 "max": 3.699999988079071,
                 "raw": [
@@ -3284,6 +3354,7 @@
             "fr": {
               "e2e": {
                 "avg": 7.720000001788139,
+                "median": 7.720000001788139,
                 "min": 5,
                 "max": 16.900000005960464,
                 "raw": [
@@ -3296,6 +3367,7 @@
               },
               "profiler": {
                 "avg": 1,
+                "median": 1,
                 "min": 0,
                 "max": 3.4000000059604645,
                 "raw": [
@@ -3309,7 +3381,8 @@
             }
           },
           "e2eAvgMs": 8.109999997913837,
-          "profilerAvgMs": 1.0299999982118606
+          "profilerAvgMs": 1.0299999982118606,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -3317,6 +3390,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 17.859999999403954,
+                "median": 17.859999999403954,
                 "min": 12.799999997019768,
                 "max": 22.5,
                 "raw": [
@@ -3329,6 +3403,7 @@
               },
               "hydration": {
                 "avg": 24.340000000596046,
+                "median": 24.340000000596046,
                 "min": 11.200000002980232,
                 "max": 53.599999994039536,
                 "raw": [
@@ -3341,6 +3416,7 @@
               },
               "reactMount": {
                 "avg": 5.940000003576278,
+                "median": 5.940000003576278,
                 "min": 1.4000000059604645,
                 "max": 23.200000002980232,
                 "raw": [
@@ -3357,6 +3433,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 13.5,
+                "median": 13.5,
                 "min": 12.600000008940697,
                 "max": 15.099999994039536,
                 "raw": [
@@ -3369,6 +3446,7 @@
               },
               "hydration": {
                 "avg": 18.86000000536442,
+                "median": 18.86000000536442,
                 "min": 10.799999997019768,
                 "max": 42.80000001192093,
                 "raw": [
@@ -3381,6 +3459,7 @@
               },
               "reactMount": {
                 "avg": 3.5,
+                "median": 3.5,
                 "min": 1.300000011920929,
                 "max": 11.799999997019768,
                 "raw": [
@@ -3397,13 +3476,14 @@
           },
           "e2ePageLoadAvgMs": 15.679999999701977,
           "hydrationAvgMs": 21.60000000298023,
-          "reactMountAvgMs": 4.720000001788139
+          "reactMountAvgMs": 4.720000001788139,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
     "gt-react": {
       "global": {
-        "version": "11.1.24",
+        "version": "latest",
         "libSize": {
           "status": "ok",
           "gzip": 99727,
@@ -3421,14 +3501,360 @@
         "isFallback": false,
         "overallStatus": "partial",
         "pageBundle": {
-          "status": "missing",
-          "byLocale": {},
-          "jsGzipMin": null,
-          "jsGzipAvg": null,
-          "jsGzipMax": null,
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "jsGzip": {
+                "avg": 162045.4,
+                "median": 161833,
+                "min": 161441,
+                "max": 163391,
+                "raw": [
+                  163391,
+                  162124,
+                  161726,
+                  162165,
+                  161441,
+                  161940,
+                  161575,
+                  161564,
+                  162900,
+                  161628
+                ]
+              },
+              "localeLeakPct": null,
+              "pageLeakPct": null,
+              "otherPageContentLeakPct": {
+                "avg": 0,
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/en/",
+                  "page": "home",
+                  "jsGzipSize": 163391,
+                  "totalGzipSize": 173963,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 5562,
+                  "fileCount": 13,
+                  "jsFileCount": 11,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/about",
+                  "page": "about",
+                  "jsGzipSize": 162124,
+                  "totalGzipSize": 171818,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4684,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/blog",
+                  "page": "blog",
+                  "jsGzipSize": 161726,
+                  "totalGzipSize": 171074,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4338,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/careers",
+                  "page": "careers",
+                  "jsGzipSize": 162165,
+                  "totalGzipSize": 171598,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4423,
+                  "fileCount": 13,
+                  "jsFileCount": 11,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/contact",
+                  "page": "contact",
+                  "jsGzipSize": 161441,
+                  "totalGzipSize": 170388,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 3937,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/faq",
+                  "page": "faq",
+                  "jsGzipSize": 161940,
+                  "totalGzipSize": 171527,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4577,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 161575,
+                  "totalGzipSize": 170724,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4139,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/products",
+                  "page": "products",
+                  "jsGzipSize": 161564,
+                  "totalGzipSize": 170698,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4124,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/settings",
+                  "page": "settings",
+                  "jsGzipSize": 162900,
+                  "totalGzipSize": 172244,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4334,
+                  "fileCount": 15,
+                  "jsFileCount": 13,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/en/team",
+                  "page": "team",
+                  "jsGzipSize": 161628,
+                  "totalGzipSize": 170888,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4250,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                }
+              ]
+            },
+            "fr": {
+              "jsGzip": {
+                "avg": 162045.4,
+                "median": 161833,
+                "min": 161441,
+                "max": 163391,
+                "raw": [
+                  163391,
+                  162124,
+                  161726,
+                  162165,
+                  161441,
+                  161940,
+                  161575,
+                  161564,
+                  162900,
+                  161628
+                ]
+              },
+              "localeLeakPct": null,
+              "pageLeakPct": null,
+              "otherPageContentLeakPct": {
+                "avg": 0,
+                "median": 0,
+                "min": 0,
+                "max": 0,
+                "raw": [
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0,
+                  0
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/fr/",
+                  "page": "home",
+                  "jsGzipSize": 163391,
+                  "totalGzipSize": 175485,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 7084,
+                  "fileCount": 13,
+                  "jsFileCount": 11,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/about",
+                  "page": "about",
+                  "jsGzipSize": 162124,
+                  "totalGzipSize": 172973,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 5839,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/blog",
+                  "page": "blog",
+                  "jsGzipSize": 161726,
+                  "totalGzipSize": 171738,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 5002,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/careers",
+                  "page": "careers",
+                  "jsGzipSize": 162165,
+                  "totalGzipSize": 172284,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 5109,
+                  "fileCount": 13,
+                  "jsFileCount": 11,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/contact",
+                  "page": "contact",
+                  "jsGzipSize": 161441,
+                  "totalGzipSize": 170648,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4197,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/faq",
+                  "page": "faq",
+                  "jsGzipSize": 161940,
+                  "totalGzipSize": 172520,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 5570,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 161575,
+                  "totalGzipSize": 171122,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4537,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/products",
+                  "page": "products",
+                  "jsGzipSize": 161564,
+                  "totalGzipSize": 171277,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4703,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/settings",
+                  "page": "settings",
+                  "jsGzipSize": 162900,
+                  "totalGzipSize": 172634,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4724,
+                  "fileCount": 15,
+                  "jsFileCount": 13,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                },
+                {
+                  "path": "/fr/team",
+                  "page": "team",
+                  "jsGzipSize": 161628,
+                  "totalGzipSize": 171473,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 4835,
+                  "fileCount": 12,
+                  "jsFileCount": 10,
+                  "localeLeakagePercent": null,
+                  "pageLeakagePercent": null,
+                  "otherPageContentLeakagePercent": 0
+                }
+              ]
+            }
+          },
+          "jsGzipMin": 161441,
+          "jsGzipAvg": 162045.4,
+          "jsGzipMax": 163391,
           "localeLeakAvgPct": null,
           "pageLeakAvgPct": null,
-          "otherPageContentLeakAvgPct": null
+          "otherPageContentLeakAvgPct": 0,
+          "leakMetricsExcluded": true
         },
         "components": {
           "status": "ok",
@@ -3699,14 +4125,16 @@
           "status": "missing",
           "byLocale": {},
           "e2eAvgMs": null,
-          "profilerAvgMs": null
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "missing",
           "byLocale": {},
           "e2ePageLoadAvgMs": null,
           "hydrationAvgMs": null,
-          "reactMountAvgMs": null
+          "reactMountAvgMs": null,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -3735,6 +4163,7 @@
             "en": {
               "jsGzip": {
                 "avg": 129706,
+                "median": 129200,
                 "min": 128781,
                 "max": 132065,
                 "raw": [
@@ -3752,6 +4181,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -3769,6 +4199,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -3786,6 +4217,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -3937,6 +4369,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 129942.4,
+                "median": 129433.5,
                 "min": 128908,
                 "max": 132242,
                 "raw": [
@@ -3954,6 +4387,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -3971,6 +4405,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -3988,6 +4423,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -4415,6 +4851,7 @@
             "en": {
               "e2e": {
                 "avg": 6.239999985694885,
+                "median": 6.239999985694885,
                 "min": 3.700000047683716,
                 "max": 14.200000047683716,
                 "raw": [
@@ -4427,6 +4864,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -4441,6 +4879,7 @@
             "fr": {
               "e2e": {
                 "avg": 5.719999980926514,
+                "median": 5.719999980926514,
                 "min": 3.899999976158142,
                 "max": 9.099999904632568,
                 "raw": [
@@ -4453,6 +4892,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -4466,7 +4906,8 @@
             }
           },
           "e2eAvgMs": 5.9799999833107,
-          "profilerAvgMs": null
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -4474,6 +4915,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 15.180000019073486,
+                "median": 15.180000019073486,
                 "min": 13.700000047683716,
                 "max": 19.300000071525574,
                 "raw": [
@@ -4486,6 +4928,7 @@
               },
               "hydration": {
                 "avg": 12.659999990463257,
+                "median": 12.659999990463257,
                 "min": 8.200000047683716,
                 "max": 28.199999928474426,
                 "raw": [
@@ -4498,6 +4941,7 @@
               },
               "reactMount": {
                 "avg": 1.8799999952316284,
+                "median": 1.8799999952316284,
                 "min": 0.7999999523162842,
                 "max": 5.399999976158142,
                 "raw": [
@@ -4514,6 +4958,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 14.17999999523163,
+                "median": 14.17999999523163,
                 "min": 13.600000023841858,
                 "max": 15.899999976158142,
                 "raw": [
@@ -4526,6 +4971,7 @@
               },
               "hydration": {
                 "avg": 10.379999995231628,
+                "median": 10.379999995231628,
                 "min": 8.5,
                 "max": 16.200000047683716,
                 "raw": [
@@ -4538,6 +4984,7 @@
               },
               "reactMount": {
                 "avg": 1.5000000715255737,
+                "median": 1.5000000715255737,
                 "min": 0.8000000715255737,
                 "max": 3.8000000715255737,
                 "raw": [
@@ -4554,7 +5001,8 @@
           },
           "e2ePageLoadAvgMs": 14.680000007152557,
           "hydrationAvgMs": 11.519999992847442,
-          "reactMountAvgMs": 1.6900000333786012
+          "reactMountAvgMs": 1.6900000333786012,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -4583,6 +5031,7 @@
             "en": {
               "jsGzip": {
                 "avg": 123726.7,
+                "median": 123512,
                 "min": 123010,
                 "max": 125314,
                 "raw": [
@@ -4602,6 +5051,7 @@
               "pageLeakPct": null,
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -4753,6 +5203,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 123726.7,
+                "median": 123512,
                 "min": 123010,
                 "max": 125314,
                 "raw": [
@@ -4772,6 +5223,7 @@
               "pageLeakPct": null,
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -5200,6 +5652,7 @@
             "en": {
               "e2e": {
                 "avg": 3.780000001192093,
+                "median": 3.780000001192093,
                 "min": 2.699999988079071,
                 "max": 6.9000000059604645,
                 "raw": [
@@ -5212,6 +5665,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -5226,6 +5680,7 @@
             "fr": {
               "e2e": {
                 "avg": 3.540000003576279,
+                "median": 3.540000003576279,
                 "min": 2.7999999821186066,
                 "max": 5.800000011920929,
                 "raw": [
@@ -5238,6 +5693,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -5251,7 +5707,8 @@
             }
           },
           "e2eAvgMs": 3.660000002384186,
-          "profilerAvgMs": null
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -5259,6 +5716,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 14.500000005960464,
+                "median": 14.500000005960464,
                 "min": 13.199999988079071,
                 "max": 16.600000023841858,
                 "raw": [
@@ -5271,6 +5729,7 @@
               },
               "hydration": {
                 "avg": 10.159999996423721,
+                "median": 10.159999996423721,
                 "min": 8.5,
                 "max": 15,
                 "raw": [
@@ -5283,6 +5742,7 @@
               },
               "reactMount": {
                 "avg": 2.180000001192093,
+                "median": 2.180000001192093,
                 "min": 1.5999999940395355,
                 "max": 3.7999999821186066,
                 "raw": [
@@ -5299,6 +5759,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 12.880000001192093,
+                "median": 12.880000001192093,
                 "min": 12,
                 "max": 15.5,
                 "raw": [
@@ -5311,6 +5772,7 @@
               },
               "hydration": {
                 "avg": 9.880000007152557,
+                "median": 9.880000007152557,
                 "min": 8.400000005960464,
                 "max": 14.800000011920929,
                 "raw": [
@@ -5323,6 +5785,7 @@
               },
               "reactMount": {
                 "avg": 2.1400000035762785,
+                "median": 2.1400000035762785,
                 "min": 1.4000000059604645,
                 "max": 3.9000000059604645,
                 "raw": [
@@ -5339,7 +5802,8 @@
           },
           "e2ePageLoadAvgMs": 13.690000003576278,
           "hydrationAvgMs": 10.020000001788139,
-          "reactMountAvgMs": 2.1600000023841854
+          "reactMountAvgMs": 2.1600000023841854,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -5368,6 +5832,7 @@
             "en": {
               "jsGzip": {
                 "avg": 123092.6,
+                "median": 122937,
                 "min": 122572,
                 "max": 124320,
                 "raw": [
@@ -5385,6 +5850,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -5402,6 +5868,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -5419,6 +5886,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -5570,6 +6038,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 123092.6,
+                "median": 122937,
                 "min": 122572,
                 "max": 124320,
                 "raw": [
@@ -5587,6 +6056,7 @@
               },
               "localeLeakPct": {
                 "avg": 17.259740259740262,
+                "median": 13.571428571428571,
                 "min": 0,
                 "max": 45.45454545454545,
                 "raw": [
@@ -5604,6 +6074,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -5621,6 +6092,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -6048,6 +6520,7 @@
             "en": {
               "e2e": {
                 "avg": 32.940000009536746,
+                "median": 32.940000009536746,
                 "min": 13.300000011920929,
                 "max": 80.69999998807907,
                 "raw": [
@@ -6060,6 +6533,7 @@
               },
               "profiler": {
                 "avg": 4.339999997615815,
+                "median": 4.339999997615815,
                 "min": 3.699999988079071,
                 "max": 4.800000011920929,
                 "raw": [
@@ -6074,6 +6548,7 @@
             "fr": {
               "e2e": {
                 "avg": 51.25999999046326,
+                "median": 51.25999999046326,
                 "min": 28,
                 "max": 84.39999997615814,
                 "raw": [
@@ -6086,6 +6561,7 @@
               },
               "profiler": {
                 "avg": 4.759999990463257,
+                "median": 4.759999990463257,
                 "min": 4.5,
                 "max": 5.099999964237213,
                 "raw": [
@@ -6099,7 +6575,8 @@
             }
           },
           "e2eAvgMs": 42.1,
-          "profilerAvgMs": 4.549999994039536
+          "profilerAvgMs": 4.549999994039536,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -6107,6 +6584,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 20.72000000178814,
+                "median": 20.72000000178814,
                 "min": 18,
                 "max": 22.899999991059303,
                 "raw": [
@@ -6119,6 +6597,7 @@
               },
               "hydration": {
                 "avg": 33.880000001192094,
+                "median": 33.880000001192094,
                 "min": 20.600000008940697,
                 "max": 70,
                 "raw": [
@@ -6131,6 +6610,7 @@
               },
               "reactMount": {
                 "avg": 7.219999998807907,
+                "median": 7.219999998807907,
                 "min": 1.5,
                 "max": 29.100000008940697,
                 "raw": [
@@ -6147,6 +6627,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 23.059999999403953,
+                "median": 23.059999999403953,
                 "min": 18.900000005960464,
                 "max": 30.200000002980232,
                 "raw": [
@@ -6159,6 +6640,7 @@
               },
               "hydration": {
                 "avg": 31.840000000596046,
+                "median": 31.840000000596046,
                 "min": 25.5,
                 "max": 41.6000000089407,
                 "raw": [
@@ -6171,6 +6653,7 @@
               },
               "reactMount": {
                 "avg": 5.280000001192093,
+                "median": 5.280000001192093,
                 "min": 1.5999999940395355,
                 "max": 19.200000002980232,
                 "raw": [
@@ -6187,7 +6670,8 @@
           },
           "e2ePageLoadAvgMs": 21.890000000596046,
           "hydrationAvgMs": 32.86000000089407,
-          "reactMountAvgMs": 6.25
+          "reactMountAvgMs": 6.25,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -6216,6 +6700,7 @@
             "en": {
               "jsGzip": {
                 "avg": 128150.9,
+                "median": 126294.5,
                 "min": 122534,
                 "max": 139109,
                 "raw": [
@@ -6233,6 +6718,7 @@
               },
               "localeLeakPct": {
                 "avg": 53.64566213513582,
+                "median": 53.1015037593985,
                 "min": 48,
                 "max": 63.1578947368421,
                 "raw": [
@@ -6250,6 +6736,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -6267,6 +6754,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -6418,6 +6906,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 128150.9,
+                "median": 126294.5,
                 "min": 122534,
                 "max": 139109,
                 "raw": [
@@ -6435,6 +6924,7 @@
               },
               "localeLeakPct": {
                 "avg": 45.82802207539049,
+                "median": 46.8984962406015,
                 "min": 31.57894736842105,
                 "max": 52,
                 "raw": [
@@ -6452,6 +6942,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -6469,6 +6960,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -6896,6 +7388,7 @@
             "en": {
               "e2e": {
                 "avg": 4.4000000059604645,
+                "median": 4.4000000059604645,
                 "min": 3.300000011920929,
                 "max": 8.400000005960464,
                 "raw": [
@@ -6908,6 +7401,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -6922,6 +7416,7 @@
             "fr": {
               "e2e": {
                 "avg": 4.280000007152557,
+                "median": 4.280000007152557,
                 "min": 3.300000011920929,
                 "max": 7.700000017881393,
                 "raw": [
@@ -6934,6 +7429,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -6947,7 +7443,8 @@
             }
           },
           "e2eAvgMs": 4.340000006556511,
-          "profilerAvgMs": null
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -6955,6 +7452,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 28.85999999642372,
+                "median": 28.85999999642372,
                 "min": 15.300000011920929,
                 "max": 70.7999999821186,
                 "raw": [
@@ -6967,6 +7465,7 @@
               },
               "hydration": {
                 "avg": 19.920000004768372,
+                "median": 19.920000004768372,
                 "min": 9.300000011920929,
                 "max": 60,
                 "raw": [
@@ -6979,6 +7478,7 @@
               },
               "reactMount": {
                 "avg": 2.5799999952316286,
+                "median": 2.5799999952316286,
                 "min": 2.2000000178813934,
                 "max": 3.0999999940395355,
                 "raw": [
@@ -6995,6 +7495,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 15.240000009536743,
+                "median": 15.240000009536743,
                 "min": 13.900000005960464,
                 "max": 17.30000001192093,
                 "raw": [
@@ -7007,6 +7508,7 @@
               },
               "hydration": {
                 "avg": 10.560000002384186,
+                "median": 10.560000002384186,
                 "min": 9.200000017881393,
                 "max": 13.599999994039536,
                 "raw": [
@@ -7019,6 +7521,7 @@
               },
               "reactMount": {
                 "avg": 2.1799999952316282,
+                "median": 2.1799999952316282,
                 "min": 1.7999999821186066,
                 "max": 2.5,
                 "raw": [
@@ -7035,7 +7538,8 @@
           },
           "e2ePageLoadAvgMs": 22.050000002980234,
           "hydrationAvgMs": 15.240000003576279,
-          "reactMountAvgMs": 2.3799999952316284
+          "reactMountAvgMs": 2.3799999952316284,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -7064,6 +7568,7 @@
             "en": {
               "jsGzip": {
                 "avg": 130268.2,
+                "median": 130021.5,
                 "min": 129802,
                 "max": 131503,
                 "raw": [
@@ -7081,6 +7586,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -7098,6 +7604,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -7115,6 +7622,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -7266,6 +7774,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 130268.2,
+                "median": 130021.5,
                 "min": 129802,
                 "max": 131503,
                 "raw": [
@@ -7283,6 +7792,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -7300,6 +7810,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -7317,6 +7828,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -7744,6 +8256,7 @@
             "en": {
               "e2e": {
                 "avg": 16.9,
+                "median": 16.9,
                 "min": 11.799999997019768,
                 "max": 35.19999998807907,
                 "raw": [
@@ -7756,6 +8269,7 @@
               },
               "profiler": {
                 "avg": 4.3599999964237215,
+                "median": 4.3599999964237215,
                 "min": 2.2999999970197678,
                 "max": 11.5,
                 "raw": [
@@ -7770,6 +8284,7 @@
             "fr": {
               "e2e": {
                 "avg": 18.260000002384185,
+                "median": 18.260000002384185,
                 "min": 12.5,
                 "max": 39.5,
                 "raw": [
@@ -7782,6 +8297,7 @@
               },
               "profiler": {
                 "avg": 4.860000008344651,
+                "median": 4.860000008344651,
                 "min": 2.4000000059604645,
                 "max": 13.700000017881393,
                 "raw": [
@@ -7795,7 +8311,8 @@
             }
           },
           "e2eAvgMs": 17.58000000119209,
-          "profilerAvgMs": 4.6100000023841865
+          "profilerAvgMs": 4.6100000023841865,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -7803,6 +8320,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 19.580000001192094,
+                "median": 19.580000001192094,
                 "min": 17,
                 "max": 27.099999994039536,
                 "raw": [
@@ -7815,6 +8333,7 @@
               },
               "hydration": {
                 "avg": 12.32000000476837,
+                "median": 12.32000000476837,
                 "min": 9.800000011920929,
                 "max": 21.69999998807907,
                 "raw": [
@@ -7827,6 +8346,7 @@
               },
               "reactMount": {
                 "avg": 2.540000003576279,
+                "median": 2.540000003576279,
                 "min": 1.9000000059604645,
                 "max": 4.4000000059604645,
                 "raw": [
@@ -7843,6 +8363,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 15.6,
+                "median": 15.6,
                 "min": 14.200000017881393,
                 "max": 20.19999998807907,
                 "raw": [
@@ -7855,6 +8376,7 @@
               },
               "hydration": {
                 "avg": 10.240000003576279,
+                "median": 10.240000003576279,
                 "min": 8.800000011920929,
                 "max": 14.400000005960464,
                 "raw": [
@@ -7867,6 +8389,7 @@
               },
               "reactMount": {
                 "avg": 2.1200000047683716,
+                "median": 2.1200000047683716,
                 "min": 1.800000011920929,
                 "max": 2.5999999940395355,
                 "raw": [
@@ -7883,7 +8406,8 @@
           },
           "e2ePageLoadAvgMs": 17.590000000596046,
           "hydrationAvgMs": 11.280000004172326,
-          "reactMountAvgMs": 2.3300000041723252
+          "reactMountAvgMs": 2.3300000041723252,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -7912,6 +8436,7 @@
             "en": {
               "jsGzip": {
                 "avg": 134189.6,
+                "median": 133906.5,
                 "min": 133790,
                 "max": 135411,
                 "raw": [
@@ -7929,6 +8454,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -7946,6 +8472,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -7963,6 +8490,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8114,6 +8642,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 134189.6,
+                "median": 133906.5,
                 "min": 133790,
                 "max": 135411,
                 "raw": [
@@ -8131,6 +8660,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8148,6 +8678,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8165,6 +8696,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8592,6 +9124,7 @@
             "en": {
               "e2e": {
                 "avg": 10.280000007152557,
+                "median": 10.280000007152557,
                 "min": 7,
                 "max": 16.900000005960464,
                 "raw": [
@@ -8604,6 +9137,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8618,6 +9152,7 @@
             "fr": {
               "e2e": {
                 "avg": 10.319999998807907,
+                "median": 10.319999998807907,
                 "min": 6.5999999940395355,
                 "max": 19.099999994039536,
                 "raw": [
@@ -8630,6 +9165,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8643,7 +9179,8 @@
             }
           },
           "e2eAvgMs": 10.300000002980232,
-          "profilerAvgMs": null
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -8651,6 +9188,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 20.960000002384184,
+                "median": 20.960000002384184,
                 "min": 18,
                 "max": 25.200000002980232,
                 "raw": [
@@ -8663,6 +9201,7 @@
               },
               "hydration": {
                 "avg": 36.66000000536442,
+                "median": 36.66000000536442,
                 "min": 21.400000005960464,
                 "max": 70.5,
                 "raw": [
@@ -8675,6 +9214,7 @@
               },
               "reactMount": {
                 "avg": 5.759999999403954,
+                "median": 5.759999999403954,
                 "min": 2.199999988079071,
                 "max": 17.5,
                 "raw": [
@@ -8691,6 +9231,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 20.780000001192093,
+                "median": 20.780000001192093,
                 "min": 16,
                 "max": 24.400000005960464,
                 "raw": [
@@ -8703,6 +9244,7 @@
               },
               "hydration": {
                 "avg": 30.080000001192094,
+                "median": 30.080000001192094,
                 "min": 22.900000005960464,
                 "max": 47.099999994039536,
                 "raw": [
@@ -8715,6 +9257,7 @@
               },
               "reactMount": {
                 "avg": 5.259999999403954,
+                "median": 5.259999999403954,
                 "min": 2,
                 "max": 16,
                 "raw": [
@@ -8731,7 +9274,8 @@
           },
           "e2ePageLoadAvgMs": 20.87000000178814,
           "hydrationAvgMs": 33.37000000327826,
-          "reactMountAvgMs": 5.509999999403954
+          "reactMountAvgMs": 5.509999999403954,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -8760,6 +9304,7 @@
             "en": {
               "jsGzip": {
                 "avg": 138848.7,
+                "median": 138613,
                 "min": 138491,
                 "max": 139946,
                 "raw": [
@@ -8777,6 +9322,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8794,6 +9340,7 @@
               },
               "pageLeakPct": {
                 "avg": 7.261904761904762,
+                "median": 0,
                 "min": 0,
                 "max": 64.28571428571429,
                 "raw": [
@@ -8811,6 +9358,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 7.261904761904762,
+                "median": 0,
                 "min": 0,
                 "max": 64.28571428571429,
                 "raw": [
@@ -8962,6 +9510,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 138848.7,
+                "median": 138613,
                 "min": 138491,
                 "max": 139946,
                 "raw": [
@@ -8979,6 +9528,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -8996,6 +9546,7 @@
               },
               "pageLeakPct": {
                 "avg": 6,
+                "median": 0,
                 "min": 0,
                 "max": 60,
                 "raw": [
@@ -9013,6 +9564,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 6,
+                "median": 0,
                 "min": 0,
                 "max": 60,
                 "raw": [
@@ -9440,6 +9992,7 @@
             "en": {
               "e2e": {
                 "avg": 16.580000019073488,
+                "median": 16.580000019073488,
                 "min": 12.5,
                 "max": 28.800000071525574,
                 "raw": [
@@ -9452,6 +10005,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -9466,6 +10020,7 @@
             "fr": {
               "e2e": {
                 "avg": 14.7,
+                "median": 14.7,
                 "min": 10.900000095367432,
                 "max": 20.899999976158142,
                 "raw": [
@@ -9478,6 +10033,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -9491,7 +10047,8 @@
             }
           },
           "e2eAvgMs": 15.640000009536744,
-          "profilerAvgMs": null
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -9499,6 +10056,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 26.860000014305115,
+                "median": 26.860000014305115,
                 "min": 19.09999990463257,
                 "max": 38.39999997615814,
                 "raw": [
@@ -9511,6 +10069,7 @@
               },
               "hydration": {
                 "avg": 12.300000023841857,
+                "median": 12.300000023841857,
                 "min": 9.5,
                 "max": 21.799999952316284,
                 "raw": [
@@ -9523,6 +10082,7 @@
               },
               "reactMount": {
                 "avg": 2.8400000095367433,
+                "median": 2.8400000095367433,
                 "min": 2.0999999046325684,
                 "max": 4.799999952316284,
                 "raw": [
@@ -9539,6 +10099,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 34.26000001430511,
+                "median": 34.26000001430511,
                 "min": 15.5,
                 "max": 98.29999995231628,
                 "raw": [
@@ -9551,6 +10112,7 @@
               },
               "hydration": {
                 "avg": 14.080000019073486,
+                "median": 14.080000019073486,
                 "min": 10.100000023841858,
                 "max": 21.700000047683716,
                 "raw": [
@@ -9563,6 +10125,7 @@
               },
               "reactMount": {
                 "avg": 2.7799999475479127,
+                "median": 2.7799999475479127,
                 "min": 2.1999999284744263,
                 "max": 4.899999976158142,
                 "raw": [
@@ -9579,7 +10142,8 @@
           },
           "e2ePageLoadAvgMs": 30.560000014305114,
           "hydrationAvgMs": 13.19000002145767,
-          "reactMountAvgMs": 2.809999978542328
+          "reactMountAvgMs": 2.809999978542328,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -9608,6 +10172,7 @@
             "en": {
               "jsGzip": {
                 "avg": 131810.1,
+                "median": 131522.5,
                 "min": 131401,
                 "max": 132980,
                 "raw": [
@@ -9625,6 +10190,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -9642,6 +10208,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -9659,6 +10226,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -9810,6 +10378,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 131810.1,
+                "median": 131522.5,
                 "min": 131401,
                 "max": 132980,
                 "raw": [
@@ -9827,6 +10396,7 @@
               },
               "localeLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -9844,6 +10414,7 @@
               },
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -9861,6 +10432,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -10288,6 +10860,7 @@
             "en": {
               "e2e": {
                 "avg": 6.740000003576279,
+                "median": 6.740000003576279,
                 "min": 5.200000017881393,
                 "max": 11,
                 "raw": [
@@ -10300,6 +10873,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -10314,6 +10888,7 @@
             "fr": {
               "e2e": {
                 "avg": 19.779999995231627,
+                "median": 19.779999995231627,
                 "min": 8.300000011920929,
                 "max": 62.099999994039536,
                 "raw": [
@@ -10326,6 +10901,7 @@
               },
               "profiler": {
                 "avg": 3.5000000059604646,
+                "median": 3.5000000059604646,
                 "min": 1.699999988079071,
                 "max": 10.200000017881393,
                 "raw": [
@@ -10339,7 +10915,8 @@
             }
           },
           "e2eAvgMs": 13.259999999403952,
-          "profilerAvgMs": 3.5000000059604646
+          "profilerAvgMs": 3.5000000059604646,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -10347,6 +10924,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 17.539999997615816,
+                "median": 17.539999997615816,
                 "min": 15.299999997019768,
                 "max": 20,
                 "raw": [
@@ -10359,6 +10937,7 @@
               },
               "hydration": {
                 "avg": 30.60000000298023,
+                "median": 30.60000000298023,
                 "min": 15,
                 "max": 65.29999999701977,
                 "raw": [
@@ -10371,6 +10950,7 @@
               },
               "reactMount": {
                 "avg": 7.1,
+                "median": 7.1,
                 "min": 1.5999999940395355,
                 "max": 28.299999997019768,
                 "raw": [
@@ -10387,6 +10967,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 17.180000004172324,
+                "median": 17.180000004172324,
                 "min": 14.700000002980232,
                 "max": 20.200000002980232,
                 "raw": [
@@ -10399,6 +10980,7 @@
               },
               "hydration": {
                 "avg": 21.240000000596048,
+                "median": 21.240000000596048,
                 "min": 12.799999997019768,
                 "max": 41.70000000298023,
                 "raw": [
@@ -10411,6 +10993,7 @@
               },
               "reactMount": {
                 "avg": 3.9000000059604645,
+                "median": 3.9000000059604645,
                 "min": 1.5,
                 "max": 13.200000002980232,
                 "raw": [
@@ -10427,7 +11010,8 @@
           },
           "e2ePageLoadAvgMs": 17.36000000089407,
           "hydrationAvgMs": 25.92000000178814,
-          "reactMountAvgMs": 5.500000002980232
+          "reactMountAvgMs": 5.500000002980232,
+          "e2ePageLoadVsBaseline": null
         }
       }
     },
@@ -10456,6 +11040,7 @@
             "en": {
               "jsGzip": {
                 "avg": 122968.1,
+                "median": 122751,
                 "min": 122605,
                 "max": 124225,
                 "raw": [
@@ -10474,6 +11059,7 @@
               "localeLeakPct": null,
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -10491,6 +11077,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -10642,6 +11229,7 @@
             "fr": {
               "jsGzip": {
                 "avg": 123547.1,
+                "median": 123330,
                 "min": 123184,
                 "max": 124804,
                 "raw": [
@@ -10660,6 +11248,7 @@
               "localeLeakPct": null,
               "pageLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -10677,6 +11266,7 @@
               },
               "otherPageContentLeakPct": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -11105,6 +11695,7 @@
             "en": {
               "e2e": {
                 "avg": 36.2200000166893,
+                "median": 36.2200000166893,
                 "min": 15.399999976158142,
                 "max": 81.30000001192093,
                 "raw": [
@@ -11117,6 +11708,7 @@
               },
               "profiler": {
                 "avg": 3.9799999952316285,
+                "median": 3.9799999952316285,
                 "min": 3.800000011920929,
                 "max": 4.399999976158142,
                 "raw": [
@@ -11131,6 +11723,7 @@
             "fr": {
               "e2e": {
                 "avg": 9.83999999165535,
+                "median": 9.83999999165535,
                 "min": 5.799999982118607,
                 "max": 19.599999994039536,
                 "raw": [
@@ -11143,6 +11736,7 @@
               },
               "profiler": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -11156,7 +11750,8 @@
             }
           },
           "e2eAvgMs": 23.030000004172322,
-          "profilerAvgMs": 3.9799999952316285
+          "profilerAvgMs": 3.9799999952316285,
+          "e2eVsBaseline": null
         },
         "rendering": {
           "status": "ok",
@@ -11164,6 +11759,7 @@
             "en": {
               "e2ePageLoad": {
                 "avg": 17.37999999523163,
+                "median": 17.37999999523163,
                 "min": 14.899999991059303,
                 "max": 19.799999997019768,
                 "raw": [
@@ -11176,6 +11772,7 @@
               },
               "hydration": {
                 "avg": 25.380000001192094,
+                "median": 25.380000001192094,
                 "min": 15.399999991059303,
                 "max": 56,
                 "raw": [
@@ -11188,6 +11785,7 @@
               },
               "reactMount": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -11204,6 +11802,7 @@
             "fr": {
               "e2ePageLoad": {
                 "avg": 15.580000001192094,
+                "median": 15.580000001192094,
                 "min": 13.799999997019768,
                 "max": 19.599999994039536,
                 "raw": [
@@ -11216,6 +11815,7 @@
               },
               "hydration": {
                 "avg": 20.180000004172324,
+                "median": 20.180000004172324,
                 "min": 13.800000011920929,
                 "max": 35.29999999701977,
                 "raw": [
@@ -11228,6 +11828,7 @@
               },
               "reactMount": {
                 "avg": 0,
+                "median": 0,
                 "min": 0,
                 "max": 0,
                 "raw": [
@@ -11244,7 +11845,8 @@
           },
           "e2ePageLoadAvgMs": 16.47999999821186,
           "hydrationAvgMs": 22.780000002682208,
-          "reactMountAvgMs": null
+          "reactMountAvgMs": null,
+          "e2ePageLoadVsBaseline": null
         }
       }
     }

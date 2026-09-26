@@ -11,9 +11,9 @@ _Generated: 2026-09-26_
 | **Locale leak %** | % of JS bundle containing strings from locales the user is NOT using |
 | **Page leak %** | % of JS bundle containing strings from pages the user is NOT on |
 | **Comp avg (gz)** | Average gzip size of individual components compiled in isolation |
-| **E2E reactivity** | Wall-clock time from locale `<select>` change to `html[lang]` DOM update (ms) |
+| **E2E reactivity** | Median wall-clock time from locale `<select>` change to `html[lang]` DOM update (ms); `×n` = relative to the base app in the same CI job |
 | **React Profiler** | Sum of React `actualDuration` during locale-switch re-renders (ms) |
-| **Page load** | `PerformanceNavigationTiming.duration` — full page load time (ms) |
+| **Page load** | Median `PerformanceNavigationTiming.duration` — full page load time (ms); `×n` = relative to the base app in the same CI job |
 | **Hydration avg** | Custom perf-mark delta for React hydration phase (ms); — = not instrumented |
 
 > **Status icons:** ✅ all data · 🔶 partial · ⬜ missing · ❌ error  
@@ -1017,7 +1017,7 @@ _Generated: 2026-09-26_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 193.9 KB | — | 0.0% | — | 22.8 ms | 6.8 ms | 22.1 ms | 26.8 ms |
-| Dynamic | ↳ Static | 193.9 KB | — | 0.0% | — | 22.8 ms | 6.8 ms | 22.1 ms | 26.8 ms |
+| Dynamic | 🔶 | 193.9 KB | — | 45.0% | — | — | — | — | — |
 | Scoped Static | 🔶 | 193.9 KB | — | 0.0% | — | 26.9 ms | 7.0 ms | 20.5 ms | 24.1 ms |
 | Scoped Dynamic | 🔶 | 193.9 KB | — | 0.0% | — | 26.0 ms | 6.6 ms | 21.0 ms | 26.0 ms |
 
@@ -1085,7 +1085,7 @@ _Generated: 2026-09-26_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 194.2 KB | — | 0.0% |
+| `/en/` | 194.3 KB | — | 0.0% |
 | `/en/about` | 194.1 KB | — | 0.0% |
 | `/en/blog` | 193.8 KB | — | 0.0% |
 | `/en/careers` | 193.8 KB | — | 0.0% |
@@ -1100,38 +1100,18 @@ _Generated: 2026-09-26_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 194.2 KB | — | 0.0% |
-| `/fr/about` | 194.1 KB | — | 0.0% |
-| `/fr/blog` | 193.8 KB | — | 0.0% |
-| `/fr/careers` | 193.8 KB | — | 0.0% |
-| `/fr/contact` | 193.8 KB | — | 0.0% |
-| `/fr/faq` | 193.8 KB | — | 0.0% |
-| `/fr/pricing` | 193.8 KB | — | 0.0% |
-| `/fr/products` | 193.8 KB | — | 0.0% |
-| `/fr/settings` | 193.8 KB | — | 0.0% |
-| `/fr/team` | 193.8 KB | — | 0.0% |
+| `/fr/` | 194.3 KB | — | 84.3% |
+| `/fr/about` | 194.1 KB | — | 86.3% |
+| `/fr/blog` | 193.8 KB | — | 87.3% |
+| `/fr/careers` | 193.8 KB | — | 88.2% |
+| `/fr/contact` | 193.8 KB | — | 98.0% |
+| `/fr/faq` | 193.8 KB | — | 91.2% |
+| `/fr/pricing` | 193.8 KB | — | 91.2% |
+| `/fr/products` | 193.8 KB | — | 90.2% |
+| `/fr/settings` | 193.8 KB | — | 93.1% |
+| `/fr/team` | 193.8 KB | — | 90.2% |
 
-**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-static-gt-next-app/bundle/rollup-visualizer.html)
-
-</details>
-
-<details>
-<summary><strong>Dynamic</strong> — per-locale reactivity</summary>
-
-| Locale | E2E avg | E2E min | E2E max | Profiler avg |
-| :---: | ---: | ---: | ---: | ---: |
-| `en` | 24.7 ms | 20.4 ms | 36.1 ms | 6.5 ms |
-| `fr` | 20.8 ms | 18.6 ms | 24.9 ms | 7.1 ms |
-
-</details>
-
-<details>
-<summary><strong>Dynamic</strong> — per-locale rendering</summary>
-
-| Locale | Page load | Hydration | React mount |
-| :---: | ---: | ---: | ---: |
-| `en` | 25.1 ms | 27.9 ms | 11.2 ms |
-| `fr` | 19.2 ms | 25.6 ms | 10.5 ms |
+**Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/nextjs-dynamic-gt-next-app/bundle/rollup-visualizer.html)
 
 </details>
 
@@ -1984,7 +1964,7 @@ _Generated: 2026-09-26_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 1.3.1 | 4.1 KB | 16.1 KB |
+| 1.3.1 | 4.7 KB | 16.6 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -3443,9 +3423,9 @@ _Generated: 2026-09-26_
 | Metric | Count |
 | :--- | :--- |
 | Total libraries | 14 |
-| Total app entries | 38 |
+| Total app entries | 39 |
 | With lib size data | 13 |
 | With page bundle data | 56 |
 | With component data | 56 |
-| With reactivity data | 56 |
-| With rendering data | 56 |
+| With reactivity data | 55 |
+| With rendering data | 55 |
