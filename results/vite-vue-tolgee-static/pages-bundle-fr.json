@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-tolgee-static",
   "locale": "fr",
-  "timestamp": "2026-09-26T19:22:09.650Z",
+  "timestamp": "2026-09-26T22:29:17.797Z",
   "fingerprintCounts": {
     "locale": {
       "en": 100,
@@ -492,15 +492,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/WhatWeMeasure-C6mqVVgm.js",
-          "size": 1166,
-          "gzipSize": 524,
-          "type": "js"
-        },
-        {
           "url": "/assets/AboutGrid-Djiv0cSV.js",
           "size": 771,
           "gzipSize": 373,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhatWeMeasure-C6mqVVgm.js",
+          "size": 1166,
+          "gzipSize": 524,
           "type": "js"
         }
       ],
@@ -1348,15 +1348,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/CareersBenefits-DpMWScDE.js",
-          "size": 758,
-          "gzipSize": 402,
-          "type": "js"
-        },
-        {
           "url": "/assets/OpenPositions-R_khg3Or.js",
           "size": 1965,
           "gzipSize": 730,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersBenefits-DpMWScDE.js",
+          "size": 758,
+          "gzipSize": 402,
           "type": "js"
         }
       ],
@@ -3479,27 +3479,27 @@
           "type": "js"
         },
         {
-          "url": "/assets/ProfileSection-vt2BBmVQ.js",
-          "size": 1086,
-          "gzipSize": 489,
-          "type": "js"
-        },
-        {
           "url": "/assets/ApiAccessSection-C5liiYZA.js",
           "size": 1005,
           "gzipSize": 506,
           "type": "js"
         },
         {
-          "url": "/assets/PreferencesSection-KXtsnH-E.js",
-          "size": 2274,
-          "gzipSize": 761,
+          "url": "/assets/ProfileSection-vt2BBmVQ.js",
+          "size": 1086,
+          "gzipSize": 489,
           "type": "js"
         },
         {
           "url": "/assets/SettingsFooter-CRNtt-2e.js",
           "size": 604,
           "gzipSize": 367,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PreferencesSection-KXtsnH-E.js",
+          "size": 2274,
+          "gzipSize": 761,
           "type": "js"
         }
       ],

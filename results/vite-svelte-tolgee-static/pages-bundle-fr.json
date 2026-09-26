@@ -1,7 +1,7 @@
 {
   "app": "vite-svelte-tolgee-static",
   "locale": "fr",
-  "timestamp": "2026-09-26T19:23:47.916Z",
+  "timestamp": "2026-09-26T22:28:35.494Z",
   "fingerprintCounts": {
     "locale": {
       "en": 100,
@@ -43,9 +43,9 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-ChDckoZj.js",
-          "size": 23124,
-          "gzipSize": 8104,
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
+          "size": 314,
+          "gzipSize": 177,
           "type": "js"
         },
         {
@@ -55,9 +55,9 @@
           "type": "css"
         },
         {
-          "url": "/assets/performanceMeasure-DVvPM0hr.js",
-          "size": 314,
-          "gzipSize": 177,
+          "url": "/assets/index-ChDckoZj.js",
+          "size": 23124,
+          "gzipSize": 8104,
           "type": "js"
         },
         {
@@ -899,15 +899,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-C9g-ttxt.js",
-          "size": 385,
-          "gzipSize": 292,
-          "type": "js"
-        },
-        {
           "url": "/assets/Blog-CcTeNUMr.js",
           "size": 1741,
           "gzipSize": 874,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-C9g-ttxt.js",
+          "size": 385,
+          "gzipSize": 292,
           "type": "js"
         }
       ],
@@ -1306,16 +1306,16 @@
           "type": "js"
         },
         {
-          "url": "/assets/index-C3wJIVTR.css",
-          "size": 24724,
-          "gzipSize": 5110,
-          "type": "css"
-        },
-        {
           "url": "/assets/index-ChDckoZj.js",
           "size": 23124,
           "gzipSize": 8104,
           "type": "js"
+        },
+        {
+          "url": "/assets/index-C3wJIVTR.css",
+          "size": 24724,
+          "gzipSize": 5110,
+          "type": "css"
         },
         {
           "url": "/assets/tolgee-CPft1bLf.js",
@@ -1731,16 +1731,16 @@
           "type": "js"
         },
         {
-          "url": "/assets/performanceMeasure-DVvPM0hr.js",
-          "size": 314,
-          "gzipSize": 177,
-          "type": "js"
-        },
-        {
           "url": "/assets/index-C3wJIVTR.css",
           "size": 24724,
           "gzipSize": 5110,
           "type": "css"
+        },
+        {
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
+          "size": 314,
+          "gzipSize": 177,
+          "type": "js"
         },
         {
           "url": "/assets/tolgee-CPft1bLf.js",
@@ -2156,16 +2156,16 @@
           "type": "js"
         },
         {
-          "url": "/assets/performanceMeasure-DVvPM0hr.js",
-          "size": 314,
-          "gzipSize": 177,
-          "type": "js"
-        },
-        {
           "url": "/assets/index-C3wJIVTR.css",
           "size": 24724,
           "gzipSize": 5110,
           "type": "css"
+        },
+        {
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
+          "size": 314,
+          "gzipSize": 177,
+          "type": "js"
         },
         {
           "url": "/assets/tolgee-CPft1bLf.js",
@@ -2581,16 +2581,16 @@
           "type": "js"
         },
         {
-          "url": "/assets/performanceMeasure-DVvPM0hr.js",
-          "size": 314,
-          "gzipSize": 177,
-          "type": "js"
-        },
-        {
           "url": "/assets/index-C3wJIVTR.css",
           "size": 24724,
           "gzipSize": 5110,
           "type": "css"
+        },
+        {
+          "url": "/assets/performanceMeasure-DVvPM0hr.js",
+          "size": 314,
+          "gzipSize": 177,
+          "type": "js"
         },
         {
           "url": "/assets/tolgee-CPft1bLf.js",
@@ -3850,12 +3850,6 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-ChDckoZj.js",
-          "size": 23124,
-          "gzipSize": 8104,
-          "type": "js"
-        },
-        {
           "url": "/assets/performanceMeasure-DVvPM0hr.js",
           "size": 314,
           "gzipSize": 177,
@@ -3868,21 +3862,27 @@
           "type": "css"
         },
         {
+          "url": "/assets/index-ChDckoZj.js",
+          "size": 23124,
+          "gzipSize": 8104,
+          "type": "js"
+        },
+        {
           "url": "/assets/tolgee-CPft1bLf.js",
           "size": 274421,
           "gzipSize": 93623,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-C9g-ttxt.js",
-          "size": 385,
-          "gzipSize": 292,
-          "type": "js"
-        },
-        {
           "url": "/assets/Team-B4enH2bJ.js",
           "size": 1631,
           "gzipSize": 847,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-C9g-ttxt.js",
+          "size": 385,
+          "gzipSize": 292,
           "type": "js"
         }
       ],

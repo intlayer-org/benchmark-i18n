@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-tolgee-static",
   "locale": "en",
-  "timestamp": "2026-09-26T19:21:44.346Z",
+  "timestamp": "2026-09-26T22:28:52.593Z",
   "fingerprintCounts": {
     "locale": {
       "en": 100,
@@ -471,15 +471,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/AboutGrid-Djiv0cSV.js",
-          "size": 771,
-          "gzipSize": 373,
-          "type": "js"
-        },
-        {
           "url": "/assets/AboutHeader-B8ESko51.js",
           "size": 408,
           "gzipSize": 285,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutGrid-Djiv0cSV.js",
+          "size": 771,
+          "gzipSize": 373,
           "type": "js"
         },
         {
@@ -1291,27 +1291,27 @@
           "type": "js"
         },
         {
-          "url": "/assets/CareersHeader-Codx9clv.js",
-          "size": 437,
-          "gzipSize": 302,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-Cs9xaMUD.js",
           "size": 303,
           "gzipSize": 240,
           "type": "js"
         },
         {
-          "url": "/assets/OpenPositions-R_khg3Or.js",
-          "size": 1965,
-          "gzipSize": 730,
+          "url": "/assets/CareersHeader-Codx9clv.js",
+          "size": 437,
+          "gzipSize": 302,
           "type": "js"
         },
         {
           "url": "/assets/CareersBenefits-DpMWScDE.js",
           "size": 758,
           "gzipSize": 402,
+          "type": "js"
+        },
+        {
+          "url": "/assets/OpenPositions-R_khg3Or.js",
+          "size": 1965,
+          "gzipSize": 730,
           "type": "js"
         }
       ],

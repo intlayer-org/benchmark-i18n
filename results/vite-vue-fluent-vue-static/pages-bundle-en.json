@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-fluent-vue-static",
   "locale": "en",
-  "timestamp": "2026-09-26T19:21:31.961Z",
+  "timestamp": "2026-09-26T22:28:35.175Z",
   "fingerprintCounts": {
     "locale": {
       "en": 99,
@@ -61,15 +61,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/WhyItMatters-qQRwX5pV.js",
-          "size": 1577,
-          "gzipSize": 547,
-          "type": "js"
-        },
-        {
           "url": "/assets/UnderstandingImpact-Bwqs2Ljk.js",
           "size": 2458,
           "gzipSize": 687,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhyItMatters-qQRwX5pV.js",
+          "size": 1577,
+          "gzipSize": 547,
           "type": "js"
         },
         {
@@ -877,15 +877,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/BlogHeader-DzYky0Sy.js",
-          "size": 773,
-          "gzipSize": 400,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-llj1F-CU.js",
           "size": 657,
           "gzipSize": 338,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogHeader-DzYky0Sy.js",
+          "size": 773,
+          "gzipSize": 400,
           "type": "js"
         },
         {
@@ -1705,15 +1705,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-llj1F-CU.js",
-          "size": 657,
-          "gzipSize": 338,
-          "type": "js"
-        },
-        {
           "url": "/assets/ContactForm-DGwpZT_x.js",
           "size": 2587,
           "gzipSize": 871,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-llj1F-CU.js",
+          "size": 657,
+          "gzipSize": 338,
           "type": "js"
         }
       ],
@@ -2107,15 +2107,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/FAQList-DxrcyLjj.js",
-          "size": 979,
-          "gzipSize": 532,
-          "type": "js"
-        },
-        {
           "url": "/assets/FAQHeader-DgmiyAnA.js",
           "size": 781,
           "gzipSize": 395,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQList-DxrcyLjj.js",
+          "size": 979,
+          "gzipSize": 532,
           "type": "js"
         }
       ],
@@ -2509,15 +2509,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/PricingHeader-CLsLplvj.js",
-          "size": 819,
-          "gzipSize": 423,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-llj1F-CU.js",
           "size": 657,
           "gzipSize": 338,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingHeader-CLsLplvj.js",
+          "size": 819,
+          "gzipSize": 423,
           "type": "js"
         },
         {
@@ -2917,15 +2917,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/ProductsHeader-5llA3Kmq.js",
-          "size": 785,
-          "gzipSize": 405,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-llj1F-CU.js",
           "size": 657,
           "gzipSize": 338,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsHeader-5llA3Kmq.js",
+          "size": 785,
+          "gzipSize": 405,
           "type": "js"
         },
         {
@@ -3337,15 +3337,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/PreferencesSection-Cot3xJag.js",
-          "size": 2628,
-          "gzipSize": 874,
+          "url": "/assets/ProfileSection-CSZ_WqYk.js",
+          "size": 1440,
+          "gzipSize": 593,
           "type": "js"
         },
         {
-          "url": "/assets/SettingsFooter-Ce7ohVYE.js",
-          "size": 958,
-          "gzipSize": 463,
+          "url": "/assets/PreferencesSection-Cot3xJag.js",
+          "size": 2628,
+          "gzipSize": 874,
           "type": "js"
         },
         {
@@ -3355,9 +3355,9 @@
           "type": "js"
         },
         {
-          "url": "/assets/ProfileSection-CSZ_WqYk.js",
-          "size": 1440,
-          "gzipSize": 593,
+          "url": "/assets/SettingsFooter-Ce7ohVYE.js",
+          "size": 958,
+          "gzipSize": 463,
           "type": "js"
         }
       ],

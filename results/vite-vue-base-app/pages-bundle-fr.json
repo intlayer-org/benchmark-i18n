@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-base-app",
   "locale": "fr",
-  "timestamp": "2026-09-26T19:22:09.143Z",
+  "timestamp": "2026-09-26T22:28:44.869Z",
   "fingerprintCounts": {
     "locale": {
       "en": 0,
@@ -61,15 +61,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/UnderstandingImpact-B2lZAB9v.js",
-          "size": 2826,
-          "gzipSize": 1275,
-          "type": "js"
-        },
-        {
           "url": "/assets/WhyItMatters-CAvJptBa.js",
           "size": 1887,
           "gzipSize": 917,
+          "type": "js"
+        },
+        {
+          "url": "/assets/UnderstandingImpact-B2lZAB9v.js",
+          "size": 2826,
+          "gzipSize": 1275,
           "type": "js"
         },
         {
@@ -577,15 +577,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/ContactForm-DTiiNc2W.js",
-          "size": 1894,
-          "gzipSize": 665,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-D_S5Oae6.js",
           "size": 375,
           "gzipSize": 297,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactForm-DTiiNc2W.js",
+          "size": 1894,
+          "gzipSize": 665,
           "type": "js"
         }
       ],
@@ -686,15 +686,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/FAQHeader-DtHEELkm.js",
-          "size": 428,
-          "gzipSize": 318,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-D_S5Oae6.js",
           "size": 375,
           "gzipSize": 297,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQHeader-DtHEELkm.js",
+          "size": 428,
+          "gzipSize": 318,
           "type": "js"
         },
         {
@@ -1062,9 +1062,9 @@
           "type": "js"
         },
         {
-          "url": "/assets/ProfileSection-Wzs02BT6.js",
-          "size": 920,
-          "gzipSize": 437,
+          "url": "/assets/ApiAccessSection-AjMwS0ET.js",
+          "size": 871,
+          "gzipSize": 492,
           "type": "js"
         },
         {
@@ -1074,9 +1074,9 @@
           "type": "js"
         },
         {
-          "url": "/assets/ApiAccessSection-AjMwS0ET.js",
-          "size": 871,
-          "gzipSize": 492,
+          "url": "/assets/ProfileSection-Wzs02BT6.js",
+          "size": 920,
+          "gzipSize": 437,
           "type": "js"
         },
         {

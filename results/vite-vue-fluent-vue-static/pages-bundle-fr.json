@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-fluent-vue-static",
   "locale": "fr",
-  "timestamp": "2026-09-26T19:21:58.052Z",
+  "timestamp": "2026-09-26T22:28:59.076Z",
   "fingerprintCounts": {
     "locale": {
       "en": 99,
@@ -1765,15 +1765,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/ContactForm-DGwpZT_x.js",
-          "size": 2587,
-          "gzipSize": 871,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-llj1F-CU.js",
           "size": 657,
           "gzipSize": 338,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactForm-DGwpZT_x.js",
+          "size": 2587,
+          "gzipSize": 871,
           "type": "js"
         }
       ],
@@ -3457,15 +3457,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/ProfileSection-CSZ_WqYk.js",
-          "size": 1440,
-          "gzipSize": 593,
-          "type": "js"
-        },
-        {
           "url": "/assets/PreferencesSection-Cot3xJag.js",
           "size": 2628,
           "gzipSize": 874,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ApiAccessSection-CiZrDhEv.js",
+          "size": 1359,
+          "gzipSize": 609,
           "type": "js"
         },
         {
@@ -3475,9 +3475,9 @@
           "type": "js"
         },
         {
-          "url": "/assets/ApiAccessSection-CiZrDhEv.js",
-          "size": 1359,
-          "gzipSize": 609,
+          "url": "/assets/ProfileSection-CSZ_WqYk.js",
+          "size": 1440,
+          "gzipSize": 593,
           "type": "js"
         }
       ],

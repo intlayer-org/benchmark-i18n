@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-intlayer-static",
   "locale": "en",
-  "timestamp": "2026-09-26T19:24:14.267Z",
+  "timestamp": "2026-09-26T22:28:23.227Z",
   "fingerprintCounts": {
     "locale": {
       "en": 96,
@@ -67,15 +67,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/WhyItMatters-BieRAFYz.js",
-          "size": 1101,
-          "gzipSize": 455,
-          "type": "js"
-        },
-        {
           "url": "/assets/UnderstandingImpact-DPvqFsyG.js",
           "size": 1495,
           "gzipSize": 582,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhyItMatters-BieRAFYz.js",
+          "size": 1101,
+          "gzipSize": 455,
           "type": "js"
         },
         {
@@ -483,15 +483,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/WhatWeMeasure-N17XroPl.js",
-          "size": 669,
-          "gzipSize": 409,
-          "type": "js"
-        },
-        {
           "url": "/assets/AboutGrid-Cj1Ec0Cx.js",
           "size": 722,
           "gzipSize": 366,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhatWeMeasure-N17XroPl.js",
+          "size": 669,
+          "gzipSize": 409,
           "type": "js"
         }
       ],
@@ -1297,15 +1297,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/CareersHeader-BCCdIY7E.js",
-          "size": 433,
-          "gzipSize": 308,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-deSvRSZE.js",
           "size": 320,
           "gzipSize": 248,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersHeader-BCCdIY7E.js",
+          "size": 433,
+          "gzipSize": 308,
           "type": "js"
         },
         {
@@ -3365,27 +3365,27 @@
           "type": "js"
         },
         {
-          "url": "/assets/ProfileSection-UMMKHBkR.js",
-          "size": 1058,
-          "gzipSize": 487,
-          "type": "js"
-        },
-        {
           "url": "/assets/ApiAccessSection-lK8MjI3b.js",
           "size": 949,
           "gzipSize": 508,
           "type": "js"
         },
         {
-          "url": "/assets/SettingsFooter-RF8Lvogm.js",
-          "size": 588,
-          "gzipSize": 363,
+          "url": "/assets/ProfileSection-UMMKHBkR.js",
+          "size": 1058,
+          "gzipSize": 487,
           "type": "js"
         },
         {
           "url": "/assets/PreferencesSection-VRk2vSSh.js",
           "size": 1819,
           "gzipSize": 766,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-RF8Lvogm.js",
+          "size": 588,
+          "gzipSize": 363,
           "type": "js"
         }
       ],

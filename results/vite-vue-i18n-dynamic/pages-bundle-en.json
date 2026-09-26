@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-i18n-dynamic",
   "locale": "en",
-  "timestamp": "2026-09-26T19:23:47.943Z",
+  "timestamp": "2026-09-26T22:26:37.701Z",
   "fingerprintCounts": {
     "locale": {
       "en": 100,
@@ -994,15 +994,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-XEswR5Rg.js",
-          "size": 303,
-          "gzipSize": 235,
-          "type": "js"
-        },
-        {
           "url": "/assets/CareersHeader-BCdgNmKe.js",
           "size": 437,
           "gzipSize": 302,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-XEswR5Rg.js",
+          "size": 303,
+          "gzipSize": 235,
           "type": "js"
         },
         {
@@ -1315,15 +1315,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-XEswR5Rg.js",
-          "size": 303,
-          "gzipSize": 235,
-          "type": "js"
-        },
-        {
           "url": "/assets/ContactForm-GJ4CdZPG.js",
           "size": 2243,
           "gzipSize": 761,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-XEswR5Rg.js",
+          "size": 303,
+          "gzipSize": 235,
           "type": "js"
         }
       ],
@@ -1618,15 +1618,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-XEswR5Rg.js",
-          "size": 303,
-          "gzipSize": 235,
-          "type": "js"
-        },
-        {
           "url": "/assets/FAQHeader-Dq-1fZFD.js",
           "size": 426,
           "gzipSize": 301,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-XEswR5Rg.js",
+          "size": 303,
+          "gzipSize": 235,
           "type": "js"
         },
         {
@@ -1927,15 +1927,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/PricingHeader-dnFh9i5x.js",
-          "size": 475,
-          "gzipSize": 323,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-XEswR5Rg.js",
           "size": 303,
           "gzipSize": 235,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingHeader-dnFh9i5x.js",
+          "size": 475,
+          "gzipSize": 323,
           "type": "js"
         },
         {
@@ -2569,15 +2569,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/SettingsFooter-CQ8V45Nq.js",
-          "size": 604,
-          "gzipSize": 364,
-          "type": "js"
-        },
-        {
           "url": "/assets/ApiAccessSection-C-1o5Qaz.js",
           "size": 1005,
           "gzipSize": 502,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-CQ8V45Nq.js",
+          "size": 604,
+          "gzipSize": 364,
           "type": "js"
         }
       ],

@@ -1,7 +1,7 @@
 {
   "app": "vite-svelte-paraglide-js-static",
   "locale": "en",
-  "timestamp": "2026-09-26T19:23:33.853Z",
+  "timestamp": "2026-09-26T22:28:35.866Z",
   "fingerprintCounts": {
     "locale": {
       "en": 100,
@@ -798,15 +798,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/Contact-DlUdCbpz.js",
-          "size": 3405,
-          "gzipSize": 1358,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-b9q9dK63.js",
           "size": 2067,
           "gzipSize": 1264,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Contact-DlUdCbpz.js",
+          "size": 3405,
+          "gzipSize": 1358,
           "type": "js"
         },
         {
@@ -973,6 +973,18 @@
           "type": "js"
         },
         {
+          "url": "/assets/contact_header_title-CG9dErWH.js",
+          "size": 7456,
+          "gzipSize": 2900,
+          "type": "js"
+        },
+        {
+          "url": "/assets/careers_openpositions_writertitle2--QM8v2x7.js",
+          "size": 19638,
+          "gzipSize": 7713,
+          "type": "js"
+        },
+        {
           "url": "/assets/about_whatwemeasure_title2-Ieb-aVjU.js",
           "size": 28544,
           "gzipSize": 11905,
@@ -985,9 +997,9 @@
           "type": "js"
         },
         {
-          "url": "/assets/careers_openpositions_writertitle2--QM8v2x7.js",
-          "size": 19638,
-          "gzipSize": 7713,
+          "url": "/assets/products_header_title-DTbEigAj.js",
+          "size": 15187,
+          "gzipSize": 5918,
           "type": "js"
         },
         {
@@ -997,33 +1009,21 @@
           "type": "js"
         },
         {
-          "url": "/assets/contact_header_title-CG9dErWH.js",
-          "size": 7456,
-          "gzipSize": 2900,
-          "type": "js"
-        },
-        {
-          "url": "/assets/products_header_title-DTbEigAj.js",
-          "size": 15187,
-          "gzipSize": 5918,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-b9q9dK63.js",
           "size": 2067,
           "gzipSize": 1264,
           "type": "js"
         },
         {
-          "url": "/assets/settings_profile_title-CS1cg2_L.js",
-          "size": 13045,
-          "gzipSize": 4702,
-          "type": "js"
-        },
-        {
           "url": "/assets/team_header_title-Du48Zpr6.js",
           "size": 16209,
           "gzipSize": 6150,
+          "type": "js"
+        },
+        {
+          "url": "/assets/settings_profile_title-CS1cg2_L.js",
+          "size": 13045,
+          "gzipSize": 4702,
           "type": "js"
         }
       ],

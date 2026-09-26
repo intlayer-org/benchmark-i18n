@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-i18n-static",
   "locale": "fr",
-  "timestamp": "2026-09-26T19:22:23.366Z",
+  "timestamp": "2026-09-26T22:30:18.429Z",
   "fingerprintCounts": {
     "locale": {
       "en": 100,
@@ -911,15 +911,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-LWwyPzsR.js",
-          "size": 303,
-          "gzipSize": 237,
-          "type": "js"
-        },
-        {
           "url": "/assets/BlogHeader-DTB7JuS6.js",
           "size": 429,
           "gzipSize": 302,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-LWwyPzsR.js",
+          "size": 303,
+          "gzipSize": 237,
           "type": "js"
         },
         {
@@ -3479,27 +3479,27 @@
           "type": "js"
         },
         {
-          "url": "/assets/ProfileSection-Bwtnb5ky.js",
-          "size": 1086,
-          "gzipSize": 487,
-          "type": "js"
-        },
-        {
           "url": "/assets/ApiAccessSection-JRapbDBH.js",
           "size": 1005,
           "gzipSize": 502,
           "type": "js"
         },
         {
-          "url": "/assets/SettingsFooter-CYe0F3Q1.js",
-          "size": 604,
-          "gzipSize": 363,
-          "type": "js"
-        },
-        {
           "url": "/assets/PreferencesSection-DGWLVZ0c.js",
           "size": 2274,
           "gzipSize": 758,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProfileSection-Bwtnb5ky.js",
+          "size": 1086,
+          "gzipSize": 487,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-CYe0F3Q1.js",
+          "size": 604,
+          "gzipSize": 363,
           "type": "js"
         }
       ],

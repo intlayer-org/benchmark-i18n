@@ -1,7 +1,7 @@
 {
   "app": "vite-vue-i18n-dynamic",
   "locale": "fr",
-  "timestamp": "2026-09-26T19:24:12.879Z",
+  "timestamp": "2026-09-26T22:27:02.564Z",
   "fingerprintCounts": {
     "locale": {
       "en": 100,
@@ -412,15 +412,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/AboutGrid-PB1BfCp-.js",
-          "size": 771,
-          "gzipSize": 369,
-          "type": "js"
-        },
-        {
           "url": "/assets/WhatWeMeasure-CejNc17J.js",
           "size": 1166,
           "gzipSize": 522,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutGrid-PB1BfCp-.js",
+          "size": 771,
+          "gzipSize": 369,
           "type": "js"
         }
       ],
@@ -1090,15 +1090,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/CareersBenefits-DaB1x5FH.js",
-          "size": 758,
-          "gzipSize": 396,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-XEswR5Rg.js",
           "size": 303,
           "gzipSize": 235,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersBenefits-DaB1x5FH.js",
+          "size": 758,
+          "gzipSize": 396,
           "type": "js"
         },
         {
@@ -2107,15 +2107,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-XEswR5Rg.js",
-          "size": 303,
-          "gzipSize": 235,
-          "type": "js"
-        },
-        {
           "url": "/assets/PricingHeader-dnFh9i5x.js",
           "size": 475,
           "gzipSize": 323,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-XEswR5Rg.js",
+          "size": 303,
+          "gzipSize": 235,
           "type": "js"
         },
         {
@@ -2809,15 +2809,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/SettingsFooter-CQ8V45Nq.js",
-          "size": 604,
-          "gzipSize": 364,
-          "type": "js"
-        },
-        {
           "url": "/assets/ApiAccessSection-C-1o5Qaz.js",
           "size": 1005,
           "gzipSize": 502,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-CQ8V45Nq.js",
+          "size": 604,
+          "gzipSize": 364,
           "type": "js"
         }
       ],
