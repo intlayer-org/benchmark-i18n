@@ -1,20 +1,20 @@
 {
   "app": "tanstack-scoped-dynamic-react-i18next-app",
   "locale": "en",
-  "timestamp": "2026-09-09T01:20:03.339Z",
+  "timestamp": "2026-09-28T00:47:10.840Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 84,
-      "fr": 100
+      "en": 94,
+      "fr": 109
     },
     "page": {
       "home": 24,
-      "about": 12,
+      "about": 10,
       "blog": 13,
-      "careers": 4,
+      "careers": 11,
       "contact": 3,
-      "faq": 7,
-      "pricing": 3,
+      "faq": 10,
+      "pricing": 4,
       "products": 9,
       "settings": 5,
       "team": 10
@@ -25,12 +25,12 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 465198,
-      "totalGzipSize": 141984,
-      "jsSize": 422395,
-      "jsGzipSize": 131076,
-      "cssSize": 23727,
-      "cssGzipSize": 5026,
+      "totalSize": 495255,
+      "totalGzipSize": 150843,
+      "jsSize": 452497,
+      "jsGzipSize": 139951,
+      "cssSize": 23682,
+      "cssGzipSize": 5010,
       "htmlSize": 19076,
       "htmlGzipSize": 5882,
       "fileCount": 10,
@@ -43,57 +43,57 @@
           "type": "html"
         },
         {
-          "url": "/assets/styles-CQ3iAL3_.css",
-          "size": 23727,
-          "gzipSize": 5026,
+          "url": "/assets/styles-CPQOGQ5n.css",
+          "size": 23682,
+          "gzipSize": 5010,
           "type": "css"
         },
         {
-          "url": "/assets/route-DitkCPBM.js",
+          "url": "/assets/route-CNc_mhIu.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/_locale-CTz794H3.js",
+          "url": "/assets/_locale-jhKr8kbx.js",
           "size": 1320,
-          "gzipSize": 491,
+          "gzipSize": 489,
           "type": "js"
         },
         {
-          "url": "/assets/jsx-runtime-Cltr0gcK.js",
-          "size": 8430,
-          "gzipSize": 3212,
+          "url": "/assets/jsx-runtime-Dk72oS4N.js",
+          "size": 8774,
+          "gzipSize": 3327,
           "type": "js"
         },
         {
-          "url": "/assets/index-VWNzqkwI.js",
-          "size": 406041,
-          "gzipSize": 124995,
+          "url": "/assets/index-DM5FW1r5.js",
+          "size": 435799,
+          "gzipSize": 133755,
           "type": "js"
         },
         {
-          "url": "/assets/Hero-nGt_EMPZ.js",
+          "url": "/assets/Hero-tPyuj7Av.js",
           "size": 958,
           "gzipSize": 491,
           "type": "js"
         },
         {
-          "url": "/assets/WhyItMatters-CbfG5gZh.js",
+          "url": "/assets/WhyItMatters-DWbo6JU2.js",
           "size": 1330,
-          "gzipSize": 437,
+          "gzipSize": 438,
           "type": "js"
         },
         {
-          "url": "/assets/ResultsTable-Br_QhxrS.js",
+          "url": "/assets/UnderstandingImpact-DJUHhKDc.js",
+          "size": 2572,
+          "gzipSize": 805,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ResultsTable-Btk5MlSP.js",
           "size": 1673,
           "gzipSize": 560,
-          "type": "js"
-        },
-        {
-          "url": "/assets/UnderstandingImpact-zBkfZ3y5.js",
-          "size": 2572,
-          "gzipSize": 804,
           "type": "js"
         }
       ],
@@ -193,67 +193,67 @@
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 457560,
-      "totalGzipSize": 140167,
-      "jsSize": 418666,
-      "jsGzipSize": 130012,
-      "cssSize": 23727,
-      "cssGzipSize": 5026,
-      "htmlSize": 15167,
-      "htmlGzipSize": 5129,
+      "totalSize": 486434,
+      "totalGzipSize": 148824,
+      "jsSize": 448138,
+      "jsGzipSize": 138819,
+      "cssSize": 23682,
+      "cssGzipSize": 5010,
+      "htmlSize": 14614,
+      "htmlGzipSize": 4995,
       "fileCount": 9,
       "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/about",
-          "size": 15167,
-          "gzipSize": 5129,
+          "size": 14614,
+          "gzipSize": 4995,
           "type": "html"
         },
         {
-          "url": "/assets/styles-CQ3iAL3_.css",
-          "size": 23727,
-          "gzipSize": 5026,
+          "url": "/assets/styles-CPQOGQ5n.css",
+          "size": 23682,
+          "gzipSize": 5010,
           "type": "css"
         },
         {
-          "url": "/assets/jsx-runtime-Cltr0gcK.js",
-          "size": 8430,
-          "gzipSize": 3212,
+          "url": "/assets/jsx-runtime-Dk72oS4N.js",
+          "size": 8774,
+          "gzipSize": 3327,
           "type": "js"
         },
         {
-          "url": "/assets/route-DitkCPBM.js",
+          "url": "/assets/route-CNc_mhIu.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/about-KEdppp4O.js",
+          "url": "/assets/about-COXf4Ro4.js",
           "size": 1075,
-          "gzipSize": 455,
+          "gzipSize": 457,
           "type": "js"
         },
         {
-          "url": "/assets/index-VWNzqkwI.js",
-          "size": 406041,
-          "gzipSize": 124995,
+          "url": "/assets/index-DM5FW1r5.js",
+          "size": 435799,
+          "gzipSize": 133755,
           "type": "js"
         },
         {
-          "url": "/assets/AboutHeader-CpOis_iZ.js",
+          "url": "/assets/AboutHeader-j30rsgdQ.js",
           "size": 443,
-          "gzipSize": 301,
+          "gzipSize": 302,
           "type": "js"
         },
         {
-          "url": "/assets/AboutGrid-0vDzD9S5.js",
-          "size": 1456,
-          "gzipSize": 427,
+          "url": "/assets/AboutGrid-COEDR7Pc.js",
+          "size": 826,
+          "gzipSize": 356,
           "type": "js"
         },
         {
-          "url": "/assets/WhatWeMeasure-CaySsWGy.js",
+          "url": "/assets/WhatWeMeasure-Cko9JR2X.js",
           "size": 1150,
           "gzipSize": 536,
           "type": "js"
@@ -261,19 +261,17 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 15,
+          "count": 13,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
+            "about this benchmark",
+            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
+            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
+            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
+            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
+            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
             "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
@@ -292,17 +290,15 @@
           "found": []
         },
         "about": {
-          "count": 12,
+          "count": 10,
           "found": [
-            "we designed this benchmark to provide fair, reproducible, and meaningful comparisons of i18n libraries. here's our approach.",
-            "all benchmarks run on the same hardware (m2 macbook pro, 16 gb ram), same browser (chromium 120 via playwright), and same network conditions (simulated 4g). each test is repeated 50 times and we report the median with p95/p99 percentiles.",
-            "the benchmark app has 10 pages with realistic content — navigation, forms, dynamic lists, and static text. each page uses 15–30 translation keys to represent real-world usage patterns rather than synthetic micro-benchmarks.",
-            "measurement methodology",
-            "we use browser-native apis (performance timeline, resource timing, layout instability) combined with react profiler data. bundle sizes are measured post-gzip using source-map-explorer for accuracy.",
-            "each i18n library is integrated following its official documentation and best practices. we consult maintainers when possible to ensure optimal configuration. the same react app, same vite config, same deployment.",
-            "the additional javascript bytes sent to the client specifically due to the i18n library runtime, plus the translation files for the current locale.",
-            "how much extra time the i18n layer adds to each component render — measured using react profiler's actualduration.",
-            "during ssr, translation data is serialized into the html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
+            "about this benchmark",
+            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
+            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
+            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
+            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
+            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
             "lazy loading effectiveness",
             "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
             "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
@@ -347,69 +343,69 @@
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 456525,
-      "totalGzipSize": 139705,
-      "jsSize": 418000,
-      "jsGzipSize": 130017,
-      "cssSize": 23727,
-      "cssGzipSize": 5026,
-      "htmlSize": 14798,
-      "htmlGzipSize": 4662,
+      "totalSize": 486816,
+      "totalGzipSize": 148597,
+      "jsSize": 448178,
+      "jsGzipSize": 138898,
+      "cssSize": 23682,
+      "cssGzipSize": 5010,
+      "htmlSize": 14956,
+      "htmlGzipSize": 4689,
       "fileCount": 9,
       "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/blog",
-          "size": 14798,
-          "gzipSize": 4662,
+          "size": 14956,
+          "gzipSize": 4689,
           "type": "html"
         },
         {
-          "url": "/assets/styles-CQ3iAL3_.css",
-          "size": 23727,
-          "gzipSize": 5026,
+          "url": "/assets/styles-CPQOGQ5n.css",
+          "size": 23682,
+          "gzipSize": 5010,
           "type": "css"
         },
         {
-          "url": "/assets/route-DitkCPBM.js",
+          "url": "/assets/blog-DXzdVvRi.js",
+          "size": 862,
+          "gzipSize": 437,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-CNc_mhIu.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/blog-D6OYOb1C.js",
-          "size": 862,
-          "gzipSize": 435,
+          "url": "/assets/jsx-runtime-Dk72oS4N.js",
+          "size": 8774,
+          "gzipSize": 3327,
           "type": "js"
         },
         {
-          "url": "/assets/jsx-runtime-Cltr0gcK.js",
-          "size": 8430,
-          "gzipSize": 3212,
+          "url": "/assets/index-DM5FW1r5.js",
+          "size": 435799,
+          "gzipSize": 133755,
           "type": "js"
         },
         {
-          "url": "/assets/index-VWNzqkwI.js",
-          "size": 406041,
-          "gzipSize": 124995,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-CF7_AYUa.js",
-          "size": 305,
-          "gzipSize": 238,
-          "type": "js"
-        },
-        {
-          "url": "/assets/BlogHeader-Bm1-xAlZ.js",
+          "url": "/assets/BlogHeader-CUqjXz_F.js",
           "size": 455,
-          "gzipSize": 298,
+          "gzipSize": 297,
           "type": "js"
         },
         {
-          "url": "/assets/BlogList-fC_Ia1Eg.js",
-          "size": 1836,
-          "gzipSize": 753,
+          "url": "/assets/MockBanner-D3z5kytA.js",
+          "size": 305,
+          "gzipSize": 239,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogList-VWyyUkar.js",
+          "size": 1912,
+          "gzipSize": 757,
           "type": "js"
         }
       ],
@@ -421,14 +417,14 @@
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "insights, deep dives, and updates from the i18n benchmarking community.",
-            "i18n benchmark 2026 results",
-            "we tested 12 different internationalization libraries across 10 pages. here are the detailed results with interactive charts.",
+            "comparing i18n libraries in 2026: a deep dive",
+            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
             "how to reduce your i18n bundle by 60%",
-            "practical strategies for optimizing translation file loading, tree-shaking unused locales, and leveraging build-time compilation.",
-            "the state of internationalization in 2026",
-            "an overview of the current i18n ecosystem, comparing approaches from message catalogs to compiler-based solutions.",
+            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+            "the state of internationalization in react",
+            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
             "migrating from react-i18next to lingui",
-            "a step-by-step guide for migrating a production app with 50,000 translation keys from react-i18next to lingui.",
+            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
@@ -454,14 +450,14 @@
           "count": 13,
           "found": [
             "insights, deep dives, and updates from the i18n benchmarking community.",
-            "i18n benchmark 2026 results",
-            "we tested 12 different internationalization libraries across 10 pages. here are the detailed results with interactive charts.",
+            "comparing i18n libraries in 2026: a deep dive",
+            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
             "how to reduce your i18n bundle by 60%",
-            "practical strategies for optimizing translation file loading, tree-shaking unused locales, and leveraging build-time compilation.",
-            "the state of internationalization in 2026",
-            "an overview of the current i18n ecosystem, comparing approaches from message catalogs to compiler-based solutions.",
+            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+            "the state of internationalization in react",
+            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
             "migrating from react-i18next to lingui",
-            "a step-by-step guide for migrating a production app with 50,000 translation keys from react-i18next to lingui.",
+            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
             "server components and i18n: what changes?",
             "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
             "benchmark methodology: how we test",
@@ -503,89 +499,96 @@
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 453361,
-      "totalGzipSize": 139422,
-      "jsSize": 418631,
-      "jsGzipSize": 130289,
-      "cssSize": 23727,
-      "cssGzipSize": 5026,
-      "htmlSize": 11003,
-      "htmlGzipSize": 4107,
+      "totalSize": 489476,
+      "totalGzipSize": 149187,
+      "jsSize": 449763,
+      "jsGzipSize": 139390,
+      "cssSize": 23682,
+      "cssGzipSize": 5010,
+      "htmlSize": 16031,
+      "htmlGzipSize": 4787,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/careers",
-          "size": 11003,
-          "gzipSize": 4107,
+          "size": 16031,
+          "gzipSize": 4787,
           "type": "html"
         },
         {
-          "url": "/assets/styles-CQ3iAL3_.css",
-          "size": 23727,
-          "gzipSize": 5026,
+          "url": "/assets/styles-CPQOGQ5n.css",
+          "size": 23682,
+          "gzipSize": 5010,
           "type": "css"
         },
         {
-          "url": "/assets/route-DitkCPBM.js",
+          "url": "/assets/route-CNc_mhIu.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/careers-BemtBqwA.js",
+          "url": "/assets/careers-BV1Oa0qg.js",
           "size": 1130,
-          "gzipSize": 482,
+          "gzipSize": 481,
           "type": "js"
         },
         {
-          "url": "/assets/jsx-runtime-Cltr0gcK.js",
-          "size": 8430,
-          "gzipSize": 3212,
+          "url": "/assets/jsx-runtime-Dk72oS4N.js",
+          "size": 8774,
+          "gzipSize": 3327,
           "type": "js"
         },
         {
-          "url": "/assets/index-VWNzqkwI.js",
-          "size": 406041,
-          "gzipSize": 124995,
+          "url": "/assets/index-DM5FW1r5.js",
+          "size": 435799,
+          "gzipSize": 133755,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-CF7_AYUa.js",
+          "url": "/assets/CareersHeader-p4w2TGyH.js",
+          "size": 467,
+          "gzipSize": 302,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-D3z5kytA.js",
           "size": 305,
-          "gzipSize": 238,
+          "gzipSize": 239,
           "type": "js"
         },
         {
-          "url": "/assets/CareersHeader-D7CGZkek.js",
-          "size": 456,
-          "gzipSize": 294,
+          "url": "/assets/OpenPositions-mvpxVNBN.js",
+          "size": 2423,
+          "gzipSize": 779,
           "type": "js"
         },
         {
-          "url": "/assets/CareersBenefits-C7oPcxBU.js",
-          "size": 683,
-          "gzipSize": 377,
-          "type": "js"
-        },
-        {
-          "url": "/assets/OpenPositions-jPPnA5Pv.js",
-          "size": 1515,
-          "gzipSize": 605,
+          "url": "/assets/CareersBenefits-D2fZkzYc.js",
+          "size": 794,
+          "gzipSize": 421,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 7,
+          "count": 14,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "from anywhere in the world",
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "fr": {
@@ -608,12 +611,19 @@
           "found": []
         },
         "careers": {
-          "count": 4,
+          "count": 11,
           "found": [
-            "from anywhere in the world",
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite."
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "contact": {
@@ -647,67 +657,67 @@
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 453824,
-      "totalGzipSize": 139203,
-      "jsSize": 418825,
-      "jsGzipSize": 130026,
-      "cssSize": 23727,
-      "cssGzipSize": 5026,
-      "htmlSize": 11272,
-      "htmlGzipSize": 4151,
+      "totalSize": 483902,
+      "totalGzipSize": 148066,
+      "jsSize": 448925,
+      "jsGzipSize": 138901,
+      "cssSize": 23682,
+      "cssGzipSize": 5010,
+      "htmlSize": 11295,
+      "htmlGzipSize": 4155,
       "fileCount": 9,
       "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/contact",
-          "size": 11272,
-          "gzipSize": 4151,
+          "size": 11295,
+          "gzipSize": 4155,
           "type": "html"
         },
         {
-          "url": "/assets/styles-CQ3iAL3_.css",
-          "size": 23727,
-          "gzipSize": 5026,
+          "url": "/assets/jsx-runtime-Dk72oS4N.js",
+          "size": 8774,
+          "gzipSize": 3327,
+          "type": "js"
+        },
+        {
+          "url": "/assets/styles-CPQOGQ5n.css",
+          "size": 23682,
+          "gzipSize": 5010,
           "type": "css"
         },
         {
-          "url": "/assets/route-DitkCPBM.js",
+          "url": "/assets/route-CNc_mhIu.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/contact-Dzz3Xg1c.js",
+          "url": "/assets/contact-BqM0qqCa.js",
           "size": 932,
-          "gzipSize": 452,
+          "gzipSize": 451,
           "type": "js"
         },
         {
-          "url": "/assets/jsx-runtime-Cltr0gcK.js",
-          "size": 8430,
-          "gzipSize": 3212,
+          "url": "/assets/index-DM5FW1r5.js",
+          "size": 435799,
+          "gzipSize": 133755,
           "type": "js"
         },
         {
-          "url": "/assets/index-VWNzqkwI.js",
-          "size": 406041,
-          "gzipSize": 124995,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-CF7_AYUa.js",
-          "size": 305,
-          "gzipSize": 238,
-          "type": "js"
-        },
-        {
-          "url": "/assets/ContactHeader-BZi8UHNI.js",
-          "size": 605,
+          "url": "/assets/ContactHeader-y5YcXEId.js",
+          "size": 603,
           "gzipSize": 369,
           "type": "js"
         },
         {
-          "url": "/assets/ContactForm-BLgJhbOW.js",
+          "url": "/assets/MockBanner-D3z5kytA.js",
+          "size": 305,
+          "gzipSize": 239,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactForm-Df-4_4ku.js",
           "size": 2441,
           "gzipSize": 674,
           "type": "js"
@@ -780,86 +790,89 @@
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 453652,
-      "totalGzipSize": 139332,
-      "jsSize": 417137,
-      "jsGzipSize": 129802,
-      "cssSize": 23727,
-      "cssGzipSize": 5026,
-      "htmlSize": 12788,
-      "htmlGzipSize": 4504,
+      "totalSize": 486414,
+      "totalGzipSize": 148747,
+      "jsSize": 447517,
+      "jsGzipSize": 138791,
+      "cssSize": 23682,
+      "cssGzipSize": 5010,
+      "htmlSize": 15215,
+      "htmlGzipSize": 4946,
       "fileCount": 9,
       "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/faq",
-          "size": 12788,
-          "gzipSize": 4504,
+          "size": 15215,
+          "gzipSize": 4946,
           "type": "html"
         },
         {
-          "url": "/assets/styles-CQ3iAL3_.css",
-          "size": 23727,
-          "gzipSize": 5026,
+          "url": "/assets/styles-CPQOGQ5n.css",
+          "size": 23682,
+          "gzipSize": 5010,
           "type": "css"
         },
         {
-          "url": "/assets/route-DitkCPBM.js",
+          "url": "/assets/route-CNc_mhIu.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/faq-NxzZJPrD.js",
+          "url": "/assets/faq-CqEd9-qZ.js",
           "size": 858,
           "gzipSize": 437,
           "type": "js"
         },
         {
-          "url": "/assets/jsx-runtime-Cltr0gcK.js",
-          "size": 8430,
-          "gzipSize": 3212,
+          "url": "/assets/jsx-runtime-Dk72oS4N.js",
+          "size": 8774,
+          "gzipSize": 3327,
           "type": "js"
         },
         {
-          "url": "/assets/index-VWNzqkwI.js",
-          "size": 406041,
-          "gzipSize": 124995,
+          "url": "/assets/index-DM5FW1r5.js",
+          "size": 435799,
+          "gzipSize": 133755,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-CF7_AYUa.js",
-          "size": 305,
-          "gzipSize": 238,
-          "type": "js"
-        },
-        {
-          "url": "/assets/FAQHeader-CpJ9LL7k.js",
+          "url": "/assets/FAQHeader-BHqHWdQR.js",
           "size": 479,
           "gzipSize": 317,
           "type": "js"
         },
         {
-          "url": "/assets/FAQList-DFQzBMbl.js",
-          "size": 953,
-          "gzipSize": 517,
+          "url": "/assets/MockBanner-D3z5kytA.js",
+          "size": 305,
+          "gzipSize": 239,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQList-BLjjRBPi.js",
+          "size": 1231,
+          "gzipSize": 630,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 10,
+          "count": 13,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "what is i18n benchmark?",
+            "how are benchmarks conducted?",
+            "which libraries are currently supported?",
+            "can i submit my own benchmarks?",
+            "how often are benchmarks updated?",
+            "is the data reliable?",
+            "do you offer consulting services?",
+            "how can i contribute?"
           ]
         },
         "fr": {
@@ -890,15 +903,18 @@
           "found": []
         },
         "faq": {
-          "count": 7,
+          "count": 10,
           "found": [
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
-            "how are the benchmarks run?",
-            "what libraries are currently tested?",
-            "can i contribute a new library integration?",
-            "how often are results updated?",
-            "are the results statistically significant?"
+            "what is i18n benchmark?",
+            "how are benchmarks conducted?",
+            "which libraries are currently supported?",
+            "can i submit my own benchmarks?",
+            "how often are benchmarks updated?",
+            "is the data reliable?",
+            "do you offer consulting services?",
+            "how can i contribute?"
           ]
         },
         "pricing": {
@@ -924,80 +940,81 @@
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 456269,
-      "totalGzipSize": 139573,
-      "jsSize": 418475,
-      "jsGzipSize": 130120,
-      "cssSize": 23727,
-      "cssGzipSize": 5026,
-      "htmlSize": 14067,
-      "htmlGzipSize": 4427,
+      "totalSize": 486380,
+      "totalGzipSize": 148469,
+      "jsSize": 448589,
+      "jsGzipSize": 139001,
+      "cssSize": 23682,
+      "cssGzipSize": 5010,
+      "htmlSize": 14109,
+      "htmlGzipSize": 4458,
       "fileCount": 9,
       "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/pricing",
-          "size": 14067,
-          "gzipSize": 4427,
+          "size": 14109,
+          "gzipSize": 4458,
           "type": "html"
         },
         {
-          "url": "/assets/styles-CQ3iAL3_.css",
-          "size": 23727,
-          "gzipSize": 5026,
+          "url": "/assets/styles-CPQOGQ5n.css",
+          "size": 23682,
+          "gzipSize": 5010,
           "type": "css"
         },
         {
-          "url": "/assets/route-DitkCPBM.js",
+          "url": "/assets/jsx-runtime-Dk72oS4N.js",
+          "size": 8774,
+          "gzipSize": 3327,
+          "type": "js"
+        },
+        {
+          "url": "/assets/pricing-G5Xeg2b3.js",
+          "size": 876,
+          "gzipSize": 438,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-CNc_mhIu.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/pricing-DFcw-7pd.js",
-          "size": 876,
-          "gzipSize": 442,
+          "url": "/assets/index-DM5FW1r5.js",
+          "size": 435799,
+          "gzipSize": 133755,
           "type": "js"
         },
         {
-          "url": "/assets/jsx-runtime-Cltr0gcK.js",
-          "size": 8430,
-          "gzipSize": 3212,
+          "url": "/assets/PricingHeader-DN3Y_F0Y.js",
+          "size": 540,
+          "gzipSize": 328,
           "type": "js"
         },
         {
-          "url": "/assets/index-VWNzqkwI.js",
-          "size": 406041,
-          "gzipSize": 124995,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-CF7_AYUa.js",
+          "url": "/assets/MockBanner-D3z5kytA.js",
           "size": 305,
-          "gzipSize": 238,
+          "gzipSize": 239,
           "type": "js"
         },
         {
-          "url": "/assets/PricingHeader-BjGe3gXe.js",
-          "size": 528,
-          "gzipSize": 318,
-          "type": "js"
-        },
-        {
-          "url": "/assets/PricingTiers-BWLZwZDT.js",
+          "url": "/assets/PricingTiers-kK_6y1tZ.js",
           "size": 2224,
-          "gzipSize": 829,
+          "gzipSize": 828,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 6,
+          "count": 7,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "transparent pricing for every stage of your i18n journey.",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -1034,9 +1051,10 @@
           "found": []
         },
         "pricing": {
-          "count": 3,
+          "count": 4,
           "found": [
-            "transparent pricing for every stage of your i18n journey.",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
             "5 benchmark runs/day",
             "dedicated account manager"
           ]
@@ -1060,81 +1078,82 @@
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 455562,
-      "totalGzipSize": 139288,
-      "jsSize": 417827,
-      "jsGzipSize": 129862,
-      "cssSize": 23727,
-      "cssGzipSize": 5026,
-      "htmlSize": 14008,
-      "htmlGzipSize": 4400,
+      "totalSize": 485597,
+      "totalGzipSize": 148319,
+      "jsSize": 447918,
+      "jsGzipSize": 138827,
+      "cssSize": 23682,
+      "cssGzipSize": 5010,
+      "htmlSize": 13997,
+      "htmlGzipSize": 4482,
       "fileCount": 9,
       "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/products",
-          "size": 14008,
-          "gzipSize": 4400,
+          "size": 13997,
+          "gzipSize": 4482,
           "type": "html"
         },
         {
-          "url": "/assets/styles-CQ3iAL3_.css",
-          "size": 23727,
-          "gzipSize": 5026,
+          "url": "/assets/styles-CPQOGQ5n.css",
+          "size": 23682,
+          "gzipSize": 5010,
           "type": "css"
         },
         {
-          "url": "/assets/route-DitkCPBM.js",
+          "url": "/assets/route-CNc_mhIu.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/products-CXCHoBZt.js",
+          "url": "/assets/products-BirrnUwt.js",
           "size": 878,
-          "gzipSize": 442,
+          "gzipSize": 437,
           "type": "js"
         },
         {
-          "url": "/assets/jsx-runtime-Cltr0gcK.js",
-          "size": 8430,
-          "gzipSize": 3212,
+          "url": "/assets/jsx-runtime-Dk72oS4N.js",
+          "size": 8774,
+          "gzipSize": 3327,
           "type": "js"
         },
         {
-          "url": "/assets/index-VWNzqkwI.js",
-          "size": 406041,
-          "gzipSize": 124995,
+          "url": "/assets/index-DM5FW1r5.js",
+          "size": 435799,
+          "gzipSize": 133755,
           "type": "js"
         },
         {
-          "url": "/assets/ProductsHeader-BUgOfxuZ.js",
+          "url": "/assets/ProductsHeader-DjopnuFc.js",
           "size": 469,
-          "gzipSize": 299,
+          "gzipSize": 298,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-CF7_AYUa.js",
+          "url": "/assets/MockBanner-D3z5kytA.js",
           "size": 305,
-          "gzipSize": 238,
+          "gzipSize": 239,
           "type": "js"
         },
         {
-          "url": "/assets/ProductsGrid-C1K3v7b5.js",
-          "size": 1633,
-          "gzipSize": 590,
+          "url": "/assets/ProductsGrid-sKi8ybcd.js",
+          "size": 1622,
+          "gzipSize": 685,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 9,
+          "count": 10,
           "found": [
             "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
             "i18n benchmark — open-source project. built with react, vite & tanstack router.",
             "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
             "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
             "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
             "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
             "automated quality checks for missing translations, pluralization issues, and context errors.",
@@ -1205,12 +1224,12 @@
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 459329,
-      "totalGzipSize": 141078,
-      "jsSize": 422316,
-      "jsGzipSize": 131503,
-      "cssSize": 23727,
-      "cssGzipSize": 5026,
+      "totalSize": 489386,
+      "totalGzipSize": 149939,
+      "jsSize": 452418,
+      "jsGzipSize": 140380,
+      "cssSize": 23682,
+      "cssGzipSize": 5010,
       "htmlSize": 13286,
       "htmlGzipSize": 4549,
       "fileCount": 12,
@@ -1223,69 +1242,69 @@
           "type": "html"
         },
         {
-          "url": "/assets/styles-CQ3iAL3_.css",
-          "size": 23727,
-          "gzipSize": 5026,
+          "url": "/assets/styles-CPQOGQ5n.css",
+          "size": 23682,
+          "gzipSize": 5010,
           "type": "css"
         },
         {
-          "url": "/assets/route-DitkCPBM.js",
+          "url": "/assets/route-CNc_mhIu.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/jsx-runtime-Cltr0gcK.js",
-          "size": 8430,
-          "gzipSize": 3212,
+          "url": "/assets/jsx-runtime-Dk72oS4N.js",
+          "size": 8774,
+          "gzipSize": 3327,
           "type": "js"
         },
         {
-          "url": "/assets/settings-ByPEFTS7.js",
+          "url": "/assets/settings-DXbkjVn0.js",
           "size": 1751,
-          "gzipSize": 582,
+          "gzipSize": 580,
           "type": "js"
         },
         {
-          "url": "/assets/index-VWNzqkwI.js",
-          "size": 406041,
-          "gzipSize": 124995,
+          "url": "/assets/index-DM5FW1r5.js",
+          "size": 435799,
+          "gzipSize": 133755,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-CF7_AYUa.js",
-          "size": 305,
-          "gzipSize": 238,
-          "type": "js"
-        },
-        {
-          "url": "/assets/SettingsHeader-BXNdl4h7.js",
+          "url": "/assets/SettingsHeader-DHPUxf_w.js",
           "size": 478,
           "gzipSize": 302,
           "type": "js"
         },
         {
-          "url": "/assets/PreferencesSection-C7LOmmvf.js",
-          "size": 2330,
-          "gzipSize": 750,
+          "url": "/assets/MockBanner-D3z5kytA.js",
+          "size": 305,
+          "gzipSize": 239,
           "type": "js"
         },
         {
-          "url": "/assets/ApiAccessSection-C8YnExu6.js",
-          "size": 1099,
-          "gzipSize": 511,
-          "type": "js"
-        },
-        {
-          "url": "/assets/ProfileSection-BpcJVywL.js",
+          "url": "/assets/ProfileSection-DcMeEsw8.js",
           "size": 1189,
           "gzipSize": 479,
           "type": "js"
         },
         {
-          "url": "/assets/SettingsFooter-Cn5hdHjC.js",
+          "url": "/assets/PreferencesSection-qu3E6BCm.js",
+          "size": 2330,
+          "gzipSize": 751,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ApiAccessSection-D0Wp-6qD.js",
+          "size": 1099,
+          "gzipSize": 512,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-BSpUVPdz.js",
           "size": 622,
-          "gzipSize": 348,
+          "gzipSize": 349,
           "type": "js"
         }
       ],
@@ -1362,67 +1381,67 @@
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 455061,
-      "totalGzipSize": 139578,
-      "jsSize": 417724,
-      "jsGzipSize": 129975,
-      "cssSize": 23727,
-      "cssGzipSize": 5026,
+      "totalSize": 485118,
+      "totalGzipSize": 148440,
+      "jsSize": 447826,
+      "jsGzipSize": 138852,
+      "cssSize": 23682,
+      "cssGzipSize": 5010,
       "htmlSize": 13610,
-      "htmlGzipSize": 4577,
+      "htmlGzipSize": 4578,
       "fileCount": 9,
       "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/en/team",
           "size": 13610,
-          "gzipSize": 4577,
+          "gzipSize": 4578,
           "type": "html"
         },
         {
-          "url": "/assets/styles-CQ3iAL3_.css",
-          "size": 23727,
-          "gzipSize": 5026,
+          "url": "/assets/styles-CPQOGQ5n.css",
+          "size": 23682,
+          "gzipSize": 5010,
           "type": "css"
         },
         {
-          "url": "/assets/route-DitkCPBM.js",
+          "url": "/assets/route-CNc_mhIu.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/team-DjE5WJRI.js",
+          "url": "/assets/team-DhVLQMe2.js",
           "size": 862,
-          "gzipSize": 436,
+          "gzipSize": 437,
           "type": "js"
         },
         {
-          "url": "/assets/jsx-runtime-Cltr0gcK.js",
-          "size": 8430,
-          "gzipSize": 3212,
+          "url": "/assets/jsx-runtime-Dk72oS4N.js",
+          "size": 8774,
+          "gzipSize": 3327,
           "type": "js"
         },
         {
-          "url": "/assets/index-VWNzqkwI.js",
-          "size": 406041,
-          "gzipSize": 124995,
+          "url": "/assets/index-DM5FW1r5.js",
+          "size": 435799,
+          "gzipSize": 133755,
           "type": "js"
         },
         {
-          "url": "/assets/TeamHeader-CJziNbBu.js",
+          "url": "/assets/TeamHeader-Cf2dVIU1.js",
           "size": 461,
           "gzipSize": 303,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-CF7_AYUa.js",
+          "url": "/assets/MockBanner-D3z5kytA.js",
           "size": 305,
-          "gzipSize": 238,
+          "gzipSize": 239,
           "type": "js"
         },
         {
-          "url": "/assets/TeamGrid-B4VBvHEN.js",
+          "url": "/assets/TeamGrid-lhQefTh9.js",
           "size": 1554,
           "gzipSize": 705,
           "type": "js"

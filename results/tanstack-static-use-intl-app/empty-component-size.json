@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-06T07:17:02.033Z",
+  "timestamp": "2026-09-28T00:52:02.992Z",
   "packageName": "tanstack-static-use-intl-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 291021,
-    "totalMinifiedBytes": 271307,
-    "totalGzipBytes": 77739
+    "totalUnminifiedBytes": 67306,
+    "totalMinifiedBytes": 52818,
+    "totalGzipBytes": 13305
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 291021,
-      "unminifiedGzipBytes": 80149,
-      "minifiedBytes": 271307,
-      "minifiedGzipBytes": 77739
+      "unminifiedBytes": 67306,
+      "unminifiedGzipBytes": 15267,
+      "minifiedBytes": 52818,
+      "minifiedGzipBytes": 13305
     }
   ]
 }

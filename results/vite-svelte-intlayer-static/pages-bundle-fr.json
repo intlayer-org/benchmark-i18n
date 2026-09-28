@@ -1,7 +1,7 @@
 {
   "app": "vite-svelte-intlayer-static",
   "locale": "fr",
-  "timestamp": "2026-09-26T22:26:58.855Z",
+  "timestamp": "2026-09-28T00:54:32.425Z",
   "fingerprintCounts": {
     "locale": {
       "en": 99,
@@ -43,16 +43,16 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-tDY0cyWJ.css",
-          "size": 24720,
-          "gzipSize": 5108,
-          "type": "css"
-        },
-        {
           "url": "/assets/index-CHVoCcKI.js",
           "size": 80109,
           "gzipSize": 30713,
           "type": "js"
+        },
+        {
+          "url": "/assets/index-tDY0cyWJ.css",
+          "size": 24720,
+          "gzipSize": 5108,
+          "type": "css"
         },
         {
           "url": "/assets/useDictionary-Ox3K_QmF.js",
@@ -195,16 +195,16 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-CHVoCcKI.js",
-          "size": 80109,
-          "gzipSize": 30713,
-          "type": "js"
-        },
-        {
           "url": "/assets/index-tDY0cyWJ.css",
           "size": 24720,
           "gzipSize": 5108,
           "type": "css"
+        },
+        {
+          "url": "/assets/index-CHVoCcKI.js",
+          "size": 80109,
+          "gzipSize": 30713,
+          "type": "js"
         },
         {
           "url": "/assets/useDictionary-Ox3K_QmF.js",
@@ -410,15 +410,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-DBO6MjJ9.js",
-          "size": 2121,
-          "gzipSize": 1394,
-          "type": "js"
-        },
-        {
           "url": "/assets/Blog-Dc1kLoik.js",
           "size": 22854,
           "gzipSize": 8202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-DBO6MjJ9.js",
+          "size": 2121,
+          "gzipSize": 1394,
           "type": "js"
         }
       ],
@@ -598,16 +598,16 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-CHVoCcKI.js",
-          "size": 80109,
-          "gzipSize": 30713,
-          "type": "js"
-        },
-        {
           "url": "/assets/index-tDY0cyWJ.css",
           "size": 24720,
           "gzipSize": 5108,
           "type": "css"
+        },
+        {
+          "url": "/assets/index-CHVoCcKI.js",
+          "size": 80109,
+          "gzipSize": 30713,
+          "type": "js"
         },
         {
           "url": "/assets/useDictionary-Ox3K_QmF.js",
@@ -616,15 +616,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-DBO6MjJ9.js",
-          "size": 2121,
-          "gzipSize": 1394,
-          "type": "js"
-        },
-        {
           "url": "/assets/Careers-MHQ9MYbD.js",
           "size": 22281,
           "gzipSize": 8580,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-DBO6MjJ9.js",
+          "size": 2121,
+          "gzipSize": 1394,
           "type": "js"
         }
       ],
@@ -816,15 +816,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-DBO6MjJ9.js",
-          "size": 2121,
-          "gzipSize": 1394,
-          "type": "js"
-        },
-        {
           "url": "/assets/Contact-CQSgbsI8.js",
           "size": 8791,
           "gzipSize": 3660,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-DBO6MjJ9.js",
+          "size": 2121,
+          "gzipSize": 1394,
           "type": "js"
         }
       ],
@@ -988,15 +988,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/FAQ-DRXBALr3.js",
-          "size": 24743,
-          "gzipSize": 10996,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-DBO6MjJ9.js",
           "size": 2121,
           "gzipSize": 1394,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQ-DRXBALr3.js",
+          "size": 24743,
+          "gzipSize": 10996,
           "type": "js"
         }
       ],
@@ -1356,16 +1356,16 @@
           "type": "html"
         },
         {
-          "url": "/assets/index-tDY0cyWJ.css",
-          "size": 24720,
-          "gzipSize": 5108,
-          "type": "css"
-        },
-        {
           "url": "/assets/index-CHVoCcKI.js",
           "size": 80109,
           "gzipSize": 30713,
           "type": "js"
+        },
+        {
+          "url": "/assets/index-tDY0cyWJ.css",
+          "size": 24720,
+          "gzipSize": 5108,
+          "type": "css"
         },
         {
           "url": "/assets/useDictionary-Ox3K_QmF.js",
@@ -1569,15 +1569,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/Settings-B5nqL7J9.js",
-          "size": 16248,
-          "gzipSize": 5746,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-DBO6MjJ9.js",
           "size": 2121,
           "gzipSize": 1394,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Settings-B5nqL7J9.js",
+          "size": 16248,
+          "gzipSize": 5746,
           "type": "js"
         }
       ],

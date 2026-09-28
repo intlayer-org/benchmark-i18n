@@ -1,11 +1,11 @@
 {
   "app": "nextjs-static-intlayer-compat-next-intl-app",
   "locale": "en",
-  "timestamp": "2026-09-26T05:53:20.445Z",
+  "timestamp": "2026-09-28T00:47:09.414Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 95,
-      "fr": 112
+      "en": 96,
+      "fr": 113
     },
     "page": {
       "home": 24,
@@ -25,21 +25,21 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 901542,
-      "totalGzipSize": 244790,
-      "jsSize": 848050,
-      "jsGzipSize": 233285,
+      "totalSize": 884519,
+      "totalGzipSize": 239649,
+      "jsSize": 833728,
+      "jsGzipSize": 228339,
       "cssSize": 22806,
       "cssGzipSize": 4815,
-      "htmlSize": 30686,
-      "htmlGzipSize": 6690,
+      "htmlSize": 27985,
+      "htmlGzipSize": 6495,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en",
-          "size": 30686,
-          "gzipSize": 6690,
+          "size": 27985,
+          "gzipSize": 6495,
           "type": "html"
         },
         {
@@ -55,27 +55,21 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
-          "size": 9688,
-          "gzipSize": 3835,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/3i1daxt6ele94.js",
-          "size": 20536,
-          "gzipSize": 8033,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
           "size": 19466,
           "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/08i8s29a0m49q.js",
-          "size": 3713,
-          "gzipSize": 1469,
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/0n6y_fd4xex0w.js",
+          "size": 20536,
+          "gzipSize": 8033,
           "type": "js"
         },
         {
@@ -85,21 +79,27 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/11_tt99f4d9un.js",
-          "size": 227963,
-          "gzipSize": 71337,
+          "url": "/_next/static/chunks/2s3lynil-3ca5.js",
+          "size": 5371,
+          "gzipSize": 1789,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3oj_-otxca2-2.js",
-          "size": 365536,
-          "gzipSize": 88532,
+          "url": "/_next/static/chunks/055s4lydwm0cs.js",
+          "size": 349556,
+          "gzipSize": 83266,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 89,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -146,6 +146,7 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -193,7 +194,7 @@
           ]
         },
         "fr": {
-          "count": 106,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -245,7 +246,8 @@
             "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
             "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
             "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
@@ -304,7 +306,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.35897435897436,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -361,11 +363,12 @@
           ]
         },
         "careers": {
-          "count": 10,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -443,27 +446,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 81.3953488372093
+      "pageLeakagePercent": 81.60919540229885
     },
     {
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 893738,
-      "totalGzipSize": 243613,
-      "jsSize": 847527,
-      "jsGzipSize": 233086,
+      "totalSize": 877727,
+      "totalGzipSize": 238352,
+      "jsSize": 831546,
+      "jsGzipSize": 227819,
       "cssSize": 22806,
       "cssGzipSize": 4815,
-      "htmlSize": 23405,
-      "htmlGzipSize": 5712,
+      "htmlSize": 23375,
+      "htmlGzipSize": 5718,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/about",
-          "size": 23405,
-          "gzipSize": 5712,
+          "size": 23375,
+          "gzipSize": 5718,
           "type": "html"
         },
         {
@@ -485,21 +488,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
-          "size": 19466,
-          "gzipSize": 5163,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/3i1daxt6ele94.js",
-          "size": 20536,
-          "gzipSize": 8033,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0d5r9j53gfh_4.js",
-          "size": 3190,
-          "gzipSize": 1270,
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
           "type": "js"
         },
         {
@@ -509,21 +500,33 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/11_tt99f4d9un.js",
-          "size": 227963,
-          "gzipSize": 71337,
+          "url": "/_next/static/chunks/0n6y_fd4xex0w.js",
+          "size": 20536,
+          "gzipSize": 8033,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3oj_-otxca2-2.js",
-          "size": 365536,
-          "gzipSize": 88532,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/055s4lydwm0cs.js",
+          "size": 349556,
+          "gzipSize": 83266,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/0iqdrku_nj3sf.js",
+          "size": 3189,
+          "gzipSize": 1269,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 89,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -570,6 +573,7 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -617,7 +621,7 @@
           ]
         },
         "fr": {
-          "count": 106,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -669,7 +673,8 @@
             "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
             "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
             "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
@@ -728,7 +733,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.35897435897436,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -785,11 +790,12 @@
           ]
         },
         "careers": {
-          "count": 10,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -867,27 +873,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 88.37209302325581
+      "pageLeakagePercent": 88.50574712643679
     },
     {
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 896360,
-      "totalGzipSize": 243192,
-      "jsSize": 847086,
-      "jsGzipSize": 232877,
+      "totalSize": 876502,
+      "totalGzipSize": 238271,
+      "jsSize": 833008,
+      "jsGzipSize": 228269,
       "cssSize": 22806,
       "cssGzipSize": 4815,
-      "htmlSize": 26468,
-      "htmlGzipSize": 5500,
+      "htmlSize": 20688,
+      "htmlGzipSize": 5187,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/blog",
-          "size": 26468,
-          "gzipSize": 5500,
+          "size": 20688,
+          "gzipSize": 5187,
           "type": "html"
         },
         {
@@ -903,27 +909,21 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
-          "size": 19466,
-          "gzipSize": 5163,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
           "size": 9688,
           "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3i1daxt6ele94.js",
+          "url": "/_next/static/chunks/0n6y_fd4xex0w.js",
           "size": 20536,
           "gzipSize": 8033,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/335f_63__vnw_.js",
-          "size": 2749,
-          "gzipSize": 1061,
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
@@ -933,9 +933,15 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3oj_-otxca2-2.js",
-          "size": 365536,
-          "gzipSize": 88532,
+          "url": "/_next/static/chunks/055s4lydwm0cs.js",
+          "size": 349556,
+          "gzipSize": 83266,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/34_12_j1utnp4.js",
+          "size": 4651,
+          "gzipSize": 1719,
           "type": "js"
         },
         {
@@ -947,7 +953,7 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 89,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -994,6 +1000,7 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -1041,7 +1048,7 @@
           ]
         },
         "fr": {
-          "count": 106,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -1093,7 +1100,8 @@
             "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
             "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
             "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
@@ -1152,7 +1160,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.35897435897436,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1209,11 +1217,12 @@
           ]
         },
         "careers": {
-          "count": 10,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -1291,27 +1300,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 84.88372093023256
+      "pageLeakagePercent": 85.0574712643678
     },
     {
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 899043,
-      "totalGzipSize": 243322,
-      "jsSize": 847086,
-      "jsGzipSize": 232877,
+      "totalSize": 879342,
+      "totalGzipSize": 238635,
+      "jsSize": 834792,
+      "jsGzipSize": 228574,
       "cssSize": 22806,
       "cssGzipSize": 4815,
-      "htmlSize": 29151,
-      "htmlGzipSize": 5630,
+      "htmlSize": 21744,
+      "htmlGzipSize": 5246,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/careers",
-          "size": 29151,
-          "gzipSize": 5630,
+          "size": 21744,
+          "gzipSize": 5246,
           "type": "html"
         },
         {
@@ -1327,13 +1336,19 @@
           "type": "js"
         },
         {
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
+          "type": "js"
+        },
+        {
           "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
           "size": 9688,
           "gzipSize": 3835,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3i1daxt6ele94.js",
+          "url": "/_next/static/chunks/0n6y_fd4xex0w.js",
           "size": 20536,
           "gzipSize": 8033,
           "type": "js"
@@ -1345,15 +1360,15 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
-          "size": 19466,
-          "gzipSize": 5163,
+          "url": "/_next/static/chunks/41ptsaztr6kp-.js",
+          "size": 6435,
+          "gzipSize": 2024,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/335f_63__vnw_.js",
-          "size": 2749,
-          "gzipSize": 1061,
+          "url": "/_next/static/chunks/055s4lydwm0cs.js",
+          "size": 349556,
+          "gzipSize": 83266,
           "type": "js"
         },
         {
@@ -1361,17 +1376,11 @@
           "size": 227963,
           "gzipSize": 71337,
           "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/3oj_-otxca2-2.js",
-          "size": 365536,
-          "gzipSize": 88532,
-          "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 89,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1418,6 +1427,7 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -1465,7 +1475,7 @@
           ]
         },
         "fr": {
-          "count": 106,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -1517,7 +1527,8 @@
             "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
             "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
             "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
@@ -1576,7 +1587,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.35897435897436,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1722,21 +1733,21 @@
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 891121,
-      "totalGzipSize": 243197,
-      "jsSize": 849432,
-      "jsGzipSize": 233453,
+      "totalSize": 875110,
+      "totalGzipSize": 237935,
+      "jsSize": 833451,
+      "jsGzipSize": 228186,
       "cssSize": 22806,
       "cssGzipSize": 4815,
-      "htmlSize": 18883,
-      "htmlGzipSize": 4929,
+      "htmlSize": 18853,
+      "htmlGzipSize": 4934,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/contact",
-          "size": 18883,
-          "gzipSize": 4929,
+          "size": 18853,
+          "gzipSize": 4934,
           "type": "html"
         },
         {
@@ -1764,439 +1775,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3i1daxt6ele94.js",
+          "url": "/_next/static/chunks/0n6y_fd4xex0w.js",
           "size": 20536,
           "gzipSize": 8033,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
-          "size": 170771,
-          "gzipSize": 45667,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/3uee2g03knhwq.js",
-          "size": 5095,
-          "gzipSize": 1637,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/11_tt99f4d9un.js",
-          "size": 227963,
-          "gzipSize": 71337,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/3oj_-otxca2-2.js",
-          "size": 365536,
-          "gzipSize": 88532,
-          "type": "js"
-        }
-      ],
-      "localeLeakage": {
-        "en": {
-          "count": 89,
-          "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
-            "why these metrics matter",
-            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
-            "rendering & hydration",
-            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
-            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
-            "understanding the impact",
-            "why a single large json can hurt performance",
-            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
-            "the json must be parsed on every page load — blocking the main thread.",
-            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
-            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
-            "the trade-offs of dynamic loading",
-            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
-            "what this benchmark measures",
-            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
-            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
-            "i18n benchmark — open-source project. built with react, vite & tanstack router.",
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "comparing i18n libraries in 2026: a deep dive",
-            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
-            "how to reduce your i18n bundle by 60%",
-            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
-            "the state of internationalization in react",
-            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
-            "migrating from react-i18next to lingui",
-            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
-            "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
-            "benchmark methodology: how we test",
-            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "work from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
-            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
-            "san francisco / remote",
-            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "dedicated account manager",
-            "tools and services to streamline your internationalization workflow.",
-            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
-            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
-            "benchmark enterprise",
-            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
-            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
-            "automated quality checks for missing translations, pluralization issues, and context errors.",
-            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically.",
-            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
-            "founder & lead engineer",
-            "former google engineer with 10 years of experience building internationalization systems at scale.",
-            "performance engineer",
-            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
-            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
-            "full-stack developer",
-            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
-            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
-            "manages community contributions, partnerships, and events. background in open source governance."
-          ]
-        },
-        "fr": {
-          "count": 106,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "connecter un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arborescence. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "charger toutes les traductions à l'avance surcharge la charge utile initiale. le chargement dynamique (lazy) divise les traductions par route ou espace de noms, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade (waterfall), flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul grand json peut nuire aux performances",
-            "de nombreuses bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. cela signifie :",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "les architectures basées sur le contexte peuvent provoquer des re-rendus en cascade lorsque la locale change, car chaque consommateur est averti même si ses clés spécifiques n'ont pas changé.",
-            "pendant le rendu côté serveur, le dictionnaire complet est sérialisé dans la charge utile html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "diviser les traductions en fragments par itinéraire ou par espace de noms peut réduire considérablement la charge utile initiale. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement paresseux. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "résultats d'échantillon",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "à propos de ce benchmark",
-            "ceci est une application de test open-source — pas un produit ou une entreprise. son seul but est de fournir une application react multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques.",
-            "pourquoi ce projet existe",
-            "choisir une bibliothèque i18n est une décision d'architecture aux conséquences à long terme. la plupart des comparaisons se concentrent sur l'ergonomie de l'api, mais peu mesurent le coût en performance : quel poids la bibliothèque ajoute-t-elle au bundle ? quel est son impact sur le rendu lorsque des milliers de clés de traduction sont chargées ? le chargement asynchrone aide-t-il vraiment ou déplace-t-il simplement le coût ? ce benchmark répond à ces questions avec des données réelles.",
-            "la même application de 10 pages est construite une fois par bibliothèque. nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits lighthouse pour les métriques de chargement et utilisons le react profiler pour capturer les temps de rendu lors des changements de locale. tous les tests s'exécutent en ci sur du matériel constant pour garantir des résultats reproductibles.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "les octets javascript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers de traduction sont inclus. cela affecte directement le temps de téléchargement sur les réseaux lents.",
-            "combien de temps supplémentaire la bibliothèque ajoute au cycle de rendu de react. les bibliothèques qui injectent des traductions via un seul fournisseur de contexte peuvent provoquer des rendus inutiles dans tout l'arbre des composants.",
-            "pendant le ssr, les données de traduction sont sérialisées en html. les dictionnaires volumineux augmentent la charge utile html et ralentissent l'hydratation — le moment où la page devient interactive.",
-            "efficacité du lazy loading",
-            "si diviser les traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "aperçus, tutoriels et analyses de la communauté i18n.",
-            "comparer les bibliothèques i18n en 2026 : une analyse approfondie",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et la dx. voici les résultats surprenants.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour optimiser les bundles de traduction, y compris le lazy loading, le fractionnement du code et les optimisations au moment de la compilation.",
-            "l'état de l'internationalisation dans react",
-            "un aperçu de l'écosystème i18n actuel dans react, couvrant les tendances, les modèles émergents et les préférences de la communauté.",
-            "migrer de react-i18next vers lingui",
-            "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "méthodologie du benchmark : comment nous testons",
-            "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travailler de n'importe où dans le monde",
-            "rémunération compétitive",
-            "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
-            "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
-            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
-            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
-            "san francisco / télétravail",
-            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce que i18n benchmark ?",
-            "comment les benchmarks sont-ils menés ?",
-            "quelles bibliothèques sont actuellement supportées ?",
-            "puis-je soumettre mes propres benchmarks ?",
-            "à quelle fréquence les benchmarks sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous des services de conseil ?",
-            "comment puis-je contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez l'offre qui convient à votre équipe. pas de frais cachés.",
-            "support communautaire",
-            "toutes les bibliothèques",
-            "tout ce qui est dans pro",
-            "option sur site (on-premise)",
-            "gestionnaire de compte dédié",
-            "sessions de formation",
-            "contacter le service commercial",
-            "des outils et services pour rationaliser votre flux de travail d'internationalisation.",
-            "exécutez des benchmarks localement depuis votre terminal. supporte les configurations personnalisées et l'intégration ci.",
-            "benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
-            "benchmark entreprise",
-            "déploiement sur site avec sso, journaux d'audit, sla personnalisés et support dédié.",
-            "assistant de migration",
-            "outil alimenté par l'ia qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.",
-            "contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.",
-            "optimiseur de bundle",
-            "analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir des rapports hebdomadaires de benchmark",
-            "utiliser le schéma de couleurs sombres",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour d'excellents outils de développement.",
-            "fondatrice & ingénieure principale",
-            "ancienne ingénieure google avec 10 ans d'expérience dans la construction de systèmes d'internationalisation à grande échelle.",
-            "ingénieur performance",
-            "spécialisé dans l'optimisation des performances javascript et la méthodologie de benchmarking. précédemment chez vercel.",
-            "passionnée par l'expérience développeur et l'éducation. conférencière à react conf, jsconf et i18nnext.",
-            "développeur full-stack",
-            "entretient l'infrastructure de benchmarking et le pipeline ci/cd. contributeur open source à lingui.",
-            "assure la rigueur statistique de tous les résultats de benchmark. doctorat en statistiques appliquées du mit.",
-            "responsable de communauté",
-            "gère les contributions de la communauté, les partenariats et les événements. expérience en gouvernance open source."
-          ]
-        }
-      },
-      "localeLeakagePercent": 54.35897435897436,
-      "pageLeakage": {
-        "home": {
-          "count": 16,
-          "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
-            "why these metrics matter",
-            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
-            "rendering & hydration",
-            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
-            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
-            "understanding the impact",
-            "why a single large json can hurt performance",
-            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
-            "the json must be parsed on every page load — blocking the main thread.",
-            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
-            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
-            "the trade-offs of dynamic loading",
-            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
-            "what this benchmark measures",
-            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
-          ]
-        },
-        "about": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
-        },
-        "blog": {
-          "count": 13,
-          "found": [
-            "insights, tutorials, and analysis from the i18n community.",
-            "comparing i18n libraries in 2026: a deep dive",
-            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
-            "how to reduce your i18n bundle by 60%",
-            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
-            "the state of internationalization in react",
-            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
-            "migrating from react-i18next to lingui",
-            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
-            "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
-            "benchmark methodology: how we test",
-            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
-          ]
-        },
-        "careers": {
-          "count": 10,
-          "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "work from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
-            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
-            "san francisco / remote",
-            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
-          ]
-        },
-        "contact": {
-          "count": 1,
-          "found": [
-            "methodology question"
-          ]
-        },
-        "faq": {
-          "count": 10,
-          "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?"
-          ]
-        },
-        "pricing": {
-          "count": 3,
-          "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "dedicated account manager"
-          ]
-        },
-        "products": {
-          "count": 8,
-          "found": [
-            "tools and services to streamline your internationalization workflow.",
-            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
-            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
-            "benchmark enterprise",
-            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
-            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
-            "automated quality checks for missing translations, pluralization issues, and context errors.",
-            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
-          ]
-        },
-        "settings": {
-          "count": 5,
-          "found": [
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
-          ]
-        },
-        "team": {
-          "count": 10,
-          "found": [
-            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
-            "founder & lead engineer",
-            "former google engineer with 10 years of experience building internationalization systems at scale.",
-            "performance engineer",
-            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
-            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
-            "full-stack developer",
-            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
-            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
-            "manages community contributions, partnerships, and events. background in open source governance."
-          ]
-        }
-      },
-      "pageLeakagePercent": 98.83720930232558
-    },
-    {
-      "path": "/en/faq",
-      "page": "faq",
-      "locale": "en",
-      "totalSize": 895152,
-      "totalGzipSize": 243383,
-      "jsSize": 847086,
-      "jsGzipSize": 232877,
-      "cssSize": 22806,
-      "cssGzipSize": 4815,
-      "htmlSize": 25260,
-      "htmlGzipSize": 5691,
-      "fileCount": 10,
-      "jsFileCount": 8,
-      "bundleFiles": [
-        {
-          "url": "/en/faq",
-          "size": 25260,
-          "gzipSize": 5691,
-          "type": "html"
-        },
-        {
-          "url": "/_next/static/chunks/2ra5xi_bc41ag.css",
-          "size": 22806,
-          "gzipSize": 4815,
-          "type": "css"
-        },
-        {
-          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
-          "size": 30377,
-          "gzipSize": 9249,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
-          "size": 19466,
-          "gzipSize": 5163,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
-          "size": 9688,
-          "gzipSize": 3835,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/3i1daxt6ele94.js",
-          "size": 20536,
-          "gzipSize": 8033,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/335f_63__vnw_.js",
-          "size": 2749,
-          "gzipSize": 1061,
           "type": "js"
         },
         {
@@ -2212,433 +1793,15 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3oj_-otxca2-2.js",
-          "size": 365536,
-          "gzipSize": 88532,
-          "type": "js"
-        }
-      ],
-      "localeLeakage": {
-        "en": {
-          "count": 89,
-          "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
-            "why these metrics matter",
-            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
-            "rendering & hydration",
-            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
-            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
-            "understanding the impact",
-            "why a single large json can hurt performance",
-            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
-            "the json must be parsed on every page load — blocking the main thread.",
-            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
-            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
-            "the trade-offs of dynamic loading",
-            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
-            "what this benchmark measures",
-            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
-            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
-            "i18n benchmark — open-source project. built with react, vite & tanstack router.",
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
-            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
-            "insights, tutorials, and analysis from the i18n community.",
-            "comparing i18n libraries in 2026: a deep dive",
-            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
-            "how to reduce your i18n bundle by 60%",
-            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
-            "the state of internationalization in react",
-            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
-            "migrating from react-i18next to lingui",
-            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
-            "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
-            "benchmark methodology: how we test",
-            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "work from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
-            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
-            "san francisco / remote",
-            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
-            "methodology question",
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?",
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "dedicated account manager",
-            "tools and services to streamline your internationalization workflow.",
-            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
-            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
-            "benchmark enterprise",
-            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
-            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
-            "automated quality checks for missing translations, pluralization issues, and context errors.",
-            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically.",
-            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
-            "founder & lead engineer",
-            "former google engineer with 10 years of experience building internationalization systems at scale.",
-            "performance engineer",
-            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
-            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
-            "full-stack developer",
-            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
-            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
-            "manages community contributions, partnerships, and events. background in open source governance."
-          ]
-        },
-        "fr": {
-          "count": 106,
-          "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
-            "pourquoi ces mesures sont importantes",
-            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
-            "connecter un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arborescence. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
-            "chargement dynamique",
-            "charger toutes les traductions à l'avance surcharge la charge utile initiale. le chargement dynamique (lazy) divise les traductions par route ou espace de noms, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade (waterfall), flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
-            "pourquoi un seul grand json peut nuire aux performances",
-            "de nombreuses bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. cela signifie :",
-            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
-            "les architectures basées sur le contexte peuvent provoquer des re-rendus en cascade lorsque la locale change, car chaque consommateur est averti même si ses clés spécifiques n'ont pas changé.",
-            "pendant le rendu côté serveur, le dictionnaire complet est sérialisé dans la charge utile html, augmentant la taille du document qui doit être téléchargé et hydraté.",
-            "les compromis du chargement dynamique",
-            "diviser les traductions en fragments par itinéraire ou par espace de noms peut réduire considérablement la charge utile initiale. mais cela introduit de nouveaux défis :",
-            "ce que ce benchmark mesure",
-            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement paresseux. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
-            "résultats d'échantillon",
-            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
-            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
-            "à propos de ce benchmark",
-            "ceci est une application de test open-source — pas un produit ou une entreprise. son seul but est de fournir une application react multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques.",
-            "pourquoi ce projet existe",
-            "choisir une bibliothèque i18n est une décision d'architecture aux conséquences à long terme. la plupart des comparaisons se concentrent sur l'ergonomie de l'api, mais peu mesurent le coût en performance : quel poids la bibliothèque ajoute-t-elle au bundle ? quel est son impact sur le rendu lorsque des milliers de clés de traduction sont chargées ? le chargement asynchrone aide-t-il vraiment ou déplace-t-il simplement le coût ? ce benchmark répond à ces questions avec des données réelles.",
-            "la même application de 10 pages est construite une fois par bibliothèque. nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits lighthouse pour les métriques de chargement et utilisons le react profiler pour capturer les temps de rendu lors des changements de locale. tous les tests s'exécutent en ci sur du matériel constant pour garantir des résultats reproductibles.",
-            "ce que nous mesurons",
-            "impact sur la taille du bundle",
-            "les octets javascript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers de traduction sont inclus. cela affecte directement le temps de téléchargement sur les réseaux lents.",
-            "combien de temps supplémentaire la bibliothèque ajoute au cycle de rendu de react. les bibliothèques qui injectent des traductions via un seul fournisseur de contexte peuvent provoquer des rendus inutiles dans tout l'arbre des composants.",
-            "pendant le ssr, les données de traduction sont sérialisées en html. les dictionnaires volumineux augmentent la charge utile html et ralentissent l'hydratation — le moment où la page devient interactive.",
-            "efficacité du lazy loading",
-            "si diviser les traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
-            "vitesse de changement de langue",
-            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le rendu des composants et la mise à jour du dom.",
-            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
-            "aperçus, tutoriels et analyses de la communauté i18n.",
-            "comparer les bibliothèques i18n en 2026 : une analyse approfondie",
-            "nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et la dx. voici les résultats surprenants.",
-            "comment réduire votre bundle i18n de 60 %",
-            "stratégies pratiques pour optimiser les bundles de traduction, y compris le lazy loading, le fractionnement du code et les optimisations au moment de la compilation.",
-            "l'état de l'internationalisation dans react",
-            "un aperçu de l'écosystème i18n actuel dans react, couvrant les tendances, les modèles émergents et les préférences de la communauté.",
-            "migrer de react-i18next vers lingui",
-            "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
-            "server components et i18n : qu'est-ce qui change ?",
-            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
-            "méthodologie du benchmark : comment nous testons",
-            "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travailler de n'importe où dans le monde",
-            "rémunération compétitive",
-            "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
-            "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
-            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
-            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
-            "san francisco / télétravail",
-            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
-            "nouvelle idée de benchmark",
-            "question sur la méthodologie",
-            "tout ce que vous devez savoir sur i18n benchmark.",
-            "qu'est-ce que i18n benchmark ?",
-            "comment les benchmarks sont-ils menés ?",
-            "quelles bibliothèques sont actuellement supportées ?",
-            "puis-je soumettre mes propres benchmarks ?",
-            "à quelle fréquence les benchmarks sont-ils mis à jour ?",
-            "les données sont-elles fiables ?",
-            "proposez-vous des services de conseil ?",
-            "comment puis-je contribuer ?",
-            "une tarification simple et transparente",
-            "choisissez l'offre qui convient à votre équipe. pas de frais cachés.",
-            "support communautaire",
-            "toutes les bibliothèques",
-            "tout ce qui est dans pro",
-            "option sur site (on-premise)",
-            "gestionnaire de compte dédié",
-            "sessions de formation",
-            "contacter le service commercial",
-            "des outils et services pour rationaliser votre flux de travail d'internationalisation.",
-            "exécutez des benchmarks localement depuis votre terminal. supporte les configurations personnalisées et l'intégration ci.",
-            "benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
-            "benchmark entreprise",
-            "déploiement sur site avec sso, journaux d'audit, sla personnalisés et support dédié.",
-            "assistant de migration",
-            "outil alimenté par l'ia qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.",
-            "contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.",
-            "optimiseur de bundle",
-            "analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code.",
-            "gérez vos préférences de compte et votre configuration.",
-            "notifications par email",
-            "recevoir des rapports hebdomadaires de benchmark",
-            "utiliser le schéma de couleurs sombres",
-            "chinois simplifié (zh-cn)",
-            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
-            "enregistrer les modifications",
-            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour d'excellents outils de développement.",
-            "fondatrice & ingénieure principale",
-            "ancienne ingénieure google avec 10 ans d'expérience dans la construction de systèmes d'internationalisation à grande échelle.",
-            "ingénieur performance",
-            "spécialisé dans l'optimisation des performances javascript et la méthodologie de benchmarking. précédemment chez vercel.",
-            "passionnée par l'expérience développeur et l'éducation. conférencière à react conf, jsconf et i18nnext.",
-            "développeur full-stack",
-            "entretient l'infrastructure de benchmarking et le pipeline ci/cd. contributeur open source à lingui.",
-            "assure la rigueur statistique de tous les résultats de benchmark. doctorat en statistiques appliquées du mit.",
-            "responsable de communauté",
-            "gère les contributions de la communauté, les partenariats et les événements. expérience en gouvernance open source."
-          ]
-        }
-      },
-      "localeLeakagePercent": 54.35897435897436,
-      "pageLeakage": {
-        "home": {
-          "count": 16,
-          "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
-            "why these metrics matter",
-            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
-            "rendering & hydration",
-            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
-            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
-            "understanding the impact",
-            "why a single large json can hurt performance",
-            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
-            "the json must be parsed on every page load — blocking the main thread.",
-            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
-            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
-            "the trade-offs of dynamic loading",
-            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
-            "what this benchmark measures",
-            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
-          ]
-        },
-        "about": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
-        },
-        "blog": {
-          "count": 13,
-          "found": [
-            "insights, tutorials, and analysis from the i18n community.",
-            "comparing i18n libraries in 2026: a deep dive",
-            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
-            "how to reduce your i18n bundle by 60%",
-            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
-            "the state of internationalization in react",
-            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
-            "migrating from react-i18next to lingui",
-            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
-            "server components and i18n: what changes?",
-            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
-            "benchmark methodology: how we test",
-            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
-          ]
-        },
-        "careers": {
-          "count": 10,
-          "found": [
-            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
-            "work from anywhere in the world",
-            "top-of-market compensation",
-            "senior frontend engineer",
-            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
-            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
-            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
-            "san francisco / remote",
-            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
-          ]
-        },
-        "contact": {
-          "count": 1,
-          "found": [
-            "methodology question"
-          ]
-        },
-        "faq": {
-          "count": 10,
-          "found": [
-            "frequently asked questions",
-            "everything you need to know about i18n benchmark.",
-            "what is i18n benchmark?",
-            "how are benchmarks conducted?",
-            "which libraries are currently supported?",
-            "can i submit my own benchmarks?",
-            "how often are benchmarks updated?",
-            "is the data reliable?",
-            "do you offer consulting services?",
-            "how can i contribute?"
-          ]
-        },
-        "pricing": {
-          "count": 3,
-          "found": [
-            "simple, transparent pricing",
-            "choose the plan that fits your team. no hidden fees.",
-            "dedicated account manager"
-          ]
-        },
-        "products": {
-          "count": 8,
-          "found": [
-            "tools and services to streamline your internationalization workflow.",
-            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
-            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
-            "benchmark enterprise",
-            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
-            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
-            "automated quality checks for missing translations, pluralization issues, and context errors.",
-            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
-          ]
-        },
-        "settings": {
-          "count": 5,
-          "found": [
-            "manage your account preferences and configuration.",
-            "receive weekly benchmark reports",
-            "use dark color scheme",
-            "chinese simplified (zh-cn)",
-            "use this key to access the benchmarking api programmatically."
-          ]
-        },
-        "team": {
-          "count": 10,
-          "found": [
-            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
-            "founder & lead engineer",
-            "former google engineer with 10 years of experience building internationalization systems at scale.",
-            "performance engineer",
-            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
-            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
-            "full-stack developer",
-            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
-            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
-            "manages community contributions, partnerships, and events. background in open source governance."
-          ]
-        }
-      },
-      "pageLeakagePercent": 88.37209302325581
-    },
-    {
-      "path": "/en/pricing",
-      "page": "pricing",
-      "locale": "en",
-      "totalSize": 896687,
-      "totalGzipSize": 243098,
-      "jsSize": 847086,
-      "jsGzipSize": 232877,
-      "cssSize": 22806,
-      "cssGzipSize": 4815,
-      "htmlSize": 26795,
-      "htmlGzipSize": 5406,
-      "fileCount": 10,
-      "jsFileCount": 8,
-      "bundleFiles": [
-        {
-          "url": "/en/pricing",
-          "size": 26795,
-          "gzipSize": 5406,
-          "type": "html"
-        },
-        {
-          "url": "/_next/static/chunks/2ra5xi_bc41ag.css",
-          "size": 22806,
-          "gzipSize": 4815,
-          "type": "css"
-        },
-        {
-          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
-          "size": 30377,
-          "gzipSize": 9249,
+          "url": "/_next/static/chunks/265q_w88afzx8.js",
+          "size": 5094,
+          "gzipSize": 1636,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
-          "size": 9688,
-          "gzipSize": 3835,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
-          "size": 19466,
-          "gzipSize": 5163,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/3i1daxt6ele94.js",
-          "size": 20536,
-          "gzipSize": 8033,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/335f_63__vnw_.js",
-          "size": 2749,
-          "gzipSize": 1061,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
-          "size": 170771,
-          "gzipSize": 45667,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/11_tt99f4d9un.js",
-          "size": 227963,
-          "gzipSize": 71337,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/3oj_-otxca2-2.js",
-          "size": 365536,
-          "gzipSize": 88532,
+          "url": "/_next/static/chunks/055s4lydwm0cs.js",
+          "size": 349556,
+          "gzipSize": 83266,
           "type": "js"
         }
       ],
@@ -2691,6 +1854,7 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -2711,7 +1875,6 @@
             "how can i contribute?",
             "simple, transparent pricing",
             "choose the plan that fits your team. no hidden fees.",
-            "5 benchmark runs/day",
             "dedicated account manager",
             "tools and services to streamline your internationalization workflow.",
             "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
@@ -2739,7 +1902,7 @@
           ]
         },
         "fr": {
-          "count": 106,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -2791,7 +1954,8 @@
             "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
             "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
             "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
@@ -2850,7 +2014,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.08163265306123,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2907,11 +2071,867 @@
           ]
         },
         "careers": {
-          "count": 10,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+          ]
+        },
+        "contact": {
+          "count": 1,
+          "found": [
+            "methodology question"
+          ]
+        },
+        "faq": {
+          "count": 10,
+          "found": [
+            "frequently asked questions",
+            "everything you need to know about i18n benchmark.",
+            "what is i18n benchmark?",
+            "how are benchmarks conducted?",
+            "which libraries are currently supported?",
+            "can i submit my own benchmarks?",
+            "how often are benchmarks updated?",
+            "is the data reliable?",
+            "do you offer consulting services?",
+            "how can i contribute?"
+          ]
+        },
+        "pricing": {
+          "count": 3,
+          "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
+            "dedicated account manager"
+          ]
+        },
+        "products": {
+          "count": 8,
+          "found": [
+            "tools and services to streamline your internationalization workflow.",
+            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
+            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
+            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
+            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+            "automated quality checks for missing translations, pluralization issues, and context errors.",
+            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+          ]
+        },
+        "settings": {
+          "count": 5,
+          "found": [
+            "manage your account preferences and configuration.",
+            "receive weekly benchmark reports",
+            "use dark color scheme",
+            "chinese simplified (zh-cn)",
+            "use this key to access the benchmarking api programmatically."
+          ]
+        },
+        "team": {
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
+        }
+      },
+      "pageLeakagePercent": 98.85057471264368
+    },
+    {
+      "path": "/en/faq",
+      "page": "faq",
+      "locale": "en",
+      "totalSize": 879172,
+      "totalGzipSize": 238118,
+      "jsSize": 831106,
+      "jsGzipSize": 227611,
+      "cssSize": 22806,
+      "cssGzipSize": 4815,
+      "htmlSize": 25260,
+      "htmlGzipSize": 5692,
+      "fileCount": 10,
+      "jsFileCount": 8,
+      "bundleFiles": [
+        {
+          "url": "/en/faq",
+          "size": 25260,
+          "gzipSize": 5692,
+          "type": "html"
+        },
+        {
+          "url": "/_next/static/chunks/2ra5xi_bc41ag.css",
+          "size": 22806,
+          "gzipSize": 4815,
+          "type": "css"
+        },
+        {
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/0n6y_fd4xex0w.js",
+          "size": 20536,
+          "gzipSize": 8033,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/335f_63__vnw_.js",
+          "size": 2749,
+          "gzipSize": 1061,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/055s4lydwm0cs.js",
+          "size": 349556,
+          "gzipSize": 83266,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 90,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with react, vite & tanstack router.",
+            "about this benchmark",
+            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
+            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
+            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
+            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
+            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
+            "lazy loading effectiveness",
+            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "insights, tutorials, and analysis from the i18n community.",
+            "comparing i18n libraries in 2026: a deep dive",
+            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
+            "how to reduce your i18n bundle by 60%",
+            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+            "the state of internationalization in react",
+            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
+            "migrating from react-i18next to lingui",
+            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
+            "server components and i18n: what changes?",
+            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
+            "benchmark methodology: how we test",
+            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
+            "top-of-market compensation",
+            "20% time for oss contributions",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
+            "methodology question",
+            "frequently asked questions",
+            "everything you need to know about i18n benchmark.",
+            "what is i18n benchmark?",
+            "how are benchmarks conducted?",
+            "which libraries are currently supported?",
+            "can i submit my own benchmarks?",
+            "how often are benchmarks updated?",
+            "is the data reliable?",
+            "do you offer consulting services?",
+            "how can i contribute?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
+            "dedicated account manager",
+            "tools and services to streamline your internationalization workflow.",
+            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
+            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
+            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
+            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+            "automated quality checks for missing translations, pluralization issues, and context errors.",
+            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
+            "manage your account preferences and configuration.",
+            "receive weekly benchmark reports",
+            "use dark color scheme",
+            "chinese simplified (zh-cn)",
+            "use this key to access the benchmarking api programmatically.",
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
+        },
+        "fr": {
+          "count": 107,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces mesures sont importantes",
+            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
+            "connecter un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arborescence. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions à l'avance surcharge la charge utile initiale. le chargement dynamique (lazy) divise les traductions par route ou espace de noms, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade (waterfall), flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
+            "pourquoi un seul grand json peut nuire aux performances",
+            "de nombreuses bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
+            "les architectures basées sur le contexte peuvent provoquer des re-rendus en cascade lorsque la locale change, car chaque consommateur est averti même si ses clés spécifiques n'ont pas changé.",
+            "pendant le rendu côté serveur, le dictionnaire complet est sérialisé dans la charge utile html, augmentant la taille du document qui doit être téléchargé et hydraté.",
+            "les compromis du chargement dynamique",
+            "diviser les traductions en fragments par itinéraire ou par espace de noms peut réduire considérablement la charge utile initiale. mais cela introduit de nouveaux défis :",
+            "ce que ce benchmark mesure",
+            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement paresseux. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
+            "résultats d'échantillon",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
+            "à propos de ce benchmark",
+            "ceci est une application de test open-source — pas un produit ou une entreprise. son seul but est de fournir une application react multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques.",
+            "pourquoi ce projet existe",
+            "choisir une bibliothèque i18n est une décision d'architecture aux conséquences à long terme. la plupart des comparaisons se concentrent sur l'ergonomie de l'api, mais peu mesurent le coût en performance : quel poids la bibliothèque ajoute-t-elle au bundle ? quel est son impact sur le rendu lorsque des milliers de clés de traduction sont chargées ? le chargement asynchrone aide-t-il vraiment ou déplace-t-il simplement le coût ? ce benchmark répond à ces questions avec des données réelles.",
+            "la même application de 10 pages est construite une fois par bibliothèque. nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits lighthouse pour les métriques de chargement et utilisons le react profiler pour capturer les temps de rendu lors des changements de locale. tous les tests s'exécutent en ci sur du matériel constant pour garantir des résultats reproductibles.",
+            "ce que nous mesurons",
+            "impact sur la taille du bundle",
+            "les octets javascript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers de traduction sont inclus. cela affecte directement le temps de téléchargement sur les réseaux lents.",
+            "combien de temps supplémentaire la bibliothèque ajoute au cycle de rendu de react. les bibliothèques qui injectent des traductions via un seul fournisseur de contexte peuvent provoquer des rendus inutiles dans tout l'arbre des composants.",
+            "pendant le ssr, les données de traduction sont sérialisées en html. les dictionnaires volumineux augmentent la charge utile html et ralentissent l'hydratation — le moment où la page devient interactive.",
+            "efficacité du lazy loading",
+            "si diviser les traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
+            "vitesse de changement de langue",
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le rendu des composants et la mise à jour du dom.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
+            "aperçus, tutoriels et analyses de la communauté i18n.",
+            "comparer les bibliothèques i18n en 2026 : une analyse approfondie",
+            "nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et la dx. voici les résultats surprenants.",
+            "comment réduire votre bundle i18n de 60 %",
+            "stratégies pratiques pour optimiser les bundles de traduction, y compris le lazy loading, le fractionnement du code et les optimisations au moment de la compilation.",
+            "l'état de l'internationalisation dans react",
+            "un aperçu de l'écosystème i18n actuel dans react, couvrant les tendances, les modèles émergents et les préférences de la communauté.",
+            "migrer de react-i18next vers lingui",
+            "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
+            "server components et i18n : qu'est-ce qui change ?",
+            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
+            "méthodologie du benchmark : comment nous testons",
+            "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
+            "rémunération compétitive",
+            "rémunération au-dessus du marché",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
+            "ingénieur frontend senior",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
+            "nouvelle idée de benchmark",
+            "question sur la méthodologie",
+            "tout ce que vous devez savoir sur i18n benchmark.",
+            "qu'est-ce que i18n benchmark ?",
+            "comment les benchmarks sont-ils menés ?",
+            "quelles bibliothèques sont actuellement supportées ?",
+            "puis-je soumettre mes propres benchmarks ?",
+            "à quelle fréquence les benchmarks sont-ils mis à jour ?",
+            "les données sont-elles fiables ?",
+            "proposez-vous des services de conseil ?",
+            "comment puis-je contribuer ?",
+            "une tarification simple et transparente",
+            "choisissez l'offre qui convient à votre équipe. pas de frais cachés.",
+            "support communautaire",
+            "toutes les bibliothèques",
+            "tout ce qui est dans pro",
+            "option sur site (on-premise)",
+            "gestionnaire de compte dédié",
+            "sessions de formation",
+            "contacter le service commercial",
+            "des outils et services pour rationaliser votre flux de travail d'internationalisation.",
+            "exécutez des benchmarks localement depuis votre terminal. supporte les configurations personnalisées et l'intégration ci.",
+            "benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
+            "benchmark entreprise",
+            "déploiement sur site avec sso, journaux d'audit, sla personnalisés et support dédié.",
+            "assistant de migration",
+            "outil alimenté par l'ia qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.",
+            "contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.",
+            "optimiseur de bundle",
+            "analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code.",
+            "gérez vos préférences de compte et votre configuration.",
+            "notifications par email",
+            "recevoir des rapports hebdomadaires de benchmark",
+            "utiliser le schéma de couleurs sombres",
+            "chinois simplifié (zh-cn)",
+            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
+            "enregistrer les modifications",
+            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour d'excellents outils de développement.",
+            "fondatrice & ingénieure principale",
+            "ancienne ingénieure google avec 10 ans d'expérience dans la construction de systèmes d'internationalisation à grande échelle.",
+            "ingénieur performance",
+            "spécialisé dans l'optimisation des performances javascript et la méthodologie de benchmarking. précédemment chez vercel.",
+            "passionnée par l'expérience développeur et l'éducation. conférencière à react conf, jsconf et i18nnext.",
+            "développeur full-stack",
+            "entretient l'infrastructure de benchmarking et le pipeline ci/cd. contributeur open source à lingui.",
+            "assure la rigueur statistique de tous les résultats de benchmark. doctorat en statistiques appliquées du mit.",
+            "responsable de communauté",
+            "gère les contributions de la communauté, les partenariats et les événements. expérience en gouvernance open source."
+          ]
+        }
+      },
+      "localeLeakagePercent": 54.314720812182735,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 10,
+          "found": [
+            "about this benchmark",
+            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
+            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
+            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
+            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
+            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
+            "lazy loading effectiveness",
+            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+          ]
+        },
+        "blog": {
+          "count": 13,
+          "found": [
+            "insights, tutorials, and analysis from the i18n community.",
+            "comparing i18n libraries in 2026: a deep dive",
+            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
+            "how to reduce your i18n bundle by 60%",
+            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+            "the state of internationalization in react",
+            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
+            "migrating from react-i18next to lingui",
+            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
+            "server components and i18n: what changes?",
+            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
+            "benchmark methodology: how we test",
+            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+          ]
+        },
+        "careers": {
+          "count": 11,
+          "found": [
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
+            "top-of-market compensation",
+            "20% time for oss contributions",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+          ]
+        },
+        "contact": {
+          "count": 1,
+          "found": [
+            "methodology question"
+          ]
+        },
+        "faq": {
+          "count": 10,
+          "found": [
+            "frequently asked questions",
+            "everything you need to know about i18n benchmark.",
+            "what is i18n benchmark?",
+            "how are benchmarks conducted?",
+            "which libraries are currently supported?",
+            "can i submit my own benchmarks?",
+            "how often are benchmarks updated?",
+            "is the data reliable?",
+            "do you offer consulting services?",
+            "how can i contribute?"
+          ]
+        },
+        "pricing": {
+          "count": 3,
+          "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
+            "dedicated account manager"
+          ]
+        },
+        "products": {
+          "count": 8,
+          "found": [
+            "tools and services to streamline your internationalization workflow.",
+            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
+            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
+            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
+            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+            "automated quality checks for missing translations, pluralization issues, and context errors.",
+            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+          ]
+        },
+        "settings": {
+          "count": 5,
+          "found": [
+            "manage your account preferences and configuration.",
+            "receive weekly benchmark reports",
+            "use dark color scheme",
+            "chinese simplified (zh-cn)",
+            "use this key to access the benchmarking api programmatically."
+          ]
+        },
+        "team": {
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
+        }
+      },
+      "pageLeakagePercent": 88.50574712643679
+    },
+    {
+      "path": "/en/pricing",
+      "page": "pricing",
+      "locale": "en",
+      "totalSize": 880793,
+      "totalGzipSize": 237828,
+      "jsSize": 831106,
+      "jsGzipSize": 227611,
+      "cssSize": 22806,
+      "cssGzipSize": 4815,
+      "htmlSize": 26881,
+      "htmlGzipSize": 5402,
+      "fileCount": 10,
+      "jsFileCount": 8,
+      "bundleFiles": [
+        {
+          "url": "/en/pricing",
+          "size": 26881,
+          "gzipSize": 5402,
+          "type": "html"
+        },
+        {
+          "url": "/_next/static/chunks/2ra5xi_bc41ag.css",
+          "size": 22806,
+          "gzipSize": 4815,
+          "type": "css"
+        },
+        {
+          "url": "/_next/static/chunks/1ipp8g_xypmvy.js",
+          "size": 30377,
+          "gzipSize": 9249,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
+          "size": 19466,
+          "gzipSize": 5163,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/0n6y_fd4xex0w.js",
+          "size": 20536,
+          "gzipSize": 8033,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/335f_63__vnw_.js",
+          "size": 2749,
+          "gzipSize": 1061,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/11_tt99f4d9un.js",
+          "size": 227963,
+          "gzipSize": 71337,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/055s4lydwm0cs.js",
+          "size": 349556,
+          "gzipSize": 83266,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 91,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with react, vite & tanstack router.",
+            "about this benchmark",
+            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
+            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
+            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
+            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
+            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
+            "lazy loading effectiveness",
+            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "insights, tutorials, and analysis from the i18n community.",
+            "comparing i18n libraries in 2026: a deep dive",
+            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
+            "how to reduce your i18n bundle by 60%",
+            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+            "the state of internationalization in react",
+            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
+            "migrating from react-i18next to lingui",
+            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
+            "server components and i18n: what changes?",
+            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
+            "benchmark methodology: how we test",
+            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility.",
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
+            "top-of-market compensation",
+            "20% time for oss contributions",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
+            "methodology question",
+            "frequently asked questions",
+            "everything you need to know about i18n benchmark.",
+            "what is i18n benchmark?",
+            "how are benchmarks conducted?",
+            "which libraries are currently supported?",
+            "can i submit my own benchmarks?",
+            "how often are benchmarks updated?",
+            "is the data reliable?",
+            "do you offer consulting services?",
+            "how can i contribute?",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
+            "5 benchmark runs/day",
+            "dedicated account manager",
+            "tools and services to streamline your internationalization workflow.",
+            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
+            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
+            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
+            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+            "automated quality checks for missing translations, pluralization issues, and context errors.",
+            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting.",
+            "manage your account preferences and configuration.",
+            "receive weekly benchmark reports",
+            "use dark color scheme",
+            "chinese simplified (zh-cn)",
+            "use this key to access the benchmarking api programmatically.",
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
+        },
+        "fr": {
+          "count": 107,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces mesures sont importantes",
+            "le bundle représente les données envoyées à chaque utilisateur dans le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur des connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
+            "connecter un dictionnaire json volumineux à chaque composant crée une dépendance cachée : tout changement dans le contexte de traduction peut déclencher des re-rendus sur l'ensemble de l'arborescence. pendant l'hydratation ssr, l'analyse et l'attachement d'objets de traduction massifs ajoutent de la latence avant que la page ne devienne interactive — impactant directement le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions à l'avance surcharge la charge utile initiale. le chargement dynamique (lazy) divise les traductions par route ou espace de noms, n'envoyant que ce dont la page actuelle a besoin. cependant, le lazy loading introduit ses propres compromis : requêtes en cascade (waterfall), flash de contenu non traduit et complexité de mise en cache. mesurer les deux stratégies est essentiel.",
+            "pourquoi un seul grand json peut nuire aux performances",
+            "de nombreuses bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsque cet objet est volumineux (des milliers de clés), chaque composant qui consomme des traductions détient une référence à l'ensemble du dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — bloquant le thread principal.",
+            "les architectures basées sur le contexte peuvent provoquer des re-rendus en cascade lorsque la locale change, car chaque consommateur est averti même si ses clés spécifiques n'ont pas changé.",
+            "pendant le rendu côté serveur, le dictionnaire complet est sérialisé dans la charge utile html, augmentant la taille du document qui doit être téléchargé et hydraté.",
+            "les compromis du chargement dynamique",
+            "diviser les traductions en fragments par itinéraire ou par espace de noms peut réduire considérablement la charge utile initiale. mais cela introduit de nouveaux défis :",
+            "ce que ce benchmark mesure",
+            "cette application de test fournit un environnement contrôlé — 10 pages avec un contenu réaliste — pour comparer les bibliothèques i18n selon trois axes : le poids qu'elles ajoutent à votre bundle javascript, le temps passé à analyser et à rendre le contenu traduit, et l'efficacité de leurs stratégies de fractionnement de code et de chargement paresseux. chaque bibliothèque est intégrée dans la même application afin que les résultats soient directement comparables.",
+            "résultats d'échantillon",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "i18n benchmark — projet open source. construit avec react, vite & tanstack router.",
+            "à propos de ce benchmark",
+            "ceci est une application de test open-source — pas un produit ou une entreprise. son seul but est de fournir une application react multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans des conditions identiques.",
+            "pourquoi ce projet existe",
+            "choisir une bibliothèque i18n est une décision d'architecture aux conséquences à long terme. la plupart des comparaisons se concentrent sur l'ergonomie de l'api, mais peu mesurent le coût en performance : quel poids la bibliothèque ajoute-t-elle au bundle ? quel est son impact sur le rendu lorsque des milliers de clés de traduction sont chargées ? le chargement asynchrone aide-t-il vraiment ou déplace-t-il simplement le coût ? ce benchmark répond à ces questions avec des données réelles.",
+            "la même application de 10 pages est construite une fois par bibliothèque. nous mesurons le bundle de production (via rollup-plugin-visualizer), effectuons des audits lighthouse pour les métriques de chargement et utilisons le react profiler pour capturer les temps de rendu lors des changements de locale. tous les tests s'exécutent en ci sur du matériel constant pour garantir des résultats reproductibles.",
+            "ce que nous mesurons",
+            "impact sur la taille du bundle",
+            "les octets javascript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers de traduction sont inclus. cela affecte directement le temps de téléchargement sur les réseaux lents.",
+            "combien de temps supplémentaire la bibliothèque ajoute au cycle de rendu de react. les bibliothèques qui injectent des traductions via un seul fournisseur de contexte peuvent provoquer des rendus inutiles dans tout l'arbre des composants.",
+            "pendant le ssr, les données de traduction sont sérialisées en html. les dictionnaires volumineux augmentent la charge utile html et ralentissent l'hydratation — le moment où la page devient interactive.",
+            "efficacité du lazy loading",
+            "si diviser les traductions par route ou par espace de noms réduit réellement la charge initiale, et quels compromis cela introduit (requêtes en cascade, fouc, complexité du cache).",
+            "vitesse de changement de langue",
+            "à quelle vitesse l'application peut passer d'une langue à une autre au moment de l'exécution — y compris la récupération de nouvelles traductions, le rendu des composants et la mise à jour du dom.",
+            "⚠️ cette page contient des données factices à des fins de benchmarking uniquement. elle n'est liée à aucune entreprise ou service réel.",
+            "aperçus, tutoriels et analyses de la communauté i18n.",
+            "comparer les bibliothèques i18n en 2026 : une analyse approfondie",
+            "nous avons testé 12 bibliothèques d'internationalisation différentes sur la performance, la taille du bundle et la dx. voici les résultats surprenants.",
+            "comment réduire votre bundle i18n de 60 %",
+            "stratégies pratiques pour optimiser les bundles de traduction, y compris le lazy loading, le fractionnement du code et les optimisations au moment de la compilation.",
+            "l'état de l'internationalisation dans react",
+            "un aperçu de l'écosystème i18n actuel dans react, couvrant les tendances, les modèles émergents et les préférences de la communauté.",
+            "migrer de react-i18next vers lingui",
+            "un guide étape par étape sur la migration d'une application de production avec 50 000 clés de traduction de react-i18next vers lingui.",
+            "server components et i18n : qu'est-ce qui change ?",
+            "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
+            "méthodologie du benchmark : comment nous testons",
+            "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
+            "rémunération compétitive",
+            "rémunération au-dessus du marché",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
+            "ingénieur frontend senior",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
+            "nouvelle idée de benchmark",
+            "question sur la méthodologie",
+            "tout ce que vous devez savoir sur i18n benchmark.",
+            "qu'est-ce que i18n benchmark ?",
+            "comment les benchmarks sont-ils menés ?",
+            "quelles bibliothèques sont actuellement supportées ?",
+            "puis-je soumettre mes propres benchmarks ?",
+            "à quelle fréquence les benchmarks sont-ils mis à jour ?",
+            "les données sont-elles fiables ?",
+            "proposez-vous des services de conseil ?",
+            "comment puis-je contribuer ?",
+            "une tarification simple et transparente",
+            "choisissez l'offre qui convient à votre équipe. pas de frais cachés.",
+            "support communautaire",
+            "toutes les bibliothèques",
+            "tout ce qui est dans pro",
+            "option sur site (on-premise)",
+            "gestionnaire de compte dédié",
+            "sessions de formation",
+            "contacter le service commercial",
+            "des outils et services pour rationaliser votre flux de travail d'internationalisation.",
+            "exécutez des benchmarks localement depuis votre terminal. supporte les configurations personnalisées et l'intégration ci.",
+            "benchmarking automatisé basé sur le cloud avec suivi historique, alertes et tableaux de bord d'équipe.",
+            "benchmark entreprise",
+            "déploiement sur site avec sso, journaux d'audit, sla personnalisés et support dédié.",
+            "assistant de migration",
+            "outil alimenté par l'ia qui aide à migrer votre base de code entre les bibliothèques i18n sans temps d'arrêt.",
+            "contrôles de qualité automatisés pour les traductions manquantes, les problèmes de pluralisation et les erreurs de contexte.",
+            "optimiseur de bundle",
+            "analyse et optimise votre bundle i18n pour la production avec élimination des codes morts (tree-shaking) et fractionnement du code.",
+            "gérez vos préférences de compte et votre configuration.",
+            "notifications par email",
+            "recevoir des rapports hebdomadaires de benchmark",
+            "utiliser le schéma de couleurs sombres",
+            "chinois simplifié (zh-cn)",
+            "utilisez cette clé pour accéder à l'api de benchmarking par programmation.",
+            "enregistrer les modifications",
+            "rencontrez les personnes derrière i18n benchmark. une équipe diversifiée unie par une passion commune pour d'excellents outils de développement.",
+            "fondatrice & ingénieure principale",
+            "ancienne ingénieure google avec 10 ans d'expérience dans la construction de systèmes d'internationalisation à grande échelle.",
+            "ingénieur performance",
+            "spécialisé dans l'optimisation des performances javascript et la méthodologie de benchmarking. précédemment chez vercel.",
+            "passionnée par l'expérience développeur et l'éducation. conférencière à react conf, jsconf et i18nnext.",
+            "développeur full-stack",
+            "entretient l'infrastructure de benchmarking et le pipeline ci/cd. contributeur open source à lingui.",
+            "assure la rigueur statistique de tous les résultats de benchmark. doctorat en statistiques appliquées du mit.",
+            "responsable de communauté",
+            "gère les contributions de la communauté, les partenariats et les événements. expérience en gouvernance open source."
+          ]
+        }
+      },
+      "localeLeakagePercent": 54.04040404040404,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 10,
+          "found": [
+            "about this benchmark",
+            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
+            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
+            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
+            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
+            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
+            "lazy loading effectiveness",
+            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+          ]
+        },
+        "blog": {
+          "count": 13,
+          "found": [
+            "insights, tutorials, and analysis from the i18n community.",
+            "comparing i18n libraries in 2026: a deep dive",
+            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
+            "how to reduce your i18n bundle by 60%",
+            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+            "the state of internationalization in react",
+            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
+            "migrating from react-i18next to lingui",
+            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
+            "server components and i18n: what changes?",
+            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
+            "benchmark methodology: how we test",
+            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+          ]
+        },
+        "careers": {
+          "count": 11,
+          "found": [
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
+            "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -2990,27 +3010,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 95.40229885057471
+      "pageLeakagePercent": 95.45454545454545
     },
     {
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 895444,
-      "totalGzipSize": 242949,
-      "jsSize": 847086,
-      "jsGzipSize": 232877,
+      "totalSize": 879464,
+      "totalGzipSize": 237682,
+      "jsSize": 831106,
+      "jsGzipSize": 227611,
       "cssSize": 22806,
       "cssGzipSize": 4815,
       "htmlSize": 25552,
-      "htmlGzipSize": 5257,
+      "htmlGzipSize": 5256,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/products",
           "size": 25552,
-          "gzipSize": 5257,
+          "gzipSize": 5256,
           "type": "html"
         },
         {
@@ -3026,21 +3046,15 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
-          "size": 9688,
-          "gzipSize": 3835,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/3i1daxt6ele94.js",
-          "size": 20536,
-          "gzipSize": 8033,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
           "size": 170771,
           "gzipSize": 45667,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
@@ -3056,21 +3070,27 @@
           "type": "js"
         },
         {
+          "url": "/_next/static/chunks/0n6y_fd4xex0w.js",
+          "size": 20536,
+          "gzipSize": 8033,
+          "type": "js"
+        },
+        {
           "url": "/_next/static/chunks/11_tt99f4d9un.js",
           "size": 227963,
           "gzipSize": 71337,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3oj_-otxca2-2.js",
-          "size": 365536,
-          "gzipSize": 88532,
+          "url": "/_next/static/chunks/055s4lydwm0cs.js",
+          "size": 349556,
+          "gzipSize": 83266,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 89,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3117,6 +3137,7 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -3164,7 +3185,7 @@
           ]
         },
         "fr": {
-          "count": 106,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -3216,7 +3237,8 @@
             "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
             "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
             "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
@@ -3275,7 +3297,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.35897435897436,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3332,11 +3354,12 @@
           ]
         },
         "careers": {
-          "count": 10,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -3414,16 +3437,16 @@
           ]
         }
       },
-      "pageLeakagePercent": 90.69767441860465
+      "pageLeakagePercent": 90.80459770114942
     },
     {
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 896164,
-      "totalGzipSize": 243968,
-      "jsSize": 851908,
-      "jsGzipSize": 233783,
+      "totalSize": 880244,
+      "totalGzipSize": 238694,
+      "jsSize": 835988,
+      "jsGzipSize": 228509,
       "cssSize": 22806,
       "cssGzipSize": 4815,
       "htmlSize": 21450,
@@ -3456,27 +3479,33 @@
           "type": "js"
         },
         {
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
+          "type": "js"
+        },
+        {
           "url": "/_next/static/chunks/0fxrz0_jvu2d8.js",
           "size": 19466,
           "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3i1daxt6ele94.js",
+          "url": "/_next/static/chunks/0n6y_fd4xex0w.js",
           "size": 20536,
           "gzipSize": 8033,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/1g887a89juwdu.js",
-          "size": 7571,
-          "gzipSize": 1967,
+          "url": "/_next/static/chunks/2y0bew6djil7f.js",
+          "size": 7631,
+          "gzipSize": 1959,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
-          "size": 170771,
-          "gzipSize": 45667,
+          "url": "/_next/static/chunks/055s4lydwm0cs.js",
+          "size": 349556,
+          "gzipSize": 83266,
           "type": "js"
         },
         {
@@ -3484,17 +3513,11 @@
           "size": 227963,
           "gzipSize": 71337,
           "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/3oj_-otxca2-2.js",
-          "size": 365536,
-          "gzipSize": 88532,
-          "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 89,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3541,6 +3564,7 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -3588,7 +3612,7 @@
           ]
         },
         "fr": {
-          "count": 106,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -3640,7 +3664,8 @@
             "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
             "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
             "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
@@ -3699,7 +3724,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.35897435897436,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3756,11 +3781,12 @@
           ]
         },
         "careers": {
-          "count": 10,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -3838,27 +3864,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 94.18604651162791
+      "pageLeakagePercent": 94.25287356321839
     },
     {
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 893860,
-      "totalGzipSize": 243021,
-      "jsSize": 847086,
-      "jsGzipSize": 232877,
+      "totalSize": 877880,
+      "totalGzipSize": 237753,
+      "jsSize": 831106,
+      "jsGzipSize": 227611,
       "cssSize": 22806,
       "cssGzipSize": 4815,
       "htmlSize": 23968,
-      "htmlGzipSize": 5329,
+      "htmlGzipSize": 5327,
       "fileCount": 10,
       "jsFileCount": 8,
       "bundleFiles": [
         {
           "url": "/en/team",
           "size": 23968,
-          "gzipSize": 5329,
+          "gzipSize": 5327,
           "type": "html"
         },
         {
@@ -3874,6 +3900,12 @@
           "type": "js"
         },
         {
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
+          "type": "js"
+        },
+        {
           "url": "/_next/static/chunks/turbopack-3ajmtcmdf9xy0.js",
           "size": 9688,
           "gzipSize": 3835,
@@ -3886,7 +3918,7 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3i1daxt6ele94.js",
+          "url": "/_next/static/chunks/0n6y_fd4xex0w.js",
           "size": 20536,
           "gzipSize": 8033,
           "type": "js"
@@ -3898,9 +3930,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
-          "size": 170771,
-          "gzipSize": 45667,
+          "url": "/_next/static/chunks/055s4lydwm0cs.js",
+          "size": 349556,
+          "gzipSize": 83266,
           "type": "js"
         },
         {
@@ -3908,17 +3940,11 @@
           "size": 227963,
           "gzipSize": 71337,
           "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/3oj_-otxca2-2.js",
-          "size": 365536,
-          "gzipSize": 88532,
-          "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 89,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3965,6 +3991,7 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -4012,7 +4039,7 @@
           ]
         },
         "fr": {
-          "count": 106,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -4064,7 +4091,8 @@
             "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
             "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
             "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
@@ -4123,7 +4151,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.35897435897436,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -4180,11 +4208,12 @@
           ]
         },
         "careers": {
-          "count": 10,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
@@ -4262,7 +4291,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 88.37209302325581
+      "pageLeakagePercent": 88.50574712643679
     }
   ]
 }

@@ -1,17 +1,17 @@
 {
   "app": "nextjs-dynamic-intlayer-compat-next-intl-app",
   "locale": "en",
-  "timestamp": "2026-09-26T06:05:42.402Z",
+  "timestamp": "2026-09-28T00:51:42.156Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 92,
-      "fr": 109
+      "en": 96,
+      "fr": 113
     },
     "page": {
       "home": 24,
       "about": 10,
       "blog": 13,
-      "careers": 7,
+      "careers": 11,
       "contact": 2,
       "faq": 10,
       "pricing": 4,
@@ -25,21 +25,21 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 905343,
-      "totalGzipSize": 253186,
-      "jsSize": 861227,
-      "jsGzipSize": 242336,
+      "totalSize": 889376,
+      "totalGzipSize": 248354,
+      "jsSize": 845312,
+      "jsGzipSize": 237531,
       "cssSize": 22782,
       "cssGzipSize": 4807,
-      "htmlSize": 21334,
-      "htmlGzipSize": 6043,
+      "htmlSize": 21282,
+      "htmlGzipSize": 6016,
       "fileCount": 11,
       "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/en",
-          "size": 21334,
-          "gzipSize": 6043,
+          "size": 21282,
+          "gzipSize": 6016,
           "type": "html"
         },
         {
@@ -55,9 +55,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b7wu0dotkch.js",
-          "size": 477,
-          "gzipSize": 281,
+          "url": "/_next/static/chunks/2qfj_nhvwc3xe.js",
+          "size": 19467,
+          "gzipSize": 5163,
           "type": "js"
         },
         {
@@ -67,21 +67,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2qfj_nhvwc3xe.js",
-          "size": 19467,
-          "gzipSize": 5163,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/19v3xw7qo32zj.js",
-          "size": 21870,
-          "gzipSize": 8232,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/21smxnp8nx6gs.js",
-          "size": 9255,
-          "gzipSize": 2508,
+          "url": "/_next/static/chunks/01b7wu0dotkch.js",
+          "size": 477,
+          "gzipSize": 281,
           "type": "js"
         },
         {
@@ -91,21 +79,33 @@
           "type": "js"
         },
         {
+          "url": "/_next/static/chunks/2yqfmm7_qgypg.js",
+          "size": 9268,
+          "gzipSize": 2504,
+          "type": "js"
+        },
+        {
           "url": "/_next/static/chunks/0qcbtmaoe63mx.js",
           "size": 227964,
           "gzipSize": 71339,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/1zjkvyojipqi0.js",
-          "size": 371357,
-          "gzipSize": 96062,
+          "url": "/_next/static/chunks/20gahp4i02ppu.js",
+          "size": 355430,
+          "gzipSize": 91262,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/1u5fpzobuzliq.js",
+          "size": 21869,
+          "gzipSize": 8231,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 86,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -152,10 +152,14 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
             "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
             "methodology question",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
@@ -196,7 +200,7 @@
           ]
         },
         "fr": {
-          "count": 103,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -244,15 +248,19 @@
             "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travaillez de n'importe où dans le monde",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.",
-            "créer des guides complets, des références d'api et des tutoriels pour notre plateforme de benchmarking.",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
             "nouvelle idée de benchmark",
             "question sur la méthodologie",
             "tout ce que vous devez savoir sur i18n benchmark.",
@@ -304,7 +312,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.4973544973545,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -361,15 +369,19 @@
           ]
         },
         "careers": {
-          "count": 7,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform."
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "contact": {
@@ -440,27 +452,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 80.72289156626506
+      "pageLeakagePercent": 81.60919540229885
     },
     {
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 898019,
-      "totalGzipSize": 251692,
-      "jsSize": 857090,
-      "jsGzipSize": 241570,
+      "totalSize": 882127,
+      "totalGzipSize": 246906,
+      "jsSize": 841159,
+      "jsGzipSize": 236768,
       "cssSize": 22782,
       "cssGzipSize": 4807,
-      "htmlSize": 18147,
-      "htmlGzipSize": 5315,
+      "htmlSize": 18186,
+      "htmlGzipSize": 5331,
       "fileCount": 11,
       "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/en/about",
-          "size": 18147,
-          "gzipSize": 5315,
+          "size": 18186,
+          "gzipSize": 5331,
           "type": "html"
         },
         {
@@ -476,18 +488,6 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
-          "size": 170771,
-          "gzipSize": 45667,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/turbopack-1habctlk8rft7.js",
-          "size": 9688,
-          "gzipSize": 3835,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/01b7wu0dotkch.js",
           "size": 477,
           "gzipSize": 281,
@@ -500,15 +500,33 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0alslzi9clolc.js",
-          "size": 5118,
-          "gzipSize": 1742,
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/19v3xw7qo32zj.js",
-          "size": 21870,
-          "gzipSize": 8232,
+          "url": "/_next/static/chunks/turbopack-1habctlk8rft7.js",
+          "size": 9688,
+          "gzipSize": 3835,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/1u5fpzobuzliq.js",
+          "size": 21869,
+          "gzipSize": 8231,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/1wrnz2achjl6b.js",
+          "size": 5115,
+          "gzipSize": 1741,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/20gahp4i02ppu.js",
+          "size": 355430,
+          "gzipSize": 91262,
           "type": "js"
         },
         {
@@ -516,17 +534,11 @@
           "size": 227964,
           "gzipSize": 71339,
           "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/1zjkvyojipqi0.js",
-          "size": 371357,
-          "gzipSize": 96062,
-          "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 86,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -573,10 +585,14 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
             "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
             "methodology question",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
@@ -617,7 +633,7 @@
           ]
         },
         "fr": {
-          "count": 103,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -665,15 +681,19 @@
             "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travaillez de n'importe où dans le monde",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.",
-            "créer des guides complets, des références d'api et des tutoriels pour notre plateforme de benchmarking.",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
             "nouvelle idée de benchmark",
             "question sur la méthodologie",
             "tout ce que vous devez savoir sur i18n benchmark.",
@@ -725,7 +745,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.4973544973545,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -782,15 +802,19 @@
           ]
         },
         "careers": {
-          "count": 7,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform."
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "contact": {
@@ -861,26 +885,26 @@
           ]
         }
       },
-      "pageLeakagePercent": 87.95180722891565
+      "pageLeakagePercent": 88.50574712643679
     },
     {
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 898860,
-      "totalGzipSize": 251473,
-      "jsSize": 857245,
-      "jsGzipSize": 241693,
+      "totalSize": 883009,
+      "totalGzipSize": 246676,
+      "jsSize": 841393,
+      "jsGzipSize": 236896,
       "cssSize": 22782,
       "cssGzipSize": 4807,
-      "htmlSize": 18833,
+      "htmlSize": 18834,
       "htmlGzipSize": 4973,
       "fileCount": 11,
       "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/en/blog",
-          "size": 18833,
+          "size": 18834,
           "gzipSize": 4973,
           "type": "html"
         },
@@ -915,21 +939,27 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/19v3xw7qo32zj.js",
-          "size": 21870,
-          "gzipSize": 8232,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/2iy0jd6m7ygox.js",
-          "size": 5273,
-          "gzipSize": 1865,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
           "size": 170771,
           "gzipSize": 45667,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/20gahp4i02ppu.js",
+          "size": 355430,
+          "gzipSize": 91262,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/1u5fpzobuzliq.js",
+          "size": 21869,
+          "gzipSize": 8231,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/226d24hk5iodb.js",
+          "size": 5349,
+          "gzipSize": 1869,
           "type": "js"
         },
         {
@@ -937,17 +967,11 @@
           "size": 227964,
           "gzipSize": 71339,
           "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/1zjkvyojipqi0.js",
-          "size": 371357,
-          "gzipSize": 96062,
-          "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 86,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -994,10 +1018,14 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
             "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
             "methodology question",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
@@ -1038,7 +1066,7 @@
           ]
         },
         "fr": {
-          "count": 103,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -1086,15 +1114,19 @@
             "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travaillez de n'importe où dans le monde",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.",
-            "créer des guides complets, des références d'api et des tutoriels pour notre plateforme de benchmarking.",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
             "nouvelle idée de benchmark",
             "question sur la méthodologie",
             "tout ce que vous devez savoir sur i18n benchmark.",
@@ -1146,7 +1178,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.4973544973545,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1203,15 +1235,19 @@
           ]
         },
         "careers": {
-          "count": 7,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform."
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "contact": {
@@ -1282,27 +1318,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 84.33734939759037
+      "pageLeakagePercent": 85.0574712643678
     },
     {
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 899573,
-      "totalGzipSize": 251457,
-      "jsSize": 858287,
-      "jsGzipSize": 241769,
+      "totalSize": 885580,
+      "totalGzipSize": 246935,
+      "jsSize": 842561,
+      "jsGzipSize": 237059,
       "cssSize": 22782,
       "cssGzipSize": 4807,
-      "htmlSize": 18504,
-      "htmlGzipSize": 4881,
+      "htmlSize": 20237,
+      "htmlGzipSize": 5069,
       "fileCount": 11,
       "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/en/careers",
-          "size": 18504,
-          "gzipSize": 4881,
+          "size": 20237,
+          "gzipSize": 5069,
           "type": "html"
         },
         {
@@ -1336,21 +1372,27 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/20bst311m4p0k.js",
-          "size": 6315,
-          "gzipSize": 1941,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/19v3xw7qo32zj.js",
-          "size": 21870,
-          "gzipSize": 8232,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
           "size": 170771,
           "gzipSize": 45667,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/3i8p3apclw9rx.js",
+          "size": 6517,
+          "gzipSize": 2032,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/1u5fpzobuzliq.js",
+          "size": 21869,
+          "gzipSize": 8231,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/20gahp4i02ppu.js",
+          "size": 355430,
+          "gzipSize": 91262,
           "type": "js"
         },
         {
@@ -1358,17 +1400,11 @@
           "size": 227964,
           "gzipSize": 71339,
           "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/1zjkvyojipqi0.js",
-          "size": 371357,
-          "gzipSize": 96062,
-          "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 86,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1415,10 +1451,14 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
             "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
             "methodology question",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
@@ -1459,7 +1499,7 @@
           ]
         },
         "fr": {
-          "count": 103,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -1507,15 +1547,19 @@
             "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travaillez de n'importe où dans le monde",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.",
-            "créer des guides complets, des références d'api et des tutoriels pour notre plateforme de benchmarking.",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
             "nouvelle idée de benchmark",
             "question sur la méthodologie",
             "tout ce que vous devez savoir sur i18n benchmark.",
@@ -1567,7 +1611,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.4973544973545,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1624,15 +1668,19 @@
           ]
         },
         "careers": {
-          "count": 7,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform."
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "contact": {
@@ -1703,27 +1751,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 91.56626506024097
+      "pageLeakagePercent": 87.35632183908046
     },
     {
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 897452,
-      "totalGzipSize": 251131,
-      "jsSize": 857893,
-      "jsGzipSize": 241647,
+      "totalSize": 881521,
+      "totalGzipSize": 246327,
+      "jsSize": 841962,
+      "jsGzipSize": 236845,
       "cssSize": 22782,
       "cssGzipSize": 4807,
       "htmlSize": 16777,
-      "htmlGzipSize": 4677,
+      "htmlGzipSize": 4675,
       "fileCount": 11,
       "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/en/contact",
           "size": 16777,
-          "gzipSize": 4677,
+          "gzipSize": 4675,
           "type": "html"
         },
         {
@@ -1739,33 +1787,15 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-1habctlk8rft7.js",
-          "size": 9688,
-          "gzipSize": 3835,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/01b7wu0dotkch.js",
           "size": 477,
           "gzipSize": 281,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2qfj_nhvwc3xe.js",
-          "size": 19467,
-          "gzipSize": 5163,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/19v3xw7qo32zj.js",
-          "size": 21870,
-          "gzipSize": 8232,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/0ednfq2eghh07.js",
-          "size": 5921,
-          "gzipSize": 1819,
+          "url": "/_next/static/chunks/turbopack-1habctlk8rft7.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
@@ -1775,21 +1805,39 @@
           "type": "js"
         },
         {
+          "url": "/_next/static/chunks/2qfj_nhvwc3xe.js",
+          "size": 19467,
+          "gzipSize": 5163,
+          "type": "js"
+        },
+        {
           "url": "/_next/static/chunks/0qcbtmaoe63mx.js",
           "size": 227964,
           "gzipSize": 71339,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/1zjkvyojipqi0.js",
-          "size": 371357,
-          "gzipSize": 96062,
+          "url": "/_next/static/chunks/1u5fpzobuzliq.js",
+          "size": 21869,
+          "gzipSize": 8231,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/0b4zxno8_sfim.js",
+          "size": 5918,
+          "gzipSize": 1818,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/20gahp4i02ppu.js",
+          "size": 355430,
+          "gzipSize": 91262,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 86,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -1836,10 +1884,14 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
             "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
             "methodology question",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
@@ -1880,7 +1932,7 @@
           ]
         },
         "fr": {
-          "count": 103,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -1928,15 +1980,19 @@
             "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travaillez de n'importe où dans le monde",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.",
-            "créer des guides complets, des références d'api et des tutoriels pour notre plateforme de benchmarking.",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
             "nouvelle idée de benchmark",
             "question sur la méthodologie",
             "tout ce que vous devez savoir sur i18n benchmark.",
@@ -1988,7 +2044,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.4973544973545,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2045,15 +2101,19 @@
           ]
         },
         "careers": {
-          "count": 7,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform."
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "contact": {
@@ -2124,27 +2184,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 98.79518072289156
+      "pageLeakagePercent": 98.85057471264368
     },
     {
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 898032,
-      "totalGzipSize": 251661,
-      "jsSize": 856626,
-      "jsGzipSize": 241590,
+      "totalSize": 882101,
+      "totalGzipSize": 246854,
+      "jsSize": 840695,
+      "jsGzipSize": 236788,
       "cssSize": 22782,
       "cssGzipSize": 4807,
       "htmlSize": 18624,
-      "htmlGzipSize": 5264,
+      "htmlGzipSize": 5259,
       "fileCount": 11,
       "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/en/faq",
           "size": 18624,
-          "gzipSize": 5264,
+          "gzipSize": 5259,
           "type": "html"
         },
         {
@@ -2160,9 +2220,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-1habctlk8rft7.js",
-          "size": 9688,
-          "gzipSize": 3835,
+          "url": "/_next/static/chunks/01b7wu0dotkch.js",
+          "size": 477,
+          "gzipSize": 281,
           "type": "js"
         },
         {
@@ -2172,21 +2232,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b7wu0dotkch.js",
-          "size": 477,
-          "gzipSize": 281,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/1ej_8z7roc8xv.js",
-          "size": 4654,
-          "gzipSize": 1762,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/19v3xw7qo32zj.js",
-          "size": 21870,
-          "gzipSize": 8232,
+          "url": "/_next/static/chunks/turbopack-1habctlk8rft7.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
@@ -2196,21 +2244,33 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/0qcbtmaoe63mx.js",
-          "size": 227964,
-          "gzipSize": 71339,
+          "url": "/_next/static/chunks/0oy-mglcq6l79.js",
+          "size": 4651,
+          "gzipSize": 1761,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/1zjkvyojipqi0.js",
-          "size": 371357,
-          "gzipSize": 96062,
+          "url": "/_next/static/chunks/1u5fpzobuzliq.js",
+          "size": 21869,
+          "gzipSize": 8231,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/20gahp4i02ppu.js",
+          "size": 355430,
+          "gzipSize": 91262,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/0qcbtmaoe63mx.js",
+          "size": 227964,
+          "gzipSize": 71339,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 86,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2257,10 +2317,14 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
             "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
             "methodology question",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
@@ -2301,7 +2365,7 @@
           ]
         },
         "fr": {
-          "count": 103,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -2349,15 +2413,19 @@
             "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travaillez de n'importe où dans le monde",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.",
-            "créer des guides complets, des références d'api et des tutoriels pour notre plateforme de benchmarking.",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
             "nouvelle idée de benchmark",
             "question sur la méthodologie",
             "tout ce que vous devez savoir sur i18n benchmark.",
@@ -2409,7 +2477,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.4973544973545,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2466,15 +2534,19 @@
           ]
         },
         "careers": {
-          "count": 7,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform."
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "contact": {
@@ -2545,27 +2617,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 87.95180722891565
+      "pageLeakagePercent": 88.50574712643679
     },
     {
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 899370,
-      "totalGzipSize": 251373,
-      "jsSize": 857903,
-      "jsGzipSize": 241805,
+      "totalSize": 883413,
+      "totalGzipSize": 246558,
+      "jsSize": 841972,
+      "jsGzipSize": 237003,
       "cssSize": 22782,
       "cssGzipSize": 4807,
-      "htmlSize": 18685,
-      "htmlGzipSize": 4761,
+      "htmlSize": 18659,
+      "htmlGzipSize": 4748,
       "fileCount": 11,
       "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/en/pricing",
-          "size": 18685,
-          "gzipSize": 4761,
+          "size": 18659,
+          "gzipSize": 4748,
           "type": "html"
         },
         {
@@ -2587,27 +2659,15 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b7wu0dotkch.js",
-          "size": 477,
-          "gzipSize": 281,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/2qfj_nhvwc3xe.js",
           "size": 19467,
           "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/19v3xw7qo32zj.js",
-          "size": 21870,
-          "gzipSize": 8232,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/2mdysrbqrxufb.js",
-          "size": 5931,
-          "gzipSize": 1977,
+          "url": "/_next/static/chunks/01b7wu0dotkch.js",
+          "size": 477,
+          "gzipSize": 281,
           "type": "js"
         },
         {
@@ -2617,21 +2677,33 @@
           "type": "js"
         },
         {
+          "url": "/_next/static/chunks/1u5fpzobuzliq.js",
+          "size": 21869,
+          "gzipSize": 8231,
+          "type": "js"
+        },
+        {
           "url": "/_next/static/chunks/0qcbtmaoe63mx.js",
           "size": 227964,
           "gzipSize": 71339,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/1zjkvyojipqi0.js",
-          "size": 371357,
-          "gzipSize": 96062,
+          "url": "/_next/static/chunks/3h1lg_klxnj_8.js",
+          "size": 5928,
+          "gzipSize": 1976,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/20gahp4i02ppu.js",
+          "size": 355430,
+          "gzipSize": 91262,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 87,
+          "count": 91,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -2678,10 +2750,14 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
             "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
             "methodology question",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
@@ -2723,7 +2799,7 @@
           ]
         },
         "fr": {
-          "count": 103,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -2771,15 +2847,19 @@
             "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travaillez de n'importe où dans le monde",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.",
-            "créer des guides complets, des références d'api et des tutoriels pour notre plateforme de benchmarking.",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
             "nouvelle idée de benchmark",
             "question sur la méthodologie",
             "tout ce que vous devez savoir sur i18n benchmark.",
@@ -2831,7 +2911,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.21052631578947,
+      "localeLeakagePercent": 54.04040404040404,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -2888,15 +2968,19 @@
           ]
         },
         "careers": {
-          "count": 7,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform."
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "contact": {
@@ -2968,27 +3052,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 95.23809523809523
+      "pageLeakagePercent": 95.45454545454545
     },
     {
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 898524,
-      "totalGzipSize": 251256,
-      "jsSize": 857286,
-      "jsGzipSize": 241631,
+      "totalSize": 882593,
+      "totalGzipSize": 246453,
+      "jsSize": 841355,
+      "jsGzipSize": 236831,
       "cssSize": 22782,
       "cssGzipSize": 4807,
       "htmlSize": 18456,
-      "htmlGzipSize": 4818,
+      "htmlGzipSize": 4815,
       "fileCount": 11,
       "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/en/products",
           "size": 18456,
-          "gzipSize": 4818,
+          "gzipSize": 4815,
           "type": "html"
         },
         {
@@ -3010,6 +3094,12 @@
           "type": "js"
         },
         {
+          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
+          "size": 170771,
+          "gzipSize": 45667,
+          "type": "js"
+        },
+        {
           "url": "/_next/static/chunks/01b7wu0dotkch.js",
           "size": 477,
           "gzipSize": 281,
@@ -3022,21 +3112,9 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2uu7cc0u2ik2z.js",
-          "size": 170771,
-          "gzipSize": 45667,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/229ddya_9dar2.js",
-          "size": 5314,
-          "gzipSize": 1803,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/19v3xw7qo32zj.js",
-          "size": 21870,
-          "gzipSize": 8232,
+          "url": "/_next/static/chunks/1u5fpzobuzliq.js",
+          "size": 21869,
+          "gzipSize": 8231,
           "type": "js"
         },
         {
@@ -3046,15 +3124,21 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/1zjkvyojipqi0.js",
-          "size": 371357,
-          "gzipSize": 96062,
+          "url": "/_next/static/chunks/1mpo6bm6e55h1.js",
+          "size": 5311,
+          "gzipSize": 1804,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/20gahp4i02ppu.js",
+          "size": 355430,
+          "gzipSize": 91262,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 86,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3101,10 +3185,14 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
             "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
             "methodology question",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
@@ -3145,7 +3233,7 @@
           ]
         },
         "fr": {
-          "count": 103,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -3193,15 +3281,19 @@
             "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travaillez de n'importe où dans le monde",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.",
-            "créer des guides complets, des références d'api et des tutoriels pour notre plateforme de benchmarking.",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
             "nouvelle idée de benchmark",
             "question sur la méthodologie",
             "tout ce que vous devez savoir sur i18n benchmark.",
@@ -3253,7 +3345,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.4973544973545,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3310,15 +3402,19 @@
           ]
         },
         "careers": {
-          "count": 7,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform."
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "contact": {
@@ -3389,27 +3485,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 90.36144578313254
+      "pageLeakagePercent": 90.80459770114942
     },
     {
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 903110,
-      "totalGzipSize": 251946,
-      "jsSize": 860864,
-      "jsGzipSize": 242018,
+      "totalSize": 887239,
+      "totalGzipSize": 247132,
+      "jsSize": 844993,
+      "jsGzipSize": 237207,
       "cssSize": 22782,
       "cssGzipSize": 4807,
       "htmlSize": 19464,
-      "htmlGzipSize": 5121,
+      "htmlGzipSize": 5118,
       "fileCount": 11,
       "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/en/settings",
           "size": 19464,
-          "gzipSize": 5121,
+          "gzipSize": 5118,
           "type": "html"
         },
         {
@@ -3431,27 +3527,15 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/01b7wu0dotkch.js",
-          "size": 477,
-          "gzipSize": 281,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/2qfj_nhvwc3xe.js",
           "size": 19467,
           "gzipSize": 5163,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/3p865ij7fh_tf.js",
-          "size": 8892,
-          "gzipSize": 2190,
-          "type": "js"
-        },
-        {
-          "url": "/_next/static/chunks/19v3xw7qo32zj.js",
-          "size": 21870,
-          "gzipSize": 8232,
+          "url": "/_next/static/chunks/01b7wu0dotkch.js",
+          "size": 477,
+          "gzipSize": 281,
           "type": "js"
         },
         {
@@ -3467,15 +3551,27 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/1zjkvyojipqi0.js",
-          "size": 371357,
-          "gzipSize": 96062,
+          "url": "/_next/static/chunks/3m888p35o5vkm.js",
+          "size": 8949,
+          "gzipSize": 2180,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/1u5fpzobuzliq.js",
+          "size": 21869,
+          "gzipSize": 8231,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/20gahp4i02ppu.js",
+          "size": 355430,
+          "gzipSize": 91262,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 86,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3522,10 +3618,14 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
             "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
             "methodology question",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
@@ -3566,7 +3666,7 @@
           ]
         },
         "fr": {
-          "count": 103,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -3614,15 +3714,19 @@
             "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travaillez de n'importe où dans le monde",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.",
-            "créer des guides complets, des références d'api et des tutoriels pour notre plateforme de benchmarking.",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
             "nouvelle idée de benchmark",
             "question sur la méthodologie",
             "tout ce que vous devez savoir sur i18n benchmark.",
@@ -3674,7 +3778,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.4973544973545,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -3731,15 +3835,19 @@
           ]
         },
         "careers": {
-          "count": 7,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform."
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "contact": {
@@ -3810,27 +3918,27 @@
           ]
         }
       },
-      "pageLeakagePercent": 93.97590361445783
+      "pageLeakagePercent": 94.25287356321839
     },
     {
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 897735,
-      "totalGzipSize": 251355,
-      "jsSize": 857041,
-      "jsGzipSize": 241643,
+      "totalSize": 881804,
+      "totalGzipSize": 246551,
+      "jsSize": 841110,
+      "jsGzipSize": 236841,
       "cssSize": 22782,
       "cssGzipSize": 4807,
       "htmlSize": 17912,
-      "htmlGzipSize": 4905,
+      "htmlGzipSize": 4903,
       "fileCount": 11,
       "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/en/team",
           "size": 17912,
-          "gzipSize": 4905,
+          "gzipSize": 4903,
           "type": "html"
         },
         {
@@ -3846,15 +3954,15 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/turbopack-1habctlk8rft7.js",
-          "size": 9688,
-          "gzipSize": 3835,
-          "type": "js"
-        },
-        {
           "url": "/_next/static/chunks/01b7wu0dotkch.js",
           "size": 477,
           "gzipSize": 281,
+          "type": "js"
+        },
+        {
+          "url": "/_next/static/chunks/turbopack-1habctlk8rft7.js",
+          "size": 9688,
+          "gzipSize": 3835,
           "type": "js"
         },
         {
@@ -3870,15 +3978,15 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/2xd0vtide4d58.js",
-          "size": 5069,
-          "gzipSize": 1815,
+          "url": "/_next/static/chunks/1u5fpzobuzliq.js",
+          "size": 21869,
+          "gzipSize": 8231,
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/19v3xw7qo32zj.js",
-          "size": 21870,
-          "gzipSize": 8232,
+          "url": "/_next/static/chunks/2xt68xvqtlfnk.js",
+          "size": 5066,
+          "gzipSize": 1814,
           "type": "js"
         },
         {
@@ -3888,15 +3996,15 @@
           "type": "js"
         },
         {
-          "url": "/_next/static/chunks/1zjkvyojipqi0.js",
-          "size": 371357,
-          "gzipSize": 96062,
+          "url": "/_next/static/chunks/20gahp4i02ppu.js",
+          "size": 355430,
+          "gzipSize": 91262,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 86,
+          "count": 90,
           "found": [
             "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
@@ -3943,10 +4051,14 @@
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
             "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation.",
             "methodology question",
             "frequently asked questions",
             "everything you need to know about i18n benchmark.",
@@ -3987,7 +4099,7 @@
           ]
         },
         "fr": {
-          "count": 103,
+          "count": 107,
           "found": [
             "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
@@ -4035,15 +4147,19 @@
             "les react server components introduisent de nouveaux modèles pour l'internationalisation. nous explorons les implications et les meilleures pratiques.",
             "méthodologie du benchmark : comment nous testons",
             "un regard transparent sur notre méthodologie de benchmark, incluant les environnements de test, les méthodes statistiques et la reproductibilité.",
-            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe privilégiant le télétravail qui valorise l'impact, la transparence et l'apprentissage continu.",
-            "travaillez de n'importe où dans le monde",
+            "rejoignez notre mission pour améliorer l'écosystème de l'internationalisation. nous sommes une équipe télétravail d'abord qui valorise l'impact, la transparence et l'apprentissage continu.",
+            "travailler de n'importe où dans le monde",
             "rémunération compétitive",
             "rémunération au-dessus du marché",
-            "temps dédié à l'open source",
+            "temps alloué à l'open source",
+            "20 % du temps pour les contributions oss",
             "ingénieur frontend senior",
-            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement en utilisant react, typescript et vite.",
-            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de passages automatisés par jour.",
-            "créer des guides complets, des références d'api et des tutoriels pour notre plateforme de benchmarking.",
+            "construire et maintenir notre tableau de bord de benchmarking et nos outils de développement utilisant react, typescript et vite.",
+            "concevoir et mettre à l'échelle notre infrastructure de benchmarking cloud gérant des milliers de lancements automatisés par jour.",
+            "créer des guides complets, des références api et des tutoriels pour notre plateforme de benchmarking.",
+            "s'engager avec la communauté i18n via des conférences, des ateliers, des articles de blog et des contributions open source.",
+            "san francisco / télétravail",
+            "assurer la précision et la fiabilité des résultats de benchmark via des tests rigoureux et une validation.",
             "nouvelle idée de benchmark",
             "question sur la méthodologie",
             "tout ce que vous devez savoir sur i18n benchmark.",
@@ -4095,7 +4211,7 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.4973544973545,
+      "localeLeakagePercent": 54.314720812182735,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -4152,15 +4268,19 @@
           ]
         },
         "careers": {
-          "count": 7,
+          "count": 11,
           "found": [
             "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
             "work from anywhere in the world",
             "top-of-market compensation",
+            "20% time for oss contributions",
             "senior frontend engineer",
             "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
             "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
-            "create comprehensive guides, api references, and tutorials for our benchmarking platform."
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
           ]
         },
         "contact": {
@@ -4231,7 +4351,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 87.95180722891565
+      "pageLeakagePercent": 88.50574712643679
     }
   ]
 }

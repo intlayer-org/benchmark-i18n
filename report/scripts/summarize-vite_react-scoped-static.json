@@ -2,10 +2,10 @@
   "meta": {
     "framework": "vite-react",
     "frameworkLabel": "Vite + React",
-    "generatedAt": "2026-09-28T00:44:33.983Z",
+    "generatedAt": "2026-09-28T00:55:27.415Z",
     "counts": {
-      "totalLibs": 2,
-      "totalApps": 2
+      "totalLibs": 3,
+      "totalApps": 5
     }
   },
   "libs": {
@@ -32,21 +32,21 @@
           "byLocale": {
             "en": {
               "jsGzip": {
-                "avg": 86926.5,
-                "median": 86754.5,
-                "min": 86374,
-                "max": 88241,
+                "avg": 93073.4,
+                "median": 92936,
+                "min": 92555,
+                "max": 93969,
                 "raw": [
-                  88241,
-                  87032,
-                  86642,
-                  86983,
-                  86374,
-                  86867,
-                  86456,
-                  86474,
-                  87653,
-                  86543
+                  93969,
+                  93215,
+                  92823,
+                  93204,
+                  92555,
+                  93049,
+                  92634,
+                  92656,
+                  93906,
+                  92723
                 ]
               },
               "localeLeakPct": {
@@ -107,12 +107,12 @@
                 {
                   "path": "/en/",
                   "page": "home",
-                  "jsGzipSize": 88241,
-                  "totalGzipSize": 93935,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 9,
-                  "jsFileCount": 7,
+                  "jsGzipSize": 93969,
+                  "totalGzipSize": 99605,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -120,12 +120,12 @@
                 {
                   "path": "/en/about",
                   "page": "about",
-                  "jsGzipSize": 87032,
-                  "totalGzipSize": 92726,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 93215,
+                  "totalGzipSize": 98851,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -133,12 +133,12 @@
                 {
                   "path": "/en/blog",
                   "page": "blog",
-                  "jsGzipSize": 86642,
-                  "totalGzipSize": 92336,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 92823,
+                  "totalGzipSize": 98459,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -146,12 +146,12 @@
                 {
                   "path": "/en/careers",
                   "page": "careers",
-                  "jsGzipSize": 86983,
-                  "totalGzipSize": 92677,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 9,
-                  "jsFileCount": 7,
+                  "jsGzipSize": 93204,
+                  "totalGzipSize": 98840,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -159,12 +159,12 @@
                 {
                   "path": "/en/contact",
                   "page": "contact",
-                  "jsGzipSize": 86374,
-                  "totalGzipSize": 92068,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 92555,
+                  "totalGzipSize": 98191,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -172,12 +172,12 @@
                 {
                   "path": "/en/faq",
                   "page": "faq",
-                  "jsGzipSize": 86867,
-                  "totalGzipSize": 92561,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 93049,
+                  "totalGzipSize": 98685,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -185,12 +185,12 @@
                 {
                   "path": "/en/pricing",
                   "page": "pricing",
-                  "jsGzipSize": 86456,
-                  "totalGzipSize": 92150,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 92634,
+                  "totalGzipSize": 98270,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -198,12 +198,12 @@
                 {
                   "path": "/en/products",
                   "page": "products",
-                  "jsGzipSize": 86474,
-                  "totalGzipSize": 92168,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 92656,
+                  "totalGzipSize": 98292,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -211,12 +211,12 @@
                 {
                   "path": "/en/settings",
                   "page": "settings",
-                  "jsGzipSize": 87653,
-                  "totalGzipSize": 93347,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 11,
-                  "jsFileCount": 9,
+                  "jsGzipSize": 93906,
+                  "totalGzipSize": 99542,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 10,
+                  "jsFileCount": 8,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -224,12 +224,12 @@
                 {
                   "path": "/en/team",
                   "page": "team",
-                  "jsGzipSize": 86543,
-                  "totalGzipSize": 92237,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 92723,
+                  "totalGzipSize": 98359,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -238,21 +238,21 @@
             },
             "fr": {
               "jsGzip": {
-                "avg": 86926.5,
-                "median": 86754.5,
-                "min": 86374,
-                "max": 88241,
+                "avg": 93073.4,
+                "median": 92936,
+                "min": 92555,
+                "max": 93969,
                 "raw": [
-                  88241,
-                  87032,
-                  86642,
-                  86983,
-                  86374,
-                  86867,
-                  86456,
-                  86474,
-                  87653,
-                  86543
+                  93969,
+                  93215,
+                  92823,
+                  93204,
+                  92555,
+                  93049,
+                  92634,
+                  92656,
+                  93906,
+                  92723
                 ]
               },
               "localeLeakPct": {
@@ -313,12 +313,12 @@
                 {
                   "path": "/fr/",
                   "page": "home",
-                  "jsGzipSize": 88241,
-                  "totalGzipSize": 93935,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 9,
-                  "jsFileCount": 7,
+                  "jsGzipSize": 93969,
+                  "totalGzipSize": 99605,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -326,12 +326,12 @@
                 {
                   "path": "/fr/about",
                   "page": "about",
-                  "jsGzipSize": 87032,
-                  "totalGzipSize": 92726,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 93215,
+                  "totalGzipSize": 98851,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -339,12 +339,12 @@
                 {
                   "path": "/fr/blog",
                   "page": "blog",
-                  "jsGzipSize": 86642,
-                  "totalGzipSize": 92336,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 92823,
+                  "totalGzipSize": 98459,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -352,12 +352,12 @@
                 {
                   "path": "/fr/careers",
                   "page": "careers",
-                  "jsGzipSize": 86983,
-                  "totalGzipSize": 92677,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 9,
-                  "jsFileCount": 7,
+                  "jsGzipSize": 93204,
+                  "totalGzipSize": 98840,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -365,12 +365,12 @@
                 {
                   "path": "/fr/contact",
                   "page": "contact",
-                  "jsGzipSize": 86374,
-                  "totalGzipSize": 92068,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 92555,
+                  "totalGzipSize": 98191,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -378,12 +378,12 @@
                 {
                   "path": "/fr/faq",
                   "page": "faq",
-                  "jsGzipSize": 86867,
-                  "totalGzipSize": 92561,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 93049,
+                  "totalGzipSize": 98685,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -391,12 +391,12 @@
                 {
                   "path": "/fr/pricing",
                   "page": "pricing",
-                  "jsGzipSize": 86456,
-                  "totalGzipSize": 92150,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 92634,
+                  "totalGzipSize": 98270,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -404,12 +404,12 @@
                 {
                   "path": "/fr/products",
                   "page": "products",
-                  "jsGzipSize": 86474,
-                  "totalGzipSize": 92168,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 92656,
+                  "totalGzipSize": 98292,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -417,12 +417,12 @@
                 {
                   "path": "/fr/settings",
                   "page": "settings",
-                  "jsGzipSize": 87653,
-                  "totalGzipSize": 93347,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 11,
-                  "jsFileCount": 9,
+                  "jsGzipSize": 93906,
+                  "totalGzipSize": 99542,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 10,
+                  "jsFileCount": 8,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -430,12 +430,12 @@
                 {
                   "path": "/fr/team",
                   "page": "team",
-                  "jsGzipSize": 86543,
-                  "totalGzipSize": 92237,
-                  "cssGzipSize": 5019,
-                  "htmlGzipSize": 675,
-                  "fileCount": 8,
-                  "jsFileCount": 6,
+                  "jsGzipSize": 92723,
+                  "totalGzipSize": 98359,
+                  "cssGzipSize": 5010,
+                  "htmlGzipSize": 626,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
                   "localeLeakagePercent": 0,
                   "pageLeakagePercent": 0,
                   "otherPageContentLeakagePercent": 0
@@ -443,9 +443,9 @@
               ]
             }
           },
-          "jsGzipMin": 86374,
-          "jsGzipAvg": 86926.5,
-          "jsGzipMax": 88241,
+          "jsGzipMin": 92555,
+          "jsGzipAvg": 93073.4,
+          "jsGzipMax": 93969,
           "localeLeakAvgPct": 0,
           "pageLeakAvgPct": 0,
           "otherPageContentLeakAvgPct": 0
@@ -453,244 +453,244 @@
         "components": {
           "status": "ok",
           "gzipMin": 20,
-          "gzipAvg": 752.1818181818181,
-          "gzipMax": 1625,
+          "gzipAvg": 583.2424242424242,
+          "gzipMax": 1328,
           "count": 33,
           "items": [
             {
               "name": "UnderstandingImpact.tsx",
               "category": "pages",
-              "minifiedGzip": 1625,
-              "minified": 5821,
-              "unminified": 6272,
-              "unminifiedGzip": 1645
-            },
-            {
-              "name": "PreferencesSection.tsx",
-              "category": "pages",
-              "minifiedGzip": 1062,
-              "minified": 4803,
-              "unminified": 5338,
-              "unminifiedGzip": 1084
-            },
-            {
-              "name": "ContactForm.tsx",
-              "category": "pages",
-              "minifiedGzip": 945,
-              "minified": 4261,
-              "unminified": 4769,
-              "unminifiedGzip": 977
+              "minifiedGzip": 1328,
+              "minified": 3651,
+              "unminified": 3730,
+              "unminifiedGzip": 1333
             },
             {
               "name": "OpenPositions.tsx",
               "category": "pages",
-              "minifiedGzip": 1201,
-              "minified": 3628,
-              "unminified": 3873,
-              "unminifiedGzip": 1216
-            },
-            {
-              "name": "WhyItMatters.tsx",
-              "category": "pages",
-              "minifiedGzip": 1127,
-              "minified": 3437,
-              "unminified": 3688,
-              "unminifiedGzip": 1145
-            },
-            {
-              "name": "ResultsTable.tsx",
-              "category": "pages",
-              "minifiedGzip": 837,
-              "minified": 3425,
-              "unminified": 3753,
-              "unminifiedGzip": 852
-            },
-            {
-              "name": "BlogList.tsx",
-              "category": "pages",
-              "minifiedGzip": 1242,
-              "minified": 3331,
-              "unminified": 3501,
-              "unminifiedGzip": 1261
-            },
-            {
-              "name": "PricingTiers.tsx",
-              "category": "pages",
-              "minifiedGzip": 1089,
-              "minified": 3119,
-              "unminified": 3336,
-              "unminifiedGzip": 1112
+              "minifiedGzip": 971,
+              "minified": 2538,
+              "unminified": 2582,
+              "unminifiedGzip": 974
             },
             {
               "name": "FAQList.tsx",
               "category": "pages",
-              "minifiedGzip": 1413,
-              "minified": 2967,
-              "unminified": 3060,
-              "unminifiedGzip": 1428
+              "minifiedGzip": 1251,
+              "minified": 2527,
+              "unminified": 2538,
+              "unminifiedGzip": 1257
+            },
+            {
+              "name": "BlogList.tsx",
+              "category": "pages",
+              "minifiedGzip": 1058,
+              "minified": 2521,
+              "unminified": 2543,
+              "unminifiedGzip": 1065
+            },
+            {
+              "name": "ContactForm.tsx",
+              "category": "pages",
+              "minifiedGzip": 694,
+              "minified": 2402,
+              "unminified": 2568,
+              "unminifiedGzip": 711
+            },
+            {
+              "name": "PreferencesSection.tsx",
+              "category": "pages",
+              "minifiedGzip": 756,
+              "minified": 2393,
+              "unminified": 2503,
+              "unminifiedGzip": 768
+            },
+            {
+              "name": "WhyItMatters.tsx",
+              "category": "pages",
+              "minifiedGzip": 902,
+              "minified": 2264,
+              "unminified": 2305,
+              "unminifiedGzip": 911
+            },
+            {
+              "name": "PricingTiers.tsx",
+              "category": "pages",
+              "minifiedGzip": 867,
+              "minified": 2118,
+              "unminified": 2155,
+              "unminifiedGzip": 878
             },
             {
               "name": "ProductsGrid.tsx",
               "category": "pages",
-              "minifiedGzip": 1060,
-              "minified": 2722,
-              "unminified": 2899,
-              "unminifiedGzip": 1080
+              "minifiedGzip": 866,
+              "minified": 1928,
+              "unminified": 1959,
+              "unminifiedGzip": 873
+            },
+            {
+              "name": "ResultsTable.tsx",
+              "category": "pages",
+              "minifiedGzip": 569,
+              "minified": 1921,
+              "unminified": 1969,
+              "unminifiedGzip": 574
             },
             {
               "name": "TeamGrid.tsx",
               "category": "pages",
-              "minifiedGzip": 1079,
-              "minified": 2533,
-              "unminified": 2666,
-              "unminifiedGzip": 1096
+              "minifiedGzip": 908,
+              "minified": 1907,
+              "unminified": 1924,
+              "unminifiedGzip": 913
             },
             {
               "name": "WhatWeMeasure.tsx",
               "category": "pages",
-              "minifiedGzip": 1086,
-              "minified": 2425,
-              "unminified": 2567,
-              "unminifiedGzip": 1100
-            },
-            {
-              "name": "AboutGrid.tsx",
-              "category": "pages",
-              "minifiedGzip": 872,
-              "minified": 2133,
-              "unminified": 2285,
-              "unminifiedGzip": 888
-            },
-            {
-              "name": "Hero.tsx",
-              "category": "pages",
-              "minifiedGzip": 820,
-              "minified": 2052,
-              "unminified": 2274,
-              "unminifiedGzip": 861
-            },
-            {
-              "name": "ProfileSection.tsx",
-              "category": "pages",
-              "minifiedGzip": 647,
-              "minified": 2030,
-              "unminified": 2295,
-              "unminifiedGzip": 671
-            },
-            {
-              "name": "ApiAccessSection.tsx",
-              "category": "pages",
-              "minifiedGzip": 728,
-              "minified": 1925,
-              "unminified": 2134,
-              "unminifiedGzip": 751
+              "minifiedGzip": 894,
+              "minified": 1806,
+              "unminified": 1834,
+              "unminifiedGzip": 900
             },
             {
               "name": "ThemeToggle.tsx",
               "category": "Shared",
-              "minifiedGzip": 837,
-              "minified": 1824,
-              "unminified": 2276,
-              "unminifiedGzip": 942
+              "minifiedGzip": 710,
+              "minified": 1618,
+              "unminified": 2042,
+              "unminifiedGzip": 806
             },
             {
-              "name": "ContactHeader.tsx",
+              "name": "AboutGrid.tsx",
               "category": "pages",
-              "minifiedGzip": 704,
-              "minified": 1525,
-              "unminified": 1699,
-              "unminifiedGzip": 720
+              "minifiedGzip": 696,
+              "minified": 1442,
+              "unminified": 1465,
+              "unminifiedGzip": 701
             },
             {
-              "name": "PricingHeader.tsx",
+              "name": "Hero.tsx",
               "category": "pages",
-              "minifiedGzip": 633,
-              "minified": 1369,
-              "unminified": 1543,
-              "unminifiedGzip": 651
+              "minifiedGzip": 651,
+              "minified": 1432,
+              "unminified": 1540,
+              "unminifiedGzip": 680
             },
             {
-              "name": "CareersHeader.tsx",
+              "name": "ProfileSection.tsx",
               "category": "pages",
-              "minifiedGzip": 649,
-              "minified": 1325,
-              "unminified": 1481,
-              "unminifiedGzip": 667
+              "minifiedGzip": 454,
+              "minified": 1159,
+              "unminified": 1263,
+              "unminifiedGzip": 467
             },
             {
-              "name": "TeamHeader.tsx",
+              "name": "ApiAccessSection.tsx",
               "category": "pages",
-              "minifiedGzip": 623,
-              "minified": 1280,
-              "unminified": 1430,
-              "unminifiedGzip": 640
-            },
-            {
-              "name": "ProductsHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 600,
-              "minified": 1249,
-              "unminified": 1407,
-              "unminifiedGzip": 617
-            },
-            {
-              "name": "FAQHeader.tsx",
-              "category": "pages",
-              "minifiedGzip": 604,
-              "minified": 1239,
-              "unminified": 1387,
-              "unminifiedGzip": 622
+              "minifiedGzip": 529,
+              "minified": 1130,
+              "unminified": 1193,
+              "unminifiedGzip": 544
             },
             {
               "name": "AboutHeader.tsx",
               "category": "pages",
-              "minifiedGzip": 644,
-              "minified": 1237,
-              "unminified": 1408,
-              "unminifiedGzip": 684
+              "minifiedGzip": 517,
+              "minified": 944,
+              "unminified": 1061,
+              "unminifiedGzip": 548
             },
             {
-              "name": "SettingsHeader.tsx",
+              "name": "ContactHeader.tsx",
               "category": "pages",
-              "minifiedGzip": 589,
-              "minified": 1230,
-              "unminified": 1388,
-              "unminifiedGzip": 606
+              "minifiedGzip": 507,
+              "minified": 869,
+              "unminified": 917,
+              "unminifiedGzip": 523
             },
             {
-              "name": "BlogHeader.tsx",
+              "name": "CareersHeader.tsx",
               "category": "pages",
-              "minifiedGzip": 593,
-              "minified": 1227,
-              "unminified": 1377,
-              "unminifiedGzip": 613
+              "minifiedGzip": 470,
+              "minified": 756,
+              "unminified": 801,
+              "unminifiedGzip": 485
             },
             {
               "name": "CareersBenefits.tsx",
               "category": "pages",
-              "minifiedGzip": 572,
-              "minified": 1194,
-              "unminified": 1303,
-              "unminifiedGzip": 588
+              "minifiedGzip": 408,
+              "minified": 742,
+              "unminified": 769,
+              "unminifiedGzip": 417
+            },
+            {
+              "name": "PricingHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 443,
+              "minified": 729,
+              "unminified": 777,
+              "unminifiedGzip": 455
+            },
+            {
+              "name": "TeamHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 451,
+              "minified": 717,
+              "unminified": 756,
+              "unminifiedGzip": 462
+            },
+            {
+              "name": "ProductsHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 424,
+              "minified": 678,
+              "unminified": 725,
+              "unminifiedGzip": 437
+            },
+            {
+              "name": "FAQHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 427,
+              "minified": 677,
+              "unminified": 714,
+              "unminifiedGzip": 442
+            },
+            {
+              "name": "BlogHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 419,
+              "minified": 664,
+              "unminified": 703,
+              "unminifiedGzip": 433
+            },
+            {
+              "name": "SettingsHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 413,
+              "minified": 659,
+              "unminified": 706,
+              "unminifiedGzip": 427
             },
             {
               "name": "SettingsFooter.tsx",
               "category": "pages",
-              "minifiedGzip": 467,
-              "minified": 930,
-              "unminified": 1018,
-              "unminifiedGzip": 479
+              "minifiedGzip": 310,
+              "minified": 561,
+              "unminified": 584,
+              "unminifiedGzip": 322
             },
             {
               "name": "MockBanner.tsx",
               "category": "Shared",
-              "minifiedGzip": 394,
-              "minified": 543,
-              "unminified": 590,
-              "unminifiedGzip": 406
+              "minifiedGzip": 274,
+              "minified": 345,
+              "unminified": 360,
+              "unminifiedGzip": 282
             },
             {
-              "name": "LocaleSwitcher.tsx",
+              "name": "Footer.tsx",
               "category": "Shared",
               "minifiedGzip": 20,
               "minified": 0,
@@ -698,7 +698,7 @@
               "unminifiedGzip": 20
             },
             {
-              "name": "Footer.tsx",
+              "name": "LocaleSwitcher.tsx",
               "category": "Shared",
               "minifiedGzip": 20,
               "minified": 0,
@@ -1422,7 +1422,7 @@
               "unminifiedGzip": 5694
             },
             {
-              "name": "LocaleSwitcher.tsx",
+              "name": "Footer.tsx",
               "category": "Shared",
               "minifiedGzip": 20,
               "minified": 0,
@@ -1430,7 +1430,7 @@
               "unminifiedGzip": 20
             },
             {
-              "name": "Footer.tsx",
+              "name": "LocaleSwitcher.tsx",
               "category": "Shared",
               "minifiedGzip": 20,
               "minified": 0,
@@ -1612,6 +1612,738 @@
           "e2ePageLoadAvgMs": 6.6100000023841865,
           "hydrationAvgMs": 4.010000002384185,
           "reactMountAvgMs": 1.2200000405311584,
+          "e2ePageLoadVsBaseline": null
+        }
+      },
+      "scoped-dynamic": null
+    },
+    "lingui": {
+      "global": {
+        "version": "6.6.0",
+        "libSize": {
+          "status": "ok",
+          "gzip": 11558,
+          "minified": 36951,
+          "unminified": 50818
+        }
+      },
+      "static": null,
+      "dynamic": null,
+      "scoped-static": {
+        "appName": "vite-react-lingui-static",
+        "bundleLink": "https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/vite-react-lingui-static/bundle/rollup-visualizer.html",
+        "measuredCategory": "static",
+        "isFallback": true,
+        "overallStatus": "partial",
+        "pageBundle": {
+          "status": "ok",
+          "byLocale": {
+            "en": {
+              "jsGzip": {
+                "avg": 163582.2,
+                "median": 163337.5,
+                "min": 162888,
+                "max": 164821,
+                "raw": [
+                  164821,
+                  163412,
+                  162966,
+                  163856,
+                  162888,
+                  163666,
+                  163263,
+                  163158,
+                  164557,
+                  163235
+                ]
+              },
+              "localeLeakPct": {
+                "avg": 53.88601036269431,
+                "median": 53.8860103626943,
+                "min": 53.8860103626943,
+                "max": 53.8860103626943,
+                "raw": [
+                  53.8860103626943,
+                  53.8860103626943,
+                  53.8860103626943,
+                  53.8860103626943,
+                  53.8860103626943,
+                  53.8860103626943,
+                  53.8860103626943,
+                  53.8860103626943,
+                  53.8860103626943,
+                  53.8860103626943
+                ]
+              },
+              "pageLeakPct": {
+                "avg": 89.99999999999999,
+                "median": 88.50574712643679,
+                "min": 81.60919540229885,
+                "max": 98.85057471264368,
+                "raw": [
+                  81.60919540229885,
+                  88.50574712643679,
+                  85.0574712643678,
+                  88.50574712643679,
+                  98.85057471264368,
+                  88.50574712643679,
+                  95.40229885057471,
+                  90.80459770114942,
+                  94.25287356321839,
+                  88.50574712643679
+                ]
+              },
+              "otherPageContentLeakPct": {
+                "avg": 89.99999999999999,
+                "median": 88.50574712643679,
+                "min": 81.60919540229885,
+                "max": 98.85057471264368,
+                "raw": [
+                  81.60919540229885,
+                  88.50574712643679,
+                  85.0574712643678,
+                  88.50574712643679,
+                  98.85057471264368,
+                  88.50574712643679,
+                  95.40229885057471,
+                  90.80459770114942,
+                  94.25287356321839,
+                  88.50574712643679
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/en/",
+                  "page": "home",
+                  "jsGzipSize": 164821,
+                  "totalGzipSize": 170475,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 53.8860103626943,
+                  "pageLeakagePercent": 81.60919540229885,
+                  "otherPageContentLeakagePercent": 81.60919540229885
+                },
+                {
+                  "path": "/en/about",
+                  "page": "about",
+                  "jsGzipSize": 163412,
+                  "totalGzipSize": 169066,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 53.8860103626943,
+                  "pageLeakagePercent": 88.50574712643679,
+                  "otherPageContentLeakagePercent": 88.50574712643679
+                },
+                {
+                  "path": "/en/blog",
+                  "page": "blog",
+                  "jsGzipSize": 162966,
+                  "totalGzipSize": 168620,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 53.8860103626943,
+                  "pageLeakagePercent": 85.0574712643678,
+                  "otherPageContentLeakagePercent": 85.0574712643678
+                },
+                {
+                  "path": "/en/careers",
+                  "page": "careers",
+                  "jsGzipSize": 163856,
+                  "totalGzipSize": 169510,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 53.8860103626943,
+                  "pageLeakagePercent": 88.50574712643679,
+                  "otherPageContentLeakagePercent": 88.50574712643679
+                },
+                {
+                  "path": "/en/contact",
+                  "page": "contact",
+                  "jsGzipSize": 162888,
+                  "totalGzipSize": 168542,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 53.8860103626943,
+                  "pageLeakagePercent": 98.85057471264368,
+                  "otherPageContentLeakagePercent": 98.85057471264368
+                },
+                {
+                  "path": "/en/faq",
+                  "page": "faq",
+                  "jsGzipSize": 163666,
+                  "totalGzipSize": 169320,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 53.8860103626943,
+                  "pageLeakagePercent": 88.50574712643679,
+                  "otherPageContentLeakagePercent": 88.50574712643679
+                },
+                {
+                  "path": "/en/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 163263,
+                  "totalGzipSize": 168917,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 53.8860103626943,
+                  "pageLeakagePercent": 95.40229885057471,
+                  "otherPageContentLeakagePercent": 95.40229885057471
+                },
+                {
+                  "path": "/en/products",
+                  "page": "products",
+                  "jsGzipSize": 163158,
+                  "totalGzipSize": 168812,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 53.8860103626943,
+                  "pageLeakagePercent": 90.80459770114942,
+                  "otherPageContentLeakagePercent": 90.80459770114942
+                },
+                {
+                  "path": "/en/settings",
+                  "page": "settings",
+                  "jsGzipSize": 164557,
+                  "totalGzipSize": 170211,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 10,
+                  "jsFileCount": 8,
+                  "localeLeakagePercent": 53.8860103626943,
+                  "pageLeakagePercent": 94.25287356321839,
+                  "otherPageContentLeakagePercent": 94.25287356321839
+                },
+                {
+                  "path": "/en/team",
+                  "page": "team",
+                  "jsGzipSize": 163235,
+                  "totalGzipSize": 168889,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 53.8860103626943,
+                  "pageLeakagePercent": 88.50574712643679,
+                  "otherPageContentLeakagePercent": 88.50574712643679
+                }
+              ]
+            },
+            "fr": {
+              "jsGzip": {
+                "avg": 163582.2,
+                "median": 163337.5,
+                "min": 162888,
+                "max": 164821,
+                "raw": [
+                  164821,
+                  163412,
+                  162966,
+                  163856,
+                  162888,
+                  163666,
+                  163263,
+                  163158,
+                  164557,
+                  163235
+                ]
+              },
+              "localeLeakPct": {
+                "avg": 46.11398963730569,
+                "median": 46.1139896373057,
+                "min": 46.1139896373057,
+                "max": 46.1139896373057,
+                "raw": [
+                  46.1139896373057,
+                  46.1139896373057,
+                  46.1139896373057,
+                  46.1139896373057,
+                  46.1139896373057,
+                  46.1139896373057,
+                  46.1139896373057,
+                  46.1139896373057,
+                  46.1139896373057,
+                  46.1139896373057
+                ]
+              },
+              "pageLeakPct": {
+                "avg": 90,
+                "median": 89.70588235294119,
+                "min": 84.31372549019608,
+                "max": 98.0392156862745,
+                "raw": [
+                  84.31372549019608,
+                  86.27450980392157,
+                  87.25490196078431,
+                  89.2156862745098,
+                  98.0392156862745,
+                  91.17647058823529,
+                  91.17647058823529,
+                  90.19607843137256,
+                  93.13725490196079,
+                  89.2156862745098
+                ]
+              },
+              "otherPageContentLeakPct": {
+                "avg": 90,
+                "median": 89.70588235294119,
+                "min": 84.31372549019608,
+                "max": 98.0392156862745,
+                "raw": [
+                  84.31372549019608,
+                  86.27450980392157,
+                  87.25490196078431,
+                  89.2156862745098,
+                  98.0392156862745,
+                  91.17647058823529,
+                  91.17647058823529,
+                  90.19607843137256,
+                  93.13725490196079,
+                  89.2156862745098
+                ]
+              },
+              "pages": [
+                {
+                  "path": "/fr/",
+                  "page": "home",
+                  "jsGzipSize": 164821,
+                  "totalGzipSize": 170475,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.1139896373057,
+                  "pageLeakagePercent": 84.31372549019608,
+                  "otherPageContentLeakagePercent": 84.31372549019608
+                },
+                {
+                  "path": "/fr/about",
+                  "page": "about",
+                  "jsGzipSize": 163412,
+                  "totalGzipSize": 169066,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.1139896373057,
+                  "pageLeakagePercent": 86.27450980392157,
+                  "otherPageContentLeakagePercent": 86.27450980392157
+                },
+                {
+                  "path": "/fr/blog",
+                  "page": "blog",
+                  "jsGzipSize": 162966,
+                  "totalGzipSize": 168620,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.1139896373057,
+                  "pageLeakagePercent": 87.25490196078431,
+                  "otherPageContentLeakagePercent": 87.25490196078431
+                },
+                {
+                  "path": "/fr/careers",
+                  "page": "careers",
+                  "jsGzipSize": 163856,
+                  "totalGzipSize": 169510,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 8,
+                  "jsFileCount": 6,
+                  "localeLeakagePercent": 46.1139896373057,
+                  "pageLeakagePercent": 89.2156862745098,
+                  "otherPageContentLeakagePercent": 89.2156862745098
+                },
+                {
+                  "path": "/fr/contact",
+                  "page": "contact",
+                  "jsGzipSize": 162888,
+                  "totalGzipSize": 168542,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.1139896373057,
+                  "pageLeakagePercent": 98.0392156862745,
+                  "otherPageContentLeakagePercent": 98.0392156862745
+                },
+                {
+                  "path": "/fr/faq",
+                  "page": "faq",
+                  "jsGzipSize": 163666,
+                  "totalGzipSize": 169320,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.1139896373057,
+                  "pageLeakagePercent": 91.17647058823529,
+                  "otherPageContentLeakagePercent": 91.17647058823529
+                },
+                {
+                  "path": "/fr/pricing",
+                  "page": "pricing",
+                  "jsGzipSize": 163263,
+                  "totalGzipSize": 168917,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.1139896373057,
+                  "pageLeakagePercent": 91.17647058823529,
+                  "otherPageContentLeakagePercent": 91.17647058823529
+                },
+                {
+                  "path": "/fr/products",
+                  "page": "products",
+                  "jsGzipSize": 163158,
+                  "totalGzipSize": 168812,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.1139896373057,
+                  "pageLeakagePercent": 90.19607843137256,
+                  "otherPageContentLeakagePercent": 90.19607843137256
+                },
+                {
+                  "path": "/fr/settings",
+                  "page": "settings",
+                  "jsGzipSize": 164557,
+                  "totalGzipSize": 170211,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 10,
+                  "jsFileCount": 8,
+                  "localeLeakagePercent": 46.1139896373057,
+                  "pageLeakagePercent": 93.13725490196079,
+                  "otherPageContentLeakagePercent": 93.13725490196079
+                },
+                {
+                  "path": "/fr/team",
+                  "page": "team",
+                  "jsGzipSize": 163235,
+                  "totalGzipSize": 168889,
+                  "cssGzipSize": 5030,
+                  "htmlGzipSize": 624,
+                  "fileCount": 7,
+                  "jsFileCount": 5,
+                  "localeLeakagePercent": 46.1139896373057,
+                  "pageLeakagePercent": 89.2156862745098,
+                  "otherPageContentLeakagePercent": 89.2156862745098
+                }
+              ]
+            }
+          },
+          "jsGzipMin": 162888,
+          "jsGzipAvg": 163582.2,
+          "jsGzipMax": 164821,
+          "localeLeakAvgPct": 50.00000000000002,
+          "pageLeakAvgPct": 90.00000000000001,
+          "otherPageContentLeakAvgPct": 90.00000000000001
+        },
+        "components": {
+          "status": "ok",
+          "gzipMin": 20,
+          "gzipAvg": 70030.09090909091,
+          "gzipMax": 80904,
+          "count": 33,
+          "items": [
+            {
+              "name": "UnderstandingImpact.tsx",
+              "category": "pages",
+              "minifiedGzip": 80904,
+              "minified": 309287,
+              "unminified": 324303,
+              "unminifiedGzip": 83004
+            },
+            {
+              "name": "WhyItMatters.tsx",
+              "category": "pages",
+              "minifiedGzip": 80412,
+              "minified": 306958,
+              "unminified": 321907,
+              "unminifiedGzip": 82604
+            },
+            {
+              "name": "ResultsTable.tsx",
+              "category": "pages",
+              "minifiedGzip": 80061,
+              "minified": 306225,
+              "unminified": 321160,
+              "unminifiedGzip": 82337
+            },
+            {
+              "name": "AboutGrid.tsx",
+              "category": "pages",
+              "minifiedGzip": 79906,
+              "minified": 305833,
+              "unminified": 320746,
+              "unminifiedGzip": 82409
+            },
+            {
+              "name": "Hero.tsx",
+              "category": "pages",
+              "minifiedGzip": 80093,
+              "minified": 305676,
+              "unminified": 320664,
+              "unminifiedGzip": 82361
+            },
+            {
+              "name": "ProfileSection.tsx",
+              "category": "pages",
+              "minifiedGzip": 79960,
+              "minified": 305444,
+              "unminified": 320435,
+              "unminifiedGzip": 82230
+            },
+            {
+              "name": "ApiAccessSection.tsx",
+              "category": "pages",
+              "minifiedGzip": 80022,
+              "minified": 305440,
+              "unminified": 320366,
+              "unminifiedGzip": 82288
+            },
+            {
+              "name": "OpenPositions.tsx",
+              "category": "pages",
+              "minifiedGzip": 79685,
+              "minified": 305407,
+              "unminified": 319197,
+              "unminifiedGzip": 81730
+            },
+            {
+              "name": "AboutHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 79823,
+              "minified": 305161,
+              "unminified": 320157,
+              "unminifiedGzip": 82235
+            },
+            {
+              "name": "PricingTiers.tsx",
+              "category": "pages",
+              "minifiedGzip": 79668,
+              "minified": 305078,
+              "unminified": 318887,
+              "unminifiedGzip": 81702
+            },
+            {
+              "name": "CareersHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 79893,
+              "minified": 304934,
+              "unminified": 319870,
+              "unminifiedGzip": 82186
+            },
+            {
+              "name": "PricingHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 79855,
+              "minified": 304900,
+              "unminified": 319832,
+              "unminifiedGzip": 82167
+            },
+            {
+              "name": "TeamHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 79851,
+              "minified": 304850,
+              "unminified": 319773,
+              "unminifiedGzip": 82163
+            },
+            {
+              "name": "BlogHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 79800,
+              "minified": 304839,
+              "unminified": 319769,
+              "unminifiedGzip": 82154
+            },
+            {
+              "name": "ProductsHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 79829,
+              "minified": 304819,
+              "unminified": 319750,
+              "unminifiedGzip": 82151
+            },
+            {
+              "name": "FAQHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 79832,
+              "minified": 304808,
+              "unminified": 319729,
+              "unminifiedGzip": 82153
+            },
+            {
+              "name": "SettingsHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 79818,
+              "minified": 304801,
+              "unminified": 319732,
+              "unminifiedGzip": 82141
+            },
+            {
+              "name": "SettingsFooter.tsx",
+              "category": "pages",
+              "minifiedGzip": 79806,
+              "minified": 304746,
+              "unminified": 319622,
+              "unminifiedGzip": 82115
+            },
+            {
+              "name": "FAQList.tsx",
+              "category": "pages",
+              "minifiedGzip": 79931,
+              "minified": 304745,
+              "unminified": 318463,
+              "unminifiedGzip": 81935
+            },
+            {
+              "name": "PreferencesSection.tsx",
+              "category": "pages",
+              "minifiedGzip": 79423,
+              "minified": 304659,
+              "unminified": 318463,
+              "unminifiedGzip": 81518
+            },
+            {
+              "name": "ProductsGrid.tsx",
+              "category": "pages",
+              "minifiedGzip": 79498,
+              "minified": 304206,
+              "unminified": 317961,
+              "unminifiedGzip": 81578
+            },
+            {
+              "name": "TeamGrid.tsx",
+              "category": "pages",
+              "minifiedGzip": 79517,
+              "minified": 303964,
+              "unminified": 317700,
+              "unminifiedGzip": 81616
+            },
+            {
+              "name": "ContactForm.tsx",
+              "category": "pages",
+              "minifiedGzip": 79188,
+              "minified": 303692,
+              "unminified": 317543,
+              "unminifiedGzip": 81336
+            },
+            {
+              "name": "BlogList.tsx",
+              "category": "pages",
+              "minifiedGzip": 79288,
+              "minified": 303231,
+              "unminified": 316968,
+              "unminifiedGzip": 81418
+            },
+            {
+              "name": "ThemeToggle.tsx",
+              "category": "Shared",
+              "minifiedGzip": 79140,
+              "minified": 302793,
+              "unminified": 316880,
+              "unminifiedGzip": 81367
+            },
+            {
+              "name": "WhatWeMeasure.tsx",
+              "category": "pages",
+              "minifiedGzip": 79046,
+              "minified": 302394,
+              "unminified": 316120,
+              "unminifiedGzip": 81185
+            },
+            {
+              "name": "CareersBenefits.tsx",
+              "category": "pages",
+              "minifiedGzip": 78967,
+              "minified": 302031,
+              "unminified": 315737,
+              "unminifiedGzip": 81107
+            },
+            {
+              "name": "ContactHeader.tsx",
+              "category": "pages",
+              "minifiedGzip": 78937,
+              "minified": 301894,
+              "unminified": 315604,
+              "unminifiedGzip": 81079
+            },
+            {
+              "name": "MockBanner.tsx",
+              "category": "Shared",
+              "minifiedGzip": 78760,
+              "minified": 301358,
+              "unminified": 315032,
+              "unminifiedGzip": 80889
+            },
+            {
+              "name": "Footer.tsx",
+              "category": "Shared",
+              "minifiedGzip": 20,
+              "minified": 0,
+              "unminified": 0,
+              "unminifiedGzip": 20
+            },
+            {
+              "name": "LocaleSwitcher.tsx",
+              "category": "Shared",
+              "minifiedGzip": 20,
+              "minified": 0,
+              "unminified": 0,
+              "unminifiedGzip": 20
+            },
+            {
+              "name": "Layout.tsx",
+              "category": "Shared",
+              "minifiedGzip": 20,
+              "minified": 0,
+              "unminified": 0,
+              "unminifiedGzip": 20
+            },
+            {
+              "name": "Header.tsx",
+              "category": "Shared",
+              "minifiedGzip": 20,
+              "minified": 0,
+              "unminified": 0,
+              "unminifiedGzip": 20
+            }
+          ]
+        },
+        "reactivity": {
+          "status": "missing",
+          "byLocale": {},
+          "e2eAvgMs": null,
+          "profilerAvgMs": null,
+          "e2eVsBaseline": null
+        },
+        "rendering": {
+          "status": "missing",
+          "byLocale": {},
+          "e2ePageLoadAvgMs": null,
+          "hydrationAvgMs": null,
+          "reactMountAvgMs": null,
           "e2ePageLoadVsBaseline": null
         }
       },

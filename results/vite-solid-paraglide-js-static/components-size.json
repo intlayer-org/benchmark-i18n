@@ -1,28 +1,28 @@
 {
-  "timestamp": "2026-09-09T19:18:22.826Z",
+  "timestamp": "2026-09-28T00:54:22.860Z",
   "packageName": "vite-solid-paraglide-js-static",
   "summary": {
     "totalComponents": 60,
-    "totalUnminifiedBytes": 2579047,
-    "totalMinifiedBytes": 1343192,
-    "totalGzipBytes": 469069
+    "totalUnminifiedBytes": 2579095,
+    "totalMinifiedBytes": 1343240,
+    "totalGzipBytes": 469135
   },
   "components": [
     {
       "name": "FAQList.tsx",
       "category": "pages",
-      "unminifiedBytes": 548360,
-      "unminifiedGzipBytes": 96127,
-      "minifiedBytes": 282434,
-      "minifiedGzipBytes": 83215
+      "unminifiedBytes": 548372,
+      "unminifiedGzipBytes": 96146,
+      "minifiedBytes": 282446,
+      "minifiedGzipBytes": 83229
     },
     {
       "name": "FAQList.tsx",
       "category": "faq",
-      "unminifiedBytes": 548360,
-      "unminifiedGzipBytes": 96127,
-      "minifiedBytes": 282434,
-      "minifiedGzipBytes": 83215
+      "unminifiedBytes": 548372,
+      "unminifiedGzipBytes": 96146,
+      "minifiedBytes": 282446,
+      "minifiedGzipBytes": 83229
     },
     {
       "name": "UnderstandingImpact.tsx",
@@ -84,17 +84,17 @@
       "name": "PricingTiers.tsx",
       "category": "pages",
       "unminifiedBytes": 52696,
-      "unminifiedGzipBytes": 8124,
+      "unminifiedGzipBytes": 8127,
       "minifiedBytes": 21197,
-      "minifiedGzipBytes": 6702
+      "minifiedGzipBytes": 6705
     },
     {
       "name": "PricingTiers.tsx",
       "category": "pricing",
       "unminifiedBytes": 52696,
-      "unminifiedGzipBytes": 8124,
+      "unminifiedGzipBytes": 8127,
       "minifiedBytes": 21197,
-      "minifiedGzipBytes": 6702
+      "minifiedGzipBytes": 6705
     },
     {
       "name": "Header.tsx",
@@ -123,18 +123,18 @@
     {
       "name": "ProductsGrid.tsx",
       "category": "pages",
-      "unminifiedBytes": 42821,
-      "unminifiedGzipBytes": 8758,
-      "minifiedBytes": 20955,
-      "minifiedGzipBytes": 7533
+      "unminifiedBytes": 42824,
+      "unminifiedGzipBytes": 8761,
+      "minifiedBytes": 20958,
+      "minifiedGzipBytes": 7535
     },
     {
       "name": "ProductsGrid.tsx",
       "category": "products",
-      "unminifiedBytes": 42821,
-      "unminifiedGzipBytes": 8758,
-      "minifiedBytes": 20955,
-      "minifiedGzipBytes": 7533
+      "unminifiedBytes": 42824,
+      "unminifiedGzipBytes": 8761,
+      "minifiedBytes": 20958,
+      "minifiedGzipBytes": 7535
     },
     {
       "name": "WhatWeMeasure.tsx",
@@ -299,18 +299,18 @@
     {
       "name": "CareersBenefits.tsx",
       "category": "pages",
-      "unminifiedBytes": 17944,
-      "unminifiedGzipBytes": 4365,
-      "minifiedBytes": 8535,
-      "minifiedGzipBytes": 3496
+      "unminifiedBytes": 17953,
+      "unminifiedGzipBytes": 4381,
+      "minifiedBytes": 8544,
+      "minifiedGzipBytes": 3510
     },
     {
       "name": "CareersBenefits.tsx",
       "category": "careers",
-      "unminifiedBytes": 17944,
-      "unminifiedGzipBytes": 4365,
-      "minifiedBytes": 8535,
-      "minifiedGzipBytes": 3496
+      "unminifiedBytes": 17953,
+      "unminifiedGzipBytes": 4381,
+      "minifiedBytes": 8544,
+      "minifiedGzipBytes": 3510
     },
     {
       "name": "TeamHeader.tsx",

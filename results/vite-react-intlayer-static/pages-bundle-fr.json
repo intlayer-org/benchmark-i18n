@@ -1,7 +1,7 @@
 {
   "app": "vite-react-intlayer-static",
   "locale": "fr",
-  "timestamp": "2026-09-26T05:30:45.159Z",
+  "timestamp": "2026-09-28T00:52:12.199Z",
   "fingerprintCounts": {
     "locale": {
       "en": 100,
@@ -61,12 +61,6 @@
           "type": "js"
         },
         {
-          "url": "/assets/WhyItMatters-u5rnCAaW.js",
-          "size": 15263,
-          "gzipSize": 7547,
-          "type": "js"
-        },
-        {
           "url": "/assets/ResultsTable-BZo9-zW9.js",
           "size": 4392,
           "gzipSize": 1520,
@@ -76,6 +70,12 @@
           "url": "/assets/UnderstandingImpact-BAnKtO2n.js",
           "size": 24276,
           "gzipSize": 11019,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhyItMatters-u5rnCAaW.js",
+          "size": 15263,
+          "gzipSize": 7547,
           "type": "js"
         }
       ],
@@ -391,15 +391,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/BlogHeader-BEbfikNk.js",
-          "size": 1237,
-          "gzipSize": 810,
-          "type": "js"
-        },
-        {
           "url": "/assets/MockBanner-DORMMEbI.js",
           "size": 246,
           "gzipSize": 202,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogHeader-BEbfikNk.js",
+          "size": 1237,
+          "gzipSize": 810,
           "type": "js"
         },
         {
@@ -717,15 +717,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-DORMMEbI.js",
-          "size": 246,
-          "gzipSize": 202,
-          "type": "js"
-        },
-        {
           "url": "/assets/ContactHeader-ByPiuL9B.js",
           "size": 1965,
           "gzipSize": 1289,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-DORMMEbI.js",
+          "size": 246,
+          "gzipSize": 202,
           "type": "js"
         },
         {
@@ -844,15 +844,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-DORMMEbI.js",
-          "size": 246,
-          "gzipSize": 202,
-          "type": "js"
-        },
-        {
           "url": "/assets/FAQHeader-CwNKdMuH.js",
           "size": 1336,
           "gzipSize": 868,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-DORMMEbI.js",
+          "size": 246,
+          "gzipSize": 202,
           "type": "js"
         },
         {
@@ -1297,6 +1297,12 @@
           "type": "js"
         },
         {
+          "url": "/assets/SettingsFooter-B0WmfLqq.js",
+          "size": 1022,
+          "gzipSize": 646,
+          "type": "js"
+        },
+        {
           "url": "/assets/ProfileSection-CfGlTjg4.js",
           "size": 1682,
           "gzipSize": 838,
@@ -1312,12 +1318,6 @@
           "url": "/assets/ApiAccessSection-C9suaZU5.js",
           "size": 2397,
           "gzipSize": 1292,
-          "type": "js"
-        },
-        {
-          "url": "/assets/SettingsFooter-B0WmfLqq.js",
-          "size": 1022,
-          "gzipSize": 646,
           "type": "js"
         }
       ],
@@ -1444,15 +1444,15 @@
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-DORMMEbI.js",
-          "size": 246,
-          "gzipSize": 202,
-          "type": "js"
-        },
-        {
           "url": "/assets/TeamHeader-xiyzR4Co.js",
           "size": 2248,
           "gzipSize": 1446,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-DORMMEbI.js",
+          "size": 246,
+          "gzipSize": 202,
           "type": "js"
         },
         {

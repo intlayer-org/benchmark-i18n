@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-26T05:31:46.382Z",
+  "timestamp": "2026-09-28T00:52:33.228Z",
   "packageName": "vite-react-intlayer-static",
   "summary": {
     "totalComponents": 60,
@@ -457,7 +457,7 @@
       "minifiedGzipBytes": 4364
     },
     {
-      "name": "LocaleSwitcher.tsx",
+      "name": "Footer.tsx",
       "category": "Shared",
       "unminifiedBytes": 0,
       "unminifiedGzipBytes": 20,
@@ -465,7 +465,7 @@
       "minifiedGzipBytes": 20
     },
     {
-      "name": "Footer.tsx",
+      "name": "LocaleSwitcher.tsx",
       "category": "Shared",
       "unminifiedBytes": 0,
       "unminifiedGzipBytes": 20,

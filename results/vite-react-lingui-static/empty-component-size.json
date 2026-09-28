@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-09-28T00:50:01.772Z",
+  "packageName": "vite-react-lingui-static",
+  "summary": {
+    "totalComponents": 1,
+    "totalUnminifiedBytes": 50818,
+    "totalMinifiedBytes": 36951,
+    "totalGzipBytes": 11558
+  },
+  "components": [
+    {
+      "name": "EmptyComponent.tsx",
+      "category": "Synthetic",
+      "unminifiedBytes": 50818,
+      "unminifiedGzipBytes": 13701,
+      "minifiedBytes": 36951,
+      "minifiedGzipBytes": 11558
+    }
+  ]
+}

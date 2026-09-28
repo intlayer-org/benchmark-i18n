@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-26T05:54:13.300Z",
+  "timestamp": "2026-09-28T00:47:52.124Z",
   "packageName": "nextjs-static-intlayer-compat-next-intl-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 40973,
-    "totalMinifiedBytes": 24315,
-    "totalGzipBytes": 8207
+    "totalUnminifiedBytes": 40888,
+    "totalMinifiedBytes": 24246,
+    "totalGzipBytes": 8198
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 40973,
-      "unminifiedGzipBytes": 11245,
-      "minifiedBytes": 24315,
-      "minifiedGzipBytes": 8207
+      "unminifiedBytes": 40888,
+      "unminifiedGzipBytes": 11225,
+      "minifiedBytes": 24246,
+      "minifiedGzipBytes": 8198
     }
   ]
 }

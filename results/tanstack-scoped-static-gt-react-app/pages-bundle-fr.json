@@ -1,11 +1,11 @@
 {
   "app": "tanstack-scoped-static-gt-react-app",
   "locale": "fr",
-  "timestamp": "2026-09-09T02:37:06.005Z",
+  "timestamp": "2026-09-28T00:50:02.791Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 1,
-      "fr": 10
+      "en": 0,
+      "fr": 0
     },
     "page": {
       "home": 24,
@@ -25,21 +25,21 @@
       "path": "/fr/",
       "page": "home",
       "locale": "fr",
-      "totalSize": 1482966,
-      "totalGzipSize": 459493,
-      "jsSize": 1429128,
-      "jsGzipSize": 444273,
+      "totalSize": 711760,
+      "totalGzipSize": 201917,
+      "jsSize": 657939,
+      "jsGzipSize": 186699,
       "cssSize": 23682,
       "cssGzipSize": 5010,
-      "htmlSize": 30156,
-      "htmlGzipSize": 10210,
-      "fileCount": 5,
-      "jsFileCount": 3,
+      "htmlSize": 30139,
+      "htmlGzipSize": 10208,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/fr",
-          "size": 30156,
-          "gzipSize": 10210,
+          "size": 30139,
+          "gzipSize": 10208,
           "type": "html"
         },
         {
@@ -49,48 +49,59 @@
           "type": "css"
         },
         {
-          "url": "/assets/route-DHBvBSJB.js",
+          "url": "/assets/route-qioZDL6T.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/_locale-Cb8AVx0Y.js",
+          "url": "/assets/_locale-BuarJYrL.js",
           "size": 1240,
-          "gzipSize": 466,
+          "gzipSize": 465,
           "type": "js"
         },
         {
-          "url": "/assets/index-CreEESkN.js",
-          "size": 1427817,
-          "gzipSize": 443721,
+          "url": "/assets/index-BN_ToGWt.js",
+          "size": 647882,
+          "gzipSize": 182957,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Hero-Ch41d_de.js",
+          "size": 1074,
+          "gzipSize": 519,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhyItMatters-GmvwZ4LC.js",
+          "size": 2262,
+          "gzipSize": 888,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ResultsTable-0KmeFwwA.js",
+          "size": 1771,
+          "gzipSize": 532,
+          "type": "js"
+        },
+        {
+          "url": "/assets/UnderstandingImpact-C_qAkgnw.js",
+          "size": 3639,
+          "gzipSize": 1252,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
-          "found": [
-            "something went wrong!"
-          ]
+          "count": 0,
+          "found": []
         },
         "fr": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 9.090909090909092,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -188,21 +199,21 @@
       "path": "/fr/about",
       "page": "about",
       "locale": "fr",
-      "totalSize": 1479430,
-      "totalGzipSize": 459073,
-      "jsSize": 1428885,
-      "jsGzipSize": 444236,
+      "totalSize": 703464,
+      "totalGzipSize": 200290,
+      "jsSize": 652936,
+      "jsGzipSize": 185454,
       "cssSize": 23682,
       "cssGzipSize": 5010,
-      "htmlSize": 26863,
-      "htmlGzipSize": 9827,
-      "fileCount": 5,
-      "jsFileCount": 3,
+      "htmlSize": 26846,
+      "htmlGzipSize": 9826,
+      "fileCount": 8,
+      "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/about",
-          "size": 26863,
-          "gzipSize": 9827,
+          "size": 26846,
+          "gzipSize": 9826,
           "type": "html"
         },
         {
@@ -212,48 +223,53 @@
           "type": "css"
         },
         {
-          "url": "/assets/route-DHBvBSJB.js",
+          "url": "/assets/route-qioZDL6T.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/about-CS2jyES-.js",
+          "url": "/assets/about-wvChOLJw.js",
           "size": 997,
-          "gzipSize": 429,
+          "gzipSize": 432,
           "type": "js"
         },
         {
-          "url": "/assets/index-CreEESkN.js",
-          "size": 1427817,
-          "gzipSize": 443721,
+          "url": "/assets/index-BN_ToGWt.js",
+          "size": 647882,
+          "gzipSize": 182957,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutHeader-CqFeE7dZ.js",
+          "size": 612,
+          "gzipSize": 396,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutGrid-C8uILFIX.js",
+          "size": 1476,
+          "gzipSize": 695,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhatWeMeasure-wmywzh4E.js",
+          "size": 1898,
+          "gzipSize": 888,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
-          "found": [
-            "something went wrong!"
-          ]
+          "count": 0,
+          "found": []
         },
         "fr": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 9.090909090909092,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -351,21 +367,21 @@
       "path": "/fr/blog",
       "page": "blog",
       "locale": "fr",
-      "totalSize": 1480099,
-      "totalGzipSize": 459449,
-      "jsSize": 1428674,
-      "jsGzipSize": 444217,
+      "totalSize": 703754,
+      "totalGzipSize": 200289,
+      "jsSize": 652346,
+      "jsGzipSize": 185061,
       "cssSize": 23682,
       "cssGzipSize": 5010,
-      "htmlSize": 27743,
-      "htmlGzipSize": 10222,
-      "fileCount": 5,
-      "jsFileCount": 3,
+      "htmlSize": 27726,
+      "htmlGzipSize": 10218,
+      "fileCount": 8,
+      "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/blog",
-          "size": 27743,
-          "gzipSize": 10222,
+          "size": 27726,
+          "gzipSize": 10218,
           "type": "html"
         },
         {
@@ -375,48 +391,53 @@
           "type": "css"
         },
         {
-          "url": "/assets/route-DHBvBSJB.js",
+          "url": "/assets/route-qioZDL6T.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/blog-Bj535QJW.js",
+          "url": "/assets/blog-C7eU3lTz.js",
           "size": 786,
-          "gzipSize": 410,
+          "gzipSize": 409,
           "type": "js"
         },
         {
-          "url": "/assets/index-CreEESkN.js",
-          "size": 1427817,
-          "gzipSize": 443721,
+          "url": "/assets/index-BN_ToGWt.js",
+          "size": 647882,
+          "gzipSize": 182957,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogHeader-Vvfz5uMz.js",
+          "size": 455,
+          "gzipSize": 292,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Dbga7SJB.js",
+          "size": 361,
+          "gzipSize": 286,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogList-Chfac7Lu.js",
+          "size": 2791,
+          "gzipSize": 1031,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
-          "found": [
-            "something went wrong!"
-          ]
+          "count": 0,
+          "found": []
         },
         "fr": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 9.090909090909092,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -528,21 +549,21 @@
       "path": "/fr/careers",
       "page": "careers",
       "locale": "fr",
-      "totalSize": 1481451,
-      "totalGzipSize": 459281,
-      "jsSize": 1428940,
-      "jsGzipSize": 444265,
+      "totalSize": 706037,
+      "totalGzipSize": 200493,
+      "jsSize": 653543,
+      "jsGzipSize": 185479,
       "cssSize": 23682,
       "cssGzipSize": 5010,
-      "htmlSize": 28829,
-      "htmlGzipSize": 10006,
-      "fileCount": 5,
-      "jsFileCount": 3,
+      "htmlSize": 28812,
+      "htmlGzipSize": 10004,
+      "fileCount": 9,
+      "jsFileCount": 7,
       "bundleFiles": [
         {
           "url": "/fr/careers",
-          "size": 28829,
-          "gzipSize": 10006,
+          "size": 28812,
+          "gzipSize": 10004,
           "type": "html"
         },
         {
@@ -552,48 +573,59 @@
           "type": "css"
         },
         {
-          "url": "/assets/route-DHBvBSJB.js",
+          "url": "/assets/route-qioZDL6T.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/careers-BahPx5Uj.js",
+          "url": "/assets/careers-DwPTB3nW.js",
           "size": 1052,
-          "gzipSize": 458,
+          "gzipSize": 454,
           "type": "js"
         },
         {
-          "url": "/assets/index-CreEESkN.js",
-          "size": 1427817,
-          "gzipSize": 443721,
+          "url": "/assets/index-BN_ToGWt.js",
+          "size": 647882,
+          "gzipSize": 182957,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersHeader-_moLb6pZ.js",
+          "size": 547,
+          "gzipSize": 346,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Dbga7SJB.js",
+          "size": 361,
+          "gzipSize": 286,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersBenefits-BzKmwDif.js",
+          "size": 796,
+          "gzipSize": 409,
+          "type": "js"
+        },
+        {
+          "url": "/assets/OpenPositions-L1P-h0eB.js",
+          "size": 2834,
+          "gzipSize": 941,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
-          "found": [
-            "something went wrong!"
-          ]
+          "count": 0,
+          "found": []
         },
         "fr": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 9.090909090909092,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -691,21 +723,21 @@
       "path": "/fr/contact",
       "page": "contact",
       "locale": "fr",
-      "totalSize": 1478098,
-      "totalGzipSize": 459234,
-      "jsSize": 1428744,
-      "jsGzipSize": 444233,
+      "totalSize": 701580,
+      "totalGzipSize": 199767,
+      "jsSize": 652243,
+      "jsGzipSize": 184772,
       "cssSize": 23682,
       "cssGzipSize": 5010,
-      "htmlSize": 25672,
-      "htmlGzipSize": 9991,
-      "fileCount": 5,
-      "jsFileCount": 3,
+      "htmlSize": 25655,
+      "htmlGzipSize": 9985,
+      "fileCount": 8,
+      "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/contact",
-          "size": 25672,
-          "gzipSize": 9991,
+          "size": 25655,
+          "gzipSize": 9985,
           "type": "html"
         },
         {
@@ -715,48 +747,53 @@
           "type": "css"
         },
         {
-          "url": "/assets/route-DHBvBSJB.js",
+          "url": "/assets/contact-LEAn4TFU.js",
+          "size": 856,
+          "gzipSize": 424,
+          "type": "js"
+        },
+        {
+          "url": "/assets/route-qioZDL6T.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/contact-JG_oZ8iZ.js",
-          "size": 856,
-          "gzipSize": 426,
+          "url": "/assets/index-BN_ToGWt.js",
+          "size": 647882,
+          "gzipSize": 182957,
           "type": "js"
         },
         {
-          "url": "/assets/index-CreEESkN.js",
-          "size": 1427817,
-          "gzipSize": 443721,
+          "url": "/assets/MockBanner-Dbga7SJB.js",
+          "size": 361,
+          "gzipSize": 286,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactHeader-Cw41r1Q7.js",
+          "size": 618,
+          "gzipSize": 373,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactForm-BNN0oZ7a.js",
+          "size": 2455,
+          "gzipSize": 646,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
-          "found": [
-            "something went wrong!"
-          ]
+          "count": 0,
+          "found": []
         },
         "fr": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 9.090909090909092,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -856,22 +893,28 @@
       "path": "/fr/faq",
       "page": "faq",
       "locale": "fr",
-      "totalSize": 1479880,
-      "totalGzipSize": 459689,
-      "jsSize": 1428670,
-      "jsGzipSize": 444216,
+      "totalSize": 703443,
+      "totalGzipSize": 200749,
+      "jsSize": 652250,
+      "jsGzipSize": 185277,
       "cssSize": 23682,
       "cssGzipSize": 5010,
-      "htmlSize": 27528,
-      "htmlGzipSize": 10463,
-      "fileCount": 5,
-      "jsFileCount": 3,
+      "htmlSize": 27511,
+      "htmlGzipSize": 10462,
+      "fileCount": 8,
+      "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/faq",
-          "size": 27528,
-          "gzipSize": 10463,
+          "size": 27511,
+          "gzipSize": 10462,
           "type": "html"
+        },
+        {
+          "url": "/assets/faq-S598kmRi.js",
+          "size": 782,
+          "gzipSize": 411,
+          "type": "js"
         },
         {
           "url": "/assets/styles-CPQOGQ5n.css",
@@ -880,48 +923,47 @@
           "type": "css"
         },
         {
-          "url": "/assets/route-DHBvBSJB.js",
+          "url": "/assets/route-qioZDL6T.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/faq-Bcv-2s7r.js",
-          "size": 782,
-          "gzipSize": 409,
+          "url": "/assets/index-BN_ToGWt.js",
+          "size": 647882,
+          "gzipSize": 182957,
           "type": "js"
         },
         {
-          "url": "/assets/index-CreEESkN.js",
-          "size": 1427817,
-          "gzipSize": 443721,
+          "url": "/assets/FAQHeader-f80ijYiq.js",
+          "size": 447,
+          "gzipSize": 301,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Dbga7SJB.js",
+          "size": 361,
+          "gzipSize": 286,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQList-DvL5GfKo.js",
+          "size": 2707,
+          "gzipSize": 1236,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
-          "found": [
-            "something went wrong!"
-          ]
+          "count": 0,
+          "found": []
         },
         "fr": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 9.090909090909092,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1030,21 +1072,21 @@
       "path": "/fr/pricing",
       "page": "pricing",
       "locale": "fr",
-      "totalSize": 1479972,
-      "totalGzipSize": 459267,
-      "jsSize": 1428688,
-      "jsGzipSize": 444220,
+      "totalSize": 703344,
+      "totalGzipSize": 199956,
+      "jsSize": 652077,
+      "jsGzipSize": 184911,
       "cssSize": 23682,
       "cssGzipSize": 5010,
-      "htmlSize": 27602,
-      "htmlGzipSize": 10037,
-      "fileCount": 5,
-      "jsFileCount": 3,
+      "htmlSize": 27585,
+      "htmlGzipSize": 10035,
+      "fileCount": 8,
+      "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/pricing",
-          "size": 27602,
-          "gzipSize": 10037,
+          "size": 27585,
+          "gzipSize": 10035,
           "type": "html"
         },
         {
@@ -1054,48 +1096,53 @@
           "type": "css"
         },
         {
-          "url": "/assets/pricing-BXKtX3jo.js",
-          "size": 800,
-          "gzipSize": 413,
-          "type": "js"
-        },
-        {
-          "url": "/assets/route-DHBvBSJB.js",
+          "url": "/assets/route-qioZDL6T.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/index-CreEESkN.js",
-          "size": 1427817,
-          "gzipSize": 443721,
+          "url": "/assets/pricing-DM_8OyAH.js",
+          "size": 800,
+          "gzipSize": 411,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-BN_ToGWt.js",
+          "size": 647882,
+          "gzipSize": 182957,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingHeader-D0yfx2At.js",
+          "size": 527,
+          "gzipSize": 318,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Dbga7SJB.js",
+          "size": 361,
+          "gzipSize": 286,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingTiers-DfeI-Rl3.js",
+          "size": 2436,
+          "gzipSize": 853,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
-          "found": [
-            "something went wrong!"
-          ]
+          "count": 0,
+          "found": []
         },
         "fr": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 9.090909090909092,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1198,21 +1245,21 @@
       "path": "/fr/products",
       "page": "products",
       "locale": "fr",
-      "totalSize": 1479747,
-      "totalGzipSize": 459059,
-      "jsSize": 1428690,
-      "jsGzipSize": 444220,
+      "totalSize": 702715,
+      "totalGzipSize": 199737,
+      "jsSize": 651675,
+      "jsGzipSize": 184900,
       "cssSize": 23682,
       "cssGzipSize": 5010,
-      "htmlSize": 27375,
-      "htmlGzipSize": 9829,
-      "fileCount": 5,
-      "jsFileCount": 3,
+      "htmlSize": 27358,
+      "htmlGzipSize": 9827,
+      "fileCount": 8,
+      "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/products",
-          "size": 27375,
-          "gzipSize": 9829,
+          "size": 27358,
+          "gzipSize": 9827,
           "type": "html"
         },
         {
@@ -1222,48 +1269,53 @@
           "type": "css"
         },
         {
-          "url": "/assets/products-TWzHmPeK.js",
-          "size": 802,
-          "gzipSize": 413,
-          "type": "js"
-        },
-        {
-          "url": "/assets/route-DHBvBSJB.js",
+          "url": "/assets/route-qioZDL6T.js",
           "size": 71,
           "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/index-CreEESkN.js",
-          "size": 1427817,
-          "gzipSize": 443721,
+          "url": "/assets/products-iGuOXTL3.js",
+          "size": 802,
+          "gzipSize": 411,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-BN_ToGWt.js",
+          "size": 647882,
+          "gzipSize": 182957,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsHeader-FeZlfajo.js",
+          "size": 469,
+          "gzipSize": 299,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Dbga7SJB.js",
+          "size": 361,
+          "gzipSize": 286,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsGrid-DBh1UeJp.js",
+          "size": 2090,
+          "gzipSize": 861,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
-          "found": [
-            "something went wrong!"
-          ]
+          "count": 0,
+          "found": []
         },
         "fr": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 9.090909090909092,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1361,28 +1413,22 @@
       "path": "/fr/settings",
       "page": "settings",
       "locale": "fr",
-      "totalSize": 1480453,
-      "totalGzipSize": 459647,
-      "jsSize": 1429557,
-      "jsGzipSize": 444363,
+      "totalSize": 706619,
+      "totalGzipSize": 201456,
+      "jsSize": 655740,
+      "jsGzipSize": 186174,
       "cssSize": 23682,
       "cssGzipSize": 5010,
-      "htmlSize": 27214,
-      "htmlGzipSize": 10274,
-      "fileCount": 5,
-      "jsFileCount": 3,
+      "htmlSize": 27197,
+      "htmlGzipSize": 10272,
+      "fileCount": 11,
+      "jsFileCount": 9,
       "bundleFiles": [
         {
           "url": "/fr/settings",
-          "size": 27214,
-          "gzipSize": 10274,
+          "size": 27197,
+          "gzipSize": 10272,
           "type": "html"
-        },
-        {
-          "url": "/assets/route-DHBvBSJB.js",
-          "size": 71,
-          "gzipSize": 86,
-          "type": "js"
         },
         {
           "url": "/assets/styles-CPQOGQ5n.css",
@@ -1391,42 +1437,71 @@
           "type": "css"
         },
         {
-          "url": "/assets/settings-J8ZcdrIk.js",
+          "url": "/assets/settings-DhNjEjOl.js",
           "size": 1669,
-          "gzipSize": 556,
+          "gzipSize": 559,
           "type": "js"
         },
         {
-          "url": "/assets/index-CreEESkN.js",
-          "size": 1427817,
-          "gzipSize": 443721,
+          "url": "/assets/route-qioZDL6T.js",
+          "size": 71,
+          "gzipSize": 86,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-BN_ToGWt.js",
+          "size": 647882,
+          "gzipSize": 182957,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsHeader-CKEP7dXp.js",
+          "size": 450,
+          "gzipSize": 286,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Dbga7SJB.js",
+          "size": 361,
+          "gzipSize": 286,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProfileSection-BZryIBfF.js",
+          "size": 1155,
+          "gzipSize": 452,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PreferencesSection-CvCB__SQ.js",
+          "size": 2466,
+          "gzipSize": 719,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-DY6MS3Er.js",
+          "size": 573,
+          "gzipSize": 317,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ApiAccessSection-GMjR0C8Z.js",
+          "size": 1113,
+          "gzipSize": 512,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
-          "found": [
-            "something went wrong!"
-          ]
+          "count": 0,
+          "found": []
         },
         "fr": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 9.090909090909092,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1530,28 +1605,22 @@
       "path": "/fr/team",
       "page": "team",
       "locale": "fr",
-      "totalSize": 1479184,
-      "totalGzipSize": 459395,
-      "jsSize": 1428674,
-      "jsGzipSize": 444217,
+      "totalSize": 702195,
+      "totalGzipSize": 200138,
+      "jsSize": 651702,
+      "jsGzipSize": 184962,
       "cssSize": 23682,
       "cssGzipSize": 5010,
-      "htmlSize": 26828,
-      "htmlGzipSize": 10168,
-      "fileCount": 5,
-      "jsFileCount": 3,
+      "htmlSize": 26811,
+      "htmlGzipSize": 10166,
+      "fileCount": 8,
+      "jsFileCount": 6,
       "bundleFiles": [
         {
           "url": "/fr/team",
-          "size": 26828,
-          "gzipSize": 10168,
+          "size": 26811,
+          "gzipSize": 10166,
           "type": "html"
-        },
-        {
-          "url": "/assets/route-DHBvBSJB.js",
-          "size": 71,
-          "gzipSize": 86,
-          "type": "js"
         },
         {
           "url": "/assets/styles-CPQOGQ5n.css",
@@ -1560,42 +1629,53 @@
           "type": "css"
         },
         {
-          "url": "/assets/team-wXZudSMs.js",
-          "size": 786,
-          "gzipSize": 410,
+          "url": "/assets/route-qioZDL6T.js",
+          "size": 71,
+          "gzipSize": 86,
           "type": "js"
         },
         {
-          "url": "/assets/index-CreEESkN.js",
-          "size": 1427817,
-          "gzipSize": 443721,
+          "url": "/assets/team-9FxWoWIF.js",
+          "size": 786,
+          "gzipSize": 408,
+          "type": "js"
+        },
+        {
+          "url": "/assets/index-BN_ToGWt.js",
+          "size": 647882,
+          "gzipSize": 182957,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamHeader-Bp7P7C-1.js",
+          "size": 508,
+          "gzipSize": 325,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-Dbga7SJB.js",
+          "size": 361,
+          "gzipSize": 286,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamGrid-Cbk9_Rp7.js",
+          "size": 2094,
+          "gzipSize": 900,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 1,
-          "found": [
-            "something went wrong!"
-          ]
+          "count": 0,
+          "found": []
         },
         "fr": {
-          "count": 10,
-          "found": [
-            "about this benchmark",
-            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
-            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
-            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
-            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
-            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
-            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
-            "lazy loading effectiveness",
-            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
-            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
-          ]
+          "count": 0,
+          "found": []
         }
       },
-      "localeLeakagePercent": 9.090909090909092,
+      "localeLeakagePercent": 0,
       "pageLeakage": {
         "home": {
           "count": 16,
@@ -1683,9 +1763,10 @@
           "found": []
         },
         "team": {
-          "count": 9,
+          "count": 10,
           "found": [
             "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
             "former google engineer with 10 years of experience building internationalization systems at scale.",
             "performance engineer",
             "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
@@ -1697,7 +1778,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 83.33333333333334
+      "pageLeakagePercent": 81.81818181818183
     }
   ]
 }

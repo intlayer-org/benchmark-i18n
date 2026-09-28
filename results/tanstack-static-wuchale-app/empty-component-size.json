@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-04-20T03:21:44.128Z",
+  "timestamp": "2026-09-28T00:47:45.662Z",
   "packageName": "tanstack-static-wuchale-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 252,
-    "totalMinifiedBytes": 220,
-    "totalGzipBytes": 175
+    "totalUnminifiedBytes": 2211,
+    "totalMinifiedBytes": 1485,
+    "totalGzipBytes": 723
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 252,
-      "unminifiedGzipBytes": 185,
-      "minifiedBytes": 220,
-      "minifiedGzipBytes": 175
+      "unminifiedBytes": 2211,
+      "unminifiedGzipBytes": 924,
+      "minifiedBytes": 1485,
+      "minifiedGzipBytes": 723
     }
   ]
 }

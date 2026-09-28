@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-26T19:24:32.946Z",
+  "timestamp": "2026-09-28T00:47:33.643Z",
   "packageName": "vite-solid-i18next-dynamic",
   "summary": {
     "totalComponents": 60,
-    "totalUnminifiedBytes": 5899066,
+    "totalUnminifiedBytes": 5899067,
     "totalMinifiedBytes": 4489864,
-    "totalGzipBytes": 1394962
+    "totalGzipBytes": 1394964
   },
   "components": [
     {
       "name": "Layout.tsx",
       "category": "Shared",
-      "unminifiedBytes": 108464,
-      "unminifiedGzipBytes": 29888,
+      "unminifiedBytes": 108465,
+      "unminifiedGzipBytes": 29889,
       "minifiedBytes": 82880,
-      "minifiedGzipBytes": 25887
+      "minifiedGzipBytes": 25889
     },
     {
       "name": "Header.tsx",

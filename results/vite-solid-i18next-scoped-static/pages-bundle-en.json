@@ -1,0 +1,1998 @@
+{
+  "app": "vite-solid-i18next-scoped-static",
+  "locale": "en",
+  "timestamp": "2026-09-28T00:49:17.957Z",
+  "fingerprintCounts": {
+    "locale": {
+      "en": 100,
+      "fr": 115
+    },
+    "page": {
+      "home": 24,
+      "about": 10,
+      "blog": 13,
+      "careers": 11,
+      "contact": 2,
+      "faq": 10,
+      "pricing": 4,
+      "products": 8,
+      "settings": 5,
+      "team": 10
+    }
+  },
+  "results": [
+    {
+      "path": "/en/",
+      "page": "home",
+      "locale": "en",
+      "totalSize": 185685,
+      "totalGzipSize": 61350,
+      "jsSize": 158958,
+      "jsGzipSize": 55488,
+      "cssSize": 25384,
+      "cssGzipSize": 5238,
+      "htmlSize": 1343,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/",
+          "size": 1343,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BwSLYvWb.css",
+          "size": 25384,
+          "gzipSize": 5238,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-02yffUst.js",
+          "size": 152768,
+          "gzipSize": 53357,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Hero-CNJdy0mv.js",
+          "size": 876,
+          "gzipSize": 455,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhyItMatters-BtlygsrY.js",
+          "size": 1264,
+          "gzipSize": 427,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ResultsTable-CZU8wrdS.js",
+          "size": 1731,
+          "gzipSize": 647,
+          "type": "js"
+        },
+        {
+          "url": "/assets/UnderstandingImpact-CQjiVEKV.js",
+          "size": 2319,
+          "gzipSize": 602,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 19,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with vue, vite & a client-side router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
+          ]
+        },
+        "fr": {
+          "count": 20,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces métriques comptent",
+            "le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3g lentes encore très répandues. les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.",
+            "rendu et hydratation",
+            "brancher un gros dictionnaire json sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. lors de l'hydratation ssr, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions d'un coup surdimensionne la charge initiale. le chargement paresseux découpe les traductions par route ou espace de noms et n'envoie que le nécessaire. il introduit pourtant ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité du cache. il faut mesurer les deux approches.",
+            "pourquoi un unique gros json peut nuire aux performances",
+            "beaucoup de bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsqu'il est volumineux (milliers de clés), chaque composant qui consomme des traductions garde une référence à tout le dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — en bloquant le thread principal.",
+            "les architectures fondées sur le contexte peuvent provoquer des re-rendus en cascade quand la langue change, car chaque consommateur est notifié même si ses clés n'ont pas changé.",
+            "lors du rendu serveur, tout le dictionnaire est sérialisé dans le html, alourdissant le document à télécharger et à hydrater.",
+            "les compromis du chargement dynamique",
+            "découper les traductions par route ou espace de noms réduit fortement la charge initiale, mais pose de nouveaux défis :",
+            "ce que mesure ce benchmark",
+            "cette appli de test offre un environnement contrôlé — 10 pages au contenu réaliste — pour comparer les bibliothèques i18n sur trois axes : le poids ajouté au bundle javascript, le temps passé à analyser et afficher le texte traduit, et l'efficacité du découpage de code et du chargement paresseux. chaque bibliothèque est intégrée dans la même base pour des résultats comparables.",
+            "exemple de résultats",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "benchmark i18n — projet open-source. construit avec vue, vite et un routeur côté client.",
+            "⚠️ cette page contient des données fictives à des fins de benchmark uniquement. elle n'est liée à aucune activité commerciale ou service réel."
+          ]
+        }
+      },
+      "localeLeakagePercent": 51.28205128205128,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 0
+    },
+    {
+      "path": "/en/about",
+      "page": "about",
+      "locale": "en",
+      "totalSize": 209962,
+      "totalGzipSize": 71355,
+      "jsSize": 183235,
+      "jsGzipSize": 65493,
+      "cssSize": 25384,
+      "cssGzipSize": 5238,
+      "htmlSize": 1343,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/about",
+          "size": 1343,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BwSLYvWb.css",
+          "size": 25384,
+          "gzipSize": 5238,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-02yffUst.js",
+          "size": 152768,
+          "gzipSize": 53357,
+          "type": "js"
+        },
+        {
+          "url": "/assets/About-Be8NVDK_.js",
+          "size": 28355,
+          "gzipSize": 11058,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutHeader-DtF6wjQQ.js",
+          "size": 371,
+          "gzipSize": 246,
+          "type": "js"
+        },
+        {
+          "url": "/assets/WhatWeMeasure-Bpf-tpnv.js",
+          "size": 990,
+          "gzipSize": 491,
+          "type": "js"
+        },
+        {
+          "url": "/assets/AboutGrid-CEbd1YfH.js",
+          "size": 751,
+          "gzipSize": 341,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 29,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with vue, vite & a client-side router.",
+            "about this benchmark",
+            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
+            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
+            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
+            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
+            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
+            "lazy loading effectiveness",
+            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service."
+          ]
+        },
+        "fr": {
+          "count": 34,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces métriques comptent",
+            "le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3g lentes encore très répandues. les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.",
+            "rendu et hydratation",
+            "brancher un gros dictionnaire json sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. lors de l'hydratation ssr, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions d'un coup surdimensionne la charge initiale. le chargement paresseux découpe les traductions par route ou espace de noms et n'envoie que le nécessaire. il introduit pourtant ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité du cache. il faut mesurer les deux approches.",
+            "pourquoi un unique gros json peut nuire aux performances",
+            "beaucoup de bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsqu'il est volumineux (milliers de clés), chaque composant qui consomme des traductions garde une référence à tout le dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — en bloquant le thread principal.",
+            "les architectures fondées sur le contexte peuvent provoquer des re-rendus en cascade quand la langue change, car chaque consommateur est notifié même si ses clés n'ont pas changé.",
+            "lors du rendu serveur, tout le dictionnaire est sérialisé dans le html, alourdissant le document à télécharger et à hydrater.",
+            "les compromis du chargement dynamique",
+            "découper les traductions par route ou espace de noms réduit fortement la charge initiale, mais pose de nouveaux défis :",
+            "ce que mesure ce benchmark",
+            "cette appli de test offre un environnement contrôlé — 10 pages au contenu réaliste — pour comparer les bibliothèques i18n sur trois axes : le poids ajouté au bundle javascript, le temps passé à analyser et afficher le texte traduit, et l'efficacité du découpage de code et du chargement paresseux. chaque bibliothèque est intégrée dans la même base pour des résultats comparables.",
+            "exemple de résultats",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "benchmark i18n — projet open-source. construit avec vue, vite et un routeur côté client.",
+            "à propos de ce benchmark",
+            "il s'agit d'une application de test open source — pas d'un produit ni d'une entreprise. elle sert uniquement de base multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans les mêmes conditions.",
+            "pourquoi ce projet existe",
+            "choisir une bibliothèque i18n est une décision d'architecture à long terme. beaucoup de comparatifs insistent sur l'ergonomie d'api, mais peu mesurent le coût performance : poids ajouté au bundle ? impact sur le rendu avec des milliers de clés ? le chargement paresseux aide-t-il vraiment ou déplace-t-il seulement le coût ? ce benchmark répond avec des données réelles.",
+            "la même application 10 pages est construite pour chaque bibliothèque. nous mesurons le bundle de production (rollup-plugin-visualizer), lançons des audits lighthouse et utilisons le profilage pour capturer le rendu lors des changements de langue. tout s'exécute en ci sur du matériel homogène pour des résultats reproductibles.",
+            "ce que nous mesurons",
+            "impact sur la taille du bundle",
+            "les octets javascript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers sont inclus — impact direct sur les réseaux lents.",
+            "temps supplémentaire ajouté au cycle de rendu. les bibliothèques qui injectent les traductions via un seul provider de contexte peuvent provoquer des re-rendus inutiles.",
+            "en ssr, les données de traduction sont sérialisées dans le html. de gros dictionnaires alourdissent la page et ralentissent l'hydratation.",
+            "efficacité du chargement paresseux",
+            "le découpage par route ou espace de noms réduit-il vraiment la charge initiale, et quels compromis cela introduit (cascade, fouc, cache) ?",
+            "vitesse de changement de langue",
+            "à quelle vitesse l'application peut basculer de langue à l'exécution — récupération des traductions, re-rendu, mise à jour du dom.",
+            "⚠️ cette page contient des données fictives à des fins de benchmark uniquement. elle n'est liée à aucune activité commerciale ou service réel."
+          ]
+        }
+      },
+      "localeLeakagePercent": 53.96825396825397,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 10,
+          "found": [
+            "about this benchmark",
+            "this is an open-source test application — not a product or a company. its sole purpose is to provide a realistic, multi-page react app where different i18n libraries can be integrated and measured under identical conditions.",
+            "choosing an i18n library is an architectural decision with long-term consequences. most comparisons focus on api ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? how does it affect rendering when thousands of translation keys are loaded? does lazy loading actually help or just shift the cost? this benchmark answers those questions with real data.",
+            "the same 10-page app is built once per library. we measure the production bundle (via rollup-plugin-visualizer), run lighthouse audits for loading metrics, and use react profiler to capture render times during locale switches. all tests run in ci on consistent hardware to ensure reproducible results.",
+            "the additional javascript bytes sent to users when the i18n library and its translation files are included. this directly affects download time on slow networks.",
+            "how much extra time the library adds to react's render cycle. libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.",
+            "during ssr, translation data is serialized into html. large dictionaries increase the html payload and slow down hydration — the moment the page becomes interactive.",
+            "lazy loading effectiveness",
+            "whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, fouc, cache complexity).",
+            "how fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the dom."
+          ]
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 61.53846153846154
+    },
+    {
+      "path": "/en/blog",
+      "page": "blog",
+      "locale": "en",
+      "totalSize": 199537,
+      "totalGzipSize": 66645,
+      "jsSize": 172810,
+      "jsGzipSize": 60783,
+      "cssSize": 25384,
+      "cssGzipSize": 5238,
+      "htmlSize": 1343,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/blog",
+          "size": 1343,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BwSLYvWb.css",
+          "size": 25384,
+          "gzipSize": 5238,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-02yffUst.js",
+          "size": 152768,
+          "gzipSize": 53357,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Blog-_25dO0c1.js",
+          "size": 18375,
+          "gzipSize": 6448,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogHeader-DKIf7QBt.js",
+          "size": 395,
+          "gzipSize": 258,
+          "type": "js"
+        },
+        {
+          "url": "/assets/BlogList-EHllpTM0.js",
+          "size": 1005,
+          "gzipSize": 510,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-B2Udsvqx.js",
+          "size": 267,
+          "gzipSize": 210,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 32,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with vue, vite & a client-side router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "insights, tutorials, and analysis from the i18n community.",
+            "comparing i18n libraries in 2026: a deep dive",
+            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
+            "how to reduce your i18n bundle by 60%",
+            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+            "the state of internationalization in react",
+            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
+            "migrating from react-i18next to lingui",
+            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
+            "server components and i18n: what changes?",
+            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
+            "benchmark methodology: how we test",
+            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+          ]
+        },
+        "fr": {
+          "count": 33,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces métriques comptent",
+            "le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3g lentes encore très répandues. les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.",
+            "rendu et hydratation",
+            "brancher un gros dictionnaire json sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. lors de l'hydratation ssr, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions d'un coup surdimensionne la charge initiale. le chargement paresseux découpe les traductions par route ou espace de noms et n'envoie que le nécessaire. il introduit pourtant ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité du cache. il faut mesurer les deux approches.",
+            "pourquoi un unique gros json peut nuire aux performances",
+            "beaucoup de bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsqu'il est volumineux (milliers de clés), chaque composant qui consomme des traductions garde une référence à tout le dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — en bloquant le thread principal.",
+            "les architectures fondées sur le contexte peuvent provoquer des re-rendus en cascade quand la langue change, car chaque consommateur est notifié même si ses clés n'ont pas changé.",
+            "lors du rendu serveur, tout le dictionnaire est sérialisé dans le html, alourdissant le document à télécharger et à hydrater.",
+            "les compromis du chargement dynamique",
+            "découper les traductions par route ou espace de noms réduit fortement la charge initiale, mais pose de nouveaux défis :",
+            "ce que mesure ce benchmark",
+            "cette appli de test offre un environnement contrôlé — 10 pages au contenu réaliste — pour comparer les bibliothèques i18n sur trois axes : le poids ajouté au bundle javascript, le temps passé à analyser et afficher le texte traduit, et l'efficacité du découpage de code et du chargement paresseux. chaque bibliothèque est intégrée dans la même base pour des résultats comparables.",
+            "exemple de résultats",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "benchmark i18n — projet open-source. construit avec vue, vite et un routeur côté client.",
+            "⚠️ cette page contient des données fictives à des fins de benchmark uniquement. elle n'est liée à aucune activité commerciale ou service réel.",
+            "articles, tutoriels et analyses de la communauté i18n.",
+            "comparer les bibliothèques i18n en 2026 : plongée détaillée",
+            "nous avons testé 12 bibliothèques sur la perf, la taille du bundle et l'expérience développeur. voici les résultats surprenants.",
+            "réduire votre bundle i18n de 60 %",
+            "stratégies concrètes : chargement paresseux, découpage et optimisations à la compilation.",
+            "état de l'internationalisation dans l'écosystème react",
+            "panorama des tendances, patterns émergents et préférences de la communauté.",
+            "migrer de react-i18next vers lingui",
+            "guide pas à pas pour migrer une app en production avec 50 000 clés de traduction.",
+            "server components et i18n : qu'est-ce qui change ?",
+            "les react server components introduisent de nouveaux motifs pour l'i18n.",
+            "méthodologie de benchmark : comment nous testons",
+            "transparence sur l'environnement de test, les méthodes statistiques et la reproductibilité."
+          ]
+        }
+      },
+      "localeLeakagePercent": 50.76923076923077,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 13,
+          "found": [
+            "insights, tutorials, and analysis from the i18n community.",
+            "comparing i18n libraries in 2026: a deep dive",
+            "we tested 12 different internationalization libraries across performance, bundle size, and dx. here are the surprising results.",
+            "how to reduce your i18n bundle by 60%",
+            "practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations.",
+            "the state of internationalization in react",
+            "an overview of the current i18n ecosystem in react, covering trends, emerging patterns, and community preferences.",
+            "migrating from react-i18next to lingui",
+            "a step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to lingui.",
+            "server components and i18n: what changes?",
+            "react server components introduce new patterns for internationalization. we explore the implications and best practices.",
+            "benchmark methodology: how we test",
+            "a transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+          ]
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 55.172413793103445
+    },
+    {
+      "path": "/en/careers",
+      "page": "careers",
+      "locale": "en",
+      "totalSize": 199950,
+      "totalGzipSize": 67372,
+      "jsSize": 173223,
+      "jsGzipSize": 61510,
+      "cssSize": 25384,
+      "cssGzipSize": 5238,
+      "htmlSize": 1343,
+      "htmlGzipSize": 624,
+      "fileCount": 8,
+      "jsFileCount": 6,
+      "bundleFiles": [
+        {
+          "url": "/en/careers",
+          "size": 1343,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BwSLYvWb.css",
+          "size": 25384,
+          "gzipSize": 5238,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-02yffUst.js",
+          "size": 152768,
+          "gzipSize": 53357,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Careers-DZakr2sv.js",
+          "size": 17124,
+          "gzipSize": 6575,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersHeader-DKjtC_St.js",
+          "size": 400,
+          "gzipSize": 259,
+          "type": "js"
+        },
+        {
+          "url": "/assets/CareersBenefits-BAtAQsHD.js",
+          "size": 662,
+          "gzipSize": 385,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-B2Udsvqx.js",
+          "size": 267,
+          "gzipSize": 210,
+          "type": "js"
+        },
+        {
+          "url": "/assets/OpenPositions-sjrEC67U.js",
+          "size": 2002,
+          "gzipSize": 724,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 30,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with vue, vite & a client-side router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
+            "top-of-market compensation",
+            "20% time for oss contributions",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+          ]
+        },
+        "fr": {
+          "count": 33,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces métriques comptent",
+            "le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3g lentes encore très répandues. les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.",
+            "rendu et hydratation",
+            "brancher un gros dictionnaire json sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. lors de l'hydratation ssr, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions d'un coup surdimensionne la charge initiale. le chargement paresseux découpe les traductions par route ou espace de noms et n'envoie que le nécessaire. il introduit pourtant ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité du cache. il faut mesurer les deux approches.",
+            "pourquoi un unique gros json peut nuire aux performances",
+            "beaucoup de bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsqu'il est volumineux (milliers de clés), chaque composant qui consomme des traductions garde une référence à tout le dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — en bloquant le thread principal.",
+            "les architectures fondées sur le contexte peuvent provoquer des re-rendus en cascade quand la langue change, car chaque consommateur est notifié même si ses clés n'ont pas changé.",
+            "lors du rendu serveur, tout le dictionnaire est sérialisé dans le html, alourdissant le document à télécharger et à hydrater.",
+            "les compromis du chargement dynamique",
+            "découper les traductions par route ou espace de noms réduit fortement la charge initiale, mais pose de nouveaux défis :",
+            "ce que mesure ce benchmark",
+            "cette appli de test offre un environnement contrôlé — 10 pages au contenu réaliste — pour comparer les bibliothèques i18n sur trois axes : le poids ajouté au bundle javascript, le temps passé à analyser et afficher le texte traduit, et l'efficacité du découpage de code et du chargement paresseux. chaque bibliothèque est intégrée dans la même base pour des résultats comparables.",
+            "exemple de résultats",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "benchmark i18n — projet open-source. construit avec vue, vite et un routeur côté client.",
+            "⚠️ cette page contient des données fictives à des fins de benchmark uniquement. elle n'est liée à aucune activité commerciale ou service réel.",
+            "rejoignez notre mission pour améliorer l'écosystème i18n. équipe remote-first, impact, transparence et apprentissage continu.",
+            "travaillez depuis n'importe où",
+            "rémunération compétitive",
+            "fourchettes haut de marché",
+            "20 % du temps pour contribuer à l'oss",
+            "ingénieur front-end senior",
+            "construire et maintenir le tableau de bord de benchmark et les outils dev avec react, typescript et vite.",
+            "concevoir et faire évoluer l'infrastructure cloud qui exécute des milliers de benchmarks automatisés.",
+            "rédacteur·rice technique",
+            "guides, références d'api et tutoriels pour la plateforme de benchmark.",
+            "animer la communauté i18n : conférences, ateliers, articles et contributions oss.",
+            "san francisco / télétravail",
+            "garantir la fiabilité des résultats par des tests et validations rigoureux."
+          ]
+        }
+      },
+      "localeLeakagePercent": 52.38095238095239,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 11,
+          "found": [
+            "join our mission to improve the internationalization ecosystem. we're a remote-first team that values impact, transparency, and continuous learning.",
+            "work from anywhere in the world",
+            "top-of-market compensation",
+            "20% time for oss contributions",
+            "senior frontend engineer",
+            "build and maintain our benchmarking dashboard and developer tools using react, typescript, and vite.",
+            "design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily.",
+            "create comprehensive guides, api references, and tutorials for our benchmarking platform.",
+            "engage with the i18n community through talks, workshops, blog posts, and open source contributions.",
+            "san francisco / remote",
+            "ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+          ]
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 59.25925925925925
+    },
+    {
+      "path": "/en/contact",
+      "page": "contact",
+      "locale": "en",
+      "totalSize": 189346,
+      "totalGzipSize": 63159,
+      "jsSize": 162619,
+      "jsGzipSize": 57297,
+      "cssSize": 25384,
+      "cssGzipSize": 5238,
+      "htmlSize": 1343,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/contact",
+          "size": 1343,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BwSLYvWb.css",
+          "size": 25384,
+          "gzipSize": 5238,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-02yffUst.js",
+          "size": 152768,
+          "gzipSize": 53357,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Contact-CGXPhPP1.js",
+          "size": 6626,
+          "gzipSize": 2560,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactHeader-CtJ8wFAO.js",
+          "size": 546,
+          "gzipSize": 352,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-B2Udsvqx.js",
+          "size": 267,
+          "gzipSize": 210,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ContactForm-DbqU48My.js",
+          "size": 2412,
+          "gzipSize": 818,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 20,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with vue, vite & a client-side router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "methodology question"
+          ]
+        },
+        "fr": {
+          "count": 21,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces métriques comptent",
+            "le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3g lentes encore très répandues. les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.",
+            "rendu et hydratation",
+            "brancher un gros dictionnaire json sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. lors de l'hydratation ssr, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions d'un coup surdimensionne la charge initiale. le chargement paresseux découpe les traductions par route ou espace de noms et n'envoie que le nécessaire. il introduit pourtant ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité du cache. il faut mesurer les deux approches.",
+            "pourquoi un unique gros json peut nuire aux performances",
+            "beaucoup de bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsqu'il est volumineux (milliers de clés), chaque composant qui consomme des traductions garde une référence à tout le dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — en bloquant le thread principal.",
+            "les architectures fondées sur le contexte peuvent provoquer des re-rendus en cascade quand la langue change, car chaque consommateur est notifié même si ses clés n'ont pas changé.",
+            "lors du rendu serveur, tout le dictionnaire est sérialisé dans le html, alourdissant le document à télécharger et à hydrater.",
+            "les compromis du chargement dynamique",
+            "découper les traductions par route ou espace de noms réduit fortement la charge initiale, mais pose de nouveaux défis :",
+            "ce que mesure ce benchmark",
+            "cette appli de test offre un environnement contrôlé — 10 pages au contenu réaliste — pour comparer les bibliothèques i18n sur trois axes : le poids ajouté au bundle javascript, le temps passé à analyser et afficher le texte traduit, et l'efficacité du découpage de code et du chargement paresseux. chaque bibliothèque est intégrée dans la même base pour des résultats comparables.",
+            "exemple de résultats",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "benchmark i18n — projet open-source. construit avec vue, vite et un routeur côté client.",
+            "⚠️ cette page contient des données fictives à des fins de benchmark uniquement. elle n'est liée à aucune activité commerciale ou service réel.",
+            "question de méthodologie"
+          ]
+        }
+      },
+      "localeLeakagePercent": 51.21951219512195,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 1,
+          "found": [
+            "methodology question"
+          ]
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 94.11764705882352
+    },
+    {
+      "path": "/en/faq",
+      "page": "faq",
+      "locale": "en",
+      "totalSize": 204251,
+      "totalGzipSize": 69599,
+      "jsSize": 177524,
+      "jsGzipSize": 63737,
+      "cssSize": 25384,
+      "cssGzipSize": 5238,
+      "htmlSize": 1343,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/faq",
+          "size": 1343,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BwSLYvWb.css",
+          "size": 25384,
+          "gzipSize": 5238,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-02yffUst.js",
+          "size": 152768,
+          "gzipSize": 53357,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQ-BdTJrHc4.js",
+          "size": 23482,
+          "gzipSize": 9512,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQHeader-DRq0zK42.js",
+          "size": 397,
+          "gzipSize": 259,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-B2Udsvqx.js",
+          "size": 267,
+          "gzipSize": 210,
+          "type": "js"
+        },
+        {
+          "url": "/assets/FAQList-CeaOueRP.js",
+          "size": 610,
+          "gzipSize": 399,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 29,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with vue, vite & a client-side router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "frequently asked questions",
+            "everything you need to know about i18n benchmark.",
+            "what is i18n benchmark?",
+            "how are benchmarks conducted?",
+            "which libraries are currently supported?",
+            "can i submit my own benchmarks?",
+            "how often are benchmarks updated?",
+            "is the data reliable?",
+            "do you offer consulting services?",
+            "how can i contribute?"
+          ]
+        },
+        "fr": {
+          "count": 30,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces métriques comptent",
+            "le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3g lentes encore très répandues. les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.",
+            "rendu et hydratation",
+            "brancher un gros dictionnaire json sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. lors de l'hydratation ssr, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions d'un coup surdimensionne la charge initiale. le chargement paresseux découpe les traductions par route ou espace de noms et n'envoie que le nécessaire. il introduit pourtant ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité du cache. il faut mesurer les deux approches.",
+            "pourquoi un unique gros json peut nuire aux performances",
+            "beaucoup de bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsqu'il est volumineux (milliers de clés), chaque composant qui consomme des traductions garde une référence à tout le dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — en bloquant le thread principal.",
+            "les architectures fondées sur le contexte peuvent provoquer des re-rendus en cascade quand la langue change, car chaque consommateur est notifié même si ses clés n'ont pas changé.",
+            "lors du rendu serveur, tout le dictionnaire est sérialisé dans le html, alourdissant le document à télécharger et à hydrater.",
+            "les compromis du chargement dynamique",
+            "découper les traductions par route ou espace de noms réduit fortement la charge initiale, mais pose de nouveaux défis :",
+            "ce que mesure ce benchmark",
+            "cette appli de test offre un environnement contrôlé — 10 pages au contenu réaliste — pour comparer les bibliothèques i18n sur trois axes : le poids ajouté au bundle javascript, le temps passé à analyser et afficher le texte traduit, et l'efficacité du découpage de code et du chargement paresseux. chaque bibliothèque est intégrée dans la même base pour des résultats comparables.",
+            "exemple de résultats",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "benchmark i18n — projet open-source. construit avec vue, vite et un routeur côté client.",
+            "⚠️ cette page contient des données fictives à des fins de benchmark uniquement. elle n'est liée à aucune activité commerciale ou service réel.",
+            "questions fréquentes",
+            "tout savoir sur i18n benchmark.",
+            "qu'est-ce qu'i18n benchmark ?",
+            "comment sont menés les benchmarks ?",
+            "quelles bibliothèques sont prises en charge ?",
+            "puis-je proposer des benchmarks ?",
+            "à quelle fréquence sont-ils mis à jour ?",
+            "les données sont-elles fiables ?",
+            "proposez-vous du conseil ?",
+            "comment contribuer ?"
+          ]
+        }
+      },
+      "localeLeakagePercent": 50.847457627118644,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 10,
+          "found": [
+            "frequently asked questions",
+            "everything you need to know about i18n benchmark.",
+            "what is i18n benchmark?",
+            "how are benchmarks conducted?",
+            "which libraries are currently supported?",
+            "can i submit my own benchmarks?",
+            "how often are benchmarks updated?",
+            "is the data reliable?",
+            "do you offer consulting services?",
+            "how can i contribute?"
+          ]
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 61.53846153846154
+    },
+    {
+      "path": "/en/pricing",
+      "page": "pricing",
+      "locale": "en",
+      "totalSize": 194016,
+      "totalGzipSize": 64508,
+      "jsSize": 167289,
+      "jsGzipSize": 58646,
+      "cssSize": 25384,
+      "cssGzipSize": 5238,
+      "htmlSize": 1343,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/pricing",
+          "size": 1343,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BwSLYvWb.css",
+          "size": 25384,
+          "gzipSize": 5238,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-02yffUst.js",
+          "size": 152768,
+          "gzipSize": 53357,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Pricing-BS1yB_Ak.js",
+          "size": 11674,
+          "gzipSize": 3898,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingHeader-DhgNC5uF.js",
+          "size": 423,
+          "gzipSize": 294,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-B2Udsvqx.js",
+          "size": 267,
+          "gzipSize": 210,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PricingTiers-CqsTGeEK.js",
+          "size": 2157,
+          "gzipSize": 887,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 23,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with vue, vite & a client-side router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
+            "5 benchmark runs/day",
+            "dedicated account manager"
+          ]
+        },
+        "fr": {
+          "count": 29,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces métriques comptent",
+            "le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3g lentes encore très répandues. les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.",
+            "rendu et hydratation",
+            "brancher un gros dictionnaire json sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. lors de l'hydratation ssr, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions d'un coup surdimensionne la charge initiale. le chargement paresseux découpe les traductions par route ou espace de noms et n'envoie que le nécessaire. il introduit pourtant ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité du cache. il faut mesurer les deux approches.",
+            "pourquoi un unique gros json peut nuire aux performances",
+            "beaucoup de bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsqu'il est volumineux (milliers de clés), chaque composant qui consomme des traductions garde une référence à tout le dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — en bloquant le thread principal.",
+            "les architectures fondées sur le contexte peuvent provoquer des re-rendus en cascade quand la langue change, car chaque consommateur est notifié même si ses clés n'ont pas changé.",
+            "lors du rendu serveur, tout le dictionnaire est sérialisé dans le html, alourdissant le document à télécharger et à hydrater.",
+            "les compromis du chargement dynamique",
+            "découper les traductions par route ou espace de noms réduit fortement la charge initiale, mais pose de nouveaux défis :",
+            "ce que mesure ce benchmark",
+            "cette appli de test offre un environnement contrôlé — 10 pages au contenu réaliste — pour comparer les bibliothèques i18n sur trois axes : le poids ajouté au bundle javascript, le temps passé à analyser et afficher le texte traduit, et l'efficacité du découpage de code et du chargement paresseux. chaque bibliothèque est intégrée dans la même base pour des résultats comparables.",
+            "exemple de résultats",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "benchmark i18n — projet open-source. construit avec vue, vite et un routeur côté client.",
+            "⚠️ cette page contient des données fictives à des fins de benchmark uniquement. elle n'est liée à aucune activité commerciale ou service réel.",
+            "tarification simple et transparente",
+            "choisissez l'offre adaptée à votre équipe. sans frais cachés.",
+            "5 exécutions de benchmark / jour",
+            "support communautaire",
+            "exécutions illimitées",
+            "toutes les bibliothèques",
+            "account manager dédié",
+            "sessions de formation",
+            "contacter les ventes"
+          ]
+        }
+      },
+      "localeLeakagePercent": 55.769230769230774,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 4,
+          "found": [
+            "simple, transparent pricing",
+            "choose the plan that fits your team. no hidden fees.",
+            "5 benchmark runs/day",
+            "dedicated account manager"
+          ]
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 80
+    },
+    {
+      "path": "/en/products",
+      "page": "products",
+      "locale": "en",
+      "totalSize": 195004,
+      "totalGzipSize": 65355,
+      "jsSize": 168277,
+      "jsGzipSize": 59493,
+      "cssSize": 25384,
+      "cssGzipSize": 5238,
+      "htmlSize": 1343,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/products",
+          "size": 1343,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BwSLYvWb.css",
+          "size": 25384,
+          "gzipSize": 5238,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-02yffUst.js",
+          "size": 152768,
+          "gzipSize": 53357,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Products-Bjx5RSNP.js",
+          "size": 13454,
+          "gzipSize": 5060,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-B2Udsvqx.js",
+          "size": 267,
+          "gzipSize": 210,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsGrid-BE5-QA_v.js",
+          "size": 1385,
+          "gzipSize": 605,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProductsHeader-DQse4Oyv.js",
+          "size": 403,
+          "gzipSize": 261,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 27,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with vue, vite & a client-side router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "tools and services to streamline your internationalization workflow.",
+            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
+            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
+            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
+            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+            "automated quality checks for missing translations, pluralization issues, and context errors.",
+            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+          ]
+        },
+        "fr": {
+          "count": 30,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces métriques comptent",
+            "le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3g lentes encore très répandues. les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.",
+            "rendu et hydratation",
+            "brancher un gros dictionnaire json sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. lors de l'hydratation ssr, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions d'un coup surdimensionne la charge initiale. le chargement paresseux découpe les traductions par route ou espace de noms et n'envoie que le nécessaire. il introduit pourtant ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité du cache. il faut mesurer les deux approches.",
+            "pourquoi un unique gros json peut nuire aux performances",
+            "beaucoup de bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsqu'il est volumineux (milliers de clés), chaque composant qui consomme des traductions garde une référence à tout le dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — en bloquant le thread principal.",
+            "les architectures fondées sur le contexte peuvent provoquer des re-rendus en cascade quand la langue change, car chaque consommateur est notifié même si ses clés n'ont pas changé.",
+            "lors du rendu serveur, tout le dictionnaire est sérialisé dans le html, alourdissant le document à télécharger et à hydrater.",
+            "les compromis du chargement dynamique",
+            "découper les traductions par route ou espace de noms réduit fortement la charge initiale, mais pose de nouveaux défis :",
+            "ce que mesure ce benchmark",
+            "cette appli de test offre un environnement contrôlé — 10 pages au contenu réaliste — pour comparer les bibliothèques i18n sur trois axes : le poids ajouté au bundle javascript, le temps passé à analyser et afficher le texte traduit, et l'efficacité du découpage de code et du chargement paresseux. chaque bibliothèque est intégrée dans la même base pour des résultats comparables.",
+            "exemple de résultats",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "benchmark i18n — projet open-source. construit avec vue, vite et un routeur côté client.",
+            "⚠️ cette page contient des données fictives à des fins de benchmark uniquement. elle n'est liée à aucune activité commerciale ou service réel.",
+            "outils et services pour fluidifier votre flux i18n.",
+            "lancez des benchmarks en local. configurations personnalisées et ci.",
+            "benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+            "benchmark entreprise",
+            "on-premise avec sso, journaux d'audit, sla et support dédié.",
+            "assistant de migration",
+            "outil assisté par ia pour migrer entre bibliothèques i18n sans interruption.",
+            "contrôles automatiques : clés manquantes, pluriels, contexte.",
+            "optimiseur de bundle",
+            "analyse et optimise votre bundle i18n en production (tree-shaking, découpage)."
+          ]
+        }
+      },
+      "localeLeakagePercent": 52.63157894736842,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 8,
+          "found": [
+            "tools and services to streamline your internationalization workflow.",
+            "run benchmarks locally from your terminal. supports custom configurations and ci integration.",
+            "automated cloud-based benchmarking with historical tracking, alerts, and team dashboards.",
+            "benchmark enterprise",
+            "on-premise deployment with sso, audit logs, custom slas, and dedicated support.",
+            "ai-powered tool that helps migrate your codebase between i18n libraries with zero downtime.",
+            "automated quality checks for missing translations, pluralization issues, and context errors.",
+            "analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+          ]
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 66.66666666666666
+    },
+    {
+      "path": "/en/settings",
+      "page": "settings",
+      "locale": "en",
+      "totalSize": 196767,
+      "totalGzipSize": 65709,
+      "jsSize": 170040,
+      "jsGzipSize": 59847,
+      "cssSize": 25384,
+      "cssGzipSize": 5238,
+      "htmlSize": 1343,
+      "htmlGzipSize": 624,
+      "fileCount": 10,
+      "jsFileCount": 8,
+      "bundleFiles": [
+        {
+          "url": "/en/settings",
+          "size": 1343,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BwSLYvWb.css",
+          "size": 25384,
+          "gzipSize": 5238,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-02yffUst.js",
+          "size": 152768,
+          "gzipSize": 53357,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Settings-DpZg2wG3.js",
+          "size": 11412,
+          "gzipSize": 3870,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsHeader-Dq_SpYDZ.js",
+          "size": 402,
+          "gzipSize": 261,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-B2Udsvqx.js",
+          "size": 267,
+          "gzipSize": 210,
+          "type": "js"
+        },
+        {
+          "url": "/assets/SettingsFooter-B8w0jEAD.js",
+          "size": 570,
+          "gzipSize": 338,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ProfileSection-B-kHOlps.js",
+          "size": 1103,
+          "gzipSize": 480,
+          "type": "js"
+        },
+        {
+          "url": "/assets/PreferencesSection-BQOxa3de.js",
+          "size": 2492,
+          "gzipSize": 832,
+          "type": "js"
+        },
+        {
+          "url": "/assets/ApiAccessSection-CGZtme_n.js",
+          "size": 1026,
+          "gzipSize": 499,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 24,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with vue, vite & a client-side router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "manage your account preferences and configuration.",
+            "receive weekly benchmark reports",
+            "use dark color scheme",
+            "chinese simplified (zh-cn)",
+            "use this key to access the benchmarking api programmatically."
+          ]
+        },
+        "fr": {
+          "count": 26,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces métriques comptent",
+            "le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3g lentes encore très répandues. les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.",
+            "rendu et hydratation",
+            "brancher un gros dictionnaire json sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. lors de l'hydratation ssr, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions d'un coup surdimensionne la charge initiale. le chargement paresseux découpe les traductions par route ou espace de noms et n'envoie que le nécessaire. il introduit pourtant ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité du cache. il faut mesurer les deux approches.",
+            "pourquoi un unique gros json peut nuire aux performances",
+            "beaucoup de bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsqu'il est volumineux (milliers de clés), chaque composant qui consomme des traductions garde une référence à tout le dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — en bloquant le thread principal.",
+            "les architectures fondées sur le contexte peuvent provoquer des re-rendus en cascade quand la langue change, car chaque consommateur est notifié même si ses clés n'ont pas changé.",
+            "lors du rendu serveur, tout le dictionnaire est sérialisé dans le html, alourdissant le document à télécharger et à hydrater.",
+            "les compromis du chargement dynamique",
+            "découper les traductions par route ou espace de noms réduit fortement la charge initiale, mais pose de nouveaux défis :",
+            "ce que mesure ce benchmark",
+            "cette appli de test offre un environnement contrôlé — 10 pages au contenu réaliste — pour comparer les bibliothèques i18n sur trois axes : le poids ajouté au bundle javascript, le temps passé à analyser et afficher le texte traduit, et l'efficacité du découpage de code et du chargement paresseux. chaque bibliothèque est intégrée dans la même base pour des résultats comparables.",
+            "exemple de résultats",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "benchmark i18n — projet open-source. construit avec vue, vite et un routeur côté client.",
+            "⚠️ cette page contient des données fictives à des fins de benchmark uniquement. elle n'est liée à aucune activité commerciale ou service réel.",
+            "gérez les préférences et la configuration de votre compte.",
+            "notifications e-mail",
+            "recevoir les rapports hebdomadaires",
+            "utiliser le thème sombre",
+            "chinois simplifié (zh-cn)",
+            "utilisez cette clé pour appeler l'api de benchmark par programmation."
+          ]
+        }
+      },
+      "localeLeakagePercent": 52,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 5,
+          "found": [
+            "manage your account preferences and configuration.",
+            "receive weekly benchmark reports",
+            "use dark color scheme",
+            "chinese simplified (zh-cn)",
+            "use this key to access the benchmarking api programmatically."
+          ]
+        },
+        "team": {
+          "count": 0,
+          "found": []
+        }
+      },
+      "pageLeakagePercent": 76.19047619047619
+    },
+    {
+      "path": "/en/team",
+      "page": "team",
+      "locale": "en",
+      "totalSize": 195627,
+      "totalGzipSize": 65464,
+      "jsSize": 168900,
+      "jsGzipSize": 59602,
+      "cssSize": 25384,
+      "cssGzipSize": 5238,
+      "htmlSize": 1343,
+      "htmlGzipSize": 624,
+      "fileCount": 7,
+      "jsFileCount": 5,
+      "bundleFiles": [
+        {
+          "url": "/en/team",
+          "size": 1343,
+          "gzipSize": 624,
+          "type": "html"
+        },
+        {
+          "url": "/assets/index-BwSLYvWb.css",
+          "size": 25384,
+          "gzipSize": 5238,
+          "type": "css"
+        },
+        {
+          "url": "/assets/index-02yffUst.js",
+          "size": 152768,
+          "gzipSize": 53357,
+          "type": "js"
+        },
+        {
+          "url": "/assets/Team-Cq3WhXvd.js",
+          "size": 14581,
+          "gzipSize": 5280,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamHeader-D8F5il3g.js",
+          "size": 399,
+          "gzipSize": 259,
+          "type": "js"
+        },
+        {
+          "url": "/assets/TeamGrid-B9p-YGXI.js",
+          "size": 885,
+          "gzipSize": 496,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-B2Udsvqx.js",
+          "size": 267,
+          "gzipSize": 210,
+          "type": "js"
+        }
+      ],
+      "localeLeakage": {
+        "en": {
+          "count": 29,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable.",
+            "an open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+            "i18n benchmark — open-source project. built with vue, vite & a client-side router.",
+            "⚠️ this page contains mock data for benchmarking purposes only. it is not related to any real business or service.",
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
+        },
+        "fr": {
+          "count": 30,
+          "found": [
+            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
+            "pourquoi ces métriques comptent",
+            "le bundle est l'ensemble des données livrées à chaque utilisateur dans le monde. un bundle plus lourd implique des temps de téléchargement plus longs — surtout sur des connexions 3g lentes encore très répandues. les bibliothèques i18n ont des poids très variables : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, sans compter les fichiers de traduction.",
+            "rendu et hydratation",
+            "brancher un gros dictionnaire json sur chaque composant crée une dépendance cachée : tout changement de contexte de traduction peut déclencher des re-rendus sur tout l'arbre. lors de l'hydratation ssr, analyser et attacher d'immenses objets de traduction ajoute de la latence avant que la page soit interactive — impact direct sur le time to interactive (tti).",
+            "chargement dynamique",
+            "charger toutes les traductions d'un coup surdimensionne la charge initiale. le chargement paresseux découpe les traductions par route ou espace de noms et n'envoie que le nécessaire. il introduit pourtant ses propres compromis : requêtes en cascade, flash de contenu non traduit et complexité du cache. il faut mesurer les deux approches.",
+            "pourquoi un unique gros json peut nuire aux performances",
+            "beaucoup de bibliothèques i18n stockent les traductions dans un seul objet json fourni via le contexte react. lorsqu'il est volumineux (milliers de clés), chaque composant qui consomme des traductions garde une référence à tout le dictionnaire. cela signifie :",
+            "le json doit être analysé à chaque chargement de page — en bloquant le thread principal.",
+            "les architectures fondées sur le contexte peuvent provoquer des re-rendus en cascade quand la langue change, car chaque consommateur est notifié même si ses clés n'ont pas changé.",
+            "lors du rendu serveur, tout le dictionnaire est sérialisé dans le html, alourdissant le document à télécharger et à hydrater.",
+            "les compromis du chargement dynamique",
+            "découper les traductions par route ou espace de noms réduit fortement la charge initiale, mais pose de nouveaux défis :",
+            "ce que mesure ce benchmark",
+            "cette appli de test offre un environnement contrôlé — 10 pages au contenu réaliste — pour comparer les bibliothèques i18n sur trois axes : le poids ajouté au bundle javascript, le temps passé à analyser et afficher le texte traduit, et l'efficacité du découpage de code et du chargement paresseux. chaque bibliothèque est intégrée dans la même base pour des résultats comparables.",
+            "exemple de résultats",
+            "une application de test open source pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, le temps de chargement et la réactivité de l'application.",
+            "benchmark i18n — projet open-source. construit avec vue, vite et un routeur côté client.",
+            "⚠️ cette page contient des données fictives à des fins de benchmark uniquement. elle n'est liée à aucune activité commerciale ou service réel.",
+            "les personnes derrière i18n benchmark, unies par la passion des outils développeurs.",
+            "fondatrice & lead ingénieur",
+            "ex-ingénieure google, 10 ans sur l'internationalisation à grande échelle.",
+            "ingénieur performance",
+            "optimisation javascript et méthodologie de benchmark — précédemment chez vercel.",
+            "expérience développeur et pédagogie — conférencière react conf, jsconf, i18nnext.",
+            "développeur full-stack",
+            "infrastructure de benchmark et ci/cd — contributeur open source à lingui.",
+            "rigueur statistique des résultats — doctorat en statistiques appliquées (mit).",
+            "contributions communautaires, partenariats et événements — gouvernance open source."
+          ]
+        }
+      },
+      "localeLeakagePercent": 50.847457627118644,
+      "pageLeakage": {
+        "home": {
+          "count": 16,
+          "found": [
+            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
+            "why these metrics matter",
+            "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
+            "rendering & hydration",
+            "connecting a large json dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. during ssr hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting time to interactive (tti).",
+            "loading all translations upfront overloads the initial payload. dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. however, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. measuring both strategies is essential.",
+            "understanding the impact",
+            "why a single large json can hurt performance",
+            "many i18n libraries store translations in a single json object provided via react context. when this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. this means:",
+            "the json must be parsed on every page load — blocking the main thread.",
+            "context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change.",
+            "during server-side rendering, the full dictionary is serialized into the html payload, increasing the document size that must be downloaded and hydrated.",
+            "the trade-offs of dynamic loading",
+            "splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. but it introduces new challenges:",
+            "what this benchmark measures",
+            "this test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your javascript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. each library is integrated into the same app so results are directly comparable."
+          ]
+        },
+        "about": {
+          "count": 0,
+          "found": []
+        },
+        "blog": {
+          "count": 0,
+          "found": []
+        },
+        "careers": {
+          "count": 0,
+          "found": []
+        },
+        "contact": {
+          "count": 0,
+          "found": []
+        },
+        "faq": {
+          "count": 0,
+          "found": []
+        },
+        "pricing": {
+          "count": 0,
+          "found": []
+        },
+        "products": {
+          "count": 0,
+          "found": []
+        },
+        "settings": {
+          "count": 0,
+          "found": []
+        },
+        "team": {
+          "count": 10,
+          "found": [
+            "meet the people behind i18n benchmark. a diverse team united by a shared passion for great developer tools.",
+            "founder & lead engineer",
+            "former google engineer with 10 years of experience building internationalization systems at scale.",
+            "performance engineer",
+            "specializes in javascript performance optimization and benchmarking methodology. previously at vercel.",
+            "passionate about developer experience and education. speaker at react conf, jsconf, and i18nnext.",
+            "full-stack developer",
+            "maintains the benchmarking infrastructure and ci/cd pipeline. open source contributor to lingui.",
+            "ensures statistical rigor in all benchmark results. phd in applied statistics from mit.",
+            "manages community contributions, partnerships, and events. background in open source governance."
+          ]
+        }
+      },
+      "pageLeakagePercent": 61.53846153846154
+    }
+  ]
+}

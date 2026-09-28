@@ -1,18 +1,18 @@
 {
-  "timestamp": "2026-09-26T06:07:47.600Z",
+  "timestamp": "2026-09-28T00:52:50.239Z",
   "packageName": "tanstack-static-intlayer-compat-react-i18next-app",
   "summary": {
     "totalComponents": 59,
-    "totalUnminifiedBytes": 15682354,
-    "totalMinifiedBytes": 14588637,
-    "totalGzipBytes": 4279407
+    "totalUnminifiedBytes": 15688034,
+    "totalMinifiedBytes": 14592897,
+    "totalGzipBytes": 4280199
   },
   "components": [
     {
       "name": "Header.tsx",
       "category": "Shared",
-      "unminifiedBytes": 271069,
-      "unminifiedGzipBytes": 77516,
+      "unminifiedBytes": 272489,
+      "unminifiedGzipBytes": 77776,
       "minifiedBytes": 252831,
       "minifiedGzipBytes": 74557
     },
@@ -113,6 +113,14 @@
       "minifiedGzipBytes": 72827
     },
     {
+      "name": "Footer.tsx",
+      "category": "Shared",
+      "unminifiedBytes": 266668,
+      "unminifiedGzipBytes": 75744,
+      "minifiedBytes": 248038,
+      "minifiedGzipBytes": 72737
+    },
+    {
       "name": "ResultsTable.tsx",
       "category": "pages",
       "unminifiedBytes": 266452,
@@ -159,6 +167,14 @@
       "unminifiedGzipBytes": 75552,
       "minifiedBytes": 247657,
       "minifiedGzipBytes": 72581
+    },
+    {
+      "name": "ThemeToggle.tsx",
+      "category": "Shared",
+      "unminifiedBytes": 266496,
+      "unminifiedGzipBytes": 75728,
+      "minifiedBytes": 247562,
+      "minifiedGzipBytes": 72685
     },
     {
       "name": "WhyItMatters.tsx",
@@ -257,14 +273,6 @@
       "minifiedGzipBytes": 72527
     },
     {
-      "name": "AboutGrid.tsx",
-      "category": "pages",
-      "unminifiedBytes": 265275,
-      "unminifiedGzipBytes": 75344,
-      "minifiedBytes": 246759,
-      "minifiedGzipBytes": 72377
-    },
-    {
       "name": "CareersBenefits.tsx",
       "category": "pages",
       "unminifiedBytes": 265300,
@@ -274,7 +282,7 @@
     },
     {
       "name": "AboutGrid.tsx",
-      "category": "about",
+      "category": "pages",
       "unminifiedBytes": 265275,
       "unminifiedGzipBytes": 75344,
       "minifiedBytes": 246759,
@@ -287,6 +295,14 @@
       "unminifiedGzipBytes": 75422,
       "minifiedBytes": 246759,
       "minifiedGzipBytes": 72386
+    },
+    {
+      "name": "AboutGrid.tsx",
+      "category": "about",
+      "unminifiedBytes": 265275,
+      "unminifiedGzipBytes": 75344,
+      "minifiedBytes": 246759,
+      "minifiedGzipBytes": 72377
     },
     {
       "name": "ContactHeader.tsx",
@@ -319,14 +335,6 @@
       "unminifiedGzipBytes": 75374,
       "minifiedBytes": 246679,
       "minifiedGzipBytes": 72362
-    },
-    {
-      "name": "Footer.tsx",
-      "category": "Shared",
-      "unminifiedBytes": 265248,
-      "unminifiedGzipBytes": 75480,
-      "minifiedBytes": 246618,
-      "minifiedGzipBytes": 72476
     },
     {
       "name": "PricingHeader.tsx",
@@ -465,20 +473,12 @@
       "minifiedGzipBytes": 72245
     },
     {
-      "name": "ThemeToggle.tsx",
-      "category": "Shared",
-      "unminifiedBytes": 265076,
-      "unminifiedGzipBytes": 75471,
-      "minifiedBytes": 246142,
-      "minifiedGzipBytes": 72431
-    },
-    {
       "name": "LocaleSwitcher.tsx",
       "category": "Shared",
-      "unminifiedBytes": 260891,
-      "unminifiedGzipBytes": 74710,
-      "minifiedBytes": 243463,
-      "minifiedGzipBytes": 71712
+      "unminifiedBytes": 262311,
+      "unminifiedGzipBytes": 74971,
+      "minifiedBytes": 244883,
+      "minifiedGzipBytes": 71989
     }
   ]
 }

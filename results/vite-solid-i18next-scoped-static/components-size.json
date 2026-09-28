@@ -1,0 +1,492 @@
+{
+  "timestamp": "2026-09-28T00:49:54.904Z",
+  "packageName": "vite-solid-i18next-scoped-static",
+  "summary": {
+    "totalComponents": 60,
+    "totalUnminifiedBytes": 5727131,
+    "totalMinifiedBytes": 4271604,
+    "totalGzipBytes": 1267067
+  },
+  "components": [
+    {
+      "name": "Layout.tsx",
+      "category": "Shared",
+      "unminifiedBytes": 105648,
+      "unminifiedGzipBytes": 27681,
+      "minifiedBytes": 79291,
+      "minifiedGzipBytes": 23787
+    },
+    {
+      "name": "Header.tsx",
+      "category": "Shared",
+      "unminifiedBytes": 102896,
+      "unminifiedGzipBytes": 27279,
+      "minifiedBytes": 77009,
+      "minifiedGzipBytes": 23328
+    },
+    {
+      "name": "UnderstandingImpact.tsx",
+      "category": "pages",
+      "unminifiedBytes": 96973,
+      "unminifiedGzipBytes": 24853,
+      "minifiedBytes": 72496,
+      "minifiedGzipBytes": 21259
+    },
+    {
+      "name": "UnderstandingImpact.tsx",
+      "category": "home",
+      "unminifiedBytes": 96973,
+      "unminifiedGzipBytes": 24853,
+      "minifiedBytes": 72496,
+      "minifiedGzipBytes": 21259
+    },
+    {
+      "name": "PreferencesSection.tsx",
+      "category": "pages",
+      "unminifiedBytes": 96910,
+      "unminifiedGzipBytes": 25022,
+      "minifiedBytes": 72419,
+      "minifiedGzipBytes": 21416
+    },
+    {
+      "name": "PreferencesSection.tsx",
+      "category": "settings",
+      "unminifiedBytes": 96910,
+      "unminifiedGzipBytes": 25022,
+      "minifiedBytes": 72419,
+      "minifiedGzipBytes": 21416
+    },
+    {
+      "name": "ContactForm.tsx",
+      "category": "pages",
+      "unminifiedBytes": 97024,
+      "unminifiedGzipBytes": 25047,
+      "minifiedBytes": 72388,
+      "minifiedGzipBytes": 21407
+    },
+    {
+      "name": "ContactForm.tsx",
+      "category": "contact",
+      "unminifiedBytes": 97024,
+      "unminifiedGzipBytes": 25047,
+      "minifiedBytes": 72388,
+      "minifiedGzipBytes": 21407
+    },
+    {
+      "name": "PricingTiers.tsx",
+      "category": "pages",
+      "unminifiedBytes": 96679,
+      "unminifiedGzipBytes": 25110,
+      "minifiedBytes": 72337,
+      "minifiedGzipBytes": 21511
+    },
+    {
+      "name": "PricingTiers.tsx",
+      "category": "pricing",
+      "unminifiedBytes": 96679,
+      "unminifiedGzipBytes": 25110,
+      "minifiedBytes": 72337,
+      "minifiedGzipBytes": 21511
+    },
+    {
+      "name": "ResultsTable.tsx",
+      "category": "pages",
+      "unminifiedBytes": 96329,
+      "unminifiedGzipBytes": 24895,
+      "minifiedBytes": 71991,
+      "minifiedGzipBytes": 21309
+    },
+    {
+      "name": "ResultsTable.tsx",
+      "category": "home",
+      "unminifiedBytes": 96329,
+      "unminifiedGzipBytes": 24895,
+      "minifiedBytes": 71991,
+      "minifiedGzipBytes": 21309
+    },
+    {
+      "name": "OpenPositions.tsx",
+      "category": "pages",
+      "unminifiedBytes": 96215,
+      "unminifiedGzipBytes": 24873,
+      "minifiedBytes": 71976,
+      "minifiedGzipBytes": 21296
+    },
+    {
+      "name": "OpenPositions.tsx",
+      "category": "careers",
+      "unminifiedBytes": 96215,
+      "unminifiedGzipBytes": 24873,
+      "minifiedBytes": 71976,
+      "minifiedGzipBytes": 21296
+    },
+    {
+      "name": "Footer.tsx",
+      "category": "Shared",
+      "unminifiedBytes": 95823,
+      "unminifiedGzipBytes": 24756,
+      "minifiedBytes": 71599,
+      "minifiedGzipBytes": 21194
+    },
+    {
+      "name": "ThemeToggle.tsx",
+      "category": "Shared",
+      "unminifiedBytes": 96059,
+      "unminifiedGzipBytes": 24936,
+      "minifiedBytes": 71530,
+      "minifiedGzipBytes": 21272
+    },
+    {
+      "name": "WhyItMatters.tsx",
+      "category": "pages",
+      "unminifiedBytes": 95578,
+      "unminifiedGzipBytes": 24630,
+      "minifiedBytes": 71354,
+      "minifiedGzipBytes": 21058
+    },
+    {
+      "name": "WhyItMatters.tsx",
+      "category": "home",
+      "unminifiedBytes": 95578,
+      "unminifiedGzipBytes": 24630,
+      "minifiedBytes": 71354,
+      "minifiedGzipBytes": 21058
+    },
+    {
+      "name": "ProductsGrid.tsx",
+      "category": "pages",
+      "unminifiedBytes": 95436,
+      "unminifiedGzipBytes": 24734,
+      "minifiedBytes": 71290,
+      "minifiedGzipBytes": 21163
+    },
+    {
+      "name": "ProductsGrid.tsx",
+      "category": "products",
+      "unminifiedBytes": 95436,
+      "unminifiedGzipBytes": 24734,
+      "minifiedBytes": 71290,
+      "minifiedGzipBytes": 21163
+    },
+    {
+      "name": "Hero.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94994,
+      "unminifiedGzipBytes": 24635,
+      "minifiedBytes": 70888,
+      "minifiedGzipBytes": 21073
+    },
+    {
+      "name": "Hero.tsx",
+      "category": "home",
+      "unminifiedBytes": 94994,
+      "unminifiedGzipBytes": 24635,
+      "minifiedBytes": 70888,
+      "minifiedGzipBytes": 21073
+    },
+    {
+      "name": "ProfileSection.tsx",
+      "category": "pages",
+      "unminifiedBytes": 95095,
+      "unminifiedGzipBytes": 24606,
+      "minifiedBytes": 70880,
+      "minifiedGzipBytes": 21029
+    },
+    {
+      "name": "ProfileSection.tsx",
+      "category": "settings",
+      "unminifiedBytes": 95095,
+      "unminifiedGzipBytes": 24606,
+      "minifiedBytes": 70880,
+      "minifiedGzipBytes": 21029
+    },
+    {
+      "name": "WhatWeMeasure.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94967,
+      "unminifiedGzipBytes": 24602,
+      "minifiedBytes": 70837,
+      "minifiedGzipBytes": 21035
+    },
+    {
+      "name": "WhatWeMeasure.tsx",
+      "category": "about",
+      "unminifiedBytes": 94967,
+      "unminifiedGzipBytes": 24602,
+      "minifiedBytes": 70837,
+      "minifiedGzipBytes": 21035
+    },
+    {
+      "name": "BlogList.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94978,
+      "unminifiedGzipBytes": 24647,
+      "minifiedBytes": 70811,
+      "minifiedGzipBytes": 21068
+    },
+    {
+      "name": "BlogList.tsx",
+      "category": "blog",
+      "unminifiedBytes": 94978,
+      "unminifiedGzipBytes": 24647,
+      "minifiedBytes": 70811,
+      "minifiedGzipBytes": 21068
+    },
+    {
+      "name": "ApiAccessSection.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94945,
+      "unminifiedGzipBytes": 24620,
+      "minifiedBytes": 70798,
+      "minifiedGzipBytes": 21042
+    },
+    {
+      "name": "ApiAccessSection.tsx",
+      "category": "settings",
+      "unminifiedBytes": 94945,
+      "unminifiedGzipBytes": 24620,
+      "minifiedBytes": 70798,
+      "minifiedGzipBytes": 21042
+    },
+    {
+      "name": "LocaleSwitcher.tsx",
+      "category": "Shared",
+      "unminifiedBytes": 95082,
+      "unminifiedGzipBytes": 24767,
+      "minifiedBytes": 70759,
+      "minifiedGzipBytes": 21155
+    },
+    {
+      "name": "TeamGrid.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94881,
+      "unminifiedGzipBytes": 24620,
+      "minifiedBytes": 70701,
+      "minifiedGzipBytes": 21038
+    },
+    {
+      "name": "TeamGrid.tsx",
+      "category": "team",
+      "unminifiedBytes": 94881,
+      "unminifiedGzipBytes": 24620,
+      "minifiedBytes": 70701,
+      "minifiedGzipBytes": 21038
+    },
+    {
+      "name": "AboutGrid.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94549,
+      "unminifiedGzipBytes": 24414,
+      "minifiedBytes": 70480,
+      "minifiedGzipBytes": 20858
+    },
+    {
+      "name": "AboutGrid.tsx",
+      "category": "about",
+      "unminifiedBytes": 94549,
+      "unminifiedGzipBytes": 24414,
+      "minifiedBytes": 70480,
+      "minifiedGzipBytes": 20858
+    },
+    {
+      "name": "ContactHeader.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94615,
+      "unminifiedGzipBytes": 24481,
+      "minifiedBytes": 70471,
+      "minifiedGzipBytes": 20914
+    },
+    {
+      "name": "ContactHeader.tsx",
+      "category": "contact",
+      "unminifiedBytes": 94615,
+      "unminifiedGzipBytes": 24481,
+      "minifiedBytes": 70471,
+      "minifiedGzipBytes": 20914
+    },
+    {
+      "name": "CareersBenefits.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94572,
+      "unminifiedGzipBytes": 24483,
+      "minifiedBytes": 70465,
+      "minifiedGzipBytes": 20926
+    },
+    {
+      "name": "CareersBenefits.tsx",
+      "category": "careers",
+      "unminifiedBytes": 94572,
+      "unminifiedGzipBytes": 24483,
+      "minifiedBytes": 70465,
+      "minifiedGzipBytes": 20926
+    },
+    {
+      "name": "AboutHeader.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94535,
+      "unminifiedGzipBytes": 24443,
+      "minifiedBytes": 70414,
+      "minifiedGzipBytes": 20857
+    },
+    {
+      "name": "AboutHeader.tsx",
+      "category": "about",
+      "unminifiedBytes": 94535,
+      "unminifiedGzipBytes": 24443,
+      "minifiedBytes": 70414,
+      "minifiedGzipBytes": 20857
+    },
+    {
+      "name": "FAQList.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94478,
+      "unminifiedGzipBytes": 24509,
+      "minifiedBytes": 70389,
+      "minifiedGzipBytes": 20948
+    },
+    {
+      "name": "FAQList.tsx",
+      "category": "faq",
+      "unminifiedBytes": 94478,
+      "unminifiedGzipBytes": 24509,
+      "minifiedBytes": 70389,
+      "minifiedGzipBytes": 20948
+    },
+    {
+      "name": "ProductsHeader.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94427,
+      "unminifiedGzipBytes": 24380,
+      "minifiedBytes": 70315,
+      "minifiedGzipBytes": 20824
+    },
+    {
+      "name": "ProductsHeader.tsx",
+      "category": "products",
+      "unminifiedBytes": 94427,
+      "unminifiedGzipBytes": 24380,
+      "minifiedBytes": 70315,
+      "minifiedGzipBytes": 20824
+    },
+    {
+      "name": "SettingsHeader.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94426,
+      "unminifiedGzipBytes": 24378,
+      "minifiedBytes": 70314,
+      "minifiedGzipBytes": 20823
+    },
+    {
+      "name": "SettingsHeader.tsx",
+      "category": "settings",
+      "unminifiedBytes": 94426,
+      "unminifiedGzipBytes": 24378,
+      "minifiedBytes": 70314,
+      "minifiedGzipBytes": 20823
+    },
+    {
+      "name": "CareersHeader.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94422,
+      "unminifiedGzipBytes": 24377,
+      "minifiedBytes": 70312,
+      "minifiedGzipBytes": 20822
+    },
+    {
+      "name": "CareersHeader.tsx",
+      "category": "careers",
+      "unminifiedBytes": 94422,
+      "unminifiedGzipBytes": 24377,
+      "minifiedBytes": 70312,
+      "minifiedGzipBytes": 20822
+    },
+    {
+      "name": "BlogHeader.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94411,
+      "unminifiedGzipBytes": 24377,
+      "minifiedBytes": 70307,
+      "minifiedGzipBytes": 20821
+    },
+    {
+      "name": "PricingHeader.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94402,
+      "unminifiedGzipBytes": 24394,
+      "minifiedBytes": 70307,
+      "minifiedGzipBytes": 20850
+    },
+    {
+      "name": "BlogHeader.tsx",
+      "category": "blog",
+      "unminifiedBytes": 94411,
+      "unminifiedGzipBytes": 24377,
+      "minifiedBytes": 70307,
+      "minifiedGzipBytes": 20821
+    },
+    {
+      "name": "PricingHeader.tsx",
+      "category": "pricing",
+      "unminifiedBytes": 94402,
+      "unminifiedGzipBytes": 24394,
+      "minifiedBytes": 70307,
+      "minifiedGzipBytes": 20850
+    },
+    {
+      "name": "SettingsFooter.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94307,
+      "unminifiedGzipBytes": 24400,
+      "minifiedBytes": 70274,
+      "minifiedGzipBytes": 20854
+    },
+    {
+      "name": "SettingsFooter.tsx",
+      "category": "settings",
+      "unminifiedBytes": 94307,
+      "unminifiedGzipBytes": 24400,
+      "minifiedBytes": 70274,
+      "minifiedGzipBytes": 20854
+    },
+    {
+      "name": "TeamHeader.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94357,
+      "unminifiedGzipBytes": 24366,
+      "minifiedBytes": 70268,
+      "minifiedGzipBytes": 20804
+    },
+    {
+      "name": "TeamHeader.tsx",
+      "category": "team",
+      "unminifiedBytes": 94357,
+      "unminifiedGzipBytes": 24366,
+      "minifiedBytes": 70268,
+      "minifiedGzipBytes": 20804
+    },
+    {
+      "name": "FAQHeader.tsx",
+      "category": "pages",
+      "unminifiedBytes": 94353,
+      "unminifiedGzipBytes": 24367,
+      "minifiedBytes": 70266,
+      "minifiedGzipBytes": 20803
+    },
+    {
+      "name": "FAQHeader.tsx",
+      "category": "faq",
+      "unminifiedBytes": 94353,
+      "unminifiedGzipBytes": 24367,
+      "minifiedBytes": 70266,
+      "minifiedGzipBytes": 20803
+    },
+    {
+      "name": "MockBanner.tsx",
+      "category": "Shared",
+      "unminifiedBytes": 93907,
+      "unminifiedGzipBytes": 24244,
+      "minifiedBytes": 69920,
+      "minifiedGzipBytes": 20715
+    }
+  ]
+}
