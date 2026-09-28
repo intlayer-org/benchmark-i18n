@@ -1,6 +1,6 @@
 # Next.js — i18n Benchmark Results
 
-_Generated: 2026-09-26_
+_Generated: 2026-09-28_
 
 ## Metric Legend
 
@@ -40,12 +40,12 @@ _Generated: 2026-09-26_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.10 | 10.7 KB | 34.1 KB |
+| 9.5.11 | 10.7 KB | 34.1 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 221.6 KB | 50.0% | 90.0% | 84.4 KB | 14.0 ms | 3.7 ms | 15.9 ms | 11.1 ms |
-| Dynamic | 🔶 | 221.6 KB | 50.0% | 90.0% | 11.4 KB | 15.5 ms | 4.0 ms | 16.9 ms | 11.8 ms |
+| Dynamic | ✅ | 221.6 KB | 50.0% | 90.0% | 11.4 KB | 15.5 ms | 4.0 ms | 16.9 ms | 11.8 ms |
 | Scoped Static | ↳ Static | 221.6 KB | 50.0% | 90.0% | 84.4 KB | 14.0 ms | 3.7 ms | 15.9 ms | 11.1 ms |
 | Scoped Dynamic | ↳ Dynamic | 221.6 KB | 50.0% | 90.0% | 11.4 KB | 15.5 ms | 4.0 ms | 16.9 ms | 11.8 ms |
 
@@ -283,12 +283,12 @@ _Generated: 2026-09-26_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.10 | 8.7 KB | 25.6 KB |
+| 9.5.11 | 8.7 KB | 25.6 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 211.5 KB | 50.0% | 89.8% | 70.8 KB | 17.1 ms | 3.8 ms | 15.1 ms | 22.8 ms |
-| Dynamic | 🔶 | 211.5 KB | 50.0% | 89.8% | 9.1 KB | 16.8 ms | 4.0 ms | 15.6 ms | 21.3 ms |
+| Dynamic | ✅ | 211.5 KB | 50.0% | 89.8% | 9.1 KB | 16.8 ms | 4.0 ms | 15.6 ms | 21.3 ms |
 | Scoped Static | ↳ Static | 211.5 KB | 50.0% | 89.8% | 70.8 KB | 17.1 ms | 3.8 ms | 15.1 ms | 22.8 ms |
 | Scoped Dynamic | ↳ Dynamic | 211.5 KB | 50.0% | 89.8% | 9.1 KB | 16.8 ms | 4.0 ms | 15.6 ms | 21.3 ms |
 
@@ -526,12 +526,12 @@ _Generated: 2026-09-26_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.10 | 8.0 KB | 23.7 KB |
+| 9.5.11 | 8.0 KB | 23.7 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 227.6 KB | 50.0% | 89.8% | 85.8 KB | 15.1 ms | 3.8 ms | 15.0 ms | 11.8 ms |
-| Dynamic | 🔶 | 236.1 KB | 50.0% | 89.9% | 8.0 KB | 13.2 ms | 3.7 ms | 14.3 ms | 11.4 ms |
+| Dynamic | ✅ | 236.1 KB | 50.0% | 89.9% | 8.0 KB | 13.2 ms | 3.7 ms | 14.3 ms | 11.4 ms |
 | Scoped Static | ↳ Static | 227.6 KB | 50.0% | 89.8% | 85.8 KB | 15.1 ms | 3.8 ms | 15.0 ms | 11.8 ms |
 | Scoped Dynamic | ↳ Dynamic | 236.1 KB | 50.0% | 89.9% | 8.0 KB | 13.2 ms | 3.7 ms | 14.3 ms | 11.4 ms |
 
@@ -1018,8 +1018,8 @@ _Generated: 2026-09-26_
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 193.9 KB | — | 0.0% | — | 22.8 ms | 6.8 ms | 22.1 ms | 26.8 ms |
 | Dynamic | 🔶 | 193.9 KB | — | 45.0% | — | — | — | — | — |
-| Scoped Static | 🔶 | 193.9 KB | — | 0.0% | — | 26.9 ms | 7.0 ms | 20.5 ms | 24.1 ms |
-| Scoped Dynamic | 🔶 | 193.9 KB | — | 0.0% | — | 26.0 ms | 6.6 ms | 21.0 ms | 26.0 ms |
+| Scoped Static | ✅ | 193.9 KB | — | 0.0% | — | 26.9 ms | 7.0 ms | 20.5 ms | 24.1 ms |
+| Scoped Dynamic | ✅ | 193.9 KB | — | 0.0% | — | 26.0 ms | 6.6 ms | 21.0 ms | 26.0 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -1483,9 +1483,9 @@ _Generated: 2026-09-26_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 207.4 KB | 50.0% | 90.0% | 73.3 KB | 15.3 ms | 4.2 ms | 16.5 ms | 15.2 ms |
-| Dynamic | 🔶 | 145.4 KB | 2.8% | 89.9% | 19.9 KB | 15.7 ms | 4.1 ms | 15.8 ms | 12.7 ms |
-| Scoped Static | 🔶 | 148.2 KB | 2.7% | 89.1% | 20.4 KB | 15.1 ms | 4.2 ms | 16.3 ms | 13.1 ms |
-| Scoped Dynamic | 🔶 | 148.6 KB | 14.8% | 0.0% | 152.6 KB | 16.1 ms | 4.3 ms | 16.6 ms | 14.8 ms |
+| Dynamic | ✅ | 145.4 KB | 2.8% | 89.9% | 19.9 KB | 15.7 ms | 4.1 ms | 15.8 ms | 12.7 ms |
+| Scoped Static | ✅ | 148.2 KB | 2.7% | 89.1% | 20.4 KB | 15.1 ms | 4.2 ms | 16.3 ms | 13.1 ms |
+| Scoped Dynamic | ✅ | 148.6 KB | 14.8% | 0.0% | 152.6 KB | 16.1 ms | 4.3 ms | 16.6 ms | 14.8 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -1726,9 +1726,9 @@ _Generated: 2026-09-26_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 218.5 KB | 0.0% | 89.8% | 78.5 KB | 16.4 ms | 4.3 ms | 15.3 ms | 15.6 ms |
-| Dynamic | 🔶 | 169.5 KB | 50.0% | 89.8% | 26.1 KB | 15.4 ms | 4.1 ms | 16.2 ms | 27.7 ms |
-| Scoped Static | 🔶 | 220.1 KB | 0.0% | 89.8% | 78.9 KB | 16.4 ms | 4.4 ms | 15.6 ms | 14.7 ms |
-| Scoped Dynamic | 🔶 | 163.4 KB | 0.0% | 0.0% | 27.1 KB | 15.9 ms | 6.5 ms | 16.6 ms | 15.1 ms |
+| Dynamic | ✅ | 169.5 KB | 50.0% | 89.8% | 26.1 KB | 15.4 ms | 4.1 ms | 16.2 ms | 27.7 ms |
+| Scoped Static | ✅ | 220.1 KB | 0.0% | 89.8% | 78.9 KB | 16.4 ms | 4.4 ms | 15.6 ms | 14.7 ms |
+| Scoped Dynamic | ✅ | 163.4 KB | 0.0% | 0.0% | 27.1 KB | 15.9 ms | 6.5 ms | 16.6 ms | 15.1 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -2212,9 +2212,9 @@ _Generated: 2026-09-26_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 153.6 KB | 4.2% | 89.8% | 21.8 KB | 16.0 ms | 4.0 ms | 16.5 ms | 14.7 ms |
-| Dynamic | 🔶 | 153.6 KB | 9.7% | 89.9% | 21.8 KB | 15.6 ms | 4.0 ms | 16.5 ms | 14.8 ms |
-| Scoped Static | 🔶 | 153.6 KB | 0.0% | 0.0% | 80.1 KB | 17.9 ms | 4.1 ms | 17.5 ms | 17.4 ms |
-| Scoped Dynamic | 🔶 | 153.6 KB | 0.0% | 0.0% | 22.9 KB | 17.8 ms | 4.1 ms | 17.1 ms | 16.8 ms |
+| Dynamic | ✅ | 153.6 KB | 9.7% | 89.9% | 21.8 KB | 15.6 ms | 4.0 ms | 16.5 ms | 14.8 ms |
+| Scoped Static | ✅ | 153.6 KB | 0.0% | 0.0% | 80.1 KB | 17.9 ms | 4.1 ms | 17.5 ms | 17.4 ms |
+| Scoped Dynamic | ✅ | 153.6 KB | 0.0% | 0.0% | 22.9 KB | 17.8 ms | 4.1 ms | 17.1 ms | 16.8 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -2450,12 +2450,12 @@ _Generated: 2026-09-26_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.10 | 4.9 KB | 14.6 KB |
+| 9.5.11 | 4.9 KB | 14.6 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 141.5 KB | 0.0% | 0.0% | 7.2 KB | 11.1 ms | 4.2 ms | 12.7 ms (×1.09) | 6.1 ms |
-| Dynamic | 🔶 | 141.5 KB | 0.0% | 0.0% | 5.5 KB | 13.9 ms | 4.6 ms | 13.1 ms (×1.13) | 6.4 ms |
+| Dynamic | ✅ | 141.5 KB | 0.0% | 0.0% | 5.5 KB | 13.9 ms | 4.6 ms | 13.1 ms (×1.13) | 6.4 ms |
 | Scoped Static | ↳ Static | 141.5 KB | 0.0% | 0.0% | 7.2 KB | 11.1 ms | 4.2 ms | 12.7 ms (×1.09) | 6.1 ms |
 | Scoped Dynamic | ↳ Dynamic | 141.5 KB | 0.0% | 0.0% | 5.5 KB | 13.9 ms | 4.6 ms | 13.1 ms (×1.13) | 6.4 ms |
 
@@ -2698,9 +2698,9 @@ _Generated: 2026-09-26_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 143.1 KB | 0.0% | 89.8% | 61.3 KB | 17.4 ms | 4.4 ms | 17.8 ms | 15.5 ms |
-| Dynamic | 🔶 | 143.1 KB | 0.0% | 89.8% | 10.7 KB | 16.2 ms | 4.2 ms | 19.0 ms | 15.5 ms |
-| Scoped Static | 🔶 | 143.1 KB | 0.0% | 89.8% | 61.5 KB | 18.4 ms | 4.5 ms | 17.6 ms | 15.2 ms |
-| Scoped Dynamic | 🔶 | 143.1 KB | 0.0% | 61.5% | 11.7 KB | 18.1 ms | 4.5 ms | 18.9 ms | 17.1 ms |
+| Dynamic | ✅ | 143.1 KB | 0.0% | 89.8% | 10.7 KB | 16.2 ms | 4.2 ms | 19.0 ms | 15.5 ms |
+| Scoped Static | ✅ | 143.1 KB | 0.0% | 89.8% | 61.5 KB | 18.4 ms | 4.5 ms | 17.6 ms | 15.2 ms |
+| Scoped Dynamic | ✅ | 143.1 KB | 0.0% | 61.5% | 11.7 KB | 18.1 ms | 4.5 ms | 18.9 ms | 17.1 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -3184,9 +3184,9 @@ _Generated: 2026-09-26_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | 🔶 | 283.8 KB | 50.0% | 90.0% | 0.0 KB | 15.8 ms | 3.9 ms | 16.7 ms | 23.1 ms |
-| Dynamic | 🔶 | 161.1 KB | 0.0% | 90.0% | 26.7 KB | 17.1 ms | 4.3 ms | 14.2 ms | 15.6 ms |
-| Scoped Static | 🔶 | 268.5 KB | 39.4% | 90.0% | 0.0 KB | 13.7 ms | 4.8 ms | 19.1 ms | 18.5 ms |
-| Scoped Dynamic | 🔶 | 160.3 KB | 33.3% | 0.0% | 13.9 KB | 13.2 ms | 3.5 ms | 16.1 ms | 15.2 ms |
+| Dynamic | ✅ | 161.1 KB | 0.0% | 90.0% | 26.7 KB | 17.1 ms | 4.3 ms | 14.2 ms | 15.6 ms |
+| Scoped Static | ✅ | 268.5 KB | 39.4% | 90.0% | 0.0 KB | 13.7 ms | 4.8 ms | 19.1 ms | 18.5 ms |
+| Scoped Dynamic | ✅ | 160.3 KB | 33.3% | 0.0% | 13.9 KB | 13.2 ms | 3.5 ms | 16.1 ms | 15.2 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>

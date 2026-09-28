@@ -1,6 +1,6 @@
 # Vite + Vue — i18n Benchmark Results
 
-_Generated: 2026-09-26_
+_Generated: 2026-09-28_
 
 ## Metric Legend
 
@@ -32,7 +32,7 @@ _Generated: 2026-09-26_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.10 | 9.6 KB | 28.9 KB |
+| 9.5.11 | 9.6 KB | 28.9 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -761,12 +761,12 @@ _Generated: 2026-09-26_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.10 | 4.6 KB | 14.0 KB |
+| 9.5.11 | 4.6 KB | 14.0 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 117.2 KB | 50.0% | 90.0% | 76.4 KB | 2.5 ms | — | 13.7 ms | 5.8 ms |
-| Dynamic | 🔶 | 117.2 KB | 50.0% | 90.0% | 76.4 KB | 2.5 ms | — | 15.4 ms | 6.6 ms |
+| Dynamic | ✅ | 117.2 KB | 50.0% | 90.0% | 76.4 KB | 2.5 ms | — | 15.4 ms | 6.6 ms |
 | Scoped Static | ↳ Static | 117.2 KB | 50.0% | 90.0% | 76.4 KB | 2.5 ms | — | 13.7 ms | 5.8 ms |
 | Scoped Dynamic | ↳ Dynamic | 117.2 KB | 50.0% | 90.0% | 76.4 KB | 2.5 ms | — | 15.4 ms | 6.6 ms |
 
@@ -1009,7 +1009,7 @@ _Generated: 2026-09-26_
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 112.8 KB | 50.0% | 90.0% | 76.1 KB | 1.6 ms | — | 18.7 ms | 9.2 ms |
-| Dynamic | 🔶 | 58.7 KB | 0.0% | 90.0% | 21.2 KB | 1.7 ms | — | 11.3 ms | 10.8 ms |
+| Dynamic | ✅ | 58.7 KB | 0.0% | 90.0% | 21.2 KB | 1.7 ms | — | 11.3 ms | 10.8 ms |
 | Scoped Static | ↳ Static | 112.8 KB | 50.0% | 90.0% | 76.1 KB | 1.6 ms | — | 18.7 ms | 9.2 ms |
 | Scoped Dynamic | ↳ Dynamic | 58.7 KB | 0.0% | 90.0% | 21.2 KB | 1.7 ms | — | 11.3 ms | 10.8 ms |
 

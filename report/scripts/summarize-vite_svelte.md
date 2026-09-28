@@ -1,6 +1,6 @@
 # Vite + Svelte — i18n Benchmark Results
 
-_Generated: 2026-09-26_
+_Generated: 2026-09-28_
 
 ## Metric Legend
 
@@ -32,7 +32,7 @@ _Generated: 2026-09-26_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| — | — | — |
+| 9.5.11 | — | — |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -438,12 +438,12 @@ _Generated: 2026-09-26_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.10 | 3.6 KB | 9.9 KB |
+| 9.5.11 | 3.6 KB | 9.9 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 59.0 KB | 50.0% | 59.9% | 6.8 KB | 0.9 ms | — | 13.9 ms | 5.2 ms |
-| Dynamic | 🔶 | 37.4 KB | 19.5% | 59.9% | 5.6 KB | 1.2 ms | — | 11.8 ms | 4.4 ms |
+| Dynamic | ✅ | 37.4 KB | 19.5% | 59.9% | 5.6 KB | 1.2 ms | — | 11.8 ms | 4.4 ms |
 | Scoped Static | ↳ Static | 59.0 KB | 50.0% | 59.9% | 6.8 KB | 0.9 ms | — | 13.9 ms | 5.2 ms |
 | Scoped Dynamic | ↳ Dynamic | 37.4 KB | 19.5% | 59.9% | 5.6 KB | 1.2 ms | — | 11.8 ms | 4.4 ms |
 

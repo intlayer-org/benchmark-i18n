@@ -1,6 +1,6 @@
 # Vite + Solid — i18n Benchmark Results
 
-_Generated: 2026-09-26_
+_Generated: 2026-09-28_
 
 ## Metric Legend
 
@@ -478,12 +478,12 @@ _Generated: 2026-09-26_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.10 | 3.9 KB | 10.5 KB |
+| 9.5.11 | 3.9 KB | 10.5 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 35.4 KB | 50.0% | 0.0% | 6.5 KB | 1.2 ms | — | 10.6 ms | 3.4 ms |
-| Dynamic | 🔶 | 28.3 KB | 0.0% | 0.0% | 8.3 KB | 5.3 ms | — | 9.3 ms | 3.1 ms |
+| Dynamic | ✅ | 28.3 KB | 0.0% | 0.0% | 8.3 KB | 5.3 ms | — | 9.3 ms | 3.1 ms |
 | Scoped Static | ↳ Static | 35.4 KB | 50.0% | 0.0% | 6.5 KB | 1.2 ms | — | 10.6 ms | 3.4 ms |
 | Scoped Dynamic | ↳ Dynamic | 28.3 KB | 0.0% | 0.0% | 8.3 KB | 5.3 ms | — | 9.3 ms | 3.1 ms |
 
