@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, watch, ref, onBeforeMount } from "vue";
+import { onMounted, watch, ref, onBeforeMount, nextTick } from "vue";
 import { useRoute } from "vue-router";
 import {
   recordHydrationDuration,
@@ -12,7 +12,8 @@ const route = useRoute();
 const renderStart = ref(0);
 
 onBeforeMount(() => {
-  renderStart.value = typeof performance !== "undefined" ? performance.now() : 0;
+  renderStart.value =
+    typeof performance !== "undefined" ? performance.now() : 0;
 });
 
 onMounted(() => {
@@ -22,12 +23,15 @@ onMounted(() => {
 
 watch(
   () => route.params.locale,
-  (newLocale) => {
+  async (newLocale) => {
     if (newLocale) {
+      // html[lang] is the reactivity test's end marker: set it once Vue has
+      // patched the DOM with the new locale, not when the switch starts.
+      await nextTick();
       document.documentElement.lang = newLocale as string;
     }
   },
-  { immediate: true }
+  { immediate: true },
 );
 </script>
 

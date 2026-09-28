@@ -19,9 +19,11 @@ export default function Layout(props: { children?: JSX.Element }) {
 
   createEffect(() => {
     const loc = params.locale ?? "en";
-    document.documentElement.lang = loc;
     void i18next.changeLanguage(loc).then(() => {
       setT(() => i18next.t.bind(i18next));
+      // Solid patches the DOM synchronously on the signal write above, so
+      // html[lang] (the reactivity test's end marker) follows the new text.
+      document.documentElement.lang = loc;
     });
   });
 

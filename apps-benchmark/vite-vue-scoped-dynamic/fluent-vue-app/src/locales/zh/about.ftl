@@ -1,0 +1,17 @@
+about-header-title = 关于此基准测试
+about-header-description = 这是一个开源测试应用程序 — 不是产品或公司。其唯一目的是提供一个现实的、多页面的 React 应用，以便在相同条件下集成和衡量不同的 i18n 库。
+about-grid-why-exists-title = 为什么存在这个测试
+about-grid-why-exists-desc = 选择 i18n 库是一个具有长期影响的架构决策。大多数比较关注 API 的易用性，但很少有衡量性能成本的：库为包增加了多少重量？当加载数千个翻译键时，它如何影响渲染？延迟加载是否真的有帮助，还是只是转移了成本？本基准测试通过真实数据回答了这些问题。
+about-grid-methodology-title = 方法论
+about-grid-methodology-desc = 相同的 10 页应用为每个库构建一次。我们测量生产包（通过 rollup-plugin-visualizer），运行加载指标的 Lighthouse 审核，并使用 React Profiler 捕获语言环境切换期间的渲染时间。所有测试都在一致硬件上的 CI 中运行，以确保结果可复现。
+about-what-we-measure-title = 衡量指标
+about-what-we-measure-bundle-size-impact = 包大小影响
+about-what-we-measure-bundle-size-impact-desc = 包含 i18n 库及其翻译文件时发送给用户的额外 JavaScript 字节。这直接影响慢速网络下的下载时间。
+about-what-we-measure-rendering-overhead = 渲染开销
+about-what-we-measure-rendering-overhead-desc = 库为 React 的渲染周期增加了多少额外时间。通过单个上下文提供程序注入翻译的库可能会导致整个组件树的不必要重新渲染。
+about-what-we-measure-hydration-cost = 注水成本
+about-what-we-measure-hydration-cost-desc = 在 SSR 期间，翻译数据被序列化到 HTML 中。大型字典会增加 HTML 负载并减慢注水速度 — 即页面变得可交互的时刻。
+about-what-we-measure-lazy-loading = 延迟加载有效性
+about-what-we-measure-lazy-loading-desc = 按路由或命名空间拆分翻译是否确实减少了初始加载，以及它引入了哪些权衡（瀑布流请求、FOUC、缓存复杂性）。
+about-what-we-measure-locale-switch = 语言环境切换速度
+about-what-we-measure-locale-switch-desc = 应用程序在运行时从一种语言切换到另一种语言的速度 — 包括获取新翻译、重新渲染组件和更新 DOM。

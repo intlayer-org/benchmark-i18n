@@ -1,0 +1,15 @@
+contact-header-title = お問い合わせ
+contact-header-description = アイデアがある、バグを見つけた、またはベンチマークを投稿したいですか？こちらまでご連絡ください：
+contact-form-name = 名前
+contact-form-your-name = お名前
+contact-form-email = メールアドレス
+contact-form-email-placeholder = you@example.com
+contact-form-topic = トピック
+contact-form-bug-report = バグ報告
+contact-form-new-benchmark-idea = 新しいベンチマークのアイデア
+contact-form-methodology-question = 手法に関する質問
+contact-form-contribution = 貢献
+contact-form-other = その他
+contact-form-message = メッセージ
+contact-form-message-placeholder = ご質問やアイデアを記入してください...
+contact-form-send-message = メッセージを送信

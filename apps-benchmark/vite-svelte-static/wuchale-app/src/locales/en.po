@@ -1,0 +1,1005 @@
+msgid ""
+msgstr ""
+"Source-Language: en\n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2\n"
+"X-Plurals-Order: one, other\n"
+
+#: src/components/Footer.svelte
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/components/Footer.svelte
+#: src/components/Header.svelte
+#: src/components/pages/about/AboutGrid.svelte
+#: src/components/pages/home/Hero.svelte
+msgid "Methodology"
+msgstr "Methodology"
+
+#: src/components/Footer.svelte
+msgid "Contributing"
+msgstr "Contributing"
+
+#: src/components/Footer.svelte
+#: src/components/pages/home/Hero.svelte
+msgid "i18n Benchmark"
+msgstr "i18n Benchmark"
+
+#: src/components/Footer.svelte
+msgid "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+msgstr "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+
+#: src/components/Footer.svelte
+msgid "Resources"
+msgstr "Resources"
+
+#: src/components/Footer.svelte
+#: src/components/Header.svelte
+msgid "Contact"
+msgstr "Contact"
+
+#: src/components/Footer.svelte
+msgid "contact@intlayer.org"
+msgstr "contact@intlayer.org"
+
+#~ msgid "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
+#~ msgstr "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
+
+#: src/components/MockBanner.svelte
+msgid "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+msgstr "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+
+#~ msgid "Header"
+#~ msgstr "Header"
+
+#: src/components/Header.svelte
+#: src/components/pages/products/ProductsHeader.svelte
+msgid "Products"
+msgstr "Products"
+
+#: src/components/Header.svelte
+msgid "Pricing"
+msgstr "Pricing"
+
+#: src/components/Header.svelte
+msgid "Team"
+msgstr "Team"
+
+#: src/components/Header.svelte
+#: src/components/pages/blog/BlogHeader.svelte
+msgid "Blog"
+msgstr "Blog"
+
+#: src/components/Header.svelte
+#: src/components/pages/careers/CareersHeader.svelte
+msgid "Careers"
+msgstr "Careers"
+
+#: src/components/Header.svelte
+#: src/components/pages/settings/SettingsHeader.svelte
+msgid "Settings"
+msgstr "Settings"
+
+#: src/components/Header.svelte
+msgid "i18n Bench"
+msgstr "i18n Bench"
+
+#: src/components/Header.svelte
+msgid "Home"
+msgstr "Home"
+
+#: src/components/Header.svelte
+msgid "Mock Pages <0/>"
+msgstr "Mock Pages <0/>"
+
+#: src/components/Header.svelte
+msgid "Go to GitHub"
+msgstr "Go to GitHub"
+
+#: src/components/ThemeToggle.svelte
+msgid "Theme mode: auto (system). Click to switch to light mode."
+msgstr "Theme mode: auto (system). Click to switch to light mode."
+
+#. 0: mode
+#: src/components/ThemeToggle.svelte
+msgid "Theme mode: {0}. Click to switch mode."
+msgstr "Theme mode: {0}. Click to switch mode."
+
+#: src/components/ThemeToggle.svelte
+msgid "Theme: Auto"
+msgstr "Theme: Auto"
+
+#: src/components/ThemeToggle.svelte
+msgid "Theme: Dark"
+msgstr "Theme: Dark"
+
+#: src/components/ThemeToggle.svelte
+msgid "Theme: Light"
+msgstr "Theme: Light"
+
+#: src/pages/NotFound.svelte
+msgid "Oops! Page not found"
+msgstr "Oops! Page not found"
+
+#: src/pages/NotFound.svelte
+msgid "Return to Home"
+msgstr "Return to Home"
+
+#: src/components/Layout.svelte
+msgid "AppRoot"
+msgstr "AppRoot"
+
+#: src/components/pages/about/AboutGrid.svelte
+msgid "Why This Exists"
+msgstr "Why This Exists"
+
+#: src/components/pages/about/AboutGrid.svelte
+msgid "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+msgstr "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+
+#: src/components/pages/about/AboutGrid.svelte
+msgid "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+msgstr "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+
+#~ msgid "AboutHeader"
+#~ msgstr "AboutHeader"
+
+#: src/components/pages/about/AboutHeader.svelte
+msgid "About This Benchmark"
+msgstr "About This Benchmark"
+
+#: src/components/pages/about/AboutHeader.svelte
+msgid "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+msgstr "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Bundle size impact"
+msgstr "Bundle size impact"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+msgstr "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Rendering overhead"
+msgstr "Rendering overhead"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+msgstr "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Hydration cost"
+msgstr "Hydration cost"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+msgstr "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Lazy loading effectiveness"
+msgstr "Lazy loading effectiveness"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
+msgstr "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Locale switch speed"
+msgstr "Locale switch speed"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
+msgstr "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "What We Measure"
+msgstr "What We Measure"
+
+#: src/components/pages/blog/BlogHeader.svelte
+msgid "Insights, tutorials, and analysis from the i18n community."
+msgstr "Insights, tutorials, and analysis from the i18n community."
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Read More →"
+msgstr "Read More →"
+
+#: src/components/pages/careers/CareersBenefits.svelte
+msgid "Remote-first"
+msgstr "Remote-first"
+
+#: src/components/pages/careers/CareersBenefits.svelte
+msgid "Work from anywhere in the world"
+msgstr "Work from anywhere in the world"
+
+#: src/components/pages/careers/CareersBenefits.svelte
+msgid "Competitive pay"
+msgstr "Competitive pay"
+
+#: src/components/pages/careers/CareersBenefits.svelte
+msgid "Top-of-market compensation"
+msgstr "Top-of-market compensation"
+
+#: src/components/pages/careers/CareersBenefits.svelte
+msgid "Open source time"
+msgstr "Open source time"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Open Positions"
+msgstr "Open Positions"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Apply Now"
+msgstr "Apply Now"
+
+#: src/components/pages/contact/ContactHeader.svelte
+msgid "Get in Touch"
+msgstr "Get in Touch"
+
+#~ msgid "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at{0} <0>contact@intlayer.org</0> ."
+#~ msgstr "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at{0} <0>contact@intlayer.org</0> ."
+
+#: src/components/pages/careers/CareersHeader.svelte
+msgid "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+msgstr "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+
+#: src/components/pages/faq/FAQHeader.svelte
+msgid "Frequently Asked Questions"
+msgstr "Frequently Asked Questions"
+
+#: src/components/pages/faq/FAQHeader.svelte
+msgid "Everything you need to know about i18n Benchmark."
+msgstr "Everything you need to know about i18n Benchmark."
+
+#~ msgid "Hero"
+#~ msgstr "Hero"
+
+#: src/components/pages/home/Hero.svelte
+msgid "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
+msgstr "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
+
+#: src/components/pages/home/Hero.svelte
+msgid "View Results"
+msgstr "View Results"
+
+#: src/components/pages/home/ResultsTable.svelte
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Yes"
+msgstr "Yes"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Manual"
+msgstr "Manual"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Built-in"
+msgstr "Built-in"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Sample Results"
+msgstr "Sample Results"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Library"
+msgstr "Library"
+
+#: src/components/pages/home/ResultsTable.svelte
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Bundle Size"
+msgstr "Bundle Size"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Lookup Time"
+msgstr "Lookup Time"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Lazy Loading"
+msgstr "Lazy Loading"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Name"
+msgstr "Name"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Your name"
+msgstr "Your name"
+
+#: src/components/pages/contact/ContactForm.svelte
+#: src/components/pages/settings/ProfileSection.svelte
+msgid "Email"
+msgstr "Email"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Topic"
+msgstr "Topic"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Bug Report"
+msgstr "Bug Report"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "New Benchmark Idea"
+msgstr "New Benchmark Idea"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Methodology Question"
+msgstr "Methodology Question"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Contribution"
+msgstr "Contribution"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Other"
+msgstr "Other"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Message"
+msgstr "Message"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Describe your question or idea..."
+msgstr "Describe your question or idea..."
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Send Message"
+msgstr "Send Message"
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Why These Metrics Matter"
+msgstr "Why These Metrics Matter"
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
+msgstr "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Rendering & Hydration"
+msgstr "Rendering & Hydration"
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
+msgstr "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Dynamic Loading"
+msgstr "Dynamic Loading"
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+msgstr "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "Understanding the Impact"
+msgstr "Understanding the Impact"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "Why a single large JSON can hurt performance"
+msgstr "Why a single large JSON can hurt performance"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
+msgstr "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "The JSON must be parsed on every page load — blocking the main thread."
+msgstr "The JSON must be parsed on every page load — blocking the main thread."
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
+msgstr "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
+msgstr "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "The trade-offs of dynamic loading"
+msgstr "The trade-offs of dynamic loading"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
+msgstr "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "<0>Waterfall requests:</0> the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
+msgstr "<0>Waterfall requests:</0> the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
+
+#~ msgid "<0>Flash of untranslated content (FOUC):</0>{0} users may briefly see translation keys or a fallback language before the chunk arrives."
+#~ msgstr "<0>Flash of untranslated content (FOUC):</0>{0} users may briefly see translation keys or a fallback language before the chunk arrives."
+
+#~ msgid "<0>Cache invalidation:</0>{0} updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+#~ msgstr "<0>Cache invalidation:</0>{0} updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "What this benchmark measures"
+msgstr "What this benchmark measures"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+msgstr "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+
+#: src/components/pages/pricing/PricingHeader.svelte
+msgid "Simple, Transparent Pricing"
+msgstr "Simple, Transparent Pricing"
+
+#: src/components/pages/pricing/PricingHeader.svelte
+msgid "Choose the plan that fits your team. No hidden fees."
+msgstr "Choose the plan that fits your team. No hidden fees."
+
+#: src/components/pages/pricing/PricingTiers.svelte
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Enterprise"
+msgstr "Enterprise"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Contact Sales"
+msgstr "Contact Sales"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Get Started"
+msgstr "Get Started"
+
+#: src/components/pages/settings/ApiAccessSection.svelte
+msgid "API Access"
+msgstr "API Access"
+
+#: src/components/pages/settings/ApiAccessSection.svelte
+msgid "API Key"
+msgstr "API Key"
+
+#: src/components/pages/settings/ApiAccessSection.svelte
+msgid "Copy"
+msgstr "Copy"
+
+#: src/components/pages/settings/ApiAccessSection.svelte
+msgid "Use this key to access the benchmarking API programmatically."
+msgstr "Use this key to access the benchmarking API programmatically."
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Preferences"
+msgstr "Preferences"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Email Notifications"
+msgstr "Email Notifications"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Receive weekly benchmark reports"
+msgstr "Receive weekly benchmark reports"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Toggle notifications"
+msgstr "Toggle notifications"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Dark Mode"
+msgstr "Dark Mode"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Use dark color scheme"
+msgstr "Use dark color scheme"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Toggle dark mode"
+msgstr "Toggle dark mode"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Default Language"
+msgstr "Default Language"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "English (en)"
+msgstr "English (en)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "French (fr)"
+msgstr "French (fr)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "German (de)"
+msgstr "German (de)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Spanish (es)"
+msgstr "Spanish (es)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Japanese (ja)"
+msgstr "Japanese (ja)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Chinese Simplified (zh-CN)"
+msgstr "Chinese Simplified (zh-CN)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Arabic (ar)"
+msgstr "Arabic (ar)"
+
+#: src/components/pages/settings/SettingsFooter.svelte
+msgid "Cancel"
+msgstr "Cancel"
+
+#: src/components/pages/settings/SettingsFooter.svelte
+msgid "Save Changes"
+msgstr "Save Changes"
+
+#: src/components/pages/settings/ProfileSection.svelte
+msgid "Profile"
+msgstr "Profile"
+
+#: src/components/pages/settings/ProfileSection.svelte
+msgid "Display Name"
+msgstr "Display Name"
+
+#: src/components/pages/settings/ProfileSection.svelte
+msgid "John Developer"
+msgstr "John Developer"
+
+#: src/components/pages/settings/SettingsHeader.svelte
+msgid "Manage your account preferences and configuration."
+msgstr "Manage your account preferences and configuration."
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Learn More"
+msgstr "Learn More"
+
+#: src/components/pages/products/ProductsHeader.svelte
+msgid "Tools and services to streamline your internationalization workflow."
+msgstr "Tools and services to streamline your internationalization workflow."
+
+#: src/components/pages/team/TeamHeader.svelte
+msgid "Our Team"
+msgstr "Our Team"
+
+#: src/components/pages/team/TeamHeader.svelte
+msgid "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+msgstr "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+
+#~ msgid "Hello \"__root\"!"
+#~ msgstr "Hello \"__root\"!"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Starter"
+msgstr "Starter"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Community support"
+msgstr "Community support"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Public results"
+msgstr "Public results"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Pro"
+msgstr "Pro"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Unlimited runs"
+msgstr "Unlimited runs"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "All libraries"
+msgstr "All libraries"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Priority support"
+msgstr "Priority support"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Private results"
+msgstr "Private results"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "CI integration"
+msgstr "CI integration"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Historical data"
+msgstr "Historical data"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Custom"
+msgstr "Custom"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Everything in Pro"
+msgstr "Everything in Pro"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "On-premise option"
+msgstr "On-premise option"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Dedicated account manager"
+msgstr "Dedicated account manager"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Custom SLAs"
+msgstr "Custom SLAs"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Audit logs"
+msgstr "Audit logs"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Training sessions"
+msgstr "Training sessions"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Comparing i18n Libraries in 2026: A Deep Dive"
+msgstr "Comparing i18n Libraries in 2026: A Deep Dive"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "March 15, 2026"
+msgstr "March 15, 2026"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+msgstr "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Benchmark"
+msgstr "Benchmark"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "How to Reduce Your i18n Bundle by 60%"
+msgstr "How to Reduce Your i18n Bundle by 60%"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "March 8, 2026"
+msgstr "March 8, 2026"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+msgstr "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+
+#: src/components/pages/blog/BlogList.svelte
+#: src/components/pages/blog/BlogList.svelte
+msgid "Tutorial"
+msgstr "Tutorial"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "The State of Internationalization in React"
+msgstr "The State of Internationalization in React"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "February 28, 2026"
+msgstr "February 28, 2026"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+msgstr "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+
+#: src/components/pages/blog/BlogList.svelte
+#: src/components/pages/blog/BlogList.svelte
+msgid "Analysis"
+msgstr "Analysis"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Migrating from react-i18next to Lingui"
+msgstr "Migrating from react-i18next to Lingui"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "February 15, 2026"
+msgstr "February 15, 2026"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+msgstr "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Server Components and i18n: What Changes?"
+msgstr "Server Components and i18n: What Changes?"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "February 1, 2026"
+msgstr "February 1, 2026"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+msgstr "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Benchmark Methodology: How We Test"
+msgstr "Benchmark Methodology: How We Test"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "January 20, 2026"
+msgstr "January 20, 2026"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+msgstr "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Meta"
+msgstr "Meta"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Sarah Chen"
+msgstr "Sarah Chen"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Founder & Lead Engineer"
+msgstr "Founder & Lead Engineer"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Former Google engineer with 10 years of experience building internationalization systems at scale."
+msgstr "Former Google engineer with 10 years of experience building internationalization systems at scale."
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Marcus Weber"
+msgstr "Marcus Weber"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Performance Engineer"
+msgstr "Performance Engineer"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+msgstr "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Aisha Patel"
+msgstr "Aisha Patel"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Developer Advocate"
+msgstr "Developer Advocate"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+msgstr "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Tomás Rodríguez"
+msgstr "Tomás Rodríguez"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Full-Stack Developer"
+msgstr "Full-Stack Developer"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+msgstr "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Yuki Tanaka"
+msgstr "Yuki Tanaka"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Data Analyst"
+msgstr "Data Analyst"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+msgstr "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Elena Kowalski"
+msgstr "Elena Kowalski"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Community Manager"
+msgstr "Community Manager"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Manages community contributions, partnerships, and events. Background in open source governance."
+msgstr "Manages community contributions, partnerships, and events. Background in open source governance."
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Benchmark CLI"
+msgstr "Benchmark CLI"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Run benchmarks locally from your terminal. Supports custom configurations and CI integration."
+msgstr "Run benchmarks locally from your terminal. Supports custom configurations and CI integration."
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Free"
+msgstr "Free"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Benchmark Cloud"
+msgstr "Benchmark Cloud"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards."
+msgstr "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards."
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Benchmark Enterprise"
+msgstr "Benchmark Enterprise"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support."
+msgstr "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support."
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Contact Us"
+msgstr "Contact Us"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Migration Assistant"
+msgstr "Migration Assistant"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime."
+msgstr "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime."
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Translation QA"
+msgstr "Translation QA"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Automated quality checks for missing translations, pluralization issues, and context errors."
+msgstr "Automated quality checks for missing translations, pluralization issues, and context errors."
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Bundle Optimizer"
+msgstr "Bundle Optimizer"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+msgstr "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "What is i18n Benchmark?"
+msgstr "What is i18n Benchmark?"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "How are benchmarks conducted?"
+msgstr "How are benchmarks conducted?"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
+msgstr "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Which libraries are currently supported?"
+msgstr "Which libraries are currently supported?"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee."
+msgstr "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee."
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Can I submit my own benchmarks?"
+msgstr "Can I submit my own benchmarks?"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
+msgstr "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "How often are benchmarks updated?"
+msgstr "How often are benchmarks updated?"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
+msgstr "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Is the data reliable?"
+msgstr "Is the data reliable?"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
+msgstr "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Do you offer consulting services?"
+msgstr "Do you offer consulting services?"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
+msgstr "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "How can I contribute?"
+msgstr "How can I contribute?"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+msgstr "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Senior Frontend Engineer"
+msgstr "Senior Frontend Engineer"
+
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Remote"
+msgstr "Remote"
+
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Full-time"
+msgstr "Full-time"
+
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Engineering"
+msgstr "Engineering"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+msgstr "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Backend Engineer"
+msgstr "Backend Engineer"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
+msgstr "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Technical Writer"
+msgstr "Technical Writer"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Part-time"
+msgstr "Part-time"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Documentation"
+msgstr "Documentation"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
+msgstr "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "DevRel Engineer"
+msgstr "DevRel Engineer"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "San Francisco / Remote"
+msgstr "San Francisco / Remote"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Community"
+msgstr "Community"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
+msgstr "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "QA Engineer"
+msgstr "QA Engineer"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+msgstr "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+
+#: src/App.svelte
+msgid "Loading..."
+msgstr "Loading..."
+
+#: src/components/Footer.svelte
+msgid "i18n Benchmark — Open-source project. Built with Svelte, Vite, and a client-side router."
+msgstr "i18n Benchmark — Open-source project. Built with Svelte, Vite, and a client-side router."
+
+#: src/components/pages/contact/ContactHeader.svelte
+msgid "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at <0>contact@intlayer.org</0> ."
+msgstr "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at <0>contact@intlayer.org</0> ."
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "<0>Flash of untranslated content (FOUC):</0> users may briefly see translation keys or a fallback language before the chunk arrives."
+msgstr "<0>Flash of untranslated content (FOUC):</0> users may briefly see translation keys or a fallback language before the chunk arrives."
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "<0>Cache invalidation:</0> updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+msgstr "<0>Cache invalidation:</0> updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."

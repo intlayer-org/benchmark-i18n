@@ -1,0 +1,38 @@
+{
+  "header": {
+    "title": "Paramètres",
+    "description": "Gérez les préférences et la configuration de votre compte."
+  },
+  "profile": {
+    "title": "Profil",
+    "displayName": "Nom affiché",
+    "email": "E-mail"
+  },
+  "preferences": {
+    "title": "Préférences",
+    "emailNotifications": "Notifications e-mail",
+    "weeklyReports": "Recevoir les rapports hebdomadaires",
+    "toggleNotifications": "Activer/désactiver les notifications",
+    "darkMode": "Mode sombre",
+    "darkColorScheme": "Utiliser le thème sombre",
+    "toggleDarkMode": "Basculer le mode sombre",
+    "defaultLanguage": "Langue par défaut",
+    "english": "Anglais (en)",
+    "french": "Français (fr)",
+    "german": "Allemand (de)",
+    "spanish": "Espagnol (es)",
+    "japanese": "Japonais (ja)",
+    "chinese": "Chinois simplifié (zh-CN)",
+    "arabic": "Arabe (ar)"
+  },
+  "apiAccess": {
+    "title": "Accès API",
+    "apiKey": "Clé API",
+    "copy": "Copier",
+    "description": "Utilisez cette clé pour appeler l'API de benchmark par programmation."
+  },
+  "footer": {
+    "cancel": "Annuler",
+    "saveChanges": "Enregistrer"
+  }
+}

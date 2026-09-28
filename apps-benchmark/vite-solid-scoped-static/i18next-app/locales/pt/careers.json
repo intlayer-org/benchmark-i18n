@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "Carreiras",
+    "description": "Junte-se à nossa missão de melhorar o ecossistema de internacionalização. Somos uma equipe remota que valoriza o impacto, a transparência e o aprendizado contínuo."
+  },
+  "benefits": {
+    "remoteLabel": "Remoto primeiro",
+    "remoteValue": "Trabalhe de qualquer lugar do mundo",
+    "payLabel": "Salário competitivo",
+    "payValue": "Remuneração acima do mercado",
+    "ossLabel": "Tempo para o código aberto",
+    "ossValue": "20% do tempo para contribuições OSS"
+  },
+  "openPositions": {
+    "title": "Vagas abertas",
+    "applyNow": "Candidatar-se agora",
+    "remote": "Remoto",
+    "fullTime": "Tempo integral",
+    "partTime": "Tempo parcial",
+    "engineering": "Engenharia",
+    "documentation": "Documentação",
+    "community": "Comunidade",
+    "sfRemote": "San Francisco / Remoto",
+    "frontendTitle": "Engenheiro Frontend Sênior",
+    "frontendDesc": "Construa e mantenha nosso painel de benchmarking e ferramentas de desenvolvedor usando React, TypeScript e Vite.",
+    "backendTitle": "Engenheiro Backend",
+    "backendDesc": "Projete e dimensione nossa infraestrutura de benchmarking na nuvem que lida com milhares de execuções automatizadas diariamente.",
+    "writerTitle": "Redator técnico",
+    "writerDesc": "Crie guias abrangentes, referências de API e tutoriais para nossa plataforma de benchmarking.",
+    "devrelTitle": "Engenheiro de DevRel",
+    "devrelDesc": "Envolva-se com a comunidade i18n através de palestras, workshops, postagens em blogs e contribuições de código aberto.",
+    "qaTitle": "Engenheiro de QA",
+    "qaDesc": "Garanta a precisão e a confiabilidade dos resultados do benchmark através de testes e validações rigorosos."
+  }
+}

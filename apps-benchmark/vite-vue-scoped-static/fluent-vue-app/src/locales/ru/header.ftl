@@ -1,0 +1,11 @@
+header-home = Главная
+header-methodology = Методология
+header-mock-pages = Тестовые страницы
+header-products = Продукты
+header-pricing = Цены
+header-team = Команда
+header-blog = Блог
+header-careers = Вакансии
+header-faq = FAQ
+header-contact = Контакт
+header-settings = Настройки

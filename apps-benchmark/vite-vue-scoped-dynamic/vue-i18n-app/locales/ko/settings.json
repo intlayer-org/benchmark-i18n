@@ -1,0 +1,38 @@
+{
+  "header": {
+    "title": "설정",
+    "description": "계정 기본 설정과 구성을 관리합니다."
+  },
+  "profile": {
+    "title": "프로필",
+    "displayName": "표시 이름",
+    "email": "이메일"
+  },
+  "preferences": {
+    "title": "환경 설정",
+    "emailNotifications": "이메일 알림",
+    "weeklyReports": "주간 벤치마크 리포트 받기",
+    "toggleNotifications": "알림 켜기/끄기",
+    "darkMode": "다크 모드",
+    "darkColorScheme": "어두운 색 구성 사용",
+    "toggleDarkMode": "다크 모드 전환",
+    "defaultLanguage": "기본 언어",
+    "english": "영어 (en)",
+    "french": "프랑스어 (fr)",
+    "german": "독일어 (de)",
+    "spanish": "스페인어 (es)",
+    "japanese": "일본어 (ja)",
+    "chinese": "중국어 간체 (zh-CN)",
+    "arabic": "아랍어 (ar)"
+  },
+  "apiAccess": {
+    "title": "API 액세스",
+    "apiKey": "API 키",
+    "copy": "복사",
+    "description": "이 키를 사용하면 벤치마크 API를 프로그래밍 방식으로 호출할 수 있습니다."
+  },
+  "footer": {
+    "cancel": "취소",
+    "saveChanges": "변경 저장"
+  }
+}

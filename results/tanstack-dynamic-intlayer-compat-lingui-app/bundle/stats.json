@@ -424,7 +424,7 @@
             "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun",
             "children": [
               {
-                "name": "@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm",
+                "name": "@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm",
                 "children": [
                   {
                     "uid": "0c8195d0-153",
@@ -441,11 +441,11 @@
                 ]
               },
               {
-                "name": "@intlayer+types@9.5.10/node_modules/@intlayer/types/dist/esm/nodeType.mjs",
+                "name": "@intlayer+types@9.5.11/node_modules/@intlayer/types/dist/esm/nodeType.mjs",
                 "uid": "0c8195d0-157"
               },
               {
-                "name": "@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm",
+                "name": "@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm",
                 "children": [
                   {
                     "name": "interpreter",
@@ -589,7 +589,7 @@
                 ]
               },
               {
-                "name": "react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client",
+                "name": "react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client",
                 "children": [
                   {
                     "uid": "0c8195d0-213",
@@ -602,7 +602,7 @@
                 ]
               },
               {
-                "name": "@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/setIntlayerIdentifier.mjs",
+                "name": "@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/setIntlayerIdentifier.mjs",
                 "uid": "0c8195d0-215"
               }
             ]
@@ -682,7 +682,7 @@
         "name": "assets/ProductsGrid-BoIWk_PA.js",
         "children": [
           {
-            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/useLingui.mjs",
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/useLingui.mjs",
             "uid": "0c8195d0-241"
           },
           {
@@ -3078,7 +3078,7 @@
             "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun",
             "children": [
               {
-                "name": "@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm",
+                "name": "@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm",
                 "children": [
                   {
                     "uid": "0c8195d0-785",
@@ -3091,7 +3091,7 @@
                 ]
               },
               {
-                "name": "@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm",
+                "name": "@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm",
                 "children": [
                   {
                     "uid": "0c8195d0-787",
@@ -3104,7 +3104,7 @@
                 ]
               },
               {
-                "name": "@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getIntlayer.mjs",
+                "name": "@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getIntlayer.mjs",
                 "uid": "0c8195d0-793"
               }
             ]
@@ -3119,7 +3119,7 @@
         "name": "assets/route-CR6a_2Aj.js",
         "children": [
           {
-            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm",
+            "name": "Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm",
             "children": [
               {
                 "uid": "0c8195d0-797",
@@ -3169,7 +3169,7 @@
                 "name": "node_modules/.bun",
                 "children": [
                   {
-                    "name": "react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm",
+                    "name": "react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm",
                     "children": [
                       {
                         "name": "client",
@@ -3199,7 +3199,7 @@
                     ]
                   },
                   {
-                    "name": "@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm",
+                    "name": "@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm",
                     "children": [
                       {
                         "name": "utils/intlayerNodePrototype.mjs",
@@ -3216,11 +3216,11 @@
                     ]
                   },
                   {
-                    "name": "@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/dictionary.mjs",
+                    "name": "@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/dictionary.mjs",
                     "uid": "0c8195d0-815"
                   },
                   {
-                    "name": "@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm",
+                    "name": "@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm",
                     "children": [
                       {
                         "uid": "0c8195d0-827",
@@ -9019,7 +9019,7 @@
       ]
     },
     "0c8195d0-152": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/eventEmitter.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/eventEmitter.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-153"
       },
@@ -9031,7 +9031,7 @@
       ]
     },
     "0c8195d0-154": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/linguiCatalog.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/linguiCatalog.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-155"
       },
@@ -9046,7 +9046,7 @@
       ]
     },
     "0c8195d0-156": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+types@9.5.10/node_modules/@intlayer/types/dist/esm/nodeType.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+types@9.5.11/node_modules/@intlayer/types/dist/esm/nodeType.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-157"
       },
@@ -9136,7 +9136,7 @@
       ]
     },
     "0c8195d0-158": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getContent/deepTransform.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getContent/deepTransform.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-159"
       },
@@ -9173,7 +9173,7 @@
       ]
     },
     "0c8195d0-160": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/enumeration/enumeration.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/enumeration/enumeration.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-161"
       },
@@ -9198,7 +9198,7 @@
       ]
     },
     "0c8195d0-162": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/gender/gender.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/gender/gender.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-163"
       },
@@ -9220,7 +9220,7 @@
       ]
     },
     "0c8195d0-164": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/html/getHTMLCustomComponents.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/html/getHTMLCustomComponents.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-165"
       },
@@ -9235,7 +9235,7 @@
       ]
     },
     "0c8195d0-166": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/html/validateHTML.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/html/validateHTML.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-167"
       },
@@ -9250,7 +9250,7 @@
       ]
     },
     "0c8195d0-168": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/html/html.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/html/html.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-169"
       },
@@ -9278,7 +9278,7 @@
       ]
     },
     "0c8195d0-170": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/insertion/getInsertionValues.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/insertion/getInsertionValues.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-171"
       },
@@ -9290,7 +9290,7 @@
       ]
     },
     "0c8195d0-172": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/insertion/insertion.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/insertion/insertion.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-173"
       },
@@ -9318,7 +9318,7 @@
       ]
     },
     "0c8195d0-174": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/plural/plural.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/plural/plural.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-175"
       },
@@ -9340,7 +9340,7 @@
       ]
     },
     "0c8195d0-176": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/select/select.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/select/select.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-177"
       },
@@ -9359,7 +9359,7 @@
       ]
     },
     "0c8195d0-178": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/ICU.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/ICU.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-179"
       },
@@ -9399,7 +9399,7 @@
       ]
     },
     "0c8195d0-180": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getEnumeration.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getEnumeration.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-181"
       },
@@ -9543,7 +9543,7 @@
       ]
     },
     "0c8195d0-184": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/intl.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/intl.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-185"
       },
@@ -9595,7 +9595,7 @@
       ]
     },
     "0c8195d0-186": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getPlural.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getPlural.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-187"
       },
@@ -9617,7 +9617,7 @@
       ]
     },
     "0c8195d0-188": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getSelect.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getSelect.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-189"
       },
@@ -9635,7 +9635,7 @@
       ]
     },
     "0c8195d0-190": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/resolveMessage.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/resolveMessage.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-191"
       },
@@ -9672,7 +9672,7 @@
       ]
     },
     "0c8195d0-192": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/I18nClass.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/I18nClass.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-193"
       },
@@ -9703,7 +9703,7 @@
       ]
     },
     "0c8195d0-194": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/cookieExpiry.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/cookieExpiry.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-195"
       },
@@ -9715,7 +9715,7 @@
       ]
     },
     "0c8195d0-196": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/localeStorage.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/localeStorage.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-197"
       },
@@ -9746,7 +9746,7 @@
       ]
     },
     "0c8195d0-198": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/dictionaryTransformCache.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/dictionaryTransformCache.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-199"
       },
@@ -9764,7 +9764,7 @@
       ]
     },
     "0c8195d0-200": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getInsertion.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getInsertion.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-201"
       },
@@ -9782,7 +9782,7 @@
       ]
     },
     "0c8195d0-202": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getTranslation.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getTranslation.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-203"
       },
@@ -9797,7 +9797,7 @@
       ]
     },
     "0c8195d0-204": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/interpolableNode.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/interpolableNode.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-205"
       },
@@ -9819,7 +9819,7 @@
       ]
     },
     "0c8195d0-206": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getContent/plugins.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getContent/plugins.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-207"
       },
@@ -9871,7 +9871,7 @@
       ]
     },
     "0c8195d0-208": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getContent/getContent.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getContent/getContent.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-209"
       },
@@ -9899,7 +9899,7 @@
       ]
     },
     "0c8195d0-210": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getDictionary.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getDictionary.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-211"
       },
@@ -9933,7 +9933,7 @@
       ]
     },
     "0c8195d0-212": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useLocaleStorage.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useLocaleStorage.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-213"
       },
@@ -9958,7 +9958,7 @@
       ]
     },
     "0c8195d0-214": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/setIntlayerIdentifier.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/setIntlayerIdentifier.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-215"
       },
@@ -9970,7 +9970,7 @@
       ]
     },
     "0c8195d0-216": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/localeResolver.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/localeResolver.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-217"
       },
@@ -9992,7 +9992,7 @@
       ]
     },
     "0c8195d0-218": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/IntlayerProvider.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/IntlayerProvider.mjs",
       "moduleParts": {
         "assets/IntlayerProvider-DnBDPZHJ.js": "0c8195d0-219"
       },
@@ -10464,7 +10464,7 @@
       ]
     },
     "0c8195d0-240": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/useLingui.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/useLingui.mjs",
       "moduleParts": {
         "assets/ProductsGrid-BoIWk_PA.js": "0c8195d0-241"
       },
@@ -14514,7 +14514,7 @@
       ]
     },
     "0c8195d0-784": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/LinguiContext.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/LinguiContext.mjs",
       "moduleParts": {
         "assets/registryLookup-5wMLLh1t.js": "0c8195d0-785"
       },
@@ -14539,7 +14539,7 @@
       ]
     },
     "0c8195d0-786": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/colors.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/colors.mjs",
       "moduleParts": {
         "assets/registryLookup-5wMLLh1t.js": "0c8195d0-787"
       },
@@ -14560,7 +14560,7 @@
       ]
     },
     "0c8195d0-788": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/logger.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/logger.mjs",
       "moduleParts": {
         "assets/registryLookup-5wMLLh1t.js": "0c8195d0-789"
       },
@@ -14603,7 +14603,7 @@
       ]
     },
     "0c8195d0-792": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getIntlayer.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getIntlayer.mjs",
       "moduleParts": {
         "assets/registryLookup-5wMLLh1t.js": "0c8195d0-793"
       },
@@ -14634,7 +14634,7 @@
       ]
     },
     "0c8195d0-794": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/registryLookup.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/registryLookup.mjs",
       "moduleParts": {
         "assets/registryLookup-5wMLLh1t.js": "0c8195d0-795"
       },
@@ -14659,7 +14659,7 @@
       ]
     },
     "0c8195d0-796": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/setupI18n.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/setupI18n.mjs",
       "moduleParts": {
         "assets/route-CR6a_2Aj.js": "0c8195d0-797"
       },
@@ -14678,7 +14678,7 @@
       ]
     },
     "0c8195d0-798": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/I18nProvider.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/I18nProvider.mjs",
       "moduleParts": {
         "assets/route-CR6a_2Aj.js": "0c8195d0-799"
       },
@@ -14865,7 +14865,7 @@
       "importedBy": []
     },
     "0c8195d0-808": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useLoadDynamic.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useLoadDynamic.mjs",
       "moduleParts": {
         "assets/router-D1GKf8Us.js": "0c8195d0-809"
       },
@@ -14883,7 +14883,7 @@
       ]
     },
     "0c8195d0-810": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/intlayerNodePrototype.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/intlayerNodePrototype.mjs",
       "moduleParts": {
         "assets/router-D1GKf8Us.js": "0c8195d0-811"
       },
@@ -14895,7 +14895,7 @@
       ]
     },
     "0c8195d0-812": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/IntlayerNode.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/IntlayerNode.mjs",
       "moduleParts": {
         "assets/router-D1GKf8Us.js": "0c8195d0-813"
       },
@@ -14917,7 +14917,7 @@
       ]
     },
     "0c8195d0-814": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/dictionary.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/dictionary.mjs",
       "moduleParts": {
         "assets/router-D1GKf8Us.js": "0c8195d0-815"
       },
@@ -14929,7 +14929,7 @@
       ]
     },
     "0c8195d0-816": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/preloadedDynamicLoader.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/preloadedDynamicLoader.mjs",
       "moduleParts": {
         "assets/router-D1GKf8Us.js": "0c8195d0-817"
       },
@@ -14948,7 +14948,7 @@
       ]
     },
     "0c8195d0-818": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/splitAndJoinInsertion.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/splitAndJoinInsertion.mjs",
       "moduleParts": {
         "assets/router-D1GKf8Us.js": "0c8195d0-819"
       },
@@ -14960,7 +14960,7 @@
       ]
     },
     "0c8195d0-820": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/plugins.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/plugins.mjs",
       "moduleParts": {
         "assets/router-D1GKf8Us.js": "0c8195d0-821"
       },
@@ -15009,7 +15009,7 @@
       ]
     },
     "0c8195d0-822": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/getDictionary.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/getDictionary.mjs",
       "moduleParts": {
         "assets/router-D1GKf8Us.js": "0c8195d0-823"
       },
@@ -15034,7 +15034,7 @@
       ]
     },
     "0c8195d0-824": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useLocale.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useLocale.mjs",
       "moduleParts": {
         "assets/router-D1GKf8Us.js": "0c8195d0-825"
       },
@@ -15062,7 +15062,7 @@
       ]
     },
     "0c8195d0-826": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/useDictionary.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/useDictionary.mjs",
       "moduleParts": {
         "assets/router-D1GKf8Us.js": "0c8195d0-827"
       },
@@ -15090,7 +15090,7 @@
       ]
     },
     "0c8195d0-828": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/useDictionaryDynamic.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/useDictionaryDynamic.mjs",
       "moduleParts": {
         "assets/router-D1GKf8Us.js": "0c8195d0-829"
       },
@@ -18043,7 +18043,7 @@
       ]
     },
     "0c8195d0-1059": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/index.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/index.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18227,7 +18227,7 @@
       ]
     },
     "0c8195d0-1062": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/formats.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/formats.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -18237,7 +18237,7 @@
       ]
     },
     "0c8195d0-1063": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.10+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/Trans.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+lingui@9.5.11+75b6e8aa274beae0/node_modules/@intlayer/lingui/dist/esm/Trans.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18279,7 +18279,7 @@
       ]
     },
     "0c8195d0-1065": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/index.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/index.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18311,7 +18311,7 @@
       ]
     },
     "0c8195d0-1066": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/index.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/index.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18397,7 +18397,7 @@
       ]
     },
     "0c8195d0-1067": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/index.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/index.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18474,7 +18474,7 @@
       ]
     },
     "0c8195d0-1068": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/i18next.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/i18next.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18512,7 +18512,7 @@
       ]
     },
     "0c8195d0-1069": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/navigatePath.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/navigatePath.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -18522,7 +18522,7 @@
       ]
     },
     "0c8195d0-1070": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/po.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/po.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18554,7 +18554,7 @@
       ]
     },
     "0c8195d0-1071": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/vue-i18n.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/messageFormat/vue-i18n.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18580,7 +18580,7 @@
       ]
     },
     "0c8195d0-1072": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/getIntlayer.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/getIntlayer.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18600,7 +18600,7 @@
       ]
     },
     "0c8195d0-1073": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/analytics/useAnalytics.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/analytics/useAnalytics.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18626,7 +18626,7 @@
       ]
     },
     "0c8195d0-1074": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/analytics/AnalyticsProvider.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/analytics/AnalyticsProvider.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18643,7 +18643,7 @@
       ]
     },
     "0c8195d0-1075": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/analytics/useConversion.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/analytics/useConversion.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18660,7 +18660,7 @@
       ]
     },
     "0c8195d0-1076": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/analytics/useExperiment.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/analytics/useExperiment.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18677,7 +18677,7 @@
       ]
     },
     "0c8195d0-1077": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/format/useIntl.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/format/useIntl.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18697,7 +18697,7 @@
       ]
     },
     "0c8195d0-1078": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/t.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/t.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18717,7 +18717,7 @@
       ]
     },
     "0c8195d0-1079": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useDictionary.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useDictionary.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18743,7 +18743,7 @@
       ]
     },
     "0c8195d0-1080": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useDictionaryAsync.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useDictionaryAsync.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18766,7 +18766,7 @@
       ]
     },
     "0c8195d0-1081": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useDictionaryDynamic.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useDictionaryDynamic.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18795,7 +18795,7 @@
       ]
     },
     "0c8195d0-1082": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useI18n.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useI18n.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18815,7 +18815,7 @@
       ]
     },
     "0c8195d0-1083": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useIntlayer.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useIntlayer.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18838,7 +18838,7 @@
       ]
     },
     "0c8195d0-1084": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useLocaleBase.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useLocaleBase.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18858,7 +18858,7 @@
       ]
     },
     "0c8195d0-1085": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/usePathname.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/usePathname.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18875,7 +18875,7 @@
       ]
     },
     "0c8195d0-1086": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useRewriteURL.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/client/useRewriteURL.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18898,7 +18898,7 @@
       ]
     },
     "0c8195d0-1087": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/markdown/MarkdownProvider.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/markdown/MarkdownProvider.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18921,7 +18921,7 @@
       ]
     },
     "0c8195d0-1088": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/markdown/MarkdownRenderer.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/markdown/MarkdownRenderer.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18941,7 +18941,7 @@
       ]
     },
     "0c8195d0-1089": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/qualifiedDictionary.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/qualifiedDictionary.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -18966,7 +18966,7 @@
       ]
     },
     "0c8195d0-1090": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/qualifiedDynamicLoader.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/qualifiedDynamicLoader.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -18989,7 +18989,7 @@
       ]
     },
     "0c8195d0-1091": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/plainDynamicLoader.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/plainDynamicLoader.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19012,7 +19012,7 @@
       ]
     },
     "0c8195d0-1092": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/editDictionaryByKeyPath.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/editDictionaryByKeyPath.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19026,7 +19026,7 @@
       ]
     },
     "0c8195d0-1093": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getContentNodeByKeyPath.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getContentNodeByKeyPath.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19040,7 +19040,7 @@
       ]
     },
     "0c8195d0-1094": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getDefaultNode.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getDefaultNode.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19054,7 +19054,7 @@
       ]
     },
     "0c8195d0-1095": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getEmptyNode.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getEmptyNode.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19068,7 +19068,7 @@
       ]
     },
     "0c8195d0-1096": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getNestedDictionaryReferences.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getNestedDictionaryReferences.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19082,7 +19082,7 @@
       ]
     },
     "0c8195d0-1097": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getNodeChildren.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getNodeChildren.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19096,7 +19096,7 @@
       ]
     },
     "0c8195d0-1098": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getNodeType.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/getNodeType.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19116,7 +19116,7 @@
       ]
     },
     "0c8195d0-1099": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/mergeDictionaries.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/mergeDictionaries.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19142,7 +19142,7 @@
       ]
     },
     "0c8195d0-1100": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/qualifiedDictionaryDeclaration.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/qualifiedDictionaryDeclaration.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19159,7 +19159,7 @@
       ]
     },
     "0c8195d0-1101": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/mergeQualifiedDictionaries.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/mergeQualifiedDictionaries.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19185,7 +19185,7 @@
       ]
     },
     "0c8195d0-1102": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/orderDictionaries.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/orderDictionaries.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19202,7 +19202,7 @@
       ]
     },
     "0c8195d0-1103": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/normalizeDictionary.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/normalizeDictionary.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19222,7 +19222,7 @@
       ]
     },
     "0c8195d0-1104": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/removeContentNodeByKeyPath.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/removeContentNodeByKeyPath.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19236,7 +19236,7 @@
       ]
     },
     "0c8195d0-1105": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/renameContentNodeByKeyPath.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/renameContentNodeByKeyPath.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19250,7 +19250,7 @@
       ]
     },
     "0c8195d0-1106": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/updateNodeChildren.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/dictionaryManipulator/updateNodeChildren.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19264,7 +19264,7 @@
       ]
     },
     "0c8195d0-1107": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/index.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/index.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19347,7 +19347,7 @@
       ]
     },
     "0c8195d0-1108": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/index.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/index.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19388,7 +19388,7 @@
       ]
     },
     "0c8195d0-1109": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/editor/EditorProvider.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/editor/EditorProvider.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19402,7 +19402,7 @@
       ]
     },
     "0c8195d0-1110": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/client.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/client.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19440,7 +19440,7 @@
       ]
     },
     "0c8195d0-1111": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/index.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/index.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19529,7 +19529,7 @@
       ]
     },
     "0c8195d0-1112": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/analytics/exposureSink.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/analytics/exposureSink.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -19542,7 +19542,7 @@
       ]
     },
     "0c8195d0-1113": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+analytics@9.5.10+62547eec5a2188e3/node_modules/@intlayer/analytics/dist/esm/isEnabled.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+analytics@9.5.11+62547eec5a2188e3/node_modules/@intlayer/analytics/dist/esm/isEnabled.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19565,7 +19565,7 @@
       ]
     },
     "0c8195d0-1114": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/index.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/index.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19603,7 +19603,7 @@
       ]
     },
     "0c8195d0-1115": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/markdown/processor.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/markdown/processor.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19623,7 +19623,7 @@
       ]
     },
     "0c8195d0-1116": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/index.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/index.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19679,7 +19679,7 @@
       ]
     },
     "0c8195d0-1117": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/isValidReactElement.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/isValidReactElement.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -19692,7 +19692,7 @@
       ]
     },
     "0c8195d0-1118": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/deepTransformPlugins/getMultilingualDictionary.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/deepTransformPlugins/getMultilingualDictionary.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19709,7 +19709,7 @@
       ]
     },
     "0c8195d0-1119": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/translation/translation.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/translation/translation.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19726,7 +19726,7 @@
       ]
     },
     "0c8195d0-1120": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/deepTransformPlugins/getLocalizedContent.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/deepTransformPlugins/getLocalizedContent.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19743,7 +19743,7 @@
       ]
     },
     "0c8195d0-1121": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getCondition.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getCondition.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -19756,7 +19756,7 @@
       ]
     },
     "0c8195d0-1122": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getGender.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getGender.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -19769,7 +19769,7 @@
       ]
     },
     "0c8195d0-1123": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getNesting.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getNesting.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19786,7 +19786,7 @@
       ]
     },
     "0c8195d0-1124": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getDictionaryAsync.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getDictionaryAsync.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19815,7 +19815,7 @@
       ]
     },
     "0c8195d0-1125": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getHTML.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getHTML.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -19825,7 +19825,7 @@
       ]
     },
     "0c8195d0-1126": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getIntlayerAsync.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getIntlayerAsync.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19839,7 +19839,7 @@
       ]
     },
     "0c8195d0-1127": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/editor/ContentSelector.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/editor/ContentSelector.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19856,7 +19856,7 @@
       ]
     },
     "0c8195d0-1128": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/reactElement/renderReactElement.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/reactElement/renderReactElement.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19870,7 +19870,7 @@
       ]
     },
     "0c8195d0-1129": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/index.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/index.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -19908,7 +19908,7 @@
       ]
     },
     "0c8195d0-1130": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/parseYaml.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/parseYaml.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -19921,7 +19921,7 @@
       ]
     },
     "0c8195d0-1131": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/checkIsURLAbsolute.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/checkIsURLAbsolute.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -19946,7 +19946,7 @@
       ]
     },
     "0c8195d0-1132": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/getCookie.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/getCookie.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -19962,7 +19962,7 @@
       ]
     },
     "0c8195d0-1133": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/isSameKeyPath.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/isSameKeyPath.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -19972,7 +19972,7 @@
       ]
     },
     "0c8195d0-1134": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/stringifyYaml.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/utils/stringifyYaml.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -19982,7 +19982,7 @@
       ]
     },
     "0c8195d0-1135": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/editor/useEditor.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/editor/useEditor.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20002,7 +20002,7 @@
       ]
     },
     "0c8195d0-1136": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/configFile/buildBrowserConfiguration.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/configFile/buildBrowserConfiguration.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20031,7 +20031,7 @@
       ]
     },
     "0c8195d0-1137": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/extractErrorMessage.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/extractErrorMessage.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20041,7 +20041,7 @@
       ]
     },
     "0c8195d0-1138": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/logStack.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/logStack.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20058,7 +20058,7 @@
       ]
     },
     "0c8195d0-1139": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/normalizePath.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/normalizePath.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20068,7 +20068,7 @@
       ]
     },
     "0c8195d0-1140": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/stringFormatter/camelCaseToKebabCase.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/stringFormatter/camelCaseToKebabCase.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20078,7 +20078,7 @@
       ]
     },
     "0c8195d0-1141": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/stringFormatter/camelCaseToSentence.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/stringFormatter/camelCaseToSentence.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20088,7 +20088,7 @@
       ]
     },
     "0c8195d0-1142": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/stringFormatter/kebabCaseToCamelCase.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/stringFormatter/kebabCaseToCamelCase.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20098,7 +20098,7 @@
       ]
     },
     "0c8195d0-1143": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/stringFormatter/toLowerCamelCase.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/stringFormatter/toLowerCamelCase.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20108,7 +20108,7 @@
       ]
     },
     "0c8195d0-1144": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getPathWithoutLocale.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getPathWithoutLocale.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20131,7 +20131,7 @@
       ]
     },
     "0c8195d0-1145": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/comparePaths.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/comparePaths.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20148,7 +20148,7 @@
       ]
     },
     "0c8195d0-1146": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/domainUtils.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/domainUtils.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20167,7 +20167,7 @@
       ]
     },
     "0c8195d0-1147": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/rewriteMatch.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/rewriteMatch.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20186,7 +20186,7 @@
       ]
     },
     "0c8195d0-1148": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getCanonicalPath.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getCanonicalPath.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20209,7 +20209,7 @@
       ]
     },
     "0c8195d0-1149": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getPrefix.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getPrefix.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20256,7 +20256,7 @@
       ]
     },
     "0c8195d0-1150": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/rewriteUtils.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/rewriteUtils.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20279,7 +20279,7 @@
       ]
     },
     "0c8195d0-1151": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocalizedPath.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocalizedPath.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20311,7 +20311,7 @@
       ]
     },
     "0c8195d0-1152": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocalizedUrl.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocalizedUrl.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20340,7 +20340,7 @@
       ]
     },
     "0c8195d0-1153": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getMultilingualUrls.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getMultilingualUrls.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20360,7 +20360,7 @@
       ]
     },
     "0c8195d0-1154": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/generateSitemap.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/generateSitemap.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20380,7 +20380,7 @@
       ]
     },
     "0c8195d0-1155": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/localeDetector.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/localeDetector.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20400,7 +20400,7 @@
       ]
     },
     "0c8195d0-1156": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getBrowserLocale.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getBrowserLocale.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20423,7 +20423,7 @@
       ]
     },
     "0c8195d0-1157": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getHTMLTextDir.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getHTMLTextDir.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20433,7 +20433,7 @@
       ]
     },
     "0c8195d0-1158": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocale.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocale.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20462,7 +20462,7 @@
       ]
     },
     "0c8195d0-1159": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocaleFromPath.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocaleFromPath.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20485,7 +20485,7 @@
       ]
     },
     "0c8195d0-1160": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocaleFromRequest.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocaleFromRequest.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20511,7 +20511,7 @@
       ]
     },
     "0c8195d0-1161": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocaleLang.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocaleLang.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20521,7 +20521,7 @@
       ]
     },
     "0c8195d0-1162": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocaleName.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/getLocaleName.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20535,7 +20535,7 @@
       ]
     },
     "0c8195d0-1163": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/localeMapper.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/localeMapper.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20555,7 +20555,7 @@
       ]
     },
     "0c8195d0-1164": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/proxyMode.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/proxyMode.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20572,7 +20572,7 @@
       ]
     },
     "0c8195d0-1165": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/resolveBrowserLocale.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/resolveBrowserLocale.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20595,7 +20595,7 @@
       ]
     },
     "0c8195d0-1166": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/validatePrefix.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/localization/validatePrefix.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20609,7 +20609,7 @@
       ]
     },
     "0c8195d0-1167": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+analytics@9.5.10+62547eec5a2188e3/node_modules/@intlayer/analytics/dist/esm/utils/isBot.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+analytics@9.5.11+62547eec5a2188e3/node_modules/@intlayer/analytics/dist/esm/utils/isBot.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20619,7 +20619,7 @@
       ]
     },
     "0c8195d0-1168": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/compact.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/compact.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20636,7 +20636,7 @@
       ]
     },
     "0c8195d0-1169": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/currency.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/currency.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20653,7 +20653,7 @@
       ]
     },
     "0c8195d0-1170": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/date.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/date.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20670,7 +20670,7 @@
       ]
     },
     "0c8195d0-1171": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/list.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/list.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20687,7 +20687,7 @@
       ]
     },
     "0c8195d0-1172": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/number.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/number.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20704,7 +20704,7 @@
       ]
     },
     "0c8195d0-1173": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/percentage.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/percentage.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20721,7 +20721,7 @@
       ]
     },
     "0c8195d0-1174": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/relativeTime.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/relativeTime.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20738,7 +20738,7 @@
       ]
     },
     "0c8195d0-1175": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/units.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/formatters/units.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20755,7 +20755,7 @@
       ]
     },
     "0c8195d0-1176": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.10+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/markdown/runtime.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/react-intlayer@9.5.11+6f4b9a1cfb20c0ae/node_modules/react-intlayer/dist/esm/markdown/runtime.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20769,7 +20769,7 @@
       ]
     },
     "0c8195d0-1177": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/analytics.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/analytics.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20782,7 +20782,7 @@
       ]
     },
     "0c8195d0-1178": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/editor.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/editor.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20795,7 +20795,7 @@
       ]
     },
     "0c8195d0-1179": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/internationalization.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/internationalization.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20808,7 +20808,7 @@
       ]
     },
     "0c8195d0-1180": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/log.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/log.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20825,7 +20825,7 @@
       ]
     },
     "0c8195d0-1181": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/routing.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/routing.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20841,7 +20841,7 @@
       ]
     },
     "0c8195d0-1182": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/build.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/build.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20851,7 +20851,7 @@
       ]
     },
     "0c8195d0-1183": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/compiler.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/compiler.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20861,7 +20861,7 @@
       ]
     },
     "0c8195d0-1184": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/content.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/content.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20871,7 +20871,7 @@
       ]
     },
     "0c8195d0-1185": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/system.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/defaultValues/system.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20881,7 +20881,7 @@
       ]
     },
     "0c8195d0-1186": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getNesting.optimized.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/interpreter/getNesting.optimized.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20895,7 +20895,7 @@
       ]
     },
     "0c8195d0-1187": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+editor@9.5.10+62547eec5a2188e3/node_modules/@intlayer/editor/dist/esm/isEnabled.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+editor@9.5.11+62547eec5a2188e3/node_modules/@intlayer/editor/dist/esm/isEnabled.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20912,7 +20912,7 @@
       ]
     },
     "0c8195d0-1188": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/markdown/getMarkdownMetadata.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/markdown/getMarkdownMetadata.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20929,7 +20929,7 @@
       ]
     },
     "0c8195d0-1189": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/markdown/validateMarkdown.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/markdown/validateMarkdown.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20946,7 +20946,7 @@
       ]
     },
     "0c8195d0-1190": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/markdown/markdown.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/transpiler/markdown/markdown.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -20972,7 +20972,7 @@
       ]
     },
     "0c8195d0-1191": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/constants.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/constants.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -20991,7 +20991,7 @@
       ]
     },
     "0c8195d0-1192": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/utils.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/utils.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -21011,7 +21011,7 @@
       ]
     },
     "0c8195d0-1193": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/parser.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/parser.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -21031,7 +21031,7 @@
       ]
     },
     "0c8195d0-1194": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/renderer.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/renderer.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [
@@ -21044,7 +21044,7 @@
       ]
     },
     "0c8195d0-1195": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/compiler.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/compiler.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -21070,7 +21070,7 @@
       ]
     },
     "0c8195d0-1196": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.10+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/getStorageAttributes.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+config@9.5.11+62547eec5a2188e3/node_modules/@intlayer/config/dist/esm/utils/getStorageAttributes.mjs",
       "moduleParts": {},
       "imported": [
         {
@@ -21084,7 +21084,7 @@
       ]
     },
     "0c8195d0-1197": {
-      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.10+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/elementScanner.mjs",
+      "id": "/Users/aymericpineau/Documents/benchmark-bloom/node_modules/.bun/@intlayer+core@9.5.11+62547eec5a2188e3/node_modules/@intlayer/core/dist/esm/markdown/elementScanner.mjs",
       "moduleParts": {},
       "imported": [],
       "importedBy": [

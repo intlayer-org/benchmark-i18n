@@ -559,6 +559,7 @@ const LIBRARY_PACKAGES: Record<string, string[]> = {
   "@intlayer/react-i18next": ["@intlayer/react-i18next"],
   "@intlayer/react-intl": ["@intlayer/react-intl"],
   "@intlayer/vue-i18n": ["@intlayer/vue-i18n"],
+  "@intlayer/svelte-i18n": ["@intlayer/svelte-i18n"],
   "intlayer-compat-use-intl": ["@intlayer/use-intl"],
   "intlayer-compat-lingui": ["@intlayer/lingui"],
   "intlayer-compat-next-i18next": ["@intlayer/next-i18next"],
@@ -567,6 +568,7 @@ const LIBRARY_PACKAGES: Record<string, string[]> = {
   "intlayer-compat-react-i18next": ["@intlayer/react-i18next"],
   "intlayer-compat-react-intl": ["@intlayer/react-intl"],
   "intlayer-compat-vue-i18n": ["@intlayer/vue-i18n"],
+  "intlayer-compat-svelte-i18n": ["@intlayer/svelte-i18n"],
   "gt-next": ["gt-next"],
   "gt-react": ["gt-react"],
   "next-intl": ["next-intl"],
@@ -1254,7 +1256,9 @@ function collectAppSummary(
   );
 
   const overallStatus = deriveOverallStatus([
-    libSize.status,
+    // Lib size is measured once per library, on its static app; other
+    // categories have no empty-component-size.json and are not "partial" for it.
+    ...(testCategory === "static" ? [libSize.status] : []),
     pageBundle.status,
     components.status,
     reactivity.status,

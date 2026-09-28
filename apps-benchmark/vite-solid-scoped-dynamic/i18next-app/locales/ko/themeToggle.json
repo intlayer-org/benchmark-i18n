@@ -1,0 +1,7 @@
+{
+  "auto": "Theme: Auto",
+  "dark": "Theme: Dark",
+  "light": "Theme: Light",
+  "labelAuto": "Theme mode: auto (system). Click to switch to light mode.",
+  "labelOther": "Theme mode: {mode}. Click to switch mode."
+}

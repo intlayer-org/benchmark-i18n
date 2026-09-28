@@ -1,0 +1,39 @@
+import { trans } from '../../../i18n';
+import { usePerformanceMeasure } from '../../../hooks/usePerformanceMeasure';
+
+export default function WhyItMatters() {
+  usePerformanceMeasure('WhyItMatters');
+  return (
+    <section class="mb-16">
+      <h2 class="mb-6 text-2xl font-bold text-foreground">
+        {trans('home.whyItMatters.title')}
+      </h2>
+      <div class="grid gap-6 md:grid-cols-3">
+        <div class="rounded-lg border border-border bg-card p-6">
+          <h3 class="mb-2 text-lg font-semibold text-foreground">
+            {trans('home.whyItMatters.bundleSizeTitle')}
+          </h3>
+          <p class="text-sm text-muted-foreground">
+            {trans('home.whyItMatters.bundleSizeDesc')}
+          </p>
+        </div>
+        <div class="rounded-lg border border-border bg-card p-6">
+          <h3 class="mb-2 text-lg font-semibold text-foreground">
+            {trans('home.whyItMatters.renderingTitle')}
+          </h3>
+          <p class="text-sm text-muted-foreground">
+            {trans('home.whyItMatters.renderingDesc')}
+          </p>
+        </div>
+        <div class="rounded-lg border border-border bg-card p-6">
+          <h3 class="mb-2 text-lg font-semibold text-foreground">
+            {trans('home.whyItMatters.dynamicLoadingTitle')}
+          </h3>
+          <p class="text-sm text-muted-foreground">
+            {trans('home.whyItMatters.dynamicLoadingDesc')}
+          </p>
+        </div>
+      </div>
+    </section>
+  );
+}

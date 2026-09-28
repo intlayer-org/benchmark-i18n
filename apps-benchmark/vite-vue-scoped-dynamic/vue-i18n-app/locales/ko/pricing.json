@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "단순하고 투명한 가격",
+    "description": "팀에 맞는 플랜을 선택하세요. 숨겨진 요금은 없습니다."
+  },
+  "tiers": {
+    "starterName": "스타터",
+    "starterPrice": "$0",
+    "starterPeriod": "영구 무료",
+    "starterFeature1": "하루 5회 벤치마크 실행",
+    "starterFeature2": "3개 라이브러리",
+    "starterFeature3": "커뮤니티 지원",
+    "starterFeature4": "공개 결과",
+    "proName": "Pro",
+    "proPrice": "$29",
+    "proPeriod": "/월",
+    "proFeature1": "무제한 실행",
+    "proFeature2": "모든 라이브러리",
+    "proFeature3": "우선 지원",
+    "proFeature4": "비공개 결과",
+    "proFeature5": "CI 연동",
+    "proFeature6": "과거 데이터",
+    "enterpriseName": "엔터프라이즈",
+    "enterprisePrice": "맞춤",
+    "enterpriseFeature1": "Pro의 모든 것",
+    "enterpriseFeature2": "온프레미스 옵션",
+    "enterpriseFeature3": "SSO 및 SAML",
+    "enterpriseFeature4": "전담 계정 매니저",
+    "enterpriseFeature5": "맞춤 SLA",
+    "enterpriseFeature6": "감사 로그",
+    "enterpriseFeature7": "교육 세션",
+    "contactSales": "영업 문의",
+    "getStarted": "시작하기"
+  }
+}

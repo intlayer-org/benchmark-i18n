@@ -1,0 +1,26 @@
+{
+  "header": {
+    "title": "私たちのチーム",
+    "description": "i18n Benchmarkを支えるメンバーをご紹介します。優れた開発者ツールへの情熱で結ばれた多様なチームです。"
+  },
+  "grid": {
+    "member1Name": "Sarah Chen",
+    "member1Role": "創設者 & リードエンジニア",
+    "member1Bio": "大規模な国際化システムの構築において10年の経験を持つ元Googleエンジニア。",
+    "member2Name": "Marcus Weber",
+    "member2Role": "パフォーマンスエンジニア",
+    "member2Bio": "JavaScriptのパフォーマンス最適化とベンチマーク手法を専門としています。前職はVercel。",
+    "member3Name": "Aisha Patel",
+    "member3Role": "Developer Advocate",
+    "member3Bio": "開発者体験と教育に情熱を注いています。React Conf、JSConf、i18nNextのスピーカー。",
+    "member4Name": "Tomás Rodríguez",
+    "member4Role": "フルスタックデベロッパー",
+    "member4Bio": "ベンチマークインフラストラクチャとCI/CDパイプラインを維持しています。Linguiのオープンソースコントリビューター。",
+    "member5Name": "Yuki Tanaka",
+    "member5Role": "データアナリスト",
+    "member5Bio": "すべてのベンチマーク結果における統計的厳密さを確保します。MITの応用統計学博士。",
+    "member6Name": "Elena Kowalski",
+    "member6Role": "コミュニティマネージャー",
+    "member6Bio": "コミュニティの貢献、パートナーシップ、イベントを管理しています。オープンソースガバナンスの経歴。"
+  }
+}

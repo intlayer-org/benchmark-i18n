@@ -1,0 +1,33 @@
+{
+  "header": {
+    "title": "Blog",
+    "description": "Información, tutoriales y análisis de la comunidad i18n."
+  },
+  "list": {
+    "readMore": "Leer más →",
+    "post1Title": "Comparativa de bibliotecas i18n en 2026: Un análisis profundo",
+    "post1Date": "15 de marzo de 2026",
+    "post1Excerpt": "Probamos 12 bibliotecas de internacionalización diferentes en cuanto a rendimiento, tamaño del bundle y DX. Aquí están los sorprendentes resultados.",
+    "post1Category": "Benchmark",
+    "post2Title": "Cómo reducir tu bundle i18n en un 60%",
+    "post2Date": "8 de marzo de 2026",
+    "post2Excerpt": "Estrategias prácticas para optimizar los bundles de traducción, incluyendo carga diferida, división de código y optimizaciones en tiempo de compilación.",
+    "post2Category": "Tutorial",
+    "post3Title": "El estado de la internacionalización en React",
+    "post3Date": "28 de febrero de 2026",
+    "post3Excerpt": "Una visión general del ecosistema i18n actual en React, cubriendo tendencias, patrones emergentes y preferencias de la comunidad.",
+    "post3Category": "Análisis",
+    "post4Title": "Migración de react-i18next a Lingui",
+    "post4Date": "15 de febrero de 2026",
+    "post4Excerpt": "Una guía paso a paso sobre la migración de una aplicación de producción con 50.000 claves de traducción de react-i18next a Lingui.",
+    "post4Category": "Tutorial",
+    "post5Title": "Server Components e i18n: ¿Qué cambia?",
+    "post5Date": "1 de febrero de 2026",
+    "post5Excerpt": "Los React Server Components introducen nuevos patrones para la internacionalización. Exploramos las implicaciones y las mejores prácticas.",
+    "post5Category": "Análisis",
+    "post6Title": "Metodología de benchmark: Cómo probamos",
+    "post6Date": "20 de enero de 2026",
+    "post6Excerpt": "Una mirada transparente a nuestra metodología de benchmarking, incluyendo entornos de prueba, métodos estadísticos y reproducibilidad.",
+    "post6Category": "Meta"
+  }
+}

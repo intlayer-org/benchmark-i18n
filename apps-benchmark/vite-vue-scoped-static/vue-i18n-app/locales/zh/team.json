@@ -1,0 +1,26 @@
+{
+  "header": {
+    "title": "我们的团队",
+    "description": "了解 i18n 基准测试背后的团队成员。一个因对优秀开发工具的共同热情而团结在一起的多元化团队。"
+  },
+  "grid": {
+    "member1Name": "Sarah Chen",
+    "member1Role": "创始人兼首席工程师",
+    "member1Bio": "前 Google 工程师，在构建大规模国际化系统方面拥有 10 年经验。",
+    "member2Name": "Marcus Weber",
+    "member2Role": "性能工程师",
+    "member2Bio": "专注于 JavaScript 性能优化和基准测试方法论。此前就职于 Vercel。",
+    "member3Name": "Aisha Patel",
+    "member3Role": "开发者倡导者",
+    "member3Bio": "对开发者体验和教育充满热情。曾在 React Conf, JSConf 和 i18nNext 发表演讲。",
+    "member4Name": "Tomás Rodríguez",
+    "member4Role": "全栈开发人员",
+    "member4Bio": "维护基准测试基础设施和 CI/CD 流水线。Lingui 的开源贡献者。",
+    "member5Name": "Yuki Tanaka",
+    "member5Role": "数据分析师",
+    "member5Bio": "确保所有基准测试结果 agrarian 统计严谨性。获得 MIT 应用统计学博士学位。",
+    "member6Name": "Elena Kowalski",
+    "member6Role": "社区经理",
+    "member6Bio": "管理社区贡献、合作伙伴关系和活动。具有开源治理背景。"
+  }
+}

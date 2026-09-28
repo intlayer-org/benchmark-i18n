@@ -2532,7 +2532,189 @@
         "vite": "^8.2.2",
       },
     },
-    "apps-benchmark/vite-react-intlayer-static": {
+    "apps-benchmark/vite-react-dynamic/intlayer-app": {
+      "name": "vite-react-intlayer-dynamic",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "@tanstack/react-router": "1.170.33",
+        "@tanstack/react-router-ssr-query": "latest",
+        "@tanstack/react-start": "1.168.50",
+        "@tanstack/router-plugin": "^1.168.36",
+        "intlayer": "^9.5.10",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-intlayer": "^9.5.10",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
+        "vite-intlayer": "^9.5.10",
+      },
+    },
+    "apps-benchmark/vite-react-dynamic/lingui-app": {
+      "name": "vite-react-lingui-dynamic",
+      "dependencies": {
+        "@lingui/core": "^6.6.0",
+        "@lingui/format-json": "^6.6.0",
+        "@lingui/react": "^6.6.0",
+        "@tailwindcss/vite": "^4.3.3",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@lingui/babel-plugin-lingui-macro": "^6.6.0",
+        "@lingui/cli": "^6.6.0",
+        "@lingui/vite-plugin": "^6.6.0",
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-react-dynamic/react-i18next-app": {
+      "name": "vite-react-react-i18next-dynamic",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "i18next": "^26.4.2",
+        "i18next-resources-to-backend": "^1.2.3",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-i18next": "^17.0.13",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-react-dynamic/react-intl-app": {
+      "name": "vite-react-react-intl-dynamic",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-intl": "^10.1.26",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-react-dynamic/tolgee-app": {
+      "name": "vite-react-tolgee-dynamic",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "@tolgee/react": "^7.2.0",
+        "@tolgee/web": "^7.2.0",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-react-dynamic/use-intl-app": {
+      "name": "vite-react-use-intl-dynamic",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+        "use-intl": "^4.14.2",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-react-static/intlayer-app": {
       "name": "vite-react-intlayer-static",
       "dependencies": {
         "@tailwindcss/vite": "^4.3.3",
@@ -2564,6 +2746,182 @@
         "typescript": "^7.0.2",
         "vite": "^8.2.2",
         "vite-intlayer": "^9.5.10",
+      },
+    },
+    "apps-benchmark/vite-react-static/lingui-app": {
+      "name": "vite-react-lingui-static",
+      "dependencies": {
+        "@lingui/core": "^6.6.0",
+        "@lingui/format-json": "^6.6.0",
+        "@lingui/react": "^6.6.0",
+        "@tailwindcss/vite": "^4.3.3",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@lingui/babel-plugin-lingui-macro": "^6.6.0",
+        "@lingui/cli": "^6.6.0",
+        "@lingui/vite-plugin": "^6.6.0",
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-react-static/paraglide-app": {
+      "name": "vite-react-paraglide-static",
+      "dependencies": {
+        "@inlang/paraglide-js": "^2.15.1",
+        "@tailwindcss/vite": "^4.3.3",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@inlang/paraglide-js": "^2.15.1",
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-react-static/react-i18next-app": {
+      "name": "vite-react-react-i18next-static",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "i18next": "^26.4.2",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-i18next": "^17.0.13",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-react-static/react-intl-app": {
+      "name": "vite-react-react-intl-static",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-intl": "^10.1.26",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-react-static/tolgee-app": {
+      "name": "vite-react-tolgee-static",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "@tolgee/react": "^7.2.0",
+        "@tolgee/web": "^7.2.0",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-react-static/use-intl-app": {
+      "name": "vite-react-use-intl-static",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "lucide-react": "^1.43.0",
+        "react": "^19.3.0",
+        "react-dom": "^19.3.0",
+        "react-router-dom": "^7.14.0",
+        "tailwindcss": "^4.3.3",
+        "use-intl": "^4.14.2",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@testing-library/dom": "^10.4.1",
+        "@testing-library/react": "^16.3.3",
+        "@types/node": "^26",
+        "@types/react": "^19.3.0",
+        "@types/react-dom": "^19.3.0",
+        "@vitejs/plugin-react": "^6.1.1",
+        "bun": "^1.4.2",
+        "jsdom": "^30.0.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "test-utils": "workspace:*",
+        "typescript": "^7.0.2",
+        "vite": "^8.2.2",
       },
     },
     "apps-benchmark/vite-solid-base-app": {
@@ -2627,6 +2985,71 @@
         "typescript": "~7.0.2",
         "vite": "^8.2.2",
         "vite-intlayer": "^9.5.10",
+        "vite-plugin-solid": "^2.11.14",
+      },
+    },
+    "apps-benchmark/vite-solid-dynamic/tolgee-app": {
+      "name": "vite-solid-tolgee-dynamic",
+      "dependencies": {
+        "@solidjs/router": "^1.0.0",
+        "@tailwindcss/vite": "^4.3.3",
+        "@tolgee/web": "^7.2.0",
+        "solid-js": "^1.9.15",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@types/node": "^26",
+        "bun": "^1.4.2",
+        "test-utils": "workspace:*",
+        "typescript": "~7.0.2",
+        "vite": "^8.2.2",
+        "vite-plugin-solid": "^2.11.14",
+      },
+    },
+    "apps-benchmark/vite-solid-scoped-dynamic/i18next-app": {
+      "name": "vite-solid-i18next-scoped-dynamic",
+      "dependencies": {
+        "@mbarzda/solid-i18next": "^1.4.1",
+        "@solidjs/router": "^1.0.0",
+        "@tailwindcss/vite": "^4.3.3",
+        "i18next": "^26.0.8",
+        "i18next-browser-languagedetector": "^8.2.1",
+        "i18next-resources-to-backend": "^1.2.3",
+        "solid-js": "^1.9.15",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@types/node": "^26",
+        "bun": "^1.4.2",
+        "test-utils": "workspace:*",
+        "typescript": "~7.0.2",
+        "vite": "^8.2.2",
+        "vite-plugin-solid": "^2.11.14",
+      },
+    },
+    "apps-benchmark/vite-solid-scoped-static/i18next-app": {
+      "name": "vite-solid-i18next-scoped-static",
+      "dependencies": {
+        "@mbarzda/solid-i18next": "^1.4.1",
+        "@solidjs/router": "^1.0.0",
+        "@tailwindcss/vite": "^4.3.3",
+        "i18next": "^26.0.8",
+        "i18next-browser-languagedetector": "^8.2.1",
+        "solid-js": "^1.9.15",
+        "tailwindcss": "^4.3.3",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@types/node": "^26",
+        "bun": "^1.4.2",
+        "test-utils": "workspace:*",
+        "typescript": "~7.0.2",
+        "vite": "^8.2.2",
         "vite-plugin-solid": "^2.11.14",
       },
     },
@@ -2807,6 +3230,30 @@
         "vite-intlayer": "^9.5.10",
       },
     },
+    "apps-benchmark/vite-svelte-dynamic/tolgee-app": {
+      "name": "vite-svelte-tolgee-dynamic",
+      "version": "0.0.0",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "@tolgee/svelte": "^7.2.1",
+        "@tolgee/web": "^7.2.1",
+        "lucide-svelte": "^1.0.1",
+        "tailwindcss": "^4.3.3",
+        "test-utils": "workspace:*",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@sveltejs/vite-plugin-svelte": "^7.3.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@tsconfig/svelte": "^5.0.8",
+        "@types/node": "^26",
+        "bun": "^1.4.2",
+        "svelte": "^5.57.0",
+        "svelte-check": "^4.7.6",
+        "typescript": "~7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
     "apps-benchmark/vite-svelte-static/intlayer-compat-svelte-i18n-app": {
       "name": "vite-svelte-intlayer-compat-svelte-i18n-static",
       "version": "0.0.0",
@@ -2933,6 +3380,30 @@
         "vite": "^8.2.2",
       },
     },
+    "apps-benchmark/vite-svelte-static/wuchale-app": {
+      "name": "vite-svelte-wuchale-static",
+      "version": "0.0.0",
+      "dependencies": {
+        "@tailwindcss/vite": "^4.3.3",
+        "lucide-svelte": "^1.0.1",
+        "tailwindcss": "^4.3.3",
+        "test-utils": "workspace:*",
+        "wuchale": "^0.26.7",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@sveltejs/vite-plugin-svelte": "^7.3.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@tsconfig/svelte": "^5.0.8",
+        "@types/node": "^26",
+        "@wuchale/svelte": "^0.21.4",
+        "bun": "^1.4.2",
+        "svelte": "^5.57.0",
+        "svelte-check": "^4.7.6",
+        "typescript": "~7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
     "apps-benchmark/vite-vue-base-app": {
       "name": "vite-vue-base-app",
       "version": "0.0.0",
@@ -3029,6 +3500,104 @@
         "vue-tsc": "^3.3.11",
       },
     },
+    "apps-benchmark/vite-vue-scoped-dynamic/fluent-vue-app": {
+      "name": "vite-vue-fluent-vue-scoped-dynamic",
+      "version": "0.0.0",
+      "dependencies": {
+        "@fluent/bundle": "^0.19.1",
+        "fluent-vue": "^3.8.2",
+        "lucide-vue-next": "^1.0.0",
+        "vue": "^3.5.42",
+        "vue-router": "^5.3.1",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@tailwindcss/vite": "^4.3.3",
+        "@types/node": "^26",
+        "@vitejs/plugin-vue": "^6.0.8",
+        "@vue/tsconfig": "^0.9.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "tailwindcss": "^4.3.3",
+        "test-utils": "workspace:*",
+        "typescript": "~7.0.2",
+        "unplugin-fluent-vue": "^1.4.1",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-vue-scoped-dynamic/vue-i18n-app": {
+      "name": "vite-vue-i18n-scoped-dynamic",
+      "version": "0.0.0",
+      "dependencies": {
+        "lucide-vue-next": "^1.0.0",
+        "vue": "^3.5.42",
+        "vue-i18n": "^11.4.0",
+        "vue-router": "^5.3.1",
+      },
+      "devDependencies": {
+        "@intlify/unplugin-vue-i18n": "^11.1.2",
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@tailwindcss/vite": "^4.3.3",
+        "@types/node": "^26",
+        "@vitejs/plugin-vue": "^6.0.8",
+        "@vue/tsconfig": "^0.9.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "tailwindcss": "^4.3.3",
+        "test-utils": "workspace:*",
+        "typescript": "~7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-vue-scoped-static/fluent-vue-app": {
+      "name": "vite-vue-fluent-vue-scoped-static",
+      "version": "0.0.0",
+      "dependencies": {
+        "@fluent/bundle": "^0.19.1",
+        "fluent-vue": "^3.8.2",
+        "lucide-vue-next": "^1.0.0",
+        "vue": "^3.5.42",
+        "vue-router": "^5.3.1",
+      },
+      "devDependencies": {
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@tailwindcss/vite": "^4.3.3",
+        "@types/node": "^26",
+        "@vitejs/plugin-vue": "^6.0.8",
+        "@vue/tsconfig": "^0.9.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "tailwindcss": "^4.3.3",
+        "test-utils": "workspace:*",
+        "typescript": "~7.0.2",
+        "unplugin-fluent-vue": "^1.4.1",
+        "vite": "^8.2.2",
+      },
+    },
+    "apps-benchmark/vite-vue-scoped-static/vue-i18n-app": {
+      "name": "vite-vue-i18n-scoped-static",
+      "version": "0.0.0",
+      "dependencies": {
+        "lucide-vue-next": "^1.0.0",
+        "vue": "^3.5.42",
+        "vue-i18n": "^11.4.0",
+        "vue-router": "^5.3.1",
+      },
+      "devDependencies": {
+        "@intlify/unplugin-vue-i18n": "^11.1.2",
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@tailwindcss/vite": "^4.3.3",
+        "@types/node": "^26",
+        "@vitejs/plugin-vue": "^6.0.8",
+        "@vue/tsconfig": "^0.9.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "tailwindcss": "^4.3.3",
+        "test-utils": "workspace:*",
+        "typescript": "~7.0.2",
+        "vite": "^8.2.2",
+      },
+    },
     "apps-benchmark/vite-vue-static/fluent-vue-app": {
       "name": "vite-vue-fluent-vue-static",
       "version": "0.0.0",
@@ -3080,6 +3649,30 @@
         "typescript": "~7.0.2",
         "vite": "^8.2.2",
         "vite-intlayer": "^9.5.10",
+      },
+    },
+    "apps-benchmark/vite-vue-static/paraglide-js-app": {
+      "name": "vite-vue-paraglide-js-static",
+      "version": "0.0.0",
+      "dependencies": {
+        "@inlang/paraglide-js": "^2.25.1",
+        "lucide-vue-next": "^1.0.0",
+        "vue": "^3.5.42",
+        "vue-router": "^5.3.1",
+      },
+      "devDependencies": {
+        "@inlang/plugin-message-format": "^4",
+        "@playwright/test": "^1.63.0",
+        "@tailwindcss/typography": "^0.5.20",
+        "@tailwindcss/vite": "^4.3.3",
+        "@types/node": "^26",
+        "@vitejs/plugin-vue": "^6.0.8",
+        "@vue/tsconfig": "^0.9.1",
+        "rollup-plugin-visualizer": "^7.1.1",
+        "tailwindcss": "^4.3.3",
+        "test-utils": "workspace:*",
+        "typescript": "~7.0.2",
+        "vite": "^8.2.2",
       },
     },
     "apps-benchmark/vite-vue-static/tolgee-app": {
@@ -4336,6 +4929,8 @@
     "@webassemblyjs/wast-printer": ["@webassemblyjs/wast-printer@1.14.1", "", { "dependencies": { "@webassemblyjs/ast": "1.14.1", "@xtuc/long": "4.2.2" } }, "sha512-kPSSXE6De1XOR820C90RIo2ogvZG+c3KiHzqUoO/F34Y2shGzesfqv7o57xrxovZJH/MetF5UjroJ/R/3isoiw=="],
 
     "@wuchale/jsx": ["@wuchale/jsx@0.13.0", "", { "dependencies": { "@sveltejs/acorn-typescript": "^1.0.13", "acorn": "^8.18.0", "wuchale": "^0.26.0" }, "peerDependencies": { "react": "^19.1", "solid-js": "^1.9" }, "optionalPeers": ["react", "solid-js"] }, "sha512-CQhwbbIjl/ncMdHE5zurn9/l/jd0YSbSYWQEGmnRrTvpkwklnxQ9Xk2dD8n1Ik/Rpj1schxFJycZoFStfTYXGg=="],
+
+    "@wuchale/svelte": ["@wuchale/svelte@0.21.4", "", { "dependencies": { "wuchale": "^0.26.7" }, "peerDependencies": { "svelte": "^5" } }, "sha512-oz10LbRnI+SxNbnUC1grolKJcrHyiKIHRYwSwqJVfWocgC1vBbX4tsohYWPtOQ8B3QfDva3YboeE8fb8gxKuVA=="],
 
     "@xmldom/xmldom": ["@xmldom/xmldom@0.8.13", "", {}, "sha512-KRYzxepc14G/CEpEGc3Yn+JKaAeT63smlDr+vjB8jRfgTBBI9wRj/nkQEO+ucV8p8I9bfKLWp37uHgFrbntPvw=="],
 
@@ -6123,11 +6718,39 @@
 
     "vite-react-base-app": ["vite-react-base-app@workspace:apps-benchmark/vite-react-base-app"],
 
-    "vite-react-intlayer-static": ["vite-react-intlayer-static@workspace:apps-benchmark/vite-react-intlayer-static"],
+    "vite-react-intlayer-dynamic": ["vite-react-intlayer-dynamic@workspace:apps-benchmark/vite-react-dynamic/intlayer-app"],
+
+    "vite-react-intlayer-static": ["vite-react-intlayer-static@workspace:apps-benchmark/vite-react-static/intlayer-app"],
+
+    "vite-react-lingui-dynamic": ["vite-react-lingui-dynamic@workspace:apps-benchmark/vite-react-dynamic/lingui-app"],
+
+    "vite-react-lingui-static": ["vite-react-lingui-static@workspace:apps-benchmark/vite-react-static/lingui-app"],
+
+    "vite-react-paraglide-static": ["vite-react-paraglide-static@workspace:apps-benchmark/vite-react-static/paraglide-app"],
+
+    "vite-react-react-i18next-dynamic": ["vite-react-react-i18next-dynamic@workspace:apps-benchmark/vite-react-dynamic/react-i18next-app"],
+
+    "vite-react-react-i18next-static": ["vite-react-react-i18next-static@workspace:apps-benchmark/vite-react-static/react-i18next-app"],
+
+    "vite-react-react-intl-dynamic": ["vite-react-react-intl-dynamic@workspace:apps-benchmark/vite-react-dynamic/react-intl-app"],
+
+    "vite-react-react-intl-static": ["vite-react-react-intl-static@workspace:apps-benchmark/vite-react-static/react-intl-app"],
+
+    "vite-react-tolgee-dynamic": ["vite-react-tolgee-dynamic@workspace:apps-benchmark/vite-react-dynamic/tolgee-app"],
+
+    "vite-react-tolgee-static": ["vite-react-tolgee-static@workspace:apps-benchmark/vite-react-static/tolgee-app"],
+
+    "vite-react-use-intl-dynamic": ["vite-react-use-intl-dynamic@workspace:apps-benchmark/vite-react-dynamic/use-intl-app"],
+
+    "vite-react-use-intl-static": ["vite-react-use-intl-static@workspace:apps-benchmark/vite-react-static/use-intl-app"],
 
     "vite-solid-base-app": ["vite-solid-base-app@workspace:apps-benchmark/vite-solid-base-app"],
 
     "vite-solid-i18next-dynamic": ["vite-solid-i18next-dynamic@workspace:apps-benchmark/vite-solid-dynamic/i18next-app"],
+
+    "vite-solid-i18next-scoped-dynamic": ["vite-solid-i18next-scoped-dynamic@workspace:apps-benchmark/vite-solid-scoped-dynamic/i18next-app"],
+
+    "vite-solid-i18next-scoped-static": ["vite-solid-i18next-scoped-static@workspace:apps-benchmark/vite-solid-scoped-static/i18next-app"],
 
     "vite-solid-i18next-static": ["vite-solid-i18next-static@workspace:apps-benchmark/vite-solid-static/i18next-app"],
 
@@ -6138,6 +6761,8 @@
     "vite-solid-paraglide-js-static": ["vite-solid-paraglide-js-static@workspace:apps-benchmark/vite-solid-static/paraglide-js-app"],
 
     "vite-solid-primitives-i18n-static": ["vite-solid-primitives-i18n-static@workspace:apps-benchmark/vite-solid-static/solid-primitives-i18n-app"],
+
+    "vite-solid-tolgee-dynamic": ["vite-solid-tolgee-dynamic@workspace:apps-benchmark/vite-solid-dynamic/tolgee-app"],
 
     "vite-solid-tolgee-static": ["vite-solid-tolgee-static@workspace:apps-benchmark/vite-solid-static/tolgee-app"],
 
@@ -6155,15 +6780,27 @@
 
     "vite-svelte-paraglide-js-static": ["vite-svelte-paraglide-js-static@workspace:apps-benchmark/vite-svelte-static/paraglide-js-app"],
 
+    "vite-svelte-tolgee-dynamic": ["vite-svelte-tolgee-dynamic@workspace:apps-benchmark/vite-svelte-dynamic/tolgee-app"],
+
     "vite-svelte-tolgee-static": ["vite-svelte-tolgee-static@workspace:apps-benchmark/vite-svelte-static/tolgee-app"],
+
+    "vite-svelte-wuchale-static": ["vite-svelte-wuchale-static@workspace:apps-benchmark/vite-svelte-static/wuchale-app"],
 
     "vite-tsconfig-paths": ["vite-tsconfig-paths@6.1.1", "", { "dependencies": { "debug": "^4.1.1", "globrex": "^0.1.2", "tsconfck": "^3.0.3" }, "peerDependencies": { "vite": "*" } }, "sha512-2cihq7zliibCCZ8P9cKJrQBkfgdvcFkOOc3Y02o3GWUDLgqjWsZudaoiuOwO/gzTzy17cS5F7ZPo4bsnS4DGkg=="],
 
     "vite-vue-base-app": ["vite-vue-base-app@workspace:apps-benchmark/vite-vue-base-app"],
 
+    "vite-vue-fluent-vue-scoped-dynamic": ["vite-vue-fluent-vue-scoped-dynamic@workspace:apps-benchmark/vite-vue-scoped-dynamic/fluent-vue-app"],
+
+    "vite-vue-fluent-vue-scoped-static": ["vite-vue-fluent-vue-scoped-static@workspace:apps-benchmark/vite-vue-scoped-static/fluent-vue-app"],
+
     "vite-vue-fluent-vue-static": ["vite-vue-fluent-vue-static@workspace:apps-benchmark/vite-vue-static/fluent-vue-app"],
 
     "vite-vue-i18n-dynamic": ["vite-vue-i18n-dynamic@workspace:apps-benchmark/vite-vue-dynamic/vue-i18n-app"],
+
+    "vite-vue-i18n-scoped-dynamic": ["vite-vue-i18n-scoped-dynamic@workspace:apps-benchmark/vite-vue-scoped-dynamic/vue-i18n-app"],
+
+    "vite-vue-i18n-scoped-static": ["vite-vue-i18n-scoped-static@workspace:apps-benchmark/vite-vue-scoped-static/vue-i18n-app"],
 
     "vite-vue-i18n-static": ["vite-vue-i18n-static@workspace:apps-benchmark/vite-vue-static/vue-i18n-app"],
 
@@ -6172,6 +6809,8 @@
     "vite-vue-intlayer-dynamic": ["vite-vue-intlayer-dynamic@workspace:apps-benchmark/vite-vue-dynamic/vue-intlayer-app"],
 
     "vite-vue-intlayer-static": ["vite-vue-intlayer-static@workspace:apps-benchmark/vite-vue-static/vue-intlayer-app"],
+
+    "vite-vue-paraglide-js-static": ["vite-vue-paraglide-js-static@workspace:apps-benchmark/vite-vue-static/paraglide-js-app"],
 
     "vite-vue-tolgee-dynamic": ["vite-vue-tolgee-dynamic@workspace:apps-benchmark/vite-vue-dynamic/tolgee-app"],
 
@@ -6603,6 +7242,8 @@
 
     "@vue/compiler-sfc/postcss": ["postcss@8.5.28", "", { "dependencies": { "nanoid": "^3.3.18", "picocolors": "^1.1.1", "source-map-js": "^1.2.1" } }, "sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A=="],
 
+    "@wuchale/svelte/wuchale": ["wuchale@0.26.7", "", { "dependencies": { "@sveltejs/acorn-typescript": "^1.0.13", "acorn": "^8.18.0", "chokidar": "^5.0.0", "magic-string": "^1.3.1", "picomatch": "^4.0.7", "pofile": "^1.1.4", "tinyglobby": "^0.2.17" }, "bin": { "wuchale": "dist/cli/index.js" } }, "sha512-G9V612ezxLmXQ8vm6R3kETsBOCubvN1yxYv9I3GoU7uIVXPpCThgGrRyxD8ZZPJUOizz0IljZp6UgSlKPyILsQ=="],
+
     "aggregate-error/indent-string": ["indent-string@4.0.0", "", {}, "sha512-EdDDZu4A2OyIK7Lr/2zG+w5jmbuk1DVBnEwREQvBzspBJkCEbRa8GxU1lghYcaGJCnRWibjDXlq779X1/y5xwg=="],
 
     "ai-sdk-ollama/@ai-sdk/provider": ["@ai-sdk/provider@3.0.15", "", { "dependencies": { "json-schema": "^0.4.0" } }, "sha512-XeZW1CcDF2GMbH4wejW6xBRI2QCOgnkVYUnxoeDadB1mf85riL2bMUeDoh+6gJ/r4mjNfzUPW8OjLjvwTP0u1Q=="],
@@ -6945,11 +7586,23 @@
 
     "vite/postcss": ["postcss@8.5.28", "", { "dependencies": { "nanoid": "^3.3.18", "picocolors": "^1.1.1", "source-map-js": "^1.2.1" } }, "sha512-RRuzqDtt5Y9h3quz5hWhK+TPnsmVs6WwSU6LkJMeY4HstUEDuYTG8UJSdawMRzmzAtV+KEoG8N3Qg2qLy5vM/A=="],
 
+    "vite-react-intlayer-dynamic/@tanstack/react-router-ssr-query": ["@tanstack/react-router-ssr-query@1.167.3", "", { "dependencies": { "@tanstack/router-ssr-query-core": "1.169.3" }, "peerDependencies": { "@tanstack/query-core": ">=5.102.0", "@tanstack/react-query": ">=5.102.0", "@tanstack/react-router": ">=1.170.33", "react": ">=18.0.0 || >=19.0.0", "react-dom": ">=18.0.0 || >=19.0.0" } }, "sha512-HA0pxuPuhU+rwoe+z1Xcbytuoo6ZbcROpgNgNSm38s3/hGLmgzOBLzDg+Vyx6ex26QilnPbZ+5Ypet5mImm9bQ=="],
+
     "vite-react-intlayer-static/@tanstack/react-router-ssr-query": ["@tanstack/react-router-ssr-query@1.167.3", "", { "dependencies": { "@tanstack/router-ssr-query-core": "1.169.3" }, "peerDependencies": { "@tanstack/query-core": ">=5.102.0", "@tanstack/react-query": ">=5.102.0", "@tanstack/react-router": ">=1.170.33", "react": ">=18.0.0 || >=19.0.0", "react-dom": ">=18.0.0 || >=19.0.0" } }, "sha512-HA0pxuPuhU+rwoe+z1Xcbytuoo6ZbcROpgNgNSm38s3/hGLmgzOBLzDg+Vyx6ex26QilnPbZ+5Ypet5mImm9bQ=="],
+
+    "vite-react-tolgee-dynamic/@tolgee/web": ["@tolgee/web@7.2.1", "", { "dependencies": { "@tolgee/core": "7.2.1" } }, "sha512-rCbXY/jGuOsckbAkuFZr5j41YcDFuBnub/sYIybBjbCMgG0aRil1JywGHQ5x/bASvNhcFfuv2LlxP3YGbQZqnA=="],
+
+    "vite-react-tolgee-static/@tolgee/web": ["@tolgee/web@7.2.1", "", { "dependencies": { "@tolgee/core": "7.2.1" } }, "sha512-rCbXY/jGuOsckbAkuFZr5j41YcDFuBnub/sYIybBjbCMgG0aRil1JywGHQ5x/bASvNhcFfuv2LlxP3YGbQZqnA=="],
+
+    "vite-solid-tolgee-dynamic/@tolgee/web": ["@tolgee/web@7.2.1", "", { "dependencies": { "@tolgee/core": "7.2.1" } }, "sha512-rCbXY/jGuOsckbAkuFZr5j41YcDFuBnub/sYIybBjbCMgG0aRil1JywGHQ5x/bASvNhcFfuv2LlxP3YGbQZqnA=="],
 
     "vite-solid-tolgee-static/@tolgee/web": ["@tolgee/web@7.2.1", "", { "dependencies": { "@tolgee/core": "7.2.1" } }, "sha512-rCbXY/jGuOsckbAkuFZr5j41YcDFuBnub/sYIybBjbCMgG0aRil1JywGHQ5x/bASvNhcFfuv2LlxP3YGbQZqnA=="],
 
+    "vite-svelte-tolgee-dynamic/@tolgee/web": ["@tolgee/web@7.2.1", "", { "dependencies": { "@tolgee/core": "7.2.1" } }, "sha512-rCbXY/jGuOsckbAkuFZr5j41YcDFuBnub/sYIybBjbCMgG0aRil1JywGHQ5x/bASvNhcFfuv2LlxP3YGbQZqnA=="],
+
     "vite-svelte-tolgee-static/@tolgee/web": ["@tolgee/web@7.2.1", "", { "dependencies": { "@tolgee/core": "7.2.1" } }, "sha512-rCbXY/jGuOsckbAkuFZr5j41YcDFuBnub/sYIybBjbCMgG0aRil1JywGHQ5x/bASvNhcFfuv2LlxP3YGbQZqnA=="],
+
+    "vite-svelte-wuchale-static/wuchale": ["wuchale@0.26.7", "", { "dependencies": { "@sveltejs/acorn-typescript": "^1.0.13", "acorn": "^8.18.0", "chokidar": "^5.0.0", "magic-string": "^1.3.1", "picomatch": "^4.0.7", "pofile": "^1.1.4", "tinyglobby": "^0.2.17" }, "bin": { "wuchale": "dist/cli/index.js" } }, "sha512-G9V612ezxLmXQ8vm6R3kETsBOCubvN1yxYv9I3GoU7uIVXPpCThgGrRyxD8ZZPJUOizz0IljZp6UgSlKPyILsQ=="],
 
     "vue-i18n/@vue/devtools-api": ["@vue/devtools-api@6.6.4", "", {}, "sha512-sGhTPMuXqZ1rVOk32RylztWkfXTRhuS7vgAKv0zjqk8gbsHkJ7xfFf+jbySxt7tWObEJwyKaHMikV/WGDiQm8g=="],
 
@@ -7417,6 +8070,8 @@
 
     "@vue/compiler-sfc/postcss/nanoid": ["nanoid@3.3.18", "", { "bin": { "nanoid": "bin/nanoid.cjs" } }, "sha512-DTg4MJbGMWkfi6VZFdNt2/caMbQy4Ou+Op/hJQvGEWcnVfoA1QA+xzRKAzw9jD6+GVOOeYr/mIcuDSdug6F6+w=="],
 
+    "@wuchale/svelte/wuchale/magic-string": ["magic-string@1.4.2", "", { "dependencies": { "@jridgewell/sourcemap-codec": "^1.6.0" } }, "sha512-vG+rjFRj1PqdIBozIxAGMjPlOhaVe+GXpbttY/iSK7rGcJRMlwNJO7dcUwmUqkymsFLJiNGI06t4D7Fr7yRC9g=="],
+
     "ai-sdk-ollama/@ai-sdk/provider-utils/eventsource-parser": ["eventsource-parser@3.0.8", "", {}, "sha512-70QWGkr4snxr0OXLRWsFLeRBIRPuQOvt4s8QYjmUlmlkyTZkRqS7EDVRZtzU3TiyDbXSzaOeF0XUKy8PchzukQ=="],
 
     "ai-sdk-ollama/@ai-sdk/provider-utils/undici": ["undici@6.28.1", "", {}, "sha512-zWpdTVD54H48CIybL0rWQ3ukpb9d23wM7eH5RtfdmeP70cWHNjtfo7P4vZX+5CoDcO53J4Pu5uXp7lNfjc6DRA=="],
@@ -7783,11 +8438,23 @@
 
     "use-intl/intl-messageformat/@formatjs/icu-messageformat-parser": ["@formatjs/icu-messageformat-parser@3.5.6", "", { "dependencies": { "@formatjs/icu-skeleton-parser": "2.1.6" } }, "sha512-04ZjRIeQCnR/h32wBP9/S7rkyy1hLAs2fXJcNwc7hseJd//K9TMBqK0ukb4dXqnALKQ9m5ruZeOD2qqEkK9ixg=="],
 
+    "vite-react-intlayer-dynamic/@tanstack/react-router-ssr-query/@tanstack/router-ssr-query-core": ["@tanstack/router-ssr-query-core@1.169.3", "", { "peerDependencies": { "@tanstack/query-core": ">=5.102.0", "@tanstack/router-core": ">=1.171.28" } }, "sha512-0EE3mFa753mExMJEfWhZMi+EKViSLmZHoiYADZJzr5+2S/T4T12soHg8fMn67jCvDwL2dpd1mE7aL/XXzDPfhA=="],
+
     "vite-react-intlayer-static/@tanstack/react-router-ssr-query/@tanstack/router-ssr-query-core": ["@tanstack/router-ssr-query-core@1.169.3", "", { "peerDependencies": { "@tanstack/query-core": ">=5.102.0", "@tanstack/router-core": ">=1.171.28" } }, "sha512-0EE3mFa753mExMJEfWhZMi+EKViSLmZHoiYADZJzr5+2S/T4T12soHg8fMn67jCvDwL2dpd1mE7aL/XXzDPfhA=="],
+
+    "vite-react-tolgee-dynamic/@tolgee/web/@tolgee/core": ["@tolgee/core@7.2.1", "", {}, "sha512-JA47ZTm413auqyALjsiElgIAZRg04Pmr2EciC5q5HHNSIn/E8oY14E12+c3YoLz7jVfQ6Psyt6fu8VGpgp+jwA=="],
+
+    "vite-react-tolgee-static/@tolgee/web/@tolgee/core": ["@tolgee/core@7.2.1", "", {}, "sha512-JA47ZTm413auqyALjsiElgIAZRg04Pmr2EciC5q5HHNSIn/E8oY14E12+c3YoLz7jVfQ6Psyt6fu8VGpgp+jwA=="],
+
+    "vite-solid-tolgee-dynamic/@tolgee/web/@tolgee/core": ["@tolgee/core@7.2.1", "", {}, "sha512-JA47ZTm413auqyALjsiElgIAZRg04Pmr2EciC5q5HHNSIn/E8oY14E12+c3YoLz7jVfQ6Psyt6fu8VGpgp+jwA=="],
 
     "vite-solid-tolgee-static/@tolgee/web/@tolgee/core": ["@tolgee/core@7.2.1", "", {}, "sha512-JA47ZTm413auqyALjsiElgIAZRg04Pmr2EciC5q5HHNSIn/E8oY14E12+c3YoLz7jVfQ6Psyt6fu8VGpgp+jwA=="],
 
+    "vite-svelte-tolgee-dynamic/@tolgee/web/@tolgee/core": ["@tolgee/core@7.2.1", "", {}, "sha512-JA47ZTm413auqyALjsiElgIAZRg04Pmr2EciC5q5HHNSIn/E8oY14E12+c3YoLz7jVfQ6Psyt6fu8VGpgp+jwA=="],
+
     "vite-svelte-tolgee-static/@tolgee/web/@tolgee/core": ["@tolgee/core@7.2.1", "", {}, "sha512-JA47ZTm413auqyALjsiElgIAZRg04Pmr2EciC5q5HHNSIn/E8oY14E12+c3YoLz7jVfQ6Psyt6fu8VGpgp+jwA=="],
+
+    "vite-svelte-wuchale-static/wuchale/magic-string": ["magic-string@1.4.2", "", { "dependencies": { "@jridgewell/sourcemap-codec": "^1.6.0" } }, "sha512-vG+rjFRj1PqdIBozIxAGMjPlOhaVe+GXpbttY/iSK7rGcJRMlwNJO7dcUwmUqkymsFLJiNGI06t4D7Fr7yRC9g=="],
 
     "vite/postcss/nanoid": ["nanoid@3.3.18", "", { "bin": { "nanoid": "bin/nanoid.cjs" } }, "sha512-DTg4MJbGMWkfi6VZFdNt2/caMbQy4Ou+Op/hJQvGEWcnVfoA1QA+xzRKAzw9jD6+GVOOeYr/mIcuDSdug6F6+w=="],
 
@@ -7977,6 +8644,8 @@
 
     "@vue/compiler-core/@babel/parser/@babel/types/@babel/helper-validator-identifier": ["@babel/helper-validator-identifier@7.28.5", "", {}, "sha512-qSs4ifwzKJSV39ucNjsvc6WVHs6b7S03sOh2OcHF9UHfVPqWWALUsNUVzhSBiItjRZoLHx7nIarVjqKVusUZ1Q=="],
 
+    "@wuchale/svelte/wuchale/magic-string/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.6.0", "", {}, "sha512-T7jf+5zgsZHwNJ4lvQ7/aezbyk0nNX+zJVWpmHA7VYsEx7a7qr5Rg5IbtJFqkgze5Y2sruq1RUY8Q837Od7iFw=="],
+
     "ai-sdk-ollama/ai/@ai-sdk/gateway/@vercel/oidc": ["@vercel/oidc@3.1.0", "", {}, "sha512-Fw28YZpRnA3cAHHDlkt7xQHiJ0fcL+NRcIqsocZQUSmbzeIKRpwttJjik5ZGanXP+vlA4SbTg+AbA3bP363l+w=="],
 
     "ai-sdk-ollama/ai/@ai-sdk/provider-utils/eventsource-parser": ["eventsource-parser@3.0.8", "", {}, "sha512-70QWGkr4snxr0OXLRWsFLeRBIRPuQOvt4s8QYjmUlmlkyTZkRqS7EDVRZtzU3TiyDbXSzaOeF0XUKy8PchzukQ=="],
@@ -8076,6 +8745,8 @@
     "tanstack-scoped-dynamic-gt-react-app/gt/generaltranslation/@generaltranslation/api": ["@generaltranslation/api@0.2.0", "", {}, "sha512-3zP95nBly0Zz+2rBD7MbhBOjPHoqcnu10JFfhZwKXLIGCb6cnLp+qwMt752kO+TVP6gpbTs+tsvVF66FgKwuNA=="],
 
     "use-intl/intl-messageformat/@formatjs/icu-messageformat-parser/@formatjs/icu-skeleton-parser": ["@formatjs/icu-skeleton-parser@2.1.6", "", {}, "sha512-9f1VQ2kaaLHK0WPU1OrAmiNKCKJwyoDmwNzQXbUa6XtFBOgHZ4YZURE8sSedHmMr0kvpB75OtplB0hMYkfdwfg=="],
+
+    "vite-svelte-wuchale-static/wuchale/magic-string/@jridgewell/sourcemap-codec": ["@jridgewell/sourcemap-codec@1.6.0", "", {}, "sha512-T7jf+5zgsZHwNJ4lvQ7/aezbyk0nNX+zJVWpmHA7VYsEx7a7qr5Rg5IbtJFqkgze5Y2sruq1RUY8Q837Od7iFw=="],
 
     "@inlang/paraglide-unplugin/@inlang/paraglide-js/@inlang/recommend-sherlock/@inlang/sdk/solid-js": ["solid-js@1.6.12", "", { "dependencies": { "csstype": "^3.1.0" } }, "sha512-JFqRobfG3q5r1l4RYVOAukk6+FWtHpXGIjgh/GEsHKweN/kK+iHOtzUALE6+P5t/jIcSNeGiVitX8gmJg+cYvQ=="],
 

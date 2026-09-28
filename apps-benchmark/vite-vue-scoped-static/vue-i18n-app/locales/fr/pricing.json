@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "Tarification simple et transparente",
+    "description": "Choisissez l'offre adaptée à votre équipe. Sans frais cachés."
+  },
+  "tiers": {
+    "starterName": "Starter",
+    "starterPrice": "0 €",
+    "starterPeriod": "pour toujours",
+    "starterFeature1": "5 exécutions de benchmark / jour",
+    "starterFeature2": "3 bibliothèques",
+    "starterFeature3": "Support communautaire",
+    "starterFeature4": "Résultats publics",
+    "proName": "Pro",
+    "proPrice": "29 €",
+    "proPeriod": "/ mois",
+    "proFeature1": "Exécutions illimitées",
+    "proFeature2": "Toutes les bibliothèques",
+    "proFeature3": "Support prioritaire",
+    "proFeature4": "Résultats privés",
+    "proFeature5": "Intégration CI",
+    "proFeature6": "Historique",
+    "enterpriseName": "Entreprise",
+    "enterprisePrice": "Sur mesure",
+    "enterpriseFeature1": "Tout le Pro",
+    "enterpriseFeature2": "Option on-premise",
+    "enterpriseFeature3": "SSO et SAML",
+    "enterpriseFeature4": "Account manager dédié",
+    "enterpriseFeature5": "SLA sur mesure",
+    "enterpriseFeature6": "Journaux d'audit",
+    "enterpriseFeature7": "Sessions de formation",
+    "contactSales": "Contacter les ventes",
+    "getStarted": "Commencer"
+  }
+}

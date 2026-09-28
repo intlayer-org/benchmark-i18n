@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "title": "i18n Benchmark",
+    "description": "Uma aplicação de teste projetada para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no desempenho de carregamento e na reatividade de renderização.",
+    "viewResults": "Ver Resultados",
+    "methodology": "Metodologia"
+  },
+  "whyItMatters": {
+    "title": "Por que estas métricas importam",
+    "bundleSizeTitle": "Tamanho do bundle",
+    "bundleSizeDesc": "O bundle representa os dados enviados para cada usuário em todo o mundo. Um bundle maior significa tempos de download mais longos — especialmente em conexões 3G lentas, comuns em muitas regiões. As bibliotecas i18n variam drasticamente em seu peso: de alguns kilobytes a dezenas de kilobytes de código runtime, além dos próprios arquivos de tradução.",
+    "renderingTitle": "Renderização e hidratação",
+    "renderingDesc": "Conectar um grande dicionário JSON a cada componente cria uma dependência oculta: qualquer alteração no contexto de tradução pode disparar renderizações em toda a árvore. Durante a hidratação SSR, analisar e anexar objetos de tradução massivos adiciona latência antes que a página se torne interativa — impactando diretamente o Time to Interactive (TTI).",
+    "dynamicLoadingTitle": "Carregamento dinâmico",
+    "dynamicLoadingDesc": "Carregar todas as traduções antecipadamente sobrecarrega o payload inicial. O carregamento dinâmico (lazy) divide as traduções por rota ou namespace, enviando apenas o que a página atual precisa. No entanto, o carregamento lento introduz seus próprios trade-offs: requisições em cascata, flash de conteúdo não traduzido e complexidade de cache. Medir ambas as estratégias é essencial."
+  },
+  "understandingImpact": {
+    "title": "Entendendo o impacto",
+    "singleJsonTitle": "Por que um único JSON grande pode prejudicar o desempenho",
+    "singleJsonIntro": "Muitas bibliotecas i18n armazenam traduções em um único objeto JSON fornecido via contexto React. Quando este objeto é grande (milhares de chaves), cada componente que consome traduções mantém uma referência a todo o dicionário. Isso significa:",
+    "singleJsonBullet1": "O JSON deve ser analisado a cada carregamento de página — bloqueando a thread principal.",
+    "singleJsonBullet2": "Arquiteturas baseadas em contexto podem causar renderizações em cascata quando a localidade muda, porque cada consumidor é notificado mesmo que suas chaves específicas não tenham mudado.",
+    "singleJsonBullet3": "Durante a renderização no lado do servidor, o dicionário completo é serializado no payload HTML, aumentando o tamanho do documento que deve ser baixado e hidratado.",
+    "tradeOffsTitle": "Os trade-offs do carregamento dinâmico",
+    "tradeOffsIntro": "Dividir as traduções em pedaços por rota ou por namespace pode reduzir drasticamente o payload inicial. Mas introduz novos desafios:",
+    "waterfallLabel": "Requisições em cascata:",
+    "waterfallDesc": "o app deve primeiro carregar, determinar a localidade, então buscar o chunk certo — adicionando network round-trips.",
+    "foucLabel": "Flash de conteúdo não traduzido (FOUC):",
+    "foucDesc": "usuários podem ver brevemente as chaves de tradução ou um idioma de fallback antes de o chunk chegar.",
+    "cacheLabel": "Invalidação de cache:",
+    "cacheDesc": "atualizar as traduções requer estratégias de invalidação de cache para garantir que os usuários obtenham conteúdo fresco sem baixar novamente os chunks inalterados.",
+    "measuresTitle": "O que este benchmark mede",
+    "measuresDesc": "Este app de teste fornece um ambiente controlado — 10 páginas com conteúdo realista — para comparar bibliotecas i18n em três eixos: o peso que elas adicionam ao seu bundle JavaScript, o tempo gasto analisando e renderizando conteúdo traduzido e a eficácia de suas estratégias de divisão de código e carregamento lento. Cada biblioteca é integrada no mesmo app para que os resultados sejam diretamente comparáveis."
+  },
+  "resultsTable": {
+    "title": "Resultados de exemplo",
+    "library": "Biblioteca",
+    "bundleSize": "Tamanho do Bundle",
+    "lookupTime": "Tempo de Busca",
+    "lazyLoading": "Carregamento Lento",
+    "yes": "Sim",
+    "manual": "Manual",
+    "builtIn": "Integrado"
+  }
+}

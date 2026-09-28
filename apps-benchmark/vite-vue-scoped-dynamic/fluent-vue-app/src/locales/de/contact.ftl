@@ -1,0 +1,15 @@
+contact-header-title = Kontakt aufnehmen
+contact-header-description = Haben Sie Ideen, einen Fehler gefunden oder möchten Sie einen Benchmark beisteuern? Kontaktieren Sie uns unter
+contact-form-name = Name
+contact-form-your-name = Ihr Name
+contact-form-email = E-Mail
+contact-form-email-placeholder = ihre@beispiel.de
+contact-form-topic = Thema
+contact-form-bug-report = Fehlerbericht
+contact-form-new-benchmark-idea = Neue Benchmark-Idee
+contact-form-methodology-question = Frage zur Methodik
+contact-form-contribution = Beitrag
+contact-form-other = Sonstiges
+contact-form-message = Nachricht
+contact-form-message-placeholder = Beschreiben Sie Ihre Frage oder Idee...
+contact-form-send-message = Nachricht senden

@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "Простые и прозрачные цены",
+    "description": "Выберите подходящий план для вашей команды. Никаких скрытых комиссий."
+  },
+  "tiers": {
+    "starterName": "Starter",
+    "starterPrice": "0 $",
+    "starterPeriod": "навсегда",
+    "starterFeature1": "5 запусков бенчмарка в день",
+    "starterFeature2": "3 библиотеки",
+    "starterFeature3": "Поддержка сообщества",
+    "starterFeature4": "Публичные результаты",
+    "proName": "Pro",
+    "proPrice": "29 $",
+    "proPeriod": "/мес",
+    "proFeature1": "Неограниченное число запусков",
+    "proFeature2": "Все библиотеки",
+    "proFeature3": "Приоритетная поддержка",
+    "proFeature4": "Приватные результаты",
+    "proFeature5": "Интеграция с CI",
+    "proFeature6": "Исторические данные",
+    "enterpriseName": "Enterprise",
+    "enterprisePrice": "Индивидуально",
+    "enterpriseFeature1": "Все, что есть в Pro",
+    "enterpriseFeature2": "Локальная установка",
+    "enterpriseFeature3": "SSO и SAML",
+    "enterpriseFeature4": "Персональный менеджер",
+    "enterpriseFeature5": "Индивидуальные SLA",
+    "enterpriseFeature6": "Журналы аудита",
+    "enterpriseFeature7": "Обучающие сессии",
+    "contactSales": "Связаться с отделом продаж",
+    "getStarted": "Начать работу"
+  }
+}

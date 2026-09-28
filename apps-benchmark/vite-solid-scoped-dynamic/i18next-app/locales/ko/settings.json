@@ -1,0 +1,38 @@
+{
+  "header": {
+    "title": "Settings",
+    "description": "Manage your account preferences and configuration."
+  },
+  "profile": {
+    "title": "Profile",
+    "displayName": "Display Name",
+    "email": "Email"
+  },
+  "preferences": {
+    "title": "Preferences",
+    "emailNotifications": "Email Notifications",
+    "weeklyReports": "Receive weekly benchmark reports",
+    "toggleNotifications": "Toggle notifications",
+    "darkMode": "Dark Mode",
+    "darkColorScheme": "Use dark color scheme",
+    "toggleDarkMode": "Toggle dark mode",
+    "defaultLanguage": "Default Language",
+    "english": "English (en)",
+    "french": "French (fr)",
+    "german": "German (de)",
+    "spanish": "Spanish (es)",
+    "japanese": "Japanese (ja)",
+    "chinese": "Chinese Simplified (zh-CN)",
+    "arabic": "Arabic (ar)"
+  },
+  "apiAccess": {
+    "title": "API Access",
+    "apiKey": "API Key",
+    "copy": "Copy",
+    "description": "Use this key to access the benchmarking API programmatically."
+  },
+  "footer": {
+    "cancel": "Cancel",
+    "saveChanges": "Save Changes"
+  }
+}

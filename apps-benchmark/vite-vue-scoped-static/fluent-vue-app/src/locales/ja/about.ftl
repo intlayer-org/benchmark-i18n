@@ -1,0 +1,17 @@
+about-header-title = このベンチマークについて
+about-header-description = これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、現実的なマルチページReactアプリを提供し、異なるi18nライブラリを同一条件下で統合して測定できるようにすることです。
+about-grid-why-exists-title = なぜこれが存在するのか
+about-grid-why-exists-desc = i18nライブラリの選択は、長期的な影響を伴うアーキテクチャ上の決定です。ほとんどの比較はAPIの使いやすさに焦点を当てていますが、パフォーマンスコストを測定しているものはほとんどありません。ライブラリはバンドルにどれだけの重量を追加しますか？数千の翻訳キーが読み込まれたとき、レンダリングにどのように影響しますか？遅延読み込みは実際に役立ちますか、それともコストをシフトするだけですか？このベンチマークは、実際のデータでこれらの質問に答えます。
+about-grid-methodology-title = 手法
+about-grid-methodology-desc = 同じ10ページのアプリをライブラリごとに1回構築します。本番バンドルを測定し（rollup-plugin-visualizer経由）、読み込み指標のLighthouse監査を実行し、React Profilerを使用してロケール切り替え中のレンダー時間をキャプチャします。再現可能な結果を確保するために、すべてのテストは一貫したハードウェア上のCIで実行されます。
+about-what-we-measure-title = 測定項目
+about-what-we-measure-bundle-size-impact = バンドルサイズへの影響
+about-what-we-measure-bundle-size-impact-desc = i18nライブラリとその翻訳ファイルが含まれるときにユーザーに送信される追加のJavaScriptバイト。これは、低速なネットワークでのダウンロード時間に直接影響します。
+about-what-we-measure-rendering-overhead = レンダリングのオーバーヘッド
+about-what-we-measure-rendering-overhead-desc = ライブラリがReactのレンダーサイクルに追加する余分な時間。単一のコンテキストプロバイダーを介して翻訳を注入するライブラリは、コンポーネントツリー全体で不要な再レンダリングを引き起こす可能性があります。
+about-what-we-measure-hydration-cost = ハイドレーションコスト
+about-what-we-measure-hydration-cost-desc = SSR中、翻訳データはHTMLにシリアル化されます。巨大な辞書はHTMLペイロードを増加させ、ページがインタラクティブになるまでのハイドレーションを遅らせます。
+about-what-we-measure-lazy-loading = 遅延読み込みの有効性
+about-what-we-measure-lazy-loading-desc = ルートごとまたは名前空間ごとに翻訳を分割することが実際に初期負荷を軽減するかどうか、またどのようなトレードオフ（ウォーターフォールリクエスト、FOUC、キャッシュの複雑さ）が導入されるか。
+about-what-we-measure-locale-switch = ロケール切り替え速度
+about-what-we-measure-locale-switch-desc = 実行時にある言語から別の言語にどれだけ速く切り替えられるか。新しい翻訳の取得、コンポーネントの再レンダリング、DOMの更新が含まれます。

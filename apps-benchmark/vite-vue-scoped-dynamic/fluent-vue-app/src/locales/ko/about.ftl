@@ -1,0 +1,17 @@
+about-header-title = About This Benchmark
+about-header-description = This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions.
+about-grid-why-exists-title = Why This Exists
+about-grid-why-exists-desc = Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data.
+about-grid-methodology-title = Methodology
+about-grid-methodology-desc = The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results.
+about-what-we-measure-title = What We Measure
+about-what-we-measure-bundle-size-impact = Bundle size impact
+about-what-we-measure-bundle-size-impact-desc = The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks.
+about-what-we-measure-rendering-overhead = Rendering overhead
+about-what-we-measure-rendering-overhead-desc = How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree.
+about-what-we-measure-hydration-cost = Hydration cost
+about-what-we-measure-hydration-cost-desc = During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive.
+about-what-we-measure-lazy-loading = Lazy loading effectiveness
+about-what-we-measure-lazy-loading-desc = Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity).
+about-what-we-measure-locale-switch = Locale switch speed
+about-what-we-measure-locale-switch-desc = How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM.

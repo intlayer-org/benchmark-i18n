@@ -1,0 +1,38 @@
+{
+  "header": {
+    "title": "Настройки",
+    "description": "Управляйте предпочтениями и конфигурацией вашей учетной записи."
+  },
+  "profile": {
+    "title": "Профиль",
+    "displayName": "Отображаемое имя",
+    "email": "Электронная почта"
+  },
+  "preferences": {
+    "title": "Предпочтения",
+    "emailNotifications": "Уведомления по почте",
+    "weeklyReports": "Получать еженедельные отчеты о бенчмарках",
+    "toggleNotifications": "Переключить уведомления",
+    "darkMode": "Темная тема",
+    "darkColorScheme": "Использовать темную цветовую схему",
+    "toggleDarkMode": "Переключить темную тему",
+    "defaultLanguage": "Язык по умолчанию",
+    "english": "Английский (en)",
+    "french": "Французский (fr)",
+    "german": "Немецкий (de)",
+    "spanish": "Испанский (es)",
+    "japanese": "Японский (ja)",
+    "chinese": "Китайский упрощенный (zh-CN)",
+    "arabic": "Арабский (ar)"
+  },
+  "apiAccess": {
+    "title": "Доступ к API",
+    "apiKey": "Ключ API",
+    "copy": "Копировать",
+    "description": "Используйте этот ключ для программного доступа к API бенчмаркинга."
+  },
+  "footer": {
+    "cancel": "Отмена",
+    "saveChanges": "Сохранить изменения"
+  }
+}

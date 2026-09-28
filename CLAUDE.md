@@ -89,7 +89,12 @@ benchmark-bloom/
 │   ├── tanstack-start-react-dynamic/
 │   ├── tanstack-start-react-scoped-static/
 │   ├── tanstack-start-react-scoped-dynamic/
-│   └── vite+react-base-app/
+│   ├── vite-react-base-app/          # Vite + React Router baseline
+│   ├── vite-react-static/            # ported from the TanStack apps (scripts/port-tanstack-to-vite-react.ts)
+│   ├── vite-react-dynamic/
+│   ├── vite-{vue,svelte,solid}-base-app/
+│   ├── vite-{vue,svelte,solid}-{static,dynamic}/
+│   └── vite-{vue,solid}-scoped-{static,dynamic}/   # per-page namespaces (vue-i18n, fluent-vue, solid-i18next)
 ├── test-utils/                       # Shared Playwright test helpers (workspace package)
 │   └── src/
 │       ├── pages-test.ts             # Bundle size & content leakage logic

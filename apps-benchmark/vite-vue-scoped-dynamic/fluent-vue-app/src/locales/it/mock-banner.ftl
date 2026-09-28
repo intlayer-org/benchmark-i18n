@@ -1,0 +1,1 @@
+mock-banner = ⚠️ Questa pagina contiene dati fittizi solo a scopo di benchmarking. Non è collegata ad alcuna attività o servizio reale.

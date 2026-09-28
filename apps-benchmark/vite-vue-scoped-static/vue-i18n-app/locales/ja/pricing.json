@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "シンプルで透明性の高い価格設定",
+    "description": "チームに合ったプランをお選びください。隠れた費用はありません。"
+  },
+  "tiers": {
+    "starterName": "スターター",
+    "starterPrice": "0円",
+    "starterPeriod": "ずっと無料",
+    "starterFeature1": "1日あたり5回のベンチマーク実行",
+    "starterFeature2": "3ライブラリ",
+    "starterFeature3": "コミュニティサポート",
+    "starterFeature4": "公開結果",
+    "proName": "プロ",
+    "proPrice": "29ドル",
+    "proPeriod": "/月",
+    "proFeature1": "無制限の実行",
+    "proFeature2": "すべてのライブラリ",
+    "proFeature3": "優先サポート",
+    "proFeature4": "非公開の結果",
+    "proFeature5": "CI統合",
+    "proFeature6": "履歴データ",
+    "enterpriseName": "エンタープライズ",
+    "enterprisePrice": "カスタム",
+    "enterpriseFeature1": "Proプランのすべてを含む",
+    "enterpriseFeature2": "オンプレミスオプション",
+    "enterpriseFeature3": "SSO & SAML",
+    "enterpriseFeature4": "専任のアカウントマネージャー",
+    "enterpriseFeature5": "カスタムSLA",
+    "enterpriseFeature6": "監査ログ",
+    "enterpriseFeature7": "トレーニングセッション",
+    "contactSales": "営業に問い合わせる",
+    "getStarted": "始める"
+  }
+}

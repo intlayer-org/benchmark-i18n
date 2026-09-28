@@ -1,0 +1,33 @@
+{
+  "header": {
+    "title": "블로그",
+    "description": "i18n 커뮤니티의 인사이트, 튜토리얼, 분석."
+  },
+  "list": {
+    "readMore": "더 읽기 →",
+    "post1Title": "2026년 i18n 라이브러리 비교: 심층 분석",
+    "post1Date": "2026년 3월 15일",
+    "post1Excerpt": "성능, 번들 크기, DX를 놓고 12개 국제화 라이브러리를 테스트했습니다. 놀라운 결과를 소개합니다.",
+    "post1Category": "벤치마크",
+    "post2Title": "i18n 번들을 60% 줄이는 방법",
+    "post2Date": "2026년 3월 8일",
+    "post2Excerpt": "지연 로딩, 코드 분할, 컴파일 타임 최적화를 포함한 번역 번들 최적화 실전 전략.",
+    "post2Category": "튜토리얼",
+    "post3Title": "React에서 국제화의 현주소",
+    "post3Date": "2026년 2월 28일",
+    "post3Excerpt": "트렌드, 신흥 패턴, 커뮤니티 선호를 다루는 React i18n 생태계 개요.",
+    "post3Category": "분석",
+    "post4Title": "react-i18next에서 Lingui로 마이그레이션",
+    "post4Date": "2026년 2월 15일",
+    "post4Excerpt": "5만 개의 번역 키를 가진 프로덕션 앱을 react-i18next에서 Lingui로 옮기는 단계별 가이드.",
+    "post4Category": "튜토리얼",
+    "post5Title": "Server Components와 i18n: 무엇이 달라지나",
+    "post5Date": "2026년 2월 1일",
+    "post5Excerpt": "React Server Components가 국제화에 가져오는 새 패턴과 그 함의, 모범 사례를 살펴봅니다.",
+    "post5Category": "분석",
+    "post6Title": "벤치마크 방법론: 테스트 방식",
+    "post6Date": "2026년 1월 20일",
+    "post6Excerpt": "테스트 환경, 통계 방법, 재현성을 포함한 벤치마크 방법을 투명하게 공개합니다.",
+    "post6Category": "메타"
+  }
+}

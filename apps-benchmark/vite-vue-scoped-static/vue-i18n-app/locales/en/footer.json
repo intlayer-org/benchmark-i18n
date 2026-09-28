@@ -1,0 +1,10 @@
+{
+  "title": "i18n Benchmark",
+  "description": "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity.",
+  "resources": "Resources",
+  "github": "GitHub",
+  "methodology": "Methodology",
+  "contributing": "Contributing",
+  "contact": "Contact",
+  "builtWith": "i18n Benchmark — Open-source project. Built with Vue, Vite & a client-side router."
+}

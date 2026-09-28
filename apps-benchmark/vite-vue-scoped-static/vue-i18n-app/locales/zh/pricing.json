@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "简单透明的定价",
+    "description": "选择适合您团队的计划。无隐藏费用。"
+  },
+  "tiers": {
+    "starterName": "入门版",
+    "starterPrice": "0 $",
+    "starterPeriod": "永久",
+    "starterFeature1": "每天 5 次基准测试运行",
+    "starterFeature2": "3 个库",
+    "starterFeature3": "社区支持",
+    "starterFeature4": "公开结果",
+    "proName": "专业版",
+    "proPrice": "29 $",
+    "proPeriod": "/月",
+    "proFeature1": "无限次运行",
+    "proFeature2": "所有库",
+    "proFeature3": "优先支持",
+    "proFeature4": "私有结果",
+    "proFeature5": "CI 集成",
+    "proFeature6": "历史数据",
+    "enterpriseName": "企业版",
+    "enterprisePrice": "定制",
+    "enterpriseFeature1": "包含专业版中的所有功能",
+    "enterpriseFeature2": "本地部署选项",
+    "enterpriseFeature3": "SSO 和 SAML",
+    "enterpriseFeature4": "专属客户经理",
+    "enterpriseFeature5": "定制 SLA",
+    "enterpriseFeature6": "审计日志",
+    "enterpriseFeature7": "培训课程",
+    "contactSales": "联系销售",
+    "getStarted": "开始使用"
+  }
+}

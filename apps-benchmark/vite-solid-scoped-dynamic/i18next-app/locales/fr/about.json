@@ -1,0 +1,25 @@
+{
+  "header": {
+    "title": "À propos de ce benchmark",
+    "description": "Il s'agit d'une application de test open source — pas d'un produit ni d'une entreprise. Elle sert uniquement de base multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans les mêmes conditions."
+  },
+  "grid": {
+    "whyExistsTitle": "Pourquoi ce projet existe",
+    "whyExistsDesc": "Choisir une bibliothèque i18n est une décision d'architecture à long terme. Beaucoup de comparatifs insistent sur l'ergonomie d'API, mais peu mesurent le coût performance : poids ajouté au bundle ? impact sur le rendu avec des milliers de clés ? le chargement paresseux aide-t-il vraiment ou déplace-t-il seulement le coût ? Ce benchmark répond avec des données réelles.",
+    "methodologyTitle": "Méthodologie",
+    "methodologyDesc": "La même application 10 pages est construite pour chaque bibliothèque. Nous mesurons le bundle de production (rollup-plugin-visualizer), lançons des audits Lighthouse et utilisons le profilage pour capturer le rendu lors des changements de langue. Tout s'exécute en CI sur du matériel homogène pour des résultats reproductibles."
+  },
+  "whatWeMeasure": {
+    "title": "Ce que nous mesurons",
+    "bundleSizeImpact": "Impact sur la taille du bundle",
+    "bundleSizeImpactDesc": "Les octets JavaScript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers sont inclus — impact direct sur les réseaux lents.",
+    "renderingOverhead": "Surcharge de rendu",
+    "renderingOverheadDesc": "Temps supplémentaire ajouté au cycle de rendu. Les bibliothèques qui injectent les traductions via un seul provider de contexte peuvent provoquer des re-rendus inutiles.",
+    "hydrationCost": "Coût d'hydratation",
+    "hydrationCostDesc": "En SSR, les données de traduction sont sérialisées dans le HTML. De gros dictionnaires alourdissent la page et ralentissent l'hydratation.",
+    "lazyLoading": "Efficacité du chargement paresseux",
+    "lazyLoadingDesc": "Le découpage par route ou espace de noms réduit-il vraiment la charge initiale, et quels compromis cela introduit (cascade, FOUC, cache) ?",
+    "localeSwitch": "Vitesse de changement de langue",
+    "localeSwitchDesc": "À quelle vitesse l'application peut basculer de langue à l'exécution — récupération des traductions, re-rendu, mise à jour du DOM."
+  }
+}

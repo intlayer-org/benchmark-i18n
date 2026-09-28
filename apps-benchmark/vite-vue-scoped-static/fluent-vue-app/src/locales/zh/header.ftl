@@ -1,0 +1,11 @@
+header-home = 首页
+header-methodology = 方法论
+header-mock-pages = 模拟页面
+header-products = 产品
+header-pricing = 价格
+header-team = 团队
+header-blog = 博客
+header-careers = 招聘
+header-faq = 常见问题
+header-contact = 联系我们
+header-settings = 设置

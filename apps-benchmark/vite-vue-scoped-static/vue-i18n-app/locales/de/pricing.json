@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "Einfache, transparente Preisgestaltung",
+    "description": "Wählen Sie den Plan, der zu Ihrem Team passt. Keine versteckten Gebühren."
+  },
+  "tiers": {
+    "starterName": "Starter",
+    "starterPrice": "0 $",
+    "starterPeriod": "für immer",
+    "starterFeature1": "5 Benchmark-Durchläufe/Tag",
+    "starterFeature2": "3 Bibliotheken",
+    "starterFeature3": "Community-Support",
+    "starterFeature4": "Öffentliche Ergebnisse",
+    "proName": "Pro",
+    "proPrice": "29 $",
+    "proPeriod": "/Monat",
+    "proFeature1": "Unbegrenzte Durchläufe",
+    "proFeature2": "Alle Bibliotheken",
+    "proFeature3": "Priorisierter Support",
+    "proFeature4": "Private Ergebnisse",
+    "proFeature5": "CI-Integration",
+    "proFeature6": "Historische Daten",
+    "enterpriseName": "Enterprise",
+    "enterprisePrice": "Individuell",
+    "enterpriseFeature1": "Alles in Pro enthalten",
+    "enterpriseFeature2": "On-Premise-Option",
+    "enterpriseFeature3": "SSO & SAML",
+    "enterpriseFeature4": "Dedizierter Account Manager",
+    "enterpriseFeature5": "Individuelle SLAs",
+    "enterpriseFeature6": "Audit-Protokolle",
+    "enterpriseFeature7": "Schulungssitzungen",
+    "contactSales": "Vertrieb kontaktieren",
+    "getStarted": "Erste Schritte"
+  }
+}

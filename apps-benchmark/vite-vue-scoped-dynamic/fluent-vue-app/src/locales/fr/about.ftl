@@ -1,0 +1,17 @@
+about-header-title = À propos de ce benchmark
+about-header-description = Il s'agit d'une application de test open source — pas d'un produit ni d'une entreprise. Elle sert uniquement de base multi-pages réaliste où différentes bibliothèques i18n peuvent être intégrées et mesurées dans les mêmes conditions.
+about-grid-why-exists-title = Pourquoi ce projet existe
+about-grid-why-exists-desc = Choisir une bibliothèque i18n est une décision d'architecture à long terme. Beaucoup de comparatifs insistent sur l'ergonomie d'API, mais peu mesurent le coût performance : poids ajouté au bundle ? impact sur le rendu avec des milliers de clés ? le chargement paresseux aide-t-il vraiment ou déplace-t-il seulement le coût ? Ce benchmark répond avec des données réelles.
+about-grid-methodology-title = Méthodologie
+about-grid-methodology-desc = La même application 10 pages est construite pour chaque bibliothèque. Nous mesurons le bundle de production (rollup-plugin-visualizer), lançons des audits Lighthouse et utilisons le profilage pour capturer le rendu lors des changements de langue. Tout s'exécute en CI sur du matériel homogène pour des résultats reproductibles.
+about-what-we-measure-title = Ce que nous mesurons
+about-what-we-measure-bundle-size-impact = Impact sur la taille du bundle
+about-what-we-measure-bundle-size-impact-desc = Les octets JavaScript supplémentaires envoyés aux utilisateurs lorsque la bibliothèque i18n et ses fichiers sont inclus — impact direct sur les réseaux lents.
+about-what-we-measure-rendering-overhead = Surcharge de rendu
+about-what-we-measure-rendering-overhead-desc = Temps supplémentaire ajouté au cycle de rendu. Les bibliothèques qui injectent les traductions via un seul provider de contexte peuvent provoquer des re-rendus inutiles.
+about-what-we-measure-hydration-cost = Coût d'hydratation
+about-what-we-measure-hydration-cost-desc = En SSR, les données de traduction sont sérialisées dans le HTML. De gros dictionnaires alourdissent la page et ralentissent l'hydratation.
+about-what-we-measure-lazy-loading = Efficacité du chargement paresseux
+about-what-we-measure-lazy-loading-desc = Le découpage par route ou espace de noms réduit-il vraiment la charge initiale, et quels compromis cela introduit (cascade, FOUC, cache) ?
+about-what-we-measure-locale-switch = Vitesse de changement de langue
+about-what-we-measure-locale-switch-desc = À quelle vitesse l'application peut basculer de langue à l'exécution — récupération des traductions, re-rendu, mise à jour du DOM.

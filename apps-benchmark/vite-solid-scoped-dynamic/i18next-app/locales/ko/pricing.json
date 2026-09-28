@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "Simple, Transparent Pricing",
+    "description": "Choose the plan that fits your team. No hidden fees."
+  },
+  "tiers": {
+    "starterName": "Starter",
+    "starterPrice": "$0",
+    "starterPeriod": "forever",
+    "starterFeature1": "5 benchmark runs/day",
+    "starterFeature2": "3 libraries",
+    "starterFeature3": "Community support",
+    "starterFeature4": "Public results",
+    "proName": "Pro",
+    "proPrice": "$29",
+    "proPeriod": "/month",
+    "proFeature1": "Unlimited runs",
+    "proFeature2": "All libraries",
+    "proFeature3": "Priority support",
+    "proFeature4": "Private results",
+    "proFeature5": "CI integration",
+    "proFeature6": "Historical data",
+    "enterpriseName": "Enterprise",
+    "enterprisePrice": "Custom",
+    "enterpriseFeature1": "Everything in Pro",
+    "enterpriseFeature2": "On-premise option",
+    "enterpriseFeature3": "SSO & SAML",
+    "enterpriseFeature4": "Dedicated account manager",
+    "enterpriseFeature5": "Custom SLAs",
+    "enterpriseFeature6": "Audit logs",
+    "enterpriseFeature7": "Training sessions",
+    "contactSales": "Contact Sales",
+    "getStarted": "Get Started"
+  }
+}

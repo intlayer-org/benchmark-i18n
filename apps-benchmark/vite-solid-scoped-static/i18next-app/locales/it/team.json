@@ -1,0 +1,26 @@
+{
+  "header": {
+    "title": "Il nostro team",
+    "description": "Incontra le persone che stanno dietro i18n Benchmark. Un team eterogeneo unito dalla passione comune per i grandi strumenti per gli sviluppatori."
+  },
+  "grid": {
+    "member1Name": "Sarah Chen",
+    "member1Role": "Fondatrice e Responsabile tecnico",
+    "member1Bio": "Ex ingegnere Google con 10 anni di esperienza nella costruzione di sistemi di internazionalizzazione su scala.",
+    "member2Name": "Marcus Weber",
+    "member2Role": "Ingegnere delle prestazioni",
+    "member2Bio": "Specializzato nell'ottimizzazione delle prestazioni JavaScript e nella metodologia di benchmarking. Precedentemente presso Vercel.",
+    "member3Name": "Aisha Patel",
+    "member3Role": "Developer Advocate",
+    "member3Bio": "Appassionata di esperienza degli sviluppatori e formazione. Relatrice a React Conf, JSConf e i18nNext.",
+    "member4Name": "Tomás Rodríguez",
+    "member4Role": "Sviluppatore Full-Stack",
+    "member4Bio": "Mantiene l'infrastruttura di benchmarking e la pipeline CI/CD. Collaboratore open source di Lingui.",
+    "member5Name": "Yuki Tanaka",
+    "member5Role": "Analista dati",
+    "member5Bio": "Garantisce il rigore statistico in tutti i risultati dei benchmark. Dottorato in statistica applicata al MIT.",
+    "member6Name": "Elena Kowalski",
+    "member6Role": "Responsable della comunità",
+    "member6Bio": "Gestisce i contributi della comunità, le partnership e gli eventi. Background nella governance open source."
+  }
+}

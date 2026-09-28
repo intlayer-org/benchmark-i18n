@@ -1,0 +1,1005 @@
+msgid ""
+msgstr ""
+"Source-Language: en\n"
+"Language: zh\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1\n"
+"X-Plurals-Order: other\n"
+
+#: src/components/Footer.svelte
+msgid "GitHub"
+msgstr "GitHub"
+
+#: src/components/Footer.svelte
+#: src/components/Header.svelte
+#: src/components/pages/about/AboutGrid.svelte
+#: src/components/pages/home/Hero.svelte
+msgid "Methodology"
+msgstr "方法学"
+
+#: src/components/Footer.svelte
+msgid "Contributing"
+msgstr "贡献"
+
+#: src/components/Footer.svelte
+#: src/components/pages/home/Hero.svelte
+msgid "i18n Benchmark"
+msgstr "i18n Benchmark"
+
+#: src/components/Footer.svelte
+msgid "An open-source test application for measuring the real-world impact of internationalization libraries on bundle size, loading time, and app reactivity."
+msgstr "一个开源测试应用程序，用于衡量国际化库对包大小、加载时间和应用程序反应性的实际影响。"
+
+#: src/components/Footer.svelte
+msgid "Resources"
+msgstr "资源"
+
+#: src/components/Footer.svelte
+#: src/components/Header.svelte
+msgid "Contact"
+msgstr "联系我们"
+
+#: src/components/Footer.svelte
+msgid "contact@intlayer.org"
+msgstr "contact@intlayer.org"
+
+#~ msgid "i18n Benchmark — Open-source project. Built with React, Vite & TanStack Router."
+#~ msgstr "i18n Benchmark — 开源项目。使用 React, Vite 和 TanStack Router 构建。"
+
+#: src/components/MockBanner.svelte
+msgid "⚠️ This page contains mock data for benchmarking purposes only. It is not related to any real business or service."
+msgstr "⚠️ 此页面仅包含用于基准测试的模拟数据。它与任何真实的业务或服务无关。"
+
+#~ msgid "Header"
+#~ msgstr "Header"
+
+#: src/components/Header.svelte
+#: src/components/pages/products/ProductsHeader.svelte
+msgid "Products"
+msgstr "产品"
+
+#: src/components/Header.svelte
+msgid "Pricing"
+msgstr "价格"
+
+#: src/components/Header.svelte
+msgid "Team"
+msgstr "团队"
+
+#: src/components/Header.svelte
+#: src/components/pages/blog/BlogHeader.svelte
+msgid "Blog"
+msgstr "博客"
+
+#: src/components/Header.svelte
+#: src/components/pages/careers/CareersHeader.svelte
+msgid "Careers"
+msgstr "职业"
+
+#: src/components/Header.svelte
+#: src/components/pages/settings/SettingsHeader.svelte
+msgid "Settings"
+msgstr "设置"
+
+#: src/components/Header.svelte
+msgid "i18n Bench"
+msgstr "i18n Bench"
+
+#: src/components/Header.svelte
+msgid "Home"
+msgstr "首页"
+
+#: src/components/Header.svelte
+msgid "Mock Pages <0/>"
+msgstr "Mock Pages <0/>"
+
+#: src/components/Header.svelte
+msgid "Go to GitHub"
+msgstr "前往 GitHub"
+
+#: src/components/ThemeToggle.svelte
+msgid "Theme mode: auto (system). Click to switch to light mode."
+msgstr "主题模式：自动（系统）。点击切换到浅色模式。"
+
+#. 0: mode
+#: src/components/ThemeToggle.svelte
+msgid "Theme mode: {0}. Click to switch mode."
+msgstr "Theme mode: {0}. Click to switch mode."
+
+#: src/components/ThemeToggle.svelte
+msgid "Theme: Auto"
+msgstr "主题：自动"
+
+#: src/components/ThemeToggle.svelte
+msgid "Theme: Dark"
+msgstr "主题：深色"
+
+#: src/components/ThemeToggle.svelte
+msgid "Theme: Light"
+msgstr "主题：浅色"
+
+#: src/pages/NotFound.svelte
+msgid "Oops! Page not found"
+msgstr "糟糕！找不到页面"
+
+#: src/pages/NotFound.svelte
+msgid "Return to Home"
+msgstr "返回首页"
+
+#: src/components/Layout.svelte
+msgid "AppRoot"
+msgstr "AppRoot"
+
+#: src/components/pages/about/AboutGrid.svelte
+msgid "Why This Exists"
+msgstr "Why This Exists"
+
+#: src/components/pages/about/AboutGrid.svelte
+msgid "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+msgstr "Choosing an i18n library is an architectural decision with long-term consequences. Most comparisons focus on API ergonomics, but few measure the performance cost: how much weight does the library add to the bundle? How does it affect rendering when thousands of translation keys are loaded? Does lazy loading actually help or just shift the cost? This benchmark answers those questions with real data."
+
+#: src/components/pages/about/AboutGrid.svelte
+msgid "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+msgstr "The same 10-page app is built once per library. We measure the production bundle (via rollup-plugin-visualizer), run Lighthouse audits for loading metrics, and use React Profiler to capture render times during locale switches. All tests run in CI on consistent hardware to ensure reproducible results."
+
+#~ msgid "AboutHeader"
+#~ msgstr "AboutHeader"
+
+#: src/components/pages/about/AboutHeader.svelte
+msgid "About This Benchmark"
+msgstr "About This Benchmark"
+
+#: src/components/pages/about/AboutHeader.svelte
+msgid "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+msgstr "This is an open-source test application — not a product or a company. Its sole purpose is to provide a realistic, multi-page React app where different i18n libraries can be integrated and measured under identical conditions."
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Bundle size impact"
+msgstr "包大小影响"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+msgstr "The additional JavaScript bytes sent to users when the i18n library and its translation files are included. This directly affects download time on slow networks."
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Rendering overhead"
+msgstr "渲染开销"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+msgstr "How much extra time the library adds to React's render cycle. Libraries that inject translations via a single context provider can cause unnecessary re-renders across the component tree."
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Hydration cost"
+msgstr "注水成本"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+msgstr "During SSR, translation data is serialized into HTML. Large dictionaries increase the HTML payload and slow down hydration — the moment the page becomes interactive."
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Lazy loading effectiveness"
+msgstr "延迟加载有效性"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Whether splitting translations by route or namespace actually reduces the initial load, and what trade-offs it introduces (waterfall requests, FOUC, cache complexity)."
+msgstr "按路线或命名空间拆分翻译是否真的能减少初始负载，以及它引入了哪些权衡（瀑布请求、FOUC、缓存复杂性）。"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "Locale switch speed"
+msgstr "本地语言切换速度"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "How fast the app can switch from one language to another at runtime — including fetching new translations, re-rendering components, and updating the DOM."
+msgstr "应用程序在运行时从一种语言切换到另一种语言的速度——包括获取新翻译、重新渲染组件和更新 DOM。"
+
+#: src/components/pages/about/WhatWeMeasure.svelte
+msgid "What We Measure"
+msgstr "我们测量什么"
+
+#: src/components/pages/blog/BlogHeader.svelte
+msgid "Insights, tutorials, and analysis from the i18n community."
+msgstr "Insights, tutorials, and analysis from the i18n community."
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Read More →"
+msgstr "阅读更多 →"
+
+#: src/components/pages/careers/CareersBenefits.svelte
+msgid "Remote-first"
+msgstr "Remote-first"
+
+#: src/components/pages/careers/CareersBenefits.svelte
+msgid "Work from anywhere in the world"
+msgstr "Work from anywhere in the world"
+
+#: src/components/pages/careers/CareersBenefits.svelte
+msgid "Competitive pay"
+msgstr "Competitive pay"
+
+#: src/components/pages/careers/CareersBenefits.svelte
+msgid "Top-of-market compensation"
+msgstr "Top-of-market compensation"
+
+#: src/components/pages/careers/CareersBenefits.svelte
+msgid "Open source time"
+msgstr "Open source time"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Open Positions"
+msgstr "开放职位"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Apply Now"
+msgstr "立即申请"
+
+#: src/components/pages/contact/ContactHeader.svelte
+msgid "Get in Touch"
+msgstr "Get in Touch"
+
+#~ msgid "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at{0} <0>contact@intlayer.org</0> ."
+#~ msgstr "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at{0} <0>contact@intlayer.org</0> ."
+
+#: src/components/pages/careers/CareersHeader.svelte
+msgid "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+msgstr "Join our mission to improve the internationalization ecosystem. We're a remote-first team that values impact, transparency, and continuous learning."
+
+#: src/components/pages/faq/FAQHeader.svelte
+msgid "Frequently Asked Questions"
+msgstr "常见问题"
+
+#: src/components/pages/faq/FAQHeader.svelte
+msgid "Everything you need to know about i18n Benchmark."
+msgstr "Everything you need to know about i18n Benchmark."
+
+#~ msgid "Hero"
+#~ msgstr "Hero"
+
+#: src/components/pages/home/Hero.svelte
+msgid "A test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity."
+msgstr "一个测试应用程序，旨在衡量国际化库对包大小、加载性能和渲染反应性的实际影响。"
+
+#: src/components/pages/home/Hero.svelte
+msgid "View Results"
+msgstr "查看结果"
+
+#: src/components/pages/home/ResultsTable.svelte
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Yes"
+msgstr "Yes"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Manual"
+msgstr "Manual"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Built-in"
+msgstr "Built-in"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Sample Results"
+msgstr "样本结果"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Library"
+msgstr "Library"
+
+#: src/components/pages/home/ResultsTable.svelte
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Bundle Size"
+msgstr "包大小"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Lookup Time"
+msgstr "查询时间"
+
+#: src/components/pages/home/ResultsTable.svelte
+msgid "Lazy Loading"
+msgstr "延迟加载"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Name"
+msgstr "姓名"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Your name"
+msgstr "Your name"
+
+#: src/components/pages/contact/ContactForm.svelte
+#: src/components/pages/settings/ProfileSection.svelte
+msgid "Email"
+msgstr "电子邮件"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Topic"
+msgstr "Topic"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Bug Report"
+msgstr "Bug Report"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "New Benchmark Idea"
+msgstr "New Benchmark Idea"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Methodology Question"
+msgstr "Methodology Question"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Contribution"
+msgstr "Contribution"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Other"
+msgstr "Other"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Message"
+msgstr "留言"
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Describe your question or idea..."
+msgstr "Describe your question or idea..."
+
+#: src/components/pages/contact/ContactForm.svelte
+msgid "Send Message"
+msgstr "发送消息"
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Why These Metrics Matter"
+msgstr "为什么这些指标很重要"
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "The bundle is the data shipped to every user across the globe. A larger bundle means longer download times — especially on slow 3G connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves."
+msgstr "Bundle 是运送给全球每一位用户的数据。更大的 Bundle 意味着更长的下载时间——尤其是在许多地区常见的缓慢 3G 连接上。i18n 库的重量差异巨大：从几 KB 到数十 KB 的运行时代码，再加上翻译文件本身。"
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Rendering & Hydration"
+msgstr "渲染与注水"
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Connecting a large JSON dictionary to every component creates a hidden dependency: any change in the translation context can trigger re-renders across the entire tree. During SSR hydration, parsing and attaching massive translation objects adds latency before the page becomes interactive — directly impacting Time to Interactive (TTI)."
+msgstr "将大型 JSON 字典连接到每个组件会创建一个隐藏的依赖关系：翻译上下文中的任何更改都可能触发整个树的重新渲染。在 SSR 注水期间，解析和附加庞大的翻译对象会在页面变得可交互之前增加延迟——直接影响可交互时间 (TTI)。"
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Dynamic Loading"
+msgstr "动态加载"
+
+#: src/components/pages/home/WhyItMatters.svelte
+msgid "Loading all translations upfront overloads the initial payload. Dynamic (lazy) loading splits translations by route or namespace, sending only what the current page needs. However, lazy loading introduces its own trade-offs: waterfall requests, flash of untranslated content, and caching complexity. Measuring both strategies is essential."
+msgstr "预先加载所有翻译会使初始有效载荷过载。动态（懒）加载按路由或命名空间拆分翻译，仅发送当前页面所需的内容。然而，懒加载也会带来自身的权衡：瀑布请求、未翻译内容的闪烁以及缓存复杂性。衡量这两种策略至关重要。"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "Understanding the Impact"
+msgstr "理解影响"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "Why a single large JSON can hurt performance"
+msgstr "为什么单个大型 JSON 会损害性能"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "Many i18n libraries store translations in a single JSON object provided via React context. When this object is large (thousands of keys), every component that consumes translations holds a reference to the entire dictionary. This means:"
+msgstr "许多 i18n 库将翻译存储在通过 React 上下文提供的单个 JSON 对象中。当这个对象很大（数千个键）时，每个使用翻译的组件都会持有对整个字典的引用。这意味着："
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "The JSON must be parsed on every page load — blocking the main thread."
+msgstr "JSON 必须在每次页面加载时进行解析 —— 这会阻塞主线程。"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "Context-based architectures can cause cascading re-renders when the locale changes, because every consumer is notified even if their specific keys didn't change."
+msgstr "当本地化发生变化时，基于上下文的架构可能会导致级联重新渲染，因为即使某些组件的特定键没有变化，每个消费者也会收到通知。"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "During server-side rendering, the full dictionary is serialized into the HTML payload, increasing the document size that must be downloaded and hydrated."
+msgstr "在服务器端渲染期间，整个字典会被序列化到 HTML 负载中，从而增加了必须下载和注水的文件大小。"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "The trade-offs of dynamic loading"
+msgstr "动态加载的权衡"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "Splitting translations into per-route or per-namespace chunks can dramatically reduce the initial payload. But it introduces new challenges:"
+msgstr "将翻译拆分为按路由或按命名空间的块可以显著减少初始负载。但它引入了新的挑战："
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "<0>Waterfall requests:</0> the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
+msgstr "<0>Waterfall requests:</0> the app must first load, determine the locale, then fetch the right chunk — adding network round-trips."
+
+#~ msgid "<0>Flash of untranslated content (FOUC):</0>{0} users may briefly see translation keys or a fallback language before the chunk arrives."
+#~ msgstr "<0>Flash of untranslated content (FOUC):</0>{0} users may briefly see translation keys or a fallback language before the chunk arrives."
+
+#~ msgid "<0>Cache invalidation:</0>{0} updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+#~ msgstr "<0>Cache invalidation:</0>{0} updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "What this benchmark measures"
+msgstr "此基准测试测量什么"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "This test app provides a controlled environment — 10 pages with realistic content — to compare i18n libraries across three axes: the weight they add to your JavaScript bundle, the time spent parsing and rendering translated content, and the effectiveness of their code-splitting and lazy-loading strategies. Each library is integrated into the same app so results are directly comparable."
+msgstr "此测试应用提供了一个受控环境 —— 10 个具有现实内容的页面 —— 以在三个维度上比较 i18n 库：它们为 JavaScript 包增加的重量、解析和渲染翻译内容所花费的时间，以及它们的代码拆分和懒加载策略的有效性。每个库都集成到同一个应用中，因此结果具有直接可比性。"
+
+#: src/components/pages/pricing/PricingHeader.svelte
+msgid "Simple, Transparent Pricing"
+msgstr "Simple, Transparent Pricing"
+
+#: src/components/pages/pricing/PricingHeader.svelte
+msgid "Choose the plan that fits your team. No hidden fees."
+msgstr "Choose the plan that fits your team. No hidden fees."
+
+#: src/components/pages/pricing/PricingTiers.svelte
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Enterprise"
+msgstr "Enterprise"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Contact Sales"
+msgstr "联系销售人员"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Get Started"
+msgstr "开始使用"
+
+#: src/components/pages/settings/ApiAccessSection.svelte
+msgid "API Access"
+msgstr "API 访问"
+
+#: src/components/pages/settings/ApiAccessSection.svelte
+msgid "API Key"
+msgstr "API 密钥"
+
+#: src/components/pages/settings/ApiAccessSection.svelte
+msgid "Copy"
+msgstr "复制"
+
+#: src/components/pages/settings/ApiAccessSection.svelte
+msgid "Use this key to access the benchmarking API programmatically."
+msgstr "使用此密钥以编程方式访问基准测试 API。"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Preferences"
+msgstr "偏好设置"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Email Notifications"
+msgstr "邮件通知"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Receive weekly benchmark reports"
+msgstr "接收每周基准测试报告"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Toggle notifications"
+msgstr "Toggle notifications"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Dark Mode"
+msgstr "深色模式"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Use dark color scheme"
+msgstr "使用深色配色方案"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Toggle dark mode"
+msgstr "Toggle dark mode"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Default Language"
+msgstr "默认语言"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "English (en)"
+msgstr "English (en)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "French (fr)"
+msgstr "French (fr)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "German (de)"
+msgstr "German (de)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Spanish (es)"
+msgstr "Spanish (es)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Japanese (ja)"
+msgstr "Japanese (ja)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Chinese Simplified (zh-CN)"
+msgstr "Chinese Simplified (zh-CN)"
+
+#: src/components/pages/settings/PreferencesSection.svelte
+msgid "Arabic (ar)"
+msgstr "Arabic (ar)"
+
+#: src/components/pages/settings/SettingsFooter.svelte
+msgid "Cancel"
+msgstr "取消"
+
+#: src/components/pages/settings/SettingsFooter.svelte
+msgid "Save Changes"
+msgstr "保存更改"
+
+#: src/components/pages/settings/ProfileSection.svelte
+msgid "Profile"
+msgstr "个人资料"
+
+#: src/components/pages/settings/ProfileSection.svelte
+msgid "Display Name"
+msgstr "显示名称"
+
+#: src/components/pages/settings/ProfileSection.svelte
+msgid "John Developer"
+msgstr "John Developer"
+
+#: src/components/pages/settings/SettingsHeader.svelte
+msgid "Manage your account preferences and configuration."
+msgstr "管理您的账户偏好和配置。"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Learn More"
+msgstr "了解更多"
+
+#: src/components/pages/products/ProductsHeader.svelte
+msgid "Tools and services to streamline your internationalization workflow."
+msgstr "Tools and services to streamline your internationalization workflow."
+
+#: src/components/pages/team/TeamHeader.svelte
+msgid "Our Team"
+msgstr "我们的团队"
+
+#: src/components/pages/team/TeamHeader.svelte
+msgid "Meet the people behind i18n Benchmark. A diverse team united by a shared passion for great developer tools."
+msgstr "认识 i18n 基准测试背后的团队。一支多元化的团队，因为对优秀开发人员工具的共同热情而团结在一起。"
+
+#~ msgid "Hello \"__root\"!"
+#~ msgstr ""
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Starter"
+msgstr "入门版"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Community support"
+msgstr "社区支持"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Public results"
+msgstr "公开结果"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Pro"
+msgstr "专业版"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Unlimited runs"
+msgstr "无限次运行"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "All libraries"
+msgstr "所有库"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Priority support"
+msgstr "优先支持"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Private results"
+msgstr "私有结果"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "CI integration"
+msgstr "CI 集成"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Historical data"
+msgstr "历史数据"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Custom"
+msgstr "定制"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Everything in Pro"
+msgstr "包含专业版中的所有功能"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "On-premise option"
+msgstr "本地部署选项"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Dedicated account manager"
+msgstr "专属客户经理"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Custom SLAs"
+msgstr "定制 SLA"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Audit logs"
+msgstr "审计日志"
+
+#: src/components/pages/pricing/PricingTiers.svelte
+msgid "Training sessions"
+msgstr "培训课程"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Comparing i18n Libraries in 2026: A Deep Dive"
+msgstr "2026 年 i18n 库对比：深度分析"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "March 15, 2026"
+msgstr "2026年3月15日"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "We tested 12 different internationalization libraries across performance, bundle size, and DX. Here are the surprising results."
+msgstr "我们在性能、包大小和 DX 方面测试了 12 种不同的国际化库。以下是令人惊讶的结果。"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Benchmark"
+msgstr "基准测试"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "How to Reduce Your i18n Bundle by 60%"
+msgstr "如何将 i18n 包大小减少 60%"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "March 8, 2026"
+msgstr "2026年3月8日"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Practical strategies for optimizing translation bundles including lazy loading, code splitting, and compile-time optimizations."
+msgstr "优化翻译包的实用策略，包括延迟加载、代码拆分和编译时优化。"
+
+#: src/components/pages/blog/BlogList.svelte
+#: src/components/pages/blog/BlogList.svelte
+msgid "Tutorial"
+msgstr "教程"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "The State of Internationalization in React"
+msgstr "React 国际化现状"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "February 28, 2026"
+msgstr "2026年2月28日"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "An overview of the current i18n ecosystem in React, covering trends, emerging patterns, and community preferences."
+msgstr "React 中当前 i18n 生态系统的概述，涵盖趋势、新兴模式和社区偏好。"
+
+#: src/components/pages/blog/BlogList.svelte
+#: src/components/pages/blog/BlogList.svelte
+msgid "Analysis"
+msgstr "分析"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Migrating from react-i18next to Lingui"
+msgstr "从 react-i18next 迁移到 Lingui"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "February 15, 2026"
+msgstr "2026年2月15日"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "A step-by-step guide on migrating a production app with 50,000 translation keys from react-i18next to Lingui."
+msgstr "关于将具有 50,000 个翻译键的生产应用从 react-i18next 迁移到 Lingui 的分步指南。"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Server Components and i18n: What Changes?"
+msgstr "Server Components 与 i18n：发生了什么变化？"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "February 1, 2026"
+msgstr "2026年2月1日"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "React Server Components introduce new patterns for internationalization. We explore the implications and best practices."
+msgstr "React Server Components 为国际化引入了新模式。我们探讨了其影响和最佳实践。"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Benchmark Methodology: How We Test"
+msgstr "基准测试方法论：我们如何测试"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "January 20, 2026"
+msgstr "2026年1月20日"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "A transparent look at our benchmarking methodology, including test environments, statistical methods, and reproducibility."
+msgstr "透明地展示我们的基准测试方法，包括测试环境、统计方法和可复现性。"
+
+#: src/components/pages/blog/BlogList.svelte
+msgid "Meta"
+msgstr "Meta"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Sarah Chen"
+msgstr "Sarah Chen"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Founder & Lead Engineer"
+msgstr "创始人兼首席工程师"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Former Google engineer with 10 years of experience building internationalization systems at scale."
+msgstr "前 Google 工程师，在构建大规模国际化系统方面拥有 10 年经验。"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Marcus Weber"
+msgstr "Marcus Weber"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Performance Engineer"
+msgstr "性能工程师"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Specializes in JavaScript performance optimization and benchmarking methodology. Previously at Vercel."
+msgstr "专注于 JavaScript 性能优化和基准测试方法论。此前就职于 Vercel。"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Aisha Patel"
+msgstr "Aisha Patel"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Developer Advocate"
+msgstr "开发者倡导者"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Passionate about developer experience and education. Speaker at React Conf, JSConf, and i18nNext."
+msgstr "对开发者体验和教育充满热情。曾在 React Conf, JSConf 和 i18nNext 发表演讲。"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Tomás Rodríguez"
+msgstr "Tomás Rodríguez"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Full-Stack Developer"
+msgstr "全栈开发人员"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Maintains the benchmarking infrastructure and CI/CD pipeline. Open source contributor to Lingui."
+msgstr "维护基准测试基础设施和 CI/CD 流水线。Lingui 的开源贡献者。"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Yuki Tanaka"
+msgstr "Yuki Tanaka"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Data Analyst"
+msgstr "数据分析师"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Ensures statistical rigor in all benchmark results. PhD in Applied Statistics from MIT."
+msgstr "确保所有基准测试结果 agrarian 统计严谨性。获得 MIT 应用统计学博士学位。"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Elena Kowalski"
+msgstr "Elena Kowalski"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Community Manager"
+msgstr "社区经理"
+
+#: src/components/pages/team/TeamGrid.svelte
+msgid "Manages community contributions, partnerships, and events. Background in open source governance."
+msgstr "管理社区贡献、合作伙伴关系和活动。具有开源治理背景。"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Benchmark CLI"
+msgstr "基准测试 CLI"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Run benchmarks locally from your terminal. Supports custom configurations and CI integration."
+msgstr "从您的终端本地运行基准测试。支持自定义配置和 CI 集成。"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Free"
+msgstr "免费"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Benchmark Cloud"
+msgstr "基准测试云"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Automated cloud-based benchmarking with historical tracking, alerts, and team dashboards."
+msgstr "具有历史追踪、警报和团队仪表板的自动化云基准测试。"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Benchmark Enterprise"
+msgstr "基准测试企业版"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "On-premise deployment with SSO, audit logs, custom SLAs, and dedicated support."
+msgstr "支持 SSO、审计日志、定制 SLA 和专属支持的本地部署。"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Contact Us"
+msgstr "联系我们"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Migration Assistant"
+msgstr "迁移助手"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "AI-powered tool that helps migrate your codebase between i18n libraries with zero downtime."
+msgstr "AI 驱动的工具，可帮助您在 i18n 库之间迁移代码库，零停机时间。"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Translation QA"
+msgstr "翻译 QA"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Automated quality checks for missing translations, pluralization issues, and context errors."
+msgstr "自动检查翻译缺失、复数问题和上下文错误。"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Bundle Optimizer"
+msgstr "包优化器"
+
+#: src/components/pages/products/ProductsGrid.svelte
+msgid "Analyzes and optimizes your i18n bundle for production with tree-shaking and code splitting."
+msgstr "通过 tree-shaking 和代码拆分分析并优化您的生产 i18n 包。"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "What is i18n Benchmark?"
+msgstr "什么是 i18n 基准测试？"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "How are benchmarks conducted?"
+msgstr "基准测试是如何进行的？"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "We run standardized tests in isolated environments using consistent hardware. Each benchmark is repeated multiple times to ensure statistical significance. All test configurations are publicly available in our GitHub repository."
+msgstr "我们在使用一致硬件的隔离环境中运行标准化测试。每个基准测试都重复多次以确保统计显著性。所有测试配置都在我们的 GitHub 存储库中公开可用。"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Which libraries are currently supported?"
+msgstr "目前支持哪些库？"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "We support react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react, and Tolgee."
+msgstr "我们支持 react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, @fluent/react 和 Tolgee。"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Can I submit my own benchmarks?"
+msgstr "我可以提交我自己的基准测试吗？"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Yes! Community benchmark submissions are welcome. Fork our repository, add your benchmark following our contribution guide, and submit a pull request. Our team will review and merge qualifying submissions."
+msgstr "是的！欢迎社区提交基准测试。Fork 我们的存储库，按照我们的贡献指南添加您的基准测试，并提交拉取请求。我们的团队将审核并合并符合条件的提交。"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "How often are benchmarks updated?"
+msgstr "基准测试多久更新一次？"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "We re-run all benchmarks weekly against the latest stable versions of each library. Major version releases trigger an immediate re-benchmark cycle."
+msgstr "我们每周针对每个库的最新稳定版本重新运行所有基准测试。主要版本发布会立即触发重新基准测试周期。"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Is the data reliable?"
+msgstr "数据可靠吗？"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "We follow rigorous statistical methodology including warm-up runs, outlier detection, and confidence intervals. All raw data is published alongside our analysis for full transparency."
+msgstr "我们遵循严格的统计方法，包括预热运行、异常值检测和置信区间。所有原始数据都与我们的分析一起发布，以实现完全透明。"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Do you offer consulting services?"
+msgstr "你们提供咨询服务吗？"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "Yes, our Enterprise plan includes consulting hours for teams evaluating i18n solutions. We can provide tailored recommendations based on your specific use case, scale, and constraints."
+msgstr "是的，我们的企业计划包括为评估 i18n 解决方案的团队提供咨询时间。我们可以根据您的具体用例、规模和限制提供量身定制的建议。"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "How can I contribute?"
+msgstr "我该如何贡献？"
+
+#: src/components/pages/faq/FAQList.svelte
+msgid "There are many ways to contribute: submit benchmarks, improve documentation, report bugs, suggest new metrics, or sponsor the project. Visit our GitHub repository for more details."
+msgstr "有很多贡献方式：提交基准测试、改进文档、报告错误、建议新指标或赞助项目。访问我们的 GitHub 存储库了解更多详情。"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Senior Frontend Engineer"
+msgstr "高级前端工程师"
+
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Remote"
+msgstr "远程"
+
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Full-time"
+msgstr "全职"
+
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Engineering"
+msgstr "工程"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Build and maintain our benchmarking dashboard and developer tools using React, TypeScript, and Vite."
+msgstr "使用 React、TypeScript 和 Vite 构建和维护我们的基准测试仪表板和开发人员工具。"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Backend Engineer"
+msgstr "后端工程师"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Design and scale our cloud benchmarking infrastructure handling thousands of automated runs daily."
+msgstr "设计和扩展我们的云基准测试基础设施，每天处理数千次自动化运行。"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Technical Writer"
+msgstr "技术作家"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Part-time"
+msgstr "兼职"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Documentation"
+msgstr "文档"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Create comprehensive guides, API references, and tutorials for our benchmarking platform."
+msgstr "为我们的基准测试平台编写全面的指南、API 参考和教程。"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "DevRel Engineer"
+msgstr "DevRel 工程师"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "San Francisco / Remote"
+msgstr "旧金山 / 远程"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Community"
+msgstr "社区"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Engage with the i18n community through talks, workshops, blog posts, and open source contributions."
+msgstr "通过演讲、研讨会、博客文章和开源贡献与 i18n 社区互动。"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "QA Engineer"
+msgstr "QA 工程师"
+
+#: src/components/pages/careers/OpenPositions.svelte
+msgid "Ensure the accuracy and reliability of benchmark results through rigorous testing and validation."
+msgstr "通过严格的测试和验证确保基准测试结果 agrarian 准确性和可靠性。"
+
+#: src/App.svelte
+msgid "Loading..."
+msgstr ""
+
+#: src/components/Footer.svelte
+msgid "i18n Benchmark — Open-source project. Built with Svelte, Vite, and a client-side router."
+msgstr "i18n 基准测试 — 开源项目。使用 Vue, Vite 和客户端路由构建。"
+
+#: src/components/pages/contact/ContactHeader.svelte
+msgid "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at <0>contact@intlayer.org</0> ."
+msgstr "有想法、发现了错误或想贡献基准测试？请联系我们： <0>contact@intlayer.org</0> ."
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "<0>Flash of untranslated content (FOUC):</0> users may briefly see translation keys or a fallback language before the chunk arrives."
+msgstr "<0>未翻译内容闪烁 (FOUC)：</0> 在块到达之前，用户可能会短暂看到翻译键或回退语言。"
+
+#: src/components/pages/home/UnderstandingImpact.svelte
+msgid "<0>Cache invalidation:</0> updating translations requires cache-busting strategies to ensure users get fresh content without re-downloading unchanged chunks."
+msgstr "<0>缓存失效：</0> 更新翻译需要缓存刷新策略，以确保用户获得最新内容，而无需重新下载未更改的块。"

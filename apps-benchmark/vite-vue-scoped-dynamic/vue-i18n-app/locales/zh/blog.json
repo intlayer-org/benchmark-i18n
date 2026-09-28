@@ -1,0 +1,33 @@
+{
+  "header": {
+    "title": "博客",
+    "description": "来自 i18n 社区的见解、教程和分析。"
+  },
+  "list": {
+    "readMore": "阅读更多 →",
+    "post1Title": "2026 年 i18n 库对比：深度分析",
+    "post1Date": "2026年3月15日",
+    "post1Excerpt": "我们在性能、包大小和 DX 方面测试了 12 种不同的国际化库。以下是令人惊讶的结果。",
+    "post1Category": "基准测试",
+    "post2Title": "如何将 i18n 包大小减少 60%",
+    "post2Date": "2026年3月8日",
+    "post2Excerpt": "优化翻译包的实用策略，包括延迟加载、代码拆分和编译时优化。",
+    "post2Category": "教程",
+    "post3Title": "React 国际化现状",
+    "post3Date": "2026年2月28日",
+    "post3Excerpt": "React 中当前 i18n 生态系统的概述，涵盖趋势、新兴模式和社区偏好。",
+    "post3Category": "分析",
+    "post4Title": "从 react-i18next 迁移到 Lingui",
+    "post4Date": "2026年2月15日",
+    "post4Excerpt": "关于将具有 50,000 个翻译键的生产应用从 react-i18next 迁移到 Lingui 的分步指南。",
+    "post4Category": "教程",
+    "post5Title": "Server Components 与 i18n：发生了什么变化？",
+    "post5Date": "2026年2月1日",
+    "post5Excerpt": "React Server Components 为国际化引入了新模式。我们探讨了其影响和最佳实践。",
+    "post5Category": "分析",
+    "post6Title": "基准测试方法论：我们如何测试",
+    "post6Date": "2026年1月20日",
+    "post6Excerpt": "透明地展示我们的基准测试方法，包括测试环境、统计方法和可复现性。",
+    "post6Category": "Meta"
+  }
+}

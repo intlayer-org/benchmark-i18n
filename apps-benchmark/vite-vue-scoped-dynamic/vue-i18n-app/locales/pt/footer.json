@@ -1,0 +1,10 @@
+{
+  "title": "i18n Benchmark",
+  "description": "Uma aplicação de teste de código aberto para medir o impacto real das bibliotecas de internacionalização no tamanho do bundle, no tempo de carregamento e na reatividade da aplicação.",
+  "resources": "Recursos",
+  "github": "GitHub",
+  "methodology": "Metodologia",
+  "contributing": "Contribuindo",
+  "contact": "Contato",
+  "builtWith": "i18n Benchmark — Projeto de código aberto. Construído com Vue, Vite e um roteador no lado do cliente."
+}

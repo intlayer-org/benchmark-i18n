@@ -1,0 +1,21 @@
+{
+  "header": {
+    "title": "Get in Touch",
+    "description": "Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at"
+  },
+  "form": {
+    "name": "Name",
+    "yourName": "Your name",
+    "email": "Email",
+    "emailPlaceholder": "you@example.com",
+    "topic": "Topic",
+    "bugReport": "Bug Report",
+    "newBenchmarkIdea": "New Benchmark Idea",
+    "methodologyQuestion": "Methodology Question",
+    "contribution": "Contribution",
+    "other": "Other",
+    "message": "Message",
+    "messagePlaceholder": "Describe your question or idea...",
+    "sendMessage": "Send Message"
+  }
+}

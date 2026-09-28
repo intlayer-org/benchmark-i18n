@@ -1,0 +1,15 @@
+contact-header-title = Ponte en contacto
+contact-header-description = ¿Tienes ideas, has encontrado un error o quieres contribuir con un benchmark? Ponte en contacto con nosotros en
+contact-form-name = Nombre
+contact-form-your-name = Tu nombre
+contact-form-email = Correo electrónico
+contact-form-email-placeholder = tu@ejemplo.com
+contact-form-topic = Tema
+contact-form-bug-report = Informe de error
+contact-form-new-benchmark-idea = Nueva idea de benchmark
+contact-form-methodology-question = Pregunta sobre la metodología
+contact-form-contribution = Contribución
+contact-form-other = Otro
+contact-form-message = Mensaje
+contact-form-message-placeholder = Describe tu pregunta o idea...
+contact-form-send-message = Enviar mensaje

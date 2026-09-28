@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, watch, ref, onBeforeMount } from "vue";
+import { onMounted, watch, ref, onBeforeMount, nextTick } from "vue";
 import { useRoute } from "vue-router";
 import { tolgee } from "../i18n";
 import {
@@ -23,10 +23,13 @@ onMounted(() => {
 
 watch(
   () => route.params.locale,
-  (newLocale) => {
+  async (newLocale) => {
     if (newLocale) {
+      // html[lang] marks the end of the switch for the reactivity test: set it
+      // once Tolgee has applied the language and Vue has patched the DOM.
+      await tolgee.changeLanguage(newLocale as string);
+      await nextTick();
       document.documentElement.lang = newLocale as string;
-      tolgee.changeLanguage(newLocale as string);
     }
   },
   { immediate: true }

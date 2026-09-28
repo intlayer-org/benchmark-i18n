@@ -1,0 +1,11 @@
+header-home = Home
+header-methodology = Methodology
+header-mock-pages = Mock Pages
+header-products = Products
+header-pricing = Pricing
+header-team = Team
+header-blog = Blog
+header-careers = Careers
+header-faq = FAQ
+header-contact = Contact
+header-settings = Settings

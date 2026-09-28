@@ -1,0 +1,10 @@
+{
+  "title": "i18n Benchmark",
+  "description": "国際化ライブラリがバンドルサイズ、読み込み時間、アプリの反応性に与える実世界の影響を測定するためのオープンソーステストアプリケーション。",
+  "resources": "リソース",
+  "github": "GitHub",
+  "methodology": "手法",
+  "contributing": "貢献する",
+  "contact": "お問い合わせ",
+  "builtWith": "i18n Benchmark — オープンソースプロジェクト。Vue、Vite、およびクライアントサイドローターで構築されています。"
+}

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, watch, ref, onBeforeMount } from "vue";
+import { onMounted, watch, ref, onBeforeMount, nextTick } from "vue";
 import { useRoute } from "vue-router";
 import { useLocale } from "vue-intlayer";
 import {
@@ -24,10 +24,13 @@ onMounted(() => {
 
 watch(
   () => route.params.locale,
-  (newLocale) => {
+  async (newLocale) => {
     if (newLocale) {
-      document.documentElement.lang = newLocale as string;
       setLocale(newLocale as any);
+      // html[lang] is the reactivity test's end marker: set it once Vue has
+      // patched the DOM with the new locale, not when the switch starts.
+      await nextTick();
+      document.documentElement.lang = newLocale as string;
     }
   },
   { immediate: true }

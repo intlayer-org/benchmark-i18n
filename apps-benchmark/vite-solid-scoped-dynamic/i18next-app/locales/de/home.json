@@ -1,0 +1,45 @@
+{
+  "hero": {
+    "title": "i18n Benchmark",
+    "description": "Eine Testanwendung, die entwickelt wurde, um die realen Auswirkungen von Internationalisierungsbibliotheken auf die Bundle-Größe, die Ladeleistung und die Rendering-Reaktivität zu messen.",
+    "viewResults": "Ergebnisse anzeigen",
+    "methodology": "Methodik"
+  },
+  "whyItMatters": {
+    "title": "Warum diese Metriken wichtig sind",
+    "bundleSizeTitle": "Bundle-Größe",
+    "bundleSizeDesc": "Das Bundle sind die Daten, die an jeden Benutzer auf der ganzen Welt gesendet werden. Ein größeres Bundle bedeutet längere Download-Zeiten — besonders bei langsamen 3G-Verbindungen, die in vielen Regionen üblich sind. i18n-Bibliotheken variieren stark in ihrem Gewicht: von einigen Kilobyte bis zu Dutzenden von Kilobyte an Laufzeitcode, plus die Übersetzungsdateien selbst.",
+    "renderingTitle": "Rendering & Hydrierung",
+    "renderingDesc": "Die Anbindung eines großen JSON-Verzeichnisses an jede Komponente erzeugt eine versteckte Abhängigkeit: Jede Änderung im Übersetzungskontext kann Re-Renderings im gesamten Baum auslösen. Während der SSR-Hydrierung verursacht das Parsen und Anhängen massiver Übersetzungsobjekte Latenzzeit, bevor die Seite interaktiv wird — was sich direkt auf die Time to Interactive (TTI) auswirkt.",
+    "dynamicLoadingTitle": "Dynamisches Laden",
+    "dynamicLoadingDesc": "Das Laden aller Übersetzungen im Voraus überlastet die anfängliche Nutzlast. Dynamisches (Lazy) Laden teilt Übersetzungen nach Route oder Namespace auf und sendet nur das, was die aktuelle Seite benötigt. Lazy Loading bringt jedoch eigene Kompromisse mit sich: Waterfall-Anfragen, Flash of Untranslated Content und Caching-Komplexität. Die Messung beider Strategien ist unerlässlich."
+  },
+  "understandingImpact": {
+    "title": "Die Auswirkungen verstehen",
+    "singleJsonTitle": "Warum ein einzelnes großes JSON die Leistung beeinträchtigen kann",
+    "singleJsonIntro": "Viele i18n-Bibliotheken speichern Übersetzungen in einem einzigen JSON-Objekt, das über den React-Kontext bereitgestellt wird. Wenn dieses Objekt groß ist (Tausende von Schlüsseln), hält jede Komponente, die Übersetzungen verbraucht, eine Referenz auf das gesamte Verzeichnis. Das bedeutet:",
+    "singleJsonBullet1": "Das JSON muss bei jedem Seitenladen analysiert werden — was den Haupt-Thread blockiert.",
+    "singleJsonBullet2": "Kontextbasierte Architekturen können kaskadierende Re-Renderings verursachen, wenn sich die Sprache ändert, da jeder Konsument benachrichtigt wird, auch wenn sich seine spezifischen Schlüssel nicht geändert haben.",
+    "singleJsonBullet3": "Beim serverseitigen Rendering wird das vollständige Verzeichnis in die HTML-Nutzlast serialisiert, was die Dokumentgröße erhöht, die heruntergeladen und hydriert werden muss.",
+    "tradeOffsTitle": "Die Kompromisse beim dynamischen Laden",
+    "tradeOffsIntro": "Das Aufteilen von Übersetzungen in Chunks pro Route oder pro Namespace kann die anfängliche Nutzlast drastisch reduzieren. Es bringt jedoch neue Herausforderungen mit sich:",
+    "waterfallLabel": "Waterfall-Anfragen:",
+    "waterfallDesc": "Die App muss zuerst laden, die Sprache bestimmen und dann den richtigen Chunk abrufen — was zusätzliche Netzwerk-Roundtrips verursacht.",
+    "foucLabel": "Flash of Untranslated Content (FOUC):",
+    "foucDesc": "Benutzer sehen möglicherweise kurzzeitig Übersetzungsschlüssel oder eine Fallback-Sprache, bevor der Chunk eintrifft.",
+    "cacheLabel": "Cache-Invalidierung:",
+    "cacheDesc": "Die Aktualisierung von Übersetzungen erfordert Strategien zur Cache-Invalidierung, um sicherzustellen, dass Benutzer frische Inhalte erhalten, ohne unveränderte Chunks erneut herunterzuladen.",
+    "measuresTitle": "Was dieser Benchmark misst",
+    "measuresDesc": "Diese Testanwendung bietet eine kontrollierte Umgebung — 10 Seiten mit realistischen Inhalten —, um i18n-Bibliotheken auf drei Achsen zu vergleichen: das Gewicht, das sie Ihrem JavaScript-Bundle hinzufügen, die Zeit, die für das Parsen und Rendern übersetzter Inhalte aufgewendet wird, und die Effektivität ihrer Code-Splitting- und Lazy-Loading-Strategien. Jede Bibliothek ist in dieselbe Anwendung integriert, sodass die Ergebnisse direkt vergleichbar sind."
+  },
+  "resultsTable": {
+    "title": "Beispielergebnisse",
+    "library": "Bibliothek",
+    "bundleSize": "Bundle-Größe",
+    "lookupTime": "Lookup-Zeit",
+    "lazyLoading": "Lazy Loading",
+    "yes": "Ja",
+    "manual": "Manuell",
+    "builtIn": "Integriert"
+  }
+}

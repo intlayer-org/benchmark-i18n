@@ -1,0 +1,38 @@
+{
+  "header": {
+    "title": "Ajustes",
+    "description": "Gestiona las preferencias y la configuración de tu cuenta."
+  },
+  "profile": {
+    "title": "Perfil",
+    "displayName": "Nombre visible",
+    "email": "Correo electrónico"
+  },
+  "preferences": {
+    "title": "Preferencias",
+    "emailNotifications": "Notificaciones por correo electrónico",
+    "weeklyReports": "Recibir informes semanales de benchmarks",
+    "toggleNotifications": "Cambiar notificaciones",
+    "darkMode": "Modo oscuro",
+    "darkColorScheme": "Usar esquema de colores oscuro",
+    "toggleDarkMode": "Cambiar modo oscuro",
+    "defaultLanguage": "Idioma predeterminado",
+    "english": "Inglés (en)",
+    "french": "Francés (fr)",
+    "german": "Alemán (de)",
+    "spanish": "Español (es)",
+    "japanese": "Japonés (ja)",
+    "chinese": "Chino simplificado (zh-CN)",
+    "arabic": "Árabe (ar)"
+  },
+  "apiAccess": {
+    "title": "Acceso API",
+    "apiKey": "Llave API",
+    "copy": "Copiar",
+    "description": "Usa esta llave para acceder a la API de benchmarking de forma programática."
+  },
+  "footer": {
+    "cancel": "Cancelar",
+    "saveChanges": "Guardar cambios"
+  }
+}

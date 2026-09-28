@@ -1,0 +1,7 @@
+{
+  "auto": "Thème : automatique",
+  "dark": "Thème : sombre",
+  "light": "Thème : clair",
+  "labelAuto": "Mode thème : automatique (système). Cliquez pour passer en mode clair.",
+  "labelOther": "Mode thème : {mode}. Cliquez pour changer de mode."
+}

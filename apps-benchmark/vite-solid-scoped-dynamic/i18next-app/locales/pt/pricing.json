@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "Preços simples e transparentes",
+    "description": "Escolha o plano que se adapta à sua equipe. Sem taxas ocultas."
+  },
+  "tiers": {
+    "starterName": "Starter",
+    "starterPrice": "0 $",
+    "starterPeriod": "para sempre",
+    "starterFeature1": "5 execuções de benchmark/dia",
+    "starterFeature2": "3 bibliotecas",
+    "starterFeature3": "Suporte da comunidade",
+    "starterFeature4": "Resultados públicos",
+    "proName": "Pro",
+    "proPrice": "29 $",
+    "proPeriod": "/mês",
+    "proFeature1": "Execuções ilimitadas",
+    "proFeature2": "Todas as bibliotecas",
+    "proFeature3": "Suporte prioritário",
+    "proFeature4": "Resultados privados",
+    "proFeature5": "Integração CI",
+    "proFeature6": "Dados históricos",
+    "enterpriseName": "Enterprise",
+    "enterprisePrice": "Personalizado",
+    "enterpriseFeature1": "Tudo o que está no Pro",
+    "enterpriseFeature2": "Opção on-premise",
+    "enterpriseFeature3": "SSO e SAML",
+    "enterpriseFeature4": "Gerente de conta dedicado",
+    "enterpriseFeature5": "SLAs personalizados",
+    "enterpriseFeature6": "Logs de auditoria",
+    "enterpriseFeature7": "Sessões de treinamento",
+    "contactSales": "Contatar vendas",
+    "getStarted": "Começar"
+  }
+}

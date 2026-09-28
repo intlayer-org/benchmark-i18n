@@ -1,0 +1,7 @@
+{
+  "auto": "Thema: Auto",
+  "dark": "Thema: Dunkel",
+  "light": "Thema: Hell",
+  "labelAuto": "Themenmodus: Auto (System). Klicken Sie hier, um zum hellen Modus zu wechseln.",
+  "labelOther": "Themenmodus: {mode}. Klicken Sie hier, um den Modus zu wechseln."
+}

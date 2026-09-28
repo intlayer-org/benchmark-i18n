@@ -1,0 +1,33 @@
+{
+  "header": {
+    "title": "ブログ",
+    "description": "i18nコミュニティからのインサイト、チュートリアル、分析。"
+  },
+  "list": {
+    "readMore": "続きを読む →",
+    "post1Title": "2026年のi18nライブラリ比較：ディープダイブ",
+    "post1Date": "2026年3月15日",
+    "post1Excerpt": "パフォーマンス、バンドルサイズ、DXにわたって12の異なる国際化ライブラリをテストしました。驚くべき結果がここにあります。",
+    "post1Category": "ベンチマーク",
+    "post2Title": "i18nバンドルを60%削減する方法",
+    "post2Date": "2026年3月8日",
+    "post2Excerpt": "遅延読み込み、コード分割、ビルド時の最適化を含む、翻訳バンドルを最適化するための実践的な戦略。",
+    "post2Category": "チュートリアル",
+    "post3Title": "Reactにおける国際化の現状",
+    "post3Date": "2026年2月28日",
+    "post3Excerpt": "トレンド、新興パターン、コミュニティの好みをカバーする、Reactにおける現在のi18nエコシステムの概要。",
+    "post3Category": "分析",
+    "post4Title": "react-i18nextからLinguiへの移行",
+    "post4Date": "2026年2月15日",
+    "post4Excerpt": "50,000の翻訳キーを持つ本番アプリをreact-i18nextからLinguiに移行するためのステップバイステップガイド。",
+    "post4Category": "チュートリアル",
+    "post5Title": "Server Componentsとi18n：何が変わるのか？",
+    "post5Date": "2026年2月1日",
+    "post5Excerpt": "React Server Componentsは、国際化のための新しいパターンを導入します。その影響とベストプラクティスを探ります。",
+    "post5Category": "分析",
+    "post6Title": "ベンチマーク手法：テスト方法について",
+    "post6Date": "2026年1月20日",
+    "post6Excerpt": "テスト環境、統計手法、再現性など、私たちのベンチマーク手法を透明性を持って公開します。",
+    "post6Category": "メタ"
+  }
+}

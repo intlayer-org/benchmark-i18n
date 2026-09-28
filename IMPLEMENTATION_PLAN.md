@@ -237,8 +237,32 @@ For every new app:
 
 ## Summary Matrix
 
+State of `apps-benchmark/` (2026-09-27). ✅ = app exists, ⬜ = not built yet, — = skipped (reason given).
+
 | Library | static | dynamic | scoped-static | scoped-dynamic |
 | --- | --- | --- | --- | --- |
+| react-intlayer | ✅ | ✅ | — *per-component dictionaries already* | — *same* |
+| react-i18next / react-intl / use-intl / lingui / tolgee (Vite+React) | ✅ | ✅ | ⬜ | ⬜ |
+| paraglide (Vite+React) | ✅ | — *no async loader* | — | — |
+| vue-i18n | ✅ | ✅ | ✅ | ✅ |
+| fluent-vue | ✅ | ⬜ | ✅ | ✅ |
+| vue-intlayer | ✅ | ⚠ *config = static (optimize off upstream)* | — *per-component dictionaries already* | — |
+| paraglide-js (vue) | ✅ | ⬜ | — *skipped, tree-shaken* | — |
+| tolgee (vue / svelte / solid) | ✅ | ✅ | ⬜ | ⬜ |
+| paraglide-js (svelte) | ✅ | ⬜ | — *skipped, tree-shaken* | — *skipped* |
+| svelte-i18n | ✅ | ✅ | — *no scope concept* | — *no scope concept* |
+| svelte-intlayer | ✅ | ✅ | — *per-component dictionaries already* | — |
+| wuchale (svelte) | ✅ | ⬜ | ⬜ | ⬜ |
+| @solid-primitives/i18n | ✅ | ⬜ | — *single global dict* | — *single global dict* |
+| paraglide-js (solid) | ✅ | ⬜ | — *skipped, tree-shaken* | — *skipped* |
+| solid-i18next | ✅ | ✅ | ✅ (per-page namespaces) | ✅ (per-page namespaces) |
+| solid-intlayer | ✅ | ✅ | — *per-component dictionaries already* | — |
+
+Intlayer apps compile one dictionary per component (`compiler.enabled`), so their
+static/dynamic apps are already scoped; the report falls back to them for the
+scoped rows (↳ Static / ↳ Dynamic).
+
+--- | --- | --- | --- | --- |
 | react-intlayer | ✅ | ✅ | ✅ | ✅ |
 | vue-i18n | ✅ | ✅ | ✅ | ✅ |
 | fluent-vue | ✅ | ✅ | ✅ | ✅ |

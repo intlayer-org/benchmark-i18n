@@ -1,0 +1,21 @@
+{
+  "header": {
+    "title": "문의하기",
+    "description": "아이디어가 있거나 버그를 찾았거나 벤치마크에 기여하고 싶으신가요? 다음으로 연락 주세요"
+  },
+  "form": {
+    "name": "이름",
+    "yourName": "이름을 입력하세요",
+    "email": "이메일",
+    "emailPlaceholder": "you{'@'}example.com",
+    "topic": "주제",
+    "bugReport": "버그 신고",
+    "newBenchmarkIdea": "새 벤치마크 아이디어",
+    "methodologyQuestion": "방법론 질문",
+    "contribution": "기여",
+    "other": "기타",
+    "message": "메시지",
+    "messagePlaceholder": "질문이나 아이디어를 적어 주세요...",
+    "sendMessage": "메시지 보내기"
+  }
+}

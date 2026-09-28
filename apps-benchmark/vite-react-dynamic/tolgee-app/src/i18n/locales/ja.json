@@ -1,0 +1,327 @@
+{
+  "route": {
+    "oopsPageNotFound": "おっと！ページが見つかりません",
+    "returnToHome": "ホームに戻る",
+    "couldNotMeasureHydrationDuration": "ハイドレーション時間を測定できませんでした："
+  },
+  "header": {
+    "home": "ホーム",
+    "methodology": "測定方法",
+    "mockPages": "モックページ",
+    "products": "製品",
+    "pricing": "料金",
+    "team": "チーム",
+    "blog": "ブログ",
+    "careers": "採用情報",
+    "faq": "FAQ",
+    "contact": "お問い合わせ",
+    "settings": "設定",
+    "goToGithub": "GitHubへ"
+  },
+  "footer": {
+    "resources": "リソース",
+    "contact": "お問い合わせ",
+    "github": "GitHub",
+    "methodology": "測定方法",
+    "contributing": "貢献する",
+    "builtWith": "i18n Benchmark — オープンソースプロジェクト。React, Vite & TanStack Routerで構築されています。",
+    "anOpenSourceTestApplication": "国際化ライブラリがバンドルサイズ、ロード時間、アプリの反応性に与える実際の影響を測定するためのオープンソースのテストアプリケーションです。"
+  },
+  "common": {
+    "readMore": "もっと読む",
+    "copy": "コピー",
+    "cancel": "キャンセル",
+    "saveChanges": "変更を保存"
+  },
+  "themeToggle": {
+    "themeModeAutoSystemClick": "テーマモード：自動（システム）。クリックしてライトモードに切り替えます。",
+    "themeModeLightClick": "テーマモード：ライト。クリックしてダークモードに切り替えます。",
+    "themeModeDarkClick": "テーマモード：ダーク。クリックして自動（システム）モードに切り替えます。",
+    "themeAuto": "テーマ：自動",
+    "themeDark": "テーマ：ダーク",
+    "themeLight": "テーマ：ライト"
+  },
+  "hero": {
+    "aTestApplicationDesignedTo": "国際化ライブラリがバンドルサイズ、ロードパフォーマンス、レンダリングの反応性に与える実際の影響を測定するために設計されたテストアプリケーションです。",
+    "viewResults": "結果を見る"
+  },
+  "whyItMatters": {
+    "bundleSize": "バンドルサイズ",
+    "connectingALargeJsonDictionary": "大きな JSON 辞書を各コンポーネントに接続すると、隠れた依存関係が生じます。翻訳コンテキストの変更は、ツリー全体の再レンダリングをトリガーする可能性があります。SSR ハイドレーション中、巨大な翻訳オブジェクトの解析とアタッチにより、ページがインタラクティブになるまでのレイテンシが増加し、Time to Interactive (TTI) に直接影響します。",
+    "dynamicLoading": "ダイナミックローディング",
+    "loadingAllTranslationsUpfrontOverloads": "すべての翻訳を事前読み込みすると、初期ペイロードが過負荷になります。ダイナミック（遅延）読み込みは、ルートまたは名前空間ごとに翻訳を分割し、現在のページに必要なものだけを送信します。ただし、遅延読み込みには、ウォーターフォールリクエスト、翻訳されていないコンテンツのフラッシュ、キャッシュの複雑さなどのトレードオフがあります。両方の戦略を測定することが不可欠です。",
+    "renderingHydration": "レンダリングとハイドレーション",
+    "theBundleIsTheData": "バンドルは、世界中のすべてのユーザーに送られるデータです。バンドルが大きいほど、ダウンロード時間が長くなります。これは、多くの地域で一般的な低速な 3G 接続では特に顕著です。i18n ライブラリはその重量が劇的に異なります。数キロバイトから数十キロバイトのランタイムコード、さらに翻訳ファイル自体が含まれます。",
+    "whyTheseMetricsMatter": "これらの指標が重要な理由"
+  },
+  "understandingImpact": {
+    "cacheInvalidation": "キャッシュの無効化：",
+    "contextBasedArchitecturesCanCause": "コンテキストベースのアーキテクチャでは、ロケールが変更されるとカスケード再レンダリングが発生する可能性があります。これは、特定のキーが変更されていなくても、すべてのコンシューマーに通知されるためです。",
+    "duringServerSideRenderingThe": "サーバーサイドレンダリング中、辞書全体がHTMLペイロードにシリアル化され、ダウンロードしてシリアライズする必要があるドキュメントサイズが増加します。",
+    "flashOfUntranslatedContentFouc": "未翻訳コンテンツのフラッシュ(FOUC)：",
+    "manyI18nLibrariesStoreTranslations": "多くのi18nライブラリは、Reactコンテキストを介して提供される単一のJSONオブジェクトに翻訳を保存します。このオブジェクトが大きい（数千のキーがある）場合、翻訳を消費するすべてのコンポーネントが辞書全体への参照を保持します。これは以下のことを意味します：",
+    "splittingTranslationsIntoPerRoute": "翻訳をルートごとまたは名前空間ごとのチャンクに分割すると、初期ペイロードを劇的に削減できます。しかし、それは新たな課題をもたらします：",
+    "theJsonMustBeParsed": "JSONはページを読み込むたびに解析する必要があり、メインスレッドをブロックします。",
+    "theTradeOffsOfDynamic": "動的読み込みのトレードオフ",
+    "thisTestAppProvidesA": "このテストアプリは、10ページの現実的なコンテンツで制御された環境を提供し、18nライブラリを3つの軸で比較します。JavaScriptバンドルに追加される重み、翻訳されたコンテンツの解析とレンダリングに費やされる時間、およびコード分割と遅延読み込み戦略の有効性です。各ライブラリは同じアプリに統合されているため、結果を直接比較できます。",
+    "understandingTheImpact": "影響を理解する",
+    "waterfallRequests": "ウォーターフォールリクエスト：",
+    "whatThisBenchmarkMeasures": "このベンチマークが測定するもの",
+    "whyASingleLargeJson": "なぜ1つの大きなJSONがパフォーマンスを低下させるのか"
+  },
+  "resultsTable": {
+    "bundleSize": "バンドルサイズ",
+    "lazyLoading": "遅延読み込み",
+    "library": "ライブラリ",
+    "lookupTime": "検索時間",
+    "sampleResults": "サンプル結果"
+  },
+  "aboutHeader": {
+    "aboutThisBenchmark": "このベンチマークについて",
+    "thisIsAnOpenSource": "これはオープンソースのテストアプリケーションであり、製品や企業ではありません。その唯一の目的は、さまざまな i18n ライブラリを同一条件下で統合および測定できる、現実的なマルチページ React アプリを提供することです。"
+  },
+  "aboutGrid": {
+    "choosingAnI18nLibraryIs": "i18n ライブラリの選択は、長期的な影響を伴うアーキテクチャ上の決定です。ほとんどの比較は API の使いやすさに焦点を当てていますが、パフォーマンスコストを測定しているものはほとんどありません。ライブラリはバンドルにどれだけの重みを加えるのか？数千の翻訳キーが読み込まれたとき、レンダリングにどのような影響を与えるのか？遅延読み込みは本当に役立つのか、それともコストをシフトさせるだけなのか？このベンチマークは、実際のデータでそれらの質問に答えます。",
+    "methodology": "方法論",
+    "theSame10PageApp": "同じ 10 ページのアプリがライブラリごとに 1 回構築されます。プロダクションバンドルを測定し（rollup-plugin-visualizer を使用）、読み込みメトリクスの Lighthouse 監査を実行し、React Profiler を使用してロケール切り替え中のレンダリング時間をキャプチャします。再現可能な結果を保証するために、すべてのテストは一貫したハードウェア上の CI で実行されます。",
+    "whyThisExists": "なぜこれが存在するのか"
+  },
+  "whatWeMeasure": {
+    "bundleSizeImpact": "バンドルサイズへの影響",
+    "duringSsrTranslationDataIs": "SSR 中、翻訳データは HTML にシリアル化されます。大規模な辞書は HTML ペイロードを増加させ、ページがインタラクティブになる瞬間であるハイドレーションを遅らせます。",
+    "howFastTheAppCan": "ランタイム時にアプリが言語をどれだけ速く切り替えられるか。これには、新しい翻訳の取得、コンポーネントの再レンダリング、DOM の更新が含まれます。",
+    "howMuchExtraTimeThe": "ライブラリが React のレンダリングサイクルにどれだけの時間を追加するか。単一のコンテキストプロバイダーを介して翻訳を挿入するライブラリは、コンポーネントツリー全体で不必要な再レンダリングを引き起こす可能性があります。",
+    "hydrationCost": "ハイドレーションのコスト",
+    "lazyLoadingEffectiveness": "遅延読み込みの有効性",
+    "localeSwitchSpeed": "ロケール切り替え速度",
+    "renderingOverhead": "レンダリングのオーバーヘッド",
+    "theAdditionalJavascriptBytesSent": "i18n ライブラリとその翻訳ファイルが含まれているときにユーザーに送信される追加の JavaScript バイト。これは、低速なネットワークでのダウンロード時間に直接影響します。",
+    "whatWeMeasure": "測定対象",
+    "whetherSplittingTranslationsByRoute": "ルートや名前空間ごとに翻訳を分割することが実際に初期読み込みを削減するかどうか、そしてどのようなトレードオフを導入するか（ウォーターフォールリクエスト、FOUC、キャッシュの複雑さ）。"
+  },
+  "blogHeader": {
+    "blog": "ブログ",
+    "insightsDeepDivesAnd": "i18nベンチマークコミュニティからの洞察、深掘り、アップデート。",
+    "insightsTutorialsAndAnalysis": "i18nコミュニティからの洞察、チュートリアル、分析。"
+  },
+  "blogList": {
+    "analysis": "分析",
+    "anOverviewOfTheCurrent": "トレンド、新たなパターン、コミュニティの好みなど、React における現在の i18n エコシステムの概要。",
+    "aStepByStepGuide": "50,000 の翻訳キーを持つプロダクションアプリを react-i18next から Lingui に移行するためのステップバイステップガイド。",
+    "aTransparentLookAtOur": "テスト環境、統計手法、再現性など、当社のベンチマーク方法論を透過的に公開します。",
+    "benchmark": "ベンチマーク",
+    "benchmarkMethodologyHowWeTest": "ベンチマークの方法論：テスト方法",
+    "comparingI18nLibrariesIn2026": "2026 年の i18n ライブラリの比較：詳細な分析",
+    "february12026": "2026年2月1日",
+    "february152026": "2026年2月15日",
+    "february282026": "2026年2月28日",
+    "howToReduceYourI18n": "i18n バンドルを 60% 削減する方法",
+    "january202026": "2026年1月20日",
+    "march152026": "2026年3月15日",
+    "march82026": "2026年3月8日",
+    "meta": "メタ",
+    "migratingFromReactI18nextTo": "react-i18next から Lingui への移行",
+    "practicalStrategiesForOptimizingTranslation": "遅延読み込み、コード分割、コンパイル時の最適化などの翻訳バンドルを最適化するための実用的な戦略。",
+    "reactServerComponentsIntroduceNew": "React サーバーコンポーネントは、国際化のための新しいパターンを導入します。その影響とベストプラクティスを検討します。",
+    "readMore": "続きを読む →",
+    "serverComponentsAndI18nWhat": "サーバーコンポーネントと i18n：何が変わるのか？",
+    "theStateOfInternationalizationIn": "React における国際化の現状",
+    "tutorial": "チュートリアル",
+    "weTested12DifferentInternationalization": "パフォーマンス、バンドルサイズ、DX にわたって 12 の異なる国際化ライブラリをテストしました。驚くべき結果が得られました。"
+  },
+  "careersHeader": {
+    "joinOurMissionToImprove": "国際化エコシステムを改善するという私たちの使命に参加してください。私たちは、影響力、透明性、継続的な学習を重視するリモートファーストのチームです。",
+    "title": "採用情報"
+  },
+  "careersBenefits": {
+    "competitivePay": "競争力のある報酬",
+    "openSourceTime": "オープンソースの時間",
+    "remoteFirst": "リモートファースト",
+    "topOfMarketCompensation": "市場最高水准の報酬",
+    "workFromAnywhereInThe": "世界中どこからでも仕事ができます",
+    "x20TimeForOssContributions": "OSS への貢献に 20% の時間を割く"
+  },
+  "openPositions": {
+    "applyNow": "今すぐ応募",
+    "backendEngineer": "バックエンドエンジニア",
+    "buildAndMaintainOurBenchmarking": "React、TypeScript、Vite を使用して、ベンチマークダッシュボードと開発者ツールを構築・保守します。",
+    "community": "コミュニティ",
+    "createComprehensiveGuidesApiReferences": "ベンチマークプラットフォーム向けの包括的なガイド、API リファレンス、およびチュートリアルを作成します。",
+    "designAndScaleOurCloud": "毎日数千の自動実行を処理するクラウドベンチマークインフラストラクチャを設計・拡張します。",
+    "devrelEngineer": "DevRel エンジニア",
+    "documentation": "ドキュメント",
+    "engageWithTheI18nCommunity": "講演、ワークショップ、ブログ投稿、オープンソースへの貢献を通じて、i18n コミュニティと交流します。",
+    "engineering": "エンジニアリング",
+    "ensureTheAccuracyAndReliability": "厳密なテストと検証を通じて、ベンチマーク結果の正確性と信頼性を確保します。",
+    "fullTime": "正社員",
+    "openPositions": "募集職種",
+    "partTime": "アルバイト",
+    "qaEngineer": "QA エンジニア",
+    "remote": "リモート",
+    "sanFranciscoRemote": "サンフランシスコ / リモート",
+    "seniorFrontendEngineer": "シニアフロントエンドエンジニア",
+    "technicalWriter": "テクニカルライター"
+  },
+  "contactHeader": {
+    "getInTouch": "お問い合わせ",
+    "haveIdeasFoundABug": "アイデアがある、バグを見つけた、またはベンチマークを提供したいですか？こちらまでご連絡ください"
+  },
+  "contactForm": {
+    "name": "お名前",
+    "yourName": "あなたのお名前",
+    "email": "メールアドレス",
+    "emailPlaceholder": "you@example.com",
+    "subject": "件名",
+    "topic": "トピック",
+    "bugReport": "バグ報告",
+    "newBenchmarkIdea": "新しいベンチマークのアイデア",
+    "methodologyQuestion": "測定方法に関する質問",
+    "contribution": "貢献",
+    "other": "その他",
+    "message": "メッセージ",
+    "messagePlaceholder": "質問やアイデアの内容を記入してください...",
+    "sendMessage": "メッセージを送信",
+    "wellGetBackTo": "48時間以内に返信いたします。"
+  },
+  "faqHeader": {
+    "everythingYouNeedToKnow": "i18n Benchmark について知っておくべきことのすべて。",
+    "frequentlyAskedQuestions": "よくある質問"
+  },
+  "faqList": {
+    "canISubmitMyOwn": "独自のベンチマークを送信できますか？",
+    "doYouOfferConsultingServices": "コンサルティングサービスを提供していますか？",
+    "howAreBenchmarksConducted": "ベンチマークはどのように行われますか？",
+    "howCanIContribute": "どのように貢献できますか？",
+    "howOftenAreBenchmarksUpdated": "ベンチマークはどのくらいの頻度で更新されますか？",
+    "isTheDataReliable": "データは信頼できますか？",
+    "thereAreManyWaysTo": "貢献する方法はたくさんあります。ベンチマークの送信、ドキュメントの改善、バグの報告、新しい指標の提案、プロジェクトのスポンサーなどです。詳細については、GitHub リポジトリをご覧ください。",
+    "weFollowRigorousStatisticalMethodology": "ウォームアップ実行、外れ値の検出、信頼区間などの厳密な統計的手法に従います。すべての生データは、完全な透明性のために当社の分析とともに公開されます。",
+    "weReRunAllBenchmarks": "各ライブラリの最新の安定バージョンに対して、毎週すべてのベンチマークを再実行します。メジャーバージョンのリリースにより、即座に再ベンチマークサイクルが実行されます。",
+    "weRunStandardizedTestsIn": "一貫したハードウェアを使用し、分離された環境で標準化されたテストを実行します。各ベンチマークは、統計的有意性を確保するために複数回繰り返されます。すべてのテスト構成は、GitHub リポジトリで公開されています。",
+    "weSupportReactI18nextReact": "react-i18next、react-intl (FormatJS)、Lingui、typesafe-i18n、next-intl、Paraglide、Rosetta、i18n-js、Polyglot.js、vue-i18n、@fluent/react、Tolgee をサポートしています。",
+    "whatIsI18nBenchmark": "i18n Benchmark とは何ですか？",
+    "whatIsI18nBenchmarkAnswer": "i18n Benchmark is an open-source benchmarking suite that measures and compares the performance, bundle size, and developer experience of internationalization libraries for JavaScript and React applications.",
+    "whichLibrariesAreCurrentlySupported": "現在サポートされているライブラリは何ですか？",
+    "yesCommunityBenchmarkSubmissionsAre": "はい！コミュニティからのベンチマークの送信を歓迎します。当社のリポジトリをフォークし、コントリビューションガイドに従ってベンチマークを追加し、プルリクエストを送信してください。当社のチームが、資格のある送信内容をレビューしてマージします。",
+    "yesOurEnterprisePlanIncludes": "はい、当社のエンタープライズプランには、i18n ソリューションを評価するチーム向けのコンサルティング時間が含まれています。特定のユースケース、規模、制約に基づいて、カスタマイズされた推奨事項を提供できます。"
+  },
+  "pricingHeader": {
+    "chooseThePlanThatFits": "チームに合ったプランをお選びください。隠れた費用はありません。",
+    "simpleTransparentPricing": "シンプルで透明性の高い料金プラン"
+  },
+  "pricingTiers": {
+    "allLibraries": "すべてのライブラリ",
+    "auditLogs": "監査ログ",
+    "benchmarkRunPerDay": "毎日 {{runs}} 回のベンチマーク実行",
+    "ciIntegration": "CI 統合",
+    "communitySupport": "コミュニティサポート",
+    "contactSales": "営業に問い合わせる",
+    "customPrice": "カスタム価格",
+    "customSlas": "カスタム SLA",
+    "dedicatedAccountManager": "専任のアカウントマネージャー",
+    "enterprise": "エンタープライズ",
+    "everythingInPro": "Pro のすべて",
+    "forever": "永久",
+    "getStarted": "使ってみる",
+    "historicalData": "履歴データ",
+    "librariesNumber": "{{libs}} 個のライブラリ",
+    "month": "/月",
+    "onPremiseOption": "オンプレミスオプション",
+    "price0": "0 $",
+    "price29": "29 $",
+    "prioritySupport": "優先サポート",
+    "privateResults": "プライベート結果",
+    "pro": "プロ",
+    "publicResults": "公開結果",
+    "ssoSaml": "SSO & SAML",
+    "starter": "スターター",
+    "trainingSessions": "トレーニングセッション",
+    "unlimitedRuns": "無限の実行"
+  },
+  "productsHeader": {
+    "products": "製品",
+    "toolsAndServicesTo": "国際化戦略の最適化を支援するツールとサービス。"
+  },
+  "productsGrid": {
+    "aiPoweredToolThatHelps": "i18n ライブラリ間のコードベースをダウンタイムなしで移行するのに役立つ AI 搭載ツール。",
+    "analyzesAndOptimizesYourI18n": "生産向けに i18n バンドルをツリーシェイキングとコード分割で分析・最適化します。",
+    "automatedCloudBasedBenchmarkingWith": "履歴追跡、アラート、チームダッシュボードを備えた、自動化されたクラウドベースのベンチマーク。",
+    "automatedQualityChecksForMissing": "翻訳の欠落、複数形の問題、コンテキストエラーに対する自動品質チェック。",
+    "benchmarkCli": "ベンチマーク CLI",
+    "benchmarkCloud": "ベンチマーククラウド",
+    "benchmarkEnterprise": "ベンチマークエンタープライズ",
+    "bundleOptimizer": "バンドルオプティマイザー",
+    "contactUs": "お問い合わせ",
+    "free": "無料",
+    "learnMore": "詳細はこちら",
+    "migrationAssistant": "移行アシスタント",
+    "onPremiseDeploymentWithSso": "SSO、監査ログ、カスタム SLA、および専用サポートを備えたオンプレミス展開。",
+    "price19mo": "$19/月",
+    "price29mo": "$29/月",
+    "price49mo": "$49/月",
+    "price99oneTime": "$99 一回限り",
+    "runBenchmarksLocallyFromYour": "ターミナルからローカルでベンチマークを実行します。カスタム構成と CI 統合をサポートします。",
+    "translationQa": "翻訳 QA"
+  },
+  "settingsHeader": {
+    "settings": "設定",
+    "manageYourAccountPreferencesAnd": "アカウント設定と構成を管理します。"
+  },
+  "profileSection": {
+    "displayName": "表示名",
+    "email": "メールアドレス",
+    "profile": "プロフィール"
+  },
+  "preferencesSection": {
+    "arabicAr": "アラビア語 (ar)",
+    "chineseSimplifiedZhCn": "中国語（簡体字）(zh)",
+    "darkMode": "ダークモード",
+    "defaultLanguage": "デフォルト言語",
+    "emailNotifications": "メール通知",
+    "englishEn": "英語 (en)",
+    "frenchFr": "フランス語 (fr)",
+    "germanDe": "ドイツ語 (de)",
+    "japaneseJa": "日本語 (ja)",
+    "preferences": "設定",
+    "receiveWeeklyBenchmarkReports": "ベンチマーク週報を受け取る",
+    "spanishEs": "スペイン語 (es)",
+    "toggleDarkMode": "ダークモードの切り替え",
+    "toggleNotifications": "通知の切り替え",
+    "useDarkColorScheme": "ダークカラー体系を使用する"
+  },
+  "apiAccessSection": {
+    "apiAccess": "APIアクセス",
+    "apiKey": "APIキー",
+    "copy": "コピー",
+    "useThisKeyToAccess": "このキーを使用して、ベンチマークAPIにプログラムでアクセスします。"
+  },
+  "settingsFooter": {
+    "cancel": "キャンセル",
+    "saveChanges": "変更を保存"
+  },
+  "teamHeader": {
+    "meetThePeopleBehindI18n": "i18n Benchmark を支える人々を紹介します。素晴らしい開発者ツールへの情熱を共有する多様なチームです。",
+    "ourTeam": "私たちのチーム"
+  },
+  "teamGrid": {
+    "aishaPatel": "アイシャ・パテル (Aisha Patel)",
+    "communityManager": "コミュニティマネージャー",
+    "dataAnalyst": "データアナリスト",
+    "developerAdvocate": "デベロッパーアドボケイト",
+    "elenaKowalski": "エレナ・コワルスキー (Elena Kowalski)",
+    "ensuresStatisticalRigorInAll": "すべてのベンチマーク結果において統計的な厳密さを確保します。MIT で応用統計学の博士号を取得。",
+    "formerGoogleEngineerWith10": "元 Google エンジニア。大規模な国際化システムの構築に 10 年の経験があります。",
+    "founderLeadEngineer": "創設者兼リードエンジニア",
+    "fullStackDeveloper": "フルスタックデベロッパー",
+    "maintainsTheBenchmarkingInfrastructureAnd": "ベンチマークインフラストラクチャと CI/CD パイプラインを保守しています。Lingui へのオープンソースコントリビューターです。",
+    "managesCommunityContributionsPartnershipsAnd": "コミュニティへの貢献、パートナーシップ、イベントを管理しています。オープンソースガバナンスの経験があります。",
+    "marcusWeber": "マーカス・ウェーバー (Marcus Weber)",
+    "passionateAboutDeveloperExperienceAnd": "デベロッパーエクスペリエンスと教育に情熱を注いでいます。React Conf、JSConf、i18nNext のスピーカー。",
+    "performanceEngineer": "パフォーマンスエンジニア",
+    "sarahChen": "サラ・チェン (Sarah Chen)",
+    "specializesInJavascriptPerformanceOptimization": "JavaScript のパフォーマンス最適化とベンチマーク方法論を専門としています。以前は Vercel に在籍していました。",
+    "tomasRodriguez": "トマス・ロドリゲス (Tomás Rodríguez)",
+    "yukiTanaka": "田中由紀 (Yuki Tanaka)"
+  },
+  "mockBanner": "⚠️ このページにはベンチマーク目的のモックデータのみが含まれています。実際のビジネスやサービスとは関係ありません。"
+}

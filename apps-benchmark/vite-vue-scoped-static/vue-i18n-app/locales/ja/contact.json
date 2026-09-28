@@ -1,0 +1,21 @@
+{
+  "header": {
+    "title": "お問い合わせ",
+    "description": "アイデアがある、バグを見つけた、またはベンチマークを投稿したいですか？こちらまでご連絡ください："
+  },
+  "form": {
+    "name": "名前",
+    "yourName": "お名前",
+    "email": "メールアドレス",
+    "emailPlaceholder": "you{'@'}example.com",
+    "topic": "トピック",
+    "bugReport": "バグ報告",
+    "newBenchmarkIdea": "新しいベンチマークのアイデア",
+    "methodologyQuestion": "手法に関する質問",
+    "contribution": "貢献",
+    "other": "その他",
+    "message": "メッセージ",
+    "messagePlaceholder": "ご質問やアイデアを記入してください...",
+    "sendMessage": "メッセージを送信"
+  }
+}

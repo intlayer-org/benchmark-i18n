@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "Carrières",
+    "description": "Rejoignez notre mission pour améliorer l'écosystème i18n. Équipe remote-first, impact, transparence et apprentissage continu."
+  },
+  "benefits": {
+    "remoteLabel": "Télétravail d'abord",
+    "remoteValue": "Travaillez depuis n'importe où",
+    "payLabel": "Rémunération compétitive",
+    "payValue": "Fourchettes haut de marché",
+    "ossLabel": "Temps open source",
+    "ossValue": "20 % du temps pour contribuer à l'OSS"
+  },
+  "openPositions": {
+    "title": "Postes ouverts",
+    "applyNow": "Postuler",
+    "remote": "À distance",
+    "fullTime": "Temps plein",
+    "partTime": "Temps partiel",
+    "engineering": "Ingénierie",
+    "documentation": "Documentation",
+    "community": "Communauté",
+    "sfRemote": "San Francisco / télétravail",
+    "frontendTitle": "Ingénieur front-end senior",
+    "frontendDesc": "Construire et maintenir le tableau de bord de benchmark et les outils dev avec React, TypeScript et Vite.",
+    "backendTitle": "Ingénieur back-end",
+    "backendDesc": "Concevoir et faire évoluer l'infrastructure cloud qui exécute des milliers de benchmarks automatisés.",
+    "writerTitle": "Rédacteur·rice technique",
+    "writerDesc": "Guides, références d'API et tutoriels pour la plateforme de benchmark.",
+    "devrelTitle": "Ingénieur DevRel",
+    "devrelDesc": "Animer la communauté i18n : conférences, ateliers, articles et contributions OSS.",
+    "qaTitle": "Ingénieur QA",
+    "qaDesc": "Garantir la fiabilité des résultats par des tests et validations rigoureux."
+  }
+}

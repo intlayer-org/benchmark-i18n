@@ -1,0 +1,11 @@
+header-home = ホーム
+header-methodology = 手法
+header-mock-pages = テストページ
+header-products = 製品
+header-pricing = 価格
+header-team = チーム
+header-blog = ブログ
+header-careers = 採用情報
+header-faq = FAQ
+header-contact = お問い合わせ
+header-settings = 設定

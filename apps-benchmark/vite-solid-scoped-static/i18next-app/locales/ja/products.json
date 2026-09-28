@@ -1,0 +1,27 @@
+{
+  "header": {
+    "title": "製品",
+    "description": "国際化ワークフローを効率化するためのツールとサービス。"
+  },
+  "grid": {
+    "learnMore": "詳細はこちら",
+    "cliName": "Benchmark CLI",
+    "cliDesc": "ターミナルからローカルでベンチマークを実行します。カスタム構成とCI統合をサポートしています。",
+    "cliPrice": "無料",
+    "cloudName": "Benchmark Cloud",
+    "cloudDesc": "履歴追跡、アラート、チームダッシュボードを備えた、自動化されたクラウドベースのベンチマーク。",
+    "cloudPrice": "29ドル/月",
+    "enterpriseName": "Benchmark Enterprise",
+    "enterpriseDesc": "SSO、監査ログ、カスタムSLA、および専任サポートを備えたオンプレミス展開。",
+    "enterprisePrice": "お問い合わせ",
+    "migrationName": "移行アシスタント",
+    "migrationDesc": "ダウンタイムなしでi18nライブラリ間でコードベースを移行するのを支援するAI駆動ツール。",
+    "migrationPrice": "99ドル（一回限り）",
+    "qaName": "翻訳QA",
+    "qaDesc": "翻訳の欠落、複数形化の問題、コンテキストエラーの自動品質チェック。",
+    "qaPrice": "19ドル/月",
+    "optimizerName": "バンドルオプティマイザー",
+    "optimizerDesc": "ツリーシェイキングとコード分割を使用して、本番用にi18nバンドルを分析および最適化します。",
+    "optimizerPrice": "49ドル/月"
+  }
+}

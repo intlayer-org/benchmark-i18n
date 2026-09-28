@@ -1,0 +1,21 @@
+{
+  "header": {
+    "title": "Связаться с нами",
+    "description": "Есть идеи, нашли баг или хотите предложить бенчмарк? Напишите нам по адресу"
+  },
+  "form": {
+    "name": "Имя",
+    "yourName": "Ваше имя",
+    "email": "Электронная почта",
+    "emailPlaceholder": "you@example.com",
+    "topic": "Тема",
+    "bugReport": "Отчет об ошибке",
+    "newBenchmarkIdea": "Идея нового бенчмарка",
+    "methodologyQuestion": "Вопрос по методологии",
+    "contribution": "Вклад в проект",
+    "other": "Другое",
+    "message": "Сообщение",
+    "messagePlaceholder": "Опишите ваш вопрос или идею...",
+    "sendMessage": "Отправить сообщение"
+  }
+}

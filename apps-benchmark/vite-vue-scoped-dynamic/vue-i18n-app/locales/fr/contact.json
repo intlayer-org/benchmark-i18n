@@ -1,0 +1,21 @@
+{
+  "header": {
+    "title": "Contact",
+    "description": "Une idée, un bug ou envie de contribuer un benchmark ? Écrivez-nous à"
+  },
+  "form": {
+    "name": "Nom",
+    "yourName": "Votre nom",
+    "email": "E-mail",
+    "emailPlaceholder": "vous{'@'}exemple.com",
+    "topic": "Sujet",
+    "bugReport": "Rapport de bug",
+    "newBenchmarkIdea": "Idée de benchmark",
+    "methodologyQuestion": "Question de méthodologie",
+    "contribution": "Contribution",
+    "other": "Autre",
+    "message": "Message",
+    "messagePlaceholder": "Décrivez votre question ou idée…",
+    "sendMessage": "Envoyer"
+  }
+}

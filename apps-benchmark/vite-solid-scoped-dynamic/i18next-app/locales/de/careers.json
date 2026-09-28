@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "Karriere",
+    "description": "Schließen Sie sich unserer Mission an, das Internationalisierungs-Ökosystem zu verbessern. Wir sind ein Remote-First-Team, das Wert auf Wirkung, Transparenz und kontinuierliches Lernen legt."
+  },
+  "benefits": {
+    "remoteLabel": "Remote-First",
+    "remoteValue": "Arbeiten Sie von überall auf der Welt",
+    "payLabel": "Wettbewerbsfähige Bezahlung",
+    "payValue": "Überdurchschnittliche Vergütung",
+    "ossLabel": "Open-Source-Zeit",
+    "ossValue": "20 % der Zeit für OSS-Beiträge"
+  },
+  "openPositions": {
+    "title": "Offene Stellen",
+    "applyNow": "Jetzt bewerben",
+    "remote": "Remote",
+    "fullTime": "Vollzeit",
+    "partTime": "Teilzeit",
+    "engineering": "Engineering",
+    "documentation": "Dokumentation",
+    "community": "Community",
+    "sfRemote": "San Francisco / Remote",
+    "frontendTitle": "Senior Frontend Engineer",
+    "frontendDesc": "Erstellen und warten Sie unser Benchmarking-Dashboard und unsere Entwicklertools mit React, TypeScript und Vite.",
+    "backendTitle": "Backend-Ingenieur",
+    "backendDesc": "Entwerfen und skalieren Sie unsere Cloud-Benchmarking-Infrastruktur, die täglich Tausende von automatisierten Durchläufen verarbeitet.",
+    "writerTitle": "Technischer Redakteur",
+    "writerDesc": "Erstellen Sie umfassende Leitfäden, API-Referenzen und Tutorials für unsere Benchmarking-Plattform.",
+    "devrelTitle": "DevRel-Ingenieur",
+    "devrelDesc": "Engagieren Sie sich in der i18n-Community durch Vorträge, Workshops, Blog-Posts und Open-Source-Beiträge.",
+    "qaTitle": "QA-Ingenieur",
+    "qaDesc": "Gewährleisten Sie die Genauigkeit und Zuverlässigkeit der Benchmark-Ergebnisse durch strenge Tests und Validierung."
+  }
+}

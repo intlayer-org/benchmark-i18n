@@ -1,0 +1,27 @@
+{
+  "header": {
+    "title": "Prodotti",
+    "description": "Strumenti e servizi per semplificare il flusso di lavoro di internazionalizzazione."
+  },
+  "grid": {
+    "learnMore": "Scopri di più",
+    "cliName": "CLI del Benchmark",
+    "cliDesc": "Esegui i benchmark localmente dal tuo terminale. Supporta configurazioni personalizzate e integrazione CI.",
+    "cliPrice": "Gratis",
+    "cloudName": "Benchmark Cloud",
+    "cloudDesc": "Benchmarking automatizzato basato su cloud con tracciamento storico, avvisi e dashboard del team.",
+    "cloudPrice": "29 $/mese",
+    "enterpriseName": "Benchmark Enterprise",
+    "enterpriseDesc": "Distribuzione on-premise con SSO, log di controllo, SLA personalizzati e supporto dedicato.",
+    "enterprisePrice": "Contattaci",
+    "migrationName": "Assistente alla migrazione",
+    "migrationDesc": "Strumento basato sull'IA che aiuta a migrare la tua codebase tra librerie i18n senza tempi di inattività.",
+    "migrationPrice": "99 $ una tantum",
+    "qaName": "QA delle traduzioni",
+    "qaDesc": "Controlli di qualità automatizzati per traduzioni mancanti, problemi di pluralizzazione ed errori di contesto.",
+    "qaPrice": "19 $/mese",
+    "optimizerName": "Ottimizzatore del bundle",
+    "optimizerDesc": "Analizza e ottimizza il tuo bundle i18n per la produzione con tree-shaking e code splitting.",
+    "optimizerPrice": "49 $/mese"
+  }
+}

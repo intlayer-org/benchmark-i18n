@@ -3,5 +3,5 @@ import pkg from "../package.json" with { type: "json" };
 
 measureComponents({
   appName: pkg.name,
-  benchmarkCategory: "tanstack-start-react-static",
+  benchmarkCategory: "vite-react-static",
 }).catch(console.error);

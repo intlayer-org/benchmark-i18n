@@ -1,0 +1,38 @@
+{
+  "header": {
+    "title": "設定",
+    "description": "アカウント設定と構成を管理します。"
+  },
+  "profile": {
+    "title": "プロフィール",
+    "displayName": "表示名",
+    "email": "メールアドレス"
+  },
+  "preferences": {
+    "title": "設定",
+    "emailNotifications": "メール通知",
+    "weeklyReports": "毎週のベンチマークレポートを受け取る",
+    "toggleNotifications": "通知の切り替え",
+    "darkMode": "ダークモード",
+    "darkColorScheme": "ダークカラー（暗い配色）を使用する",
+    "toggleDarkMode": "ダークモードの切り替え",
+    "defaultLanguage": "デフォルトの言語",
+    "english": "英語 (en)",
+    "french": "フランス語 (fr)",
+    "german": "ドイツ語 (de)",
+    "spanish": "スペイン語 (es)",
+    "japanese": "日本語 (ja)",
+    "chinese": "中国語（簡体字） (zh-CN)",
+    "arabic": "アラビア語 (ar)"
+  },
+  "apiAccess": {
+    "title": "APIアクセス",
+    "apiKey": "APIキー",
+    "copy": "コピー",
+    "description": "このキーを使用して、プログラムでベンチマークAPIにアクセスします。"
+  },
+  "footer": {
+    "cancel": "キャンセル",
+    "saveChanges": "変更を保存"
+  }
+}

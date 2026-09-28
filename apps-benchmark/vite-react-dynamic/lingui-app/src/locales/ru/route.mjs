@@ -1,0 +1,1 @@
+/*eslint-disable*/export const messages=JSON.parse("{\"route.couldNotMeasureHydrationDuration\":[\"Не удалось измерить продолжительность гидратации:\"],\"route.oopsPageNotFound\":[\"Упс! Страница не найдена\"],\"route.returnToHome\":[\"Вернуться на главную\"]}");

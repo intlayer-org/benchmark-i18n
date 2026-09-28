@@ -1,0 +1,38 @@
+{
+  "header": {
+    "title": "Einstellungen",
+    "description": "Verwalten Sie Ihre Kontoeinstellungen und Konfiguration."
+  },
+  "profile": {
+    "title": "Profil",
+    "displayName": "Anzeigename",
+    "email": "E-Mail"
+  },
+  "preferences": {
+    "title": "Einstellungen",
+    "emailNotifications": "E-Mail-Benachrichtigungen",
+    "weeklyReports": "Wöchentliche Benchmark-Berichte erhalten",
+    "toggleNotifications": "Benachrichtigungen umschalten",
+    "darkMode": "Dunkelmodus",
+    "darkColorScheme": "Dunkles Farbschema verwenden",
+    "toggleDarkMode": "Dunkelmodus umschalten",
+    "defaultLanguage": "Standardsprache",
+    "english": "Englisch (en)",
+    "french": "Französisch (fr)",
+    "german": "Deutsch (de)",
+    "spanish": "Spanisch (es)",
+    "japanese": "Japanisch (ja)",
+    "chinese": "Chinesisch vereinfacht (zh-CN)",
+    "arabic": "Arabisch (ar)"
+  },
+  "apiAccess": {
+    "title": "API-Zugriff",
+    "apiKey": "API-Schlüssel",
+    "copy": "Kopieren",
+    "description": "Verwenden Sie diesen Schlüssel, um programmgesteuert auf die Benchmarking-API zuzugreifen."
+  },
+  "footer": {
+    "cancel": "Abbrechen",
+    "saveChanges": "Änderungen speichern"
+  }
+}

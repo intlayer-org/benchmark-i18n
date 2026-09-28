@@ -1,4 +1,5 @@
 import { FormatSimple, GlobalContextPlugin, Tolgee, getTranslate } from "@tolgee/svelte";
+import { tick } from "svelte";
 import { writable } from "svelte/store";
 import de from "../../../locales/de.json";
 import en from "../../../locales/en.json";
@@ -38,10 +39,14 @@ tolgee.on("update", () => {
 });
 
 tolgee.on("language", (lang) => {
-  if (typeof document !== "undefined" && lang?.value) {
-    document.documentElement.lang = lang.value;
-  }
   tStore.set(createTranslateFn());
+  // html[lang] is the reactivity test's end marker: set it after Svelte has
+  // flushed the translated text, not when the switch starts.
+  if (typeof document !== "undefined" && lang?.value) {
+    void tick().then(() => {
+      document.documentElement.lang = lang.value;
+    });
+  }
 });
 
 export const t = tStore;
@@ -50,9 +55,6 @@ export { getTranslate };
 
 export function changeLanguage(locale: string): Promise<void> {
   if (isLocale(locale)) {
-    if (typeof document !== "undefined") {
-      document.documentElement.lang = locale;
-    }
     return tolgee.changeLanguage(locale);
   }
   return Promise.resolve();

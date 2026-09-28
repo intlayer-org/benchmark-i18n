@@ -1,0 +1,27 @@
+{
+  "header": {
+    "title": "Produits",
+    "description": "Outils et services pour fluidifier votre flux i18n."
+  },
+  "grid": {
+    "learnMore": "En savoir plus",
+    "cliName": "CLI de Benchmark",
+    "cliDesc": "Lancez des benchmarks en local. Configurations personnalisées et CI.",
+    "cliPrice": "Gratuit",
+    "cloudName": "Benchmark Cloud",
+    "cloudDesc": "Benchmarks cloud automatisés, historique, alertes et tableaux d'équipe.",
+    "cloudPrice": "29 €/mois",
+    "enterpriseName": "Benchmark Entreprise",
+    "enterpriseDesc": "On-premise avec SSO, journaux d'audit, SLA et support dédié.",
+    "enterprisePrice": "Nous contacter",
+    "migrationName": "Assistant de migration",
+    "migrationDesc": "Outil assisté par IA pour migrer entre bibliothèques i18n sans interruption.",
+    "migrationPrice": "99 € (unique)",
+    "qaName": "QA des traductions",
+    "qaDesc": "Contrôles automatiques : clés manquantes, pluriels, contexte.",
+    "qaPrice": "19 €/mois",
+    "optimizerName": "Optimiseur de bundle",
+    "optimizerDesc": "Analyse et optimise votre bundle i18n en production (tree-shaking, découpage).",
+    "optimizerPrice": "49 €/mois"
+  }
+}

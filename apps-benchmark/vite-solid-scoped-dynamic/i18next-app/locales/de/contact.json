@@ -1,0 +1,21 @@
+{
+  "header": {
+    "title": "Kontakt aufnehmen",
+    "description": "Haben Sie Ideen, einen Fehler gefunden oder möchten Sie einen Benchmark beisteuern? Kontaktieren Sie uns unter"
+  },
+  "form": {
+    "name": "Name",
+    "yourName": "Ihr Name",
+    "email": "E-Mail",
+    "emailPlaceholder": "ihre@beispiel.de",
+    "topic": "Thema",
+    "bugReport": "Fehlerbericht",
+    "newBenchmarkIdea": "Neue Benchmark-Idee",
+    "methodologyQuestion": "Frage zur Methodik",
+    "contribution": "Beitrag",
+    "other": "Sonstiges",
+    "message": "Nachricht",
+    "messagePlaceholder": "Beschreiben Sie Ihre Frage oder Idee...",
+    "sendMessage": "Nachricht senden"
+  }
+}

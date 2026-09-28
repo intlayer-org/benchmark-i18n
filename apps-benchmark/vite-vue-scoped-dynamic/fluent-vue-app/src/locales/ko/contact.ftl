@@ -1,0 +1,15 @@
+contact-header-title = Get in Touch
+contact-header-description = Have ideas, found a bug, or want to contribute a benchmark? Reach out to us at
+contact-form-name = Name
+contact-form-your-name = Your name
+contact-form-email = Email
+contact-form-email-placeholder = you@example.com
+contact-form-topic = Topic
+contact-form-bug-report = Bug Report
+contact-form-new-benchmark-idea = New Benchmark Idea
+contact-form-methodology-question = Methodology Question
+contact-form-contribution = Contribution
+contact-form-other = Other
+contact-form-message = Message
+contact-form-message-placeholder = Describe your question or idea...
+contact-form-send-message = Send Message

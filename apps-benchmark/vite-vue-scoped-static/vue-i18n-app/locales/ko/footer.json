@@ -1,0 +1,10 @@
+{
+  "title": "i18n Benchmark",
+  "description": "국제화 라이브러리가 번들 크기, 로딩 시간, 앱 반응성에 미치는 실제 영향을 측정하기 위한 오픈소스 테스트 애플리케이션입니다.",
+  "resources": "리소스",
+  "github": "GitHub",
+  "methodology": "방법론",
+  "contributing": "기여",
+  "contact": "문의",
+  "builtWith": "i18n Benchmark — 오픈소스 프로젝트. Vue, Vite 및 클라이언트 사이드 라우터로 제작되었습니다."
+}

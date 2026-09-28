@@ -1,0 +1,17 @@
+about-header-title = Informazioni su questo benchmark
+about-header-description = Questa è un'applicazione di test open source — non un prodotto o un'azienda. Il suo unico scopo è quello di fornire un'app React multipagina realistica in cui diverse librerie i18n possono essere integrate e misurate in condizioni identiche.
+about-grid-why-exists-title = Perché esiste
+about-grid-why-exists-desc = Scegliere una libreria i18n è una decisione architettonica con conseguenze a lungo termine. La maggior parte dei confronti si concentra sull'ergonomia delle API, ma pochi misurano il costo delle prestazioni: quanto peso aggiunge la libreria al bundle? In che modo influisce sul rendering quando vengono caricate migliaia di chiavi di traduzione? Il caricamento pigro aiuta davvero o sposta solo il costo? Questo benchmark risponde a queste domande con dati reali.
+about-grid-methodology-title = Metodologia
+about-grid-methodology-desc = La stessa app di 10 pagine viene costruita una volta per libreria. Misuriamo il bundle di produzione (tramite rollup-plugin-visualizer), eseguiamo audit Lighthouse per le metriche di caricamento e utilizziamo React Profiler per catturare i tempi di rendering durante i cambi di lingua. Tutti i test vengono eseguiti in CI su hardware coerente per garantire risultati riproducibili.
+about-what-we-measure-title = Cosa misuriamo
+about-what-we-measure-bundle-size-impact = Impatto sulla dimensione del bundle
+about-what-we-measure-bundle-size-impact-desc = I byte JavaScript aggiuntivi inviati agli utenti quando vengono incluse la libreria i18n e i suoi file di traduzione. Ciò influisce direttamente sul tempo di download su reti lente.
+about-what-we-measure-rendering-overhead = Sovrapprezzo di rendering
+about-what-we-measure-rendering-overhead-desc = Quanto tempo extra la libreria aggiunge al ciclo di rendering di React. Le librerie che iniettano traduzioni tramite un unico provider di contesto possono causare rendering non necessari in tutto l'albero dei componenti.
+about-what-we-measure-hydration-cost = Costo di idratazione
+about-what-we-measure-hydration-cost-desc = Durante l'SSR, i dati di traduzione vengono serializzati nell'HTML. Dizionari di grandi dimensioni aumentano il payload HTML e rallentano l'idratazione — il momento in cui la pagina diventa interattiva.
+about-what-we-measure-lazy-loading = Efficacia del caricamento pigro
+about-what-we-measure-lazy-loading-desc = Se la scomposizione delle traduzioni per rotta o namespace riduca effettivamente il carico iniziale e quali compromessi introduca (richieste a cascata, FOUC, complessità della cache).
+about-what-we-measure-locale-switch = Velocità di cambio lingua
+about-what-we-measure-locale-switch-desc = Quanto velocemente l'app può passare da una lingua all'altra in fase di esecuzione — inclusi il recupero delle nuove traduzioni, il rendering dei componenti e l'aggiornamento del DOM.

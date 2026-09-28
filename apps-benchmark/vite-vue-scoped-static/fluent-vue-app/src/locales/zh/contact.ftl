@@ -1,0 +1,15 @@
+contact-header-title = 取得联系
+contact-header-description = 有想法、发现了错误或想贡献基准测试？请联系我们：
+contact-form-name = 姓名
+contact-form-your-name = 您的姓名
+contact-form-email = 电子邮件
+contact-form-email-placeholder = you@example.com
+contact-form-topic = 主题
+contact-form-bug-report = 错误报告
+contact-form-new-benchmark-idea = 新基准测试想法
+contact-form-methodology-question = 方法论问题
+contact-form-contribution = 贡献
+contact-form-other = 其他
+contact-form-message = 消息
+contact-form-message-placeholder = 描述您的问题或想法...
+contact-form-send-message = 发送消息

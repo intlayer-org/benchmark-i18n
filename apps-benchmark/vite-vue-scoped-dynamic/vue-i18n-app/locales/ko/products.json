@@ -1,0 +1,27 @@
+{
+  "header": {
+    "title": "제품",
+    "description": "국제화 워크플로를 간소화하는 도구와 서비스."
+  },
+  "grid": {
+    "learnMore": "자세히 보기",
+    "cliName": "Benchmark CLI",
+    "cliDesc": "터미널에서 로컬로 벤치마크를 실행합니다. 사용자 정의 구성과 CI 연동을 지원합니다.",
+    "cliPrice": "무료",
+    "cloudName": "Benchmark Cloud",
+    "cloudDesc": "이력 추적, 알림, 팀 대시보드가 있는 자동화 클라우드 벤치마크.",
+    "cloudPrice": "$29/월",
+    "enterpriseName": "Benchmark Enterprise",
+    "enterpriseDesc": "SSO, 감사 로그, 맞춤 SLA, 전담 지원이 있는 온프레미스 배포.",
+    "enterprisePrice": "문의",
+    "migrationName": "마이그레이션 어시스턴트",
+    "migrationDesc": "다운타임 없이 i18n 라이브러리 간 코드베이스 이전을 돕는 AI 기반 도구.",
+    "migrationPrice": "$99 일회성",
+    "qaName": "번역 QA",
+    "qaDesc": "누락된 번역, 복수형 문제, 맥락 오류에 대한 자동 품질 검사.",
+    "qaPrice": "$19/월",
+    "optimizerName": "번들 옵티마이저",
+    "optimizerDesc": "트리 쉐이킹과 코드 분할로 프로덕션용 i18n 번들을 분석·최적화합니다.",
+    "optimizerPrice": "$49/월"
+  }
+}

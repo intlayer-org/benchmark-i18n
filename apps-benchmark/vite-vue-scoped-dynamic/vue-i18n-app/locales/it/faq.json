@@ -1,0 +1,24 @@
+{
+  "header": {
+    "title": "Domande frequenti",
+    "description": "Tutto quello che c'è da sapere su i18n Benchmark."
+  },
+  "list": {
+    "q1": "Cos'è i18n Benchmark?",
+    "a1": "i18n Benchmark è una suite di benchmarking open source che misura e confronta le prestazioni, le dimensioni del bundle e l'esperienza degli sviluppatori delle librerie di internazionalizzazione per applicazioni JavaScript e React.",
+    "q2": "Come vengono condotti i benchmark?",
+    "a2": "Eseguiamo test standardizzati in ambienti isolati utilizzando hardware coerente. Ogni benchmark viene ripetuto più volte per garantire la significatività statistica. Tutte le configurazioni dei test sono disponibili pubblicamente nel nostro repository GitHub.",
+    "q3": "Quali librerie sono attualmente supportate?",
+    "a3": "Supportiamo react-i18next, react-intl (FormatJS), Lingui, typesafe-i18n, next-intl, Paraglide, Rosetta, i18n-js, Polyglot.js, vue-i18n, {'@'}fluent/react e Tolgee.",
+    "q4": "Posso inviare i miei benchmark?",
+    "a4": "Sì! Gli invii di benchmark da parte della comunità sono i benvenuti. Fai un fork del nostro repository, aggiungi il tuo benchmark seguendo la nostra guida ai contributi e invia una pull request. Il nostro team esaminerà e unirà gli invii idonei.",
+    "q5": "Con quale frequenza vengono aggiornati i benchmark?",
+    "a5": "Rieseguiamo tutti i benchmark settimanalmente rispetto alle ultime versioni stabili di ogni libreria. I rilasci di versioni principali innescano un ciclo di re-benchmark immediato.",
+    "q6": "I dati sono affidabili?",
+    "a6": "Seguiamo una rigorosa metodologia statistica che include esecuzioni di riscaldamento, rilevamento di valori anomali e intervalli di confidenza. Tutti i dati grezzi sono pubblicati insieme alla nostra analisi per la massima trasparenza.",
+    "q7": "Offrite servizi di consulenza?",
+    "a7": "Sì, il nostro piano Enterprise include ore di consulenza per i team che valutano soluzioni i18n. Possiamo fornire raccomandazioni personalizzate in base al caso d'uso specifico, alla scala e ai vincoli.",
+    "q8": "Come posso contribuire?",
+    "a8": "Ci sono molti modi per contribuire: inviare benchmark, migliorare la documentazione, segnalare bug, suggerire nuove metriche o sponsorizzare il progetto. Visita il nostro repository GitHub per maggiori dettagli."
+  }
+}

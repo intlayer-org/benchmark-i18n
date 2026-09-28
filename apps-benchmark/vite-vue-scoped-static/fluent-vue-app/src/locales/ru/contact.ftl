@@ -1,0 +1,15 @@
+contact-header-title = Связаться с нами
+contact-header-description = Есть идеи, нашли баг или хотите предложить бенчмарк? Напишите нам по адресу
+contact-form-name = Имя
+contact-form-your-name = Ваше имя
+contact-form-email = Электронная почта
+contact-form-email-placeholder = you@example.com
+contact-form-topic = Тема
+contact-form-bug-report = Отчет об ошибке
+contact-form-new-benchmark-idea = Идея нового бенчмарка
+contact-form-methodology-question = Вопрос по методологии
+contact-form-contribution = Вклад в проект
+contact-form-other = Другое
+contact-form-message = Сообщение
+contact-form-message-placeholder = Опишите ваш вопрос или идею...
+contact-form-send-message = Отправить сообщение

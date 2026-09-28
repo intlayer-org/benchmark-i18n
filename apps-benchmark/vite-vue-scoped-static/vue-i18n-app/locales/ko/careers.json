@@ -1,0 +1,35 @@
+{
+  "header": {
+    "title": "채용",
+    "description": "국제화 생태계를 개선하겠다는 우리의 미션에 합류하세요. 영향력, 투명성, 지속적 학습을 중시하는 원격 우선 팀입니다."
+  },
+  "benefits": {
+    "remoteLabel": "원격 우선",
+    "remoteValue": "전 세계 어디서나 근무",
+    "payLabel": "경쟁력 있는 보상",
+    "payValue": "시장 상위 수준의 급여",
+    "ossLabel": "오픈소스 시간",
+    "ossValue": "시간의 20%를 OSS 기여에"
+  },
+  "openPositions": {
+    "title": "채용 중인 포지션",
+    "applyNow": "지원하기",
+    "remote": "원격",
+    "fullTime": "정규",
+    "partTime": "파트타임",
+    "engineering": "엔지니어링",
+    "documentation": "문서",
+    "community": "커뮤니티",
+    "sfRemote": "샌프란시스코 / 원격",
+    "frontendTitle": "시니어 프론트엔드 엔지니어",
+    "frontendDesc": "React, TypeScript, Vite로 벤치마크 대시보드와 개발자 도구를 구축·유지합니다.",
+    "backendTitle": "백엔드 엔지니어",
+    "backendDesc": "매일 수천 건의 자동 실행을 처리하는 클라우드 벤치마크 인프라를 설계·확장합니다.",
+    "writerTitle": "기술 작가",
+    "writerDesc": "벤치마크 플랫폼을 위한 가이드, API 참조, 튜토리얼을 작성합니다.",
+    "devrelTitle": "DevRel 엔지니어",
+    "devrelDesc": "강연, 워크숍, 블로그, 오픈소스 기여를 통해 i18n 커뮤니티와 소통합니다.",
+    "qaTitle": "QA 엔지니어",
+    "qaDesc": "엄격한 테스트와 검증으로 벤치마크 결과의 정확성과 신뢰성을 보장합니다."
+  }
+}
