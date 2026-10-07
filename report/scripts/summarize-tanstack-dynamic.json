@@ -2,7 +2,7 @@
   "meta": {
     "framework": "tanstack-start-react",
     "frameworkLabel": "TanStack Start (React)",
-    "generatedAt": "2026-10-07T06:49:16.110Z",
+    "generatedAt": "2026-10-07T06:54:02.959Z",
     "counts": {
       "totalLibs": 14,
       "totalApps": 40
@@ -11,12 +11,12 @@
   "libs": {
     "@intlayer/lingui": {
       "global": {
-        "version": "9.5.11",
+        "version": "9.7.0",
         "libSize": {
           "status": "ok",
-          "gzip": 10530,
-          "minified": 33517,
-          "unminified": 54290
+          "gzip": 9845,
+          "minified": 31774,
+          "unminified": 51915
         }
       },
       "static": null,
@@ -879,12 +879,12 @@
     },
     "@intlayer/react-i18next": {
       "global": {
-        "version": "9.5.11",
+        "version": "9.7.0",
         "libSize": {
           "status": "ok",
-          "gzip": 9025,
-          "minified": 26947,
-          "unminified": 45553
+          "gzip": 8686,
+          "minified": 26064,
+          "unminified": 44445
         }
       },
       "static": null,
@@ -1747,12 +1747,12 @@
     },
     "@intlayer/use-intl": {
       "global": {
-        "version": "9.5.11",
+        "version": "9.7.0",
         "libSize": {
           "status": "ok",
-          "gzip": 7508,
-          "minified": 22414,
-          "unminified": 38153
+          "gzip": 6857,
+          "minified": 20813,
+          "unminified": 35880
         }
       },
       "static": null,
@@ -4230,9 +4230,9 @@
         "version": "9.7.0",
         "libSize": {
           "status": "ok",
-          "gzip": 4642,
-          "minified": 13754,
-          "unminified": 24367
+          "gzip": 4815,
+          "minified": 14096,
+          "unminified": 25170
         }
       },
       "static": null,

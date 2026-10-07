@@ -2,7 +2,7 @@
   "meta": {
     "framework": "vite-react",
     "frameworkLabel": "Vite + React",
-    "generatedAt": "2026-10-07T06:49:16.110Z",
+    "generatedAt": "2026-10-07T06:54:02.959Z",
     "counts": {
       "totalLibs": 3,
       "totalApps": 5
@@ -743,7 +743,7 @@
     },
     "intlayer": {
       "global": {
-        "version": "9.5.11",
+        "version": "9.7.0",
         "libSize": {
           "status": "missing",
           "gzip": null,

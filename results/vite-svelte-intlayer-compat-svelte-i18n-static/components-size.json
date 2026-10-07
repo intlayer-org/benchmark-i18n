@@ -1,269 +1,269 @@
 {
-  "timestamp": "2026-09-28T00:54:38.417Z",
+  "timestamp": "2026-10-07T06:52:19.419Z",
   "packageName": "vite-svelte-intlayer-compat-svelte-i18n-static",
   "framework": "svelte",
   "summary": {
     "totalComponents": 33,
-    "totalUnminifiedBytes": 7830545,
-    "totalMinifiedBytes": 7349392,
-    "totalGzipBytes": 2323891
+    "totalUnminifiedBytes": 7913617,
+    "totalMinifiedBytes": 7401903,
+    "totalGzipBytes": 2335760
   },
   "components": [
     {
       "name": "Layout.svelte",
       "category": "Shared",
-      "unminifiedBytes": 257858,
-      "unminifiedGzipBytes": 78678,
-      "minifiedBytes": 239944,
-      "minifiedGzipBytes": 75792
+      "unminifiedBytes": 260454,
+      "unminifiedGzipBytes": 79125,
+      "minifiedBytes": 241583,
+      "minifiedGzipBytes": 76123
     },
     {
       "name": "Header.svelte",
       "category": "Shared",
-      "unminifiedBytes": 253516,
-      "unminifiedGzipBytes": 77814,
-      "minifiedBytes": 236531,
-      "minifiedGzipBytes": 75110
+      "unminifiedBytes": 256112,
+      "unminifiedGzipBytes": 78239,
+      "minifiedBytes": 238168,
+      "minifiedGzipBytes": 75425
     },
     {
       "name": "PreferencesSection.svelte",
       "category": "pages",
-      "unminifiedBytes": 247121,
-      "unminifiedGzipBytes": 75520,
-      "minifiedBytes": 231434,
-      "minifiedGzipBytes": 72999
+      "unminifiedBytes": 249717,
+      "unminifiedGzipBytes": 75961,
+      "minifiedBytes": 233075,
+      "minifiedGzipBytes": 73365
     },
     {
       "name": "UnderstandingImpact.svelte",
       "category": "pages",
-      "unminifiedBytes": 246328,
-      "unminifiedGzipBytes": 75269,
-      "minifiedBytes": 231072,
-      "minifiedGzipBytes": 72794
+      "unminifiedBytes": 248924,
+      "unminifiedGzipBytes": 75727,
+      "minifiedBytes": 232712,
+      "minifiedGzipBytes": 73159
     },
     {
       "name": "Footer.svelte",
       "category": "Shared",
-      "unminifiedBytes": 246201,
-      "unminifiedGzipBytes": 75569,
-      "minifiedBytes": 230812,
-      "minifiedGzipBytes": 72984
+      "unminifiedBytes": 248797,
+      "unminifiedGzipBytes": 76055,
+      "minifiedBytes": 232451,
+      "minifiedGzipBytes": 73335
     },
     {
       "name": "ContactForm.svelte",
       "category": "pages",
-      "unminifiedBytes": 245839,
-      "unminifiedGzipBytes": 75265,
-      "minifiedBytes": 230674,
-      "minifiedGzipBytes": 72796
+      "unminifiedBytes": 248435,
+      "unminifiedGzipBytes": 75725,
+      "minifiedBytes": 232310,
+      "minifiedGzipBytes": 73146
     },
     {
       "name": "PricingTiers.svelte",
       "category": "pages",
-      "unminifiedBytes": 245279,
-      "unminifiedGzipBytes": 75316,
-      "minifiedBytes": 230351,
-      "minifiedGzipBytes": 72770
+      "unminifiedBytes": 247875,
+      "unminifiedGzipBytes": 75765,
+      "minifiedBytes": 231993,
+      "minifiedGzipBytes": 73145
     },
     {
       "name": "ResultsTable.svelte",
       "category": "pages",
-      "unminifiedBytes": 245293,
-      "unminifiedGzipBytes": 75212,
-      "minifiedBytes": 230254,
-      "minifiedGzipBytes": 72721
+      "unminifiedBytes": 247889,
+      "unminifiedGzipBytes": 75662,
+      "minifiedBytes": 231898,
+      "minifiedGzipBytes": 73094
     },
     {
       "name": "OpenPositions.svelte",
       "category": "pages",
-      "unminifiedBytes": 245057,
-      "unminifiedGzipBytes": 75181,
-      "minifiedBytes": 230151,
-      "minifiedGzipBytes": 72684
+      "unminifiedBytes": 247653,
+      "unminifiedGzipBytes": 75613,
+      "minifiedBytes": 231792,
+      "minifiedGzipBytes": 73063
     },
     {
       "name": "WhyItMatters.svelte",
       "category": "pages",
-      "unminifiedBytes": 244407,
-      "unminifiedGzipBytes": 74915,
-      "minifiedBytes": 229514,
-      "minifiedGzipBytes": 72453
+      "unminifiedBytes": 247003,
+      "unminifiedGzipBytes": 75358,
+      "minifiedBytes": 231158,
+      "minifiedGzipBytes": 72826
     },
     {
       "name": "ProductsGrid.svelte",
       "category": "pages",
-      "unminifiedBytes": 244144,
-      "unminifiedGzipBytes": 75000,
-      "minifiedBytes": 229363,
-      "minifiedGzipBytes": 72535
+      "unminifiedBytes": 246740,
+      "unminifiedGzipBytes": 75437,
+      "minifiedBytes": 231005,
+      "minifiedGzipBytes": 72916
     },
     {
       "name": "ThemeToggle.svelte",
       "category": "Shared",
-      "unminifiedBytes": 244232,
-      "unminifiedGzipBytes": 74984,
-      "minifiedBytes": 229204,
-      "minifiedGzipBytes": 72474
+      "unminifiedBytes": 246828,
+      "unminifiedGzipBytes": 75428,
+      "minifiedBytes": 230845,
+      "minifiedGzipBytes": 72835
     },
     {
       "name": "Hero.svelte",
       "category": "pages",
-      "unminifiedBytes": 243645,
-      "unminifiedGzipBytes": 74874,
-      "minifiedBytes": 228882,
-      "minifiedGzipBytes": 72421
+      "unminifiedBytes": 246241,
+      "unminifiedGzipBytes": 75323,
+      "minifiedBytes": 230524,
+      "minifiedGzipBytes": 72791
     },
     {
       "name": "BlogList.svelte",
       "category": "pages",
-      "unminifiedBytes": 243609,
-      "unminifiedGzipBytes": 74881,
-      "minifiedBytes": 228815,
-      "minifiedGzipBytes": 72429
+      "unminifiedBytes": 246205,
+      "unminifiedGzipBytes": 75325,
+      "minifiedBytes": 230457,
+      "minifiedGzipBytes": 72800
     },
     {
       "name": "ProfileSection.svelte",
       "category": "pages",
-      "unminifiedBytes": 243465,
-      "unminifiedGzipBytes": 74769,
-      "minifiedBytes": 228761,
-      "minifiedGzipBytes": 72333
+      "unminifiedBytes": 246061,
+      "unminifiedGzipBytes": 75210,
+      "minifiedBytes": 230402,
+      "minifiedGzipBytes": 72700
     },
     {
       "name": "ApiAccessSection.svelte",
       "category": "pages",
-      "unminifiedBytes": 243430,
-      "unminifiedGzipBytes": 74813,
-      "minifiedBytes": 228711,
-      "minifiedGzipBytes": 72376
+      "unminifiedBytes": 246026,
+      "unminifiedGzipBytes": 75255,
+      "minifiedBytes": 230352,
+      "minifiedGzipBytes": 72746
     },
     {
       "name": "TeamGrid.svelte",
       "category": "pages",
-      "unminifiedBytes": 243452,
-      "unminifiedGzipBytes": 74858,
-      "minifiedBytes": 228664,
-      "minifiedGzipBytes": 72384
+      "unminifiedBytes": 246048,
+      "unminifiedGzipBytes": 75298,
+      "minifiedBytes": 230306,
+      "minifiedGzipBytes": 72754
     },
     {
       "name": "WhatWeMeasure.svelte",
       "category": "pages",
-      "unminifiedBytes": 243383,
-      "unminifiedGzipBytes": 74812,
-      "minifiedBytes": 228652,
-      "minifiedGzipBytes": 72346
+      "unminifiedBytes": 245979,
+      "unminifiedGzipBytes": 75259,
+      "minifiedBytes": 230293,
+      "minifiedGzipBytes": 72725
     },
     {
       "name": "ContactHeader.svelte",
       "category": "pages",
-      "unminifiedBytes": 243255,
-      "unminifiedGzipBytes": 74710,
-      "minifiedBytes": 228486,
-      "minifiedGzipBytes": 72249
+      "unminifiedBytes": 245851,
+      "unminifiedGzipBytes": 75167,
+      "minifiedBytes": 230127,
+      "minifiedGzipBytes": 72632
     },
     {
       "name": "AboutGrid.svelte",
       "category": "pages",
-      "unminifiedBytes": 243102,
-      "unminifiedGzipBytes": 74642,
-      "minifiedBytes": 228417,
-      "minifiedGzipBytes": 72202
+      "unminifiedBytes": 245698,
+      "unminifiedGzipBytes": 75093,
+      "minifiedBytes": 230059,
+      "minifiedGzipBytes": 72573
     },
     {
       "name": "PricingHeader.svelte",
       "category": "pages",
-      "unminifiedBytes": 243082,
-      "unminifiedGzipBytes": 74638,
-      "minifiedBytes": 228331,
-      "minifiedGzipBytes": 72175
+      "unminifiedBytes": 245678,
+      "unminifiedGzipBytes": 75079,
+      "minifiedBytes": 229972,
+      "minifiedGzipBytes": 72557
     },
     {
       "name": "CareersBenefits.svelte",
       "category": "pages",
-      "unminifiedBytes": 242972,
-      "unminifiedGzipBytes": 74679,
-      "minifiedBytes": 228288,
-      "minifiedGzipBytes": 72225
+      "unminifiedBytes": 245568,
+      "unminifiedGzipBytes": 75125,
+      "minifiedBytes": 229929,
+      "minifiedGzipBytes": 72603
     },
     {
       "name": "ProductsHeader.svelte",
       "category": "pages",
-      "unminifiedBytes": 243015,
-      "unminifiedGzipBytes": 74617,
-      "minifiedBytes": 228272,
-      "minifiedGzipBytes": 72153
+      "unminifiedBytes": 245611,
+      "unminifiedGzipBytes": 75057,
+      "minifiedBytes": 229913,
+      "minifiedGzipBytes": 72532
     },
     {
       "name": "SettingsHeader.svelte",
       "category": "pages",
-      "unminifiedBytes": 243014,
-      "unminifiedGzipBytes": 74615,
-      "minifiedBytes": 228271,
-      "minifiedGzipBytes": 72151
+      "unminifiedBytes": 245610,
+      "unminifiedGzipBytes": 75056,
+      "minifiedBytes": 229912,
+      "minifiedGzipBytes": 72533
     },
     {
       "name": "CareersHeader.svelte",
       "category": "pages",
-      "unminifiedBytes": 243010,
-      "unminifiedGzipBytes": 74615,
-      "minifiedBytes": 228269,
-      "minifiedGzipBytes": 72151
+      "unminifiedBytes": 245606,
+      "unminifiedGzipBytes": 75056,
+      "minifiedBytes": 229910,
+      "minifiedGzipBytes": 72533
     },
     {
       "name": "TeamHeader.svelte",
       "category": "pages",
-      "unminifiedBytes": 242999,
-      "unminifiedGzipBytes": 74614,
-      "minifiedBytes": 228264,
-      "minifiedGzipBytes": 72148
+      "unminifiedBytes": 245595,
+      "unminifiedGzipBytes": 75055,
+      "minifiedBytes": 229905,
+      "minifiedGzipBytes": 72533
     },
     {
       "name": "BlogHeader.svelte",
       "category": "pages",
-      "unminifiedBytes": 242999,
-      "unminifiedGzipBytes": 74614,
-      "minifiedBytes": 228264,
-      "minifiedGzipBytes": 72150
+      "unminifiedBytes": 245595,
+      "unminifiedGzipBytes": 75056,
+      "minifiedBytes": 229905,
+      "minifiedGzipBytes": 72533
     },
     {
       "name": "FAQHeader.svelte",
       "category": "pages",
-      "unminifiedBytes": 242995,
-      "unminifiedGzipBytes": 74614,
-      "minifiedBytes": 228262,
-      "minifiedGzipBytes": 72149
+      "unminifiedBytes": 245591,
+      "unminifiedGzipBytes": 75055,
+      "minifiedBytes": 229903,
+      "minifiedGzipBytes": 72533
     },
     {
       "name": "AboutHeader.svelte",
       "category": "pages",
-      "unminifiedBytes": 242898,
-      "unminifiedGzipBytes": 74610,
-      "minifiedBytes": 228206,
-      "minifiedGzipBytes": 72168
+      "unminifiedBytes": 245494,
+      "unminifiedGzipBytes": 75053,
+      "minifiedBytes": 229848,
+      "minifiedGzipBytes": 72533
     },
     {
       "name": "FAQList.svelte",
       "category": "pages",
-      "unminifiedBytes": 242876,
-      "unminifiedGzipBytes": 74699,
-      "minifiedBytes": 228194,
-      "minifiedGzipBytes": 72241
+      "unminifiedBytes": 245472,
+      "unminifiedGzipBytes": 75148,
+      "minifiedBytes": 229835,
+      "minifiedGzipBytes": 72623
     },
     {
       "name": "SettingsFooter.svelte",
       "category": "pages",
-      "unminifiedBytes": 242706,
-      "unminifiedGzipBytes": 74599,
-      "minifiedBytes": 228079,
-      "minifiedGzipBytes": 72163
+      "unminifiedBytes": 245302,
+      "unminifiedGzipBytes": 75044,
+      "minifiedBytes": 229720,
+      "minifiedGzipBytes": 72545
     },
     {
       "name": "MockBanner.svelte",
       "category": "Shared",
-      "unminifiedBytes": 242248,
-      "unminifiedGzipBytes": 74430,
-      "minifiedBytes": 227685,
-      "minifiedGzipBytes": 72005
+      "unminifiedBytes": 244844,
+      "unminifiedGzipBytes": 74875,
+      "minifiedBytes": 229326,
+      "minifiedGzipBytes": 72389
     },
     {
       "name": "LocaleSwitcher.svelte",

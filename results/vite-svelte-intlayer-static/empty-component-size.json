@@ -1,21 +1,21 @@
 {
-  "timestamp": "2026-09-28T00:54:43.126Z",
+  "timestamp": "2026-10-07T06:52:23.258Z",
   "packageName": "vite-svelte-intlayer-static",
   "framework": "svelte",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 17966,
-    "totalMinifiedBytes": 10187,
-    "totalGzipBytes": 3729
+    "totalUnminifiedBytes": 18545,
+    "totalMinifiedBytes": 10436,
+    "totalGzipBytes": 3841
   },
   "components": [
     {
       "name": "EmptyComponent.svelte",
       "category": "Synthetic",
-      "unminifiedBytes": 17966,
-      "unminifiedGzipBytes": 4976,
-      "minifiedBytes": 10187,
-      "minifiedGzipBytes": 3729
+      "unminifiedBytes": 18545,
+      "unminifiedGzipBytes": 5175,
+      "minifiedBytes": 10436,
+      "minifiedGzipBytes": 3841
     }
   ]
 }
