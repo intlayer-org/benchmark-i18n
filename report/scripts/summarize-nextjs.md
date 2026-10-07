@@ -1,6 +1,6 @@
 # Next.js — i18n Benchmark Results
 
-_Generated: 2026-09-28_
+_Generated: 2026-10-07_
 
 ## Metric Legend
 
@@ -40,7 +40,7 @@ _Generated: 2026-09-28_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.11 | 10.7 KB | 34.1 KB |
+| 9.7.0 | 10.7 KB | 34.1 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -283,7 +283,7 @@ _Generated: 2026-09-28_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.11 | 8.7 KB | 25.6 KB |
+| 9.7.0 | 8.7 KB | 25.6 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -526,7 +526,7 @@ _Generated: 2026-09-28_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.11 | 8.0 KB | 23.7 KB |
+| 9.7.0 | 8.0 KB | 23.7 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -2450,7 +2450,7 @@ _Generated: 2026-09-28_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.11 | 4.9 KB | 14.6 KB |
+| 9.7.0 | 4.9 KB | 14.6 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |

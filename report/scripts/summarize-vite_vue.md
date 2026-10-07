@@ -1,6 +1,6 @@
 # Vite + Vue — i18n Benchmark Results
 
-_Generated: 2026-09-28_
+_Generated: 2026-10-07_
 
 ## Metric Legend
 
@@ -32,7 +32,7 @@ _Generated: 2026-09-28_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.11 | 9.7 KB | 28.9 KB |
+| 9.7.0 | 9.7 KB | 28.9 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -761,7 +761,7 @@ _Generated: 2026-09-28_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.5.11 | 4.6 KB | 14.0 KB |
+| 9.7.0 | 4.6 KB | 14.0 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |

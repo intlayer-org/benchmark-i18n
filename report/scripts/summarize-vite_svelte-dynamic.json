@@ -2,7 +2,7 @@
   "meta": {
     "framework": "vite-svelte",
     "frameworkLabel": "Vite + Svelte",
-    "generatedAt": "2026-09-28T00:55:27.415Z",
+    "generatedAt": "2026-10-07T06:49:16.110Z",
     "counts": {
       "totalLibs": 6,
       "totalApps": 8
@@ -1619,7 +1619,7 @@
     },
     "intlayer": {
       "global": {
-        "version": "9.5.11",
+        "version": "9.7.0",
         "libSize": {
           "status": "ok",
           "gzip": 3729,

@@ -1,6 +1,6 @@
 # Vite + Solid — i18n Benchmark Results
 
-_Generated: 2026-09-28_
+_Generated: 2026-10-07_
 
 ## Metric Legend
 
