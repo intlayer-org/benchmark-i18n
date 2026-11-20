@@ -1,6 +1,6 @@
 # TanStack Start (React) — i18n Benchmark Results
 
-_Generated: 2026-10-07_
+_Generated: 2026-11-20_
 
 ## Metric Legend
 
@@ -40,13 +40,13 @@ _Generated: 2026-10-07_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.7.0 | 9.6 KB | 31.0 KB |
+| 9.8.3 | 10.3 KB | 33.5 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 193.5 KB | 50.0% | 88.9% | 78.9 KB | 2.6 ms | — | 15.7 ms | 10.5 ms |
+| Static | ✅ | 194.4 KB | 50.0% | 88.9% | 80.1 KB | 2.6 ms | — | 15.7 ms | 10.5 ms |
 | Dynamic | ✅ | 200.6 KB | 50.0% | 90.0% | 12.8 KB | 3.0 ms | — | 16.9 ms | 18.2 ms |
-| Scoped Static | ↳ Static | 193.5 KB | 50.0% | 88.9% | 78.9 KB | 2.6 ms | — | 15.7 ms | 10.5 ms |
+| Scoped Static | ↳ Static | 194.4 KB | 50.0% | 88.9% | 80.1 KB | 2.6 ms | — | 15.7 ms | 10.5 ms |
 | Scoped Dynamic | ↳ Dynamic | 200.6 KB | 50.0% | 90.0% | 12.8 KB | 3.0 ms | — | 16.9 ms | 18.2 ms |
 
 <details>
@@ -56,31 +56,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 195.2 KB | 54.0% | 79.2% |
-| `/en/about` | 193.3 KB | 54.0% | 87.0% |
-| `/en/blog` | 192.9 KB | 54.0% | 83.1% |
-| `/en/careers` | 193.3 KB | 54.0% | 94.8% |
-| `/en/contact` | 192.8 KB | 54.0% | 98.7% |
-| `/en/faq` | 193.5 KB | 54.0% | 87.0% |
-| `/en/pricing` | 193.1 KB | 54.0% | 94.8% |
-| `/en/products` | 193.0 KB | 54.0% | 89.6% |
-| `/en/settings` | 194.4 KB | 54.0% | 87.4% |
-| `/en/team` | 193.1 KB | 54.0% | 87.0% |
+| `/en/` | 196.0 KB | 54.0% | 79.2% |
+| `/en/about` | 194.2 KB | 54.0% | 87.0% |
+| `/en/blog` | 193.7 KB | 54.0% | 83.1% |
+| `/en/careers` | 194.2 KB | 54.0% | 94.8% |
+| `/en/contact` | 193.7 KB | 54.0% | 98.7% |
+| `/en/faq` | 194.4 KB | 54.0% | 87.0% |
+| `/en/pricing` | 194.0 KB | 54.0% | 94.8% |
+| `/en/products` | 193.9 KB | 54.0% | 89.6% |
+| `/en/settings` | 195.3 KB | 54.0% | 87.4% |
+| `/en/team` | 194.0 KB | 54.0% | 87.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 195.2 KB | 46.0% | 82.4% |
-| `/fr/about` | 193.3 KB | 46.0% | 84.6% |
-| `/fr/blog` | 192.9 KB | 46.0% | 85.7% |
-| `/fr/careers` | 193.3 KB | 46.0% | 93.4% |
-| `/fr/contact` | 192.8 KB | 46.0% | 97.8% |
-| `/fr/faq` | 193.5 KB | 46.0% | 90.1% |
-| `/fr/pricing` | 193.1 KB | 46.0% | 90.1% |
-| `/fr/products` | 193.0 KB | 46.0% | 89.0% |
-| `/fr/settings` | 194.4 KB | 46.0% | 89.1% |
-| `/fr/team` | 193.1 KB | 46.0% | 87.9% |
+| `/fr/` | 196.0 KB | 46.0% | 82.4% |
+| `/fr/about` | 194.2 KB | 46.0% | 84.6% |
+| `/fr/blog` | 193.7 KB | 46.0% | 85.7% |
+| `/fr/careers` | 194.2 KB | 46.0% | 93.4% |
+| `/fr/contact` | 193.7 KB | 46.0% | 97.8% |
+| `/fr/faq` | 194.4 KB | 46.0% | 90.1% |
+| `/fr/pricing` | 194.0 KB | 46.0% | 90.1% |
+| `/fr/products` | 193.9 KB | 46.0% | 89.0% |
+| `/fr/settings` | 195.3 KB | 46.0% | 89.1% |
+| `/fr/team` | 194.0 KB | 46.0% | 87.9% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-compat-lingui-app/bundle/rollup-visualizer.html)
 
@@ -117,7 +117,7 @@ _Generated: 2026-10-07_
 | `/en/about` | 200.0 KB | 54.4% | 88.4% |
 | `/en/blog` | 200.1 KB | 54.4% | 84.9% |
 | `/en/careers` | 200.9 KB | 54.4% | 88.4% |
-| `/en/contact` | 200.1 KB | 54.4% | 98.8% |
+| `/en/contact` | 200.0 KB | 54.4% | 98.8% |
 | `/en/faq` | 200.8 KB | 54.4% | 88.4% |
 | `/en/pricing` | 200.3 KB | 54.4% | 96.5% |
 | `/en/products` | 200.3 KB | 54.4% | 90.7% |
@@ -132,7 +132,7 @@ _Generated: 2026-10-07_
 | `/fr/about` | 200.0 KB | 45.6% | 86.3% |
 | `/fr/blog` | 200.1 KB | 45.6% | 87.3% |
 | `/fr/careers` | 200.9 KB | 45.6% | 88.2% |
-| `/fr/contact` | 200.1 KB | 45.6% | 98.0% |
+| `/fr/contact` | 200.0 KB | 45.6% | 98.0% |
 | `/fr/faq` | 200.8 KB | 45.6% | 91.2% |
 | `/fr/pricing` | 200.3 KB | 45.6% | 90.2% |
 | `/fr/products` | 200.3 KB | 45.6% | 92.2% |
@@ -170,31 +170,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 195.2 KB | 54.0% | 79.2% |
-| `/en/about` | 193.3 KB | 54.0% | 87.0% |
-| `/en/blog` | 192.9 KB | 54.0% | 83.1% |
-| `/en/careers` | 193.3 KB | 54.0% | 94.8% |
-| `/en/contact` | 192.8 KB | 54.0% | 98.7% |
-| `/en/faq` | 193.5 KB | 54.0% | 87.0% |
-| `/en/pricing` | 193.1 KB | 54.0% | 94.8% |
-| `/en/products` | 193.0 KB | 54.0% | 89.6% |
-| `/en/settings` | 194.4 KB | 54.0% | 87.4% |
-| `/en/team` | 193.1 KB | 54.0% | 87.0% |
+| `/en/` | 196.0 KB | 54.0% | 79.2% |
+| `/en/about` | 194.2 KB | 54.0% | 87.0% |
+| `/en/blog` | 193.7 KB | 54.0% | 83.1% |
+| `/en/careers` | 194.2 KB | 54.0% | 94.8% |
+| `/en/contact` | 193.7 KB | 54.0% | 98.7% |
+| `/en/faq` | 194.4 KB | 54.0% | 87.0% |
+| `/en/pricing` | 194.0 KB | 54.0% | 94.8% |
+| `/en/products` | 193.9 KB | 54.0% | 89.6% |
+| `/en/settings` | 195.3 KB | 54.0% | 87.4% |
+| `/en/team` | 194.0 KB | 54.0% | 87.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 195.2 KB | 46.0% | 82.4% |
-| `/fr/about` | 193.3 KB | 46.0% | 84.6% |
-| `/fr/blog` | 192.9 KB | 46.0% | 85.7% |
-| `/fr/careers` | 193.3 KB | 46.0% | 93.4% |
-| `/fr/contact` | 192.8 KB | 46.0% | 97.8% |
-| `/fr/faq` | 193.5 KB | 46.0% | 90.1% |
-| `/fr/pricing` | 193.1 KB | 46.0% | 90.1% |
-| `/fr/products` | 193.0 KB | 46.0% | 89.0% |
-| `/fr/settings` | 194.4 KB | 46.0% | 89.1% |
-| `/fr/team` | 193.1 KB | 46.0% | 87.9% |
+| `/fr/` | 196.0 KB | 46.0% | 82.4% |
+| `/fr/about` | 194.2 KB | 46.0% | 84.6% |
+| `/fr/blog` | 193.7 KB | 46.0% | 85.7% |
+| `/fr/careers` | 194.2 KB | 46.0% | 93.4% |
+| `/fr/contact` | 193.7 KB | 46.0% | 97.8% |
+| `/fr/faq` | 194.4 KB | 46.0% | 90.1% |
+| `/fr/pricing` | 194.0 KB | 46.0% | 90.1% |
+| `/fr/products` | 193.9 KB | 46.0% | 89.0% |
+| `/fr/settings` | 195.3 KB | 46.0% | 89.1% |
+| `/fr/team` | 194.0 KB | 46.0% | 87.9% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-compat-lingui-app/bundle/rollup-visualizer.html)
 
@@ -231,7 +231,7 @@ _Generated: 2026-10-07_
 | `/en/about` | 200.0 KB | 54.4% | 88.4% |
 | `/en/blog` | 200.1 KB | 54.4% | 84.9% |
 | `/en/careers` | 200.9 KB | 54.4% | 88.4% |
-| `/en/contact` | 200.1 KB | 54.4% | 98.8% |
+| `/en/contact` | 200.0 KB | 54.4% | 98.8% |
 | `/en/faq` | 200.8 KB | 54.4% | 88.4% |
 | `/en/pricing` | 200.3 KB | 54.4% | 96.5% |
 | `/en/products` | 200.3 KB | 54.4% | 90.7% |
@@ -246,7 +246,7 @@ _Generated: 2026-10-07_
 | `/fr/about` | 200.0 KB | 45.6% | 86.3% |
 | `/fr/blog` | 200.1 KB | 45.6% | 87.3% |
 | `/fr/careers` | 200.9 KB | 45.6% | 88.2% |
-| `/fr/contact` | 200.1 KB | 45.6% | 98.0% |
+| `/fr/contact` | 200.0 KB | 45.6% | 98.0% |
 | `/fr/faq` | 200.8 KB | 45.6% | 91.2% |
 | `/fr/pricing` | 200.3 KB | 45.6% | 90.2% |
 | `/fr/products` | 200.3 KB | 45.6% | 92.2% |
@@ -283,14 +283,14 @@ _Generated: 2026-10-07_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.7.0 | 8.5 KB | 25.5 KB |
+| 9.8.3 | 8.6 KB | 25.9 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 184.3 KB | 50.0% | 89.7% | 70.5 KB | 3.9 ms | — | 17.8 ms | 12.0 ms |
-| Dynamic | ✅ | 184.6 KB | 50.0% | 89.7% | 9.2 KB | 3.5 ms | — | 14.2 ms | 10.7 ms |
-| Scoped Static | ↳ Static | 184.3 KB | 50.0% | 89.7% | 70.5 KB | 3.9 ms | — | 17.8 ms | 12.0 ms |
-| Scoped Dynamic | ↳ Dynamic | 184.6 KB | 50.0% | 89.7% | 9.2 KB | 3.5 ms | — | 14.2 ms | 10.7 ms |
+| Static | ✅ | 184.6 KB | 50.0% | 89.7% | 70.6 KB | 3.9 ms | — | 17.8 ms | 12.0 ms |
+| Dynamic | ✅ | 184.6 KB | 50.0% | 89.7% | 9.0 KB | 3.5 ms | — | 14.2 ms | 10.7 ms |
+| Scoped Static | ↳ Static | 184.6 KB | 50.0% | 89.7% | 70.6 KB | 3.9 ms | — | 17.8 ms | 12.0 ms |
+| Scoped Dynamic | ↳ Dynamic | 184.6 KB | 50.0% | 89.7% | 9.0 KB | 3.5 ms | — | 14.2 ms | 10.7 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -299,31 +299,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 185.1 KB | 53.9% | 81.4% |
-| `/en/about` | 184.0 KB | 53.9% | 88.4% |
-| `/en/blog` | 184.1 KB | 53.9% | 84.9% |
-| `/en/careers` | 184.5 KB | 53.9% | 87.2% |
-| `/en/contact` | 184.1 KB | 53.9% | 97.7% |
-| `/en/faq` | 184.0 KB | 53.9% | 88.4% |
-| `/en/pricing` | 184.2 KB | 53.6% | 95.4% |
-| `/en/products` | 184.0 KB | 53.9% | 90.7% |
-| `/en/settings` | 185.4 KB | 53.9% | 94.3% |
-| `/en/team` | 184.0 KB | 53.9% | 88.4% |
+| `/en/` | 185.3 KB | 53.9% | 81.4% |
+| `/en/about` | 184.2 KB | 53.9% | 88.4% |
+| `/en/blog` | 184.3 KB | 53.9% | 84.9% |
+| `/en/careers` | 184.7 KB | 53.9% | 87.2% |
+| `/en/contact` | 184.3 KB | 53.9% | 97.7% |
+| `/en/faq` | 184.2 KB | 53.9% | 88.4% |
+| `/en/pricing` | 184.4 KB | 53.6% | 95.4% |
+| `/en/products` | 184.2 KB | 53.9% | 90.7% |
+| `/en/settings` | 185.7 KB | 53.9% | 94.3% |
+| `/en/team` | 184.2 KB | 53.9% | 88.4% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 185.1 KB | 46.1% | 84.2% |
-| `/fr/about` | 184.0 KB | 46.1% | 86.1% |
-| `/fr/blog` | 184.1 KB | 46.1% | 87.1% |
-| `/fr/careers` | 184.5 KB | 46.1% | 87.1% |
-| `/fr/contact` | 184.1 KB | 46.1% | 98.0% |
-| `/fr/faq` | 184.0 KB | 46.1% | 91.1% |
-| `/fr/pricing` | 184.2 KB | 45.9% | 91.2% |
-| `/fr/products` | 184.0 KB | 46.1% | 90.1% |
-| `/fr/settings` | 185.4 KB | 46.1% | 93.1% |
-| `/fr/team` | 184.0 KB | 46.1% | 89.1% |
+| `/fr/` | 185.3 KB | 46.1% | 84.2% |
+| `/fr/about` | 184.2 KB | 46.1% | 86.1% |
+| `/fr/blog` | 184.3 KB | 46.1% | 87.1% |
+| `/fr/careers` | 184.7 KB | 46.1% | 87.1% |
+| `/fr/contact` | 184.3 KB | 46.1% | 98.0% |
+| `/fr/faq` | 184.2 KB | 46.1% | 91.1% |
+| `/fr/pricing` | 184.4 KB | 45.9% | 91.2% |
+| `/fr/products` | 184.2 KB | 46.1% | 90.1% |
+| `/fr/settings` | 185.7 KB | 46.1% | 93.1% |
+| `/fr/team` | 184.2 KB | 46.1% | 89.1% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-compat-react-i18next-app/bundle/rollup-visualizer.html)
 
@@ -357,12 +357,12 @@ _Generated: 2026-10-07_
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
 | `/en/` | 185.3 KB | 53.9% | 81.4% |
-| `/en/about` | 184.3 KB | 53.9% | 88.4% |
+| `/en/about` | 184.2 KB | 53.9% | 88.4% |
 | `/en/blog` | 184.3 KB | 53.9% | 84.9% |
 | `/en/careers` | 184.8 KB | 53.9% | 87.2% |
 | `/en/contact` | 184.3 KB | 53.9% | 97.7% |
 | `/en/faq` | 184.2 KB | 53.9% | 88.4% |
-| `/en/pricing` | 184.5 KB | 53.6% | 95.4% |
+| `/en/pricing` | 184.4 KB | 53.6% | 95.4% |
 | `/en/products` | 184.3 KB | 53.9% | 90.7% |
 | `/en/settings` | 185.7 KB | 53.9% | 94.3% |
 | `/en/team` | 184.3 KB | 53.9% | 88.4% |
@@ -372,12 +372,12 @@ _Generated: 2026-10-07_
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
 | `/fr/` | 185.3 KB | 46.1% | 84.2% |
-| `/fr/about` | 184.3 KB | 46.1% | 86.1% |
+| `/fr/about` | 184.2 KB | 46.1% | 86.1% |
 | `/fr/blog` | 184.3 KB | 46.1% | 87.1% |
 | `/fr/careers` | 184.8 KB | 46.1% | 87.1% |
 | `/fr/contact` | 184.3 KB | 46.1% | 98.0% |
 | `/fr/faq` | 184.2 KB | 46.1% | 91.1% |
-| `/fr/pricing` | 184.5 KB | 45.9% | 91.2% |
+| `/fr/pricing` | 184.4 KB | 45.9% | 91.2% |
 | `/fr/products` | 184.3 KB | 46.1% | 90.1% |
 | `/fr/settings` | 185.7 KB | 46.1% | 93.1% |
 | `/fr/team` | 184.3 KB | 46.1% | 89.1% |
@@ -413,31 +413,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 185.1 KB | 53.9% | 81.4% |
-| `/en/about` | 184.0 KB | 53.9% | 88.4% |
-| `/en/blog` | 184.1 KB | 53.9% | 84.9% |
-| `/en/careers` | 184.5 KB | 53.9% | 87.2% |
-| `/en/contact` | 184.1 KB | 53.9% | 97.7% |
-| `/en/faq` | 184.0 KB | 53.9% | 88.4% |
-| `/en/pricing` | 184.2 KB | 53.6% | 95.4% |
-| `/en/products` | 184.0 KB | 53.9% | 90.7% |
-| `/en/settings` | 185.4 KB | 53.9% | 94.3% |
-| `/en/team` | 184.0 KB | 53.9% | 88.4% |
+| `/en/` | 185.3 KB | 53.9% | 81.4% |
+| `/en/about` | 184.2 KB | 53.9% | 88.4% |
+| `/en/blog` | 184.3 KB | 53.9% | 84.9% |
+| `/en/careers` | 184.7 KB | 53.9% | 87.2% |
+| `/en/contact` | 184.3 KB | 53.9% | 97.7% |
+| `/en/faq` | 184.2 KB | 53.9% | 88.4% |
+| `/en/pricing` | 184.4 KB | 53.6% | 95.4% |
+| `/en/products` | 184.2 KB | 53.9% | 90.7% |
+| `/en/settings` | 185.7 KB | 53.9% | 94.3% |
+| `/en/team` | 184.2 KB | 53.9% | 88.4% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 185.1 KB | 46.1% | 84.2% |
-| `/fr/about` | 184.0 KB | 46.1% | 86.1% |
-| `/fr/blog` | 184.1 KB | 46.1% | 87.1% |
-| `/fr/careers` | 184.5 KB | 46.1% | 87.1% |
-| `/fr/contact` | 184.1 KB | 46.1% | 98.0% |
-| `/fr/faq` | 184.0 KB | 46.1% | 91.1% |
-| `/fr/pricing` | 184.2 KB | 45.9% | 91.2% |
-| `/fr/products` | 184.0 KB | 46.1% | 90.1% |
-| `/fr/settings` | 185.4 KB | 46.1% | 93.1% |
-| `/fr/team` | 184.0 KB | 46.1% | 89.1% |
+| `/fr/` | 185.3 KB | 46.1% | 84.2% |
+| `/fr/about` | 184.2 KB | 46.1% | 86.1% |
+| `/fr/blog` | 184.3 KB | 46.1% | 87.1% |
+| `/fr/careers` | 184.7 KB | 46.1% | 87.1% |
+| `/fr/contact` | 184.3 KB | 46.1% | 98.0% |
+| `/fr/faq` | 184.2 KB | 46.1% | 91.1% |
+| `/fr/pricing` | 184.4 KB | 45.9% | 91.2% |
+| `/fr/products` | 184.2 KB | 46.1% | 90.1% |
+| `/fr/settings` | 185.7 KB | 46.1% | 93.1% |
+| `/fr/team` | 184.2 KB | 46.1% | 89.1% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-compat-react-i18next-app/bundle/rollup-visualizer.html)
 
@@ -471,12 +471,12 @@ _Generated: 2026-10-07_
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
 | `/en/` | 185.3 KB | 53.9% | 81.4% |
-| `/en/about` | 184.3 KB | 53.9% | 88.4% |
+| `/en/about` | 184.2 KB | 53.9% | 88.4% |
 | `/en/blog` | 184.3 KB | 53.9% | 84.9% |
 | `/en/careers` | 184.8 KB | 53.9% | 87.2% |
 | `/en/contact` | 184.3 KB | 53.9% | 97.7% |
 | `/en/faq` | 184.2 KB | 53.9% | 88.4% |
-| `/en/pricing` | 184.5 KB | 53.6% | 95.4% |
+| `/en/pricing` | 184.4 KB | 53.6% | 95.4% |
 | `/en/products` | 184.3 KB | 53.9% | 90.7% |
 | `/en/settings` | 185.7 KB | 53.9% | 94.3% |
 | `/en/team` | 184.3 KB | 53.9% | 88.4% |
@@ -486,12 +486,12 @@ _Generated: 2026-10-07_
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
 | `/fr/` | 185.3 KB | 46.1% | 84.2% |
-| `/fr/about` | 184.3 KB | 46.1% | 86.1% |
+| `/fr/about` | 184.2 KB | 46.1% | 86.1% |
 | `/fr/blog` | 184.3 KB | 46.1% | 87.1% |
 | `/fr/careers` | 184.8 KB | 46.1% | 87.1% |
 | `/fr/contact` | 184.3 KB | 46.1% | 98.0% |
 | `/fr/faq` | 184.2 KB | 46.1% | 91.1% |
-| `/fr/pricing` | 184.5 KB | 45.9% | 91.2% |
+| `/fr/pricing` | 184.4 KB | 45.9% | 91.2% |
 | `/fr/products` | 184.3 KB | 46.1% | 90.1% |
 | `/fr/settings` | 185.7 KB | 46.1% | 93.1% |
 | `/fr/team` | 184.3 KB | 46.1% | 89.1% |
@@ -526,14 +526,14 @@ _Generated: 2026-10-07_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.7.0 | 6.7 KB | 20.3 KB |
+| 9.8.3 | 6.8 KB | 20.8 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Static | ✅ | 195.3 KB | 50.0% | 89.8% | 30.0 KB | 3.5 ms | — | 15.5 ms | 13.0 ms |
-| Dynamic | ✅ | 201.7 KB | 50.0% | 89.8% | 9.1 KB | 11.7 ms | — | 16.7 ms | 17.0 ms |
-| Scoped Static | ↳ Static | 195.3 KB | 50.0% | 89.8% | 30.0 KB | 3.5 ms | — | 15.5 ms | 13.0 ms |
-| Scoped Dynamic | ↳ Dynamic | 201.7 KB | 50.0% | 89.8% | 9.1 KB | 11.7 ms | — | 16.7 ms | 17.0 ms |
+| Static | ✅ | 195.4 KB | 50.0% | 89.8% | 30.1 KB | 3.5 ms | — | 15.5 ms | 13.0 ms |
+| Dynamic | ✅ | 201.0 KB | 50.0% | 89.8% | 8.9 KB | 11.7 ms | — | 16.7 ms | 17.0 ms |
+| Scoped Static | ↳ Static | 195.4 KB | 50.0% | 89.8% | 30.1 KB | 3.5 ms | — | 15.5 ms | 13.0 ms |
+| Scoped Dynamic | ↳ Dynamic | 201.0 KB | 50.0% | 89.8% | 8.9 KB | 11.7 ms | — | 16.7 ms | 17.0 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -542,31 +542,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 196.0 KB | 54.4% | 81.4% |
-| `/en/about` | 194.9 KB | 54.4% | 88.4% |
-| `/en/blog` | 195.1 KB | 54.4% | 84.9% |
-| `/en/careers` | 195.5 KB | 54.4% | 87.4% |
-| `/en/contact` | 195.1 KB | 54.4% | 98.8% |
+| `/en/` | 196.1 KB | 54.4% | 81.4% |
+| `/en/about` | 195.0 KB | 54.4% | 88.4% |
+| `/en/blog` | 195.2 KB | 54.4% | 84.9% |
+| `/en/careers` | 195.6 KB | 54.4% | 87.4% |
+| `/en/contact` | 195.2 KB | 54.4% | 98.8% |
 | `/en/faq` | 195.0 KB | 54.4% | 88.4% |
-| `/en/pricing` | 195.2 KB | 54.1% | 95.4% |
-| `/en/products` | 195.0 KB | 54.4% | 90.7% |
-| `/en/settings` | 196.4 KB | 54.4% | 94.2% |
-| `/en/team` | 195.0 KB | 54.4% | 88.4% |
+| `/en/pricing` | 195.3 KB | 54.1% | 95.4% |
+| `/en/products` | 195.1 KB | 54.4% | 90.7% |
+| `/en/settings` | 196.5 KB | 54.4% | 94.2% |
+| `/en/team` | 195.1 KB | 54.4% | 88.4% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 196.0 KB | 45.6% | 84.5% |
-| `/fr/about` | 194.9 KB | 45.6% | 86.4% |
-| `/fr/blog` | 195.1 KB | 45.6% | 87.4% |
-| `/fr/careers` | 195.5 KB | 45.6% | 87.5% |
-| `/fr/contact` | 195.1 KB | 45.6% | 98.1% |
+| `/fr/` | 196.1 KB | 45.6% | 84.5% |
+| `/fr/about` | 195.0 KB | 45.6% | 86.4% |
+| `/fr/blog` | 195.2 KB | 45.6% | 87.4% |
+| `/fr/careers` | 195.6 KB | 45.6% | 87.5% |
+| `/fr/contact` | 195.2 KB | 45.6% | 98.1% |
 | `/fr/faq` | 195.0 KB | 45.6% | 91.3% |
-| `/fr/pricing` | 195.2 KB | 45.4% | 90.4% |
-| `/fr/products` | 195.0 KB | 45.6% | 90.3% |
-| `/fr/settings` | 196.4 KB | 45.6% | 93.2% |
-| `/fr/team` | 195.0 KB | 45.6% | 89.3% |
+| `/fr/pricing` | 195.3 KB | 45.4% | 90.4% |
+| `/fr/products` | 195.1 KB | 45.6% | 90.3% |
+| `/fr/settings` | 196.5 KB | 45.6% | 93.2% |
+| `/fr/team` | 195.1 KB | 45.6% | 89.3% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-compat-use-intl-app/bundle/rollup-visualizer.html)
 
@@ -599,31 +599,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 203.9 KB | 54.4% | 81.4% |
-| `/en/about` | 201.8 KB | 54.4% | 88.4% |
-| `/en/blog` | 200.9 KB | 54.4% | 84.9% |
-| `/en/careers` | 201.9 KB | 54.4% | 87.4% |
-| `/en/contact` | 200.3 KB | 54.4% | 98.8% |
-| `/en/faq` | 201.1 KB | 54.4% | 88.4% |
-| `/en/pricing` | 200.7 KB | 54.1% | 95.4% |
-| `/en/products` | 200.6 KB | 54.4% | 90.7% |
-| `/en/settings` | 203.7 KB | 54.4% | 94.2% |
-| `/en/team` | 200.8 KB | 54.4% | 88.4% |
+| `/en/` | 203.1 KB | 54.4% | 81.4% |
+| `/en/about` | 201.1 KB | 54.4% | 88.4% |
+| `/en/blog` | 200.2 KB | 54.4% | 84.9% |
+| `/en/careers` | 201.2 KB | 54.4% | 87.4% |
+| `/en/contact` | 199.6 KB | 54.4% | 98.8% |
+| `/en/faq` | 200.4 KB | 54.4% | 88.4% |
+| `/en/pricing` | 200.0 KB | 54.1% | 95.4% |
+| `/en/products` | 199.9 KB | 54.4% | 90.7% |
+| `/en/settings` | 202.9 KB | 54.4% | 94.2% |
+| `/en/team` | 200.0 KB | 54.4% | 88.4% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 204.3 KB | 45.6% | 84.5% |
-| `/fr/about` | 202.2 KB | 45.6% | 86.4% |
-| `/fr/blog` | 201.1 KB | 45.6% | 87.4% |
-| `/fr/careers` | 202.2 KB | 45.6% | 87.5% |
-| `/fr/contact` | 200.4 KB | 45.6% | 98.1% |
-| `/fr/faq` | 201.4 KB | 45.6% | 91.3% |
-| `/fr/pricing` | 200.9 KB | 45.4% | 90.4% |
-| `/fr/products` | 200.8 KB | 45.6% | 90.3% |
-| `/fr/settings` | 203.9 KB | 45.6% | 93.2% |
-| `/fr/team` | 201.0 KB | 45.6% | 89.3% |
+| `/fr/` | 203.6 KB | 45.6% | 84.5% |
+| `/fr/about` | 201.4 KB | 45.6% | 86.4% |
+| `/fr/blog` | 200.4 KB | 45.6% | 87.4% |
+| `/fr/careers` | 201.4 KB | 45.6% | 87.5% |
+| `/fr/contact` | 199.7 KB | 45.6% | 98.1% |
+| `/fr/faq` | 200.7 KB | 45.6% | 91.3% |
+| `/fr/pricing` | 200.2 KB | 45.4% | 90.4% |
+| `/fr/products` | 200.1 KB | 45.6% | 90.3% |
+| `/fr/settings` | 203.2 KB | 45.6% | 93.2% |
+| `/fr/team` | 200.3 KB | 45.6% | 89.3% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-dynamic-intlayer-compat-use-intl-app/bundle/rollup-visualizer.html)
 
@@ -656,31 +656,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 196.0 KB | 54.4% | 81.4% |
-| `/en/about` | 194.9 KB | 54.4% | 88.4% |
-| `/en/blog` | 195.1 KB | 54.4% | 84.9% |
-| `/en/careers` | 195.5 KB | 54.4% | 87.4% |
-| `/en/contact` | 195.1 KB | 54.4% | 98.8% |
+| `/en/` | 196.1 KB | 54.4% | 81.4% |
+| `/en/about` | 195.0 KB | 54.4% | 88.4% |
+| `/en/blog` | 195.2 KB | 54.4% | 84.9% |
+| `/en/careers` | 195.6 KB | 54.4% | 87.4% |
+| `/en/contact` | 195.2 KB | 54.4% | 98.8% |
 | `/en/faq` | 195.0 KB | 54.4% | 88.4% |
-| `/en/pricing` | 195.2 KB | 54.1% | 95.4% |
-| `/en/products` | 195.0 KB | 54.4% | 90.7% |
-| `/en/settings` | 196.4 KB | 54.4% | 94.2% |
-| `/en/team` | 195.0 KB | 54.4% | 88.4% |
+| `/en/pricing` | 195.3 KB | 54.1% | 95.4% |
+| `/en/products` | 195.1 KB | 54.4% | 90.7% |
+| `/en/settings` | 196.5 KB | 54.4% | 94.2% |
+| `/en/team` | 195.1 KB | 54.4% | 88.4% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 196.0 KB | 45.6% | 84.5% |
-| `/fr/about` | 194.9 KB | 45.6% | 86.4% |
-| `/fr/blog` | 195.1 KB | 45.6% | 87.4% |
-| `/fr/careers` | 195.5 KB | 45.6% | 87.5% |
-| `/fr/contact` | 195.1 KB | 45.6% | 98.1% |
+| `/fr/` | 196.1 KB | 45.6% | 84.5% |
+| `/fr/about` | 195.0 KB | 45.6% | 86.4% |
+| `/fr/blog` | 195.2 KB | 45.6% | 87.4% |
+| `/fr/careers` | 195.6 KB | 45.6% | 87.5% |
+| `/fr/contact` | 195.2 KB | 45.6% | 98.1% |
 | `/fr/faq` | 195.0 KB | 45.6% | 91.3% |
-| `/fr/pricing` | 195.2 KB | 45.4% | 90.4% |
-| `/fr/products` | 195.0 KB | 45.6% | 90.3% |
-| `/fr/settings` | 196.4 KB | 45.6% | 93.2% |
-| `/fr/team` | 195.0 KB | 45.6% | 89.3% |
+| `/fr/pricing` | 195.3 KB | 45.4% | 90.4% |
+| `/fr/products` | 195.1 KB | 45.6% | 90.3% |
+| `/fr/settings` | 196.5 KB | 45.6% | 93.2% |
+| `/fr/team` | 195.1 KB | 45.6% | 89.3% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-compat-use-intl-app/bundle/rollup-visualizer.html)
 
@@ -713,31 +713,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 203.9 KB | 54.4% | 81.4% |
-| `/en/about` | 201.8 KB | 54.4% | 88.4% |
-| `/en/blog` | 200.9 KB | 54.4% | 84.9% |
-| `/en/careers` | 201.9 KB | 54.4% | 87.4% |
-| `/en/contact` | 200.3 KB | 54.4% | 98.8% |
-| `/en/faq` | 201.1 KB | 54.4% | 88.4% |
-| `/en/pricing` | 200.7 KB | 54.1% | 95.4% |
-| `/en/products` | 200.6 KB | 54.4% | 90.7% |
-| `/en/settings` | 203.7 KB | 54.4% | 94.2% |
-| `/en/team` | 200.8 KB | 54.4% | 88.4% |
+| `/en/` | 203.1 KB | 54.4% | 81.4% |
+| `/en/about` | 201.1 KB | 54.4% | 88.4% |
+| `/en/blog` | 200.2 KB | 54.4% | 84.9% |
+| `/en/careers` | 201.2 KB | 54.4% | 87.4% |
+| `/en/contact` | 199.6 KB | 54.4% | 98.8% |
+| `/en/faq` | 200.4 KB | 54.4% | 88.4% |
+| `/en/pricing` | 200.0 KB | 54.1% | 95.4% |
+| `/en/products` | 199.9 KB | 54.4% | 90.7% |
+| `/en/settings` | 202.9 KB | 54.4% | 94.2% |
+| `/en/team` | 200.0 KB | 54.4% | 88.4% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 204.3 KB | 45.6% | 84.5% |
-| `/fr/about` | 202.2 KB | 45.6% | 86.4% |
-| `/fr/blog` | 201.1 KB | 45.6% | 87.4% |
-| `/fr/careers` | 202.2 KB | 45.6% | 87.5% |
-| `/fr/contact` | 200.4 KB | 45.6% | 98.1% |
-| `/fr/faq` | 201.4 KB | 45.6% | 91.3% |
-| `/fr/pricing` | 200.9 KB | 45.4% | 90.4% |
-| `/fr/products` | 200.8 KB | 45.6% | 90.3% |
-| `/fr/settings` | 203.9 KB | 45.6% | 93.2% |
-| `/fr/team` | 201.0 KB | 45.6% | 89.3% |
+| `/fr/` | 203.6 KB | 45.6% | 84.5% |
+| `/fr/about` | 201.4 KB | 45.6% | 86.4% |
+| `/fr/blog` | 200.4 KB | 45.6% | 87.4% |
+| `/fr/careers` | 201.4 KB | 45.6% | 87.5% |
+| `/fr/contact` | 199.7 KB | 45.6% | 98.1% |
+| `/fr/faq` | 200.7 KB | 45.6% | 91.3% |
+| `/fr/pricing` | 200.2 KB | 45.4% | 90.4% |
+| `/fr/products` | 200.1 KB | 45.6% | 90.3% |
+| `/fr/settings` | 203.2 KB | 45.6% | 93.2% |
+| `/fr/team` | 200.3 KB | 45.6% | 89.3% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-dynamic-intlayer-compat-use-intl-app/bundle/rollup-visualizer.html)
 
@@ -1012,7 +1012,7 @@ _Generated: 2026-10-07_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| latest | 37.1 KB | 130.3 KB |
+| 11.1.24 | 37.1 KB | 130.3 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -1214,14 +1214,14 @@ _Generated: 2026-10-07_
 
 | Version | Lib size (gz) | Lib size (min) |
 | :--- | ---: | ---: |
-| 9.7.0 | 4.7 KB | 13.8 KB |
+| 9.8.3 | 4.7 KB | 13.8 KB |
 
 | Category | Status | Page JS avg (gz) | Locale leak % | Other page content leak % | Comp avg (gz) | E2E reactivity | React Profiler | Page load | Hydration |
 | :--- | :---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Static | ✅ | 134.5 KB | 49.7% | 0.0% | 7.7 KB | 3.2 ms | — | 14.2 ms | 9.4 ms |
-| Dynamic | ✅ | 126.8 KB | 0.0% | 0.0% | 5.8 KB | 5.2 ms | — | 14.8 ms | 10.2 ms |
+| Dynamic | ✅ | 127.0 KB | 0.0% | 0.0% | 6.1 KB | 5.2 ms | — | 14.8 ms | 10.2 ms |
 | Scoped Static | ↳ Static | 134.5 KB | 49.7% | 0.0% | 7.7 KB | 3.2 ms | — | 14.2 ms | 9.4 ms |
-| Scoped Dynamic | ✅ | 126.9 KB | 0.0% | 0.0% | 6.0 KB | 6.0 ms | — | 14.7 ms | 11.5 ms |
+| Scoped Dynamic | ✅ | 127.1 KB | 0.0% | 0.0% | 6.1 KB | 6.0 ms | — | 14.7 ms | 11.5 ms |
 
 <details>
 <summary><strong>Static</strong> — per-locale page bundle</summary>
@@ -1230,31 +1230,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 146.1 KB | 50.0% | 0.0% |
+| `/en/` | 146.2 KB | 50.0% | 0.0% |
 | `/en/about` | 138.8 KB | 57.1% | 0.0% |
 | `/en/blog` | 133.2 KB | 50.0% | 0.0% |
 | `/en/careers` | 134.1 KB | 53.3% | 0.0% |
 | `/en/contact` | 128.9 KB | 55.6% | 0.0% |
 | `/en/faq` | 136.9 KB | 48.0% | 0.0% |
-| `/en/pricing` | 130.3 KB | 61.1% | 0.0% |
+| `/en/pricing` | 130.4 KB | 61.1% | 0.0% |
 | `/en/products` | 132.0 KB | 54.2% | 0.0% |
 | `/en/settings` | 131.9 KB | 55.6% | 0.0% |
-| `/en/team` | 132.4 KB | 51.9% | 0.0% |
+| `/en/team` | 132.5 KB | 51.9% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 146.1 KB | 50.0% | 0.0% |
+| `/fr/` | 146.2 KB | 50.0% | 0.0% |
 | `/fr/about` | 138.8 KB | 42.9% | 0.0% |
 | `/fr/blog` | 133.2 KB | 50.0% | 0.0% |
 | `/fr/careers` | 134.1 KB | 46.7% | 0.0% |
 | `/fr/contact` | 128.9 KB | 44.4% | 0.0% |
 | `/fr/faq` | 136.9 KB | 52.0% | 0.0% |
-| `/fr/pricing` | 130.3 KB | 33.3% | 0.0% |
+| `/fr/pricing` | 130.4 KB | 33.3% | 0.0% |
 | `/fr/products` | 132.0 KB | 45.8% | 0.0% |
 | `/fr/settings` | 131.9 KB | 44.4% | 0.0% |
-| `/fr/team` | 132.4 KB | 48.1% | 0.0% |
+| `/fr/team` | 132.5 KB | 48.1% | 0.0% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-app/bundle/rollup-visualizer.html)
 
@@ -1287,31 +1287,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 128.3 KB | 0.0% | 0.0% |
-| `/en/about` | 126.4 KB | 0.0% | 0.0% |
-| `/en/blog` | 126.1 KB | 0.0% | 0.0% |
-| `/en/careers` | 127.0 KB | 0.0% | 0.0% |
-| `/en/contact` | 125.7 KB | 0.0% | 0.0% |
-| `/en/faq` | 126.3 KB | 0.0% | 0.0% |
-| `/en/pricing` | 125.9 KB | 0.0% | 0.0% |
-| `/en/products` | 125.9 KB | 0.0% | 0.0% |
-| `/en/settings` | 128.9 KB | 0.0% | 0.0% |
-| `/en/team` | 125.9 KB | 0.0% | 0.0% |
+| `/en/` | 128.6 KB | 0.0% | 0.0% |
+| `/en/about` | 126.7 KB | 0.0% | 0.0% |
+| `/en/blog` | 126.3 KB | 0.0% | 0.0% |
+| `/en/careers` | 127.3 KB | 0.0% | 0.0% |
+| `/en/contact` | 126.0 KB | 0.0% | 0.0% |
+| `/en/faq` | 126.5 KB | 0.0% | 0.0% |
+| `/en/pricing` | 126.2 KB | 0.0% | 0.0% |
+| `/en/products` | 126.2 KB | 0.0% | 0.0% |
+| `/en/settings` | 129.2 KB | 0.0% | 0.0% |
+| `/en/team` | 126.2 KB | 0.0% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 128.8 KB | 0.0% | 0.0% |
-| `/fr/about` | 126.7 KB | 0.0% | 0.0% |
-| `/fr/blog` | 126.2 KB | 0.0% | 0.0% |
-| `/fr/careers` | 127.3 KB | 0.0% | 0.0% |
-| `/fr/contact` | 125.9 KB | 0.0% | 0.0% |
-| `/fr/faq` | 126.5 KB | 0.0% | 0.0% |
-| `/fr/pricing` | 126.1 KB | 0.0% | 0.0% |
-| `/fr/products` | 126.1 KB | 0.0% | 0.0% |
-| `/fr/settings` | 129.1 KB | 0.0% | 0.0% |
-| `/fr/team` | 126.1 KB | 0.0% | 0.0% |
+| `/fr/` | 129.1 KB | 0.0% | 0.0% |
+| `/fr/about` | 127.0 KB | 0.0% | 0.0% |
+| `/fr/blog` | 126.5 KB | 0.0% | 0.0% |
+| `/fr/careers` | 127.5 KB | 0.0% | 0.0% |
+| `/fr/contact` | 126.1 KB | 0.0% | 0.0% |
+| `/fr/faq` | 126.8 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 126.4 KB | 0.0% | 0.0% |
+| `/fr/products` | 126.3 KB | 0.0% | 0.0% |
+| `/fr/settings` | 129.4 KB | 0.0% | 0.0% |
+| `/fr/team` | 126.4 KB | 0.0% | 0.0% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-dynamic-intlayer-app/bundle/rollup-visualizer.html)
 
@@ -1344,31 +1344,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 146.1 KB | 50.0% | 0.0% |
+| `/en/` | 146.2 KB | 50.0% | 0.0% |
 | `/en/about` | 138.8 KB | 57.1% | 0.0% |
 | `/en/blog` | 133.2 KB | 50.0% | 0.0% |
 | `/en/careers` | 134.1 KB | 53.3% | 0.0% |
 | `/en/contact` | 128.9 KB | 55.6% | 0.0% |
 | `/en/faq` | 136.9 KB | 48.0% | 0.0% |
-| `/en/pricing` | 130.3 KB | 61.1% | 0.0% |
+| `/en/pricing` | 130.4 KB | 61.1% | 0.0% |
 | `/en/products` | 132.0 KB | 54.2% | 0.0% |
 | `/en/settings` | 131.9 KB | 55.6% | 0.0% |
-| `/en/team` | 132.4 KB | 51.9% | 0.0% |
+| `/en/team` | 132.5 KB | 51.9% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 146.1 KB | 50.0% | 0.0% |
+| `/fr/` | 146.2 KB | 50.0% | 0.0% |
 | `/fr/about` | 138.8 KB | 42.9% | 0.0% |
 | `/fr/blog` | 133.2 KB | 50.0% | 0.0% |
 | `/fr/careers` | 134.1 KB | 46.7% | 0.0% |
 | `/fr/contact` | 128.9 KB | 44.4% | 0.0% |
 | `/fr/faq` | 136.9 KB | 52.0% | 0.0% |
-| `/fr/pricing` | 130.3 KB | 33.3% | 0.0% |
+| `/fr/pricing` | 130.4 KB | 33.3% | 0.0% |
 | `/fr/products` | 132.0 KB | 45.8% | 0.0% |
 | `/fr/settings` | 131.9 KB | 44.4% | 0.0% |
-| `/fr/team` | 132.4 KB | 48.1% | 0.0% |
+| `/fr/team` | 132.5 KB | 48.1% | 0.0% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-static-intlayer-app/bundle/rollup-visualizer.html)
 
@@ -1401,31 +1401,31 @@ _Generated: 2026-10-07_
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/en/` | 128.5 KB | 0.0% | 0.0% |
-| `/en/about` | 126.5 KB | 0.0% | 0.0% |
-| `/en/blog` | 126.2 KB | 0.0% | 0.0% |
-| `/en/careers` | 127.2 KB | 0.0% | 0.0% |
-| `/en/contact` | 125.9 KB | 0.0% | 0.0% |
-| `/en/faq` | 126.4 KB | 0.0% | 0.0% |
-| `/en/pricing` | 126.1 KB | 0.0% | 0.0% |
-| `/en/products` | 126.0 KB | 0.0% | 0.0% |
-| `/en/settings` | 129.1 KB | 0.0% | 0.0% |
-| `/en/team` | 126.1 KB | 0.0% | 0.0% |
+| `/en/` | 128.6 KB | 0.0% | 0.0% |
+| `/en/about` | 126.7 KB | 0.0% | 0.0% |
+| `/en/blog` | 126.3 KB | 0.0% | 0.0% |
+| `/en/careers` | 127.3 KB | 0.0% | 0.0% |
+| `/en/contact` | 126.0 KB | 0.0% | 0.0% |
+| `/en/faq` | 126.5 KB | 0.0% | 0.0% |
+| `/en/pricing` | 126.2 KB | 0.0% | 0.0% |
+| `/en/products` | 126.2 KB | 0.0% | 0.0% |
+| `/en/settings` | 129.2 KB | 0.0% | 0.0% |
+| `/en/team` | 126.2 KB | 0.0% | 0.0% |
 
 **Locale: `fr`**
 
 | Page | JS (gz) | Locale leak % | Page leak % |
 | :--- | ---: | ---: | ---: |
-| `/fr/` | 128.9 KB | 0.0% | 0.0% |
-| `/fr/about` | 126.9 KB | 0.0% | 0.0% |
-| `/fr/blog` | 126.4 KB | 0.0% | 0.0% |
-| `/fr/careers` | 127.4 KB | 0.0% | 0.0% |
-| `/fr/contact` | 126.0 KB | 0.0% | 0.0% |
-| `/fr/faq` | 126.7 KB | 0.0% | 0.0% |
-| `/fr/pricing` | 126.2 KB | 0.0% | 0.0% |
-| `/fr/products` | 126.2 KB | 0.0% | 0.0% |
-| `/fr/settings` | 129.3 KB | 0.0% | 0.0% |
-| `/fr/team` | 126.3 KB | 0.0% | 0.0% |
+| `/fr/` | 129.1 KB | 0.0% | 0.0% |
+| `/fr/about` | 127.0 KB | 0.0% | 0.0% |
+| `/fr/blog` | 126.5 KB | 0.0% | 0.0% |
+| `/fr/careers` | 127.6 KB | 0.0% | 0.0% |
+| `/fr/contact` | 126.2 KB | 0.0% | 0.0% |
+| `/fr/faq` | 126.8 KB | 0.0% | 0.0% |
+| `/fr/pricing` | 126.4 KB | 0.0% | 0.0% |
+| `/fr/products` | 126.4 KB | 0.0% | 0.0% |
+| `/fr/settings` | 129.4 KB | 0.0% | 0.0% |
+| `/fr/team` | 126.4 KB | 0.0% | 0.0% |
 
 **Bundle link:** [View bundle visualizer](https://htmlpreview.github.io/?https://github.com/intlayer-org/benchmark-i18n/blob/main/results/tanstack-scoped-dynamic-intlayer-app/bundle/rollup-visualizer.html)
 

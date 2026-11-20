@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-28T00:54:33.296Z",
+  "timestamp": "2026-11-20T18:41:22.963Z",
   "packageName": "vite-vue-intlayer-compat-vue-i18n-static",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 47398,
-    "totalMinifiedBytes": 29603,
-    "totalGzipBytes": 9895
+    "totalUnminifiedBytes": 61075,
+    "totalMinifiedBytes": 39296,
+    "totalGzipBytes": 12782
   },
   "components": [
     {
       "name": "EmptyComponent.vue",
       "category": "Synthetic",
-      "unminifiedBytes": 47398,
-      "unminifiedGzipBytes": 13074,
-      "minifiedBytes": 29603,
-      "minifiedGzipBytes": 9895
+      "unminifiedBytes": 61075,
+      "unminifiedGzipBytes": 16669,
+      "minifiedBytes": 39296,
+      "minifiedGzipBytes": 12782
     }
   ]
 }

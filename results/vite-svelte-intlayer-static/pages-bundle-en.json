@@ -1,14 +1,14 @@
 {
   "app": "vite-svelte-intlayer-static",
   "locale": "en",
-  "timestamp": "2026-10-07T06:51:43.301Z",
+  "timestamp": "2026-11-20T18:38:41.373Z",
   "fingerprintCounts": {
     "locale": {
-      "en": 99,
-      "fr": 116
+      "en": 98,
+      "fr": 115
     },
     "page": {
-      "home": 24,
+      "home": 23,
       "about": 10,
       "blog": 13,
       "careers": 11,
@@ -25,21 +25,21 @@
       "path": "/en/",
       "page": "home",
       "locale": "en",
-      "totalSize": 163761,
-      "totalGzipSize": 58264,
-      "jsSize": 137550,
-      "jsGzipSize": 52466,
+      "totalSize": 160855,
+      "totalGzipSize": 57932,
+      "jsSize": 134644,
+      "jsGzipSize": 52135,
       "cssSize": 24720,
       "cssGzipSize": 5108,
       "htmlSize": 1491,
-      "htmlGzipSize": 690,
+      "htmlGzipSize": 689,
       "fileCount": 4,
       "jsFileCount": 2,
       "bundleFiles": [
         {
           "url": "/en/",
           "size": 1491,
-          "gzipSize": 690,
+          "gzipSize": 689,
           "type": "html"
         },
         {
@@ -49,23 +49,22 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-DBxMLEF5.js",
-          "size": 79248,
-          "gzipSize": 30337,
+          "url": "/assets/index-BaJiU3xi.js",
+          "size": 76288,
+          "gzipSize": 29981,
           "type": "js"
         },
         {
-          "url": "/assets/useDictionary-Ng4eeV8q.js",
-          "size": 58302,
-          "gzipSize": 22129,
+          "url": "/assets/useDictionary-CVFMzlw2.js",
+          "size": 58356,
+          "gzipSize": 22154,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 18,
+          "count": 17,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -86,9 +85,8 @@
           ]
         },
         "fr": {
-          "count": 19,
+          "count": 18,
           "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
             "le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
             "rendu et hydratation",
@@ -110,12 +108,11 @@
           ]
         }
       },
-      "localeLeakagePercent": 51.35135135135135,
+      "localeLeakagePercent": 51.42857142857142,
       "pageLeakage": {
         "home": {
-          "count": 16,
+          "count": 15,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -176,21 +173,21 @@
       "path": "/en/about",
       "page": "about",
       "locale": "en",
-      "totalSize": 193771,
-      "totalGzipSize": 71909,
-      "jsSize": 167560,
-      "jsGzipSize": 66111,
+      "totalSize": 190865,
+      "totalGzipSize": 71576,
+      "jsSize": 164654,
+      "jsGzipSize": 65779,
       "cssSize": 24720,
       "cssGzipSize": 5108,
       "htmlSize": 1491,
-      "htmlGzipSize": 690,
+      "htmlGzipSize": 689,
       "fileCount": 5,
       "jsFileCount": 3,
       "bundleFiles": [
         {
           "url": "/en/about",
           "size": 1491,
-          "gzipSize": 690,
+          "gzipSize": 689,
           "type": "html"
         },
         {
@@ -200,29 +197,28 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-DBxMLEF5.js",
-          "size": 79248,
-          "gzipSize": 30337,
+          "url": "/assets/index-BaJiU3xi.js",
+          "size": 76288,
+          "gzipSize": 29981,
           "type": "js"
         },
         {
-          "url": "/assets/useDictionary-Ng4eeV8q.js",
-          "size": 58302,
-          "gzipSize": 22129,
+          "url": "/assets/useDictionary-CVFMzlw2.js",
+          "size": 58356,
+          "gzipSize": 22154,
           "type": "js"
         },
         {
-          "url": "/assets/About-D5rmhDB5.js",
+          "url": "/assets/About-CxgZX9v9.js",
           "size": 30010,
-          "gzipSize": 13645,
+          "gzipSize": 13644,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 28,
+          "count": 27,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -253,9 +249,8 @@
           ]
         },
         "fr": {
-          "count": 33,
+          "count": 32,
           "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
             "le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
             "rendu et hydratation",
@@ -291,12 +286,11 @@
           ]
         }
       },
-      "localeLeakagePercent": 54.09836065573771,
+      "localeLeakagePercent": 54.23728813559322,
       "pageLeakage": {
         "home": {
-          "count": 16,
+          "count": 15,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -362,27 +356,27 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 61.53846153846154
+      "pageLeakagePercent": 60
     },
     {
       "path": "/en/blog",
       "page": "blog",
       "locale": "en",
-      "totalSize": 188736,
-      "totalGzipSize": 67857,
-      "jsSize": 162525,
-      "jsGzipSize": 62059,
+      "totalSize": 185830,
+      "totalGzipSize": 67525,
+      "jsSize": 159619,
+      "jsGzipSize": 61728,
       "cssSize": 24720,
       "cssGzipSize": 5108,
       "htmlSize": 1491,
-      "htmlGzipSize": 690,
+      "htmlGzipSize": 689,
       "fileCount": 6,
       "jsFileCount": 4,
       "bundleFiles": [
         {
           "url": "/en/blog",
           "size": 1491,
-          "gzipSize": 690,
+          "gzipSize": 689,
           "type": "html"
         },
         {
@@ -392,35 +386,34 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-DBxMLEF5.js",
-          "size": 79248,
-          "gzipSize": 30337,
+          "url": "/assets/index-BaJiU3xi.js",
+          "size": 76288,
+          "gzipSize": 29981,
           "type": "js"
         },
         {
-          "url": "/assets/useDictionary-Ng4eeV8q.js",
-          "size": 58302,
-          "gzipSize": 22129,
+          "url": "/assets/useDictionary-CVFMzlw2.js",
+          "size": 58356,
+          "gzipSize": 22154,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-er7MIeK6.js",
+          "url": "/assets/MockBanner-C_I-Biiq.js",
           "size": 2121,
-          "gzipSize": 1393,
+          "gzipSize": 1394,
           "type": "js"
         },
         {
-          "url": "/assets/Blog-BmP-fCPD.js",
+          "url": "/assets/Blog-BNSwDYSv.js",
           "size": 22854,
-          "gzipSize": 8200,
+          "gzipSize": 8199,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 32,
+          "count": 31,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -455,9 +448,8 @@
           ]
         },
         "fr": {
-          "count": 33,
+          "count": 32,
           "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
             "le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
             "rendu et hydratation",
@@ -493,12 +485,11 @@
           ]
         }
       },
-      "localeLeakagePercent": 50.76923076923077,
+      "localeLeakagePercent": 50.79365079365079,
       "pageLeakage": {
         "home": {
-          "count": 16,
+          "count": 15,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -567,27 +558,27 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 55.172413793103445
+      "pageLeakagePercent": 53.57142857142857
     },
     {
       "path": "/en/careers",
       "page": "careers",
       "locale": "en",
-      "totalSize": 188163,
-      "totalGzipSize": 68235,
-      "jsSize": 161952,
-      "jsGzipSize": 62437,
+      "totalSize": 185257,
+      "totalGzipSize": 67903,
+      "jsSize": 159046,
+      "jsGzipSize": 62106,
       "cssSize": 24720,
       "cssGzipSize": 5108,
       "htmlSize": 1491,
-      "htmlGzipSize": 690,
+      "htmlGzipSize": 689,
       "fileCount": 6,
       "jsFileCount": 4,
       "bundleFiles": [
         {
           "url": "/en/careers",
           "size": 1491,
-          "gzipSize": 690,
+          "gzipSize": 689,
           "type": "html"
         },
         {
@@ -597,35 +588,34 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-DBxMLEF5.js",
-          "size": 79248,
-          "gzipSize": 30337,
+          "url": "/assets/index-BaJiU3xi.js",
+          "size": 76288,
+          "gzipSize": 29981,
           "type": "js"
         },
         {
-          "url": "/assets/useDictionary-Ng4eeV8q.js",
-          "size": 58302,
-          "gzipSize": 22129,
+          "url": "/assets/useDictionary-CVFMzlw2.js",
+          "size": 58356,
+          "gzipSize": 22154,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-er7MIeK6.js",
+          "url": "/assets/MockBanner-C_I-Biiq.js",
           "size": 2121,
-          "gzipSize": 1393,
+          "gzipSize": 1394,
           "type": "js"
         },
         {
-          "url": "/assets/Careers-BjTwlD15.js",
+          "url": "/assets/Careers-DQR3KEEj.js",
           "size": 22281,
-          "gzipSize": 8578,
+          "gzipSize": 8577,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 30,
+          "count": 29,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -658,9 +648,8 @@
           ]
         },
         "fr": {
-          "count": 31,
+          "count": 30,
           "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
             "le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
             "rendu et hydratation",
@@ -694,12 +683,11 @@
           ]
         }
       },
-      "localeLeakagePercent": 50.81967213114754,
+      "localeLeakagePercent": 50.847457627118644,
       "pageLeakage": {
         "home": {
-          "count": 16,
+          "count": 15,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -766,28 +754,34 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 59.25925925925925
+      "pageLeakagePercent": 57.692307692307686
     },
     {
       "path": "/en/contact",
       "page": "contact",
       "locale": "en",
-      "totalSize": 174673,
-      "totalGzipSize": 63316,
-      "jsSize": 148462,
-      "jsGzipSize": 57518,
+      "totalSize": 171767,
+      "totalGzipSize": 62985,
+      "jsSize": 145556,
+      "jsGzipSize": 57188,
       "cssSize": 24720,
       "cssGzipSize": 5108,
       "htmlSize": 1491,
-      "htmlGzipSize": 690,
+      "htmlGzipSize": 689,
       "fileCount": 6,
       "jsFileCount": 4,
       "bundleFiles": [
         {
           "url": "/en/contact",
           "size": 1491,
-          "gzipSize": 690,
+          "gzipSize": 689,
           "type": "html"
+        },
+        {
+          "url": "/assets/index-BaJiU3xi.js",
+          "size": 76288,
+          "gzipSize": 29981,
+          "type": "js"
         },
         {
           "url": "/assets/index-tDY0cyWJ.css",
@@ -796,25 +790,19 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-DBxMLEF5.js",
-          "size": 79248,
-          "gzipSize": 30337,
+          "url": "/assets/useDictionary-CVFMzlw2.js",
+          "size": 58356,
+          "gzipSize": 22154,
           "type": "js"
         },
         {
-          "url": "/assets/useDictionary-Ng4eeV8q.js",
-          "size": 58302,
-          "gzipSize": 22129,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-er7MIeK6.js",
+          "url": "/assets/MockBanner-C_I-Biiq.js",
           "size": 2121,
-          "gzipSize": 1393,
+          "gzipSize": 1394,
           "type": "js"
         },
         {
-          "url": "/assets/Contact-7X7z-acU.js",
+          "url": "/assets/Contact-EwgX5GBP.js",
           "size": 8791,
           "gzipSize": 3659,
           "type": "js"
@@ -822,9 +810,8 @@
       ],
       "localeLeakage": {
         "en": {
-          "count": 20,
+          "count": 19,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -847,9 +834,8 @@
           ]
         },
         "fr": {
-          "count": 22,
+          "count": 21,
           "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
             "le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
             "rendu et hydratation",
@@ -874,12 +860,11 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.38095238095239,
+      "localeLeakagePercent": 52.5,
       "pageLeakage": {
         "home": {
-          "count": 16,
+          "count": 15,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -936,34 +921,28 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 94.11764705882352
+      "pageLeakagePercent": 93.75
     },
     {
       "path": "/en/faq",
       "page": "faq",
       "locale": "en",
-      "totalSize": 190625,
-      "totalGzipSize": 70652,
-      "jsSize": 164414,
-      "jsGzipSize": 64854,
+      "totalSize": 187719,
+      "totalGzipSize": 70320,
+      "jsSize": 161508,
+      "jsGzipSize": 64523,
       "cssSize": 24720,
       "cssGzipSize": 5108,
       "htmlSize": 1491,
-      "htmlGzipSize": 690,
+      "htmlGzipSize": 689,
       "fileCount": 6,
       "jsFileCount": 4,
       "bundleFiles": [
         {
           "url": "/en/faq",
           "size": 1491,
-          "gzipSize": 690,
+          "gzipSize": 689,
           "type": "html"
-        },
-        {
-          "url": "/assets/index-DBxMLEF5.js",
-          "size": 79248,
-          "gzipSize": 30337,
-          "type": "js"
         },
         {
           "url": "/assets/index-tDY0cyWJ.css",
@@ -972,29 +951,34 @@
           "type": "css"
         },
         {
-          "url": "/assets/useDictionary-Ng4eeV8q.js",
-          "size": 58302,
-          "gzipSize": 22129,
+          "url": "/assets/index-BaJiU3xi.js",
+          "size": 76288,
+          "gzipSize": 29981,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-er7MIeK6.js",
-          "size": 2121,
-          "gzipSize": 1393,
+          "url": "/assets/useDictionary-CVFMzlw2.js",
+          "size": 58356,
+          "gzipSize": 22154,
           "type": "js"
         },
         {
-          "url": "/assets/FAQ-B2kWkie3.js",
+          "url": "/assets/FAQ-C62QWdax.js",
           "size": 24743,
-          "gzipSize": 10995,
+          "gzipSize": 10994,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-C_I-Biiq.js",
+          "size": 2121,
+          "gzipSize": 1394,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 29,
+          "count": 28,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -1026,9 +1010,8 @@
           ]
         },
         "fr": {
-          "count": 30,
+          "count": 29,
           "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
             "le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
             "rendu et hydratation",
@@ -1061,12 +1044,11 @@
           ]
         }
       },
-      "localeLeakagePercent": 50.847457627118644,
+      "localeLeakagePercent": 50.877192982456144,
       "pageLeakage": {
         "home": {
-          "count": 16,
+          "count": 15,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -1132,27 +1114,27 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 61.53846153846154
+      "pageLeakagePercent": 60
     },
     {
       "path": "/en/pricing",
       "page": "pricing",
       "locale": "en",
-      "totalSize": 177163,
-      "totalGzipSize": 64299,
-      "jsSize": 150952,
-      "jsGzipSize": 58501,
+      "totalSize": 174257,
+      "totalGzipSize": 63967,
+      "jsSize": 148046,
+      "jsGzipSize": 58170,
       "cssSize": 24720,
       "cssGzipSize": 5108,
       "htmlSize": 1491,
-      "htmlGzipSize": 690,
+      "htmlGzipSize": 689,
       "fileCount": 6,
       "jsFileCount": 4,
       "bundleFiles": [
         {
           "url": "/en/pricing",
           "size": 1491,
-          "gzipSize": 690,
+          "gzipSize": 689,
           "type": "html"
         },
         {
@@ -1162,35 +1144,34 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-DBxMLEF5.js",
-          "size": 79248,
-          "gzipSize": 30337,
+          "url": "/assets/index-BaJiU3xi.js",
+          "size": 76288,
+          "gzipSize": 29981,
           "type": "js"
         },
         {
-          "url": "/assets/useDictionary-Ng4eeV8q.js",
-          "size": 58302,
-          "gzipSize": 22129,
+          "url": "/assets/useDictionary-CVFMzlw2.js",
+          "size": 58356,
+          "gzipSize": 22154,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-er7MIeK6.js",
+          "url": "/assets/MockBanner-C_I-Biiq.js",
           "size": 2121,
-          "gzipSize": 1393,
+          "gzipSize": 1394,
           "type": "js"
         },
         {
-          "url": "/assets/Pricing-B6Etl4Ft.js",
+          "url": "/assets/Pricing-VHYKC2uY.js",
           "size": 11281,
-          "gzipSize": 4642,
+          "gzipSize": 4641,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 23,
+          "count": 22,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -1216,9 +1197,8 @@
           ]
         },
         "fr": {
-          "count": 29,
+          "count": 28,
           "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
             "le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
             "rendu et hydratation",
@@ -1250,12 +1230,11 @@
           ]
         }
       },
-      "localeLeakagePercent": 55.769230769230774,
+      "localeLeakagePercent": 56.00000000000001,
       "pageLeakage": {
         "home": {
-          "count": 16,
+          "count": 15,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -1315,27 +1294,27 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 80
+      "pageLeakagePercent": 78.94736842105263
     },
     {
       "path": "/en/products",
       "page": "products",
       "locale": "en",
-      "totalSize": 181620,
-      "totalGzipSize": 65970,
-      "jsSize": 155409,
-      "jsGzipSize": 60172,
+      "totalSize": 178714,
+      "totalGzipSize": 65639,
+      "jsSize": 152503,
+      "jsGzipSize": 59842,
       "cssSize": 24720,
       "cssGzipSize": 5108,
       "htmlSize": 1491,
-      "htmlGzipSize": 690,
+      "htmlGzipSize": 689,
       "fileCount": 6,
       "jsFileCount": 4,
       "bundleFiles": [
         {
           "url": "/en/products",
           "size": 1491,
-          "gzipSize": 690,
+          "gzipSize": 689,
           "type": "html"
         },
         {
@@ -1345,35 +1324,34 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-DBxMLEF5.js",
-          "size": 79248,
-          "gzipSize": 30337,
+          "url": "/assets/index-BaJiU3xi.js",
+          "size": 76288,
+          "gzipSize": 29981,
           "type": "js"
         },
         {
-          "url": "/assets/useDictionary-Ng4eeV8q.js",
-          "size": 58302,
-          "gzipSize": 22129,
+          "url": "/assets/useDictionary-CVFMzlw2.js",
+          "size": 58356,
+          "gzipSize": 22154,
           "type": "js"
         },
         {
-          "url": "/assets/Products-C9y4Y7ZK.js",
+          "url": "/assets/Products-CCVPDAAc.js",
           "size": 15738,
           "gzipSize": 6313,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-er7MIeK6.js",
+          "url": "/assets/MockBanner-C_I-Biiq.js",
           "size": 2121,
-          "gzipSize": 1393,
+          "gzipSize": 1394,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 27,
+          "count": 26,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -1403,9 +1381,8 @@
           ]
         },
         "fr": {
-          "count": 30,
+          "count": 29,
           "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
             "le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
             "rendu et hydratation",
@@ -1438,12 +1415,11 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.63157894736842,
+      "localeLeakagePercent": 52.72727272727272,
       "pageLeakage": {
         "home": {
-          "count": 16,
+          "count": 15,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -1507,27 +1483,27 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 66.66666666666666
+      "pageLeakagePercent": 65.21739130434783
     },
     {
       "path": "/en/settings",
       "page": "settings",
       "locale": "en",
-      "totalSize": 182130,
-      "totalGzipSize": 65401,
-      "jsSize": 155919,
-      "jsGzipSize": 59603,
+      "totalSize": 179224,
+      "totalGzipSize": 65070,
+      "jsSize": 153013,
+      "jsGzipSize": 59273,
       "cssSize": 24720,
       "cssGzipSize": 5108,
       "htmlSize": 1491,
-      "htmlGzipSize": 690,
+      "htmlGzipSize": 689,
       "fileCount": 6,
       "jsFileCount": 4,
       "bundleFiles": [
         {
           "url": "/en/settings",
           "size": 1491,
-          "gzipSize": 690,
+          "gzipSize": 689,
           "type": "html"
         },
         {
@@ -1537,35 +1513,34 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-DBxMLEF5.js",
-          "size": 79248,
-          "gzipSize": 30337,
+          "url": "/assets/index-BaJiU3xi.js",
+          "size": 76288,
+          "gzipSize": 29981,
           "type": "js"
         },
         {
-          "url": "/assets/useDictionary-Ng4eeV8q.js",
-          "size": 58302,
-          "gzipSize": 22129,
+          "url": "/assets/useDictionary-CVFMzlw2.js",
+          "size": 58356,
+          "gzipSize": 22154,
           "type": "js"
         },
         {
-          "url": "/assets/MockBanner-er7MIeK6.js",
-          "size": 2121,
-          "gzipSize": 1393,
-          "type": "js"
-        },
-        {
-          "url": "/assets/Settings-DX3xG7CV.js",
+          "url": "/assets/Settings-BvdIQrG4.js",
           "size": 16248,
           "gzipSize": 5744,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-C_I-Biiq.js",
+          "size": 2121,
+          "gzipSize": 1394,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 24,
+          "count": 23,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -1592,9 +1567,8 @@
           ]
         },
         "fr": {
-          "count": 27,
+          "count": 26,
           "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
             "le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
             "rendu et hydratation",
@@ -1624,12 +1598,11 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.94117647058824,
+      "localeLeakagePercent": 53.06122448979592,
       "pageLeakage": {
         "home": {
-          "count": 16,
+          "count": 15,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -1690,28 +1663,34 @@
           "found": []
         }
       },
-      "pageLeakagePercent": 76.19047619047619
+      "pageLeakagePercent": 75
     },
     {
       "path": "/en/team",
       "page": "team",
       "locale": "en",
-      "totalSize": 184415,
-      "totalGzipSize": 66731,
-      "jsSize": 158204,
-      "jsGzipSize": 60933,
+      "totalSize": 181509,
+      "totalGzipSize": 66398,
+      "jsSize": 155298,
+      "jsGzipSize": 60601,
       "cssSize": 24720,
       "cssGzipSize": 5108,
       "htmlSize": 1491,
-      "htmlGzipSize": 690,
+      "htmlGzipSize": 689,
       "fileCount": 6,
       "jsFileCount": 4,
       "bundleFiles": [
         {
           "url": "/en/team",
           "size": 1491,
-          "gzipSize": 690,
+          "gzipSize": 689,
           "type": "html"
+        },
+        {
+          "url": "/assets/index-BaJiU3xi.js",
+          "size": 76288,
+          "gzipSize": 29981,
+          "type": "js"
         },
         {
           "url": "/assets/index-tDY0cyWJ.css",
@@ -1720,35 +1699,28 @@
           "type": "css"
         },
         {
-          "url": "/assets/index-DBxMLEF5.js",
-          "size": 79248,
-          "gzipSize": 30337,
+          "url": "/assets/useDictionary-CVFMzlw2.js",
+          "size": 58356,
+          "gzipSize": 22154,
           "type": "js"
         },
         {
-          "url": "/assets/useDictionary-Ng4eeV8q.js",
-          "size": 58302,
-          "gzipSize": 22129,
-          "type": "js"
-        },
-        {
-          "url": "/assets/MockBanner-er7MIeK6.js",
-          "size": 2121,
-          "gzipSize": 1393,
-          "type": "js"
-        },
-        {
-          "url": "/assets/Team-C-y5Z6h1.js",
+          "url": "/assets/Team-BiGZLjZt.js",
           "size": 18533,
-          "gzipSize": 7074,
+          "gzipSize": 7072,
+          "type": "js"
+        },
+        {
+          "url": "/assets/MockBanner-C_I-Biiq.js",
+          "size": 2121,
+          "gzipSize": 1394,
           "type": "js"
         }
       ],
       "localeLeakage": {
         "en": {
-          "count": 29,
+          "count": 28,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -1780,9 +1752,8 @@
           ]
         },
         "fr": {
-          "count": 32,
+          "count": 31,
           "found": [
-            "une application de test conçue pour mesurer l'impact réel des bibliothèques d'internationalisation sur la taille du bundle, les performances de chargement et la réactivité du rendu.",
             "pourquoi ces mesures sont importantes",
             "le bundle est l'ensemble des données envoyées à chaque utilisateur à travers le monde. un bundle plus volumineux signifie des temps de téléchargement plus longs — particulièrement sur les connexions 3g lentes courantes dans de nombreuses régions. les bibliothèques i18n varient considérablement dans leur poids : de quelques kilo-octets à des dizaines de kilo-octets de code d'exécution, plus les fichiers de traduction eux-mêmes.",
             "rendu et hydratation",
@@ -1817,12 +1788,11 @@
           ]
         }
       },
-      "localeLeakagePercent": 52.459016393442624,
+      "localeLeakagePercent": 52.54237288135594,
       "pageLeakage": {
         "home": {
-          "count": 16,
+          "count": 15,
           "found": [
-            "a test application designed to measure the real-world impact of internationalization libraries on bundle size, loading performance, and rendering reactivity.",
             "why these metrics matter",
             "the bundle is the data shipped to every user across the globe. a larger bundle means longer download times — especially on slow 3g connections common in many regions. i18n libraries vary dramatically in their weight: from a few kilobytes to tens of kilobytes of runtime code, plus the translation files themselves.",
             "rendering & hydration",
@@ -1888,7 +1858,7 @@
           ]
         }
       },
-      "pageLeakagePercent": 61.53846153846154
+      "pageLeakagePercent": 60
     }
   ]
 }

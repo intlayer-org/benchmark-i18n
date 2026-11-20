@@ -1,20 +1,20 @@
 {
-  "timestamp": "2026-09-28T00:50:38.325Z",
+  "timestamp": "2026-11-20T18:38:31.208Z",
   "packageName": "nextjs-static-intlayer-compat-lingui-app",
   "summary": {
     "totalComponents": 1,
-    "totalUnminifiedBytes": 55982,
-    "totalMinifiedBytes": 34871,
-    "totalGzipBytes": 10990
+    "totalUnminifiedBytes": 61193,
+    "totalMinifiedBytes": 38003,
+    "totalGzipBytes": 11856
   },
   "components": [
     {
       "name": "EmptyComponent.tsx",
       "category": "Synthetic",
-      "unminifiedBytes": 55982,
-      "unminifiedGzipBytes": 14866,
-      "minifiedBytes": 34871,
-      "minifiedGzipBytes": 10990
+      "unminifiedBytes": 61193,
+      "unminifiedGzipBytes": 16160,
+      "minifiedBytes": 38003,
+      "minifiedGzipBytes": 11856
     }
   ]
 }
